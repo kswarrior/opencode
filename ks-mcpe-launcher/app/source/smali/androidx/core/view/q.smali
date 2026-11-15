@@ -1,20 +1,11 @@
 .class public interface abstract Landroidx/core/view/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Landroidx/core/view/p;
 
 
 # virtual methods
-.method public abstract a(ILandroid/view/View;)V
-.end method
-
-.method public abstract c(Landroid/view/View;IIIII)V
-.end method
-
-.method public abstract d(Landroid/view/View;Landroid/view/View;II)Z
-.end method
-
-.method public abstract e(Landroid/view/View;Landroid/view/View;II)V
-.end method
-
-.method public abstract f(Landroid/view/View;II[II)V
+.method public abstract b(Landroid/view/View;IIIII[I)V
 .end method

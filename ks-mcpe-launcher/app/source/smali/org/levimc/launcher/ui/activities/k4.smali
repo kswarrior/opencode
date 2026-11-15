@@ -1,97 +1,96 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/k4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lorg/levimc/launcher/ui/activities/WorldEditorActivity$Values;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+.field public final synthetic d:Ljava/util/List;
 
 .field public final synthetic h:I
 
+.field public final synthetic p:I
+
+.field public final synthetic q:I
+
+.field public final synthetic w:I
+
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/k4;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k4;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 5
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/k4;->h:I
-
     .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/k4;->d:Ljava/util/List;
 
+    .line 7
     .line 8
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/k4;->h:I
+
     .line 9
     .line 10
+    iput p4, p0, Lorg/levimc/launcher/ui/activities/k4;->p:I
+
+    .line 11
+    .line 12
+    iput p5, p0, Lorg/levimc/launcher/ui/activities/k4;->q:I
+
+    .line 13
+    .line 14
+    iput p6, p0, Lorg/levimc/launcher/ui/activities/k4;->w:I
+
+    .line 15
+    .line 16
     return-void
 .end method
 
 
 # virtual methods
-.method public final accept([Ljava/lang/String;)V
-    .locals 2
+.method public final run()V
+    .locals 6
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/k4;->c:I
+    iget v4, p0, Lorg/levimc/launcher/ui/activities/k4;->q:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget v5, p0, Lorg/levimc/launcher/ui/activities/k4;->w:I
 
     .line 4
     .line 5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k4;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
     .line 7
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/k4;->d:Ljava/util/List;
+
     .line 8
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/k4;->h:I
-
     .line 9
-    .line 10
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->o2(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I[Ljava/lang/String;)V
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/k4;->h:I
 
+    .line 10
     .line 11
+    iget v3, p0, Lorg/levimc/launcher/ui/activities/k4;->p:I
+
     .line 12
     .line 13
-    return-void
+    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->V(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
 
     .line 14
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
     .line 15
     .line 16
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/k4;->h:I
-
-    .line 17
-    .line 18
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->o0(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I[Ljava/lang/String;)V
-
-    .line 19
-    .line 20
-    .line 21
     return-void
-
-    .line 22
-    nop
-
-    .line 23
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

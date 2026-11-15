@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/MsftLoginActivity$3;
 .super Landroid/webkit/WebViewClient;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -61,7 +61,7 @@
 
     .line 10
     .line 11
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->b0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->c0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
 
     .line 12
     .line 13
@@ -77,7 +77,7 @@
 
     .line 18
     .line 19
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->e0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->f0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
 
     .line 20
     .line 21
@@ -146,7 +146,7 @@
 
     .line 51
     .line 52
-    invoke-static {p2, p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->f0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->g0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)V
 
     .line 53
     .line 54
@@ -168,7 +168,7 @@
 
     .line 5
     .line 6
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->e0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->f0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Z
 
     .line 7
     .line 8
@@ -196,7 +196,7 @@
     move-result-object p2
 
     .line 20
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->f0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->g0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)V
 
     .line 21
     .line 22
@@ -234,7 +234,7 @@
     :goto_0
     iget-object p2, p0, Lorg/levimc/launcher/ui/activities/MsftLoginActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
 
-    invoke-static {p2, p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->d0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)Z
+    invoke-static {p2, p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->e0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)Z
 
     move-result p1
 
@@ -247,7 +247,7 @@
     .line 1
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MsftLoginActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
 
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->d0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)Z
+    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->e0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;Ljava/lang/String;)Z
 
     move-result p1
 

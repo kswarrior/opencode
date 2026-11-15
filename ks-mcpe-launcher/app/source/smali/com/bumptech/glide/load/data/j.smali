@@ -1,21 +1,21 @@
 .class public final Lcom/bumptech/glide/load/data/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/d;
 
 
 # instance fields
-.field public final c:Ly2/i;
+.field public final c:Ly2/h;
 
 .field public final d:I
 
 .field public h:Ljava/net/HttpURLConnection;
 
-.field public q:Ljava/io/InputStream;
+.field public p:Ljava/io/InputStream;
 
-.field public volatile w:Z
+.field public volatile q:Z
 
 
 # direct methods
@@ -26,7 +26,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Ly2/i;I)V
+.method public constructor <init>(Ly2/h;I)V
     .locals 0
 
     .line 1
@@ -35,7 +35,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lcom/bumptech/glide/load/data/j;->c:Ly2/i;
+    iput-object p1, p0, Lcom/bumptech/glide/load/data/j;->c:Ly2/h;
 
     .line 5
     .line 6
@@ -46,7 +46,7 @@
     return-void
 .end method
 
-.method public static d(Ljava/net/HttpURLConnection;)I
+.method public static c(Ljava/net/HttpURLConnection;)I
     .locals 2
 
     .line 1
@@ -120,7 +120,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/bumptech/glide/load/data/j;->q:Ljava/io/InputStream;
+    iget-object v0, p0, Lcom/bumptech/glide/load/data/j;->p:Ljava/io/InputStream;
 
     .line 2
     .line 3
@@ -162,7 +162,21 @@
     return-void
 .end method
 
-.method public final c()I
+.method public final cancel()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    iput-boolean v0, p0, Lcom/bumptech/glide/load/data/j;->q:Z
+
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public final d()I
     .locals 1
 
     .line 1
@@ -172,25 +186,11 @@
     return v0
 .end method
 
-.method public final cancel()V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    iput-boolean v0, p0, Lcom/bumptech/glide/load/data/j;->w:Z
-
-    .line 3
-    .line 4
-    return-void
-.end method
-
 .method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
     .locals 8
 
     .line 1
-    iget-object p1, p0, Lcom/bumptech/glide/load/data/j;->c:Ly2/i;
+    iget-object p1, p0, Lcom/bumptech/glide/load/data/j;->c:Ly2/h;
 
     .line 2
     .line 3
@@ -218,7 +218,7 @@
 
     .line 14
     :try_start_0
-    invoke-virtual {p1}, Ly2/i;->d()Ljava/net/URL;
+    invoke-virtual {p1}, Ly2/h;->d()Ljava/net/URL;
 
     .line 15
     .line 16
@@ -226,11 +226,11 @@
     move-result-object v5
 
     .line 18
-    iget-object p1, p1, Ly2/i;->b:Ly2/j;
+    iget-object p1, p1, Ly2/h;->b:Ly2/i;
 
     .line 19
     .line 20
-    invoke-interface {p1}, Ly2/j;->a()Ljava/util/Map;
+    invoke-interface {p1}, Ly2/i;->a()Ljava/util/Map;
 
     .line 21
     .line 22
@@ -347,7 +347,7 @@
     .line 73
     .line 74
     :cond_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -678,13 +678,13 @@
     move-result-object v0
 
     .line 103
-    iput-object v0, p0, Lcom/bumptech/glide/load/data/j;->q:Ljava/io/InputStream;
+    iput-object v0, p0, Lcom/bumptech/glide/load/data/j;->p:Ljava/io/InputStream;
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_4
 
     .line 104
     .line 105
-    iget-boolean v0, p0, Lcom/bumptech/glide/load/data/j;->w:Z
+    iget-boolean v0, p0, Lcom/bumptech/glide/load/data/j;->q:Z
 
     .line 106
     .line 107
@@ -700,7 +700,7 @@
 
     .line 111
     .line 112
-    invoke-static {v0}, Lcom/bumptech/glide/load/data/j;->d(Ljava/net/HttpURLConnection;)I
+    invoke-static {v0}, Lcom/bumptech/glide/load/data/j;->c(Ljava/net/HttpURLConnection;)I
 
     .line 113
     .line 114
@@ -783,7 +783,7 @@
     .line 150
     .line 151
     .line 152
-    iput-object p2, p0, Lcom/bumptech/glide/load/data/j;->q:Ljava/io/InputStream;
+    iput-object p2, p0, Lcom/bumptech/glide/load/data/j;->p:Ljava/io/InputStream;
 
     .line 153
     .line 154
@@ -854,14 +854,14 @@
     move-result-object p2
 
     .line 186
-    iput-object p2, p0, Lcom/bumptech/glide/load/data/j;->q:Ljava/io/InputStream;
+    iput-object p2, p0, Lcom/bumptech/glide/load/data/j;->p:Ljava/io/InputStream;
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
 
     .line 187
     .line 188
     :goto_2
-    iget-object p1, p0, Lcom/bumptech/glide/load/data/j;->q:Ljava/io/InputStream;
+    iget-object p1, p0, Lcom/bumptech/glide/load/data/j;->p:Ljava/io/InputStream;
 
     .line 189
     .line 190
@@ -877,7 +877,7 @@
 
     .line 194
     .line 195
-    invoke-static {p1}, Lcom/bumptech/glide/load/data/j;->d(Ljava/net/HttpURLConnection;)I
+    invoke-static {p1}, Lcom/bumptech/glide/load/data/j;->c(Ljava/net/HttpURLConnection;)I
 
     .line 196
     .line 197
@@ -969,7 +969,7 @@
 
     .line 237
     .line 238
-    invoke-static {p3, v1}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p3, v1}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 239
     .line 240
@@ -1083,7 +1083,7 @@
 
     .line 289
     .line 290
-    invoke-static {p3}, Lcom/bumptech/glide/load/data/j;->d(Ljava/net/HttpURLConnection;)I
+    invoke-static {p3}, Lcom/bumptech/glide/load/data/j;->c(Ljava/net/HttpURLConnection;)I
 
     .line 291
     .line 292

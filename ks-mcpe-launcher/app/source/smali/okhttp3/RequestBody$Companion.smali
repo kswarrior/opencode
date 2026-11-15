@@ -1,6 +1,6 @@
 .class public final Lokhttp3/RequestBody$Companion;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -15,7 +15,7 @@
 
 
 # direct methods
-.method public static a(Ljava/lang/String;Lokhttp3/MediaType;)Lokhttp3/e;
+.method public static a(Ljava/lang/String;Lokhttp3/MediaType;)Lokhttp3/f;
     .locals 2
 
     .line 1
@@ -23,12 +23,12 @@
 
     .line 2
     .line 3
-    invoke-static {p0, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p0, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
     .line 6
-    sget-object v0, Lm9/a;->a:Ljava/nio/charset/Charset;
+    sget-object v0, Lo9/a;->a:Ljava/nio/charset/Charset;
 
     .line 7
     .line 8
@@ -79,7 +79,7 @@
     move-result-object p1
 
     .line 33
-    invoke-static {p1}, Lcom/bumptech/glide/e;->J(Ljava/lang/String;)Lokhttp3/MediaType;
+    invoke-static {p1}, Lcom/bumptech/glide/e;->Y(Ljava/lang/String;)Lokhttp3/MediaType;
 
     .line 34
     .line 35
@@ -108,7 +108,7 @@
 
     .line 44
     .line 45
-    invoke-static {p0, v0}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p0, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 46
     .line 47
@@ -119,7 +119,7 @@
     array-length v1, p0
 
     .line 50
-    invoke-static {p1, p0, v0, v1}, Lokhttp3/RequestBody$Companion;->b(Lokhttp3/MediaType;[BII)Lokhttp3/e;
+    invoke-static {p1, p0, v0, v1}, Lokhttp3/RequestBody$Companion;->b(Lokhttp3/MediaType;[BII)Lokhttp3/f;
 
     .line 51
     .line 52
@@ -130,7 +130,7 @@
     return-object p0
 .end method
 
-.method public static b(Lokhttp3/MediaType;[BII)Lokhttp3/e;
+.method public static b(Lokhttp3/MediaType;[BII)Lokhttp3/f;
     .locals 7
 
     .line 1
@@ -138,7 +138,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -155,16 +155,16 @@
     int-to-long v5, p3
 
     .line 10
-    invoke-static/range {v1 .. v6}, Lwb/d;->a(JJJ)V
+    invoke-static/range {v1 .. v6}, Lvb/d;->a(JJJ)V
 
     .line 11
     .line 12
     .line 13
-    new-instance v0, Lokhttp3/e;
+    new-instance v0, Lokhttp3/f;
 
     .line 14
     .line 15
-    invoke-direct {v0, p0, p1, p3, p2}, Lokhttp3/e;-><init>(Lokhttp3/MediaType;[BII)V
+    invoke-direct {v0, p0, p1, p3, p2}, Lokhttp3/f;-><init>(Lokhttp3/MediaType;[BII)V
 
     .line 16
     .line 17
@@ -172,7 +172,7 @@
     return-object v0
 .end method
 
-.method public static synthetic c(Lokhttp3/MediaType;[BII)Lokhttp3/e;
+.method public static synthetic c(Lokhttp3/MediaType;[BII)Lokhttp3/f;
     .locals 1
 
     .line 1
@@ -203,7 +203,7 @@
     array-length p3, p1
 
     .line 12
-    invoke-static {p0, p1, p2, p3}, Lokhttp3/RequestBody$Companion;->b(Lokhttp3/MediaType;[BII)Lokhttp3/e;
+    invoke-static {p0, p1, p2, p3}, Lokhttp3/RequestBody$Companion;->b(Lokhttp3/MediaType;[BII)Lokhttp3/f;
 
     .line 13
     .line 14

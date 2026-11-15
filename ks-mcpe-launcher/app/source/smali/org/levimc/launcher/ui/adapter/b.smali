@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/adapter/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
@@ -108,7 +108,7 @@
 
     .line 31
     .line 32
-    check-cast v0, Lorg/levimc/launcher/ui/adapter/StructuresAdapter$OnStructureExportListener;
+    check-cast v0, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
     .line 33
     .line 34
@@ -116,11 +116,11 @@
 
     .line 35
     .line 36
-    check-cast v1, Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;
+    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 37
     .line 38
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/StructuresAdapter$StructureViewHolder;->a(Lorg/levimc/launcher/ui/adapter/StructuresAdapter$OnStructureExportListener;Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;Landroid/view/View;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->b(Lorg/levimc/launcher/ui/adapter/AccountsAdapter;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
 
     .line 39
     .line 40
@@ -129,6 +129,27 @@
 
     .line 42
     :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/b;->d:Ljava/lang/Object;
+
+    .line 43
+    .line 44
+    check-cast v0, Lorg/levimc/launcher/ui/adapter/StructuresAdapter$OnStructureExportListener;
+
+    .line 45
+    .line 46
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/b;->h:Ljava/lang/Object;
+
+    .line 47
+    .line 48
+    check-cast v1, Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;
+
+    .line 49
+    .line 50
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/StructuresAdapter$StructureViewHolder;->a(Lorg/levimc/launcher/ui/adapter/StructuresAdapter$OnStructureExportListener;Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;Landroid/view/View;)V
+
+    .line 51
+    .line 52
+    .line 53
     return-void
 
     .line 54
@@ -137,7 +158,7 @@
 
     .line 55
     .line 56
-    check-cast v0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;
+    check-cast v0, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;
 
     .line 57
     .line 58
@@ -145,11 +166,11 @@
 
     .line 59
     .line 60
-    check-cast v1, Lorg/levimc/launcher/core/curseforge/models/Content;
+    check-cast v1, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$QuickLaunchItem;
 
     .line 61
     .line 62
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->a(Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;Lorg/levimc/launcher/core/curseforge/models/Content;Landroid/view/View;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;->a(Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$ViewHolder;Lorg/levimc/launcher/ui/adapter/QuickLaunchAdapter$QuickLaunchItem;Landroid/view/View;)V
 
     .line 63
     .line 64
@@ -157,11 +178,37 @@
     return-void
 
     .line 66
-    nop
+    :pswitch_4
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/b;->d:Ljava/lang/Object;
 
     .line 67
+    .line 68
+    check-cast v0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;
+
+    .line 69
+    .line 70
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/b;->h:Ljava/lang/Object;
+
+    .line 71
+    .line 72
+    check-cast v1, Lorg/levimc/launcher/core/curseforge/models/Content;
+
+    .line 73
+    .line 74
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->a(Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;Lorg/levimc/launcher/core/curseforge/models/Content;Landroid/view/View;)V
+
+    .line 75
+    .line 76
+    .line 77
+    return-void
+
+    .line 78
+    nop
+
+    .line 79
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_4
         :pswitch_3
         :pswitch_2
         :pswitch_1

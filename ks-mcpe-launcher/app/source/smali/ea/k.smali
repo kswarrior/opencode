@@ -1,219 +1,246 @@
-.class public final enum Lea/k;
-.super Ljava/lang/Enum;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public abstract Lea/k;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final synthetic X:Lx8/b;
-
-.field public static final enum h:Lea/k;
-
-.field public static final enum q:Lea/k;
-
-.field public static final enum w:Lea/k;
-
-.field public static final enum x:Lea/k;
-
-.field public static final synthetic y:[Lea/k;
-
-
-# instance fields
-.field public final c:C
-
-.field public final d:C
+.field public static final a:[Lca/d;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 9
+    .locals 1
 
     .line 1
-    new-instance v0, Lea/k;
+    const/4 v0, 0x0
+
+    .line 2
+    new-array v0, v0, [Lca/d;
+
+    .line 3
+    .line 4
+    sput-object v0, Lea/k;->a:[Lca/d;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public static final a(IILca/d;)V
+    .locals 4
+
+    .line 1
+    const-string v0, "descriptor"
 
     .line 2
     .line 3
-    const-string v1, "OBJ"
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
-    const/4 v2, 0x0
-
     .line 6
-    const/16 v3, 0x7b
+    new-instance v0, Ljava/util/ArrayList;
 
     .line 7
     .line 8
-    const/16 v4, 0x7d
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 9
     .line 10
-    invoke-direct {v0, v1, v2, v3, v4}, Lea/k;-><init>(Ljava/lang/String;ICC)V
-
     .line 11
+    not-int p0, p0
+
     .line 12
+    and-int/2addr p0, p1
+
     .line 13
-    sput-object v0, Lea/k;->h:Lea/k;
+    const/4 p1, 0x0
 
     .line 14
+    move v1, p1
+
     .line 15
-    new-instance v1, Lea/k;
+    :goto_0
+    const/16 v2, 0x20
 
     .line 16
     .line 17
-    const-string v2, "LIST"
+    if-ge v1, v2, :cond_1
 
     .line 18
     .line 19
-    const/4 v5, 0x1
+    and-int/lit8 v2, p0, 0x1
 
     .line 20
-    const/16 v6, 0x5b
-
     .line 21
+    if-eqz v2, :cond_0
+
     .line 22
-    const/16 v7, 0x5d
-
     .line 23
-    .line 24
-    invoke-direct {v1, v2, v5, v6, v7}, Lea/k;-><init>(Ljava/lang/String;ICC)V
+    invoke-interface {p2, v1}, Lca/d;->l(I)Ljava/lang/String;
 
+    .line 24
     .line 25
     .line 26
+    move-result-object v2
+
     .line 27
-    sput-object v1, Lea/k;->q:Lea/k;
+    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
     .line 28
     .line 29
-    new-instance v2, Lea/k;
-
     .line 30
+    :cond_0
+    ushr-int/lit8 p0, p0, 0x1
+
     .line 31
-    const-string v5, "MAP"
-
     .line 32
-    .line 33
-    const/4 v8, 0x2
+    add-int/lit8 v1, v1, 0x1
 
+    .line 33
     .line 34
-    invoke-direct {v2, v5, v8, v3, v4}, Lea/k;-><init>(Ljava/lang/String;ICC)V
+    goto :goto_0
 
     .line 35
+    :cond_1
+    new-instance p0, Laa/b;
+
     .line 36
     .line 37
-    sput-object v2, Lea/k;->w:Lea/k;
+    invoke-interface {p2}, Lca/d;->g()Ljava/lang/String;
 
     .line 38
     .line 39
-    new-instance v3, Lea/k;
-
     .line 40
+    move-result-object p2
+
     .line 41
-    const-string v4, "POLY_OBJ"
+    const-string v1, "serialName"
 
     .line 42
     .line 43
-    const/4 v5, 0x3
+    invoke-static {p2, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 44
-    invoke-direct {v3, v4, v5, v6, v7}, Lea/k;-><init>(Ljava/lang/String;ICC)V
-
     .line 45
     .line 46
-    .line 47
-    sput-object v3, Lea/k;->x:Lea/k;
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
+    .line 47
     .line 48
     .line 49
-    filled-new-array {v0, v1, v2, v3}, [Lea/k;
+    move-result v1
 
     .line 50
-    .line 51
-    .line 52
-    move-result-object v0
+    const/4 v2, 0x1
 
+    .line 51
+    if-ne v1, v2, :cond_2
+
+    .line 52
     .line 53
-    sput-object v0, Lea/k;->y:[Lea/k;
+    new-instance v1, Ljava/lang/StringBuilder;
 
     .line 54
     .line 55
-    new-instance v1, Lx8/b;
+    const-string v2, "Field \'"
 
     .line 56
     .line 57
-    invoke-direct {v1, v0}, Lx8/b;-><init>([Ljava/lang/Enum;)V
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 58
     .line 59
     .line 60
-    sput-object v1, Lea/k;->X:Lx8/b;
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
     .line 61
     .line 62
-    return-void
-.end method
+    .line 63
+    move-result-object p1
 
-.method public constructor <init>(Ljava/lang/String;ICC)V
-    .locals 0
+    .line 64
+    check-cast p1, Ljava/lang/String;
 
-    .line 1
-    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+    .line 65
+    .line 66
+    const-string v2, "\' is required for type with serial name \'"
 
-    .line 2
-    .line 3
-    .line 4
-    iput-char p3, p0, Lea/k;->c:C
+    .line 67
+    .line 68
+    const-string v3, "\', but it was missing"
 
-    .line 5
-    .line 6
-    iput-char p4, p0, Lea/k;->d:C
+    .line 69
+    .line 70
+    invoke-static {v1, p1, v2, p2, v3}, Ls1/a;->s(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 7
-    .line 8
-    return-void
-.end method
+    .line 71
+    .line 72
+    .line 73
+    move-result-object p1
 
-.method public static valueOf(Ljava/lang/String;)Lea/k;
-    .locals 1
+    .line 74
+    goto :goto_1
 
-    .line 1
-    const-class v0, Lea/k;
+    .line 75
+    :cond_2
+    new-instance p1, Ljava/lang/StringBuilder;
 
-    .line 2
-    .line 3
-    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+    .line 76
+    .line 77
+    const-string v1, "Fields "
 
-    .line 4
-    .line 5
-    .line 6
-    move-result-object p0
+    .line 78
+    .line 79
+    invoke-direct {p1, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    .line 7
-    check-cast p0, Lea/k;
+    .line 80
+    .line 81
+    .line 82
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    .line 8
-    .line 9
-    return-object p0
-.end method
+    .line 83
+    .line 84
+    .line 85
+    const-string v1, " are required for type with serial name \'"
 
-.method public static values()[Lea/k;
-    .locals 1
+    .line 86
+    .line 87
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 1
-    sget-object v0, Lea/k;->y:[Lea/k;
+    .line 88
+    .line 89
+    .line 90
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    .line 91
+    .line 92
+    .line 93
+    const-string p2, "\', but they were missing"
 
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v0
+    .line 94
+    .line 95
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 7
-    check-cast v0, [Lea/k;
+    .line 96
+    .line 97
+    .line 98
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 8
-    .line 9
-    return-object v0
+    .line 99
+    .line 100
+    .line 101
+    move-result-object p1
+
+    .line 102
+    :goto_1
+    const/4 p2, 0x0
+
+    .line 103
+    invoke-direct {p0, v0, p1, p2}, Laa/b;-><init>(Ljava/util/List;Ljava/lang/String;Laa/b;)V
+
+    .line 104
+    .line 105
+    .line 106
+    throw p0
 .end method

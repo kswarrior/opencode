@@ -1,6 +1,6 @@
 .class public final Lv2/e;
-.super Landroidx/core/view/y0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Landroidx/core/view/w0;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,28 +8,46 @@
 
 
 # direct methods
-.method public synthetic constructor <init>(I)V
-    .locals 0
+.method public constructor <init>(I)V
+    .locals 1
 
     .line 1
     iput p1, p0, Lv2/e;->d:I
 
     .line 2
     .line 3
-    const/4 p1, 0x4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 4
-    invoke-direct {p0, p1}, Landroidx/core/view/y0;-><init>(I)V
-
     .line 5
     .line 6
+    sget-object p1, Lo3/n;->a:[C
+
     .line 7
+    .line 8
+    new-instance p1, Ljava/util/ArrayDeque;
+
+    .line 9
+    .line 10
+    const/16 v0, 0x14
+
+    .line 11
+    .line 12
+    invoke-direct {p1, v0}, Ljava/util/ArrayDeque;-><init>(I)V
+
+    .line 13
+    .line 14
+    .line 15
+    iput-object p1, p0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+
+    .line 16
+    .line 17
     return-void
 .end method
 
 
 # virtual methods
-.method public final s()Lv2/g;
+.method public final l()Lv2/g;
     .locals 1
 
     .line 1

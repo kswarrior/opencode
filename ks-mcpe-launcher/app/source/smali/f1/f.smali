@@ -1,14 +1,14 @@
 .class public final Lf1/f;
-.super Lkd/h;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super La7/t1;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final d:Landroid/widget/TextView;
+.field public final a:Landroid/widget/TextView;
 
-.field public final h:Lf1/d;
+.field public final b:Lf1/d;
 
-.field public q:Z
+.field public c:Z
 
 
 # direct methods
@@ -16,44 +16,41 @@
     .locals 1
 
     .line 1
-    const/4 v0, 0x6
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    invoke-direct {p0, v0}, Lkd/h;-><init>(I)V
-
     .line 3
     .line 4
-    .line 5
-    iput-object p1, p0, Lf1/f;->d:Landroid/widget/TextView;
+    iput-object p1, p0, Lf1/f;->a:Landroid/widget/TextView;
 
+    .line 5
     .line 6
-    .line 7
     const/4 v0, 0x1
 
-    .line 8
-    iput-boolean v0, p0, Lf1/f;->q:Z
+    .line 7
+    iput-boolean v0, p0, Lf1/f;->c:Z
 
+    .line 8
     .line 9
-    .line 10
     new-instance v0, Lf1/d;
 
+    .line 10
     .line 11
-    .line 12
     invoke-direct {v0, p1}, Lf1/d;-><init>(Landroid/widget/TextView;)V
 
+    .line 12
     .line 13
     .line 14
-    .line 15
-    iput-object v0, p0, Lf1/f;->h:Lf1/d;
+    iput-object v0, p0, Lf1/f;->b:Lf1/d;
 
+    .line 15
     .line 16
-    .line 17
     return-void
 .end method
 
 
 # virtual methods
-.method public final G(Z)V
+.method public final C(Z)V
     .locals 1
 
     .line 1
@@ -61,7 +58,7 @@
 
     .line 2
     .line 3
-    iget-object p1, p0, Lf1/f;->d:Landroid/widget/TextView;
+    iget-object p1, p0, Lf1/f;->a:Landroid/widget/TextView;
 
     .line 4
     .line 5
@@ -73,7 +70,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {p0, v0}, Lf1/f;->K(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
+    invoke-virtual {p0, v0}, Lf1/f;->M(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
 
     .line 10
     .line 11
@@ -90,15 +87,15 @@
     return-void
 .end method
 
-.method public final H(Z)V
+.method public final D(Z)V
     .locals 1
 
     .line 1
-    iput-boolean p1, p0, Lf1/f;->q:Z
+    iput-boolean p1, p0, Lf1/f;->c:Z
 
     .line 2
     .line 3
-    iget-object p1, p0, Lf1/f;->d:Landroid/widget/TextView;
+    iget-object p1, p0, Lf1/f;->a:Landroid/widget/TextView;
 
     .line 4
     .line 5
@@ -110,7 +107,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {p0, v0}, Lf1/f;->K(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
+    invoke-virtual {p0, v0}, Lf1/f;->M(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
 
     .line 10
     .line 11
@@ -131,7 +128,7 @@
     move-result-object v0
 
     .line 20
-    invoke-virtual {p0, v0}, Lf1/f;->u([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
+    invoke-virtual {p0, v0}, Lf1/f;->h([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
 
     .line 21
     .line 22
@@ -147,11 +144,11 @@
     return-void
 .end method
 
-.method public final K(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
+.method public final M(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lf1/f;->q:Z
+    iget-boolean v0, p0, Lf1/f;->c:Z
 
     .line 2
     .line 3
@@ -216,11 +213,11 @@
     return-object p1
 .end method
 
-.method public final u([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
+.method public final h([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
     .locals 6
 
     .line 1
-    iget-boolean v0, p0, Lf1/f;->q:Z
+    iget-boolean v0, p0, Lf1/f;->c:Z
 
     .line 2
     .line 3
@@ -369,7 +366,7 @@
 
     .line 65
     :goto_2
-    iget-object v4, p0, Lf1/f;->h:Lf1/d;
+    iget-object v4, p0, Lf1/f;->b:Lf1/d;
 
     .line 66
     .line 67
@@ -419,11 +416,11 @@
     return-object v2
 .end method
 
-.method public final y()Z
+.method public final r()Z
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lf1/f;->q:Z
+    iget-boolean v0, p0, Lf1/f;->c:Z
 
     .line 2
     .line 3

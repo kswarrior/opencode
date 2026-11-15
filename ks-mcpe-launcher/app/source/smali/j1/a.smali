@@ -1,6 +1,6 @@
 .class public final Lj1/a;
 .super Lj1/b;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -301,6 +301,10 @@
     .line 57
     .line 58
     .line 59
+    .line 60
+    .line 61
+    .line 62
+    .line 63
     :array_1
     .array-data 4
         0x0
@@ -734,7 +738,7 @@
 
     .line 10
     :pswitch_0
-    sget-object p1, Lj1/a;->e:[F
+    sget-object p1, Lj1/a;->d:[F
 
     .line 11
     .line 12
@@ -746,25 +750,11 @@
     return-void
 
     .line 16
-    :pswitch_1
-    sget-object p1, Lj1/a;->d:[F
-
-    .line 17
-    .line 18
-    invoke-direct {p0, p1}, Lj1/b;-><init>([F)V
-
-    .line 19
-    .line 20
-    .line 21
-    return-void
-
-    .line 22
     nop
 
-    .line 23
+    .line 17
     :pswitch_data_0
     .packed-switch 0x1
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

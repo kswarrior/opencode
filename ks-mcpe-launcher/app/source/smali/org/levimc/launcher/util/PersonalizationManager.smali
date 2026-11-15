@@ -1,36 +1,48 @@
 .class public Lorg/levimc/launcher/util/PersonalizationManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final BG_BLUR_MAX:I = 0x19
+.field public static final BG_BLUR_MAX:I = 0x32
 
 .field public static final BG_BLUR_MIN:I = 0x0
 
 .field public static final BG_BRIGHTNESS_DEFAULT:I = 0x64
 
-.field public static final BG_BRIGHTNESS_MAX:I = 0x96
+.field public static final BG_BRIGHTNESS_MAX:I = 0x64
 
-.field public static final BG_BRIGHTNESS_MIN:I = 0x1
+.field public static final BG_BRIGHTNESS_MIN:I = 0x14
 
-.field private static final GLASS_ALPHA_DARK:I = 0x32
+.field public static final BG_OPACITY_DEFAULT:I = 0x64
 
-.field private static final GLASS_ALPHA_LIGHT:I = 0x32
+.field public static final FIT_CENTER:Ljava/lang/String; = "center"
 
-.field private static final GLASS_B_DARK:I = 0x19
+.field public static final FIT_FIT:Ljava/lang/String; = "fit"
 
-.field private static final GLASS_B_LIGHT:I = 0xff
+.field public static final FIT_MODES:[Ljava/lang/String;
 
-.field private static final GLASS_G_DARK:I = 0x19
+.field public static final FIT_SMART:Ljava/lang/String; = "smart"
 
-.field private static final GLASS_G_LIGHT:I = 0xff
+.field public static final FIT_STRETCH:Ljava/lang/String; = "stretch"
 
-.field private static final GLASS_R_DARK:I = 0x19
+.field public static final FIT_TILE:Ljava/lang/String; = "tile"
 
-.field private static final GLASS_R_LIGHT:I = 0xff
+.field public static final FIT_TOP_LEFT:Ljava/lang/String; = "top_left"
+
+.field public static final FIT_TOP_RIGHT:Ljava/lang/String; = "top_right"
 
 .field private static final KEY_ACCENT_COLOR:Ljava/lang/String; = "accent_color"
+
+.field private static final KEY_ACCENT_DARK:Ljava/lang/String; = "accent_color_dark"
+
+.field private static final KEY_ACCENT_LIGHT:Ljava/lang/String; = "accent_color_light"
+
+.field private static final KEY_BG_FIT_MODE:Ljava/lang/String; = "bg_fit_mode"
+
+.field private static final KEY_BG_FOLDER:Ljava/lang/String; = "bg_folder_uri"
+
+.field private static final KEY_BG_FOLDER_CURRENT:Ljava/lang/String; = "bg_folder_current"
 
 .field private static final KEY_BG_IMAGE_BLUR:Ljava/lang/String; = "bg_image_blur"
 
@@ -40,13 +52,23 @@
 
 .field private static final KEY_BG_MEDIA_TYPE:Ljava/lang/String; = "bg_media_type"
 
+.field private static final KEY_BG_OPACITY:Ljava/lang/String; = "bg_opacity"
+
+.field private static final KEY_BG_PLAY_ORDER:Ljava/lang/String; = "bg_play_order"
+
 .field private static final KEY_BG_POSTER_PATH:Ljava/lang/String; = "bg_poster_path"
 
 .field public static final MORE_COLORS:[I
 
+.field public static final ORDER_RANDOM:Ljava/lang/String; = "random"
+
+.field public static final ORDER_SEQUENTIAL:Ljava/lang/String; = "sequential"
+
 .field private static final PREFS_NAME:Ljava/lang/String; = "personalization_prefs"
 
 .field public static final PRESET_COLORS:[I
+
+.field public static final TAG_KEEP_BACKGROUND:Ljava/lang/String; = "levi_keep_background"
 
 .field private static final sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
 
@@ -61,160 +83,92 @@
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
+    .locals 7
 
     .line 1
-    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
+    const-string v5, "top_left"
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>()V
+    const-string v6, "top_right"
 
     .line 4
     .line 5
+    const-string v0, "smart"
+
     .line 6
-    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
-
     .line 7
+    const-string v1, "center"
+
     .line 8
-    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
-
     .line 9
-    .line 10
-    invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>()V
+    const-string v2, "fit"
 
+    .line 10
     .line 11
+    const-string v3, "stretch"
+
     .line 12
     .line 13
-    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+    const-string v4, "tile"
 
     .line 14
     .line 15
-    const/16 v0, 0xf
+    filled-new-array/range {v0 .. v6}, [Ljava/lang/String;
 
     .line 16
     .line 17
-    new-array v0, v0, [I
-
     .line 18
+    move-result-object v0
+
     .line 19
-    fill-array-data v0, :array_0
+    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->FIT_MODES:[Ljava/lang/String;
 
     .line 20
     .line 21
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
+
     .line 22
-    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->PRESET_COLORS:[I
-
     .line 23
-    .line 24
-    const/16 v0, 0x27
+    invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>()V
 
+    .line 24
     .line 25
     .line 26
-    new-array v0, v0, [I
+    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 27
     .line 28
-    fill-array-data v0, :array_1
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 29
     .line 30
-    .line 31
-    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->MORE_COLORS:[I
+    invoke-direct {v0}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>()V
 
+    .line 31
     .line 32
     .line 33
-    return-void
+    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 34
-    nop
-
     .line 35
-    :array_0
-    .array-data 4
-        -0xd95966
-        -0xbd5a0b
-        -0xa39440
-        -0x54b844
-        -0x13bf86
-        -0x10acb0
-        -0x8fbd
-        -0x58da
-        -0x35d8
-        -0x994496
-        -0xd93926
-        -0xd6490a
-        -0x81a83e
-        -0x16e19d
-        -0xbbcca
-    .end array-data
+    sget-object v0, Lorg/levimc/launcher/util/ThemePalette;->PRESETS:[I
 
     .line 36
     .line 37
+    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->PRESET_COLORS:[I
+
     .line 38
     .line 39
+    sget-object v0, Lorg/levimc/launcher/util/ThemePalette;->MORE:[I
+
     .line 40
     .line 41
+    sput-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->MORE_COLORS:[I
+
     .line 42
     .line 43
-    .line 44
-    .line 45
-    .line 46
-    .line 47
-    .line 48
-    .line 49
-    .line 50
-    .line 51
-    .line 52
-    .line 53
-    .line 54
-    .line 55
-    .line 56
-    .line 57
-    .line 58
-    .line 59
-    :array_1
-    .array-data 4
-        -0x6800
-        -0xa8400
-        -0x19af00
-        -0xa8de
-        -0x40c9f4
-        -0x2cd0d1
-        -0x39d7d8
-        -0x52eba9
-        -0x77f1b1
-        -0x16e19d
-        -0xf9d6e
-        -0x316c28
-        -0x63d850
-        -0x84e05e
-        -0xb5eb74
-        -0xa39440
-        -0xc0ae4b
-        -0xd7ca6d
-        -0xe5dc82
-        -0xea9a40
-        -0xf2b85f
-        -0xfd8843
-        -0xff7c71
-        -0xff9f9c
-        -0xff8695
-        -0xff96a4
-        -0xffb2c0
-        -0xd182ce
-        -0xe4a1e0
-        -0xcc96e2
-        -0x7d88e9
-        -0x616162
-        -0x8a8a8b
-        -0x9e9e9f
-        -0xbaa59c
-        -0xc8b8b1
-        -0xb51f60
-        -0x3223c7
-        -0x743cb6
-    .end array-data
+    return-void
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
@@ -437,170 +391,14 @@
     .line 108
     .line 109
     :cond_2
-    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->ensureDefaultBackground()V
-
     return-void
 .end method
 
-.method private ensureDefaultBackground()V
-    .locals 10
-
-    iget-object v1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
-
-    const-string v0, "bg_image_path"
-
-    const/4 v2, 0x0
-
-    invoke-interface {v1, v0, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object v0
-
-    if-eqz v0, :cond_1
-
-    new-instance v2, Ljava/io/File;
-
-    invoke-direct {v2, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
-    invoke-virtual {v2}, Ljava/io/File;->exists()Z
-
-    move-result v2
-
-    if-eqz v2, :cond_1
-
-    return-void
-
-    :cond_1
-    const/4 v4, 0x1
-
-    const-string v0, "bg_image_blur"
-
-    invoke-interface {v1, v0}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_2
-
-    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    invoke-interface {v2, v0, v4}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    :cond_2
-    const-string v0, "bg_image_brightness"
-
-    invoke-interface {v1, v0}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
-
-    move-result v2
-
-    if-nez v2, :cond_3
-
-    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    const/16 v3, 0x64
-
-    invoke-interface {v2, v0, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    :cond_3
-    new-instance v0, Ljava/io/File;
-
-    iget-object v2, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
-    invoke-virtual {v2}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
-
-    move-result-object v3
-
-    const-string v5, "default_background.jpg"
-
-    invoke-direct {v0, v3, v5}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
-    invoke-virtual {v0}, Ljava/io/File;->exists()Z
-
-    move-result v3
-
-    if-nez v3, :cond_5
-
-    :try_start_0
-    iget-object v3, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
-    invoke-virtual {v3}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
-
-    move-result-object v3
-
-    invoke-virtual {v3, v5}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
-
-    move-result-object v3
-
-    new-instance v6, Ljava/io/FileOutputStream;
-
-    invoke-direct {v6, v0}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
-
-    const/16 v7, 0x2000
-
-    new-array v7, v7, [B
-
-    :goto_0
-    invoke-virtual {v3, v7}, Ljava/io/InputStream;->read([B)I
-
-    move-result v8
-
-    const/4 v9, -0x1
-
-    if-ne v8, v9, :goto_1
-
-    const/4 v9, 0x0
-
-    invoke-virtual {v6, v7, v9, v8}, Ljava/io/FileOutputStream;->write([BII)V
-
-    goto :goto_0
-
-    :goto_1
-    invoke-virtual {v6}, Ljava/io/FileOutputStream;->close()V
-
-    invoke-virtual {v3}, Ljava/io/InputStream;->close()V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    goto :cond_5
-
-    :catch_0
-    move-exception v3
-
-    return-void
-
-    :cond_5
-    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v2
-
-    invoke-virtual {v0}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
-
-    move-result-object v3
-
-    const-string v5, "bg_image_path"
-
-    invoke-interface {v2, v5, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    const-string v5, "bg_poster_path"
-
-    invoke-interface {v2, v5, v3}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
-
-    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
-
-    return-void
-.end method
-
-.method public static synthetic a([ZLandroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V
+.method public static synthetic a(Lorg/levimc/launcher/util/PersonalizationManager;Landroid/widget/ImageView;)V
     .locals 0
 
     .line 1
-    invoke-static {p0, p1, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->lambda$setBackgroundImage$0([ZLandroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->lambda$applyFitMode$1(Landroid/widget/ImageView;)V
 
     .line 2
     .line 3
@@ -609,7 +407,7 @@
 .end method
 
 .method private applyBackgroundImage(Landroid/app/Activity;Landroid/view/ViewGroup;)V
-    .locals 6
+    .locals 7
 
     .line 1
     const-string v0, "personalization_bg"
@@ -882,128 +680,1218 @@
 
     .line 139
     :cond_4
-    const-string v0, "personalization_overlay"
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/app/Activity;)Z
 
     .line 140
     .line 141
-    invoke-virtual {p2, v0}, Landroid/view/View;->findViewWithTag(Ljava/lang/Object;)Landroid/view/View;
-
     .line 142
-    .line 143
-    .line 144
-    move-result-object v2
+    move-result v0
 
+    .line 143
+    const-string v2, "personalization_base"
+
+    .line 144
     .line 145
-    if-nez v2, :cond_5
+    invoke-virtual {p2, v2}, Landroid/view/View;->findViewWithTag(Ljava/lang/Object;)Landroid/view/View;
 
     .line 146
     .line 147
-    new-instance v2, Landroid/view/View;
-
     .line 148
+    move-result-object v5
+
     .line 149
-    invoke-direct {v2, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
+    if-nez v5, :cond_5
 
     .line 150
     .line 151
-    .line 152
-    invoke-virtual {v2, v0}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
+    new-instance v5, Landroid/view/View;
 
+    .line 152
     .line 153
+    invoke-direct {v5, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
+
     .line 154
     .line 155
-    new-instance v0, Landroid/view/ViewGroup$LayoutParams;
-
     .line 156
-    .line 157
-    invoke-direct {v0, v4, v4}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+    invoke-virtual {v5, v2}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
 
+    .line 157
     .line 158
     .line 159
-    .line 160
-    invoke-virtual {v2, v0}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    new-instance v2, Landroid/view/ViewGroup$LayoutParams;
 
+    .line 160
     .line 161
+    invoke-direct {v2, v4, v4}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+
     .line 162
     .line 163
-    invoke-virtual {p2, v1}, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
-
     .line 164
+    invoke-virtual {p2, v5, v3, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;ILandroid/view/ViewGroup$LayoutParams;)V
+
     .line 165
     .line 166
-    move-result v0
-
     .line 167
-    add-int/lit8 v0, v0, 0x1
+    goto :goto_1
 
     .line 168
-    .line 169
-    invoke-virtual {p2, v2, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
+    :cond_5
+    invoke-virtual {p2, v5}, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
 
+    .line 169
     .line 170
     .line 171
+    move-result v2
+
     .line 172
-    :cond_5
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/app/Activity;)Z
+    invoke-virtual {p2, v1}, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
 
     .line 173
     .line 174
     .line 175
-    move-result v0
+    move-result v6
 
     .line 176
-    if-eqz v0, :cond_6
+    if-le v2, v6, :cond_6
 
     .line 177
     .line 178
-    const/16 v0, 0x64
+    invoke-virtual {p2, v5}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
 
     .line 179
     .line 180
-    invoke-static {v0, v3, v3, v3}, Landroid/graphics/Color;->argb(IIII)I
-
     .line 181
+    invoke-virtual {p2, v5, v3}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
+
     .line 182
     .line 183
-    move-result v0
-
     .line 184
-    goto :goto_1
+    :cond_6
+    :goto_1
+    invoke-direct {p0, v5, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyBaseLayer(Landroid/view/View;Z)V
 
     .line 185
-    :cond_6
-    const/16 v0, 0x50
-
     .line 186
     .line 187
-    const/16 v1, 0xff
+    const-string v2, "personalization_overlay"
 
     .line 188
     .line 189
-    invoke-static {v0, v1, v1, v1}, Landroid/graphics/Color;->argb(IIII)I
+    invoke-virtual {p2, v2}, Landroid/view/View;->findViewWithTag(Ljava/lang/Object;)Landroid/view/View;
 
     .line 190
     .line 191
     .line 192
-    move-result v0
+    move-result-object v3
 
     .line 193
-    :goto_1
-    invoke-virtual {v2, v0}, Landroid/view/View;->setBackgroundColor(I)V
+    if-nez v3, :cond_7
 
     .line 194
     .line 195
-    .line 196
-    invoke-virtual {v2, v3}, Landroid/view/View;->setVisibility(I)V
+    new-instance v3, Landroid/view/View;
 
+    .line 196
     .line 197
+    invoke-direct {v3, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
+
     .line 198
     .line 199
-    invoke-direct {p0, p2, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;Landroid/app/Activity;)V
-
     .line 200
+    invoke-virtual {v3, v2}, Landroid/view/View;->setTag(Ljava/lang/Object;)V
+
     .line 201
     .line 202
+    .line 203
+    new-instance p1, Landroid/view/ViewGroup$LayoutParams;
+
+    .line 204
+    .line 205
+    invoke-direct {p1, v4, v4}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+
+    .line 206
+    .line 207
+    .line 208
+    invoke-virtual {v3, p1}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 209
+    .line 210
+    .line 211
+    invoke-virtual {p2, v1}, Landroid/view/ViewGroup;->indexOfChild(Landroid/view/View;)I
+
+    .line 212
+    .line 213
+    .line 214
+    move-result p1
+
+    .line 215
+    add-int/lit8 p1, p1, 0x1
+
+    .line 216
+    .line 217
+    invoke-virtual {p2, v3, p1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;I)V
+
+    .line 218
+    .line 219
+    .line 220
+    :cond_7
+    invoke-direct {p0, v3, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyOverlay(Landroid/view/View;Z)V
+
+    .line 221
+    .line 222
+    .line 223
+    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getWallpaperSurfaceColor()I
+
+    .line 224
+    .line 225
+    .line 226
+    move-result p1
+
+    .line 227
+    invoke-direct {p0, p2, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;I)V
+
+    .line 228
+    .line 229
+    .line 230
+    return-void
+.end method
+
+.method private applyBaseLayer(Landroid/view/View;Z)V
+    .locals 3
+
+    .line 1
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    sget v1, Lorg/levimc/launcher/R$color;->background:I
+
+    .line 6
+    .line 7
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getColor(I)I
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v0
+
+    .line 11
+    iget-object v1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    .line 12
+    .line 13
+    invoke-static {v1, p2}, Lorg/levimc/launcher/util/UiSettings;->getBaseMode(Landroid/content/Context;Z)Ljava/lang/String;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    const-string v2, "none"
+
+    .line 18
+    .line 19
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v2
+
+    .line 23
+    if-eqz v2, :cond_0
+
+    .line 24
+    .line 25
+    invoke-virtual {p1, v0}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+
+    .line 29
+    :cond_0
+    const-string v2, "theme"
+
+    .line 30
+    .line 31
+    invoke-virtual {v2, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 32
+    .line 33
+    .line 34
+    move-result v1
+
+    .line 35
+    if-eqz v1, :cond_2
+
+    .line 36
+    .line 37
+    invoke-virtual {p0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor(Z)I
+
+    .line 38
+    .line 39
+    .line 40
+    move-result v1
+
+    .line 41
+    if-eqz p2, :cond_1
+
+    .line 42
+    .line 43
+    const/16 v2, 0x384
+
+    .line 44
+    .line 45
+    goto :goto_0
+
+    .line 46
+    :cond_1
+    const/16 v2, 0x32
+
+    .line 47
+    .line 48
+    :goto_0
+    invoke-static {v1, v2}, Lorg/levimc/launcher/util/ThemePalette;->shade(II)I
+
+    .line 49
+    .line 50
+    .line 51
+    move-result v1
+
+    .line 52
+    goto :goto_1
+
+    .line 53
+    :cond_2
+    iget-object v1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    .line 54
+    .line 55
+    invoke-static {v1, p2}, Lorg/levimc/launcher/util/UiSettings;->getBaseColor(Landroid/content/Context;Z)I
+
+    .line 56
+    .line 57
+    .line 58
+    move-result v1
+
+    .line 59
+    :goto_1
+    iget-object v2, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    .line 60
+    .line 61
+    invoke-static {v2, p2}, Lorg/levimc/launcher/util/UiSettings;->getBaseOpacity(Landroid/content/Context;Z)I
+
+    .line 62
+    .line 63
+    .line 64
+    move-result p2
+
+    .line 65
+    int-to-float p2, p2
+
+    .line 66
+    const/high16 v2, 0x42c80000    # 100.0f
+
+    .line 67
+    .line 68
+    div-float/2addr p2, v2
+
+    .line 69
+    invoke-static {v0, v1, p2}, Lorg/levimc/launcher/util/ThemePalette;->mix(IIF)I
+
+    .line 70
+    .line 71
+    .line 72
+    move-result p2
+
+    .line 73
+    invoke-virtual {p1, p2}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 74
+    .line 75
+    .line 76
+    return-void
+.end method
+
+.method private applyFitMode(Landroid/widget/ImageView;)V
+    .locals 4
+
+    .line 1
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundFitMode()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {p1}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v1
+
+    .line 9
+    const-string v2, "tile"
+
+    .line 10
+    .line 11
+    invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v2
+
+    .line 15
+    const/4 v3, 0x0
+
+    .line 16
+    if-eqz v2, :cond_0
+
+    .line 17
+    .line 18
+    instance-of v2, v1, Landroid/graphics/drawable/BitmapDrawable;
+
+    .line 19
+    .line 20
+    if-eqz v2, :cond_0
+
+    .line 21
+    .line 22
+    new-instance v0, Landroid/graphics/drawable/BitmapDrawable;
+
+    .line 23
+    .line 24
+    invoke-virtual {p1}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v2
+
+    .line 28
+    check-cast v1, Landroid/graphics/drawable/BitmapDrawable;
+
+    .line 29
+    .line 30
+    invoke-virtual {v1}, Landroid/graphics/drawable/BitmapDrawable;->getBitmap()Landroid/graphics/Bitmap;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v1
+
+    .line 34
+    invoke-direct {v0, v2, v1}, Landroid/graphics/drawable/BitmapDrawable;-><init>(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+
+    .line 35
+    .line 36
+    .line 37
+    sget-object v1, Landroid/graphics/Shader$TileMode;->REPEAT:Landroid/graphics/Shader$TileMode;
+
+    .line 38
+    .line 39
+    invoke-virtual {v0, v1, v1}, Landroid/graphics/drawable/BitmapDrawable;->setTileModeXY(Landroid/graphics/Shader$TileMode;Landroid/graphics/Shader$TileMode;)V
+
+    .line 40
+    .line 41
+    .line 42
+    invoke-virtual {p1, v0}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 43
+    .line 44
+    .line 45
+    invoke-virtual {p1, v3}, Landroid/widget/ImageView;->setImageAlpha(I)V
+
+    .line 46
+    .line 47
+    .line 48
+    return-void
+
+    .line 49
+    :cond_0
+    invoke-virtual {p1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v1
+
+    .line 53
+    instance-of v1, v1, Landroid/graphics/drawable/BitmapDrawable;
+
+    .line 54
+    .line 55
+    if-eqz v1, :cond_1
+
+    .line 56
+    .line 57
+    const/4 v1, 0x0
+
+    .line 58
+    invoke-virtual {p1, v1}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 59
+    .line 60
+    .line 61
+    :cond_1
+    const/16 v1, 0xff
+
+    .line 62
+    .line 63
+    invoke-virtual {p1, v1}, Landroid/widget/ImageView;->setImageAlpha(I)V
+
+    .line 64
+    .line 65
+    .line 66
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 67
+    .line 68
+    .line 69
+    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
+
+    .line 70
+    .line 71
+    .line 72
+    move-result v1
+
+    .line 73
+    const/4 v2, -0x1
+
+    .line 74
+    sparse-switch v1, :sswitch_data_0
+
+    .line 75
+    .line 76
+    .line 77
+    :goto_0
+    move v3, v2
+
+    .line 78
+    goto :goto_1
+
+    .line 79
+    :sswitch_0
+    const-string v1, "top_right"
+
+    .line 80
+    .line 81
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 82
+    .line 83
+    .line 84
+    move-result v0
+
+    .line 85
+    if-nez v0, :cond_2
+
+    .line 86
+    .line 87
+    goto :goto_0
+
+    .line 88
+    :cond_2
+    const/4 v3, 0x4
+
+    .line 89
+    goto :goto_1
+
+    .line 90
+    :sswitch_1
+    const-string v1, "fit"
+
+    .line 91
+    .line 92
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 93
+    .line 94
+    .line 95
+    move-result v0
+
+    .line 96
+    if-nez v0, :cond_3
+
+    .line 97
+    .line 98
+    goto :goto_0
+
+    .line 99
+    :cond_3
+    const/4 v3, 0x3
+
+    .line 100
+    goto :goto_1
+
+    .line 101
+    :sswitch_2
+    const-string v1, "top_left"
+
+    .line 102
+    .line 103
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 104
+    .line 105
+    .line 106
+    move-result v0
+
+    .line 107
+    if-nez v0, :cond_4
+
+    .line 108
+    .line 109
+    goto :goto_0
+
+    .line 110
+    :cond_4
+    const/4 v3, 0x2
+
+    .line 111
+    goto :goto_1
+
+    .line 112
+    :sswitch_3
+    const-string v1, "center"
+
+    .line 113
+    .line 114
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 115
+    .line 116
+    .line 117
+    move-result v0
+
+    .line 118
+    if-nez v0, :cond_5
+
+    .line 119
+    .line 120
+    goto :goto_0
+
+    .line 121
+    :cond_5
+    const/4 v3, 0x1
+
+    .line 122
+    goto :goto_1
+
+    .line 123
+    :sswitch_4
+    const-string v1, "stretch"
+
+    .line 124
+    .line 125
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 126
+    .line 127
+    .line 128
+    move-result v0
+
+    .line 129
+    if-nez v0, :cond_6
+
+    .line 130
+    .line 131
+    goto :goto_0
+
+    .line 132
+    :cond_6
+    :goto_1
+    packed-switch v3, :pswitch_data_0
+
+    .line 133
+    .line 134
+    .line 135
+    sget-object v0, Landroid/widget/ImageView$ScaleType;->CENTER_CROP:Landroid/widget/ImageView$ScaleType;
+
+    .line 136
+    .line 137
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+
+    .line 138
+    .line 139
+    .line 140
+    return-void
+
+    .line 141
+    :pswitch_0
+    sget-object v0, Landroid/widget/ImageView$ScaleType;->FIT_CENTER:Landroid/widget/ImageView$ScaleType;
+
+    .line 142
+    .line 143
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+
+    .line 144
+    .line 145
+    .line 146
+    return-void
+
+    .line 147
+    :pswitch_1
+    sget-object v0, Landroid/widget/ImageView$ScaleType;->MATRIX:Landroid/widget/ImageView$ScaleType;
+
+    .line 148
+    .line 149
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+
+    .line 150
+    .line 151
+    .line 152
+    new-instance v0, Lorg/levimc/launcher/util/i;
+
+    .line 153
+    .line 154
+    const/4 v1, 0x5
+
+    .line 155
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 156
+    .line 157
+    .line 158
+    invoke-virtual {p1, v0}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+    .line 159
+    .line 160
+    .line 161
+    return-void
+
+    .line 162
+    :pswitch_2
+    sget-object v0, Landroid/widget/ImageView$ScaleType;->CENTER:Landroid/widget/ImageView$ScaleType;
+
+    .line 163
+    .line 164
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+
+    .line 165
+    .line 166
+    .line 167
+    return-void
+
+    .line 168
+    :pswitch_3
+    sget-object v0, Landroid/widget/ImageView$ScaleType;->FIT_XY:Landroid/widget/ImageView$ScaleType;
+
+    .line 169
+    .line 170
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setScaleType(Landroid/widget/ImageView$ScaleType;)V
+
+    .line 171
+    .line 172
+    .line 173
+    return-void
+
+    .line 174
+    nop
+
+    .line 175
+    :sswitch_data_0
+    .sparse-switch
+        -0x702b18fb -> :sswitch_4
+        -0x514d33ab -> :sswitch_3
+        -0x3997db4f -> :sswitch_2
+        0x18c11 -> :sswitch_1
+        0x6f2d2b2 -> :sswitch_0
+    .end sparse-switch
+
+    .line 176
+    .line 177
+    .line 178
+    .line 179
+    .line 180
+    .line 181
+    .line 182
+    .line 183
+    .line 184
+    .line 185
+    .line 186
+    .line 187
+    .line 188
+    .line 189
+    .line 190
+    .line 191
+    .line 192
+    .line 193
+    .line 194
+    .line 195
+    .line 196
+    .line 197
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+        :pswitch_1
+    .end packed-switch
+.end method
+
+.method private applyGlassToDrawable(Landroid/graphics/drawable/Drawable;Landroid/content/Context;I)V
+    .locals 3
+
+    .line 1
+    instance-of v0, p1, Landroid/graphics/drawable/ColorDrawable;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    if-eqz v0, :cond_2
+
+    .line 5
+    .line 6
+    check-cast p1, Landroid/graphics/drawable/ColorDrawable;
+
+    .line 7
+    .line 8
+    invoke-virtual {p1}, Landroid/graphics/drawable/ColorDrawable;->getColor()I
+
+    .line 9
+    .line 10
+    .line 11
+    move-result v0
+
+    .line 12
+    invoke-direct {p0, v0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->isSurfaceColor(ILandroid/content/Context;)Z
+
+    .line 13
+    .line 14
+    .line 15
+    move-result v2
+
+    .line 16
+    if-eqz v2, :cond_a
+
+    .line 17
+    .line 18
+    sget v2, Lorg/levimc/launcher/R$color;->background:I
+
+    .line 19
+    .line 20
+    invoke-virtual {p2, v2}, Landroid/content/Context;->getColor(I)I
+
+    .line 21
+    .line 22
+    .line 23
+    move-result p2
+
+    .line 24
+    if-eq v0, p2, :cond_0
+
+    .line 25
+    .line 26
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
+
+    .line 27
+    .line 28
+    .line 29
+    move-result p2
+
+    .line 30
+    if-eqz p2, :cond_1
+
+    .line 31
+    .line 32
+    :cond_0
+    move p3, v1
+
+    .line 33
+    :cond_1
+    invoke-virtual {p1, p3}, Landroid/graphics/drawable/ColorDrawable;->setColor(I)V
+
+    .line 34
+    .line 35
+    .line 36
+    return-void
+
+    .line 37
+    :cond_2
+    instance-of v0, p1, Landroid/graphics/drawable/GradientDrawable;
+
+    .line 38
+    .line 39
+    if-eqz v0, :cond_3
+
+    .line 40
+    .line 41
+    check-cast p1, Landroid/graphics/drawable/GradientDrawable;
+
+    .line 42
+    .line 43
+    invoke-virtual {p1}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
+
+    .line 44
+    .line 45
+    .line 46
+    move-result-object v0
+
+    .line 47
+    if-eqz v0, :cond_a
+
+    .line 48
+    .line 49
+    invoke-virtual {v0}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    .line 50
+    .line 51
+    .line 52
+    move-result v0
+
+    .line 53
+    invoke-direct {p0, v0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->isSurfaceColor(ILandroid/content/Context;)Z
+
+    .line 54
+    .line 55
+    .line 56
+    move-result p2
+
+    .line 57
+    if-eqz p2, :cond_a
+
+    .line 58
+    .line 59
+    invoke-virtual {p1, p3}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
+
+    .line 60
+    .line 61
+    .line 62
+    return-void
+
+    .line 63
+    :cond_3
+    instance-of v0, p1, Landroid/graphics/drawable/StateListDrawable;
+
+    .line 64
+    .line 65
+    if-eqz v0, :cond_6
+
+    .line 66
+    .line 67
+    check-cast p1, Landroid/graphics/drawable/StateListDrawable;
+
+    .line 68
+    .line 69
+    :goto_0
+    invoke-static {p1}, Lfc/a;->c(Landroid/graphics/drawable/StateListDrawable;)I
+
+    .line 70
+    .line 71
+    .line 72
+    move-result v0
+
+    .line 73
+    if-ge v1, v0, :cond_5
+
+    .line 74
+    .line 75
+    invoke-static {p1, v1}, Lfc/a;->g(Landroid/graphics/drawable/StateListDrawable;I)Landroid/graphics/drawable/Drawable;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object v0
+
+    .line 79
+    if-eqz v0, :cond_4
+
+    .line 80
+    .line 81
+    invoke-direct {p0, v0, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToDrawable(Landroid/graphics/drawable/Drawable;Landroid/content/Context;I)V
+
+    .line 82
+    .line 83
+    .line 84
+    :cond_4
+    add-int/lit8 v1, v1, 0x1
+
+    .line 85
+    .line 86
+    goto :goto_0
+
+    .line 87
+    :cond_5
+    invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
+
+    .line 88
+    .line 89
+    .line 90
+    return-void
+
+    .line 91
+    :cond_6
+    instance-of v0, p1, Landroid/graphics/drawable/InsetDrawable;
+
+    .line 92
+    .line 93
+    if-eqz v0, :cond_7
+
+    .line 94
+    .line 95
+    check-cast p1, Landroid/graphics/drawable/InsetDrawable;
+
+    .line 96
+    .line 97
+    invoke-virtual {p1}, Landroid/graphics/drawable/DrawableWrapper;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 98
+    .line 99
+    .line 100
+    move-result-object p1
+
+    .line 101
+    if-eqz p1, :cond_a
+
+    .line 102
+    .line 103
+    invoke-direct {p0, p1, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToDrawable(Landroid/graphics/drawable/Drawable;Landroid/content/Context;I)V
+
+    .line 104
+    .line 105
+    .line 106
+    return-void
+
+    .line 107
+    :cond_7
+    instance-of v0, p1, Landroid/graphics/drawable/LayerDrawable;
+
+    .line 108
+    .line 109
+    if-eqz v0, :cond_9
+
+    .line 110
+    .line 111
+    check-cast p1, Landroid/graphics/drawable/LayerDrawable;
+
+    .line 112
+    .line 113
+    :goto_1
+    invoke-virtual {p1}, Landroid/graphics/drawable/LayerDrawable;->getNumberOfLayers()I
+
+    .line 114
+    .line 115
+    .line 116
+    move-result v0
+
+    .line 117
+    if-ge v1, v0, :cond_a
+
+    .line 118
+    .line 119
+    invoke-virtual {p1, v1}, Landroid/graphics/drawable/LayerDrawable;->getId(I)I
+
+    .line 120
+    .line 121
+    .line 122
+    move-result v0
+
+    .line 123
+    const v2, 0x102002e
+
+    .line 124
+    .line 125
+    .line 126
+    if-eq v0, v2, :cond_8
+
+    .line 127
+    .line 128
+    invoke-virtual {p1, v1}, Landroid/graphics/drawable/LayerDrawable;->getDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    .line 129
+    .line 130
+    .line 131
+    move-result-object v0
+
+    .line 132
+    invoke-direct {p0, v0, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToDrawable(Landroid/graphics/drawable/Drawable;Landroid/content/Context;I)V
+
+    .line 133
+    .line 134
+    .line 135
+    :cond_8
+    add-int/lit8 v1, v1, 0x1
+
+    .line 136
+    .line 137
+    goto :goto_1
+
+    .line 138
+    :cond_9
+    instance-of v0, p1, Lv5/j;
+
+    .line 139
+    .line 140
+    if-eqz v0, :cond_a
+
+    .line 141
+    .line 142
+    check-cast p1, Lv5/j;
+
+    .line 143
+    .line 144
+    iget-object v0, p1, Lv5/j;->d:Lv5/h;
+
+    .line 145
+    .line 146
+    iget-object v0, v0, Lv5/h;->d:Landroid/content/res/ColorStateList;
+
+    .line 147
+    .line 148
+    if-eqz v0, :cond_a
+
+    .line 149
+    .line 150
+    invoke-virtual {v0}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    .line 151
+    .line 152
+    .line 153
+    move-result v0
+
+    .line 154
+    invoke-direct {p0, v0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->isSurfaceColor(ILandroid/content/Context;)Z
+
+    .line 155
+    .line 156
+    .line 157
+    move-result p2
+
+    .line 158
+    if-eqz p2, :cond_a
+
+    .line 159
+    .line 160
+    invoke-static {p3}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    .line 161
+    .line 162
+    .line 163
+    move-result-object p2
+
+    .line 164
+    invoke-virtual {p1, p2}, Lv5/j;->r(Landroid/content/res/ColorStateList;)V
+
+    .line 165
+    .line 166
+    .line 167
+    :cond_a
+    return-void
+.end method
+
+.method private applyGlassToView(Landroid/view/View;I)V
+    .locals 2
+
+    .line 3
+    const-string v0, "levi_keep_background"
+
+    invoke-virtual {p1}, Landroid/view/View;->getTag()Ljava/lang/Object;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    goto :goto_0
+
+    .line 4
+    :cond_0
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    .line 5
+    instance-of v1, p1, Landroidx/cardview/widget/CardView;
+
+    if-eqz v1, :cond_1
+
+    .line 6
+    check-cast p1, Landroidx/cardview/widget/CardView;
+
+    .line 7
+    invoke-virtual {p1}, Landroidx/cardview/widget/CardView;->getCardBackgroundColor()Landroid/content/res/ColorStateList;
+
+    move-result-object v1
+
+    invoke-virtual {v1}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v1
+
+    .line 8
+    invoke-direct {p0, v1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isSurfaceColor(ILandroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 9
+    invoke-virtual {p1, p2}, Landroidx/cardview/widget/CardView;->setCardBackgroundColor(I)V
+
+    return-void
+
+    .line 10
+    :cond_1
+    invoke-virtual {p1}, Landroid/view/View;->getBackgroundTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v1
+
+    if-eqz v1, :cond_2
+
+    .line 11
+    invoke-virtual {v1}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v1
+
+    invoke-direct {p0, v1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isSurfaceColor(ILandroid/content/Context;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_3
+
+    .line 12
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object p2
+
+    invoke-virtual {p1, p2}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    return-void
+
+    .line 13
+    :cond_2
+    invoke-virtual {p1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object p1
+
+    if-eqz p1, :cond_3
+
+    .line 14
+    invoke-virtual {p1}, Landroid/graphics/drawable/Drawable;->mutate()Landroid/graphics/drawable/Drawable;
+
+    move-result-object p1
+
+    invoke-direct {p0, p1, v0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToDrawable(Landroid/graphics/drawable/Drawable;Landroid/content/Context;I)V
+
+    :cond_3
+    :goto_0
     return-void
 .end method
 
@@ -1083,6 +1971,282 @@
     .line 36
     .line 37
     :cond_1
+    return-void
+.end method
+
+.method private applyOverlay(Landroid/view/View;Z)V
+    .locals 2
+
+    .line 1
+    if-eqz p2, :cond_0
+
+    .line 2
+    .line 3
+    const/16 v0, 0x64
+
+    .line 4
+    .line 5
+    goto :goto_0
+
+    .line 6
+    :cond_0
+    const/16 v0, 0x50
+
+    .line 7
+    .line 8
+    :goto_0
+    const/4 v1, 0x0
+
+    .line 9
+    if-eqz p2, :cond_1
+
+    .line 10
+    .line 11
+    invoke-static {v0, v1, v1, v1}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p2
+
+    .line 15
+    goto :goto_1
+
+    .line 16
+    :cond_1
+    const/16 p2, 0xff
+
+    .line 17
+    .line 18
+    invoke-static {v0, p2, p2, p2}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 19
+    .line 20
+    .line 21
+    move-result p2
+
+    .line 22
+    :goto_1
+    invoke-virtual {p1, p2}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 23
+    .line 24
+    .line 25
+    invoke-virtual {p1, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+.end method
+
+.method private applySwitchColors(Landroid/widget/CompoundButton;ILandroid/content/Context;)V
+    .locals 3
+
+    .line 1
+    const v0, 0x10100a0
+
+    .line 2
+    .line 3
+    .line 4
+    filled-new-array {v0}, [I
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v0
+
+    .line 8
+    const/4 v1, 0x0
+
+    .line 9
+    new-array v1, v1, [I
+
+    .line 10
+    .line 11
+    filled-new-array {v0, v1}, [[I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object v0
+
+    .line 15
+    invoke-virtual {p0, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result p3
+
+    .line 19
+    if-eqz p3, :cond_0
+
+    .line 20
+    .line 21
+    const p3, -0xadada5
+
+    .line 22
+    .line 23
+    .line 24
+    goto :goto_0
+
+    .line 25
+    :cond_0
+    const p3, -0x2b2b28
+
+    .line 26
+    .line 27
+    .line 28
+    :goto_0
+    new-instance v1, Landroid/content/res/ColorStateList;
+
+    .line 29
+    .line 30
+    const/4 v2, -0x1
+
+    .line 31
+    filled-new-array {v2, v2}, [I
+
+    .line 32
+    .line 33
+    .line 34
+    move-result-object v2
+
+    .line 35
+    invoke-direct {v1, v0, v2}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
+
+    .line 36
+    .line 37
+    .line 38
+    new-instance v2, Landroid/content/res/ColorStateList;
+
+    .line 39
+    .line 40
+    filled-new-array {p2, p3}, [I
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object p2
+
+    .line 44
+    invoke-direct {v2, v0, p2}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
+
+    .line 45
+    .line 46
+    .line 47
+    instance-of p2, p1, Landroidx/appcompat/widget/SwitchCompat;
+
+    .line 48
+    .line 49
+    if-eqz p2, :cond_1
+
+    .line 50
+    .line 51
+    check-cast p1, Landroidx/appcompat/widget/SwitchCompat;
+
+    .line 52
+    .line 53
+    invoke-virtual {p1, v1}, Landroidx/appcompat/widget/SwitchCompat;->setThumbTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 54
+    .line 55
+    .line 56
+    invoke-virtual {p1, v2}, Landroidx/appcompat/widget/SwitchCompat;->setTrackTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 57
+    .line 58
+    .line 59
+    sget-object p2, Landroid/graphics/PorterDuff$Mode;->SRC_IN:Landroid/graphics/PorterDuff$Mode;
+
+    .line 60
+    .line 61
+    invoke-virtual {p1, p2}, Landroidx/appcompat/widget/SwitchCompat;->setTrackTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    .line 62
+    .line 63
+    .line 64
+    return-void
+
+    .line 65
+    :cond_1
+    instance-of p2, p1, Landroid/widget/Switch;
+
+    .line 66
+    .line 67
+    if-eqz p2, :cond_2
+
+    .line 68
+    .line 69
+    check-cast p1, Landroid/widget/Switch;
+
+    .line 70
+    .line 71
+    invoke-virtual {p1, v1}, Landroid/widget/Switch;->setThumbTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 72
+    .line 73
+    .line 74
+    invoke-virtual {p1, v2}, Landroid/widget/Switch;->setTrackTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 75
+    .line 76
+    .line 77
+    sget-object p2, Landroid/graphics/PorterDuff$Mode;->SRC_IN:Landroid/graphics/PorterDuff$Mode;
+
+    .line 78
+    .line 79
+    invoke-virtual {p1, p2}, Landroid/widget/Switch;->setTrackTintMode(Landroid/graphics/PorterDuff$Mode;)V
+
+    .line 80
+    .line 81
+    .line 82
+    :cond_2
+    return-void
+.end method
+
+.method public static synthetic b([ZLandroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->lambda$setBackgroundImage$0([ZLandroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bumpBackgroundEffects()V
+    .locals 1
+
+    .line 1
+    sget-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public static bumpChange()V
+    .locals 1
+
+    .line 1
+    sget-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 4
+    .line 5
+    .line 6
     return-void
 .end method
 
@@ -2294,43 +3458,177 @@
     .locals 1
 
     .line 1
-    const/16 v0, 0x32
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundOpacity()I
 
     .line 2
     .line 3
-    if-eqz p1, :cond_0
-
     .line 4
+    move-result v0
+
     .line 5
-    const/16 p1, 0x19
+    if-nez v0, :cond_1
 
     .line 6
     .line 7
+    if-eqz p1, :cond_0
+
+    .line 8
+    .line 9
+    const p1, -0xeaeae8
+
+    .line 10
+    .line 11
+    .line 12
+    return p1
+
+    .line 13
+    :cond_0
+    const p1, -0xe0717
+
+    .line 14
+    .line 15
+    .line 16
+    return p1
+
+    .line 17
+    :cond_1
+    const/16 v0, 0x32
+
+    .line 18
+    .line 19
+    if-eqz p1, :cond_2
+
+    .line 20
+    .line 21
+    const/16 p1, 0x19
+
+    .line 22
+    .line 23
+    :goto_0
     invoke-static {v0, p1, p1, p1}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 24
+    .line 25
+    .line 26
+    move-result p1
+
+    .line 27
+    return p1
+
+    .line 28
+    :cond_2
+    const/16 p1, 0xff
+
+    .line 29
+    .line 30
+    goto :goto_0
+.end method
+
+.method private getWallpaperSurfaceColor()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkActive(Landroid/content/Context;)Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getGlassColor(Z)I
 
     .line 8
     .line 9
     .line 10
-    move-result p1
+    move-result v0
 
     .line 11
-    return p1
+    return v0
+.end method
+
+.method public static isDarkActive(Landroid/content/Context;)Z
+    .locals 3
+
+    .line 1
+    sget v0, Landroidx/appcompat/app/AppCompatDelegate;->d:I
+
+    .line 2
+    .line 3
+    const/4 v1, 0x2
+
+    .line 4
+    const/4 v2, 0x1
+
+    .line 5
+    if-ne v0, v1, :cond_0
+
+    .line 6
+    .line 7
+    return v2
+
+    .line 8
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 9
+    if-ne v0, v2, :cond_1
+
+    .line 10
+    .line 11
+    return v1
 
     .line 12
-    :cond_0
-    const/16 p1, 0xff
+    :cond_1
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     .line 13
     .line 14
-    invoke-static {v0, p1, p1, p1}, Landroid/graphics/Color;->argb(IIII)I
-
     .line 15
-    .line 16
-    .line 17
-    move-result p1
+    move-result-object p0
 
+    .line 16
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 17
     .line 18
-    return p1
+    .line 19
+    move-result-object p0
+
+    .line 20
+    invoke-virtual {p0}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p0
+
+    .line 24
+    iget p0, p0, Landroid/content/res/Configuration;->uiMode:I
+
+    .line 25
+    .line 26
+    and-int/lit8 p0, p0, 0x30
+
+    .line 27
+    .line 28
+    const/16 v0, 0x20
+
+    .line 29
+    .line 30
+    if-ne p0, v0, :cond_2
+
+    .line 31
+    .line 32
+    return v2
+
+    .line 33
+    :cond_2
+    return v1
 .end method
 
 .method private isDarkMode(Landroid/app/Activity;)Z
@@ -2488,6 +3786,296 @@
 
     .line 32
     return p1
+.end method
+
+.method private isSurfaceColor(ILandroid/content/Context;)Z
+    .locals 4
+
+    .line 1
+    invoke-static {p1}, Landroid/graphics/Color;->alpha(I)I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    const/16 v1, 0xc8
+
+    .line 6
+    .line 7
+    const/4 v2, 0x0
+
+    .line 8
+    const/4 v3, 0x1
+
+    .line 9
+    if-gt v0, v1, :cond_1
+
+    .line 10
+    .line 11
+    sget v0, Lorg/levimc/launcher/R$color;->ui_card_surface:I
+
+    .line 12
+    .line 13
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result p2
+
+    .line 17
+    if-ne p1, p2, :cond_0
+
+    .line 18
+    .line 19
+    return v3
+
+    .line 20
+    :cond_0
+    return v2
+
+    .line 21
+    :cond_1
+    sget v0, Lorg/levimc/launcher/R$color;->background:I
+
+    .line 22
+    .line 23
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 24
+    .line 25
+    .line 26
+    move-result v0
+
+    .line 27
+    if-eq p1, v0, :cond_3
+
+    .line 28
+    .line 29
+    sget v0, Lorg/levimc/launcher/R$color;->surface:I
+
+    .line 30
+    .line 31
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 32
+    .line 33
+    .line 34
+    move-result v0
+
+    .line 35
+    if-eq p1, v0, :cond_3
+
+    .line 36
+    .line 37
+    sget v0, Lorg/levimc/launcher/R$color;->surface_variant:I
+
+    .line 38
+    .line 39
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 40
+    .line 41
+    .line 42
+    move-result v0
+
+    .line 43
+    if-eq p1, v0, :cond_3
+
+    .line 44
+    .line 45
+    sget v0, Lorg/levimc/launcher/R$color;->ui_chrome:I
+
+    .line 46
+    .line 47
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 48
+    .line 49
+    .line 50
+    move-result v0
+
+    .line 51
+    if-eq p1, v0, :cond_3
+
+    .line 52
+    .line 53
+    sget v0, Lorg/levimc/launcher/R$color;->ui_default:I
+
+    .line 54
+    .line 55
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 56
+    .line 57
+    .line 58
+    move-result v0
+
+    .line 59
+    if-eq p1, v0, :cond_3
+
+    .line 60
+    .line 61
+    sget v0, Lorg/levimc/launcher/R$color;->ui_input:I
+
+    .line 62
+    .line 63
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 64
+    .line 65
+    .line 66
+    move-result v0
+
+    .line 67
+    if-eq p1, v0, :cond_3
+
+    .line 68
+    .line 69
+    sget v0, Lorg/levimc/launcher/R$color;->ui_strip:I
+
+    .line 70
+    .line 71
+    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 72
+    .line 73
+    .line 74
+    move-result p2
+
+    .line 75
+    if-eq p1, p2, :cond_3
+
+    .line 76
+    .line 77
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
+
+    .line 78
+    .line 79
+    .line 80
+    move-result p2
+
+    .line 81
+    if-nez p2, :cond_3
+
+    .line 82
+    .line 83
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
+
+    .line 84
+    .line 85
+    .line 86
+    move-result p1
+
+    .line 87
+    if-eqz p1, :cond_2
+
+    .line 88
+    .line 89
+    goto :goto_0
+
+    .line 90
+    :cond_2
+    return v2
+
+    .line 91
+    :cond_3
+    :goto_0
+    return v3
+.end method
+
+.method private synthetic lambda$applyFitMode$1(Landroid/widget/ImageView;)V
+    .locals 4
+
+    .line 1
+    invoke-virtual {p1}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    if-nez v0, :cond_0
+
+    .line 6
+    .line 7
+    return-void
+
+    .line 8
+    :cond_0
+    new-instance v1, Landroid/graphics/Matrix;
+
+    .line 9
+    .line 10
+    invoke-direct {v1}, Landroid/graphics/Matrix;-><init>()V
+
+    .line 11
+    .line 12
+    .line 13
+    const-string v2, "top_right"
+
+    .line 14
+    .line 15
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundFitMode()Ljava/lang/String;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object v3
+
+    .line 19
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v2
+
+    .line 23
+    if-eqz v2, :cond_1
+
+    .line 24
+    .line 25
+    invoke-virtual {p1}, Landroid/view/View;->getWidth()I
+
+    .line 26
+    .line 27
+    .line 28
+    move-result v2
+
+    .line 29
+    invoke-virtual {v0}, Landroid/graphics/drawable/Drawable;->getIntrinsicWidth()I
+
+    .line 30
+    .line 31
+    .line 32
+    move-result v0
+
+    .line 33
+    sub-int/2addr v2, v0
+
+    .line 34
+    int-to-float v0, v2
+
+    .line 35
+    const/4 v2, 0x0
+
+    .line 36
+    invoke-virtual {v1, v0, v2}, Landroid/graphics/Matrix;->setTranslate(FF)V
+
+    .line 37
+    .line 38
+    .line 39
+    :cond_1
+    invoke-virtual {p1, v1}, Landroid/widget/ImageView;->setImageMatrix(Landroid/graphics/Matrix;)V
+
+    .line 40
+    .line 41
+    .line 42
+    return-void
 .end method
 
 .method private static synthetic lambda$setBackgroundImage$0([ZLandroid/graphics/ImageDecoder;Landroid/graphics/ImageDecoder$ImageInfo;Landroid/graphics/ImageDecoder$Source;)V
@@ -2648,617 +4236,142 @@
     return-void
 .end method
 
-.method private makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;Landroid/app/Activity;)V
-    .locals 13
+.method private makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;I)V
+    .locals 4
 
     .line 1
-    sget v0, Lorg/levimc/launcher/R$color;->background:I
+    const/4 v0, 0x0
 
     .line 2
-    .line 3
-    invoke-virtual {p2, v0}, Landroid/content/Context;->getColor(I)I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    sget v1, Lorg/levimc/launcher/R$color;->surface:I
-
-    .line 8
-    .line 9
-    invoke-virtual {p2, v1}, Landroid/content/Context;->getColor(I)I
-
-    .line 10
-    .line 11
-    .line 12
-    move-result v1
-
-    .line 13
-    sget v2, Lorg/levimc/launcher/R$color;->surface_variant:I
-
-    .line 14
-    .line 15
-    invoke-virtual {p2, v2}, Landroid/content/Context;->getColor(I)I
-
-    .line 16
-    .line 17
-    .line 18
-    move-result v2
-
-    .line 19
-    invoke-direct {p0, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/app/Activity;)Z
-
-    .line 20
-    .line 21
-    .line 22
-    move-result v3
-
-    .line 23
-    invoke-direct {p0, v3}, Lorg/levimc/launcher/util/PersonalizationManager;->getGlassColor(Z)I
-
-    .line 24
-    .line 25
-    .line 26
-    move-result v3
-
-    .line 27
-    const/4 v4, 0x0
-
-    .line 28
-    move v5, v4
-
-    .line 29
     :goto_0
     invoke-virtual {p1}, Landroid/view/ViewGroup;->getChildCount()I
 
+    .line 3
+    .line 4
+    .line 5
+    move-result v1
+
+    .line 6
+    if-ge v0, v1, :cond_2
+
+    .line 7
+    .line 8
+    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v1
+
+    .line 12
+    const-string v2, "personalization_bg"
+
+    .line 13
+    .line 14
+    invoke-virtual {v1}, Landroid/view/View;->getTag()Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v3
+
+    .line 18
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 19
+    .line 20
+    .line 21
+    move-result v2
+
+    .line 22
+    if-nez v2, :cond_1
+
+    .line 23
+    .line 24
+    const-string v2, "personalization_overlay"
+
+    .line 25
+    .line 26
+    invoke-virtual {v1}, Landroid/view/View;->getTag()Ljava/lang/Object;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object v3
+
     .line 30
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
     .line 31
     .line 32
-    move-result v6
-
     .line 33
-    if-ge v5, v6, :cond_f
+    move-result v2
 
     .line 34
-    .line 35
-    invoke-virtual {p1, v5}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+    if-nez v2, :cond_1
 
+    .line 35
     .line 36
+    const-string v2, "personalization_base"
+
     .line 37
     .line 38
-    move-result-object v6
+    invoke-virtual {v1}, Landroid/view/View;->getTag()Ljava/lang/Object;
 
     .line 39
-    const-string v7, "personalization_bg"
-
     .line 40
     .line 41
-    invoke-virtual {v6}, Landroid/view/View;->getTag()Ljava/lang/Object;
+    move-result-object v3
 
     .line 42
+    invoke-virtual {v2, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
     .line 43
     .line 44
-    move-result-object v8
-
     .line 45
-    invoke-virtual {v7, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    move-result v2
 
     .line 46
+    if-eqz v2, :cond_0
+
     .line 47
     .line 48
-    move-result v7
+    goto :goto_1
 
     .line 49
-    if-nez v7, :cond_e
+    :cond_0
+    invoke-direct {p0, v1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;I)V
 
     .line 50
     .line 51
-    const-string v7, "personalization_overlay"
-
     .line 52
-    .line 53
-    invoke-virtual {v6}, Landroid/view/View;->getTag()Ljava/lang/Object;
+    instance-of v2, v1, Landroid/view/ViewGroup;
 
+    .line 53
     .line 54
+    if-eqz v2, :cond_1
+
     .line 55
     .line 56
-    move-result-object v8
+    check-cast v1, Landroid/view/ViewGroup;
 
     .line 57
-    invoke-virtual {v7, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
     .line 58
+    invoke-direct {p0, v1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;I)V
+
     .line 59
     .line 60
-    move-result v7
-
     .line 61
-    if-eqz v7, :cond_0
+    :cond_1
+    :goto_1
+    add-int/lit8 v0, v0, 0x1
 
     .line 62
     .line 63
-    goto/16 :goto_4
+    goto :goto_0
 
     .line 64
-    .line 65
-    :cond_0
-    instance-of v7, v6, Landroidx/cardview/widget/CardView;
-
-    .line 66
-    .line 67
-    if-eqz v7, :cond_3
-
-    .line 68
-    .line 69
-    move-object v7, v6
-
-    .line 70
-    check-cast v7, Landroidx/cardview/widget/CardView;
-
-    .line 71
-    .line 72
-    invoke-virtual {v7}, Landroidx/cardview/widget/CardView;->getCardBackgroundColor()Landroid/content/res/ColorStateList;
-
-    .line 73
-    .line 74
-    .line 75
-    move-result-object v8
-
-    .line 76
-    invoke-virtual {v8}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 77
-    .line 78
-    .line 79
-    move-result v8
-
-    .line 80
-    if-eq v8, v1, :cond_1
-
-    .line 81
-    .line 82
-    if-eq v8, v0, :cond_1
-
-    .line 83
-    .line 84
-    if-eq v8, v2, :cond_1
-
-    .line 85
-    .line 86
-    invoke-direct {p0, v8}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 87
-    .line 88
-    .line 89
-    move-result v9
-
-    .line 90
-    if-nez v9, :cond_1
-
-    .line 91
-    .line 92
-    invoke-direct {p0, v8}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 93
-    .line 94
-    .line 95
-    move-result v8
-
-    .line 96
-    if-eqz v8, :cond_2
-
-    .line 97
-    .line 98
-    :cond_1
-    invoke-virtual {v7, v3}, Landroidx/cardview/widget/CardView;->setCardBackgroundColor(I)V
-
-    .line 99
-    .line 100
-    .line 101
     :cond_2
-    check-cast v6, Landroid/view/ViewGroup;
-
-    .line 102
-    .line 103
-    invoke-direct {p0, v6, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;Landroid/app/Activity;)V
-
-    .line 104
-    .line 105
-    .line 106
-    goto/16 :goto_4
-
-    .line 107
-    .line 108
-    :cond_3
-    invoke-virtual {v6}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
-
-    .line 109
-    .line 110
-    .line 111
-    move-result-object v7
-
-    .line 112
-    instance-of v8, v7, Landroid/graphics/drawable/ColorDrawable;
-
-    .line 113
-    .line 114
-    if-eqz v8, :cond_7
-
-    .line 115
-    .line 116
-    check-cast v7, Landroid/graphics/drawable/ColorDrawable;
-
-    .line 117
-    .line 118
-    invoke-virtual {v7}, Landroid/graphics/drawable/ColorDrawable;->getColor()I
-
-    .line 119
-    .line 120
-    .line 121
-    move-result v7
-
-    .line 122
-    if-eq v7, v0, :cond_6
-
-    .line 123
-    .line 124
-    invoke-direct {p0, v7}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 125
-    .line 126
-    .line 127
-    move-result v8
-
-    .line 128
-    if-eqz v8, :cond_4
-
-    .line 129
-    .line 130
-    goto :goto_1
-
-    .line 131
-    :cond_4
-    if-eq v7, v1, :cond_5
-
-    .line 132
-    .line 133
-    if-eq v7, v2, :cond_5
-
-    .line 134
-    .line 135
-    invoke-direct {p0, v7}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 136
-    .line 137
-    .line 138
-    move-result v7
-
-    .line 139
-    if-eqz v7, :cond_d
-
-    .line 140
-    .line 141
-    :cond_5
-    invoke-virtual {v6, v3}, Landroid/view/View;->setBackgroundColor(I)V
-
-    .line 142
-    .line 143
-    .line 144
-    goto/16 :goto_3
-
-    .line 145
-    .line 146
-    :cond_6
-    :goto_1
-    invoke-virtual {v6, v4}, Landroid/view/View;->setBackgroundColor(I)V
-
-    .line 147
-    .line 148
-    .line 149
-    goto/16 :goto_3
-
-    .line 150
-    .line 151
-    :cond_7
-    instance-of v8, v7, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 152
-    .line 153
-    if-eqz v8, :cond_9
-
-    .line 154
-    .line 155
-    check-cast v7, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 156
-    .line 157
-    :try_start_0
-    invoke-virtual {v7}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 158
-    .line 159
-    .line 160
-    move-result-object v8
-
-    .line 161
-    if-eqz v8, :cond_d
-
-    .line 162
-    .line 163
-    invoke-virtual {v7}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 164
-    .line 165
-    .line 166
-    move-result-object v7
-
-    .line 167
-    invoke-virtual {v7}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 168
-    .line 169
-    .line 170
-    move-result v7
-
-    .line 171
-    if-eq v7, v1, :cond_8
-
-    .line 172
-    .line 173
-    if-eq v7, v0, :cond_8
-
-    .line 174
-    .line 175
-    if-eq v7, v2, :cond_8
-
-    .line 176
-    .line 177
-    invoke-direct {p0, v7}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 178
-    .line 179
-    .line 180
-    move-result v8
-
-    .line 181
-    if-nez v8, :cond_8
-
-    .line 182
-    .line 183
-    invoke-direct {p0, v7}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 184
-    .line 185
-    .line 186
-    move-result v7
-
-    .line 187
-    if-eqz v7, :cond_d
-
-    .line 188
-    .line 189
-    :cond_8
-    new-instance v7, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 190
-    .line 191
-    invoke-direct {v7}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
-
-    .line 192
-    .line 193
-    .line 194
-    const/high16 v8, 0x41400000    # 12.0f
-
-    .line 195
-    .line 196
-    invoke-direct {p0, p2, v8}, Lorg/levimc/launcher/util/PersonalizationManager;->dpToPx(Landroid/content/Context;F)F
-
-    .line 197
-    .line 198
-    .line 199
-    move-result v8
-
-    .line 200
-    invoke-virtual {v7, v8}, Landroid/graphics/drawable/GradientDrawable;->setCornerRadius(F)V
-
-    .line 201
-    .line 202
-    .line 203
-    invoke-virtual {v7, v3}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-
-    .line 204
-    .line 205
-    .line 206
-    invoke-virtual {v6, v7}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
-
-    .line 207
-    .line 208
-    .line 209
-    goto :goto_3
-
-    .line 210
-    :cond_9
-    instance-of v8, v7, Landroid/graphics/drawable/StateListDrawable;
-
-    .line 211
-    .line 212
-    if-eqz v8, :cond_d
-
-    .line 213
-    .line 214
-    check-cast v7, Landroid/graphics/drawable/StateListDrawable;
-
-    .line 215
-    .line 216
-    move v8, v4
-
-    .line 217
-    move v9, v8
-
-    .line 218
-    :goto_2
-    invoke-static {v7}, Lgc/a;->c(Landroid/graphics/drawable/StateListDrawable;)I
-
-    .line 219
-    .line 220
-    .line 221
-    move-result v10
-
-    .line 222
-    if-ge v8, v10, :cond_c
-
-    .line 223
-    .line 224
-    invoke-static {v7, v8}, Lgc/a;->g(Landroid/graphics/drawable/StateListDrawable;I)Landroid/graphics/drawable/Drawable;
-
-    .line 225
-    .line 226
-    .line 227
-    move-result-object v10
-
-    .line 228
-    instance-of v11, v10, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 229
-    .line 230
-    if-eqz v11, :cond_b
-
-    .line 231
-    .line 232
-    check-cast v10, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 233
-    .line 234
-    :try_start_1
-    invoke-virtual {v10}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 235
-    .line 236
-    .line 237
-    move-result-object v11
-
-    .line 238
-    if-eqz v11, :cond_b
-
-    .line 239
-    .line 240
-    invoke-virtual {v10}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 241
-    .line 242
-    .line 243
-    move-result-object v11
-
-    .line 244
-    invoke-virtual {v11}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 245
-    .line 246
-    .line 247
-    move-result v11
-
-    .line 248
-    if-eq v11, v1, :cond_a
-
-    .line 249
-    .line 250
-    if-eq v11, v0, :cond_a
-
-    .line 251
-    .line 252
-    if-eq v11, v2, :cond_a
-
-    .line 253
-    .line 254
-    invoke-direct {p0, v11}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 255
-    .line 256
-    .line 257
-    move-result v12
-
-    .line 258
-    if-nez v12, :cond_a
-
-    .line 259
-    .line 260
-    invoke-direct {p0, v11}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 261
-    .line 262
-    .line 263
-    move-result v11
-
-    .line 264
-    if-eqz v11, :cond_b
-
-    .line 265
-    .line 266
-    :cond_a
-    invoke-virtual {v10, v3}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-    :try_end_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 267
-    .line 268
-    .line 269
-    const/4 v9, 0x1
-
-    .line 270
-    :catch_0
-    :cond_b
-    add-int/lit8 v8, v8, 0x1
-
-    .line 271
-    .line 272
-    goto :goto_2
-
-    .line 273
-    :cond_c
-    if-eqz v9, :cond_d
-
-    .line 274
-    .line 275
-    invoke-virtual {v7}, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
-
-    .line 276
-    .line 277
-    .line 278
-    :catch_1
-    :cond_d
-    :goto_3
-    instance-of v7, v6, Landroid/view/ViewGroup;
-
-    .line 279
-    .line 280
-    if-eqz v7, :cond_e
-
-    .line 281
-    .line 282
-    check-cast v6, Landroid/view/ViewGroup;
-
-    .line 283
-    .line 284
-    invoke-direct {p0, v6, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;Landroid/app/Activity;)V
-
-    .line 285
-    .line 286
-    .line 287
-    :cond_e
-    :goto_4
-    add-int/lit8 v5, v5, 0x1
-
-    .line 288
-    .line 289
-    goto/16 :goto_0
-
-    .line 290
-    .line 291
-    :cond_f
     return-void
 .end method
 
@@ -3274,598 +4387,548 @@
 .end method
 
 .method public applyAccentColorRecursive(Landroid/view/View;ILandroid/content/Context;)V
-    .locals 17
-
-    move-object/from16 v0, p1
-
-    move/from16 v1, p2
-
-    move-object/from16 v2, p3
+    .locals 9
 
     .line 2
-    sget v3, Lorg/levimc/launcher/R$color;->primary:I
+    sget v0, Lorg/levimc/launcher/R$color;->primary:I
 
     .line 3
-    invoke-virtual {v2, v3}, Landroid/content/Context;->getColor(I)I
+    invoke-virtual {p3, v0}, Landroid/content/Context;->getColor(I)I
+
+    move-result v0
+
+    .line 4
+    sget v1, Lorg/levimc/launcher/R$color;->secondary:I
+
+    .line 5
+    invoke-virtual {p3, v1}, Landroid/content/Context;->getColor(I)I
+
+    move-result v1
+
+    .line 6
+    sget v2, Lorg/levimc/launcher/R$color;->tertiary:I
+
+    .line 7
+    invoke-virtual {p3, v2}, Landroid/content/Context;->getColor(I)I
+
+    move-result v2
+
+    .line 8
+    sget v3, Lorg/levimc/launcher/R$color;->accent_text:I
+
+    .line 9
+    invoke-virtual {p3, v3}, Landroid/content/Context;->getColor(I)I
 
     move-result v3
 
-    .line 4
-    sget v4, Lorg/levimc/launcher/R$color;->secondary:I
-
-    .line 5
-    invoke-virtual {v2, v4}, Landroid/content/Context;->getColor(I)I
-
-    move-result v4
-
-    .line 6
-    sget v5, Lorg/levimc/launcher/R$color;->tertiary:I
-
-    .line 7
-    invoke-virtual {v2, v5}, Landroid/content/Context;->getColor(I)I
-
-    move-result v5
-
-    .line 8
-    sget v6, Lorg/levimc/launcher/R$color;->accent_text:I
-
-    .line 9
-    invoke-virtual {v2, v6}, Landroid/content/Context;->getColor(I)I
-
-    move-result v6
-
     .line 10
-    instance-of v7, v0, Lcom/google/android/material/switchmaterial/SwitchMaterial;
+    instance-of v4, p1, Lcom/google/android/material/switchmaterial/SwitchMaterial;
 
-    const v8, -0xaaaaab
-
-    const/16 v9, 0x64
-
-    const v10, -0x555556
-
-    const v11, 0x10100a0
-
-    const/4 v12, 0x0
-
-    if-eqz v7, :cond_0
+    if-eqz v4, :cond_0
 
     .line 11
-    move-object v7, v0
+    move-object v4, p1
 
-    check-cast v7, Lcom/google/android/material/switchmaterial/SwitchMaterial;
+    check-cast v4, Lcom/google/android/material/switchmaterial/SwitchMaterial;
 
     .line 12
     :try_start_0
-    filled-new-array {v11}, [I
-
-    move-result-object v13
-
-    new-array v14, v12, [I
-
-    filled-new-array {v13, v14}, [[I
-
-    move-result-object v13
-
-    .line 13
-    new-instance v14, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v1, v10}, [I
-
-    move-result-object v15
-
-    invoke-direct {v14, v13, v15}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v14}, Landroidx/appcompat/widget/SwitchCompat;->setThumbTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 14
-    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
-
-    move-result v14
-
-    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v15
+    invoke-direct {p0, v4, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applySwitchColors(Landroid/widget/CompoundButton;ILandroid/content/Context;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    move/from16 v16, v11
+    .line 13
+    :catch_0
+    :cond_0
+    instance-of v4, p1, Landroid/widget/Switch;
 
-    :try_start_1
-    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
+    if-eqz v4, :cond_1
 
-    move-result v11
+    instance-of v4, p1, Lcom/google/android/material/switchmaterial/SwitchMaterial;
 
-    invoke-static {v9, v14, v15, v11}, Landroid/graphics/Color;->argb(IIII)I
+    if-nez v4, :cond_1
 
-    move-result v11
+    .line 14
+    move-object v4, p1
+
+    check-cast v4, Landroid/widget/Switch;
 
     .line 15
-    new-instance v14, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v11, v8}, [I
-
-    move-result-object v11
-
-    invoke-direct {v14, v13, v11}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v14}, Landroidx/appcompat/widget/SwitchCompat;->setTrackTintList(Landroid/content/res/ColorStateList;)V
+    :try_start_1
+    invoke-direct {p0, v4, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applySwitchColors(Landroid/widget/CompoundButton;ILandroid/content/Context;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 
-    goto :goto_0
-
-    :catch_0
-    :cond_0
-    move/from16 v16, v11
-
     .line 16
     :catch_1
-    :goto_0
-    instance-of v7, v0, Landroid/widget/Switch;
+    :cond_1
+    instance-of v4, p1, Landroidx/appcompat/widget/SwitchCompat;
 
-    if-eqz v7, :cond_1
+    if-eqz v4, :cond_2
 
-    instance-of v7, v0, Lcom/google/android/material/switchmaterial/SwitchMaterial;
+    instance-of v4, p1, Lcom/google/android/material/switchmaterial/SwitchMaterial;
 
-    if-nez v7, :cond_1
+    if-nez v4, :cond_2
 
     .line 17
-    move-object v7, v0
+    move-object v4, p1
 
-    check-cast v7, Landroid/widget/Switch;
+    check-cast v4, Landroidx/appcompat/widget/SwitchCompat;
 
     .line 18
     :try_start_2
-    filled-new-array/range {v16 .. v16}, [I
-
-    move-result-object v11
-
-    new-array v13, v12, [I
-
-    filled-new-array {v11, v13}, [[I
-
-    move-result-object v11
-
-    .line 19
-    new-instance v13, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v1, v10}, [I
-
-    move-result-object v14
-
-    invoke-direct {v13, v11, v14}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v13}, Landroid/widget/Switch;->setThumbTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 20
-    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
-
-    move-result v13
-
-    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v14
-
-    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
-
-    move-result v15
-
-    invoke-static {v9, v13, v14, v15}, Landroid/graphics/Color;->argb(IIII)I
-
-    move-result v13
-
-    .line 21
-    new-instance v14, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v13, v8}, [I
-
-    move-result-object v13
-
-    invoke-direct {v14, v11, v13}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v14}, Landroid/widget/Switch;->setTrackTintList(Landroid/content/res/ColorStateList;)V
+    invoke-direct {p0, v4, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applySwitchColors(Landroid/widget/CompoundButton;ILandroid/content/Context;)V
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_2
 
-    .line 22
+    .line 19
     :catch_2
-    :cond_1
-    instance-of v7, v0, Landroidx/appcompat/widget/SwitchCompat;
+    :cond_2
+    instance-of v4, p1, Landroid/widget/SeekBar;
 
-    if-eqz v7, :cond_2
+    if-eqz v4, :cond_3
 
-    instance-of v7, v0, Lcom/google/android/material/switchmaterial/SwitchMaterial;
+    .line 20
+    move-object v4, p1
 
-    if-nez v7, :cond_2
+    check-cast v4, Landroid/widget/SeekBar;
 
-    .line 23
-    move-object v7, v0
-
-    check-cast v7, Landroidx/appcompat/widget/SwitchCompat;
-
-    .line 24
+    .line 21
     :try_start_3
-    filled-new-array/range {v16 .. v16}, [I
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
-    move-result-object v11
+    move-result-object v5
 
-    new-array v13, v12, [I
+    invoke-virtual {v4, v5}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
 
-    filled-new-array {v11, v13}, [[I
+    .line 22
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
-    move-result-object v11
+    move-result-object v5
 
-    .line 25
-    new-instance v13, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v1, v10}, [I
-
-    move-result-object v10
-
-    invoke-direct {v13, v11, v10}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v13}, Landroidx/appcompat/widget/SwitchCompat;->setThumbTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 26
-    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
-
-    move-result v10
-
-    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v13
-
-    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
-
-    move-result v14
-
-    invoke-static {v9, v10, v13, v14}, Landroid/graphics/Color;->argb(IIII)I
-
-    move-result v9
-
-    .line 27
-    new-instance v10, Landroid/content/res/ColorStateList;
-
-    filled-new-array {v9, v8}, [I
-
-    move-result-object v8
-
-    invoke-direct {v10, v11, v8}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    invoke-virtual {v7, v10}, Landroidx/appcompat/widget/SwitchCompat;->setTrackTintList(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v4, v5}, Landroid/widget/AbsSeekBar;->setThumbTintList(Landroid/content/res/ColorStateList;)V
     :try_end_3
     .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_3
 
-    .line 28
+    .line 23
     :catch_3
-    :cond_2
-    instance-of v7, v0, Landroid/widget/SeekBar;
+    :cond_3
+    instance-of v4, p1, Landroid/widget/ProgressBar;
 
-    if-eqz v7, :cond_3
+    if-eqz v4, :cond_4
 
-    .line 29
-    move-object v7, v0
+    .line 24
+    move-object v4, p1
 
-    check-cast v7, Landroid/widget/SeekBar;
+    check-cast v4, Landroid/widget/ProgressBar;
 
-    .line 30
+    .line 25
     :try_start_4
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
-    move-result-object v8
+    move-result-object v5
 
-    invoke-virtual {v7, v8}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v4, v5}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
 
-    .line 31
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+    .line 26
+    invoke-static {p2}, Landroid/graphics/Color;->red(I)I
 
-    move-result-object v8
+    move-result v5
 
-    invoke-virtual {v7, v8}, Landroid/widget/AbsSeekBar;->setThumbTintList(Landroid/content/res/ColorStateList;)V
+    invoke-static {p2}, Landroid/graphics/Color;->green(I)I
+
+    move-result v6
+
+    invoke-static {p2}, Landroid/graphics/Color;->blue(I)I
+
+    move-result v7
+
+    const/16 v8, 0x2a
+
+    invoke-static {v8, v5, v6, v7}, Landroid/graphics/Color;->argb(IIII)I
+
+    move-result v5
+
+    invoke-static {v5}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Landroid/widget/ProgressBar;->setProgressBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 27
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v4, v5}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
     :try_end_4
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_4
 
-    .line 32
+    .line 28
     :catch_4
-    :cond_3
-    instance-of v7, v0, Landroid/widget/ProgressBar;
+    :cond_4
+    instance-of v4, p1, Landroid/widget/Button;
 
-    if-eqz v7, :cond_4
+    if-eqz v4, :cond_a
+
+    .line 29
+    move-object v4, p1
+
+    check-cast v4, Landroid/widget/Button;
+
+    .line 30
+    :try_start_5
+    invoke-virtual {v4}, Landroid/view/View;->getBackgroundTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_6
+
+    .line 31
+    invoke-virtual {v4}, Landroid/view/View;->getBackgroundTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v5
+
+    if-eq v5, v0, :cond_5
+
+    if-eq v5, v1, :cond_5
+
+    if-ne v5, v2, :cond_6
+
+    .line 32
+    :cond_5
+    invoke-static {p2}, Lorg/levimc/launcher/util/ThemePalette;->onAccent(I)I
+
+    move-result v5
 
     .line 33
-    move-object v7, v0
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
-    check-cast v7, Landroid/widget/ProgressBar;
+    move-result-object v6
+
+    invoke-virtual {v4, v6}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
 
     .line 34
-    :try_start_5
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v4, v5}, Landroid/widget/TextView;->setTextColor(I)V
 
     .line 35
-    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
+    instance-of v6, v4, Lcom/google/android/material/button/MaterialButton;
 
-    move-result v8
-
-    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
-
-    move-result v9
-
-    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
-
-    move-result v10
-
-    const/16 v11, 0x2a
-
-    invoke-static {v11, v8, v9, v10}, Landroid/graphics/Color;->argb(IIII)I
-
-    move-result v8
-
-    invoke-static {v8}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v8
-
-    invoke-virtual {v7, v8}, Landroid/widget/ProgressBar;->setProgressBackgroundTintList(Landroid/content/res/ColorStateList;)V
+    if-eqz v6, :cond_6
 
     .line 36
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+    move-object v6, v4
 
-    move-result-object v8
+    check-cast v6, Lcom/google/android/material/button/MaterialButton;
 
-    invoke-virtual {v7, v8}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
+    .line 37
+    invoke-static {v5}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v6, v5}, Lcom/google/android/material/button/MaterialButton;->setIconTint(Landroid/content/res/ColorStateList;)V
     :try_end_5
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_5
 
-    .line 37
-    :catch_5
-    :cond_4
-    instance-of v7, v0, Landroid/widget/Button;
-
-    if-eqz v7, :cond_a
-
     .line 38
-    move-object v7, v0
-
-    check-cast v7, Landroid/widget/Button;
-
-    const/4 v8, -0x1
-
-    .line 39
-    :try_start_6
-    invoke-virtual {v7}, Landroid/view/View;->getBackgroundTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v9
-
-    if-eqz v9, :cond_6
-
-    .line 40
-    invoke-virtual {v7}, Landroid/view/View;->getBackgroundTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v9
-
-    invoke-virtual {v9}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    move-result v9
-
-    if-eq v9, v3, :cond_5
-
-    if-eq v9, v4, :cond_5
-
-    if-ne v9, v5, :cond_6
-
-    .line 41
-    :cond_5
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v9
-
-    invoke-virtual {v7, v9}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 42
-    invoke-virtual {v7, v8}, Landroid/widget/TextView;->setTextColor(I)V
-    :try_end_6
-    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_6
-
-    .line 43
-    :catch_6
+    :catch_5
     :cond_6
-    invoke-virtual {v7}, Landroid/widget/TextView;->getCurrentTextColor()I
-
-    move-result v9
-
-    if-eq v9, v3, :cond_7
-
-    invoke-virtual {v7}, Landroid/widget/TextView;->getCurrentTextColor()I
-
-    move-result v9
-
-    if-ne v9, v6, :cond_8
-
-    .line 44
-    :cond_7
-    invoke-virtual {v7, v1}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 45
-    :cond_8
-    invoke-virtual {v7}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
-
-    move-result-object v9
-
-    .line 46
-    instance-of v10, v9, Landroid/graphics/drawable/GradientDrawable;
-
-    if-eqz v10, :cond_a
-
-    .line 47
-    check-cast v9, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 48
-    :try_start_7
-    invoke-virtual {v9}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    move-result-object v10
-
-    if-eqz v10, :cond_a
-
-    .line 49
-    invoke-virtual {v9}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    move-result-object v10
-
-    invoke-virtual {v10}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    move-result v10
-
-    if-eq v10, v3, :cond_9
-
-    if-eq v10, v4, :cond_9
-
-    if-ne v10, v5, :cond_a
-
-    .line 50
-    :cond_9
-    invoke-virtual {v9, v1}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-
-    .line 51
-    invoke-virtual {v7, v8}, Landroid/widget/TextView;->setTextColor(I)V
-    :try_end_7
-    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_7
-
-    .line 52
-    :catch_7
-    :cond_a
-    instance-of v4, v0, Landroid/widget/TextView;
-
-    if-eqz v4, :cond_d
-
-    instance-of v4, v0, Landroid/widget/Button;
-
-    if-nez v4, :cond_d
-
-    .line 53
-    move-object v4, v0
-
-    check-cast v4, Landroid/widget/TextView;
-
-    .line 54
     invoke-virtual {v4}, Landroid/widget/TextView;->getCurrentTextColor()I
 
     move-result v5
 
-    if-eq v5, v3, :cond_b
+    if-eq v5, v0, :cond_7
 
-    if-ne v5, v6, :cond_c
+    invoke-virtual {v4}, Landroid/widget/TextView;->getCurrentTextColor()I
+
+    move-result v5
+
+    if-ne v5, v3, :cond_8
+
+    .line 39
+    :cond_7
+    invoke-virtual {p0, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+
+    move-result v5
+
+    invoke-static {p2, v5}, Lorg/levimc/launcher/util/ThemePalette;->foreground(IZ)I
+
+    move-result v5
+
+    .line 40
+    invoke-virtual {v4, v5}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 41
+    instance-of v6, v4, Lcom/google/android/material/button/MaterialButton;
+
+    if-eqz v6, :cond_8
+
+    .line 42
+    move-object v6, v4
+
+    check-cast v6, Lcom/google/android/material/button/MaterialButton;
+
+    .line 43
+    invoke-static {v5}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v6, v5}, Lcom/google/android/material/button/MaterialButton;->setIconTint(Landroid/content/res/ColorStateList;)V
+
+    .line 44
+    invoke-virtual {v6}, Lcom/google/android/material/button/MaterialButton;->getStrokeColor()Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    if-eqz v5, :cond_8
+
+    invoke-virtual {v6}, Lcom/google/android/material/button/MaterialButton;->getStrokeColor()Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v5}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v5
+
+    if-ne v5, v0, :cond_8
+
+    .line 45
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v5
+
+    invoke-virtual {v6, v5}, Lcom/google/android/material/button/MaterialButton;->setStrokeColor(Landroid/content/res/ColorStateList;)V
+
+    .line 46
+    :cond_8
+    invoke-virtual {v4}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
+
+    move-result-object v5
+
+    .line 47
+    instance-of v6, v5, Landroid/graphics/drawable/GradientDrawable;
+
+    if-eqz v6, :cond_a
+
+    .line 48
+    check-cast v5, Landroid/graphics/drawable/GradientDrawable;
+
+    .line 49
+    :try_start_6
+    invoke-virtual {v5}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
+
+    move-result-object v6
+
+    if-eqz v6, :cond_a
+
+    .line 50
+    invoke-virtual {v5}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
+
+    move-result-object v6
+
+    invoke-virtual {v6}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v6
+
+    if-eq v6, v0, :cond_9
+
+    if-eq v6, v1, :cond_9
+
+    if-ne v6, v2, :cond_a
+
+    .line 51
+    :cond_9
+    invoke-virtual {v5, p2}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
+
+    const/4 v1, -0x1
+
+    .line 52
+    invoke-virtual {v4, v1}, Landroid/widget/TextView;->setTextColor(I)V
+    :try_end_6
+    .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_6
+
+    .line 53
+    :catch_6
+    :cond_a
+    instance-of v1, p1, Landroid/widget/TextView;
+
+    if-eqz v1, :cond_e
+
+    instance-of v1, p1, Landroid/widget/Button;
+
+    if-nez v1, :cond_e
+
+    .line 54
+    move-object v1, p1
+
+    check-cast v1, Landroid/widget/TextView;
 
     .line 55
-    :cond_b
-    invoke-virtual {v4, v1}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v1}, Landroid/widget/TextView;->getCurrentTextColor()I
+
+    move-result v2
+
+    if-ne v2, v0, :cond_b
 
     .line 56
-    :cond_c
-    :try_start_8
-    invoke-virtual {v4}, Landroid/widget/TextView;->getCompoundDrawableTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v5
-
-    if-eqz v5, :cond_d
-
-    .line 57
-    invoke-virtual {v4}, Landroid/widget/TextView;->getCompoundDrawableTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    move-result v5
-
-    if-ne v5, v3, :cond_d
-
-    .line 58
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v5
-
-    invoke-virtual {v4, v5}, Landroid/widget/TextView;->setCompoundDrawableTintList(Landroid/content/res/ColorStateList;)V
-    :try_end_8
-    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_8
-
-    .line 59
-    :catch_8
-    :cond_d
-    instance-of v4, v0, Landroid/widget/ImageView;
-
-    if-eqz v4, :cond_e
-
-    instance-of v4, v0, Landroid/widget/Button;
-
-    if-nez v4, :cond_e
-
-    .line 60
-    move-object v4, v0
-
-    check-cast v4, Landroid/widget/ImageView;
-
-    .line 61
-    invoke-virtual {v4}, Landroid/widget/ImageView;->getImageTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v5
-
-    if-eqz v5, :cond_e
-
-    .line 62
-    invoke-virtual {v4}, Landroid/widget/ImageView;->getImageTintList()Landroid/content/res/ColorStateList;
-
-    move-result-object v5
-
-    invoke-virtual {v5}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    move-result v5
-
-    if-ne v5, v3, :cond_e
-
-    .line 63
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v3
-
-    invoke-virtual {v4, v3}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 64
-    :cond_e
-    instance-of v3, v0, Landroid/view/ViewGroup;
-
-    if-eqz v3, :cond_f
-
-    .line 65
-    check-cast v0, Landroid/view/ViewGroup;
-
-    .line 66
-    :goto_1
-    invoke-virtual {v0}, Landroid/view/ViewGroup;->getChildCount()I
-
-    move-result v3
-
-    if-ge v12, v3, :cond_f
-
-    .line 67
-    invoke-virtual {v0, v12}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
-
-    move-result-object v3
-
-    move-object/from16 v4, p0
-
-    invoke-virtual {v4, v3, v1, v2}, Lorg/levimc/launcher/util/PersonalizationManager;->applyAccentColorRecursive(Landroid/view/View;ILandroid/content/Context;)V
-
-    add-int/lit8 v12, v12, 0x1
+    invoke-virtual {v1, p2}, Landroid/widget/TextView;->setTextColor(I)V
 
     goto :goto_1
 
-    :cond_f
-    move-object/from16 v4, p0
+    :cond_b
+    if-ne v2, v3, :cond_d
 
+    .line 57
+    invoke-virtual {p0, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+
+    move-result v2
+
+    .line 58
+    invoke-virtual {v1}, Landroid/widget/TextView;->getTextSize()F
+
+    move-result v3
+
+    invoke-virtual {p3}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v4
+
+    iget v4, v4, Landroid/util/DisplayMetrics;->scaledDensity:F
+
+    div-float/2addr v3, v4
+
+    const/high16 v4, 0x41a00000    # 20.0f
+
+    cmpl-float v3, v3, v4
+
+    if-ltz v3, :cond_c
+
+    .line 59
+    invoke-static {p2, v2}, Lorg/levimc/launcher/util/ThemePalette;->heading(IZ)I
+
+    move-result v2
+
+    goto :goto_0
+
+    .line 60
+    :cond_c
+    invoke-static {p2, v2}, Lorg/levimc/launcher/util/ThemePalette;->foreground(IZ)I
+
+    move-result v2
+
+    .line 61
+    :goto_0
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 62
+    :cond_d
+    :goto_1
+    :try_start_7
+    invoke-virtual {v1}, Landroid/widget/TextView;->getCompoundDrawableTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_e
+
+    .line 63
+    invoke-virtual {v1}, Landroid/widget/TextView;->getCompoundDrawableTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v2
+
+    if-ne v2, v0, :cond_e
+
+    .line 64
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setCompoundDrawableTintList(Landroid/content/res/ColorStateList;)V
+    :try_end_7
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_7
+
+    .line 65
+    :catch_7
+    :cond_e
+    instance-of v1, p1, Landroid/widget/ImageView;
+
+    if-eqz v1, :cond_f
+
+    instance-of v1, p1, Landroid/widget/Button;
+
+    if-nez v1, :cond_f
+
+    .line 66
+    move-object v1, p1
+
+    check-cast v1, Landroid/widget/ImageView;
+
+    .line 67
+    invoke-virtual {v1}, Landroid/widget/ImageView;->getImageTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    if-eqz v2, :cond_f
+
+    .line 68
+    invoke-virtual {v1}, Landroid/widget/ImageView;->getImageTintList()Landroid/content/res/ColorStateList;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+
+    move-result v2
+
+    if-ne v2, v0, :cond_f
+
+    .line 69
+    invoke-static {p2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    move-result-object v0
+
+    invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
+
+    .line 70
+    :cond_f
+    instance-of v0, p1, Landroid/view/ViewGroup;
+
+    if-eqz v0, :cond_10
+
+    .line 71
+    check-cast p1, Landroid/view/ViewGroup;
+
+    const/4 v0, 0x0
+
+    .line 72
+    :goto_2
+    invoke-virtual {p1}, Landroid/view/ViewGroup;->getChildCount()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_10
+
+    .line 73
+    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
+
+    move-result-object v1
+
+    invoke-virtual {p0, v1, p2, p3}, Lorg/levimc/launcher/util/PersonalizationManager;->applyAccentColorRecursive(Landroid/view/View;ILandroid/content/Context;)V
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_2
+
+    :cond_10
     return-void
 .end method
 
@@ -3901,213 +4964,213 @@
     .locals 6
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundImageBlur()I
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->applyFitMode(Landroid/widget/ImageView;)V
 
     .line 2
     .line 3
     .line 4
-    move-result v0
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundOpacity()I
 
     .line 5
-    sget v1, Landroid/os/Build$VERSION;->SDK_INT:I
-
     .line 6
     .line 7
-    const/16 v2, 0x1f
+    move-result v0
 
     .line 8
+    int-to-float v0, v0
+
     .line 9
-    if-lt v1, v2, :cond_1
+    const/high16 v1, 0x42c80000    # 100.0f
 
     .line 10
     .line 11
-    if-lez v0, :cond_0
+    div-float/2addr v0, v1
 
     .line 12
+    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
+
     .line 13
-    int-to-float v0, v0
-
     .line 14
-    sget-object v1, Landroid/graphics/Shader$TileMode;->CLAMP:Landroid/graphics/Shader$TileMode;
-
     .line 15
-    .line 16
-    invoke-static {v0, v0}, Landroidx/core/view/c;->f(FF)Landroid/graphics/RenderEffect;
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundImageBlur()I
 
+    .line 16
     .line 17
     .line 18
+    move-result v0
+
     .line 19
-    move-result-object v0
+    sget v2, Landroid/os/Build$VERSION;->SDK_INT:I
 
     .line 20
-    invoke-static {p1, v0}, Landroidx/core/view/c;->w(Landroid/widget/ImageView;Landroid/graphics/RenderEffect;)V
-
     .line 21
+    const/16 v3, 0x1f
+
     .line 22
     .line 23
-    goto :goto_0
+    if-lt v2, v3, :cond_1
 
     .line 24
-    :cond_0
-    invoke-static {p1}, Landroidx/core/view/c;->v(Landroid/widget/ImageView;)V
-
     .line 25
+    if-lez v0, :cond_0
+
     .line 26
     .line 27
+    int-to-float v0, v0
+
+    .line 28
+    sget-object v2, Landroid/graphics/Shader$TileMode;->CLAMP:Landroid/graphics/Shader$TileMode;
+
+    .line 29
+    .line 30
+    invoke-static {v0, v0}, Landroidx/core/view/c;->g(FF)Landroid/graphics/RenderEffect;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v0
+
+    .line 34
+    invoke-static {p1, v0}, Landroidx/core/view/c;->z(Landroid/widget/ImageView;Landroid/graphics/RenderEffect;)V
+
+    .line 35
+    .line 36
+    .line 37
+    goto :goto_0
+
+    .line 38
+    :cond_0
+    invoke-static {p1}, Landroidx/core/view/c;->y(Landroid/widget/ImageView;)V
+
+    .line 39
+    .line 40
+    .line 41
     :cond_1
     :goto_0
     invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundImageBrightness()I
 
-    .line 28
-    .line 29
-    .line 30
+    .line 42
+    .line 43
+    .line 44
     move-result v0
 
-    .line 31
+    .line 45
     int-to-float v0, v0
 
-    .line 32
-    const/high16 v1, 0x42c80000    # 100.0f
-
-    .line 33
-    .line 34
+    .line 46
     div-float/2addr v0, v1
 
-    .line 35
+    .line 47
     const/high16 v1, 0x3f800000    # 1.0f
 
-    .line 36
-    .line 37
+    .line 48
+    .line 49
     sub-float v2, v0, v1
 
-    .line 38
-    .line 39
+    .line 50
+    .line 51
     invoke-static {v2}, Ljava/lang/Math;->abs(F)F
 
-    .line 40
-    .line 41
-    .line 42
-    move-result v2
-
-    .line 43
-    const v3, 0x3a83126f    # 0.001f
-
-    .line 44
-    .line 45
-    .line 46
-    cmpg-float v2, v2, v3
-
-    .line 47
-    .line 48
-    if-gez v2, :cond_2
-
-    .line 49
-    .line 50
-    invoke-virtual {p1}, Landroid/widget/ImageView;->clearColorFilter()V
-
-    .line 51
     .line 52
     .line 53
-    return-void
-
     .line 54
-    :cond_2
-    new-instance v2, Landroid/graphics/ColorMatrix;
+    move-result v2
 
     .line 55
-    .line 56
-    const/16 v3, 0x14
+    const v3, 0x3a83126f    # 0.001f
 
+    .line 56
     .line 57
     .line 58
-    new-array v3, v3, [F
+    cmpg-float v2, v2, v3
 
     .line 59
     .line 60
-    const/4 v4, 0x0
+    if-gez v2, :cond_2
 
     .line 61
-    aput v0, v3, v4
-
     .line 62
+    invoke-virtual {p1}, Landroid/widget/ImageView;->clearColorFilter()V
+
     .line 63
-    const/4 v4, 0x1
-
     .line 64
-    const/4 v5, 0x0
-
     .line 65
-    aput v5, v3, v4
+    return-void
 
     .line 66
-    .line 67
-    const/4 v4, 0x2
+    :cond_2
+    new-instance v2, Landroid/graphics/ColorMatrix;
 
+    .line 67
     .line 68
-    aput v5, v3, v4
+    const/16 v3, 0x14
 
     .line 69
     .line 70
-    const/4 v4, 0x3
+    new-array v3, v3, [F
 
     .line 71
-    aput v5, v3, v4
-
     .line 72
+    const/4 v4, 0x0
+
     .line 73
-    const/4 v4, 0x4
+    aput v0, v3, v4
 
     .line 74
-    aput v5, v3, v4
-
     .line 75
+    const/4 v4, 0x1
+
     .line 76
-    const/4 v4, 0x5
+    const/4 v5, 0x0
 
     .line 77
     aput v5, v3, v4
 
     .line 78
     .line 79
-    const/4 v4, 0x6
+    const/4 v4, 0x2
 
     .line 80
-    aput v0, v3, v4
+    aput v5, v3, v4
 
     .line 81
     .line 82
-    const/4 v4, 0x7
+    const/4 v4, 0x3
 
     .line 83
     aput v5, v3, v4
 
     .line 84
     .line 85
-    const/16 v4, 0x8
+    const/4 v4, 0x4
 
     .line 86
-    .line 87
     aput v5, v3, v4
 
+    .line 87
     .line 88
+    const/4 v4, 0x5
+
     .line 89
-    const/16 v4, 0x9
+    aput v5, v3, v4
 
     .line 90
     .line 91
-    aput v5, v3, v4
+    const/4 v4, 0x6
 
     .line 92
-    .line 93
-    const/16 v4, 0xa
+    aput v0, v3, v4
 
+    .line 93
     .line 94
+    const/4 v4, 0x7
+
     .line 95
     aput v5, v3, v4
 
     .line 96
     .line 97
-    const/16 v4, 0xb
+    const/16 v4, 0x8
 
     .line 98
     .line 99
@@ -4115,39 +5178,39 @@
 
     .line 100
     .line 101
-    const/16 v4, 0xc
+    const/16 v4, 0x9
 
     .line 102
     .line 103
-    aput v0, v3, v4
+    aput v5, v3, v4
 
     .line 104
     .line 105
-    const/16 v0, 0xd
+    const/16 v4, 0xa
 
     .line 106
     .line 107
-    aput v5, v3, v0
+    aput v5, v3, v4
 
     .line 108
     .line 109
-    const/16 v0, 0xe
+    const/16 v4, 0xb
 
     .line 110
     .line 111
-    aput v5, v3, v0
+    aput v5, v3, v4
 
     .line 112
     .line 113
-    const/16 v0, 0xf
+    const/16 v4, 0xc
 
     .line 114
     .line 115
-    aput v5, v3, v0
+    aput v0, v3, v4
 
     .line 116
     .line 117
-    const/16 v0, 0x10
+    const/16 v0, 0xd
 
     .line 118
     .line 119
@@ -4155,7 +5218,7 @@
 
     .line 120
     .line 121
-    const/16 v0, 0x11
+    const/16 v0, 0xe
 
     .line 122
     .line 123
@@ -4163,15 +5226,15 @@
 
     .line 124
     .line 125
-    const/16 v0, 0x12
+    const/16 v0, 0xf
 
     .line 126
     .line 127
-    aput v1, v3, v0
+    aput v5, v3, v0
 
     .line 128
     .line 129
-    const/16 v0, 0x13
+    const/16 v0, 0x10
 
     .line 130
     .line 131
@@ -4179,25 +5242,49 @@
 
     .line 132
     .line 133
-    invoke-direct {v2, v3}, Landroid/graphics/ColorMatrix;-><init>([F)V
+    const/16 v0, 0x11
 
     .line 134
     .line 135
+    aput v5, v3, v0
+
     .line 136
-    new-instance v0, Landroid/graphics/ColorMatrixColorFilter;
-
     .line 137
-    .line 138
-    invoke-direct {v0, v2}, Landroid/graphics/ColorMatrixColorFilter;-><init>(Landroid/graphics/ColorMatrix;)V
+    const/16 v0, 0x12
 
+    .line 138
     .line 139
+    aput v1, v3, v0
+
     .line 140
     .line 141
-    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setColorFilter(Landroid/graphics/ColorFilter;)V
+    const/16 v0, 0x13
 
     .line 142
     .line 143
+    aput v5, v3, v0
+
     .line 144
+    .line 145
+    invoke-direct {v2, v3}, Landroid/graphics/ColorMatrix;-><init>([F)V
+
+    .line 146
+    .line 147
+    .line 148
+    new-instance v0, Landroid/graphics/ColorMatrixColorFilter;
+
+    .line 149
+    .line 150
+    invoke-direct {v0, v2}, Landroid/graphics/ColorMatrixColorFilter;-><init>(Landroid/graphics/ColorMatrix;)V
+
+    .line 151
+    .line 152
+    .line 153
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setColorFilter(Landroid/graphics/ColorFilter;)V
+
+    .line 154
+    .line 155
+    .line 156
     return-void
 .end method
 
@@ -4452,8 +5539,8 @@
     return v4
 .end method
 
-.method public applyGlassToView(Landroid/view/View;)V
-    .locals 8
+.method public applyGlassToTree(Landroid/view/View;Landroid/app/Activity;)V
+    .locals 1
 
     .line 1
     invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->hasBackgroundImage()Z
@@ -4461,396 +5548,84 @@
     .line 2
     .line 3
     .line 4
-    move-result v0
+    move-result p2
 
     .line 5
-    if-nez v0, :cond_0
+    if-eqz p2, :cond_1
 
     .line 6
     .line 7
-    goto/16 :goto_1
+    invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->isMinecraftBlocked()Z
 
     .line 8
     .line 9
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
     .line 10
+    move-result p2
+
     .line 11
-    invoke-virtual {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+    if-eqz p2, :cond_0
 
     .line 12
     .line 13
+    goto :goto_0
+
     .line 14
-    move-result v0
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getWallpaperSurfaceColor()I
 
     .line 15
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getGlassColor(Z)I
-
     .line 16
     .line 17
+    move-result p2
+
     .line 18
-    move-result v0
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;I)V
 
     .line 19
-    iget-object v1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
     .line 20
     .line 21
-    sget v2, Lorg/levimc/launcher/R$color;->surface:I
+    instance-of v0, p1, Landroid/view/ViewGroup;
 
     .line 22
     .line 23
-    invoke-virtual {v1, v2}, Landroid/content/Context;->getColor(I)I
+    if-eqz v0, :cond_1
 
     .line 24
     .line 25
-    .line 26
-    move-result v1
+    check-cast p1, Landroid/view/ViewGroup;
 
+    .line 26
     .line 27
-    iget-object v2, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->makeChildBackgroundsTranslucent(Landroid/view/ViewGroup;I)V
 
     .line 28
     .line 29
-    sget v3, Lorg/levimc/launcher/R$color;->background:I
-
     .line 30
-    .line 31
-    invoke-virtual {v2, v3}, Landroid/content/Context;->getColor(I)I
-
-    .line 32
-    .line 33
-    .line 34
-    move-result v2
-
-    .line 35
-    iget-object v3, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
-    .line 36
-    .line 37
-    sget v4, Lorg/levimc/launcher/R$color;->surface_variant:I
-
-    .line 38
-    .line 39
-    invoke-virtual {v3, v4}, Landroid/content/Context;->getColor(I)I
-
-    .line 40
-    .line 41
-    .line 42
-    move-result v3
-
-    .line 43
-    invoke-virtual {p1}, Landroid/view/View;->getBackground()Landroid/graphics/drawable/Drawable;
-
-    .line 44
-    .line 45
-    .line 46
-    move-result-object v4
-
-    .line 47
-    instance-of v5, v4, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 48
-    .line 49
-    if-eqz v5, :cond_2
-
-    .line 50
-    .line 51
-    check-cast v4, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 52
-    .line 53
-    :try_start_0
-    invoke-virtual {v4}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 54
-    .line 55
-    .line 56
-    move-result-object p1
-
-    .line 57
-    if-eqz p1, :cond_8
-
-    .line 58
-    .line 59
-    invoke-virtual {v4}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 60
-    .line 61
-    .line 62
-    move-result-object p1
-
-    .line 63
-    invoke-virtual {p1}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 64
-    .line 65
-    .line 66
-    move-result p1
-
-    .line 67
-    if-eq p1, v1, :cond_1
-
-    .line 68
-    .line 69
-    if-eq p1, v2, :cond_1
-
-    .line 70
-    .line 71
-    if-eq p1, v3, :cond_1
-
-    .line 72
-    .line 73
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 74
-    .line 75
-    .line 76
-    move-result v1
-
-    .line 77
-    if-nez v1, :cond_1
-
-    .line 78
-    .line 79
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 80
-    .line 81
-    .line 82
-    move-result p1
-
-    .line 83
-    if-eqz p1, :cond_8
-
-    .line 84
-    .line 85
     :cond_1
-    invoke-virtual {v4, v0}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
-
-    .line 86
-    .line 87
-    .line 88
-    goto :goto_1
-
-    .line 89
-    :cond_2
-    instance-of v5, v4, Landroid/graphics/drawable/StateListDrawable;
-
-    .line 90
-    .line 91
-    if-eqz v5, :cond_6
-
-    .line 92
-    .line 93
-    check-cast v4, Landroid/graphics/drawable/StateListDrawable;
-
-    .line 94
-    .line 95
-    const/4 p1, 0x0
-
-    .line 96
     :goto_0
-    invoke-static {v4}, Lgc/a;->c(Landroid/graphics/drawable/StateListDrawable;)I
+    return-void
+.end method
 
-    .line 97
-    .line 98
-    .line 99
-    move-result v5
+.method public applyGlassToView(Landroid/view/View;)V
+    .locals 1
 
-    .line 100
-    if-ge p1, v5, :cond_5
+    .line 1
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->hasBackgroundImage()Z
 
-    .line 101
-    .line 102
-    invoke-static {v4, p1}, Lgc/a;->g(Landroid/graphics/drawable/StateListDrawable;I)Landroid/graphics/drawable/Drawable;
+    move-result v0
 
-    .line 103
-    .line 104
-    .line 105
-    move-result-object v5
+    if-nez v0, :cond_0
 
-    .line 106
-    instance-of v6, v5, Landroid/graphics/drawable/GradientDrawable;
+    return-void
 
-    .line 107
-    .line 108
-    if-eqz v6, :cond_4
+    .line 2
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getWallpaperSurfaceColor()I
 
-    .line 109
-    .line 110
-    check-cast v5, Landroid/graphics/drawable/GradientDrawable;
+    move-result v0
 
-    .line 111
-    .line 112
-    :try_start_1
-    invoke-virtual {v5}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
+    invoke-direct {p0, p1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;I)V
 
-    .line 113
-    .line 114
-    .line 115
-    move-result-object v6
-
-    .line 116
-    if-eqz v6, :cond_4
-
-    .line 117
-    .line 118
-    invoke-virtual {v5}, Landroid/graphics/drawable/GradientDrawable;->getColor()Landroid/content/res/ColorStateList;
-
-    .line 119
-    .line 120
-    .line 121
-    move-result-object v6
-
-    .line 122
-    invoke-virtual {v6}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 123
-    .line 124
-    .line 125
-    move-result v6
-
-    .line 126
-    if-eq v6, v1, :cond_3
-
-    .line 127
-    .line 128
-    if-eq v6, v2, :cond_3
-
-    .line 129
-    .line 130
-    if-eq v6, v3, :cond_3
-
-    .line 131
-    .line 132
-    invoke-direct {p0, v6}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 133
-    .line 134
-    .line 135
-    move-result v7
-
-    .line 136
-    if-nez v7, :cond_3
-
-    .line 137
-    .line 138
-    invoke-direct {p0, v6}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 139
-    .line 140
-    .line 141
-    move-result v6
-
-    .line 142
-    if-eqz v6, :cond_4
-
-    .line 143
-    .line 144
-    :cond_3
-    invoke-virtual {v5, v0}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-    :try_end_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 145
-    .line 146
-    .line 147
-    :catch_0
-    :cond_4
-    add-int/lit8 p1, p1, 0x1
-
-    .line 148
-    .line 149
-    goto :goto_0
-
-    .line 150
-    :cond_5
-    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
-
-    .line 151
-    .line 152
-    .line 153
-    goto :goto_1
-
-    .line 154
-    :cond_6
-    instance-of v4, p1, Landroidx/cardview/widget/CardView;
-
-    .line 155
-    .line 156
-    if-eqz v4, :cond_8
-
-    .line 157
-    .line 158
-    check-cast p1, Landroidx/cardview/widget/CardView;
-
-    .line 159
-    .line 160
-    invoke-virtual {p1}, Landroidx/cardview/widget/CardView;->getCardBackgroundColor()Landroid/content/res/ColorStateList;
-
-    .line 161
-    .line 162
-    .line 163
-    move-result-object v4
-
-    .line 164
-    invoke-virtual {v4}, Landroid/content/res/ColorStateList;->getDefaultColor()I
-
-    .line 165
-    .line 166
-    .line 167
-    move-result v4
-
-    .line 168
-    if-eq v4, v1, :cond_7
-
-    .line 169
-    .line 170
-    if-eq v4, v2, :cond_7
-
-    .line 171
-    .line 172
-    if-eq v4, v3, :cond_7
-
-    .line 173
-    .line 174
-    invoke-direct {p0, v4}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearBlack(I)Z
-
-    .line 175
-    .line 176
-    .line 177
-    move-result v1
-
-    .line 178
-    if-nez v1, :cond_7
-
-    .line 179
-    .line 180
-    invoke-direct {p0, v4}, Lorg/levimc/launcher/util/PersonalizationManager;->isNearWhite(I)Z
-
-    .line 181
-    .line 182
-    .line 183
-    move-result v1
-
-    .line 184
-    if-eqz v1, :cond_8
-
-    .line 185
-    .line 186
-    :cond_7
-    invoke-virtual {p1, v0}, Landroidx/cardview/widget/CardView;->setCardBackgroundColor(I)V
-
-    .line 187
-    .line 188
-    .line 189
-    :catch_1
-    :cond_8
-    :goto_1
     return-void
 .end method
 
@@ -5083,20 +5858,44 @@
     move-result-object v0
 
     .line 13
-    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+    const-string v1, "accent_color_light"
 
     .line 14
     .line 15
-    .line 16
-    sget-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+    invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
+    .line 16
     .line 17
     .line 18
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+    move-result-object v0
 
     .line 19
+    const-string v1, "accent_color_dark"
+
     .line 20
     .line 21
+    invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v0
+
+    .line 25
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 26
+    .line 27
+    .line 28
+    sget-object v0, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 29
+    .line 30
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 31
+    .line 32
+    .line 33
     return-void
 .end method
 
@@ -5192,8 +5991,6 @@
     .line 45
     invoke-direct {p0, v1}, Lorg/levimc/launcher/util/PersonalizationManager;->deleteBackgroundFile(Ljava/lang/String;)V
 
-    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->ensureDefaultBackground()V
-
     .line 46
     .line 47
     .line 48
@@ -5210,6 +6007,150 @@
 .end method
 
 .method public getAccentColor()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    invoke-static {v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkActive(Landroid/content/Context;)Z
+
+    move-result v0
+
+    invoke-virtual {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor(Z)I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public getAccentColor(Z)I
+    .locals 2
+
+    if-eqz p1, :cond_0
+
+    .line 2
+    const-string p1, "accent_color_dark"
+
+    goto :goto_0
+
+    :cond_0
+    const-string p1, "accent_color_light"
+
+    .line 3
+    :goto_0
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    invoke-interface {v0, p1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
+    move-result v0
+
+    const v1, -0xef467f
+
+    if-eqz v0, :cond_1
+
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    invoke-interface {v0, p1, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result p1
+
+    return p1
+
+    .line 4
+    :cond_1
+    iget-object p1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    const-string v0, "accent_color"
+
+    invoke-interface {p1, v0}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_2
+
+    iget-object p1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    invoke-interface {p1, v0, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    move-result p1
+
+    return p1
+
+    :cond_2
+    return v1
+.end method
+
+.method public getBackgroundFitMode()Ljava/lang/String;
+    .locals 7
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 2
+    .line 3
+    const-string v1, "bg_fit_mode"
+
+    .line 4
+    .line 5
+    const-string v2, "smart"
+
+    .line 6
+    .line 7
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    sget-object v1, Lorg/levimc/launcher/util/PersonalizationManager;->FIT_MODES:[Ljava/lang/String;
+
+    .line 12
+    .line 13
+    array-length v3, v1
+
+    .line 14
+    const/4 v4, 0x0
+
+    .line 15
+    :goto_0
+    if-ge v4, v3, :cond_1
+
+    .line 16
+    .line 17
+    aget-object v5, v1, v4
+
+    .line 18
+    .line 19
+    invoke-virtual {v5, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v6
+
+    .line 23
+    if-eqz v6, :cond_0
+
+    .line 24
+    .line 25
+    return-object v5
+
+    .line 26
+    :cond_0
+    add-int/lit8 v4, v4, 0x1
+
+    .line 27
+    .line 28
+    goto :goto_0
+
+    .line 29
+    :cond_1
+    return-object v2
+.end method
+
+.method public getBackgroundFolder()Ljava/lang/String;
     .locals 3
 
     .line 1
@@ -5217,30 +6158,48 @@
 
     .line 2
     .line 3
-    sget-object v1, Lorg/levimc/launcher/util/PersonalizationManager;->PRESET_COLORS:[I
+    const-string v1, "bg_folder_uri"
 
     .line 4
     .line 5
     const/4 v2, 0x0
 
     .line 6
-    aget v1, v1, v2
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 7
     .line 8
-    const-string v2, "accent_color"
-
     .line 9
+    move-result-object v0
+
     .line 10
-    invoke-interface {v0, v2, v1}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    return-object v0
+.end method
 
-    .line 11
-    .line 12
-    .line 13
-    move-result v0
+.method public getBackgroundFolderCurrent()Ljava/lang/String;
+    .locals 3
 
-    .line 14
-    return v0
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 2
+    .line 3
+    const-string v1, "bg_folder_current"
+
+    .line 4
+    .line 5
+    const/4 v2, 0x0
+
+    .line 6
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object v0
+
+    .line 10
+    return-object v0
 .end method
 
 .method public getBackgroundImageBlur()I
@@ -5255,7 +6214,7 @@
 
     .line 4
     .line 5
-    const/4 v2, 0x1
+    const/4 v2, 0x0
 
     .line 6
     invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
@@ -5266,9 +6225,7 @@
     move-result v0
 
     .line 10
-    const/4 v2, 0x0
-
-    const/16 v1, 0x19
+    const/16 v1, 0x32
 
     .line 11
     .line 12
@@ -5307,26 +6264,23 @@
     move-result v0
 
     .line 11
-    const/4 v1, 0x1
+    const/16 v1, 0x14
 
     .line 12
-    const/16 v2, 0x96
-
     .line 13
-    .line 14
     invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/util/PersonalizationManager;->clamp(III)I
 
+    .line 14
     .line 15
     .line 16
-    .line 17
     move-result v0
 
-    .line 18
+    .line 17
     return v0
 .end method
 
 .method public getBackgroundImagePath()Ljava/lang/String;
-    .locals 4
+    .locals 3
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
@@ -5348,28 +6302,184 @@
     move-result-object v0
 
     .line 10
-    if-nez v0, :cond_0
+    return-object v0
+.end method
 
-    new-instance v0, Ljava/io/File;
+.method public getBackgroundOpacity()I
+    .locals 3
 
-    iget-object v3, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
 
-    invoke-virtual {v3}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+    .line 2
+    .line 3
+    const-string v1, "bg_opacity"
 
-    move-result-object v3
+    .line 4
+    .line 5
+    const/16 v2, 0x64
 
-    const-string v2, "default_background.jpg"
+    .line 6
+    .line 7
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
-    invoke-direct {v0, v3, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+    .line 8
+    .line 9
+    .line 10
+    move-result v0
 
-    invoke-virtual {v0}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+    .line 11
+    const/4 v1, 0x0
 
+    .line 12
+    invoke-direct {p0, v0, v1, v2}, Lorg/levimc/launcher/util/PersonalizationManager;->clamp(III)I
+
+    .line 13
+    .line 14
+    .line 15
+    move-result v0
+
+    .line 16
+    return v0
+.end method
+
+.method public getBackgroundPlayOrder()Ljava/lang/String;
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 2
+    .line 3
+    const-string v1, "bg_play_order"
+
+    .line 4
+    .line 5
+    const-string v2, "random"
+
+    .line 6
+    .line 7
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 8
+    .line 9
+    .line 10
     move-result-object v0
 
-    return-object v0
+    .line 11
+    const-string v1, "sequential"
 
+    .line 12
+    .line 13
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    if-eqz v0, :cond_0
+
+    .line 18
+    .line 19
+    return-object v1
+
+    .line 20
     :cond_0
-    return-object v0
+    return-object v2
+.end method
+
+.method public getChromeGlassColor(Landroid/content/Context;)I
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundOpacity()I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v1
+
+    .line 9
+    if-nez v1, :cond_0
+
+    .line 10
+    .line 11
+    sget v0, Lorg/levimc/launcher/R$color;->ui_chrome:I
+
+    .line 12
+    .line 13
+    invoke-virtual {p1, v0}, Landroid/content/Context;->getColor(I)I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result p1
+
+    .line 17
+    return p1
+
+    .line 18
+    :cond_0
+    if-eqz v0, :cond_1
+
+    .line 19
+    .line 20
+    const/16 p1, 0x5a
+
+    .line 21
+    .line 22
+    goto :goto_0
+
+    .line 23
+    :cond_1
+    const/16 p1, 0x6e
+
+    .line 24
+    .line 25
+    :goto_0
+    if-eqz v0, :cond_2
+
+    .line 26
+    .line 27
+    const/16 v0, 0x19
+
+    .line 28
+    .line 29
+    invoke-static {p1, v0, v0, v0}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 30
+    .line 31
+    .line 32
+    move-result p1
+
+    .line 33
+    return p1
+
+    .line 34
+    :cond_2
+    const/16 v0, 0xff
+
+    .line 35
+    .line 36
+    invoke-static {p1, v0, v0, v0}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 37
+    .line 38
+    .line 39
+    move-result p1
+
+    .line 40
+    return p1
 .end method
 
 .method public getEffectiveSurfaceColor()I
@@ -5388,47 +6498,66 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getWallpaperSurfaceColor()I
 
     .line 8
     .line 9
-    invoke-virtual {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+    .line 10
+    move-result v0
+
+    .line 11
+    return v0
+
+    .line 12
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    .line 13
+    .line 14
+    sget v1, Lorg/levimc/launcher/R$color;->surface:I
+
+    .line 15
+    .line 16
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getColor(I)I
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v0
+
+    .line 20
+    return v0
+.end method
+
+.method public getHeadingColor(Landroid/content/Context;)I
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/content/Context;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p1
+
+    .line 5
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor(Z)I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v0
+
+    .line 9
+    invoke-static {v0, p1}, Lorg/levimc/launcher/util/ThemePalette;->heading(IZ)I
 
     .line 10
     .line 11
     .line 12
-    move-result v0
+    move-result p1
 
     .line 13
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getGlassColor(Z)I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v0
-
-    .line 17
-    return v0
-
-    .line 18
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
-
-    .line 19
-    .line 20
-    sget v1, Lorg/levimc/launcher/R$color;->surface:I
-
-    .line 21
-    .line 22
-    invoke-virtual {v0, v1}, Landroid/content/Context;->getColor(I)I
-
-    .line 23
-    .line 24
-    .line 25
-    move-result v0
-
-    .line 26
-    return v0
+    return p1
 .end method
 
 .method public hasAnimatedBackground()Z
@@ -5547,7 +6676,7 @@
 
     .line 2
     .line 3
-    const-string v1, "accent_color"
+    const-string v1, "accent_color_light"
 
     .line 4
     .line 5
@@ -5559,43 +6688,100 @@
     move-result v0
 
     .line 9
-    const/4 v2, 0x0
+    if-nez v0, :cond_1
 
     .line 10
-    if-eqz v0, :cond_0
-
     .line 11
-    .line 12
     iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
 
+    .line 12
     .line 13
-    .line 14
-    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    const-string v1, "accent_color_dark"
 
+    .line 14
     .line 15
+    invoke-interface {v0, v1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
     .line 16
     .line 17
+    .line 18
     move-result v0
 
-    .line 18
-    if-eqz v0, :cond_0
-
     .line 19
-    .line 20
-    const/4 v0, 0x1
+    if-nez v0, :cond_1
 
+    .line 20
     .line 21
-    return v0
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
 
     .line 22
+    .line 23
+    const-string v1, "accent_color"
+
+    .line 24
+    .line 25
+    invoke-interface {v0, v1}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
+    .line 26
+    .line 27
+    .line 28
+    move-result v0
+
+    .line 29
+    const/4 v2, 0x0
+
+    .line 30
+    if-eqz v0, :cond_0
+
+    .line 31
+    .line 32
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 33
+    .line 34
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+
+    .line 35
+    .line 36
+    .line 37
+    move-result v0
+
+    .line 38
+    if-eqz v0, :cond_0
+
+    .line 39
+    .line 40
+    goto :goto_0
+
+    .line 41
     :cond_0
     return v2
+
+    .line 42
+    :cond_1
+    :goto_0
+    const/4 v0, 0x1
+
+    .line 43
+    return v0
 .end method
 
 .method public isDarkMode(Landroid/content/Context;)Z
     .locals 1
 
     .line 2
+    instance-of v0, p1, Landroid/app/Activity;
+
+    if-nez v0, :cond_0
+
+    invoke-static {p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkActive(Landroid/content/Context;)Z
+
+    move-result p1
+
+    return p1
+
+    .line 3
+    :cond_0
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object p1
@@ -5610,13 +6796,13 @@
 
     const/16 v0, 0x20
 
-    if-ne p1, v0, :cond_0
+    if-ne p1, v0, :cond_1
 
     const/4 p1, 0x1
 
     return p1
 
-    :cond_0
+    :cond_1
     const/4 p1, 0x0
 
     return p1
@@ -5758,7 +6944,7 @@
 .end method
 
 .method public refreshBackgroundEffects(Landroid/app/Activity;)V
-    .locals 1
+    .locals 2
 
     .line 1
     const v0, 0x1020002
@@ -5771,14 +6957,14 @@
     .line 5
     .line 6
     .line 7
-    move-result-object p1
+    move-result-object v0
 
     .line 8
-    check-cast p1, Landroid/view/ViewGroup;
+    check-cast v0, Landroid/view/ViewGroup;
 
     .line 9
     .line 10
-    if-nez p1, :cond_0
+    if-nez v0, :cond_0
 
     .line 11
     .line 12
@@ -5786,29 +6972,81 @@
 
     .line 13
     :cond_0
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->findBackgroundPoster(Landroid/view/ViewGroup;)Landroid/widget/ImageView;
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkMode(Landroid/app/Activity;)Z
 
     .line 14
     .line 15
     .line 16
-    move-result-object p1
+    move-result p1
 
     .line 17
-    if-eqz p1, :cond_1
+    const-string v1, "personalization_base"
 
     .line 18
     .line 19
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->refreshBackgroundImageView(Landroid/widget/ImageView;)V
+    invoke-virtual {v0, v1}, Landroid/view/View;->findViewWithTag(Ljava/lang/Object;)Landroid/view/View;
 
     .line 20
     .line 21
     .line 22
-    :cond_1
-    invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->refreshEffects()V
+    move-result-object v1
 
     .line 23
+    if-eqz v1, :cond_1
+
     .line 24
     .line 25
+    invoke-direct {p0, v1, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->applyBaseLayer(Landroid/view/View;Z)V
+
+    .line 26
+    .line 27
+    .line 28
+    :cond_1
+    const-string v1, "personalization_overlay"
+
+    .line 29
+    .line 30
+    invoke-virtual {v0, v1}, Landroid/view/View;->findViewWithTag(Ljava/lang/Object;)Landroid/view/View;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v1
+
+    .line 34
+    if-eqz v1, :cond_2
+
+    .line 35
+    .line 36
+    invoke-direct {p0, v1, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->applyOverlay(Landroid/view/View;Z)V
+
+    .line 37
+    .line 38
+    .line 39
+    :cond_2
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->findBackgroundPoster(Landroid/view/ViewGroup;)Landroid/widget/ImageView;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object p1
+
+    .line 43
+    if-eqz p1, :cond_3
+
+    .line 44
+    .line 45
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->refreshBackgroundImageView(Landroid/widget/ImageView;)V
+
+    .line 46
+    .line 47
+    .line 48
+    :cond_3
+    invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->refreshEffects()V
+
+    .line 49
+    .line 50
+    .line 51
     return-void
 .end method
 
@@ -5846,6 +7084,128 @@
 .end method
 
 .method public setAccentColor(I)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    invoke-static {v0}, Lorg/levimc/launcher/util/PersonalizationManager;->isDarkActive(Landroid/content/Context;)Z
+
+    move-result v0
+
+    invoke-virtual {p0, v0, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->setAccentColor(ZI)V
+
+    return-void
+.end method
+
+.method public setAccentColor(ZI)V
+    .locals 2
+
+    .line 2
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    move-result-object v0
+
+    if-eqz p1, :cond_0
+
+    const-string p1, "accent_color_dark"
+
+    goto :goto_0
+
+    :cond_0
+    const-string p1, "accent_color_light"
+
+    :goto_0
+    const/high16 v1, -0x1000000
+
+    or-int/2addr p2, v1
+
+    invoke-interface {v0, p1, p2}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+
+    move-result-object p1
+
+    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 3
+    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    return-void
+.end method
+
+.method public setBackgroundFitMode(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundFitMode()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v0
+
+    .line 9
+    if-eqz v0, :cond_0
+
+    .line 10
+    .line 11
+    return-void
+
+    .line 12
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 13
+    .line 14
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v0
+
+    .line 18
+    const-string v1, "bg_fit_mode"
+
+    .line 19
+    .line 20
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p1
+
+    .line 24
+    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 25
+    .line 26
+    .line 27
+    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 28
+    .line 29
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 30
+    .line 31
+    .line 32
+    return-void
+.end method
+
+.method public setBackgroundFolder(Ljava/lang/String;)V
     .locals 2
 
     .line 1
@@ -5861,11 +7221,70 @@
     move-result-object v0
 
     .line 7
-    const-string v1, "accent_color"
+    const-string v1, "bg_folder_uri"
 
     .line 8
     .line 9
-    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    if-nez p1, :cond_0
+
+    .line 10
+    .line 11
+    invoke-interface {v0, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p1
+
+    .line 15
+    const-string v1, "bg_folder_current"
+
+    .line 16
+    .line 17
+    invoke-interface {p1, v1}, Landroid/content/SharedPreferences$Editor;->remove(Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 18
+    .line 19
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 22
+    .line 23
+    .line 24
+    :goto_0
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 25
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public setBackgroundFolderCurrent(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    const-string v1, "bg_folder_current"
+
+    .line 8
+    .line 9
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
 
     .line 10
     .line 11
@@ -5878,15 +7297,6 @@
     .line 14
     .line 15
     .line 16
-    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
-
-    .line 17
-    .line 18
-    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
-
-    .line 19
-    .line 20
-    .line 21
     return-void
 .end method
 
@@ -6307,11 +7717,11 @@
     move-result-object v1
 
     .line 188
-    new-instance v4, Lorg/levimc/launcher/util/s;
+    new-instance v4, Lorg/levimc/launcher/util/t;
 
     .line 189
     .line 190
-    invoke-direct {v4, p2}, Lorg/levimc/launcher/util/s;-><init>([Z)V
+    invoke-direct {v4, p2}, Lorg/levimc/launcher/util/t;-><init>([Z)V
 
     .line 191
     .line 192
@@ -6833,7 +8243,7 @@
     const/4 v0, 0x0
 
     .line 2
-    const/16 v1, 0x19
+    const/16 v1, 0x32
 
     .line 3
     .line 4
@@ -6906,14 +8316,91 @@
     .locals 2
 
     .line 1
-    const/4 v0, 0x1
+    const/16 v0, 0x14
 
     .line 2
-    const/16 v1, 0x96
-
     .line 3
+    const/16 v1, 0x64
+
     .line 4
+    .line 5
     invoke-direct {p0, p1, v0, v1}, Lorg/levimc/launcher/util/PersonalizationManager;->clamp(III)I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result p1
+
+    .line 9
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundImageBrightness()I
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v0
+
+    .line 13
+    if-ne v0, p1, :cond_0
+
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 17
+    .line 18
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v0
+
+    .line 22
+    const-string v1, "bg_image_brightness"
+
+    .line 23
+    .line 24
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object p1
+
+    .line 28
+    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 29
+    .line 30
+    .line 31
+    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 32
+    .line 33
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 34
+    .line 35
+    .line 36
+    return-void
+.end method
+
+.method public setBackgroundOpacity(I)V
+    .locals 4
+
+    .line 1
+    const/16 v0, 0x64
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    invoke-direct {p0, p1, v1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->clamp(III)I
 
     .line 5
     .line 6
@@ -6921,7 +8408,7 @@
     move-result p1
 
     .line 8
-    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundImageBrightness()I
+    invoke-virtual {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->getBackgroundOpacity()I
 
     .line 9
     .line 10
@@ -6929,52 +8416,154 @@
     move-result v0
 
     .line 12
-    if-ne v0, p1, :cond_0
+    if-ne p1, v0, :cond_0
 
     .line 13
     .line 14
-    return-void
+    goto :goto_1
 
     .line 15
     :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+    iget-object v2, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
 
     .line 16
     .line 17
-    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
     .line 18
     .line 19
     .line 20
-    move-result-object v0
+    move-result-object v2
 
     .line 21
-    const-string v1, "bg_image_brightness"
+    const-string v3, "bg_opacity"
 
     .line 22
     .line 23
-    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
+    invoke-interface {v2, v3, p1}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
     .line 24
     .line 25
     .line 26
-    move-result-object p1
+    move-result-object v2
 
     .line 27
-    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+    invoke-interface {v2}, Landroid/content/SharedPreferences$Editor;->apply()V
 
     .line 28
     .line 29
     .line 30
-    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+    sget-object v2, Lorg/levimc/launcher/util/PersonalizationManager;->sBackgroundEffectGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 31
     .line 32
-    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+    invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
 
     .line 33
     .line 34
     .line 35
+    const/4 v2, 0x1
+
+    .line 36
+    if-nez v0, :cond_1
+
+    .line 37
+    .line 38
+    move v0, v2
+
+    .line 39
+    goto :goto_0
+
+    .line 40
+    :cond_1
+    move v0, v1
+
+    .line 41
+    :goto_0
+    if-nez p1, :cond_2
+
+    .line 42
+    .line 43
+    move v1, v2
+
+    .line 44
+    :cond_2
+    if-eq v0, v1, :cond_3
+
+    .line 45
+    .line 46
+    sget-object p1, Lorg/levimc/launcher/util/PersonalizationManager;->sChangeGeneration:Ljava/util/concurrent/atomic/AtomicInteger;
+
+    .line 47
+    .line 48
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicInteger;->incrementAndGet()I
+
+    .line 49
+    .line 50
+    .line 51
+    :cond_3
+    :goto_1
+    return-void
+.end method
+
+.method public setBackgroundPlayOrder(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    const-string v1, "sequential"
+
+    .line 8
+    .line 9
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result p1
+
+    .line 13
+    if-eqz p1, :cond_0
+
+    .line 14
+    .line 15
+    goto :goto_0
+
+    .line 16
+    :cond_0
+    const-string v1, "random"
+
+    .line 17
+    .line 18
+    :goto_0
+    const-string p1, "bg_play_order"
+
+    .line 19
+    .line 20
+    invoke-interface {v0, p1, v1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p1
+
+    .line 24
+    invoke-interface {p1}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 25
+    .line 26
+    .line 27
     return-void
 .end method
 

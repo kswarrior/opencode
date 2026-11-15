@@ -1,6 +1,6 @@
 .class public final Ln0/a;
-.super Lm/i2;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super La1/a;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -12,37 +12,38 @@
     .locals 1
 
     .line 1
-    const/4 v0, 0x1
+    const/16 v0, 0x1c
 
     .line 2
-    invoke-direct {p0, p1, v0}, Lm/i2;-><init>(Ljava/lang/Object;I)V
-
     .line 3
+    invoke-direct {p0, p1, v0}, La1/a;-><init>(Ljava/lang/Object;I)V
+
     .line 4
     .line 5
+    .line 6
     new-instance v0, Ld0/d;
 
-    .line 6
     .line 7
+    .line 8
     invoke-direct {v0, p0, p1}, Ld0/d;-><init>(Ln0/a;Lcom/mojang/minecraftpe/MainActivity;)V
 
-    .line 8
     .line 9
     .line 10
+    .line 11
     iput-object v0, p0, Ln0/a;->h:Ld0/d;
 
-    .line 11
     .line 12
+    .line 13
     return-void
 .end method
 
 
 # virtual methods
-.method public final f()V
+.method public final M()V
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lm/i2;->d:Ljava/lang/Object;
+    iget-object v0, p0, La1/a;->d:Ljava/lang/Object;
 
     .line 2
     .line 3
@@ -62,7 +63,7 @@
 
     .line 10
     .line 11
-    invoke-static {v1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 12
     .line 13
@@ -76,7 +77,7 @@
     .line 17
     .line 18
     .line 19
-    invoke-virtual {p0, v1, v2}, Lm/i2;->g(Landroid/content/res/Resources$Theme;Landroid/util/TypedValue;)V
+    invoke-virtual {p0, v1, v2}, La1/a;->S(Landroid/content/res/Resources$Theme;Landroid/util/TypedValue;)V
 
     .line 20
     .line 21
@@ -113,7 +114,7 @@
 
     .line 37
     .line 38
-    invoke-static {v0, v1}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 39
     .line 40

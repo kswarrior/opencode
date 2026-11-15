@@ -1,19 +1,19 @@
 .class public final Lcom/bumptech/glide/p;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lh3/a;
 
 
 # instance fields
-.field public final a:Lh3/q;
+.field public final a:Lh3/r;
 
-.field public final synthetic b:Lcom/bumptech/glide/q;
+.field public final synthetic b:Lcom/bumptech/glide/RequestManager;
 
 
 # direct methods
-.method public constructor <init>(Lcom/bumptech/glide/q;Lh3/q;)V
+.method public constructor <init>(Lcom/bumptech/glide/RequestManager;Lh3/r;)V
     .locals 0
 
     .line 1
@@ -22,11 +22,11 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lcom/bumptech/glide/p;->b:Lcom/bumptech/glide/q;
+    iput-object p1, p0, Lcom/bumptech/glide/p;->b:Lcom/bumptech/glide/RequestManager;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lcom/bumptech/glide/p;->a:Lh3/q;
+    iput-object p2, p0, Lcom/bumptech/glide/p;->a:Lh3/r;
 
     .line 7
     .line 8
@@ -43,7 +43,7 @@
 
     .line 2
     .line 3
-    iget-object p1, p0, Lcom/bumptech/glide/p;->b:Lcom/bumptech/glide/q;
+    iget-object p1, p0, Lcom/bumptech/glide/p;->b:Lcom/bumptech/glide/RequestManager;
 
     .line 4
     .line 5
@@ -51,11 +51,11 @@
 
     .line 6
     :try_start_0
-    iget-object v0, p0, Lcom/bumptech/glide/p;->a:Lh3/q;
+    iget-object v0, p0, Lcom/bumptech/glide/p;->a:Lh3/r;
 
     .line 7
     .line 8
-    iget-object v1, v0, Lh3/q;->h:Ljava/lang/Object;
+    iget-object v1, v0, Lh3/r;->h:Ljava/lang/Object;
 
     .line 9
     .line 10
@@ -134,7 +134,7 @@
     .line 45
     .line 46
     .line 47
-    iget-boolean v3, v0, Lh3/q;->d:Z
+    iget-boolean v3, v0, Lh3/r;->d:Z
 
     .line 48
     .line 49
@@ -151,7 +151,7 @@
 
     .line 55
     :cond_1
-    iget-object v3, v0, Lh3/q;->q:Ljava/lang/Object;
+    iget-object v3, v0, Lh3/r;->p:Ljava/lang/Object;
 
     .line 56
     .line 57

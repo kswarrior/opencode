@@ -1,6 +1,6 @@
 .class public Lokio/ByteString;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/io/Serializable;
@@ -8,7 +8,7 @@
 
 
 # static fields
-.field public static final q:Lokio/ByteString;
+.field public static final p:Lokio/ByteString;
 
 
 # instance fields
@@ -40,7 +40,7 @@
     .line 7
     .line 8
     .line 9
-    sput-object v0, Lokio/ByteString;->q:Lokio/ByteString;
+    sput-object v0, Lokio/ByteString;->p:Lokio/ByteString;
 
     .line 10
     .line 11
@@ -55,7 +55,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -85,7 +85,7 @@
 
     .line 5
     .line 6
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 7
     .line 8
@@ -125,7 +125,7 @@
 
     .line 5
     .line 6
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 7
     .line 8
@@ -196,7 +196,7 @@
     .locals 13
 
     .line 1
-    sget-object v0, Lmc/a;->a:[B
+    sget-object v0, Llc/a;->a:[B
 
     .line 2
     .line 3
@@ -208,7 +208,7 @@
 
     .line 6
     .line 7
-    invoke-static {v2, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v2, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     .line 9
@@ -217,7 +217,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 13
     .line 14
@@ -566,7 +566,7 @@
 
     .line 173
     .line 174
-    sget-object v2, Lm9/a;->a:Ljava/nio/charset/Charset;
+    sget-object v2, Lo9/a;->a:Ljava/nio/charset/Charset;
 
     .line 175
     .line 176
@@ -586,7 +586,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -743,7 +743,7 @@
 
     .line 20
     .line 21
-    invoke-static {p1}, Lf9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p1}, Lh9/i;->b(Ljava/lang/Object;)V
 
     .line 22
     .line 23
@@ -830,7 +830,7 @@
 
     .line 16
     .line 17
-    sget-object v7, Lnc/b;->a:[C
+    sget-object v7, Lmc/b;->a:[C
 
     .line 18
     .line 19
@@ -966,7 +966,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -1003,7 +1003,7 @@
     array-length v3, p2
 
     .line 19
-    invoke-static {v0, p1, v2, p2, v3}, Lmc/b;->a([BII[BI)Z
+    invoke-static {v0, p1, v2, p2, v3}, Llc/b;->a([BII[BI)Z
 
     .line 20
     .line 21
@@ -1106,7 +1106,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -1154,7 +1154,7 @@
     array-length v3, p1
 
     .line 24
-    invoke-static {v1, v0, v2, p1, v3}, Lmc/b;->a([BII[BI)Z
+    invoke-static {v1, v0, v2, p1, v3}, Llc/b;->a([BII[BI)Z
 
     .line 25
     .line 26
@@ -1189,7 +1189,7 @@
 
     .line 2
     .line 3
-    invoke-static {p4, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p4, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -1226,7 +1226,7 @@
 
     .line 19
     .line 20
-    invoke-static {v0, p1, p2, p4, p3}, Lmc/b;->a([BII[BI)Z
+    invoke-static {v0, p1, p2, p4, p3}, Llc/b;->a([BII[BI)Z
 
     .line 21
     .line 22
@@ -1259,7 +1259,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -1290,7 +1290,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -1375,7 +1375,7 @@
 
     .line 28
     .line 29
-    invoke-static {p1, p2, v0}, Lr8/i;->R(II[B)[B
+    invoke-static {p1, p2, v0}, Lt8/i;->R(II[B)[B
 
     .line 30
     .line 31
@@ -1542,7 +1542,7 @@
 
     .line 24
     .line 25
-    invoke-static {v1, v5}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v5}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 26
     .line 27
@@ -1655,7 +1655,7 @@
 
     .line 9
     .line 10
-    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 11
     .line 12
@@ -1687,7 +1687,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 12
     .line 13
@@ -1696,7 +1696,7 @@
 
     .line 15
     .line 16
-    sget-object v2, Lm9/a;->a:Ljava/nio/charset/Charset;
+    sget-object v2, Lo9/a;->a:Ljava/nio/charset/Charset;
 
     .line 17
     .line 18
@@ -1716,7 +1716,7 @@
     return-object v0
 .end method
 
-.method public t(Lmc/f;I)V
+.method public t(Llc/f;I)V
     .locals 2
 
     .line 1
@@ -1727,7 +1727,7 @@
 
     .line 3
     .line 4
-    invoke-virtual {p1, v1, v0, p2}, Lmc/f;->write([BII)V
+    invoke-virtual {p1, v1, v0, p2}, Llc/f;->write([BII)V
 
     .line 5
     .line 6
@@ -2820,7 +2820,7 @@
     const/4 v5, 0x0
 
     .line 499
-    invoke-static {v5, v8, v1}, Lr8/i;->R(II[B)[B
+    invoke-static {v5, v8, v1}, Lt8/i;->R(II[B)[B
 
     .line 500
     .line 501
@@ -2946,7 +2946,7 @@
 
     .line 561
     .line 562
-    invoke-static {v7, v8}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v7, v8}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 563
     .line 564
@@ -2959,7 +2959,7 @@
 
     .line 568
     .line 569
-    invoke-static {v7, v8, v9}, Lm9/o;->U(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v7, v8, v9}, Lo9/o;->o0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 570
     .line 571
@@ -2975,7 +2975,7 @@
 
     .line 576
     .line 577
-    invoke-static {v7, v8, v9}, Lm9/o;->U(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v7, v8, v9}, Lo9/o;->o0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 578
     .line 579
@@ -2991,7 +2991,7 @@
 
     .line 584
     .line 585
-    invoke-static {v7, v8, v9}, Lm9/o;->U(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v7, v8, v9}, Lo9/o;->o0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 586
     .line 587
@@ -3063,7 +3063,7 @@
 
     .line 621
     .line 622
-    invoke-static {v4, v1, v7}, Ls1/a;->j(CLjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v4, v1, v7}, Ls1/a;->h(CLjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 623
     .line 624

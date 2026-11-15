@@ -1,6 +1,6 @@
 .class public final Lokhttp3/internal/platform/PlatformInitializer;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lj2/b;
@@ -34,7 +34,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lr8/p;->c:Lr8/p;
+    sget-object v0, Lt8/p;->c:Lt8/p;
 
     .line 2
     .line 3
@@ -49,16 +49,16 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
     .line 6
-    sget-object v0, Lfc/e;->a:Lfc/e;
+    sget-object v0, Lec/e;->a:Lec/e;
 
     .line 7
     .line 8
-    sget-object v0, Lfc/e;->a:Lfc/e;
+    sget-object v0, Lec/e;->a:Lec/e;
 
     .line 9
     .line 10
@@ -66,7 +66,7 @@
 
     .line 11
     .line 12
-    check-cast v0, Lfc/d;
+    check-cast v0, Lec/d;
 
     .line 13
     .line 14
@@ -82,13 +82,13 @@
 
     .line 17
     .line 18
-    invoke-interface {v0, p1}, Lfc/d;->a(Landroid/content/Context;)V
+    invoke-interface {v0, p1}, Lec/d;->a(Landroid/content/Context;)V
 
     .line 19
     .line 20
     .line 21
     :cond_1
-    sget-object p1, Lfc/e;->a:Lfc/e;
+    sget-object p1, Lec/e;->a:Lec/e;
 
     .line 22
     .line 23

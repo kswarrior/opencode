@@ -1,194 +1,374 @@
-.class public final Lmc/l;
-.super Lmc/e0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final synthetic Lmc/l;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
 
 
 # instance fields
-.field public e:Lmc/e0;
+.field public final synthetic X:Lh9/q;
+
+.field public final synthetic c:Lh9/n;
+
+.field public final synthetic d:J
+
+.field public final synthetic h:Lh9/p;
+
+.field public final synthetic p:Llc/w;
+
+.field public final synthetic q:Lh9/p;
+
+.field public final synthetic w:Lh9/p;
+
+.field public final synthetic x:Lh9/q;
+
+.field public final synthetic y:Lh9/q;
 
 
 # direct methods
-.method public constructor <init>(Lmc/e0;)V
-    .locals 1
+.method public synthetic constructor <init>(Lh9/n;JLh9/p;Llc/w;Lh9/p;Lh9/p;Lh9/q;Lh9/q;Lh9/q;)V
+    .locals 0
 
     .line 1
-    const-string v0, "delegate"
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 4
+    iput-object p1, p0, Lmc/l;->c:Lh9/n;
+
     .line 5
     .line 6
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-wide p2, p0, Lmc/l;->d:J
 
     .line 7
     .line 8
-    .line 9
-    iput-object p1, p0, Lmc/l;->e:Lmc/e0;
+    iput-object p4, p0, Lmc/l;->h:Lh9/p;
 
+    .line 9
     .line 10
+    iput-object p5, p0, Lmc/l;->p:Llc/w;
+
     .line 11
+    .line 12
+    iput-object p6, p0, Lmc/l;->q:Lh9/p;
+
+    .line 13
+    .line 14
+    iput-object p7, p0, Lmc/l;->w:Lh9/p;
+
+    .line 15
+    .line 16
+    iput-object p8, p0, Lmc/l;->x:Lh9/q;
+
+    .line 17
+    .line 18
+    iput-object p9, p0, Lmc/l;->y:Lh9/q;
+
+    .line 19
+    .line 20
+    iput-object p10, p0, Lmc/l;->X:Lh9/q;
+
+    .line 21
+    .line 22
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()Lmc/e0;
-    .locals 1
+.method public final g(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 6
 
     .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
+    check-cast p1, Ljava/lang/Integer;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Lmc/e0;->a()Lmc/e0;
+    invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
 
     .line 4
     .line 5
     .line 6
-    move-result-object v0
+    move-result p1
 
     .line 7
-    return-object v0
-.end method
+    check-cast p2, Ljava/lang/Long;
 
-.method public final b()Lmc/e0;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Lmc/e0;->b()Lmc/e0;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v0
-
-    .line 7
-    return-object v0
-.end method
-
-.method public final c()J
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Lmc/e0;->c()J
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-wide v0
-
-    .line 7
-    return-wide v0
-.end method
-
-.method public final d(J)Lmc/e0;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0, p1, p2}, Lmc/e0;->d(J)Lmc/e0;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object p1
-
-    .line 7
-    return-object p1
-.end method
-
-.method public final e()Z
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Lmc/e0;->e()Z
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    return v0
-.end method
-
-.method public final f()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Lmc/e0;->f()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final g(JLjava/util/concurrent/TimeUnit;)Lmc/e0;
-    .locals 1
-
-    .line 1
-    const-string v0, "unit"
-
-    .line 2
-    .line 3
-    invoke-static {p3, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 7
     .line 8
-    invoke-virtual {v0, p1, p2, p3}, Lmc/e0;->g(JLjava/util/concurrent/TimeUnit;)Lmc/e0;
-
     .line 9
+    invoke-virtual {p2}, Ljava/lang/Long;->longValue()J
+
     .line 10
     .line 11
-    move-result-object p1
-
     .line 12
-    return-object p1
-.end method
-
-.method public final h()J
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lmc/l;->e:Lmc/e0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Lmc/e0;->h()J
-
-    .line 4
-    .line 5
-    .line 6
     move-result-wide v0
 
-    .line 7
-    return-wide v0
+    .line 13
+    iget-object p2, p0, Lmc/l;->p:Llc/w;
+
+    .line 14
+    .line 15
+    const/4 v2, 0x1
+
+    .line 16
+    if-eq p1, v2, :cond_2
+
+    .line 17
+    .line 18
+    const/16 v2, 0xa
+
+    .line 19
+    .line 20
+    if-eq p1, v2, :cond_0
+
+    .line 21
+    .line 22
+    goto :goto_1
+
+    .line 23
+    :cond_0
+    const-wide/16 v2, 0x4
+
+    .line 24
+    .line 25
+    cmp-long p1, v0, v2
+
+    .line 26
+    .line 27
+    if-ltz p1, :cond_1
+
+    .line 28
+    .line 29
+    invoke-virtual {p2, v2, v3}, Llc/w;->skip(J)V
+
+    .line 30
+    .line 31
+    .line 32
+    sub-long/2addr v0, v2
+
+    .line 33
+    long-to-int p1, v0
+
+    .line 34
+    new-instance v0, Lmc/k;
+
+    .line 35
+    .line 36
+    iget-object v1, p0, Lmc/l;->x:Lh9/q;
+
+    .line 37
+    .line 38
+    iget-object v2, p0, Lmc/l;->y:Lh9/q;
+
+    .line 39
+    .line 40
+    iget-object v3, p0, Lmc/l;->X:Lh9/q;
+
+    .line 41
+    .line 42
+    invoke-direct {v0, v1, p2, v2, v3}, Lmc/k;-><init>(Lh9/q;Llc/w;Lh9/q;Lh9/q;)V
+
+    .line 43
+    .line 44
+    .line 45
+    invoke-static {p2, p1, v0}, Lmc/b;->e(Llc/w;ILkotlin/jvm/functions/Function2;)V
+
+    .line 46
+    .line 47
+    .line 48
+    goto :goto_1
+
+    .line 49
+    :cond_1
+    new-instance p1, Ljava/io/IOException;
+
+    .line 50
+    .line 51
+    const-string p2, "bad zip: NTFS extra too short"
+
+    .line 52
+    .line 53
+    invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 54
+    .line 55
+    .line 56
+    throw p1
+
+    .line 57
+    :cond_2
+    iget-object p1, p0, Lmc/l;->c:Lh9/n;
+
+    .line 58
+    .line 59
+    iget-boolean v3, p1, Lh9/n;->c:Z
+
+    .line 60
+    .line 61
+    if-nez v3, :cond_7
+
+    .line 62
+    .line 63
+    iput-boolean v2, p1, Lh9/n;->c:Z
+
+    .line 64
+    .line 65
+    iget-wide v2, p0, Lmc/l;->d:J
+
+    .line 66
+    .line 67
+    cmp-long p1, v0, v2
+
+    .line 68
+    .line 69
+    if-ltz p1, :cond_6
+
+    .line 70
+    .line 71
+    iget-object p1, p0, Lmc/l;->h:Lh9/p;
+
+    .line 72
+    .line 73
+    iget-wide v0, p1, Lh9/p;->c:J
+
+    .line 74
+    .line 75
+    const-wide v2, 0xffffffffL
+
+    .line 76
+    .line 77
+    .line 78
+    .line 79
+    .line 80
+    cmp-long v4, v0, v2
+
+    .line 81
+    .line 82
+    if-nez v4, :cond_3
+
+    .line 83
+    .line 84
+    invoke-virtual {p2}, Llc/w;->g()J
+
+    .line 85
+    .line 86
+    .line 87
+    move-result-wide v0
+
+    .line 88
+    :cond_3
+    iput-wide v0, p1, Lh9/p;->c:J
+
+    .line 89
+    .line 90
+    iget-object p1, p0, Lmc/l;->q:Lh9/p;
+
+    .line 91
+    .line 92
+    iget-wide v0, p1, Lh9/p;->c:J
+
+    .line 93
+    .line 94
+    cmp-long v0, v0, v2
+
+    .line 95
+    .line 96
+    const-wide/16 v4, 0x0
+
+    .line 97
+    .line 98
+    if-nez v0, :cond_4
+
+    .line 99
+    .line 100
+    invoke-virtual {p2}, Llc/w;->g()J
+
+    .line 101
+    .line 102
+    .line 103
+    move-result-wide v0
+
+    .line 104
+    goto :goto_0
+
+    .line 105
+    :cond_4
+    move-wide v0, v4
+
+    .line 106
+    :goto_0
+    iput-wide v0, p1, Lh9/p;->c:J
+
+    .line 107
+    .line 108
+    iget-object p1, p0, Lmc/l;->w:Lh9/p;
+
+    .line 109
+    .line 110
+    iget-wide v0, p1, Lh9/p;->c:J
+
+    .line 111
+    .line 112
+    cmp-long v0, v0, v2
+
+    .line 113
+    .line 114
+    if-nez v0, :cond_5
+
+    .line 115
+    .line 116
+    invoke-virtual {p2}, Llc/w;->g()J
+
+    .line 117
+    .line 118
+    .line 119
+    move-result-wide v4
+
+    .line 120
+    :cond_5
+    iput-wide v4, p1, Lh9/p;->c:J
+
+    .line 121
+    .line 122
+    :goto_1
+    sget-object p1, Ls8/k;->a:Ls8/k;
+
+    .line 123
+    .line 124
+    return-object p1
+
+    .line 125
+    :cond_6
+    new-instance p1, Ljava/io/IOException;
+
+    .line 126
+    .line 127
+    const-string p2, "bad zip: zip64 extra too short"
+
+    .line 128
+    .line 129
+    invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 130
+    .line 131
+    .line 132
+    throw p1
+
+    .line 133
+    :cond_7
+    new-instance p1, Ljava/io/IOException;
+
+    .line 134
+    .line 135
+    const-string p2, "bad zip: zip64 extra repeated"
+
+    .line 136
+    .line 137
+    invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 138
+    .line 139
+    .line 140
+    throw p1
 .end method

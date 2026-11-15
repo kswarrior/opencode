@@ -1,203 +1,217 @@
 .class public abstract Ly4/f;
-.super Ld0/b;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# instance fields
-.field public a:Landroidx/datastore/preferences/protobuf/k;
-
-.field public b:I
+# static fields
+.field public static final a:[I
 
 
 # direct methods
-.method public constructor <init>()V
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    const/4 v0, 0x0
-
-    .line 2
-    iput v0, p0, Ly4/f;->b:I
-
-    return-void
-.end method
-
-.method public constructor <init>(I)V
-    .locals 0
-
-    .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    const/4 p1, 0x0
-
-    .line 4
-    iput p1, p0, Ly4/f;->b:I
-
-    return-void
-.end method
-
-
-# virtual methods
-.method public l(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;I)Z
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Ly4/f;->x(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;I)V
+    const v0, 0x1010448
 
     .line 2
     .line 3
     .line 4
-    iget-object p1, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    filled-new-array {v0}, [I
 
     .line 5
     .line 6
-    if-nez p1, :cond_0
-
     .line 7
+    move-result-object v0
+
     .line 8
-    new-instance p1, Landroidx/datastore/preferences/protobuf/k;
+    sput-object v0, Ly4/f;->a:[I
 
     .line 9
     .line 10
-    invoke-direct {p1}, Ljava/lang/Object;-><init>()V
+    return-void
+.end method
 
+.method public static a(Lcom/google/android/material/appbar/AppBarLayout;F)V
+    .locals 11
+
+    .line 1
+    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    const v1, 0x7f0b0002
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getInteger(I)I
+
+    .line 9
+    .line 10
     .line 11
+    move-result v0
+
     .line 12
+    new-instance v1, Landroid/animation/StateListAnimator;
+
     .line 13
-    iput-object p2, p1, Landroidx/datastore/preferences/protobuf/k;->d:Ljava/lang/Object;
-
     .line 14
-    .line 15
-    iput-object p1, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    invoke-direct {v1}, Landroid/animation/StateListAnimator;-><init>()V
 
+    .line 15
     .line 16
     .line 17
-    :cond_0
-    iget-object p1, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    const v2, 0x7f0404f8
 
     .line 18
     .line 19
-    iget-object p2, p1, Landroidx/datastore/preferences/protobuf/k;->d:Ljava/lang/Object;
-
     .line 20
-    .line 21
-    check-cast p2, Landroid/view/View;
+    const v3, -0x7f0404f9
 
+    .line 21
     .line 22
     .line 23
-    invoke-virtual {p2}, Landroid/view/View;->getTop()I
+    const v4, 0x101009e
 
     .line 24
     .line 25
     .line 26
-    move-result p3
+    filled-new-array {v4, v2, v3}, [I
 
     .line 27
-    iput p3, p1, Landroidx/datastore/preferences/protobuf/k;->a:I
-
     .line 28
     .line 29
-    invoke-virtual {p2}, Landroid/view/View;->getLeft()I
+    move-result-object v2
 
     .line 30
-    .line 31
-    .line 32
-    move-result p2
+    const/4 v3, 0x1
 
+    .line 31
+    new-array v5, v3, [F
+
+    .line 32
     .line 33
-    iput p2, p1, Landroidx/datastore/preferences/protobuf/k;->b:I
+    const/4 v6, 0x0
 
     .line 34
+    const/4 v7, 0x0
+
     .line 35
-    iget-object p1, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    aput v7, v5, v6
 
     .line 36
     .line 37
-    invoke-virtual {p1}, Landroidx/datastore/preferences/protobuf/k;->a()V
+    const-string v8, "elevation"
 
     .line 38
     .line 39
-    .line 40
-    iget p1, p0, Ly4/f;->b:I
+    invoke-static {p0, v8, v5}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
 
+    .line 40
     .line 41
     .line 42
-    if-eqz p1, :cond_2
+    move-result-object v5
 
     .line 43
+    int-to-long v9, v0
+
     .line 44
-    iget-object p2, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    invoke-virtual {v5, v9, v10}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
 
     .line 45
     .line 46
-    iget p3, p2, Landroidx/datastore/preferences/protobuf/k;->c:I
-
     .line 47
+    move-result-object v0
+
     .line 48
-    if-eq p3, p1, :cond_1
+    invoke-virtual {v1, v2, v0}, Landroid/animation/StateListAnimator;->addState([ILandroid/animation/Animator;)V
 
     .line 49
     .line 50
-    iput p1, p2, Landroidx/datastore/preferences/protobuf/k;->c:I
-
     .line 51
-    .line 52
-    invoke-virtual {p2}, Landroidx/datastore/preferences/protobuf/k;->a()V
+    filled-new-array {v4}, [I
 
+    .line 52
     .line 53
     .line 54
+    move-result-object v0
+
     .line 55
-    :cond_1
-    const/4 p1, 0x0
+    new-array v2, v3, [F
 
     .line 56
-    iput p1, p0, Ly4/f;->b:I
-
     .line 57
+    aput p1, v2, v6
+
     .line 58
-    :cond_2
-    const/4 p1, 0x1
-
     .line 59
-    return p1
-.end method
+    invoke-static {p0, v8, v2}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
 
-.method public final w()I
-    .locals 1
+    .line 60
+    .line 61
+    .line 62
+    move-result-object p1
 
-    .line 1
-    iget-object v0, p0, Ly4/f;->a:Landroidx/datastore/preferences/protobuf/k;
+    .line 63
+    invoke-virtual {p1, v9, v10}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
 
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
+    .line 64
+    .line 65
+    .line 66
+    move-result-object p1
 
-    .line 4
-    .line 5
-    iget v0, v0, Landroidx/datastore/preferences/protobuf/k;->c:I
+    .line 67
+    invoke-virtual {v1, v0, p1}, Landroid/animation/StateListAnimator;->addState([ILandroid/animation/Animator;)V
 
-    .line 6
-    .line 7
-    return v0
+    .line 68
+    .line 69
+    .line 70
+    new-array p1, v6, [I
 
-    .line 8
-    :cond_0
-    const/4 v0, 0x0
+    .line 71
+    .line 72
+    new-array v0, v3, [F
 
-    .line 9
-    return v0
-.end method
+    .line 73
+    .line 74
+    aput v7, v0, v6
 
-.method public x(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Landroid/view/View;I)V
-    .locals 0
+    .line 75
+    .line 76
+    invoke-static {p0, v8, v0}, Landroid/animation/ObjectAnimator;->ofFloat(Ljava/lang/Object;Ljava/lang/String;[F)Landroid/animation/ObjectAnimator;
 
-    .line 1
-    invoke-virtual {p1, p3, p2}, Landroidx/coordinatorlayout/widget/CoordinatorLayout;->q(ILandroid/view/View;)V
+    .line 77
+    .line 78
+    .line 79
+    move-result-object v0
 
-    .line 2
-    .line 3
-    .line 4
+    .line 80
+    const-wide/16 v2, 0x0
+
+    .line 81
+    .line 82
+    invoke-virtual {v0, v2, v3}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
+
+    .line 83
+    .line 84
+    .line 85
+    move-result-object v0
+
+    .line 86
+    invoke-virtual {v1, p1, v0}, Landroid/animation/StateListAnimator;->addState([ILandroid/animation/Animator;)V
+
+    .line 87
+    .line 88
+    .line 89
+    invoke-virtual {p0, v1}, Landroid/view/View;->setStateListAnimator(Landroid/animation/StateListAnimator;)V
+
+    .line 90
+    .line 91
+    .line 92
     return-void
 .end method

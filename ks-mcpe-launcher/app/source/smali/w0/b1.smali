@@ -1,76 +1,79 @@
 .class public final Lw0/b1;
-.super Lw8/c;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ly8/g;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
-
-# instance fields
-.field public X:I
-
-.field public q:Lw9/c;
-
-.field public w:Z
-
-.field public synthetic x:Ljava/lang/Object;
-
-.field public final synthetic y:Lw0/d1;
-
-
-# direct methods
-.method public constructor <init>(Lw0/d1;Lw8/c;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lw0/b1;->y:Lw0/d1;
-
-    .line 2
-    .line 3
-    invoke-direct {p0, p2}, Lw8/c;-><init>(Lkotlin/coroutines/Continuation;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
+# interfaces
+.implements Lkotlin/jvm/functions/Function2;
 
 
 # virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+.method public final g(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
 
     .line 1
-    iput-object p1, p0, Lw0/b1;->x:Ljava/lang/Object;
+    check-cast p1, Lt9/d;
 
     .line 2
     .line 3
-    iget p1, p0, Lw0/b1;->X:I
+    check-cast p2, Lkotlin/coroutines/Continuation;
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
+    invoke-virtual {p0, p1, p2}, Lw0/b1;->k(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
 
     .line 6
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lw0/b1;->X:I
+    move-result-object p1
 
     .line 9
+    check-cast p1, Lw0/b1;
+
     .line 10
-    iget-object p1, p0, Lw0/b1;->y:Lw0/d1;
-
     .line 11
-    .line 12
-    const/4 v0, 0x0
+    sget-object p2, Ls8/k;->a:Ls8/k;
 
+    .line 12
     .line 13
-    invoke-virtual {p1, v0, p0}, Lw0/d1;->b(Lkotlin/jvm/functions/Function2;Lw8/c;)Ljava/lang/Object;
+    invoke-virtual {p1, p2}, Lw0/b1;->n(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 14
     .line 15
     .line 16
-    move-result-object p1
+    return-object p2
+.end method
 
-    .line 17
+.method public final k(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+    .locals 1
+
+    .line 1
+    new-instance p1, Lw0/b1;
+
+    .line 2
+    .line 3
+    const/4 v0, 0x2
+
+    .line 4
+    invoke-direct {p1, v0, p2}, Ly8/g;-><init>(ILkotlin/coroutines/Continuation;)V
+
+    .line 5
+    .line 6
+    .line 7
+    return-object p1
+.end method
+
+.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    invoke-static {p1}, La7/t1;->J(Ljava/lang/Object;)V
+
+    .line 2
+    .line 3
+    .line 4
+    sget-object p1, Ls8/k;->a:Ls8/k;
+
+    .line 5
+    .line 6
     return-object p1
 .end method

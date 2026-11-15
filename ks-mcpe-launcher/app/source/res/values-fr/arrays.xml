@@ -12,5 +12,11 @@
         <item>Gérez plusieurs comptes Xbox et basculez entre eux de manière transparente.</item>
         <item>CurseForge vous permet de télécharger du contenu de la communauté directement.</item>
         <item>Chargez des modules natifs SO externes pour étendre ou améliorer les performances de Minecraft.</item>
+        <item>Les GIF animés peuvent aussi servir de fond d’écran au lanceur.</item>
+        <item>Modifiez l’icône d’une instance depuis ses paramètres.</item>
+        <item>Ajoutez une étoile aux modules du menu de mods pour les retrouver dans les Favoris.</item>
+        <item>Déplacez le menu de mods par son titre et redimensionnez-le par son coin inférieur droit.</item>
+        <item>Utilisez Compatibles uniquement dans Mods externes pour filtrer selon votre version de Minecraft.</item>
+        <item>Sauvegardez votre monde avant de modifier ses données NBT.</item>
     </string-array>
 </resources>

@@ -1,250 +1,238 @@
 .class public final Lcom/google/android/gms/internal/measurement/mg;
-.super Lcom/google/android/gms/internal/measurement/m4;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final h:Lcom/google/android/gms/internal/measurement/o6;
+.field public final a:Lg6/r;
 
-.field public final q:Ljava/util/HashMap;
+.field public final b:Lg6/r;
+
+.field public final c:Ljava/util/UUID;
 
 
 # direct methods
-.method public constructor <init>(Lcom/google/android/gms/internal/measurement/o6;)V
-    .locals 1
+.method public constructor <init>(Lg6/r;Lg6/r;Ljava/util/UUID;)V
+    .locals 0
 
     .line 1
-    const-string v0, "require"
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0, v0}, Lcom/google/android/gms/internal/measurement/m4;-><init>(Ljava/lang/String;)V
-
     .line 4
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/mg;->a:Lg6/r;
+
     .line 5
     .line 6
-    new-instance v0, Ljava/util/HashMap;
+    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/mg;->b:Lg6/r;
 
     .line 7
     .line 8
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/mg;->c:Ljava/util/UUID;
 
     .line 9
     .line 10
-    .line 11
-    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/mg;->q:Ljava/util/HashMap;
-
-    .line 12
-    .line 13
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/mg;->h:Lcom/google/android/gms/internal/measurement/o6;
-
-    .line 14
-    .line 15
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/google/android/gms/internal/measurement/y7;Ljava/util/List;)Lcom/google/android/gms/internal/measurement/y5;
-    .locals 2
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 3
 
     .line 1
-    const-string v0, "require"
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p1, p0, :cond_0
+
+    .line 3
+    .line 4
+    return v0
+
+    .line 5
+    :cond_0
+    instance-of v1, p1, Lcom/google/android/gms/internal/measurement/mg;
+
+    .line 6
+    .line 7
+    if-eqz v1, :cond_1
+
+    .line 8
+    .line 9
+    check-cast p1, Lcom/google/android/gms/internal/measurement/mg;
+
+    .line 10
+    .line 11
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/mg;->a:Lg6/r;
+
+    .line 12
+    .line 13
+    iget-object v2, p1, Lcom/google/android/gms/internal/measurement/mg;->a:Lg6/r;
+
+    .line 14
+    .line 15
+    invoke-virtual {v1, v2}, Lg6/g;->equals(Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    if-eqz v1, :cond_1
+
+    .line 20
+    .line 21
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/mg;->b:Lg6/r;
+
+    .line 22
+    .line 23
+    iget-object v2, p1, Lcom/google/android/gms/internal/measurement/mg;->b:Lg6/r;
+
+    .line 24
+    .line 25
+    invoke-virtual {v1, v2}, Lg6/g;->equals(Ljava/lang/Object;)Z
+
+    .line 26
+    .line 27
+    .line 28
+    move-result v1
+
+    .line 29
+    if-eqz v1, :cond_1
+
+    .line 30
+    .line 31
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/mg;->c:Ljava/util/UUID;
+
+    .line 32
+    .line 33
+    iget-object p1, p1, Lcom/google/android/gms/internal/measurement/mg;->c:Ljava/util/UUID;
+
+    .line 34
+    .line 35
+    invoke-virtual {v1, p1}, Ljava/util/UUID;->equals(Ljava/lang/Object;)Z
+
+    .line 36
+    .line 37
+    .line 38
+    move-result p1
+
+    .line 39
+    if-eqz p1, :cond_1
+
+    .line 40
+    .line 41
+    return v0
+
+    .line 42
+    :cond_1
+    const/4 p1, 0x0
+
+    .line 43
+    return p1
+.end method
+
+.method public final hashCode()I
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/mg;->a:Lg6/r;
 
     .line 2
     .line 3
-    const/4 v1, 0x1
+    invoke-virtual {v0}, Lg6/g;->hashCode()I
 
     .line 4
-    invoke-static {v0, v1, p2}, Lcom/google/android/gms/internal/measurement/ib;->d(Ljava/lang/String;ILjava/util/List;)V
-
     .line 5
     .line 6
+    move-result v0
+
     .line 7
-    const/4 v0, 0x0
+    const v1, 0xf4243
 
     .line 8
-    invoke-interface {p2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
-
     .line 9
     .line 10
+    xor-int/2addr v0, v1
+
     .line 11
-    move-result-object p2
+    mul-int/2addr v0, v1
 
     .line 12
-    check-cast p2, Lcom/google/android/gms/internal/measurement/y5;
+    iget-object v2, p0, Lcom/google/android/gms/internal/measurement/mg;->b:Lg6/r;
 
     .line 13
     .line 14
-    iget-object v0, p1, Lcom/google/android/gms/internal/measurement/y7;->h:Ljava/lang/Object;
+    invoke-virtual {v2}, Lg6/g;->hashCode()I
 
     .line 15
     .line 16
-    check-cast v0, Lcom/google/android/gms/internal/measurement/e6;
-
     .line 17
+    move-result v2
+
     .line 18
-    invoke-virtual {v0, p1, p2}, Lcom/google/android/gms/internal/measurement/e6;->e(Lcom/google/android/gms/internal/measurement/y7;Lcom/google/android/gms/internal/measurement/y5;)Lcom/google/android/gms/internal/measurement/y5;
+    xor-int/2addr v0, v2
 
     .line 19
-    .line 20
-    .line 21
-    move-result-object p1
+    mul-int/2addr v0, v1
 
+    .line 20
+    iget-object v2, p0, Lcom/google/android/gms/internal/measurement/mg;->c:Ljava/util/UUID;
+
+    .line 21
     .line 22
-    invoke-interface {p1}, Lcom/google/android/gms/internal/measurement/y5;->zzc()Ljava/lang/String;
+    invoke-virtual {v2}, Ljava/util/UUID;->hashCode()I
 
     .line 23
     .line 24
     .line 25
-    move-result-object p1
+    move-result v2
 
     .line 26
-    iget-object p2, p0, Lcom/google/android/gms/internal/measurement/mg;->q:Ljava/util/HashMap;
+    xor-int/2addr v0, v2
 
     .line 27
+    mul-int/2addr v0, v1
+
     .line 28
-    invoke-virtual {p2, p1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+    const-wide v1, -0x100000000L
 
     .line 29
     .line 30
     .line 31
-    move-result v0
-
     .line 32
-    if-eqz v0, :cond_0
-
     .line 33
+    long-to-int v1, v1
+
     .line 34
-    invoke-virtual {p2, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    xor-int/2addr v0, v1
 
     .line 35
-    .line 36
-    .line 37
-    move-result-object p1
+    return v0
+.end method
 
-    .line 38
-    check-cast p1, Lcom/google/android/gms/internal/measurement/y5;
+.method public final toString()Ljava/lang/String;
+    .locals 2
 
-    .line 39
-    .line 40
-    return-object p1
+    .line 1
+    const-string v0, " -> "
 
-    .line 41
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/mg;->h:Lcom/google/android/gms/internal/measurement/o6;
+    .line 2
+    .line 3
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/mg;->a:Lg6/r;
 
-    .line 42
-    .line 43
-    iget-object v0, v0, Lcom/google/android/gms/internal/measurement/o6;->d:Ljava/lang/Object;
+    .line 4
+    .line 5
+    invoke-static {v0, v1}, Landroid/text/TextUtils;->join(Ljava/lang/CharSequence;Ljava/lang/Iterable;)Ljava/lang/String;
 
-    .line 44
-    .line 45
-    check-cast v0, Ljava/util/HashMap;
-
-    .line 46
-    .line 47
-    invoke-virtual {v0, p1}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
-
-    .line 48
-    .line 49
-    .line 50
-    move-result v1
-
-    .line 51
-    if-eqz v1, :cond_1
-
-    .line 52
-    .line 53
-    invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 54
-    .line 55
-    .line 56
+    .line 6
+    .line 7
+    .line 8
     move-result-object v0
 
-    .line 57
-    check-cast v0, Ljava/util/concurrent/Callable;
-
-    .line 58
-    .line 59
-    :try_start_0
-    invoke-interface {v0}, Ljava/util/concurrent/Callable;->call()Ljava/lang/Object;
-
-    .line 60
-    .line 61
-    .line 62
-    move-result-object v0
-
-    .line 63
-    check-cast v0, Lcom/google/android/gms/internal/measurement/y5;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 64
-    .line 65
-    goto :goto_0
-
-    .line 66
-    :catch_0
-    new-instance p2, Ljava/lang/IllegalStateException;
-
-    .line 67
-    .line 68
-    invoke-static {p1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 69
-    .line 70
-    .line 71
-    move-result-object p1
-
-    .line 72
-    const-string v0, "Failed to create API implementation: "
-
-    .line 73
-    .line 74
-    invoke-virtual {v0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 75
-    .line 76
-    .line 77
-    move-result-object p1
-
-    .line 78
-    invoke-direct {p2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 79
-    .line 80
-    .line 81
-    throw p2
-
-    .line 82
-    :cond_1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/y5;->a:Lcom/google/android/gms/internal/measurement/c6;
-
-    .line 83
-    .line 84
-    :goto_0
-    instance-of v1, v0, Lcom/google/android/gms/internal/measurement/m4;
-
-    .line 85
-    .line 86
-    if-eqz v1, :cond_2
-
-    .line 87
-    .line 88
-    move-object v1, v0
-
-    .line 89
-    check-cast v1, Lcom/google/android/gms/internal/measurement/m4;
-
-    .line 90
-    .line 91
-    invoke-virtual {p2, p1, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 92
-    .line 93
-    .line 94
-    :cond_2
+    .line 9
     return-object v0
 .end method

@@ -1,14 +1,14 @@
 .class public final Lq0/d;
 .super Landroid/view/accessibility/AccessibilityNodeProvider;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final a:Lhf/b;
+.field public final a:Lng/a;
 
 
 # direct methods
-.method public constructor <init>(Lhf/b;)V
+.method public constructor <init>(Lng/a;)V
     .locals 0
 
     .line 1
@@ -17,7 +17,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lq0/d;->a:Lhf/b;
+    iput-object p1, p0, Lq0/d;->a:Lng/a;
 
     .line 5
     .line 6
@@ -30,7 +30,7 @@
     .locals 0
 
     .line 1
-    iget-object p1, p0, Lq0/d;->a:Lhf/b;
+    iget-object p1, p0, Lq0/d;->a:Lng/a;
 
     .line 2
     .line 3
@@ -46,11 +46,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lq0/d;->a:Lhf/b;
+    iget-object v0, p0, Lq0/d;->a:Lng/a;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lhf/b;->p(I)Lq0/c;
+    invoke-virtual {v0, p1}, Lng/a;->q(I)Lq0/c;
 
     .line 4
     .line 5
@@ -80,7 +80,7 @@
     .locals 0
 
     .line 1
-    iget-object p1, p0, Lq0/d;->a:Lhf/b;
+    iget-object p1, p0, Lq0/d;->a:Lng/a;
 
     .line 2
     .line 3
@@ -99,11 +99,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lq0/d;->a:Lhf/b;
+    iget-object v0, p0, Lq0/d;->a:Lng/a;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lhf/b;->q(I)Lq0/c;
+    invoke-virtual {v0, p1}, Lng/a;->r(I)Lq0/c;
 
     .line 4
     .line 5
@@ -133,11 +133,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lq0/d;->a:Lhf/b;
+    iget-object v0, p0, Lq0/d;->a:Lng/a;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1, p2, p3}, Lhf/b;->t(IILandroid/os/Bundle;)Z
+    invoke-virtual {v0, p1, p2, p3}, Lng/a;->v(IILandroid/os/Bundle;)Z
 
     .line 4
     .line 5

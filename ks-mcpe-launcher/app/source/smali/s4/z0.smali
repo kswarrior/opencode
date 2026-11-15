@@ -1,734 +1,2659 @@
 .class public final Ls4/z0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic a:I
+.field public A:Ljava/lang/Long;
 
-.field public b:J
+.field public B:J
 
-.field public c:J
+.field public C:Ljava/lang/String;
 
-.field public final d:Ljava/lang/Object;
+.field public D:I
 
-.field public final e:Ljava/io/Serializable;
+.field public E:I
 
-.field public final f:Ljava/lang/Cloneable;
+.field public F:J
+
+.field public G:Ljava/lang/String;
+
+.field public H:[B
+
+.field public I:I
+
+.field public J:J
+
+.field public K:J
+
+.field public L:J
+
+.field public M:J
+
+.field public N:J
+
+.field public O:J
+
+.field public P:J
+
+.field public Q:Ljava/lang/String;
+
+.field public R:Z
+
+.field public S:J
+
+.field public T:J
+
+.field public final a:Ls4/q1;
+
+.field public final b:Ljava/lang/String;
+
+.field public c:Ljava/lang/String;
+
+.field public d:Ljava/lang/String;
+
+.field public e:Ljava/lang/String;
+
+.field public f:Ljava/lang/String;
+
+.field public g:J
+
+.field public h:J
+
+.field public i:J
+
+.field public j:Ljava/lang/String;
+
+.field public k:J
+
+.field public l:Ljava/lang/String;
+
+.field public m:J
+
+.field public n:J
+
+.field public o:Z
+
+.field public p:Z
+
+.field public q:Ljava/lang/Boolean;
+
+.field public r:J
+
+.field public s:Ljava/util/ArrayList;
+
+.field public t:Ljava/lang/String;
+
+.field public u:Z
+
+.field public v:J
+
+.field public w:J
+
+.field public x:I
+
+.field public y:Z
+
+.field public z:Ljava/lang/Long;
 
 
 # direct methods
-.method public constructor <init>(JJLandroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput v0, p0, Ls4/z0;->a:I
+.method public constructor <init>(Ls4/q1;Ljava/lang/String;)V
+    .locals 0
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p6, p0, Ls4/z0;->d:Ljava/lang/Object;
-
-    iput-object p7, p0, Ls4/z0;->e:Ljava/io/Serializable;
-
-    iput-object p5, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
-
-    iput-wide p1, p0, Ls4/z0;->b:J
-
-    iput-wide p3, p0, Ls4/z0;->c:J
-
-    return-void
-.end method
-
-.method public constructor <init>(Lkf/r;)V
-    .locals 2
-
-    const/4 v0, 0x1
-
-    iput v0, p0, Ls4/z0;->a:I
-
-    .line 2
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 3
-    iput-object p1, p0, Ls4/z0;->d:Ljava/lang/Object;
-
-    const/16 p1, 0x14
-
-    .line 4
-    new-array v0, p1, [B
-
-    iput-object v0, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
-
-    const-wide/16 v0, 0x1
-
-    .line 5
-    iput-wide v0, p0, Ls4/z0;->c:J
-
-    .line 6
-    new-array p1, p1, [B
-
-    iput-object p1, p0, Ls4/z0;->e:Ljava/io/Serializable;
-
-    .line 7
-    iput-wide v0, p0, Ls4/z0;->b:J
-
-    return-void
-.end method
-
-.method public static d(Ls4/w;)Ls4/z0;
-    .locals 8
-
-    .line 1
-    new-instance v0, Ls4/z0;
-
     .line 2
     .line 3
-    iget-object v6, p0, Ls4/w;->c:Ljava/lang/String;
-
     .line 4
-    .line 5
-    iget-object v7, p0, Ls4/w;->h:Ljava/lang/String;
+    invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 5
     .line 6
     .line 7
-    iget-object v1, p0, Ls4/w;->d:Ls4/v;
+    invoke-static {p2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
 
     .line 8
     .line 9
-    invoke-virtual {v1}, Ls4/v;->E0()Landroid/os/Bundle;
-
     .line 10
+    iput-object p1, p0, Ls4/z0;->a:Ls4/q1;
+
     .line 11
     .line 12
-    move-result-object v5
+    iput-object p2, p0, Ls4/z0;->b:Ljava/lang/String;
 
     .line 13
-    iget-wide v1, p0, Ls4/w;->q:J
-
     .line 14
+    iget-object p1, p1, Ls4/q1;->x:Ls4/o1;
+
     .line 15
-    iget-wide v3, p0, Ls4/w;->w:J
-
     .line 16
-    .line 17
-    invoke-direct/range {v0 .. v7}, Ls4/z0;-><init>(JJLandroid/os/Bundle;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1}, Ls4/q1;->l(Ls4/y1;)V
 
+    .line 17
     .line 18
     .line 19
+    invoke-virtual {p1}, Ls4/o1;->k()V
+
     .line 20
-    return-object v0
+    .line 21
+    .line 22
+    return-void
 .end method
 
 
 # virtual methods
-.method public a([B)V
+.method public final A(J)V
     .locals 3
 
     .line 1
-    monitor-enter p0
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
 
     .line 2
-    :try_start_0
-    iget-object v0, p0, Ls4/z0;->d:Ljava/lang/Object;
-
     .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
     .line 4
-    check-cast v0, Lkf/r;
-
     .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
     .line 6
-    array-length v1, p1
-
     .line 7
-    const/4 v2, 0x0
-
     .line 8
-    invoke-virtual {v0, p1, v2, v1}, Lkf/g;->update([BII)V
+    invoke-virtual {v0}, Ls4/o1;->k()V
 
     .line 9
     .line 10
     .line 11
-    iget-object p1, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
+    iget-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 12
     .line 13
-    check-cast p1, [B
+    iget-wide v1, p0, Ls4/z0;->v:J
 
     .line 14
     .line 15
-    iget-object v0, p0, Ls4/z0;->d:Ljava/lang/Object;
+    cmp-long v1, v1, p1
 
     .line 16
     .line 17
-    check-cast v0, Lkf/r;
+    if-eqz v1, :cond_0
 
     .line 18
     .line 19
-    array-length v1, p1
+    const/4 v1, 0x1
 
     .line 20
-    invoke-virtual {v0, p1, v2, v1}, Lkf/g;->update([BII)V
-
-    .line 21
-    .line 22
-    .line 23
-    iget-object p1, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
-
-    .line 24
-    .line 25
-    check-cast p1, [B
-
-    .line 26
-    .line 27
-    iget-object v0, p0, Ls4/z0;->d:Ljava/lang/Object;
-
-    .line 28
-    .line 29
-    check-cast v0, Lkf/r;
-
-    .line 30
-    .line 31
-    invoke-virtual {v0, p1, v2}, Lkf/r;->doFinal([BI)I
-
-    .line 32
-    .line 33
-    .line 34
-    monitor-exit p0
-
-    .line 35
-    return-void
-
-    .line 36
-    :catchall_0
-    move-exception p1
-
-    .line 37
-    monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 38
-    throw p1
-.end method
-
-.method public b()V
-    .locals 12
-
-    .line 1
-    iget-object v0, p0, Ls4/z0;->d:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Lkf/r;
-
-    .line 4
-    .line 5
-    iget-wide v1, p0, Ls4/z0;->b:J
-
-    .line 6
-    .line 7
-    const-wide/16 v3, 0x1
-
-    .line 8
-    .line 9
-    add-long v5, v1, v3
-
-    .line 10
-    .line 11
-    iput-wide v5, p0, Ls4/z0;->b:J
-
-    .line 12
-    .line 13
-    const/4 v5, 0x0
-
-    .line 14
-    move v6, v5
-
-    .line 15
-    :goto_0
-    const/16 v7, 0x8
-
-    .line 16
-    .line 17
-    if-eq v6, v7, :cond_0
-
-    .line 18
-    .line 19
-    long-to-int v8, v1
-
-    .line 20
-    int-to-byte v8, v8
-
-    .line 21
-    invoke-virtual {v0, v8}, Lkf/g;->update(B)V
-
-    .line 22
-    .line 23
-    .line 24
-    ushr-long/2addr v1, v7
-
-    .line 25
-    add-int/lit8 v6, v6, 0x1
-
-    .line 26
-    .line 27
     goto :goto_0
 
-    .line 28
+    .line 21
     :cond_0
-    iget-object v1, p0, Ls4/z0;->e:Ljava/io/Serializable;
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->v:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final B(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->w:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->w:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final C(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->B:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->B:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final D()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->C:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final E()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->b:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final F()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->c:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final G(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Ls4/z0;->c:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 20
+    .line 21
+    or-int/2addr v0, v1
+
+    .line 22
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Ls4/z0;->c:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final H()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->d:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final I(Ljava/lang/String;)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    const/4 v1, 0x1
+
+    .line 16
+    if-ne v1, v0, :cond_0
+
+    .line 17
+    .line 18
+    const/4 p1, 0x0
+
+    .line 19
+    :cond_0
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 20
+    .line 21
+    iget-object v2, p0, Ls4/z0;->d:Ljava/lang/String;
+
+    .line 22
+    .line 23
+    invoke-static {v2, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 24
+    .line 25
+    .line 26
+    move-result v2
+
+    .line 27
+    xor-int/2addr v1, v2
+
+    .line 28
+    or-int/2addr v0, v1
+
+    .line 29
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 30
+    .line 31
+    iput-object p1, p0, Ls4/z0;->d:Ljava/lang/String;
+
+    .line 32
+    .line 33
+    return-void
+.end method
+
+.method public final J(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Ls4/z0;->e:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 20
+    .line 21
+    or-int/2addr v0, v1
+
+    .line 22
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Ls4/z0;->e:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final K()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->f:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final L(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Ls4/z0;->f:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 20
+    .line 21
+    or-int/2addr v0, v1
+
+    .line 22
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Ls4/z0;->f:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final M(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->h:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->h:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final N(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->i:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->i:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final O()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->j:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final P(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Ls4/z0;->j:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 20
+    .line 21
+    or-int/2addr v0, v1
+
+    .line 22
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Ls4/z0;->j:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final Q()J
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-wide v0, p0, Ls4/z0;->k:J
+
+    .line 12
+    .line 13
+    return-wide v0
+.end method
+
+.method public final R(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->k:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->k:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final S(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Ls4/z0;->l:Ljava/lang/String;
+
+    .line 14
+    .line 15
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v1
+
+    .line 19
+    xor-int/lit8 v1, v1, 0x1
+
+    .line 20
+    .line 21
+    or-int/2addr v0, v1
+
+    .line 22
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Ls4/z0;->l:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final T(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->m:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->m:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final a(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->n:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->n:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final b()J
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-wide v0, p0, Ls4/z0;->r:J
+
+    .line 12
+    .line 13
+    return-wide v0
+.end method
+
+.method public final c(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->r:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->r:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final d(Z)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-boolean v1, p0, Ls4/z0;->o:Z
+
+    .line 14
+    .line 15
+    if-eq v1, p1, :cond_0
+
+    .line 16
+    .line 17
+    const/4 v1, 0x1
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 20
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 21
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 22
+    .line 23
+    iput-boolean p1, p0, Ls4/z0;->o:Z
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+.method public final e(J)V
+    .locals 5
+
+    .line 1
+    const-wide/16 v0, 0x0
+
+    .line 2
+    .line 3
+    cmp-long v0, p1, v0
+
+    .line 4
+    .line 5
+    const/4 v1, 0x0
+
+    .line 6
+    const/4 v2, 0x1
+
+    .line 7
+    if-ltz v0, :cond_0
+
+    .line 8
+    .line 9
+    move v0, v2
+
+    .line 10
+    goto :goto_0
+
+    .line 11
+    :cond_0
+    move v0, v1
+
+    .line 12
+    :goto_0
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkArgument(Z)V
+
+    .line 13
+    .line 14
+    .line 15
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 16
+    .line 17
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 18
+    .line 19
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 20
+    .line 21
+    .line 22
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 23
+    .line 24
+    .line 25
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 26
+    .line 27
+    iget-wide v3, p0, Ls4/z0;->g:J
+
+    .line 28
+    .line 29
+    cmp-long v3, v3, p1
+
+    .line 30
+    .line 31
+    if-eqz v3, :cond_1
+
+    .line 32
+    .line 33
+    move v1, v2
+
+    .line 34
+    :cond_1
+    or-int/2addr v0, v1
+
+    .line 35
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 36
+    .line 37
+    iput-wide p1, p0, Ls4/z0;->g:J
+
+    .line 38
+    .line 39
+    return-void
+.end method
+
+.method public final f(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->S:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->S:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final g(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->T:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->T:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final h(J)V
+    .locals 9
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v1, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    iget-object v0, v0, Ls4/q1;->w:Ls4/v0;
+
+    .line 6
+    .line 7
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 8
+    .line 9
+    .line 10
+    invoke-virtual {v1}, Ls4/o1;->k()V
+
+    .line 11
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->g:J
+
+    .line 14
+    .line 15
+    add-long/2addr v1, p1
+
+    .line 16
+    const-wide/32 v3, 0x7fffffff
+
+    .line 17
+    .line 18
+    .line 19
+    cmp-long v5, v1, v3
+
+    .line 20
+    .line 21
+    iget-object v6, p0, Ls4/z0;->b:Ljava/lang/String;
+
+    .line 22
+    .line 23
+    if-lez v5, :cond_0
+
+    .line 24
+    .line 25
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 26
+    .line 27
+    .line 28
+    iget-object v1, v0, Ls4/v0;->X:Ls4/t0;
 
     .line 29
     .line 30
-    check-cast v1, [B
+    const-string v2, "Bundle index overflow. appId"
 
     .line 31
     .line 32
-    array-length v2, v1
+    invoke-static {v6}, Ls4/v0;->t(Ljava/lang/String;)Ls4/u0;
 
     .line 33
-    invoke-virtual {v0, v1, v5, v2}, Lkf/g;->update([BII)V
-
     .line 34
     .line 35
+    move-result-object v5
+
     .line 36
-    iget-object v2, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
+    invoke-virtual {v1, v5, v2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 37
     .line 38
-    check-cast v2, [B
-
     .line 39
-    .line 40
-    array-length v6, v2
+    const-wide/16 v1, -0x1
 
+    .line 40
     .line 41
-    invoke-virtual {v0, v2, v5, v6}, Lkf/g;->update([BII)V
+    add-long/2addr v1, p1
 
     .line 42
+    :cond_0
+    iget-wide p1, p0, Ls4/z0;->F:J
+
     .line 43
     .line 44
-    invoke-virtual {v0, v1, v5}, Lkf/r;->doFinal([BI)I
+    const-wide/16 v7, 0x1
 
     .line 45
     .line 46
+    add-long/2addr p1, v7
+
     .line 47
-    iget-wide v8, p0, Ls4/z0;->b:J
+    cmp-long v3, p1, v3
 
     .line 48
     .line 49
-    const-wide/16 v10, 0xa
+    if-lez v3, :cond_1
 
     .line 50
     .line 51
-    rem-long/2addr v8, v10
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 52
-    const-wide/16 v10, 0x0
-
     .line 53
     .line 54
-    cmp-long v1, v8, v10
+    iget-object p1, v0, Ls4/v0;->X:Ls4/t0;
 
     .line 55
     .line 56
-    if-nez v1, :cond_2
+    const-string p2, "Delivery index overflow. appId"
 
     .line 57
     .line 58
-    array-length v1, v2
+    invoke-static {v6}, Ls4/v0;->t(Ljava/lang/String;)Ls4/u0;
 
     .line 59
-    invoke-virtual {v0, v2, v5, v1}, Lkf/g;->update([BII)V
-
     .line 60
     .line 61
+    move-result-object v0
+
     .line 62
-    iget-wide v8, p0, Ls4/z0;->c:J
+    invoke-virtual {p1, v0, p2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 63
     .line 64
-    add-long/2addr v3, v8
-
     .line 65
-    iput-wide v3, p0, Ls4/z0;->c:J
+    const-wide/16 p1, 0x0
 
     .line 66
     .line 67
-    move v1, v5
+    :cond_1
+    const/4 v0, 0x1
 
     .line 68
-    :goto_1
-    if-eq v1, v7, :cond_1
+    iput-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 69
     .line 70
-    long-to-int v3, v8
+    iput-wide v1, p0, Ls4/z0;->g:J
 
     .line 71
-    int-to-byte v3, v3
-
     .line 72
-    invoke-virtual {v0, v3}, Lkf/g;->update(B)V
+    iput-wide p1, p0, Ls4/z0;->F:J
 
     .line 73
     .line 74
-    .line 75
-    ushr-long/2addr v8, v7
-
-    .line 76
-    add-int/lit8 v1, v1, 0x1
-
-    .line 77
-    .line 78
-    goto :goto_1
-
-    .line 79
-    :cond_1
-    invoke-virtual {v0, v2, v5}, Lkf/r;->doFinal([BI)I
-
-    .line 80
-    .line 81
-    .line 82
-    :cond_2
     return-void
 .end method
 
-.method public c([B)V
-    .locals 6
+.method public final i(J)V
+    .locals 3
 
     .line 1
-    array-length v0, p1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
 
     .line 2
-    monitor-enter p0
-
     .line 3
-    :try_start_0
-    invoke-virtual {p0}, Ls4/z0;->b()V
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
 
     .line 4
     .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
     .line 6
-    const/4 v1, 0x0
-
     .line 7
-    move v2, v1
-
     .line 8
-    move v3, v2
+    invoke-virtual {v0}, Ls4/o1;->k()V
 
     .line 9
-    :goto_0
-    if-eq v2, v0, :cond_1
-
     .line 10
     .line 11
-    iget-object v4, p0, Ls4/z0;->e:Ljava/io/Serializable;
+    iget-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 12
     .line 13
-    check-cast v4, [B
+    iget-wide v1, p0, Ls4/z0;->K:J
 
     .line 14
     .line 15
-    array-length v4, v4
+    cmp-long v1, v1, p1
 
     .line 16
-    if-ne v3, v4, :cond_0
-
     .line 17
+    if-eqz v1, :cond_0
+
     .line 18
-    invoke-virtual {p0}, Ls4/z0;->b()V
-
     .line 19
+    const/4 v1, 0x1
+
     .line 20
-    .line 21
-    move v3, v1
-
-    .line 22
-    goto :goto_1
-
-    .line 23
-    :catchall_0
-    move-exception p1
-
-    .line 24
-    goto :goto_2
-
-    .line 25
-    :cond_0
-    :goto_1
-    iget-object v4, p0, Ls4/z0;->e:Ljava/io/Serializable;
-
-    .line 26
-    .line 27
-    check-cast v4, [B
-
-    .line 28
-    .line 29
-    add-int/lit8 v5, v3, 0x1
-
-    .line 30
-    .line 31
-    aget-byte v3, v4, v3
-
-    .line 32
-    .line 33
-    aput-byte v3, p1, v2
-
-    .line 34
-    .line 35
-    add-int/lit8 v2, v2, 0x1
-
-    .line 36
-    .line 37
-    move v3, v5
-
-    .line 38
     goto :goto_0
 
-    .line 39
-    :cond_1
-    monitor-exit p0
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
 
-    .line 40
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->K:J
+
+    .line 26
+    .line 27
     return-void
-
-    .line 41
-    :goto_2
-    monitor-exit p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 42
-    throw p1
 .end method
 
-.method public e()Ls4/w;
-    .locals 8
+.method public final j(J)V
+    .locals 3
 
     .line 1
-    new-instance v0, Ls4/w;
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
 
     .line 2
     .line 3
-    new-instance v2, Ls4/v;
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
 
     .line 4
     .line 5
-    new-instance v1, Landroid/os/Bundle;
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 6
     .line 7
-    iget-object v3, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
-
     .line 8
-    .line 9
-    check-cast v3, Landroid/os/Bundle;
+    invoke-virtual {v0}, Ls4/o1;->k()V
 
+    .line 9
     .line 10
     .line 11
-    invoke-direct {v1, v3}, Landroid/os/Bundle;-><init>(Landroid/os/Bundle;)V
+    iget-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 12
     .line 13
+    iget-wide v1, p0, Ls4/z0;->L:J
+
     .line 14
-    invoke-direct {v2, v1}, Ls4/v;-><init>(Landroid/os/Bundle;)V
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->L:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final k(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->M:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->M:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final l(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->N:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->N:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final m(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->P:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->P:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final n(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->O:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->O:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final o()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    return v0
+.end method
+
+.method public final p(I)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget v1, p0, Ls4/z0;->D:I
+
+    .line 14
+    .line 15
+    if-eq v1, p1, :cond_0
+
+    .line 16
+    .line 17
+    const/4 v1, 0x1
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 20
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 21
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 22
+    .line 23
+    iput p1, p0, Ls4/z0;->D:I
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+.method public final q(I)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget v1, p0, Ls4/z0;->E:I
+
+    .line 14
+    .line 15
+    if-eq v1, p1, :cond_0
+
+    .line 16
+    .line 17
+    const/4 v1, 0x1
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 20
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 21
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 22
+    .line 23
+    iput p1, p0, Ls4/z0;->E:I
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+.method public final r(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->F:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->F:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final s()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->G:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final t()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget v0, p0, Ls4/z0;->I:I
+
+    .line 12
+    .line 13
+    return v0
+.end method
+
+.method public final u(J)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 12
+    .line 13
+    iget-wide v1, p0, Ls4/z0;->J:J
+
+    .line 14
+    .line 15
+    cmp-long v1, v1, p1
+
+    .line 16
+    .line 17
+    if-eqz v1, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
+    .line 20
+    goto :goto_0
+
+    .line 21
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 22
+    :goto_0
+    or-int/2addr v0, v1
+
+    .line 23
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 24
+    .line 25
+    iput-wide p1, p0, Ls4/z0;->J:J
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public final v()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->Q:Ljava/lang/String;
+
+    .line 12
+    .line 13
+    const/4 v1, 0x0
+
+    .line 14
+    invoke-virtual {p0, v1}, Ls4/z0;->w(Ljava/lang/String;)V
 
     .line 15
     .line 16
     .line 17
-    iget-object v1, p0, Ls4/z0;->e:Ljava/io/Serializable;
-
-    .line 18
-    .line 19
-    move-object v3, v1
-
-    .line 20
-    check-cast v3, Ljava/lang/String;
-
-    .line 21
-    .line 22
-    iget-wide v4, p0, Ls4/z0;->b:J
-
-    .line 23
-    .line 24
-    iget-object v1, p0, Ls4/z0;->d:Ljava/lang/Object;
-
-    .line 25
-    .line 26
-    check-cast v1, Ljava/lang/String;
-
-    .line 27
-    .line 28
-    iget-wide v6, p0, Ls4/z0;->c:J
-
-    .line 29
-    .line 30
-    invoke-direct/range {v0 .. v7}, Ls4/w;-><init>(Ljava/lang/String;Ls4/v;Ljava/lang/String;JJ)V
-
-    .line 31
-    .line 32
-    .line 33
     return-object v0
 .end method
 
-.method public toString()Ljava/lang/String;
-    .locals 6
+.method public final w(Ljava/lang/String;)V
+    .locals 2
 
     .line 1
-    iget v0, p0, Ls4/z0;->a:I
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
 
     .line 4
     .line 5
-    .line 6
-    invoke-super {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
+    .line 6
     .line 7
     .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
     .line 9
-    move-result-object v0
-
     .line 10
-    return-object v0
-
     .line 11
-    :pswitch_0
-    iget-object v0, p0, Ls4/z0;->e:Ljava/io/Serializable;
+    iget-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 12
     .line 13
-    check-cast v0, Ljava/lang/String;
+    iget-object v1, p0, Ls4/z0;->Q:Ljava/lang/String;
 
     .line 14
     .line 15
-    iget-object v1, p0, Ls4/z0;->f:Ljava/lang/Cloneable;
+    invoke-static {v1, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 16
     .line 17
-    check-cast v1, Landroid/os/Bundle;
-
     .line 18
+    move-result v1
+
     .line 19
-    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    xor-int/lit8 v1, v1, 0x1
 
     .line 20
     .line 21
+    or-int/2addr v0, v1
+
     .line 22
-    move-result-object v1
+    iput-boolean v0, p0, Ls4/z0;->R:Z
 
     .line 23
-    invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
     .line 24
+    iput-object p1, p0, Ls4/z0;->Q:Ljava/lang/String;
+
     .line 25
     .line 26
-    move-result-object v2
+    return-void
+.end method
+
+.method public final x()Ljava/lang/Boolean;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->q:Ljava/lang/Boolean;
+
+    .line 12
+    .line 13
+    return-object v0
+.end method
+
+.method public final y(Ljava/util/List;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object v0, p0, Ls4/z0;->s:Ljava/util/ArrayList;
+
+    .line 12
+    .line 13
+    invoke-static {v0, p1}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    if-nez v0, :cond_1
+
+    .line 18
+    .line 19
+    const/4 v0, 0x1
+
+    .line 20
+    iput-boolean v0, p0, Ls4/z0;->R:Z
+
+    .line 21
+    .line 22
+    if-eqz p1, :cond_0
+
+    .line 23
+    .line 24
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 25
+    .line 26
+    invoke-direct {v0, p1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
 
     .line 27
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
-
     .line 28
     .line 29
+    goto :goto_0
+
     .line 30
-    move-result v2
+    :cond_0
+    const/4 v0, 0x0
 
     .line 31
-    iget-object v3, p0, Ls4/z0;->d:Ljava/lang/Object;
+    :goto_0
+    iput-object v0, p0, Ls4/z0;->s:Ljava/util/ArrayList;
 
     .line 32
     .line 33
-    check-cast v3, Ljava/lang/String;
+    :cond_1
+    return-void
+.end method
 
-    .line 34
-    .line 35
-    invoke-static {v3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+.method public final z()Z
+    .locals 1
 
-    .line 36
-    .line 37
-    .line 38
-    move-result-object v4
+    .line 1
+    iget-object v0, p0, Ls4/z0;->a:Ls4/q1;
 
-    .line 39
-    invoke-virtual {v4}, Ljava/lang/String;->length()I
+    .line 2
+    .line 3
+    iget-object v0, v0, Ls4/q1;->x:Ls4/o1;
 
-    .line 40
-    .line 41
-    .line 42
-    move-result v4
+    .line 4
+    .line 5
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
-    .line 43
-    invoke-virtual {v1}, Ljava/lang/String;->length()I
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls4/o1;->k()V
 
-    .line 44
-    .line 45
-    .line 46
-    move-result v5
+    .line 9
+    .line 10
+    .line 11
+    iget-boolean v0, p0, Ls4/z0;->u:Z
 
-    .line 47
-    add-int/lit8 v2, v2, 0xd
-
-    .line 48
-    .line 49
-    add-int/2addr v2, v4
-
-    .line 50
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 51
-    .line 52
-    add-int/lit8 v2, v2, 0x8
-
-    .line 53
-    .line 54
-    add-int/2addr v2, v5
-
-    .line 55
-    invoke-direct {v4, v2}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    .line 56
-    .line 57
-    .line 58
-    const-string v2, "origin="
-
-    .line 59
-    .line 60
-    const-string v5, ",name="
-
-    .line 61
-    .line 62
-    invoke-static {v4, v2, v0, v5, v3}, Lv6/u;->f(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 63
-    .line 64
-    .line 65
-    const-string v0, ",params="
-
-    .line 66
-    .line 67
-    invoke-static {v4, v0, v1}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 68
-    .line 69
-    .line 70
-    move-result-object v0
-
-    .line 71
-    return-object v0
-
-    .line 72
-    nop
-
-    .line 73
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 12
+    .line 13
+    return v0
 .end method

@@ -1,62 +1,72 @@
 .class public abstract Lp3/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final a:Lce/b;
+.field public static final a:Lp7/d;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
+    .locals 2
 
     .line 1
-    new-instance v0, Lce/b;
+    new-instance v0, Lp7/d;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    const/16 v1, 0x1b
 
     .line 4
     .line 5
-    .line 6
-    sput-object v0, Lp3/d;->a:Lce/b;
+    invoke-direct {v0, v1}, Lp7/d;-><init>(I)V
 
+    .line 6
     .line 7
     .line 8
-    return-void
-.end method
-
-.method public static a(ILp3/a;)Lkd/d;
-    .locals 3
-
-    .line 1
-    new-instance v0, Lp0/c;
-
-    .line 2
-    .line 3
-    invoke-direct {v0, p0}, Lp0/c;-><init>(I)V
-
-    .line 4
-    .line 5
-    .line 6
-    new-instance p0, Lkd/d;
-
-    .line 7
-    .line 8
-    const/16 v1, 0x16
+    sput-object v0, Lp3/d;->a:Lp7/d;
 
     .line 9
     .line 10
-    sget-object v2, Lp3/d;->a:Lce/b;
+    return-void
+.end method
+
+.method public static a(ILp3/a;)Lkd/e;
+    .locals 6
+
+    .line 1
+    new-instance v2, Lp0/c;
+
+    .line 2
+    .line 3
+    invoke-direct {v2, p0}, Lp0/c;-><init>(I)V
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance v0, Lkd/e;
+
+    .line 7
+    .line 8
+    const/16 v1, 0x10
+
+    .line 9
+    .line 10
+    const/4 v5, 0x0
 
     .line 11
-    .line 12
-    invoke-direct {p0, v0, p1, v2, v1}, Lkd/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+    sget-object v4, Lp3/d;->a:Lp7/d;
 
+    .line 12
     .line 13
+    move-object v3, p1
+
     .line 14
+    invoke-direct/range {v0 .. v5}, Lkd/e;-><init>(ILjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Z)V
+
     .line 15
-    return-object p0
+    .line 16
+    .line 17
+    return-object v0
 .end method

@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter$1;
-.super Landroidx/recyclerview/widget/r;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Landroidx/recyclerview/widget/q;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -17,11 +17,15 @@
 # instance fields
 .field final synthetic val$copy:Ljava/util/List;
 
+.field final synthetic val$nextStates:Ljava/util/Map;
+
 .field final synthetic val$old:Ljava/util/List;
+
+.field final synthetic val$oldStates:Ljava/util/Map;
 
 
 # direct methods
-.method public constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter;Ljava/util/List;Ljava/util/List;)V
+.method public constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter;Ljava/util/List;Ljava/util/List;Ljava/util/Map;Ljava/util/Map;)V
     .locals 0
 
     .line 1
@@ -33,11 +37,19 @@
 
     .line 4
     .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter$1;->val$oldStates:Ljava/util/Map;
 
     .line 6
     .line 7
+    iput-object p5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter$1;->val$nextStates:Ljava/util/Map;
+
     .line 8
+    .line 9
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 10
+    .line 11
+    .line 12
     return-void
 .end method
 
@@ -79,22 +91,46 @@
 
     .line 16
     .line 17
-    iget-object p1, p1, Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;->signature:Ljava/lang/String;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter$1;->val$oldStates:Ljava/util/Map;
 
     .line 18
     .line 19
-    iget-object p2, p2, Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;->signature:Ljava/lang/String;
+    iget-object p1, p1, Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;->id:Ljava/lang/String;
 
     .line 20
     .line 21
-    invoke-virtual {p1, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 22
     .line 23
     .line 24
-    move-result p1
+    move-result-object p1
 
     .line 25
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$NodeAdapter$1;->val$nextStates:Ljava/util/Map;
+
+    .line 26
+    .line 27
+    iget-object p2, p2, Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;->id:Ljava/lang/String;
+
+    .line 28
+    .line 29
+    invoke-interface {v0, p2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object p2
+
+    .line 33
+    invoke-static {p1, p2}, Ljava/util/Objects;->equals(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 34
+    .line 35
+    .line 36
+    move-result p1
+
+    .line 37
     return p1
 .end method
 

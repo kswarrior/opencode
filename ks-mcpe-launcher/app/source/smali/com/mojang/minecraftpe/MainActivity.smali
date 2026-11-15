@@ -1,6 +1,6 @@
 .class public Lcom/mojang/minecraftpe/MainActivity;
 .super Lcom/google/androidgamesdk/GameActivity;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/view/View$OnKeyListener;
@@ -166,6 +166,8 @@
 
 .field platform:Lcom/mojang/minecraftpe/platforms/Platform;
 
+.field private final reportedSurfaceSize:Lcom/mojang/minecraftpe/GameSurfaceSize;
+
 .field private textInputFocusSink:Landroid/view/View;
 
 .field public textInputWidget:Lcom/mojang/minecraftpe/TextInputProxyEditTextbox;
@@ -203,252 +205,265 @@
 
     .line 11
     .line 12
-    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->_fromOnCreate:Z
+    new-instance v2, Lcom/mojang/minecraftpe/GameSurfaceSize;
 
     .line 13
     .line 14
-    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mCursorLocked:Z
+    invoke-direct {v2}, Lcom/mojang/minecraftpe/GameSurfaceSize;-><init>()V
 
     .line 15
     .line 16
+    .line 17
+    iput-object v2, p0, Lcom/mojang/minecraftpe/MainActivity;->reportedSurfaceSize:Lcom/mojang/minecraftpe/GameSurfaceSize;
+
+    .line 18
+    .line 19
+    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->_fromOnCreate:Z
+
+    .line 20
+    .line 21
+    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mCursorLocked:Z
+
+    .line 22
+    .line 23
     iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mIsSoftKeyboardVisible:Z
 
-    .line 17
-    .line 18
+    .line 24
+    .line 25
     const-wide/16 v2, 0x0
 
-    .line 19
-    .line 20
+    .line 26
+    .line 27
     iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mFileDialogCallback:J
 
-    .line 21
-    .line 22
+    .line 28
+    .line 29
     const/high16 v4, 0x3f800000    # 1.0f
 
-    .line 23
-    .line 24
+    .line 30
+    .line 31
     iput v4, p0, Lcom/mojang/minecraftpe/MainActivity;->mVolume:F
 
-    .line 25
-    .line 26
+    .line 32
+    .line 33
     iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mIsRunningInAppCenter:Z
 
-    .line 27
-    .line 28
-    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mPauseTextboxUIUpdates:Z
-
-    .line 29
-    .line 30
-    new-instance v4, Ljava/util/concurrent/atomic/AtomicInteger;
-
-    .line 31
-    .line 32
-    invoke-direct {v4, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
-
-    .line 33
     .line 34
     .line 35
-    iput-object v4, p0, Lcom/mojang/minecraftpe/MainActivity;->mCaretPositionMirror:Ljava/util/concurrent/atomic/AtomicInteger;
+    iput-boolean v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mPauseTextboxUIUpdates:Z
 
     .line 36
     .line 37
-    new-instance v1, Ljava/util/concurrent/atomic/AtomicReference;
+    new-instance v4, Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 38
     .line 39
-    const-string v4, ""
+    invoke-direct {v4, v1}, Ljava/util/concurrent/atomic/AtomicInteger;-><init>(I)V
 
     .line 40
     .line 41
-    invoke-direct {v1, v4}, Ljava/util/concurrent/atomic/AtomicReference;-><init>(Ljava/lang/Object;)V
-
     .line 42
+    iput-object v4, p0, Lcom/mojang/minecraftpe/MainActivity;->mCaretPositionMirror:Ljava/util/concurrent/atomic/AtomicInteger;
+
     .line 43
     .line 44
-    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mCurrentTextMirror:Ljava/util/concurrent/atomic/AtomicReference;
+    new-instance v1, Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 45
     .line 46
-    new-instance v1, Ljava/util/ArrayList;
+    const-string v4, ""
 
     .line 47
     .line 48
-    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v1, v4}, Ljava/util/concurrent/atomic/AtomicReference;-><init>(Ljava/lang/Object;)V
 
     .line 49
     .line 50
     .line 51
-    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mActivityListeners:Ljava/util/List;
+    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mCurrentTextMirror:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 52
     .line 53
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mFilePickerManager:Lcom/mojang/minecraftpe/FilePickerManager;
+    new-instance v1, Ljava/util/ArrayList;
 
     .line 54
     .line 55
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mWorldRecovery:Lcom/mojang/minecraftpe/WorldRecovery;
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     .line 56
     .line 57
+    .line 58
+    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mActivityListeners:Ljava/util/List;
+
+    .line 59
+    .line 60
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mFilePickerManager:Lcom/mojang/minecraftpe/FilePickerManager;
+
+    .line 61
+    .line 62
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mWorldRecovery:Lcom/mojang/minecraftpe/WorldRecovery;
+
+    .line 63
+    .line 64
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mWifiManager:Landroid/net/wifi/WifiManager;
 
-    .line 58
-    .line 59
+    .line 65
+    .line 66
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mMulticastLock:Landroid/net/wifi/WifiManager$MulticastLock;
 
-    .line 60
-    .line 61
+    .line 67
+    .line 68
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mAppExitInfoHelper:Lcom/mojang/minecraftpe/AppExitInfoHelper;
 
-    .line 62
-    .line 63
+    .line 69
+    .line 70
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mBrazeManager:Lcom/mojang/minecraftpe/BrazeManager;
 
-    .line 64
-    .line 65
+    .line 71
+    .line 72
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mService:Landroid/os/Messenger;
 
-    .line 66
-    .line 67
+    .line 73
+    .line 74
     sget-object v1, Lcom/mojang/minecraftpe/MainActivity$MessageConnectionStatus;->NOTSET:Lcom/mojang/minecraftpe/MainActivity$MessageConnectionStatus;
 
-    .line 68
-    .line 69
+    .line 75
+    .line 76
     iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mBound:Lcom/mojang/minecraftpe/MainActivity$MessageConnectionStatus;
 
-    .line 70
-    .line 71
-    new-instance v1, Landroid/os/Messenger;
-
-    .line 72
-    .line 73
-    new-instance v4, Lcom/mojang/minecraftpe/MainActivity$IncomingHandler;
-
-    .line 74
-    .line 75
-    invoke-direct {v4, p0}, Lcom/mojang/minecraftpe/MainActivity$IncomingHandler;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
-
-    .line 76
     .line 77
     .line 78
-    invoke-direct {v1, v4}, Landroid/os/Messenger;-><init>(Landroid/os/Handler;)V
+    new-instance v1, Landroid/os/Messenger;
 
     .line 79
     .line 80
+    new-instance v4, Lcom/mojang/minecraftpe/MainActivity$IncomingHandler;
+
     .line 81
-    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mMessenger:Landroid/os/Messenger;
-
     .line 82
-    .line 83
-    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$1;
+    invoke-direct {v4, p0}, Lcom/mojang/minecraftpe/MainActivity$IncomingHandler;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
 
+    .line 83
     .line 84
     .line 85
-    invoke-direct {v1, p0}, Lcom/mojang/minecraftpe/MainActivity$1;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
+    invoke-direct {v1, v4}, Landroid/os/Messenger;-><init>(Landroid/os/Handler;)V
 
     .line 86
     .line 87
     .line 88
-    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mConnection:Landroid/content/ServiceConnection;
+    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mMessenger:Landroid/os/Messenger;
 
     .line 89
     .line 90
-    const/4 v1, -0x1
+    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$1;
 
     .line 91
-    iput v1, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputStatus:I
-
     .line 92
-    .line 93
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputText:[Ljava/lang/String;
+    invoke-direct {v1, p0}, Lcom/mojang/minecraftpe/MainActivity$1;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
 
+    .line 93
     .line 94
     .line 95
-    new-instance v0, Ljava/util/ArrayList;
+    iput-object v1, p0, Lcom/mojang/minecraftpe/MainActivity;->mConnection:Landroid/content/ServiceConnection;
 
     .line 96
     .line 97
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    const/4 v1, -0x1
 
     .line 98
+    iput v1, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputStatus:I
+
     .line 99
     .line 100
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputValues:Ljava/util/ArrayList;
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputText:[Ljava/lang/String;
 
     .line 101
     .line 102
-    new-instance v0, Landroid/app/ActivityManager$MemoryInfo;
+    new-instance v0, Ljava/util/ArrayList;
 
     .line 103
     .line 104
-    invoke-direct {v0}, Landroid/app/ActivityManager$MemoryInfo;-><init>()V
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
 
     .line 105
     .line 106
     .line 107
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedMemoryInfo:Landroid/app/ActivityManager$MemoryInfo;
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->_userInputValues:Ljava/util/ArrayList;
 
     .line 108
     .line 109
-    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedMemoryInfoUpdateTime:J
+    new-instance v0, Landroid/app/ActivityManager$MemoryInfo;
 
     .line 110
     .line 111
-    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedUsedMemory:J
+    invoke-direct {v0}, Landroid/app/ActivityManager$MemoryInfo;-><init>()V
 
     .line 112
     .line 113
-    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedUsedMemoryUpdateTime:J
-
     .line 114
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedMemoryInfo:Landroid/app/ActivityManager$MemoryInfo;
+
     .line 115
-    new-instance v0, Landroid/os/Debug$MemoryInfo;
-
     .line 116
-    .line 117
-    invoke-direct {v0}, Landroid/os/Debug$MemoryInfo;-><init>()V
+    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedMemoryInfoUpdateTime:J
 
+    .line 117
     .line 118
+    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedUsedMemory:J
+
     .line 119
     .line 120
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedDebugMemoryInfo:Landroid/os/Debug$MemoryInfo;
+    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedUsedMemoryUpdateTime:J
 
     .line 121
     .line 122
-    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedDebugMemoryUpdateTime:J
+    new-instance v0, Landroid/os/Debug$MemoryInfo;
 
     .line 123
     .line 124
-    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCallback:J
+    invoke-direct {v0}, Landroid/os/Debug$MemoryInfo;-><init>()V
 
     .line 125
     .line 126
-    new-instance v0, Landroid/os/Handler;
-
     .line 127
-    .line 128
-    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedDebugMemoryInfo:Landroid/os/Debug$MemoryInfo;
 
+    .line 128
     .line 129
+    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCachedDebugMemoryUpdateTime:J
+
     .line 130
     .line 131
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->fullscreenHandler:Landroid/os/Handler;
+    iput-wide v2, p0, Lcom/mojang/minecraftpe/MainActivity;->mCallback:J
 
     .line 132
     .line 133
-    new-instance v0, Lcom/mojang/minecraftpe/MainActivity$5;
+    new-instance v0, Landroid/os/Handler;
 
     .line 134
     .line 135
-    invoke-direct {v0, p0}, Lcom/mojang/minecraftpe/MainActivity$5;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
+    invoke-direct {v0}, Landroid/os/Handler;-><init>()V
 
     .line 136
     .line 137
     .line 138
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->fullscreenRunnable:Ljava/lang/Runnable;
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->fullscreenHandler:Landroid/os/Handler;
 
     .line 139
     .line 140
+    new-instance v0, Lcom/mojang/minecraftpe/MainActivity$5;
+
+    .line 141
+    .line 142
+    invoke-direct {v0, p0}, Lcom/mojang/minecraftpe/MainActivity$5;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
+
+    .line 143
+    .line 144
+    .line 145
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->fullscreenRunnable:Ljava/lang/Runnable;
+
+    .line 146
+    .line 147
     return-void
 .end method
 
@@ -471,6 +486,18 @@
 
     .line 2
     .line 3
+    return-void
+.end method
+
+.method public static bridge synthetic C(Lcom/mojang/minecraftpe/MainActivity;II)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lcom/mojang/minecraftpe/MainActivity;->reportSurfaceSize(II)V
+
+    .line 2
+    .line 3
+    .line 4
     return-void
 .end method
 
@@ -557,124 +584,119 @@
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    const/4 v1, 0x0
 
     .line 4
+    invoke-direct {v0, p0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;I)V
+
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
-
     .line 7
-    .line 8
-    check-cast v1, Lg/b;
-
-    .line 9
-    .line 10
     const-string v2, ""
 
+    .line 8
+    .line 9
+    invoke-virtual {v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 10
     .line 11
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    if-eqz p3, :cond_0
 
     .line 13
     .line 14
-    if-eqz p3, :cond_0
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setCancelable(Z)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 15
     .line 16
-    const/4 p3, 0x0
-
     .line 17
-    iput-boolean p3, v1, Lg/b;->m:Z
-
-    .line 18
-    .line 19
     :cond_0
     new-instance p3, Lcom/microsoft/xbox/toolkit/d;
 
+    .line 18
+    .line 19
+    const/4 v1, 0x1
+
     .line 20
+    invoke-direct {p3, p0, v1}, Lcom/microsoft/xbox/toolkit/d;-><init>(Ljava/lang/Object;I)V
+
     .line 21
-    const/4 v2, 0x1
-
     .line 22
-    invoke-direct {p3, p0, v2}, Lcom/microsoft/xbox/toolkit/d;-><init>(Ljava/lang/Object;I)V
-
     .line 23
+    invoke-virtual {v0, p3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setOnCancelListener(Landroid/content/DialogInterface$OnCancelListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 24
     .line 25
-    iput-object p3, v1, Lg/b;->n:Lcom/microsoft/xbox/toolkit/d;
-
     .line 26
-    .line 27
     if-eqz p1, :cond_1
 
+    .line 27
     .line 28
-    .line 29
     new-instance p1, Lcom/mojang/minecraftpe/d;
 
+    .line 29
     .line 30
-    .line 31
     const/4 p3, 0x0
 
-    .line 32
+    .line 31
     invoke-direct {p1, p0, p3}, Lcom/mojang/minecraftpe/d;-><init>(Lcom/mojang/minecraftpe/MainActivity;I)V
 
+    .line 32
     .line 33
     .line 34
-    .line 35
     const-string p3, "Ok"
 
+    .line 35
     .line 36
-    .line 37
-    invoke-virtual {v0, p3, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v0, p3, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
+    .line 37
     .line 38
     .line 39
-    .line 40
     :cond_1
     if-eqz p2, :cond_2
 
+    .line 40
     .line 41
-    .line 42
     new-instance p1, Lcom/mojang/minecraftpe/d;
 
+    .line 42
     .line 43
-    .line 44
     const/4 p2, 0x1
 
-    .line 45
+    .line 44
     invoke-direct {p1, p0, p2}, Lcom/mojang/minecraftpe/d;-><init>(Lcom/mojang/minecraftpe/MainActivity;I)V
 
+    .line 45
     .line 46
     .line 47
-    .line 48
     const-string p2, "Cancel"
 
+    .line 48
     .line 49
-    .line 50
-    invoke-virtual {v0, p2, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
+    invoke-virtual {v0, p2, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
+    .line 50
     .line 51
     .line 52
-    .line 53
     :cond_2
-    invoke-virtual {v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->e()Landroidx/appcompat/app/AlertDialog;
+    invoke-virtual {v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->create()Landroidx/appcompat/app/AlertDialog;
 
+    .line 53
     .line 54
     .line 55
-    .line 56
     move-result-object p1
 
-    .line 57
+    .line 56
     iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->mDialog:Landroidx/appcompat/app/AlertDialog;
 
+    .line 57
     .line 58
-    .line 59
     invoke-virtual {p1, p0}, Landroid/app/Dialog;->setOwnerActivity(Landroid/app/Activity;)V
 
+    .line 59
     .line 60
     .line 61
-    .line 62
     return-void
 .end method
 
@@ -1586,7 +1608,7 @@
     move-object v2, p1
 
     .line 16
-    invoke-direct/range {v0 .. v5}, Lcom/mojang/minecraftpe/c;-><init>(Lg/g;Ljava/lang/Object;JI)V
+    invoke-direct/range {v0 .. v5}, Lcom/mojang/minecraftpe/c;-><init>(Lg/i;Ljava/lang/Object;JI)V
 
     .line 17
     .line 18
@@ -1771,7 +1793,7 @@
 
     .line 15
     .line 16
-    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
 
     .line 17
     .line 18
@@ -1779,7 +1801,7 @@
     move-result-object p2
 
     .line 20
-    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
 
     .line 21
     .line 22
@@ -2666,6 +2688,70 @@
     return-void
 .end method
 
+.method private reportSurfaceSize(II)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->reportedSurfaceSize:Lcom/mojang/minecraftpe/GameSurfaceSize;
+
+    .line 2
+    .line 3
+    iget v1, p0, Lcom/mojang/minecraftpe/MainActivity;->keyboardHeight:I
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, p1, p2, v1}, Lcom/mojang/minecraftpe/GameSurfaceSize;->changed(III)Z
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v0
+
+    .line 9
+    if-nez v0, :cond_0
+
+    .line 10
+    .line 11
+    return-void
+
+    .line 12
+    :cond_0
+    :try_start_0
+    invoke-virtual {p0, p1, p2}, Lcom/mojang/minecraftpe/MainActivity;->nativeResize(II)V
+    :try_end_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/LinkageError; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 13
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :catch_0
+    move-exception p1
+
+    .line 17
+    goto :goto_0
+
+    .line 18
+    :catch_1
+    move-exception p1
+
+    .line 19
+    :goto_0
+    iget-object p2, p0, Lcom/mojang/minecraftpe/MainActivity;->reportedSurfaceSize:Lcom/mojang/minecraftpe/GameSurfaceSize;
+
+    .line 20
+    .line 21
+    invoke-virtual {p2}, Lcom/mojang/minecraftpe/GameSurfaceSize;->reset()V
+
+    .line 22
+    .line 23
+    .line 24
+    throw p1
+.end method
+
 .method public static synthetic s(Lcom/mojang/minecraftpe/MainActivity;J)Ljava/lang/Long;
     .locals 0
 
@@ -3250,7 +3336,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -3589,7 +3675,7 @@
     .line 57
     .line 58
     .line 59
-    invoke-virtual {p0, v2}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v2}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 60
     .line 61
@@ -3786,7 +3872,7 @@
     move-result-object v0
 
     .line 5
-    invoke-static {v0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {v0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 6
     .line 7
@@ -4124,7 +4210,7 @@
 
     .line 28
     :cond_1
-    invoke-super {p0, p1}, Lg/g;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
+    invoke-super {p0, p1}, Lg/i;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
 
     .line 29
     .line 30
@@ -4245,7 +4331,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -4606,7 +4692,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -6208,7 +6294,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -6801,7 +6887,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -6832,7 +6918,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -7151,7 +7237,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -7518,7 +7604,7 @@
     .locals 4
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -7620,7 +7706,7 @@
     .locals 2
 
     .line 1
-    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
 
     .line 2
     .line 3
@@ -8215,7 +8301,7 @@
 
     .line 6
     .line 7
-    invoke-static {}, Lgc/a;->t()Z
+    invoke-static {}, Lz2/c;->b()Z
 
     .line 8
     .line 9
@@ -8237,7 +8323,7 @@
     .locals 3
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -8906,7 +8992,7 @@
     .line 2
     .line 3
     .line 4
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v0}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 5
     .line 6
@@ -9279,574 +9365,576 @@
 
     .line 19
     :cond_0
-    new-instance v1, Lm/i2;
+    new-instance v1, La1/a;
 
     .line 20
     .line 21
-    const/4 v2, 0x1
+    const/16 v2, 0x1c
 
     .line 22
-    invoke-direct {v1, p0, v2}, Lm/i2;-><init>(Ljava/lang/Object;I)V
-
     .line 23
+    invoke-direct {v1, p0, v2}, La1/a;-><init>(Ljava/lang/Object;I)V
+
     .line 24
     .line 25
-    :goto_0
-    invoke-virtual {v1}, Lm/i2;->f()V
-
     .line 26
+    :goto_0
+    invoke-virtual {v1}, La1/a;->M()V
+
     .line 27
     .line 28
+    .line 29
     invoke-super {p0, p1}, Lcom/google/androidgamesdk/GameActivity;->onCreate(Landroid/os/Bundle;)V
 
-    .line 29
     .line 30
     .line 31
-    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
-
     .line 32
+    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
+
     .line 33
     .line 34
+    .line 35
     move-result-object p1
 
-    .line 35
+    .line 36
     if-nez p1, :cond_1
 
-    .line 36
     .line 37
+    .line 38
     invoke-virtual {p0}, Landroid/app/Activity;->finish()V
 
-    .line 38
     .line 39
     .line 40
+    .line 41
     return-void
 
-    .line 41
+    .line 42
     :cond_1
     invoke-static {}, Lcom/mojang/minecraftpe/MainActivity;->nativeWaitCrashManagementSetupComplete()V
 
-    .line 42
     .line 43
     .line 44
+    .line 45
     invoke-virtual {p0}, Lcom/mojang/minecraftpe/MainActivity;->initializeAppExitInfoHelper()Lcom/mojang/minecraftpe/AppExitInfoHelper;
 
-    .line 45
     .line 46
     .line 47
+    .line 48
     new-instance p1, Lcom/mojang/minecraftpe/BrazeManager;
 
-    .line 48
     .line 49
+    .line 50
     invoke-direct {p1}, Lcom/mojang/minecraftpe/BrazeManager;-><init>()V
 
-    .line 50
     .line 51
     .line 52
+    .line 53
     iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->mBrazeManager:Lcom/mojang/minecraftpe/BrazeManager;
 
-    .line 53
     .line 54
+    .line 55
     invoke-virtual {p0}, Lcom/mojang/minecraftpe/MainActivity;->isEduMode()Z
 
-    .line 55
     .line 56
     .line 57
+    .line 58
     move-result p1
 
-    .line 58
+    .line 59
     if-eqz p1, :cond_2
 
-    .line 59
     .line 60
+    .line 61
     :try_start_0
     invoke-virtual {p0}, Landroid/content/Context;->getClassLoader()Ljava/lang/ClassLoader;
 
-    .line 61
     .line 62
     .line 63
-    move-result-object p1
-
     .line 64
-    const-string v0, "com.microsoft.applications.events.HttpClient"
+    move-result-object p1
 
     .line 65
+    const-string v0, "com.microsoft.applications.events.HttpClient"
+
     .line 66
+    .line 67
     invoke-virtual {p1, v0}, Ljava/lang/ClassLoader;->loadClass(Ljava/lang/String;)Ljava/lang/Class;
 
-    .line 67
     .line 68
     .line 69
-    move-result-object p1
-
     .line 70
-    const-class v0, Landroid/content/Context;
+    move-result-object p1
 
     .line 71
+    const-class v0, Landroid/content/Context;
+
     .line 72
+    .line 73
     filled-new-array {v0}, [Ljava/lang/Class;
 
-    .line 73
     .line 74
     .line 75
-    move-result-object v0
-
     .line 76
-    invoke-virtual {p1, v0}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    move-result-object v0
 
     .line 77
+    invoke-virtual {p1, v0}, Ljava/lang/Class;->getConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+
     .line 78
     .line 79
+    .line 80
     move-result-object p1
 
-    .line 80
+    .line 81
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 81
     .line 82
     .line 83
-    move-result-object v0
-
     .line 84
-    filled-new-array {v0}, [Ljava/lang/Object;
+    move-result-object v0
 
     .line 85
+    filled-new-array {v0}, [Ljava/lang/Object;
+
     .line 86
     .line 87
+    .line 88
     move-result-object v0
 
-    .line 88
+    .line 89
     invoke-virtual {p1, v0}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 89
     .line 90
     .line 91
+    .line 92
     goto :goto_1
 
-    .line 92
+    .line 93
     :catch_0
     move-exception p1
 
-    .line 93
+    .line 94
     new-instance v0, Ljava/lang/RuntimeException;
 
-    .line 94
     .line 95
+    .line 96
     invoke-direct {v0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    .line 96
     .line 97
     .line 98
+    .line 99
     throw v0
 
-    .line 99
+    .line 100
     :cond_2
     invoke-direct {p0}, Lcom/mojang/minecraftpe/MainActivity;->configureBrazeAtRuntime()V
 
-    .line 100
     .line 101
     .line 102
+    .line 103
     const/16 p1, 0x21
 
-    .line 103
     .line 104
+    .line 105
     if-lt v0, p1, :cond_3
 
-    .line 105
     .line 106
+    .line 107
     iget-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->mBrazeManager:Lcom/mojang/minecraftpe/BrazeManager;
 
-    .line 107
     .line 108
+    .line 109
     invoke-virtual {p1}, Lcom/mojang/minecraftpe/BrazeManager;->requestPushPermission()V
 
-    .line 109
     .line 110
     .line 111
+    .line 112
     :cond_3
     :goto_1
     const/4 p1, 0x1
 
-    .line 112
+    .line 113
     invoke-static {p1}, Lcom/mojang/minecraftpe/platforms/Platform;->createPlatform(Z)Lcom/mojang/minecraftpe/platforms/Platform;
 
-    .line 113
     .line 114
     .line 115
-    move-result-object v0
-
     .line 116
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->platform:Lcom/mojang/minecraftpe/platforms/Platform;
+    move-result-object v0
 
     .line 117
-    .line 118
-    const/4 v0, 0x3
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->platform:Lcom/mojang/minecraftpe/platforms/Platform;
 
+    .line 118
     .line 119
-    invoke-virtual {p0, v0}, Landroid/app/Activity;->setVolumeControlStream(I)V
+    const/4 v0, 0x3
 
     .line 120
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->setVolumeControlStream(I)V
+
     .line 121
     .line 122
+    .line 123
     invoke-static {p0}, Lorg/fmod/FMOD;->init(Landroid/content/Context;)V
 
-    .line 123
     .line 124
     .line 125
+    .line 126
     new-instance v0, Lcom/mojang/minecraftpe/MainActivity$HeadsetConnectionReceiver;
 
-    .line 126
     .line 127
+    .line 128
     const/4 v1, 0x0
 
-    .line 128
+    .line 129
     invoke-direct {v0, p0, v1}, Lcom/mojang/minecraftpe/MainActivity$HeadsetConnectionReceiver;-><init>(Lcom/mojang/minecraftpe/MainActivity;I)V
 
-    .line 129
     .line 130
     .line 131
+    .line 132
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->headsetConnectionReceiver:Lcom/mojang/minecraftpe/MainActivity$HeadsetConnectionReceiver;
 
-    .line 132
     .line 133
+    .line 134
     new-instance v0, Lcom/mojang/minecraftpe/NetworkMonitor;
 
-    .line 134
     .line 135
+    .line 136
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 136
     .line 137
     .line 138
-    move-result-object v1
-
     .line 139
-    invoke-direct {v0, v1}, Lcom/mojang/minecraftpe/NetworkMonitor;-><init>(Landroid/content/Context;)V
+    move-result-object v1
 
     .line 140
+    invoke-direct {v0, v1}, Lcom/mojang/minecraftpe/NetworkMonitor;-><init>(Landroid/content/Context;)V
+
     .line 141
     .line 142
+    .line 143
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mNetworkMonitor:Lcom/mojang/minecraftpe/NetworkMonitor;
 
-    .line 143
     .line 144
+    .line 145
     iget-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->platform:Lcom/mojang/minecraftpe/platforms/Platform;
 
-    .line 145
     .line 146
+    .line 147
     invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    .line 147
     .line 148
     .line 149
-    move-result-object v1
-
     .line 150
-    invoke-virtual {v1}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+    move-result-object v1
 
     .line 151
+    invoke-virtual {v1}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
     .line 152
     .line 153
-    move-result-object v1
-
     .line 154
-    invoke-virtual {v0, v1}, Lcom/mojang/minecraftpe/platforms/Platform;->onAppStart(Landroid/view/View;)V
+    move-result-object v1
 
     .line 155
+    invoke-virtual {v0, v1}, Lcom/mojang/minecraftpe/platforms/Platform;->onAppStart(Landroid/view/View;)V
+
     .line 156
     .line 157
+    .line 158
     invoke-virtual {p0}, Lcom/mojang/minecraftpe/MainActivity;->hasWriteExternalStoragePermission()Z
 
-    .line 158
     .line 159
     .line 160
-    move-result v0
-
     .line 161
-    sput-boolean v0, Lcom/mojang/minecraftpe/MainActivity;->mHasStoragePermission:Z
+    move-result v0
 
     .line 162
+    sput-boolean v0, Lcom/mojang/minecraftpe/MainActivity;->mHasStoragePermission:Z
+
     .line 163
+    .line 164
     sput-boolean p1, Lcom/mojang/minecraftpe/MainActivity;->mHasReadMediaImagesPermission:Z
 
-    .line 164
     .line 165
+    .line 166
     const-string v0, "audio"
 
-    .line 166
     .line 167
+    .line 168
     invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 168
     .line 169
     .line 170
-    move-result-object v0
-
     .line 171
-    check-cast v0, Landroid/media/AudioManager;
+    move-result-object v0
 
     .line 172
+    check-cast v0, Landroid/media/AudioManager;
+
     .line 173
+    .line 174
     invoke-virtual {v0}, Landroid/media/AudioManager;->isWiredHeadsetOn()Z
 
-    .line 174
     .line 175
     .line 176
+    .line 177
     move-result v0
 
-    .line 177
+    .line 178
     invoke-virtual {p0, v0}, Lcom/mojang/minecraftpe/MainActivity;->nativeSetHeadphonesConnected(Z)V
 
-    .line 178
     .line 179
     .line 180
+    .line 181
     const-string v0, "clipboard"
 
-    .line 181
     .line 182
+    .line 183
     invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 183
     .line 184
     .line 185
-    move-result-object v0
-
     .line 186
-    check-cast v0, Landroid/content/ClipboardManager;
+    move-result-object v0
 
     .line 187
+    check-cast v0, Landroid/content/ClipboardManager;
+
     .line 188
+    .line 189
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->clipboardManager:Landroid/content/ClipboardManager;
 
-    .line 189
     .line 190
+    .line 191
     invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
 
-    .line 191
     .line 192
     .line 193
-    move-result-object v0
-
     .line 194
-    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->initialUserLocale:Ljava/util/Locale;
+    move-result-object v0
 
     .line 195
+    iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->initialUserLocale:Ljava/util/Locale;
+
     .line 196
+    .line 197
     new-instance v0, Lcom/mojang/minecraftpe/FilePickerManager;
 
-    .line 197
     .line 198
+    .line 199
     invoke-direct {v0, p0}, Lcom/mojang/minecraftpe/FilePickerManager;-><init>(Lcom/mojang/minecraftpe/FilePickerManagerHandler;)V
 
-    .line 199
     .line 200
     .line 201
+    .line 202
     iput-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->mFilePickerManager:Lcom/mojang/minecraftpe/FilePickerManager;
 
-    .line 202
     .line 203
+    .line 204
     invoke-virtual {p0, v0}, Lcom/mojang/minecraftpe/MainActivity;->addListener(Lcom/mojang/minecraftpe/ActivityListener;)V
 
-    .line 204
     .line 205
     .line 206
+    .line 207
     sput-object p0, Lcom/mojang/minecraftpe/MainActivity;->mInstance:Lcom/mojang/minecraftpe/MainActivity;
 
-    .line 207
     .line 208
+    .line 209
     iput-boolean p1, p0, Lcom/mojang/minecraftpe/MainActivity;->_fromOnCreate:Z
 
-    .line 209
     .line 210
+    .line 211
     const p1, 0x1020002
 
-    .line 211
     .line 212
     .line 213
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
-
     .line 214
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
+
     .line 215
     .line 216
-    move-result-object v0
-
     .line 217
-    invoke-virtual {v0}, Landroid/view/View;->getRootView()Landroid/view/View;
+    move-result-object v0
 
     .line 218
+    invoke-virtual {v0}, Landroid/view/View;->getRootView()Landroid/view/View;
+
     .line 219
     .line 220
-    move-result-object v0
-
     .line 221
-    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$2;
+    move-result-object v0
 
     .line 222
+    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$2;
+
     .line 223
+    .line 224
     invoke-direct {v1, p0}, Lcom/mojang/minecraftpe/MainActivity$2;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
 
-    .line 224
     .line 225
     .line 226
+    .line 227
     invoke-virtual {v0, v1}, Landroid/view/View;->addOnLayoutChangeListener(Landroid/view/View$OnLayoutChangeListener;)V
 
-    .line 227
     .line 228
     .line 229
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
-
     .line 230
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
+
     .line 231
     .line 232
-    move-result-object p1
-
     .line 233
-    invoke-virtual {p1}, Landroid/view/View;->getRootView()Landroid/view/View;
+    move-result-object p1
 
     .line 234
+    invoke-virtual {p1}, Landroid/view/View;->getRootView()Landroid/view/View;
+
     .line 235
     .line 236
-    move-result-object p1
-
     .line 237
-    invoke-virtual {p1}, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+    move-result-object p1
 
     .line 238
+    invoke-virtual {p1}, Landroid/view/View;->getViewTreeObserver()Landroid/view/ViewTreeObserver;
+
     .line 239
     .line 240
-    move-result-object v0
-
     .line 241
-    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$3;
+    move-result-object v0
 
     .line 242
+    new-instance v1, Lcom/mojang/minecraftpe/MainActivity$3;
+
     .line 243
+    .line 244
     invoke-direct {v1, p0, p1}, Lcom/mojang/minecraftpe/MainActivity$3;-><init>(Lcom/mojang/minecraftpe/MainActivity;Landroid/view/View;)V
 
-    .line 244
     .line 245
     .line 246
+    .line 247
     invoke-virtual {v0, v1}, Landroid/view/ViewTreeObserver;->addOnGlobalLayoutListener(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
 
-    .line 247
     .line 248
     .line 249
+    .line 250
     invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
-    .line 250
     .line 251
     .line 252
-    move-result-object p1
-
     .line 253
-    invoke-virtual {p1}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+    move-result-object p1
 
     .line 254
+    invoke-virtual {p1}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
     .line 255
     .line 256
+    .line 257
     move-result-object p1
 
-    .line 257
+    .line 258
     new-instance v0, Lcom/mojang/minecraftpe/MainActivity$4;
 
-    .line 258
     .line 259
+    .line 260
     invoke-direct {v0, p0}, Lcom/mojang/minecraftpe/MainActivity$4;-><init>(Lcom/mojang/minecraftpe/MainActivity;)V
 
-    .line 260
     .line 261
     .line 262
+    .line 263
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnSystemUiVisibilityChangeListener(Landroid/view/View$OnSystemUiVisibilityChangeListener;)V
 
-    .line 263
     .line 264
     .line 265
+    .line 266
     new-instance p1, Lcom/mojang/minecraftpe/WorldRecovery;
 
-    .line 266
     .line 267
+    .line 268
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 268
     .line 269
     .line 270
+    .line 271
     move-result-object v0
 
-    .line 271
+    .line 272
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 272
     .line 273
     .line 274
-    move-result-object v1
-
     .line 275
-    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    move-result-object v1
 
     .line 276
+    invoke-virtual {v1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+
     .line 277
     .line 278
+    .line 279
     move-result-object v1
 
-    .line 279
+    .line 280
     invoke-direct {p1, v0, v1}, Lcom/mojang/minecraftpe/WorldRecovery;-><init>(Landroid/content/Context;Landroid/content/ContentResolver;)V
 
-    .line 280
     .line 281
     .line 282
+    .line 283
     iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->mWorldRecovery:Lcom/mojang/minecraftpe/WorldRecovery;
 
-    .line 283
     .line 284
+    .line 285
     new-instance p1, Landroidx/fragment/app/w0;
 
-    .line 285
     .line 286
-    const/4 v0, 0x3
-
     .line 287
-    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+    const/4 v0, 0x4
 
     .line 288
+    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+
     .line 289
     .line 290
-    new-instance v0, Lc/m;
-
     .line 291
-    .line 292
-    const/4 v1, 0x7
+    new-instance v0, La6/c0;
 
+    .line 292
     .line 293
-    invoke-direct {v0, p0, v1}, Lc/m;-><init>(Ljava/lang/Object;I)V
+    const/16 v1, 0x9
 
     .line 294
     .line 295
-    .line 296
-    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
+    invoke-direct {v0, p0, v1}, La6/c0;-><init>(Ljava/lang/Object;I)V
 
+    .line 296
     .line 297
     .line 298
+    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
+
     .line 299
+    .line 300
+    .line 301
     move-result-object p1
 
-    .line 300
-    iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->pickMedia:Landroidx/activity/result/ActivityResultLauncher;
-
-    .line 301
     .line 302
-    invoke-virtual {p0}, Lcom/mojang/minecraftpe/MainActivity;->createTextWidget()Lcom/mojang/minecraftpe/TextInputProxyEditTextbox;
+    iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->pickMedia:Landroidx/activity/result/ActivityResultLauncher;
 
     .line 303
     .line 304
+    invoke-virtual {p0}, Lcom/mojang/minecraftpe/MainActivity;->createTextWidget()Lcom/mojang/minecraftpe/TextInputProxyEditTextbox;
+
     .line 305
+    .line 306
+    .line 307
     move-result-object p1
 
-    .line 306
+    .line 308
     iput-object p1, p0, Lcom/mojang/minecraftpe/MainActivity;->textInputWidget:Lcom/mojang/minecraftpe/TextInputProxyEditTextbox;
 
-    .line 307
-    .line 308
+    .line 309
+    .line 310
     return-void
 .end method
 
@@ -10415,150 +10503,159 @@
     .line 2
     .line 3
     .line 4
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+    iget-object v0, p0, Lcom/mojang/minecraftpe/MainActivity;->reportedSurfaceSize:Lcom/mojang/minecraftpe/GameSurfaceSize;
 
     .line 5
     .line 6
+    invoke-virtual {v0}, Lcom/mojang/minecraftpe/GameSurfaceSize;->reset()V
+
     .line 7
-    move-result-object v0
-
     .line 8
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
     .line 9
-    .line 10
-    .line 11
-    move-result-object v1
-
-    .line 12
-    const-string v2, "MINECRAFT_FIREBASE_APP_ID"
-
-    .line 13
-    .line 14
-    invoke-virtual {v1, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 15
-    .line 16
-    .line 17
-    move-result-object v1
-
-    .line 18
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v2
-
-    .line 22
-    const-string v3, "MINECRAFT_FIREBASE_API_KEY"
-
-    .line 23
-    .line 24
-    invoke-virtual {v2, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 25
-    .line 26
-    .line 27
-    move-result-object v2
-
-    .line 28
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v3
-
-    .line 32
-    const-string v4, "MINECRAFT_FIREBASE_PROJECT_ID"
-
-    .line 33
-    .line 34
-    invoke-virtual {v3, v4}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 35
-    .line 36
-    .line 37
-    move-result-object v3
-
-    .line 38
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
-    .line 39
-    .line 40
-    .line 41
-    move-result-object v4
-
-    .line 42
-    const-string v5, "MINECRAFT_FIREBASE_SENDER_ID"
-
-    .line 43
-    .line 44
-    invoke-virtual {v4, v5}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 45
-    .line 46
-    .line 47
-    move-result-object v4
-
-    .line 48
-    invoke-static {v0, v1, v2, v3, v4}, Lcom/mojang/minecraftpe/NotificationListenerService;->initialize(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 49
-    .line 50
-    .line 51
     invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 52
-    .line 53
-    .line 54
+    .line 10
+    .line 11
+    .line 12
     move-result-object v0
 
-    .line 55
-    invoke-static {v0}, Lcom/mojang/minecraftpe/NotificationListenerService;->onMinecraftForeground(Landroid/content/Context;)V
+    .line 13
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
 
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    const-string v2, "MINECRAFT_FIREBASE_APP_ID"
+
+    .line 18
+    .line 19
+    invoke-virtual {v1, v2}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v1
+
+    .line 23
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v2
+
+    .line 27
+    const-string v3, "MINECRAFT_FIREBASE_API_KEY"
+
+    .line 28
+    .line 29
+    invoke-virtual {v2, v3}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v2
+
+    .line 33
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v3
+
+    .line 37
+    const-string v4, "MINECRAFT_FIREBASE_PROJECT_ID"
+
+    .line 38
+    .line 39
+    invoke-virtual {v3, v4}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v3
+
+    .line 43
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+
+    .line 44
+    .line 45
+    .line 46
+    move-result-object v4
+
+    .line 47
+    const-string v5, "MINECRAFT_FIREBASE_SENDER_ID"
+
+    .line 48
+    .line 49
+    invoke-virtual {v4, v5}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v4
+
+    .line 53
+    invoke-static {v0, v1, v2, v3, v4}, Lcom/mojang/minecraftpe/NotificationListenerService;->initialize(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 54
+    .line 55
     .line 56
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
     .line 57
     .line 58
-    new-instance v0, Landroid/os/Handler;
-
     .line 59
+    move-result-object v0
+
     .line 60
-    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+    invoke-static {v0}, Lcom/mojang/minecraftpe/NotificationListenerService;->onMinecraftForeground(Landroid/content/Context;)V
 
     .line 61
     .line 62
     .line 63
-    move-result-object v1
+    new-instance v0, Landroid/os/Handler;
 
     .line 64
-    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
-
     .line 65
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
     .line 66
     .line 67
-    new-instance v1, Lcom/mojang/minecraftpe/b;
-
     .line 68
+    move-result-object v1
+
     .line 69
-    const/4 v2, 0x1
+    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
     .line 70
-    invoke-direct {v1, p0, v2}, Lcom/mojang/minecraftpe/b;-><init>(Lcom/mojang/minecraftpe/MainActivity;I)V
-
     .line 71
     .line 72
-    .line 73
-    const-wide/16 v2, 0x7d0
+    new-instance v1, Lcom/mojang/minecraftpe/b;
 
+    .line 73
     .line 74
+    const/4 v2, 0x1
+
     .line 75
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+    invoke-direct {v1, p0, v2}, Lcom/mojang/minecraftpe/b;-><init>(Lcom/mojang/minecraftpe/MainActivity;I)V
 
     .line 76
     .line 77
     .line 78
+    const-wide/16 v2, 0x7d0
+
+    .line 79
+    .line 80
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 81
+    .line 82
+    .line 83
     return-void
 .end method
 
@@ -10884,7 +10981,7 @@
 
     .line 18
     .line 19
-    invoke-static {}, Landroidx/core/view/j1;->t()I
+    invoke-static {}, Landroidx/core/view/g1;->u()I
 
     .line 20
     .line 21
@@ -10936,7 +11033,7 @@
 
     .line 43
     .line 44
-    invoke-static {}, Landroidx/core/view/j1;->t()I
+    invoke-static {}, Landroidx/core/view/g1;->u()I
 
     .line 45
     .line 46
@@ -10966,7 +11063,7 @@
     const/4 p2, 0x0
 
     .line 58
-    invoke-virtual {p1, v5, p2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {p1, v5, p2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -11299,7 +11396,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -11404,23 +11501,26 @@
 .end method
 
 .method public setKeepScreenOnFlag(Z)V
-    .locals 1
+    .locals 2
 
     .line 1
     new-instance v0, Lcom/mojang/minecraftpe/e;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0, p1}, Lcom/mojang/minecraftpe/e;-><init>(Lcom/mojang/minecraftpe/MainActivity;Z)V
+    const/4 v1, 0x0
 
     .line 4
+    invoke-direct {v0, p0, p1, v1}, Lcom/mojang/minecraftpe/e;-><init>(Lg/i;ZI)V
+
     .line 5
     .line 6
+    .line 7
     invoke-virtual {p0, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 7
     .line 8
     .line 9
+    .line 10
     return-void
 .end method
 
@@ -11428,7 +11528,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -11513,7 +11613,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -11550,7 +11650,7 @@
     .locals 1
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -11583,7 +11683,7 @@
     .locals 2
 
     .line 1
-    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 2
     .line 3
@@ -12453,7 +12553,7 @@
     .line 2
     .line 3
     .line 4
-    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v0}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 5
     .line 6

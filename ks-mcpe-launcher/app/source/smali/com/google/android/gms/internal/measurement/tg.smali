@@ -1,139 +1,94 @@
-.class public final Lcom/google/android/gms/internal/measurement/tg;
-.super Lcom/google/android/gms/internal/measurement/ug;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final synthetic Lcom/google/android/gms/internal/measurement/tg;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ljava/util/function/Consumer;
 
 
-# static fields
-.field public static final e:Lcom/google/android/gms/internal/measurement/ug;
-
-.field public static final f:Lcom/google/android/gms/internal/measurement/ug;
+# instance fields
+.field public final synthetic a:I
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 4
+.method public synthetic constructor <init>(I)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/tg;
+    iput p1, p0, Lcom/google/android/gms/internal/measurement/tg;->a:I
 
     .line 2
     .line 3
-    new-instance v1, Landroidx/collection/SimpleArrayMap;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 4
     .line 5
-    const/4 v2, 0x0
-
     .line 6
-    invoke-direct {v1, v2}, Landroidx/collection/SimpleArrayMap;-><init>(I)V
+    return-void
+.end method
+
+
+# virtual methods
+.method public final synthetic accept(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/tg;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 7
     .line 8
     .line 9
-    const/4 v3, 0x0
+    new-instance p1, Ljava/lang/ClassCastException;
 
     .line 10
-    invoke-direct {v0, v3, v1}, Lcom/google/android/gms/internal/measurement/ug;-><init>(Lcom/google/android/gms/internal/measurement/ug;Landroidx/collection/SimpleArrayMap;)V
-
     .line 11
+    invoke-direct {p1}, Ljava/lang/ClassCastException;-><init>()V
+
     .line 12
     .line 13
-    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/ug;->b()Lcom/google/android/gms/internal/measurement/ug;
-
     .line 14
-    .line 15
-    .line 16
-    move-result-object v0
+    throw p1
 
+    .line 15
+    :pswitch_0
+    if-nez p1, :cond_0
+
+    .line 16
     .line 17
-    sput-object v0, Lcom/google/android/gms/internal/measurement/tg;->e:Lcom/google/android/gms/internal/measurement/ug;
+    sget-object p1, Lcom/google/android/gms/internal/measurement/ug;->x:Lcom/google/android/gms/internal/measurement/zb;
 
     .line 18
     .line 19
-    new-instance v1, Lcom/google/android/gms/internal/measurement/tg;
+    const/4 p1, 0x0
 
     .line 20
+    throw p1
+
     .line 21
-    new-instance v3, Landroidx/collection/SimpleArrayMap;
+    :cond_0
+    new-instance p1, Ljava/lang/ClassCastException;
 
     .line 22
     .line 23
-    invoke-direct {v3, v2}, Landroidx/collection/SimpleArrayMap;-><init>(I)V
+    invoke-direct {p1}, Ljava/lang/ClassCastException;-><init>()V
 
     .line 24
     .line 25
     .line 26
-    invoke-direct {v1, v0, v3}, Lcom/google/android/gms/internal/measurement/ug;-><init>(Lcom/google/android/gms/internal/measurement/ug;Landroidx/collection/SimpleArrayMap;)V
+    throw p1
 
     .line 27
-    .line 28
-    .line 29
-    iget-boolean v0, v1, Lcom/google/android/gms/internal/measurement/ug;->c:Z
-
-    .line 30
-    .line 31
-    xor-int/lit8 v0, v0, 0x1
-
-    .line 32
-    .line 33
-    sget-object v2, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
-
-    .line 34
-    .line 35
-    const-string v3, "Can\'t mutate after handing to trace"
-
-    .line 36
-    .line 37
-    invoke-static {v3, v0}, Lcom/bumptech/glide/d;->l(Ljava/lang/String;Z)V
-
-    .line 38
-    .line 39
-    .line 40
-    invoke-virtual {v1}, Lcom/google/android/gms/internal/measurement/ug;->c()Z
-
-    .line 41
-    .line 42
-    .line 43
-    move-result v0
-
-    .line 44
-    xor-int/lit8 v0, v0, 0x1
-
-    .line 45
-    .line 46
-    const-string v3, "Key already present"
-
-    .line 47
-    .line 48
-    invoke-static {v3, v0}, Lcom/bumptech/glide/d;->l(Ljava/lang/String;Z)V
-
-    .line 49
-    .line 50
-    .line 51
-    iget-object v0, v1, Lcom/google/android/gms/internal/measurement/ug;->b:Landroidx/collection/SimpleArrayMap;
-
-    .line 52
-    .line 53
-    sget-object v3, Lcom/google/android/gms/internal/measurement/ug;->d:Lcom/google/android/gms/internal/measurement/sg;
-
-    .line 54
-    .line 55
-    invoke-virtual {v0, v3, v2}, Landroidx/collection/SimpleArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 56
-    .line 57
-    .line 58
-    invoke-virtual {v1}, Lcom/google/android/gms/internal/measurement/ug;->b()Lcom/google/android/gms/internal/measurement/ug;
-
-    .line 59
-    .line 60
-    .line 61
-    move-result-object v0
-
-    .line 62
-    sput-object v0, Lcom/google/android/gms/internal/measurement/tg;->f:Lcom/google/android/gms/internal/measurement/ug;
-
-    .line 63
-    .line 64
-    return-void
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

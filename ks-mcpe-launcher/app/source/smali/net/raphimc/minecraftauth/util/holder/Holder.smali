@@ -1,10 +1,10 @@
 .class public final Lnet/raphimc/minecraftauth/util/holder/Holder;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final a:Lae/c1;
+.field public final a:Lde/g;
 
 .field public final b:Lwa/a;
 
@@ -34,13 +34,13 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 3
-    new-instance v0, Lae/c1;
+    new-instance v0, Lde/g;
 
-    const/4 v1, 0x2
+    const/4 v1, 0x3
 
-    invoke-direct {v0, v1}, Lae/c1;-><init>(I)V
+    invoke-direct {v0, v1}, Lde/g;-><init>(I)V
 
-    iput-object v0, p0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iput-object v0, p0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 4
     iput-object p1, p0, Lnet/raphimc/minecraftauth/util/holder/Holder;->b:Lwa/a;
@@ -232,11 +232,11 @@
 
     .line 7
     .line 8
-    iget-object v2, p0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v2, p0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 9
     .line 10
-    invoke-virtual {v2, v1, p1}, Lae/c1;->c(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-virtual {v2, v1, p1}, Lde/g;->f(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 11
     .line 12

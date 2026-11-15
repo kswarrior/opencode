@@ -1,262 +1,262 @@
-.class public final Lcom/google/android/material/chip/ChipGroup;
+.class public Lcom/google/android/material/chip/ChipGroup;
 .super Ln5/d;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final B1:I
+.field public final C1:Lg5/j;
 
-.field public final C1:Lh5/j;
+.field public final b1:I
 
-.field public final b1:Lag/e;
+.field public q:I
 
 .field public w:I
 
-.field public x:I
+.field public x:Lg5/i;
 
-.field public y:Lh5/i;
+.field public final y:Lfa/d;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;)V
+.method public constructor <init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
     .locals 9
 
     .line 1
-    const v0, 0x7f1404ac
+    const v0, 0x7f1404d5
 
     .line 2
     .line 3
     .line 4
-    const/4 v2, 0x0
-
-    .line 5
     const v4, 0x7f0400d3
 
+    .line 5
     .line 6
     .line 7
-    .line 8
-    invoke-static {p1, v2, v4, v0}, La6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    invoke-static {p1, p2, v4, v0}, Lc6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
 
+    .line 8
     .line 9
     .line 10
-    .line 11
     move-result-object p1
+
+    .line 11
+    invoke-direct {p0, p1, p2, v4}, Landroid/view/ViewGroup;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 12
-    invoke-direct {p0, p1, v2, v4}, Landroid/view/ViewGroup;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
-
     .line 13
     .line 14
-    .line 15
     const/4 v0, 0x0
 
-    .line 16
+    .line 15
     iput-boolean v0, p0, Ln5/d;->h:Z
 
+    .line 16
     .line 17
-    .line 18
     invoke-virtual {p1}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
+    .line 18
     .line 19
     .line 20
-    .line 21
     move-result-object p1
+
+    .line 21
+    sget-object v1, Lw4/a;->m:[I
 
     .line 22
-    sget-object v1, Lw4/a;->l:[I
-
     .line 23
-    .line 24
-    invoke-virtual {p1, v2, v1, v0, v0}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+    invoke-virtual {p1, p2, v1, v0, v0}, Landroid/content/res/Resources$Theme;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
+    .line 24
     .line 25
     .line 26
-    .line 27
     move-result-object p1
 
-    .line 28
+    .line 27
     const/4 v7, 0x1
 
-    .line 29
+    .line 28
     invoke-virtual {p1, v7, v0}, Landroid/content/res/TypedArray;->getDimensionPixelSize(II)I
 
+    .line 29
     .line 30
     .line 31
-    .line 32
     move-result v1
 
-    .line 33
+    .line 32
     iput v1, p0, Ln5/d;->c:I
 
+    .line 33
     .line 34
-    .line 35
     invoke-virtual {p1, v0, v0}, Landroid/content/res/TypedArray;->getDimensionPixelSize(II)I
 
+    .line 35
     .line 36
     .line 37
-    .line 38
     move-result v1
 
-    .line 39
+    .line 38
     iput v1, p0, Ln5/d;->d:I
 
+    .line 39
     .line 40
-    .line 41
     invoke-virtual {p1}, Landroid/content/res/TypedArray;->recycle()V
 
+    .line 41
     .line 42
     .line 43
-    .line 44
-    new-instance p1, Lag/e;
+    new-instance p1, Lfa/d;
 
+    .line 44
     .line 45
+    const/4 v1, 0x1
+
     .line 46
-    const/4 v1, 0x2
+    invoke-direct {p1, v1}, Lfa/d;-><init>(I)V
 
     .line 47
-    invoke-direct {p1, v1}, Lag/e;-><init>(I)V
-
     .line 48
     .line 49
+    iput-object p1, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
+
     .line 50
-    iput-object p1, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
-
     .line 51
+    new-instance v8, Lg5/j;
+
     .line 52
-    new-instance v8, Lh5/j;
-
     .line 53
-    .line 54
-    invoke-direct {v8, p0}, Lh5/j;-><init>(Lcom/google/android/material/chip/ChipGroup;)V
+    invoke-direct {v8, p0}, Lg5/j;-><init>(Lcom/google/android/material/chip/ChipGroup;)V
 
+    .line 54
     .line 55
     .line 56
-    .line 57
-    iput-object v8, p0, Lcom/google/android/material/chip/ChipGroup;->C1:Lh5/j;
+    iput-object v8, p0, Lcom/google/android/material/chip/ChipGroup;->C1:Lg5/j;
 
+    .line 57
     .line 58
-    .line 59
     invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
 
+    .line 59
     .line 60
     .line 61
-    .line 62
     move-result-object v1
 
-    .line 63
-    const v5, 0x7f1404ac
+    .line 62
+    const v5, 0x7f1404d5
 
+    .line 63
     .line 64
     .line 65
-    .line 66
     new-array v6, v0, [I
 
+    .line 66
     .line 67
-    .line 68
-    sget-object v3, Lw4/a;->g:[I
+    sget-object v3, Lw4/a;->h:[I
 
+    .line 68
     .line 69
+    move-object v2, p2
+
     .line 70
-    invoke-static/range {v1 .. v6}, Ln5/n;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
+    invoke-static/range {v1 .. v6}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
 
     .line 71
     .line 72
     .line 73
-    move-result-object v1
+    move-result-object p2
 
     .line 74
-    invoke-virtual {v1, v7, v0}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
+    invoke-virtual {p2, v7, v0}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
 
     .line 75
     .line 76
     .line 77
-    move-result v2
+    move-result v1
 
     .line 78
-    const/4 v3, 0x2
+    const/4 v2, 0x2
 
     .line 79
-    invoke-virtual {v1, v3, v2}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
+    invoke-virtual {p2, v2, v1}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
 
     .line 80
     .line 81
     .line 82
-    move-result v3
+    move-result v2
 
     .line 83
-    invoke-virtual {p0, v3}, Lcom/google/android/material/chip/ChipGroup;->setChipSpacingHorizontal(I)V
+    invoke-virtual {p0, v2}, Lcom/google/android/material/chip/ChipGroup;->setChipSpacingHorizontal(I)V
 
     .line 84
     .line 85
     .line 86
-    const/4 v3, 0x3
+    const/4 v2, 0x3
 
     .line 87
-    invoke-virtual {v1, v3, v2}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
+    invoke-virtual {p2, v2, v1}, Landroid/content/res/TypedArray;->getDimensionPixelOffset(II)I
 
     .line 88
     .line 89
     .line 90
-    move-result v2
+    move-result v1
 
     .line 91
-    invoke-virtual {p0, v2}, Lcom/google/android/material/chip/ChipGroup;->setChipSpacingVertical(I)V
+    invoke-virtual {p0, v1}, Lcom/google/android/material/chip/ChipGroup;->setChipSpacingVertical(I)V
 
     .line 92
     .line 93
     .line 94
-    const/4 v2, 0x5
+    const/4 v1, 0x5
 
     .line 95
-    invoke-virtual {v1, v2, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {p2, v1, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     .line 96
     .line 97
     .line 98
-    move-result v2
+    move-result v1
 
     .line 99
-    invoke-virtual {p0, v2}, Lcom/google/android/material/chip/ChipGroup;->setSingleLine(Z)V
+    invoke-virtual {p0, v1}, Lcom/google/android/material/chip/ChipGroup;->setSingleLine(Z)V
 
     .line 100
     .line 101
     .line 102
-    const/4 v2, 0x6
+    const/4 v1, 0x6
 
     .line 103
-    invoke-virtual {v1, v2, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {p2, v1, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     .line 104
     .line 105
     .line 106
-    move-result v2
+    move-result v1
 
     .line 107
-    invoke-virtual {p0, v2}, Lcom/google/android/material/chip/ChipGroup;->setSingleSelection(Z)V
+    invoke-virtual {p0, v1}, Lcom/google/android/material/chip/ChipGroup;->setSingleSelection(Z)V
 
     .line 108
     .line 109
     .line 110
-    const/4 v2, 0x4
+    const/4 v1, 0x4
 
     .line 111
-    invoke-virtual {v1, v2, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {p2, v1, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     .line 112
     .line 113
     .line 114
-    move-result v2
+    move-result v1
 
     .line 115
-    invoke-virtual {p0, v2}, Lcom/google/android/material/chip/ChipGroup;->setSelectionRequired(Z)V
+    invoke-virtual {p0, v1}, Lcom/google/android/material/chip/ChipGroup;->setSelectionRequired(Z)V
 
     .line 116
     .line 117
     .line 118
-    const/4 v2, -0x1
+    const/4 v1, -0x1
 
     .line 119
-    invoke-virtual {v1, v0, v2}, Landroid/content/res/TypedArray;->getResourceId(II)I
+    invoke-virtual {p2, v0, v1}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     .line 120
     .line 121
@@ -264,29 +264,29 @@
     move-result v0
 
     .line 123
-    iput v0, p0, Lcom/google/android/material/chip/ChipGroup;->B1:I
+    iput v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:I
 
     .line 124
     .line 125
-    invoke-virtual {v1}, Landroid/content/res/TypedArray;->recycle()V
+    invoke-virtual {p2}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 126
     .line 127
     .line 128
-    new-instance v0, Ljd/k;
+    new-instance p2, La1/a;
 
     .line 129
     .line 130
-    const/16 v1, 0x1d
+    const/16 v0, 0x13
 
     .line 131
     .line 132
-    invoke-direct {v0, p0, v1}, Ljd/k;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p2, p0, v0}, La1/a;-><init>(Ljava/lang/Object;I)V
 
     .line 133
     .line 134
     .line 135
-    iput-object v0, p1, Lag/e;->f:Ljava/lang/Object;
+    iput-object p2, p1, Lfa/d;->f:Ljava/lang/Object;
 
     .line 136
     .line 137
@@ -396,7 +396,7 @@
 
     .line 6
     .line 7
-    instance-of p1, p1, Lh5/g;
+    instance-of p1, p1, Lg5/g;
 
     .line 8
     .line 9
@@ -421,7 +421,7 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lh5/g;
+    new-instance v0, Lg5/g;
 
     .line 2
     .line 3
@@ -440,7 +440,7 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lh5/g;
+    new-instance v0, Lg5/g;
 
     invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
 
@@ -456,7 +456,7 @@
     .locals 1
 
     .line 3
-    new-instance v0, Lh5/g;
+    new-instance v0, Lg5/g;
 
     .line 4
     invoke-direct {v0, p1}, Landroid/view/ViewGroup$MarginLayoutParams;-><init>(Landroid/view/ViewGroup$LayoutParams;)V
@@ -468,11 +468,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Lag/e;->f()I
+    invoke-virtual {v0}, Lfa/d;->f()I
 
     .line 4
     .line 5
@@ -495,11 +495,11 @@
     .end annotation
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p0}, Lag/e;->d(Landroid/view/ViewGroup;)Ljava/util/ArrayList;
+    invoke-virtual {v0, p0}, Lfa/d;->d(Landroid/view/ViewGroup;)Ljava/util/ArrayList;
 
     .line 4
     .line 5
@@ -514,7 +514,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
+    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->q:I
 
     .line 2
     .line 3
@@ -525,7 +525,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->x:I
+    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
 
     .line 2
     .line 3
@@ -544,7 +544,7 @@
     const/4 v0, -0x1
 
     .line 5
-    iget v1, p0, Lcom/google/android/material/chip/ChipGroup;->B1:I
+    iget v1, p0, Lcom/google/android/material/chip/ChipGroup;->b1:I
 
     .line 6
     .line 7
@@ -552,11 +552,11 @@
 
     .line 8
     .line 9
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
     .line 10
     .line 11
-    iget-object v2, v0, Lag/e;->d:Ljava/lang/Object;
+    iget-object v2, v0, Lfa/d;->d:Ljava/lang/Object;
 
     .line 12
     .line 13
@@ -592,7 +592,7 @@
 
     .line 28
     :cond_0
-    invoke-virtual {v0, v1}, Lag/e;->b(Ln5/g;)Z
+    invoke-virtual {v0, v1}, Lfa/d;->b(Ln5/g;)Z
 
     .line 29
     .line 30
@@ -604,7 +604,7 @@
 
     .line 33
     .line 34
-    invoke-virtual {v0}, Lag/e;->g()V
+    invoke-virtual {v0}, Lfa/d;->g()V
 
     .line 35
     .line 36
@@ -655,11 +655,11 @@
     move-result v1
 
     .line 18
-    iget-object v2, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v2, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
     .line 19
     .line 20
-    iget-boolean v2, v2, Lag/e;->b:Z
+    iget-boolean v2, v2, Lfa/d;->b:Z
 
     .line 21
     .line 22
@@ -718,7 +718,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
+    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->q:I
 
     .line 2
     .line 3
@@ -726,7 +726,7 @@
 
     .line 4
     .line 5
-    iput p1, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
+    iput p1, p0, Lcom/google/android/material/chip/ChipGroup;->q:I
 
     .line 6
     .line 7
@@ -804,7 +804,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->x:I
+    iget v0, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
 
     .line 2
     .line 3
@@ -812,7 +812,7 @@
 
     .line 4
     .line 5
-    iput p1, p0, Lcom/google/android/material/chip/ChipGroup;->x:I
+    iput p1, p0, Lcom/google/android/material/chip/ChipGroup;->w:I
 
     .line 6
     .line 7
@@ -924,7 +924,7 @@
     throw p1
 .end method
 
-.method public setOnCheckedChangeListener(Lh5/h;)V
+.method public setOnCheckedChangeListener(Lg5/h;)V
     .locals 1
     .annotation runtime Ljava/lang/Deprecated;
     .end annotation
@@ -937,7 +937,7 @@
     const/4 p1, 0x0
 
     .line 4
-    invoke-virtual {p0, p1}, Lcom/google/android/material/chip/ChipGroup;->setOnCheckedStateChangeListener(Lh5/i;)V
+    invoke-virtual {p0, p1}, Lcom/google/android/material/chip/ChipGroup;->setOnCheckedStateChangeListener(Lg5/i;)V
 
     .line 5
     .line 6
@@ -946,20 +946,20 @@
 
     .line 8
     :cond_0
-    new-instance p1, Lx7/c;
+    new-instance p1, La4/e;
 
     .line 9
     .line 10
-    const/16 v0, 0x18
+    const/16 v0, 0x16
 
     .line 11
     .line 12
-    invoke-direct {p1, p0, v0}, Lx7/c;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p0, v0}, La4/e;-><init>(Ljava/lang/Object;I)V
 
     .line 13
     .line 14
     .line 15
-    invoke-virtual {p0, p1}, Lcom/google/android/material/chip/ChipGroup;->setOnCheckedStateChangeListener(Lh5/i;)V
+    invoke-virtual {p0, p1}, Lcom/google/android/material/chip/ChipGroup;->setOnCheckedStateChangeListener(Lg5/i;)V
 
     .line 16
     .line 17
@@ -967,11 +967,11 @@
     return-void
 .end method
 
-.method public setOnCheckedStateChangeListener(Lh5/i;)V
+.method public setOnCheckedStateChangeListener(Lg5/i;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lh5/i;
+    iput-object p1, p0, Lcom/google/android/material/chip/ChipGroup;->x:Lg5/i;
 
     .line 2
     .line 3
@@ -982,11 +982,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->C1:Lh5/j;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->C1:Lg5/j;
 
     .line 2
     .line 3
-    iput-object p1, v0, Lh5/j;->c:Landroid/view/ViewGroup$OnHierarchyChangeListener;
+    iput-object p1, v0, Lg5/j;->c:Landroid/view/ViewGroup$OnHierarchyChangeListener;
 
     .line 4
     .line 5
@@ -997,11 +997,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
     .line 2
     .line 3
-    iput-boolean p1, v0, Lag/e;->c:Z
+    iput-boolean p1, v0, Lfa/d;->c:Z
 
     .line 4
     .line 5
@@ -1099,17 +1099,17 @@
     .locals 4
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
+    iget-object v0, p0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
 
-    iget-boolean v1, v0, Lag/e;->b:Z
+    iget-boolean v1, v0, Lfa/d;->b:Z
 
     if-eq v1, p1, :cond_1
 
     .line 2
-    iput-boolean p1, v0, Lag/e;->b:Z
+    iput-boolean p1, v0, Lfa/d;->b:Z
 
     .line 3
-    iget-object p1, v0, Lag/e;->e:Ljava/lang/Object;
+    iget-object p1, v0, Lfa/d;->e:Ljava/lang/Object;
 
     check-cast p1, Ljava/util/HashSet;
 
@@ -1118,7 +1118,7 @@
     move-result p1
 
     .line 4
-    iget-object v1, v0, Lag/e;->d:Ljava/lang/Object;
+    iget-object v1, v0, Lfa/d;->d:Ljava/lang/Object;
 
     check-cast v1, Ljava/util/HashMap;
 
@@ -1146,7 +1146,7 @@
     const/4 v3, 0x0
 
     .line 5
-    invoke-virtual {v0, v2, v3}, Lag/e;->j(Ln5/g;Z)Z
+    invoke-virtual {v0, v2, v3}, Lfa/d;->j(Ln5/g;Z)Z
 
     goto :goto_0
 
@@ -1154,7 +1154,7 @@
     if-nez p1, :cond_1
 
     .line 6
-    invoke-virtual {v0}, Lag/e;->g()V
+    invoke-virtual {v0}, Lfa/d;->g()V
 
     :cond_1
     return-void

@@ -1,54 +1,25 @@
 .class public final Ljd/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lyc/f;
 
 
 # instance fields
-.field public final a:Lorg/apache/commons/logging/Log;
+.field public final c:Lorg/apache/http/conn/ClientConnectionManager;
 
-.field public final b:Lorg/apache/http/conn/ClientConnectionManager;
+.field public final d:Ljd/d;
 
-.field public final c:Lhf/b;
+.field public volatile h:Ljd/g;
 
-.field public final d:Lt5/f;
+.field public volatile p:Z
 
-.field public final e:Lt5/f;
-
-.field public final f:Ld7/c;
-
-.field public final g:Lrd/e;
-
-.field public final h:Lsc/c;
-
-.field public final i:Lsc/e;
-
-.field public final j:Lsc/a;
-
-.field public final k:Lsc/a;
-
-.field public final l:Lce/b;
-
-.field public final m:Ljd/e;
-
-.field public n:Lzc/e;
-
-.field public final o:Lrc/e;
-
-.field public final p:Lrc/e;
-
-.field public final q:Ljd/k;
-
-.field public r:I
-
-.field public s:I
-
-.field public final t:I
-
-.field public u:Lqc/f;
+.field public volatile q:J
 
 
 # direct methods
-.method public constructor <init>(Lorg/apache/commons/logging/Log;Ld7/c;Lorg/apache/http/conn/ClientConnectionManager;Lt5/f;Lt5/f;Lhf/b;Lrd/f;Lsc/c;Lsc/e;Lsc/a;Lsc/a;Lce/b;Ljd/e;)V
+.method public constructor <init>(Lorg/apache/http/conn/ClientConnectionManager;Ljd/d;Ljd/g;)V
     .locals 1
 
     .line 1
@@ -57,6813 +28,1518 @@
     .line 2
     .line 3
     .line 4
-    const-string v0, "Log"
+    const-string v0, "Connection operator"
 
     .line 5
     .line 6
-    invoke-static {p1, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 7
     .line 8
     .line 9
-    const-string v0, "Request executor"
+    const-string v0, "HTTP pool entry"
 
     .line 10
     .line 11
-    invoke-static {p2, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p3, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 12
     .line 13
     .line 14
-    const-string v0, "Client connection manager"
+    iput-object p1, p0, Ljd/i;->c:Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 15
     .line 16
-    invoke-static {p3, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    iput-object p2, p0, Ljd/i;->d:Ljd/d;
 
     .line 17
     .line 18
+    iput-object p3, p0, Ljd/i;->h:Ljd/g;
+
     .line 19
-    const-string v0, "Connection reuse strategy"
-
     .line 20
-    .line 21
-    invoke-static {p4, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 22
-    .line 23
-    .line 24
-    const-string v0, "Connection keep alive strategy"
-
-    .line 25
-    .line 26
-    invoke-static {p5, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 27
-    .line 28
-    .line 29
-    const-string v0, "Route planner"
-
-    .line 30
-    .line 31
-    invoke-static {p6, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 32
-    .line 33
-    .line 34
-    const-string v0, "HTTP protocol processor"
-
-    .line 35
-    .line 36
-    invoke-static {p7, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 37
-    .line 38
-    .line 39
-    const-string v0, "HTTP request retry handler"
-
-    .line 40
-    .line 41
-    invoke-static {p8, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 42
-    .line 43
-    .line 44
-    const-string v0, "Redirect strategy"
-
-    .line 45
-    .line 46
-    invoke-static {p9, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 47
-    .line 48
-    .line 49
-    const-string v0, "Target authentication strategy"
-
-    .line 50
-    .line 51
-    invoke-static {p10, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 52
-    .line 53
-    .line 54
-    const-string v0, "Proxy authentication strategy"
-
-    .line 55
-    .line 56
-    invoke-static {p11, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 57
-    .line 58
-    .line 59
-    const-string v0, "User token handler"
-
-    .line 60
-    .line 61
-    invoke-static {p12, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 62
-    .line 63
-    .line 64
-    iput-object p1, p0, Ljd/i;->a:Lorg/apache/commons/logging/Log;
-
-    .line 65
-    .line 66
-    new-instance v0, Ljd/k;
-
-    .line 67
-    .line 68
-    invoke-direct {v0, p1}, Ljd/k;-><init>(Lorg/apache/commons/logging/Log;)V
-
-    .line 69
-    .line 70
-    .line 71
-    iput-object v0, p0, Ljd/i;->q:Ljd/k;
-
-    .line 72
-    .line 73
-    iput-object p2, p0, Ljd/i;->f:Ld7/c;
-
-    .line 74
-    .line 75
-    iput-object p3, p0, Ljd/i;->b:Lorg/apache/http/conn/ClientConnectionManager;
-
-    .line 76
-    .line 77
-    iput-object p4, p0, Ljd/i;->d:Lt5/f;
-
-    .line 78
-    .line 79
-    iput-object p5, p0, Ljd/i;->e:Lt5/f;
-
-    .line 80
-    .line 81
-    iput-object p6, p0, Ljd/i;->c:Lhf/b;
-
-    .line 82
-    .line 83
-    iput-object p7, p0, Ljd/i;->g:Lrd/e;
-
-    .line 84
-    .line 85
-    iput-object p8, p0, Ljd/i;->h:Lsc/c;
-
-    .line 86
-    .line 87
-    iput-object p9, p0, Ljd/i;->i:Lsc/e;
-
-    .line 88
-    .line 89
-    iput-object p10, p0, Ljd/i;->j:Lsc/a;
-
-    .line 90
-    .line 91
-    iput-object p11, p0, Ljd/i;->k:Lsc/a;
-
-    .line 92
-    .line 93
-    iput-object p12, p0, Ljd/i;->l:Lce/b;
-
-    .line 94
-    .line 95
-    iput-object p13, p0, Ljd/i;->m:Ljd/e;
-
-    .line 96
-    .line 97
     const/4 p1, 0x0
 
-    .line 98
-    iput-object p1, p0, Ljd/i;->n:Lzc/e;
-
-    .line 99
-    .line 100
-    const/4 p1, 0x0
-
-    .line 101
-    iput p1, p0, Ljd/i;->r:I
-
-    .line 102
-    .line 103
-    iput p1, p0, Ljd/i;->s:I
-
-    .line 104
-    .line 105
-    new-instance p1, Lrc/e;
-
-    .line 106
-    .line 107
-    invoke-direct {p1}, Lrc/e;-><init>()V
-
-    .line 108
-    .line 109
-    .line 110
-    iput-object p1, p0, Ljd/i;->o:Lrc/e;
-
-    .line 111
-    .line 112
-    new-instance p1, Lrc/e;
-
-    .line 113
-    .line 114
-    invoke-direct {p1}, Lrc/e;-><init>()V
-
-    .line 115
-    .line 116
-    .line 117
-    iput-object p1, p0, Ljd/i;->p:Lrc/e;
-
-    .line 118
-    .line 119
-    const-string p1, "http.protocol.max-redirects"
-
-    .line 120
-    .line 121
-    const/16 p2, 0x64
-
-    .line 122
-    .line 123
-    invoke-virtual {p13, p2, p1}, Lqd/a;->c(ILjava/lang/String;)I
-
-    .line 124
-    .line 125
-    .line 126
-    move-result p1
-
-    .line 127
-    iput p1, p0, Ljd/i;->t:I
-
-    .line 128
-    .line 129
-    return-void
-.end method
-
-.method public static e(Ljd/n;Lbd/a;)V
-    .locals 3
-
-    .line 1
-    :try_start_0
-    iget-object v0, p0, Ljd/n;->d:Ljava/net/URI;
-
-    .line 2
-    .line 3
-    invoke-virtual {p1}, Lbd/a;->d()Lqc/f;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v1
-
-    .line 7
-    if-eqz v1, :cond_1
-
-    .line 8
-    .line 9
-    invoke-virtual {p1}, Lbd/a;->c()Z
-
-    .line 10
-    .line 11
-    .line 12
-    move-result v1
-
-    .line 13
-    if-nez v1, :cond_1
-
-    .line 14
-    .line 15
-    invoke-virtual {v0}, Ljava/net/URI;->isAbsolute()Z
-
-    .line 16
-    .line 17
-    .line 18
-    move-result v1
-
-    .line 19
-    if-nez v1, :cond_0
-
-    .line 20
     .line 21
-    iget-object p1, p1, Lbd/a;->c:Lqc/f;
+    iput-boolean p1, p0, Ljd/i;->p:Z
 
     .line 22
     .line 23
-    sget-object v1, Lxc/e;->b:Ljava/util/EnumSet;
+    const-wide p1, 0x7fffffffffffffffL
 
     .line 24
     .line 25
-    invoke-static {v0, p1, v1}, Lxc/e;->e(Ljava/net/URI;Lqc/f;Ljava/util/EnumSet;)Ljava/net/URI;
-
     .line 26
     .line 27
     .line 28
-    move-result-object p1
+    iput-wide p1, p0, Ljd/i;->q:J
 
     .line 29
-    goto :goto_0
-
     .line 30
-    :catch_0
-    move-exception p1
-
-    .line 31
-    goto :goto_1
-
-    .line 32
-    :cond_0
-    invoke-static {v0}, Lxc/e;->d(Ljava/net/URI;)Ljava/net/URI;
-
-    .line 33
-    .line 34
-    .line 35
-    move-result-object p1
-
-    .line 36
-    goto :goto_0
-
-    .line 37
-    :cond_1
-    invoke-virtual {v0}, Ljava/net/URI;->isAbsolute()Z
-
-    .line 38
-    .line 39
-    .line 40
-    move-result p1
-
-    .line 41
-    if-eqz p1, :cond_2
-
-    .line 42
-    .line 43
-    sget-object p1, Lxc/e;->b:Ljava/util/EnumSet;
-
-    .line 44
-    .line 45
-    const/4 v1, 0x0
-
-    .line 46
-    invoke-static {v0, v1, p1}, Lxc/e;->e(Ljava/net/URI;Lqc/f;Ljava/util/EnumSet;)Ljava/net/URI;
-
-    .line 47
-    .line 48
-    .line 49
-    move-result-object p1
-
-    .line 50
-    goto :goto_0
-
-    .line 51
-    :cond_2
-    invoke-static {v0}, Lxc/e;->d(Ljava/net/URI;)Ljava/net/URI;
-
-    .line 52
-    .line 53
-    .line 54
-    move-result-object p1
-
-    .line 55
-    :goto_0
-    iput-object p1, p0, Ljd/n;->d:Ljava/net/URI;
-    :try_end_0
-    .catch Ljava/net/URISyntaxException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 56
-    .line 57
     return-void
-
-    .line 58
-    :goto_1
-    new-instance v0, Lqc/s;
-
-    .line 59
-    .line 60
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    .line 61
-    .line 62
-    const-string v2, "Invalid URI: "
-
-    .line 63
-    .line 64
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 65
-    .line 66
-    .line 67
-    invoke-virtual {p0}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 68
-    .line 69
-    .line 70
-    move-result-object p0
-
-    .line 71
-    check-cast p0, Lorg/apache/http/message/l;
-
-    .line 72
-    .line 73
-    iget-object p0, p0, Lorg/apache/http/message/l;->h:Ljava/lang/String;
-
-    .line 74
-    .line 75
-    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 76
-    .line 77
-    .line 78
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 79
-    .line 80
-    .line 81
-    move-result-object p0
-
-    .line 82
-    invoke-direct {v0, p0, p1}, Lqc/s;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 83
-    .line 84
-    .line 85
-    throw v0
-.end method
-
-.method public static h(Lqc/i;)Ljd/n;
-    .locals 2
-
-    .line 1
-    instance-of v0, p0, Lqc/d;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_1
-
-    .line 4
-    .line 5
-    new-instance v0, Ljd/j;
-
-    .line 6
-    .line 7
-    check-cast p0, Lqc/d;
-
-    .line 8
-    .line 9
-    invoke-direct {v0, p0}, Ljd/n;-><init>(Lqc/i;)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-interface {p0}, Lqc/d;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object p0
-
-    .line 16
-    if-eqz p0, :cond_0
-
-    .line 17
-    .line 18
-    new-instance v1, Lgd/c;
-
-    .line 19
-    .line 20
-    invoke-direct {v1, v0, p0}, Lgd/c;-><init>(Ljd/j;Lorg/apache/http/HttpEntity;)V
-
-    .line 21
-    .line 22
-    .line 23
-    goto :goto_0
-
-    .line 24
-    :cond_0
-    const/4 v1, 0x0
-
-    .line 25
-    :goto_0
-    iput-object v1, v0, Ljd/j;->x:Lgd/c;
-
-    .line 26
-    .line 27
-    const/4 p0, 0x0
-
-    .line 28
-    iput-boolean p0, v0, Ljd/j;->y:Z
-
-    .line 29
-    .line 30
-    return-object v0
-
-    .line 31
-    :cond_1
-    new-instance v0, Ljd/n;
-
-    .line 32
-    .line 33
-    invoke-direct {v0, p0}, Ljd/n;-><init>(Lqc/i;)V
-
-    .line 34
-    .line 35
-    .line 36
-    return-object v0
 .end method
 
 
 # virtual methods
-.method public final a()V
+.method public final C0()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    const/4 v0, 0x0
+
+    .line 6
+    goto :goto_0
+
+    .line 7
+    :cond_0
+    iget-object v0, v0, Ljd/g;->c:Ljd/c;
+
+    .line 8
+    .line 9
+    :goto_0
+    if-eqz v0, :cond_1
+
+    .line 10
+    .line 11
+    invoke-virtual {v0}, Ljd/c;->C0()Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    return v0
+
+    .line 16
+    :cond_1
+    const/4 v0, 0x1
+
+    .line 17
+    return v0
+.end method
+
+.method public final L(J)V
+    .locals 3
+
+    .line 1
+    sget-object v0, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
+    .line 2
+    .line 3
+    const-wide/16 v1, 0x0
+
+    .line 4
+    .line 5
+    cmp-long v1, p1, v1
+
+    .line 6
+    .line 7
+    if-lez v1, :cond_0
+
+    .line 8
+    .line 9
+    invoke-virtual {v0, p1, p2}, Ljava/util/concurrent/TimeUnit;->toMillis(J)J
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-wide p1
+
+    .line 13
+    iput-wide p1, p0, Ljd/i;->q:J
+
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :cond_0
+    const-wide/16 p1, -0x1
+
+    .line 17
+    .line 18
+    iput-wide p1, p0, Ljd/i;->q:J
+
+    .line 19
+    .line 20
+    return-void
+.end method
+
+.method public final T()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    iput-boolean v0, p0, Ljd/i;->p:Z
+
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public final V(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iput-object p1, v0, Ljd/g;->f:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    return-void
+
+    .line 8
+    :cond_0
+    new-instance p1, Ljd/b;
+
+    .line 9
+    .line 10
+    invoke-direct {p1}, Ljava/lang/IllegalStateException;-><init>()V
+
+    .line 11
+    .line 12
+    .line 13
+    throw p1
+.end method
+
+.method public final Z(Lorg/apache/http/HttpResponse;)V
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0, p1}, Ljd/c;->Z(Lorg/apache/http/HttpResponse;)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public final a()Ljd/c;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iget-object v0, v0, Ljd/g;->c:Ljd/c;
+
+    .line 6
+    .line 7
+    return-object v0
+
+    .line 8
+    :cond_0
+    new-instance v0, Ljd/b;
+
+    .line 9
+    .line 10
+    invoke-direct {v0}, Ljava/lang/IllegalStateException;-><init>()V
+
+    .line 11
+    .line 12
+    .line 13
+    throw v0
+.end method
+
+.method public final a0(I)Z
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0, p1}, Ljd/c;->a0(I)Z
+
+    .line 6
+    .line 7
+    .line 8
+    move-result p1
+
+    .line 9
+    return p1
+.end method
+
+.method public final b()V
     .locals 4
 
     .line 1
-    iget-object v0, p0, Ljd/i;->a:Lorg/apache/commons/logging/Log;
+    monitor-enter p0
 
     .line 2
+    :try_start_0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
     .line 3
-    iget-object v1, p0, Ljd/i;->n:Lzc/e;
-
     .line 4
-    .line 5
-    if-eqz v1, :cond_1
+    if-nez v0, :cond_0
 
+    .line 5
     .line 6
+    monitor-exit p0
+
     .line 7
-    const/4 v2, 0x0
+    return-void
 
     .line 8
-    iput-object v2, p0, Ljd/i;->n:Lzc/e;
+    :catchall_0
+    move-exception v0
 
     .line 9
+    goto :goto_0
+
     .line 10
-    :try_start_0
-    invoke-interface {v1}, Lorg/apache/http/conn/ConnectionReleaseTrigger;->g()V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    :cond_0
+    iget-object v0, p0, Ljd/i;->c:Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 11
     .line 12
-    .line 13
-    goto :goto_0
+    iget-wide v1, p0, Ljd/i;->q:J
 
+    .line 13
     .line 14
-    :catch_0
-    move-exception v2
+    sget-object v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
 
     .line 15
-    invoke-interface {v0}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
     .line 16
+    invoke-interface {v0, p0, v1, v2}, Lorg/apache/http/conn/ClientConnectionManager;->v(Lyc/f;J)V
+
     .line 17
     .line 18
-    move-result v3
-
     .line 19
-    if-eqz v3, :cond_0
+    const/4 v0, 0x0
 
     .line 20
-    .line 21
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    iput-object v0, p0, Ljd/i;->h:Ljd/g;
 
+    .line 21
     .line 22
+    monitor-exit p0
+
     .line 23
+    return-void
+
     .line 24
-    move-result-object v3
+    :goto_0
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 25
-    invoke-interface {v0, v3, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
+    throw v0
+.end method
 
-    .line 26
-    .line 27
-    .line 28
-    :cond_0
-    :goto_0
-    :try_start_1
-    invoke-interface {v1}, Lorg/apache/http/conn/ConnectionReleaseTrigger;->b()V
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
+.method public final b0(Lpc/d;)V
+    .locals 1
 
-    .line 29
-    .line 30
-    .line 31
-    goto :goto_1
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
 
-    .line 32
-    :catch_1
-    move-exception v1
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
 
-    .line 33
-    const-string v2, "Error releasing connection"
+    .line 5
+    invoke-virtual {v0, p1}, Ljd/c;->b0(Lpc/d;)V
 
-    .line 34
-    .line 35
-    invoke-interface {v0, v2, v1}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
-
-    .line 36
-    .line 37
-    .line 38
-    :cond_1
-    :goto_1
+    .line 6
+    .line 7
+    .line 8
     return-void
 .end method
 
-.method public final b(Lbd/a;Lrd/c;)V
-    .locals 16
+.method public final close()V
+    .locals 2
 
     .line 1
-    move-object/from16 v0, p0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
 
     .line 2
     .line 3
-    move-object/from16 v1, p1
+    if-eqz v0, :cond_0
 
     .line 4
     .line 5
-    move-object/from16 v7, p2
+    iget-object v1, v0, Ljd/g;->c:Ljd/c;
 
     .line 6
     .line 7
-    iget-boolean v8, v1, Lbd/a;->x:Z
+    iget-object v0, v0, Ljd/g;->h:Lad/e;
 
     .line 8
     .line 9
-    iget-object v9, v1, Lbd/a;->w:Lbd/b;
+    invoke-virtual {v0}, Lad/e;->f()V
 
     .line 10
     .line 11
-    iget-object v10, v1, Lbd/a;->c:Lqc/f;
+    .line 12
+    invoke-virtual {v1}, Ljd/c;->close()V
+
+    .line 13
+    .line 14
+    .line 15
+    :cond_0
+    return-void
+.end method
+
+.method public final f0(Lad/a;Lqd/c;Lid/e;)V
+    .locals 8
+
+    .line 1
+    const-string v0, "HTTP parameters"
+
+    .line 2
+    .line 3
+    invoke-static {p3, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    monitor-enter p0
+
+    .line 7
+    :try_start_0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 8
+    .line 9
+    if-eqz v0, :cond_3
+
+    .line 10
+    .line 11
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
 
     .line 12
     .line 13
-    :cond_0
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
+    iget-object v0, v0, Ljd/g;->h:Lad/e;
 
     .line 14
     .line 15
-    invoke-interface {v2}, Lzc/e;->j()Lbd/a;
+    const-string v1, "Route tracker"
 
     .line 16
     .line 17
+    invoke-static {v0, v1}, Lcom/bumptech/glide/f;->v(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 18
-    move-result-object v2
-
     .line 19
-    const/4 v11, 0x1
-
     .line 20
-    if-eqz v2, :cond_13
+    iget-boolean v0, v0, Lad/e;->h:Z
 
     .line 21
     .line 22
-    iget-boolean v3, v2, Lbd/a;->x:Z
+    const/4 v1, 0x1
 
     .line 23
+    xor-int/2addr v0, v1
+
     .line 24
-    iget-object v4, v2, Lbd/a;->w:Lbd/b;
+    const-string v2, "Connection already open"
 
     .line 25
     .line 26
-    iget-object v5, v2, Lbd/a;->c:Lqc/f;
+    invoke-static {v2, v0}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
 
     .line 27
     .line 28
-    invoke-virtual {v2}, Lbd/a;->b()I
-
     .line 29
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
     .line 30
     .line 31
-    move-result v6
+    iget-object v3, v0, Ljd/g;->c:Ljd/c;
 
     .line 32
-    if-ge v6, v11, :cond_1
-
     .line 33
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
     .line 34
-    goto/16 :goto_4
+    invoke-virtual {p1}, Lad/a;->d()Lpc/f;
 
     .line 35
     .line 36
-    :cond_1
-    invoke-virtual {v1}, Lbd/a;->b()I
-
     .line 37
-    .line 38
-    .line 39
-    move-result v6
+    move-result-object v0
 
+    .line 38
+    iget-object v2, p0, Ljd/i;->d:Ljd/d;
+
+    .line 39
     .line 40
-    const/4 v13, -0x1
+    if-eqz v0, :cond_0
 
     .line 41
-    if-le v6, v11, :cond_f
-
     .line 42
+    move-object v4, v0
+
     .line 43
-    invoke-virtual {v2}, Lbd/a;->b()I
+    goto :goto_0
 
     .line 44
+    :cond_0
+    iget-object v4, p1, Lad/a;->c:Lpc/f;
+
     .line 45
     .line 46
-    move-result v6
+    :goto_0
+    iget-object v5, p1, Lad/a;->d:Ljava/net/InetAddress;
 
     .line 47
-    if-gt v6, v11, :cond_2
-
     .line 48
+    move-object v6, p2
+
     .line 49
-    goto :goto_2
+    move-object v7, p3
 
     .line 50
-    :cond_2
-    invoke-virtual {v10, v5}, Lqc/f;->equals(Ljava/lang/Object;)Z
+    invoke-virtual/range {v2 .. v7}, Ljd/d;->B(Ljd/c;Lpc/f;Ljava/net/InetAddress;Lqd/c;Lorg/apache/http/params/HttpParams;)V
 
     .line 51
     .line 52
     .line 53
-    move-result v5
+    monitor-enter p0
 
     .line 54
-    if-nez v5, :cond_3
+    :try_start_1
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
 
     .line 55
     .line 56
-    goto :goto_2
+    if-eqz p1, :cond_2
 
     .line 57
-    :cond_3
-    invoke-virtual {v1}, Lbd/a;->b()I
-
     .line 58
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
+
     .line 59
     .line 60
-    move-result v5
+    iget-object p1, p1, Ljd/g;->h:Lad/e;
 
     .line 61
-    invoke-virtual {v2}, Lbd/a;->b()I
-
     .line 62
+    if-nez v0, :cond_1
+
     .line 63
     .line 64
-    move-result v6
+    iget-boolean p2, v3, Ljd/c;->E1:Z
 
     .line 65
-    if-ge v5, v6, :cond_4
-
     .line 66
-    .line 67
-    goto :goto_2
+    iget-boolean p3, p1, Lad/e;->h:Z
 
+    .line 67
     .line 68
-    :cond_4
-    const/4 v14, 0x0
+    xor-int/2addr p3, v1
 
     .line 69
-    :goto_0
-    add-int/lit8 v15, v6, -0x1
+    const-string v0, "Already connected"
 
     .line 70
     .line 71
-    if-ge v14, v15, :cond_6
+    invoke-static {v0, p3}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
 
     .line 72
     .line 73
-    invoke-virtual {v1, v14}, Lbd/a;->f(I)Lqc/f;
-
     .line 74
+    iput-boolean v1, p1, Lad/e;->h:Z
+
     .line 75
     .line 76
-    move-result-object v15
+    iput-boolean p2, p1, Lad/e;->x:Z
 
     .line 77
-    invoke-virtual {v2, v14}, Lbd/a;->f(I)Lqc/f;
-
     .line 78
-    .line 79
-    .line 80
-    move-result-object v12
-
-    .line 81
-    invoke-virtual {v15, v12}, Lqc/f;->equals(Ljava/lang/Object;)Z
-
-    .line 82
-    .line 83
-    .line 84
-    move-result v12
-
-    .line 85
-    if-nez v12, :cond_5
-
-    .line 86
-    .line 87
-    goto :goto_2
-
-    .line 88
-    :cond_5
-    add-int/lit8 v14, v14, 0x1
-
-    .line 89
-    .line 90
-    goto :goto_0
-
-    .line 91
-    :cond_6
-    if-le v5, v6, :cond_7
-
-    .line 92
-    .line 93
-    const/4 v12, 0x4
-
-    .line 94
-    goto :goto_5
-
-    .line 95
-    :cond_7
-    invoke-virtual {v2}, Lbd/a;->c()Z
-
-    .line 96
-    .line 97
-    .line 98
-    move-result v5
-
-    .line 99
-    if-eqz v5, :cond_8
-
-    .line 100
-    .line 101
-    invoke-virtual {v1}, Lbd/a;->c()Z
-
-    .line 102
-    .line 103
-    .line 104
-    move-result v5
-
-    .line 105
-    if-eqz v5, :cond_d
-
-    .line 106
-    .line 107
-    :cond_8
-    sget-object v5, Lbd/b;->d:Lbd/b;
-
-    .line 108
-    .line 109
-    if-ne v4, v5, :cond_9
-
-    .line 110
-    .line 111
-    if-ne v9, v5, :cond_d
-
-    .line 112
-    .line 113
-    :cond_9
-    invoke-virtual {v1}, Lbd/a;->c()Z
-
-    .line 114
-    .line 115
-    .line 116
-    move-result v6
-
-    .line 117
-    if-eqz v6, :cond_a
-
-    .line 118
-    .line 119
-    invoke-virtual {v2}, Lbd/a;->c()Z
-
-    .line 120
-    .line 121
-    .line 122
-    move-result v6
-
-    .line 123
-    if-nez v6, :cond_a
-
-    .line 124
-    .line 125
-    const/4 v12, 0x3
-
-    .line 126
-    goto :goto_5
-
-    .line 127
-    :cond_a
-    if-ne v9, v5, :cond_c
-
-    .line 128
-    .line 129
-    if-ne v4, v5, :cond_b
-
-    .line 130
-    .line 131
     goto :goto_1
 
-    .line 132
-    :cond_b
-    const/4 v12, 0x5
+    .line 79
+    :catchall_0
+    move-exception v0
 
-    .line 133
-    goto :goto_5
+    .line 80
+    move-object p1, v0
 
-    .line 134
-    :cond_c
-    :goto_1
-    if-eq v8, v3, :cond_e
-
-    .line 135
-    .line 136
-    :cond_d
-    :goto_2
-    move v12, v13
-
-    .line 137
-    goto :goto_5
-
-    .line 138
-    :cond_e
-    const/4 v12, 0x0
-
-    .line 139
-    goto :goto_5
-
-    .line 140
-    :cond_f
-    invoke-virtual {v2}, Lbd/a;->b()I
-
-    .line 141
-    .line 142
-    .line 143
-    move-result v4
-
-    .line 144
-    if-le v4, v11, :cond_10
-
-    .line 145
-    .line 146
-    goto :goto_3
-
-    .line 147
-    :cond_10
-    invoke-virtual {v10, v5}, Lqc/f;->equals(Ljava/lang/Object;)Z
-
-    .line 148
-    .line 149
-    .line 150
-    move-result v4
-
-    .line 151
-    if-nez v4, :cond_11
-
-    .line 152
-    .line 153
-    goto :goto_3
-
-    .line 154
-    :cond_11
-    if-eq v8, v3, :cond_12
-
-    .line 155
-    .line 156
-    goto :goto_3
-
-    .line 157
-    :cond_12
-    iget-object v3, v1, Lbd/a;->d:Ljava/net/InetAddress;
-
-    .line 158
-    .line 159
-    if-eqz v3, :cond_e
-
-    .line 160
-    .line 161
-    iget-object v4, v2, Lbd/a;->d:Ljava/net/InetAddress;
-
-    .line 162
-    .line 163
-    invoke-virtual {v3, v4}, Ljava/net/InetAddress;->equals(Ljava/lang/Object;)Z
-
-    .line 164
-    .line 165
-    .line 166
-    move-result v3
-
-    .line 167
-    if-nez v3, :cond_e
-
-    .line 168
-    .line 169
-    :goto_3
+    .line 81
     goto :goto_2
 
-    .line 170
-    :cond_13
-    :goto_4
-    invoke-virtual {v1}, Lbd/a;->b()I
-
-    .line 171
-    .line 172
-    .line 173
-    move-result v3
-
-    .line 174
-    if-le v3, v11, :cond_14
-
-    .line 175
-    .line 176
-    const/4 v12, 0x2
-
-    .line 177
-    goto :goto_5
-
-    .line 178
-    :cond_14
-    move v12, v11
-
-    .line 179
-    :goto_5
-    iget-object v13, v0, Ljd/i;->m:Ljd/e;
-
-    .line 180
-    .line 181
-    packed-switch v12, :pswitch_data_0
-
-    .line 182
-    .line 183
-    .line 184
-    new-instance v1, Ljava/lang/IllegalStateException;
-
-    .line 185
-    .line 186
-    const-string v2, "Unknown step indicator "
-
-    .line 187
-    .line 188
-    const-string v3, " from RouteDirector."
-
-    .line 189
-    .line 190
-    invoke-static {v12, v2, v3}, Ls1/a;->k(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 191
-    .line 192
-    .line 193
-    move-result-object v2
-
-    .line 194
-    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 195
-    .line 196
-    .line 197
-    throw v1
-
-    .line 198
-    :pswitch_0
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 199
-    .line 200
-    invoke-interface {v2, v7, v13}, Lzc/e;->s(Lrd/c;Ljd/e;)V
-
-    .line 201
-    .line 202
-    .line 203
-    goto/16 :goto_7
-
-    .line 204
-    .line 205
-    :pswitch_1
-    invoke-virtual {v2}, Lbd/a;->b()I
-
-    .line 206
-    .line 207
-    .line 208
-    new-instance v1, Lqc/e;
-
-    .line 209
-    .line 210
-    const-string v2, "Proxy chains are not supported."
-
-    .line 211
-    .line 212
-    invoke-static {v2}, Lqc/e;->a(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 213
-    .line 214
-    .line 215
-    move-result-object v2
-
-    .line 216
-    invoke-direct {v1, v2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
-
-    .line 217
-    .line 218
-    .line 219
-    throw v1
-
-    .line 220
-    :pswitch_2
-    invoke-virtual {v1}, Lbd/a;->d()Lqc/f;
-
-    .line 221
-    .line 222
-    .line 223
-    move-result-object v3
-
-    .line 224
-    :cond_15
-    :goto_6
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 225
-    .line 226
-    invoke-interface {v2}, Lqc/c;->isOpen()Z
-
-    .line 227
-    .line 228
-    .line 229
-    move-result v2
-
-    .line 230
-    if-nez v2, :cond_16
-
-    .line 231
-    .line 232
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 233
-    .line 234
-    invoke-interface {v2, v1, v7, v13}, Lzc/e;->Y(Lbd/a;Lrd/c;Ljd/e;)V
-
-    .line 235
-    .line 236
-    .line 237
-    :cond_16
-    iget-object v2, v10, Lqc/f;->c:Ljava/lang/String;
-
-    .line 238
-    .line 239
-    iget v4, v10, Lqc/f;->h:I
-
-    .line 240
-    .line 241
-    if-gez v4, :cond_17
-
-    .line 242
-    .line 243
-    iget-object v4, v0, Ljd/i;->b:Lorg/apache/http/conn/ClientConnectionManager;
-
-    .line 244
-    .line 245
-    invoke-interface {v4}, Lorg/apache/http/conn/ClientConnectionManager;->a()Lcd/g;
-
-    .line 246
-    .line 247
-    .line 248
-    move-result-object v4
-
-    .line 249
-    iget-object v5, v10, Lqc/f;->q:Ljava/lang/String;
-
-    .line 250
-    .line 251
-    invoke-virtual {v4, v5}, Lcd/g;->a(Ljava/lang/String;)Lcd/c;
-
-    .line 252
-    .line 253
-    .line 254
-    move-result-object v4
-
-    .line 255
-    iget v4, v4, Lcd/c;->c:I
-
-    .line 256
-    .line 257
-    :cond_17
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    .line 258
-    .line 259
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
-
-    .line 260
-    .line 261
-    .line 262
-    move-result v6
-
-    .line 263
-    add-int/lit8 v6, v6, 0x6
-
-    .line 264
-    .line 265
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    .line 266
-    .line 267
-    .line 268
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 269
-    .line 270
-    .line 271
-    const/16 v2, 0x3a
-
-    .line 272
-    .line 273
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    .line 274
-    .line 275
-    .line 276
-    invoke-static {v4}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
-
-    .line 277
-    .line 278
-    .line 279
-    move-result-object v2
-
-    .line 280
-    invoke-virtual {v5, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 281
-    .line 282
-    .line 283
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 284
-    .line 285
-    .line 286
-    move-result-object v2
-
-    .line 287
-    invoke-static {v13}, Lgc/h;->N(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/ProtocolVersion;
-
-    .line 288
-    .line 289
-    .line 290
-    move-result-object v4
-
-    .line 291
-    new-instance v5, Lorg/apache/http/message/f;
-
-    .line 292
-    .line 293
-    invoke-direct {v5, v2, v4}, Lorg/apache/http/message/f;-><init>(Ljava/lang/String;Lorg/apache/http/ProtocolVersion;)V
-
-    .line 294
-    .line 295
-    .line 296
-    invoke-interface {v5, v13}, Lqc/h;->setParams(Lorg/apache/http/params/HttpParams;)V
-
-    .line 297
-    .line 298
-    .line 299
-    const-string v2, "http.target_host"
-
-    .line 300
-    .line 301
-    invoke-interface {v7, v2, v10}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 302
-    .line 303
-    .line 304
-    const-string v2, "http.route"
-
-    .line 305
-    .line 306
-    invoke-interface {v7, v2, v1}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 307
-    .line 308
-    .line 309
-    const-string v2, "http.proxy_host"
-
-    .line 310
-    .line 311
-    invoke-interface {v7, v2, v3}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 312
-    .line 313
-    .line 314
-    const-string v2, "http.connection"
-
-    .line 315
-    .line 316
-    iget-object v4, v0, Ljd/i;->n:Lzc/e;
-
-    .line 317
-    .line 318
-    invoke-interface {v7, v2, v4}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 319
-    .line 320
-    .line 321
-    const-string v2, "http.request"
-
-    .line 322
-    .line 323
-    invoke-interface {v7, v2, v5}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 324
-    .line 325
-    .line 326
-    iget-object v4, v0, Ljd/i;->f:Ld7/c;
-
-    .line 327
-    .line 328
-    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 329
-    .line 330
-    .line 331
-    const-string v6, "HTTP processor"
-
-    .line 332
-    .line 333
-    iget-object v14, v0, Ljd/i;->g:Lrd/e;
-
-    .line 334
-    .line 335
-    invoke-static {v14, v6}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 336
-    .line 337
-    .line 338
-    invoke-interface {v7, v2, v5}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 339
-    .line 340
-    .line 341
-    invoke-interface {v14, v5, v7}, Lqc/j;->b(Lqc/i;Lrd/c;)V
-
-    .line 342
-    .line 343
-    .line 344
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 345
-    .line 346
-    invoke-virtual {v4, v5, v2, v7}, Ld7/c;->f(Lqc/i;Lqc/b;Lrd/c;)Lorg/apache/http/HttpResponse;
-
-    .line 347
-    .line 348
-    .line 349
-    move-result-object v4
-
-    .line 350
-    invoke-interface {v4, v13}, Lqc/h;->setParams(Lorg/apache/http/params/HttpParams;)V
-
-    .line 351
-    .line 352
-    .line 353
-    const-string v2, "http.response"
-
-    .line 354
-    .line 355
-    invoke-interface {v7, v2, v4}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 356
-    .line 357
-    .line 358
-    invoke-interface {v14, v4, v7}, Lqc/l;->a(Lorg/apache/http/HttpResponse;Lrd/c;)V
-
-    .line 359
-    .line 360
-    .line 361
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 362
-    .line 363
-    .line 364
-    move-result-object v2
-
-    .line 365
-    iget v2, v2, Lorg/apache/http/message/m;->d:I
-
-    .line 366
-    .line 367
-    const/16 v5, 0xc8
-
-    .line 368
-    .line 369
-    if-lt v2, v5, :cond_1d
-
-    .line 370
-    .line 371
-    const-string v2, "http.protocol.handle-authentication"
-
-    .line 372
-    .line 373
-    invoke-virtual {v13, v2, v11}, Lqd/a;->d(Ljava/lang/String;Z)Z
-
-    .line 374
-    .line 375
-    .line 376
-    move-result v2
-
-    .line 377
-    if-eqz v2, :cond_15
-
-    .line 378
-    .line 379
-    iget-object v5, v0, Ljd/i;->k:Lsc/a;
-
-    .line 380
-    .line 381
-    iget-object v6, v0, Ljd/i;->p:Lrc/e;
-
-    .line 382
-    .line 383
-    iget-object v2, v0, Ljd/i;->q:Ljd/k;
-
-    .line 384
-    .line 385
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->N(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
-
-    .line 386
-    .line 387
-    .line 388
-    move-result v2
-
-    .line 389
-    iget-object v14, v0, Ljd/i;->a:Lorg/apache/commons/logging/Log;
-
-    .line 390
-    .line 391
-    if-eqz v2, :cond_19
-
-    .line 392
-    .line 393
-    iget-object v5, v0, Ljd/i;->k:Lsc/a;
-
-    .line 394
-    .line 395
-    iget-object v6, v0, Ljd/i;->p:Lrc/e;
-
-    .line 396
-    .line 397
-    iget-object v2, v0, Ljd/i;->q:Ljd/k;
-
-    .line 398
-    .line 399
-    move-object/from16 v7, p2
-
-    .line 400
-    .line 401
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->y(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
-
-    .line 402
-    .line 403
-    .line 404
-    move-result v2
-
-    .line 405
-    if-eqz v2, :cond_1a
-
-    .line 406
-    .line 407
-    iget-object v2, v0, Ljd/i;->d:Lt5/f;
-
-    .line 408
-    .line 409
-    invoke-virtual {v2, v4, v7}, Lt5/f;->B(Lorg/apache/http/HttpResponse;Lrd/c;)Z
-
-    .line 410
-    .line 411
-    .line 412
-    move-result v2
-
-    .line 413
-    if-eqz v2, :cond_18
-
-    .line 414
-    .line 415
-    const-string v2, "Connection kept alive"
-
-    .line 416
-    .line 417
-    invoke-interface {v14, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 418
-    .line 419
-    .line 420
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 421
-    .line 422
-    .line 423
-    move-result-object v2
-
-    .line 424
-    invoke-static {v2}, Lk6/b;->c(Lorg/apache/http/HttpEntity;)V
-
-    .line 425
-    .line 426
-    .line 427
-    goto/16 :goto_6
-
-    .line 428
-    .line 429
-    :cond_18
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 430
-    .line 431
-    invoke-interface {v2}, Ljava/io/Closeable;->close()V
-
-    .line 432
-    .line 433
-    .line 434
-    goto/16 :goto_6
-
-    .line 435
-    .line 436
-    :cond_19
-    move-object/from16 v7, p2
-
-    .line 437
-    .line 438
-    :cond_1a
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 439
-    .line 440
-    .line 441
-    move-result-object v2
-
-    .line 442
-    iget v2, v2, Lorg/apache/http/message/m;->d:I
-
-    .line 443
-    .line 444
-    const/16 v3, 0x12b
-
-    .line 445
-    .line 446
-    if-le v2, v3, :cond_1c
-
-    .line 447
-    .line 448
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 449
-    .line 450
-    .line 451
-    move-result-object v1
-
-    .line 452
-    if-eqz v1, :cond_1b
-
-    .line 453
-    .line 454
-    new-instance v2, Lgd/c;
-
-    .line 455
-    .line 456
-    invoke-direct {v2, v1}, Lgd/c;-><init>(Lorg/apache/http/HttpEntity;)V
-
-    .line 457
-    .line 458
-    .line 459
-    invoke-interface {v4, v2}, Lorg/apache/http/HttpResponse;->setEntity(Lorg/apache/http/HttpEntity;)V
-
-    .line 460
-    .line 461
-    .line 462
-    :cond_1b
-    iget-object v1, v0, Ljd/i;->n:Lzc/e;
-
-    .line 463
-    .line 464
-    invoke-interface {v1}, Ljava/io/Closeable;->close()V
-
-    .line 465
-    .line 466
-    .line 467
-    new-instance v1, Ljd/p;
-
-    .line 468
-    .line 469
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    .line 470
-    .line 471
-    const-string v3, "CONNECT refused by proxy: "
-
-    .line 472
-    .line 473
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 474
-    .line 475
-    .line 476
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 477
-    .line 478
-    .line 479
-    move-result-object v3
-
-    .line 480
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 481
-    .line 482
-    .line 483
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 484
-    .line 485
-    .line 486
-    move-result-object v2
-
-    .line 487
-    invoke-direct {v1, v2, v4}, Ljd/p;-><init>(Ljava/lang/String;Lorg/apache/http/HttpResponse;)V
-
-    .line 488
-    .line 489
-    .line 490
-    throw v1
-
-    .line 491
-    :cond_1c
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 492
-    .line 493
-    invoke-interface {v2}, Lzc/e;->k0()V
-
-    .line 494
-    .line 495
-    .line 496
-    const-string v2, "Tunnel to target created."
-
-    .line 497
-    .line 498
-    invoke-interface {v14, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 499
-    .line 500
-    .line 501
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 502
-    .line 503
-    invoke-interface {v2, v13}, Lzc/e;->u(Ljd/e;)V
-
-    .line 504
-    .line 505
-    .line 506
-    goto :goto_7
-
-    .line 507
-    :cond_1d
-    new-instance v1, Lqc/e;
-
-    .line 508
-    .line 509
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    .line 510
-    .line 511
-    const-string v3, "Unexpected response to CONNECT request: "
-
-    .line 512
-    .line 513
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 514
-    .line 515
-    .line 516
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 517
-    .line 518
-    .line 519
-    move-result-object v3
-
-    .line 520
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 521
-    .line 522
-    .line 523
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 524
-    .line 525
-    .line 526
-    move-result-object v2
-
-    .line 527
-    invoke-direct {v1, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 528
-    .line 529
-    .line 530
-    throw v1
-
-    .line 531
-    :pswitch_3
-    iget-object v2, v0, Ljd/i;->n:Lzc/e;
-
-    .line 532
-    .line 533
-    invoke-interface {v2, v1, v7, v13}, Lzc/e;->Y(Lbd/a;Lrd/c;Ljd/e;)V
-
-    .line 534
-    .line 535
-    .line 536
-    :goto_7
-    :pswitch_4
-    if-gtz v12, :cond_0
-
-    .line 537
-    .line 538
+    .line 82
+    :cond_1
+    iget-boolean p2, v3, Ljd/c;->E1:Z
+
+    .line 83
+    .line 84
+    iget-boolean p3, p1, Lad/e;->h:Z
+
+    .line 85
+    .line 86
+    xor-int/2addr p3, v1
+
+    .line 87
+    const-string v2, "Already connected"
+
+    .line 88
+    .line 89
+    invoke-static {v2, p3}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+
+    .line 90
+    .line 91
+    .line 92
+    iput-boolean v1, p1, Lad/e;->h:Z
+
+    .line 93
+    .line 94
+    filled-new-array {v0}, [Lpc/f;
+
+    .line 95
+    .line 96
+    .line 97
+    move-result-object p3
+
+    .line 98
+    iput-object p3, p1, Lad/e;->p:[Lpc/f;
+
+    .line 99
+    .line 100
+    iput-boolean p2, p1, Lad/e;->x:Z
+
+    .line 101
+    .line 102
+    :goto_1
+    monitor-exit p0
+
+    .line 103
     return-void
 
-    .line 539
-    :pswitch_5
-    new-instance v3, Lqc/e;
-
-    .line 540
-    .line 541
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 542
-    .line 543
-    const-string v5, "Unable to establish route: planned = "
-
-    .line 544
-    .line 545
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 546
-    .line 547
-    .line 548
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 549
-    .line 550
-    .line 551
-    const-string v1, "; current = "
-
-    .line 552
-    .line 553
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 554
-    .line 555
-    .line 556
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 557
-    .line 558
-    .line 559
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 560
-    .line 561
-    .line 562
-    move-result-object v1
-
-    .line 563
-    invoke-direct {v3, v1}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 564
-    .line 565
-    .line 566
-    throw v3
-
-    .line 567
-    :pswitch_data_0
-    .packed-switch -0x1
-        :pswitch_5
-        :pswitch_4
-        :pswitch_3
-        :pswitch_3
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final c(Lqc/f;Lorg/apache/http/client/methods/HttpUriRequest;Lrd/c;)Lorg/apache/http/HttpResponse;
-    .locals 25
-
-    .line 1
-    move-object/from16 v1, p0
-
-    .line 2
-    .line 3
-    move-object/from16 v2, p2
-
-    .line 4
-    .line 5
-    move-object/from16 v3, p3
-
-    .line 6
-    .line 7
-    iget-object v4, v1, Ljd/i;->g:Lrd/e;
-
-    .line 8
-    .line 9
-    iget-object v5, v1, Ljd/i;->f:Ld7/c;
-
-    .line 10
-    .line 11
-    const-string v6, "http.user-token"
-
-    .line 12
-    .line 13
-    const-string v0, "http.auth.target-scope"
-
-    .line 14
-    .line 15
-    iget-object v7, v1, Ljd/i;->o:Lrc/e;
-
-    .line 16
-    .line 17
-    invoke-interface {v3, v0, v7}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 18
-    .line 19
-    .line 20
-    const-string v0, "http.auth.proxy-scope"
-
-    .line 21
-    .line 22
-    iget-object v8, v1, Ljd/i;->p:Lrc/e;
-
-    .line 23
-    .line 24
-    invoke-interface {v3, v0, v8}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 25
-    .line 26
-    .line 27
-    invoke-static {v2}, Ljd/i;->h(Lqc/i;)Ljd/n;
-
-    .line 28
-    .line 29
-    .line 30
-    move-result-object v0
-
-    .line 31
-    iget-object v9, v1, Ljd/i;->m:Ljd/e;
-
-    .line 32
-    .line 33
-    invoke-virtual {v0, v9}, Lorg/apache/http/message/a;->setParams(Lorg/apache/http/params/HttpParams;)V
-
-    .line 34
-    .line 35
-    .line 36
-    if-eqz p1, :cond_0
-
-    .line 37
-    .line 38
-    move-object/from16 v12, p1
-
-    .line 39
-    .line 40
-    goto :goto_0
-
-    .line 41
-    :cond_0
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 42
-    .line 43
-    .line 44
-    move-result-object v10
-
-    .line 45
-    const-string v11, "http.default-host"
-
-    .line 46
-    .line 47
-    invoke-interface {v10, v11}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object v10
-
-    .line 51
-    check-cast v10, Lqc/f;
-
-    .line 52
-    .line 53
-    move-object v12, v10
-
-    .line 54
-    :goto_0
-    iget-object v10, v1, Ljd/i;->c:Lhf/b;
-
-    .line 55
-    .line 56
-    invoke-virtual {v10}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 57
-    .line 58
-    .line 59
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 60
-    .line 61
-    .line 62
-    move-result-object v11
-
-    .line 63
-    sget-object v13, Lad/e;->a:Lqc/f;
-
-    .line 64
-    .line 65
-    const-string v13, "Parameters"
-
-    .line 66
-    .line 67
-    invoke-static {v11, v13}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 68
-    .line 69
-    .line 70
-    const-string v14, "http.route.forced-route"
-
-    .line 71
-    .line 72
-    invoke-interface {v11, v14}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 73
-    .line 74
-    .line 75
-    move-result-object v11
-
-    .line 76
-    check-cast v11, Lbd/a;
-
-    .line 77
-    .line 78
-    const/4 v14, 0x0
-
-    .line 79
-    if-eqz v11, :cond_1
-
-    .line 80
-    .line 81
-    sget-object v15, Lad/e;->b:Lbd/a;
-
-    .line 82
-    .line 83
-    invoke-virtual {v15, v11}, Lbd/a;->equals(Ljava/lang/Object;)Z
-
-    .line 84
-    .line 85
-    .line 86
-    move-result v15
-
-    .line 87
-    if-eqz v15, :cond_1
-
-    .line 88
-    .line 89
-    move-object v11, v14
-
-    .line 90
-    :cond_1
-    if-eqz v11, :cond_2
-
-    .line 91
-    .line 92
-    move-object v10, v14
-
-    .line 93
-    goto/16 :goto_1
-
-    .line 94
-    .line 95
-    :cond_2
-    const-string v11, "Target host"
-
-    .line 96
-    .line 97
-    invoke-static {v12, v11}, Lgc/h;->b0(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 98
-    .line 99
-    .line 100
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 101
-    .line 102
-    .line 103
-    move-result-object v11
-
     .line 104
-    invoke-static {v11, v13}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    :cond_2
+    new-instance p1, Ljava/io/InterruptedIOException;
 
     .line 105
     .line 106
-    .line 107
-    const-string v15, "http.route.local-address"
+    invoke-direct {p1}, Ljava/io/InterruptedIOException;-><init>()V
 
+    .line 107
     .line 108
     .line 109
-    invoke-interface {v11, v15}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
+    throw p1
 
     .line 110
-    .line 111
-    .line 112
-    move-result-object v11
-
-    .line 113
-    check-cast v11, Ljava/net/InetAddress;
-
-    .line 114
-    .line 115
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 116
-    .line 117
-    .line 118
-    move-result-object v15
-
-    .line 119
-    invoke-static {v15, v13}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 120
-    .line 121
-    .line 122
-    const-string v13, "http.route.default-proxy"
-
-    .line 123
-    .line 124
-    invoke-interface {v15, v13}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 125
-    .line 126
-    .line 127
-    move-result-object v13
-
-    .line 128
-    check-cast v13, Lqc/f;
-
-    .line 129
-    .line 130
-    if-eqz v13, :cond_3
-
-    .line 131
-    .line 132
-    sget-object v15, Lad/e;->a:Lqc/f;
-
-    .line 133
-    .line 134
-    invoke-virtual {v15, v13}, Lqc/f;->equals(Ljava/lang/Object;)Z
-
-    .line 135
-    .line 136
-    .line 137
-    move-result v15
-
-    .line 138
-    if-eqz v15, :cond_3
-
-    .line 139
-    .line 140
-    move-object v13, v14
-
-    .line 141
-    :cond_3
-    :try_start_0
-    iget-object v10, v10, Lhf/b;->d:Ljava/lang/Object;
-
-    .line 142
-    .line 143
-    check-cast v10, Lcd/g;
-
-    .line 144
-    .line 145
-    iget-object v15, v12, Lqc/f;->q:Ljava/lang/String;
-
-    .line 146
-    .line 147
-    invoke-virtual {v10, v15}, Lcd/g;->a(Ljava/lang/String;)Lcd/c;
-
-    .line 148
-    .line 149
-    .line 150
-    move-result-object v10
-    :try_end_0
-    .catch Ljava/lang/IllegalStateException; {:try_start_0 .. :try_end_0} :catch_8
-
-    .line 151
-    iget-boolean v15, v10, Lcd/c;->d:Z
-
-    .line 152
-    .line 153
-    sget-object v17, Lbd/b;->c:Lbd/b;
-
-    .line 154
-    .line 155
-    sget-object v16, Lbd/c;->c:Lbd/c;
-
-    .line 156
-    .line 157
-    if-nez v13, :cond_4
-
-    .line 158
-    .line 159
-    move-object v13, v11
-
-    .line 160
-    new-instance v11, Lbd/a;
-
-    .line 161
-    .line 162
-    move-object v10, v14
-
-    .line 163
-    sget-object v14, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
-
-    .line 164
-    .line 165
-    invoke-direct/range {v11 .. v17}, Lbd/a;-><init>(Lqc/f;Ljava/net/InetAddress;Ljava/util/List;ZLbd/c;Lbd/b;)V
-
-    .line 166
-    .line 167
-    .line 168
-    goto :goto_1
-
-    .line 169
-    :cond_4
-    move-object v10, v13
-
-    .line 170
-    move-object v13, v11
-
-    .line 171
-    move-object v11, v14
-
-    .line 172
-    new-instance v14, Lbd/a;
-
-    .line 173
-    .line 174
-    invoke-static {v10}, Ljava/util/Collections;->singletonList(Ljava/lang/Object;)Ljava/util/List;
-
-    .line 175
-    .line 176
-    .line 177
-    move-result-object v10
-
-    .line 178
-    if-eqz v15, :cond_5
-
-    .line 179
-    .line 180
-    sget-object v16, Lbd/c;->d:Lbd/c;
-
-    .line 181
-    .line 182
-    :cond_5
-    if-eqz v15, :cond_6
-
-    .line 183
-    .line 184
-    sget-object v17, Lbd/b;->d:Lbd/b;
-
-    .line 185
-    .line 186
-    :cond_6
-    move-object/from16 v24, v14
-
-    .line 187
-    .line 188
-    move-object v14, v10
-
-    .line 189
-    move-object v10, v11
-
-    .line 190
-    move-object/from16 v11, v24
-
-    .line 191
-    .line 192
-    invoke-direct/range {v11 .. v17}, Lbd/a;-><init>(Lqc/f;Ljava/net/InetAddress;Ljava/util/List;ZLbd/c;Lbd/b;)V
-
-    .line 193
-    .line 194
-    .line 195
-    :goto_1
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 196
-    .line 197
-    .line 198
-    move-result-object v12
-
-    .line 199
-    const-string v13, "http.virtual-host"
-
-    .line 200
-    .line 201
-    invoke-interface {v12, v13}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 202
-    .line 203
-    .line 204
-    move-result-object v12
-
-    .line 205
-    check-cast v12, Lqc/f;
-
-    .line 206
-    .line 207
-    iput-object v12, v1, Ljd/i;->u:Lqc/f;
-
-    .line 208
-    .line 209
-    if-eqz v12, :cond_8
-
-    .line 210
-    .line 211
-    iget v12, v12, Lqc/f;->h:I
-
-    .line 212
-    .line 213
-    const/4 v13, -0x1
-
-    .line 214
-    if-ne v12, v13, :cond_8
-
-    .line 215
-    .line 216
-    if-eqz p1, :cond_7
-
-    .line 217
-    .line 218
-    move-object/from16 v12, p1
-
-    .line 219
-    .line 220
-    goto :goto_2
-
-    .line 221
-    :cond_7
-    invoke-virtual {v11}, Lbd/a;->e()Lqc/f;
-
-    .line 222
-    .line 223
-    .line 224
-    move-result-object v12
-
-    .line 225
     :goto_2
-    iget v12, v12, Lqc/f;->h:I
-
-    .line 226
-    .line 227
-    if-eq v12, v13, :cond_8
-
-    .line 228
-    .line 229
-    new-instance v13, Lqc/f;
-
-    .line 230
-    .line 231
-    iget-object v14, v1, Ljd/i;->u:Lqc/f;
-
-    .line 232
-    .line 233
-    invoke-virtual {v14}, Lqc/f;->a()Ljava/lang/String;
-
-    .line 234
-    .line 235
-    .line 236
-    move-result-object v14
-
-    .line 237
-    iget-object v15, v1, Ljd/i;->u:Lqc/f;
-
-    .line 238
-    .line 239
-    invoke-virtual {v15}, Lqc/f;->b()Ljava/lang/String;
-
-    .line 240
-    .line 241
-    .line 242
-    move-result-object v15
-
-    .line 243
-    invoke-direct {v13, v14, v12, v15}, Lqc/f;-><init>(Ljava/lang/String;ILjava/lang/String;)V
-
-    .line 244
-    .line 245
-    .line 246
-    iput-object v13, v1, Ljd/i;->u:Lqc/f;
-
-    .line 247
-    .line 248
-    :cond_8
-    new-instance v12, Li6/i0;
-
-    .line 249
-    .line 250
-    const/4 v13, 0x3
-
-    .line 251
-    invoke-direct {v12, v0, v11, v13}, Li6/i0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
-    .line 252
-    .line 253
-    .line 254
-    const/4 v0, 0x0
-
-    .line 255
-    move v11, v0
-
-    .line 256
-    move-object v14, v10
-
-    .line 257
-    move-object v13, v12
-
-    .line 258
-    move-object/from16 v0, p1
-
-    .line 259
-    .line 260
-    move v12, v11
-
-    .line 261
-    :goto_3
-    iget-object v15, v13, Li6/i0;->h:Ljava/lang/Object;
-
-    .line 262
-    .line 263
-    check-cast v15, Lbd/a;
-
-    .line 264
-    .line 265
-    const-string v10, "IOException releasing connection"
-
-    .line 266
-    .line 267
-    move-object/from16 v17, v5
-
-    .line 268
-    .line 269
-    iget-object v5, v1, Ljd/i;->a:Lorg/apache/commons/logging/Log;
-
-    .line 270
-    .line 271
-    if-nez v11, :cond_1d
-
-    .line 272
-    .line 273
-    :try_start_1
-    invoke-virtual {v13}, Li6/i0;->i()Ljd/n;
-
-    .line 274
-    .line 275
-    .line 276
-    move-result-object v14
-
-    .line 277
-    move/from16 p1, v11
-
-    .line 278
-    .line 279
-    invoke-interface {v3, v6}, Lrd/c;->getAttribute(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 280
-    .line 281
-    .line 282
-    move-result-object v11
-
-    .line 283
-    move/from16 v18, v12
-
-    .line 284
-    .line 285
-    iget-object v12, v1, Ljd/i;->n:Lzc/e;
-
-    .line 286
-    .line 287
-    if-nez v12, :cond_a
-
-    .line 288
-    .line 289
-    iget-object v12, v1, Ljd/i;->b:Lorg/apache/http/conn/ClientConnectionManager;
-
-    .line 290
-    .line 291
-    invoke-interface {v12, v15, v11}, Lorg/apache/http/conn/ClientConnectionManager;->g(Lbd/a;Ljava/lang/Object;)Lorg/apache/http/conn/ClientConnectionRequest;
-
-    .line 292
-    .line 293
-    .line 294
-    move-result-object v12
-
-    .line 295
-    move-object/from16 v19, v11
-
-    .line 296
-    .line 297
-    instance-of v11, v2, Luc/b;
-
-    .line 298
-    .line 299
-    if-eqz v11, :cond_9
-
-    .line 300
-    .line 301
-    move-object v11, v2
-
-    .line 302
-    check-cast v11, Luc/b;
-
-    .line 303
-    .line 304
-    invoke-virtual {v11, v12}, Luc/b;->setConnectionRequest(Lorg/apache/http/conn/ClientConnectionRequest;)V
-
-    .line 305
-    .line 306
-    .line 307
-    :cond_9
-    move-object/from16 v20, v10
-
-    .line 308
-    .line 309
-    goto :goto_4
-
-    .line 310
-    :catch_0
-    move-exception v0
-
-    .line 311
-    goto/16 :goto_14
-
-    .line 312
-    .line 313
-    :catch_1
-    move-exception v0
-
-    .line 314
-    goto/16 :goto_15
-
-    .line 315
-    .line 316
-    :catch_2
-    move-exception v0
-
-    .line 317
-    goto/16 :goto_16
-
-    .line 318
-    .line 319
-    :catch_3
-    move-exception v0
-
-    .line 320
-    goto/16 :goto_17
-
-    .line 321
-    .line 322
-    :goto_4
-    invoke-static {v9}, Lgc/h;->A(Ljd/e;)J
-
-    .line 323
-    .line 324
-    .line 325
-    move-result-wide v10
+    monitor-exit p0
     :try_end_1
-    .catch Lkd/b; {:try_start_1 .. :try_end_1} :catch_3
-    .catch Lqc/e; {:try_start_1 .. :try_end_1} :catch_2
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 326
-    :try_start_2
-    sget-object v21, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
-
-    .line 327
-    .line 328
-    invoke-interface {v12, v10, v11}, Lorg/apache/http/conn/ClientConnectionRequest;->l(J)Lzc/e;
-
-    .line 329
-    .line 330
-    .line 331
-    move-result-object v10
-
-    .line 332
-    iput-object v10, v1, Ljd/i;->n:Lzc/e;
-    :try_end_2
-    .catch Ljava/lang/InterruptedException; {:try_start_2 .. :try_end_2} :catch_4
-    .catch Lkd/b; {:try_start_2 .. :try_end_2} :catch_3
-    .catch Lqc/e; {:try_start_2 .. :try_end_2} :catch_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_2 .. :try_end_2} :catch_0
-
-    .line 333
-    .line 334
-    :try_start_3
-    invoke-static {v9}, Leh/k;->v(Ljd/e;)Z
-
-    .line 335
-    .line 336
-    .line 337
-    move-result v10
-
-    .line 338
-    if-eqz v10, :cond_b
-
-    .line 339
-    .line 340
-    iget-object v10, v1, Ljd/i;->n:Lzc/e;
-
-    .line 341
-    .line 342
-    invoke-interface {v10}, Lqc/c;->isOpen()Z
-
-    .line 343
-    .line 344
-    .line 345
-    move-result v10
-
-    .line 346
-    if-eqz v10, :cond_b
-
-    .line 347
-    .line 348
-    const-string v10, "Stale connection check"
-
-    .line 349
-    .line 350
-    invoke-interface {v5, v10}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 351
-    .line 352
-    .line 353
-    iget-object v10, v1, Ljd/i;->n:Lzc/e;
-
-    .line 354
-    .line 355
-    invoke-interface {v10}, Lqc/c;->A0()Z
-
-    .line 356
-    .line 357
-    .line 358
-    move-result v10
-
-    .line 359
-    if-eqz v10, :cond_b
-
-    .line 360
-    .line 361
-    const-string v10, "Stale connection detected"
-
-    .line 362
-    .line 363
-    invoke-interface {v5, v10}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 364
-    .line 365
-    .line 366
-    iget-object v10, v1, Ljd/i;->n:Lzc/e;
-
-    .line 367
-    .line 368
-    invoke-interface {v10}, Ljava/io/Closeable;->close()V
-
-    .line 369
-    .line 370
-    .line 371
-    goto :goto_5
-
-    .line 372
-    :catch_4
-    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
-
-    .line 373
-    .line 374
-    .line 375
-    move-result-object v0
-
-    .line 376
-    invoke-virtual {v0}, Ljava/lang/Thread;->interrupt()V
-
-    .line 377
-    .line 378
-    .line 379
-    new-instance v0, Ljava/io/InterruptedIOException;
-
-    .line 380
-    .line 381
-    invoke-direct {v0}, Ljava/io/InterruptedIOException;-><init>()V
-
-    .line 382
-    .line 383
-    .line 384
-    throw v0
-
-    .line 385
-    :cond_a
-    move-object/from16 v20, v10
-
-    .line 386
-    .line 387
-    move-object/from16 v19, v11
-
-    .line 388
-    .line 389
-    :cond_b
-    :goto_5
-    instance-of v10, v2, Luc/b;
-
-    .line 390
-    .line 391
-    if-eqz v10, :cond_c
-
-    .line 392
-    .line 393
-    move-object v10, v2
-
-    .line 394
-    check-cast v10, Luc/b;
-
-    .line 395
-    .line 396
-    iget-object v11, v1, Ljd/i;->n:Lzc/e;
-
-    .line 397
-    .line 398
-    invoke-virtual {v10, v11}, Luc/b;->setReleaseTrigger(Lorg/apache/http/conn/ConnectionReleaseTrigger;)V
-    :try_end_3
-    .catch Lkd/b; {:try_start_3 .. :try_end_3} :catch_3
-    .catch Lqc/e; {:try_start_3 .. :try_end_3} :catch_2
-    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_3 .. :try_end_3} :catch_0
-
-    .line 399
-    .line 400
-    .line 401
-    :cond_c
-    :try_start_4
-    invoke-virtual {v1, v13, v3}, Ljd/i;->f(Li6/i0;Lrd/c;)V
-    :try_end_4
-    .catch Ljd/p; {:try_start_4 .. :try_end_4} :catch_6
-    .catch Lkd/b; {:try_start_4 .. :try_end_4} :catch_3
-    .catch Lqc/e; {:try_start_4 .. :try_end_4} :catch_2
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_4 .. :try_end_4} :catch_0
-
-    .line 402
-    .line 403
-    .line 404
-    :try_start_5
-    invoke-virtual {v14}, Ljd/n;->getURI()Ljava/net/URI;
-
-    .line 405
-    .line 406
-    .line 407
-    move-result-object v10
-
-    .line 408
-    invoke-virtual {v10}, Ljava/net/URI;->getUserInfo()Ljava/lang/String;
-
-    .line 409
-    .line 410
-    .line 411
-    move-result-object v10
-
-    .line 412
-    if-eqz v10, :cond_d
-
-    .line 413
-    .line 414
-    new-instance v11, Lid/b;
-
-    .line 415
-    .line 416
-    invoke-direct {v11}, Lid/b;-><init>()V
-
-    .line 417
-    .line 418
-    .line 419
-    new-instance v12, Lrc/j;
-
-    .line 420
-    .line 421
-    invoke-direct {v12, v10}, Lrc/j;-><init>(Ljava/lang/String;)V
-
-    .line 422
-    .line 423
-    .line 424
-    invoke-virtual {v7, v11, v12}, Lrc/e;->c(Lid/a;Lrc/j;)V
-
-    .line 425
-    .line 426
-    .line 427
-    :cond_d
-    iget-object v10, v1, Ljd/i;->u:Lqc/f;
-
-    .line 428
-    .line 429
-    if-eqz v10, :cond_e
-
-    .line 430
-    .line 431
-    move-object v0, v10
-
-    .line 432
-    goto :goto_6
-
-    .line 433
-    :cond_e
-    invoke-virtual {v14}, Ljd/n;->getURI()Ljava/net/URI;
-
-    .line 434
-    .line 435
-    .line 436
-    move-result-object v10
-
-    .line 437
-    invoke-virtual {v10}, Ljava/net/URI;->isAbsolute()Z
-
-    .line 438
-    .line 439
-    .line 440
-    move-result v11
-
-    .line 441
-    if-eqz v11, :cond_f
-
-    .line 442
-    .line 443
-    invoke-static {v10}, Lxc/e;->a(Ljava/net/URI;)Lqc/f;
-
-    .line 444
-    .line 445
-    .line 446
-    move-result-object v0
-
-    .line 447
-    :cond_f
-    :goto_6
-    if-nez v0, :cond_10
-
-    .line 448
-    .line 449
-    invoke-virtual {v15}, Lbd/a;->e()Lqc/f;
-
-    .line 450
-    .line 451
-    .line 452
-    move-result-object v0
-
-    .line 453
-    :cond_10
-    move-object v10, v0
-
-    .line 454
-    invoke-virtual {v14}, Ljd/n;->c()V
-
-    .line 455
-    .line 456
-    .line 457
-    invoke-static {v14, v15}, Ljd/i;->e(Ljd/n;Lbd/a;)V
-
-    .line 458
-    .line 459
-    .line 460
-    const-string v0, "http.target_host"
-
-    .line 461
-    .line 462
-    invoke-interface {v3, v0, v10}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 463
-    .line 464
-    .line 465
-    const-string v0, "http.route"
-
-    .line 466
-    .line 467
-    invoke-interface {v3, v0, v15}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 468
-    .line 469
-    .line 470
-    const-string v0, "http.connection"
-
-    .line 471
-    .line 472
-    iget-object v11, v1, Ljd/i;->n:Lzc/e;
-
-    .line 473
-    .line 474
-    invoke-interface {v3, v0, v11}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 475
-    .line 476
-    .line 477
-    invoke-virtual/range {v17 .. v17}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 478
-    .line 479
-    .line 480
-    const-string v0, "HTTP processor"
-
-    .line 481
-    .line 482
-    invoke-static {v4, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 483
-    .line 484
-    .line 485
-    const-string v0, "http.request"
-
-    .line 486
-    .line 487
-    invoke-interface {v3, v0, v14}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 488
-    .line 489
-    .line 490
-    invoke-interface {v4, v14, v3}, Lqc/j;->b(Lqc/i;Lrd/c;)V
-
-    .line 491
-    .line 492
-    .line 493
-    invoke-virtual {v1, v13, v3}, Ljd/i;->g(Li6/i0;Lrd/c;)Lorg/apache/http/HttpResponse;
-
-    .line 494
-    .line 495
-    .line 496
-    move-result-object v14
-
-    .line 497
-    if-nez v14, :cond_11
-
-    .line 498
-    .line 499
-    move/from16 v11, p1
-
-    .line 500
-    .line 501
-    move-object v0, v10
-
-    .line 502
-    move-object/from16 v5, v17
-
-    .line 503
-    .line 504
-    move/from16 v12, v18
-
-    .line 505
-    .line 506
-    const/4 v10, 0x0
-
-    .line 507
-    goto/16 :goto_3
-
-    .line 508
-    .line 509
-    :cond_11
-    invoke-interface {v14, v9}, Lqc/h;->setParams(Lorg/apache/http/params/HttpParams;)V
-
-    .line 510
-    .line 511
-    .line 512
-    const-string v0, "http.response"
-
-    .line 513
-    .line 514
-    invoke-interface {v3, v0, v14}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 515
-    .line 516
-    .line 517
-    invoke-interface {v4, v14, v3}, Lqc/l;->a(Lorg/apache/http/HttpResponse;Lrd/c;)V
-
-    .line 518
-    .line 519
-    .line 520
-    iget-object v0, v1, Ljd/i;->d:Lt5/f;
-
-    .line 521
-    .line 522
-    invoke-virtual {v0, v14, v3}, Lt5/f;->B(Lorg/apache/http/HttpResponse;Lrd/c;)Z
-
-    .line 523
-    .line 524
-    .line 525
-    move-result v12
-
-    .line 526
-    if-eqz v12, :cond_14
-
-    .line 527
-    .line 528
-    iget-object v0, v1, Ljd/i;->e:Lt5/f;
-
-    .line 529
-    .line 530
-    move-object v11, v9
-
-    .line 531
-    move-object/from16 v21, v10
-
-    .line 532
-    .line 533
-    invoke-virtual {v0, v14}, Lt5/f;->y(Lorg/apache/http/HttpResponse;)J
-
-    .line 534
-    .line 535
-    .line 536
-    move-result-wide v9
-
-    .line 537
-    invoke-interface {v5}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 538
-    .line 539
-    .line 540
-    move-result v0
-
-    .line 541
-    if-eqz v0, :cond_13
-
-    .line 542
-    .line 543
-    const-wide/16 v22, 0x0
-
-    .line 544
-    .line 545
-    cmp-long v0, v9, v22
-
-    .line 546
-    .line 547
-    if-lez v0, :cond_12
-
-    .line 548
-    .line 549
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 550
-    .line 551
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 552
-    .line 553
-    .line 554
-    const-string v2, "for "
-
-    .line 555
-    .line 556
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 557
-    .line 558
-    .line 559
-    invoke-virtual {v0, v9, v10}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    .line 560
-    .line 561
-    .line 562
-    const-string v2, " "
-
-    .line 563
-    .line 564
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 565
-    .line 566
-    .line 567
-    sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
-
-    .line 568
-    .line 569
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 570
-    .line 571
-    .line 572
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 573
-    .line 574
-    .line 575
-    move-result-object v0
-
-    .line 576
-    goto :goto_7
-
-    .line 577
-    :cond_12
-    const-string v0, "indefinitely"
-
-    .line 578
-    .line 579
-    :goto_7
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    .line 580
-    .line 581
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 582
-    .line 583
-    .line 584
-    move-object/from16 v22, v4
-
-    .line 585
-    .line 586
-    const-string v4, "Connection can be kept alive "
-
-    .line 587
-    .line 588
-    invoke-virtual {v2, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 589
-    .line 590
-    .line 591
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 592
-    .line 593
-    .line 594
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 595
-    .line 596
-    .line 597
-    move-result-object v0
-
-    .line 598
-    invoke-interface {v5, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 599
-    .line 600
-    .line 601
-    goto :goto_8
-
-    .line 602
-    :cond_13
-    move-object/from16 v22, v4
-
-    .line 603
-    .line 604
-    :goto_8
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 605
-    .line 606
-    sget-object v2, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
-
-    .line 607
-    .line 608
-    invoke-interface {v0, v9, v10}, Lzc/e;->L(J)V
-
-    .line 609
-    .line 610
-    .line 611
-    goto :goto_9
-
-    .line 612
-    :cond_14
-    move-object/from16 v22, v4
-
-    .line 613
-    .line 614
-    move-object v11, v9
-
-    .line 615
-    move-object/from16 v21, v10
-
-    .line 616
-    .line 617
-    :goto_9
-    invoke-virtual {v1, v13, v14, v3}, Ljd/i;->d(Li6/i0;Lorg/apache/http/HttpResponse;Lrd/c;)Li6/i0;
-
-    .line 618
-    .line 619
-    .line 620
-    move-result-object v2
-
-    .line 621
-    if-nez v2, :cond_15
-
-    .line 622
-    .line 623
-    const/4 v0, 0x1
-
-    .line 624
-    goto :goto_d
-
-    .line 625
-    :cond_15
-    if-eqz v12, :cond_16
-
-    .line 626
-    .line 627
-    invoke-interface {v14}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 628
-    .line 629
-    .line 630
-    move-result-object v0
-
-    .line 631
-    invoke-static {v0}, Lk6/b;->c(Lorg/apache/http/HttpEntity;)V
-
-    .line 632
-    .line 633
-    .line 634
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 635
-    .line 636
-    invoke-interface {v0}, Lzc/e;->k0()V
-
-    .line 637
-    .line 638
-    .line 639
-    goto :goto_a
-
-    .line 640
-    :cond_16
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 641
-    .line 642
-    invoke-interface {v0}, Ljava/io/Closeable;->close()V
-
-    .line 643
-    .line 644
-    .line 645
-    iget v0, v8, Lrc/e;->a:I
-
-    .line 646
-    .line 647
-    const/4 v4, 0x2
-
-    .line 648
-    invoke-static {v0, v4}, Lw/e;->a(II)I
-
-    .line 649
-    .line 650
-    .line 651
-    move-result v0
-
-    .line 652
-    if-lez v0, :cond_17
-
-    .line 653
-    .line 654
-    iget-object v0, v8, Lrc/e;->b:Lid/a;
-
-    .line 655
-    .line 656
-    if-eqz v0, :cond_17
-
-    .line 657
-    .line 658
-    invoke-virtual {v0}, Lid/a;->f()Z
-
-    .line 659
-    .line 660
-    .line 661
-    move-result v0
-
-    .line 662
-    if-eqz v0, :cond_17
-
-    .line 663
-    .line 664
-    const-string v0, "Resetting proxy auth state"
-
-    .line 665
-    .line 666
-    invoke-interface {v5, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 667
-    .line 668
-    .line 669
-    invoke-virtual {v8}, Lrc/e;->a()V
-
-    .line 670
-    .line 671
-    .line 672
-    :cond_17
-    iget v0, v7, Lrc/e;->a:I
-
-    .line 673
-    .line 674
-    invoke-static {v0, v4}, Lw/e;->a(II)I
-
-    .line 675
-    .line 676
-    .line 677
-    move-result v0
-
-    .line 678
-    if-lez v0, :cond_18
-
-    .line 679
-    .line 680
-    iget-object v0, v7, Lrc/e;->b:Lid/a;
-
-    .line 681
-    .line 682
-    if-eqz v0, :cond_18
-
-    .line 683
-    .line 684
-    invoke-virtual {v0}, Lid/a;->f()Z
-
-    .line 685
-    .line 686
-    .line 687
-    move-result v0
-
-    .line 688
-    if-eqz v0, :cond_18
-
-    .line 689
-    .line 690
-    const-string v0, "Resetting target auth state"
-
-    .line 691
-    .line 692
-    invoke-interface {v5, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 693
-    .line 694
-    .line 695
-    invoke-virtual {v7}, Lrc/e;->a()V
-
-    .line 696
-    .line 697
-    .line 698
-    :cond_18
-    :goto_a
-    iget-object v0, v2, Li6/i0;->h:Ljava/lang/Object;
-
-    .line 699
-    .line 700
-    check-cast v0, Lbd/a;
-
-    .line 701
-    .line 702
-    invoke-virtual {v0, v15}, Lbd/a;->equals(Ljava/lang/Object;)Z
-
-    .line 703
-    .line 704
-    .line 705
-    move-result v0
-    :try_end_5
-    .catch Lkd/b; {:try_start_5 .. :try_end_5} :catch_3
-    .catch Lqc/e; {:try_start_5 .. :try_end_5} :catch_2
-    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_5 .. :try_end_5} :catch_0
-
-    .line 706
-    if-nez v0, :cond_19
-
-    .line 707
-    .line 708
-    :try_start_6
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 709
-    .line 710
-    invoke-interface {v0}, Lorg/apache/http/conn/ConnectionReleaseTrigger;->b()V
-    :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_5
-    .catch Lkd/b; {:try_start_6 .. :try_end_6} :catch_3
-    .catch Lqc/e; {:try_start_6 .. :try_end_6} :catch_2
-    .catch Ljava/lang/RuntimeException; {:try_start_6 .. :try_end_6} :catch_0
-
-    .line 711
-    .line 712
-    .line 713
-    :goto_b
-    const/4 v10, 0x0
-
-    .line 714
-    goto :goto_c
-
-    .line 715
-    :catch_5
-    move-exception v0
-
-    .line 716
-    move-object/from16 v4, v20
-
-    .line 717
-    .line 718
-    :try_start_7
-    invoke-interface {v5, v4, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
-
-    .line 719
-    .line 720
-    .line 721
-    goto :goto_b
-
-    .line 722
-    :goto_c
-    iput-object v10, v1, Ljd/i;->n:Lzc/e;
-
-    .line 723
-    .line 724
-    :cond_19
-    move/from16 v0, p1
-
-    .line 725
-    .line 726
-    move-object v13, v2
-
-    .line 727
-    :goto_d
-    iget-object v2, v1, Ljd/i;->n:Lzc/e;
-
-    .line 728
-    .line 729
-    if-eqz v2, :cond_1b
-
-    .line 730
-    .line 731
-    if-nez v19, :cond_1a
-
-    .line 732
-    .line 733
-    iget-object v2, v1, Ljd/i;->l:Lce/b;
-
-    .line 734
-    .line 735
-    invoke-virtual {v2, v3}, Lce/b;->p(Lrd/c;)Ljava/security/Principal;
-
-    .line 736
-    .line 737
-    .line 738
-    move-result-object v2
-
-    .line 739
-    invoke-interface {v3, v6, v2}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 740
-    .line 741
-    .line 742
-    goto :goto_e
-
-    .line 743
-    :cond_1a
-    move-object/from16 v2, v19
-
-    .line 744
-    .line 745
-    :goto_e
-    if-eqz v2, :cond_1b
-
-    .line 746
-    .line 747
-    iget-object v4, v1, Ljd/i;->n:Lzc/e;
-
-    .line 748
-    .line 749
-    invoke-interface {v4, v2}, Lzc/e;->T(Ljava/lang/Object;)V
-
-    .line 750
-    .line 751
-    .line 752
-    :cond_1b
-    move-object/from16 v2, p2
-
-    .line 753
-    .line 754
-    move-object v9, v11
-
-    .line 755
-    move-object/from16 v5, v17
-
-    .line 756
-    .line 757
-    move-object/from16 v4, v22
-
-    .line 758
-    .line 759
-    const/4 v10, 0x0
-
-    .line 760
-    move v11, v0
-
-    .line 761
-    move-object/from16 v0, v21
-
-    .line 762
-    .line 763
-    goto/16 :goto_3
-
-    .line 764
-    .line 765
-    :catch_6
-    move-exception v0
-
-    .line 766
-    move-object/from16 v4, v20
-
-    .line 767
-    .line 768
-    invoke-interface {v5}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 769
-    .line 770
-    .line 771
-    move-result v2
-
-    .line 772
-    if-eqz v2, :cond_1c
-
-    .line 773
-    .line 774
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 775
-    .line 776
-    .line 777
-    move-result-object v2
-
-    .line 778
-    invoke-interface {v5, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 779
-    .line 780
-    .line 781
-    :cond_1c
-    invoke-virtual {v0}, Ljd/p;->b()Lorg/apache/http/HttpResponse;
-
-    .line 782
-    .line 783
-    .line 784
-    move-result-object v14
-
-    .line 785
-    goto :goto_f
-
-    .line 786
-    :cond_1d
-    move-object v4, v10
-
-    .line 787
-    move/from16 v18, v12
-
-    .line 788
-    .line 789
-    :goto_f
-    if-eqz v14, :cond_1e
-
-    .line 790
-    .line 791
-    invoke-interface {v14}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 792
-    .line 793
-    .line 794
-    move-result-object v0
-
-    .line 795
-    if-eqz v0, :cond_1e
-
-    .line 796
-    .line 797
-    invoke-interface {v14}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 798
-    .line 799
-    .line 800
-    move-result-object v0
-
-    .line 801
-    invoke-interface {v0}, Lorg/apache/http/HttpEntity;->i()Z
-
-    .line 802
-    .line 803
-    .line 804
-    move-result v0
-
-    .line 805
-    if-nez v0, :cond_1f
-
-    .line 806
-    .line 807
-    :cond_1e
-    move/from16 v12, v18
-
-    .line 808
-    .line 809
-    goto :goto_10
-
-    .line 810
-    :cond_1f
-    invoke-interface {v14}, Lorg/apache/http/HttpResponse;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 811
-    .line 812
-    .line 813
-    move-result-object v0
-
-    .line 814
-    new-instance v2, Lzc/a;
-
-    .line 815
-    .line 816
-    iget-object v3, v1, Ljd/i;->n:Lzc/e;
-
-    .line 817
-    .line 818
-    move/from16 v12, v18
-
-    .line 819
-    .line 820
-    invoke-direct {v2, v0, v3, v12}, Lzc/a;-><init>(Lorg/apache/http/HttpEntity;Lzc/e;Z)V
-
-    .line 821
-    .line 822
-    .line 823
-    invoke-interface {v14, v2}, Lorg/apache/http/HttpResponse;->setEntity(Lorg/apache/http/HttpEntity;)V
-
-    .line 824
-    .line 825
-    .line 826
-    goto :goto_13
-
-    .line 827
-    :goto_10
-    if-eqz v12, :cond_20
-
-    .line 828
-    .line 829
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 830
-    .line 831
-    invoke-interface {v0}, Lzc/e;->k0()V
-    :try_end_7
-    .catch Lkd/b; {:try_start_7 .. :try_end_7} :catch_3
-    .catch Lqc/e; {:try_start_7 .. :try_end_7} :catch_2
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_7 .. :try_end_7} :catch_0
-
-    .line 832
-    .line 833
-    .line 834
-    :cond_20
-    :try_start_8
-    iget-object v0, v1, Ljd/i;->n:Lzc/e;
-
-    .line 835
-    .line 836
-    invoke-interface {v0}, Lorg/apache/http/conn/ConnectionReleaseTrigger;->b()V
-    :try_end_8
-    .catch Ljava/io/IOException; {:try_start_8 .. :try_end_8} :catch_7
-    .catch Lkd/b; {:try_start_8 .. :try_end_8} :catch_3
-    .catch Lqc/e; {:try_start_8 .. :try_end_8} :catch_2
-    .catch Ljava/lang/RuntimeException; {:try_start_8 .. :try_end_8} :catch_0
-
-    .line 837
-    .line 838
-    .line 839
-    :goto_11
-    const/4 v10, 0x0
-
-    .line 840
-    goto :goto_12
-
-    .line 841
-    :catch_7
-    move-exception v0
-
-    .line 842
-    :try_start_9
-    invoke-interface {v5, v4, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
-
-    .line 843
-    .line 844
-    .line 845
-    goto :goto_11
-
-    .line 846
-    :goto_12
-    iput-object v10, v1, Ljd/i;->n:Lzc/e;
-    :try_end_9
-    .catch Lkd/b; {:try_start_9 .. :try_end_9} :catch_3
-    .catch Lqc/e; {:try_start_9 .. :try_end_9} :catch_2
-    .catch Ljava/io/IOException; {:try_start_9 .. :try_end_9} :catch_1
-    .catch Ljava/lang/RuntimeException; {:try_start_9 .. :try_end_9} :catch_0
-
-    .line 847
-    .line 848
-    :goto_13
-    return-object v14
-
-    .line 849
-    :goto_14
-    invoke-virtual {v1}, Ljd/i;->a()V
-
-    .line 850
-    .line 851
-    .line 852
-    throw v0
-
-    .line 853
-    :goto_15
-    invoke-virtual {v1}, Ljd/i;->a()V
-
-    .line 854
-    .line 855
-    .line 856
-    throw v0
-
-    .line 857
-    :goto_16
-    invoke-virtual {v1}, Ljd/i;->a()V
-
-    .line 858
-    .line 859
-    .line 860
-    throw v0
-
-    .line 861
-    :goto_17
-    new-instance v2, Ljava/io/InterruptedIOException;
-
-    .line 862
-    .line 863
-    const-string v3, "Connection has been shut down"
-
-    .line 864
-    .line 865
-    invoke-direct {v2, v3}, Ljava/io/InterruptedIOException;-><init>(Ljava/lang/String;)V
-
-    .line 866
-    .line 867
-    .line 868
-    invoke-virtual {v2, v0}, Ljava/lang/Throwable;->initCause(Ljava/lang/Throwable;)Ljava/lang/Throwable;
-
-    .line 869
-    .line 870
-    .line 871
-    throw v2
-
-    .line 872
-    :catch_8
-    move-exception v0
-
-    .line 873
-    new-instance v2, Lqc/e;
-
-    .line 874
-    .line 875
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 876
-    .line 877
-    .line 878
-    move-result-object v0
-
-    .line 879
-    invoke-direct {v2, v0}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 880
-    .line 881
-    .line 882
-    throw v2
-.end method
-
-.method public final d(Li6/i0;Lorg/apache/http/HttpResponse;Lrd/c;)Li6/i0;
-    .locals 19
-
-    .line 1
-    move-object/from16 v1, p0
-
-    .line 2
-    .line 3
-    move-object/from16 v0, p1
-
-    .line 4
-    .line 5
-    move-object/from16 v7, p3
-
-    .line 6
-    .line 7
-    iget-object v2, v0, Li6/i0;->h:Ljava/lang/Object;
-
-    .line 8
-    .line 9
-    move-object v8, v2
-
-    .line 10
-    check-cast v8, Lbd/a;
-
-    .line 11
-    .line 12
-    iget-object v9, v8, Lbd/a;->c:Lqc/f;
-
-    .line 13
-    .line 14
-    iget-object v2, v0, Li6/i0;->d:Ljava/lang/Object;
-
-    .line 15
-    .line 16
-    move-object v10, v2
-
-    .line 17
-    check-cast v10, Ljd/n;
-
-    .line 18
-    .line 19
-    invoke-virtual {v10}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 20
-    .line 21
-    .line 22
-    move-result-object v11
-
-    .line 23
-    const-string v2, "HTTP parameters"
-
-    .line 24
-    .line 25
-    invoke-static {v11, v2}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 26
-    .line 27
-    .line 28
-    const-string v2, "http.protocol.handle-authentication"
-
-    .line 29
-    .line 30
-    const/4 v12, 0x1
-
-    .line 31
-    invoke-interface {v11, v2, v12}, Lorg/apache/http/params/HttpParams;->d(Ljava/lang/String;Z)Z
-
-    .line 32
-    .line 33
-    .line 34
-    move-result v2
-
-    .line 35
-    const-string v13, "http.target_host"
-
-    .line 36
-    .line 37
-    if-eqz v2, :cond_5
-
-    .line 38
-    .line 39
-    invoke-interface {v7, v13}, Lrd/c;->getAttribute(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 40
-    .line 41
-    .line 42
-    move-result-object v2
-
-    .line 43
-    check-cast v2, Lqc/f;
-
-    .line 44
-    .line 45
-    if-nez v2, :cond_0
-
-    .line 46
-    .line 47
-    move-object v2, v9
-
-    .line 48
-    :cond_0
-    iget v3, v2, Lqc/f;->h:I
-
-    .line 49
-    .line 50
-    iget-object v4, v2, Lqc/f;->q:Ljava/lang/String;
-
-    .line 51
-    .line 52
-    if-gez v3, :cond_1
-
-    .line 53
-    .line 54
-    iget-object v3, v1, Ljd/i;->b:Lorg/apache/http/conn/ClientConnectionManager;
-
-    .line 55
-    .line 56
-    invoke-interface {v3}, Lorg/apache/http/conn/ClientConnectionManager;->a()Lcd/g;
-
-    .line 57
-    .line 58
-    .line 59
-    move-result-object v3
-
-    .line 60
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 61
-    .line 62
-    .line 63
-    invoke-virtual {v3, v4}, Lcd/g;->a(Ljava/lang/String;)Lcd/c;
-
-    .line 64
-    .line 65
-    .line 66
-    move-result-object v3
-
-    .line 67
-    new-instance v5, Lqc/f;
-
-    .line 68
-    .line 69
-    iget-object v2, v2, Lqc/f;->c:Ljava/lang/String;
-
-    .line 70
-    .line 71
-    iget v3, v3, Lcd/c;->c:I
-
-    .line 72
-    .line 73
-    invoke-direct {v5, v2, v3, v4}, Lqc/f;-><init>(Ljava/lang/String;ILjava/lang/String;)V
-
-    .line 74
-    .line 75
-    .line 76
-    move-object v3, v5
-
-    .line 77
-    goto :goto_0
-
-    .line 78
-    :cond_1
-    move-object v3, v2
-
-    .line 79
-    :goto_0
-    iget-object v5, v1, Ljd/i;->j:Lsc/a;
-
-    .line 80
-    .line 81
-    iget-object v6, v1, Ljd/i;->o:Lrc/e;
-
-    .line 82
-    .line 83
-    iget-object v2, v1, Ljd/i;->q:Ljd/k;
-
-    .line 84
-    .line 85
-    move-object/from16 v4, p2
-
-    .line 86
-    .line 87
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->N(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
-
-    .line 88
-    .line 89
-    .line 90
-    move-result v14
-
-    .line 91
-    move-object v15, v3
-
-    .line 92
-    invoke-virtual {v8}, Lbd/a;->d()Lqc/f;
-
-    .line 93
-    .line 94
-    .line 95
-    move-result-object v2
-
-    .line 96
-    if-nez v2, :cond_2
-
-    .line 97
-    .line 98
-    move-object v3, v9
-
-    .line 99
-    goto :goto_1
-
-    .line 100
-    :cond_2
-    move-object v3, v2
-
-    .line 101
-    :goto_1
-    iget-object v5, v1, Ljd/i;->k:Lsc/a;
-
-    .line 102
-    .line 103
-    iget-object v6, v1, Ljd/i;->p:Lrc/e;
-
-    .line 104
-    .line 105
-    iget-object v2, v1, Ljd/i;->q:Ljd/k;
-
-    .line 106
-    .line 107
-    move-object/from16 v4, p2
-
-    .line 108
-    .line 109
-    move-object/from16 v7, p3
-
-    .line 110
     .line 111
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->N(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
+    throw p1
 
     .line 112
+    :catchall_1
+    move-exception v0
+
     .line 113
+    move-object p1, v0
+
     .line 114
-    move-result v8
-
-    .line 115
-    move-object/from16 v16, v3
-
-    .line 116
-    .line 117
-    if-eqz v14, :cond_3
-
-    .line 118
-    .line 119
-    iget-object v5, v1, Ljd/i;->j:Lsc/a;
-
-    .line 120
-    .line 121
-    iget-object v6, v1, Ljd/i;->o:Lrc/e;
-
-    .line 122
-    .line 123
-    iget-object v2, v1, Ljd/i;->q:Ljd/k;
-
-    .line 124
-    .line 125
-    move-object/from16 v4, p2
-
-    .line 126
-    .line 127
-    move-object/from16 v7, p3
-
-    .line 128
-    .line 129
-    move-object v3, v15
-
-    .line 130
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->y(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
-
-    .line 131
-    .line 132
-    .line 133
-    move-result v2
-
-    .line 134
-    if-eqz v2, :cond_3
-
-    .line 135
-    .line 136
-    goto :goto_2
-
-    .line 137
-    :cond_3
-    if-eqz v8, :cond_4
-
-    .line 138
-    .line 139
-    iget-object v5, v1, Ljd/i;->k:Lsc/a;
-
-    .line 140
-    .line 141
-    iget-object v6, v1, Ljd/i;->p:Lrc/e;
-
-    .line 142
-    .line 143
-    iget-object v2, v1, Ljd/i;->q:Ljd/k;
-
-    .line 144
-    .line 145
-    move-object/from16 v4, p2
-
-    .line 146
-    .line 147
-    move-object/from16 v7, p3
-
-    .line 148
-    .line 149
-    move-object/from16 v3, v16
-
-    .line 150
-    .line 151
-    invoke-virtual/range {v2 .. v7}, Ljd/k;->y(Lqc/f;Lorg/apache/http/HttpResponse;Lsc/a;Lrc/e;Lrd/c;)Z
-
-    .line 152
-    .line 153
-    .line 154
-    move-result v2
-
-    .line 155
-    if-eqz v2, :cond_6
-
-    .line 156
-    .line 157
-    :goto_2
-    return-object v0
-
-    .line 158
-    :cond_4
-    move-object/from16 v4, p2
-
-    .line 159
-    .line 160
-    move-object/from16 v7, p3
-
-    .line 161
-    .line 162
     goto :goto_3
 
-    .line 163
-    :cond_5
-    move-object/from16 v4, p2
-
-    .line 164
-    .line 165
-    :cond_6
-    :goto_3
-    const-string v0, "http.protocol.handle-redirects"
-
-    .line 166
-    .line 167
-    invoke-interface {v11, v0, v12}, Lorg/apache/http/params/HttpParams;->d(Ljava/lang/String;Z)Z
-
-    .line 168
-    .line 169
-    .line 170
-    move-result v0
-
-    .line 171
-    const/4 v2, 0x0
-
-    .line 172
-    if-eqz v0, :cond_7
-
-    .line 173
-    .line 174
-    iget-object v0, v1, Ljd/i;->i:Lsc/e;
-
-    .line 175
-    .line 176
-    check-cast v0, Ljd/h;
-
-    .line 177
-    .line 178
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 179
-    .line 180
-    .line 181
-    iget-object v3, v0, Ljd/h;->b:[Ljava/lang/String;
-
-    .line 182
-    .line 183
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 184
-    .line 185
-    .line 186
-    move-result-object v5
-
-    .line 187
-    iget v5, v5, Lorg/apache/http/message/m;->d:I
-
-    .line 188
-    .line 189
-    invoke-virtual {v10}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 190
-    .line 191
-    .line 192
-    move-result-object v6
-
-    .line 193
-    check-cast v6, Lorg/apache/http/message/l;
-
-    .line 194
-    .line 195
-    iget-object v6, v6, Lorg/apache/http/message/l;->d:Ljava/lang/String;
-
-    .line 196
-    .line 197
-    const-string v8, "location"
-
-    .line 198
-    .line 199
-    invoke-interface {v4, v8}, Lqc/h;->getFirstHeader(Ljava/lang/String;)Lorg/apache/http/Header;
-
-    .line 200
-    .line 201
-    .line 202
-    move-result-object v14
-
-    .line 203
-    const/16 v15, 0x134
-
-    .line 204
-    .line 205
-    move/from16 v16, v12
-
-    .line 206
-    .line 207
-    const/16 v12, 0x133
-
-    .line 208
-    .line 209
-    if-eq v5, v12, :cond_9
-
-    .line 210
-    .line 211
-    if-eq v5, v15, :cond_9
-
-    .line 212
-    .line 213
-    packed-switch v5, :pswitch_data_0
-
-    .line 214
-    .line 215
-    .line 216
-    :cond_7
-    move-object v0, v2
-
-    .line 217
-    goto/16 :goto_15
-
-    .line 218
-    .line 219
-    :pswitch_0
-    invoke-static {v3, v6}, Ljava/util/Arrays;->binarySearch([Ljava/lang/Object;Ljava/lang/Object;)I
-
-    .line 220
-    .line 221
-    .line 222
-    move-result v3
-
-    .line 223
-    if-ltz v3, :cond_8
-
-    .line 224
-    .line 225
-    if-eqz v14, :cond_7
-
-    .line 226
-    .line 227
-    goto :goto_4
-
-    .line 228
-    :cond_8
-    return-object v2
-
-    .line 229
-    :cond_9
-    :pswitch_1
-    invoke-static {v3, v6}, Ljava/util/Arrays;->binarySearch([Ljava/lang/Object;Ljava/lang/Object;)I
-
-    .line 230
-    .line 231
-    .line 232
-    move-result v3
-
-    .line 233
-    if-ltz v3, :cond_2b
-
-    .line 234
-    .line 235
-    :goto_4
-    :pswitch_2
-    iget v3, v1, Ljd/i;->s:I
-
-    .line 236
-    .line 237
-    iget v5, v1, Ljd/i;->t:I
-
-    .line 238
-    .line 239
-    if-ge v3, v5, :cond_2a
-
-    .line 240
-    .line 241
-    add-int/lit8 v3, v3, 0x1
-
-    .line 242
-    .line 243
-    iput v3, v1, Ljd/i;->s:I
-
-    .line 244
-    .line 245
-    iput-object v2, v1, Ljd/i;->u:Lqc/f;
-
-    .line 246
-    .line 247
-    iget-object v0, v0, Ljd/h;->a:Lorg/apache/commons/logging/Log;
-
-    .line 248
-    .line 249
-    const-string v3, "Relative redirect location \'"
-
-    .line 250
-    .line 251
-    invoke-static {v7}, Lwc/a;->b(Lrd/c;)Lwc/a;
-
-    .line 252
-    .line 253
-    .line 254
-    move-result-object v5
-
-    .line 255
-    invoke-interface {v4, v8}, Lqc/h;->getFirstHeader(Ljava/lang/String;)Lorg/apache/http/Header;
-
-    .line 256
-    .line 257
-    .line 258
-    move-result-object v6
-
-    .line 259
-    if-eqz v6, :cond_29
-
-    .line 260
-    .line 261
-    invoke-interface {v6}, Lqc/p;->getValue()Ljava/lang/String;
-
-    .line 262
-    .line 263
-    .line 264
-    move-result-object v6
-
-    .line 265
-    invoke-interface {v0}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 266
-    .line 267
-    .line 268
-    move-result v8
-
-    .line 269
-    const-string v14, "\'"
-
-    .line 270
-    .line 271
-    if-eqz v8, :cond_a
-
-    .line 272
-    .line 273
-    new-instance v8, Ljava/lang/StringBuilder;
-
-    .line 274
-    .line 275
-    const-string v2, "Redirect requested to location \'"
-
-    .line 276
-    .line 277
-    invoke-direct {v8, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 278
-    .line 279
-    .line 280
-    invoke-virtual {v8, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 281
-    .line 282
-    .line 283
-    invoke-virtual {v8, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 284
-    .line 285
-    .line 286
-    invoke-virtual {v8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 287
-    .line 288
-    .line 289
-    move-result-object v2
-
-    .line 290
-    invoke-interface {v0, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 291
-    .line 292
-    .line 293
-    :cond_a
-    const-string v0, "http.request-config"
-
-    .line 294
-    .line 295
-    const-class v2, Lorg/apache/http/client/config/RequestConfig;
-
-    .line 296
-    .line 297
-    invoke-virtual {v5, v2, v0}, Lrd/d;->a(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 298
-    .line 299
-    .line 300
-    move-result-object v0
-
-    .line 301
-    check-cast v0, Lorg/apache/http/client/config/RequestConfig;
-
-    .line 302
-    .line 303
-    if-eqz v0, :cond_b
-
-    .line 304
-    .line 305
-    goto :goto_5
-
-    .line 306
-    :cond_b
-    sget-object v0, Lorg/apache/http/client/config/RequestConfig;->E1:Lorg/apache/http/client/config/RequestConfig;
-
-    .line 307
-    .line 308
-    :goto_5
-    :try_start_0
-    new-instance v2, Ljava/net/URI;
-
-    .line 309
-    .line 310
-    invoke-direct {v2, v6}, Ljava/net/URI;-><init>(Ljava/lang/String;)V
-    :try_end_0
-    .catch Ljava/net/URISyntaxException; {:try_start_0 .. :try_end_0} :catch_4
-
-    .line 311
-    .line 312
-    .line 313
-    :try_start_1
-    invoke-static {v2}, Lxc/e;->b(Ljava/net/URI;)Ljava/net/URI;
-
-    .line 314
-    .line 315
-    .line 316
-    move-result-object v2
-
-    .line 317
-    invoke-virtual {v2}, Ljava/net/URI;->isAbsolute()Z
-
-    .line 318
-    .line 319
-    .line 320
-    move-result v6
-
-    .line 321
-    if-nez v6, :cond_d
-
-    .line 322
-    .line 323
-    iget-boolean v6, v0, Lorg/apache/http/client/config/RequestConfig;->x:Z
-
-    .line 324
-    .line 325
-    if-eqz v6, :cond_c
-
-    .line 326
-    .line 327
-    const-class v3, Lqc/f;
-
-    .line 328
-    .line 329
-    invoke-virtual {v5, v3, v13}, Lrd/d;->a(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 330
-    .line 331
-    .line 332
-    move-result-object v3
-
-    .line 333
-    check-cast v3, Lqc/f;
-
-    .line 334
-    .line 335
-    const-string v6, "Target host"
-
-    .line 336
-    .line 337
-    invoke-static {v3, v6}, Lgc/h;->b0(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 338
-    .line 339
-    .line 340
-    new-instance v6, Ljava/net/URI;
-
-    .line 341
-    .line 342
-    invoke-virtual {v10}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 343
-    .line 344
-    .line 345
-    move-result-object v8
-
-    .line 346
-    check-cast v8, Lorg/apache/http/message/l;
-
-    .line 347
-    .line 348
-    iget-object v8, v8, Lorg/apache/http/message/l;->h:Ljava/lang/String;
-
-    .line 349
-    .line 350
-    invoke-direct {v6, v8}, Ljava/net/URI;-><init>(Ljava/lang/String;)V
-
-    .line 351
-    .line 352
-    .line 353
-    sget-object v8, Lxc/e;->a:Ljava/util/EnumSet;
-
-    .line 354
-    .line 355
-    invoke-static {v6, v3, v8}, Lxc/e;->e(Ljava/net/URI;Lqc/f;Ljava/util/EnumSet;)Ljava/net/URI;
-
-    .line 356
-    .line 357
-    .line 358
-    move-result-object v3
-
-    .line 359
-    invoke-static {v3, v2}, Lxc/e;->c(Ljava/net/URI;Ljava/net/URI;)Ljava/net/URI;
-
-    .line 360
-    .line 361
-    .line 362
-    move-result-object v2
-
-    .line 363
-    goto :goto_6
-
-    .line 364
-    :catch_0
-    move-exception v0
-
-    .line 365
-    goto/16 :goto_14
-
-    .line 366
-    .line 367
-    :cond_c
-    new-instance v0, Lqc/s;
-
-    .line 368
-    .line 369
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 370
-    .line 371
-    invoke-direct {v4, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 372
-    .line 373
-    .line 374
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 375
-    .line 376
-    .line 377
-    const-string v2, "\' not allowed"
-
-    .line 378
-    .line 379
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 380
-    .line 381
-    .line 382
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 383
-    .line 384
-    .line 385
-    move-result-object v2
-
-    .line 386
-    invoke-direct {v0, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 387
-    .line 388
-    .line 389
-    throw v0
-    :try_end_1
-    .catch Ljava/net/URISyntaxException; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 390
-    :cond_d
-    :goto_6
-    iget-object v3, v5, Lrd/d;->c:Lrd/c;
-
-    .line 391
-    .line 392
-    const-string v5, "http.protocol.redirect-locations"
-
-    .line 393
-    .line 394
-    invoke-interface {v3, v5}, Lrd/c;->getAttribute(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 395
-    .line 396
-    .line 397
-    move-result-object v3
-
-    .line 398
-    check-cast v3, Ljd/m;
-
-    .line 399
-    .line 400
-    if-nez v3, :cond_e
-
-    .line 401
-    .line 402
-    new-instance v3, Ljd/m;
-
-    .line 403
-    .line 404
-    invoke-direct {v3}, Ljd/m;-><init>()V
-
-    .line 405
-    .line 406
-    .line 407
-    invoke-interface {v7, v5, v3}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
-
-    .line 408
-    .line 409
-    .line 410
-    :cond_e
-    iget-object v5, v3, Ljd/m;->c:Ljava/util/HashSet;
-
-    .line 411
-    .line 412
-    iget-boolean v0, v0, Lorg/apache/http/client/config/RequestConfig;->y:Z
-
-    .line 413
-    .line 414
-    if-nez v0, :cond_10
-
-    .line 415
-    .line 416
-    invoke-virtual {v5, v2}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
-
-    .line 417
-    .line 418
-    .line 419
-    move-result v0
-
-    .line 420
-    if-nez v0, :cond_f
-
-    .line 421
-    .line 422
-    goto :goto_7
-
-    .line 423
-    :cond_f
-    new-instance v0, Lsc/b;
-
-    .line 424
-    .line 425
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 426
-    .line 427
-    const-string v4, "Circular redirect to \'"
-
-    .line 428
-    .line 429
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 430
-    .line 431
-    .line 432
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 433
-    .line 434
-    .line 435
-    invoke-virtual {v3, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 436
-    .line 437
-    .line 438
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 439
-    .line 440
-    .line 441
-    move-result-object v2
-
-    .line 442
-    invoke-direct {v0, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 443
-    .line 444
-    .line 445
-    throw v0
-
-    .line 446
-    :cond_10
-    :goto_7
-    invoke-virtual {v5, v2}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
-
-    .line 447
-    .line 448
-    .line 449
-    iget-object v0, v3, Ljd/m;->d:Ljava/util/ArrayList;
-
-    .line 450
-    .line 451
-    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 452
-    .line 453
-    .line 454
-    invoke-virtual {v10}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 455
-    .line 456
-    .line 457
-    move-result-object v0
-
-    .line 458
-    check-cast v0, Lorg/apache/http/message/l;
-
-    .line 459
-    .line 460
-    iget-object v0, v0, Lorg/apache/http/message/l;->d:Ljava/lang/String;
-
-    .line 461
-    .line 462
-    const-string v3, "HEAD"
-
-    .line 463
-    .line 464
-    invoke-virtual {v0, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    .line 465
-    .line 466
-    .line 467
-    move-result v3
-
-    .line 468
-    if-eqz v3, :cond_11
-
-    .line 469
-    .line 470
-    new-instance v0, Luc/d;
-
-    .line 471
-    .line 472
-    const/4 v3, 0x2
-
-    .line 473
-    invoke-direct {v0, v3}, Luc/d;-><init>(I)V
-
-    .line 474
-    .line 475
-    .line 476
-    invoke-virtual {v0, v2}, Lorg/apache/http/client/methods/a;->setURI(Ljava/net/URI;)V
-
-    .line 477
-    .line 478
-    .line 479
-    goto/16 :goto_11
-
-    .line 480
-    .line 481
-    :cond_11
-    const-string v3, "GET"
-
-    .line 482
-    .line 483
-    invoke-virtual {v0, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    .line 484
-    .line 485
-    .line 486
-    move-result v0
-
-    .line 487
-    if-eqz v0, :cond_12
-
-    .line 488
-    .line 489
-    new-instance v0, Luc/d;
-
-    .line 490
-    .line 491
-    invoke-direct {v0, v2}, Luc/d;-><init>(Ljava/net/URI;)V
-
-    .line 492
-    .line 493
-    .line 494
-    goto/16 :goto_11
-
-    .line 495
-    .line 496
-    :cond_12
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 497
-    .line 498
-    .line 499
-    move-result-object v0
-
-    .line 500
-    iget v0, v0, Lorg/apache/http/message/m;->d:I
-
-    .line 501
-    .line 502
-    if-eq v0, v12, :cond_14
-
-    .line 503
-    .line 504
-    if-ne v0, v15, :cond_13
-
-    .line 505
-    .line 506
-    goto :goto_8
-
-    .line 507
-    :cond_13
-    new-instance v0, Luc/d;
-
-    .line 508
-    .line 509
-    invoke-direct {v0, v2}, Luc/d;-><init>(Ljava/net/URI;)V
-
-    .line 510
-    .line 511
-    .line 512
-    goto/16 :goto_11
-
-    .line 513
-    .line 514
-    :cond_14
-    :goto_8
-    sget-object v0, Lqc/a;->a:Ljava/nio/charset/Charset;
-
-    .line 515
-    .line 516
-    invoke-virtual {v10}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 517
-    .line 518
-    .line 519
-    move-result-object v3
-
-    .line 520
-    check-cast v3, Lorg/apache/http/message/l;
-
-    .line 521
-    .line 522
-    iget-object v3, v3, Lorg/apache/http/message/l;->d:Ljava/lang/String;
-
-    .line 523
-    .line 524
-    invoke-virtual {v10}, Ljd/n;->getRequestLine()Lorg/apache/http/RequestLine;
-
-    .line 525
-    .line 526
-    .line 527
-    move-result-object v4
-
-    .line 528
-    check-cast v4, Lorg/apache/http/message/l;
-
-    .line 529
-    .line 530
-    iget-object v4, v4, Lorg/apache/http/message/l;->c:Lorg/apache/http/ProtocolVersion;
-
-    .line 531
-    .line 532
-    new-instance v5, Lorg/apache/http/message/HeaderGroup;
-
-    .line 533
-    .line 534
-    invoke-direct {v5}, Lorg/apache/http/message/HeaderGroup;-><init>()V
-
-    .line 535
-    .line 536
-    .line 537
-    iget-object v5, v5, Lorg/apache/http/message/HeaderGroup;->c:Ljava/util/ArrayList;
-
-    .line 538
-    .line 539
-    invoke-virtual {v5}, Ljava/util/ArrayList;->clear()V
-
-    .line 540
-    .line 541
-    .line 542
-    invoke-virtual {v10}, Lorg/apache/http/message/a;->getAllHeaders()[Lorg/apache/http/Header;
-
-    .line 543
-    .line 544
-    .line 545
-    move-result-object v6
-
-    .line 546
-    invoke-virtual {v5}, Ljava/util/ArrayList;->clear()V
-
-    .line 547
-    .line 548
-    .line 549
-    if-nez v6, :cond_15
-
-    .line 550
-    .line 551
-    goto :goto_9
-
-    .line 552
-    :cond_15
-    invoke-static {v5, v6}, Ljava/util/Collections;->addAll(Ljava/util/Collection;[Ljava/lang/Object;)Z
-
-    .line 553
-    .line 554
-    .line 555
-    :goto_9
-    instance-of v6, v10, Lqc/d;
-
-    .line 556
-    .line 557
-    if-eqz v6, :cond_17
-
-    .line 558
-    .line 559
-    move-object v6, v10
-
-    .line 560
-    check-cast v6, Lqc/d;
-
-    .line 561
-    .line 562
-    invoke-interface {v6}, Lqc/d;->getEntity()Lorg/apache/http/HttpEntity;
-
-    .line 563
-    .line 564
-    .line 565
-    move-result-object v6
-
-    .line 566
-    invoke-static {v6}, Lgd/e;->b(Lorg/apache/http/HttpEntity;)Lgd/e;
-
-    .line 567
-    .line 568
-    .line 569
-    move-result-object v7
-
-    .line 570
-    if-eqz v7, :cond_18
-
-    .line 571
-    .line 572
-    iget-object v8, v7, Lgd/e;->c:Ljava/lang/String;
-
-    .line 573
-    .line 574
-    sget-object v12, Lgd/e;->q:Lgd/e;
-
-    .line 575
-    .line 576
-    iget-object v12, v12, Lgd/e;->c:Ljava/lang/String;
-
-    .line 577
-    .line 578
-    invoke-virtual {v8, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 579
-    .line 580
-    .line 581
-    move-result v8
-
-    .line 582
-    if-eqz v8, :cond_18
-
-    .line 583
-    .line 584
+    .line 115
+    :cond_3
     :try_start_2
-    iget-object v0, v7, Lgd/e;->d:Ljava/nio/charset/Charset;
+    new-instance p1, Ljd/b;
 
-    .line 585
-    .line 586
-    invoke-static {v6}, Lxc/f;->b(Lorg/apache/http/HttpEntity;)Ljava/util/ArrayList;
+    .line 116
+    .line 117
+    invoke-direct {p1}, Ljava/lang/IllegalStateException;-><init>()V
 
-    .line 587
-    .line 588
-    .line 589
-    move-result-object v6
+    .line 118
+    .line 119
+    .line 120
+    throw p1
 
-    .line 590
-    invoke-virtual {v6}, Ljava/util/ArrayList;->isEmpty()Z
-
-    .line 591
-    .line 592
-    .line 593
-    move-result v7
+    .line 121
+    :goto_3
+    monitor-exit p0
     :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 594
-    if-nez v7, :cond_16
-
-    .line 595
-    .line 596
-    goto :goto_a
-
-    .line 597
-    :cond_16
-    const/4 v6, 0x0
-
-    .line 598
-    :goto_a
-    move-object v7, v0
-
-    .line 599
-    move-object v0, v6
-
-    .line 600
-    :goto_b
-    const/4 v6, 0x0
-
-    .line 601
-    goto :goto_c
-
-    .line 602
-    :catch_1
-    :cond_17
-    move-object v7, v0
-
-    .line 603
-    const/4 v0, 0x0
-
-    .line 604
-    goto :goto_b
-
-    .line 605
-    :cond_18
-    move-object v7, v0
-
-    .line 606
-    const/4 v0, 0x0
-
-    .line 607
-    :goto_c
-    if-eqz v2, :cond_19
-
-    .line 608
-    .line 609
-    goto :goto_d
-
-    .line 610
-    :cond_19
-    const-string v2, "/"
-
-    .line 611
-    .line 612
-    invoke-static {v2}, Ljava/net/URI;->create(Ljava/lang/String;)Ljava/net/URI;
-
-    .line 613
-    .line 614
-    .line 615
-    move-result-object v2
-
-    .line 616
-    :goto_d
-    if-eqz v0, :cond_1e
-
-    .line 617
-    .line 618
-    invoke-virtual {v0}, Ljava/util/ArrayList;->isEmpty()Z
-
-    .line 619
-    .line 620
-    .line 621
-    move-result v8
-
-    .line 622
-    if-nez v8, :cond_1e
-
-    .line 623
-    .line 624
-    if-nez v6, :cond_1c
-
-    .line 625
-    .line 626
-    const-string v8, "POST"
-
-    .line 627
-    .line 628
-    invoke-virtual {v8, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    .line 629
-    .line 630
-    .line 631
-    move-result v8
-
-    .line 632
-    if-nez v8, :cond_1a
-
-    .line 633
-    .line 634
-    const-string v8, "PUT"
-
-    .line 635
-    .line 636
-    invoke-virtual {v8, v3}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
-
-    .line 637
-    .line 638
-    .line 639
-    move-result v8
-
-    .line 640
-    if-eqz v8, :cond_1c
-
-    .line 641
-    .line 642
-    :cond_1a
-    new-instance v6, Ltc/a;
-
-    .line 643
-    .line 644
-    if-eqz v7, :cond_1b
-
-    .line 645
-    .line 646
-    goto :goto_e
-
-    .line 647
-    :cond_1b
-    sget-object v7, Lrd/b;->a:Ljava/nio/charset/Charset;
-
-    .line 648
-    .line 649
-    :goto_e
-    invoke-direct {v6, v0, v7}, Ltc/a;-><init>(Ljava/util/ArrayList;Ljava/nio/charset/Charset;)V
-
-    .line 650
-    .line 651
-    .line 652
-    goto :goto_f
-
-    .line 653
-    :cond_1c
-    :try_start_3
-    new-instance v8, Lxc/c;
-
-    .line 654
-    .line 655
-    invoke-direct {v8, v2}, Lxc/c;-><init>(Ljava/net/URI;)V
-
-    .line 656
-    .line 657
-    .line 658
-    iput-object v7, v8, Lxc/c;->l:Ljava/nio/charset/Charset;
-
-    .line 659
-    .line 660
-    iget-object v7, v8, Lxc/c;->k:Ljava/util/ArrayList;
-
-    .line 661
-    .line 662
-    if-nez v7, :cond_1d
-
-    .line 663
-    .line 664
-    new-instance v7, Ljava/util/ArrayList;
-
-    .line 665
-    .line 666
-    invoke-direct {v7}, Ljava/util/ArrayList;-><init>()V
-
-    .line 667
-    .line 668
-    .line 669
-    iput-object v7, v8, Lxc/c;->k:Ljava/util/ArrayList;
-
-    .line 670
-    .line 671
-    :cond_1d
-    iget-object v7, v8, Lxc/c;->k:Ljava/util/ArrayList;
-
-    .line 672
-    .line 673
-    invoke-interface {v7, v0}, Ljava/util/List;->addAll(Ljava/util/Collection;)Z
-
-    .line 674
-    .line 675
-    .line 676
-    const/4 v0, 0x0
-
-    .line 677
-    iput-object v0, v8, Lxc/c;->j:Ljava/lang/String;
-
-    .line 678
-    .line 679
-    iput-object v0, v8, Lxc/c;->b:Ljava/lang/String;
-
-    .line 680
-    .line 681
-    new-instance v0, Ljava/net/URI;
-
-    .line 682
-    .line 683
-    invoke-virtual {v8}, Lxc/c;->a()Ljava/lang/String;
-
-    .line 684
-    .line 685
-    .line 686
-    move-result-object v7
-
-    .line 687
-    invoke-direct {v0, v7}, Ljava/net/URI;-><init>(Ljava/lang/String;)V
-    :try_end_3
-    .catch Ljava/net/URISyntaxException; {:try_start_3 .. :try_end_3} :catch_2
-
-    .line 688
-    .line 689
-    .line 690
-    move-object v2, v0
-
-    .line 691
-    :catch_2
-    :cond_1e
-    :goto_f
-    if-nez v6, :cond_1f
-
-    .line 692
-    .line 693
-    new-instance v0, Luc/i;
-
-    .line 694
-    .line 695
-    invoke-direct {v0, v3}, Luc/i;-><init>(Ljava/lang/String;)V
-
-    .line 696
-    .line 697
-    .line 698
-    goto :goto_10
-
-    .line 699
-    :cond_1f
-    new-instance v0, Luc/h;
-
-    .line 700
-    .line 701
-    invoke-direct {v0, v3}, Luc/h;-><init>(Ljava/lang/String;)V
-
-    .line 702
-    .line 703
-    .line 704
-    invoke-virtual {v0, v6}, Luc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
-
-    .line 705
-    .line 706
-    .line 707
-    :goto_10
-    invoke-virtual {v0, v4}, Lorg/apache/http/client/methods/a;->setProtocolVersion(Lorg/apache/http/ProtocolVersion;)V
-
-    .line 708
-    .line 709
-    .line 710
-    invoke-virtual {v0, v2}, Lorg/apache/http/client/methods/a;->setURI(Ljava/net/URI;)V
-
-    .line 711
-    .line 712
-    .line 713
-    invoke-virtual {v5}, Ljava/util/ArrayList;->size()I
-
-    .line 714
-    .line 715
-    .line 716
-    move-result v2
-
-    .line 717
-    new-array v2, v2, [Lorg/apache/http/Header;
-
-    .line 718
-    .line 719
-    invoke-virtual {v5, v2}, Ljava/util/ArrayList;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
-
-    .line 720
-    .line 721
-    .line 722
-    move-result-object v2
-
-    .line 723
-    check-cast v2, [Lorg/apache/http/Header;
-
-    .line 724
-    .line 725
-    invoke-virtual {v0, v2}, Lorg/apache/http/message/a;->setHeaders([Lorg/apache/http/Header;)V
-
-    .line 726
-    .line 727
-    .line 728
-    const/4 v2, 0x0
-
-    .line 729
-    invoke-virtual {v0, v2}, Lorg/apache/http/client/methods/a;->setConfig(Lorg/apache/http/client/config/RequestConfig;)V
-
-    .line 730
-    .line 731
-    .line 732
-    :goto_11
-    iget-object v2, v10, Ljd/n;->c:Lqc/i;
-
-    .line 733
-    .line 734
-    invoke-interface {v2}, Lqc/h;->getAllHeaders()[Lorg/apache/http/Header;
-
-    .line 735
-    .line 736
-    .line 737
-    move-result-object v2
-
-    .line 738
-    invoke-interface {v0, v2}, Lqc/h;->setHeaders([Lorg/apache/http/Header;)V
-
-    .line 739
-    .line 740
-    .line 741
-    invoke-interface {v0}, Lorg/apache/http/client/methods/HttpUriRequest;->getURI()Ljava/net/URI;
-
-    .line 742
-    .line 743
-    .line 744
-    move-result-object v2
-
-    .line 745
-    invoke-static {v2}, Lxc/e;->a(Ljava/net/URI;)Lqc/f;
-
-    .line 746
-    .line 747
-    .line 748
-    move-result-object v13
-
-    .line 749
-    if-eqz v13, :cond_28
-
-    .line 750
-    .line 751
-    invoke-virtual {v9, v13}, Lqc/f;->equals(Ljava/lang/Object;)Z
-
-    .line 752
-    .line 753
-    .line 754
-    move-result v3
-
-    .line 755
-    iget-object v4, v1, Ljd/i;->a:Lorg/apache/commons/logging/Log;
-
-    .line 756
-    .line 757
-    if-nez v3, :cond_20
-
-    .line 758
-    .line 759
-    const-string v3, "Resetting target auth state"
-
-    .line 760
-    .line 761
-    invoke-interface {v4, v3}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 762
-    .line 763
-    .line 764
-    iget-object v3, v1, Ljd/i;->o:Lrc/e;
-
-    .line 765
-    .line 766
-    invoke-virtual {v3}, Lrc/e;->a()V
-
-    .line 767
-    .line 768
-    .line 769
-    iget-object v3, v1, Ljd/i;->p:Lrc/e;
-
-    .line 770
-    .line 771
-    iget-object v5, v3, Lrc/e;->b:Lid/a;
-
-    .line 772
-    .line 773
-    if-eqz v5, :cond_20
-
-    .line 774
-    .line 775
-    invoke-virtual {v5}, Lid/a;->f()Z
-
-    .line 776
-    .line 777
-    .line 778
-    move-result v5
-
-    .line 779
-    if-eqz v5, :cond_20
-
-    .line 780
-    .line 781
-    const-string v5, "Resetting proxy auth state"
-
-    .line 782
-    .line 783
-    invoke-interface {v4, v5}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 784
-    .line 785
-    .line 786
-    invoke-virtual {v3}, Lrc/e;->a()V
-
-    .line 787
-    .line 788
-    .line 789
-    :cond_20
-    invoke-static {v0}, Ljd/i;->h(Lqc/i;)Ljd/n;
-
-    .line 790
-    .line 791
-    .line 792
-    move-result-object v0
-
-    .line 793
-    invoke-virtual {v0, v11}, Lorg/apache/http/message/a;->setParams(Lorg/apache/http/params/HttpParams;)V
-
-    .line 794
-    .line 795
-    .line 796
-    iget-object v3, v1, Ljd/i;->c:Lhf/b;
-
-    .line 797
-    .line 798
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 799
-    .line 800
-    .line 801
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 802
-    .line 803
-    .line 804
-    move-result-object v5
-
-    .line 805
-    sget-object v6, Lad/e;->a:Lqc/f;
-
-    .line 806
-    .line 807
-    const-string v6, "Parameters"
-
-    .line 808
-    .line 809
-    invoke-static {v5, v6}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 810
-    .line 811
-    .line 812
-    const-string v7, "http.route.forced-route"
-
-    .line 813
-    .line 814
-    invoke-interface {v5, v7}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 815
-    .line 816
-    .line 817
-    move-result-object v5
-
-    .line 818
-    check-cast v5, Lbd/a;
-
-    .line 819
-    .line 820
-    if-eqz v5, :cond_21
-
-    .line 821
-    .line 822
-    sget-object v7, Lad/e;->b:Lbd/a;
-
-    .line 823
-    .line 824
-    invoke-virtual {v7, v5}, Lbd/a;->equals(Ljava/lang/Object;)Z
-
-    .line 825
-    .line 826
-    .line 827
-    move-result v7
-
-    .line 828
-    if-eqz v7, :cond_21
-
-    .line 829
-    .line 830
-    const/4 v5, 0x0
-
-    .line 831
-    :cond_21
-    if-eqz v5, :cond_22
-
-    .line 832
-    .line 833
-    goto :goto_13
-
-    .line 834
-    :cond_22
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 835
-    .line 836
-    .line 837
-    move-result-object v5
-
-    .line 838
-    invoke-static {v5, v6}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 839
-    .line 840
-    .line 841
-    const-string v7, "http.route.local-address"
-
-    .line 842
-    .line 843
-    invoke-interface {v5, v7}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 844
-    .line 845
-    .line 846
-    move-result-object v5
-
-    .line 847
-    move-object v14, v5
-
-    .line 848
-    check-cast v14, Ljava/net/InetAddress;
-
-    .line 849
-    .line 850
-    invoke-virtual {v0}, Lorg/apache/http/message/a;->getParams()Lorg/apache/http/params/HttpParams;
-
-    .line 851
-    .line 852
-    .line 853
-    move-result-object v5
-
-    .line 854
-    invoke-static {v5, v6}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 855
-    .line 856
-    .line 857
-    const-string v6, "http.route.default-proxy"
-
-    .line 858
-    .line 859
-    invoke-interface {v5, v6}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 860
-    .line 861
-    .line 862
-    move-result-object v5
-
-    .line 863
-    check-cast v5, Lqc/f;
-
-    .line 864
-    .line 865
-    if-eqz v5, :cond_23
-
-    .line 866
-    .line 867
-    sget-object v6, Lad/e;->a:Lqc/f;
-
-    .line 868
-    .line 869
-    invoke-virtual {v6, v5}, Lqc/f;->equals(Ljava/lang/Object;)Z
-
-    .line 870
-    .line 871
-    .line 872
-    move-result v6
-
-    .line 873
-    if-eqz v6, :cond_23
-
-    .line 874
-    .line 875
-    const/4 v5, 0x0
-
-    .line 876
-    :cond_23
-    :try_start_4
-    iget-object v3, v3, Lhf/b;->d:Ljava/lang/Object;
-
-    .line 877
-    .line 878
-    check-cast v3, Lcd/g;
-
-    .line 879
-    .line 880
-    iget-object v6, v13, Lqc/f;->q:Ljava/lang/String;
-
-    .line 881
-    .line 882
-    invoke-virtual {v3, v6}, Lcd/g;->a(Ljava/lang/String;)Lcd/c;
-
-    .line 883
-    .line 884
-    .line 885
-    move-result-object v3
-    :try_end_4
-    .catch Ljava/lang/IllegalStateException; {:try_start_4 .. :try_end_4} :catch_3
-
-    .line 886
-    iget-boolean v3, v3, Lcd/c;->d:Z
-
-    .line 887
-    .line 888
-    sget-object v18, Lbd/b;->c:Lbd/b;
-
-    .line 889
-    .line 890
-    sget-object v17, Lbd/c;->c:Lbd/c;
-
-    .line 891
-    .line 892
-    if-nez v5, :cond_24
-
-    .line 893
-    .line 894
-    new-instance v12, Lbd/a;
-
-    .line 895
-    .line 896
-    sget-object v15, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
-
-    .line 897
-    .line 898
-    move/from16 v16, v3
-
-    .line 899
-    .line 900
-    invoke-direct/range {v12 .. v18}, Lbd/a;-><init>(Lqc/f;Ljava/net/InetAddress;Ljava/util/List;ZLbd/c;Lbd/b;)V
-
-    .line 901
-    .line 902
-    .line 903
-    :goto_12
-    move-object v5, v12
-
-    .line 904
-    goto :goto_13
-
-    .line 905
-    :cond_24
-    move/from16 v16, v3
-
-    .line 906
-    .line 907
-    new-instance v12, Lbd/a;
-
-    .line 908
-    .line 909
-    invoke-static {v5}, Ljava/util/Collections;->singletonList(Ljava/lang/Object;)Ljava/util/List;
-
-    .line 910
-    .line 911
-    .line 912
-    move-result-object v15
-
-    .line 913
-    if-eqz v16, :cond_25
-
-    .line 914
-    .line 915
-    sget-object v17, Lbd/c;->d:Lbd/c;
-
-    .line 916
-    .line 917
-    :cond_25
-    if-eqz v16, :cond_26
-
-    .line 918
-    .line 919
-    sget-object v18, Lbd/b;->d:Lbd/b;
-
-    .line 920
-    .line 921
-    :cond_26
-    invoke-direct/range {v12 .. v18}, Lbd/a;-><init>(Lqc/f;Ljava/net/InetAddress;Ljava/util/List;ZLbd/c;Lbd/b;)V
-
-    .line 922
-    .line 923
-    .line 924
-    goto :goto_12
-
-    .line 925
-    :goto_13
-    new-instance v3, Li6/i0;
-
-    .line 926
-    .line 927
-    const/4 v6, 0x3
-
-    .line 928
-    invoke-direct {v3, v0, v5, v6}, Li6/i0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
-    .line 929
-    .line 930
-    .line 931
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 932
-    .line 933
-    .line 934
-    move-result v0
-
-    .line 935
-    if-eqz v0, :cond_27
-
-    .line 936
-    .line 937
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 938
-    .line 939
-    const-string v6, "Redirecting to \'"
-
-    .line 940
-    .line 941
-    invoke-direct {v0, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 942
-    .line 943
-    .line 944
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 945
-    .line 946
-    .line 947
-    const-string v2, "\' via "
-
-    .line 948
-    .line 949
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 950
-    .line 951
-    .line 952
-    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 953
-    .line 954
-    .line 955
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 956
-    .line 957
-    .line 958
-    move-result-object v0
-
-    .line 959
-    invoke-interface {v4, v0}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 960
-    .line 961
-    .line 962
-    :cond_27
-    return-object v3
-
-    .line 963
-    :catch_3
-    move-exception v0
-
-    .line 964
-    new-instance v2, Lqc/e;
-
-    .line 965
-    .line 966
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 967
-    .line 968
-    .line 969
-    move-result-object v0
-
-    .line 970
-    invoke-direct {v2, v0}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 971
-    .line 972
-    .line 973
-    throw v2
-
-    .line 974
-    :cond_28
-    new-instance v0, Lqc/s;
-
-    .line 975
-    .line 976
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 977
-    .line 978
-    const-string v4, "Redirect URI does not specify a valid host name: "
-
-    .line 979
-    .line 980
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 981
-    .line 982
-    .line 983
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 984
-    .line 985
-    .line 986
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 987
-    .line 988
-    .line 989
-    move-result-object v2
-
-    .line 990
-    invoke-direct {v0, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 991
-    .line 992
-    .line 993
-    throw v0
-
-    .line 994
-    :goto_14
-    new-instance v2, Lqc/s;
-
-    .line 995
-    .line 996
-    invoke-virtual {v0}, Ljava/net/URISyntaxException;->getMessage()Ljava/lang/String;
-
-    .line 997
-    .line 998
-    .line 999
-    move-result-object v3
-
-    .line 1000
-    invoke-direct {v2, v3, v0}, Lqc/s;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 1001
-    .line 1002
-    .line 1003
-    throw v2
-
-    .line 1004
-    :catch_4
-    move-exception v0
-
-    .line 1005
-    new-instance v2, Lqc/s;
-
-    .line 1006
-    .line 1007
-    const-string v3, "Invalid redirect URI: "
-
-    .line 1008
-    .line 1009
-    invoke-static {v3, v6}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 1010
-    .line 1011
-    .line 1012
-    move-result-object v3
-
-    .line 1013
-    invoke-direct {v2, v3, v0}, Lqc/s;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 1014
-    .line 1015
-    .line 1016
-    throw v2
-
-    .line 1017
-    :cond_29
-    new-instance v0, Lqc/s;
-
-    .line 1018
-    .line 1019
-    new-instance v2, Ljava/lang/StringBuilder;
-
-    .line 1020
-    .line 1021
-    const-string v3, "Received redirect response "
-
-    .line 1022
-    .line 1023
-    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 1024
-    .line 1025
-    .line 1026
-    invoke-interface {v4}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
-
-    .line 1027
-    .line 1028
-    .line 1029
-    move-result-object v3
-
-    .line 1030
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 1031
-    .line 1032
-    .line 1033
-    const-string v3, " but no location header"
-
-    .line 1034
-    .line 1035
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 1036
-    .line 1037
-    .line 1038
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 1039
-    .line 1040
-    .line 1041
-    move-result-object v2
-
-    .line 1042
-    invoke-direct {v0, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 1043
-    .line 1044
-    .line 1045
-    throw v0
-
-    .line 1046
-    :cond_2a
-    new-instance v0, Lsc/d;
-
-    .line 1047
-    .line 1048
-    const-string v2, "Maximum redirects ("
-
-    .line 1049
-    .line 1050
-    const-string v3, ") exceeded"
-
-    .line 1051
-    .line 1052
-    invoke-static {v5, v2, v3}, Ls1/a;->k(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 1053
-    .line 1054
-    .line 1055
-    move-result-object v2
-
-    .line 1056
-    invoke-direct {v0, v2}, Lqc/e;-><init>(Ljava/lang/String;)V
-
-    .line 1057
-    .line 1058
-    .line 1059
-    throw v0
-
-    .line 1060
-    :cond_2b
-    move-object v0, v2
-
-    .line 1061
-    :goto_15
-    return-object v0
-
-    .line 1062
-    nop
-
-    .line 1063
-    :pswitch_data_0
-    .packed-switch 0x12d
-        :pswitch_1
-        :pswitch_0
-        :pswitch_2
-    .end packed-switch
+    .line 122
+    throw p1
 .end method
 
-.method public final f(Li6/i0;Lrd/c;)V
-    .locals 7
+.method public final flush()V
+    .locals 1
 
     .line 1
-    iget-object v0, p1, Li6/i0;->h:Ljava/lang/Object;
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
 
     .line 2
     .line 3
-    check-cast v0, Lbd/a;
-
     .line 4
+    move-result-object v0
+
     .line 5
-    iget-object p1, p1, Li6/i0;->d:Ljava/lang/Object;
+    invoke-virtual {v0}, Ljd/c;->flush()V
 
     .line 6
     .line 7
-    check-cast p1, Ljd/n;
+    .line 8
+    return-void
+.end method
+
+.method public final g()V
+    .locals 4
+
+    .line 1
+    monitor-enter p0
+
+    .line 2
+    :try_start_0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 3
+    .line 4
+    if-nez v0, :cond_0
+
+    .line 5
+    .line 6
+    monitor-exit p0
+
+    .line 7
+    return-void
 
     .line 8
+    :catchall_0
+    move-exception v0
+
     .line 9
-    const/4 v1, 0x0
+    goto :goto_0
 
     .line 10
-    move v2, v1
+    :cond_0
+    const/4 v0, 0x0
 
     .line 11
-    :cond_0
-    :goto_0
-    const-string v3, "http.request"
+    iput-boolean v0, p0, Ljd/i;->p:Z
 
     .line 12
     .line 13
-    invoke-interface {p2, v3, p1}, Lrd/c;->v(Ljava/lang/String;Ljava/lang/Object;)V
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
 
     .line 14
     .line 15
-    .line 16
-    add-int/lit8 v2, v2, 0x1
-
-    .line 17
-    .line 18
-    :try_start_0
-    iget-object v3, p0, Ljd/i;->n:Lzc/e;
-
-    .line 19
-    .line 20
-    invoke-interface {v3}, Lqc/c;->isOpen()Z
-
-    .line 21
-    .line 22
-    .line 23
-    move-result v3
+    iget-object v0, v0, Ljd/g;->c:Ljd/c;
     :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 24
-    iget-object v4, p0, Ljd/i;->m:Ljd/e;
-
-    .line 25
-    .line 26
-    if-nez v3, :cond_1
-
-    .line 27
-    .line 28
+    .line 16
+    .line 17
     :try_start_1
-    iget-object v3, p0, Ljd/i;->n:Lzc/e;
-
-    .line 29
-    .line 30
-    invoke-interface {v3, v0, p2, v4}, Lzc/e;->Y(Lbd/a;Lrd/c;Ljd/e;)V
-
-    .line 31
-    .line 32
-    .line 33
-    goto :goto_1
-
-    .line 34
-    :catch_0
-    move-exception v3
-
-    .line 35
-    goto :goto_2
-
-    .line 36
-    :cond_1
-    iget-object v3, p0, Ljd/i;->n:Lzc/e;
-
-    .line 37
-    .line 38
-    const-string v5, "HTTP parameters"
-
-    .line 39
-    .line 40
-    invoke-static {v4, v5}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 41
-    .line 42
-    .line 43
-    const-string v5, "http.socket.timeout"
-
-    .line 44
-    .line 45
-    invoke-virtual {v4, v1, v5}, Lqd/a;->c(ILjava/lang/String;)I
-
-    .line 46
-    .line 47
-    .line 48
-    move-result v4
-
-    .line 49
-    invoke-interface {v3, v4}, Lqc/c;->m(I)V
-
-    .line 50
-    .line 51
-    .line 52
-    :goto_1
-    invoke-virtual {p0, v0, p2}, Ljd/i;->b(Lbd/a;Lrd/c;)V
+    invoke-virtual {v0}, Ljd/c;->shutdown()V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
-
-    .line 53
-    .line 54
-    .line 55
-    return-void
-
-    .line 56
-    :goto_2
-    :try_start_2
-    iget-object v4, p0, Ljd/i;->n:Lzc/e;
-
-    .line 57
-    .line 58
-    invoke-interface {v4}, Ljava/io/Closeable;->close()V
-    :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_1
-
-    .line 59
-    .line 60
-    .line 61
-    :catch_1
-    iget-object v4, p0, Ljd/i;->h:Lsc/c;
-
-    .line 62
-    .line 63
-    check-cast v4, Ljd/g;
-
-    .line 64
-    .line 65
-    invoke-virtual {v4, v3, v2, p2}, Ljd/g;->a(Ljava/io/IOException;ILrd/c;)Z
-
-    .line 66
-    .line 67
-    .line 68
-    move-result v4
-
-    .line 69
-    if-eqz v4, :cond_3
-
-    .line 70
-    .line 71
-    iget-object v4, p0, Ljd/i;->a:Lorg/apache/commons/logging/Log;
-
-    .line 72
-    .line 73
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isInfoEnabled()Z
-
-    .line 74
-    .line 75
-    .line 76
-    move-result v5
-
-    .line 77
-    if-eqz v5, :cond_0
-
-    .line 78
-    .line 79
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    .line 80
-    .line 81
-    const-string v6, "I/O exception ("
-
-    .line 82
-    .line 83
-    invoke-direct {v5, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 84
-    .line 85
-    .line 86
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 87
-    .line 88
-    .line 89
-    move-result-object v6
-
-    .line 90
-    invoke-virtual {v6}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    .line 91
-    .line 92
-    .line 93
-    move-result-object v6
-
-    .line 94
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 95
-    .line 96
-    .line 97
-    const-string v6, ") caught when connecting to "
-
-    .line 98
-    .line 99
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 100
-    .line 101
-    .line 102
-    invoke-virtual {v5, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 103
-    .line 104
-    .line 105
-    const-string v6, ": "
-
-    .line 106
-    .line 107
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 108
-    .line 109
-    .line 110
-    invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 111
-    .line 112
-    .line 113
-    move-result-object v6
-
-    .line 114
-    invoke-virtual {v5, v6}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 115
-    .line 116
-    .line 117
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 118
-    .line 119
-    .line 120
-    move-result-object v5
-
-    .line 121
-    invoke-interface {v4, v5}, Lorg/apache/commons/logging/Log;->info(Ljava/lang/Object;)V
-
-    .line 122
-    .line 123
-    .line 124
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 125
-    .line 126
-    .line 127
-    move-result v5
-
-    .line 128
-    if-eqz v5, :cond_2
-
-    .line 129
-    .line 130
-    invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 131
-    .line 132
-    .line 133
-    move-result-object v5
-
-    .line 134
-    invoke-interface {v4, v5, v3}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
-
-    .line 135
-    .line 136
-    .line 137
-    :cond_2
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 138
-    .line 139
-    const-string v5, "Retrying connect to "
-
-    .line 140
-    .line 141
-    invoke-direct {v3, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 142
-    .line 143
-    .line 144
-    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 145
-    .line 146
-    .line 147
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 148
-    .line 149
-    .line 150
-    move-result-object v3
-
-    .line 151
-    invoke-interface {v4, v3}, Lorg/apache/commons/logging/Log;->info(Ljava/lang/Object;)V
-
-    .line 152
-    .line 153
-    .line 154
-    goto/16 :goto_0
-
-    .line 155
-    .line 156
-    :cond_3
-    throw v3
-.end method
-
-.method public final g(Li6/i0;Lrd/c;)Lorg/apache/http/HttpResponse;
-    .locals 6
-
-    .line 1
-    iget-object v0, p1, Li6/i0;->d:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Ljd/n;
-
-    .line 4
-    .line 5
-    iget-object p1, p1, Li6/i0;->h:Ljava/lang/Object;
-
-    .line 6
-    .line 7
-    check-cast p1, Lbd/a;
-
-    .line 8
-    .line 9
-    const/4 v1, 0x0
-
-    .line 10
-    move-object v2, v1
-
-    .line 11
-    :cond_0
-    :goto_0
-    iget v3, p0, Ljd/i;->r:I
-
-    .line 12
-    .line 13
-    add-int/lit8 v3, v3, 0x1
-
-    .line 14
-    .line 15
-    iput v3, p0, Ljd/i;->r:I
-
-    .line 16
-    .line 17
-    iget v3, v0, Ljd/n;->w:I
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 18
     .line 19
-    add-int/lit8 v3, v3, 0x1
-
     .line 20
+    :catch_0
+    :try_start_2
+    iget-object v0, p0, Ljd/i;->c:Lorg/apache/http/conn/ClientConnectionManager;
+
     .line 21
-    iput v3, v0, Ljd/n;->w:I
-
     .line 22
-    .line 23
-    invoke-virtual {v0}, Ljd/n;->b()Z
+    iget-wide v1, p0, Ljd/i;->q:J
 
+    .line 23
     .line 24
+    sget-object v3, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
     .line 25
     .line 26
-    move-result v3
+    invoke-interface {v0, p0, v1, v2}, Lorg/apache/http/conn/ClientConnectionManager;->v(Lyc/f;J)V
 
     .line 27
-    iget-object v4, p0, Ljd/i;->a:Lorg/apache/commons/logging/Log;
+    .line 28
+    .line 29
+    const/4 v0, 0x0
+
+    .line 30
+    iput-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 31
+    .line 32
+    monitor-exit p0
+
+    .line 33
+    return-void
+
+    .line 34
+    :goto_0
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    .line 35
+    throw v0
+.end method
+
+.method public final h0()I
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0}, Ljd/c;->h0()I
+
+    .line 6
+    .line 7
+    .line 8
+    move-result v0
+
+    .line 9
+    return v0
+.end method
+
+.method public final isOpen()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    const/4 v0, 0x0
+
+    .line 6
+    goto :goto_0
+
+    .line 7
+    :cond_0
+    iget-object v0, v0, Ljd/g;->c:Ljd/c;
+
+    .line 8
+    .line 9
+    :goto_0
+    if-eqz v0, :cond_1
+
+    .line 10
+    .line 11
+    iget-boolean v0, v0, Ljd/c;->X:Z
+
+    .line 12
+    .line 13
+    return v0
+
+    .line 14
+    :cond_1
+    const/4 v0, 0x0
+
+    .line 15
+    return v0
+.end method
+
+.method public final j()Lad/a;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iget-object v0, v0, Ljd/g;->h:Lad/e;
+
+    .line 6
+    .line 7
+    invoke-virtual {v0}, Lad/e;->g()Lad/a;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    return-object v0
+
+    .line 12
+    :cond_0
+    new-instance v0, Ljd/b;
+
+    .line 13
+    .line 14
+    invoke-direct {v0}, Ljava/lang/IllegalStateException;-><init>()V
+
+    .line 15
+    .line 16
+    .line 17
+    throw v0
+.end method
+
+.method public final j0()Lorg/apache/http/HttpResponse;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0}, Ljd/c;->j0()Lorg/apache/http/HttpResponse;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    return-object v0
+.end method
+
+.method public final k0()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    iput-boolean v0, p0, Ljd/i;->p:Z
+
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public final l(I)V
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0, p1}, Ljd/c;->l(I)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public final l0(Lid/e;)V
+    .locals 4
+
+    .line 1
+    const-string v0, "HTTP parameters"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    monitor-enter p0
+
+    .line 7
+    :try_start_0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 8
+    .line 9
+    if-eqz v0, :cond_1
+
+    .line 10
+    .line 11
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 12
+    .line 13
+    iget-object v0, v0, Ljd/g;->h:Lad/e;
+
+    .line 14
+    .line 15
+    const-string v1, "Route tracker"
+
+    .line 16
+    .line 17
+    invoke-static {v0, v1}, Lcom/bumptech/glide/f;->v(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 18
+    .line 19
+    .line 20
+    iget-boolean v1, v0, Lad/e;->h:Z
+
+    .line 21
+    .line 22
+    const-string v2, "Connection not open"
+
+    .line 23
+    .line 24
+    invoke-static {v2, v1}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-virtual {v0}, Lad/e;->c()Z
 
     .line 28
     .line 29
-    if-nez v3, :cond_2
-
     .line 30
+    move-result v1
+
     .line 31
-    const-string p1, "Cannot retry non-repeatable request"
+    xor-int/lit8 v1, v1, 0x1
 
     .line 32
     .line 33
-    invoke-interface {v4, p1}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
+    const-string v2, "Connection is already tunnelled"
+
+    .line 34
+    .line 35
+    invoke-static {v2, v1}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+
+    .line 36
+    .line 37
+    .line 38
+    iget-object v0, v0, Lad/e;->c:Lpc/f;
+
+    .line 39
+    .line 40
+    iget-object v1, p0, Ljd/i;->h:Ljd/g;
+
+    .line 41
+    .line 42
+    iget-object v1, v1, Ljd/g;->c:Ljd/c;
+
+    .line 43
+    .line 44
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
+    .line 45
+    const/4 v2, 0x0
+
+    .line 46
+    const/4 v3, 0x0
+
+    .line 47
+    invoke-virtual {v1, v2, v0, v3, p1}, Ljd/c;->u(Ljava/net/Socket;Lpc/f;ZLorg/apache/http/params/HttpParams;)V
+
+    .line 48
+    .line 49
+    .line 50
+    monitor-enter p0
+
+    .line 51
+    :try_start_1
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
+
+    .line 52
+    .line 53
+    if-eqz p1, :cond_0
+
+    .line 54
+    .line 55
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
+
+    .line 56
+    .line 57
+    iget-object p1, p1, Ljd/g;->h:Lad/e;
+
+    .line 58
+    .line 59
+    iget-boolean v0, p1, Lad/e;->h:Z
+
+    .line 60
+    .line 61
+    const-string v1, "No tunnel unless connected"
+
+    .line 62
+    .line 63
+    invoke-static {v1, v0}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+
+    .line 64
+    .line 65
+    .line 66
+    iget-object v0, p1, Lad/e;->p:[Lpc/f;
+
+    .line 67
+    .line 68
+    const-string v1, "No tunnel without proxy"
+
+    .line 69
+    .line 70
+    invoke-static {v0, v1}, Lcom/bumptech/glide/f;->v(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 71
+    .line 72
+    .line 73
+    sget-object v0, Lad/c;->d:Lad/c;
+
+    .line 74
+    .line 75
+    iput-object v0, p1, Lad/e;->q:Lad/c;
+
+    .line 76
+    .line 77
+    iput-boolean v3, p1, Lad/e;->x:Z
+
+    .line 78
+    .line 79
+    monitor-exit p0
+
+    .line 80
+    return-void
+
+    .line 81
+    :catchall_0
+    move-exception p1
+
+    .line 82
+    goto :goto_0
+
+    .line 83
+    :cond_0
+    new-instance p1, Ljava/io/InterruptedIOException;
+
+    .line 84
+    .line 85
+    invoke-direct {p1}, Ljava/io/InterruptedIOException;-><init>()V
+
+    .line 86
+    .line 87
+    .line 88
+    throw p1
+
+    .line 89
+    :goto_0
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 90
+    throw p1
+
+    .line 91
+    :catchall_1
+    move-exception p1
+
+    .line 92
+    goto :goto_1
+
+    .line 93
+    :cond_1
+    :try_start_2
+    new-instance p1, Ljd/b;
+
+    .line 94
+    .line 95
+    invoke-direct {p1}, Ljava/lang/IllegalStateException;-><init>()V
+
+    .line 96
+    .line 97
+    .line 98
+    throw p1
+
+    .line 99
+    :goto_1
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    .line 100
+    throw p1
+.end method
+
+.method public final p(Lpc/i;)V
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0, p1}, Ljd/c;->p(Lpc/i;)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public final q0()Ljava/net/InetAddress;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0}, Ljd/c;->q0()Ljava/net/InetAddress;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    return-object v0
+.end method
+
+.method public final r(Lqd/c;Lid/e;)V
+    .locals 4
+
+    .line 1
+    const-string v0, "HTTP parameters"
+
+    .line 2
+    .line 3
+    invoke-static {p2, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    monitor-enter p0
+
+    .line 7
+    :try_start_0
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 8
+    .line 9
+    if-eqz v0, :cond_2
+
+    .line 10
+    .line 11
+    iget-object v0, p0, Ljd/i;->h:Ljd/g;
+
+    .line 12
+    .line 13
+    iget-object v0, v0, Ljd/g;->h:Lad/e;
+
+    .line 14
+    .line 15
+    const-string v1, "Route tracker"
+
+    .line 16
+    .line 17
+    invoke-static {v0, v1}, Lcom/bumptech/glide/f;->v(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 18
+    .line 19
+    .line 20
+    iget-boolean v1, v0, Lad/e;->h:Z
+
+    .line 21
+    .line 22
+    const-string v2, "Connection not open"
+
+    .line 23
+    .line 24
+    invoke-static {v2, v1}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-virtual {v0}, Lad/e;->c()Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result v1
+
+    .line 31
+    const-string v2, "Protocol layering without a tunnel not supported"
+
+    .line 32
+    .line 33
+    invoke-static {v2, v1}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
 
     .line 34
     .line 35
     .line 36
-    if-eqz v2, :cond_1
+    iget-object v1, v0, Lad/e;->w:Lad/b;
 
     .line 37
     .line 38
-    new-instance p1, Lsc/d;
+    sget-object v2, Lad/b;->d:Lad/b;
 
     .line 39
     .line 40
-    const-string p2, "Cannot retry request with a non-repeatable request entity.  The cause lists the reason the original request failed."
+    const/4 v3, 0x1
 
     .line 41
-    .line 42
-    invoke-direct {p1, p2, v2}, Lqc/s;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    if-ne v1, v2, :cond_0
 
+    .line 42
     .line 43
+    move v1, v3
+
     .line 44
+    goto :goto_0
+
     .line 45
-    throw p1
+    :cond_0
+    const/4 v1, 0x0
 
     .line 46
-    :cond_1
-    new-instance p1, Lsc/d;
+    :goto_0
+    xor-int/2addr v1, v3
 
     .line 47
+    const-string v3, "Multiple protocol layering not supported"
+
     .line 48
-    const-string p2, "Cannot retry request with a non-repeatable request entity."
-
     .line 49
-    .line 50
-    invoke-static {p2}, Lqc/e;->a(Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v3, v1}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
 
+    .line 50
     .line 51
     .line 52
-    .line 53
-    move-result-object p2
+    iget-object v0, v0, Lad/e;->c:Lpc/f;
 
+    .line 53
     .line 54
-    invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+    iget-object v1, p0, Ljd/i;->h:Ljd/g;
 
     .line 55
     .line 56
-    .line 57
-    throw p1
+    iget-object v1, v1, Ljd/g;->c:Ljd/c;
 
+    .line 57
     .line 58
-    :cond_2
-    :try_start_0
-    iget-object v2, p0, Ljd/i;->n:Lzc/e;
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
     .line 59
-    .line 60
-    invoke-interface {v2}, Lqc/c;->isOpen()Z
+    iget-object v3, p0, Ljd/i;->d:Ljd/d;
 
+    .line 60
     .line 61
+    invoke-virtual {v3, v1, v0, p1, p2}, Ljd/d;->G(Ljd/c;Lpc/f;Lqd/c;Lorg/apache/http/params/HttpParams;)V
+
     .line 62
     .line 63
-    move-result v2
-
     .line 64
-    if-nez v2, :cond_4
+    monitor-enter p0
 
     .line 65
-    .line 66
-    invoke-virtual {p1}, Lbd/a;->c()Z
+    :try_start_1
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
 
+    .line 66
     .line 67
+    if-eqz p1, :cond_1
+
     .line 68
     .line 69
-    move-result v2
+    iget-object p1, p0, Ljd/i;->h:Ljd/g;
 
     .line 70
-    if-nez v2, :cond_3
-
     .line 71
+    iget-object p1, p1, Ljd/g;->h:Lad/e;
+
     .line 72
-    const-string v2, "Reopening the direct connection."
-
     .line 73
-    .line 74
-    invoke-interface {v4, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
+    iget-boolean p2, v1, Ljd/c;->E1:Z
 
+    .line 74
     .line 75
+    iget-boolean v0, p1, Lad/e;->h:Z
+
     .line 76
     .line 77
-    iget-object v2, p0, Ljd/i;->n:Lzc/e;
+    const-string v1, "No layered protocol unless connected"
 
     .line 78
     .line 79
-    iget-object v3, p0, Ljd/i;->m:Ljd/e;
+    invoke-static {v1, v0}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
 
     .line 80
     .line 81
-    invoke-interface {v2, p1, p2, v3}, Lzc/e;->Y(Lbd/a;Lrd/c;Ljd/e;)V
-
     .line 82
+    iput-object v2, p1, Lad/e;->w:Lad/b;
+
     .line 83
     .line 84
-    goto :goto_1
+    iput-boolean p2, p1, Lad/e;->x:Z
 
     .line 85
-    :catch_0
-    move-exception v2
-
     .line 86
-    goto :goto_3
+    monitor-exit p0
 
     .line 87
-    :cond_3
-    const-string v2, "Proxied connection. Need to start over."
+    return-void
 
     .line 88
+    :catchall_0
+    move-exception p1
+
     .line 89
-    invoke-interface {v4, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
+    goto :goto_1
 
     .line 90
+    :cond_1
+    new-instance p1, Ljava/io/InterruptedIOException;
+
     .line 91
     .line 92
-    goto :goto_2
+    invoke-direct {p1}, Ljava/io/InterruptedIOException;-><init>()V
 
     .line 93
-    :cond_4
-    :goto_1
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
     .line 94
     .line 95
+    throw p1
+
     .line 96
-    move-result v2
+    :goto_1
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 97
-    if-eqz v2, :cond_5
+    throw p1
 
     .line 98
+    :catchall_1
+    move-exception p1
+
     .line 99
-    new-instance v2, Ljava/lang/StringBuilder;
+    goto :goto_2
 
     .line 100
-    .line 101
-    invoke-direct {v2}, Ljava/lang/StringBuilder;-><init>()V
+    :cond_2
+    :try_start_2
+    new-instance p1, Ljd/b;
 
+    .line 101
     .line 102
+    invoke-direct {p1}, Ljava/lang/IllegalStateException;-><init>()V
+
     .line 103
     .line 104
-    const-string v3, "Attempt "
-
     .line 105
+    throw p1
+
     .line 106
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :goto_2
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
     .line 107
-    .line 108
-    .line 109
-    iget v3, p0, Ljd/i;->r:I
+    throw p1
+.end method
 
-    .line 110
-    .line 111
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+.method public final r0()Ljavax/net/ssl/SSLSession;
+    .locals 2
 
-    .line 112
-    .line 113
-    .line 114
-    const-string v3, " to execute request"
+    .line 1
+    invoke-virtual {p0}, Ljd/i;->a()Ljd/c;
 
-    .line 115
-    .line 116
-    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
 
-    .line 117
-    .line 118
-    .line 119
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    .line 5
+    iget-object v0, v0, Ljd/c;->D1:Ljava/net/Socket;
 
-    .line 120
-    .line 121
-    .line 122
-    move-result-object v2
+    .line 6
+    .line 7
+    instance-of v1, v0, Ljavax/net/ssl/SSLSocket;
 
-    .line 123
-    invoke-interface {v4, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
+    .line 8
+    .line 9
+    if-eqz v1, :cond_0
 
-    .line 124
-    .line 125
-    .line 126
-    :cond_5
-    iget-object v2, p0, Ljd/i;->f:Ld7/c;
+    .line 10
+    .line 11
+    check-cast v0, Ljavax/net/ssl/SSLSocket;
 
-    .line 127
-    .line 128
-    iget-object v3, p0, Ljd/i;->n:Lzc/e;
+    .line 12
+    .line 13
+    invoke-virtual {v0}, Ljavax/net/ssl/SSLSocket;->getSession()Ljavax/net/ssl/SSLSession;
 
-    .line 129
-    .line 130
-    invoke-virtual {v2, v0, v3, p2}, Ld7/c;->f(Lqc/i;Lqc/b;Lrd/c;)Lorg/apache/http/HttpResponse;
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v0
 
-    .line 131
-    .line 132
-    .line 133
-    move-result-object v1
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .line 17
+    return-object v0
 
-    .line 134
-    :goto_2
-    return-object v1
+    .line 18
+    :cond_0
+    const/4 v0, 0x0
 
-    .line 135
-    :goto_3
-    const-string v3, "Closing the connection."
-
-    .line 136
-    .line 137
-    invoke-interface {v4, v3}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;)V
-
-    .line 138
-    .line 139
-    .line 140
-    :try_start_1
-    iget-object v3, p0, Ljd/i;->n:Lzc/e;
-
-    .line 141
-    .line 142
-    invoke-interface {v3}, Ljava/io/Closeable;->close()V
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
-
-    .line 143
-    .line 144
-    .line 145
-    :catch_1
-    iget v3, v0, Ljd/n;->w:I
-
-    .line 146
-    .line 147
-    iget-object v5, p0, Ljd/i;->h:Lsc/c;
-
-    .line 148
-    .line 149
-    check-cast v5, Ljd/g;
-
-    .line 150
-    .line 151
-    invoke-virtual {v5, v2, v3, p2}, Ljd/g;->a(Ljava/io/IOException;ILrd/c;)Z
-
-    .line 152
-    .line 153
-    .line 154
-    move-result v3
-
-    .line 155
-    if-eqz v3, :cond_8
-
-    .line 156
-    .line 157
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isInfoEnabled()Z
-
-    .line 158
-    .line 159
-    .line 160
-    move-result v3
-
-    .line 161
-    if-eqz v3, :cond_6
-
-    .line 162
-    .line 163
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 164
-    .line 165
-    const-string v5, "I/O exception ("
-
-    .line 166
-    .line 167
-    invoke-direct {v3, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 168
-    .line 169
-    .line 170
-    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 171
-    .line 172
-    .line 173
-    move-result-object v5
-
-    .line 174
-    invoke-virtual {v5}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    .line 175
-    .line 176
-    .line 177
-    move-result-object v5
-
-    .line 178
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 179
-    .line 180
-    .line 181
-    const-string v5, ") caught when processing request to "
-
-    .line 182
-    .line 183
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 184
-    .line 185
-    .line 186
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 187
-    .line 188
-    .line 189
-    const-string v5, ": "
-
-    .line 190
-    .line 191
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 192
-    .line 193
-    .line 194
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 195
-    .line 196
-    .line 197
-    move-result-object v5
-
-    .line 198
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 199
-    .line 200
-    .line 201
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 202
-    .line 203
-    .line 204
-    move-result-object v3
-
-    .line 205
-    invoke-interface {v4, v3}, Lorg/apache/commons/logging/Log;->info(Ljava/lang/Object;)V
-
-    .line 206
-    .line 207
-    .line 208
-    :cond_6
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isDebugEnabled()Z
-
-    .line 209
-    .line 210
-    .line 211
-    move-result v3
-
-    .line 212
-    if-eqz v3, :cond_7
-
-    .line 213
-    .line 214
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 215
-    .line 216
-    .line 217
-    move-result-object v3
-
-    .line 218
-    invoke-interface {v4, v3, v2}, Lorg/apache/commons/logging/Log;->debug(Ljava/lang/Object;Ljava/lang/Throwable;)V
-
-    .line 219
-    .line 220
-    .line 221
-    :cond_7
-    invoke-interface {v4}, Lorg/apache/commons/logging/Log;->isInfoEnabled()Z
-
-    .line 222
-    .line 223
-    .line 224
-    move-result v3
-
-    .line 225
-    if-eqz v3, :cond_0
-
-    .line 226
-    .line 227
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 228
-    .line 229
-    const-string v5, "Retrying request to "
-
-    .line 230
-    .line 231
-    invoke-direct {v3, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 232
-    .line 233
-    .line 234
-    invoke-virtual {v3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 235
-    .line 236
-    .line 237
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 238
-    .line 239
-    .line 240
-    move-result-object v3
-
-    .line 241
-    invoke-interface {v4, v3}, Lorg/apache/commons/logging/Log;->info(Ljava/lang/Object;)V
-
-    .line 242
-    .line 243
-    .line 244
-    goto/16 :goto_0
-
-    .line 245
-    .line 246
-    :cond_8
-    instance-of p2, v2, Lqc/q;
-
-    .line 247
-    .line 248
-    if-eqz p2, :cond_9
-
-    .line 249
-    .line 250
-    new-instance p2, Lqc/q;
-
-    .line 251
-    .line 252
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 253
-    .line 254
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 255
-    .line 256
-    .line 257
-    iget-object p1, p1, Lbd/a;->c:Lqc/f;
-
-    .line 258
-    .line 259
-    invoke-virtual {p1}, Lqc/f;->c()Ljava/lang/String;
-
-    .line 260
-    .line 261
-    .line 262
-    move-result-object p1
-
-    .line 263
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 264
-    .line 265
-    .line 266
-    const-string p1, " failed to respond"
-
-    .line 267
-    .line 268
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 269
-    .line 270
-    .line 271
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 272
-    .line 273
-    .line 274
-    move-result-object p1
-
-    .line 275
-    invoke-static {p1}, Lqc/e;->a(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 276
-    .line 277
-    .line 278
-    move-result-object p1
-
-    .line 279
-    invoke-direct {p2, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    .line 280
-    .line 281
-    .line 282
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getStackTrace()[Ljava/lang/StackTraceElement;
-
-    .line 283
-    .line 284
-    .line 285
-    move-result-object p1
-
-    .line 286
-    invoke-virtual {p2, p1}, Ljava/lang/Throwable;->setStackTrace([Ljava/lang/StackTraceElement;)V
-
-    .line 287
-    .line 288
-    .line 289
-    throw p2
-
-    .line 290
-    :cond_9
-    throw v2
+    .line 19
+    return-object v0
 .end method

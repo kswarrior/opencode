@@ -136,6 +136,7 @@
         0x7f040482
     .end array-data
 
+    .line 20
     :array_1
     .array-data 4
         0x7f0404c0

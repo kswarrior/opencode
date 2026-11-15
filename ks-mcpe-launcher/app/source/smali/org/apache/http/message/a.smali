@@ -1,9 +1,9 @@
 .class public abstract Lorg/apache/http/message/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lqc/h;
+.implements Lpc/h;
 
 
 # instance fields
@@ -56,7 +56,7 @@
     .line 4
     const-string v0, "Header name"
 
-    invoke-static {p1, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 5
     iget-object v0, p0, Lorg/apache/http/message/a;->headergroup:Lorg/apache/http/message/HeaderGroup;
@@ -139,7 +139,7 @@
 
     .line 18
     .line 19
-    invoke-interface {v3}, Lqc/p;->getName()Ljava/lang/String;
+    invoke-interface {v3}, Lpc/p;->getName()Ljava/lang/String;
 
     .line 20
     .line 21
@@ -256,7 +256,7 @@
 
     .line 17
     .line 18
-    invoke-interface {v2}, Lqc/p;->getName()Ljava/lang/String;
+    invoke-interface {v2}, Lpc/p;->getName()Ljava/lang/String;
 
     .line 19
     .line 20
@@ -337,7 +337,7 @@
 
     .line 18
     .line 19
-    invoke-interface {v3}, Lqc/p;->getName()Ljava/lang/String;
+    invoke-interface {v3}, Lpc/p;->getName()Ljava/lang/String;
 
     .line 20
     .line 21
@@ -465,7 +465,7 @@
 
     .line 18
     .line 19
-    invoke-interface {v2}, Lqc/p;->getName()Ljava/lang/String;
+    invoke-interface {v2}, Lpc/p;->getName()Ljava/lang/String;
 
     .line 20
     .line 21
@@ -517,11 +517,11 @@
 
     .line 4
     .line 5
-    new-instance v0, Lqd/b;
+    new-instance v0, Lpd/b;
 
     .line 6
     .line 7
-    invoke-direct {v0}, Lqd/b;-><init>()V
+    invoke-direct {v0}, Lpd/b;-><init>()V
 
     .line 8
     .line 9
@@ -663,7 +663,7 @@
     move-result-object v0
 
     .line 24
-    invoke-interface {v0}, Lqc/p;->getName()Ljava/lang/String;
+    invoke-interface {v0}, Lpc/p;->getName()Ljava/lang/String;
 
     .line 25
     .line 26
@@ -702,7 +702,7 @@
     .line 2
     const-string v0, "Header name"
 
-    invoke-static {p1, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 3
     iget-object v0, p0, Lorg/apache/http/message/a;->headergroup:Lorg/apache/http/message/HeaderGroup;
@@ -770,7 +770,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5

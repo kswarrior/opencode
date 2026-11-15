@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
 .super Landroid/app/Dialog;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -79,197 +79,206 @@
     .line 24
     .line 25
     .line 26
-    const/4 v0, 0x0
+    const/16 v0, 0x1a4
 
     .line 27
-    invoke-virtual {p0, v0}, Landroid/app/Dialog;->setCancelable(Z)V
-
     .line 28
+    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->bind(Landroid/app/Dialog;I)V
+
     .line 29
     .line 30
+    .line 31
+    const/4 v0, 0x0
+
+    .line 32
+    invoke-virtual {p0, v0}, Landroid/app/Dialog;->setCancelable(Z)V
+
+    .line 33
+    .line 34
+    .line 35
     invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
-    .line 31
-    .line 32
-    .line 33
-    move-result-object v0
-
-    .line 34
-    const v1, 0x106000d
-
-    .line 35
     .line 36
     .line 37
-    invoke-virtual {v0, v1}, Landroid/view/Window;->setBackgroundDrawableResource(I)V
-
     .line 38
-    .line 39
-    .line 40
-    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
-
-    .line 41
-    .line 42
-    .line 43
     move-result-object v0
 
-    .line 44
-    const/4 v1, 0x2
+    .line 39
+    const v1, 0x106000d
 
+    .line 40
+    .line 41
+    .line 42
+    invoke-virtual {v0, v1}, Landroid/view/Window;->setBackgroundDrawableResource(I)V
+
+    .line 43
+    .line 44
     .line 45
-    invoke-virtual {v0, v1}, Landroid/view/Window;->addFlags(I)V
+    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
     .line 46
     .line 47
     .line 48
-    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+    move-result-object v0
 
     .line 49
+    const/4 v1, 0x2
+
     .line 50
+    invoke-virtual {v0, v1}, Landroid/view/Window;->addFlags(I)V
+
     .line 51
-    move-result-object v0
-
     .line 52
-    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
-
     .line 53
+    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+
     .line 54
     .line 55
+    .line 56
     move-result-object v0
 
-    .line 56
-    const v1, 0x3f19999a    # 0.6f
-
     .line 57
+    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
     .line 58
     .line 59
-    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->dimAmount:F
-
     .line 60
+    move-result-object v0
+
     .line 61
-    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+    const v1, 0x3f19999a    # 0.6f
 
     .line 62
     .line 63
     .line 64
-    move-result-object v1
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->dimAmount:F
 
     .line 65
-    invoke-virtual {v1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
-
     .line 66
+    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+
     .line 67
     .line 68
-    sget v0, Lorg/levimc/launcher/R$id;->tv_message:I
-
     .line 69
+    move-result-object v1
+
     .line 70
-    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    invoke-virtual {v1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
     .line 71
     .line 72
     .line 73
-    move-result-object v0
+    sget v0, Lorg/levimc/launcher/R$id;->tv_message:I
 
     .line 74
-    check-cast v0, Landroid/widget/TextView;
-
     .line 75
-    .line 76
-    iput-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->messageView:Landroid/widget/TextView;
-
-    .line 77
-    .line 78
-    sget v0, Lorg/levimc/launcher/R$id;->progress_bar:I
-
-    .line 79
-    .line 80
     invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
+    .line 76
+    .line 77
+    .line 78
+    move-result-object v0
+
+    .line 79
+    check-cast v0, Landroid/widget/TextView;
+
+    .line 80
     .line 81
+    iput-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->messageView:Landroid/widget/TextView;
+
     .line 82
     .line 83
-    move-result-object p1
+    sget v0, Lorg/levimc/launcher/R$id;->progress_bar:I
 
     .line 84
-    check-cast p1, Landroid/widget/ProgressBar;
-
     .line 85
-    .line 86
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->progressBar:Landroid/widget/ProgressBar;
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
+    .line 86
     .line 87
     .line 88
-    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->pendingMessage:Ljava/lang/CharSequence;
+    move-result-object p1
 
     .line 89
+    check-cast p1, Landroid/widget/ProgressBar;
+
     .line 90
+    .line 91
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->progressBar:Landroid/widget/ProgressBar;
+
+    .line 92
+    .line 93
+    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->pendingMessage:Ljava/lang/CharSequence;
+
+    .line 94
+    .line 95
     if-eqz p1, :cond_0
 
-    .line 91
-    .line 92
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->messageView:Landroid/widget/TextView;
-
-    .line 93
-    .line 94
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 95
     .line 96
     .line 97
-    :cond_0
-    :try_start_0
-    new-instance p1, Lorg/levimc/launcher/util/PersonalizationManager;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->messageView:Landroid/widget/TextView;
 
     .line 98
     .line 99
-    invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 100
     .line 101
     .line 102
-    move-result-object v0
+    :cond_0
+    :try_start_0
+    new-instance p1, Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 103
-    invoke-direct {p1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
-
     .line 104
+    invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
+
     .line 105
     .line 106
+    .line 107
+    move-result-object v0
+
+    .line 108
+    invoke-direct {p1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
+
+    .line 109
+    .line 110
+    .line 111
     invoke-virtual {p1}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor()I
 
-    .line 107
-    .line 108
-    .line 109
-    move-result p1
-
-    .line 110
-    if-eqz p1, :cond_1
-
-    .line 111
     .line 112
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->progressBar:Landroid/widget/ProgressBar;
-
     .line 113
     .line 114
-    if-eqz v0, :cond_1
+    move-result p1
 
     .line 115
-    .line 116
-    invoke-static {p1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+    if-eqz p1, :cond_1
 
+    .line 116
     .line 117
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LoadingDialog;->progressBar:Landroid/widget/ProgressBar;
+
     .line 118
     .line 119
-    move-result-object p1
+    if-eqz v0, :cond_1
 
     .line 120
+    .line 121
+    invoke-static {p1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
+
+    .line 122
+    .line 123
+    .line 124
+    move-result-object p1
+
+    .line 125
     invoke-virtual {v0, p1}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 121
-    .line 122
-    .line 123
+    .line 126
+    .line 127
+    .line 128
     :catch_0
     :cond_1
     return-void

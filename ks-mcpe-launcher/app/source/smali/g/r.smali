@@ -1,19 +1,17 @@
 .class public final Lg/r;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroidx/appcompat/view/ActionMode$Callback;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final a:Landroidx/appcompat/view/ActionMode$Callback;
-
-.field public final synthetic b:Landroidx/appcompat/app/a;
+.field public final synthetic c:Landroidx/appcompat/app/a;
 
 
 # direct methods
-.method public constructor <init>(Landroidx/appcompat/app/a;Landroidx/appcompat/view/ActionMode$Callback;)V
+.method public constructor <init>(Landroidx/appcompat/app/a;)V
     .locals 0
 
     .line 1
@@ -22,241 +20,160 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lg/r;->b:Landroidx/appcompat/app/a;
+    iput-object p1, p0, Lg/r;->c:Landroidx/appcompat/app/a;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lg/r;->a:Landroidx/appcompat/view/ActionMode$Callback;
-
-    .line 7
-    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Landroidx/appcompat/view/ActionMode;)V
-    .locals 3
+.method public final run()V
+    .locals 5
 
     .line 1
-    iget-object v0, p0, Lg/r;->a:Landroidx/appcompat/view/ActionMode$Callback;
+    iget-object v0, p0, Lg/r;->c:Landroidx/appcompat/app/a;
 
     .line 2
     .line 3
-    invoke-interface {v0, p1}, Landroidx/appcompat/view/ActionMode$Callback;->a(Landroidx/appcompat/view/ActionMode;)V
+    iget-object v1, v0, Landroidx/appcompat/app/a;->M1:Landroid/widget/PopupWindow;
 
     .line 4
     .line 5
+    iget-object v2, v0, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
+
     .line 6
-    iget-object p1, p0, Lg/r;->b:Landroidx/appcompat/app/a;
-
     .line 7
-    .line 8
-    iget-object v0, p1, Landroidx/appcompat/app/a;->M1:Landroid/widget/PopupWindow;
+    const/16 v3, 0x37
 
+    .line 8
     .line 9
+    const/4 v4, 0x0
+
     .line 10
-    if-eqz v0, :cond_0
+    invoke-virtual {v1, v2, v3, v4, v4}, Landroid/widget/PopupWindow;->showAtLocation(Landroid/view/View;III)V
 
     .line 11
     .line 12
-    iget-object v0, p1, Landroidx/appcompat/app/a;->B1:Landroid/view/Window;
-
     .line 13
-    .line 14
-    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+    iget-object v1, v0, Landroidx/appcompat/app/a;->O1:Landroidx/core/view/u0;
 
+    .line 14
     .line 15
+    if-eqz v1, :cond_0
+
     .line 16
     .line 17
-    move-result-object v0
+    invoke-virtual {v1}, Landroidx/core/view/u0;->b()V
 
     .line 18
-    iget-object v1, p1, Landroidx/appcompat/app/a;->N1:Lg/p;
-
     .line 19
     .line 20
-    invoke-virtual {v0, v1}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
+    :cond_0
+    iget-boolean v1, v0, Landroidx/appcompat/app/a;->P1:Z
 
     .line 21
     .line 22
+    const/high16 v2, 0x3f800000    # 1.0f
+
     .line 23
-    :cond_0
-    iget-object v0, p1, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
-
     .line 24
+    if-eqz v1, :cond_1
+
     .line 25
-    if-eqz v0, :cond_2
-
     .line 26
+    iget-object v1, v0, Landroidx/appcompat/app/a;->Q1:Landroid/view/ViewGroup;
+
     .line 27
-    iget-object v0, p1, Landroidx/appcompat/app/a;->O1:Landroidx/core/view/w0;
-
     .line 28
+    if-eqz v1, :cond_1
+
     .line 29
-    if-eqz v0, :cond_1
-
     .line 30
-    .line 31
-    invoke-virtual {v0}, Landroidx/core/view/w0;->b()V
+    invoke-virtual {v1}, Landroid/view/View;->isLaidOut()Z
 
+    .line 31
     .line 32
     .line 33
+    move-result v1
+
     .line 34
-    :cond_1
-    iget-object v0, p1, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
+    if-eqz v1, :cond_1
 
     .line 35
     .line 36
-    invoke-static {v0}, Landroidx/core/view/t0;->a(Landroid/view/View;)Landroidx/core/view/w0;
+    iget-object v1, v0, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
 
     .line 37
     .line 38
+    const/4 v3, 0x0
+
     .line 39
-    move-result-object v0
+    invoke-virtual {v1, v3}, Landroid/view/View;->setAlpha(F)V
 
     .line 40
-    const/4 v1, 0x0
-
     .line 41
-    invoke-virtual {v0, v1}, Landroidx/core/view/w0;->a(F)V
-
     .line 42
+    iget-object v1, v0, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
+
     .line 43
     .line 44
-    iput-object v0, p1, Landroidx/appcompat/app/a;->O1:Landroidx/core/view/w0;
+    invoke-static {v1}, Landroidx/core/view/s0;->a(Landroid/view/View;)Landroidx/core/view/u0;
 
     .line 45
     .line 46
-    new-instance v1, Lg/o;
-
     .line 47
+    move-result-object v1
+
     .line 48
-    const/4 v2, 0x1
+    invoke-virtual {v1, v2}, Landroidx/core/view/u0;->a(F)V
 
     .line 49
-    invoke-direct {v1, p0, v2}, Lg/o;-><init>(Ljava/lang/Object;I)V
-
     .line 50
     .line 51
-    .line 52
-    invoke-virtual {v0, v1}, Landroidx/core/view/w0;->d(Landroidx/core/view/x0;)V
+    iput-object v1, v0, Landroidx/appcompat/app/a;->O1:Landroidx/core/view/u0;
 
+    .line 52
     .line 53
+    new-instance v0, Lg/q;
+
     .line 54
     .line 55
-    :cond_2
-    iget-object v0, p1, Landroidx/appcompat/app/a;->D1:Ljava/lang/Object;
+    const/4 v2, 0x0
 
     .line 56
-    .line 57
-    iget-object v1, p1, Landroidx/appcompat/app/a;->K1:Landroidx/appcompat/view/ActionMode;
+    invoke-direct {v0, p0, v2}, Lg/q;-><init>(Ljava/lang/Object;I)V
 
+    .line 57
     .line 58
     .line 59
-    invoke-interface {v0, v1}, Lg/h;->onSupportActionModeFinished(Landroidx/appcompat/view/ActionMode;)V
+    invoke-virtual {v1, v0}, Landroidx/core/view/u0;->d(Landroidx/core/view/v0;)V
 
     .line 60
     .line 61
     .line 62
-    const/4 v0, 0x0
+    return-void
 
     .line 63
-    iput-object v0, p1, Landroidx/appcompat/app/a;->K1:Landroidx/appcompat/view/ActionMode;
+    :cond_1
+    iget-object v1, v0, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
 
     .line 64
     .line 65
-    iget-object v0, p1, Landroidx/appcompat/app/a;->Q1:Landroid/view/ViewGroup;
+    invoke-virtual {v1, v2}, Landroid/view/View;->setAlpha(F)V
 
     .line 66
     .line 67
-    sget-object v1, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
-
     .line 68
-    .line 69
-    invoke-static {v0}, Landroidx/core/view/j0;->c(Landroid/view/View;)V
+    iget-object v0, v0, Landroidx/appcompat/app/a;->L1:Landroidx/appcompat/widget/ActionBarContextView;
 
+    .line 69
     .line 70
+    invoke-virtual {v0, v4}, Landroidx/appcompat/widget/ActionBarContextView;->setVisibility(I)V
+
     .line 71
     .line 72
-    invoke-virtual {p1}, Landroidx/appcompat/app/a;->e0()V
-
     .line 73
-    .line 74
-    .line 75
     return-void
-.end method
-
-.method public final b(Landroidx/appcompat/view/ActionMode;Landroid/view/Menu;)Z
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lg/r;->a:Landroidx/appcompat/view/ActionMode$Callback;
-
-    .line 2
-    .line 3
-    invoke-interface {v0, p1, p2}, Landroidx/appcompat/view/ActionMode$Callback;->b(Landroidx/appcompat/view/ActionMode;Landroid/view/Menu;)Z
-
-    .line 4
-    .line 5
-    .line 6
-    move-result p1
-
-    .line 7
-    return p1
-.end method
-
-.method public final c(Landroidx/appcompat/view/ActionMode;Landroid/view/Menu;)Z
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lg/r;->b:Landroidx/appcompat/app/a;
-
-    .line 2
-    .line 3
-    iget-object v0, v0, Landroidx/appcompat/app/a;->Q1:Landroid/view/ViewGroup;
-
-    .line 4
-    .line 5
-    sget-object v1, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
-
-    .line 6
-    .line 7
-    invoke-static {v0}, Landroidx/core/view/j0;->c(Landroid/view/View;)V
-
-    .line 8
-    .line 9
-    .line 10
-    iget-object v0, p0, Lg/r;->a:Landroidx/appcompat/view/ActionMode$Callback;
-
-    .line 11
-    .line 12
-    invoke-interface {v0, p1, p2}, Landroidx/appcompat/view/ActionMode$Callback;->c(Landroidx/appcompat/view/ActionMode;Landroid/view/Menu;)Z
-
-    .line 13
-    .line 14
-    .line 15
-    move-result p1
-
-    .line 16
-    return p1
-.end method
-
-.method public final d(Landroidx/appcompat/view/ActionMode;Landroid/view/MenuItem;)Z
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lg/r;->a:Landroidx/appcompat/view/ActionMode$Callback;
-
-    .line 2
-    .line 3
-    invoke-interface {v0, p1, p2}, Landroidx/appcompat/view/ActionMode$Callback;->d(Landroidx/appcompat/view/ActionMode;Landroid/view/MenuItem;)Z
-
-    .line 4
-    .line 5
-    .line 6
-    move-result p1
-
-    .line 7
-    return p1
 .end method

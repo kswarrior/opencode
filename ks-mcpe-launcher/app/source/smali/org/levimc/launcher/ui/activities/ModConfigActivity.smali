@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/activities/ModConfigActivity;
 .super Lorg/levimc/launcher/ui/activities/BaseActivity;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -310,49 +310,50 @@
     move-result-object p1
 
     .line 7
-    new-instance v0, Lorg/levimc/launcher/ui/activities/t1;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k;
 
     .line 8
     .line 9
-    const/4 v1, 0x0
+    const/16 v1, 0x1a
 
     .line 10
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/t1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Object;I)V
-
     .line 11
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 12
     .line 13
+    .line 14
     invoke-virtual {p0, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 14
     .line 15
     .line 16
+    .line 17
     return-void
 
-    .line 17
+    .line 18
     :catch_0
     move-exception p1
 
-    .line 18
-    new-instance v0, Lorg/levimc/launcher/ui/activities/s1;
-
     .line 19
+    new-instance v0, Lorg/levimc/launcher/ui/activities/o2;
+
     .line 20
+    .line 21
     const/4 v1, 0x1
 
-    .line 21
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/s1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;I)V
-
     .line 22
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/o2;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;I)V
+
     .line 23
     .line 24
+    .line 25
     invoke-virtual {p0, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 25
     .line 26
     .line 27
+    .line 28
     return-void
 .end method
 
@@ -476,15 +477,15 @@
     move-result-object p1
 
     .line 7
-    new-instance v0, Lorg/levimc/launcher/ui/activities/d;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k;
 
     .line 8
     .line 9
-    const/16 v1, 0x1c
+    const/16 v1, 0x18
 
     .line 10
     .line 11
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 12
     .line 13
@@ -672,14 +673,14 @@
     .line 12
     .line 13
     .line 14
-    new-instance v0, Lorg/levimc/launcher/ui/activities/r1;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/n2;
 
     .line 15
     .line 16
     const/4 v1, 0x0
 
     .line 17
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/r1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/n2;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;I)V
 
     .line 18
     .line 19
@@ -698,14 +699,14 @@
     move-exception v0
 
     .line 25
-    new-instance v1, Lorg/levimc/launcher/ui/activities/s1;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/o2;
 
     .line 26
     .line 27
     const/4 v2, 0x0
 
     .line 28
-    invoke-direct {v1, p0, v0, v2}, Lorg/levimc/launcher/ui/activities/s1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;I)V
+    invoke-direct {v1, p0, v0, v2}, Lorg/levimc/launcher/ui/activities/o2;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;I)V
 
     .line 29
     .line 30
@@ -755,15 +756,15 @@
 
     .line 17
     .line 18
-    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/k;
 
     .line 19
     .line 20
-    const/16 v2, 0x1b
+    const/16 v2, 0x17
 
     .line 21
     .line 22
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 23
     .line 24
@@ -801,28 +802,29 @@
 
     .line 8
     .line 9
-    new-instance v1, Lorg/levimc/launcher/ui/activities/t1;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/k;
 
     .line 10
     .line 11
-    const/4 v2, 0x1
+    const/16 v2, 0x19
 
     .line 12
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/t1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Object;I)V
-
     .line 13
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 14
     .line 15
+    .line 16
     invoke-direct {v0, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;)V
 
-    .line 16
     .line 17
     .line 18
+    .line 19
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
-    .line 19
     .line 20
     .line 21
+    .line 22
     return-void
 .end method
 
@@ -947,14 +949,14 @@
 
     .line 57
     .line 58
-    new-instance v1, Lorg/levimc/launcher/ui/activities/r1;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n2;
 
     .line 59
     .line 60
     const/4 v2, 0x1
 
     .line 61
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/r1;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/n2;-><init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;I)V
 
     .line 62
     .line 63
@@ -1246,7 +1248,7 @@
 
     .line 10
     .line 11
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 12
     .line 13
@@ -1268,7 +1270,7 @@
 
     .line 21
     .line 22
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 23
     .line 24
@@ -1288,7 +1290,7 @@
 
     .line 31
     .line 32
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 33
     .line 34
@@ -1308,7 +1310,7 @@
 
     .line 41
     .line 42
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 43
     .line 44
@@ -1328,7 +1330,7 @@
 
     .line 51
     .line 52
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 53
     .line 54
@@ -1348,7 +1350,7 @@
 
     .line 61
     .line 62
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 63
     .line 64
@@ -1368,7 +1370,7 @@
 
     .line 71
     .line 72
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 73
     .line 74
@@ -1427,19 +1429,19 @@
     .line 101
     .line 102
     .line 103
-    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/p1;)V
 
     .line 104
     .line 105
     .line 106
-    new-instance v0, Lorg/levimc/launcher/ui/activities/y0;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/d1;
 
     .line 107
     .line 108
     const/4 v1, 0x4
 
     .line 109
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/y0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/d1;-><init>(Ljava/lang/Object;I)V
 
     .line 110
     .line 111

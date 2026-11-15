@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/versions/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,46 +9,48 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public final synthetic d:Landroid/content/Context;
 
 .field public final synthetic h:Ljava/lang/Object;
 
-.field public final synthetic q:Ljava/lang/Object;
-
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Landroid/content/Context;Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/core/versions/j;->c:I
+    iput p3, p0, Lorg/levimc/launcher/core/versions/j;->c:I
 
-    .line 2
-    .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/versions/j;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/core/versions/j;->d:Landroid/content/Context;
 
-    .line 4
-    .line 5
     iput-object p2, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
 
-    .line 6
-    .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/core/versions/j;->q:Ljava/lang/Object;
-
-    .line 8
-    .line 9
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 10
-    .line 11
-    .line 12
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;Landroid/app/Activity;)V
+    .locals 1
+
+    .line 2
+    const/4 v0, 0x1
+
+    iput v0, p0, Lorg/levimc/launcher/core/versions/j;->c:I
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
+
+    iput-object p2, p0, Lorg/levimc/launcher/core/versions/j;->d:Landroid/content/Context;
+
     return-void
 .end method
 
 
 # virtual methods
 .method public final run()V
-    .locals 3
+    .locals 2
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/core/versions/j;->c:I
@@ -60,76 +62,82 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/versions/j;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/core/versions/VersionManager;
+    check-cast v0, Lorg/levimc/launcher/core/versions/VersionManager$InitCallback;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
+    iget-object v1, p0, Lorg/levimc/launcher/core/versions/j;->d:Landroid/content/Context;
 
     .line 11
     .line 12
-    check-cast v1, Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;
+    invoke-static {v1, v0}, Lorg/levimc/launcher/core/versions/VersionManager;->c(Landroid/content/Context;Lorg/levimc/launcher/core/versions/VersionManager$InitCallback;)V
 
     .line 13
     .line 14
-    iget-object v2, p0, Lorg/levimc/launcher/core/versions/j;->q:Ljava/lang/Object;
-
     .line 15
+    return-void
+
     .line 16
-    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
 
     .line 17
     .line 18
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/versions/VersionManager;->t(Lorg/levimc/launcher/core/versions/VersionManager;Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
 
     .line 19
     .line 20
-    .line 21
-    return-void
+    iget-object v1, p0, Lorg/levimc/launcher/core/versions/j;->d:Landroid/content/Context;
 
+    .line 21
     .line 22
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/versions/j;->d:Ljava/lang/Object;
+    check-cast v1, Landroid/app/Activity;
 
     .line 23
     .line 24
-    check-cast v0, Landroid/app/Activity;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/versions/VersionManager$1;->e(Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;Landroid/app/Activity;)V
 
     .line 25
     .line 26
-    iget-object v1, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
-
     .line 27
+    return-void
+
     .line 28
-    check-cast v1, Ljava/lang/Exception;
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/versions/j;->d:Landroid/content/Context;
 
     .line 29
     .line 30
-    iget-object v2, p0, Lorg/levimc/launcher/core/versions/j;->q:Ljava/lang/Object;
+    check-cast v0, Landroid/app/Activity;
 
     .line 31
     .line 32
-    check-cast v2, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
+    iget-object v1, p0, Lorg/levimc/launcher/core/versions/j;->h:Ljava/lang/Object;
 
     .line 33
     .line 34
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/versions/VersionManager$1;->f(Landroid/app/Activity;Ljava/lang/Exception;Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;)V
+    check-cast v1, Ljava/lang/Exception;
 
     .line 35
     .line 36
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/versions/VersionManager$1;->b(Landroid/app/Activity;Ljava/lang/Exception;)V
+
     .line 37
+    .line 38
+    .line 39
     return-void
 
-    .line 38
+    .line 40
     nop
 
-    .line 39
+    .line 41
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

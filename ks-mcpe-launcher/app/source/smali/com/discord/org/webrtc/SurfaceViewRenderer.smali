@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/SurfaceViewRenderer;
 .super Landroid/view/SurfaceView;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/view/SurfaceHolder$Callback;
@@ -511,7 +511,7 @@
 
     .line 94
     .line 95
-    invoke-static {v8, v2, v10, v3, v9}, Ls1/a;->v(Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v8, v2, v10, v3, v9}, Ls1/a;->u(Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 96
     .line 97
@@ -983,7 +983,7 @@
 
     .line 28
     .line 29
-    invoke-static {v0, p2, p1, v1}, Ls1/a;->o(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p2, p1, v1}, Ls1/a;->m(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
 
     .line 30
     .line 31

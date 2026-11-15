@@ -1,224 +1,279 @@
-.class public interface abstract Lwe/b;
+.class public final Lwe/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lwe/h;
 
 
-# static fields
-.field public static final a:Lge/o;
+# instance fields
+.field public final synthetic a:I
 
-.field public static final b:Lge/o;
-
-.field public static final c:Lge/o;
-
-.field public static final d:Lge/o;
-
-.field public static final e:Lge/o;
-
-.field public static final f:Lge/o;
-
-.field public static final g:Lge/o;
-
-.field public static final h:Lge/o;
-
-.field public static final i:Lge/o;
+.field public final b:Ljava/lang/Class;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public synthetic constructor <init>(Ljava/lang/Class;I)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lge/o;
+    iput p2, p0, Lwe/b;->a:I
 
     .line 2
     .line 3
-    const-string v1, "1.3.14.3.2.2"
+    iput-object p1, p0, Lwe/b;->b:Ljava/lang/Class;
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
     .line 8
-    new-instance v0, Lge/o;
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Ljava/lang/String;)Ljava/lang/Object;
+    .locals 4
+
+    .line 1
+    iget v0, p0, Lwe/b;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Lwe/b;->b:Ljava/lang/Class;
+
+    .line 7
+    .line 8
+    invoke-static {v0, p1}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
 
     .line 9
     .line 10
-    const-string v1, "1.3.14.3.2.3"
-
     .line 11
+    move-result-object p1
+
     .line 12
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    return-object p1
 
     .line 13
+    :pswitch_0
+    invoke-virtual {p1}, Ljava/lang/String;->toCharArray()[C
+
     .line 14
     .line 15
-    new-instance v0, Lge/o;
-
     .line 16
+    move-result-object p1
+
     .line 17
-    const-string v1, "1.3.14.3.2.4"
+    array-length v0, p1
 
     .line 18
-    .line 19
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    sget-object v1, Ljava/lang/Character;->TYPE:Ljava/lang/Class;
 
+    .line 19
     .line 20
+    iget-object v2, p0, Lwe/b;->b:Ljava/lang/Class;
+
     .line 21
     .line 22
-    new-instance v0, Lge/o;
+    if-ne v2, v1, :cond_0
 
     .line 23
     .line 24
-    const-string v1, "1.3.14.3.2.6"
+    goto :goto_1
 
     .line 25
-    .line 26
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    :cond_0
+    invoke-static {v2, v0}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
 
+    .line 26
     .line 27
     .line 28
+    move-result-object v1
+
     .line 29
-    sput-object v0, Lwe/b;->a:Lge/o;
+    const/4 v2, 0x0
 
     .line 30
+    :goto_0
+    if-ge v2, v0, :cond_1
+
     .line 31
-    new-instance v0, Lge/o;
-
     .line 32
+    aget-char v3, p1, v2
+
     .line 33
-    const-string v1, "1.3.14.3.2.7"
-
     .line 34
-    .line 35
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    invoke-static {v3}, Ljava/lang/Character;->valueOf(C)Ljava/lang/Character;
 
+    .line 35
     .line 36
     .line 37
+    move-result-object v3
+
     .line 38
-    sput-object v0, Lwe/b;->b:Lge/o;
+    invoke-static {v1, v2, v3}, Ljava/lang/reflect/Array;->set(Ljava/lang/Object;ILjava/lang/Object;)V
 
     .line 39
     .line 40
-    new-instance v0, Lge/o;
-
     .line 41
-    .line 42
-    const-string v1, "1.3.14.3.2.8"
+    add-int/lit8 v2, v2, 0x1
 
+    .line 42
     .line 43
+    goto :goto_0
+
     .line 44
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    :cond_1
+    move-object p1, v1
 
     .line 45
+    :goto_1
+    return-object p1
+
+    .line 46
+    nop
+
+    .line 47
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final b(Ljava/lang/Object;)Ljava/lang/String;
+    .locals 4
+
+    .line 1
+    iget v0, p0, Lwe/b;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    check-cast p1, Ljava/lang/Enum;
+
+    .line 7
+    .line 8
+    invoke-virtual {p1}, Ljava/lang/Enum;->name()Ljava/lang/String;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    return-object p1
+
+    .line 13
+    :pswitch_0
+    invoke-static {p1}, Ljava/lang/reflect/Array;->getLength(Ljava/lang/Object;)I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    iget-object v1, p0, Lwe/b;->b:Ljava/lang/Class;
+
+    .line 18
+    .line 19
+    sget-object v2, Ljava/lang/Character;->TYPE:Ljava/lang/Class;
+
+    .line 20
+    .line 21
+    if-ne v1, v2, :cond_0
+
+    .line 22
+    .line 23
+    check-cast p1, [C
+
+    .line 24
+    .line 25
+    new-instance v0, Ljava/lang/String;
+
+    .line 26
+    .line 27
+    invoke-direct {v0, p1}, Ljava/lang/String;-><init>([C)V
+
+    .line 28
+    .line 29
+    .line 30
+    goto :goto_1
+
+    .line 31
+    :cond_0
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 32
+    .line 33
+    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 34
+    .line 35
+    .line 36
+    const/4 v2, 0x0
+
+    .line 37
+    :goto_0
+    if-ge v2, v0, :cond_2
+
+    .line 38
+    .line 39
+    invoke-static {p1, v2}, Ljava/lang/reflect/Array;->get(Ljava/lang/Object;I)Ljava/lang/Object;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v3
+
+    .line 43
+    if-eqz v3, :cond_1
+
+    .line 44
+    .line 45
+    invoke-virtual {v1, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 46
     .line 47
-    sput-object v0, Lwe/b;->c:Lge/o;
-
     .line 48
-    .line 49
-    new-instance v0, Lge/o;
+    :cond_1
+    add-int/lit8 v2, v2, 0x1
 
+    .line 49
     .line 50
+    goto :goto_0
+
     .line 51
-    const-string v1, "1.3.14.3.2.9"
+    :cond_2
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 52
     .line 53
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
     .line 54
+    move-result-object v0
+
     .line 55
+    :goto_1
+    return-object v0
+
     .line 56
-    sput-object v0, Lwe/b;->d:Lge/o;
+    nop
 
     .line 57
-    .line 58
-    new-instance v0, Lge/o;
-
-    .line 59
-    .line 60
-    const-string v1, "1.3.14.3.2.17"
-
-    .line 61
-    .line 62
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 63
-    .line 64
-    .line 65
-    sput-object v0, Lwe/b;->e:Lge/o;
-
-    .line 66
-    .line 67
-    new-instance v0, Lge/o;
-
-    .line 68
-    .line 69
-    const-string v1, "1.3.14.3.2.26"
-
-    .line 70
-    .line 71
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 72
-    .line 73
-    .line 74
-    sput-object v0, Lwe/b;->f:Lge/o;
-
-    .line 75
-    .line 76
-    new-instance v0, Lge/o;
-
-    .line 77
-    .line 78
-    const-string v1, "1.3.14.3.2.27"
-
-    .line 79
-    .line 80
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 81
-    .line 82
-    .line 83
-    sput-object v0, Lwe/b;->g:Lge/o;
-
-    .line 84
-    .line 85
-    new-instance v0, Lge/o;
-
-    .line 86
-    .line 87
-    const-string v1, "1.3.14.3.2.29"
-
-    .line 88
-    .line 89
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 90
-    .line 91
-    .line 92
-    sput-object v0, Lwe/b;->h:Lge/o;
-
-    .line 93
-    .line 94
-    new-instance v0, Lge/o;
-
-    .line 95
-    .line 96
-    const-string v1, "1.3.14.7.2.1.1"
-
-    .line 97
-    .line 98
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 99
-    .line 100
-    .line 101
-    sput-object v0, Lwe/b;->i:Lge/o;
-
-    .line 102
-    .line 103
-    return-void
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

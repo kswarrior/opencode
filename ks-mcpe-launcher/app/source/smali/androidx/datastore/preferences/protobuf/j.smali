@@ -1,6 +1,6 @@
 .class public abstract Landroidx/datastore/preferences/protobuf/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -10,7 +10,7 @@
 
 
 # direct methods
-.method public constructor <init>(Lcom/google/android/gms/internal/measurement/fi;I)V
+.method public constructor <init>(Lcom/google/android/gms/internal/measurement/li;I)V
     .locals 2
 
     .line 1
@@ -76,7 +76,7 @@
 
     .line 31
     .line 32
-    invoke-static {p2, v0, v1}, Ls1/a;->l(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p2, v0, v1}, Ls1/a;->j(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 33
     .line 34
@@ -269,5 +269,5 @@
     throw v0
 .end method
 
-.method public abstract z(Lcom/google/android/gms/internal/measurement/yg;Ljava/lang/Object;)V
+.method public abstract z(Lcom/google/android/gms/internal/measurement/eh;Ljava/lang/Object;)V
 .end method

@@ -1,107 +1,317 @@
-.class public Lag/a;
+.class public final Lag/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljavax/crypto/SecretKey;
+.implements Lorg/spongycastle/crypto/c;
+
+
+# static fields
+.field public static final h:Ljava/math/BigInteger;
 
 
 # instance fields
-.field public final c:[C
+.field public c:Lmg/g;
 
-.field public final d:Lorg/spongycastle/crypto/y;
+.field public d:Lmg/f;
 
 
 # direct methods
-.method public constructor <init>([CLorg/spongycastle/crypto/y;)V
+.method static constructor <clinit>()V
     .locals 2
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const-wide/16 v0, 0x1
 
     .line 2
     .line 3
+    invoke-static {v0, v1}, Ljava/math/BigInteger;->valueOf(J)Ljava/math/BigInteger;
+
     .line 4
-    array-length v0, p1
-
     .line 5
-    new-array v0, v0, [C
-
     .line 6
+    move-result-object v0
+
     .line 7
-    iput-object v0, p0, Lag/a;->c:[C
+    sput-object v0, Lag/a;->h:Ljava/math/BigInteger;
 
     .line 8
     .line 9
-    iput-object p2, p0, Lag/a;->d:Lorg/spongycastle/crypto/y;
-
-    .line 10
-    .line 11
-    const/4 p2, 0x0
-
-    .line 12
-    array-length v1, p1
-
-    .line 13
-    invoke-static {p1, p2, v0, p2, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
-
-    .line 14
-    .line 15
-    .line 16
     return-void
 .end method
 
 
 # virtual methods
-.method public final getAlgorithm()Ljava/lang/String;
-    .locals 1
+.method public final g(Lorg/spongycastle/crypto/h;)Ljava/math/BigInteger;
+    .locals 3
 
     .line 1
-    const-string v0, "PBKDF1"
+    check-cast p1, Lmg/h;
 
     .line 2
     .line 3
-    return-object v0
-.end method
-
-.method public final getEncoded()[B
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lag/a;->d:Lorg/spongycastle/crypto/y;
-
-    .line 2
-    .line 3
-    iget-object v1, p0, Lag/a;->c:[C
+    iget-object v0, p1, Lmg/e;->d:Lmg/f;
 
     .line 4
     .line 5
-    invoke-virtual {v0, v1}, Lorg/spongycastle/crypto/y;->a([C)[B
+    iget-object v1, p0, Lag/a;->d:Lmg/f;
 
     .line 6
     .line 7
+    invoke-virtual {v0, v1}, Lmg/f;->equals(Ljava/lang/Object;)Z
+
     .line 8
-    move-result-object v0
-
     .line 9
-    return-object v0
+    .line 10
+    move-result v0
+
+    .line 11
+    if-eqz v0, :cond_2
+
+    .line 12
+    .line 13
+    iget-object v0, p0, Lag/a;->d:Lmg/f;
+
+    .line 14
+    .line 15
+    iget-object v0, v0, Lmg/f;->d:Ljava/math/BigInteger;
+
+    .line 16
+    .line 17
+    iget-object p1, p1, Lmg/h;->h:Ljava/math/BigInteger;
+
+    .line 18
+    .line 19
+    if-eqz p1, :cond_1
+
+    .line 20
+    .line 21
+    sget-object v1, Lag/a;->h:Ljava/math/BigInteger;
+
+    .line 22
+    .line 23
+    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+
+    .line 24
+    .line 25
+    .line 26
+    move-result v2
+
+    .line 27
+    if-lez v2, :cond_1
+
+    .line 28
+    .line 29
+    invoke-virtual {v0, v1}, Ljava/math/BigInteger;->subtract(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v2
+
+    .line 33
+    invoke-virtual {p1, v2}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+
+    .line 34
+    .line 35
+    .line 36
+    move-result v2
+
+    .line 37
+    if-gez v2, :cond_1
+
+    .line 38
+    .line 39
+    iget-object v2, p0, Lag/a;->c:Lmg/g;
+
+    .line 40
+    .line 41
+    iget-object v2, v2, Lmg/g;->h:Ljava/math/BigInteger;
+
+    .line 42
+    .line 43
+    invoke-virtual {p1, v2, v0}, Ljava/math/BigInteger;->modPow(Ljava/math/BigInteger;Ljava/math/BigInteger;)Ljava/math/BigInteger;
+
+    .line 44
+    .line 45
+    .line 46
+    move-result-object p1
+
+    .line 47
+    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->equals(Ljava/lang/Object;)Z
+
+    .line 48
+    .line 49
+    .line 50
+    move-result v0
+
+    .line 51
+    if-nez v0, :cond_0
+
+    .line 52
+    .line 53
+    return-object p1
+
+    .line 54
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 55
+    .line 56
+    const-string v0, "Shared key can\'t be 1"
+
+    .line 57
+    .line 58
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 59
+    .line 60
+    .line 61
+    throw p1
+
+    .line 62
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 63
+    .line 64
+    const-string v0, "Diffie-Hellman public key is weak"
+
+    .line 65
+    .line 66
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 67
+    .line 68
+    .line 69
+    throw p1
+
+    .line 70
+    :cond_2
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 71
+    .line 72
+    const-string v0, "Diffie-Hellman public key has wrong parameters."
+
+    .line 73
+    .line 74
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 75
+    .line 76
+    .line 77
+    throw p1
 .end method
 
-.method public final getFormat()Ljava/lang/String;
+.method public final getFieldSize()I
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lag/a;->d:Lorg/spongycastle/crypto/y;
+    iget-object v0, p0, Lag/a;->c:Lmg/g;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Lorg/spongycastle/crypto/y;->b()Ljava/lang/String;
+    iget-object v0, v0, Lmg/e;->d:Lmg/f;
 
     .line 4
     .line 5
-    .line 6
-    move-result-object v0
+    iget-object v0, v0, Lmg/f;->d:Ljava/math/BigInteger;
 
+    .line 6
     .line 7
-    return-object v0
+    invoke-virtual {v0}, Ljava/math/BigInteger;->bitLength()I
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v0
+
+    .line 11
+    add-int/lit8 v0, v0, 0x7
+
+    .line 12
+    .line 13
+    div-int/lit8 v0, v0, 0x8
+
+    .line 14
+    .line 15
+    return v0
+.end method
+
+.method public final init(Lorg/spongycastle/crypto/h;)V
+    .locals 1
+
+    .line 1
+    instance-of v0, p1, Lmg/i0;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    check-cast p1, Lmg/i0;
+
+    .line 6
+    .line 7
+    iget-object p1, p1, Lmg/i0;->d:Lorg/spongycastle/crypto/h;
+
+    .line 8
+    .line 9
+    check-cast p1, Lmg/b;
+
+    .line 10
+    .line 11
+    goto :goto_0
+
+    .line 12
+    :cond_0
+    check-cast p1, Lmg/b;
+
+    .line 13
+    .line 14
+    :goto_0
+    instance-of v0, p1, Lmg/g;
+
+    .line 15
+    .line 16
+    if-eqz v0, :cond_1
+
+    .line 17
+    .line 18
+    check-cast p1, Lmg/g;
+
+    .line 19
+    .line 20
+    iput-object p1, p0, Lag/a;->c:Lmg/g;
+
+    .line 21
+    .line 22
+    iget-object p1, p1, Lmg/e;->d:Lmg/f;
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Lag/a;->d:Lmg/f;
+
+    .line 25
+    .line 26
+    return-void
+
+    .line 27
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 28
+    .line 29
+    const-string v0, "DHEngine expects DHPrivateKeyParameters"
+
+    .line 30
+    .line 31
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 32
+    .line 33
+    .line 34
+    throw p1
 .end method

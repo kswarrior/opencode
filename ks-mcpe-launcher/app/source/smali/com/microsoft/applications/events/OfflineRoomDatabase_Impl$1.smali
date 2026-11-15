@@ -1,6 +1,6 @@
 .class Lcom/microsoft/applications/events/OfflineRoomDatabase_Impl$1;
-.super Landroidx/room/i0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Landroidx/room/k0;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -27,7 +27,7 @@
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Landroidx/room/i0;-><init>(I)V
+    invoke-direct {p0, p2}, Landroidx/room/k0;-><init>(I)V
 
     .line 4
     .line 5
@@ -45,7 +45,7 @@
 
     .line 2
     .line 3
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -54,7 +54,7 @@
 
     .line 7
     .line 8
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -63,7 +63,7 @@
 
     .line 12
     .line 13
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 14
     .line 15
@@ -72,7 +72,7 @@
 
     .line 17
     .line 18
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 19
     .line 20
@@ -81,7 +81,7 @@
 
     .line 22
     .line 23
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 24
     .line 25
@@ -90,7 +90,7 @@
 
     .line 27
     .line 28
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 29
     .line 30
@@ -106,7 +106,7 @@
 
     .line 2
     .line 3
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -115,7 +115,7 @@
 
     .line 7
     .line 8
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -184,7 +184,7 @@
     move-result-object v1
 
     .line 42
-    check-cast v1, Landroidx/room/v;
+    check-cast v1, Landroidx/room/w;
 
     .line 43
     .line 44
@@ -272,7 +272,7 @@
     move-result-object v2
 
     .line 32
-    check-cast v2, Landroidx/room/v;
+    check-cast v2, Landroidx/room/w;
 
     .line 33
     .line 34
@@ -285,7 +285,7 @@
 
     .line 38
     .line 39
-    invoke-static {p1, v2}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v2}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 40
     .line 41
@@ -387,7 +387,7 @@
     move-result-object v2
 
     .line 42
-    check-cast v2, Landroidx/room/v;
+    check-cast v2, Landroidx/room/w;
 
     .line 43
     .line 44
@@ -400,16 +400,16 @@
 
     .line 48
     .line 49
-    invoke-static {p1, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 50
     .line 51
     .line 52
-    iget-object v2, v2, Landroidx/room/v;->a:Landroidx/room/s;
+    iget-object v2, v2, Landroidx/room/w;->a:Landroidx/room/t;
 
     .line 53
     .line 54
-    invoke-virtual {v2, p1}, Landroidx/room/s;->g(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v2, p1}, Landroidx/room/t;->f(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 55
     .line 56
@@ -440,7 +440,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -454,7 +454,7 @@
     .line 9
     .line 10
     .line 11
-    invoke-static {}, Ly6/t1;->h()Ls8/c;
+    invoke-static {}, Ljb/c;->v()Lu8/c;
 
     .line 12
     .line 13
@@ -466,7 +466,7 @@
 
     .line 16
     .line 17
-    invoke-virtual {v0, v1}, Lh2/a;->y0(Ljava/lang/String;)Le2/a;
+    invoke-virtual {v0, v1}, Lh2/a;->A0(Ljava/lang/String;)Le2/a;
 
     .line 18
     .line 19
@@ -476,7 +476,7 @@
     .line 21
     :goto_0
     :try_start_0
-    invoke-interface {v1}, Le2/a;->s0()Z
+    invoke-interface {v1}, Le2/a;->t0()Z
 
     .line 22
     .line 23
@@ -491,7 +491,7 @@
 
     .line 27
     .line 28
-    invoke-interface {v1, v3}, Le2/a;->V(I)Ljava/lang/String;
+    invoke-interface {v1, v3}, Le2/a;->X(I)Ljava/lang/String;
 
     .line 29
     .line 30
@@ -499,7 +499,7 @@
     move-result-object v2
 
     .line 32
-    invoke-virtual {p1, v2}, Ls8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {p1, v2}, Lu8/c;->add(Ljava/lang/Object;)Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -520,12 +520,12 @@
     const/4 v2, 0x0
 
     .line 39
-    invoke-static {v1, v2}, Lk6/b;->b(Le2/a;Ljava/lang/Throwable;)V
+    invoke-static {v1, v2}, La/a;->g(Le2/a;Ljava/lang/Throwable;)V
 
     .line 40
     .line 41
     .line 42
-    invoke-static {p1}, Ly6/t1;->a(Ls8/c;)Ls8/c;
+    invoke-static {p1}, Ljb/c;->i(Lu8/c;)Lu8/c;
 
     .line 43
     .line 44
@@ -533,7 +533,7 @@
     move-result-object p1
 
     .line 46
-    invoke-virtual {p1, v3}, Ls8/c;->listIterator(I)Ljava/util/ListIterator;
+    invoke-virtual {p1, v3}, Lu8/c;->listIterator(I)Ljava/util/ListIterator;
 
     .line 47
     .line 48
@@ -546,11 +546,11 @@
     move-object v1, p1
 
     .line 51
-    check-cast v1, Ls8/a;
+    check-cast v1, Lu8/a;
 
     .line 52
     .line 53
-    invoke-virtual {v1}, Ls8/a;->hasNext()Z
+    invoke-virtual {v1}, Lu8/a;->hasNext()Z
 
     .line 54
     .line 55
@@ -562,7 +562,7 @@
 
     .line 58
     .line 59
-    invoke-virtual {v1}, Ls8/a;->next()Ljava/lang/Object;
+    invoke-virtual {v1}, Lu8/a;->next()Ljava/lang/Object;
 
     .line 60
     .line 61
@@ -578,7 +578,7 @@
 
     .line 66
     .line 67
-    invoke-static {v1, v2, v3}, Lm9/o;->W(Ljava/lang/String;Ljava/lang/String;Z)Z
+    invoke-static {v1, v2, v3}, Lo9/o;->q0(Ljava/lang/String;Ljava/lang/String;Z)Z
 
     .line 68
     .line 69
@@ -602,7 +602,7 @@
     move-result-object v1
 
     .line 79
-    invoke-static {v0, v1}, Lk6/b;->k(Landroidx/sqlite/SQLiteConnection;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lwh/k;->k(Landroidx/sqlite/SQLiteConnection;Ljava/lang/String;)V
 
     .line 80
     .line 81
@@ -625,7 +625,7 @@
     move-exception v0
 
     .line 86
-    invoke-static {v1, p1}, Lk6/b;->b(Le2/a;Ljava/lang/Throwable;)V
+    invoke-static {v1, p1}, La/a;->g(Le2/a;Ljava/lang/Throwable;)V
 
     .line 87
     .line 88

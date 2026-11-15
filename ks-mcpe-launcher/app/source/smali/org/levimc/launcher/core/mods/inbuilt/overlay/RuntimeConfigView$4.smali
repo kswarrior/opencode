@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
@@ -110,7 +110,7 @@
 
     .line 16
     .line 17
-    invoke-static {p3, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->X(FLjava/lang/String;)Ljava/lang/String;
+    invoke-static {p3, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->a0(FLjava/lang/String;)Ljava/lang/String;
 
     .line 18
     .line 19
@@ -143,7 +143,7 @@
     move-result-object p3
 
     .line 34
-    invoke-static {p1, p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->T(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->W(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 35
     .line 36

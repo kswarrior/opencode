@@ -1,45 +1,848 @@
-.class public final synthetic Lcom/google/firebase/messaging/o;
+.class public final Lcom/google/firebase/messaging/o;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lp6/e;
+.implements Lorg/spongycastle/crypto/b0;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Lp6/q;
+.field public b:Z
+
+.field public final c:Ljava/lang/Object;
+
+.field public d:Ljava/lang/Object;
+
+.field public e:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lp6/q;I)V
-    .locals 0
+.method public constructor <init>(Lcom/google/android/gms/internal/measurement/ae;Lh3/o;)V
+    .locals 1
 
-    .line 1
-    iput p2, p0, Lcom/google/firebase/messaging/o;->c:I
+    const/4 v0, 0x2
 
-    .line 2
-    .line 3
-    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Lp6/q;
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
 
-    .line 4
+    .line 10
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 11
+    new-instance v0, Lh3/q;
+
+    invoke-direct {v0, p0}, Lh3/q;-><init>(Lcom/google/firebase/messaging/o;)V
+
+    iput-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 12
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 13
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/google/firebase/messaging/FirebaseMessaging;Lo7/c;)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 20
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 21
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ld7/e;Z)V
+    .locals 1
+
+    const/4 v0, 0x7
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 14
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 15
+    new-instance p1, Ljava/util/concurrent/atomic/AtomicReference;
+
+    const/4 v0, 0x0
+
+    invoke-direct {p1, v0}, Ljava/util/concurrent/atomic/AtomicReference;-><init>(Ljava/lang/Object;)V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 16
+    iput-boolean p2, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 17
+    new-instance p1, Lz6/e;
+
+    if-eqz p2, :cond_0
+
+    const/16 p2, 0x2000
+
+    goto :goto_0
+
+    :cond_0
+    const/16 p2, 0x400
+
+    .line 18
+    :goto_0
+    invoke-direct {p1, p2}, Lz6/e;-><init>(I)V
+
+    .line 19
+    new-instance p2, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+
+    const/4 v0, 0x0
+
+    invoke-direct {p2, p1, v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;-><init>(Ljava/lang/Object;Z)V
+
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lkd/e;Lse/v1;Lse/o0;Z)V
+    .locals 1
+
+    const/4 v0, 0x5
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
     .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
+    iput-boolean p4, p0, Lcom/google/firebase/messaging/o;->b:Z
+
     .line 7
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
     .line 8
+    iput-object p3, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 9
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lorg/spongycastle/crypto/d;)V
+    .locals 1
+
+    const/4 v0, 0x1
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    new-instance v0, Ljg/b;
+
+    invoke-direct {v0, p1}, Ljg/b;-><init>(Lorg/spongycastle/crypto/d;)V
+
+    iput-object v0, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lq2/d;Lq2/c;)V
+    .locals 1
+
+    const/4 v0, 0x3
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 22
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 23
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 24
+    iget-boolean p2, p2, Lq2/c;->e:Z
+
+    if-eqz p2, :cond_0
+
+    const/4 p1, 0x0
+
+    goto :goto_0
+
+    .line 25
+    :cond_0
+    iget p1, p1, Lq2/d;->x:I
+
+    .line 26
+    new-array p1, p1, [Z
+
+    :goto_0
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ls4/e1;Ljava/lang/String;)V
+    .locals 1
+
+    const/4 v0, 0x4
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 2
+    invoke-static {p2}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lwb/g;Lwb/d;)V
+    .locals 1
+
+    const/4 v0, 0x6
+
+    iput v0, p0, Lcom/google/firebase/messaging/o;->a:I
+
+    .line 27
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 28
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 29
+    iget-boolean p2, p2, Lwb/d;->e:Z
+
+    if-eqz p2, :cond_0
+
+    const/4 p1, 0x0
+
+    goto :goto_0
+
+    .line 30
+    :cond_0
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    const/4 p1, 0x2
+
+    .line 31
+    new-array p1, p1, [Z
+
+    :goto_0
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
     return-void
 .end method
 
 
 # virtual methods
-.method public final f(Lae/o;)Ljava/lang/Object;
+.method public a(I[B)[B
     .locals 7
 
     .line 1
-    iget v0, p0, Lcom/google/firebase/messaging/o;->c:I
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Ljg/b;
+
+    .line 4
+    .line 5
+    iget-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 6
+    .line 7
+    if-eqz v1, :cond_4
+
+    .line 8
+    .line 9
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    check-cast v1, Lmg/h0;
+
+    .line 12
+    .line 13
+    const/4 v2, 0x1
+
+    .line 14
+    invoke-virtual {v0, v2, v1}, Ljg/b;->init(ZLorg/spongycastle/crypto/h;)V
+
+    .line 15
+    .line 16
+    .line 17
+    iget-object v1, v0, Ljg/b;->e:Lorg/spongycastle/crypto/d;
+
+    .line 18
+    .line 19
+    invoke-interface {v1}, Lorg/spongycastle/crypto/d;->e()I
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v1
+
+    .line 23
+    add-int/lit8 v3, p1, 0x4
+
+    .line 24
+    .line 25
+    mul-int/lit8 v4, v1, 0x2
+
+    .line 26
+    .line 27
+    if-ge v3, v4, :cond_0
+
+    .line 28
+    .line 29
+    new-array v4, v4, [B
+
+    .line 30
+    .line 31
+    goto :goto_1
+
+    .line 32
+    :cond_0
+    rem-int v4, v3, v1
+
+    .line 33
+    .line 34
+    if-nez v4, :cond_1
+
+    .line 35
+    .line 36
+    move v4, v3
+
+    .line 37
+    goto :goto_0
+
+    .line 38
+    :cond_1
+    div-int v4, v3, v1
+
+    .line 39
+    .line 40
+    add-int/2addr v4, v2
+
+    .line 41
+    mul-int/2addr v4, v1
+
+    .line 42
+    :goto_0
+    new-array v4, v4, [B
+
+    .line 43
+    .line 44
+    :goto_1
+    int-to-byte v5, p1
+
+    .line 45
+    const/4 v6, 0x0
+
+    .line 46
+    aput-byte v5, v4, v6
+
+    .line 47
+    .line 48
+    aget-byte v5, p2, v6
+
+    .line 49
+    .line 50
+    not-int v5, v5
+
+    .line 51
+    int-to-byte v5, v5
+
+    .line 52
+    aput-byte v5, v4, v2
+
+    .line 53
+    .line 54
+    aget-byte v2, p2, v2
+
+    .line 55
+    .line 56
+    not-int v2, v2
+
+    .line 57
+    int-to-byte v2, v2
+
+    .line 58
+    const/4 v5, 0x2
+
+    .line 59
+    aput-byte v2, v4, v5
+
+    .line 60
+    .line 61
+    aget-byte v2, p2, v5
+
+    .line 62
+    .line 63
+    not-int v2, v2
+
+    .line 64
+    int-to-byte v2, v2
+
+    .line 65
+    const/4 v5, 0x3
+
+    .line 66
+    aput-byte v2, v4, v5
+
+    .line 67
+    .line 68
+    const/4 v2, 0x4
+
+    .line 69
+    invoke-static {p2, v6, v4, v2, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 70
+    .line 71
+    .line 72
+    array-length p1, v4
+
+    .line 73
+    sub-int/2addr p1, v3
+
+    .line 74
+    new-array p2, p1, [B
+
+    .line 75
+    .line 76
+    iget-object v2, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 77
+    .line 78
+    check-cast v2, Ljava/security/SecureRandom;
+
+    .line 79
+    .line 80
+    invoke-virtual {v2, p2}, Ljava/security/SecureRandom;->nextBytes([B)V
+
+    .line 81
+    .line 82
+    .line 83
+    invoke-static {p2, v6, v4, v3, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 84
+    .line 85
+    .line 86
+    move p1, v6
+
+    .line 87
+    :goto_2
+    array-length p2, v4
+
+    .line 88
+    if-ge p1, p2, :cond_2
+
+    .line 89
+    .line 90
+    invoke-virtual {v0, p1, p1, v4, v4}, Ljg/b;->d(II[B[B)I
+
+    .line 91
+    .line 92
+    .line 93
+    add-int/2addr p1, v1
+
+    .line 94
+    goto :goto_2
+
+    .line 95
+    :cond_2
+    :goto_3
+    array-length p1, v4
+
+    .line 96
+    if-ge v6, p1, :cond_3
+
+    .line 97
+    .line 98
+    invoke-virtual {v0, v6, v6, v4, v4}, Ljg/b;->d(II[B[B)I
+
+    .line 99
+    .line 100
+    .line 101
+    add-int/2addr v6, v1
+
+    .line 102
+    goto :goto_3
+
+    .line 103
+    :cond_3
+    return-object v4
+
+    .line 104
+    :cond_4
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 105
+    .line 106
+    const-string p2, "not set for wrapping"
+
+    .line 107
+    .line 108
+    invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 109
+    .line 110
+    .line 111
+    throw p1
+.end method
+
+.method public b(I[B)[B
+    .locals 6
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Ljg/b;
+
+    .line 4
+    .line 5
+    iget-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 6
+    .line 7
+    if-nez v1, :cond_6
+
+    .line 8
+    .line 9
+    iget-object v1, v0, Ljg/b;->e:Lorg/spongycastle/crypto/d;
+
+    .line 10
+    .line 11
+    invoke-interface {v1}, Lorg/spongycastle/crypto/d;->e()I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v1
+
+    .line 15
+    mul-int/lit8 v2, v1, 0x2
+
+    .line 16
+    .line 17
+    if-lt p1, v2, :cond_5
+
+    .line 18
+    .line 19
+    new-array v2, p1, [B
+
+    .line 20
+    .line 21
+    new-array v3, v1, [B
+
+    .line 22
+    .line 23
+    const/4 v4, 0x0
+
+    .line 24
+    invoke-static {p2, v4, v2, v4, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-static {p2, v4, v3, v4, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 28
+    .line 29
+    .line 30
+    new-instance p2, Lmg/h0;
+
+    .line 31
+    .line 32
+    iget-object v5, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 33
+    .line 34
+    check-cast v5, Lmg/h0;
+
+    .line 35
+    .line 36
+    iget-object v5, v5, Lmg/h0;->d:Lorg/spongycastle/crypto/h;
+
+    .line 37
+    .line 38
+    invoke-direct {p2, v5, v3, v4, v1}, Lmg/h0;-><init>(Lorg/spongycastle/crypto/h;[BII)V
+
+    .line 39
+    .line 40
+    .line 41
+    invoke-virtual {v0, v4, p2}, Ljg/b;->init(ZLorg/spongycastle/crypto/h;)V
+
+    .line 42
+    .line 43
+    .line 44
+    move p2, v1
+
+    .line 45
+    :goto_0
+    if-ge p2, p1, :cond_0
+
+    .line 46
+    .line 47
+    invoke-virtual {v0, p2, p2, v2, v2}, Ljg/b;->d(II[B[B)I
+
+    .line 48
+    .line 49
+    .line 50
+    add-int/2addr p2, v1
+
+    .line 51
+    goto :goto_0
+
+    .line 52
+    :cond_0
+    sub-int p2, p1, v1
+
+    .line 53
+    .line 54
+    invoke-static {v2, p2, v3, v4, v1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 55
+    .line 56
+    .line 57
+    new-instance p2, Lmg/h0;
+
+    .line 58
+    .line 59
+    iget-object v5, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 60
+    .line 61
+    check-cast v5, Lmg/h0;
+
+    .line 62
+    .line 63
+    iget-object v5, v5, Lmg/h0;->d:Lorg/spongycastle/crypto/h;
+
+    .line 64
+    .line 65
+    invoke-direct {p2, v5, v3, v4, v1}, Lmg/h0;-><init>(Lorg/spongycastle/crypto/h;[BII)V
+
+    .line 66
+    .line 67
+    .line 68
+    invoke-virtual {v0, v4, p2}, Ljg/b;->init(ZLorg/spongycastle/crypto/h;)V
+
+    .line 69
+    .line 70
+    .line 71
+    invoke-virtual {v0, v4, v4, v2, v2}, Ljg/b;->d(II[B[B)I
+
+    .line 72
+    .line 73
+    .line 74
+    iget-object p2, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 75
+    .line 76
+    check-cast p2, Lmg/h0;
+
+    .line 77
+    .line 78
+    invoke-virtual {v0, v4, p2}, Ljg/b;->init(ZLorg/spongycastle/crypto/h;)V
+
+    .line 79
+    .line 80
+    .line 81
+    move p2, v4
+
+    .line 82
+    :goto_1
+    if-ge p2, p1, :cond_1
+
+    .line 83
+    .line 84
+    invoke-virtual {v0, p2, p2, v2, v2}, Ljg/b;->d(II[B[B)I
+
+    .line 85
+    .line 86
+    .line 87
+    add-int/2addr p2, v1
+
+    .line 88
+    goto :goto_1
+
+    .line 89
+    :cond_1
+    aget-byte p2, v2, v4
+
+    .line 90
+    .line 91
+    and-int/lit16 v0, p2, 0xff
+
+    .line 92
+    .line 93
+    const/4 v1, 0x4
+
+    .line 94
+    sub-int/2addr p1, v1
+
+    .line 95
+    if-gt v0, p1, :cond_4
+
+    .line 96
+    .line 97
+    new-array p1, v0, [B
+
+    .line 98
+    .line 99
+    invoke-static {v2, v1, p1, v4, p2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 100
+    .line 101
+    .line 102
+    move p2, v4
+
+    .line 103
+    :goto_2
+    const/4 v0, 0x3
+
+    .line 104
+    if-eq v4, v0, :cond_2
+
+    .line 105
+    .line 106
+    add-int/lit8 v0, v4, 0x1
+
+    .line 107
+    .line 108
+    aget-byte v1, v2, v0
+
+    .line 109
+    .line 110
+    not-int v1, v1
+
+    .line 111
+    int-to-byte v1, v1
+
+    .line 112
+    aget-byte v3, p1, v4
+
+    .line 113
+    .line 114
+    xor-int/2addr v1, v3
+
+    .line 115
+    or-int/2addr p2, v1
+
+    .line 116
+    move v4, v0
+
+    .line 117
+    goto :goto_2
+
+    .line 118
+    :cond_2
+    if-nez p2, :cond_3
+
+    .line 119
+    .line 120
+    return-object p1
+
+    .line 121
+    :cond_3
+    new-instance p1, Lorg/spongycastle/crypto/o;
+
+    .line 122
+    .line 123
+    const-string p2, "wrapped key fails checksum"
+
+    .line 124
+    .line 125
+    invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+
+    .line 126
+    .line 127
+    .line 128
+    throw p1
+
+    .line 129
+    :cond_4
+    new-instance p1, Lorg/spongycastle/crypto/o;
+
+    .line 130
+    .line 131
+    const-string p2, "wrapped key corrupted"
+
+    .line 132
+    .line 133
+    invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+
+    .line 134
+    .line 135
+    .line 136
+    throw p1
+
+    .line 137
+    :cond_5
+    new-instance p1, Lorg/spongycastle/crypto/o;
+
+    .line 138
+    .line 139
+    const-string p2, "input too short"
+
+    .line 140
+    .line 141
+    invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+
+    .line 142
+    .line 143
+    .line 144
+    throw p1
+
+    .line 145
+    :cond_6
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 146
+    .line 147
+    const-string p2, "not set for unwrapping"
+
+    .line 148
+    .line 149
+    invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 150
+    .line 151
+    .line 152
+    throw p1
+.end method
+
+.method public c()V
+    .locals 3
+
+    .line 1
+    iget v0, p0, Lcom/google/firebase/messaging/o;->a:I
 
     .line 2
     .line 3
@@ -48,130 +851,1482 @@
     .line 4
     .line 5
     .line 6
-    new-instance v1, Ln7/c;
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
 
     .line 7
     .line 8
-    const-class v0, Landroid/content/Context;
+    check-cast v0, Lwb/g;
 
     .line 9
     .line 10
-    invoke-virtual {p1, v0}, Lae/o;->a(Ljava/lang/Class;)Ljava/lang/Object;
+    monitor-enter v0
 
     .line 11
+    :try_start_0
+    iget-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
     .line 12
     .line 13
-    move-result-object v0
+    if-nez v1, :cond_1
 
     .line 14
-    move-object v2, v0
-
     .line 15
-    check-cast v2, Landroid/content/Context;
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
 
     .line 16
     .line 17
-    const-class v0, Lcom/google/firebase/FirebaseApp;
+    check-cast v1, Lwb/d;
 
     .line 18
     .line 19
-    invoke-virtual {p1, v0}, Lae/o;->a(Ljava/lang/Class;)Ljava/lang/Object;
+    iget-object v1, v1, Lwb/d;->g:Lcom/google/firebase/messaging/o;
 
     .line 20
     .line 21
+    invoke-static {v1, p0}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
     .line 22
-    move-result-object v0
-
     .line 23
-    check-cast v0, Lcom/google/firebase/FirebaseApp;
-
     .line 24
+    move-result v1
+
     .line 25
-    invoke-virtual {v0}, Lcom/google/firebase/FirebaseApp;->h()Ljava/lang/String;
+    if-eqz v1, :cond_0
 
     .line 26
     .line 27
+    const/4 v1, 0x0
+
     .line 28
-    move-result-object v3
+    invoke-virtual {v0, p0, v1}, Lwb/g;->b(Lcom/google/firebase/messaging/o;Z)V
 
     .line 29
-    const-class v0, Ln7/d;
-
     .line 30
     .line 31
-    invoke-static {v0}, Lp6/q;->a(Ljava/lang/Class;)Lp6/q;
+    goto :goto_0
 
     .line 32
+    :catchall_0
+    move-exception v1
+
     .line 33
+    goto :goto_1
+
     .line 34
-    move-result-object v0
+    :cond_0
+    :goto_0
+    const/4 v1, 0x1
 
     .line 35
-    invoke-virtual {p1, v0}, Lae/o;->f(Lp6/q;)Ljava/util/Set;
+    iput-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 36
     .line 37
+    monitor-exit v0
+
     .line 38
-    move-result-object v4
+    return-void
 
     .line 39
-    const-class v0, Lx7/b;
+    :cond_1
+    :try_start_1
+    new-instance v1, Ljava/lang/IllegalStateException;
 
     .line 40
     .line 41
-    invoke-virtual {p1, v0}, Lae/o;->c(Ljava/lang/Class;)Lq7/b;
+    const-string v2, "Check failed."
 
     .line 42
     .line 43
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
     .line 44
-    move-result-object v5
-
     .line 45
-    iget-object v0, p0, Lcom/google/firebase/messaging/o;->d:Lp6/q;
-
     .line 46
+    throw v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
     .line 47
-    invoke-virtual {p1, v0}, Lae/o;->i(Lp6/q;)Ljava/lang/Object;
+    :goto_1
+    monitor-exit v0
 
     .line 48
-    .line 49
-    .line 50
-    move-result-object p1
+    throw v1
 
+    .line 49
+    :pswitch_0
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 50
     .line 51
-    move-object v6, p1
+    check-cast v0, Lq2/d;
 
     .line 52
-    check-cast v6, Ljava/util/concurrent/Executor;
-
     .line 53
+    const/4 v1, 0x0
+
     .line 54
-    invoke-direct/range {v1 .. v6}, Ln7/c;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/util/Set;Lq7/b;Ljava/util/concurrent/Executor;)V
+    invoke-static {v0, p0, v1}, Lq2/d;->a(Lq2/d;Lcom/google/firebase/messaging/o;Z)V
 
     .line 55
     .line 56
     .line 57
-    return-object v1
+    return-void
 
     .line 58
-    :pswitch_0
-    iget-object v0, p0, Lcom/google/firebase/messaging/o;->d:Lp6/q;
+    nop
+
+    .line 59
+    :pswitch_data_0
+    .packed-switch 0x3
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public d()V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lwb/g;
+
+    .line 4
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    iget-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 7
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
+    .line 10
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    check-cast v1, Lwb/d;
+
+    .line 13
+    .line 14
+    iget-object v1, v1, Lwb/d;->g:Lcom/google/firebase/messaging/o;
+
+    .line 15
+    .line 16
+    invoke-static {v1, p0}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v1
+
+    .line 20
+    const/4 v2, 0x1
+
+    .line 21
+    if-eqz v1, :cond_0
+
+    .line 22
+    .line 23
+    invoke-virtual {v0, p0, v2}, Lwb/g;->b(Lcom/google/firebase/messaging/o;Z)V
+
+    .line 24
+    .line 25
+    .line 26
+    goto :goto_0
+
+    .line 27
+    :catchall_0
+    move-exception v1
+
+    .line 28
+    goto :goto_1
+
+    .line 29
+    :cond_0
+    :goto_0
+    iput-boolean v2, p0, Lcom/google/firebase/messaging/o;->b:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 30
+    .line 31
+    monitor-exit v0
+
+    .line 32
+    return-void
+
+    .line 33
+    :cond_1
+    :try_start_1
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 34
+    .line 35
+    const-string v2, "Check failed."
+
+    .line 36
+    .line 37
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 38
+    .line 39
+    .line 40
+    throw v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 41
+    :goto_1
+    monitor-exit v0
+
+    .line 42
+    throw v1
+.end method
+
+.method public e()V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lwb/d;
+
+    .line 4
+    .line 5
+    iget-object v1, v0, Lwb/d;->g:Lcom/google/firebase/messaging/o;
+
+    .line 6
+    .line 7
+    invoke-static {v1, p0}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v1
+
+    .line 11
+    if-eqz v1, :cond_1
+
+    .line 12
+    .line 13
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    check-cast v1, Lwb/g;
+
+    .line 16
+    .line 17
+    iget-boolean v2, v1, Lwb/g;->b1:Z
+
+    .line 18
+    .line 19
+    if-eqz v2, :cond_0
+
+    .line 20
+    .line 21
+    const/4 v0, 0x0
+
+    .line 22
+    invoke-virtual {v1, p0, v0}, Lwb/g;->b(Lcom/google/firebase/messaging/o;Z)V
+
+    .line 23
+    .line 24
+    .line 25
+    return-void
+
+    .line 26
+    :cond_0
+    const/4 v1, 0x1
+
+    .line 27
+    iput-boolean v1, v0, Lwb/d;->f:Z
+
+    .line 28
+    .line 29
+    :cond_1
+    return-void
+.end method
+
+.method public f()Ljava/io/File;
+    .locals 5
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lq2/d;
+
+    .line 4
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v1, Lq2/c;
+
+    .line 9
+    .line 10
+    iget-object v2, v1, Lq2/c;->f:Lcom/google/firebase/messaging/o;
+
+    .line 11
+    .line 12
+    if-ne v2, p0, :cond_1
+
+    .line 13
+    .line 14
+    iget-boolean v2, v1, Lq2/c;->e:Z
+
+    .line 15
+    .line 16
+    const/4 v3, 0x0
+
+    .line 17
+    if-nez v2, :cond_0
+
+    .line 18
+    .line 19
+    iget-object v2, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    check-cast v2, [Z
+
+    .line 22
+    .line 23
+    const/4 v4, 0x1
+
+    .line 24
+    aput-boolean v4, v2, v3
+
+    .line 25
+    .line 26
+    goto :goto_0
+
+    .line 27
+    :catchall_0
+    move-exception v1
+
+    .line 28
+    goto :goto_1
+
+    .line 29
+    :cond_0
+    :goto_0
+    iget-object v1, v1, Lq2/c;->d:[Ljava/io/File;
+
+    .line 30
+    .line 31
+    aget-object v1, v1, v3
+
+    .line 32
+    .line 33
+    iget-object v2, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 34
+    .line 35
+    check-cast v2, Lq2/d;
+
+    .line 36
+    .line 37
+    iget-object v2, v2, Lq2/d;->c:Ljava/io/File;
+
+    .line 38
+    .line 39
+    invoke-virtual {v2}, Ljava/io/File;->mkdirs()Z
+
+    .line 40
+    .line 41
+    .line 42
+    monitor-exit v0
+
+    .line 43
+    return-object v1
+
+    .line 44
+    :cond_1
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 45
+    .line 46
+    invoke-direct {v1}, Ljava/lang/IllegalStateException;-><init>()V
+
+    .line 47
+    .line 48
+    .line 49
+    throw v1
+
+    .line 50
+    :goto_1
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 51
+    throw v1
+.end method
+
+.method public declared-synchronized g()V
+    .locals 3
+
+    .line 1
+    monitor-enter p0
+
+    .line 2
+    :try_start_0
+    iget-boolean v0, p0, Lcom/google/firebase/messaging/o;->b:Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 3
+    .line 4
+    if-eqz v0, :cond_0
+
+    .line 5
+    .line 6
+    monitor-exit p0
+
+    .line 7
+    return-void
+
+    .line 8
+    :cond_0
+    :try_start_1
+    invoke-virtual {p0}, Lcom/google/firebase/messaging/o;->j()Ljava/lang/Boolean;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v0
+
+    .line 12
+    iput-object v0, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    if-nez v0, :cond_1
+
+    .line 15
+    .line 16
+    new-instance v0, La4/f;
+
+    .line 17
+    .line 18
+    const/16 v1, 0x12
+
+    .line 19
+    .line 20
+    invoke-direct {v0, v1}, La4/f;-><init>(I)V
+
+    .line 21
+    .line 22
+    .line 23
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 24
+    .line 25
+    check-cast v1, Lo7/c;
+
+    .line 26
+    .line 27
+    check-cast v1, Lr6/k;
+
+    .line 28
+    .line 29
+    iget-object v2, v1, Lr6/k;->c:Ls6/j;
+
+    .line 30
+    .line 31
+    invoke-virtual {v1, v2, v0}, Lr6/k;->a(Ljava/util/concurrent/Executor;Lo7/a;)V
+
+    .line 32
+    .line 33
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :catchall_0
+    move-exception v0
+
+    .line 36
+    goto :goto_1
+
+    .line 37
+    :cond_1
+    :goto_0
+    const/4 v0, 0x1
+
+    .line 38
+    iput-boolean v0, p0, Lcom/google/firebase/messaging/o;->b:Z
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 39
+    .line 40
+    monitor-exit p0
+
+    .line 41
+    return-void
+
+    .line 42
+    :goto_1
+    :try_start_2
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    .line 43
+    throw v0
+.end method
+
+.method public getAlgorithmName()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v1, Ljg/b;
+
+    .line 9
+    .line 10
+    iget-object v1, v1, Ljg/b;->e:Lorg/spongycastle/crypto/d;
+
+    .line 11
+    .line 12
+    invoke-interface {v1}, Lorg/spongycastle/crypto/d;->getAlgorithmName()Ljava/lang/String;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v1
+
+    .line 16
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 17
+    .line 18
+    .line 19
+    const-string v1, "/RFC3211Wrap"
+
+    .line 20
+    .line 21
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 22
+    .line 23
+    .line 24
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v0
+
+    .line 28
+    return-object v0
+.end method
+
+.method public declared-synchronized h()Z
+    .locals 1
+
+    .line 1
+    monitor-enter p0
+
+    .line 2
+    :try_start_0
+    invoke-virtual {p0}, Lcom/google/firebase/messaging/o;->g()V
+
+    .line 3
+    .line 4
+    .line 5
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v0, Ljava/lang/Boolean;
+
+    .line 8
+    .line 9
+    if-eqz v0, :cond_0
+
+    .line 10
+    .line 11
+    invoke-virtual {v0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    goto :goto_0
+
+    .line 16
+    :catchall_0
+    move-exception v0
+
+    .line 17
+    goto :goto_1
+
+    .line 18
+    :cond_0
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    check-cast v0, Lcom/google/firebase/messaging/FirebaseMessaging;
+
+    .line 21
+    .line 22
+    iget-object v0, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->a:Lcom/google/firebase/FirebaseApp;
+
+    .line 23
+    .line 24
+    invoke-virtual {v0}, Lcom/google/firebase/FirebaseApp;->l()Z
+
+    .line 25
+    .line 26
+    .line 27
+    move-result v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 28
+    :goto_0
+    monitor-exit p0
+
+    .line 29
+    return v0
+
+    .line 30
+    :goto_1
+    :try_start_1
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 31
+    throw v0
+.end method
+
+.method public i(I)Llc/a0;
+    .locals 4
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lwb/g;
+
+    .line 4
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    iget-boolean v1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 7
+    .line 8
+    if-nez v1, :cond_2
+
+    .line 9
+    .line 10
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    check-cast v1, Lwb/d;
+
+    .line 13
+    .line 14
+    iget-object v1, v1, Lwb/d;->g:Lcom/google/firebase/messaging/o;
+
+    .line 15
+    .line 16
+    invoke-static {v1, p0}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v1
+
+    .line 20
+    if-nez v1, :cond_0
+
+    .line 21
+    .line 22
+    new-instance p1, Llc/d;
+
+    .line 23
+    .line 24
+    invoke-direct {p1}, Ljava/lang/Object;-><init>()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 25
+    .line 26
+    .line 27
+    monitor-exit v0
+
+    .line 28
+    return-object p1
+
+    .line 29
+    :cond_0
+    :try_start_1
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 30
+    .line 31
+    check-cast v1, Lwb/d;
+
+    .line 32
+    .line 33
+    iget-boolean v1, v1, Lwb/d;->e:Z
+
+    .line 34
+    .line 35
+    if-nez v1, :cond_1
+
+    .line 36
+    .line 37
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 38
+    .line 39
+    check-cast v1, [Z
+
+    .line 40
+    .line 41
+    invoke-static {v1}, Lh9/i;->b(Ljava/lang/Object;)V
+
+    .line 42
+    .line 43
+    .line 44
+    const/4 v2, 0x1
+
+    .line 45
+    aput-boolean v2, v1, p1
+
+    .line 46
+    .line 47
+    goto :goto_0
+
+    .line 48
+    :catchall_0
+    move-exception p1
+
+    .line 49
+    goto :goto_1
+
+    .line 50
+    :cond_1
+    :goto_0
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 51
+    .line 52
+    check-cast v1, Lwb/d;
+
+    .line 53
+    .line 54
+    iget-object v1, v1, Lwb/d;->d:Ljava/util/ArrayList;
+
+    .line 55
+    .line 56
+    invoke-virtual {v1, p1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    .line 57
+    .line 58
+    .line 59
+    move-result-object p1
+
+    .line 60
+    check-cast p1, Lokio/Path;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 61
+    .line 62
+    :try_start_2
+    iget-object v1, v0, Lwb/g;->d:Lwb/f;
+
+    .line 63
+    .line 64
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 65
+    .line 66
+    .line 67
+    const-string v2, "file"
+
+    .line 68
+    .line 69
+    invoke-static {p1, v2}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 70
+    .line 71
+    .line 72
+    invoke-virtual {v1, p1}, Lwb/f;->Y(Lokio/Path;)Llc/a0;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object p1
+    :try_end_2
+    .catch Ljava/io/FileNotFoundException; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    .line 76
+    :try_start_3
+    new-instance v1, Lwb/h;
+
+    .line 77
+    .line 78
+    new-instance v2, Lp7/h;
+
+    .line 79
+    .line 80
+    const/4 v3, 0x2
+
+    .line 81
+    invoke-direct {v2, v0, p0, v3}, Lp7/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 82
+    .line 83
+    .line 84
+    invoke-direct {v1, p1, v2}, Lwb/h;-><init>(Llc/a0;Lg9/k;)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 85
+    .line 86
+    .line 87
+    monitor-exit v0
+
+    .line 88
+    return-object v1
+
+    .line 89
+    :catch_0
+    :try_start_4
+    new-instance p1, Llc/d;
+
+    .line 90
+    .line 91
+    invoke-direct {p1}, Ljava/lang/Object;-><init>()V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+
+    .line 92
+    .line 93
+    .line 94
+    monitor-exit v0
+
+    .line 95
+    return-object p1
+
+    .line 96
+    :cond_2
+    :try_start_5
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 97
+    .line 98
+    const-string v1, "Check failed."
+
+    .line 99
+    .line 100
+    invoke-direct {p1, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 101
+    .line 102
+    .line 103
+    throw p1
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
+
+    .line 104
+    :goto_1
+    monitor-exit v0
+
+    .line 105
+    throw p1
+.end method
+
+.method public init(ZLorg/spongycastle/crypto/h;)V
+    .locals 1
+
+    .line 1
+    iput-boolean p1, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 2
+    .line 3
+    instance-of v0, p2, Lmg/i0;
+
+    .line 4
+    .line 5
+    if-eqz v0, :cond_0
+
+    .line 6
+    .line 7
+    check-cast p2, Lmg/i0;
+
+    .line 8
+    .line 9
+    iget-object p1, p2, Lmg/i0;->c:Ljava/security/SecureRandom;
+
+    .line 10
+    .line 11
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 12
+    .line 13
+    iget-object p1, p2, Lmg/i0;->d:Lorg/spongycastle/crypto/h;
+
+    .line 14
+    .line 15
+    check-cast p1, Lmg/h0;
+
+    .line 16
+    .line 17
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 18
+    .line 19
+    return-void
+
+    .line 20
+    :cond_0
+    if-eqz p1, :cond_1
+
+    .line 21
+    .line 22
+    new-instance p1, Ljava/security/SecureRandom;
+
+    .line 23
+    .line 24
+    invoke-direct {p1}, Ljava/security/SecureRandom;-><init>()V
+
+    .line 25
+    .line 26
+    .line 27
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 28
+    .line 29
+    :cond_1
+    check-cast p2, Lmg/h0;
+
+    .line 30
+    .line 31
+    iput-object p2, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 32
+    .line 33
+    return-void
+.end method
+
+.method public j()Ljava/lang/Boolean;
+    .locals 6
+
+    .line 1
+    const-string v0, "firebase_messaging_auto_init_enabled"
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    check-cast v1, Lcom/google/firebase/messaging/FirebaseMessaging;
+
+    .line 6
+    .line 7
+    iget-object v1, v1, Lcom/google/firebase/messaging/FirebaseMessaging;->a:Lcom/google/firebase/FirebaseApp;
+
+    .line 8
+    .line 9
+    invoke-virtual {v1}, Lcom/google/firebase/FirebaseApp;->a()V
+
+    .line 10
+    .line 11
+    .line 12
+    iget-object v1, v1, Lcom/google/firebase/FirebaseApp;->a:Landroid/content/Context;
+
+    .line 13
+    .line 14
+    const-string v2, "com.google.firebase.messaging"
+
+    .line 15
+    .line 16
+    const/4 v3, 0x0
+
+    .line 17
+    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getSharedPreferences(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object v2
+
+    .line 21
+    const-string v4, "auto_init"
+
+    .line 22
+    .line 23
+    invoke-interface {v2, v4}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
+
+    .line 24
+    .line 25
+    .line 26
+    move-result v5
+
+    .line 27
+    if-eqz v5, :cond_0
+
+    .line 28
+    .line 29
+    invoke-interface {v2, v4, v3}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
+
+    .line 30
+    .line 31
+    .line 32
+    move-result v0
+
+    .line 33
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v0
+
+    .line 37
+    return-object v0
+
+    .line 38
+    :cond_0
+    :try_start_0
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v2
+
+    .line 42
+    if-eqz v2, :cond_1
+
+    .line 43
+    .line 44
+    invoke-virtual {v1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
+
+    .line 45
+    .line 46
+    .line 47
+    move-result-object v1
+
+    .line 48
+    const/16 v3, 0x80
+
+    .line 49
+    .line 50
+    invoke-virtual {v2, v1, v3}, Landroid/content/pm/PackageManager;->getApplicationInfo(Ljava/lang/String;I)Landroid/content/pm/ApplicationInfo;
+
+    .line 51
+    .line 52
+    .line 53
+    move-result-object v1
+
+    .line 54
+    if-eqz v1, :cond_1
+
+    .line 55
+    .line 56
+    iget-object v2, v1, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    .line 57
+    .line 58
+    if-eqz v2, :cond_1
 
     .line 59
     .line 60
-    invoke-static {v0, p1}, Lcom/google/firebase/messaging/FirebaseMessagingRegistrar;->a(Lp6/q;Lae/o;)Lcom/google/firebase/messaging/FirebaseMessaging;
+    invoke-virtual {v2, v0}, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
 
     .line 61
     .line 62
     .line 63
-    move-result-object p1
+    move-result v2
 
     .line 64
-    return-object p1
+    if-eqz v2, :cond_1
 
     .line 65
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 66
+    iget-object v1, v1, Landroid/content/pm/ApplicationInfo;->metaData:Landroid/os/Bundle;
+
+    .line 67
+    .line 68
+    invoke-virtual {v1, v0}, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+
+    .line 69
+    .line 70
+    .line 71
+    move-result v0
+
+    .line 72
+    invoke-static {v0}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object v0
+    :try_end_0
+    .catch Landroid/content/pm/PackageManager$NameNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 76
+    return-object v0
+
+    .line 77
+    :catch_0
+    :cond_1
+    const/4 v0, 0x0
+
+    .line 78
+    return-object v0
+.end method
+
+.method public k(Ljava/lang/String;Ljava/lang/String;)Z
+    .locals 2
+
+    .line 1
+    monitor-enter p0
+
+    .line 2
+    :try_start_0
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 3
+    .line 4
+    check-cast v0, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+
+    .line 5
+    .line 6
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object v0
+
+    .line 10
+    check-cast v0, Lz6/e;
+
+    .line 11
+    .line 12
+    invoke-virtual {v0, p1, p2}, Lz6/e;->b(Ljava/lang/String;Ljava/lang/String;)Z
+
+    .line 13
+    .line 14
+    .line 15
+    move-result p1
+
+    .line 16
+    if-nez p1, :cond_0
+
+    .line 17
+    .line 18
+    const/4 p1, 0x0
+
+    .line 19
+    monitor-exit p0
+
+    .line 20
+    return p1
+
+    .line 21
+    :catchall_0
+    move-exception p1
+
+    .line 22
+    goto :goto_0
+
+    .line 23
+    :cond_0
+    iget-object p1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 24
+    .line 25
+    check-cast p1, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+
+    .line 26
+    .line 27
+    invoke-virtual {p1}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object p2
+
+    .line 31
+    check-cast p2, Lz6/e;
+
+    .line 32
+    .line 33
+    const/4 v0, 0x1
+
+    .line 34
+    invoke-virtual {p1, p2, v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->set(Ljava/lang/Object;Z)V
+
+    .line 35
+    .line 36
+    .line 37
+    monitor-exit p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 38
+    new-instance p1, La6/d;
+
+    .line 39
+    .line 40
+    const/16 p2, 0x19
+
+    .line 41
+    .line 42
+    invoke-direct {p1, p0, p2}, La6/d;-><init>(Ljava/lang/Object;I)V
+
+    .line 43
+    .line 44
+    .line 45
+    iget-object p2, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 46
+    .line 47
+    check-cast p2, Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 48
+    .line 49
+    :cond_1
+    const/4 v1, 0x0
+
+    .line 50
+    invoke-virtual {p2, v1, p1}, Ljava/util/concurrent/atomic/AtomicReference;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 51
+    .line 52
+    .line 53
+    move-result v1
+
+    .line 54
+    if-eqz v1, :cond_2
+
+    .line 55
+    .line 56
+    iget-object p2, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 57
+    .line 58
+    check-cast p2, Ld7/e;
+
+    .line 59
+    .line 60
+    iget-object p2, p2, Ld7/e;->p:Ljava/lang/Object;
+
+    .line 61
+    .line 62
+    check-cast p2, Ly6/c;
+
+    .line 63
+    .line 64
+    iget-object p2, p2, Ly6/c;->b:Ly6/b;
+
+    .line 65
+    .line 66
+    invoke-virtual {p2, p1}, Ly6/b;->a(Ljava/lang/Runnable;)Lcom/google/android/gms/tasks/Task;
+
+    .line 67
+    .line 68
+    .line 69
+    return v0
+
+    .line 70
+    :cond_2
+    invoke-virtual {p2}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 71
+    .line 72
+    .line 73
+    move-result-object v1
+
+    .line 74
+    if-eqz v1, :cond_1
+
+    .line 75
+    .line 76
+    return v0
+
+    .line 77
+    :goto_0
+    :try_start_1
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 78
+    throw p1
+.end method
+
+.method public l()Ljava/lang/String;
+    .locals 3
+
+    .line 1
+    iget-boolean v0, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    const/4 v0, 0x1
+
+    .line 6
+    iput-boolean v0, p0, Lcom/google/firebase/messaging/o;->b:Z
+
+    .line 7
+    .line 8
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 9
+    .line 10
+    check-cast v0, Ls4/e1;
+
+    .line 11
+    .line 12
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    check-cast v1, Ljava/lang/String;
+
+    .line 15
+    .line 16
+    invoke-virtual {v0}, Ls4/e1;->p()Landroid/content/SharedPreferences;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object v0
+
+    .line 20
+    const/4 v2, 0x0
+
+    .line 21
+    invoke-interface {v0, v1, v2}, Landroid/content/SharedPreferences;->getString(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v0
+
+    .line 25
+    iput-object v0, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 26
+    .line 27
+    :cond_0
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 28
+    .line 29
+    check-cast v0, Ljava/lang/String;
+
+    .line 30
+    .line 31
+    return-object v0
+.end method
+
+.method public m(Ljava/lang/String;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Ls4/e1;
+
+    .line 4
+    .line 5
+    invoke-virtual {v0}, Ls4/e1;->p()Landroid/content/SharedPreferences;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    invoke-interface {v0}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v0
+
+    .line 13
+    iget-object v1, p0, Lcom/google/firebase/messaging/o;->c:Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    check-cast v1, Ljava/lang/String;
+
+    .line 16
+    .line 17
+    invoke-interface {v0, v1, p1}, Landroid/content/SharedPreferences$Editor;->putString(Ljava/lang/String;Ljava/lang/String;)Landroid/content/SharedPreferences$Editor;
+
+    .line 18
+    .line 19
+    .line 20
+    invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
+
+    .line 21
+    .line 22
+    .line 23
+    iput-object p1, p0, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+
+    .line 24
+    .line 25
+    return-void
 .end method

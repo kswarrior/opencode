@@ -60,21 +60,21 @@
 
 .field public static background_default:I = 0x7f08008f
 
-.field public static common_button_background:I = 0x7f0800ed
+.field public static common_button_background:I = 0x7f0800ff
 
-.field public static gamerpic_missing:I = 0x7f08010a
+.field public static gamerpic_missing:I = 0x7f080121
 
-.field public static loading:I = 0x7f08017c
+.field public static loading:I = 0x7f0801e4
 
-.field public static placeholder_x:I = 0x7f0801c8
+.field public static placeholder_x:I = 0x7f080233
 
-.field public static xbid_clickable_view_background:I = 0x7f0801ce
+.field public static xbid_clickable_view_background:I = 0x7f080241
 
-.field public static xbid_clickable_view_state_focused:I = 0x7f0801cf
+.field public static xbid_clickable_view_state_focused:I = 0x7f080242
 
-.field public static xbid_clickable_view_state_pressed:I = 0x7f0801d0
+.field public static xbid_clickable_view_state_pressed:I = 0x7f080243
 
-.field public static xbid_x_icon:I = 0x7f0801d1
+.field public static xbid_x_icon:I = 0x7f080244
 
 
 # direct methods

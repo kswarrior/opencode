@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;
 .super Landroid/view/View;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -13,6 +13,12 @@
 
 
 # instance fields
+.field private assetGeneration:I
+
+.field private final assetRetry:Ljava/lang/Runnable;
+
+.field private final assetWorker:Ljava/util/concurrent/ThreadPoolExecutor;
+
 .field private cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
 
 .field private cachedDrawRevision:J
@@ -52,6 +58,10 @@
 
 .field private hiddenInHudCacheLoaded:Z
 
+.field private final idlePoll:Ljava/lang/Runnable;
+
+.field private final imageBounds:Landroid/graphics/RectF;
+
 .field private final imageCache:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -67,11 +77,59 @@
 
 .field private isShowing:Z
 
+.field private final missingFonts:Ljava/util/Set;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Set<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final missingImages:Ljava/util/Set;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Set<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 .field private final paint:Landroid/graphics/Paint;
+
+.field private final pendingFonts:Ljava/util/Set;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Set<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private final pendingImages:Ljava/util/Set;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/Set<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+.field private pendingShow:Ljava/lang/Runnable;
+
+.field private runtimeActive:Z
 
 .field private snapGuideX:F
 
 .field private snapGuideY:F
+
+.field private snapshotSequence:J
+
+.field private final trianglePath:Landroid/graphics/Path;
 
 .field private final typefaceCache:Ljava/util/Map;
     .annotation system Ldalvik/annotation/Signature;
@@ -87,7 +145,7 @@
 
 # direct methods
 .method public constructor <init>(Landroid/app/Activity;)V
-    .locals 5
+    .locals 13
 
     .line 1
     invoke-direct {p0, p1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
@@ -135,205 +193,432 @@
 
     .line 23
     .line 24
-    new-instance v3, Ljava/util/HashMap;
+    const/4 v3, 0x1
 
     .line 25
-    .line 26
-    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
+    iput-boolean v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->runtimeActive:Z
 
+    .line 26
     .line 27
+    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+
     .line 28
     .line 29
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+    new-instance v4, Landroid/graphics/Path;
 
     .line 30
     .line 31
-    new-instance v3, Ljava/util/HashMap;
+    invoke-direct {v4}, Landroid/graphics/Path;-><init>()V
 
     .line 32
     .line 33
-    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
-
     .line 34
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->trianglePath:Landroid/graphics/Path;
+
     .line 35
     .line 36
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
+    new-instance v4, Landroid/graphics/RectF;
 
     .line 37
     .line 38
-    new-instance v3, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$1;
+    invoke-direct {v4}, Landroid/graphics/RectF;-><init>()V
 
     .line 39
     .line 40
-    invoke-direct {v3, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
-
     .line 41
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageBounds:Landroid/graphics/RectF;
+
     .line 42
     .line 43
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
+    new-instance v4, Ljava/util/HashMap;
 
     .line 44
     .line 45
-    new-instance v3, Landroid/os/Handler;
+    invoke-direct {v4}, Ljava/util/HashMap;-><init>()V
 
     .line 46
     .line 47
-    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
-
     .line 48
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+
     .line 49
     .line 50
-    move-result-object v4
+    new-instance v4, Ljava/util/HashMap;
 
     .line 51
-    invoke-direct {v3, v4}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
-
     .line 52
+    invoke-direct {v4}, Ljava/util/HashMap;-><init>()V
+
     .line 53
     .line 54
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
-
     .line 55
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
+
     .line 56
-    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
-
     .line 57
-    .line 58
-    const/4 v3, 0x0
+    new-instance v4, Ljava/util/HashSet;
 
+    .line 58
     .line 59
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingModule:Ljava/lang/String;
+    invoke-direct {v4}, Ljava/util/HashSet;-><init>()V
 
     .line 60
     .line 61
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHudElement:Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
-
     .line 62
-    .line 63
-    const/4 v3, 0x0
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingFonts:Ljava/util/Set;
 
+    .line 63
     .line 64
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->dragOffsetX:F
+    new-instance v4, Ljava/util/HashSet;
 
     .line 65
     .line 66
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->dragOffsetY:F
+    invoke-direct {v4}, Ljava/util/HashSet;-><init>()V
 
     .line 67
     .line 68
-    const/high16 v3, 0x3f800000    # 1.0f
-
     .line 69
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingImages:Ljava/util/Set;
+
     .line 70
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingWidth:F
-
     .line 71
+    new-instance v4, Ljava/util/HashSet;
+
     .line 72
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHeight:F
-
     .line 73
-    .line 74
-    const/high16 v3, 0x7fc00000    # Float.NaN
+    invoke-direct {v4}, Ljava/util/HashSet;-><init>()V
 
+    .line 74
     .line 75
     .line 76
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
 
     .line 77
     .line 78
-    iput v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
+    new-instance v4, Ljava/util/HashSet;
 
     .line 79
     .line 80
-    new-instance v3, Ljava/util/HashMap;
+    invoke-direct {v4}, Ljava/util/HashSet;-><init>()V
 
     .line 81
     .line 82
-    invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
-
     .line 83
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
     .line 84
     .line 85
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hiddenInHudCache:Ljava/util/Map;
+    new-instance v5, Ljava/util/concurrent/ThreadPoolExecutor;
 
     .line 86
     .line 87
-    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hiddenInHudCacheLoaded:Z
+    sget-object v10, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
 
     .line 88
     .line 89
-    new-array v3, p1, [Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+    new-instance v11, Ljava/util/concurrent/LinkedBlockingQueue;
 
     .line 90
     .line 91
-    iput-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElements:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+    invoke-direct {v11}, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V
 
     .line 92
     .line 93
-    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
-
     .line 94
-    .line 95
-    const/4 v1, 0x1
+    new-instance v12, Lorg/levimc/launcher/core/mods/inbuilt/overlay/k;
 
+    .line 95
     .line 96
-    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+    invoke-direct {v12}, Ljava/lang/Object;-><init>()V
 
     .line 97
     .line 98
     .line 99
-    invoke-virtual {p0, p1}, Landroid/view/View;->setWillNotDraw(Z)V
+    const/4 v6, 0x0
 
     .line 100
+    const/4 v7, 0x1
+
     .line 101
+    const-wide/16 v8, 0x5
+
     .line 102
-    const/high16 p1, 0x42c80000    # 100.0f
-
     .line 103
-    .line 104
-    invoke-virtual {p0, p1}, Landroid/view/View;->setElevation(F)V
+    invoke-direct/range {v5 .. v12}, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/ThreadFactory;)V
 
+    .line 104
     .line 105
     .line 106
+    iput-object v5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetWorker:Ljava/util/concurrent/ThreadPoolExecutor;
+
     .line 107
+    .line 108
+    new-instance v4, Landroid/os/Handler;
+
+    .line 109
+    .line 110
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 111
+    .line 112
+    .line 113
+    move-result-object v5
+
+    .line 114
+    invoke-direct {v4, v5}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+
+    .line 115
+    .line 116
+    .line 117
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 118
+    .line 119
+    new-instance v4, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;
+
+    .line 120
+    .line 121
+    const/4 v5, 0x1
+
+    .line 122
+    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;I)V
+
+    .line 123
+    .line 124
+    .line 125
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->idlePoll:Ljava/lang/Runnable;
+
+    .line 126
+    .line 127
+    new-instance v4, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;
+
+    .line 128
+    .line 129
+    const/4 v5, 0x2
+
+    .line 130
+    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;I)V
+
+    .line 131
+    .line 132
+    .line 133
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetRetry:Ljava/lang/Runnable;
+
+    .line 134
+    .line 135
+    new-instance v4, Lorg/levimc/launcher/core/mods/inbuilt/overlay/h;
+
+    .line 136
+    .line 137
+    invoke-direct {v4, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/h;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
+
+    .line 138
+    .line 139
+    .line 140
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
+
+    .line 141
+    .line 142
+    const/4 v4, 0x0
+
+    .line 143
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingModule:Ljava/lang/String;
+
+    .line 144
+    .line 145
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHudElement:Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+
+    .line 146
+    .line 147
+    const/4 v4, 0x0
+
+    .line 148
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->dragOffsetX:F
+
+    .line 149
+    .line 150
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->dragOffsetY:F
+
+    .line 151
+    .line 152
+    const/high16 v4, 0x3f800000    # 1.0f
+
+    .line 153
+    .line 154
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingWidth:F
+
+    .line 155
+    .line 156
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHeight:F
+
+    .line 157
+    .line 158
+    const/high16 v4, 0x7fc00000    # Float.NaN
+
+    .line 159
+    .line 160
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
+
+    .line 161
+    .line 162
+    iput v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
+
+    .line 163
+    .line 164
+    new-instance v4, Ljava/util/HashMap;
+
+    .line 165
+    .line 166
+    invoke-direct {v4}, Ljava/util/HashMap;-><init>()V
+
+    .line 167
+    .line 168
+    .line 169
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hiddenInHudCache:Ljava/util/Map;
+
+    .line 170
+    .line 171
+    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hiddenInHudCacheLoaded:Z
+
+    .line 172
+    .line 173
+    new-array v4, p1, [Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+
+    .line 174
+    .line 175
+    iput-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElements:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+
+    .line 176
+    .line 177
+    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
+
+    .line 178
+    .line 179
+    invoke-virtual {v0, v3}, Landroid/graphics/Paint;->setAntiAlias(Z)V
+
+    .line 180
+    .line 181
+    .line 182
+    invoke-virtual {p0, p1}, Landroid/view/View;->setWillNotDraw(Z)V
+
+    .line 183
+    .line 184
+    .line 185
+    const/high16 p1, 0x42c80000    # 100.0f
+
+    .line 186
+    .line 187
+    invoke-virtual {p0, p1}, Landroid/view/View;->setElevation(F)V
+
+    .line 188
+    .line 189
+    .line 190
     return-void
 .end method
 
-.method public static bridge synthetic a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)J
-    .locals 2
-
-    .line 1
-    iget-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
-
-    .line 2
-    .line 3
-    return-wide v0
-.end method
-
-.method public static bridge synthetic b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)Z
+.method public static synthetic a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
     .locals 0
 
     .line 1
-    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->retryMissingAssets()V
 
     .line 2
     .line 3
-    return p0
+    .line 4
+    return-void
 .end method
 
-.method public static bridge synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
-    .locals 2
+.method public static synthetic b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;I)V
+    .locals 0
 
     .line 1
-    const-wide/high16 v0, -0x8000000000000000L
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$getImage$5(Ljava/lang/String;I)V
 
     .line 2
     .line 3
-    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;ILjava/lang/String;Landroid/graphics/Typeface;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$getFont$2(ILjava/lang/String;Landroid/graphics/Typeface;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private canRender()Z
+    .locals 1
+
+    .line 1
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
 
     .line 4
     .line 5
-    return-void
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->runtimeActive:Z
+
+    .line 6
+    .line 7
+    if-eqz v0, :cond_0
+
+    .line 8
+    .line 9
+    invoke-virtual {p0}, Landroid/view/View;->isAttachedToWindow()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v0
+
+    .line 13
+    if-eqz v0, :cond_0
+
+    .line 14
+    .line 15
+    invoke-virtual {p0}, Landroid/view/View;->getVisibility()I
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v0
+
+    .line 19
+    if-nez v0, :cond_0
+
+    .line 20
+    .line 21
+    invoke-virtual {p0}, Landroid/view/View;->getWindowVisibility()I
+
+    .line 22
+    .line 23
+    .line 24
+    move-result v0
+
+    .line 25
+    if-nez v0, :cond_0
+
+    .line 26
+    .line 27
+    const/4 v0, 0x1
+
+    .line 28
+    return v0
+
+    .line 29
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 30
+    return v0
 .end method
 
 .method private clamp(FFF)F
@@ -413,63 +698,13 @@
 .end method
 
 .method private currentDrawCommands()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
-    .locals 4
+    .locals 1
 
     .line 1
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getDrawCommandsRevision()J
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
 
     .line 2
     .line 3
-    .line 4
-    move-result-wide v0
-
-    .line 5
-    const-wide/16 v2, 0x0
-
-    .line 6
-    .line 7
-    cmp-long v2, v0, v2
-
-    .line 8
-    .line 9
-    if-ltz v2, :cond_0
-
-    .line 10
-    .line 11
-    iget-wide v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
-
-    .line 12
-    .line 13
-    cmp-long v2, v0, v2
-
-    .line 14
-    .line 15
-    if-eqz v2, :cond_1
-
-    .line 16
-    .line 17
-    :cond_0
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getDrawCommands()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object v2
-
-    .line 21
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
-
-    .line 22
-    .line 23
-    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
-
-    .line 24
-    .line 25
-    :cond_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
-
-    .line 26
-    .line 27
     return-object v0
 .end method
 
@@ -477,96 +712,94 @@
     .locals 4
 
     .line 1
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getDrawCommandsRevision()J
+    iget-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapshotSequence:J
 
     .line 2
     .line 3
-    .line 4
-    move-result-wide v0
+    iget-wide v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
 
+    .line 4
     .line 5
-    const-wide/16 v2, 0x0
+    cmp-long v0, v0, v2
 
     .line 6
     .line 7
-    cmp-long v2, v0, v2
+    if-eqz v0, :cond_0
 
     .line 8
     .line 9
-    if-ltz v2, :cond_0
+    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getHudEditorElements()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
 
     .line 10
     .line 11
-    iget-wide v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
-
     .line 12
+    move-result-object v0
+
     .line 13
-    cmp-long v2, v0, v2
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElements:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
 
     .line 14
     .line 15
-    if-eqz v2, :cond_1
+    iget-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapshotSequence:J
 
     .line 16
     .line 17
-    :cond_0
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getHudEditorElements()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
 
     .line 18
     .line 19
-    .line 20
-    move-result-object v2
-
-    .line 21
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElements:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
-
-    .line 22
-    .line 23
-    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElementsRevision:J
-
-    .line 24
-    .line 25
-    :cond_1
+    :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedHudElements:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
 
-    .line 26
-    .line 27
+    .line 20
+    .line 21
     return-object v0
 .end method
 
-.method public static bridge synthetic d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
-    .locals 1
+.method public static synthetic d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$show$7()V
 
     .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
-
     .line 3
     .line 4
     return-void
 .end method
 
-.method public static bridge synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
-    .locals 1
+.method public static synthetic e(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    .locals 0
 
     .line 1
-    const/4 v0, 0x1
+    invoke-static {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$new$1(Ljava/lang/Runnable;)Ljava/lang/Thread;
 
     .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
-
     .line 3
     .line 4
-    return-void
+    move-result-object p0
+
+    .line 5
+    return-object p0
 .end method
 
-.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
+.method public static synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
     .locals 0
 
     .line 1
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;ILjava/lang/String;Landroid/graphics/Bitmap;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$getImage$4(ILjava/lang/String;Landroid/graphics/Bitmap;)V
 
     .line 2
     .line 3
@@ -990,188 +1223,113 @@
     .locals 5
 
     .line 1
-    const-string v0, "font_"
+    const/4 v0, 0x0
 
     .line 2
-    .line 3
-    const/4 v1, 0x0
-
-    .line 4
     if-eqz p1, :cond_3
+
+    .line 3
+    .line 4
+    invoke-virtual {p1}, Ljava/lang/String;->isEmpty()Z
 
     .line 5
     .line 6
-    invoke-virtual {p1}, Ljava/lang/String;->isEmpty()Z
-
     .line 7
+    move-result v1
+
     .line 8
+    if-eqz v1, :cond_0
+
     .line 9
-    move-result v2
-
     .line 10
-    if-eqz v2, :cond_0
-
-    .line 11
-    .line 12
     goto :goto_0
 
-    .line 13
+    .line 11
     :cond_0
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+
+    .line 12
+    .line 13
+    invoke-interface {v1, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
     .line 14
     .line 15
-    invoke-interface {v2, p1}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
-
     .line 16
-    .line 17
-    .line 18
-    move-result v2
+    move-result v1
 
+    .line 17
+    if-eqz v1, :cond_1
+
+    .line 18
     .line 19
-    if-eqz v2, :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
 
     .line 20
     .line 21
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 22
     .line 23
-    invoke-interface {v0, p1}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 24
-    .line 25
-    .line 26
     move-result-object p1
 
-    .line 27
+    .line 25
     check-cast p1, Landroid/graphics/Typeface;
 
-    .line 28
-    .line 29
+    .line 26
+    .line 27
     return-object p1
 
-    .line 30
+    .line 28
     :cond_1
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->nativeGetRegisteredFontBytes(Ljava/lang/String;)[B
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingFonts:Ljava/util/Set;
+
+    .line 29
+    .line 30
+    invoke-interface {v1, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
 
     .line 31
     .line 32
     .line 33
-    move-result-object v2
+    move-result v1
 
     .line 34
-    if-eqz v2, :cond_2
+    if-nez v1, :cond_2
 
     .line 35
     .line 36
-    array-length v3, v2
+    goto :goto_0
 
     .line 37
-    if-lez v3, :cond_2
+    :cond_2
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
 
     .line 38
     .line 39
-    :try_start_0
-    invoke-virtual {v0, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetWorker:Ljava/util/concurrent/ThreadPoolExecutor;
 
     .line 40
     .line 41
-    .line 42
-    move-result-object v0
+    new-instance v3, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;
 
+    .line 42
     .line 43
-    const-string v3, ".ttf"
+    const/4 v4, 0x0
 
     .line 44
-    .line 45
-    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+    invoke-direct {v3, p0, p1, v1, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;II)V
 
+    .line 45
     .line 46
     .line 47
+    invoke-virtual {v2, v3}, Ljava/util/concurrent/ThreadPoolExecutor;->execute(Ljava/lang/Runnable;)V
+
     .line 48
-    move-result-object v4
-
     .line 49
-    invoke-virtual {v4}, Landroid/content/Context;->getCacheDir()Ljava/io/File;
-
     .line 50
-    .line 51
-    .line 52
-    move-result-object v4
-
-    .line 53
-    invoke-static {v0, v3, v4}, Ljava/io/File;->createTempFile(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
-
-    .line 54
-    .line 55
-    .line 56
-    move-result-object v0
-
-    .line 57
-    new-instance v3, Ljava/io/FileOutputStream;
-
-    .line 58
-    .line 59
-    invoke-direct {v3, v0}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
-
-    .line 60
-    .line 61
-    .line 62
-    invoke-virtual {v3, v2}, Ljava/io/FileOutputStream;->write([B)V
-
-    .line 63
-    .line 64
-    .line 65
-    invoke-virtual {v3}, Ljava/io/FileOutputStream;->close()V
-
-    .line 66
-    .line 67
-    .line 68
-    invoke-static {v0}, Landroid/graphics/Typeface;->createFromFile(Ljava/io/File;)Landroid/graphics/Typeface;
-
-    .line 69
-    .line 70
-    .line 71
-    move-result-object v0
-
-    .line 72
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
-
-    .line 73
-    .line 74
-    invoke-interface {v2, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 75
-    .line 76
-    .line 77
-    return-object v0
-
-    .line 78
-    :catch_0
-    move-exception v0
-
-    .line 79
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
-
-    .line 80
-    .line 81
-    .line 82
-    :cond_2
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
-
-    .line 83
-    .line 84
-    invoke-interface {v0, p1, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 85
-    .line 86
-    .line 87
     :cond_3
     :goto_0
-    return-object v1
+    return-object v0
 .end method
 
 .method private getHudElementBounds(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;
@@ -1260,7 +1418,7 @@
 .end method
 
 .method private getImage(Ljava/lang/String;)Landroid/graphics/Bitmap;
-    .locals 11
+    .locals 5
 
     .line 1
     const/4 v0, 0x0
@@ -1322,178 +1480,51 @@
 
     .line 28
     :cond_1
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->nativeGetRegisteredImage(Ljava/lang/String;)[Ljava/lang/Object;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingImages:Ljava/util/Set;
 
     .line 29
     .line 30
+    invoke-interface {v1, p1}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+
     .line 31
-    move-result-object v1
-
     .line 32
-    if-eqz v1, :cond_2
-
     .line 33
+    move-result v1
+
     .line 34
-    array-length v2, v1
+    if-nez v1, :cond_2
 
     .line 35
-    const/4 v3, 0x2
-
     .line 36
-    if-lt v2, v3, :cond_2
+    goto :goto_0
 
     .line 37
-    .line 38
-    const/4 v2, 0x0
+    :cond_2
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
 
+    .line 38
     .line 39
-    aget-object v4, v1, v2
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetWorker:Ljava/util/concurrent/ThreadPoolExecutor;
 
     .line 40
     .line 41
-    instance-of v5, v4, [B
+    new-instance v3, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;
 
     .line 42
     .line 43
-    if-eqz v5, :cond_2
+    const/4 v4, 0x1
 
     .line 44
+    invoke-direct {v3, p0, p1, v1, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;II)V
+
     .line 45
-    const/4 v5, 0x1
-
     .line 46
-    aget-object v1, v1, v5
-
     .line 47
-    .line 48
-    instance-of v6, v1, [I
+    invoke-virtual {v2, v3}, Ljava/util/concurrent/ThreadPoolExecutor;->execute(Ljava/lang/Runnable;)V
 
+    .line 48
     .line 49
     .line 50
-    if-eqz v6, :cond_2
-
-    .line 51
-    .line 52
-    check-cast v4, [B
-
-    .line 53
-    .line 54
-    check-cast v1, [I
-
-    .line 55
-    .line 56
-    array-length v6, v1
-
-    .line 57
-    if-lt v6, v3, :cond_2
-
-    .line 58
-    .line 59
-    aget v3, v1, v2
-
-    .line 60
-    .line 61
-    if-lez v3, :cond_2
-
-    .line 62
-    .line 63
-    aget v6, v1, v5
-
-    .line 64
-    .line 65
-    if-lez v6, :cond_2
-
-    .line 66
-    .line 67
-    int-to-long v7, v3
-
-    .line 68
-    int-to-long v9, v6
-
-    .line 69
-    mul-long/2addr v7, v9
-
-    .line 70
-    const-wide/16 v9, 0x4
-
-    .line 71
-    .line 72
-    mul-long/2addr v7, v9
-
-    .line 73
-    array-length v3, v4
-
-    .line 74
-    int-to-long v9, v3
-
-    .line 75
-    cmp-long v3, v7, v9
-
-    .line 76
-    .line 77
-    if-nez v3, :cond_2
-
-    .line 78
-    .line 79
-    :try_start_0
-    invoke-static {v4}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
-
-    .line 80
-    .line 81
-    .line 82
-    move-result-object v3
-
-    .line 83
-    aget v2, v1, v2
-
-    .line 84
-    .line 85
-    aget v1, v1, v5
-
-    .line 86
-    .line 87
-    sget-object v4, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
-
-    .line 88
-    .line 89
-    invoke-static {v2, v1, v4}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    .line 90
-    .line 91
-    .line 92
-    move-result-object v1
-
-    .line 93
-    invoke-virtual {v1, v3}, Landroid/graphics/Bitmap;->copyPixelsFromBuffer(Ljava/nio/Buffer;)V
-
-    .line 94
-    .line 95
-    .line 96
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
-
-    .line 97
-    .line 98
-    invoke-interface {v2, p1, v1}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 99
-    .line 100
-    .line 101
-    return-object v1
-
-    .line 102
-    :catch_0
-    :cond_2
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
-
-    .line 103
-    .line 104
-    invoke-interface {v1, p1, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 105
-    .line 106
-    .line 107
     :cond_3
     :goto_0
     return-object v0
@@ -1598,6 +1629,18 @@
     return-object v1
 .end method
 
+.method public static synthetic h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;I)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$getFont$3(Ljava/lang/String;I)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
 .method private hasExplicitHudElements(Ljava/lang/String;)Z
     .locals 5
 
@@ -1672,6 +1715,18 @@
     .line 30
     :cond_2
     return v0
+.end method
+
+.method public static synthetic i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;J)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$new$6(J)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
 .end method
 
 .method private isDraggableCommand(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)Z
@@ -1765,6 +1820,1055 @@
 
     .line 22
     return p1
+.end method
+
+.method public static synthetic j(Ljava/lang/Runnable;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->lambda$new$0(Ljava/lang/Runnable;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private synthetic lambda$getFont$2(ILjava/lang/String;Landroid/graphics/Typeface;)V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
+
+    .line 2
+    .line 3
+    if-eq p1, v0, :cond_0
+
+    .line 4
+    .line 5
+    goto :goto_0
+
+    .line 6
+    :cond_0
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingFonts:Ljava/util/Set;
+
+    .line 7
+    .line 8
+    invoke-interface {p1, p2}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+
+    .line 12
+    .line 13
+    invoke-interface {p1, p2, p3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    if-nez p3, :cond_1
+
+    .line 17
+    .line 18
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
+
+    .line 19
+    .line 20
+    invoke-interface {p1, p2}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+
+    .line 21
+    .line 22
+    .line 23
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->scheduleAssetRetry()V
+
+    .line 24
+    .line 25
+    .line 26
+    return-void
+
+    .line 27
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result p1
+
+    .line 31
+    if-eqz p1, :cond_2
+
+    .line 32
+    .line 33
+    invoke-virtual {p0}, Landroid/view/View;->invalidate()V
+
+    .line 34
+    .line 35
+    .line 36
+    :cond_2
+    :goto_0
+    return-void
+.end method
+
+.method private synthetic lambda$getFont$3(Ljava/lang/String;I)V
+    .locals 9
+
+    .line 1
+    const/4 v1, 0x0
+
+    .line 2
+    :try_start_0
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->nativeGetRegisteredFontBytes(Ljava/lang/String;)[B
+
+    .line 3
+    .line 4
+    .line 5
+    move-result-object v0
+
+    .line 6
+    if-eqz v0, :cond_0
+
+    .line 7
+    .line 8
+    array-length v2, v0
+
+    .line 9
+    if-lez v2, :cond_0
+
+    .line 10
+    .line 11
+    const-string v2, "hud-font-"
+
+    .line 12
+    .line 13
+    const-string v3, ".ttf"
+
+    .line 14
+    .line 15
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object v4
+
+    .line 19
+    invoke-virtual {v4}, Landroid/content/Context;->getCacheDir()Ljava/io/File;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v4
+
+    .line 23
+    invoke-static {v2, v3, v4}, Ljava/io/File;->createTempFile(Ljava/lang/String;Ljava/lang/String;Ljava/io/File;)Ljava/io/File;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v2
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/LinkageError; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_3
+
+    .line 27
+    :try_start_1
+    new-instance v3, Ljava/io/FileOutputStream;
+
+    .line 28
+    .line 29
+    invoke-direct {v3, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/LinkageError; {:try_start_1 .. :try_end_1} :catch_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 30
+    .line 31
+    .line 32
+    :try_start_2
+    invoke-virtual {v3, v0}, Ljava/io/FileOutputStream;->write([B)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    .line 33
+    .line 34
+    .line 35
+    :try_start_3
+    invoke-virtual {v3}, Ljava/io/FileOutputStream;->close()V
+
+    .line 36
+    .line 37
+    .line 38
+    invoke-static {v2}, Landroid/graphics/Typeface;->createFromFile(Ljava/io/File;)Landroid/graphics/Typeface;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v1
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_1
+    .catch Ljava/lang/RuntimeException; {:try_start_3 .. :try_end_3} :catch_1
+    .catch Ljava/lang/LinkageError; {:try_start_3 .. :try_end_3} :catch_1
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 42
+    move-object v0, v1
+
+    .line 43
+    move-object v1, v2
+
+    .line 44
+    goto :goto_1
+
+    .line 45
+    :catchall_0
+    move-exception v0
+
+    .line 46
+    move-object p1, v0
+
+    .line 47
+    move-object v1, v2
+
+    .line 48
+    goto :goto_2
+
+    .line 49
+    :catchall_1
+    move-exception v0
+
+    .line 50
+    move-object v4, v0
+
+    .line 51
+    :try_start_4
+    invoke-virtual {v3}, Ljava/io/FileOutputStream;->close()V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
+
+    .line 52
+    .line 53
+    .line 54
+    goto :goto_0
+
+    .line 55
+    :catchall_2
+    move-exception v0
+
+    .line 56
+    :try_start_5
+    invoke-virtual {v4, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 57
+    .line 58
+    .line 59
+    :goto_0
+    throw v4
+    :try_end_5
+    .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_1
+    .catch Ljava/lang/RuntimeException; {:try_start_5 .. :try_end_5} :catch_1
+    .catch Ljava/lang/LinkageError; {:try_start_5 .. :try_end_5} :catch_1
+    .catchall {:try_start_5 .. :try_end_5} :catchall_0
+
+    .line 60
+    :catchall_3
+    move-exception v0
+
+    .line 61
+    move-object p1, v0
+
+    .line 62
+    goto :goto_2
+
+    .line 63
+    :catch_0
+    move-object v2, v1
+
+    .line 64
+    goto :goto_3
+
+    .line 65
+    :cond_0
+    move-object v0, v1
+
+    .line 66
+    :goto_1
+    if-eqz v1, :cond_1
+
+    .line 67
+    .line 68
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+
+    .line 69
+    .line 70
+    .line 71
+    :cond_1
+    move-object v7, v0
+
+    .line 72
+    goto :goto_4
+
+    .line 73
+    :goto_2
+    if-eqz v1, :cond_2
+
+    .line 74
+    .line 75
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+
+    .line 76
+    .line 77
+    .line 78
+    :cond_2
+    throw p1
+
+    .line 79
+    :catch_1
+    :goto_3
+    if-eqz v2, :cond_3
+
+    .line 80
+    .line 81
+    invoke-virtual {v2}, Ljava/io/File;->delete()Z
+
+    .line 82
+    .line 83
+    .line 84
+    :cond_3
+    move-object v7, v1
+
+    .line 85
+    :goto_4
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 86
+    .line 87
+    new-instance v3, Lorg/levimc/launcher/core/minecraft/h;
+
+    .line 88
+    .line 89
+    const/4 v8, 0x3
+
+    .line 90
+    move-object v4, p0
+
+    .line 91
+    move-object v6, p1
+
+    .line 92
+    move v5, p2
+
+    .line 93
+    invoke-direct/range {v3 .. v8}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Ljava/lang/Object;ILjava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 94
+    .line 95
+    .line 96
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 97
+    .line 98
+    .line 99
+    return-void
+.end method
+
+.method private synthetic lambda$getImage$4(ILjava/lang/String;Landroid/graphics/Bitmap;)V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
+
+    .line 2
+    .line 3
+    if-eq p1, v0, :cond_0
+
+    .line 4
+    .line 5
+    goto :goto_0
+
+    .line 6
+    :cond_0
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingImages:Ljava/util/Set;
+
+    .line 7
+    .line 8
+    invoke-interface {p1, p2}, Ljava/util/Set;->remove(Ljava/lang/Object;)Z
+
+    .line 9
+    .line 10
+    .line 11
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
+
+    .line 12
+    .line 13
+    invoke-interface {p1, p2, p3}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    if-nez p3, :cond_1
+
+    .line 17
+    .line 18
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
+    .line 19
+    .line 20
+    invoke-interface {p1, p2}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+
+    .line 21
+    .line 22
+    .line 23
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->scheduleAssetRetry()V
+
+    .line 24
+    .line 25
+    .line 26
+    return-void
+
+    .line 27
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result p1
+
+    .line 31
+    if-eqz p1, :cond_2
+
+    .line 32
+    .line 33
+    invoke-virtual {p0}, Landroid/view/View;->invalidate()V
+
+    .line 34
+    .line 35
+    .line 36
+    :cond_2
+    :goto_0
+    return-void
+.end method
+
+.method private synthetic lambda$getImage$5(Ljava/lang/String;I)V
+    .locals 9
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    :try_start_0
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->nativeGetRegisteredImage(Ljava/lang/String;)[Ljava/lang/Object;
+
+    .line 3
+    .line 4
+    .line 5
+    move-result-object v1
+
+    .line 6
+    if-eqz v1, :cond_0
+
+    .line 7
+    .line 8
+    array-length v2, v1
+
+    .line 9
+    const/4 v3, 0x2
+
+    .line 10
+    if-lt v2, v3, :cond_0
+
+    .line 11
+    .line 12
+    const/4 v2, 0x0
+
+    .line 13
+    aget-object v4, v1, v2
+
+    .line 14
+    .line 15
+    instance-of v5, v4, [B
+
+    .line 16
+    .line 17
+    if-eqz v5, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v5, 0x1
+
+    .line 20
+    aget-object v1, v1, v5
+
+    .line 21
+    .line 22
+    instance-of v6, v1, [I
+
+    .line 23
+    .line 24
+    if-eqz v6, :cond_0
+
+    .line 25
+    .line 26
+    check-cast v4, [B
+
+    .line 27
+    .line 28
+    check-cast v1, [I
+
+    .line 29
+    .line 30
+    array-length v6, v1
+
+    .line 31
+    if-lt v6, v3, :cond_0
+
+    .line 32
+    .line 33
+    aget v2, v1, v2
+
+    .line 34
+    .line 35
+    if-lez v2, :cond_0
+
+    .line 36
+    .line 37
+    aget v1, v1, v5
+
+    .line 38
+    .line 39
+    if-lez v1, :cond_0
+
+    .line 40
+    .line 41
+    int-to-long v5, v2
+
+    .line 42
+    int-to-long v7, v1
+
+    .line 43
+    mul-long/2addr v5, v7
+
+    .line 44
+    const-wide/16 v7, 0x4
+
+    .line 45
+    .line 46
+    mul-long/2addr v5, v7
+
+    .line 47
+    array-length v3, v4
+
+    .line 48
+    int-to-long v7, v3
+
+    .line 49
+    cmp-long v3, v5, v7
+
+    .line 50
+    .line 51
+    if-nez v3, :cond_0
+
+    .line 52
+    .line 53
+    sget-object v3, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    .line 54
+    .line 55
+    invoke-static {v2, v1, v3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    .line 56
+    .line 57
+    .line 58
+    move-result-object v0
+
+    .line 59
+    invoke-static {v4}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
+
+    .line 60
+    .line 61
+    .line 62
+    move-result-object v1
+
+    .line 63
+    invoke-virtual {v0, v1}, Landroid/graphics/Bitmap;->copyPixelsFromBuffer(Ljava/nio/Buffer;)V
+    :try_end_0
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/LinkageError; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 64
+    .line 65
+    .line 66
+    :catch_0
+    :cond_0
+    move-object v5, v0
+
+    .line 67
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 68
+    .line 69
+    new-instance v1, Lorg/levimc/launcher/core/minecraft/h;
+
+    .line 70
+    .line 71
+    const/4 v6, 0x2
+
+    .line 72
+    move-object v2, p0
+
+    .line 73
+    move-object v4, p1
+
+    .line 74
+    move v3, p2
+
+    .line 75
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Ljava/lang/Object;ILjava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 76
+    .line 77
+    .line 78
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 79
+    .line 80
+    .line 81
+    return-void
+.end method
+
+.method private static synthetic lambda$new$0(Ljava/lang/Runnable;)V
+    .locals 1
+
+    .line 1
+    const/16 v0, 0xa
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Landroid/os/Process;->setThreadPriority(I)V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-interface {p0}, Ljava/lang/Runnable;->run()V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+.end method
+
+.method private static synthetic lambda$new$1(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    .locals 3
+
+    .line 1
+    new-instance v0, Ljava/lang/Thread;
+
+    .line 2
+    .line 3
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;
+
+    .line 4
+    .line 5
+    const/16 v2, 0x8
+
+    .line 6
+    .line 7
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;-><init>(Ljava/lang/Object;I)V
+
+    .line 8
+    .line 9
+    .line 10
+    const-string p0, "ModHudAssets"
+
+    .line 11
+    .line 12
+    invoke-direct {v0, v1, p0}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
+    .line 13
+    .line 14
+    .line 15
+    const/4 p0, 0x1
+
+    .line 16
+    invoke-virtual {v0, p0}, Ljava/lang/Thread;->setDaemon(Z)V
+
+    .line 17
+    .line 18
+    .line 19
+    return-object v0
+.end method
+
+.method private synthetic lambda$new$6(J)V
+    .locals 4
+
+    .line 1
+    const/4 p1, 0x0
+
+    .line 2
+    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
+
+    .line 3
+    .line 4
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 5
+    .line 6
+    .line 7
+    move-result p2
+
+    .line 8
+    if-nez p2, :cond_0
+
+    .line 9
+    .line 10
+    return-void
+
+    .line 11
+    :cond_0
+    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getDrawCommandsRevision()J
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-wide v0
+
+    .line 15
+    const-wide/16 v2, 0x0
+
+    .line 16
+    .line 17
+    cmp-long p2, v0, v2
+
+    .line 18
+    .line 19
+    if-ltz p2, :cond_1
+
+    .line 20
+    .line 21
+    iget-wide v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
+
+    .line 22
+    .line 23
+    cmp-long p2, v0, v2
+
+    .line 24
+    .line 25
+    if-eqz p2, :cond_5
+
+    .line 26
+    .line 27
+    :cond_1
+    iget-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 28
+    .line 29
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->getHudDrawCommands([Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object p2
+
+    .line 33
+    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
+
+    .line 34
+    .line 35
+    iget-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapshotSequence:J
+
+    .line 36
+    .line 37
+    const-wide/16 v2, 0x1
+
+    .line 38
+    .line 39
+    add-long/2addr v0, v2
+
+    .line 40
+    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapshotSequence:J
+
+    .line 41
+    .line 42
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 43
+    .line 44
+    if-eq p2, v0, :cond_3
+
+    .line 45
+    .line 46
+    array-length v1, p2
+
+    .line 47
+    if-nez v1, :cond_2
+
+    .line 48
+    .line 49
+    array-length v0, v0
+
+    .line 50
+    if-eqz v0, :cond_3
+
+    .line 51
+    .line 52
+    :cond_2
+    const/4 p1, 0x1
+
+    .line 53
+    :cond_3
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 54
+    .line 55
+    if-nez p1, :cond_4
+
+    .line 56
+    .line 57
+    iget-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+
+    .line 58
+    .line 59
+    if-eqz p1, :cond_5
+
+    .line 60
+    .line 61
+    :cond_4
+    invoke-virtual {p0}, Landroid/view/View;->invalidate()V
+
+    .line 62
+    .line 63
+    .line 64
+    :cond_5
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 65
+    .line 66
+    array-length p1, p1
+
+    .line 67
+    if-nez p1, :cond_6
+
+    .line 68
+    .line 69
+    iget-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+
+    .line 70
+    .line 71
+    if-nez p1, :cond_6
+
+    .line 72
+    .line 73
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 74
+    .line 75
+    iget-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->idlePoll:Ljava/lang/Runnable;
+
+    .line 76
+    .line 77
+    const-wide/16 v0, 0x64
+
+    .line 78
+    .line 79
+    invoke-virtual {p1, p2, v0, v1}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 80
+    .line 81
+    .line 82
+    return-void
+
+    .line 83
+    :cond_6
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 84
+    .line 85
+    .line 86
+    return-void
+.end method
+
+.method private synthetic lambda$show$7()V
+    .locals 3
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingShow:Ljava/lang/Runnable;
+
+    .line 3
+    .line 4
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+
+    .line 5
+    .line 6
+    if-nez v0, :cond_3
+
+    .line 7
+    .line 8
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v0
+
+    .line 12
+    check-cast v0, Landroid/app/Activity;
+
+    .line 13
+    .line 14
+    invoke-virtual {v0}, Landroid/app/Activity;->isFinishing()Z
+
+    .line 15
+    .line 16
+    .line 17
+    move-result v0
+
+    .line 18
+    if-nez v0, :cond_3
+
+    .line 19
+    .line 20
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v0
+
+    .line 24
+    check-cast v0, Landroid/app/Activity;
+
+    .line 25
+    .line 26
+    invoke-virtual {v0}, Landroid/app/Activity;->isDestroyed()Z
+
+    .line 27
+    .line 28
+    .line 29
+    move-result v0
+
+    .line 30
+    if-eqz v0, :cond_0
+
+    .line 31
+    .line 32
+    goto :goto_0
+
+    .line 33
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 34
+    .line 35
+    .line 36
+    move-result-object v0
+
+    .line 37
+    check-cast v0, Landroid/app/Activity;
+
+    .line 38
+    .line 39
+    const v1, 0x1020002
+
+    .line 40
+    .line 41
+    .line 42
+    invoke-virtual {v0, v1}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+
+    .line 43
+    .line 44
+    .line 45
+    move-result-object v0
+
+    .line 46
+    check-cast v0, Landroid/view/ViewGroup;
+
+    .line 47
+    .line 48
+    if-nez v0, :cond_1
+
+    .line 49
+    .line 50
+    goto :goto_0
+
+    .line 51
+    :cond_1
+    const/16 v1, 0x8
+
+    .line 52
+    .line 53
+    invoke-virtual {p0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 54
+    .line 55
+    .line 56
+    new-instance v1, Landroid/widget/FrameLayout$LayoutParams;
+
+    .line 57
+    .line 58
+    const/4 v2, -0x1
+
+    .line 59
+    invoke-direct {v1, v2, v2}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+
+    .line 60
+    .line 61
+    .line 62
+    invoke-virtual {v0, p0, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 63
+    .line 64
+    .line 65
+    const/4 v0, 0x1
+
+    .line 66
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+
+    .line 67
+    .line 68
+    const-wide/high16 v0, -0x8000000000000000L
+
+    .line 69
+    .line 70
+    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
+
+    .line 71
+    .line 72
+    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->getInstance()Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object v0
+
+    .line 76
+    if-eqz v0, :cond_2
+
+    .line 77
+    .line 78
+    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->refreshRuntimeVisibility()V
+
+    .line 79
+    .line 80
+    .line 81
+    :cond_2
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 82
+    .line 83
+    .line 84
+    :cond_3
+    :goto_0
+    return-void
 .end method
 
 .method private loadHiddenInHudCache()V
@@ -2014,54 +3118,64 @@
 
     .line 4
     .line 5
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
 
     .line 6
     .line 7
-    if-eqz v0, :cond_1
-
     .line 8
+    move-result v0
+
     .line 9
-    invoke-virtual {p0}, Landroid/view/View;->getVisibility()I
+    if-nez v0, :cond_0
 
     .line 10
     .line 11
-    .line 12
-    move-result v0
-
-    .line 13
-    if-eqz v0, :cond_0
-
-    .line 14
-    .line 15
     goto :goto_0
 
-    .line 16
+    .line 12
     :cond_0
-    const/4 v0, 0x1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 13
+    .line 14
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->idlePoll:Ljava/lang/Runnable;
+
+    .line 15
+    .line 16
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 17
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
-
     .line 18
     .line 19
-    invoke-static {}, Landroid/view/Choreographer;->getInstance()Landroid/view/Choreographer;
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->scheduleAssetRetry()V
 
     .line 20
     .line 21
     .line 22
-    move-result-object v0
+    const/4 v0, 0x1
 
     .line 23
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
 
     .line 24
     .line 25
-    invoke-virtual {v0, v1}, Landroid/view/Choreographer;->postFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+    invoke-static {}, Landroid/view/Choreographer;->getInstance()Landroid/view/Choreographer;
 
     .line 26
     .line 27
     .line 28
+    move-result-object v0
+
+    .line 29
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
+
+    .line 30
+    .line 31
+    invoke-virtual {v0, v1}, Landroid/view/Choreographer;->postFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+
+    .line 32
+    .line 33
+    .line 34
     :cond_1
     :goto_0
     return-void
@@ -2239,6 +3353,266 @@
     .line 38
     :cond_1
     return p1
+.end method
+
+.method private retryMissingAssets()V
+    .locals 4
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    if-nez v0, :cond_0
+
+    .line 6
+    .line 7
+    goto :goto_2
+
+    .line 8
+    :cond_0
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 9
+    .line 10
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
+
+    .line 11
+    .line 12
+    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+
+    .line 13
+    .line 14
+    .line 15
+    new-instance v1, Ljava/util/ArrayList;
+
+    .line 16
+    .line 17
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
+    .line 18
+    .line 19
+    invoke-direct {v1, v2}, Ljava/util/ArrayList;-><init>(Ljava/util/Collection;)V
+
+    .line 20
+    .line 21
+    .line 22
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
+
+    .line 23
+    .line 24
+    invoke-interface {v2}, Ljava/util/Set;->clear()V
+
+    .line 25
+    .line 26
+    .line 27
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
+    .line 28
+    .line 29
+    invoke-interface {v2}, Ljava/util/Set;->clear()V
+
+    .line 30
+    .line 31
+    .line 32
+    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object v0
+
+    .line 36
+    :goto_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 37
+    .line 38
+    .line 39
+    move-result v2
+
+    .line 40
+    if-eqz v2, :cond_1
+
+    .line 41
+    .line 42
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 43
+    .line 44
+    .line 45
+    move-result-object v2
+
+    .line 46
+    check-cast v2, Ljava/lang/String;
+
+    .line 47
+    .line 48
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+
+    .line 49
+    .line 50
+    invoke-interface {v3, v2}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 51
+    .line 52
+    .line 53
+    invoke-direct {p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getFont(Ljava/lang/String;)Landroid/graphics/Typeface;
+
+    .line 54
+    .line 55
+    .line 56
+    goto :goto_0
+
+    .line 57
+    :cond_1
+    invoke-virtual {v1}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+
+    .line 58
+    .line 59
+    .line 60
+    move-result-object v0
+
+    .line 61
+    :goto_1
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 62
+    .line 63
+    .line 64
+    move-result v1
+
+    .line 65
+    if-eqz v1, :cond_2
+
+    .line 66
+    .line 67
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 68
+    .line 69
+    .line 70
+    move-result-object v1
+
+    .line 71
+    check-cast v1, Ljava/lang/String;
+
+    .line 72
+    .line 73
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
+
+    .line 74
+    .line 75
+    invoke-interface {v2, v1}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 76
+    .line 77
+    .line 78
+    invoke-direct {p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getImage(Ljava/lang/String;)Landroid/graphics/Bitmap;
+
+    .line 79
+    .line 80
+    .line 81
+    goto :goto_1
+
+    .line 82
+    :cond_2
+    :goto_2
+    return-void
+.end method
+
+.method private scheduleAssetRetry()V
+    .locals 4
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    if-eqz v0, :cond_1
+
+    .line 6
+    .line 7
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
+
+    .line 8
+    .line 9
+    invoke-interface {v0}, Ljava/util/Set;->isEmpty()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v0
+
+    .line 13
+    if-eqz v0, :cond_0
+
+    .line 14
+    .line 15
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
+    .line 16
+    .line 17
+    invoke-interface {v0}, Ljava/util/Set;->isEmpty()Z
+
+    .line 18
+    .line 19
+    .line 20
+    move-result v0
+
+    .line 21
+    if-nez v0, :cond_1
+
+    .line 22
+    .line 23
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 24
+    .line 25
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetRetry:Ljava/lang/Runnable;
+
+    .line 26
+    .line 27
+    invoke-static {v0, v1}, Lfc/a;->u(Landroid/os/Handler;Ljava/lang/Runnable;)Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result v0
+
+    .line 31
+    if-nez v0, :cond_1
+
+    .line 32
+    .line 33
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 34
+    .line 35
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetRetry:Ljava/lang/Runnable;
+
+    .line 36
+    .line 37
+    const-wide/16 v2, 0x3e8
+
+    .line 38
+    .line 39
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 40
+    .line 41
+    .line 42
+    :cond_1
+    return-void
 .end method
 
 .method private snapHudElement(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;FF)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$SnapPosition;
@@ -3674,43 +5048,37 @@
     return-object v1
 .end method
 
-
-# virtual methods
-.method public hide()V
-    .locals 3
+.method private stopFrames()V
+    .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
 
     .line 2
     .line 3
-    if-nez v0, :cond_0
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->idlePoll:Ljava/lang/Runnable;
 
     .line 4
     .line 5
-    return-void
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 6
-    :cond_0
-    :try_start_0
-    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
-
     .line 7
     .line 8
-    .line 9
-    move-result-object v0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
 
+    .line 9
     .line 10
-    check-cast v0, Landroid/app/Activity;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetRetry:Ljava/lang/Runnable;
 
     .line 11
     .line 12
-    const v1, 0x1020002
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 13
     .line 14
     .line 15
-    invoke-virtual {v0, v1}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+    invoke-static {}, Landroid/view/Choreographer;->getInstance()Landroid/view/Choreographer;
 
     .line 16
     .line 17
@@ -3718,63 +5086,201 @@
     move-result-object v0
 
     .line 19
-    check-cast v0, Landroid/view/ViewGroup;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
 
     .line 20
     .line 21
-    if-eqz v0, :cond_1
+    invoke-virtual {v0, v1}, Landroid/view/Choreographer;->removeFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
 
     .line 22
     .line 23
-    invoke-virtual {v0, p0}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    .line 24
+    const/4 v0, 0x0
+
+    .line 25
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
+
+    .line 26
+    .line 27
+    return-void
+.end method
+
+
+# virtual methods
+.method public hide()V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingShow:Ljava/lang/Runnable;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 6
+    .line 7
+    invoke-virtual {v1, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 8
+    .line 9
+    .line 10
+    const/4 v0, 0x0
+
+    .line 11
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingShow:Ljava/lang/Runnable;
+
+    .line 12
+    .line 13
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 14
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
+
+    .line 15
+    .line 16
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 17
+    .line 18
+    .line 19
+    invoke-virtual {p0}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v1
+
+    .line 23
+    instance-of v1, v1, Landroid/view/ViewGroup;
 
     .line 24
     .line 25
-    .line 26
-    goto :goto_0
+    if-eqz v1, :cond_1
 
+    .line 26
     .line 27
-    :catch_0
-    move-exception v0
+    invoke-virtual {p0}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
 
     .line 28
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
-
     .line 29
     .line 30
-    .line 31
-    :cond_1
-    :goto_0
-    const/4 v0, 0x0
-
-    .line 32
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isShowing:Z
-
-    .line 33
-    .line 34
-    invoke-static {}, Landroid/view/Choreographer;->getInstance()Landroid/view/Choreographer;
-
-    .line 35
-    .line 36
-    .line 37
     move-result-object v1
 
+    .line 31
+    check-cast v1, Landroid/view/ViewGroup;
+
+    .line 32
+    .line 33
+    invoke-virtual {v1, p0}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+
+    .line 34
+    .line 35
+    .line 36
+    :cond_1
+    new-array v0, v0, [Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+
+    .line 37
     .line 38
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallback:Landroid/view/Choreographer$FrameCallback;
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawCommands:[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
 
     .line 39
     .line 40
-    invoke-virtual {v1, v2}, Landroid/view/Choreographer;->removeFrameCallback(Landroid/view/Choreographer$FrameCallback;)V
+    const-wide/high16 v0, -0x8000000000000000L
 
     .line 41
     .line 42
-    .line 43
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->frameCallbackPosted:Z
+    iput-wide v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->cachedDrawRevision:J
 
+    .line 43
     .line 44
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
+
     .line 45
+    .line 46
+    add-int/lit8 v0, v0, 0x1
+
+    .line 47
+    .line 48
+    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetGeneration:I
+
+    .line 49
+    .line 50
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->assetWorker:Ljava/util/concurrent/ThreadPoolExecutor;
+
+    .line 51
+    .line 52
+    invoke-virtual {v0}, Ljava/util/concurrent/ThreadPoolExecutor;->getQueue()Ljava/util/concurrent/BlockingQueue;
+
+    .line 53
+    .line 54
+    .line 55
+    move-result-object v0
+
+    .line 56
+    invoke-interface {v0}, Ljava/util/Collection;->clear()V
+
+    .line 57
+    .line 58
+    .line 59
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingImages:Ljava/util/Set;
+
+    .line 60
+    .line 61
+    invoke-interface {v0}, Ljava/util/Set;->clear()V
+
+    .line 62
+    .line 63
+    .line 64
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingFonts:Ljava/util/Set;
+
+    .line 65
+    .line 66
+    invoke-interface {v0}, Ljava/util/Set;->clear()V
+
+    .line 67
+    .line 68
+    .line 69
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingImages:Ljava/util/Set;
+
+    .line 70
+    .line 71
+    invoke-interface {v0}, Ljava/util/Set;->clear()V
+
+    .line 72
+    .line 73
+    .line 74
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->missingFonts:Ljava/util/Set;
+
+    .line 75
+    .line 76
+    invoke-interface {v0}, Ljava/util/Set;->clear()V
+
+    .line 77
+    .line 78
+    .line 79
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageCache:Ljava/util/Map;
+
+    .line 80
+    .line 81
+    invoke-interface {v0}, Ljava/util/Map;->clear()V
+
+    .line 82
+    .line 83
+    .line 84
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->typefaceCache:Ljava/util/Map;
+
+    .line 85
+    .line 86
+    invoke-interface {v0}, Ljava/util/Map;->clear()V
+
+    .line 87
+    .line 88
+    .line 89
     return-void
 .end method
 
@@ -3787,6 +5293,23 @@
     .line 2
     .line 3
     return v0
+.end method
+
+.method public onDetachedFromWindow()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 2
+    .line 3
+    .line 4
+    invoke-super {p0}, Landroid/view/View;->onDetachedFromWindow()V
+
+    .line 5
+    .line 6
+    .line 7
+    return-void
 .end method
 
 .method public onDraw(Landroid/graphics/Canvas;)V
@@ -3819,2560 +5342,2512 @@
     .line 13
     .line 14
     :cond_0
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+    iget-boolean v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
 
     .line 15
     .line 16
-    .line 17
-    move-result v2
+    if-eqz v2, :cond_1
 
+    .line 17
     .line 18
-    if-lez v2, :cond_1
+    const/high16 v2, -0x78000000
 
     .line 19
     .line 20
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    invoke-virtual {v1, v2}, Landroid/graphics/Canvas;->drawColor(I)V
 
     .line 21
     .line 22
     .line 23
-    move-result v2
+    :cond_1
+    invoke-direct {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->currentDrawCommands()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
 
     .line 24
-    if-lez v2, :cond_1
-
     .line 25
     .line 26
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+    move-result-object v9
 
     .line 27
+    const/high16 v12, 0x3f800000    # 1.0f
+
     .line 28
     .line 29
-    move-result v2
+    const/high16 v15, 0x40000000    # 2.0f
 
     .line 30
-    int-to-float v2, v2
-
     .line 31
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    if-eqz v9, :cond_29
 
     .line 32
     .line 33
+    array-length v7, v9
+
     .line 34
-    move-result v3
+    const/4 v8, 0x0
 
     .line 35
-    int-to-float v3, v3
+    :goto_0
+    if-ge v8, v7, :cond_29
 
     .line 36
-    invoke-static {v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge;->setHudSurfaceSize(FF)V
-
     .line 37
+    aget-object v2, v9, v8
+
     .line 38
     .line 39
-    :cond_1
-    iget-boolean v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+    iget-boolean v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
 
     .line 40
     .line 41
-    if-eqz v2, :cond_2
+    if-eqz v3, :cond_2
 
     .line 42
     .line 43
-    const/high16 v2, -0x78000000
+    iget-object v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->moduleId:Ljava/lang/String;
 
     .line 44
     .line 45
-    invoke-virtual {v1, v2}, Landroid/graphics/Canvas;->drawColor(I)V
+    invoke-direct {v0, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHiddenInHudEditor(Ljava/lang/String;)Z
 
     .line 46
     .line 47
     .line 48
-    :cond_2
-    invoke-direct {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->currentDrawCommands()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;
+    move-result v3
 
     .line 49
+    if-eqz v3, :cond_2
+
     .line 50
     .line 51
-    move-result-object v9
+    move v10, v7
 
     .line 52
-    const/high16 v12, 0x3f800000    # 1.0f
+    move v11, v8
 
     .line 53
+    const/16 v19, 0x0
+
     .line 54
-    const/high16 v15, 0x40000000    # 2.0f
-
     .line 55
+    goto/16 :goto_19
+
     .line 56
-    if-eqz v9, :cond_2a
-
     .line 57
-    .line 58
-    array-length v7, v9
+    :cond_2
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
+    .line 58
     .line 59
-    const/4 v8, 0x0
+    iget v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->color:I
 
     .line 60
-    :goto_0
-    if-ge v8, v7, :cond_2a
-
     .line 61
-    .line 62
-    aget-object v2, v9, v8
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
 
+    .line 62
     .line 63
     .line 64
-    iget-boolean v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+    iget v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x:F
 
     .line 65
     .line 66
-    if-eqz v3, :cond_3
+    const v4, -0x396b9000    # -19000.0f
 
     .line 67
     .line 68
-    iget-object v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->moduleId:Ljava/lang/String;
-
     .line 69
-    .line 70
-    invoke-direct {v0, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHiddenInHudEditor(Ljava/lang/String;)Z
+    cmpg-float v5, v3, v4
 
+    .line 70
     .line 71
+    const v6, 0x461c4000    # 10000.0f
+
     .line 72
     .line 73
-    move-result v3
-
     .line 74
-    if-eqz v3, :cond_3
+    const v16, -0x39f36000    # -9000.0f
 
     .line 75
     .line 76
-    move v10, v7
-
     .line 77
-    move v11, v8
+    const v17, 0x469c4000    # 20000.0f
 
     .line 78
-    const/16 v19, 0x0
-
     .line 79
     .line 80
-    goto/16 :goto_19
+    if-gtz v5, :cond_3
 
     .line 81
     .line 82
-    :cond_3
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
     .line 83
     .line 84
-    iget v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->color:I
-
     .line 85
+    move-result v5
+
     .line 86
-    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setColor(I)V
+    int-to-float v5, v5
 
     .line 87
-    .line 88
-    .line 89
-    iget v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x:F
+    div-float/2addr v5, v15
 
+    .line 88
+    add-float v3, v3, v17
+
+    .line 89
     .line 90
+    :goto_1
+    add-float/2addr v3, v5
+
     .line 91
-    const v4, -0x396b9000    # -19000.0f
+    goto :goto_2
 
     .line 92
+    :cond_3
+    cmpg-float v5, v3, v16
+
     .line 93
     .line 94
-    cmpg-float v5, v3, v4
+    if-gtz v5, :cond_4
 
     .line 95
     .line 96
-    const v6, 0x461c4000    # 10000.0f
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
     .line 97
     .line 98
     .line 99
-    const v16, -0x39f36000    # -9000.0f
+    move-result v5
 
     .line 100
+    int-to-float v5, v5
+
     .line 101
-    .line 102
-    const v17, 0x469c4000    # 20000.0f
-
-    .line 103
-    .line 104
-    .line 105
-    if-gtz v5, :cond_4
-
-    .line 106
-    .line 107
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
-
-    .line 108
-    .line 109
-    .line 110
-    move-result v5
-
-    .line 111
-    int-to-float v5, v5
-
-    .line 112
-    div-float/2addr v5, v15
-
-    .line 113
-    add-float v3, v3, v17
-
-    .line 114
-    .line 115
-    :goto_1
-    add-float/2addr v3, v5
-
-    .line 116
-    goto :goto_2
-
-    .line 117
-    :cond_4
-    cmpg-float v5, v3, v16
-
-    .line 118
-    .line 119
-    if-gtz v5, :cond_5
-
-    .line 120
-    .line 121
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
-
-    .line 122
-    .line 123
-    .line 124
-    move-result v5
-
-    .line 125
-    int-to-float v5, v5
-
-    .line 126
     add-float/2addr v3, v6
 
-    .line 127
+    .line 102
     goto :goto_1
 
-    .line 128
-    :cond_5
+    .line 103
+    :cond_4
     :goto_2
     iget v5, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->y:F
 
-    .line 129
-    .line 130
+    .line 104
+    .line 105
     cmpg-float v18, v5, v4
 
-    .line 131
-    .line 132
-    if-gtz v18, :cond_6
+    .line 106
+    .line 107
+    if-gtz v18, :cond_5
 
-    .line 133
-    .line 134
+    .line 108
+    .line 109
     move/from16 v18, v4
 
-    .line 135
-    .line 136
+    .line 110
+    .line 111
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 137
-    .line 138
-    .line 139
+    .line 112
+    .line 113
+    .line 114
     move-result v4
 
-    .line 140
+    .line 115
     int-to-float v4, v4
 
-    .line 141
+    .line 116
     div-float/2addr v4, v15
 
-    .line 142
+    .line 117
     add-float v5, v5, v17
 
-    .line 143
-    .line 144
+    .line 118
+    .line 119
     :goto_3
     add-float/2addr v5, v4
 
-    .line 145
+    .line 120
     goto :goto_4
 
-    .line 146
-    :cond_6
+    .line 121
+    :cond_5
     move/from16 v18, v4
 
-    .line 147
-    .line 148
+    .line 122
+    .line 123
     cmpg-float v4, v5, v16
 
-    .line 149
-    .line 150
-    if-gtz v4, :cond_7
+    .line 124
+    .line 125
+    if-gtz v4, :cond_6
 
-    .line 151
-    .line 152
+    .line 126
+    .line 127
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 153
-    .line 154
-    .line 155
+    .line 128
+    .line 129
+    .line 130
     move-result v4
 
-    .line 156
+    .line 131
     int-to-float v4, v4
 
-    .line 157
+    .line 132
     add-float/2addr v5, v6
 
-    .line 158
+    .line 133
     goto :goto_3
 
-    .line 159
-    :cond_7
+    .line 134
+    :cond_6
     :goto_4
     iget v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->type:I
 
-    .line 160
-    .line 161
-    if-nez v4, :cond_12
+    .line 135
+    .line 136
+    if-nez v4, :cond_11
 
-    .line 162
-    .line 163
+    .line 137
+    .line 138
     iget-object v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->fontId:Ljava/lang/String;
 
-    .line 164
-    .line 165
+    .line 139
+    .line 140
     invoke-direct {v0, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getFont(Ljava/lang/String;)Landroid/graphics/Typeface;
 
-    .line 166
-    .line 167
-    .line 168
+    .line 141
+    .line 142
+    .line 143
     move-result-object v4
 
-    .line 169
-    if-eqz v4, :cond_8
+    .line 144
+    if-eqz v4, :cond_7
 
-    .line 170
-    .line 171
+    .line 145
+    .line 146
     iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 172
-    .line 173
+    .line 147
+    .line 148
     invoke-virtual {v6, v4}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
-    .line 174
-    .line 175
-    .line 176
+    .line 149
+    .line 150
+    .line 151
     goto :goto_5
 
-    .line 177
-    :cond_8
+    .line 152
+    :cond_7
     iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 178
-    .line 179
+    .line 153
+    .line 154
     sget-object v6, Landroid/graphics/Typeface;->DEFAULT:Landroid/graphics/Typeface;
 
-    .line 180
-    .line 181
+    .line 155
+    .line 156
     invoke-virtual {v4, v6}, Landroid/graphics/Paint;->setTypeface(Landroid/graphics/Typeface;)Landroid/graphics/Typeface;
 
-    .line 182
-    .line 183
-    .line 184
+    .line 157
+    .line 158
+    .line 159
     :goto_5
     iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 185
-    .line 186
+    .line 160
+    .line 161
     iget v6, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
 
-    .line 187
-    .line 188
+    .line 162
+    .line 163
     invoke-virtual {v4, v6}, Landroid/graphics/Paint;->setTextSize(F)V
 
-    .line 189
-    .line 190
-    .line 191
+    .line 164
+    .line 165
+    .line 166
     iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 192
-    .line 193
+    .line 167
+    .line 168
     sget-object v6, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
 
-    .line 194
-    .line 195
+    .line 169
+    .line 170
     invoke-virtual {v4, v6}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
-    .line 196
-    .line 197
-    .line 198
+    .line 171
+    .line 172
+    .line 173
     iget-object v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->text:Ljava/lang/String;
 
-    .line 199
-    .line 200
-    if-eqz v4, :cond_9
+    .line 174
+    .line 175
+    if-eqz v4, :cond_8
 
-    .line 201
-    .line 202
+    .line 176
+    .line 177
     const-string v6, "{DISPLAY_SIZE}"
 
+    .line 178
+    .line 179
+    invoke-virtual {v4, v6}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    .line 180
+    .line 181
+    .line 182
+    move-result v16
+
+    .line 183
+    if-eqz v16, :cond_8
+
+    .line 184
+    .line 185
+    new-instance v11, Ljava/lang/StringBuilder;
+
+    .line 186
+    .line 187
+    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 188
+    .line 189
+    .line 190
+    const/16 v19, 0x0
+
+    .line 191
+    .line 192
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+
+    .line 193
+    .line 194
+    .line 195
+    move-result v14
+
+    .line 196
+    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 197
+    .line 198
+    .line 199
+    const-string v14, "x"
+
+    .line 200
+    .line 201
+    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 202
     .line 203
     .line 204
-    invoke-virtual {v4, v6}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
     .line 205
     .line 206
     .line 207
-    move-result v16
+    move-result v14
 
     .line 208
-    if-eqz v16, :cond_9
+    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 209
     .line 210
-    new-instance v11, Ljava/lang/StringBuilder;
-
     .line 211
-    .line 212
-    invoke-direct {v11}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 212
     .line 213
     .line 214
+    move-result-object v11
+
     .line 215
-    const/16 v19, 0x0
+    invoke-virtual {v4, v6, v11}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
 
     .line 216
     .line 217
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
-
     .line 218
+    move-result-object v4
+
     .line 219
+    :goto_6
+    move-object v11, v4
+
     .line 220
-    move-result v14
+    goto :goto_7
 
     .line 221
-    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    :cond_8
+    const/16 v19, 0x0
 
     .line 222
     .line 223
+    goto :goto_6
+
     .line 224
-    const-string v14, "x"
+    :goto_7
+    iget v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
 
     .line 225
     .line 226
-    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v4}, Ljava/lang/Float;->floatToRawIntBits(F)I
 
     .line 227
     .line 228
     .line 229
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    move-result v4
 
     .line 230
+    const/high16 v16, -0x40800000    # -1.0f
+
     .line 231
     .line 232
-    move-result v14
+    if-eqz v4, :cond_b
 
     .line 233
-    invoke-virtual {v11, v14}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
     .line 234
+    if-eqz v11, :cond_b
+
     .line 235
     .line 236
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v11}, Ljava/lang/String;->isEmpty()Z
 
     .line 237
     .line 238
     .line 239
-    move-result-object v11
+    move-result v6
 
     .line 240
-    invoke-virtual {v4, v6, v11}, Ljava/lang/String;->replace(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
+    if-nez v6, :cond_b
 
     .line 241
     .line 242
-    .line 243
-    move-result-object v4
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
+    .line 243
     .line 244
-    :goto_6
-    move-object v11, v4
+    invoke-virtual {v6, v11}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
 
     .line 245
-    goto :goto_7
-
     .line 246
-    :cond_9
-    const/16 v19, 0x0
-
     .line 247
+    move-result v6
+
     .line 248
-    goto :goto_6
+    const/high16 v17, -0x40000000    # -2.0f
 
     .line 249
-    :goto_7
-    iget v4, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
-
     .line 250
-    .line 251
-    invoke-static {v4}, Ljava/lang/Float;->floatToRawIntBits(F)I
+    iget v14, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
+    .line 251
     .line 252
+    cmpl-float v18, v14, v16
+
     .line 253
     .line 254
-    move-result v4
+    if-nez v18, :cond_9
 
     .line 255
-    const/high16 v16, -0x40800000    # -1.0f
-
     .line 256
-    .line 257
-    if-eqz v4, :cond_c
+    sub-float v14, v3, v6
 
+    .line 257
     .line 258
+    goto :goto_8
+
     .line 259
-    if-eqz v11, :cond_c
+    :cond_9
+    cmpl-float v14, v14, v17
 
     .line 260
     .line 261
-    invoke-virtual {v11}, Ljava/lang/String;->isEmpty()Z
+    if-nez v14, :cond_a
 
     .line 262
     .line 263
-    .line 264
-    move-result v6
+    div-float v14, v6, v15
 
+    .line 264
     .line 265
-    if-nez v6, :cond_c
+    sub-float v14, v3, v14
 
     .line 266
     .line 267
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    goto :goto_8
 
     .line 268
-    .line 269
-    invoke-virtual {v6, v11}, Landroid/graphics/Paint;->measureText(Ljava/lang/String;)F
-
-    .line 270
-    .line 271
-    .line 272
-    move-result v6
-
-    .line 273
-    const/high16 v17, -0x40000000    # -2.0f
-
-    .line 274
-    .line 275
-    iget v14, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
-
-    .line 276
-    .line 277
-    cmpl-float v18, v14, v16
-
-    .line 278
-    .line 279
-    if-nez v18, :cond_a
-
-    .line 280
-    .line 281
-    sub-float v14, v3, v6
-
-    .line 282
-    .line 283
-    goto :goto_8
-
-    .line 284
     :cond_a
-    cmpl-float v14, v14, v17
-
-    .line 285
-    .line 286
-    if-nez v14, :cond_b
-
-    .line 287
-    .line 288
-    div-float v14, v6, v15
-
-    .line 289
-    .line 290
-    sub-float v14, v3, v14
-
-    .line 291
-    .line 292
-    goto :goto_8
-
-    .line 293
-    :cond_b
     move v14, v3
 
-    .line 294
+    .line 269
     :goto_8
     iget v10, v2, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
 
-    .line 295
-    .line 296
+    .line 270
+    .line 271
     const v18, 0x3f666666    # 0.9f
 
+    .line 272
+    .line 273
+    .line 274
+    mul-float v20, v10, v18
+
+    .line 275
+    .line 276
+    sub-float v20, v5, v20
+
+    .line 277
+    .line 278
+    add-float/2addr v6, v14
+
+    .line 279
+    const/high16 v21, 0x40800000    # 4.0f
+
+    .line 280
+    .line 281
+    add-float v22, v10, v21
+
+    .line 282
+    .line 283
+    mul-float v10, v10, v18
+
+    .line 284
+    .line 285
+    sub-float v22, v22, v10
+
+    .line 286
+    .line 287
+    add-float v22, v22, v5
+
+    .line 288
+    .line 289
+    iget-object v10, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 290
+    .line 291
+    invoke-virtual {v10}, Landroid/graphics/Paint;->getColor()I
+
+    .line 292
+    .line 293
+    .line 294
+    move-result v10
+
+    .line 295
+    move/from16 v23, v15
+
+    .line 296
     .line 297
+    iget-object v15, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 298
     .line 299
-    mul-float v20, v10, v18
+    invoke-virtual {v15, v4}, Landroid/graphics/Paint;->setColor(I)V
 
     .line 300
     .line 301
-    sub-float v20, v5, v20
-
     .line 302
-    .line 303
-    add-float/2addr v6, v14
+    sub-float v14, v14, v21
 
+    .line 303
     .line 304
-    const/high16 v21, 0x40800000    # 4.0f
+    add-float v4, v6, v21
 
     .line 305
     .line 306
-    add-float v22, v10, v21
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 307
     .line 308
-    mul-float v10, v10, v18
+    move v13, v14
 
     .line 309
+    move-object v14, v2
+
     .line 310
-    sub-float v22, v22, v10
+    move v2, v13
 
     .line 311
+    move v15, v3
+
     .line 312
-    add-float v22, v22, v5
+    move v13, v5
 
     .line 313
+    move/from16 v3, v20
+
     .line 314
-    iget-object v10, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 315
-    .line 316
-    invoke-virtual {v10}, Landroid/graphics/Paint;->getColor()I
+    move/from16 v5, v22
 
+    .line 316
     .line 317
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
     .line 318
     .line 319
-    move-result v10
-
     .line 320
-    move/from16 v23, v15
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 321
     .line 322
-    iget-object v15, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v2, v10}, Landroid/graphics/Paint;->setColor(I)V
 
     .line 323
     .line 324
-    invoke-virtual {v15, v4}, Landroid/graphics/Paint;->setColor(I)V
-
     .line 325
-    .line 326
-    .line 327
-    sub-float v14, v14, v21
-
-    .line 328
-    .line 329
-    add-float v4, v6, v21
-
-    .line 330
-    .line 331
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 332
-    .line 333
-    move v13, v14
-
-    .line 334
-    move-object v14, v2
-
-    .line 335
-    move v2, v13
-
-    .line 336
-    move v15, v3
-
-    .line 337
-    move v13, v5
-
-    .line 338
-    move/from16 v3, v20
-
-    .line 339
-    .line 340
-    move/from16 v5, v22
-
-    .line 341
-    .line 342
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
-
-    .line 343
-    .line 344
-    .line 345
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 346
-    .line 347
-    invoke-virtual {v2, v10}, Landroid/graphics/Paint;->setColor(I)V
-
-    .line 348
-    .line 349
-    .line 350
     goto :goto_9
 
-    .line 351
-    :cond_c
+    .line 326
+    :cond_b
     move-object v14, v2
 
-    .line 352
+    .line 327
     move v13, v5
 
-    .line 353
+    .line 328
     move/from16 v23, v15
 
-    .line 354
-    .line 355
+    .line 329
+    .line 330
     const/high16 v17, -0x40000000    # -2.0f
 
-    .line 356
-    .line 357
+    .line 331
+    .line 332
     move v15, v3
 
-    .line 358
+    .line 333
     :goto_9
-    if-eqz v11, :cond_11
+    if-eqz v11, :cond_10
+
+    .line 334
+    .line 335
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 336
+    .line 337
+    const/high16 v3, 0x40400000    # 3.0f
+
+    .line 338
+    .line 339
+    const/high16 v4, -0x1000000
+
+    .line 340
+    .line 341
+    invoke-virtual {v2, v3, v12, v12, v4}, Landroid/graphics/Paint;->setShadowLayer(FFFI)V
+
+    .line 342
+    .line 343
+    .line 344
+    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+
+    .line 345
+    .line 346
+    cmpl-float v3, v2, v19
+
+    .line 347
+    .line 348
+    if-lez v3, :cond_c
+
+    .line 349
+    .line 350
+    iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+
+    .line 351
+    .line 352
+    cmpl-float v3, v3, v19
+
+    .line 353
+    .line 354
+    if-lez v3, :cond_c
+
+    .line 355
+    .line 356
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 357
+    .line 358
+    sget-object v3, Landroid/graphics/Paint$Align;->CENTER:Landroid/graphics/Paint$Align;
 
     .line 359
     .line 360
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
 
     .line 361
     .line 362
-    const/high16 v3, 0x40400000    # 3.0f
-
     .line 363
+    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+
     .line 364
-    const/high16 v4, -0x1000000
-
     .line 365
+    div-float v2, v2, v23
+
     .line 366
-    invoke-virtual {v2, v3, v12, v12, v4}, Landroid/graphics/Paint;->setShadowLayer(FFFI)V
-
     .line 367
+    add-float/2addr v2, v13
+
     .line 368
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 369
-    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
-
     .line 370
-    .line 371
-    cmpl-float v3, v2, v19
+    invoke-virtual {v3}, Landroid/graphics/Paint;->descent()F
 
+    .line 371
     .line 372
     .line 373
-    if-lez v3, :cond_d
+    move-result v3
 
     .line 374
+    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 375
-    iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
-
     .line 376
-    .line 377
-    cmpl-float v3, v3, v19
+    invoke-virtual {v4}, Landroid/graphics/Paint;->ascent()F
 
+    .line 377
     .line 378
     .line 379
-    if-lez v3, :cond_d
+    move-result v4
 
     .line 380
+    add-float/2addr v4, v3
+
     .line 381
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    div-float v4, v4, v23
 
     .line 382
     .line 383
-    sget-object v3, Landroid/graphics/Paint$Align;->CENTER:Landroid/graphics/Paint$Align;
+    sub-float/2addr v2, v4
 
     .line 384
-    .line 385
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
+    iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
+    .line 385
     .line 386
+    div-float v3, v3, v23
+
     .line 387
     .line 388
-    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+    add-float/2addr v3, v15
 
     .line 389
+    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 390
-    div-float v2, v2, v23
-
     .line 391
+    invoke-virtual {v1, v11, v3, v2, v4}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
+
     .line 392
-    add-float/2addr v2, v13
-
     .line 393
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 394
+    goto :goto_b
+
     .line 395
-    invoke-virtual {v3}, Landroid/graphics/Paint;->descent()F
+    :cond_c
+    cmpl-float v3, v2, v19
 
     .line 396
     .line 397
-    .line 398
-    move-result v3
+    if-nez v3, :cond_d
 
+    .line 398
     .line 399
-    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 400
     .line 401
-    invoke-virtual {v4}, Landroid/graphics/Paint;->ascent()F
+    sget-object v3, Landroid/graphics/Paint$Align;->LEFT:Landroid/graphics/Paint$Align;
 
     .line 402
     .line 403
+    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
+
     .line 404
-    move-result v4
-
     .line 405
-    add-float/2addr v4, v3
-
     .line 406
-    div-float v4, v4, v23
+    goto :goto_a
 
     .line 407
-    .line 408
-    sub-float/2addr v2, v4
+    :cond_d
+    cmpl-float v3, v2, v16
 
+    .line 408
     .line 409
-    iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+    if-nez v3, :cond_e
 
     .line 410
     .line 411
-    div-float v3, v3, v23
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 412
     .line 413
-    add-float/2addr v3, v15
-
-    .line 414
-    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 415
-    .line 416
-    invoke-virtual {v1, v11, v3, v2, v4}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
-
-    .line 417
-    .line 418
-    .line 419
-    goto :goto_b
-
-    .line 420
-    :cond_d
-    cmpl-float v3, v2, v19
-
-    .line 421
-    .line 422
-    if-nez v3, :cond_e
-
-    .line 423
-    .line 424
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 425
-    .line 426
-    sget-object v3, Landroid/graphics/Paint$Align;->LEFT:Landroid/graphics/Paint$Align;
-
-    .line 427
-    .line 428
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
-
-    .line 429
-    .line 430
-    .line 431
-    goto :goto_a
-
-    .line 432
-    :cond_e
-    cmpl-float v3, v2, v16
-
-    .line 433
-    .line 434
-    if-nez v3, :cond_f
-
-    .line 435
-    .line 436
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 437
-    .line 438
     sget-object v3, Landroid/graphics/Paint$Align;->RIGHT:Landroid/graphics/Paint$Align;
 
-    .line 439
-    .line 440
+    .line 414
+    .line 415
     invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
 
-    .line 441
-    .line 442
-    .line 443
+    .line 416
+    .line 417
+    .line 418
     goto :goto_a
 
-    .line 444
-    :cond_f
+    .line 419
+    :cond_e
     cmpl-float v2, v2, v17
 
-    .line 445
-    .line 446
-    if-nez v2, :cond_10
+    .line 420
+    .line 421
+    if-nez v2, :cond_f
 
-    .line 447
-    .line 448
+    .line 422
+    .line 423
     iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 449
-    .line 450
+    .line 424
+    .line 425
     sget-object v3, Landroid/graphics/Paint$Align;->CENTER:Landroid/graphics/Paint$Align;
 
-    .line 451
-    .line 452
+    .line 426
+    .line 427
     invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setTextAlign(Landroid/graphics/Paint$Align;)V
 
-    .line 453
-    .line 454
-    .line 455
-    :cond_10
+    .line 428
+    .line 429
+    .line 430
+    :cond_f
     :goto_a
     iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 456
-    .line 457
+    .line 431
+    .line 432
     invoke-virtual {v1, v11, v15, v13, v2}, Landroid/graphics/Canvas;->drawText(Ljava/lang/String;FFLandroid/graphics/Paint;)V
 
-    .line 458
-    .line 459
-    .line 460
+    .line 433
+    .line 434
+    .line 435
     :goto_b
     iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 461
-    .line 462
+    .line 436
+    .line 437
     invoke-virtual {v2}, Landroid/graphics/Paint;->clearShadowLayer()V
 
-    .line 463
-    .line 464
-    .line 465
-    :cond_11
+    .line 438
+    .line 439
+    .line 440
+    :cond_10
     move v10, v7
 
-    .line 466
+    .line 441
     move v11, v8
 
-    .line 467
+    .line 442
     goto/16 :goto_18
+
+    .line 443
+    .line 444
+    :cond_11
+    move-object v14, v2
+
+    .line 445
+    move v13, v5
+
+    .line 446
+    move/from16 v23, v15
+
+    .line 447
+    .line 448
+    const/4 v2, 0x1
+
+    .line 449
+    const/16 v19, 0x0
+
+    .line 450
+    .line 451
+    move v15, v3
+
+    .line 452
+    if-ne v4, v2, :cond_13
+
+    .line 453
+    .line 454
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 455
+    .line 456
+    sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+
+    .line 457
+    .line 458
+    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
+    .line 459
+    .line 460
+    .line 461
+    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
+
+    .line 462
+    .line 463
+    cmpl-float v2, v6, v19
+
+    .line 464
+    .line 465
+    if-lez v2, :cond_12
+
+    .line 466
+    .line 467
+    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
     .line 468
     .line 469
-    :cond_12
-    move-object v14, v2
+    add-float v4, v15, v2
 
     .line 470
-    move v13, v5
-
     .line 471
-    move/from16 v23, v15
+    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
     .line 472
     .line 473
-    const/4 v2, 0x1
+    add-float v5, v13, v2
 
     .line 474
-    const/16 v19, 0x0
-
     .line 475
+    move v11, v8
+
     .line 476
-    move v15, v3
+    iget-object v8, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 477
-    if-ne v4, v2, :cond_14
-
     .line 478
+    move v2, v7
+
     .line 479
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    move v7, v6
 
     .line 480
+    move v10, v2
+
     .line 481
-    sget-object v3, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+    move v3, v13
 
     .line 482
+    move v2, v15
+
     .line 483
-    invoke-virtual {v2, v3}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    invoke-virtual/range {v1 .. v8}, Landroid/graphics/Canvas;->drawRoundRect(FFFFFFLandroid/graphics/Paint;)V
 
     .line 484
     .line 485
     .line 486
-    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
+    move-object/from16 v1, p1
 
     .line 487
     .line 488
-    cmpl-float v2, v6, v19
+    goto/16 :goto_18
 
     .line 489
     .line 490
-    if-lez v2, :cond_13
+    :cond_12
+    move v10, v7
 
     .line 491
+    move v11, v8
+
     .line 492
-    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+    move v3, v13
 
     .line 493
+    move v2, v15
+
     .line 494
-    add-float v4, v15, v2
+    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
     .line 495
     .line 496
-    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+    add-float v4, v2, v1
 
     .line 497
     .line 498
-    add-float v5, v13, v2
+    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
     .line 499
     .line 500
-    move v11, v8
+    add-float v5, v3, v1
 
     .line 501
-    iget-object v8, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 502
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 503
-    move v2, v7
-
     .line 504
-    move v7, v6
-
-    .line 505
-    move v10, v2
-
-    .line 506
-    move v3, v13
-
-    .line 507
-    move v2, v15
-
-    .line 508
-    invoke-virtual/range {v1 .. v8}, Landroid/graphics/Canvas;->drawRoundRect(FFFFFFLandroid/graphics/Paint;)V
-
-    .line 509
-    .line 510
-    .line 511
     move-object/from16 v1, p1
 
-    .line 512
-    .line 513
+    .line 505
+    .line 506
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 507
+    .line 508
+    .line 509
     goto/16 :goto_18
 
-    .line 514
-    .line 515
+    .line 510
+    .line 511
     :cond_13
     move v10, v7
 
-    .line 516
+    .line 512
     move v11, v8
 
-    .line 517
+    .line 513
     move v3, v13
 
-    .line 518
+    .line 514
     move v2, v15
 
+    .line 515
+    const/4 v1, 0x3
+
+    .line 516
+    if-ne v4, v1, :cond_15
+
+    .line 517
+    .line 518
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 519
-    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
-
     .line 520
+    sget-object v4, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+
     .line 521
-    add-float v4, v2, v1
-
     .line 522
-    .line 523
-    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
+    .line 523
     .line 524
     .line 525
-    add-float v5, v3, v1
+    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
 
     .line 526
     .line 527
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    cmpl-float v1, v6, v19
 
     .line 528
     .line 529
-    move-object/from16 v1, p1
+    if-lez v1, :cond_14
 
     .line 530
     .line 531
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
     .line 532
     .line 533
+    add-float v4, v2, v1
+
     .line 534
-    goto/16 :goto_18
-
     .line 535
-    .line 536
-    :cond_14
-    move v10, v7
+    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
+    .line 536
     .line 537
-    move v11, v8
+    add-float v5, v3, v1
 
     .line 538
-    move v3, v13
-
     .line 539
-    move v2, v15
+    iget-object v8, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 540
-    const/4 v1, 0x3
-
     .line 541
-    if-ne v4, v1, :cond_16
+    move v7, v6
 
     .line 542
+    move-object/from16 v1, p1
+
     .line 543
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 544
-    .line 545
-    sget-object v4, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+    invoke-virtual/range {v1 .. v8}, Landroid/graphics/Canvas;->drawRoundRect(FFFFFFLandroid/graphics/Paint;)V
 
+    .line 545
     .line 546
     .line 547
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    goto/16 :goto_18
 
     .line 548
     .line 549
-    .line 550
-    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
-
-    .line 551
-    .line 552
-    cmpl-float v1, v6, v19
-
-    .line 553
-    .line 554
-    if-lez v1, :cond_15
-
-    .line 555
-    .line 556
+    :cond_14
     iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
-    .line 557
-    .line 558
+    .line 550
+    .line 551
     add-float v4, v2, v1
 
-    .line 559
-    .line 560
+    .line 552
+    .line 553
     iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
-    .line 561
-    .line 562
+    .line 554
+    .line 555
     add-float v5, v3, v1
 
+    .line 556
+    .line 557
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 558
+    .line 559
+    move-object/from16 v1, p1
+
+    .line 560
+    .line 561
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+
+    .line 562
     .line 563
     .line 564
-    iget-object v8, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    goto/16 :goto_18
 
     .line 565
     .line 566
-    move v7, v6
+    :cond_15
+    const/4 v1, 0x2
 
     .line 567
-    move-object/from16 v1, p1
+    if-ne v4, v1, :cond_1a
 
     .line 568
     .line 569
-    invoke-virtual/range {v1 .. v8}, Landroid/graphics/Canvas;->drawRoundRect(FFFFFFLandroid/graphics/Paint;)V
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 570
     .line 571
+    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
+
     .line 572
-    goto/16 :goto_18
-
     .line 573
-    .line 574
-    :cond_15
-    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
+    .line 574
     .line 575
     .line 576
-    add-float v4, v2, v1
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 577
     .line 578
-    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+    sget-object v4, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
 
     .line 579
     .line 580
-    add-float v5, v3, v1
+    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
     .line 581
     .line 582
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 583
+    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x:F
+
     .line 584
-    move-object/from16 v1, p1
-
     .line 585
+    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+
     .line 586
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
-
     .line 587
+    add-float/2addr v1, v4
+
     .line 588
+    cmpg-float v4, v1, v18
+
     .line 589
-    goto/16 :goto_18
-
     .line 590
-    .line 591
-    :cond_16
-    const/4 v1, 0x2
+    if-gtz v4, :cond_17
 
+    .line 591
     .line 592
-    if-ne v4, v1, :cond_1b
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
     .line 593
     .line 594
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 595
-    .line 596
-    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
-
-    .line 597
-    .line 598
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 599
-    .line 600
-    .line 601
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 602
-    .line 603
-    sget-object v4, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
-
-    .line 604
-    .line 605
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    .line 606
-    .line 607
-    .line 608
-    iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x:F
-
-    .line 609
-    .line 610
-    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
-
-    .line 611
-    .line 612
-    add-float/2addr v1, v4
-
-    .line 613
-    cmpg-float v4, v1, v18
-
-    .line 614
-    .line 615
-    if-gtz v4, :cond_18
-
-    .line 616
-    .line 617
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
-
-    .line 618
-    .line 619
-    .line 620
     move-result v4
 
-    .line 621
+    .line 596
     int-to-float v4, v4
 
-    .line 622
+    .line 597
     div-float v4, v4, v23
 
-    .line 623
-    .line 624
+    .line 598
+    .line 599
     add-float v1, v1, v17
 
-    .line 625
-    .line 626
+    .line 600
+    .line 601
     :goto_c
     add-float/2addr v1, v4
 
-    .line 627
-    :cond_17
+    .line 602
+    :cond_16
     move v4, v1
 
-    .line 628
+    .line 603
     goto :goto_d
 
-    .line 629
-    :cond_18
+    .line 604
+    :cond_17
     cmpg-float v4, v1, v16
 
-    .line 630
-    .line 631
-    if-gtz v4, :cond_17
+    .line 605
+    .line 606
+    if-gtz v4, :cond_16
 
-    .line 632
-    .line 633
+    .line 607
+    .line 608
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 634
-    .line 635
-    .line 636
+    .line 609
+    .line 610
+    .line 611
     move-result v4
 
-    .line 637
+    .line 612
     int-to-float v4, v4
 
-    .line 638
+    .line 613
     add-float/2addr v1, v6
 
-    .line 639
+    .line 614
     goto :goto_c
 
-    .line 640
+    .line 615
     :goto_d
     iget v1, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->y:F
 
-    .line 641
-    .line 642
+    .line 616
+    .line 617
     iget v5, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
-    .line 643
-    .line 644
+    .line 618
+    .line 619
     add-float/2addr v1, v5
 
-    .line 645
+    .line 620
     cmpg-float v5, v1, v18
 
-    .line 646
-    .line 647
-    if-gtz v5, :cond_1a
+    .line 621
+    .line 622
+    if-gtz v5, :cond_19
 
-    .line 648
-    .line 649
+    .line 623
+    .line 624
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 650
-    .line 651
-    .line 652
+    .line 625
+    .line 626
+    .line 627
     move-result v5
 
-    .line 653
+    .line 628
     int-to-float v5, v5
 
-    .line 654
+    .line 629
     div-float v5, v5, v23
 
-    .line 655
-    .line 656
+    .line 630
+    .line 631
     add-float v1, v1, v17
 
-    .line 657
-    .line 658
+    .line 632
+    .line 633
     :goto_e
     add-float/2addr v1, v5
 
-    .line 659
-    :cond_19
+    .line 634
+    :cond_18
     move v5, v1
 
-    .line 660
+    .line 635
     goto :goto_f
 
-    .line 661
-    :cond_1a
+    .line 636
+    :cond_19
     cmpg-float v5, v1, v16
+
+    .line 637
+    .line 638
+    if-gtz v5, :cond_18
+
+    .line 639
+    .line 640
+    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+
+    .line 641
+    .line 642
+    .line 643
+    move-result v5
+
+    .line 644
+    int-to-float v5, v5
+
+    .line 645
+    add-float/2addr v1, v6
+
+    .line 646
+    goto :goto_e
+
+    .line 647
+    :goto_f
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 648
+    .line 649
+    move-object/from16 v1, p1
+
+    .line 650
+    .line 651
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    .line 652
+    .line 653
+    .line 654
+    goto/16 :goto_18
+
+    .line 655
+    .line 656
+    :cond_1a
+    move-object/from16 v1, p1
+
+    .line 657
+    .line 658
+    const/4 v5, 0x4
+
+    .line 659
+    if-ne v4, v5, :cond_1b
+
+    .line 660
+    .line 661
+    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 662
     .line 663
-    if-gtz v5, :cond_19
+    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
 
     .line 664
     .line 665
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
     .line 666
     .line 667
     .line 668
-    move-result v5
+    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
 
     .line 669
-    int-to-float v5, v5
-
     .line 670
-    add-float/2addr v1, v6
+    iget-object v5, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 671
-    goto :goto_e
-
     .line 672
-    :goto_f
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/graphics/Canvas;->drawCircle(FFFLandroid/graphics/Paint;)V
 
     .line 673
     .line 674
-    move-object/from16 v1, p1
-
     .line 675
-    .line 676
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
-
-    .line 677
-    .line 678
-    .line 679
     goto/16 :goto_18
 
-    .line 680
-    .line 681
+    .line 676
+    .line 677
     :cond_1b
-    move-object/from16 v1, p1
+    const/4 v5, 0x5
 
+    .line 678
+    if-ne v4, v5, :cond_24
+
+    .line 679
+    .line 680
+    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 681
     .line 682
-    .line 683
-    const/4 v5, 0x4
+    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
 
+    .line 683
     .line 684
-    if-ne v4, v5, :cond_1c
+    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
 
     .line 685
     .line 686
-    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 687
+    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->trianglePath:Landroid/graphics/Path;
+
     .line 688
-    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
-
     .line 689
-    .line 690
-    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    invoke-virtual {v4}, Landroid/graphics/Path;->rewind()V
 
+    .line 690
     .line 691
     .line 692
-    .line 693
-    iget v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->size:F
+    invoke-virtual {v4, v2, v3}, Landroid/graphics/Path;->moveTo(FF)V
 
+    .line 693
     .line 694
     .line 695
-    iget-object v5, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
     .line 696
     .line 697
-    invoke-virtual {v1, v2, v3, v4, v5}, Landroid/graphics/Canvas;->drawCircle(FFFLandroid/graphics/Paint;)V
+    cmpg-float v3, v2, v18
 
     .line 698
     .line 699
+    if-gtz v3, :cond_1c
+
     .line 700
-    goto/16 :goto_18
-
     .line 701
-    .line 702
-    :cond_1c
-    const/4 v5, 0x5
-
-    .line 703
-    if-ne v4, v5, :cond_25
-
-    .line 704
-    .line 705
-    iget-object v4, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 706
-    .line 707
-    sget-object v5, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
-
-    .line 708
-    .line 709
-    invoke-virtual {v4, v5}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    .line 710
-    .line 711
-    .line 712
-    new-instance v4, Landroid/graphics/Path;
-
-    .line 713
-    .line 714
-    invoke-direct {v4}, Landroid/graphics/Path;-><init>()V
-
-    .line 715
-    .line 716
-    .line 717
-    invoke-virtual {v4, v2, v3}, Landroid/graphics/Path;->moveTo(FF)V
-
-    .line 718
-    .line 719
-    .line 720
-    iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
-
-    .line 721
-    .line 722
-    cmpg-float v3, v2, v18
-
-    .line 723
-    .line 724
-    if-gtz v3, :cond_1d
-
-    .line 725
-    .line 726
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 727
-    .line 728
-    .line 729
+    .line 702
+    .line 703
+    .line 704
     move-result v3
 
-    .line 730
+    .line 705
     int-to-float v3, v3
 
-    .line 731
+    .line 706
     div-float v3, v3, v23
 
-    .line 732
-    .line 733
+    .line 707
+    .line 708
     add-float v2, v2, v17
 
-    .line 734
-    .line 735
+    .line 709
+    .line 710
     :goto_10
     add-float/2addr v2, v3
 
-    .line 736
+    .line 711
     goto :goto_11
 
-    .line 737
-    :cond_1d
+    .line 712
+    :cond_1c
     cmpg-float v3, v2, v16
 
-    .line 738
-    .line 739
-    if-gtz v3, :cond_1e
+    .line 713
+    .line 714
+    if-gtz v3, :cond_1d
 
-    .line 740
-    .line 741
+    .line 715
+    .line 716
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 742
-    .line 743
-    .line 744
+    .line 717
+    .line 718
+    .line 719
     move-result v3
 
-    .line 745
+    .line 720
     int-to-float v3, v3
 
-    .line 746
+    .line 721
     add-float/2addr v2, v6
 
-    .line 747
+    .line 722
     goto :goto_10
 
-    .line 748
-    :cond_1e
+    .line 723
+    :cond_1d
     :goto_11
     iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
-    .line 749
-    .line 750
+    .line 724
+    .line 725
     cmpg-float v5, v3, v18
 
-    .line 751
-    .line 752
-    if-gtz v5, :cond_1f
+    .line 726
+    .line 727
+    if-gtz v5, :cond_1e
 
-    .line 753
-    .line 754
+    .line 728
+    .line 729
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 755
-    .line 756
-    .line 757
+    .line 730
+    .line 731
+    .line 732
     move-result v5
 
-    .line 758
+    .line 733
     int-to-float v5, v5
 
-    .line 759
+    .line 734
     div-float v5, v5, v23
 
-    .line 760
-    .line 761
+    .line 735
+    .line 736
     add-float v3, v3, v17
 
-    .line 762
-    .line 763
+    .line 737
+    .line 738
     :goto_12
     add-float/2addr v3, v5
 
-    .line 764
+    .line 739
     goto :goto_13
 
-    .line 765
-    :cond_1f
+    .line 740
+    :cond_1e
     cmpg-float v5, v3, v16
 
-    .line 766
-    .line 767
-    if-gtz v5, :cond_20
+    .line 741
+    .line 742
+    if-gtz v5, :cond_1f
 
-    .line 768
-    .line 769
+    .line 743
+    .line 744
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 770
-    .line 771
-    .line 772
+    .line 745
+    .line 746
+    .line 747
     move-result v5
 
-    .line 773
+    .line 748
     int-to-float v5, v5
 
-    .line 774
+    .line 749
     add-float/2addr v3, v6
 
-    .line 775
+    .line 750
     goto :goto_12
 
-    .line 776
-    :cond_20
+    .line 751
+    :cond_1f
     :goto_13
     invoke-virtual {v4, v2, v3}, Landroid/graphics/Path;->lineTo(FF)V
 
-    .line 777
-    .line 778
-    .line 779
+    .line 752
+    .line 753
+    .line 754
     iget v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->x3:F
 
-    .line 780
-    .line 781
+    .line 755
+    .line 756
     cmpg-float v3, v2, v18
 
-    .line 782
-    .line 783
-    if-gtz v3, :cond_21
+    .line 757
+    .line 758
+    if-gtz v3, :cond_20
 
-    .line 784
-    .line 785
+    .line 759
+    .line 760
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 786
-    .line 787
-    .line 788
+    .line 761
+    .line 762
+    .line 763
     move-result v3
 
-    .line 789
+    .line 764
     int-to-float v3, v3
 
-    .line 790
+    .line 765
     div-float v3, v3, v23
 
-    .line 791
-    .line 792
+    .line 766
+    .line 767
     add-float v2, v2, v17
 
-    .line 793
-    .line 794
+    .line 768
+    .line 769
     :goto_14
     add-float/2addr v2, v3
 
-    .line 795
+    .line 770
     goto :goto_15
 
-    .line 796
-    :cond_21
+    .line 771
+    :cond_20
     cmpg-float v3, v2, v16
 
-    .line 797
-    .line 798
-    if-gtz v3, :cond_22
+    .line 772
+    .line 773
+    if-gtz v3, :cond_21
 
-    .line 799
-    .line 800
+    .line 774
+    .line 775
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 801
-    .line 802
-    .line 803
+    .line 776
+    .line 777
+    .line 778
     move-result v3
 
-    .line 804
+    .line 779
     int-to-float v3, v3
 
-    .line 805
+    .line 780
     add-float/2addr v2, v6
 
-    .line 806
+    .line 781
     goto :goto_14
 
-    .line 807
-    :cond_22
+    .line 782
+    :cond_21
     :goto_15
     iget v3, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->y3:F
 
-    .line 808
-    .line 809
+    .line 783
+    .line 784
     cmpg-float v5, v3, v18
 
-    .line 810
-    .line 811
+    .line 785
+    .line 786
+    if-gtz v5, :cond_22
+
+    .line 787
+    .line 788
+    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+
+    .line 789
+    .line 790
+    .line 791
+    move-result v5
+
+    .line 792
+    int-to-float v5, v5
+
+    .line 793
+    div-float v5, v5, v23
+
+    .line 794
+    .line 795
+    add-float v3, v3, v17
+
+    .line 796
+    .line 797
+    :goto_16
+    add-float/2addr v3, v5
+
+    .line 798
+    goto :goto_17
+
+    .line 799
+    :cond_22
+    cmpg-float v5, v3, v16
+
+    .line 800
+    .line 801
     if-gtz v5, :cond_23
 
+    .line 802
+    .line 803
+    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+
+    .line 804
+    .line 805
+    .line 806
+    move-result v5
+
+    .line 807
+    int-to-float v5, v5
+
+    .line 808
+    add-float/2addr v3, v6
+
+    .line 809
+    goto :goto_16
+
+    .line 810
+    :cond_23
+    :goto_17
+    invoke-virtual {v4, v2, v3}, Landroid/graphics/Path;->lineTo(FF)V
+
+    .line 811
     .line 812
     .line 813
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    invoke-virtual {v4}, Landroid/graphics/Path;->close()V
 
     .line 814
     .line 815
     .line 816
-    move-result v5
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 817
-    int-to-float v5, v5
-
     .line 818
-    div-float v5, v5, v23
+    invoke-virtual {v1, v4, v2}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
 
     .line 819
     .line 820
-    add-float v3, v3, v17
-
     .line 821
+    goto :goto_18
+
     .line 822
-    :goto_16
-    add-float/2addr v3, v5
+    :cond_24
+    const/4 v5, 0x6
 
     .line 823
-    goto :goto_17
+    if-ne v4, v5, :cond_25
 
     .line 824
-    :cond_23
-    cmpg-float v5, v3, v16
-
     .line 825
+    iget-object v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->imageId:Ljava/lang/String;
+
     .line 826
-    if-gtz v5, :cond_24
-
     .line 827
-    .line 828
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
+    invoke-direct {v0, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getImage(Ljava/lang/String;)Landroid/graphics/Bitmap;
 
+    .line 828
     .line 829
     .line 830
+    move-result-object v4
+
     .line 831
-    move-result v5
+    if-eqz v4, :cond_25
 
     .line 832
-    int-to-float v5, v5
-
     .line 833
-    add-float/2addr v3, v6
+    iget-object v5, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageBounds:Landroid/graphics/RectF;
 
     .line 834
-    goto :goto_16
-
     .line 835
-    :cond_24
-    :goto_17
-    invoke-virtual {v4, v2, v3}, Landroid/graphics/Path;->lineTo(FF)V
+    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
 
     .line 836
     .line 837
+    add-float/2addr v6, v2
+
     .line 838
-    invoke-virtual {v4}, Landroid/graphics/Path;->close()V
+    iget v7, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
 
     .line 839
     .line 840
+    add-float/2addr v7, v3
+
     .line 841
-    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v5, v2, v3, v6, v7}, Landroid/graphics/RectF;->set(FFFF)V
 
     .line 842
     .line 843
-    invoke-virtual {v1, v4, v2}, Landroid/graphics/Canvas;->drawPath(Landroid/graphics/Path;Landroid/graphics/Paint;)V
-
     .line 844
+    iget-object v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->imageBounds:Landroid/graphics/RectF;
+
     .line 845
     .line 846
-    goto :goto_18
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 847
-    :cond_25
-    const/4 v5, 0x6
-
     .line 848
-    if-ne v4, v5, :cond_26
+    const/4 v5, 0x0
 
     .line 849
-    .line 850
-    iget-object v4, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->imageId:Ljava/lang/String;
+    invoke-virtual {v1, v4, v5, v2, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
 
+    .line 850
     .line 851
     .line 852
-    invoke-direct {v0, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getImage(Ljava/lang/String;)Landroid/graphics/Bitmap;
+    :cond_25
+    :goto_18
+    iget-boolean v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
 
     .line 853
     .line 854
-    .line 855
-    move-result-object v4
+    if-eqz v2, :cond_28
 
+    .line 855
     .line 856
-    if-eqz v4, :cond_26
+    iget-object v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->moduleId:Ljava/lang/String;
 
     .line 857
     .line 858
-    new-instance v5, Landroid/graphics/RectF;
+    if-eqz v2, :cond_28
 
     .line 859
     .line 860
-    iget v6, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->w:F
+    invoke-direct {v0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hasExplicitHudElements(Ljava/lang/String;)Z
 
     .line 861
     .line 862
-    add-float/2addr v6, v2
-
     .line 863
-    iget v7, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->h:F
+    move-result v2
 
     .line 864
-    .line 865
-    add-float/2addr v7, v3
+    if-nez v2, :cond_28
 
+    .line 865
     .line 866
-    invoke-direct {v5, v2, v3, v6, v7}, Landroid/graphics/RectF;-><init>(FFFF)V
+    invoke-direct {v0, v14}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isDraggableCommand(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)Z
 
     .line 867
     .line 868
     .line 869
-    const/4 v2, 0x0
+    move-result v2
 
     .line 870
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    if-nez v2, :cond_26
 
     .line 871
     .line 872
-    invoke-virtual {v1, v4, v2, v5, v3}, Landroid/graphics/Canvas;->drawBitmap(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
+    goto :goto_19
 
     .line 873
+    :cond_26
+    invoke-direct {v0, v14}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getCommandBounds(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;
+
     .line 874
     .line 875
-    :cond_26
-    :goto_18
-    iget-boolean v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
-
     .line 876
+    move-result-object v2
+
     .line 877
-    if-eqz v2, :cond_29
+    if-nez v2, :cond_27
 
     .line 878
     .line 879
-    iget-object v2, v14, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;->moduleId:Ljava/lang/String;
+    goto :goto_19
 
     .line 880
+    :cond_27
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 881
-    if-eqz v2, :cond_29
-
     .line 882
-    .line 883
-    invoke-direct {v0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->hasExplicitHudElements(Ljava/lang/String;)Z
+    sget-object v4, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
 
+    .line 883
     .line 884
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
     .line 885
     .line 886
-    move-result v2
-
     .line 887
-    if-nez v2, :cond_29
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 888
     .line 889
-    invoke-direct {v0, v14}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isDraggableCommand(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)Z
+    move/from16 v4, v23
 
     .line 890
     .line 891
+    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+
     .line 892
-    move-result v2
-
     .line 893
-    if-nez v2, :cond_27
-
     .line 894
-    .line 895
-    goto :goto_19
+    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
+    .line 895
     .line 896
-    :cond_27
-    invoke-direct {v0, v14}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getCommandBounds(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$DrawCommand;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;
+    const v5, -0xb51f60
 
     .line 897
     .line 898
     .line 899
-    move-result-object v2
+    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
 
     .line 900
-    if-nez v2, :cond_28
-
     .line 901
     .line 902
-    goto :goto_19
+    iget v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->left:F
 
     .line 903
-    :cond_28
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 904
+    sub-float/2addr v3, v4
+
     .line 905
-    sget-object v4, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+    iget v5, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->top:F
 
     .line 906
     .line 907
-    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    sub-float/2addr v5, v4
 
     .line 908
+    iget v6, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->right:F
+
     .line 909
     .line 910
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    add-float/2addr v6, v4
 
     .line 911
-    .line 912
-    move/from16 v4, v23
+    iget v2, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->bottom:F
 
+    .line 912
     .line 913
+    add-float/2addr v2, v4
+
     .line 914
-    invoke-virtual {v3, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+    move v4, v6
 
     .line 915
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 916
     .line 917
-    iget-object v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    move/from16 v24, v5
 
     .line 918
     .line 919
-    const v5, -0xb51f60
-
-    .line 920
-    .line 921
-    .line 922
-    invoke-virtual {v3, v5}, Landroid/graphics/Paint;->setColor(I)V
-
-    .line 923
-    .line 924
-    .line 925
-    iget v3, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->left:F
-
-    .line 926
-    .line 927
-    sub-float/2addr v3, v4
-
-    .line 928
-    iget v5, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->top:F
-
-    .line 929
-    .line 930
-    sub-float/2addr v5, v4
-
-    .line 931
-    iget v6, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->right:F
-
-    .line 932
-    .line 933
-    add-float/2addr v6, v4
-
-    .line 934
-    iget v2, v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->bottom:F
-
-    .line 935
-    .line 936
-    add-float/2addr v2, v4
-
-    .line 937
-    move v4, v6
-
-    .line 938
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 939
-    .line 940
-    move/from16 v24, v5
-
-    .line 941
-    .line 942
     move v5, v2
 
-    .line 943
+    .line 920
     move v2, v3
 
-    .line 944
+    .line 921
     move/from16 v3, v24
 
-    .line 945
-    .line 946
+    .line 922
+    .line 923
     invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
 
-    .line 947
-    .line 948
-    .line 949
-    :cond_29
+    .line 924
+    .line 925
+    .line 926
+    :cond_28
     :goto_19
     add-int/lit8 v8, v11, 0x1
 
+    .line 927
+    .line 928
+    move-object/from16 v1, p1
+
+    .line 929
+    .line 930
+    move v7, v10
+
+    .line 931
+    const/high16 v15, 0x40000000    # 2.0f
+
+    .line 932
+    .line 933
+    goto/16 :goto_0
+
+    .line 934
+    .line 935
+    :cond_29
+    const/16 v19, 0x0
+
+    .line 936
+    .line 937
+    iget-boolean v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
+
+    .line 938
+    .line 939
+    if-eqz v1, :cond_31
+
+    .line 940
+    .line 941
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHudElement:Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+
+    .line 942
+    .line 943
+    if-eqz v1, :cond_2c
+
+    .line 944
+    .line 945
+    iget v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;->snapFlags:I
+
+    .line 946
+    .line 947
+    const/16 v20, 0x1
+
+    .line 948
+    .line 949
+    and-int/lit8 v2, v2, 0x1
+
     .line 950
     .line 951
-    move-object/from16 v1, p1
+    if-eqz v2, :cond_2c
 
     .line 952
     .line 953
-    move v7, v10
-
-    .line 954
-    const/high16 v15, 0x40000000    # 2.0f
-
-    .line 955
-    .line 956
-    goto/16 :goto_0
-
-    .line 957
-    .line 958
-    :cond_2a
-    const/16 v19, 0x0
-
-    .line 959
-    .line 960
-    iget-boolean v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHudEditorMode:Z
-
-    .line 961
-    .line 962
-    if-eqz v1, :cond_32
-
-    .line 963
-    .line 964
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->draggingHudElement:Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
-
-    .line 965
-    .line 966
-    if-eqz v1, :cond_2d
-
-    .line 967
-    .line 968
-    iget v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;->snapFlags:I
-
-    .line 969
-    .line 970
-    const/16 v20, 0x1
-
-    .line 971
-    .line 972
-    and-int/lit8 v2, v2, 0x1
-
-    .line 973
-    .line 974
-    if-eqz v2, :cond_2d
-
-    .line 975
-    .line 976
     iget v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;->gridSize:F
 
-    .line 977
-    .line 978
+    .line 954
+    .line 955
     cmpl-float v2, v1, v19
 
-    .line 979
-    .line 980
-    if-lez v2, :cond_2d
+    .line 956
+    .line 957
+    if-lez v2, :cond_2c
 
-    .line 981
-    .line 982
+    .line 958
+    .line 959
     move v7, v1
 
-    .line 983
+    .line 960
     :goto_1a
     const/high16 v1, 0x41800000    # 16.0f
 
+    .line 961
+    .line 962
+    cmpg-float v1, v7, v1
+
+    .line 963
+    .line 964
+    if-gez v1, :cond_2a
+
+    .line 965
+    .line 966
+    const/high16 v23, 0x40000000    # 2.0f
+
+    .line 967
+    .line 968
+    mul-float v7, v7, v23
+
+    .line 969
+    .line 970
+    goto :goto_1a
+
+    .line 971
+    :cond_2a
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 972
+    .line 973
+    sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+
+    .line 974
+    .line 975
+    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
+    .line 976
+    .line 977
+    .line 978
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 979
+    .line 980
+    invoke-virtual {v1, v12}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+
+    .line 981
+    .line 982
+    .line 983
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 984
     .line 985
-    cmpg-float v1, v7, v1
+    const v2, 0x334ae0a0
 
     .line 986
     .line 987
-    if-gez v1, :cond_2b
-
     .line 988
-    .line 989
-    const/high16 v23, 0x40000000    # 2.0f
+    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V
 
+    .line 989
     .line 990
     .line 991
-    mul-float v7, v7, v23
+    move/from16 v2, v19
 
     .line 992
     .line 993
-    goto :goto_1a
-
-    .line 994
-    :cond_2b
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 995
-    .line 996
-    sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
-
-    .line 997
-    .line 998
-    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
-
-    .line 999
-    .line 1000
-    .line 1001
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 1002
-    .line 1003
-    invoke-virtual {v1, v12}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 1004
-    .line 1005
-    .line 1006
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 1007
-    .line 1008
-    const v2, 0x334ae0a0
-
-    .line 1009
-    .line 1010
-    .line 1011
-    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V
-
-    .line 1012
-    .line 1013
-    .line 1014
-    move/from16 v2, v19
-
-    .line 1015
-    .line 1016
     :goto_1b
     invoke-virtual {v0}, Landroid/view/View;->getWidth()I
 
-    .line 1017
-    .line 1018
-    .line 1019
+    .line 994
+    .line 995
+    .line 996
     move-result v1
 
-    .line 1020
+    .line 997
     int-to-float v1, v1
 
-    .line 1021
+    .line 998
     cmpg-float v1, v2, v1
 
-    .line 1022
-    .line 1023
-    if-gtz v1, :cond_2c
+    .line 999
+    .line 1000
+    if-gtz v1, :cond_2b
 
-    .line 1024
-    .line 1025
+    .line 1001
+    .line 1002
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 1026
-    .line 1027
-    .line 1028
+    .line 1003
+    .line 1004
+    .line 1005
     move-result v1
 
-    .line 1029
+    .line 1006
     int-to-float v5, v1
 
-    .line 1030
+    .line 1007
     iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 1031
-    .line 1032
+    .line 1008
+    .line 1009
     const/4 v3, 0x0
 
-    .line 1033
+    .line 1010
     move v4, v2
 
-    .line 1034
+    .line 1011
     move-object/from16 v1, p1
 
-    .line 1035
-    .line 1036
+    .line 1012
+    .line 1013
     invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
 
-    .line 1037
-    .line 1038
-    .line 1039
+    .line 1014
+    .line 1015
+    .line 1016
     add-float/2addr v2, v7
 
-    .line 1040
+    .line 1017
     goto :goto_1b
 
-    .line 1041
-    :cond_2c
+    .line 1018
+    :cond_2b
     move/from16 v3, v19
 
-    .line 1042
-    .line 1043
+    .line 1019
+    .line 1020
     :goto_1c
     invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
-    .line 1044
-    .line 1045
-    .line 1046
+    .line 1021
+    .line 1022
+    .line 1023
     move-result v1
 
-    .line 1047
+    .line 1024
     int-to-float v1, v1
 
-    .line 1048
+    .line 1025
     cmpg-float v1, v3, v1
 
-    .line 1049
-    .line 1050
-    if-gtz v1, :cond_2d
+    .line 1026
+    .line 1027
+    if-gtz v1, :cond_2c
 
+    .line 1028
+    .line 1029
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+
+    .line 1030
+    .line 1031
+    .line 1032
+    move-result v1
+
+    .line 1033
+    int-to-float v4, v1
+
+    .line 1034
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 1035
+    .line 1036
+    const/4 v2, 0x0
+
+    .line 1037
+    move v5, v3
+
+    .line 1038
+    move-object/from16 v1, p1
+
+    .line 1039
+    .line 1040
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    .line 1041
+    .line 1042
+    .line 1043
+    add-float/2addr v3, v7
+
+    .line 1044
+    goto :goto_1c
+
+    .line 1045
+    :cond_2c
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 1046
+    .line 1047
+    sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+
+    .line 1048
+    .line 1049
+    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
+    .line 1050
     .line 1051
     .line 1052
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 1053
     .line 1054
-    .line 1055
-    move-result v1
+    const/high16 v4, 0x40000000    # 2.0f
 
+    .line 1055
     .line 1056
-    int-to-float v4, v1
+    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
     .line 1057
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 1058
     .line 1059
-    const/4 v2, 0x0
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
     .line 1060
-    move v5, v3
-
     .line 1061
-    move-object/from16 v1, p1
+    const v5, -0xb51f60
 
     .line 1062
     .line 1063
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
-
     .line 1064
+    invoke-virtual {v1, v5}, Landroid/graphics/Paint;->setColor(I)V
+
     .line 1065
     .line 1066
-    add-float/2addr v3, v7
-
     .line 1067
-    goto :goto_1c
+    invoke-direct {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->currentHudEditorElements()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
 
     .line 1068
-    :cond_2d
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
     .line 1069
     .line 1070
-    sget-object v2, Landroid/graphics/Paint$Style;->STROKE:Landroid/graphics/Paint$Style;
+    move-result-object v7
 
     .line 1071
+    array-length v8, v7
+
     .line 1072
-    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+    const/4 v11, 0x0
 
     .line 1073
+    :goto_1d
+    if-ge v11, v8, :cond_2f
+
     .line 1074
     .line 1075
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    aget-object v1, v7, v11
 
     .line 1076
     .line 1077
-    const/high16 v4, 0x40000000    # 2.0f
+    if-eqz v1, :cond_2d
 
     .line 1078
     .line 1079
-    invoke-virtual {v1, v4}, Landroid/graphics/Paint;->setStrokeWidth(F)V
+    iget-object v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;->moduleId:Ljava/lang/String;
 
     .line 1080
     .line 1081
-    .line 1082
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-direct {v0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHiddenInHudEditor(Ljava/lang/String;)Z
 
+    .line 1082
     .line 1083
     .line 1084
-    const v5, -0xb51f60
+    move-result v2
 
     .line 1085
+    if-eqz v2, :cond_2e
+
     .line 1086
     .line 1087
-    invoke-virtual {v1, v5}, Landroid/graphics/Paint;->setColor(I)V
+    :cond_2d
+    const/high16 v23, 0x40000000    # 2.0f
 
     .line 1088
     .line 1089
+    goto :goto_1e
+
     .line 1090
-    invoke-direct {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->currentHudEditorElements()[Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;
+    :cond_2e
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getHudElementBounds(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;
 
     .line 1091
     .line 1092
     .line 1093
-    move-result-object v7
+    move-result-object v1
 
     .line 1094
-    array-length v8, v7
+    if-eqz v1, :cond_2d
 
     .line 1095
-    const/4 v11, 0x0
-
     .line 1096
-    :goto_1d
-    if-ge v11, v8, :cond_30
+    iget v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->left:F
 
     .line 1097
     .line 1098
-    aget-object v1, v7, v11
+    const/high16 v23, 0x40000000    # 2.0f
 
     .line 1099
     .line 1100
-    if-eqz v1, :cond_2e
+    sub-float v2, v2, v23
 
     .line 1101
     .line 1102
-    iget-object v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;->moduleId:Ljava/lang/String;
+    iget v3, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->top:F
 
     .line 1103
     .line 1104
-    invoke-direct {v0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->isHiddenInHudEditor(Ljava/lang/String;)Z
+    sub-float v3, v3, v23
 
     .line 1105
     .line 1106
-    .line 1107
-    move-result v2
+    iget v4, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->right:F
 
+    .line 1107
     .line 1108
-    if-eqz v2, :cond_2f
+    add-float v4, v4, v23
 
     .line 1109
     .line 1110
-    :cond_2e
-    const/high16 v23, 0x40000000    # 2.0f
+    iget v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->bottom:F
 
     .line 1111
     .line 1112
-    goto :goto_1e
+    add-float v5, v1, v23
 
     .line 1113
-    :cond_2f
-    invoke-direct {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->getHudElementBounds(Lorg/levimc/launcher/core/mods/inbuilt/ExternalModBridge$HudEditorElement;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;
-
     .line 1114
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 1115
     .line 1116
-    move-result-object v1
+    move-object/from16 v1, p1
 
     .line 1117
-    if-eqz v1, :cond_2e
-
     .line 1118
-    .line 1119
-    iget v2, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->left:F
+    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
 
+    .line 1119
     .line 1120
     .line 1121
-    const/high16 v23, 0x40000000    # 2.0f
+    :goto_1e
+    add-int/lit8 v11, v11, 0x1
 
     .line 1122
     .line 1123
-    sub-float v2, v2, v23
+    goto :goto_1d
 
     .line 1124
+    :cond_2f
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 1125
-    iget v3, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->top:F
-
     .line 1126
-    .line 1127
-    sub-float v3, v3, v23
+    const v2, -0x55000001
 
+    .line 1127
     .line 1128
     .line 1129
-    iget v4, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->right:F
+    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V
 
     .line 1130
     .line 1131
-    add-float v4, v4, v23
-
     .line 1132
+    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
     .line 1133
-    iget v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$ModuleBounds;->bottom:F
-
     .line 1134
+    const/high16 v2, 0x3fc00000    # 1.5f
+
     .line 1135
-    add-float v5, v1, v23
-
     .line 1136
-    .line 1137
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStrokeWidth(F)V
 
+    .line 1137
     .line 1138
     .line 1139
-    move-object/from16 v1, p1
+    iget v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
 
     .line 1140
     .line 1141
-    invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawRect(FFFFLandroid/graphics/Paint;)V
+    invoke-static {v1}, Ljava/lang/Float;->isNaN(F)Z
 
     .line 1142
     .line 1143
     .line 1144
-    :goto_1e
-    add-int/lit8 v11, v11, 0x1
+    move-result v1
 
     .line 1145
-    .line 1146
-    goto :goto_1d
+    if-nez v1, :cond_30
 
+    .line 1146
     .line 1147
-    :cond_30
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+    iget v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
 
     .line 1148
     .line 1149
-    const v2, -0x55000001
+    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
 
     .line 1150
     .line 1151
     .line 1152
-    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setColor(I)V
+    move-result v1
 
     .line 1153
-    .line 1154
-    .line 1155
-    iget-object v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 1156
-    .line 1157
-    const/high16 v2, 0x3fc00000    # 1.5f
-
-    .line 1158
-    .line 1159
-    invoke-virtual {v1, v2}, Landroid/graphics/Paint;->setStrokeWidth(F)V
-
-    .line 1160
-    .line 1161
-    .line 1162
-    iget v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
-
-    .line 1163
-    .line 1164
-    invoke-static {v1}, Ljava/lang/Float;->isNaN(F)Z
-
-    .line 1165
-    .line 1166
-    .line 1167
-    move-result v1
-
-    .line 1168
-    if-nez v1, :cond_31
-
-    .line 1169
-    .line 1170
-    iget v2, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideX:F
-
-    .line 1171
-    .line 1172
-    invoke-virtual {v0}, Landroid/view/View;->getHeight()I
-
-    .line 1173
-    .line 1174
-    .line 1175
-    move-result v1
-
-    .line 1176
     int-to-float v5, v1
 
-    .line 1177
+    .line 1154
     iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
 
-    .line 1178
-    .line 1179
+    .line 1155
+    .line 1156
     const/4 v3, 0x0
 
-    .line 1180
+    .line 1157
     move v4, v2
 
-    .line 1181
+    .line 1158
     move-object/from16 v1, p1
 
-    .line 1182
-    .line 1183
+    .line 1159
+    .line 1160
     invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
+
+    .line 1161
+    .line 1162
+    .line 1163
+    :cond_30
+    iget v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
+
+    .line 1164
+    .line 1165
+    invoke-static {v1}, Ljava/lang/Float;->isNaN(F)Z
+
+    .line 1166
+    .line 1167
+    .line 1168
+    move-result v1
+
+    .line 1169
+    if-nez v1, :cond_31
+
+    .line 1170
+    .line 1171
+    iget v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
+
+    .line 1172
+    .line 1173
+    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
+
+    .line 1174
+    .line 1175
+    .line 1176
+    move-result v1
+
+    .line 1177
+    int-to-float v4, v1
+
+    .line 1178
+    iget v5, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
+
+    .line 1179
+    .line 1180
+    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
+
+    .line 1181
+    .line 1182
+    const/4 v2, 0x0
+
+    .line 1183
+    move-object/from16 v1, p1
 
     .line 1184
     .line 1185
-    .line 1186
-    :cond_31
-    iget v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
-
-    .line 1187
-    .line 1188
-    invoke-static {v1}, Ljava/lang/Float;->isNaN(F)Z
-
-    .line 1189
-    .line 1190
-    .line 1191
-    move-result v1
-
-    .line 1192
-    if-nez v1, :cond_32
-
-    .line 1193
-    .line 1194
-    iget v3, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
-
-    .line 1195
-    .line 1196
-    invoke-virtual {v0}, Landroid/view/View;->getWidth()I
-
-    .line 1197
-    .line 1198
-    .line 1199
-    move-result v1
-
-    .line 1200
-    int-to-float v4, v1
-
-    .line 1201
-    iget v5, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->snapGuideY:F
-
-    .line 1202
-    .line 1203
-    iget-object v6, v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->paint:Landroid/graphics/Paint;
-
-    .line 1204
-    .line 1205
-    const/4 v2, 0x0
-
-    .line 1206
-    move-object/from16 v1, p1
-
-    .line 1207
-    .line 1208
     invoke-virtual/range {v1 .. v6}, Landroid/graphics/Canvas;->drawLine(FFFFLandroid/graphics/Paint;)V
 
-    .line 1209
-    .line 1210
-    .line 1211
-    :cond_32
+    .line 1186
+    .line 1187
+    .line 1188
+    :cond_31
     :goto_1f
     return-void
 .end method
@@ -7216,16 +8691,94 @@
     .line 2
     .line 3
     .line 4
-    if-nez p2, :cond_0
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
 
     .line 5
     .line 6
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+    if-nez p1, :cond_0
 
     .line 7
     .line 8
+    return-void
+
     .line 9
     :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result p1
+
+    .line 13
+    if-eqz p1, :cond_1
+
+    .line 14
+    .line 15
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 16
+    .line 17
+    .line 18
+    return-void
+
+    .line 19
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 20
+    .line 21
+    .line 22
+    return-void
+.end method
+
+.method public onWindowVisibilityChanged(I)V
+    .locals 0
+
+    .line 1
+    invoke-super {p0, p1}, Landroid/view/View;->onWindowVisibilityChanged(I)V
+
+    .line 2
+    .line 3
+    .line 4
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 5
+    .line 6
+    if-nez p1, :cond_0
+
+    .line 7
+    .line 8
+    return-void
+
+    .line 9
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result p1
+
+    .line 13
+    if-eqz p1, :cond_1
+
+    .line 14
+    .line 15
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 16
+    .line 17
+    .line 18
+    return-void
+
+    .line 19
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 20
+    .line 21
+    .line 22
     return-void
 .end method
 
@@ -7279,6 +8832,53 @@
     .line 23
     .line 24
     .line 25
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 26
+    .line 27
+    .line 28
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 29
+    .line 30
+    .line 31
+    return-void
+.end method
+
+.method public setRuntimeActive(Z)V
+    .locals 0
+
+    .line 1
+    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->runtimeActive:Z
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->canRender()Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result p1
+
+    .line 7
+    if-eqz p1, :cond_0
+
+    .line 8
+    .line 9
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->postFrameCallback()V
+
+    .line 10
+    .line 11
+    .line 12
+    return-void
+
+    .line 13
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->stopFrames()V
+
+    .line 14
+    .line 15
+    .line 16
     return-void
 .end method
 
@@ -7290,35 +8890,52 @@
 
     .line 2
     .line 3
-    if-eqz v0, :cond_0
+    if-nez v0, :cond_1
 
     .line 4
     .line 5
-    return-void
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingShow:Ljava/lang/Runnable;
 
     .line 6
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
-
     .line 7
-    .line 8
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$2;
+    if-eqz v0, :cond_0
 
+    .line 8
     .line 9
+    goto :goto_0
+
     .line 10
-    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay$2;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;)V
+    :cond_0
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;
 
     .line 11
     .line 12
+    const/4 v1, 0x0
+
     .line 13
-    const-wide/16 v2, 0x64
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;I)V
 
     .line 14
     .line 15
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
     .line 16
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->pendingShow:Ljava/lang/Runnable;
+
     .line 17
     .line 18
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->handler:Landroid/os/Handler;
+
+    .line 19
+    .line 20
+    const-wide/16 v2, 0x64
+
+    .line 21
+    .line 22
+    invoke-virtual {v1, v0, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 23
+    .line 24
+    .line 25
+    :cond_1
+    :goto_0
     return-void
 .end method

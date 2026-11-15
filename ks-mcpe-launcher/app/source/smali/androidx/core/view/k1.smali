@@ -1,161 +1,22 @@
-.class public abstract synthetic Landroidx/core/view/k1;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public Landroidx/core/view/k1;
+.super Ljd/h;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+
+# instance fields
+.field public final a:Landroid/view/WindowInsetsController;
+
+.field public final b:La4/e;
+
+.field public final c:Landroid/view/Window;
 
 
 # direct methods
-.method public static bridge synthetic A(Landroid/graphics/Gainmap;FFF)V
-    .locals 0
+.method public constructor <init>(Landroid/view/Window;La4/e;)V
+    .locals 3
 
     .line 1
-    invoke-virtual {p0, p1, p2, p3}, Landroid/graphics/Gainmap;->setRatioMin(FFF)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic B(Landroid/graphics/Gainmap;)[F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getRatioMin()[F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic C(Landroid/graphics/Gainmap;FFF)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Landroid/graphics/Gainmap;->setRatioMax(FFF)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic D(Landroid/graphics/Gainmap;)[F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getRatioMax()[F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic a(Landroid/graphics/Gainmap;)F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getDisplayRatioForFullHdr()F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic b(Landroid/window/BackEvent;)F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/window/BackEvent;->getTouchX()F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic c()I
-    .locals 1
-
-    .line 1
-    invoke-static {}, Landroid/view/WindowInsets$Type;->systemOverlays()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    return v0
-.end method
-
-.method public static bridge synthetic d(Landroid/window/BackEvent;)I
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/window/BackEvent;->getSwipeEdge()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic e(Landroid/content/Context;)Landroid/adservices/measurement/MeasurementManager;
-    .locals 0
-
-    .line 1
-    invoke-static {p0}, Landroid/adservices/measurement/MeasurementManager;->get(Landroid/content/Context;)Landroid/adservices/measurement/MeasurementManager;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic f(Landroid/app/ActivityOptions;)Landroid/app/ActivityOptions;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    invoke-virtual {p0, v0}, Landroid/app/ActivityOptions;->setPendingIntentBackgroundActivityStartMode(I)Landroid/app/ActivityOptions;
-
-    .line 3
-    .line 4
-    .line 5
-    move-result-object p0
-
-    .line 6
-    return-object p0
-.end method
-
-.method public static bridge synthetic g()Landroid/app/BroadcastOptions;
-    .locals 1
-
-    .line 1
-    invoke-static {}, Landroid/app/BroadcastOptions;->makeBasic()Landroid/app/BroadcastOptions;
+    invoke-static {p1}, Landroidx/core/view/g1;->g(Landroid/view/Window;)Landroid/view/WindowInsetsController;
 
     .line 2
     .line 3
@@ -163,272 +24,398 @@
     move-result-object v0
 
     .line 5
-    return-object v0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    new-instance v1, Landroidx/collection/SimpleArrayMap;
+
+    .line 9
+    .line 10
+    const/4 v2, 0x0
+
+    .line 11
+    invoke-direct {v1, v2}, Landroidx/collection/SimpleArrayMap;-><init>(I)V
+
+    .line 12
+    .line 13
+    .line 14
+    iput-object v0, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 15
+    .line 16
+    iput-object p2, p0, Landroidx/core/view/k1;->b:La4/e;
+
+    .line 17
+    .line 18
+    iput-object p1, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 19
+    .line 20
+    return-void
 .end method
 
-.method public static bridge synthetic h(Landroid/app/BroadcastOptions;)Landroid/app/BroadcastOptions;
+
+# virtual methods
+.method public final H(Z)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 2
+    .line 3
+    const/16 v1, 0x10
+
+    .line 4
+    .line 5
+    if-eqz p1, :cond_1
+
+    .line 6
+    .line 7
+    if-eqz v0, :cond_0
+
+    .line 8
+    .line 9
+    invoke-virtual {p0, v1}, Landroidx/core/view/k1;->O(I)V
+
+    .line 10
+    .line 11
+    .line 12
+    :cond_0
+    iget-object p1, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 13
+    .line 14
+    invoke-static {p1}, Landroidx/core/view/g1;->C(Landroid/view/WindowInsetsController;)V
+
+    .line 15
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    :cond_1
+    if-eqz v0, :cond_2
+
+    .line 19
+    .line 20
+    invoke-virtual {p0, v1}, Landroidx/core/view/k1;->P(I)V
+
+    .line 21
+    .line 22
+    .line 23
+    :cond_2
+    iget-object p1, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 24
+    .line 25
+    invoke-static {p1}, Landroidx/core/view/g1;->D(Landroid/view/WindowInsetsController;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+.end method
+
+.method public final I(Z)V
+    .locals 2
+
+    .line 1
+    const/16 v0, 0x2000
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 4
+    .line 5
+    if-eqz p1, :cond_1
+
+    .line 6
+    .line 7
+    if-eqz v1, :cond_0
+
+    .line 8
+    .line 9
+    invoke-virtual {p0, v0}, Landroidx/core/view/k1;->O(I)V
+
+    .line 10
+    .line 11
+    .line 12
+    :cond_0
+    iget-object p1, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 13
+    .line 14
+    invoke-static {p1}, Landroidx/core/view/g1;->z(Landroid/view/WindowInsetsController;)V
+
+    .line 15
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    :cond_1
+    if-eqz v1, :cond_2
+
+    .line 19
+    .line 20
+    invoke-virtual {p0, v0}, Landroidx/core/view/k1;->P(I)V
+
+    .line 21
+    .line 22
+    .line 23
+    :cond_2
+    iget-object p1, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 24
+    .line 25
+    invoke-static {p1}, Landroidx/core/view/g1;->B(Landroid/view/WindowInsetsController;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+.end method
+
+.method public J()V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    const v1, 0x1538b9a6
+
+    .line 10
+    .line 11
+    .line 12
+    const/4 v2, 0x2
+
+    .line 13
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v2
+
+    .line 17
+    invoke-virtual {v0, v1, v2}, Landroid/view/View;->setTag(ILjava/lang/Object;)V
+
+    .line 18
+    .line 19
+    .line 20
+    const/16 v0, 0x800
+
+    .line 21
+    .line 22
+    invoke-virtual {p0, v0}, Landroidx/core/view/k1;->P(I)V
+
+    .line 23
+    .line 24
+    .line 25
+    const/16 v0, 0x1000
+
+    .line 26
+    .line 27
+    invoke-virtual {p0, v0}, Landroidx/core/view/k1;->O(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    return-void
+
+    .line 31
+    :cond_0
+    iget-object v0, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 32
+    .line 33
+    invoke-static {v0}, Landroidx/core/view/g1;->x(Landroid/view/WindowInsetsController;)V
+
+    .line 34
+    .line 35
+    .line 36
+    return-void
+.end method
+
+.method public final O(I)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-virtual {v0}, Landroid/view/View;->getSystemUiVisibility()I
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v1
+
+    .line 11
+    or-int/2addr p1, v1
+
+    .line 12
+    invoke-virtual {v0, p1}, Landroid/view/View;->setSystemUiVisibility(I)V
+
+    .line 13
+    .line 14
+    .line 15
+    return-void
+.end method
+
+.method public final P(I)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/k1;->c:Landroid/view/Window;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-virtual {v0}, Landroid/view/View;->getSystemUiVisibility()I
+
+    .line 8
+    .line 9
+    .line 10
+    move-result v1
+
+    .line 11
+    not-int p1, p1
+
+    .line 12
+    and-int/2addr p1, v1
+
+    .line 13
+    invoke-virtual {v0, p1}, Landroid/view/View;->setSystemUiVisibility(I)V
+
+    .line 14
+    .line 15
+    .line 16
+    return-void
+.end method
+
+.method public final x(I)V
     .locals 1
 
     .line 1
+    and-int/lit8 v0, p1, 0x8
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    iget-object v0, p0, Landroidx/core/view/k1;->b:La4/e;
+
+    .line 6
+    .line 7
+    iget-object v0, v0, La4/e;->d:Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    check-cast v0, La1/a;
+
+    .line 10
+    .line 11
+    invoke-virtual {v0}, La1/a;->L()V
+
+    .line 12
+    .line 13
+    .line 14
+    :cond_0
+    iget-object v0, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 15
+    .line 16
+    and-int/lit8 p1, p1, -0x9
+
+    .line 17
+    .line 18
+    invoke-static {v0, p1}, Landroidx/core/view/y;->q(Landroid/view/WindowInsetsController;I)V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+.end method
+
+.method public y()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Landroidx/core/view/g1;->p(Landroid/view/WindowInsetsController;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Landroidx/core/view/k1;->a:Landroid/view/WindowInsetsController;
+
+    .line 7
+    .line 8
+    invoke-static {v0}, Landroidx/core/view/g1;->c(Landroid/view/WindowInsetsController;)I
+
+    .line 9
+    .line 10
+    .line 11
+    move-result v0
+
+    .line 12
+    and-int/lit8 v0, v0, 0x8
+
+    .line 13
+    .line 14
+    if-eqz v0, :cond_0
+
+    .line 15
+    .line 16
     const/4 v0, 0x1
 
-    .line 2
-    invoke-virtual {p0, v0}, Landroid/app/BroadcastOptions;->setShareIdentityEnabled(Z)Landroid/app/BroadcastOptions;
+    .line 17
+    return v0
 
-    .line 3
-    .line 4
-    .line 5
-    move-result-object p0
-
-    .line 6
-    return-object p0
-.end method
-
-.method public static bridge synthetic i(Landroid/graphics/Gainmap;)Landroid/graphics/Bitmap;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getGainmapContents()Landroid/graphics/Bitmap;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic j(Landroid/graphics/Bitmap;)Landroid/graphics/Gainmap;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Bitmap;->getGainmap()Landroid/graphics/Gainmap;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic k(Landroid/app/BroadcastOptions;)Landroid/os/Bundle;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/app/BroadcastOptions;->toBundle()Landroid/os/Bundle;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic l()Ljava/lang/Class;
-    .locals 1
-
-    .line 1
-    const-class v0, Landroid/adservices/measurement/MeasurementManager;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public static bridge synthetic m(Landroid/content/Context;Landroid/content/Intent;Landroid/os/Bundle;)V
-    .locals 1
-
-    .line 1
+    .line 18
+    :cond_0
     const/4 v0, 0x0
 
-    .line 2
-    invoke-virtual {p0, p1, v0, p2}, Landroid/content/Context;->sendBroadcast(Landroid/content/Intent;Ljava/lang/String;Landroid/os/Bundle;)V
-
-    .line 3
-    .line 4
-    .line 5
-    return-void
-.end method
-
-.method public static bridge synthetic n(Landroid/graphics/Bitmap;Landroid/graphics/Gainmap;)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/graphics/Bitmap;->setGainmap(Landroid/graphics/Gainmap;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic o(Landroid/graphics/Gainmap;F)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/graphics/Gainmap;->setDisplayRatioForFullHdr(F)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic p(Landroid/graphics/Gainmap;FFF)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Landroid/graphics/Gainmap;->setGamma(FFF)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic q(Landroid/graphics/Gainmap;)[F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getGamma()[F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic r(Landroid/graphics/Gainmap;)F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getMinDisplayRatioForHdrTransition()F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic s(Landroid/window/BackEvent;)F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/window/BackEvent;->getTouchY()F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static synthetic t(Landroid/graphics/Bitmap;)Landroid/graphics/Gainmap;
-    .locals 1
-
-    .line 1
-    new-instance v0, Landroid/graphics/Gainmap;
-
-    .line 2
-    .line 3
-    invoke-direct {v0, p0}, Landroid/graphics/Gainmap;-><init>(Landroid/graphics/Bitmap;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-object v0
-.end method
-
-.method public static bridge synthetic u(Landroid/graphics/Gainmap;F)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/graphics/Gainmap;->setMinDisplayRatioForHdrTransition(F)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic v(Landroid/graphics/Gainmap;FFF)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Landroid/graphics/Gainmap;->setEpsilonSdr(FFF)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic w(Landroid/graphics/Gainmap;)[F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getEpsilonSdr()[F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic x(Landroid/window/BackEvent;)F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/window/BackEvent;->getProgress()F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic y(Landroid/graphics/Gainmap;FFF)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Landroid/graphics/Gainmap;->setEpsilonHdr(FFF)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic z(Landroid/graphics/Gainmap;)[F
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/graphics/Gainmap;->getEpsilonHdr()[F
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
+    .line 19
+    return v0
 .end method

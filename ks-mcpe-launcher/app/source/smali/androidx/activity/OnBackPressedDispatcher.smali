@@ -1,6 +1,6 @@
 .class public final Landroidx/activity/OnBackPressedDispatcher;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,7 +8,7 @@
 
 .field public final b:Landroidx/navigationevent/NavigationEventDispatcher;
 
-.field public final c:Lc/n;
+.field public final c:Lc/m;
 
 
 # direct methods
@@ -29,19 +29,19 @@
 
     .line 7
     .line 8
-    new-instance v0, Lc/m;
+    new-instance v0, La6/c0;
 
     .line 9
     .line 10
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     .line 11
-    invoke-direct {v0, p0, v1}, Lc/m;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, La6/c0;-><init>(Ljava/lang/Object;I)V
 
     .line 12
     .line 13
     .line 14
-    invoke-direct {p1, v0}, Landroidx/navigationevent/NavigationEventDispatcher;-><init>(Lc/m;)V
+    invoke-direct {p1, v0}, Landroidx/navigationevent/NavigationEventDispatcher;-><init>(La6/c0;)V
 
     .line 15
     .line 16
@@ -50,7 +50,7 @@
 
     .line 18
     .line 19
-    new-instance v0, Lc/n;
+    new-instance v0, Lc/m;
 
     .line 20
     .line 21
@@ -59,7 +59,7 @@
     .line 22
     .line 23
     .line 24
-    iput-object v0, p0, Landroidx/activity/OnBackPressedDispatcher;->c:Lc/n;
+    iput-object v0, p0, Landroidx/activity/OnBackPressedDispatcher;->c:Lc/m;
 
     .line 25
     .line 26
@@ -81,7 +81,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -181,11 +181,11 @@
 
     .line 53
     .line 54
-    iget-object v3, v2, Lp1/f;->e:Lr8/h;
+    iget-object v3, v2, Lp1/f;->e:Lt8/h;
 
     .line 55
     .line 56
-    invoke-virtual {v3, p2}, Lr8/h;->addFirst(Ljava/lang/Object;)V
+    invoke-virtual {v3, p2}, Lt8/h;->addFirst(Ljava/lang/Object;)V
 
     .line 57
     .line 58
@@ -269,7 +269,7 @@
     .line 97
     .line 98
     .line 99
-    invoke-virtual {v0, v1}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/r;)V
+    invoke-virtual {v0, v1}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/s;)V
 
     .line 100
     .line 101

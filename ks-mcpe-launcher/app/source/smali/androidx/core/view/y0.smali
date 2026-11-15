@@ -1,460 +1,193 @@
-.class public abstract Landroidx/core/view/y0;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ls4/d2;
-.implements Ly2/t;
+.class public final Landroidx/core/view/y0;
+.super Landroid/animation/AnimatorListenerAdapter;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public c:Ljava/lang/Object;
+.field public final synthetic a:I
+
+.field public final synthetic b:Ljava/lang/Object;
+
+.field public final synthetic c:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(I)V
+.method public constructor <init>(Landroid/view/View;Landroidx/core/view/f1;)V
     .locals 1
 
-    packed-switch p1, :pswitch_data_0
+    const/4 v0, 0x0
 
-    .line 2
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 3
-    new-instance p1, Ljava/util/HashMap;
-
-    invoke-direct {p1}, Ljava/util/HashMap;-><init>()V
-
-    iput-object p1, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    return-void
-
-    .line 4
-    :pswitch_0
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 5
-    sget-object p1, Lo3/n;->a:[C
-
-    .line 6
-    new-instance p1, Ljava/util/ArrayDeque;
-
-    const/16 v0, 0x14
-
-    invoke-direct {p1, v0}, Ljava/util/ArrayDeque;-><init>(I)V
-
-    .line 7
-    iput-object p1, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    return-void
-
-    nop
-
-    :pswitch_data_0
-    .packed-switch 0x4
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public constructor <init>(Ls4/u1;)V
-    .locals 0
+    iput v0, p0, Landroidx/core/view/y0;->a:I
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    iput-object p2, p0, Landroidx/core/view/y0;->b:Ljava/lang/Object;
 
     iput-object p1, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
     return-void
 .end method
 
-.method public constructor <init>(Ly2/b0;)V
-    .locals 0
+.method public constructor <init>(Ll2/u;Landroidx/collection/ArrayMap;)V
+    .locals 1
 
-    .line 8
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const/4 v0, 0x1
 
-    .line 9
+    iput v0, p0, Landroidx/core/view/y0;->a:I
+
+    .line 2
     iput-object p1, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
+    iput-object p2, p0, Landroidx/core/view/y0;->b:Ljava/lang/Object;
+
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
     return-void
 .end method
 
 
 # virtual methods
-.method public c()Ls4/d;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    throw v0
-.end method
-
-.method public d()Ls4/y0;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    throw v0
-.end method
-
-.method public e()Lcom/google/android/gms/common/util/Clock;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    throw v0
-.end method
-
-.method public g()Ls4/s1;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    throw v0
-.end method
-
-.method public h()Landroid/content/Context;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    throw v0
-.end method
-
-.method public i(Ly2/y;)Ly2/s;
+.method public final onAnimationEnd(Landroid/animation/Animator;)V
     .locals 2
 
     .line 1
-    new-instance p1, Ly2/d;
+    iget v0, p0, Landroidx/core/view/y0;->a:I
 
     .line 2
     .line 3
-    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    check-cast v0, Ly2/b0;
-
     .line 6
-    .line 7
-    const/4 v1, 0x2
+    iget-object v0, p0, Landroidx/core/view/y0;->b:Ljava/lang/Object;
 
+    .line 7
     .line 8
-    invoke-direct {p1, v0, v1}, Ly2/d;-><init>(Ljava/lang/Object;I)V
+    check-cast v0, Landroidx/collection/ArrayMap;
 
     .line 9
     .line 10
-    .line 11
-    return-object p1
-.end method
-
-.method public abstract k(Lcom/google/firebase/messaging/u;)V
-.end method
-
-.method public abstract l()Ljava/lang/String;
-.end method
-
-.method public m(Ljava/lang/String;)Ljava/util/Optional;
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Ljava/util/HashMap;
-
-    .line 4
-    .line 5
-    sget-object v1, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
-
-    .line 6
-    .line 7
-    invoke-virtual {p1, v1}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
-
-    .line 8
-    .line 9
-    .line 10
-    move-result-object p1
+    invoke-virtual {v0, p1}, Landroidx/collection/SimpleArrayMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 11
-    invoke-virtual {v0, p1}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 12
     .line 13
-    .line 14
-    move-result-object p1
+    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
 
+    .line 14
     .line 15
-    check-cast p1, Ljava/util/List;
+    check-cast v0, Ll2/u;
 
     .line 16
     .line 17
-    if-eqz p1, :cond_1
+    iget-object v0, v0, Ll2/u;->D1:Ljava/util/ArrayList;
 
     .line 18
     .line 19
-    invoke-interface {p1}, Ljava/util/List;->isEmpty()Z
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
     .line 20
     .line 21
     .line 22
-    move-result v0
+    return-void
 
     .line 23
-    if-eqz v0, :cond_0
+    :pswitch_0
+    iget-object p1, p0, Landroidx/core/view/y0;->b:Ljava/lang/Object;
 
     .line 24
     .line 25
-    goto :goto_0
+    check-cast p1, Landroidx/core/view/f1;
 
     .line 26
-    :cond_0
-    const/4 v0, 0x0
-
     .line 27
-    invoke-interface {p1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    const/high16 v0, 0x3f800000    # 1.0f
 
     .line 28
     .line 29
-    .line 30
-    move-result-object p1
+    iget-object v1, p1, Landroidx/core/view/f1;->a:Landroidx/core/view/e1;
 
+    .line 30
     .line 31
-    check-cast p1, Ljava/lang/String;
+    invoke-virtual {v1, v0}, Landroidx/core/view/e1;->d(F)V
 
     .line 32
     .line 33
-    invoke-static {p1}, Ljava/util/Optional;->of(Ljava/lang/Object;)Ljava/util/Optional;
-
     .line 34
+    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 35
     .line 36
-    move-result-object p1
+    check-cast v0, Landroid/view/View;
 
     .line 37
-    return-object p1
-
     .line 38
-    :cond_1
-    :goto_0
-    invoke-static {}, Ljava/util/Optional;->empty()Ljava/util/Optional;
+    invoke-static {v0, p1}, Landroidx/core/view/b1;->e(Landroid/view/View;Landroidx/core/view/f1;)V
 
     .line 39
     .line 40
     .line 41
-    move-result-object p1
+    return-void
 
     .line 42
-    return-object p1
+    nop
+
+    .line 43
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method
 
-.method public n()Ljava/util/Map;
-    .locals 4
-
-    .line 1
-    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Ljava/util/HashMap;
-
-    .line 4
-    .line 5
-    invoke-virtual {v0}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
-
-    .line 9
-    invoke-interface {v0}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v0
-
-    .line 13
-    new-instance v1, Lga/d;
-
-    .line 14
-    .line 15
-    const/4 v2, 0x2
-
-    .line 16
-    invoke-direct {v1, v2}, Lga/d;-><init>(I)V
-
-    .line 17
-    .line 18
-    .line 19
-    new-instance v2, Lga/d;
-
-    .line 20
-    .line 21
-    const/4 v3, 0x3
-
-    .line 22
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
-    .line 23
-    .line 24
-    .line 25
-    invoke-static {v1, v2}, Ljava/util/stream/Collectors;->toMap(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
-
-    .line 26
-    .line 27
-    .line 28
-    move-result-object v1
-
-    .line 29
-    invoke-interface {v0, v1}, Ljava/util/stream/Stream;->collect(Ljava/util/stream/Collector;)Ljava/lang/Object;
-
-    .line 30
-    .line 31
-    .line 32
-    move-result-object v0
-
-    .line 33
-    check-cast v0, Ljava/util/Map;
-
-    .line 34
-    .line 35
-    invoke-static {v0}, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
-
-    .line 36
-    .line 37
-    .line 38
-    move-result-object v0
-
-    .line 39
-    return-object v0
-.end method
-
-.method public o(Lv2/g;)V
-    .locals 3
-
-    .line 1
-    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Ljava/util/ArrayDeque;
-
-    .line 4
-    .line 5
-    invoke-virtual {v0}, Ljava/util/ArrayDeque;->size()I
-
-    .line 6
-    .line 7
-    .line 8
-    move-result v1
-
-    .line 9
-    const/16 v2, 0x14
-
-    .line 10
-    .line 11
-    if-ge v1, v2, :cond_0
-
-    .line 12
-    .line 13
-    invoke-virtual {v0, p1}, Ljava/util/ArrayDeque;->offer(Ljava/lang/Object;)Z
-
-    .line 14
-    .line 15
-    .line 16
-    :cond_0
-    return-void
-.end method
-
-.method public abstract p(Landroidx/core/view/WindowInsetsCompat;Ljava/util/List;)Landroidx/core/view/WindowInsetsCompat;
-.end method
-
-.method public q(Ljava/lang/String;Ljava/lang/String;)V
-    .locals 2
-
-    .line 1
-    new-instance v0, Ljava/util/ArrayList;
-
-    .line 2
-    .line 3
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    invoke-virtual {v0, p2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 7
-    .line 8
-    .line 9
-    iget-object p2, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    check-cast p2, Ljava/util/HashMap;
-
-    .line 12
-    .line 13
-    sget-object v1, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
-
-    .line 14
-    .line 15
-    invoke-virtual {p1, v1}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
-
-    .line 16
-    .line 17
-    .line 18
-    move-result-object p1
-
-    .line 19
-    invoke-virtual {p2, p1, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 20
-    .line 21
-    .line 22
-    return-void
-.end method
-
-.method public r()V
+.method public onAnimationStart(Landroid/animation/Animator;)V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+    iget v0, p0, Landroidx/core/view/y0;->a:I
 
     .line 2
     .line 3
-    check-cast v0, Ls4/u1;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, v0, Ls4/u1;->y:Ls4/s1;
-
     .line 6
-    .line 7
-    invoke-static {v0}, Ls4/u1;->l(Ls4/c2;)V
+    invoke-super {p0, p1}, Landroid/animation/AnimatorListenerAdapter;->onAnimationStart(Landroid/animation/Animator;)V
 
+    .line 7
     .line 8
     .line 9
+    return-void
+
     .line 10
-    invoke-virtual {v0}, Ls4/s1;->r()V
+    :pswitch_0
+    iget-object v0, p0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
 
     .line 11
     .line 12
+    check-cast v0, Ll2/u;
+
     .line 13
+    .line 14
+    iget-object v0, v0, Ll2/u;->D1:Ljava/util/ArrayList;
+
+    .line 15
+    .line 16
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 17
+    .line 18
+    .line 19
     return-void
+
+    .line 20
+    nop
+
+    .line 21
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+    .end packed-switch
 .end method

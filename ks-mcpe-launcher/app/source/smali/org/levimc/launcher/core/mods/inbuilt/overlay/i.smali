@@ -1,45 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic c:Landroid/content/Context;
+.field public final synthetic c:I
 
-.field public final synthetic d:Ljava/lang/String;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;
 
-.field public final synthetic h:Landroid/widget/Button;
+.field public final synthetic h:Ljava/lang/String;
 
-.field public final synthetic q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
+.field public final synthetic p:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Landroid/content/Context;Ljava/lang/String;Landroid/widget/Button;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;II)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->c:Landroid/content/Context;
-
     .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->h:Ljava/lang/String;
+
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->d:Ljava/lang/String;
-
     .line 7
+    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->p:I
+
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->h:Landroid/widget/Button;
-
     .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 10
     .line 11
     .line 12
     return-void
@@ -47,30 +47,65 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 4
+.method public final run()V
+    .locals 3
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->h:Landroid/widget/Button;
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->c:I
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->c:Landroid/content/Context;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->h:Ljava/lang/String;
+
     .line 7
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->d:Ljava/lang/String;
-
     .line 8
-    .line 9
-    invoke-static {v2, v3, v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->n(Landroid/content/Context;Ljava/lang/String;Landroid/widget/Button;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;Landroid/view/View;)V
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->p:I
 
+    .line 9
     .line 10
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;
+
     .line 11
     .line 12
+    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;I)V
+
+    .line 13
+    .line 14
+    .line 15
     return-void
+
+    .line 16
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->h:Ljava/lang/String;
+
+    .line 17
+    .line 18
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->p:I
+
+    .line 19
+    .line 20
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;
+
+    .line 21
+    .line 22
+    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;->h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/HudOverlay;Ljava/lang/String;I)V
+
+    .line 23
+    .line 24
+    .line 25
+    return-void
+
+    .line 26
+    nop
+
+    .line 27
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

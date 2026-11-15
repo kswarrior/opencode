@@ -1,57 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/v;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ljava/util/function/Predicate;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
-
-.field public final synthetic h:I
-
-.field public final synthetic q:Ljava/util/List;
+.field public final synthetic b:Ljava/lang/String;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentListActivity;ILjava/util/List;I)V
+.method public synthetic constructor <init>(Ljava/lang/String;I)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/v;->c:I
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/v;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v;->b:Ljava/lang/String;
 
     .line 4
     .line 5
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/v;->h:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/v;->q:Ljava/util/List;
-
     .line 8
-    .line 9
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 10
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 3
+.method public final test(Ljava/lang/Object;)Z
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/v;->c:I
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/v;->a:I
 
     .line 2
     .line 3
@@ -60,52 +48,68 @@
     .line 4
     .line 5
     .line 6
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/v;->h:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v;->b:Ljava/lang/String;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v;->q:Ljava/util/List;
+    check-cast p1, Lorg/levimc/launcher/core/content/ResourcePackItem;
 
     .line 9
     .line 10
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->U(Ljava/lang/String;Lorg/levimc/launcher/core/content/ResourcePackItem;)Z
 
     .line 11
     .line 12
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->M(Lorg/levimc/launcher/ui/activities/ContentListActivity;ILjava/util/List;)V
-
     .line 13
+    move-result p1
+
     .line 14
+    return p1
+
     .line 15
-    return-void
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v;->b:Ljava/lang/String;
 
     .line 16
-    :pswitch_0
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/v;->h:I
-
     .line 17
+    check-cast p1, Lorg/levimc/launcher/core/content/ServerItem;
+
     .line 18
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v;->q:Ljava/util/List;
-
     .line 19
-    .line 20
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->c0(Ljava/lang/String;Lorg/levimc/launcher/core/content/ServerItem;)Z
 
+    .line 20
     .line 21
     .line 22
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->L(Lorg/levimc/launcher/ui/activities/ContentListActivity;ILjava/util/List;)V
+    move-result p1
 
     .line 23
-    .line 24
-    .line 25
-    return-void
+    return p1
 
+    .line 24
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v;->b:Ljava/lang/String;
+
+    .line 25
     .line 26
-    nop
+    check-cast p1, Lorg/levimc/launcher/core/content/WorldItem;
 
     .line 27
+    .line 28
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->x0(Ljava/lang/String;Lorg/levimc/launcher/core/content/WorldItem;)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result p1
+
+    .line 32
+    return p1
+
+    .line 33
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

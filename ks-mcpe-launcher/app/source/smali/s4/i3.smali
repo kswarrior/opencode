@@ -1,6 +1,6 @@
 .class public final Ls4/i3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,66 +9,42 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Ljava/lang/String;
+.field public final synthetic d:Ls4/t4;
 
-.field public final synthetic h:Ljava/lang/String;
-
-.field public final synthetic q:Ls4/w4;
-
-.field public final synthetic w:Z
-
-.field public final synthetic x:Ls4/q3;
-
-.field public final synthetic y:Ljava/lang/Object;
+.field public final synthetic h:Ls4/n3;
 
 
 # direct methods
-.method public constructor <init>(Ls4/q3;Ljava/lang/String;Ljava/lang/String;Ls4/w4;ZLcom/google/android/gms/internal/measurement/y6;)V
+.method public constructor <init>(Ls4/n3;Ls4/t4;)V
     .locals 1
 
-    const/4 v0, 0x0
-
-    iput v0, p0, Ls4/i3;->c:I
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    iput-object p2, p0, Ls4/i3;->d:Ljava/lang/String;
-
-    iput-object p3, p0, Ls4/i3;->h:Ljava/lang/String;
-
-    iput-object p4, p0, Ls4/i3;->q:Ls4/w4;
-
-    iput-boolean p5, p0, Ls4/i3;->w:Z
-
-    iput-object p6, p0, Ls4/i3;->y:Ljava/lang/Object;
-
-    iput-object p1, p0, Ls4/i3;->x:Ls4/q3;
-
-    return-void
-.end method
-
-.method public constructor <init>(Ls4/q3;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/String;Ljava/lang/String;Ls4/w4;Z)V
-    .locals 1
-
-    const/4 v0, 0x1
+    const/4 v0, 0x4
 
     iput v0, p0, Ls4/i3;->c:I
 
     .line 2
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p2, p0, Ls4/i3;->y:Ljava/lang/Object;
+    iput-object p2, p0, Ls4/i3;->d:Ls4/t4;
 
-    iput-object p3, p0, Ls4/i3;->d:Ljava/lang/String;
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
 
-    iput-object p4, p0, Ls4/i3;->h:Ljava/lang/String;
+    iput-object p1, p0, Ls4/i3;->h:Ls4/n3;
 
-    iput-object p5, p0, Ls4/i3;->q:Ls4/w4;
+    return-void
+.end method
 
-    iput-boolean p6, p0, Ls4/i3;->w:Z
+.method public synthetic constructor <init>(Ls4/n3;Ls4/t4;I)V
+    .locals 0
 
-    iput-object p1, p0, Ls4/i3;->x:Ls4/q3;
+    .line 1
+    iput p3, p0, Ls4/i3;->c:I
+
+    iput-object p2, p0, Ls4/i3;->d:Ls4/t4;
+
+    iput-object p1, p0, Ls4/i3;->h:Ls4/n3;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
@@ -76,7 +52,7 @@
 
 # virtual methods
 .method public final run()V
-    .locals 10
+    .locals 7
 
     .line 1
     iget v0, p0, Ls4/i3;->c:I
@@ -88,719 +64,588 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Ls4/i3;->y:Ljava/lang/Object;
+    iget-object v0, p0, Ls4/i3;->h:Ls4/n3;
 
     .line 7
     .line 8
-    check-cast v0, Ljava/util/concurrent/atomic/AtomicReference;
+    iget-object v1, v0, Ls4/n3;->p:Ls4/h0;
 
     .line 9
     .line 10
-    monitor-enter v0
+    iget-object v2, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
 
     .line 11
-    const/4 v1, 0x0
-
     .line 12
-    :try_start_0
-    iget-object v2, p0, Ls4/i3;->x:Ls4/q3;
+    check-cast v2, Ls4/q1;
 
     .line 13
     .line 14
-    iget-object v3, v2, Ls4/q3;->q:Ls4/k0;
+    if-nez v1, :cond_0
 
     .line 15
     .line 16
-    if-nez v3, :cond_0
+    iget-object v0, v2, Ls4/q1;->w:Ls4/v0;
 
     .line 17
     .line 18
-    iget-object v2, v2, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 19
     .line 20
-    check-cast v2, Ls4/u1;
-
     .line 21
+    iget-object v0, v0, Ls4/v0;->w:Ls4/t0;
+
     .line 22
-    iget-object v2, v2, Ls4/u1;->x:Ls4/y0;
-
     .line 23
-    .line 24
-    invoke-static {v2}, Ls4/u1;->l(Ls4/c2;)V
+    const-string v1, "Failed to send consent settings to service"
 
+    .line 24
     .line 25
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
+
     .line 26
     .line 27
-    iget-object v2, v2, Ls4/y0;->x:Ls4/w0;
-
     .line 28
+    goto :goto_0
+
     .line 29
-    const-string v3, "(legacy) Failed to get user properties; not connected to service"
+    :cond_0
+    :try_start_0
+    iget-object v3, p0, Ls4/i3;->d:Ls4/t4;
 
     .line 30
     .line 31
-    iget-object v4, p0, Ls4/i3;->d:Ljava/lang/String;
+    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 32
     .line 33
-    iget-object v5, p0, Ls4/i3;->h:Ljava/lang/String;
-
     .line 34
-    .line 35
-    invoke-virtual {v2, v3, v1, v4, v5}, Ls4/w0;->d(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-interface {v1, v3}, Ls4/h0;->t(Ls4/t4;)V
 
+    .line 35
     .line 36
     .line 37
-    .line 38
-    sget-object v2, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
-
-    .line 39
-    .line 40
-    invoke-virtual {v0, v2}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+    invoke-virtual {v0}, Ls4/n3;->y()V
     :try_end_0
     .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
+    .line 38
+    .line 39
+    .line 40
+    goto :goto_0
 
     .line 41
-    .line 42
-    .line 43
-    :try_start_1
-    invoke-virtual {v0}, Ljava/lang/Object;->notify()V
+    :catch_0
+    move-exception v0
 
+    .line 42
+    iget-object v1, v2, Ls4/q1;->w:Ls4/v0;
+
+    .line 43
     .line 44
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
+
     .line 45
     .line 46
-    monitor-exit v0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
     .line 47
-    goto :goto_4
+    iget-object v1, v1, Ls4/v0;->w:Ls4/t0;
 
     .line 48
-    :catchall_0
-    move-exception v1
-
     .line 49
-    goto :goto_6
+    const-string v2, "Failed to send consent settings to the service"
 
     .line 50
-    :catchall_1
-    move-exception v1
-
     .line 51
-    goto :goto_5
+    invoke-virtual {v1, v0, v2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 52
-    :catch_0
-    move-exception v2
-
     .line 53
-    goto :goto_2
-
     .line 54
-    :cond_0
-    :try_start_2
-    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    :goto_0
+    return-void
 
     .line 55
+    :pswitch_0
+    iget-object v0, p0, Ls4/i3;->h:Ls4/n3;
+
     .line 56
     .line 57
-    move-result v4
+    iget-object v1, v0, Ls4/n3;->p:Ls4/h0;
 
     .line 58
-    if-eqz v4, :cond_1
-
     .line 59
+    iget-object v2, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+
     .line 60
-    iget-object v4, p0, Ls4/i3;->q:Ls4/w4;
-
     .line 61
-    .line 62
-    invoke-static {v4}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v2, Ls4/q1;
 
+    .line 62
     .line 63
+    if-nez v1, :cond_1
+
     .line 64
     .line 65
-    iget-object v5, p0, Ls4/i3;->d:Ljava/lang/String;
+    iget-object v0, v2, Ls4/q1;->w:Ls4/v0;
 
     .line 66
     .line 67
-    iget-object v6, p0, Ls4/i3;->h:Ljava/lang/String;
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 68
     .line 69
-    iget-boolean v7, p0, Ls4/i3;->w:Z
-
     .line 70
-    .line 71
-    invoke-interface {v3, v5, v6, v7, v4}, Ls4/k0;->a(Ljava/lang/String;Ljava/lang/String;ZLs4/w4;)Ljava/util/List;
+    iget-object v0, v0, Ls4/v0;->w:Ls4/t0;
 
+    .line 71
     .line 72
+    const-string v1, "Failed to send measurementEnabled to service"
+
     .line 73
     .line 74
-    move-result-object v3
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
 
     .line 75
-    invoke-virtual {v0, v3}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-
     .line 76
     .line 77
+    goto :goto_1
+
     .line 78
-    goto :goto_0
+    :cond_1
+    :try_start_1
+    iget-object v3, p0, Ls4/i3;->d:Ls4/t4;
 
     .line 79
-    :cond_1
-    iget-object v4, p0, Ls4/i3;->d:Ljava/lang/String;
-
     .line 80
-    .line 81
-    iget-object v5, p0, Ls4/i3;->h:Ljava/lang/String;
+    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 81
     .line 82
     .line 83
-    iget-boolean v6, p0, Ls4/i3;->w:Z
+    invoke-interface {v1, v3}, Ls4/h0;->h(Ls4/t4;)V
 
     .line 84
     .line 85
-    invoke-interface {v3, v1, v4, v5, v6}, Ls4/k0;->b(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Z)Ljava/util/List;
-
     .line 86
+    invoke-virtual {v0}, Ls4/n3;->y()V
+    :try_end_1
+    .catch Landroid/os/RemoteException; {:try_start_1 .. :try_end_1} :catch_1
+
     .line 87
     .line 88
-    move-result-object v3
-
     .line 89
-    invoke-virtual {v0, v3}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+    goto :goto_1
 
     .line 90
-    .line 91
-    .line 92
-    :goto_0
-    invoke-virtual {v2}, Ls4/q3;->E()V
-    :try_end_2
-    .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_0
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+    :catch_1
+    move-exception v0
 
+    .line 91
+    iget-object v1, v2, Ls4/q1;->w:Ls4/v0;
+
+    .line 92
     .line 93
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
+
     .line 94
     .line 95
-    :try_start_3
-    iget-object v1, p0, Ls4/i3;->y:Ljava/lang/Object;
-
     .line 96
+    iget-object v1, v1, Ls4/v0;->w:Ls4/t0;
+
     .line 97
-    check-cast v1, Ljava/util/concurrent/atomic/AtomicReference;
-
     .line 98
-    .line 99
-    :goto_1
-    invoke-virtual {v1}, Ljava/lang/Object;->notify()V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+    const-string v2, "Failed to send measurementEnabled to the service"
 
+    .line 99
     .line 100
+    invoke-virtual {v1, v0, v2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 101
     .line 102
-    goto :goto_3
-
     .line 103
-    :goto_2
-    :try_start_4
-    iget-object v3, p0, Ls4/i3;->x:Ls4/q3;
+    :goto_1
+    return-void
 
     .line 104
+    :pswitch_1
+    iget-object v0, p0, Ls4/i3;->h:Ls4/n3;
+
     .line 105
-    iget-object v3, v3, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
     .line 106
+    iget-object v1, v0, Ls4/n3;->p:Ls4/h0;
+
     .line 107
-    check-cast v3, Ls4/u1;
-
     .line 108
+    iget-object v2, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+
     .line 109
-    iget-object v3, v3, Ls4/u1;->x:Ls4/y0;
-
     .line 110
-    .line 111
-    invoke-static {v3}, Ls4/u1;->l(Ls4/c2;)V
+    check-cast v2, Ls4/q1;
 
+    .line 111
     .line 112
+    if-nez v1, :cond_2
+
     .line 113
     .line 114
-    iget-object v3, v3, Ls4/y0;->x:Ls4/w0;
+    iget-object v0, v2, Ls4/q1;->w:Ls4/v0;
 
     .line 115
     .line 116
-    const-string v4, "(legacy) Failed to get user properties; remote exception"
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 117
     .line 118
-    iget-object v5, p0, Ls4/i3;->d:Ljava/lang/String;
-
     .line 119
-    .line 120
-    invoke-virtual {v3, v4, v1, v5, v2}, Ls4/w0;->d(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+    iget-object v0, v0, Ls4/v0;->X:Ls4/t0;
 
+    .line 120
     .line 121
+    const-string v1, "Failed to send app backgrounded"
+
     .line 122
     .line 123
-    iget-object v1, p0, Ls4/i3;->y:Ljava/lang/Object;
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
 
     .line 124
     .line 125
-    check-cast v1, Ljava/util/concurrent/atomic/AtomicReference;
-
     .line 126
+    goto :goto_2
+
     .line 127
-    sget-object v2, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
+    :cond_2
+    :try_start_2
+    iget-object v3, p0, Ls4/i3;->d:Ls4/t4;
 
     .line 128
     .line 129
-    invoke-virtual {v1, v2}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 130
     .line 131
     .line 132
-    :try_start_5
-    iget-object v1, p0, Ls4/i3;->y:Ljava/lang/Object;
+    invoke-interface {v1, v3}, Ls4/h0;->n(Ls4/t4;)V
 
     .line 133
     .line 134
-    check-cast v1, Ljava/util/concurrent/atomic/AtomicReference;
-
     .line 135
+    invoke-virtual {v0}, Ls4/n3;->y()V
+    :try_end_2
+    .catch Landroid/os/RemoteException; {:try_start_2 .. :try_end_2} :catch_2
+
     .line 136
-    goto :goto_1
-
     .line 137
-    :goto_3
-    monitor-exit v0
-
     .line 138
-    :goto_4
-    return-void
+    goto :goto_2
 
     .line 139
-    :goto_5
-    iget-object v2, p0, Ls4/i3;->y:Ljava/lang/Object;
+    :catch_2
+    move-exception v0
 
     .line 140
+    iget-object v1, v2, Ls4/q1;->w:Ls4/v0;
+
     .line 141
-    check-cast v2, Ljava/util/concurrent/atomic/AtomicReference;
-
     .line 142
-    .line 143
-    invoke-virtual {v2}, Ljava/lang/Object;->notify()V
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
 
+    .line 143
     .line 144
     .line 145
-    .line 146
-    throw v1
+    iget-object v1, v1, Ls4/v0;->w:Ls4/t0;
 
+    .line 146
     .line 147
-    :goto_6
-    monitor-exit v0
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_0
+    const-string v2, "Failed to send app backgrounded to the service"
 
     .line 148
-    throw v1
-
     .line 149
-    :pswitch_0
-    iget-object v0, p0, Ls4/i3;->h:Ljava/lang/String;
+    invoke-virtual {v1, v0, v2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 150
     .line 151
-    iget-object v1, p0, Ls4/i3;->d:Ljava/lang/String;
-
     .line 152
+    :goto_2
+    return-void
+
     .line 153
-    iget-object v2, p0, Ls4/i3;->y:Ljava/lang/Object;
+    :pswitch_2
+    iget-object v0, p0, Ls4/i3;->h:Ls4/n3;
 
     .line 154
     .line 155
-    check-cast v2, Lcom/google/android/gms/internal/measurement/y6;
+    iget-object v1, v0, Ls4/n3;->p:Ls4/h0;
 
     .line 156
     .line 157
-    iget-object v3, p0, Ls4/i3;->x:Ls4/q3;
+    iget-object v2, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
 
     .line 158
     .line 159
-    new-instance v4, Landroid/os/Bundle;
+    check-cast v2, Ls4/q1;
 
     .line 160
     .line 161
-    invoke-direct {v4}, Landroid/os/Bundle;-><init>()V
+    if-nez v1, :cond_3
 
     .line 162
     .line 163
+    iget-object v0, v2, Ls4/q1;->w:Ls4/v0;
+
     .line 164
-    :try_start_6
-    iget-object v5, v3, Ls4/q3;->q:Ls4/k0;
-    :try_end_6
-    .catch Landroid/os/RemoteException; {:try_start_6 .. :try_end_6} :catch_1
-    .catchall {:try_start_6 .. :try_end_6} :catchall_2
-
     .line 165
-    .line 166
-    iget-object v6, v3, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
+    .line 166
     .line 167
     .line 168
-    check-cast v6, Ls4/u1;
+    iget-object v0, v0, Ls4/v0;->w:Ls4/t0;
 
     .line 169
     .line 170
-    if-nez v5, :cond_2
+    const-string v1, "Discarding data. Failed to send app launch"
 
     .line 171
     .line 172
-    :try_start_7
-    iget-object v5, v6, Ls4/u1;->x:Ls4/y0;
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
 
     .line 173
     .line 174
-    invoke-static {v5}, Ls4/u1;->l(Ls4/c2;)V
-
     .line 175
+    goto :goto_5
+
     .line 176
+    :cond_3
+    :try_start_3
+    iget-object v3, p0, Ls4/i3;->d:Ls4/t4;
+
     .line 177
-    iget-object v5, v5, Ls4/y0;->x:Ls4/w0;
-
     .line 178
-    .line 179
-    const-string v7, "Failed to get user properties; not connected to service"
+    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 179
     .line 180
     .line 181
-    invoke-virtual {v5, v1, v7, v0}, Ls4/w0;->c(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V
-    :try_end_7
-    .catch Landroid/os/RemoteException; {:try_start_7 .. :try_end_7} :catch_1
-    .catchall {:try_start_7 .. :try_end_7} :catchall_2
+    iget-object v4, v2, Ls4/q1;->p:Ls4/h;
 
     .line 182
     .line 183
-    .line 184
-    iget-object v0, v6, Ls4/u1;->Y:Ls4/u4;
+    sget-object v5, Ls4/e0;->W0:Ls4/d0;
 
+    .line 184
     .line 185
+    const/4 v6, 0x0
+
     .line 186
-    :goto_7
-    invoke-static {v0}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+    invoke-virtual {v4, v6, v5}, Ls4/h;->w(Ljava/lang/String;Ls4/d0;)Z
 
     .line 187
     .line 188
     .line 189
-    invoke-virtual {v0, v2, v4}, Ls4/u4;->i0(Lcom/google/android/gms/internal/measurement/y6;Landroid/os/Bundle;)V
+    move-result v4
 
     .line 190
+    if-eqz v4, :cond_4
+
     .line 191
     .line 192
-    goto/16 :goto_b
+    invoke-virtual {v0, v1, v6, v3}, Ls4/n3;->D(Ls4/h0;Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;Ls4/t4;)V
 
     .line 193
     .line 194
-    :catchall_2
-    move-exception v0
-
     .line 195
-    goto/16 :goto_c
+    goto :goto_3
 
     .line 196
-    .line 197
-    :catch_1
+    :catch_3
     move-exception v0
 
+    .line 197
+    goto :goto_4
+
     .line 198
-    goto :goto_a
+    :cond_4
+    :goto_3
+    invoke-interface {v1, v3}, Ls4/h0;->D(Ls4/t4;)V
 
     .line 199
-    :cond_2
-    :try_start_8
-    iget-object v7, p0, Ls4/i3;->q:Ls4/w4;
-
     .line 200
     .line 201
-    invoke-static {v7}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v2}, Ls4/q1;->n()Ls4/o0;
 
     .line 202
     .line 203
     .line 204
-    iget-boolean v8, p0, Ls4/i3;->w:Z
+    move-result-object v4
 
     .line 205
-    .line 206
-    invoke-interface {v5, v1, v0, v8, v7}, Ls4/k0;->a(Ljava/lang/String;Ljava/lang/String;ZLs4/w4;)Ljava/util/List;
+    invoke-virtual {v4}, Ls4/o0;->q()V
 
+    .line 206
     .line 207
     .line 208
-    .line 209
-    move-result-object v0
+    iget-object v4, v2, Ls4/q1;->p:Ls4/h;
 
+    .line 209
     .line 210
-    new-instance v5, Landroid/os/Bundle;
+    invoke-virtual {v4, v6, v5}, Ls4/h;->w(Ljava/lang/String;Ls4/d0;)Z
 
     .line 211
     .line 212
-    invoke-direct {v5}, Landroid/os/Bundle;-><init>()V
-
     .line 213
+    invoke-virtual {v0, v1, v6, v3}, Ls4/n3;->D(Ls4/h0;Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;Ls4/t4;)V
+
     .line 214
     .line 215
-    if-nez v0, :cond_3
-
     .line 216
+    invoke-virtual {v0}, Ls4/n3;->y()V
+    :try_end_3
+    .catch Landroid/os/RemoteException; {:try_start_3 .. :try_end_3} :catch_3
+
     .line 217
-    goto :goto_9
-
     .line 218
-    :cond_3
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
     .line 219
-    .line 220
-    .line 221
-    move-result-object v0
+    goto :goto_5
 
+    .line 220
+    :goto_4
+    iget-object v1, v2, Ls4/q1;->w:Ls4/v0;
+
+    .line 221
     .line 222
-    :cond_4
-    :goto_8
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 223
     .line 224
     .line 225
-    move-result v7
+    iget-object v1, v1, Ls4/v0;->w:Ls4/t0;
 
     .line 226
-    if-eqz v7, :cond_7
-
     .line 227
-    .line 228
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    const-string v2, "Failed to send app launch to the service"
 
+    .line 228
     .line 229
+    invoke-virtual {v1, v0, v2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 230
     .line 231
-    move-result-object v7
-
     .line 232
-    check-cast v7, Ls4/r4;
+    :goto_5
+    return-void
 
     .line 233
+    :pswitch_3
+    iget-object v0, p0, Ls4/i3;->h:Ls4/n3;
+
     .line 234
-    iget-object v8, v7, Ls4/r4;->w:Ljava/lang/String;
-    :try_end_8
-    .catch Landroid/os/RemoteException; {:try_start_8 .. :try_end_8} :catch_1
-    .catchall {:try_start_8 .. :try_end_8} :catchall_2
-
     .line 235
+    iget-object v1, v0, Ls4/n3;->p:Ls4/h0;
+
     .line 236
-    iget-object v9, v7, Ls4/r4;->d:Ljava/lang/String;
-
     .line 237
+    iget-object v2, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+
     .line 238
-    if-eqz v8, :cond_5
-
     .line 239
-    .line 240
-    :try_start_9
-    invoke-virtual {v5, v9, v8}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    check-cast v2, Ls4/q1;
 
+    .line 240
     .line 241
+    if-nez v1, :cond_5
+
     .line 242
     .line 243
-    goto :goto_8
+    iget-object v0, v2, Ls4/q1;->w:Ls4/v0;
 
     .line 244
-    :cond_5
-    iget-object v8, v7, Ls4/r4;->q:Ljava/lang/Long;
-
     .line 245
-    .line 246
-    if-eqz v8, :cond_6
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
 
+    .line 246
     .line 247
     .line 248
-    invoke-virtual {v8}, Ljava/lang/Long;->longValue()J
+    iget-object v0, v0, Ls4/v0;->w:Ls4/t0;
 
     .line 249
     .line 250
-    .line 251
-    move-result-wide v7
+    const-string v1, "Failed to reset data on the service: not connected to service"
 
+    .line 251
     .line 252
-    invoke-virtual {v5, v9, v7, v8}, Landroid/os/BaseBundle;->putLong(Ljava/lang/String;J)V
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
 
     .line 253
     .line 254
     .line 255
-    goto :goto_8
+    goto :goto_7
 
     .line 256
-    :cond_6
-    iget-object v7, v7, Ls4/r4;->y:Ljava/lang/Double;
+    :cond_5
+    :try_start_4
+    iget-object v3, p0, Ls4/i3;->d:Ls4/t4;
 
     .line 257
     .line 258
-    if-eqz v7, :cond_4
+    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 259
     .line 260
-    invoke-virtual {v7}, Ljava/lang/Double;->doubleValue()D
-
     .line 261
+    invoke-interface {v1, v3}, Ls4/h0;->m(Ls4/t4;)V
+    :try_end_4
+    .catch Landroid/os/RemoteException; {:try_start_4 .. :try_end_4} :catch_4
+
     .line 262
     .line 263
-    move-result-wide v7
-
     .line 264
-    invoke-virtual {v5, v9, v7, v8}, Landroid/os/BaseBundle;->putDouble(Ljava/lang/String;D)V
-    :try_end_9
-    .catch Landroid/os/RemoteException; {:try_start_9 .. :try_end_9} :catch_1
-    .catchall {:try_start_9 .. :try_end_9} :catchall_2
+    goto :goto_6
 
     .line 265
-    .line 266
-    .line 267
-    goto :goto_8
+    :catch_4
+    move-exception v1
 
+    .line 266
+    iget-object v2, v2, Ls4/q1;->w:Ls4/v0;
+
+    .line 267
     .line 268
-    :cond_7
-    :goto_9
-    :try_start_a
-    invoke-virtual {v3}, Ls4/q3;->E()V
-    :try_end_a
-    .catch Landroid/os/RemoteException; {:try_start_a .. :try_end_a} :catch_2
-    .catchall {:try_start_a .. :try_end_a} :catchall_3
+    invoke-static {v2}, Ls4/q1;->l(Ls4/y1;)V
 
     .line 269
     .line 270
     .line 271
-    iget-object v0, v6, Ls4/u1;->Y:Ls4/u4;
+    iget-object v2, v2, Ls4/v0;->w:Ls4/t0;
 
     .line 272
     .line 273
-    invoke-static {v0}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+    const-string v3, "Failed to reset data on the service: remote exception"
 
     .line 274
     .line 275
-    .line 276
-    invoke-virtual {v0, v2, v5}, Ls4/u4;->i0(Lcom/google/android/gms/internal/measurement/y6;Landroid/os/Bundle;)V
+    invoke-virtual {v2, v1, v3}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 276
     .line 277
     .line 278
+    :goto_6
+    invoke-virtual {v0}, Ls4/n3;->y()V
+
     .line 279
-    goto :goto_b
-
     .line 280
-    :catchall_3
-    move-exception v0
-
     .line 281
-    move-object v4, v5
-
-    .line 282
-    goto :goto_c
-
-    .line 283
-    :catch_2
-    move-exception v0
-
-    .line 284
-    move-object v4, v5
-
-    .line 285
-    :goto_a
-    :try_start_b
-    iget-object v5, v3, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 286
-    .line 287
-    check-cast v5, Ls4/u1;
-
-    .line 288
-    .line 289
-    iget-object v5, v5, Ls4/u1;->x:Ls4/y0;
-
-    .line 290
-    .line 291
-    invoke-static {v5}, Ls4/u1;->l(Ls4/c2;)V
-
-    .line 292
-    .line 293
-    .line 294
-    iget-object v5, v5, Ls4/y0;->x:Ls4/w0;
-
-    .line 295
-    .line 296
-    const-string v6, "Failed to get user properties; remote exception"
-
-    .line 297
-    .line 298
-    invoke-virtual {v5, v1, v6, v0}, Ls4/w0;->c(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V
-    :try_end_b
-    .catchall {:try_start_b .. :try_end_b} :catchall_2
-
-    .line 299
-    .line 300
-    .line 301
-    iget-object v0, v3, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 302
-    .line 303
-    check-cast v0, Ls4/u1;
-
-    .line 304
-    .line 305
-    iget-object v0, v0, Ls4/u1;->Y:Ls4/u4;
-
-    .line 306
-    .line 307
-    goto :goto_7
-
-    .line 308
-    :goto_b
+    :goto_7
     return-void
 
-    .line 309
-    :goto_c
-    iget-object v1, v3, Landroidx/core/view/y0;->c:Ljava/lang/Object;
-
-    .line 310
-    .line 311
-    check-cast v1, Ls4/u1;
-
-    .line 312
-    .line 313
-    iget-object v1, v1, Ls4/u1;->Y:Ls4/u4;
-
-    .line 314
-    .line 315
-    invoke-static {v1}, Ls4/u1;->j(Landroidx/core/view/y0;)V
-
-    .line 316
-    .line 317
-    .line 318
-    invoke-virtual {v1, v2, v4}, Ls4/u4;->i0(Lcom/google/android/gms/internal/measurement/y6;Landroid/os/Bundle;)V
-
-    .line 319
-    .line 320
-    .line 321
-    throw v0
-
-    .line 322
+    .line 282
     nop
 
-    .line 323
+    .line 283
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

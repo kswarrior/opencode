@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/util/LauncherStorage;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -85,7 +85,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 13
     .line 14
@@ -170,7 +170,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p0}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 4
     .line 5
@@ -2616,111 +2616,102 @@
 
     .line 96
     .line 97
-    invoke-virtual {p0}, Ljava/lang/String;->length()I
+    const/4 v1, 0x1
 
     .line 98
+    invoke-static {v1, v2, p0}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
+
     .line 99
     .line 100
-    move-result v1
-
     .line 101
-    add-int/lit8 v1, v1, -0x1
+    move-result-object p0
 
     .line 102
+    goto :goto_3
+
     .line 103
-    invoke-virtual {p0, v2, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+    :cond_8
+    invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z
 
     .line 104
     .line 105
     .line 106
-    move-result-object p0
-
-    .line 107
-    goto :goto_3
-
-    .line 108
-    :cond_8
-    invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z
-
-    .line 109
-    .line 110
-    .line 111
     move-result v1
 
-    .line 112
+    .line 107
     if-eqz v1, :cond_9
 
-    .line 113
-    .line 114
+    .line 108
+    .line 109
     return-object v0
 
-    .line 115
+    .line 110
     :cond_9
     sget-object v0, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    .line 116
-    .line 117
+    .line 111
+    .line 112
     invoke-virtual {p0, v0}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
 
-    .line 118
-    .line 119
-    .line 120
+    .line 113
+    .line 114
+    .line 115
     move-result-object v0
 
-    .line 121
+    .line 116
     const-string v1, "_shared"
 
-    .line 122
-    .line 123
+    .line 117
+    .line 118
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 124
-    .line 125
-    .line 126
+    .line 119
+    .line 120
+    .line 121
     move-result v1
 
-    .line 127
+    .line 122
     if-nez v1, :cond_b
 
-    .line 128
-    .line 129
+    .line 123
+    .line 124
     const-string v1, "_legacy_unclassified"
 
-    .line 130
-    .line 131
+    .line 125
+    .line 126
     invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 132
-    .line 133
-    .line 134
+    .line 127
+    .line 128
+    .line 129
     move-result v0
 
-    .line 135
+    .line 130
     if-eqz v0, :cond_a
 
-    .line 136
-    .line 137
+    .line 131
+    .line 132
     goto :goto_4
 
-    .line 138
+    .line 133
     :cond_a
     return-object p0
 
-    .line 139
+    .line 134
     :cond_b
     :goto_4
     const-string v0, "_profile"
 
-    .line 140
-    .line 141
+    .line 135
+    .line 136
     invoke-virtual {p0, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 142
-    .line 143
-    .line 144
+    .line 137
+    .line 138
+    .line 139
     move-result-object p0
 
-    .line 145
+    .line 140
     return-object p0
 .end method
 

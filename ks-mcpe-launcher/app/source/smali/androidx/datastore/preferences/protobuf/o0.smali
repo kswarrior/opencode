@@ -1,6 +1,6 @@
 .class public final Landroidx/datastore/preferences/protobuf/o0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroidx/datastore/preferences/protobuf/v0;
@@ -75,7 +75,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-static {p1}, Ls1/a;->B(Ljava/lang/Object;)V
+    invoke-static {p1}, Ls1/a;->y(Ljava/lang/Object;)V
 
     .line 7
     .line 8
@@ -135,7 +135,7 @@
     .line 21
     .line 22
     .line 23
-    invoke-static {p1}, Ls1/a;->B(Ljava/lang/Object;)V
+    invoke-static {p1}, Ls1/a;->y(Ljava/lang/Object;)V
 
     .line 24
     .line 25
@@ -159,7 +159,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-static {p1}, Ls1/a;->B(Ljava/lang/Object;)V
+    invoke-static {p1}, Ls1/a;->y(Ljava/lang/Object;)V
 
     .line 7
     .line 8
@@ -246,7 +246,7 @@
     const/4 v5, 0x1
 
     .line 33
-    invoke-static {v5}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
+    invoke-static {v5}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
 
     .line 34
     .line 35
@@ -260,7 +260,7 @@
     mul-int/2addr v5, v6
 
     .line 39
-    invoke-static {v6}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
+    invoke-static {v6}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
 
     .line 40
     .line 41
@@ -268,7 +268,7 @@
     move-result v6
 
     .line 43
-    invoke-static {v2}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
+    invoke-static {v2}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
 
     .line 44
     .line 45
@@ -282,7 +282,7 @@
     add-int/2addr v2, v5
 
     .line 49
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->J(ILandroidx/datastore/preferences/protobuf/g;)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->A(ILandroidx/datastore/preferences/protobuf/g;)I
 
     .line 50
     .line 51

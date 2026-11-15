@@ -1,64 +1,54 @@
 .class public final Lid/l;
-.super Lid/e;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Lid/a;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# virtual methods
-.method public final c()Ljava/lang/String;
+# direct methods
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return-object v0
-.end method
-
-.method public final d()Ljava/lang/String;
-    .locals 1
-
-    .line 1
-    const-string v0, "Negotiate"
+    new-instance v0, Lid/l;
 
     .line 2
     .line 3
-    return-object v0
-.end method
-
-.method public final f()Z
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
-.end method
-
-.method public final k([BLjava/lang/String;Lrc/j;)[B
-    .locals 1
-
-    .line 1
-    new-instance p3, Lorg/ietf/jgss/Oid;
-
-    .line 2
-    .line 3
-    const-string v0, "1.3.6.1.5.5.2"
+    invoke-direct {v0}, Lid/l;-><init>()V
 
     .line 4
     .line 5
-    invoke-direct {p3, v0}, Lorg/ietf/jgss/Oid;-><init>(Ljava/lang/String;)V
+    .line 6
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 2
+
+    .line 1
+    const/16 v0, 0x197
+
+    .line 2
+    .line 3
+    const-string v1, "Proxy-Authenticate"
+
+    .line 4
+    .line 5
+    invoke-direct {p0, v0, v1}, Lid/a;-><init>(ILjava/lang/String;)V
 
     .line 6
     .line 7
     .line 8
-    invoke-static {p1, p3, p2}, Lid/e;->j([BLorg/ietf/jgss/Oid;Ljava/lang/String;)[B
+    return-void
+.end method
 
-    .line 9
-    .line 10
-    .line 11
-    move-result-object p1
 
-    .line 12
+# virtual methods
+.method public final c(Lorg/apache/http/client/config/RequestConfig;)Ljava/util/Collection;
+    .locals 0
+
+    .line 1
+    iget-object p1, p1, Lorg/apache/http/client/config/RequestConfig;->Z:Ljava/util/Collection;
+
+    .line 2
+    .line 3
     return-object p1
 .end method

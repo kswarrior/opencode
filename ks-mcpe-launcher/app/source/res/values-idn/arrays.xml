@@ -12,5 +12,11 @@
         <item>Kelola beberapa akun Xbox di dalam launcher dan beralih antar akun dengan mudah.</item>
         <item>CurseForge memungkinkan Anda menjelajahi dan mengunduh konten komunitas secara langsung.</item>
         <item>Muat modul SO native eksternal untuk memperluas atau meningkatkan fitur dan performa Minecraft.</item>
+        <item>GIF animasi juga dapat digunakan sebagai wallpaper peluncur.</item>
+        <item>Ubah ikon instans dari pengaturannya.</item>
+        <item>Beri bintang pada modul di menu mod agar mudah ditemukan di Favorit.</item>
+        <item>Seret judul menu mod untuk memindahkannya, atau sudut kanan bawahnya untuk mengubah ukuran.</item>
+        <item>Gunakan Hanya yang kompatibel di Mod eksternal untuk memfilter versi Minecraft Anda.</item>
+        <item>Cadangkan dunia Anda sebelum mengedit data NBT-nya.</item>
     </string-array>
 </resources>

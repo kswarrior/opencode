@@ -1,37 +1,37 @@
 .class public final Lz4/a;
 .super Landroid/graphics/drawable/Drawable;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ln5/k;
+.implements Ln5/j;
 
 
 # instance fields
-.field public B1:Ljava/lang/ref/WeakReference;
-
 .field public C1:Ljava/lang/ref/WeakReference;
 
-.field public final X:I
+.field public X:F
 
 .field public Y:F
 
 .field public Z:F
 
-.field public b1:F
+.field public b1:Ljava/lang/ref/WeakReference;
 
 .field public final c:Ljava/lang/ref/WeakReference;
 
-.field public final d:Lt5/j;
+.field public final d:Lv5/j;
 
-.field public final h:Ln5/l;
+.field public final h:Ln5/k;
 
-.field public final q:Landroid/graphics/Rect;
+.field public final p:Landroid/graphics/Rect;
 
-.field public final w:Lz4/c;
+.field public final q:Lz4/c;
+
+.field public w:F
 
 .field public x:F
 
-.field public y:F
+.field public final y:I
 
 
 # direct methods
@@ -57,7 +57,7 @@
 
     .line 10
     .line 11
-    sget-object v1, Ln5/n;->b:[I
+    sget-object v1, Ln5/m;->b:[I
 
     .line 12
     .line 13
@@ -65,7 +65,7 @@
 
     .line 14
     .line 15
-    invoke-static {p1, v1, v2}, Ln5/n;->c(Landroid/content/Context;[ILjava/lang/String;)V
+    invoke-static {p1, v1, v2}, Ln5/m;->c(Landroid/content/Context;[ILjava/lang/String;)V
 
     .line 16
     .line 17
@@ -79,20 +79,20 @@
     .line 21
     .line 22
     .line 23
-    iput-object v1, p0, Lz4/a;->q:Landroid/graphics/Rect;
+    iput-object v1, p0, Lz4/a;->p:Landroid/graphics/Rect;
 
     .line 24
     .line 25
-    new-instance v1, Ln5/l;
+    new-instance v1, Ln5/k;
 
     .line 26
     .line 27
-    invoke-direct {v1, p0}, Ln5/l;-><init>(Ln5/k;)V
+    invoke-direct {v1, p0}, Ln5/k;-><init>(Ln5/j;)V
 
     .line 28
     .line 29
     .line 30
-    iput-object v1, p0, Lz4/a;->h:Ln5/l;
+    iput-object v1, p0, Lz4/a;->h:Ln5/k;
 
     .line 31
     .line 32
@@ -100,7 +100,7 @@
 
     .line 33
     .line 34
-    iget-object v3, v1, Ln5/l;->a:Landroid/text/TextPaint;
+    iget-object v3, v1, Ln5/k;->a:Landroid/text/TextPaint;
 
     .line 35
     .line 36
@@ -118,11 +118,11 @@
     .line 42
     .line 43
     .line 44
-    iput-object v2, p0, Lz4/a;->w:Lz4/c;
+    iput-object v2, p0, Lz4/a;->q:Lz4/c;
 
     .line 45
     .line 46
-    new-instance v4, Lt5/j;
+    new-instance v4, Lv5/j;
 
     .line 47
     .line 48
@@ -142,7 +142,7 @@
 
     .line 55
     .line 56
-    iget-object v5, v2, Lz4/b;->y:Ljava/lang/Integer;
+    iget-object v5, v2, Lz4/b;->x:Ljava/lang/Integer;
 
     .line 57
     .line 58
@@ -158,7 +158,7 @@
 
     .line 63
     :cond_0
-    iget-object v5, v2, Lz4/b;->w:Ljava/lang/Integer;
+    iget-object v5, v2, Lz4/b;->q:Ljava/lang/Integer;
 
     .line 64
     .line 65
@@ -183,7 +183,7 @@
 
     .line 74
     .line 75
-    iget-object v6, v2, Lz4/b;->X:Ljava/lang/Integer;
+    iget-object v6, v2, Lz4/b;->y:Ljava/lang/Integer;
 
     .line 76
     .line 77
@@ -199,7 +199,7 @@
 
     .line 82
     :cond_1
-    iget-object v6, v2, Lz4/b;->x:Ljava/lang/Integer;
+    iget-object v6, v2, Lz4/b;->w:Ljava/lang/Integer;
 
     .line 83
     .line 84
@@ -212,7 +212,7 @@
 
     .line 88
     :goto_1
-    invoke-static {p1, v5, v6}, Lt5/o;->a(Landroid/content/Context;II)Lt5/n;
+    invoke-static {p1, v5, v6}, Lv5/o;->a(Landroid/content/Context;II)Lv5/n;
 
     .line 89
     .line 90
@@ -220,7 +220,7 @@
     move-result-object p1
 
     .line 92
-    invoke-virtual {p1}, Lt5/n;->a()Lt5/o;
+    invoke-virtual {p1}, Lv5/n;->a()Lv5/o;
 
     .line 93
     .line 94
@@ -228,12 +228,12 @@
     move-result-object p1
 
     .line 96
-    invoke-direct {v4, p1}, Lt5/j;-><init>(Lt5/o;)V
+    invoke-direct {v4, p1}, Lv5/j;-><init>(Lv5/o;)V
 
     .line 97
     .line 98
     .line 99
-    iput-object v4, p0, Lz4/a;->d:Lt5/j;
+    iput-object v4, p0, Lz4/a;->d:Lv5/j;
 
     .line 100
     .line 101
@@ -262,11 +262,11 @@
 
     .line 113
     :cond_2
-    new-instance v0, Lq5/d;
+    new-instance v0, Ls5/d;
 
     .line 114
     .line 115
-    iget-object v5, v2, Lz4/b;->q:Ljava/lang/Integer;
+    iget-object v5, v2, Lz4/b;->p:Ljava/lang/Integer;
 
     .line 116
     .line 117
@@ -278,12 +278,12 @@
     move-result v5
 
     .line 121
-    invoke-direct {v0, p1, v5}, Lq5/d;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v0, p1, v5}, Ls5/d;-><init>(Landroid/content/Context;I)V
 
     .line 122
     .line 123
     .line 124
-    iget-object v5, v1, Ln5/l;->g:Lq5/d;
+    iget-object v5, v1, Ln5/k;->g:Ls5/d;
 
     .line 125
     .line 126
@@ -295,7 +295,7 @@
 
     .line 129
     :cond_3
-    invoke-virtual {v1, v0, p1}, Ln5/l;->c(Lq5/d;Landroid/content/Context;)V
+    invoke-virtual {v1, v0, p1}, Ln5/k;->c(Ls5/d;Landroid/content/Context;)V
 
     .line 130
     .line 131
@@ -333,7 +333,7 @@
     .line 149
     .line 150
     :goto_2
-    iget p1, v2, Lz4/b;->B1:I
+    iget p1, v2, Lz4/b;->b1:I
 
     .line 151
     .line 152
@@ -375,7 +375,7 @@
     sub-int/2addr p1, v5
 
     .line 168
-    iput p1, p0, Lz4/a;->X:I
+    iput p1, p0, Lz4/a;->y:I
 
     .line 169
     .line 170
@@ -387,12 +387,12 @@
 
     .line 172
     .line 173
-    iput p1, p0, Lz4/a;->X:I
+    iput p1, p0, Lz4/a;->y:I
 
     .line 174
     .line 175
     :goto_3
-    iput-boolean v5, v1, Ln5/l;->e:Z
+    iput-boolean v5, v1, Ln5/k;->e:Z
 
     .line 176
     .line 177
@@ -406,7 +406,7 @@
     .line 181
     .line 182
     .line 183
-    iput-boolean v5, v1, Ln5/l;->e:Z
+    iput-boolean v5, v1, Ln5/k;->e:Z
 
     .line 184
     .line 185
@@ -463,11 +463,11 @@
     move-result-object p1
 
     .line 214
-    iget-object v0, v4, Lt5/j;->d:Lt5/h;
+    iget-object v0, v4, Lv5/j;->d:Lv5/h;
 
     .line 215
     .line 216
-    iget-object v0, v0, Lt5/h;->d:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lv5/h;->d:Landroid/content/res/ColorStateList;
 
     .line 217
     .line 218
@@ -475,7 +475,7 @@
 
     .line 219
     .line 220
-    invoke-virtual {v4, p1}, Lt5/j;->q(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v4, p1}, Lv5/j;->r(Landroid/content/res/ColorStateList;)V
 
     .line 221
     .line 222
@@ -508,7 +508,7 @@
     .line 236
     .line 237
     .line 238
-    iget-object p1, p0, Lz4/a;->B1:Ljava/lang/ref/WeakReference;
+    iget-object p1, p0, Lz4/a;->b1:Ljava/lang/ref/WeakReference;
 
     .line 239
     .line 240
@@ -528,7 +528,7 @@
 
     .line 247
     .line 248
-    iget-object p1, p0, Lz4/a;->B1:Ljava/lang/ref/WeakReference;
+    iget-object p1, p0, Lz4/a;->b1:Ljava/lang/ref/WeakReference;
 
     .line 249
     .line 250
@@ -781,11 +781,11 @@
 
     .line 70
     :cond_3
-    iget p2, p0, Lz4/a;->y:F
+    iget p2, p0, Lz4/a;->x:F
 
     .line 71
     .line 72
-    iget v3, p0, Lz4/a;->b1:F
+    iget v3, p0, Lz4/a;->Z:F
 
     .line 73
     .line 74
@@ -795,11 +795,11 @@
     add-float/2addr p2, p1
 
     .line 76
-    iget v3, p0, Lz4/a;->x:F
+    iget v3, p0, Lz4/a;->w:F
 
     .line 77
     .line 78
-    iget v4, p0, Lz4/a;->Z:F
+    iget v4, p0, Lz4/a;->Y:F
 
     .line 79
     .line 80
@@ -824,11 +824,11 @@
     int-to-float v4, v4
 
     .line 89
-    iget v5, p0, Lz4/a;->y:F
+    iget v5, p0, Lz4/a;->x:F
 
     .line 90
     .line 91
-    iget v6, p0, Lz4/a;->b1:F
+    iget v6, p0, Lz4/a;->Z:F
 
     .line 92
     .line 93
@@ -852,11 +852,11 @@
     int-to-float p1, p1
 
     .line 101
-    iget v0, p0, Lz4/a;->x:F
+    iget v0, p0, Lz4/a;->w:F
 
     .line 102
     .line 103
-    iget v4, p0, Lz4/a;->Z:F
+    iget v4, p0, Lz4/a;->Y:F
 
     .line 104
     .line 105
@@ -877,7 +877,7 @@
 
     .line 111
     .line 112
-    iget p1, p0, Lz4/a;->y:F
+    iget p1, p0, Lz4/a;->x:F
 
     .line 113
     .line 114
@@ -892,7 +892,7 @@
     add-float/2addr p2, p1
 
     .line 119
-    iput p2, p0, Lz4/a;->y:F
+    iput p2, p0, Lz4/a;->x:F
 
     .line 120
     .line 121
@@ -905,7 +905,7 @@
 
     .line 124
     .line 125
-    iget p1, p0, Lz4/a;->x:F
+    iget p1, p0, Lz4/a;->w:F
 
     .line 126
     .line 127
@@ -920,7 +920,7 @@
     add-float/2addr p2, p1
 
     .line 132
-    iput p2, p0, Lz4/a;->x:F
+    iput p2, p0, Lz4/a;->w:F
 
     .line 133
     .line 134
@@ -933,7 +933,7 @@
 
     .line 137
     .line 138
-    iget p1, p0, Lz4/a;->y:F
+    iget p1, p0, Lz4/a;->x:F
 
     .line 139
     .line 140
@@ -948,7 +948,7 @@
     sub-float/2addr p1, p2
 
     .line 145
-    iput p1, p0, Lz4/a;->y:F
+    iput p1, p0, Lz4/a;->x:F
 
     .line 146
     .line 147
@@ -961,7 +961,7 @@
 
     .line 150
     .line 151
-    iget p1, p0, Lz4/a;->x:F
+    iget p1, p0, Lz4/a;->w:F
 
     .line 152
     .line 153
@@ -976,7 +976,7 @@
     sub-float/2addr p1, p2
 
     .line 158
-    iput p1, p0, Lz4/a;->x:F
+    iput p1, p0, Lz4/a;->w:F
 
     .line 159
     .line 160
@@ -989,7 +989,7 @@
     .locals 5
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -1001,7 +1001,7 @@
 
     .line 6
     .line 7
-    iget-object v2, v1, Lz4/b;->Z:Ljava/lang/String;
+    iget-object v2, v1, Lz4/b;->Y:Ljava/lang/String;
 
     .line 8
     .line 9
@@ -1016,7 +1016,7 @@
 
     .line 13
     .line 14
-    iget v0, v1, Lz4/b;->B1:I
+    iget v0, v1, Lz4/b;->b1:I
 
     .line 15
     .line 16
@@ -1079,7 +1079,7 @@
     move-result-object v0
 
     .line 43
-    const v2, 0x7f13023c
+    const v2, 0x7f130316
 
     .line 44
     .line 45
@@ -1133,7 +1133,7 @@
 
     .line 67
     .line 68
-    iget v1, p0, Lz4/a;->X:I
+    iget v1, p0, Lz4/a;->y:I
 
     .line 69
     .line 70
@@ -1149,7 +1149,7 @@
     move-result v1
 
     .line 76
-    iget v2, p0, Lz4/a;->X:I
+    iget v2, p0, Lz4/a;->y:I
 
     .line 77
     .line 78
@@ -1190,7 +1190,7 @@
 
     .line 93
     .line 94
-    const v2, 0x7f130378
+    const v2, 0x7f1304e6
 
     .line 95
     .line 96
@@ -1203,7 +1203,7 @@
     move-result-object v1
 
     .line 101
-    iget v2, p0, Lz4/a;->X:I
+    iget v2, p0, Lz4/a;->y:I
 
     .line 102
     .line 103
@@ -1367,11 +1367,11 @@
 
     .line 24
     :cond_0
-    iget-object v0, p0, Lz4/a;->d:Lt5/j;
+    iget-object v0, p0, Lz4/a;->d:Lv5/j;
 
     .line 25
     .line 26
-    invoke-virtual {v0, p1}, Lt5/j;->draw(Landroid/graphics/Canvas;)V
+    invoke-virtual {v0, p1}, Lv5/j;->draw(Landroid/graphics/Canvas;)V
 
     .line 27
     .line 28
@@ -1409,11 +1409,11 @@
     .line 44
     .line 45
     .line 46
-    iget-object v2, p0, Lz4/a;->h:Ln5/l;
+    iget-object v2, p0, Lz4/a;->h:Ln5/k;
 
     .line 47
     .line 48
-    iget-object v3, v2, Ln5/l;->a:Landroid/text/TextPaint;
+    iget-object v3, v2, Ln5/k;->a:Landroid/text/TextPaint;
 
     .line 49
     .line 50
@@ -1433,7 +1433,7 @@
     .line 56
     .line 57
     .line 58
-    iget v3, p0, Lz4/a;->y:F
+    iget v3, p0, Lz4/a;->x:F
 
     .line 59
     .line 60
@@ -1448,7 +1448,7 @@
     sub-float/2addr v3, v4
 
     .line 65
-    iget v4, p0, Lz4/a;->x:F
+    iget v4, p0, Lz4/a;->w:F
 
     .line 66
     .line 67
@@ -1483,7 +1483,7 @@
 
     .line 79
     :goto_1
-    iget-object v2, v2, Ln5/l;->a:Landroid/text/TextPaint;
+    iget-object v2, v2, Ln5/k;->a:Landroid/text/TextPaint;
 
     .line 80
     .line 81
@@ -1501,7 +1501,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -1509,7 +1509,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lz4/b;->b1:I
+    iget v0, v0, Lz4/b;->Z:I
 
     .line 6
     .line 7
@@ -1534,7 +1534,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -1542,7 +1542,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lz4/b;->Z:Ljava/lang/String;
+    iget-object v0, v0, Lz4/b;->Y:Ljava/lang/String;
 
     .line 6
     .line 7
@@ -1584,7 +1584,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -1592,7 +1592,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lz4/b;->Z:Ljava/lang/String;
+    iget-object v1, v0, Lz4/b;->Y:Ljava/lang/String;
 
     .line 6
     .line 7
@@ -1604,7 +1604,7 @@
 
     .line 10
     :cond_0
-    iget v0, v0, Lz4/b;->b1:I
+    iget v0, v0, Lz4/b;->Z:I
 
     .line 11
     .line 12
@@ -1633,7 +1633,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -1641,7 +1641,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lz4/b;->Y:I
+    iget v0, v0, Lz4/b;->X:I
 
     .line 6
     .line 7
@@ -1652,7 +1652,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lz4/a;->q:Landroid/graphics/Rect;
+    iget-object v0, p0, Lz4/a;->p:Landroid/graphics/Rect;
 
     .line 2
     .line 3
@@ -1671,7 +1671,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lz4/a;->q:Landroid/graphics/Rect;
+    iget-object v0, p0, Lz4/a;->p:Landroid/graphics/Rect;
 
     .line 2
     .line 3
@@ -1732,7 +1732,7 @@
     move-result v1
 
     .line 16
-    iget-object v2, p0, Lz4/a;->w:Lz4/c;
+    iget-object v2, p0, Lz4/a;->q:Lz4/c;
 
     .line 17
     .line 18
@@ -1744,7 +1744,7 @@
 
     .line 21
     .line 22
-    iget-object v1, v1, Lz4/b;->y:Ljava/lang/Integer;
+    iget-object v1, v1, Lz4/b;->x:Ljava/lang/Integer;
 
     .line 23
     .line 24
@@ -1764,7 +1764,7 @@
 
     .line 30
     .line 31
-    iget-object v1, v1, Lz4/b;->w:Ljava/lang/Integer;
+    iget-object v1, v1, Lz4/b;->q:Ljava/lang/Integer;
 
     .line 32
     .line 33
@@ -1793,7 +1793,7 @@
 
     .line 44
     .line 45
-    iget-object v2, v2, Lz4/b;->X:Ljava/lang/Integer;
+    iget-object v2, v2, Lz4/b;->y:Ljava/lang/Integer;
 
     .line 46
     .line 47
@@ -1813,7 +1813,7 @@
 
     .line 53
     .line 54
-    iget-object v2, v2, Lz4/b;->x:Ljava/lang/Integer;
+    iget-object v2, v2, Lz4/b;->w:Ljava/lang/Integer;
 
     .line 55
     .line 56
@@ -1826,7 +1826,7 @@
 
     .line 60
     :goto_1
-    invoke-static {v0, v1, v2}, Lt5/o;->a(Landroid/content/Context;II)Lt5/n;
+    invoke-static {v0, v1, v2}, Lv5/o;->a(Landroid/content/Context;II)Lv5/n;
 
     .line 61
     .line 62
@@ -1834,7 +1834,7 @@
     move-result-object v0
 
     .line 64
-    invoke-virtual {v0}, Lt5/n;->a()Lt5/o;
+    invoke-virtual {v0}, Lv5/n;->a()Lv5/o;
 
     .line 65
     .line 66
@@ -1842,11 +1842,11 @@
     move-result-object v0
 
     .line 68
-    iget-object v1, p0, Lz4/a;->d:Lt5/j;
+    iget-object v1, p0, Lz4/a;->d:Lv5/j;
 
     .line 69
     .line 70
-    invoke-virtual {v1, v0}, Lt5/j;->setShapeAppearanceModel(Lt5/o;)V
+    invoke-virtual {v1, v0}, Lv5/j;->setShapeAppearanceModel(Lv5/o;)V
 
     .line 71
     .line 72
@@ -1872,7 +1872,7 @@
     .line 4
     .line 5
     .line 6
-    iput-object v0, p0, Lz4/a;->B1:Ljava/lang/ref/WeakReference;
+    iput-object v0, p0, Lz4/a;->b1:Ljava/lang/ref/WeakReference;
 
     .line 7
     .line 8
@@ -1961,7 +1961,7 @@
 
     .line 10
     .line 11
-    iget-object v3, v0, Lz4/a;->B1:Ljava/lang/ref/WeakReference;
+    iget-object v3, v0, Lz4/a;->b1:Ljava/lang/ref/WeakReference;
 
     .line 12
     .line 13
@@ -2014,7 +2014,7 @@
     .line 33
     .line 34
     .line 35
-    iget-object v5, v0, Lz4/a;->q:Landroid/graphics/Rect;
+    iget-object v5, v0, Lz4/a;->p:Landroid/graphics/Rect;
 
     .line 36
     .line 37
@@ -2083,7 +2083,7 @@
     move-result v7
 
     .line 69
-    iget-object v8, v0, Lz4/a;->w:Lz4/c;
+    iget-object v8, v0, Lz4/a;->q:Lz4/c;
 
     .line 70
     .line 71
@@ -2104,7 +2104,7 @@
     .line 77
     .line 78
     :goto_2
-    iput v7, v0, Lz4/a;->Y:F
+    iput v7, v0, Lz4/a;->X:F
 
     .line 79
     .line 80
@@ -2124,11 +2124,11 @@
 
     .line 87
     .line 88
-    iput v7, v0, Lz4/a;->Z:F
+    iput v7, v0, Lz4/a;->Y:F
 
     .line 89
     .line 90
-    iput v7, v0, Lz4/a;->b1:F
+    iput v7, v0, Lz4/a;->Z:F
 
     .line 91
     .line 92
@@ -2179,7 +2179,7 @@
     int-to-float v7, v7
 
     .line 111
-    iput v7, v0, Lz4/a;->Z:F
+    iput v7, v0, Lz4/a;->Y:F
 
     .line 112
     .line 113
@@ -2226,7 +2226,7 @@
     int-to-float v7, v7
 
     .line 131
-    iput v7, v0, Lz4/a;->b1:F
+    iput v7, v0, Lz4/a;->Z:F
 
     .line 132
     .line 133
@@ -2251,15 +2251,15 @@
     move-result-object v7
 
     .line 143
-    iget v10, v0, Lz4/a;->Z:F
+    iget v10, v0, Lz4/a;->Y:F
 
     .line 144
     .line 145
-    iget-object v12, v0, Lz4/a;->h:Ln5/l;
+    iget-object v12, v0, Lz4/a;->h:Ln5/k;
 
     .line 146
     .line 147
-    invoke-virtual {v12, v7}, Ln5/l;->a(Ljava/lang/String;)F
+    invoke-virtual {v12, v7}, Ln5/k;->a(Ljava/lang/String;)F
 
     .line 148
     .line 149
@@ -2300,15 +2300,15 @@
     move-result v10
 
     .line 166
-    iput v10, v0, Lz4/a;->Z:F
+    iput v10, v0, Lz4/a;->Y:F
 
     .line 167
     .line 168
-    iget v10, v0, Lz4/a;->b1:F
+    iget v10, v0, Lz4/a;->Z:F
 
     .line 169
     .line 170
-    iget-boolean v13, v12, Ln5/l;->e:Z
+    iget-boolean v13, v12, Ln5/k;->e:Z
 
     .line 171
     .line 172
@@ -2316,7 +2316,7 @@
 
     .line 173
     .line 174
-    iget v7, v12, Ln5/l;->d:F
+    iget v7, v12, Ln5/k;->d:F
 
     .line 175
     .line 176
@@ -2324,12 +2324,12 @@
 
     .line 177
     :cond_8
-    invoke-virtual {v12, v7}, Ln5/l;->b(Ljava/lang/String;)V
+    invoke-virtual {v12, v7}, Ln5/k;->b(Ljava/lang/String;)V
 
     .line 178
     .line 179
     .line 180
-    iget v7, v12, Ln5/l;->d:F
+    iget v7, v12, Ln5/k;->d:F
 
     .line 181
     .line 182
@@ -2367,11 +2367,11 @@
     move-result v7
 
     .line 197
-    iput v7, v0, Lz4/a;->b1:F
+    iput v7, v0, Lz4/a;->Z:F
 
     .line 198
     .line 199
-    iget v10, v0, Lz4/a;->Z:F
+    iget v10, v0, Lz4/a;->Y:F
 
     .line 200
     .line 201
@@ -2383,7 +2383,7 @@
     move-result v7
 
     .line 205
-    iput v7, v0, Lz4/a;->Z:F
+    iput v7, v0, Lz4/a;->Y:F
 
     .line 206
     .line 207
@@ -2548,7 +2548,7 @@
 
     .line 284
     .line 285
-    iget v1, v0, Lz4/a;->b1:F
+    iget v1, v0, Lz4/a;->Z:F
 
     .line 286
     .line 287
@@ -2619,7 +2619,7 @@
     int-to-float v1, v9
 
     .line 319
-    iput v1, v0, Lz4/a;->y:F
+    iput v1, v0, Lz4/a;->x:F
 
     .line 320
     .line 321
@@ -2637,7 +2637,7 @@
     int-to-float v1, v9
 
     .line 326
-    iput v1, v0, Lz4/a;->y:F
+    iput v1, v0, Lz4/a;->x:F
 
     .line 327
     .line 328
@@ -2782,7 +2782,7 @@
     int-to-float v1, v1
 
     .line 393
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 394
     .line 395
@@ -2807,7 +2807,7 @@
     int-to-float v1, v1
 
     .line 402
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 403
     .line 404
@@ -2843,14 +2843,14 @@
     int-to-float v1, v1
 
     .line 417
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 418
     .line 419
     sub-float/2addr v1, v6
 
     .line 420
-    iget v6, v0, Lz4/a;->b1:F
+    iget v6, v0, Lz4/a;->Z:F
 
     .line 421
     .line 422
@@ -2878,14 +2878,14 @@
     int-to-float v1, v1
 
     .line 431
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 432
     .line 433
     add-float/2addr v1, v6
 
     .line 434
-    iget v6, v0, Lz4/a;->b1:F
+    iget v6, v0, Lz4/a;->Z:F
 
     .line 435
     .line 436
@@ -2903,7 +2903,7 @@
 
     .line 441
     :goto_e
-    iput v1, v0, Lz4/a;->x:F
+    iput v1, v0, Lz4/a;->w:F
 
     .line 442
     .line 443
@@ -2934,14 +2934,14 @@
     int-to-float v1, v1
 
     .line 455
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 456
     .line 457
     add-float/2addr v1, v6
 
     .line 458
-    iget v6, v0, Lz4/a;->b1:F
+    iget v6, v0, Lz4/a;->Z:F
 
     .line 459
     .line 460
@@ -2970,14 +2970,14 @@
     int-to-float v1, v1
 
     .line 469
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 470
     .line 471
     sub-float/2addr v1, v6
 
     .line 472
-    iget v6, v0, Lz4/a;->b1:F
+    iget v6, v0, Lz4/a;->Z:F
 
     .line 473
     .line 474
@@ -3017,7 +3017,7 @@
     int-to-float v1, v1
 
     .line 489
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 490
     .line 491
@@ -3041,7 +3041,7 @@
     int-to-float v1, v1
 
     .line 498
-    iget v6, v0, Lz4/a;->Z:F
+    iget v6, v0, Lz4/a;->Y:F
 
     .line 499
     .line 500
@@ -3055,7 +3055,7 @@
 
     .line 503
     :goto_10
-    iput v1, v0, Lz4/a;->x:F
+    iput v1, v0, Lz4/a;->w:F
 
     .line 504
     .line 505
@@ -3149,19 +3149,19 @@
     .line 548
     :cond_19
     :goto_12
-    iget v1, v0, Lz4/a;->x:F
+    iget v1, v0, Lz4/a;->w:F
 
     .line 549
     .line 550
-    iget v3, v0, Lz4/a;->y:F
+    iget v3, v0, Lz4/a;->x:F
 
     .line 551
     .line 552
-    iget v4, v0, Lz4/a;->Z:F
+    iget v4, v0, Lz4/a;->Y:F
 
     .line 553
     .line 554
-    iget v6, v0, Lz4/a;->b1:F
+    iget v6, v0, Lz4/a;->Z:F
 
     .line 555
     .line 556
@@ -3196,7 +3196,7 @@
     .line 567
     .line 568
     .line 569
-    iget v1, v0, Lz4/a;->Y:F
+    iget v1, v0, Lz4/a;->X:F
 
     .line 570
     .line 571
@@ -3204,7 +3204,7 @@
 
     .line 572
     .line 573
-    iget-object v4, v0, Lz4/a;->d:Lt5/j;
+    iget-object v4, v0, Lz4/a;->d:Lv5/j;
 
     .line 574
     .line 575
@@ -3212,15 +3212,15 @@
 
     .line 576
     .line 577
-    iget-object v3, v4, Lt5/j;->d:Lt5/h;
+    iget-object v3, v4, Lv5/j;->d:Lv5/h;
 
     .line 578
     .line 579
-    iget-object v3, v3, Lt5/h;->a:Lt5/o;
+    iget-object v3, v3, Lv5/h;->a:Lv5/o;
 
     .line 580
     .line 581
-    invoke-virtual {v3}, Lt5/o;->g()Lt5/n;
+    invoke-virtual {v3}, Lv5/o;->g()Lv5/n;
 
     .line 582
     .line 583
@@ -3228,59 +3228,59 @@
     move-result-object v3
 
     .line 585
-    new-instance v6, Lt5/a;
+    new-instance v6, Lv5/a;
 
     .line 586
     .line 587
-    invoke-direct {v6, v1}, Lt5/a;-><init>(F)V
+    invoke-direct {v6, v1}, Lv5/a;-><init>(F)V
 
     .line 588
     .line 589
     .line 590
-    iput-object v6, v3, Lt5/n;->e:Lt5/d;
+    iput-object v6, v3, Lv5/n;->e:Lv5/d;
 
     .line 591
     .line 592
-    new-instance v6, Lt5/a;
+    new-instance v6, Lv5/a;
 
     .line 593
     .line 594
-    invoke-direct {v6, v1}, Lt5/a;-><init>(F)V
+    invoke-direct {v6, v1}, Lv5/a;-><init>(F)V
 
     .line 595
     .line 596
     .line 597
-    iput-object v6, v3, Lt5/n;->f:Lt5/d;
+    iput-object v6, v3, Lv5/n;->f:Lv5/d;
 
     .line 598
     .line 599
-    new-instance v6, Lt5/a;
+    new-instance v6, Lv5/a;
 
     .line 600
     .line 601
-    invoke-direct {v6, v1}, Lt5/a;-><init>(F)V
+    invoke-direct {v6, v1}, Lv5/a;-><init>(F)V
 
     .line 602
     .line 603
     .line 604
-    iput-object v6, v3, Lt5/n;->g:Lt5/d;
+    iput-object v6, v3, Lv5/n;->g:Lv5/d;
 
     .line 605
     .line 606
-    new-instance v6, Lt5/a;
+    new-instance v6, Lv5/a;
 
     .line 607
     .line 608
-    invoke-direct {v6, v1}, Lt5/a;-><init>(F)V
+    invoke-direct {v6, v1}, Lv5/a;-><init>(F)V
 
     .line 609
     .line 610
     .line 611
-    iput-object v6, v3, Lt5/n;->h:Lt5/d;
+    iput-object v6, v3, Lv5/n;->h:Lv5/d;
 
     .line 612
     .line 613
-    invoke-virtual {v3}, Lt5/n;->a()Lt5/o;
+    invoke-virtual {v3}, Lv5/n;->a()Lv5/o;
 
     .line 614
     .line 615
@@ -3288,7 +3288,7 @@
     move-result-object v1
 
     .line 617
-    invoke-virtual {v4, v1}, Lt5/j;->setShapeAppearanceModel(Lt5/o;)V
+    invoke-virtual {v4, v1}, Lv5/j;->setShapeAppearanceModel(Lv5/o;)V
 
     .line 618
     .line 619
@@ -3335,7 +3335,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lz4/a;->w:Lz4/c;
+    iget-object v0, p0, Lz4/a;->q:Lz4/c;
 
     .line 2
     .line 3
@@ -3343,7 +3343,7 @@
 
     .line 4
     .line 5
-    iput p1, v1, Lz4/b;->Y:I
+    iput p1, v1, Lz4/b;->X:I
 
     .line 6
     .line 7
@@ -3351,15 +3351,15 @@
 
     .line 8
     .line 9
-    iput p1, v0, Lz4/b;->Y:I
+    iput p1, v0, Lz4/b;->X:I
 
     .line 10
     .line 11
-    iget-object p1, p0, Lz4/a;->h:Ln5/l;
+    iget-object p1, p0, Lz4/a;->h:Ln5/k;
 
     .line 12
     .line 13
-    iget-object p1, p1, Ln5/l;->a:Landroid/text/TextPaint;
+    iget-object p1, p1, Ln5/k;->a:Landroid/text/TextPaint;
 
     .line 14
     .line 15

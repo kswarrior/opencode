@@ -1,34 +1,51 @@
-.class public abstract Lv9/i;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final synthetic Lv9/i;
+.super Lh9/m;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lkotlin/jvm/functions/Function0;
 
 
-# instance fields
-.field public c:J
-
-.field public d:Z
-
-
-# direct methods
-.method public constructor <init>(JZ)V
-    .locals 0
+# virtual methods
+.method public final a()Ljava/lang/Object;
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iget-object v0, p0, Lh9/d;->d:Ljava/lang/Object;
 
     .line 2
     .line 3
-    .line 4
-    iput-wide p1, p0, Lv9/i;->c:J
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 4
     .line 5
     .line 6
-    iput-boolean p3, p0, Lv9/i;->d:Z
+    move-result-object v0
 
     .line 7
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
     .line 8
-    return-void
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    return-object v0
+.end method
+
+.method public final c()Lm9/a;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lh9/r;->a:Lh9/s;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 4
+    .line 5
+    .line 6
+    return-object p0
 .end method

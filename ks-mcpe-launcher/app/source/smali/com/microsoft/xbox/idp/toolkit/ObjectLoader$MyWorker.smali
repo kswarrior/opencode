@@ -1,6 +1,6 @@
 .class Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/microsoft/xbox/idp/toolkit/WorkerLoader$Worker;
@@ -106,7 +106,7 @@
     return-void
 .end method
 
-.method private lambda$start$0(Lcom/microsoft/xbox/idp/toolkit/WorkerLoader$ResultListener;ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
+.method private synthetic lambda$start$0(Lcom/microsoft/xbox/idp/toolkit/WorkerLoader$ResultListener;ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
     .locals 2
 
     .line 1
@@ -194,213 +194,200 @@
 
     .line 41
     .line 42
-    invoke-virtual {p4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {p4, p2, v0}, Lcom/google/gson/Gson;->c(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
 
     .line 43
     .line 44
     .line 45
-    invoke-static {v0}, Lcom/google/gson/reflect/TypeToken;->get(Ljava/lang/Class;)Lcom/google/gson/reflect/TypeToken;
+    move-result-object p4
 
     .line 46
+    invoke-direct {p3, p4}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;-><init>(Ljava/lang/Object;)V
+
     .line 47
     .line 48
-    move-result-object v0
-
     .line 49
-    invoke-virtual {p4, p2, v0}, Lcom/google/gson/Gson;->b(Ljava/io/Reader;Lcom/google/gson/reflect/TypeToken;)Ljava/lang/Object;
+    invoke-virtual {p0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->hasCache()Z
 
     .line 50
     .line 51
     .line 52
-    move-result-object p4
+    move-result p4
 
     .line 53
-    invoke-direct {p3, p4}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;-><init>(Ljava/lang/Object;)V
+    if-eqz p4, :cond_2
 
     .line 54
     .line 55
-    .line 56
-    invoke-virtual {p0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->hasCache()Z
-
-    .line 57
-    .line 58
-    .line 59
-    move-result p4
-
-    .line 60
-    if-eqz p4, :cond_2
-
-    .line 61
-    .line 62
     iget-object p4, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->cache:Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;
 
-    .line 63
-    .line 64
+    .line 56
+    .line 57
     monitor-enter p4
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 65
+    .line 58
     :try_start_1
     iget-object v0, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->cache:Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;
 
-    .line 66
-    .line 67
+    .line 59
+    .line 60
     iget-object v1, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->resultKey:Ljava/lang/Object;
 
-    .line 68
-    .line 69
+    .line 61
+    .line 62
     invoke-interface {v0, v1, p3}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;->put(Ljava/lang/Object;Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;)Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;
 
-    .line 70
-    .line 71
-    .line 72
+    .line 63
+    .line 64
+    .line 65
     monitor-exit p4
 
-    .line 73
+    .line 66
     goto :goto_0
 
-    .line 74
+    .line 67
     :catchall_0
     move-exception p1
 
-    .line 75
+    .line 68
     monitor-exit p4
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 76
+    .line 69
     :try_start_2
     throw p1
 
-    .line 77
+    .line 70
     :catchall_1
     move-exception p1
 
-    .line 78
+    .line 71
     goto :goto_1
 
-    .line 79
+    .line 72
     :cond_2
     :goto_0
     invoke-interface {p1, p3}, Lcom/microsoft/xbox/idp/toolkit/WorkerLoader$ResultListener;->onResult(Ljava/lang/Object;)V
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 80
-    .line 81
-    .line 82
+    .line 73
+    .line 74
+    .line 75
     invoke-virtual {p2}, Ljava/io/InputStreamReader;->close()V
 
-    .line 83
-    .line 84
-    .line 85
+    .line 76
+    .line 77
+    .line 78
     return-void
 
-    .line 86
+    .line 79
     :goto_1
     :try_start_3
     invoke-virtual {p2}, Ljava/io/InputStreamReader;->close()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 87
-    .line 88
-    .line 89
+    .line 80
+    .line 81
+    .line 82
     goto :goto_2
 
-    .line 90
+    .line 83
     :catchall_2
     move-exception p2
 
-    .line 91
+    .line 84
     invoke-virtual {p1, p2}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
 
-    .line 92
-    .line 93
-    .line 94
+    .line 85
+    .line 86
+    .line 87
     :goto_2
     throw p1
 
-    .line 95
+    .line 88
     :cond_3
     :goto_3
     new-instance p4, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;
 
-    .line 96
-    .line 97
+    .line 89
+    .line 90
     new-instance v0, Lcom/microsoft/xbox/idp/toolkit/HttpError;
 
-    .line 98
-    .line 99
+    .line 91
+    .line 92
     invoke-direct {v0, p2, p2, p3}, Lcom/microsoft/xbox/idp/toolkit/HttpError;-><init>(IILjava/io/InputStream;)V
 
+    .line 93
+    .line 94
+    .line 95
+    invoke-direct {p4, v0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;-><init>(Lcom/microsoft/xbox/idp/toolkit/HttpError;)V
+
+    .line 96
+    .line 97
+    .line 98
+    invoke-virtual {p0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->hasCache()Z
+
+    .line 99
     .line 100
     .line 101
+    move-result p2
+
     .line 102
-    invoke-direct {p4, v0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;-><init>(Lcom/microsoft/xbox/idp/toolkit/HttpError;)V
+    if-eqz p2, :cond_4
 
     .line 103
     .line 104
-    .line 105
-    invoke-virtual {p0}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->hasCache()Z
-
-    .line 106
-    .line 107
-    .line 108
-    move-result p2
-
-    .line 109
-    if-eqz p2, :cond_4
-
-    .line 110
-    .line 111
     iget-object p2, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->cache:Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;
 
-    .line 112
-    .line 113
+    .line 105
+    .line 106
     monitor-enter p2
 
-    .line 114
+    .line 107
     :try_start_4
     iget-object p3, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->cache:Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;
 
-    .line 115
-    .line 116
+    .line 108
+    .line 109
     iget-object v0, p0, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$MyWorker;->resultKey:Ljava/lang/Object;
 
-    .line 117
-    .line 118
+    .line 110
+    .line 111
     invoke-interface {p3, v0, p4}, Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Cache;->put(Ljava/lang/Object;Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;)Lcom/microsoft/xbox/idp/toolkit/ObjectLoader$Result;
 
-    .line 119
-    .line 120
-    .line 121
+    .line 112
+    .line 113
+    .line 114
     monitor-exit p2
 
-    .line 122
+    .line 115
     goto :goto_4
 
-    .line 123
+    .line 116
     :catchall_3
     move-exception p1
 
-    .line 124
+    .line 117
     monitor-exit p2
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_3
 
-    .line 125
+    .line 118
     throw p1
 
-    .line 126
+    .line 119
     :cond_4
     :goto_4
     invoke-interface {p1, p4}, Lcom/microsoft/xbox/idp/toolkit/WorkerLoader$ResultListener;->onResult(Ljava/lang/Object;)V
 
-    .line 127
-    .line 128
-    .line 129
+    .line 120
+    .line 121
+    .line 122
     return-void
 .end method
 

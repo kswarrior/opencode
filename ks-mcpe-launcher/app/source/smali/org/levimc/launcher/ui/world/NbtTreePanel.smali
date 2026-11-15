@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/ui/world/NbtTreePanel;
 .super Landroid/widget/LinearLayout;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -226,14 +226,14 @@
     .line 73
     .line 74
     .line 75
-    new-instance v11, Lorg/levimc/launcher/ui/world/h;
+    new-instance v11, Lorg/levimc/launcher/ui/world/g;
 
     .line 76
     .line 77
     const/4 v13, 0x0
 
     .line 78
-    invoke-direct {v11, v0, v13}, Lorg/levimc/launcher/ui/world/h;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;I)V
+    invoke-direct {v11, v0, v13}, Lorg/levimc/launcher/ui/world/g;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;I)V
 
     .line 79
     .line 80
@@ -354,14 +354,14 @@
     .line 141
     .line 142
     .line 143
-    new-instance v9, Lorg/levimc/launcher/ui/world/i;
+    new-instance v9, Lorg/levimc/launcher/ui/world/h;
 
     .line 144
     .line 145
     const/4 v15, 0x1
 
     .line 146
-    invoke-direct {v9, v0, v3, v15}, Lorg/levimc/launcher/ui/world/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v9, v0, v3, v15}, Lorg/levimc/launcher/ui/world/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 147
     .line 148
@@ -485,14 +485,14 @@
 
     .line 211
     .line 212
-    new-instance v14, Lorg/levimc/launcher/ui/world/h;
+    new-instance v14, Lorg/levimc/launcher/ui/world/g;
 
     .line 213
     .line 214
     const/4 v15, 0x1
 
     .line 215
-    invoke-direct {v14, v0, v15}, Lorg/levimc/launcher/ui/world/h;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;I)V
+    invoke-direct {v14, v0, v15}, Lorg/levimc/launcher/ui/world/g;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;I)V
 
     .line 216
     .line 217
@@ -608,7 +608,7 @@
     .line 275
     .line 276
     .line 277
-    invoke-virtual {v3, v10}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
+    invoke-virtual {v3, v10}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/p1;)V
 
     .line 278
     .line 279
@@ -672,11 +672,11 @@
     .line 309
     .line 310
     .line 311
-    new-instance v5, Landroidx/recyclerview/widget/y;
+    new-instance v5, Landroidx/recyclerview/widget/x;
 
     .line 312
     .line 313
-    invoke-direct {v5, v1}, Landroidx/recyclerview/widget/y;-><init>(Landroid/content/Context;)V
+    invoke-direct {v5, v1}, Landroidx/recyclerview/widget/x;-><init>(Landroid/content/Context;)V
 
     .line 314
     .line 315
@@ -718,11 +718,11 @@
     .line 333
     .line 334
     .line 335
-    iput-object v10, v5, Landroidx/recyclerview/widget/y;->a:Landroid/graphics/drawable/Drawable;
+    iput-object v10, v5, Landroidx/recyclerview/widget/x;->a:Landroid/graphics/drawable/Drawable;
 
     .line 336
     .line 337
-    invoke-virtual {v3, v5}, Landroidx/recyclerview/widget/RecyclerView;->g(Landroidx/recyclerview/widget/p1;)V
+    invoke-virtual {v3, v5}, Landroidx/recyclerview/widget/RecyclerView;->g(Landroidx/recyclerview/widget/n1;)V
 
     .line 338
     .line 339
@@ -736,7 +736,7 @@
     .line 343
     .line 344
     .line 345
-    invoke-virtual {v3, v5}, Landroidx/recyclerview/widget/RecyclerView;->h(Landroidx/recyclerview/widget/w1;)V
+    invoke-virtual {v3, v5}, Landroidx/recyclerview/widget/RecyclerView;->h(Landroidx/recyclerview/widget/u1;)V
 
     .line 346
     .line 347
@@ -899,7 +899,7 @@
     move-result-object v1
 
     .line 19
-    new-instance v2, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v2, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 20
     .line 21
@@ -911,7 +911,7 @@
     move-result-object v3
 
     .line 25
-    invoke-direct {v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 26
     .line 27
@@ -961,40 +961,39 @@
 
     .line 49
     :goto_0
-    iget-object v4, v2, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 50
     .line 51
-    check-cast v4, Lg/b;
-
     .line 52
+    move-result-object v2
+
     .line 53
-    iput-object v3, v4, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v3, Lorg/levimc/launcher/ui/world/a;
 
     .line 54
     .line 55
-    new-instance v3, Lorg/levimc/launcher/ui/world/a;
-
-    .line 56
-    .line 57
     const/4 v4, 0x0
 
-    .line 58
+    .line 56
     invoke-direct {v3, p0, p1, v4}, Lorg/levimc/launcher/ui/world/a;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Ljava/lang/Object;I)V
 
+    .line 57
+    .line 58
     .line 59
+    invoke-virtual {v2, v0, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 60
     .line 61
-    invoke-virtual {v2, v0, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 62
-    .line 63
-    .line 64
-    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 63
+    invoke-static {v1, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 64
     .line 65
     .line 66
-    .line 67
     return-void
 .end method
 
@@ -1158,7 +1157,7 @@
     move-result-object v1
 
     .line 75
-    new-instance v3, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v3, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 76
     .line 77
@@ -1170,49 +1169,48 @@
     move-result-object v4
 
     .line 81
-    invoke-direct {v3, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v3, v4}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 82
     .line 83
     .line 84
-    iget-object v4, v3, Lc5/d;->d:Ljava/lang/Object;
+    const-string v4, "Tag type"
 
     .line 85
     .line 86
-    check-cast v4, Lg/b;
+    invoke-virtual {v3, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 87
     .line 88
-    const-string v5, "Tag type"
-
     .line 89
+    move-result-object v3
+
     .line 90
-    iput-object v5, v4, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v4, Lorg/levimc/launcher/ui/world/a;
 
     .line 91
     .line 92
-    new-instance v4, Lorg/levimc/launcher/ui/world/a;
-
-    .line 93
-    .line 94
     const/4 v5, 0x2
 
-    .line 95
+    .line 93
     invoke-direct {v4, p0, v0, v5}, Lorg/levimc/launcher/ui/world/a;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Ljava/lang/Object;I)V
 
+    .line 94
+    .line 95
     .line 96
+    invoke-virtual {v3, v2, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 97
     .line 98
-    invoke-virtual {v3, v2, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 99
-    .line 100
-    .line 101
-    invoke-static {v1, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object v0
 
+    .line 100
+    invoke-static {v1, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 101
     .line 102
     .line 103
-    .line 104
     return-void
 .end method
 
@@ -1284,7 +1282,7 @@
     move-result-object v1
 
     .line 33
-    new-instance v2, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v2, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 34
     .line 35
@@ -1296,94 +1294,100 @@
     move-result-object v3
 
     .line 39
-    invoke-direct {v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 40
     .line 41
     .line 42
-    iget-object v3, v2, Lc5/d;->d:Ljava/lang/Object;
+    const-string v3, "Add tag"
 
     .line 43
     .line 44
-    check-cast v3, Lg/b;
+    invoke-virtual {v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 45
     .line 46
-    const-string v4, "Add tag"
-
     .line 47
+    move-result-object v2
+
     .line 48
-    iput-object v4, v3, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v2, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 49
     .line 50
-    iput-object v0, v3, Lg/b;->s:Landroid/view/View;
-
     .line 51
+    move-result-object v0
+
     .line 52
-    const-string v0, "Add"
+    const-string v2, "Add"
 
     .line 53
     .line 54
     const/4 v3, 0x0
 
     .line 55
-    invoke-virtual {v2, v0, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v0, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 56
     .line 57
     .line 58
-    const-string v0, "Cancel"
-
-    .line 59
-    .line 60
-    invoke-virtual {v2, v0, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
-    .line 61
-    .line 62
-    .line 63
-    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 64
-    .line 65
-    .line 66
-    move-result-object v10
-
-    .line 67
-    const/4 v0, -0x1
-
-    .line 68
-    invoke-virtual {v10, v0}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 69
-    .line 70
-    .line 71
     move-result-object v0
 
-    .line 72
-    new-instance v5, Lorg/levimc/launcher/ui/world/f;
+    .line 59
+    const-string v2, "Cancel"
 
+    .line 60
+    .line 61
+    invoke-virtual {v0, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 62
+    .line 63
+    .line 64
+    move-result-object v0
+
+    .line 65
+    invoke-static {v1, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object v10
+
+    .line 69
+    const/4 v0, -0x1
+
+    .line 70
+    invoke-virtual {v10, v0}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
+    .line 71
+    .line 72
     .line 73
+    move-result-object v0
+
     .line 74
-    move-object v6, p0
+    new-instance v5, Lorg/levimc/launcher/ui/world/e;
 
     .line 75
-    move-object v8, p1
-
     .line 76
-    move-object v9, p2
+    move-object v6, p0
 
     .line 77
-    invoke-direct/range {v5 .. v10}, Lorg/levimc/launcher/ui/world/f;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/core/content/nbt/NbtTag;Lorg/levimc/launcher/core/content/nbt/NbtTag;Landroidx/appcompat/app/AlertDialog;)V
+    move-object v8, p1
 
     .line 78
-    .line 79
-    .line 80
-    invoke-virtual {v0, v5}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-object v9, p2
 
+    .line 79
+    invoke-direct/range {v5 .. v10}, Lorg/levimc/launcher/ui/world/e;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/core/content/nbt/NbtTag;Lorg/levimc/launcher/core/content/nbt/NbtTag;Landroidx/appcompat/app/AlertDialog;)V
+
+    .line 80
     .line 81
     .line 82
+    invoke-virtual {v0, v5}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 83
+    .line 84
+    .line 85
     return-void
 .end method
 
@@ -1843,11 +1847,11 @@
     .line 61
     .line 62
     .line 63
-    new-instance v2, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v2, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 64
     .line 65
-    invoke-direct {v2, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 66
     .line 67
@@ -1939,82 +1943,88 @@
 
     .line 111
     :goto_1
-    iget-object v4, v2, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 112
     .line 113
-    check-cast v4, Lg/b;
-
     .line 114
+    move-result-object v2
+
     .line 115
-    iput-object v3, v4, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v2, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 116
     .line 117
-    iput-object v1, v4, Lg/b;->s:Landroid/view/View;
-
     .line 118
+    move-result-object v1
+
     .line 119
-    const-string v1, "Apply"
+    const-string v2, "Apply"
 
     .line 120
     .line 121
     const/4 v3, 0x0
 
     .line 122
-    invoke-virtual {v2, v1, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 123
     .line 124
     .line 125
-    const-string v1, "Cancel"
+    move-result-object v1
 
     .line 126
-    .line 127
-    invoke-virtual {v2, v1, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
+    const-string v2, "Cancel"
 
+    .line 127
     .line 128
+    invoke-virtual {v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 129
     .line 130
-    invoke-static {v0, v2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
     .line 131
+    move-result-object v1
+
     .line 132
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
     .line 133
+    .line 134
+    .line 135
     move-result-object v11
 
-    .line 134
+    .line 136
     const/4 v0, -0x1
 
-    .line 135
-    invoke-virtual {v11, v0}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 136
     .line 137
+    invoke-virtual {v11, v0}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
     .line 138
+    .line 139
+    .line 140
     move-result-object v0
 
-    .line 139
-    new-instance v7, Lorg/levimc/launcher/ui/world/f;
-
-    .line 140
     .line 141
-    move-object v8, p0
+    new-instance v7, Lorg/levimc/launcher/ui/world/e;
 
     .line 142
-    move-object v10, p1
-
     .line 143
-    invoke-direct/range {v7 .. v12}, Lorg/levimc/launcher/ui/world/f;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Landroidx/appcompat/app/AlertDialog;Landroid/widget/TextView;)V
+    move-object v8, p0
 
     .line 144
-    .line 145
-    .line 146
-    invoke-virtual {v0, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-object v10, p1
 
+    .line 145
+    invoke-direct/range {v7 .. v12}, Lorg/levimc/launcher/ui/world/e;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Landroidx/appcompat/app/AlertDialog;Landroid/widget/TextView;)V
+
+    .line 146
     .line 147
     .line 148
+    invoke-virtual {v0, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 149
+    .line 150
+    .line 151
     return-void
 .end method
 
@@ -3034,14 +3044,14 @@
 
     .line 20
     .line 21
-    new-instance v0, Lorg/levimc/launcher/ui/world/c;
+    new-instance v0, Lorg/levimc/launcher/ui/world/b;
 
     .line 22
     .line 23
     const/4 v1, 0x1
 
     .line 24
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/world/c;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/world/b;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
 
     .line 25
     .line 26
@@ -3070,14 +3080,14 @@
 
     .line 37
     .line 38
-    new-instance v0, Lorg/levimc/launcher/ui/world/c;
+    new-instance v0, Lorg/levimc/launcher/ui/world/b;
 
     .line 39
     .line 40
     const/4 v1, 0x2
 
     .line 41
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/world/c;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/world/b;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
 
     .line 42
     .line 43
@@ -3211,7 +3221,7 @@
     .line 37
     .line 38
     .line 39
-    invoke-virtual {p4}, Lg/d0;->dismiss()V
+    invoke-virtual {p4}, Lg/e0;->dismiss()V
 
     .line 40
     .line 41
@@ -3449,7 +3459,7 @@
     .line 107
     .line 108
     .line 109
-    invoke-virtual {p3}, Lg/d0;->dismiss()V
+    invoke-virtual {p3}, Lg/e0;->dismiss()V
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -3566,7 +3576,7 @@
 .end method
 
 .method private synthetic lambda$new$1(Lorg/levimc/launcher/ui/world/NbtTreePanel$Host;Landroid/view/View;)V
-    .locals 1
+    .locals 2
 
     .line 1
     invoke-direct {p0}, Lorg/levimc/launcher/ui/world/NbtTreePanel;->current()Lorg/levimc/launcher/core/content/nbt/NbtTag;
@@ -3577,20 +3587,23 @@
     move-result-object p2
 
     .line 5
-    new-instance v0, Lorg/levimc/launcher/ui/world/b;
+    new-instance v0, Lbe/a;
 
     .line 6
     .line 7
-    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/world/b;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;)V
+    const/4 v1, 0x2
 
     .line 8
+    invoke-direct {v0, p0, v1}, Lbe/a;-><init>(Ljava/lang/Object;I)V
+
     .line 9
     .line 10
+    .line 11
     invoke-interface {p1, p2, v0}, Lorg/levimc/launcher/ui/world/NbtTreePanel$Host;->snbt(Lorg/levimc/launcher/core/content/nbt/NbtTag;Ljava/util/function/Consumer;)V
 
-    .line 11
     .line 12
     .line 13
+    .line 14
     return-void
 .end method
 
@@ -3769,11 +3782,11 @@
 
     .line 7
     .line 8
-    new-instance v2, Lorg/levimc/launcher/ui/world/g;
+    new-instance v2, Lorg/levimc/launcher/ui/world/f;
 
     .line 9
     .line 10
-    invoke-direct {v2, p0, p1, p2, v0}, Lorg/levimc/launcher/ui/world/g;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Ljava/lang/String;Ljava/util/ArrayList;)V
+    invoke-direct {v2, p0, p1, p2, v0}, Lorg/levimc/launcher/ui/world/f;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Ljava/lang/String;Ljava/util/ArrayList;)V
 
     .line 11
     .line 12
@@ -4028,7 +4041,7 @@
     .line 64
     .line 65
     .line 66
-    invoke-virtual {p3}, Lg/d0;->dismiss()V
+    invoke-virtual {p3}, Lg/e0;->dismiss()V
 
     .line 67
     .line 68
@@ -4201,14 +4214,14 @@
 
     .line 59
     .line 60
-    new-instance v2, Lorg/levimc/launcher/ui/world/c;
+    new-instance v2, Lorg/levimc/launcher/ui/world/b;
 
     .line 61
     .line 62
     const/4 v3, 0x0
 
     .line 63
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/world/c;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/world/b;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;I)V
 
     .line 64
     .line 65
@@ -4334,7 +4347,7 @@
 
     .line 28
     .line 29
-    invoke-static {p0, v1, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p0, v1, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 30
     .line 31
@@ -4370,7 +4383,7 @@
 
     .line 45
     .line 46
-    invoke-static {p0, v1, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p0, v1, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 47
     .line 48
@@ -4529,7 +4542,7 @@
 
     .line 125
     .line 126
-    invoke-static {p0, v1, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p0, v1, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 127
     .line 128
@@ -4656,7 +4669,7 @@
 
     .line 37
     .line 38
-    invoke-static {v3}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
+    invoke-static {v3}, Ln8/a;->b(Landroid/widget/EditText;)Ljava/lang/String;
 
     .line 39
     .line 40
@@ -4801,11 +4814,11 @@
     .line 107
     .line 108
     .line 109
-    new-instance v1, Lorg/levimc/launcher/ui/world/e;
+    new-instance v1, Lorg/levimc/launcher/ui/world/d;
 
     .line 110
     .line 111
-    invoke-direct {v1, p0, v2, v3, v0}, Lorg/levimc/launcher/ui/world/e;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Ljava/lang/String;I)V
+    invoke-direct {v1, p0, v2, v3, v0}, Lorg/levimc/launcher/ui/world/d;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Ljava/lang/String;I)V
 
     .line 112
     .line 113
@@ -5182,7 +5195,7 @@
     move-result-object v0
 
     .line 17
-    new-instance v1, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 18
     .line 19
@@ -5194,34 +5207,34 @@
     move-result-object v2
 
     .line 23
-    invoke-direct {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, v2}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 24
     .line 25
     .line 26
-    iget-object v2, v1, Lc5/d;->d:Ljava/lang/Object;
+    const-string v2, "Delete tag?"
 
     .line 27
     .line 28
-    check-cast v2, Lg/b;
+    invoke-virtual {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 29
     .line 30
-    const-string v3, "Delete tag?"
-
     .line 31
+    move-result-object v1
+
     .line 32
-    iput-object v3, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    iget-object v2, p1, Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;->label:Ljava/lang/String;
 
     .line 33
     .line 34
-    iget-object v3, p1, Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;->label:Ljava/lang/String;
+    invoke-virtual {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setMessage(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 35
     .line 36
-    iput-object v3, v2, Lg/b;->f:Ljava/lang/CharSequence;
-
     .line 37
+    move-result-object v1
+
     .line 38
     new-instance v2, Lorg/levimc/launcher/ui/world/a;
 
@@ -5239,33 +5252,39 @@
 
     .line 45
     .line 46
-    invoke-virtual {v1, p1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v1, p1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 47
     .line 48
     .line 49
-    const-string p1, "Cancel"
+    move-result-object p1
 
     .line 50
+    const-string v1, "Cancel"
+
     .line 51
+    .line 52
     const/4 v2, 0x0
 
-    .line 52
-    invoke-virtual {v1, p1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
     .line 53
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 54
     .line 55
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
     .line 56
+    move-result-object p1
+
     .line 57
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
     .line 58
+    .line 59
+    .line 60
     return-void
 .end method
 
 .method private rename(Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;)V
-    .locals 6
+    .locals 5
 
     .line 1
     iget-object v0, p1, Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;->parent:Lorg/levimc/launcher/core/content/nbt/NbtTag;
@@ -5378,89 +5397,95 @@
     .line 53
     .line 54
     .line 55
-    new-instance v3, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v3, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 56
     .line 57
-    invoke-direct {v3, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v3, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 58
     .line 59
     .line 60
-    iget-object v4, v3, Lc5/d;->d:Ljava/lang/Object;
+    const-string v4, "Rename tag"
 
     .line 61
     .line 62
-    check-cast v4, Lg/b;
+    invoke-virtual {v3, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 63
     .line 64
-    const-string v5, "Rename tag"
-
     .line 65
+    move-result-object v3
+
     .line 66
-    iput-object v5, v4, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v3, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 67
     .line 68
-    iput-object v2, v4, Lg/b;->s:Landroid/view/View;
-
     .line 69
+    move-result-object v2
+
     .line 70
-    const-string v2, "Rename"
+    const-string v3, "Rename"
 
     .line 71
     .line 72
     const/4 v4, 0x0
 
     .line 73
-    invoke-virtual {v3, v2, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v2, v3, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 74
     .line 75
     .line 76
-    const-string v2, "Cancel"
-
-    .line 77
-    .line 78
-    invoke-virtual {v3, v2, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
-    .line 79
-    .line 80
-    .line 81
-    invoke-static {v0, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 82
-    .line 83
-    .line 84
-    move-result-object v0
-
-    .line 85
-    const/4 v2, -0x1
-
-    .line 86
-    invoke-virtual {v0, v2}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 87
-    .line 88
-    .line 89
     move-result-object v2
 
-    .line 90
-    new-instance v3, Lorg/levimc/launcher/ui/world/d;
+    .line 77
+    const-string v3, "Cancel"
 
+    .line 78
+    .line 79
+    invoke-virtual {v2, v3, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 80
+    .line 81
+    .line 82
+    move-result-object v2
+
+    .line 83
+    invoke-static {v0, v2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 84
+    .line 85
+    .line 86
+    move-result-object v0
+
+    .line 87
+    const/4 v2, -0x1
+
+    .line 88
+    invoke-virtual {v0, v2}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
+    .line 89
+    .line 90
     .line 91
+    move-result-object v2
+
     .line 92
-    invoke-direct {v3, p0, v1, p1, v0}, Lorg/levimc/launcher/ui/world/d;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Landroidx/appcompat/app/AlertDialog;)V
+    new-instance v3, Lorg/levimc/launcher/ui/world/c;
 
     .line 93
     .line 94
-    .line 95
-    invoke-virtual {v2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-direct {v3, p0, v1, p1, v0}, Lorg/levimc/launcher/ui/world/c;-><init>(Lorg/levimc/launcher/ui/world/NbtTreePanel;Landroid/widget/EditText;Lorg/levimc/launcher/ui/world/NbtTreePanel$Path;Landroidx/appcompat/app/AlertDialog;)V
 
+    .line 95
     .line 96
     .line 97
+    invoke-virtual {v2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 98
+    .line 99
+    .line 100
     return-void
 .end method
 

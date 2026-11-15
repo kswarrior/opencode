@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;
 .super Lcom/google/android/material/behavior/SwipeDismissBehavior;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -14,7 +14,7 @@
 
 
 # instance fields
-.field public final h:Ls4/c0;
+.field public final h:Ls4/a0;
 
 
 # direct methods
@@ -27,15 +27,15 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Ls4/c0;
+    new-instance v0, Ls4/a0;
 
     .line 5
     .line 6
-    const/16 v1, 0x12
+    const/16 v1, 0x15
 
     .line 7
     .line 8
-    invoke-direct {v0, v1}, Ls4/c0;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/a0;-><init>(I)V
 
     .line 9
     .line 10
@@ -104,7 +104,7 @@
 
     .line 42
     .line 43
-    iput-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/c0;
+    iput-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/a0;
 
     .line 44
     .line 45
@@ -117,7 +117,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/c0;
+    iget-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/a0;
 
     .line 2
     .line 3
@@ -156,7 +156,7 @@
 
     .line 19
     :cond_0
-    sget-object v0, Lb8/c;->h:Lb8/c;
+    sget-object v0, Lv3/c;->d:Lv3/c;
 
     .line 20
     .line 21
@@ -164,25 +164,25 @@
 
     .line 22
     .line 23
-    new-instance v0, Lb8/c;
+    new-instance v0, Lv3/c;
 
     .line 24
     .line 25
-    invoke-direct {v0}, Lb8/c;-><init>()V
+    invoke-direct {v0}, Lv3/c;-><init>()V
 
     .line 26
     .line 27
     .line 28
-    sput-object v0, Lb8/c;->h:Lb8/c;
+    sput-object v0, Lv3/c;->d:Lv3/c;
 
     .line 29
     .line 30
     :cond_1
-    sget-object v0, Lb8/c;->h:Lb8/c;
+    sget-object v0, Lv3/c;->d:Lv3/c;
 
     .line 31
     .line 32
-    iget-object v0, v0, Lb8/c;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lv3/c;->c:Ljava/lang/Object;
 
     .line 33
     .line 34
@@ -243,7 +243,7 @@
 
     .line 55
     .line 56
-    sget-object v0, Lb8/c;->h:Lb8/c;
+    sget-object v0, Lv3/c;->d:Lv3/c;
 
     .line 57
     .line 58
@@ -251,25 +251,25 @@
 
     .line 59
     .line 60
-    new-instance v0, Lb8/c;
+    new-instance v0, Lv3/c;
 
     .line 61
     .line 62
-    invoke-direct {v0}, Lb8/c;-><init>()V
+    invoke-direct {v0}, Lv3/c;-><init>()V
 
     .line 63
     .line 64
     .line 65
-    sput-object v0, Lb8/c;->h:Lb8/c;
+    sput-object v0, Lv3/c;->d:Lv3/c;
 
     .line 66
     .line 67
     :cond_3
-    sget-object v0, Lb8/c;->h:Lb8/c;
+    sget-object v0, Lv3/c;->d:Lv3/c;
 
     .line 68
     .line 69
-    iget-object v0, v0, Lb8/c;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lv3/c;->c:Ljava/lang/Object;
 
     .line 70
     .line 71
@@ -312,7 +312,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/c0;
+    iget-object v0, p0, Lcom/google/android/material/snackbar/BaseTransientBottomBar$Behavior;->h:Ls4/a0;
 
     .line 2
     .line 3
@@ -321,7 +321,7 @@
     .line 4
     .line 5
     .line 6
-    instance-of p1, p1, Lw5/a;
+    instance-of p1, p1, Ly5/a;
 
     .line 7
     .line 8

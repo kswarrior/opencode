@@ -1,130 +1,42 @@
 .class public final Lcom/google/android/gms/internal/measurement/w5;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lcom/google/android/gms/internal/measurement/y5;
+.implements Lcom/google/android/gms/internal/measurement/v5;
 
 
-# virtual methods
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 0
+# static fields
+.field public static final a:Lcom/google/android/gms/internal/measurement/kd;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
 
     .line 1
-    if-ne p1, p0, :cond_0
+    sget-object v0, Lcom/google/android/gms/internal/measurement/f3;->c:Lcom/google/android/gms/internal/measurement/r6;
 
     .line 2
     .line 3
-    const/4 p1, 0x1
-
-    .line 4
-    return p1
-
-    .line 5
-    :cond_0
-    instance-of p1, p1, Lcom/google/android/gms/internal/measurement/w5;
-
-    .line 6
-    .line 7
-    return p1
-.end method
-
-.method public final h(Ljava/lang/String;Lcom/google/android/gms/internal/measurement/y7;Ljava/util/ArrayList;)Lcom/google/android/gms/internal/measurement/y5;
-    .locals 0
-
-    .line 1
-    new-instance p2, Ljava/lang/IllegalStateException;
-
-    .line 2
-    .line 3
-    const-string p3, "null has no function "
+    const-string v1, "measurement.collection.service.update_with_analytics_fix"
 
     .line 4
     .line 5
-    invoke-virtual {p3, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    const/4 v2, 0x0
 
     .line 6
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/r6;->c(Ljava/lang/String;Z)Lcom/google/android/gms/internal/measurement/kd;
+
     .line 7
     .line 8
-    move-result-object p1
-
     .line 9
-    invoke-direct {p2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 10
-    .line 11
-    .line 12
-    throw p2
-.end method
-
-.method public final hashCode()I
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
-.end method
-
-.method public final k()Lcom/google/android/gms/internal/measurement/y5;
-    .locals 1
-
-    .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/y5;->b:Lcom/google/android/gms/internal/measurement/w5;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public final zzc()Ljava/lang/String;
-    .locals 1
-
-    .line 1
-    const-string v0, "null"
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public final zzd()Ljava/lang/Double;
-    .locals 2
-
-    .line 1
-    const-wide/16 v0, 0x0
-
-    .line 2
-    .line 3
-    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
-
-    .line 4
-    .line 5
-    .line 6
     move-result-object v0
 
-    .line 7
-    return-object v0
-.end method
+    .line 10
+    sput-object v0, Lcom/google/android/gms/internal/measurement/w5;->a:Lcom/google/android/gms/internal/measurement/kd;
 
-.method public final zze()Ljava/lang/Boolean;
-    .locals 1
-
-    .line 1
-    sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public final zzf()Ljava/util/Iterator;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return-object v0
+    .line 11
+    .line 12
+    return-void
 .end method

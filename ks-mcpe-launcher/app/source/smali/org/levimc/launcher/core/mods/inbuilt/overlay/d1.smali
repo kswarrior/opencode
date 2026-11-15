@@ -1,116 +1,111 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic X:[Ljava/lang/Runnable;
+.field public final synthetic c:I
 
-.field public final synthetic c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
-.field public final synthetic d:Landroid/widget/EditText;
-
-.field public final synthetic h:Lcom/google/android/material/chip/ChipGroup;
-
-.field public final synthetic q:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
-
-.field public final synthetic w:Ljava/util/ArrayList;
-
-.field public final synthetic x:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;
-
-.field public final synthetic y:Landroidx/recyclerview/widget/RecyclerView;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Landroid/widget/EditText;Lcom/google/android/material/chip/ChipGroup;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;Landroidx/recyclerview/widget/RecyclerView;[Ljava/lang/Runnable;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Landroid/widget/EditText;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->h:Lcom/google/android/material/chip/ChipGroup;
-
-    .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->q:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
-
-    .line 11
-    .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->w:Ljava/util/ArrayList;
-
-    .line 13
-    .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->x:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;
-
-    .line 15
-    .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->y:Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 17
-    .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->X:[Ljava/lang/Runnable;
-
-    .line 19
-    .line 20
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 8
+.method public final onClick(Landroid/view/View;)V
+    .locals 1
 
     .line 1
-    iget-object v6, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->y:Landroidx/recyclerview/widget/RecyclerView;
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->c:I
 
     .line 2
     .line 3
-    iget-object v7, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->X:[Ljava/lang/Runnable;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Landroid/widget/EditText;
-
     .line 8
-    .line 9
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->h:Lcom/google/android/material/chip/ChipGroup;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->m(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;Landroid/view/View;)V
 
+    .line 9
     .line 10
     .line 11
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->q:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
+    return-void
 
     .line 12
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+
     .line 13
-    iget-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->w:Ljava/util/ArrayList;
-
     .line 14
-    .line 15
-    iget-object v5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->x:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;Landroid/view/View;)V
 
+    .line 15
     .line 16
     .line 17
-    invoke-static/range {v0 .. v7}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->w(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Landroid/widget/EditText;Lcom/google/android/material/chip/ChipGroup;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;Landroidx/recyclerview/widget/RecyclerView;[Ljava/lang/Runnable;)V
+    return-void
 
     .line 18
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+
     .line 19
     .line 20
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->k(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;Landroid/view/View;)V
+
+    .line 21
+    .line 22
+    .line 23
     return-void
+
+    .line 24
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/d1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+
+    .line 25
+    .line 26
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;Landroid/view/View;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    nop
+
+    .line 31
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

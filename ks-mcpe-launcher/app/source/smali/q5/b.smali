@@ -1,30 +1,33 @@
 .class public final Lq5/b;
-.super Lh0/b;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic h:Ly6/t1;
+.field public final synthetic c:I
 
-.field public final synthetic i:Lq5/d;
+.field public final synthetic d:Lq5/d;
 
 
 # direct methods
-.method public constructor <init>(Lq5/d;Ly6/t1;)V
+.method public synthetic constructor <init>(Lq5/d;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lq5/b;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lq5/b;->d:Lq5/d;
+
     .line 4
-    iput-object p1, p0, Lq5/b;->i:Lq5/d;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lq5/b;->h:Ly6/t1;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
     return-void
@@ -32,79 +35,161 @@
 
 
 # virtual methods
-.method public final h(I)V
-    .locals 2
+.method public final run()V
+    .locals 4
 
     .line 1
-    iget-object v0, p0, Lq5/b;->i:Lq5/d;
+    iget v0, p0, Lq5/b;->c:I
 
     .line 2
     .line 3
-    const/4 v1, 0x1
+    packed-switch v0, :pswitch_data_0
 
     .line 4
-    iput-boolean v1, v0, Lq5/d;->n:Z
-
     .line 5
     .line 6
-    iget-object v0, p0, Lq5/b;->h:Ly6/t1;
+    iget-object v0, p0, Lq5/b;->d:Lq5/d;
 
     .line 7
     .line 8
-    invoke-virtual {v0, p1}, Ly6/t1;->r(I)V
+    invoke-virtual {v0}, Lq5/d;->getCurrentDrawable()Landroid/graphics/drawable/Drawable;
 
     .line 9
     .line 10
     .line 11
-    return-void
-.end method
-
-.method public final i(Landroid/graphics/Typeface;)V
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lq5/b;->i:Lq5/d;
-
-    .line 2
-    .line 3
-    iget v1, v0, Lq5/d;->d:I
-
-    .line 4
-    .line 5
-    invoke-static {p1, v1}, Landroid/graphics/Typeface;->create(Landroid/graphics/Typeface;I)Landroid/graphics/Typeface;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    iput-object p1, v0, Lq5/d;->p:Landroid/graphics/Typeface;
-
-    .line 10
-    .line 11
-    const/4 p1, 0x1
+    move-result-object v1
 
     .line 12
-    iput-boolean p1, v0, Lq5/d;->n:Z
+    check-cast v1, Lq5/h;
 
     .line 13
     .line 14
-    iget-object p1, v0, Lq5/d;->p:Landroid/graphics/Typeface;
+    const/4 v2, 0x0
 
     .line 15
+    const/4 v3, 0x1
+
     .line 16
-    const/4 v0, 0x0
+    invoke-virtual {v1, v2, v2, v3}, Lq5/h;->d(ZZZ)Z
 
     .line 17
-    iget-object v1, p0, Lq5/b;->h:Ly6/t1;
-
     .line 18
     .line 19
-    invoke-virtual {v1, p1, v0}, Ly6/t1;->s(Landroid/graphics/Typeface;Z)V
+    invoke-virtual {v0}, Lq5/d;->getProgressDrawable()Lq5/f;
 
     .line 20
     .line 21
     .line 22
+    move-result-object v1
+
+    .line 23
+    if-eqz v1, :cond_0
+
+    .line 24
+    .line 25
+    invoke-virtual {v0}, Lq5/d;->getProgressDrawable()Lq5/f;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object v1
+
+    .line 29
+    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->isVisible()Z
+
+    .line 30
+    .line 31
+    .line 32
+    move-result v1
+
+    .line 33
+    if-nez v1, :cond_2
+
+    .line 34
+    .line 35
+    :cond_0
+    invoke-virtual {v0}, Lq5/d;->getIndeterminateDrawable()Lq5/l;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v1
+
+    .line 39
+    if-eqz v1, :cond_1
+
+    .line 40
+    .line 41
+    invoke-virtual {v0}, Lq5/d;->getIndeterminateDrawable()Lq5/l;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object v1
+
+    .line 45
+    invoke-virtual {v1}, Landroid/graphics/drawable/Drawable;->isVisible()Z
+
+    .line 46
+    .line 47
+    .line 48
+    move-result v1
+
+    .line 49
+    if-nez v1, :cond_2
+
+    .line 50
+    .line 51
+    :cond_1
+    const/4 v1, 0x4
+
+    .line 52
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 53
+    .line 54
+    .line 55
+    :cond_2
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 56
+    .line 57
+    .line 58
     return-void
+
+    .line 59
+    :pswitch_0
+    iget-object v0, p0, Lq5/b;->d:Lq5/d;
+
+    .line 60
+    .line 61
+    iget v1, v0, Lq5/d;->q:I
+
+    .line 62
+    .line 63
+    if-lez v1, :cond_3
+
+    .line 64
+    .line 65
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
+
+    .line 66
+    .line 67
+    .line 68
+    :cond_3
+    const/4 v1, 0x0
+
+    .line 69
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 70
+    .line 71
+    .line 72
+    return-void
+
+    .line 73
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

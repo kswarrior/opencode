@@ -1,6 +1,6 @@
 .class public abstract Landroidx/lifecycle/LiveData;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -26,7 +26,7 @@
 
 .field public i:Z
 
-.field public final j:Landroidx/lifecycle/u;
+.field public final j:La6/f0;
 
 
 # direct methods
@@ -100,19 +100,19 @@
 
     .line 24
     .line 25
-    new-instance v1, Landroidx/lifecycle/u;
+    new-instance v1, La6/f0;
 
     .line 26
     .line 27
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     .line 28
-    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/u;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v2}, La6/f0;-><init>(Ljava/lang/Object;I)V
 
     .line 29
     .line 30
     .line 31
-    iput-object v1, p0, Landroidx/lifecycle/LiveData;->j:Landroidx/lifecycle/u;
+    iput-object v1, p0, Landroidx/lifecycle/LiveData;->j:La6/f0;
 
     .line 32
     .line 33
@@ -134,7 +134,7 @@
     .locals 3
 
     .line 1
-    invoke-static {}, Ln/b;->q0()Ln/b;
+    invoke-static {}, Ln/b;->O()Ln/b;
 
     .line 2
     .line 3
@@ -195,7 +195,7 @@
 
     .line 30
     .line 31
-    invoke-static {v1, p0, v2}, Lcom/google/android/gms/internal/measurement/gi;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, p0, v2}, Lcom/google/android/gms/internal/measurement/x;->o(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 32
     .line 33
@@ -522,7 +522,7 @@
     .line 38
     .line 39
     .line 40
-    iget p2, v1, Lo/f;->q:I
+    iget p2, v1, Lo/f;->p:I
 
     .line 41
     .line 42
@@ -530,7 +530,7 @@
 
     .line 43
     .line 44
-    iput p2, v1, Lo/f;->q:I
+    iput p2, v1, Lo/f;->p:I
 
     .line 45
     .line 46
@@ -558,7 +558,7 @@
 
     .line 56
     .line 57
-    iput-object p2, v2, Lo/c;->q:Lo/c;
+    iput-object p2, v2, Lo/c;->p:Lo/c;
 
     .line 58
     .line 59
@@ -630,7 +630,7 @@
     move-result-object p1
 
     .line 88
-    invoke-virtual {p1, v0}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/r;)V
+    invoke-virtual {p1, v0}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/s;)V
 
     .line 89
     .line 90
@@ -696,14 +696,14 @@
     .line 26
     .line 27
     .line 28
-    iget p1, v1, Lo/f;->q:I
+    iget p1, v1, Lo/f;->p:I
 
     .line 29
     .line 30
     add-int/2addr p1, v3
 
     .line 31
-    iput p1, v1, Lo/f;->q:I
+    iput p1, v1, Lo/f;->p:I
 
     .line 32
     .line 33
@@ -731,7 +731,7 @@
 
     .line 43
     .line 44
-    iput-object p1, v2, Lo/c;->q:Lo/c;
+    iput-object p1, v2, Lo/c;->p:Lo/c;
 
     .line 45
     .line 46

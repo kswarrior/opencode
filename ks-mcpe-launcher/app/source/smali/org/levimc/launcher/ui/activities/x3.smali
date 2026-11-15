@@ -1,33 +1,33 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/x3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/util/concurrent/Callable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
-.field public final synthetic b:Lorg/levimc/launcher/core/content/nbt/NbtTag;
+.field public final synthetic d:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/content/nbt/NbtTag;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/SettingsActivity;I)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/x3;->a:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/x3;->b:Lorg/levimc/launcher/core/content/nbt/NbtTag;
-
     .line 4
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/x3;->c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
+    .line 5
     .line 6
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/x3;->d:I
+
     .line 7
     .line 8
     return-void
@@ -35,55 +35,22 @@
 
 
 # virtual methods
-.method public final call()Ljava/lang/Object;
-    .locals 1
+.method public final onClick(Landroid/view/View;)V
+    .locals 2
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/x3;->a:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x3;->c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget v1, p0, Lorg/levimc/launcher/ui/activities/x3;->d:I
 
     .line 4
     .line 5
-    .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x3;->b:Lorg/levimc/launcher/core/content/nbt/NbtTag;
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->x(Lorg/levimc/launcher/ui/activities/SettingsActivity;ILandroid/view/View;)V
 
+    .line 6
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->t1(Lorg/levimc/launcher/core/content/nbt/NbtTag;)Lorg/levimc/launcher/core/content/nbt/NbtTag;
-
-    .line 9
-    .line 10
-    .line 11
-    move-result-object v0
-
-    .line 12
-    return-object v0
-
-    .line 13
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x3;->b:Lorg/levimc/launcher/core/content/nbt/NbtTag;
-
-    .line 14
-    .line 15
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->l3(Lorg/levimc/launcher/core/content/nbt/NbtTag;)Ljava/lang/String;
-
-    .line 16
-    .line 17
-    .line 18
-    move-result-object v0
-
-    .line 19
-    return-object v0
-
-    .line 20
-    nop
-
-    .line 21
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    return-void
 .end method

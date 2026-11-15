@@ -1,208 +1,420 @@
-.class public abstract Lv9/k;
+.class public Lv9/k;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final a:Ljava/lang/String;
+.field public static final synthetic a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
 
-.field public static final b:J
 
-.field public static final c:I
-
-.field public static final d:I
-
-.field public static final e:J
-
-.field public static final f:Lv9/g;
+# instance fields
+.field private volatile synthetic _cur$volatile:Ljava/lang/Object;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 8
+    .locals 3
 
     .line 1
-    const-string v0, "kotlinx.coroutines.scheduler.default.name"
+    const-class v0, Ljava/lang/Object;
 
     .line 2
     .line 3
-    sget v1, Lt9/t;->a:I
+    const-string v1, "_cur$volatile"
 
     .line 4
     .line 5
-    :try_start_0
-    invoke-static {v0}, Ljava/lang/System;->getProperty(Ljava/lang/String;)Ljava/lang/String;
+    const-class v2, Lv9/k;
 
     .line 6
     .line 7
+    invoke-static {v2, v0, v1}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
     .line 8
-    move-result-object v0
-    :try_end_0
-    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
-
     .line 9
-    goto :goto_0
-
     .line 10
-    :catch_0
-    const/4 v0, 0x0
+    move-result-object v0
 
     .line 11
-    :goto_0
-    if-nez v0, :cond_0
+    sput-object v0, Lv9/k;->a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
 
     .line 12
     .line 13
-    const-string v0, "DefaultDispatcher"
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 3
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Lv9/m;
+
+    .line 5
+    .line 6
+    const/16 v1, 0x8
+
+    .line 7
+    .line 8
+    const/4 v2, 0x0
+
+    .line 9
+    invoke-direct {v0, v1, v2}, Lv9/m;-><init>(IZ)V
+
+    .line 10
+    .line 11
+    .line 12
+    iput-object v0, p0, Lv9/k;->_cur$volatile:Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Ljava/lang/Runnable;)Z
+    .locals 4
+
+    .line 1
+    :goto_0
+    sget-object v0, Lv9/k;->a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    check-cast v1, Lv9/m;
+
+    .line 8
+    .line 9
+    invoke-virtual {v1, p1}, Lv9/m;->a(Ljava/lang/Object;)I
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v2
+
+    .line 13
+    const/4 v3, 0x1
 
     .line 14
+    if-eqz v2, :cond_4
+
     .line 15
-    :cond_0
-    sput-object v0, Lv9/k;->a:Ljava/lang/String;
-
     .line 16
-    .line 17
-    const-wide/16 v3, 0x1
+    if-eq v2, v3, :cond_1
 
+    .line 17
     .line 18
+    const/4 v0, 0x2
+
     .line 19
-    const-wide v5, 0x7fffffffffffffffL
+    if-eq v2, v0, :cond_0
 
     .line 20
     .line 21
+    goto :goto_0
+
     .line 22
+    :cond_0
+    const/4 p1, 0x0
+
     .line 23
+    return p1
+
     .line 24
-    const-wide/32 v1, 0x186a0
+    :cond_1
+    invoke-virtual {v1}, Lv9/m;->c()Lv9/m;
 
     .line 25
     .line 26
     .line 27
-    const-string v7, "kotlinx.coroutines.scheduler.resolution.ns"
+    move-result-object v2
+
+    .line 28
+    :cond_2
+    invoke-virtual {v0, p0, v1, v2}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v3
+
+    .line 32
+    if-eqz v3, :cond_3
+
+    .line 33
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :cond_3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v3
+
+    .line 39
+    if-eq v3, v1, :cond_2
+
+    .line 40
+    .line 41
+    goto :goto_0
+
+    .line 42
+    :cond_4
+    return v3
+.end method
+
+.method public final b()V
+    .locals 4
+
+    .line 1
+    :goto_0
+    sget-object v0, Lv9/k;->a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    check-cast v1, Lv9/m;
+
+    .line 8
+    .line 9
+    invoke-virtual {v1}, Lv9/m;->b()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v2
+
+    .line 13
+    if-eqz v2, :cond_0
+
+    .line 14
+    .line 15
+    return-void
+
+    .line 16
+    :cond_0
+    invoke-virtual {v1}, Lv9/m;->c()Lv9/m;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object v2
+
+    .line 20
+    :cond_1
+    invoke-virtual {v0, p0, v1, v2}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 21
+    .line 22
+    .line 23
+    move-result v3
+
+    .line 24
+    if-eqz v3, :cond_2
+
+    .line 25
+    .line 26
+    goto :goto_0
+
+    .line 27
+    :cond_2
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 28
     .line 29
-    invoke-static/range {v1 .. v7}, Lt9/a;->i(JJJLjava/lang/String;)J
+    .line 30
+    move-result-object v3
+
+    .line 31
+    if-eq v3, v1, :cond_1
+
+    .line 32
+    .line 33
+    goto :goto_0
+.end method
+
+.method public final c()I
+    .locals 5
+
+    .line 1
+    sget-object v0, Lv9/k;->a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, Lv9/m;
+
+    .line 8
+    .line 9
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 10
+    .line 11
+    .line 12
+    sget-object v1, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 13
+    .line 14
+    invoke-virtual {v1, v0}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-wide v0
+
+    .line 18
+    const-wide/32 v2, 0x3fffffff
+
+    .line 19
+    .line 20
+    .line 21
+    and-long/2addr v2, v0
+
+    .line 22
+    long-to-int v2, v2
+
+    .line 23
+    const-wide v3, 0xfffffffc0000000L
+
+    .line 24
+    .line 25
+    .line 26
+    .line 27
+    .line 28
+    and-long/2addr v0, v3
+
+    .line 29
+    const/16 v3, 0x1e
+
+    .line 30
+    .line 31
+    shr-long/2addr v0, v3
+
+    .line 32
+    long-to-int v0, v0
+
+    .line 33
+    sub-int/2addr v0, v2
+
+    .line 34
+    const v1, 0x3fffffff    # 1.9999999f
+
+    .line 35
+    .line 36
+    .line 37
+    and-int/2addr v0, v1
+
+    .line 38
+    return v0
+.end method
+
+.method public final d()Ljava/lang/Object;
+    .locals 4
+
+    .line 1
+    :goto_0
+    sget-object v0, Lv9/k;->a:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    check-cast v1, Lv9/m;
+
+    .line 8
+    .line 9
+    invoke-virtual {v1}, Lv9/m;->d()Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v2
+
+    .line 13
+    sget-object v3, Lv9/m;->g:Ld1/p;
+
+    .line 14
+    .line 15
+    if-eq v2, v3, :cond_0
+
+    .line 16
+    .line 17
+    return-object v2
+
+    .line 18
+    :cond_0
+    invoke-virtual {v1}, Lv9/m;->c()Lv9/m;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v2
+
+    .line 22
+    :cond_1
+    invoke-virtual {v0, p0, v1, v2}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v3
+
+    .line 26
+    if-eqz v3, :cond_2
+
+    .line 27
+    .line 28
+    goto :goto_0
+
+    .line 29
+    :cond_2
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 30
     .line 31
     .line 32
-    move-result-wide v0
+    move-result-object v3
 
     .line 33
-    sput-wide v0, Lv9/k;->b:J
+    if-eq v3, v1, :cond_1
 
     .line 34
     .line 35
-    sget v0, Lt9/t;->a:I
-
-    .line 36
-    .line 37
-    const/4 v1, 0x2
-
-    .line 38
-    if-ge v0, v1, :cond_1
-
-    .line 39
-    .line 40
-    move v0, v1
-
-    .line 41
-    :cond_1
-    const/16 v1, 0x8
-
-    .line 42
-    .line 43
-    const-string v2, "kotlinx.coroutines.scheduler.core.pool.size"
-
-    .line 44
-    .line 45
-    invoke-static {v0, v1, v2}, Lt9/a;->j(IILjava/lang/String;)I
-
-    .line 46
-    .line 47
-    .line 48
-    move-result v0
-
-    .line 49
-    sput v0, Lv9/k;->c:I
-
-    .line 50
-    .line 51
-    const v0, 0x1ffffe
-
-    .line 52
-    .line 53
-    .line 54
-    const/4 v1, 0x4
-
-    .line 55
-    const-string v2, "kotlinx.coroutines.scheduler.max.pool.size"
-
-    .line 56
-    .line 57
-    invoke-static {v0, v1, v2}, Lt9/a;->j(IILjava/lang/String;)I
-
-    .line 58
-    .line 59
-    .line 60
-    move-result v0
-
-    .line 61
-    sput v0, Lv9/k;->d:I
-
-    .line 62
-    .line 63
-    sget-object v0, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
-
-    .line 64
-    .line 65
-    const-wide/16 v3, 0x1
-
-    .line 66
-    .line 67
-    const-wide v5, 0x7fffffffffffffffL
-
-    .line 68
-    .line 69
-    .line 70
-    .line 71
-    .line 72
-    const-wide/16 v1, 0x3c
-
-    .line 73
-    .line 74
-    const-string v7, "kotlinx.coroutines.scheduler.keep.alive.sec"
-
-    .line 75
-    .line 76
-    invoke-static/range {v1 .. v7}, Lt9/a;->i(JJJLjava/lang/String;)J
-
-    .line 77
-    .line 78
-    .line 79
-    move-result-wide v1
-
-    .line 80
-    invoke-virtual {v0, v1, v2}, Ljava/util/concurrent/TimeUnit;->toNanos(J)J
-
-    .line 81
-    .line 82
-    .line 83
-    move-result-wide v0
-
-    .line 84
-    sput-wide v0, Lv9/k;->e:J
-
-    .line 85
-    .line 86
-    sget-object v0, Lv9/g;->a:Lv9/g;
-
-    .line 87
-    .line 88
-    sput-object v0, Lv9/k;->f:Lv9/g;
-
-    .line 89
-    .line 90
-    return-void
+    goto :goto_0
 .end method

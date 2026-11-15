@@ -6,6 +6,12 @@
         <item quantity="many">%1$d слоёв • снизу → вверх</item>
         <item quantity="other">%1$d слоя • снизу → вверх</item>
     </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="one">%1$d версия</item>
+        <item quantity="few">%1$d версии</item>
+        <item quantity="many">%1$d версий</item>
+        <item quantity="other">%1$d версии</item>
+    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d вариант</item>
         <item quantity="few">%d варианта</item>
@@ -24,10 +30,70 @@
         <item quantity="many">%d элементов</item>
         <item quantity="other">%d элемента</item>
     </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="one">%1$d мод</item>
+        <item quantity="few">%1$d мода</item>
+        <item quantity="many">%1$d модов</item>
+        <item quantity="other">%1$d мода</item>
+    </plurals>
     <plurals name="mtrl_badge_content_description">
         <item quantity="one">%d новое уведомление</item>
         <item quantity="few">%d новых уведомления</item>
         <item quantity="many">%d новых уведомлений</item>
         <item quantity="other">%d нового уведомления</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="one">Будет удалён %1$d пакет из %2$s. Продолжить?</item>
+        <item quantity="few">Будет удалено %1$d пакета из %2$s. Продолжить?</item>
+        <item quantity="many">Будет удалено %1$d пакетов из %2$s. Продолжить?</item>
+        <item quantity="other">Будет удалено %1$d пакета из %2$s. Продолжить?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="one">Удалён %1$d пакет</item>
+        <item quantity="few">Удалено %1$d пакета</item>
+        <item quantity="many">Удалено %1$d пакетов</item>
+        <item quantity="other">Удалено %1$d пакета</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="one">Выбран %1$d пакет, из них можно обновить: %2$d. Продолжить?</item>
+        <item quantity="few">Выбрано %1$d пакета, из них можно обновить: %2$d. Продолжить?</item>
+        <item quantity="many">Выбрано %1$d пакетов, из них можно обновить: %2$d. Продолжить?</item>
+        <item quantity="other">Выбрано %1$d пакета, из них можно обновить: %2$d. Продолжить?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="one">Обновлён %1$d пакет</item>
+        <item quantity="few">Обновлено %1$d пакета</item>
+        <item quantity="many">Обновлено %1$d пакетов</item>
+        <item quantity="other">Обновлено %1$d пакета</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="one">Показать %d результат</item>
+        <item quantity="few">Показать %d результата</item>
+        <item quantity="many">Показать %d результатов</item>
+        <item quantity="other">Показать %d результата</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="one">%1$d пакет, установлено вами: %2$d · %3$s</item>
+        <item quantity="few">%1$d пакета, установлено вами: %2$d · %3$s</item>
+        <item quantity="many">%1$d пакетов, установлено вами: %2$d · %3$s</item>
+        <item quantity="other">%1$d пакета, установлено вами: %2$d · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="one">%d зависимость</item>
+        <item quantity="few">%d зависимости</item>
+        <item quantity="many">%d зависимостей</item>
+        <item quantity="other">%d зависимости</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="one">Записан %d файл</item>
+        <item quantity="few">Записано %d файла</item>
+        <item quantity="many">Записано %d файлов</item>
+        <item quantity="other">Записано %d файла</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="one">%d версия</item>
+        <item quantity="few">%d версии</item>
+        <item quantity="many">%d версий</item>
+        <item quantity="other">%d версии</item>
     </plurals>
 </resources>

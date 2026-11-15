@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;
 .super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -17,9 +17,9 @@
 # instance fields
 .field displayName:Landroid/widget/TextView;
 
-.field managementIcon:Landroid/widget/ImageView;
+.field icon:Landroid/widget/ImageView;
 
-.field settingsIcon:Landroid/widget/ImageView;
+.field settingsIcon:Lcom/google/android/material/button/MaterialButton;
 
 .field typeTag:Landroid/widget/TextView;
 
@@ -96,17 +96,6 @@
 
     .line 33
     .line 34
-    sget v0, Lorg/levimc/launcher/R$id;->card_management_icon:I
-
-    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
-
-    move-result-object v0
-
-    check-cast v0, Landroid/widget/ImageView;
-
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->managementIcon:Landroid/widget/ImageView;
-
-    .line 35
     sget v0, Lorg/levimc/launcher/R$id;->card_settings_icon:I
 
     .line 35
@@ -116,16 +105,36 @@
     .line 37
     .line 38
     .line 39
-    move-result-object p1
+    move-result-object v0
 
     .line 40
-    check-cast p1, Landroid/widget/ImageView;
+    check-cast v0, Lcom/google/android/material/button/MaterialButton;
 
     .line 41
     .line 42
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->settingsIcon:Landroid/widget/ImageView;
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->settingsIcon:Lcom/google/android/material/button/MaterialButton;
 
     .line 43
     .line 44
+    sget v0, Lorg/levimc/launcher/R$id;->card_icon:I
+
+    .line 45
+    .line 46
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 47
+    .line 48
+    .line 49
+    move-result-object p1
+
+    .line 50
+    check-cast p1, Landroid/widget/ImageView;
+
+    .line 51
+    .line 52
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->icon:Landroid/widget/ImageView;
+
+    .line 53
+    .line 54
     return-void
 .end method

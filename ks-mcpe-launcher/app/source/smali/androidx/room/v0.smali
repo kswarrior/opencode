@@ -1,38 +1,28 @@
 .class public final Landroidx/room/v0;
-.super Lw8/c;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ly8/c;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public B1:I
+.field public p:Landroidx/room/concurrent/CloseBarrier;
 
-.field public X:I
+.field public synthetic q:Ljava/lang/Object;
 
-.field public Y:I
+.field public final synthetic w:Landroidx/room/b1;
 
-.field public synthetic Z:Ljava/lang/Object;
-
-.field public final synthetic b1:Landroidx/room/z0;
-
-.field public q:Landroidx/room/r;
-
-.field public w:Ljava/lang/String;
-
-.field public x:[Ljava/lang/String;
-
-.field public y:I
+.field public x:I
 
 
 # direct methods
-.method public constructor <init>(Landroidx/room/z0;Lw8/c;)V
+.method public constructor <init>(Landroidx/room/b1;Ly8/c;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Landroidx/room/v0;->b1:Landroidx/room/z0;
+    iput-object p1, p0, Landroidx/room/v0;->w:Landroidx/room/b1;
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Lw8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
 
     .line 4
     .line 5
@@ -43,14 +33,14 @@
 
 # virtual methods
 .method public final n(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 2
+    .locals 1
 
     .line 1
-    iput-object p1, p0, Landroidx/room/v0;->Z:Ljava/lang/Object;
+    iput-object p1, p0, Landroidx/room/v0;->q:Ljava/lang/Object;
 
     .line 2
     .line 3
-    iget p1, p0, Landroidx/room/v0;->B1:I
+    iget p1, p0, Landroidx/room/v0;->x:I
 
     .line 4
     .line 5
@@ -61,27 +51,21 @@
     or-int/2addr p1, v0
 
     .line 8
-    iput p1, p0, Landroidx/room/v0;->B1:I
+    iput p1, p0, Landroidx/room/v0;->x:I
 
     .line 9
     .line 10
-    const/4 p1, 0x0
+    iget-object p1, p0, Landroidx/room/v0;->w:Landroidx/room/b1;
 
     .line 11
-    const/4 v0, 0x0
-
     .line 12
-    iget-object v1, p0, Landroidx/room/v0;->b1:Landroidx/room/z0;
+    invoke-static {p1, p0}, Landroidx/room/b1;->b(Landroidx/room/b1;Ly8/c;)Ljava/lang/Object;
 
     .line 13
     .line 14
-    invoke-static {v1, p1, v0, p0}, Landroidx/room/z0;->c(Landroidx/room/z0;Landroidx/room/q0;ILw8/c;)Ljava/lang/Object;
-
     .line 15
-    .line 16
-    .line 17
     move-result-object p1
 
-    .line 18
+    .line 16
     return-object p1
 .end method

@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$1;
-.super Landroidx/recyclerview/widget/s0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Landroidx/recyclerview/widget/q0;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -27,7 +27,7 @@
 
     .line 2
     .line 3
-    invoke-direct {p0, p2, p3}, Landroidx/recyclerview/widget/s0;-><init>(II)V
+    invoke-direct {p0, p2, p3}, Landroidx/recyclerview/widget/q0;-><init>(II)V
 
     .line 4
     .line 5
@@ -41,7 +41,7 @@
     .locals 1
 
     .line 1
-    invoke-super {p0, p1, p2}, Landroidx/recyclerview/widget/o0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    invoke-super {p0, p1, p2}, Landroidx/recyclerview/widget/m0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
     .line 2
     .line 3

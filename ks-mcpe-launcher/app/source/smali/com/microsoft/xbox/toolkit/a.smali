@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/microsoft/xbox/toolkit/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,9 +13,9 @@
 
 .field public final synthetic h:Ljava/lang/Object;
 
-.field public final synthetic q:Ljava/lang/Object;
+.field public final synthetic p:Ljava/lang/Object;
 
-.field public final synthetic w:Ljava/lang/Object;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
@@ -35,11 +35,11 @@
 
     .line 6
     .line 7
-    iput-object p3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iput-object p3, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 8
     .line 9
-    iput-object p4, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iput-object p4, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 10
     .line 11
@@ -70,7 +70,7 @@
 
     .line 7
     .line 8
-    check-cast v0, Ly3/a;
+    check-cast v0, Ld7/e;
 
     .line 9
     .line 10
@@ -78,541 +78,541 @@
 
     .line 11
     .line 12
-    check-cast v1, Lt3/i;
+    check-cast v1, Ljava/lang/String;
 
     .line 13
     .line 14
-    iget-object v2, v1, Lt3/i;->a:Ljava/lang/String;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 15
     .line 16
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    check-cast v2, Ljava/util/Map;
 
     .line 17
     .line 18
-    check-cast v3, Lq3/g;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 19
     .line 20
-    iget-object v4, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    check-cast v3, Ljava/util/List;
 
     .line 21
     .line 22
-    check-cast v4, Lt3/h;
+    iget-object v4, v0, Ld7/e;->h:Ljava/lang/Object;
 
     .line 23
     .line 24
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    check-cast v4, Lz6/h;
 
     .line 25
     .line 26
+    iget-object v0, v0, Ld7/e;->y:Ljava/lang/Object;
+
     .line 27
-    sget-object v5, Ly3/a;->f:Ljava/util/logging/Logger;
-
     .line 28
+    check-cast v0, Ljava/util/concurrent/atomic/AtomicMarkableReference;
+
     .line 29
-    const-string v6, "Transport backend \'"
-
     .line 30
-    .line 31
-    :try_start_0
-    iget-object v7, v0, Ly3/a;->c:Lu3/d;
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
 
+    .line 31
     .line 32
     .line 33
-    invoke-virtual {v7, v2}, Lu3/d;->a(Ljava/lang/String;)Lu3/e;
+    move-result-object v5
 
     .line 34
+    check-cast v5, Ljava/lang/String;
+
     .line 35
     .line 36
-    move-result-object v7
+    if-eqz v5, :cond_0
 
     .line 37
-    if-nez v7, :cond_0
-
     .line 38
-    .line 39
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
 
+    .line 39
     .line 40
     .line 41
-    invoke-direct {v0, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-result-object v0
 
     .line 42
+    check-cast v0, Ljava/lang/String;
+
     .line 43
     .line 44
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v1, v0}, Lz6/h;->i(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 45
     .line 46
     .line 47
-    const-string v1, "\' is not registered"
+    :cond_0
+    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
 
     .line 48
     .line 49
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 50
+    move-result v0
+
     .line 51
+    if-nez v0, :cond_1
+
     .line 52
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
     .line 53
+    const/4 v0, 0x0
+
     .line 54
+    invoke-virtual {v4, v1, v2, v0}, Lz6/h;->h(Ljava/lang/String;Ljava/util/Map;Z)V
+
     .line 55
-    move-result-object v0
-
     .line 56
-    invoke-virtual {v5, v0}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
-
     .line 57
+    :cond_1
+    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
+
     .line 58
     .line 59
-    new-instance v1, Ljava/lang/IllegalArgumentException;
-
     .line 60
+    move-result v0
+
     .line 61
-    invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    if-nez v0, :cond_3
 
     .line 62
     .line 63
-    .line 64
-    invoke-interface {v3, v1}, Lq3/g;->d(Ljava/lang/Exception;)V
+    const-string v0, "Failed to close rollouts state file."
 
+    .line 64
     .line 65
+    iget-object v2, v4, Lz6/h;->a:Ld7/e;
+
     .line 66
     .line 67
-    goto :goto_1
+    const-string v4, "rollouts-state"
 
     .line 68
-    :catch_0
-    move-exception v0
-
     .line 69
-    goto :goto_0
+    invoke-virtual {v2, v1, v4}, Ld7/e;->g(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
 
     .line 70
-    :cond_0
-    check-cast v7, Lr3/c;
-
     .line 71
     .line 72
-    invoke-virtual {v7, v4}, Lr3/c;->a(Lt3/h;)Lt3/h;
-
-    .line 73
-    .line 74
-    .line 75
     move-result-object v2
 
+    .line 73
+    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
+
+    .line 74
+    .line 75
     .line 76
-    iget-object v4, v0, Ly3/a;->e:Lb4/c;
+    move-result v4
 
     .line 77
+    if-eqz v4, :cond_2
+
     .line 78
-    new-instance v6, La4/g;
-
     .line 79
-    .line 80
-    invoke-direct {v6, v0, v1, v2}, La4/g;-><init>(Ly3/a;Lt3/i;Lt3/h;)V
+    new-instance v0, Ljava/lang/StringBuilder;
 
+    .line 80
     .line 81
+    const-string v3, "Rollout state is empty for session: "
+
     .line 82
     .line 83
-    check-cast v4, La4/l;
+    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 84
     .line 85
-    invoke-virtual {v4, v6}, La4/l;->v(Lb4/b;)Ljava/lang/Object;
-
     .line 86
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 87
     .line 88
-    const/4 v0, 0x0
-
     .line 89
-    invoke-interface {v3, v0}, Lq3/g;->d(Ljava/lang/Exception;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 90
     .line 91
     .line 92
-    goto :goto_1
+    move-result-object v0
 
     .line 93
-    :goto_0
-    new-instance v1, Ljava/lang/StringBuilder;
+    invoke-static {v2, v0}, Lz6/h;->g(Ljava/io/File;Ljava/lang/String;)V
 
     .line 94
     .line 95
-    const-string v2, "Error scheduling event "
-
     .line 96
+    goto :goto_3
+
     .line 97
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    :cond_2
+    const/4 v1, 0x0
 
     .line 98
+    :try_start_0
+    invoke-static {v3}, Lz6/h;->e(Ljava/util/List;)Ljava/lang/String;
+
     .line 99
     .line 100
-    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
     .line 101
-    .line 102
-    .line 103
-    move-result-object v2
+    move-result-object v3
 
+    .line 102
+    new-instance v4, Ljava/io/BufferedWriter;
+
+    .line 103
     .line 104
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v5, Ljava/io/OutputStreamWriter;
 
     .line 105
     .line 106
-    .line 107
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    new-instance v6, Ljava/io/FileOutputStream;
 
+    .line 107
     .line 108
+    invoke-direct {v6, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
+
     .line 109
     .line 110
-    move-result-object v1
-
     .line 111
-    invoke-virtual {v5, v1}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
+    sget-object v7, Lz6/h;->b:Ljava/nio/charset/Charset;
 
     .line 112
     .line 113
-    .line 114
-    invoke-interface {v3, v0}, Lq3/g;->d(Ljava/lang/Exception;)V
+    invoke-direct {v5, v6, v7}, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
 
+    .line 114
     .line 115
     .line 116
+    invoke-direct {v4, v5}, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
+    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+
     .line 117
-    :goto_1
-    return-void
-
     .line 118
-    :pswitch_0
-    iget-object v0, p0, Lcom/microsoft/xbox/toolkit/a;->d:Ljava/lang/Object;
-
     .line 119
-    .line 120
-    check-cast v0, Lb7/e;
+    :try_start_1
+    invoke-virtual {v4, v3}, Ljava/io/Writer;->write(Ljava/lang/String;)V
 
+    .line 120
     .line 121
     .line 122
-    iget-object v1, p0, Lcom/microsoft/xbox/toolkit/a;->h:Ljava/lang/Object;
+    invoke-virtual {v4}, Ljava/io/Writer;->flush()V
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 123
     .line 124
-    check-cast v1, Ljava/lang/String;
-
     .line 125
-    .line 126
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    :goto_0
+    invoke-static {v4, v0}, Lx6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
 
+    .line 126
     .line 127
     .line 128
-    check-cast v2, Ljava/util/Map;
+    goto :goto_3
 
     .line 129
-    .line 130
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
-
-    .line 131
-    .line 132
-    check-cast v3, Ljava/util/List;
-
-    .line 133
-    .line 134
-    iget-object v4, v0, Lb7/e;->h:Ljava/lang/Object;
-
-    .line 135
-    .line 136
-    check-cast v4, Lx6/h;
-
-    .line 137
-    .line 138
-    iget-object v0, v0, Lb7/e;->X:Ljava/lang/Object;
-
-    .line 139
-    .line 140
-    check-cast v0, Ljava/util/concurrent/atomic/AtomicMarkableReference;
-
-    .line 141
-    .line 142
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
-
-    .line 143
-    .line 144
-    .line 145
-    move-result-object v5
-
-    .line 146
-    check-cast v5, Ljava/lang/String;
-
-    .line 147
-    .line 148
-    if-eqz v5, :cond_1
-
-    .line 149
-    .line 150
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicMarkableReference;->getReference()Ljava/lang/Object;
-
-    .line 151
-    .line 152
-    .line 153
-    move-result-object v0
-
-    .line 154
-    check-cast v0, Ljava/lang/String;
-
-    .line 155
-    .line 156
-    invoke-virtual {v4, v1, v0}, Lx6/h;->i(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 157
-    .line 158
-    .line 159
-    :cond_1
-    invoke-interface {v2}, Ljava/util/Map;->isEmpty()Z
-
-    .line 160
-    .line 161
-    .line 162
-    move-result v0
-
-    .line 163
-    if-nez v0, :cond_2
-
-    .line 164
-    .line 165
-    const/4 v0, 0x0
-
-    .line 166
-    invoke-virtual {v4, v1, v2, v0}, Lx6/h;->h(Ljava/lang/String;Ljava/util/Map;Z)V
-
-    .line 167
-    .line 168
-    .line 169
-    :cond_2
-    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
-
-    .line 170
-    .line 171
-    .line 172
-    move-result v0
-
-    .line 173
-    if-nez v0, :cond_4
-
-    .line 174
-    .line 175
-    const-string v0, "Failed to close rollouts state file."
-
-    .line 176
-    .line 177
-    iget-object v2, v4, Lx6/h;->a:Lb7/e;
-
-    .line 178
-    .line 179
-    const-string v4, "rollouts-state"
-
-    .line 180
-    .line 181
-    invoke-virtual {v2, v1, v4}, Lb7/e;->g(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-
-    .line 182
-    .line 183
-    .line 184
-    move-result-object v2
-
-    .line 185
-    invoke-interface {v3}, Ljava/util/List;->isEmpty()Z
-
-    .line 186
-    .line 187
-    .line 188
-    move-result v4
-
-    .line 189
-    if-eqz v4, :cond_3
-
-    .line 190
-    .line 191
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 192
-    .line 193
-    const-string v3, "Rollout state is empty for session: "
-
-    .line 194
-    .line 195
-    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 196
-    .line 197
-    .line 198
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 199
-    .line 200
-    .line 201
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 202
-    .line 203
-    .line 204
-    move-result-object v0
-
-    .line 205
-    invoke-static {v2, v0}, Lx6/h;->g(Ljava/io/File;Ljava/lang/String;)V
-
-    .line 206
-    .line 207
-    .line 208
-    goto :goto_5
-
-    .line 209
-    :cond_3
-    const/4 v1, 0x0
-
-    .line 210
-    :try_start_1
-    invoke-static {v3}, Lx6/h;->e(Ljava/util/List;)Ljava/lang/String;
-
-    .line 211
-    .line 212
-    .line 213
-    move-result-object v3
-
-    .line 214
-    new-instance v4, Ljava/io/BufferedWriter;
-
-    .line 215
-    .line 216
-    new-instance v5, Ljava/io/OutputStreamWriter;
-
-    .line 217
-    .line 218
-    new-instance v6, Ljava/io/FileOutputStream;
-
-    .line 219
-    .line 220
-    invoke-direct {v6, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
-
-    .line 221
-    .line 222
-    .line 223
-    sget-object v7, Lx6/h;->b:Ljava/nio/charset/Charset;
-
-    .line 224
-    .line 225
-    invoke-direct {v5, v6, v7}, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
-
-    .line 226
-    .line 227
-    .line 228
-    invoke-direct {v4, v5}, Ljava/io/BufferedWriter;-><init>(Ljava/io/Writer;)V
-    :try_end_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_2
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    .line 229
-    .line 230
-    .line 231
-    :try_start_2
-    invoke-virtual {v4, v3}, Ljava/io/Writer;->write(Ljava/lang/String;)V
-
-    .line 232
-    .line 233
-    .line 234
-    invoke-virtual {v4}, Ljava/io/Writer;->flush()V
-    :try_end_2
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 235
-    .line 236
-    .line 237
-    :goto_2
-    invoke-static {v4, v0}, Lv6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
-
-    .line 238
-    .line 239
-    .line 240
-    goto :goto_5
-
-    .line 241
     :catchall_0
     move-exception v1
 
-    .line 242
-    goto :goto_4
+    .line 130
+    goto :goto_2
 
-    .line 243
-    :catch_1
+    .line 131
+    :catch_0
     move-exception v1
 
-    .line 244
-    goto :goto_3
+    .line 132
+    goto :goto_1
 
-    .line 245
+    .line 133
     :catchall_1
     move-exception v2
 
-    .line 246
+    .line 134
     move-object v4, v1
 
-    .line 247
+    .line 135
     move-object v1, v2
 
-    .line 248
-    goto :goto_4
+    .line 136
+    goto :goto_2
 
-    .line 249
-    :catch_2
+    .line 137
+    :catch_1
     move-exception v3
 
-    .line 250
+    .line 138
     move-object v4, v1
 
-    .line 251
+    .line 139
     move-object v1, v3
 
-    .line 252
-    :goto_3
-    :try_start_3
+    .line 140
+    :goto_1
+    :try_start_2
     const-string v3, "Error serializing rollouts state."
 
-    .line 253
-    .line 254
+    .line 141
+    .line 142
     const-string v5, "FirebaseCrashlytics"
+
+    .line 143
+    .line 144
+    invoke-static {v5, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 145
+    .line 146
+    .line 147
+    invoke-static {v2}, Lz6/h;->f(Ljava/io/File;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    .line 148
+    .line 149
+    .line 150
+    goto :goto_0
+
+    .line 151
+    :goto_2
+    invoke-static {v4, v0}, Lx6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
+
+    .line 152
+    .line 153
+    .line 154
+    throw v1
+
+    .line 155
+    :cond_3
+    :goto_3
+    return-void
+
+    .line 156
+    :pswitch_0
+    iget-object v0, p0, Lcom/microsoft/xbox/toolkit/a;->d:Ljava/lang/Object;
+
+    .line 157
+    .line 158
+    check-cast v0, Ly3/a;
+
+    .line 159
+    .line 160
+    iget-object v1, p0, Lcom/microsoft/xbox/toolkit/a;->h:Ljava/lang/Object;
+
+    .line 161
+    .line 162
+    check-cast v1, Lt3/i;
+
+    .line 163
+    .line 164
+    iget-object v2, v1, Lt3/i;->a:Ljava/lang/String;
+
+    .line 165
+    .line 166
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
+
+    .line 167
+    .line 168
+    check-cast v3, Lq3/f;
+
+    .line 169
+    .line 170
+    iget-object v4, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+
+    .line 171
+    .line 172
+    check-cast v4, Lt3/h;
+
+    .line 173
+    .line 174
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 175
+    .line 176
+    .line 177
+    sget-object v5, Ly3/a;->f:Ljava/util/logging/Logger;
+
+    .line 178
+    .line 179
+    const-string v6, "Transport backend \'"
+
+    .line 180
+    .line 181
+    :try_start_3
+    iget-object v7, v0, Ly3/a;->c:Lu3/d;
+
+    .line 182
+    .line 183
+    invoke-virtual {v7, v2}, Lu3/d;->a(Ljava/lang/String;)Lu3/e;
+
+    .line 184
+    .line 185
+    .line 186
+    move-result-object v7
+
+    .line 187
+    if-nez v7, :cond_4
+
+    .line 188
+    .line 189
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 190
+    .line 191
+    invoke-direct {v0, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 192
+    .line 193
+    .line 194
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 195
+    .line 196
+    .line 197
+    const-string v1, "\' is not registered"
+
+    .line 198
+    .line 199
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 200
+    .line 201
+    .line 202
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 203
+    .line 204
+    .line 205
+    move-result-object v0
+
+    .line 206
+    invoke-virtual {v5, v0}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
+
+    .line 207
+    .line 208
+    .line 209
+    new-instance v1, Ljava/lang/IllegalArgumentException;
+
+    .line 210
+    .line 211
+    invoke-direct {v1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 212
+    .line 213
+    .line 214
+    invoke-interface {v3, v1}, Lq3/f;->d(Ljava/lang/Exception;)V
+
+    .line 215
+    .line 216
+    .line 217
+    goto :goto_5
+
+    .line 218
+    :catch_2
+    move-exception v0
+
+    .line 219
+    goto :goto_4
+
+    .line 220
+    :cond_4
+    check-cast v7, Lr3/c;
+
+    .line 221
+    .line 222
+    invoke-virtual {v7, v4}, Lr3/c;->a(Lt3/h;)Lt3/h;
+
+    .line 223
+    .line 224
+    .line 225
+    move-result-object v2
+
+    .line 226
+    iget-object v4, v0, Ly3/a;->e:Lb4/c;
+
+    .line 227
+    .line 228
+    new-instance v6, La4/h;
+
+    .line 229
+    .line 230
+    invoke-direct {v6, v0, v1, v2}, La4/h;-><init>(Ly3/a;Lt3/i;Lt3/h;)V
+
+    .line 231
+    .line 232
+    .line 233
+    check-cast v4, La4/m;
+
+    .line 234
+    .line 235
+    invoke-virtual {v4, v6}, La4/m;->u(Lb4/b;)Ljava/lang/Object;
+
+    .line 236
+    .line 237
+    .line 238
+    const/4 v0, 0x0
+
+    .line 239
+    invoke-interface {v3, v0}, Lq3/f;->d(Ljava/lang/Exception;)V
+    :try_end_3
+    .catch Ljava/lang/Exception; {:try_start_3 .. :try_end_3} :catch_2
+
+    .line 240
+    .line 241
+    .line 242
+    goto :goto_5
+
+    .line 243
+    :goto_4
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 244
+    .line 245
+    const-string v2, "Error scheduling event "
+
+    .line 246
+    .line 247
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 248
+    .line 249
+    .line 250
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 251
+    .line 252
+    .line 253
+    move-result-object v2
+
+    .line 254
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 255
     .line 256
-    invoke-static {v5, v3, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
     .line 257
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 258
     .line 259
-    invoke-static {v2}, Lx6/h;->f(Ljava/io/File;)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
-
     .line 260
+    move-result-object v1
+
     .line 261
+    invoke-virtual {v5, v1}, Ljava/util/logging/Logger;->warning(Ljava/lang/String;)V
+
     .line 262
-    goto :goto_2
-
     .line 263
-    :goto_4
-    invoke-static {v4, v0}, Lv6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
-
     .line 264
+    invoke-interface {v3, v0}, Lq3/f;->d(Ljava/lang/Exception;)V
+
     .line 265
     .line 266
-    throw v1
-
     .line 267
-    :cond_4
     :goto_5
     return-void
 
@@ -622,7 +622,7 @@
 
     .line 269
     .line 270
-    check-cast v0, Landroid/app/Activity;
+    check-cast v0, Lorg/levimc/launcher/ui/packages/TaskSession$Runner;
 
     .line 271
     .line 272
@@ -630,27 +630,27 @@
 
     .line 273
     .line 274
-    check-cast v1, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
+    check-cast v1, Lorg/levimc/launcher/ui/packages/TaskSession$Tools;
 
     .line 275
     .line 276
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 277
     .line 278
-    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
+    check-cast v2, Lorg/levimc/launcher/ui/packages/TaskSession$Env;
 
     .line 279
     .line 280
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 281
     .line 282
-    check-cast v3, Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;
+    check-cast v3, Lorg/levimc/launcher/ui/packages/TaskSession;
 
     .line 283
     .line 284
-    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/versions/VersionManager;->l(Landroid/app/Activity;Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;Lorg/levimc/launcher/core/versions/GameVersion;Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;)V
+    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/ui/packages/TaskSession;->b(Lorg/levimc/launcher/ui/packages/TaskSession$Runner;Lorg/levimc/launcher/ui/packages/TaskSession$Tools;Lorg/levimc/launcher/ui/packages/TaskSession$Env;Lorg/levimc/launcher/ui/packages/TaskSession;)V
 
     .line 285
     .line 286
@@ -663,7 +663,7 @@
 
     .line 289
     .line 290
-    check-cast v0, Lorg/levimc/launcher/core/versions/VersionManager;
+    check-cast v0, Landroid/app/Activity;
 
     .line 291
     .line 292
@@ -671,27 +671,27 @@
 
     .line 293
     .line 294
-    check-cast v1, Lorg/levimc/launcher/core/versions/GameVersion;
+    check-cast v1, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
 
     .line 295
     .line 296
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 297
     .line 298
-    check-cast v2, Ljava/lang/String;
+    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
 
     .line 299
     .line 300
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 301
     .line 302
-    check-cast v3, Lorg/levimc/launcher/core/versions/VersionManager$OnRenameVersionCallback;
+    check-cast v3, Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;
 
     .line 303
     .line 304
-    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/versions/VersionManager;->r(Lorg/levimc/launcher/core/versions/VersionManager;Lorg/levimc/launcher/core/versions/GameVersion;Ljava/lang/String;Lorg/levimc/launcher/core/versions/VersionManager$OnRenameVersionCallback;)V
+    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/versions/VersionManager;->g(Landroid/app/Activity;Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;Lorg/levimc/launcher/core/versions/GameVersion;Lorg/levimc/launcher/core/versions/VersionManager$LibsRepairCallback;)V
 
     .line 305
     .line 306
@@ -704,7 +704,7 @@
 
     .line 309
     .line 310
-    check-cast v0, Lorg/levimc/launcher/core/mods/FileHandler;
+    check-cast v0, Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 311
     .line 312
@@ -712,27 +712,27 @@
 
     .line 313
     .line 314
-    check-cast v1, Ljava/util/List;
+    check-cast v1, Lorg/levimc/launcher/core/versions/GameVersion;
 
     .line 315
     .line 316
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 317
     .line 318
-    check-cast v2, Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
+    check-cast v2, Ljava/lang/String;
 
     .line 319
     .line 320
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 321
     .line 322
-    check-cast v3, Ljava/util/List;
+    check-cast v3, Lorg/levimc/launcher/core/versions/VersionManager$OnRenameVersionCallback;
 
     .line 323
     .line 324
-    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/mods/FileHandler;->q(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/List;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Ljava/util/List;)V
+    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/versions/VersionManager;->p(Lorg/levimc/launcher/core/versions/VersionManager;Lorg/levimc/launcher/core/versions/GameVersion;Ljava/lang/String;Lorg/levimc/launcher/core/versions/VersionManager$OnRenameVersionCallback;)V
 
     .line 325
     .line 326
@@ -745,7 +745,7 @@
 
     .line 329
     .line 330
-    check-cast v0, Lcom/microsoft/xbox/toolkit/ui/TextureManager;
+    check-cast v0, Lorg/levimc/launcher/core/mods/FileHandler;
 
     .line 331
     .line 332
@@ -753,27 +753,27 @@
 
     .line 333
     .line 334
-    check-cast v1, Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;
+    check-cast v1, Ljava/util/List;
 
     .line 335
     .line 336
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 337
     .line 338
-    check-cast v2, Landroid/widget/ImageView;
+    check-cast v2, Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
 
     .line 339
     .line 340
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 341
     .line 342
-    check-cast v3, Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;
+    check-cast v3, Ljava/util/List;
 
     .line 343
     .line 344
-    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/TextureManager;->b(Lcom/microsoft/xbox/toolkit/ui/TextureManager;Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;Landroid/widget/ImageView;Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;)V
+    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/mods/FileHandler;->p(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/List;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Ljava/util/List;)V
 
     .line 345
     .line 346
@@ -798,15 +798,15 @@
 
     .line 355
     .line 356
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 357
     .line 358
-    check-cast v2, Lcom/microsoft/xbox/toolkit/ui/XLEImageView;
+    check-cast v2, Landroid/widget/ImageView;
 
     .line 359
     .line 360
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 361
     .line 362
@@ -814,7 +814,7 @@
 
     .line 363
     .line 364
-    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/TextureManager;->a(Lcom/microsoft/xbox/toolkit/ui/TextureManager;Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;Lcom/microsoft/xbox/toolkit/ui/XLEImageView;Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;)V
+    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/TextureManager;->b(Lcom/microsoft/xbox/toolkit/ui/TextureManager;Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;Landroid/widget/ImageView;Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;)V
 
     .line 365
     .line 366
@@ -827,7 +827,7 @@
 
     .line 369
     .line 370
-    check-cast v0, Lcom/microsoft/xbox/toolkit/ui/NavigationManager;
+    check-cast v0, Lcom/microsoft/xbox/toolkit/ui/TextureManager;
 
     .line 371
     .line 372
@@ -835,27 +835,27 @@
 
     .line 373
     .line 374
-    check-cast v1, Lcom/microsoft/xbox/toolkit/ui/ActivityParameters;
+    check-cast v1, Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;
 
     .line 375
     .line 376
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 377
     .line 378
-    check-cast v2, Lcom/microsoft/xbox/toolkit/ui/NavigationManager$NavigationCallbacks;
+    check-cast v2, Lcom/microsoft/xbox/toolkit/ui/XLEImageView;
 
     .line 379
     .line 380
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 381
     .line 382
-    check-cast v3, Lcom/microsoft/xbox/toolkit/ui/ScreenLayout;
+    check-cast v3, Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;
 
     .line 383
     .line 384
-    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/NavigationManager;->a(Lcom/microsoft/xbox/toolkit/ui/NavigationManager;Lcom/microsoft/xbox/toolkit/ui/ActivityParameters;Lcom/microsoft/xbox/toolkit/ui/NavigationManager$NavigationCallbacks;Lcom/microsoft/xbox/toolkit/ui/ScreenLayout;)V
+    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/TextureManager;->a(Lcom/microsoft/xbox/toolkit/ui/TextureManager;Lcom/microsoft/xbox/toolkit/ui/TextureManagerScaledNetworkBitmapRequest;Lcom/microsoft/xbox/toolkit/ui/XLEImageView;Lcom/microsoft/xbox/toolkit/ui/XLEBitmap;)V
 
     .line 385
     .line 386
@@ -868,43 +868,85 @@
 
     .line 389
     .line 390
-    check-cast v0, Lcom/microsoft/xbox/toolkit/network/IDataLoaderRunnable;
+    check-cast v0, Lcom/microsoft/xbox/toolkit/ui/NavigationManager;
 
     .line 391
     .line 392
-    iget-object v1, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/microsoft/xbox/toolkit/a;->h:Ljava/lang/Object;
 
     .line 393
     .line 394
-    check-cast v1, Lcom/microsoft/xbox/toolkit/XLEException;
+    check-cast v1, Lcom/microsoft/xbox/toolkit/ui/ActivityParameters;
 
     .line 395
     .line 396
-    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->w:Ljava/lang/Object;
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
 
     .line 397
     .line 398
-    check-cast v2, Lcom/microsoft/xbox/toolkit/AsyncActionStatus;
+    check-cast v2, Lcom/microsoft/xbox/toolkit/ui/NavigationManager$NavigationCallbacks;
 
     .line 399
     .line 400
-    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->h:Ljava/lang/Object;
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
 
     .line 401
     .line 402
-    invoke-static {v0, v3, v1, v2}, Lcom/microsoft/xbox/toolkit/DataLoadUtil;->a(Lcom/microsoft/xbox/toolkit/network/IDataLoaderRunnable;Ljava/lang/Object;Lcom/microsoft/xbox/toolkit/XLEException;Lcom/microsoft/xbox/toolkit/AsyncActionStatus;)V
+    check-cast v3, Lcom/microsoft/xbox/toolkit/ui/ScreenLayout;
 
     .line 403
     .line 404
+    invoke-static {v0, v1, v2, v3}, Lcom/microsoft/xbox/toolkit/ui/NavigationManager;->a(Lcom/microsoft/xbox/toolkit/ui/NavigationManager;Lcom/microsoft/xbox/toolkit/ui/ActivityParameters;Lcom/microsoft/xbox/toolkit/ui/NavigationManager$NavigationCallbacks;Lcom/microsoft/xbox/toolkit/ui/ScreenLayout;)V
+
     .line 405
+    .line 406
+    .line 407
     return-void
 
-    .line 406
+    .line 408
+    :pswitch_8
+    iget-object v0, p0, Lcom/microsoft/xbox/toolkit/a;->d:Ljava/lang/Object;
+
+    .line 409
+    .line 410
+    check-cast v0, Lcom/microsoft/xbox/toolkit/network/IDataLoaderRunnable;
+
+    .line 411
+    .line 412
+    iget-object v1, p0, Lcom/microsoft/xbox/toolkit/a;->p:Ljava/lang/Object;
+
+    .line 413
+    .line 414
+    check-cast v1, Lcom/microsoft/xbox/toolkit/XLEException;
+
+    .line 415
+    .line 416
+    iget-object v2, p0, Lcom/microsoft/xbox/toolkit/a;->q:Ljava/lang/Object;
+
+    .line 417
+    .line 418
+    check-cast v2, Lcom/microsoft/xbox/toolkit/AsyncActionStatus;
+
+    .line 419
+    .line 420
+    iget-object v3, p0, Lcom/microsoft/xbox/toolkit/a;->h:Ljava/lang/Object;
+
+    .line 421
+    .line 422
+    invoke-static {v0, v3, v1, v2}, Lcom/microsoft/xbox/toolkit/DataLoadUtil;->a(Lcom/microsoft/xbox/toolkit/network/IDataLoaderRunnable;Ljava/lang/Object;Lcom/microsoft/xbox/toolkit/XLEException;Lcom/microsoft/xbox/toolkit/AsyncActionStatus;)V
+
+    .line 423
+    .line 424
+    .line 425
+    return-void
+
+    .line 426
     nop
 
-    .line 407
+    .line 427
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_8
         :pswitch_7
         :pswitch_6
         :pswitch_5

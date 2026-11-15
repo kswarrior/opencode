@@ -1,126 +1,187 @@
-.class public final Ls4/q2;
+.class public abstract synthetic Ls4/q2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ljava/lang/Runnable;
-
-
-# instance fields
-.field public final synthetic X:Z
-
-.field public final synthetic Y:Ls4/w2;
-
-.field public final synthetic c:Ljava/lang/String;
-
-.field public final synthetic d:Ljava/lang/String;
-
-.field public final synthetic h:J
-
-.field public final synthetic q:J
-
-.field public final synthetic w:Landroid/os/Bundle;
-
-.field public final synthetic x:Z
-
-.field public final synthetic y:Z
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
-.method public constructor <init>(Ls4/w2;Ljava/lang/String;Ljava/lang/String;JJLandroid/os/Bundle;ZZZ)V
+.method public static bridge synthetic a(Landroid/app/ApplicationExitInfo;)I
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getReason()I
 
     .line 2
     .line 3
     .line 4
-    iput-object p2, p0, Ls4/q2;->c:Ljava/lang/String;
+    move-result p0
 
     .line 5
-    .line 6
-    iput-object p3, p0, Ls4/q2;->d:Ljava/lang/String;
-
-    .line 7
-    .line 8
-    iput-wide p4, p0, Ls4/q2;->h:J
-
-    .line 9
-    .line 10
-    iput-wide p6, p0, Ls4/q2;->q:J
-
-    .line 11
-    .line 12
-    iput-object p8, p0, Ls4/q2;->w:Landroid/os/Bundle;
-
-    .line 13
-    .line 14
-    iput-boolean p9, p0, Ls4/q2;->x:Z
-
-    .line 15
-    .line 16
-    iput-boolean p10, p0, Ls4/q2;->y:Z
-
-    .line 17
-    .line 18
-    iput-boolean p11, p0, Ls4/q2;->X:Z
-
-    .line 19
-    .line 20
-    iput-object p1, p0, Ls4/q2;->Y:Ls4/w2;
-
-    .line 21
-    .line 22
-    return-void
+    return p0
 .end method
 
-
-# virtual methods
-.method public final run()V
-    .locals 11
+.method public static bridge synthetic b(Landroid/app/ApplicationExitInfo;)J
+    .locals 2
 
     .line 1
-    iget-boolean v9, p0, Ls4/q2;->y:Z
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getTimestamp()J
 
     .line 2
     .line 3
-    iget-boolean v10, p0, Ls4/q2;->X:Z
+    .line 4
+    move-result-wide v0
+
+    .line 5
+    return-wide v0
+.end method
+
+.method public static bridge synthetic c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
+    .locals 0
+
+    .line 1
+    check-cast p0, Landroid/app/ApplicationExitInfo;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic d(Landroid/app/ApplicationExitInfo;)Ljava/io/InputStream;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getTraceInputStream()Ljava/io/InputStream;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic e(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->toString()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic f(Landroid/app/ActivityManager;)Ljava/util/List;
+    .locals 2
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    const/4 v1, 0x0
+
+    .line 3
+    invoke-virtual {p0, v0, v1, v1}, Landroid/app/ActivityManager;->getHistoricalProcessExitReasons(Ljava/lang/String;II)Ljava/util/List;
 
     .line 4
     .line 5
-    iget-object v0, p0, Ls4/q2;->Y:Ls4/w2;
-
     .line 6
+    move-result-object p0
+
     .line 7
-    iget-object v1, p0, Ls4/q2;->c:Ljava/lang/String;
+    return-object p0
+.end method
 
-    .line 8
-    .line 9
-    iget-object v2, p0, Ls4/q2;->d:Ljava/lang/String;
+.method public static bridge synthetic g(Landroid/util/SparseArray;I)Z
+    .locals 0
 
-    .line 10
-    .line 11
-    iget-wide v3, p0, Ls4/q2;->h:J
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/util/SparseArray;->contains(I)Z
 
-    .line 12
-    .line 13
-    iget-wide v5, p0, Ls4/q2;->q:J
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
 
-    .line 14
-    .line 15
-    iget-object v7, p0, Ls4/q2;->w:Landroid/os/Bundle;
+    .line 5
+    return p0
+.end method
 
-    .line 16
-    .line 17
-    iget-boolean v8, p0, Ls4/q2;->x:Z
+.method public static bridge synthetic h(Landroid/app/ApplicationExitInfo;)I
+    .locals 0
 
-    .line 18
-    .line 19
-    invoke-virtual/range {v0 .. v10}, Ls4/w2;->A(Ljava/lang/String;Ljava/lang/String;JJLandroid/os/Bundle;ZZZ)V
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getImportance()I
 
-    .line 20
-    .line 21
-    .line 22
-    return-void
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic i(Landroid/app/ApplicationExitInfo;)J
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getPss()J
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-wide v0
+
+    .line 5
+    return-wide v0
+.end method
+
+.method public static bridge synthetic j(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getProcessName()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic k(Landroid/app/ApplicationExitInfo;)I
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getPid()I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic l(Landroid/app/ApplicationExitInfo;)J
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getRss()J
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-wide v0
+
+    .line 5
+    return-wide v0
 .end method

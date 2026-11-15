@@ -1,27 +1,25 @@
-.class public interface abstract annotation Lyd/b;
+.class public final Lyd/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ljava/lang/annotation/Annotation;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# annotations
-.annotation system Ldalvik/annotation/AnnotationDefault;
-    value = .subannotation Lyd/b;
-        required = true
-        value = .enum Lyd/c;->c:Lyd/c;
-    .end subannotation
-.end annotation
-
-.annotation runtime Ljava/lang/annotation/Retention;
-    value = .enum Ljava/lang/annotation/RetentionPolicy;->RUNTIME:Ljava/lang/annotation/RetentionPolicy;
-.end annotation
+# instance fields
+.field public final a:I
 
 
-# virtual methods
-.method public abstract required()Z
-.end method
+# direct methods
+.method public constructor <init>(II)V
+    .locals 0
 
-.method public abstract value()Lyd/c;
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput p1, p0, Lyd/b;->a:I
+
+    .line 5
+    .line 6
+    return-void
 .end method

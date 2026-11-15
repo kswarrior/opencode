@@ -1,9 +1,9 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/n;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # instance fields
@@ -11,13 +11,13 @@
 
 .field public final synthetic d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
 
-.field public final synthetic h:Landroid/net/Uri;
+.field public final synthetic h:Landroid/widget/RadioGroup;
 
-.field public final synthetic q:Ljava/util/ArrayList;
+.field public final synthetic p:Lorg/levimc/launcher/core/content/ContentItem;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/widget/RadioGroup;Lorg/levimc/launcher/core/content/ContentItem;I)V
     .locals 0
 
     .line 1
@@ -29,11 +29,11 @@
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/net/Uri;
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/widget/RadioGroup;
 
     .line 6
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/n;->q:Ljava/util/ArrayList;
+    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/n;->p:Lorg/levimc/launcher/core/content/ContentItem;
 
     .line 8
     .line 9
@@ -47,7 +47,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public final onClick(Landroid/content/DialogInterface;I)V
     .locals 3
 
     .line 1
@@ -60,50 +60,58 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/net/Uri;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/n;->p:Lorg/levimc/launcher/core/content/ContentItem;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/n;->q:Ljava/util/ArrayList;
+    check-cast v0, Lorg/levimc/launcher/core/content/ResourcePackItem;
 
     .line 9
     .line 10
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/n;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/n;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
 
     .line 11
     .line 12
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->S(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;)V
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/widget/RadioGroup;
 
     .line 13
     .line 14
+    invoke-static {v1, v2, v0, p1, p2}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->k0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/widget/RadioGroup;Lorg/levimc/launcher/core/content/ResourcePackItem;Landroid/content/DialogInterface;I)V
+
     .line 15
+    .line 16
+    .line 17
     return-void
 
-    .line 16
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/net/Uri;
-
-    .line 17
     .line 18
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/n;->q:Ljava/util/ArrayList;
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/n;->p:Lorg/levimc/launcher/core/content/ContentItem;
 
     .line 19
     .line 20
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/n;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+    check-cast v0, Lorg/levimc/launcher/core/content/WorldItem;
 
     .line 21
     .line 22
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->Z(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;)V
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/n;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
 
     .line 23
     .line 24
-    .line 25
-    return-void
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/n;->h:Landroid/widget/RadioGroup;
 
+    .line 25
     .line 26
-    nop
+    invoke-static {v1, v2, v0, p1, p2}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->o0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/widget/RadioGroup;Lorg/levimc/launcher/core/content/WorldItem;Landroid/content/DialogInterface;I)V
 
     .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    nop
+
+    .line 31
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

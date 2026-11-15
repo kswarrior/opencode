@@ -1,6 +1,6 @@
 .class public final Landroidx/room/l;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -18,9 +18,9 @@
 
 .field public g:Landroidx/room/e;
 
-.field public final h:Lr9/y;
+.field public final h:Lt9/z;
 
-.field public final i:Lo7/e;
+.field public final i:Lq7/e;
 
 .field public final j:Landroidx/room/j;
 
@@ -36,7 +36,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -45,7 +45,7 @@
 
     .line 7
     .line 8
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -107,19 +107,19 @@
 
     .line 39
     .line 40
-    new-instance p1, Lr9/y;
+    new-instance p1, Lt9/z;
 
     .line 41
     .line 42
     const/4 p2, 0x0
 
     .line 43
-    invoke-direct {p1, p2}, Lr9/y;-><init>(I)V
+    invoke-direct {p1, p2}, Lt9/z;-><init>(I)V
 
     .line 44
     .line 45
     .line 46
-    iput-object p1, p0, Landroidx/room/l;->h:Lr9/y;
+    iput-object p1, p0, Landroidx/room/l;->h:Lt9/z;
 
     .line 47
     .line 48
@@ -127,52 +127,51 @@
 
     .line 49
     .line 50
-    new-instance p2, Lo7/e;
+    new-instance p2, Lq7/e;
 
     .line 51
     .line 52
-    const/16 p3, 0xa
+    const/4 p3, 0x7
 
     .line 53
-    .line 54
     const/4 v0, 0x0
 
-    .line 55
-    invoke-direct {p2, p3, p0, p1, v0}, Lo7/e;-><init>(ILjava/lang/Object;Ljava/lang/Object;Z)V
+    .line 54
+    invoke-direct {p2, p0, p1, v0, p3}, Lq7/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;ZI)V
 
+    .line 55
     .line 56
     .line 57
-    .line 58
-    iput-object p2, p0, Landroidx/room/l;->i:Lo7/e;
+    iput-object p2, p0, Landroidx/room/l;->i:Lq7/e;
 
+    .line 58
     .line 59
-    .line 60
     new-instance p1, Landroidx/room/j;
 
+    .line 60
     .line 61
-    .line 62
     invoke-direct {p1, p0}, Landroidx/room/j;-><init>(Landroidx/room/l;)V
 
+    .line 62
     .line 63
     .line 64
-    .line 65
     iput-object p1, p0, Landroidx/room/l;->j:Landroidx/room/j;
 
+    .line 65
     .line 66
-    .line 67
     new-instance p1, Landroidx/room/k;
 
+    .line 67
     .line 68
-    .line 69
     invoke-direct {p1, p0}, Landroidx/room/k;-><init>(Landroidx/room/l;)V
 
+    .line 69
     .line 70
     .line 71
-    .line 72
     iput-object p1, p0, Landroidx/room/l;->k:Landroidx/room/k;
 
+    .line 72
     .line 73
-    .line 74
     return-void
 .end method
 
@@ -186,7 +185,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -230,7 +229,7 @@
 
     .line 24
     .line 25
-    iget-object v0, p0, Landroidx/room/l;->i:Lo7/e;
+    iget-object v0, p0, Landroidx/room/l;->i:Lq7/e;
 
     .line 26
     .line 27
@@ -238,16 +237,16 @@
 
     .line 28
     .line 29
-    invoke-static {v0, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 30
     .line 31
     .line 32
-    iget-object v3, p1, Landroidx/room/InvalidationTracker;->c:Landroidx/room/z0;
+    iget-object v3, p1, Landroidx/room/InvalidationTracker;->c:Landroidx/room/b1;
 
     .line 33
     .line 34
-    iget-object v4, v0, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v4, v0, Lq7/e;->d:Ljava/lang/Object;
 
     .line 35
     .line 36
@@ -260,11 +259,11 @@
     .line 39
     .line 40
     .line 41
-    new-instance v5, Ls8/i;
+    new-instance v5, Lu8/i;
 
     .line 42
     .line 43
-    invoke-direct {v5}, Ls8/i;-><init>()V
+    invoke-direct {v5}, Lu8/i;-><init>()V
 
     .line 44
     .line 45
@@ -288,7 +287,7 @@
 
     .line 53
     .line 54
-    iget-object v10, v3, Landroidx/room/z0;->c:Ljava/util/HashMap;
+    iget-object v10, v3, Landroidx/room/b1;->c:Ljava/util/HashMap;
 
     .line 55
     .line 56
@@ -304,7 +303,7 @@
     move-result-object v11
 
     .line 62
-    invoke-static {v11, v8}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v11, v8}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 63
     .line 64
@@ -325,7 +324,7 @@
 
     .line 72
     .line 73
-    invoke-virtual {v5, v8}, Ls8/i;->addAll(Ljava/util/Collection;)Z
+    invoke-virtual {v5, v8}, Lu8/i;->addAll(Ljava/util/Collection;)Z
 
     .line 74
     .line 75
@@ -334,7 +333,7 @@
 
     .line 77
     :cond_0
-    invoke-virtual {v5, v9}, Ls8/i;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v5, v9}, Lu8/i;->add(Ljava/lang/Object;)Z
 
     .line 78
     .line 79
@@ -348,7 +347,7 @@
 
     .line 83
     :cond_1
-    invoke-static {v5}, Landroidx/room/g0;->e(Ls8/i;)Ls8/i;
+    invoke-static {v5}, Lk4/f;->b(Lu8/i;)Lu8/i;
 
     .line 84
     .line 85
@@ -391,7 +390,7 @@
 
     .line 102
     .line 103
-    iget-object v10, v3, Landroidx/room/z0;->f:Ljava/util/LinkedHashMap;
+    iget-object v10, v3, Landroidx/room/b1;->f:Ljava/util/LinkedHashMap;
 
     .line 104
     .line 105
@@ -407,7 +406,7 @@
     move-result-object v11
 
     .line 111
-    invoke-static {v11, v8}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v11, v8}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 112
     .line 113
@@ -473,11 +472,11 @@
 
     .line 143
     :cond_3
-    new-instance v3, Landroidx/room/q;
+    new-instance v3, Landroidx/room/r;
 
     .line 144
     .line 145
-    invoke-direct {v3, v0, v6, v4}, Landroidx/room/q;-><init>(Lo7/e;[I[Ljava/lang/String;)V
+    invoke-direct {v3, v0, v6, v4}, Landroidx/room/r;-><init>(Lq7/e;[I[Ljava/lang/String;)V
 
     .line 146
     .line 147
@@ -512,7 +511,7 @@
 
     .line 162
     .line 163
-    invoke-static {v3, v0}, Lr8/s;->N(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {v3, v0}, Lt8/s;->O(Ljava/util/Map;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 164
     .line 165
@@ -520,7 +519,7 @@
     move-result-object v0
 
     .line 167
-    check-cast v0, Landroidx/room/q;
+    check-cast v0, Landroidx/room/r;
 
     .line 168
     .line 169
@@ -547,7 +546,7 @@
     move-result-object v0
 
     .line 178
-    check-cast v0, Landroidx/room/q;
+    check-cast v0, Landroidx/room/r;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -563,7 +562,7 @@
 
     .line 184
     .line 185
-    iget-object p1, p1, Landroidx/room/InvalidationTracker;->c:Landroidx/room/z0;
+    iget-object p1, p1, Landroidx/room/InvalidationTracker;->c:Landroidx/room/b1;
 
     .line 186
     .line 187
@@ -572,7 +571,7 @@
     .line 188
     .line 189
     .line 190
-    iget-object p1, p1, Landroidx/room/z0;->h:Landroidx/room/p;
+    iget-object p1, p1, Landroidx/room/b1;->h:Landroidx/room/p;
 
     .line 191
     .line 192

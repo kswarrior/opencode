@@ -1,196 +1,442 @@
 .class public final Lt9/p;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lt9/d;
 
 
 # instance fields
-.field private volatile array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Ljava/util/concurrent/atomic/AtomicReferenceArray<",
-            "Ljava/lang/Object;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field public final synthetic c:I
+
+.field public final d:Ljava/lang/Object;
+
+.field public final h:Ljava/lang/Object;
+
+.field public final p:Ly8/g;
 
 
 # direct methods
-.method public constructor <init>(I)V
+.method public constructor <init>(Lh9/n;Lt9/d;Lb2/a;)V
     .locals 1
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Lt9/p;->c:I
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    iput-object p1, p0, Lt9/p;->d:Ljava/lang/Object;
+
+    iput-object p2, p0, Lt9/p;->h:Ljava/lang/Object;
+
+    iput-object p3, p0, Lt9/p;->p:Ly8/g;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lt9/d;Lkotlin/coroutines/CoroutineContext;)V
+    .locals 2
+
+    const/4 v0, 0x1
+
+    iput v0, p0, Lt9/p;->c:I
+
     .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 3
+    iput-object p2, p0, Lt9/p;->d:Ljava/lang/Object;
+
     .line 4
-    new-instance v0, Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    invoke-static {p2}, Lv9/a;->k(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/Object;
+
+    move-result-object p2
+
+    iput-object p2, p0, Lt9/p;->h:Ljava/lang/Object;
 
     .line 5
-    .line 6
-    invoke-direct {v0, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+    new-instance p2, Landroidx/room/h0;
 
-    .line 7
-    .line 8
-    .line 9
-    iput-object v0, p0, Lt9/p;->array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    const/4 v0, 0x0
 
-    .line 10
-    .line 11
+    const/16 v1, 0xc
+
+    invoke-direct {p2, p1, v0, v1}, Landroidx/room/h0;-><init>(Ljava/lang/Object;Lkotlin/coroutines/Continuation;I)V
+
+    iput-object p2, p0, Lt9/p;->p:Ly8/g;
+
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()I
-    .locals 1
+.method public final i(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    .locals 7
 
     .line 1
-    iget-object v0, p0, Lt9/p;->array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    iget v0, p0, Lt9/p;->c:I
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->length()I
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    move-result v0
+    iget-object v0, p0, Lt9/p;->d:Ljava/lang/Object;
 
     .line 7
-    return v0
-.end method
-
-.method public final b(I)Ljava/lang/Object;
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lt9/p;->array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->length()I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v1
-
-    .line 7
-    if-ge p1, v1, :cond_0
-
     .line 8
-    .line 9
-    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+    check-cast v0, Lkotlin/coroutines/CoroutineContext;
 
+    .line 9
     .line 10
+    iget-object v1, p0, Lt9/p;->p:Ly8/g;
+
     .line 11
     .line 12
-    move-result-object p1
+    check-cast v1, Landroidx/room/h0;
 
     .line 13
-    return-object p1
-
     .line 14
-    :cond_0
-    const/4 p1, 0x0
+    iget-object v2, p0, Lt9/p;->h:Ljava/lang/Object;
 
     .line 15
-    return-object p1
-.end method
-
-.method public final c(ILv9/a;)V
-    .locals 5
-
-    .line 1
-    iget-object v0, p0, Lt9/p;->array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->length()I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v1
-
-    .line 7
-    if-ge p1, v1, :cond_0
-
-    .line 8
-    .line 9
-    invoke-virtual {v0, p1, p2}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
-
-    .line 10
-    .line 11
-    .line 12
-    return-void
-
-    .line 13
-    :cond_0
-    new-instance v2, Ljava/util/concurrent/atomic/AtomicReferenceArray;
-
-    .line 14
-    .line 15
-    add-int/lit8 v3, p1, 0x1
-
     .line 16
-    .line 17
-    mul-int/lit8 v4, v1, 0x2
+    invoke-static {v0, p1, v2, v1, p2}, Lu9/b;->a(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
 
+    .line 17
     .line 18
     .line 19
-    if-ge v3, v4, :cond_1
+    move-result-object p1
 
     .line 20
-    .line 21
-    move v3, v4
+    sget-object p2, Lx8/a;->c:Lx8/a;
 
+    .line 21
     .line 22
-    :cond_1
-    invoke-direct {v2, v3}, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+    if-ne p1, p2, :cond_0
 
     .line 23
     .line 24
+    goto :goto_0
+
     .line 25
-    const/4 v3, 0x0
+    :cond_0
+    sget-object p1, Ls8/k;->a:Ls8/k;
 
     .line 26
-    :goto_0
-    if-ge v3, v1, :cond_2
-
     .line 27
+    :goto_0
+    return-object p1
+
     .line 28
-    invoke-virtual {v0, v3}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+    :pswitch_0
+    instance-of v0, p2, Lt9/o;
 
     .line 29
     .line 30
-    .line 31
-    move-result-object v4
+    if-eqz v0, :cond_1
 
+    .line 31
     .line 32
-    invoke-virtual {v2, v3, v4}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+    move-object v0, p2
 
     .line 33
+    check-cast v0, Lt9/o;
+
     .line 34
     .line 35
-    add-int/lit8 v3, v3, 0x1
+    iget v1, v0, Lt9/o;->y:I
 
     .line 36
     .line 37
-    goto :goto_0
+    const/high16 v2, -0x80000000
 
     .line 38
-    :cond_2
-    invoke-virtual {v2, p1, p2}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
-
     .line 39
+    and-int v3, v1, v2
+
     .line 40
     .line 41
-    iput-object v2, p0, Lt9/p;->array:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    if-eqz v3, :cond_1
 
     .line 42
     .line 43
-    return-void
+    sub-int/2addr v1, v2
+
+    .line 44
+    iput v1, v0, Lt9/o;->y:I
+
+    .line 45
+    .line 46
+    goto :goto_1
+
+    .line 47
+    :cond_1
+    new-instance v0, Lt9/o;
+
+    .line 48
+    .line 49
+    invoke-direct {v0, p0, p2}, Lt9/o;-><init>(Lt9/p;Lkotlin/coroutines/Continuation;)V
+
+    .line 50
+    .line 51
+    .line 52
+    :goto_1
+    iget-object p2, v0, Lt9/o;->w:Ljava/lang/Object;
+
+    .line 53
+    .line 54
+    iget v1, v0, Lt9/o;->y:I
+
+    .line 55
+    .line 56
+    const/4 v2, 0x3
+
+    .line 57
+    const/4 v3, 0x2
+
+    .line 58
+    sget-object v4, Ls8/k;->a:Ls8/k;
+
+    .line 59
+    .line 60
+    const/4 v5, 0x1
+
+    .line 61
+    sget-object v6, Lx8/a;->c:Lx8/a;
+
+    .line 62
+    .line 63
+    if-eqz v1, :cond_5
+
+    .line 64
+    .line 65
+    if-eq v1, v5, :cond_2
+
+    .line 66
+    .line 67
+    if-eq v1, v3, :cond_4
+
+    .line 68
+    .line 69
+    if-ne v1, v2, :cond_3
+
+    .line 70
+    .line 71
+    :cond_2
+    invoke-static {p2}, La7/t1;->J(Ljava/lang/Object;)V
+
+    .line 72
+    .line 73
+    .line 74
+    goto :goto_4
+
+    .line 75
+    :cond_3
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 76
+    .line 77
+    const-string p2, "call to \'resume\' before \'invoke\' with coroutine"
+
+    .line 78
+    .line 79
+    invoke-direct {p1, p2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 80
+    .line 81
+    .line 82
+    throw p1
+
+    .line 83
+    :cond_4
+    iget-object p1, v0, Lt9/o;->q:Ljava/lang/Object;
+
+    .line 84
+    .line 85
+    iget-object v1, v0, Lt9/o;->p:Lt9/p;
+
+    .line 86
+    .line 87
+    invoke-static {p2}, La7/t1;->J(Ljava/lang/Object;)V
+
+    .line 88
+    .line 89
+    .line 90
+    goto :goto_2
+
+    .line 91
+    :cond_5
+    invoke-static {p2}, La7/t1;->J(Ljava/lang/Object;)V
+
+    .line 92
+    .line 93
+    .line 94
+    iget-object p2, p0, Lt9/p;->d:Ljava/lang/Object;
+
+    .line 95
+    .line 96
+    check-cast p2, Lh9/n;
+
+    .line 97
+    .line 98
+    iget-boolean p2, p2, Lh9/n;->c:Z
+
+    .line 99
+    .line 100
+    if-eqz p2, :cond_6
+
+    .line 101
+    .line 102
+    iget-object p2, p0, Lt9/p;->h:Ljava/lang/Object;
+
+    .line 103
+    .line 104
+    check-cast p2, Lt9/d;
+
+    .line 105
+    .line 106
+    iput v5, v0, Lt9/o;->y:I
+
+    .line 107
+    .line 108
+    invoke-interface {p2, p1, v0}, Lt9/d;->i(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    .line 109
+    .line 110
+    .line 111
+    move-result-object p1
+
+    .line 112
+    if-ne p1, v6, :cond_8
+
+    .line 113
+    .line 114
+    goto :goto_3
+
+    .line 115
+    :cond_6
+    iget-object p2, p0, Lt9/p;->p:Ly8/g;
+
+    .line 116
+    .line 117
+    check-cast p2, Lb2/a;
+
+    .line 118
+    .line 119
+    iput-object p0, v0, Lt9/o;->p:Lt9/p;
+
+    .line 120
+    .line 121
+    iput-object p1, v0, Lt9/o;->q:Ljava/lang/Object;
+
+    .line 122
+    .line 123
+    iput v3, v0, Lt9/o;->y:I
+
+    .line 124
+    .line 125
+    invoke-virtual {p2, p1, v0}, Lb2/a;->g(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 126
+    .line 127
+    .line 128
+    move-result-object p2
+
+    .line 129
+    if-ne p2, v6, :cond_7
+
+    .line 130
+    .line 131
+    goto :goto_3
+
+    .line 132
+    :cond_7
+    move-object v1, p0
+
+    .line 133
+    :goto_2
+    check-cast p2, Ljava/lang/Boolean;
+
+    .line 134
+    .line 135
+    invoke-virtual {p2}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 136
+    .line 137
+    .line 138
+    move-result p2
+
+    .line 139
+    if-nez p2, :cond_8
+
+    .line 140
+    .line 141
+    iget-object p2, v1, Lt9/p;->d:Ljava/lang/Object;
+
+    .line 142
+    .line 143
+    check-cast p2, Lh9/n;
+
+    .line 144
+    .line 145
+    iput-boolean v5, p2, Lh9/n;->c:Z
+
+    .line 146
+    .line 147
+    iget-object p2, v1, Lt9/p;->h:Ljava/lang/Object;
+
+    .line 148
+    .line 149
+    check-cast p2, Lt9/d;
+
+    .line 150
+    .line 151
+    const/4 v1, 0x0
+
+    .line 152
+    iput-object v1, v0, Lt9/o;->p:Lt9/p;
+
+    .line 153
+    .line 154
+    iput-object v1, v0, Lt9/o;->q:Ljava/lang/Object;
+
+    .line 155
+    .line 156
+    iput v2, v0, Lt9/o;->y:I
+
+    .line 157
+    .line 158
+    invoke-interface {p2, p1, v0}, Lt9/d;->i(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+
+    .line 159
+    .line 160
+    .line 161
+    move-result-object p1
+
+    .line 162
+    if-ne p1, v6, :cond_8
+
+    .line 163
+    .line 164
+    :goto_3
+    move-object v4, v6
+
+    .line 165
+    :cond_8
+    :goto_4
+    return-object v4
+
+    .line 166
+    nop
+
+    .line 167
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

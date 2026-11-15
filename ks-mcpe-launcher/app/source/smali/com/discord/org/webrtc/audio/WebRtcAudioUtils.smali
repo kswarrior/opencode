@@ -1,6 +1,6 @@
 .class public final Lcom/discord/org/webrtc/audio/WebRtcAudioUtils;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -44,7 +44,7 @@
 
     .line 9
     .line 10
-    invoke-static {p0, v0}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p0, v0}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
 
     .line 11
     .line 12
@@ -302,7 +302,7 @@
 
     .line 7
     .line 8
-    invoke-static {p0, v0, v1}, Ls1/a;->k(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p0, v0, v1}, Ls1/a;->i(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 9
     .line 10
@@ -1549,7 +1549,7 @@
 
     .line 45
     .line 46
-    invoke-static {v9, v2, v0, v3, v1}, Lv6/u;->f(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v9, v2, v0, v3, v1}, Lu7/d;->g(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 47
     .line 48
@@ -1562,7 +1562,7 @@
 
     .line 52
     .line 53
-    invoke-static {v9, v4, v0, v5, v1}, Lv6/u;->f(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v9, v4, v0, v5, v1}, Lu7/d;->g(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 54
     .line 55
@@ -1575,7 +1575,7 @@
 
     .line 59
     .line 60
-    invoke-static {v9, v6, v0, v7, v1}, Lv6/u;->f(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v9, v6, v0, v7, v1}, Lu7/d;->g(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 61
     .line 62

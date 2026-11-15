@@ -1,6 +1,6 @@
 .class public final Lk3/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/bumptech/glide/request/Request;
@@ -46,11 +46,11 @@
 
 .field public final o:Lm3/a;
 
-.field public final p:Lg/l;
+.field public final p:Lg/n;
 
 .field public q:Lu2/y;
 
-.field public r:Lkd/d;
+.field public r:Ljd/d;
 
 .field public s:J
 
@@ -99,123 +99,189 @@
 .method public constructor <init>(Landroid/content/Context;Lcom/bumptech/glide/g;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Class;Lk3/a;IILcom/bumptech/glide/i;Ll3/e;Ljava/util/ArrayList;Lk3/c;Lu2/k;Lm3/a;)V
     .locals 2
 
-    sget-object v0, Lo3/f;->a:Lg/l;
-
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    sget-object v0, Lo3/f;->a:Lg/n;
 
     .line 2
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
     sget-boolean v1, Lk3/e;->C:Z
 
+    .line 7
+    .line 8
     if-eqz v1, :cond_0
 
+    .line 9
+    .line 10
     invoke-virtual {p0}, Ljava/lang/Object;->hashCode()I
 
+    .line 11
+    .line 12
+    .line 13
     move-result v1
 
+    .line 14
     invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
+    .line 15
+    .line 16
+    .line 17
     move-result-object v1
 
+    .line 18
     goto :goto_0
 
+    .line 19
     :cond_0
     const/4 v1, 0x0
 
+    .line 20
     :goto_0
     iput-object v1, p0, Lk3/e;->a:Ljava/lang/String;
 
-    .line 3
+    .line 21
+    .line 22
     new-instance v1, Lp3/e;
 
-    .line 4
+    .line 23
+    .line 24
     invoke-direct {v1}, Ljava/lang/Object;-><init>()V
 
-    .line 5
+    .line 25
+    .line 26
+    .line 27
     iput-object v1, p0, Lk3/e;->b:Lp3/e;
 
-    .line 6
+    .line 28
+    .line 29
     iput-object p3, p0, Lk3/e;->c:Ljava/lang/Object;
 
-    .line 7
+    .line 30
+    .line 31
     iput-object p1, p0, Lk3/e;->e:Landroid/content/Context;
 
-    .line 8
+    .line 32
+    .line 33
     iput-object p2, p0, Lk3/e;->f:Lcom/bumptech/glide/g;
 
-    .line 9
+    .line 34
+    .line 35
     iput-object p4, p0, Lk3/e;->g:Ljava/lang/Object;
 
-    .line 10
+    .line 36
+    .line 37
     iput-object p5, p0, Lk3/e;->h:Ljava/lang/Class;
 
-    .line 11
+    .line 38
+    .line 39
     iput-object p6, p0, Lk3/e;->i:Lk3/a;
 
-    .line 12
+    .line 40
+    .line 41
     iput p7, p0, Lk3/e;->j:I
 
-    .line 13
+    .line 42
+    .line 43
     iput p8, p0, Lk3/e;->k:I
 
-    .line 14
+    .line 44
+    .line 45
     iput-object p9, p0, Lk3/e;->l:Lcom/bumptech/glide/i;
 
-    .line 15
+    .line 46
+    .line 47
     iput-object p10, p0, Lk3/e;->m:Ll3/e;
 
-    .line 16
+    .line 48
+    .line 49
     iput-object p11, p0, Lk3/e;->n:Ljava/util/List;
 
-    .line 17
+    .line 50
+    .line 51
     iput-object p12, p0, Lk3/e;->d:Lk3/c;
 
-    .line 18
+    .line 52
+    .line 53
     iput-object p13, p0, Lk3/e;->t:Lu2/k;
 
+    .line 54
+    .line 55
     move-object/from16 p1, p14
 
-    .line 19
+    .line 56
+    .line 57
     iput-object p1, p0, Lk3/e;->o:Lm3/a;
 
-    .line 20
-    iput-object v0, p0, Lk3/e;->p:Lg/l;
+    .line 58
+    .line 59
+    iput-object v0, p0, Lk3/e;->p:Lg/n;
 
+    .line 60
+    .line 61
     const/4 p1, 0x1
 
-    .line 21
+    .line 62
     iput p1, p0, Lk3/e;->B:I
 
-    .line 22
+    .line 63
+    .line 64
     iget-object p1, p0, Lk3/e;->A:Ljava/lang/RuntimeException;
 
+    .line 65
+    .line 66
     if-nez p1, :cond_1
 
-    .line 23
-    iget-object p1, p2, Lcom/bumptech/glide/g;->h:Lx7/c;
+    .line 67
+    .line 68
+    iget-object p1, p2, Lcom/bumptech/glide/g;->h:La4/e;
 
-    .line 24
-    iget-object p1, p1, Lx7/c;->d:Ljava/lang/Object;
+    .line 69
+    .line 70
+    iget-object p1, p1, La4/e;->d:Ljava/lang/Object;
 
+    .line 71
+    .line 72
     check-cast p1, Ljava/util/Map;
 
+    .line 73
+    .line 74
     const-class p2, Lcom/bumptech/glide/d;
 
+    .line 75
+    .line 76
     invoke-interface {p1, p2}, Ljava/util/Map;->containsKey(Ljava/lang/Object;)Z
 
+    .line 77
+    .line 78
+    .line 79
     move-result p1
 
+    .line 80
     if-eqz p1, :cond_1
 
-    .line 25
+    .line 81
+    .line 82
     new-instance p1, Ljava/lang/RuntimeException;
 
+    .line 83
+    .line 84
     const-string p2, "Glide request origin trace"
 
+    .line 85
+    .line 86
     invoke-direct {p1, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
+    .line 87
+    .line 88
+    .line 89
     iput-object p1, p0, Lk3/e;->A:Ljava/lang/RuntimeException;
 
+    .line 90
+    .line 91
     :cond_1
     return-void
 .end method
@@ -550,7 +616,7 @@
     move v8, v5
 
     .line 127
-    iget-object v5, v7, Lk3/a;->Y:Ls2/e;
+    iget-object v5, v7, Lk3/a;->Z:Ls2/e;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -571,7 +637,7 @@
     move v11, v8
 
     .line 135
-    iget-object v8, v7, Lk3/a;->C1:Ljava/lang/Class;
+    iget-object v8, v7, Lk3/a;->E1:Ljava/lang/Class;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_6
 
@@ -605,7 +671,7 @@
 
     .line 147
     :try_start_3
-    iget-object v12, v7, Lk3/a;->B1:Lo3/c;
+    iget-object v12, v7, Lk3/a;->D1:Lo3/c;
 
     .line 148
     .line 149
@@ -613,7 +679,7 @@
 
     .line 150
     .line 151
-    iget-boolean v13, v7, Lk3/a;->Z:Z
+    iget-boolean v13, v7, Lk3/a;->b1:Z
 
     .line 152
     .line 153
@@ -621,7 +687,7 @@
 
     .line 154
     .line 155
-    iget-boolean v14, v7, Lk3/a;->F1:Z
+    iget-boolean v14, v7, Lk3/a;->H1:Z
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_4
 
@@ -632,7 +698,7 @@
     .line 158
     .line 159
     :try_start_4
-    iget-object v15, v7, Lk3/a;->b1:Ls2/h;
+    iget-object v15, v7, Lk3/a;->C1:Ls2/h;
 
     .line 160
     .line 161
@@ -640,11 +706,11 @@
 
     .line 162
     .line 163
-    iget-boolean v0, v7, Lk3/a;->x:Z
+    iget-boolean v0, v7, Lk3/a;->y:Z
 
     .line 164
     .line 165
-    iget-boolean v7, v7, Lk3/a;->G1:Z
+    iget-boolean v7, v7, Lk3/a;->I1:Z
 
     .line 166
     .line 167
@@ -652,7 +718,7 @@
 
     .line 168
     .line 169
-    iget-object v0, v1, Lk3/e;->p:Lg/l;
+    iget-object v0, v1, Lk3/e;->p:Lg/n;
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_3
 
@@ -695,7 +761,7 @@
     .line 188
     .line 189
     :try_start_5
-    invoke-virtual/range {v2 .. v19}, Lu2/k;->a(Lcom/bumptech/glide/g;Ljava/lang/Object;Ls2/e;IILjava/lang/Class;Ljava/lang/Class;Lcom/bumptech/glide/i;Lu2/j;Lo3/c;ZZLs2/h;ZZLk3/e;Lg/l;)Lkd/d;
+    invoke-virtual/range {v2 .. v19}, Lu2/k;->a(Lcom/bumptech/glide/g;Ljava/lang/Object;Ls2/e;IILjava/lang/Class;Ljava/lang/Class;Lcom/bumptech/glide/i;Lu2/j;Lo3/c;ZZLs2/h;ZZLk3/e;Lg/n;)Ljd/d;
 
     .line 190
     .line 191
@@ -710,7 +776,7 @@
     .line 194
     .line 195
     :try_start_6
-    iput-object v2, v3, Lk3/e;->r:Lkd/d;
+    iput-object v2, v3, Lk3/e;->r:Ljd/d;
 
     .line 196
     .line 197
@@ -725,7 +791,7 @@
     const/4 v0, 0x0
 
     .line 202
-    iput-object v0, v3, Lk3/e;->r:Lkd/d;
+    iput-object v0, v3, Lk3/e;->r:Ljd/d;
 
     .line 203
     .line 204
@@ -1123,7 +1189,7 @@
 
     .line 109
     :cond_6
-    invoke-virtual {v8, v15}, Lk3/a;->f(Lk3/a;)Z
+    invoke-virtual {v8, v15}, Lk3/a;->h(Lk3/a;)Z
 
     .line 110
     .line 111
@@ -1488,7 +1554,7 @@
     .line 13
     .line 14
     .line 15
-    iget-object v0, p0, Lk3/e;->r:Lkd/d;
+    iget-object v0, p0, Lk3/e;->r:Ljd/d;
 
     .line 16
     .line 17
@@ -1496,7 +1562,7 @@
 
     .line 18
     .line 19
-    iget-object v1, v0, Lkd/d;->q:Ljava/lang/Object;
+    iget-object v1, v0, Ljd/d;->p:Ljava/lang/Object;
 
     .line 20
     .line 21
@@ -1508,7 +1574,7 @@
 
     .line 24
     :try_start_0
-    iget-object v2, v0, Lkd/d;->d:Ljava/lang/Object;
+    iget-object v2, v0, Ljd/d;->d:Ljava/lang/Object;
 
     .line 25
     .line 26
@@ -1516,7 +1582,7 @@
 
     .line 27
     .line 28
-    iget-object v0, v0, Lkd/d;->h:Ljava/lang/Object;
+    iget-object v0, v0, Ljd/d;->h:Ljava/lang/Object;
 
     .line 29
     .line 30
@@ -1537,7 +1603,7 @@
     const/4 v0, 0x0
 
     .line 37
-    iput-object v0, p0, Lk3/e;->r:Lkd/d;
+    iput-object v0, p0, Lk3/e;->r:Ljd/d;
 
     .line 38
     .line 39
@@ -1594,19 +1660,19 @@
 
     .line 6
     .line 7
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    iget-object v1, v0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
-    .line 10
-    const/4 v1, 0x0
-
-    .line 11
     iput-object v1, p0, Lk3/e;->v:Landroid/graphics/drawable/Drawable;
+
+    .line 10
+    .line 11
+    if-nez v1, :cond_0
 
     .line 12
     .line 13
-    iget v1, v0, Lk3/a;->w:I
+    iget v1, v0, Lk3/a;->x:I
 
     .line 14
     .line 15
@@ -1631,7 +1697,7 @@
     move-result-object v2
 
     .line 26
-    invoke-static {v0, v0, v1, v2}, La/a;->j(Landroid/content/Context;Landroid/content/Context;ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+    invoke-static {v0, v0, v1, v2}, Lfc/h;->o(Landroid/content/Context;Landroid/content/Context;ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
 
     .line 27
     .line 28
@@ -2440,7 +2506,7 @@
     move-exception p1
 
     .line 72
-    goto/16 :goto_6
+    goto/16 :goto_5
 
     .line 73
     .line 74
@@ -2449,7 +2515,7 @@
     const/4 p1, 0x0
 
     .line 75
-    iput-object p1, p0, Lk3/e;->r:Lkd/d;
+    iput-object p1, p0, Lk3/e;->r:Ljd/d;
 
     .line 76
     .line 77
@@ -2560,7 +2626,7 @@
     move-exception p1
 
     .line 125
-    goto :goto_5
+    goto :goto_4
 
     .line 126
     :cond_4
@@ -2611,7 +2677,7 @@
 
     .line 145
     .line 146
-    goto :goto_4
+    goto :goto_3
 
     .line 147
     :cond_8
@@ -2645,140 +2711,132 @@
     .line 161
     .line 162
     :cond_9
-    iget-object p2, p0, Lk3/e;->w:Landroid/graphics/drawable/Drawable;
+    iget-object p1, p0, Lk3/e;->w:Landroid/graphics/drawable/Drawable;
 
     .line 163
     .line 164
-    goto :goto_3
+    :cond_a
+    if-nez p1, :cond_c
 
     .line 165
-    :cond_a
-    move-object p2, p1
-
     .line 166
-    :goto_3
-    if-nez p2, :cond_c
+    iget-object p1, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
 
     .line 167
     .line 168
-    iget-object p2, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
+    if-nez p1, :cond_b
 
     .line 169
     .line 170
-    if-nez p2, :cond_b
+    iget-object p1, p0, Lk3/e;->i:Lk3/a;
 
     .line 171
     .line 172
-    iget-object p2, p0, Lk3/e;->i:Lk3/a;
+    iget-object p2, p1, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
 
     .line 173
     .line 174
-    invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    iput-object p2, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
 
     .line 175
     .line 176
+    if-nez p2, :cond_b
+
     .line 177
-    iput-object p1, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
-
     .line 178
+    iget p2, p1, Lk3/a;->q:I
+
     .line 179
-    iget p1, p2, Lk3/a;->q:I
-
     .line 180
+    if-lez p2, :cond_b
+
     .line 181
-    if-lez p1, :cond_b
-
     .line 182
+    iget-object v2, p0, Lk3/e;->e:Landroid/content/Context;
+
     .line 183
-    iget-object p2, p0, Lk3/e;->e:Landroid/content/Context;
-
     .line 184
-    .line 185
-    iget-object v2, p0, Lk3/e;->i:Lk3/a;
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 185
     .line 186
     .line 187
-    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v2}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
 
     .line 188
     .line 189
     .line 190
-    invoke-virtual {p2}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
-
-    .line 191
-    .line 192
-    .line 193
-    move-result-object v2
-
-    .line 194
-    invoke-static {p2, p2, p1, v2}, La/a;->j(Landroid/content/Context;Landroid/content/Context;ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
-
-    .line 195
-    .line 196
-    .line 197
     move-result-object p1
 
-    .line 198
+    .line 191
+    invoke-static {v2, v2, p2, p1}, Lfc/h;->o(Landroid/content/Context;Landroid/content/Context;ILandroid/content/res/Resources$Theme;)Landroid/graphics/drawable/Drawable;
+
+    .line 192
+    .line 193
+    .line 194
+    move-result-object p1
+
+    .line 195
     iput-object p1, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
 
-    .line 199
-    .line 200
+    .line 196
+    .line 197
     :cond_b
-    iget-object p2, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
+    iget-object p1, p0, Lk3/e;->u:Landroid/graphics/drawable/Drawable;
 
-    .line 201
-    .line 202
+    .line 198
+    .line 199
     :cond_c
-    if-nez p2, :cond_d
+    if-nez p1, :cond_d
 
-    .line 203
-    .line 204
+    .line 200
+    .line 201
     invoke-virtual {p0}, Lk3/e;->g()Landroid/graphics/drawable/Drawable;
 
+    .line 202
+    .line 203
+    .line 204
+    move-result-object p1
+
     .line 205
+    :cond_d
+    iget-object p2, p0, Lk3/e;->m:Ll3/e;
+
     .line 206
     .line 207
-    move-result-object p2
-
-    .line 208
-    :cond_d
-    iget-object p1, p0, Lk3/e;->m:Ll3/e;
-
-    .line 209
-    .line 210
-    invoke-interface {p1, p2}, Ll3/e;->onLoadFailed(Landroid/graphics/drawable/Drawable;)V
+    invoke-interface {p2, p1}, Ll3/e;->onLoadFailed(Landroid/graphics/drawable/Drawable;)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 211
-    .line 212
-    .line 213
-    :goto_4
+    .line 208
+    .line 209
+    .line 210
+    :goto_3
     :try_start_2
     iput-boolean v0, p0, Lk3/e;->z:Z
 
-    .line 214
-    .line 215
+    .line 211
+    .line 212
     monitor-exit v1
 
-    .line 216
+    .line 213
     return-void
+
+    .line 214
+    :goto_4
+    iput-boolean v0, p0, Lk3/e;->z:Z
+
+    .line 215
+    .line 216
+    throw p1
 
     .line 217
     :goto_5
-    iput-boolean v0, p0, Lk3/e;->z:Z
-
-    .line 218
-    .line 219
-    throw p1
-
-    .line 220
-    :goto_6
     monitor-exit v1
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 221
+    .line 218
     throw p1
 .end method
 
@@ -2817,7 +2875,7 @@
 
     .line 14
     :try_start_1
-    iput-object v1, p0, Lk3/e;->r:Lkd/d;
+    iput-object v1, p0, Lk3/e;->r:Ljd/d;
 
     .line 15
     .line 16
@@ -3305,7 +3363,7 @@
     .line 45
     .line 46
     .line 47
-    invoke-static {p3}, Ln5/h;->u(I)Ljava/lang/String;
+    invoke-static {p3}, Ln8/a;->y(I)Ljava/lang/String;
 
     .line 48
     .line 49

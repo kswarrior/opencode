@@ -1,6 +1,6 @@
 .class public final Lo4/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/util/Iterator;
@@ -13,17 +13,17 @@
 
 .field public final h:Ljava/lang/String;
 
-.field public final q:Z
+.field public final p:Z
+
+.field public q:I
 
 .field public w:I
 
-.field public x:I
-
-.field public final synthetic y:Lo4/h;
+.field public final synthetic x:Lo4/h;
 
 
 # direct methods
-.method public constructor <init>(Lae/a;Ljava/lang/String;Lo4/h;)V
+.method public constructor <init>(Lse/a;Ljava/lang/String;Lo4/h;)V
     .locals 0
 
     .line 1
@@ -32,7 +32,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p3, p0, Lo4/i;->y:Lo4/h;
+    iput-object p3, p0, Lo4/i;->x:Lo4/h;
 
     .line 5
     .line 6
@@ -46,7 +46,7 @@
     const/4 p3, 0x0
 
     .line 10
-    iput p3, p0, Lo4/i;->w:I
+    iput p3, p0, Lo4/i;->q:I
 
     .line 11
     .line 12
@@ -55,11 +55,11 @@
     .line 13
     .line 14
     .line 15
-    iget-boolean p1, p1, Lae/a;->d:Z
+    iget-boolean p1, p1, Lse/a;->d:Z
 
     .line 16
     .line 17
-    iput-boolean p1, p0, Lo4/i;->q:Z
+    iput-boolean p1, p0, Lo4/i;->p:Z
 
     .line 18
     .line 19
@@ -68,7 +68,7 @@
     .line 20
     .line 21
     .line 22
-    iput p1, p0, Lo4/i;->x:I
+    iput p1, p0, Lo4/i;->w:I
 
     .line 23
     .line 24
@@ -125,13 +125,13 @@
 
     .line 18
     .line 19
-    iget v1, p0, Lo4/i;->w:I
+    iget v1, p0, Lo4/i;->q:I
 
     .line 20
     .line 21
     :cond_0
     :goto_0
-    iget v2, p0, Lo4/i;->w:I
+    iget v2, p0, Lo4/i;->q:I
 
     .line 22
     .line 23
@@ -157,7 +157,7 @@
     move-result v7
 
     .line 33
-    invoke-static {v2, v7}, La/a;->I(II)V
+    invoke-static {v2, v7}, La7/t1;->O(II)V
 
     .line 34
     .line 35
@@ -175,7 +175,7 @@
     move-result v8
 
     .line 42
-    iget-object v9, p0, Lo4/i;->y:Lo4/h;
+    iget-object v9, p0, Lo4/i;->x:Lo4/h;
 
     .line 43
     .line 44
@@ -215,7 +215,7 @@
     move-result v2
 
     .line 59
-    iput v5, p0, Lo4/i;->w:I
+    iput v5, p0, Lo4/i;->q:I
 
     .line 60
     .line 61
@@ -230,7 +230,7 @@
 
     .line 64
     .line 65
-    iput v7, p0, Lo4/i;->w:I
+    iput v7, p0, Lo4/i;->q:I
 
     .line 66
     .line 67
@@ -243,7 +243,7 @@
 
     .line 70
     .line 71
-    iput v7, p0, Lo4/i;->w:I
+    iput v7, p0, Lo4/i;->q:I
 
     .line 72
     .line 73
@@ -259,7 +259,7 @@
 
     .line 78
     .line 79
-    iput v5, p0, Lo4/i;->w:I
+    iput v5, p0, Lo4/i;->q:I
 
     .line 80
     .line 81
@@ -291,7 +291,7 @@
     .line 93
     .line 94
     :cond_6
-    iget-boolean v7, p0, Lo4/i;->q:Z
+    iget-boolean v7, p0, Lo4/i;->p:Z
 
     .line 95
     .line 96
@@ -303,7 +303,7 @@
 
     .line 99
     .line 100
-    iget v1, p0, Lo4/i;->w:I
+    iget v1, p0, Lo4/i;->q:I
 
     .line 101
     .line 102
@@ -311,7 +311,7 @@
 
     .line 103
     :cond_7
-    iget v3, p0, Lo4/i;->x:I
+    iget v3, p0, Lo4/i;->w:I
 
     .line 104
     .line 105
@@ -327,7 +327,7 @@
     move-result v2
 
     .line 111
-    iput v5, p0, Lo4/i;->w:I
+    iput v5, p0, Lo4/i;->q:I
 
     .line 112
     .line 113
@@ -351,7 +351,7 @@
     add-int/2addr v3, v5
 
     .line 122
-    iput v3, p0, Lo4/i;->x:I
+    iput v3, p0, Lo4/i;->w:I
 
     .line 123
     .line 124

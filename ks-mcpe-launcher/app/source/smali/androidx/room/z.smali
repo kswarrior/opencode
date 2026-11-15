@@ -1,205 +1,80 @@
-.class public final synthetic Landroidx/room/z;
-.super Lf9/h;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Lkotlin/jvm/functions/Function2;
+.class public final Landroidx/room/z;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic X:I
+.field public final a:Ljava/util/LinkedHashMap;
 
 
 # direct methods
-.method public synthetic constructor <init>(ILjava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;III)V
-    .locals 0
+.method public constructor <init>(I)V
+    .locals 3
 
     .line 1
-    iput p8, p0, Landroidx/room/z;->X:I
+    packed-switch p1, :pswitch_data_0
 
     .line 2
     .line 3
-    invoke-direct/range {p0 .. p7}, Lf9/h;-><init>(ILjava/lang/Object;Ljava/lang/Class;Ljava/lang/String;Ljava/lang/String;II)V
-
     .line 4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 5
     .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final h(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 2
-
-    .line 1
-    iget v0, p0, Landroidx/room/z;->X:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    check-cast p1, Laa/d;
-
     .line 7
+    new-instance p1, Ljava/util/LinkedHashMap;
+
     .line 8
-    check-cast p2, Ljava/lang/Number;
-
     .line 9
-    .line 10
-    invoke-virtual {p2}, Ljava/lang/Number;->intValue()I
+    invoke-direct {p1}, Ljava/util/LinkedHashMap;-><init>()V
 
+    .line 10
     .line 11
     .line 12
-    .line 13
-    move-result p2
+    iput-object p1, p0, Landroidx/room/z;->a:Ljava/util/LinkedHashMap;
 
+    .line 13
     .line 14
-    const-string v0, "p0"
+    return-void
 
     .line 15
-    .line 16
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    :pswitch_0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 16
     .line 17
     .line 18
-    .line 19
-    iget-object v0, p0, Lf9/d;->d:Ljava/lang/Object;
+    new-instance p1, Ljava/util/LinkedHashMap;
 
+    .line 19
     .line 20
+    const/4 v0, 0x1
+
     .line 21
-    check-cast v0, Lea/e;
+    const/4 v1, 0x0
 
     .line 22
-    .line 23
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    const/high16 v2, 0x3f400000    # 0.75f
 
+    .line 23
     .line 24
+    invoke-direct {p1, v1, v2, v0}, Ljava/util/LinkedHashMap;-><init>(IFZ)V
+
     .line 25
     .line 26
-    invoke-interface {p1, p2}, Laa/d;->o(I)Z
-
     .line 27
+    iput-object p1, p0, Landroidx/room/z;->a:Ljava/util/LinkedHashMap;
+
     .line 28
     .line 29
-    move-result v1
+    return-void
 
     .line 30
-    if-nez v1, :cond_0
-
-    .line 31
-    .line 32
-    invoke-interface {p1, p2}, Laa/d;->n(I)Laa/d;
-
-    .line 33
-    .line 34
-    .line 35
-    move-result-object p1
-
-    .line 36
-    invoke-interface {p1}, Laa/d;->h()Z
-
-    .line 37
-    .line 38
-    .line 39
-    move-result p1
-
-    .line 40
-    if-eqz p1, :cond_0
-
-    .line 41
-    .line 42
-    const/4 p1, 0x1
-
-    .line 43
-    goto :goto_0
-
-    .line 44
-    :cond_0
-    const/4 p1, 0x0
-
-    .line 45
-    :goto_0
-    iput-boolean p1, v0, Lea/e;->b:Z
-
-    .line 46
-    .line 47
-    invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object p1
-
-    .line 51
-    return-object p1
-
-    .line 52
-    :pswitch_0
-    check-cast p1, Le9/k;
-
-    .line 53
-    .line 54
-    check-cast p2, Lkotlin/coroutines/Continuation;
-
-    .line 55
-    .line 56
-    iget-object v0, p0, Lf9/d;->d:Ljava/lang/Object;
-
-    .line 57
-    .line 58
-    check-cast v0, Landroidx/room/RoomDatabase;
-
-    .line 59
-    .line 60
-    invoke-static {v0, p1, p2}, Leh/k;->l(Landroidx/room/RoomDatabase;Le9/k;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-
-    .line 61
-    .line 62
-    .line 63
-    move-result-object p1
-
-    .line 64
-    return-object p1
-
-    .line 65
-    :pswitch_1
-    check-cast p1, Le9/k;
-
-    .line 66
-    .line 67
-    check-cast p2, Lkotlin/coroutines/Continuation;
-
-    .line 68
-    .line 69
-    iget-object v0, p0, Lf9/d;->d:Ljava/lang/Object;
-
-    .line 70
-    .line 71
-    check-cast v0, Landroidx/room/RoomDatabase;
-
-    .line 72
-    .line 73
-    invoke-static {v0, p1, p2}, Leh/k;->l(Landroidx/room/RoomDatabase;Le9/k;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
-
-    .line 74
-    .line 75
-    .line 76
-    move-result-object p1
-
-    .line 77
-    return-object p1
-
-    .line 78
     nop
 
-    .line 79
+    .line 31
     :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
+    .packed-switch 0x1
         :pswitch_0
     .end packed-switch
 .end method

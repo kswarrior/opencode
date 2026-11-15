@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout android:orientation="vertical" android:paddingTop="10.0dp" android:paddingBottom="10.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="match_parent">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
-            <include layout="@layout/view_back_button" android:layout_width="28.0dp" android:layout_height="28.0dp" android:layout_marginEnd="10.0dp" />
-            <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/primary" android:ellipsize="end" android:id="@id/title_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/edit_options" android:maxLines="1" android:fontFamily="@font/misans" android:layout_marginEnd="12.0dp" />
-            <EditText android:textSize="13.0sp" android:textColor="@color/on_surface" android:textColorHint="@color/on_surface" android:id="@id/search_edit_text" android:background="@drawable/bg_search_box" android:padding="10.0dp" android:layout_width="0.0dp" android:layout_height="wrap_content" android:hint="@string/search_options_hint" android:maxLines="1" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:fontFamily="@font/misans" android:layout_marginEnd="12.0dp" />
-            <Button android:textSize="12.0sp" android:textColor="@color/on_primary" android:id="@id/save_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" android:fontFamily="@font/misans" android:backgroundTint="@color/primary" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="20.0sp" android:id="@id/title_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/edit_options" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:id="@id/options_editor_info" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:text="@string/options_editor_subtitle" />
         </LinearLayout>
-        <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="12.0dp" android:layout_weight="1.0">
-            <androidx.recyclerview.widget.RecyclerView android:id="@id/options_recycler_view" android:padding="4.0dp" android:clipToPadding="false" android:descendantFocusability="afterDescendants" android:layout_width="match_parent" android:layout_height="match_parent" />
-            <ProgressBar android:layout_gravity="center" android:id="@id/loading_progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <TextView android:textSize="14.0sp" android:textColor="@color/on_surface" android:layout_gravity="center" android:id="@id/empty_text" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no_options_found" android:fontFamily="@font/misans" />
-        </FrameLayout>
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/save_button" android:layout_width="wrap_content" android:layout_height="44.0dp" android:text="@string/save" android:layout_marginStart="12.0dp" app:icon="@drawable/ic_save" app:iconPadding="6.0dp" app:iconSize="17.0dp" style="@style/Widget.Levi.Button.Primary" />
     </LinearLayout>
-</FrameLayout>
+    <org.levimc.launcher.ui.widget.CatalogToolbarLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp">
+        <EditText android:textSize="13.0sp" android:id="@id/search_edit_text" android:layout_width="match_parent" android:layout_height="44.0dp" android:hint="@string/search_options_hint" android:singleLine="true" android:inputType="text" android:imeOptions="actionSearch" android:drawableStart="@drawable/ic_ui_search" android:importantForAutofill="no" style="@style/Widget.Levi.Input" />
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/options_category_button" android:layout_width="wrap_content" android:layout_height="44.0dp" android:text="@string/options_category_all" app:icon="@drawable/ic_ui_filter" app:iconPadding="6.0dp" app:iconSize="17.0dp" style="@style/Widget.Levi.Button.Secondary" />
+    </org.levimc.launcher.ui.widget.CatalogToolbarLayout>
+    <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/options_editor_status" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:layout_marginBottom="4.0dp" />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/options_recycler_view" android:paddingBottom="4.0dp" android:clipToPadding="false" android:descendantFocusability="afterDescendants" android:layout_width="match_parent" android:layout_height="match_parent" android:overScrollMode="never" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/loading_progress" android:visibility="gone" android:layout_width="32.0dp" android:layout_height="32.0dp" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/text_secondary" android:gravity="center" android:layout_gravity="center" android:id="@id/empty_text" android:padding="20.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/no_options_found" />
+    </FrameLayout>
+</LinearLayout>

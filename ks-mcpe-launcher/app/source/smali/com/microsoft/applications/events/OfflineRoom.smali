@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/applications/events/OfflineRoom;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/AutoCloseable;
@@ -93,16 +93,16 @@
 
     .line 30
     .line 31
-    invoke-static {v0, v6}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v6}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 32
     .line 33
     .line 34
-    new-instance v2, Landroidx/room/w;
+    new-instance v2, Landroidx/room/x;
 
     .line 35
     .line 36
-    invoke-direct {v2, v0, v3}, Landroidx/room/w;-><init>(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-direct {v2, v0, v3}, Landroidx/room/x;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 37
     .line 38
@@ -111,12 +111,12 @@
 
     .line 40
     :cond_0
-    invoke-static {v0, v6}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v6}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 41
     .line 42
     .line 43
-    invoke-static {v2}, Lm9/h;->f0(Ljava/lang/CharSequence;)Z
+    invoke-static {v2}, Lo9/h;->z0(Ljava/lang/CharSequence;)Z
 
     .line 44
     .line 45
@@ -140,11 +140,11 @@
 
     .line 54
     .line 55
-    new-instance v4, Landroidx/room/w;
+    new-instance v4, Landroidx/room/x;
 
     .line 56
     .line 57
-    invoke-direct {v4, v0, v2}, Landroidx/room/w;-><init>(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-direct {v4, v0, v2}, Landroidx/room/x;-><init>(Landroid/content/Context;Ljava/lang/String;)V
 
     .line 58
     .line 59
@@ -156,26 +156,26 @@
     const/4 v0, 0x0
 
     .line 62
-    iput-boolean v0, v2, Landroidx/room/w;->n:Z
+    iput-boolean v0, v2, Landroidx/room/x;->n:Z
 
     .line 63
     .line 64
     const/4 v4, 0x1
 
     .line 65
-    iput-boolean v4, v2, Landroidx/room/w;->o:Z
+    iput-boolean v4, v2, Landroidx/room/x;->o:Z
 
     .line 66
     .line 67
-    sget-object v5, Landroidx/room/x;->h:Landroidx/room/x;
+    sget-object v5, Landroidx/room/y;->h:Landroidx/room/y;
 
     .line 68
     .line 69
-    iput-object v5, v2, Landroidx/room/w;->h:Landroidx/room/x;
+    iput-object v5, v2, Landroidx/room/x;->h:Landroidx/room/y;
 
     .line 70
     .line 71
-    iget-object v7, v2, Landroidx/room/w;->f:Ljava/util/concurrent/Executor;
+    iget-object v7, v2, Landroidx/room/x;->f:Ljava/util/concurrent/Executor;
 
     .line 72
     .line 73
@@ -183,7 +183,7 @@
 
     .line 74
     .line 75
-    iget-object v8, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    iget-object v8, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 76
     .line 77
@@ -195,11 +195,11 @@
 
     .line 80
     .line 81
-    iput-object v7, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    iput-object v7, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 82
     .line 83
-    iput-object v7, v2, Landroidx/room/w;->f:Ljava/util/concurrent/Executor;
+    iput-object v7, v2, Landroidx/room/x;->f:Ljava/util/concurrent/Executor;
 
     .line 84
     .line 85
@@ -211,7 +211,7 @@
 
     .line 87
     .line 88
-    iget-object v8, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    iget-object v8, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 89
     .line 90
@@ -219,7 +219,7 @@
 
     .line 91
     .line 92
-    iput-object v7, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    iput-object v7, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 93
     .line 94
@@ -231,11 +231,11 @@
 
     .line 96
     .line 97
-    iget-object v7, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    iget-object v7, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 98
     .line 99
-    iput-object v7, v2, Landroidx/room/w;->f:Ljava/util/concurrent/Executor;
+    iput-object v7, v2, Landroidx/room/x;->f:Ljava/util/concurrent/Executor;
 
     .line 100
     .line 101
@@ -245,11 +245,11 @@
 
     .line 102
     .line 103
-    iget-object v8, v2, Landroidx/room/w;->l:Ljava/util/LinkedHashSet;
+    iget-object v8, v2, Landroidx/room/x;->l:Ljava/util/LinkedHashSet;
 
     .line 104
     .line 105
-    invoke-static {v8, v7}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v8, v7}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 106
     .line 107
@@ -258,11 +258,11 @@
 
     .line 109
     .line 110
-    iget-object v9, v2, Landroidx/room/w;->k:Ljava/util/LinkedHashSet;
+    iget-object v9, v2, Landroidx/room/x;->k:Ljava/util/LinkedHashSet;
 
     .line 111
     .line 112
-    invoke-static {v9, v7}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v9, v7}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 113
     .line 114
@@ -348,7 +348,7 @@
 
     .line 153
     .line 154
-    invoke-static {v8, v0}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v8, v0}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
 
     .line 155
     .line 156
@@ -377,1007 +377,1011 @@
 
     .line 168
     :cond_5
-    new-instance v12, Ln7/d;
+    new-instance v12, Lp7/d;
 
     .line 169
     .line 170
-    invoke-direct {v12}, Ljava/lang/Object;-><init>()V
+    const/16 v7, 0xe
 
     .line 171
     .line 172
-    .line 173
-    iget-wide v7, v2, Landroidx/room/w;->i:J
+    invoke-direct {v12, v7}, Lp7/d;-><init>(I)V
 
+    .line 173
     .line 174
     .line 175
-    const-wide/16 v10, 0x0
+    iget-wide v7, v2, Landroidx/room/x;->i:J
 
     .line 176
     .line 177
-    cmp-long v7, v7, v10
+    const-wide/16 v10, 0x0
 
     .line 178
     .line 179
-    const-string v8, "Required value was null."
+    cmp-long v7, v7, v10
 
     .line 180
     .line 181
-    if-lez v7, :cond_7
+    const-string v8, "Required value was null."
 
     .line 182
     .line 183
-    iget-object v0, v2, Landroidx/room/w;->c:Ljava/lang/String;
+    if-lez v7, :cond_7
 
     .line 184
     .line 185
-    if-eqz v0, :cond_6
+    iget-object v0, v2, Landroidx/room/x;->c:Ljava/lang/String;
 
     .line 186
     .line 187
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    if-eqz v0, :cond_6
 
     .line 188
     .line 189
-    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    new-instance v0, Ljava/lang/IllegalArgumentException;
 
     .line 190
     .line 191
+    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 192
+    .line 193
+    .line 194
     throw v0
 
-    .line 193
+    .line 195
     :cond_6
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 194
-    .line 195
-    const-string v2, "Cannot create auto-closing database for an in-memory database."
-
     .line 196
     .line 197
-    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v2, "Cannot create auto-closing database for an in-memory database."
 
     .line 198
     .line 199
+    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 200
+    .line 201
+    .line 202
     throw v0
 
-    .line 201
+    .line 203
     :cond_7
     move-object/from16 v22, v9
 
-    .line 202
-    .line 203
-    new-instance v9, Landroidx/room/DatabaseConfiguration;
-
     .line 204
     .line 205
-    iget-object v7, v2, Landroidx/room/w;->h:Landroidx/room/x;
+    new-instance v9, Landroidx/room/DatabaseConfiguration;
 
     .line 206
     .line 207
-    invoke-virtual {v7}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    iget-object v7, v2, Landroidx/room/x;->h:Landroidx/room/y;
 
     .line 208
     .line 209
-    .line 210
-    iget-object v10, v2, Landroidx/room/w;->b:Landroid/content/Context;
+    invoke-virtual {v7}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 210
     .line 211
     .line 212
-    invoke-static {v10, v6}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    iget-object v10, v2, Landroidx/room/x;->b:Landroid/content/Context;
 
     .line 213
     .line 214
-    .line 215
-    sget-object v6, Landroidx/room/x;->c:Landroidx/room/x;
+    invoke-static {v10, v6}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 215
     .line 216
     .line 217
-    if-eq v7, v6, :cond_8
+    sget-object v6, Landroidx/room/y;->c:Landroidx/room/y;
 
     .line 218
     .line 219
-    move-object/from16 v16, v7
+    if-eq v7, v6, :cond_8
 
     .line 220
     .line 221
-    goto :goto_5
+    move-object/from16 v16, v7
 
     .line 222
+    .line 223
+    goto :goto_5
+
+    .line 224
     :cond_8
     const-string v6, "activity"
 
-    .line 223
-    .line 224
-    invoke-virtual {v10, v6}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
     .line 225
     .line 226
+    invoke-virtual {v10, v6}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
     .line 227
+    .line 228
+    .line 229
     move-result-object v6
 
-    .line 228
-    instance-of v7, v6, Landroid/app/ActivityManager;
-
-    .line 229
     .line 230
-    if-eqz v7, :cond_9
+    instance-of v7, v6, Landroid/app/ActivityManager;
 
     .line 231
     .line 232
-    check-cast v6, Landroid/app/ActivityManager;
+    if-eqz v7, :cond_9
 
     .line 233
     .line 234
-    goto :goto_3
+    check-cast v6, Landroid/app/ActivityManager;
 
     .line 235
+    .line 236
+    goto :goto_3
+
+    .line 237
     :cond_9
     move-object v6, v3
 
-    .line 236
+    .line 238
     :goto_3
     if-eqz v6, :cond_a
 
-    .line 237
-    .line 238
-    invoke-virtual {v6}, Landroid/app/ActivityManager;->isLowRamDevice()Z
-
     .line 239
     .line 240
+    invoke-virtual {v6}, Landroid/app/ActivityManager;->isLowRamDevice()Z
+
     .line 241
+    .line 242
+    .line 243
     move-result v6
 
-    .line 242
-    if-nez v6, :cond_a
-
-    .line 243
     .line 244
-    :goto_4
-    move-object/from16 v16, v5
+    if-nez v6, :cond_a
 
     .line 245
     .line 246
-    goto :goto_5
+    :goto_4
+    move-object/from16 v16, v5
 
     .line 247
-    :cond_a
-    sget-object v5, Landroidx/room/x;->d:Landroidx/room/x;
-
     .line 248
+    goto :goto_5
+
     .line 249
-    goto :goto_4
+    :cond_a
+    sget-object v5, Landroidx/room/y;->d:Landroidx/room/y;
 
     .line 250
-    :goto_5
-    iget-object v5, v2, Landroidx/room/w;->f:Ljava/util/concurrent/Executor;
-
     .line 251
+    goto :goto_4
+
     .line 252
-    if-eqz v5, :cond_12
+    :goto_5
+    iget-object v5, v2, Landroidx/room/x;->f:Ljava/util/concurrent/Executor;
 
     .line 253
     .line 254
-    iget-object v6, v2, Landroidx/room/w;->g:Ljava/util/concurrent/Executor;
+    if-eqz v5, :cond_12
 
     .line 255
     .line 256
-    if-eqz v6, :cond_11
+    iget-object v6, v2, Landroidx/room/x;->g:Ljava/util/concurrent/Executor;
 
     .line 257
     .line 258
-    iget-boolean v7, v2, Landroidx/room/w;->n:Z
+    if-eqz v6, :cond_11
 
     .line 259
     .line 260
-    iget-boolean v8, v2, Landroidx/room/w;->o:Z
+    iget-boolean v7, v2, Landroidx/room/x;->n:Z
 
     .line 261
     .line 262
-    const/16 v29, 0x0
+    iget-boolean v8, v2, Landroidx/room/x;->o:Z
 
     .line 263
     .line 264
-    const/16 v30, 0x0
+    const/16 v29, 0x0
 
     .line 265
     .line 266
-    iget-object v11, v2, Landroidx/room/w;->c:Ljava/lang/String;
+    const/16 v30, 0x0
 
     .line 267
     .line 268
-    iget-object v13, v2, Landroidx/room/w;->j:Ljd/k;
+    iget-object v11, v2, Landroidx/room/x;->c:Ljava/lang/String;
 
     .line 269
     .line 270
-    iget-object v14, v2, Landroidx/room/w;->d:Ljava/util/ArrayList;
+    iget-object v13, v2, Landroidx/room/x;->j:Landroidx/room/z;
 
     .line 271
     .line 272
-    const/16 v19, 0x0
+    iget-object v14, v2, Landroidx/room/x;->d:Ljava/util/ArrayList;
 
     .line 273
     .line 274
-    const/16 v23, 0x0
+    const/16 v19, 0x0
 
     .line 275
     .line 276
-    const/16 v24, 0x0
+    const/16 v23, 0x0
 
     .line 277
     .line 278
-    const/16 v25, 0x0
+    const/16 v24, 0x0
 
     .line 279
     .line 280
-    iget-object v15, v2, Landroidx/room/w;->e:Ljava/util/ArrayList;
+    const/16 v25, 0x0
 
     .line 281
     .line 282
-    iget-object v0, v2, Landroidx/room/w;->m:Ljava/util/ArrayList;
+    iget-object v15, v2, Landroidx/room/x;->e:Ljava/util/ArrayList;
 
     .line 283
     .line 284
-    const/16 v28, 0x0
+    iget-object v0, v2, Landroidx/room/x;->m:Ljava/util/ArrayList;
 
     .line 285
     .line 286
-    move-object/from16 v27, v0
+    const/16 v28, 0x0
 
     .line 287
     .line 288
-    move-object/from16 v17, v5
+    move-object/from16 v27, v0
 
     .line 289
     .line 290
-    move-object/from16 v18, v6
+    move-object/from16 v17, v5
 
     .line 291
     .line 292
-    move/from16 v20, v7
+    move-object/from16 v18, v6
 
     .line 293
     .line 294
-    move/from16 v21, v8
+    move/from16 v20, v7
 
     .line 295
     .line 296
-    move-object/from16 v26, v15
+    move/from16 v21, v8
 
     .line 297
     .line 298
-    const/4 v15, 0x0
+    move-object/from16 v26, v15
 
     .line 299
-    invoke-direct/range {v9 .. v30}, Landroidx/room/DatabaseConfiguration;-><init>(Landroid/content/Context;Ljava/lang/String;Ln7/d;Ljd/k;Ljava/util/List;ZLandroidx/room/x;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Landroid/content/Intent;ZZLjava/util/Set;Ljava/lang/String;Ljava/io/File;Ljava/util/concurrent/Callable;Ljava/util/List;Ljava/util/List;ZLandroidx/sqlite/SQLiteDriver;Lkotlin/coroutines/CoroutineContext;)V
-
     .line 300
-    .line 301
-    .line 302
-    iget-boolean v0, v2, Landroidx/room/w;->p:Z
+    const/4 v15, 0x0
 
+    .line 301
+    invoke-direct/range {v9 .. v30}, Landroidx/room/DatabaseConfiguration;-><init>(Landroid/content/Context;Ljava/lang/String;Lp7/d;Landroidx/room/z;Ljava/util/List;ZLandroidx/room/y;Ljava/util/concurrent/Executor;Ljava/util/concurrent/Executor;Landroid/content/Intent;ZZLjava/util/Set;Ljava/lang/String;Ljava/io/File;Ljava/util/concurrent/Callable;Ljava/util/List;Ljava/util/List;ZLandroidx/sqlite/SQLiteDriver;Lkotlin/coroutines/CoroutineContext;)V
+
+    .line 302
     .line 303
     .line 304
-    iput-boolean v0, v9, Landroidx/room/DatabaseConfiguration;->v:Z
+    iget-boolean v0, v2, Landroidx/room/x;->p:Z
 
     .line 305
     .line 306
-    iget-object v0, v2, Landroidx/room/w;->a:Lf9/f;
+    iput-boolean v0, v9, Landroidx/room/DatabaseConfiguration;->v:Z
 
     .line 307
     .line 308
-    invoke-static {v0}, Lgc/h;->E(Lkotlin/reflect/KClass;)Ljava/lang/Class;
+    iget-object v0, v2, Landroidx/room/x;->a:Lh9/f;
 
     .line 309
     .line 310
+    invoke-static {v0}, Ljb/c;->J(Lkotlin/reflect/KClass;)Ljava/lang/Class;
+
     .line 311
+    .line 312
+    .line 313
     move-result-object v2
 
-    .line 312
+    .line 314
     invoke-virtual {v2}, Ljava/lang/Class;->getPackage()Ljava/lang/Package;
 
-    .line 313
-    .line 314
     .line 315
+    .line 316
+    .line 317
     move-result-object v0
 
-    .line 316
-    if-eqz v0, :cond_b
-
-    .line 317
     .line 318
-    invoke-virtual {v0}, Ljava/lang/Package;->getName()Ljava/lang/String;
+    if-eqz v0, :cond_b
 
     .line 319
     .line 320
+    invoke-virtual {v0}, Ljava/lang/Package;->getName()Ljava/lang/String;
+
     .line 321
+    .line 322
+    .line 323
     move-result-object v0
 
-    .line 322
-    if-nez v0, :cond_c
-
-    .line 323
     .line 324
-    :cond_b
-    const-string v0, ""
+    if-nez v0, :cond_c
 
     .line 325
     .line 326
-    :cond_c
-    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+    :cond_b
+    const-string v0, ""
 
     .line 327
     .line 328
+    :cond_c
+    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+
     .line 329
+    .line 330
+    .line 331
     move-result-object v5
 
-    .line 330
-    invoke-static {v5}, Lf9/i;->b(Ljava/lang/Object;)V
-
-    .line 331
     .line 332
-    .line 333
-    invoke-virtual {v0}, Ljava/lang/String;->length()I
+    invoke-static {v5}, Lh9/i;->b(Ljava/lang/Object;)V
 
+    .line 333
     .line 334
     .line 335
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
     .line 336
+    .line 337
+    .line 338
     move-result v6
 
-    .line 337
+    .line 339
     if-nez v6, :cond_d
 
-    .line 338
-    .line 339
+    .line 340
+    .line 341
     goto :goto_6
 
-    .line 340
+    .line 342
     :cond_d
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
-    .line 341
-    .line 342
     .line 343
+    .line 344
+    .line 345
     move-result v6
 
-    .line 344
+    .line 346
     add-int/2addr v6, v4
 
-    .line 345
+    .line 347
     invoke-virtual {v5, v6}, Ljava/lang/String;->substring(I)Ljava/lang/String;
 
-    .line 346
-    .line 347
     .line 348
+    .line 349
+    .line 350
     move-result-object v5
 
-    .line 349
-    const-string v6, "substring(...)"
-
-    .line 350
     .line 351
-    invoke-static {v5, v6}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string v6, "substring(...)"
 
     .line 352
     .line 353
+    invoke-static {v5, v6}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 354
+    .line 355
+    .line 356
     :goto_6
     const/16 v6, 0x5f
 
-    .line 355
-    .line 356
-    const/16 v7, 0x2e
-
     .line 357
     .line 358
-    invoke-virtual {v5, v7, v6}, Ljava/lang/String;->replace(CC)Ljava/lang/String;
+    const/16 v7, 0x2e
 
     .line 359
     .line 360
+    invoke-virtual {v5, v7, v6}, Ljava/lang/String;->replace(CC)Ljava/lang/String;
+
     .line 361
+    .line 362
+    .line 363
     move-result-object v5
 
-    .line 362
-    const-string v6, "replace(...)"
-
-    .line 363
     .line 364
-    invoke-static {v5, v6}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string v6, "replace(...)"
 
     .line 365
     .line 366
-    .line 367
-    const-string v6, "_Impl"
+    invoke-static {v5, v6}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 367
     .line 368
     .line 369
-    invoke-virtual {v5, v6}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    const-string v6, "_Impl"
 
     .line 370
     .line 371
+    invoke-virtual {v5, v6}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
     .line 372
+    .line 373
+    .line 374
     move-result-object v5
 
-    .line 373
+    .line 375
     :try_start_0
     invoke-virtual {v0}, Ljava/lang/String;->length()I
 
-    .line 374
-    .line 375
     .line 376
+    .line 377
+    .line 378
     move-result v6
 
-    .line 377
+    .line 379
     if-nez v6, :cond_e
 
-    .line 378
-    .line 379
+    .line 380
+    .line 381
     move-object v0, v5
 
-    .line 380
+    .line 382
     goto :goto_7
 
-    .line 381
+    .line 383
     :cond_e
     new-instance v6, Ljava/lang/StringBuilder;
 
-    .line 382
-    .line 383
-    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
-
     .line 384
     .line 385
-    .line 386
-    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {v6}, Ljava/lang/StringBuilder;-><init>()V
 
+    .line 386
     .line 387
     .line 388
-    .line 389
-    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 389
     .line 390
     .line 391
-    .line 392
-    invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v6, v7}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
+    .line 392
     .line 393
     .line 394
-    .line 395
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 395
     .line 396
     .line 397
+    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 398
+    .line 399
+    .line 400
     move-result-object v0
 
-    .line 399
+    .line 401
     :goto_7
     invoke-virtual {v2}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
 
-    .line 400
-    .line 401
     .line 402
+    .line 403
+    .line 404
     move-result-object v6
 
-    .line 403
+    .line 405
     invoke-static {v0, v4, v6}, Ljava/lang/Class;->forName(Ljava/lang/String;ZLjava/lang/ClassLoader;)Ljava/lang/Class;
 
-    .line 404
-    .line 405
     .line 406
+    .line 407
+    .line 408
     move-result-object v0
 
-    .line 407
-    const-string v6, "null cannot be cast to non-null type java.lang.Class<T of androidx.room.util.KClassUtil.findAndInstantiateDatabaseImpl>"
-
-    .line 408
     .line 409
-    invoke-static {v0, v6}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string v6, "null cannot be cast to non-null type java.lang.Class<T of androidx.room.util.KClassUtil.findAndInstantiateDatabaseImpl>"
 
     .line 410
     .line 411
-    .line 412
-    invoke-virtual {v0, v3}, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    invoke-static {v0, v6}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 412
     .line 413
     .line 414
+    invoke-virtual {v0, v3}, Ljava/lang/Class;->getDeclaredConstructor([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+
     .line 415
+    .line 416
+    .line 417
     move-result-object v0
 
-    .line 416
+    .line 418
     invoke-virtual {v0, v3}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 417
-    .line 418
     .line 419
+    .line 420
+    .line 421
     move-result-object v0
     :try_end_0
     .catch Ljava/lang/ClassNotFoundException; {:try_start_0 .. :try_end_0} :catch_2
     .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/lang/InstantiationException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 420
-    check-cast v0, Landroidx/room/RoomDatabase;
-
-    .line 421
     .line 422
-    invoke-virtual {v0, v9}, Landroidx/room/RoomDatabase;->init(Landroidx/room/DatabaseConfiguration;)V
+    check-cast v0, Landroidx/room/RoomDatabase;
 
     .line 423
     .line 424
-    .line 425
-    check-cast v0, Lcom/microsoft/applications/events/OfflineRoomDatabase;
+    invoke-virtual {v0, v9}, Landroidx/room/RoomDatabase;->init(Landroidx/room/DatabaseConfiguration;)V
 
+    .line 425
     .line 426
     .line 427
-    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
+    check-cast v0, Lcom/microsoft/applications/events/OfflineRoomDatabase;
 
     .line 428
     .line 429
-    invoke-virtual {v0}, Lcom/microsoft/applications/events/OfflineRoomDatabase;->getStorageRecordDao()Lcom/microsoft/applications/events/StorageRecordDao;
+    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
 
     .line 430
     .line 431
+    invoke-virtual {v0}, Lcom/microsoft/applications/events/OfflineRoomDatabase;->getStorageRecordDao()Lcom/microsoft/applications/events/StorageRecordDao;
+
     .line 432
+    .line 433
+    .line 434
     move-result-object v0
 
-    .line 433
-    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_srDao:Lcom/microsoft/applications/events/StorageRecordDao;
-
-    .line 434
     .line 435
-    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
+    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_srDao:Lcom/microsoft/applications/events/StorageRecordDao;
 
     .line 436
     .line 437
-    invoke-virtual {v0}, Lcom/microsoft/applications/events/OfflineRoomDatabase;->getStorageSettingDao()Lcom/microsoft/applications/events/StorageSettingDao;
+    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
 
     .line 438
     .line 439
+    invoke-virtual {v0}, Lcom/microsoft/applications/events/OfflineRoomDatabase;->getStorageSettingDao()Lcom/microsoft/applications/events/StorageSettingDao;
+
     .line 440
+    .line 441
+    .line 442
     move-result-object v0
 
-    .line 441
-    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_settingDao:Lcom/microsoft/applications/events/StorageSettingDao;
-
-    .line 442
     .line 443
-    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
+    iput-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_settingDao:Lcom/microsoft/applications/events/StorageSettingDao;
 
     .line 444
     .line 445
-    const-string v2, "PRAGMA page_size"
+    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
 
     .line 446
     .line 447
-    invoke-virtual {v0, v2, v3}, Landroidx/room/RoomDatabase;->query(Ljava/lang/String;[Ljava/lang/Object;)Landroid/database/Cursor;
+    const-string v2, "PRAGMA page_size"
 
     .line 448
     .line 449
+    invoke-virtual {v0, v2, v3}, Landroidx/room/RoomDatabase;->query(Ljava/lang/String;[Ljava/lang/Object;)Landroid/database/Cursor;
+
     .line 450
+    .line 451
+    .line 452
     move-result-object v0
 
-    .line 451
+    .line 453
     invoke-interface {v0}, Landroid/database/Cursor;->getCount()I
 
-    .line 452
-    .line 453
     .line 454
+    .line 455
+    .line 456
     move-result v2
 
-    .line 455
-    if-ne v2, v4, :cond_f
-
-    .line 456
     .line 457
-    invoke-interface {v0}, Landroid/database/Cursor;->getColumnCount()I
+    if-ne v2, v4, :cond_f
 
     .line 458
     .line 459
+    invoke-interface {v0}, Landroid/database/Cursor;->getColumnCount()I
+
     .line 460
+    .line 461
+    .line 462
     move-result v2
 
-    .line 461
-    if-ne v2, v4, :cond_f
-
-    .line 462
     .line 463
-    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+    if-ne v2, v4, :cond_f
 
     .line 464
     .line 465
+    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+
     .line 466
+    .line 467
+    .line 468
     const/4 v2, 0x0
 
-    .line 467
+    .line 469
     invoke-interface {v0, v2}, Landroid/database/Cursor;->getLong(I)J
 
-    .line 468
-    .line 469
     .line 470
+    .line 471
+    .line 472
     move-result-wide v5
 
-    .line 471
+    .line 473
     iput-wide v5, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_pageSize:J
 
-    .line 472
-    .line 473
+    .line 474
+    .line 475
     goto :goto_8
 
-    .line 474
+    .line 476
     :cond_f
     invoke-interface {v0}, Landroid/database/Cursor;->getCount()I
 
-    .line 475
-    .line 476
     .line 477
+    .line 478
+    .line 479
     move-result v2
 
-    .line 478
+    .line 480
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 479
-    .line 480
     .line 481
+    .line 482
+    .line 483
     move-result-object v2
 
-    .line 482
+    .line 484
     invoke-interface {v0}, Landroid/database/Cursor;->getColumnCount()I
 
-    .line 483
-    .line 484
     .line 485
+    .line 486
+    .line 487
     move-result v5
 
-    .line 486
+    .line 488
     invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 487
-    .line 488
     .line 489
+    .line 490
+    .line 491
     move-result-object v5
 
-    .line 490
+    .line 492
     filled-new-array {v2, v5}, [Ljava/lang/Object;
 
-    .line 491
-    .line 492
     .line 493
+    .line 494
+    .line 495
     move-result-object v2
 
-    .line 494
-    const-string v5, "Unexpected result from PRAGMA page_size: %d rows, %d columns"
-
-    .line 495
     .line 496
-    invoke-static {v5, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    const-string v5, "Unexpected result from PRAGMA page_size: %d rows, %d columns"
 
     .line 497
     .line 498
+    invoke-static {v5, v2}, Ljava/lang/String;->format(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
     .line 499
+    .line 500
+    .line 501
     move-result-object v2
 
-    .line 500
-    const-string v5, "MAE"
-
-    .line 501
     .line 502
-    invoke-static {v5, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v5, "MAE"
 
     .line 503
     .line 504
+    invoke-static {v5, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
+
     .line 505
+    .line 506
+    .line 507
     :goto_8
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    .line 506
-    .line 507
     .line 508
-    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
-
     .line 509
     .line 510
-    const-string v2, "PRAGMA page_count"
+    iget-object v0, v1, Lcom/microsoft/applications/events/OfflineRoom;->m_db:Lcom/microsoft/applications/events/OfflineRoomDatabase;
 
     .line 511
     .line 512
-    invoke-virtual {v0, v2, v3}, Landroidx/room/RoomDatabase;->query(Ljava/lang/String;[Ljava/lang/Object;)Landroid/database/Cursor;
+    const-string v2, "PRAGMA page_count"
 
     .line 513
     .line 514
+    invoke-virtual {v0, v2, v3}, Landroidx/room/RoomDatabase;->query(Ljava/lang/String;[Ljava/lang/Object;)Landroid/database/Cursor;
+
     .line 515
+    .line 516
+    .line 517
     move-result-object v0
 
-    .line 516
+    .line 518
     invoke-interface {v0}, Landroid/database/Cursor;->getCount()I
 
-    .line 517
-    .line 518
     .line 519
+    .line 520
+    .line 521
     move-result v2
 
-    .line 520
-    if-ne v2, v4, :cond_10
-
-    .line 521
     .line 522
-    invoke-interface {v0}, Landroid/database/Cursor;->getColumnCount()I
+    if-ne v2, v4, :cond_10
 
     .line 523
     .line 524
+    invoke-interface {v0}, Landroid/database/Cursor;->getColumnCount()I
+
     .line 525
+    .line 526
+    .line 527
     move-result v2
 
-    .line 526
-    if-ne v2, v4, :cond_10
-
-    .line 527
     .line 528
-    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+    if-ne v2, v4, :cond_10
 
     .line 529
     .line 530
+    invoke-interface {v0}, Landroid/database/Cursor;->moveToFirst()Z
+
     .line 531
+    .line 532
+    .line 533
     const/4 v2, 0x0
 
-    .line 532
+    .line 534
     invoke-interface {v0, v2}, Landroid/database/Cursor;->getLong(I)J
 
-    .line 533
-    .line 534
     .line 535
+    .line 536
+    .line 537
     :cond_10
     invoke-interface {v0}, Landroid/database/Cursor;->close()V
 
-    .line 536
-    .line 537
     .line 538
+    .line 539
+    .line 540
     return-void
 
-    .line 539
+    .line 541
     :catch_0
     move-exception v0
 
-    .line 540
+    .line 542
     goto :goto_9
 
-    .line 541
+    .line 543
     :catch_1
     move-exception v0
 
-    .line 542
+    .line 544
     goto :goto_a
 
-    .line 543
+    .line 545
     :catch_2
     move-exception v0
 
-    .line 544
+    .line 546
     goto :goto_b
 
-    .line 545
+    .line 547
     :goto_9
     new-instance v3, Ljava/lang/RuntimeException;
 
-    .line 546
-    .line 547
-    new-instance v4, Ljava/lang/StringBuilder;
-
     .line 548
     .line 549
-    const-string v5, "Failed to create an instance of "
+    new-instance v4, Ljava/lang/StringBuilder;
 
     .line 550
     .line 551
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "Failed to create an instance of "
 
     .line 552
     .line 553
-    .line 554
-    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 554
     .line 555
     .line 556
+    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+
     .line 557
+    .line 558
+    .line 559
     move-result-object v2
 
-    .line 558
+    .line 560
     invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 559
-    .line 560
     .line 561
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
     .line 562
     .line 563
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 564
+    .line 565
+    .line 566
     move-result-object v2
 
-    .line 565
+    .line 567
     invoke-direct {v3, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 566
-    .line 567
     .line 568
+    .line 569
+    .line 570
     throw v3
 
-    .line 569
+    .line 571
     :goto_a
     new-instance v3, Ljava/lang/RuntimeException;
 
-    .line 570
-    .line 571
-    new-instance v4, Ljava/lang/StringBuilder;
-
     .line 572
     .line 573
-    const-string v5, "Cannot access the constructor "
+    new-instance v4, Ljava/lang/StringBuilder;
 
     .line 574
     .line 575
-    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v5, "Cannot access the constructor "
 
     .line 576
     .line 577
-    .line 578
-    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+    invoke-direct {v4, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 578
     .line 579
     .line 580
+    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+
     .line 581
+    .line 582
+    .line 583
     move-result-object v2
 
-    .line 582
+    .line 584
     invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 583
-    .line 584
     .line 585
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
     .line 586
     .line 587
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 588
+    .line 589
+    .line 590
     move-result-object v2
 
-    .line 589
+    .line 591
     invoke-direct {v3, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 590
-    .line 591
     .line 592
+    .line 593
+    .line 594
     throw v3
 
-    .line 593
+    .line 595
     :goto_b
     new-instance v3, Ljava/lang/RuntimeException;
 
-    .line 594
-    .line 595
-    new-instance v4, Ljava/lang/StringBuilder;
-
     .line 596
     .line 597
-    const-string v6, "Cannot find implementation for "
+    new-instance v4, Ljava/lang/StringBuilder;
 
     .line 598
     .line 599
-    invoke-direct {v4, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    const-string v6, "Cannot find implementation for "
 
     .line 600
     .line 601
-    .line 602
-    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+    invoke-direct {v4, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 602
     .line 603
     .line 604
+    invoke-virtual {v2}, Ljava/lang/Class;->getCanonicalName()Ljava/lang/String;
+
     .line 605
+    .line 606
+    .line 607
     move-result-object v2
 
-    .line 606
+    .line 608
     invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
-    .line 607
-    .line 608
     .line 609
-    const-string v2, ". "
-
     .line 610
     .line 611
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, ". "
 
     .line 612
     .line 613
-    .line 614
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 614
     .line 615
     .line 616
-    .line 617
-    const-string v2, " does not exist. Is Room annotation processor correctly configured?"
+    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 617
     .line 618
     .line 619
-    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v2, " does not exist. Is Room annotation processor correctly configured?"
 
     .line 620
     .line 621
-    .line 622
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v4, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 622
     .line 623
     .line 624
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 625
+    .line 626
+    .line 627
     move-result-object v2
 
-    .line 626
+    .line 628
     invoke-direct {v3, v2, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-    .line 627
-    .line 628
     .line 629
+    .line 630
+    .line 631
     throw v3
 
-    .line 630
+    .line 632
     :cond_11
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 631
-    .line 632
-    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 633
     .line 634
+    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 635
+    .line 636
+    .line 637
     throw v0
 
-    .line 636
+    .line 638
     :cond_12
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 637
-    .line 638
-    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 639
     .line 640
+    invoke-direct {v0, v8}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 641
+    .line 642
+    .line 643
     throw v0
 
-    .line 642
+    .line 644
     :cond_13
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 643
-    .line 644
-    const-string v2, "Cannot build a database with the special name \':memory:\'. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder"
-
     .line 645
     .line 646
-    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v2, "Cannot build a database with the special name \':memory:\'. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder"
 
     .line 647
     .line 648
+    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 649
+    .line 650
+    .line 651
     throw v0
 
-    .line 650
+    .line 652
     :cond_14
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 651
-    .line 652
-    const-string v2, "Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder"
-
     .line 653
     .line 654
-    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v2, "Cannot build a database with null or empty name. If you are trying to create an in memory database, use Room.inMemoryDatabaseBuilder"
 
     .line 655
     .line 656
+    invoke-direct {v0, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 657
+    .line 658
+    .line 659
     throw v0
 .end method
 

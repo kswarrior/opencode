@@ -1,92 +1,146 @@
 .class public final Lb3/u;
-.super Lb3/e;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ls2/d;
 
 
-# static fields
-.field public static final b:[B
-
-
-# direct methods
-.method static constructor <clinit>()V
-    .locals 2
+# virtual methods
+.method public final a(Ljava/nio/ByteBuffer;)Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
+    .locals 0
 
     .line 1
-    const-string v0, "com.bumptech.glide.load.resource.bitmap.FitCenter"
+    sget-object p1, Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;->UNKNOWN:Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
 
     .line 2
     .line 3
-    sget-object v1, Ls2/e;->a:Ljava/nio/charset/Charset;
+    return-object p1
+.end method
+
+.method public final b(Ljava/nio/ByteBuffer;Lig/a;)I
+    .locals 1
+
+    .line 1
+    sget-object v0, Lo3/b;->a:Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 2
+    .line 3
+    new-instance v0, Lo3/a;
 
     .line 4
     .line 5
-    invoke-virtual {v0, v1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+    invoke-direct {v0, p1}, Lo3/a;-><init>(Ljava/nio/ByteBuffer;)V
 
     .line 6
     .line 7
     .line 8
-    move-result-object v0
+    invoke-virtual {p0, v0, p2}, Lb3/u;->e(Ljava/io/InputStream;Lig/a;)I
 
     .line 9
-    sput-object v0, Lb3/u;->b:[B
-
     .line 10
     .line 11
-    return-void
+    move-result p1
+
+    .line 12
+    return p1
 .end method
 
-
-# virtual methods
-.method public final b(Ljava/security/MessageDigest;)V
-    .locals 1
+.method public final c(Ljava/io/InputStream;)Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
+    .locals 0
 
     .line 1
-    sget-object v0, Lb3/u;->b:[B
+    sget-object p1, Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;->UNKNOWN:Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
 
     .line 2
     .line 3
-    invoke-virtual {p1, v0}, Ljava/security/MessageDigest;->update([B)V
+    return-object p1
+.end method
+
+.method public final d(Ljava/nio/ByteBuffer;Lig/a;)Z
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x0
+
+    .line 2
+    return p1
+.end method
+
+.method public final e(Ljava/io/InputStream;Lig/a;)I
+    .locals 0
+
+    .line 1
+    new-instance p2, Lg1/g;
+
+    .line 2
+    .line 3
+    invoke-direct {p2, p1}, Lg1/g;-><init>(Ljava/io/InputStream;)V
 
     .line 4
     .line 5
     .line 6
-    return-void
-.end method
+    const-string p1, "Orientation"
 
-.method public final c(Lv2/a;Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-    .locals 0
+    .line 7
+    .line 8
+    invoke-virtual {p2, p1}, Lg1/g;->c(Ljava/lang/String;)Lg1/c;
 
-    .line 1
-    invoke-static {p1, p2, p3, p4}, Lb3/b0;->b(Lv2/a;Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
-
-    .line 2
-    .line 3
-    .line 4
+    .line 9
+    .line 10
+    .line 11
     move-result-object p1
 
-    .line 5
-    return-object p1
-.end method
+    .line 12
+    if-nez p1, :cond_0
 
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 0
+    .line 13
+    .line 14
+    goto :goto_0
 
-    .line 1
-    instance-of p1, p1, Lb3/u;
+    .line 15
+    :cond_0
+    :try_start_0
+    iget-object p2, p2, Lg1/g;->f:Ljava/nio/ByteOrder;
 
-    .line 2
-    .line 3
+    .line 16
+    .line 17
+    invoke-virtual {p1, p2}, Lg1/c;->e(Ljava/nio/ByteOrder;)I
+
+    .line 18
+    .line 19
+    .line 20
+    move-result p1
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 21
+    goto :goto_1
+
+    .line 22
+    :catch_0
+    :goto_0
+    const/4 p1, 0x1
+
+    .line 23
+    :goto_1
+    if-nez p1, :cond_1
+
+    .line 24
+    .line 25
+    const/4 p1, -0x1
+
+    .line 26
+    :cond_1
     return p1
 .end method
 
-.method public final hashCode()I
-    .locals 1
+.method public final f(Ljava/io/InputStream;Lig/a;)Z
+    .locals 0
 
     .line 1
-    const v0, 0x5db7ce1d
+    const/4 p1, 0x0
 
     .line 2
-    .line 3
-    .line 4
-    return v0
+    return p1
 .end method

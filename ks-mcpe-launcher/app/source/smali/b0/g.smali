@@ -1,6 +1,6 @@
 .class public final Lb0/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -15,51 +15,23 @@
 .method public constructor <init>()V
     .locals 1
 
-    .line 67
+    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     const/16 v0, 0x100
 
-    .line 68
+    .line 62
     new-array v0, v0, [Lb0/g;
 
     iput-object v0, p0, Lb0/g;->c:Ljava/lang/Object;
 
     const/4 v0, 0x0
 
-    .line 69
+    .line 63
     iput v0, p0, Lb0/g;->a:I
 
-    .line 70
+    .line 64
     iput v0, p0, Lb0/g;->b:I
-
-    return-void
-.end method
-
-.method public constructor <init>(I)V
-    .locals 2
-
-    .line 42
-    new-instance v0, Ls4/d0;
-
-    const/16 v1, 0xa
-
-    .line 43
-    invoke-direct {v0, v1}, Ls4/d0;-><init>(I)V
-
-    .line 44
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    const/4 v1, 0x0
-
-    .line 45
-    iput v1, p0, Lb0/g;->a:I
-
-    .line 46
-    iput p1, p0, Lb0/g;->b:I
-
-    .line 47
-    iput-object v0, p0, Lb0/g;->c:Ljava/lang/Object;
 
     return-void
 .end method
@@ -67,15 +39,15 @@
 .method public constructor <init>(II)V
     .locals 1
 
-    .line 71
+    .line 65
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     const/4 v0, 0x0
 
-    .line 72
+    .line 66
     iput-object v0, p0, Lb0/g;->c:Ljava/lang/Object;
 
-    .line 73
+    .line 67
     iput p1, p0, Lb0/g;->a:I
 
     and-int/lit8 p1, p2, 0x7
@@ -84,7 +56,7 @@
 
     const/16 p1, 0x8
 
-    .line 74
+    .line 68
     :cond_0
     iput p1, p0, Lb0/g;->b:I
 
@@ -127,17 +99,17 @@
 
     iget-object p3, v0, Lb0/g;->c:Ljava/lang/Object;
 
-    check-cast p3, Lcom/google/firebase/messaging/u;
+    check-cast p3, Lcom/google/firebase/messaging/v;
 
     iput-object v0, p0, Lb0/g;->c:Ljava/lang/Object;
 
     .line 9
-    iget-object v1, p3, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
+    iget-object v1, p3, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
 
-    check-cast v1, Lxg/l;
+    check-cast v1, Lph/l;
 
     .line 10
-    iget-object v1, v1, Lxg/l;->a:Lorg/spongycastle/crypto/m;
+    iget-object v1, v1, Lph/l;->a:Lorg/spongycastle/crypto/m;
 
     .line 11
     invoke-interface {v1}, Lorg/spongycastle/crypto/m;->getAlgorithmName()Ljava/lang/String;
@@ -150,26 +122,26 @@
     move-result v3
 
     .line 13
-    iget-object p3, p3, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
+    iget-object p3, p3, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
 
-    check-cast p3, Lxg/l;
+    check-cast p3, Lph/l;
 
     .line 14
-    iget v4, p3, Lxg/l;->c:I
+    iget v4, p3, Lph/l;->c:I
 
     .line 15
-    iget v5, p3, Lxg/l;->d:I
+    iget v5, p3, Lph/l;->d:I
 
     if-eqz v2, :cond_0
 
     .line 16
-    sget-object p3, Lxg/d;->b:Ljava/util/Map;
+    sget-object p3, Lph/d;->b:Ljava/util/Map;
 
     move v6, p1
 
     move v7, p2
 
-    invoke-static/range {v2 .. v7}, Lxg/d;->a(Ljava/lang/String;IIIII)Ljava/lang/String;
+    invoke-static/range {v2 .. v7}, Lph/d;->a(Ljava/lang/String;IIIII)Ljava/lang/String;
 
     move-result-object p1
 
@@ -177,13 +149,13 @@
 
     move-result-object p1
 
-    check-cast p1, Lxg/d;
+    check-cast p1, Lph/d;
 
     return-void
 
     .line 17
     :cond_0
-    sget-object p1, Lxg/d;->b:Ljava/util/Map;
+    sget-object p1, Lph/d;->b:Ljava/util/Map;
 
     .line 18
     new-instance p1, Ljava/lang/NullPointerException;
@@ -228,16 +200,16 @@
 .method public constructor <init>(II[B)V
     .locals 0
 
-    .line 63
+    .line 57
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 64
+    .line 58
     iput-object p3, p0, Lb0/g;->c:Ljava/lang/Object;
 
-    .line 65
+    .line 59
     iput p1, p0, Lb0/g;->a:I
 
-    .line 66
+    .line 60
     iput p2, p0, Lb0/g;->b:I
 
     return-void
@@ -256,13 +228,13 @@
     if-eqz p2, :cond_3
 
     .line 23
-    new-instance v1, Lcom/google/firebase/messaging/u;
+    new-instance v1, Lcom/google/firebase/messaging/v;
 
-    new-instance v2, Lxg/l;
+    new-instance v2, Lph/l;
 
-    invoke-direct {v2, p2}, Lxg/l;-><init>(Lorg/spongycastle/crypto/m;)V
+    invoke-direct {v2, p2}, Lph/l;-><init>(Lorg/spongycastle/crypto/m;)V
 
-    invoke-direct {v1, v2}, Lcom/google/firebase/messaging/u;-><init>(Lxg/l;)V
+    invoke-direct {v1, v2}, Lcom/google/firebase/messaging/v;-><init>(Lph/l;)V
 
     iput-object v1, p0, Lb0/g;->c:Ljava/lang/Object;
 
@@ -290,15 +262,15 @@
     .line 28
     iget-object p2, p0, Lb0/g;->c:Ljava/lang/Object;
 
-    check-cast p2, Lcom/google/firebase/messaging/u;
+    check-cast p2, Lcom/google/firebase/messaging/v;
 
     .line 29
-    iget-object p2, p2, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
+    iget-object p2, p2, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
 
-    check-cast p2, Lxg/l;
+    check-cast p2, Lph/l;
 
     .line 30
-    iget-object p2, p2, Lxg/l;->a:Lorg/spongycastle/crypto/m;
+    iget-object p2, p2, Lph/l;->a:Lorg/spongycastle/crypto/m;
 
     .line 31
     invoke-interface {p2}, Lorg/spongycastle/crypto/m;->getAlgorithmName()Ljava/lang/String;
@@ -312,25 +284,25 @@
     .line 32
     iget-object v1, p0, Lb0/g;->c:Ljava/lang/Object;
 
-    check-cast v1, Lcom/google/firebase/messaging/u;
+    check-cast v1, Lcom/google/firebase/messaging/v;
 
     .line 33
-    iget-object v1, v1, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
+    iget-object v1, v1, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
 
-    check-cast v1, Lxg/l;
+    check-cast v1, Lph/l;
 
     .line 34
-    iget v2, v1, Lxg/l;->c:I
+    iget v2, v1, Lph/l;->c:I
 
     .line 35
-    iget v1, v1, Lxg/l;->d:I
+    iget v1, v1, Lph/l;->d:I
 
     if-eqz p2, :cond_0
 
     .line 36
-    sget-object v3, Lxg/e;->b:Ljava/util/Map;
+    sget-object v3, Lph/e;->b:Ljava/util/Map;
 
-    invoke-static {p2, v0, v2, v1, p1}, Lxg/e;->a(Ljava/lang/String;IIII)Ljava/lang/String;
+    invoke-static {p2, v0, v2, v1, p1}, Lph/e;->a(Ljava/lang/String;IIII)Ljava/lang/String;
 
     move-result-object p1
 
@@ -338,13 +310,13 @@
 
     move-result-object p1
 
-    check-cast p1, Lxg/e;
+    check-cast p1, Lph/e;
 
     return-void
 
     .line 37
     :cond_0
-    sget-object p1, Lxg/e;->b:Ljava/util/Map;
+    sget-object p1, Lph/e;->b:Ljava/util/Map;
 
     .line 38
     new-instance p1, Ljava/lang/NullPointerException;
@@ -409,10 +381,10 @@
 .method public constructor <init>(Landroid/content/Context;Landroid/content/res/XmlResourceParser;)V
     .locals 6
 
-    .line 48
+    .line 42
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 49
+    .line 43
     new-instance v0, Ljava/util/ArrayList;
 
     invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
@@ -421,22 +393,22 @@
 
     const/4 v0, -0x1
 
-    .line 50
+    .line 44
     iput v0, p0, Lb0/g;->b:I
 
-    .line 51
+    .line 45
     invoke-static {p2}, Landroid/util/Xml;->asAttributeSet(Lorg/xmlpull/v1/XmlPullParser;)Landroid/util/AttributeSet;
 
     move-result-object p2
 
-    .line 52
+    .line 46
     sget-object v0, Lb0/s;->h:[I
 
     invoke-virtual {p1, p2, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     move-result-object p2
 
-    .line 53
+    .line 47
     invoke-virtual {p2}, Landroid/content/res/TypedArray;->getIndexCount()I
 
     move-result v0
@@ -446,14 +418,14 @@
     :goto_0
     if-ge v1, v0, :cond_2
 
-    .line 54
+    .line 48
     invoke-virtual {p2, v1}, Landroid/content/res/TypedArray;->getIndex(I)I
 
     move-result v2
 
     if-nez v2, :cond_0
 
-    .line 55
+    .line 49
     iget v3, p0, Lb0/g;->a:I
 
     invoke-virtual {p2, v2, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -469,7 +441,7 @@
 
     if-ne v2, v3, :cond_1
 
-    .line 56
+    .line 50
     iget v3, p0, Lb0/g;->b:I
 
     invoke-virtual {p2, v2, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -478,7 +450,7 @@
 
     iput v2, p0, Lb0/g;->b:I
 
-    .line 57
+    .line 51
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v3
@@ -487,14 +459,14 @@
 
     move-result-object v3
 
-    .line 58
+    .line 52
     invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
     move-result-object v4
 
     invoke-virtual {v4, v2}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
 
-    .line 59
+    .line 53
     const-string v4, "layout"
 
     invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
@@ -503,12 +475,12 @@
 
     if-eqz v3, :cond_1
 
-    .line 60
+    .line 54
     new-instance v3, Lb0/o;
 
     invoke-direct {v3}, Lb0/o;-><init>()V
 
-    .line 61
+    .line 55
     invoke-static {p1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
 
     move-result-object v4
@@ -529,7 +501,7 @@
 
     goto :goto_0
 
-    .line 62
+    .line 56
     :cond_2
     invoke-virtual {p2}, Landroid/content/res/TypedArray;->recycle()V
 
@@ -546,19 +518,19 @@
 
     .line 2
     .line 3
-    check-cast v0, Lcom/google/firebase/messaging/u;
+    check-cast v0, Lcom/google/firebase/messaging/v;
 
     .line 4
     .line 5
-    iget-object v0, v0, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
 
     .line 6
     .line 7
-    check-cast v0, Lxg/l;
+    check-cast v0, Lph/l;
 
     .line 8
     .line 9
-    iget v0, v0, Lxg/l;->b:I
+    iget v0, v0, Lph/l;->b:I
 
     .line 10
     .line 11

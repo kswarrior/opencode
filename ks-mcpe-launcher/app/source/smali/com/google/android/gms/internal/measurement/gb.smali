@@ -1,158 +1,67 @@
-.class public final Lcom/google/android/gms/internal/measurement/gb;
-.super Landroid/content/BroadcastReceiver;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-
-# instance fields
-.field public final synthetic a:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-.field public final synthetic b:Landroid/content/Context;
-
-.field public final synthetic c:Li6/b1;
-
-.field public final synthetic d:Lcom/google/android/gms/internal/measurement/o6;
-
-.field public final synthetic e:Ljava/util/concurrent/Executor;
-
-
-# direct methods
-.method public constructor <init>(Ljava/util/concurrent/atomic/AtomicBoolean;Landroid/content/Context;Li6/b1;Lcom/google/android/gms/internal/measurement/o6;Ljava/util/concurrent/Executor;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/gb;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    .line 2
-    .line 3
-    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/gb;->b:Landroid/content/Context;
-
-    .line 4
-    .line 5
-    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/gb;->c:Li6/b1;
-
-    .line 6
-    .line 7
-    iput-object p4, p0, Lcom/google/android/gms/internal/measurement/gb;->d:Lcom/google/android/gms/internal/measurement/o6;
-
-    .line 8
-    .line 9
-    iput-object p5, p0, Lcom/google/android/gms/internal/measurement/gb;->e:Ljava/util/concurrent/Executor;
-
-    .line 10
-    .line 11
-    invoke-direct {p0}, Landroid/content/BroadcastReceiver;-><init>()V
-
-    .line 12
-    .line 13
-    .line 14
-    return-void
-.end method
+.class public abstract Lcom/google/android/gms/internal/measurement/gb;
+.super Lcom/google/android/gms/internal/measurement/m6;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # virtual methods
-.method public final onReceive(Landroid/content/Context;Landroid/content/Intent;)V
-    .locals 3
+.method public final E(ILandroid/os/Parcel;Landroid/os/Parcel;)Z
+    .locals 0
 
     .line 1
-    iget-object p1, p0, Lcom/google/android/gms/internal/measurement/gb;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+    const/4 p3, 0x2
 
     .line 2
-    .line 3
-    const/4 p2, 0x0
+    if-ne p1, p3, :cond_0
 
+    .line 3
     .line 4
-    const/4 v0, 0x1
+    invoke-virtual {p2}, Landroid/os/Parcel;->createByteArray()[B
 
     .line 5
-    invoke-virtual {p1, p2, v0}, Ljava/util/concurrent/atomic/AtomicBoolean;->compareAndSet(ZZ)Z
-
     .line 6
     .line 7
+    move-result-object p1
+
     .line 8
-    move-result p1
+    invoke-static {p2}, Lcom/google/android/gms/internal/measurement/n6;->d(Landroid/os/Parcel;)V
 
     .line 9
-    if-eqz p1, :cond_0
-
     .line 10
     .line 11
-    iget-object p1, p0, Lcom/google/android/gms/internal/measurement/gb;->b:Landroid/content/Context;
+    move-object p2, p0
 
     .line 12
-    .line 13
-    :try_start_0
-    invoke-virtual {p1, p0}, Landroid/content/Context;->unregisterReceiver(Landroid/content/BroadcastReceiver;)V
-    :try_end_0
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
+    check-cast p2, Lcom/google/android/gms/internal/measurement/eb;
 
+    .line 13
     .line 14
+    new-instance p3, Lcom/google/android/gms/internal/measurement/cb;
+
     .line 15
     .line 16
-    goto :goto_0
+    invoke-direct {p3, p2, p1}, Lcom/google/android/gms/internal/measurement/cb;-><init>(Lcom/google/android/gms/internal/measurement/eb;[B)V
 
     .line 17
-    :catch_0
-    move-exception p1
-
     .line 18
-    const-string p2, "DirectBootUtils"
-
     .line 19
+    iget-object p1, p2, Lcom/google/android/gms/internal/measurement/eb;->d:Lcom/google/android/gms/common/api/internal/ListenerHolder;
+
     .line 20
-    const-string v0, "Failed to unregister receiver"
-
     .line 21
-    .line 22
-    invoke-static {p2, v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-virtual {p1, p3}, Lcom/google/android/gms/common/api/internal/ListenerHolder;->notifyListener(Lcom/google/android/gms/common/api/internal/ListenerHolder$Notifier;)V
 
+    .line 22
     .line 23
     .line 24
+    const/4 p1, 0x1
+
     .line 25
-    :goto_0
-    iget-object p1, p0, Lcom/google/android/gms/internal/measurement/gb;->c:Li6/b1;
+    return p1
 
     .line 26
-    .line 27
-    iget-object p2, p0, Lcom/google/android/gms/internal/measurement/gb;->d:Lcom/google/android/gms/internal/measurement/o6;
-
-    .line 28
-    .line 29
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/gb;->e:Ljava/util/concurrent/Executor;
-
-    .line 30
-    .line 31
-    new-instance v1, Li6/d1;
-
-    .line 32
-    .line 33
-    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
-
-    .line 34
-    .line 35
-    .line 36
-    new-instance v2, Li6/c1;
-
-    .line 37
-    .line 38
-    invoke-direct {v2, v1, p2}, Li6/c1;-><init>(Li6/d1;Li6/z;)V
-
-    .line 39
-    .line 40
-    .line 41
-    iput-object v2, v1, Li6/d1;->Y:Li6/t0;
-
-    .line 42
-    .line 43
-    invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
-
-    .line 44
-    .line 45
-    .line 46
-    invoke-virtual {p1, v1}, Li6/s;->o(Lcom/google/common/util/concurrent/ListenableFuture;)Z
-
-    .line 47
-    .line 48
-    .line 49
     :cond_0
-    return-void
+    const/4 p1, 0x0
+
+    .line 27
+    return p1
 .end method

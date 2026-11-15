@@ -1,12 +1,12 @@
 .class public final Lt2/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
 .field public final a:Lt2/c;
 
-.field public final b:Lqf/a;
+.field public final b:Lig/a;
 
 .field public final c:Landroid/content/ContentResolver;
 
@@ -21,7 +21,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Ljava/util/ArrayList;Lt2/c;Lqf/a;Landroid/content/ContentResolver;)V
+.method public constructor <init>(Ljava/util/ArrayList;Lt2/c;Lig/a;Landroid/content/ContentResolver;)V
     .locals 0
 
     .line 1
@@ -34,7 +34,7 @@
 
     .line 5
     .line 6
-    iput-object p3, p0, Lt2/d;->b:Lqf/a;
+    iput-object p3, p0, Lt2/d;->b:Lig/a;
 
     .line 7
     .line 8

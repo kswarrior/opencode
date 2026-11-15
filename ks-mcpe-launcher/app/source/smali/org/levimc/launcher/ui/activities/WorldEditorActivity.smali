@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 .super Lorg/levimc/launcher/ui/activities/BaseActivity;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/ui/world/NbtTreePanel$Host;
@@ -1735,7 +1735,7 @@
     move-result-object v1
 
     .line 31
-    new-instance v2, Lorg/levimc/launcher/ui/activities/z3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/c5;
 
     .line 32
     .line 33
@@ -1754,7 +1754,7 @@
     move v6, p3
 
     .line 38
-    invoke-direct/range {v2 .. v7}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
+    invoke-direct/range {v2 .. v7}, Lorg/levimc/launcher/ui/activities/c5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
 
     .line 39
     .line 40
@@ -1772,92 +1772,91 @@
 .end method
 
 .method private advancedNbt()V
-    .locals 10
+    .locals 8
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Advanced NBT"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Advanced NBT"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v6, "Discard changes"
 
     .line 13
     .line 14
-    const-string v8, "Discard changes"
+    const-string v7, "Reload map"
 
     .line 15
     .line 16
-    const-string v9, "Reload map"
+    const-string v1, "Open database key"
 
     .line 17
     .line 18
-    const-string v3, "Open database key"
+    const-string v2, "Locator"
 
     .line 19
     .line 20
-    const-string v4, "Locator"
+    const-string v3, "Open NBT file"
 
     .line 21
     .line 22
-    const-string v5, "Open NBT file"
+    const-string v4, "Create record"
 
     .line 23
     .line 24
-    const-string v6, "Create record"
+    const-string v5, "Restore last save"
 
     .line 25
     .line 26
-    const-string v7, "Restore last save"
+    filled-new-array/range {v1 .. v7}, [Ljava/lang/String;
 
     .line 27
     .line 28
-    filled-new-array/range {v3 .. v9}, [Ljava/lang/String;
-
     .line 29
-    .line 30
-    .line 31
     move-result-object v1
 
-    .line 32
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    .line 30
+    new-instance v2, Lorg/levimc/launcher/ui/activities/j4;
 
-    .line 33
-    .line 34
+    .line 31
+    .line 32
     const/4 v3, 0x5
 
-    .line 35
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 33
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
+    .line 34
+    .line 35
     .line 36
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 37
     .line 38
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 39
+    move-result-object v0
+
     .line 40
-    .line 41
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 41
     .line 42
     .line 43
-    .line 44
     return-void
 .end method
 
@@ -1919,77 +1918,76 @@
     .locals 5
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Block operations"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Block operations"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Fill background"
 
     .line 13
     .line 14
-    const-string v1, "Fill background"
+    const-string v2, "Replace background"
 
     .line 15
     .line 16
-    const-string v2, "Replace background"
+    const-string v3, "Fill foreground"
 
     .line 17
     .line 18
-    const-string v3, "Fill foreground"
+    const-string v4, "Replace foreground"
 
     .line 19
     .line 20
-    const-string v4, "Replace foreground"
+    filled-new-array {v3, v4, v1, v2}, [Ljava/lang/String;
 
     .line 21
     .line 22
-    filled-new-array {v3, v4, v1, v2}, [Ljava/lang/String;
-
     .line 23
-    .line 24
-    .line 25
     move-result-object v1
 
-    .line 26
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    .line 24
+    new-instance v2, Lorg/levimc/launcher/ui/activities/j4;
 
-    .line 27
-    .line 28
+    .line 25
+    .line 26
     const/4 v3, 0x7
 
-    .line 29
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 27
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
+    .line 28
+    .line 29
     .line 30
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 31
     .line 32
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 33
+    move-result-object v0
+
     .line 34
-    .line 35
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 35
     .line 36
     .line 37
-    .line 38
     return-void
 .end method
 
@@ -2030,115 +2028,114 @@
 
     .line 17
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 18
     .line 19
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 20
     .line 21
     .line 22
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Bookmarks"
 
     .line 23
     .line 24
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 25
     .line 26
-    const-string v2, "Bookmarks"
-
     .line 27
+    move-result-object v0
+
     .line 28
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
     .line 29
     .line 30
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    iget-object v1, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->bookmarks:Ljava/util/List;
 
     .line 31
     .line 32
-    iget-object v1, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->bookmarks:Ljava/util/List;
+    invoke-interface {v1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
 
     .line 33
     .line 34
-    invoke-interface {v1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
     .line 35
-    .line 36
-    .line 37
     move-result-object v1
 
+    .line 36
+    new-instance v2, Lia/d;
+
+    .line 37
     .line 38
-    new-instance v2, Lga/d;
+    const/16 v3, 0x19
 
     .line 39
     .line 40
-    const/16 v3, 0x11
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
     .line 41
     .line 42
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
     .line 43
-    .line 44
-    .line 45
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
+    .line 44
+    .line 45
     .line 46
-    .line 47
-    .line 48
     move-result-object v1
 
-    .line 49
-    new-instance v2, Lorg/levimc/launcher/ui/activities/e3;
+    .line 47
+    new-instance v2, Lorg/levimc/launcher/ui/activities/h4;
 
-    .line 50
-    .line 51
+    .line 48
+    .line 49
     const/4 v3, 0x5
 
-    .line 52
-    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    .line 50
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
+    .line 51
+    .line 52
     .line 53
-    .line 54
-    .line 55
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
 
+    .line 54
+    .line 55
     .line 56
-    .line 57
-    .line 58
     move-result-object v1
 
-    .line 59
+    .line 57
     check-cast v1, [Ljava/lang/CharSequence;
+
+    .line 58
+    .line 59
+    new-instance v2, Lorg/levimc/launcher/ui/activities/j4;
 
     .line 60
     .line 61
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    const/16 v3, 0x8
 
     .line 62
     .line 63
-    const/16 v3, 0x8
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
     .line 64
     .line 65
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
-
     .line 66
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 67
     .line 68
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 69
+    move-result-object v0
+
     .line 70
-    .line 71
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 71
     .line 72
     .line 73
-    .line 74
     return-void
 .end method
 
@@ -2245,7 +2242,7 @@
 
     .line 51
     .line 52
-    invoke-static {v3, v4, v5}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v3, v4, v5}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 53
     .line 54
@@ -2253,7 +2250,7 @@
     move-result-object v3
 
     .line 56
-    new-instance v4, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v4, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 57
     .line 58
@@ -2261,7 +2258,7 @@
 
     .line 59
     .line 60
-    invoke-direct {v4, p0, v6}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v4, p0, v6}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 61
     .line 62
@@ -2325,7 +2322,7 @@
     move-result-object v3
 
     .line 94
-    new-instance v4, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v4, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 95
     .line 96
@@ -2333,7 +2330,7 @@
 
     .line 97
     .line 98
-    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 99
     .line 100
@@ -2388,7 +2385,7 @@
     move-result-object v3
 
     .line 127
-    new-instance v4, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v4, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 128
     .line 129
@@ -2396,7 +2393,7 @@
 
     .line 130
     .line 131
-    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v4, p0, v5}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 132
     .line 133
@@ -2637,7 +2634,7 @@
 
     .line 259
     .line 260
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 261
     .line 262
@@ -2645,7 +2642,7 @@
 
     .line 263
     .line 264
-    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 265
     .line 266
@@ -2796,7 +2793,7 @@
 
     .line 342
     .line 343
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 344
     .line 345
@@ -2804,7 +2801,7 @@
 
     .line 346
     .line 347
-    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 348
     .line 349
@@ -2855,7 +2852,7 @@
 
     .line 373
     .line 374
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 375
     .line 376
@@ -2863,7 +2860,7 @@
 
     .line 377
     .line 378
-    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, p0, v7}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 379
     .line 380
@@ -3083,7 +3080,7 @@
     move-result-object v2
 
     .line 34
-    new-instance v3, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 35
     .line 36
@@ -3091,7 +3088,7 @@
 
     .line 37
     .line 38
-    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 39
     .line 40
@@ -3116,7 +3113,7 @@
 
     .line 50
     .line 51
-    new-instance v3, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 52
     .line 53
@@ -3124,7 +3121,7 @@
 
     .line 54
     .line 55
-    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 56
     .line 57
@@ -3224,7 +3221,7 @@
     .line 105
     .line 106
     .line 107
-    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
 
     .line 108
     .line 109
@@ -3539,7 +3536,7 @@
     .line 59
     .line 60
     .line 61
-    new-instance v1, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 62
     .line 63
@@ -3547,7 +3544,7 @@
 
     .line 64
     .line 65
-    invoke-direct {v1, p0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 66
     .line 67
@@ -3648,7 +3645,7 @@
     .line 116
     .line 117
     .line 118
-    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/p1;)V
 
     .line 119
     .line 120
@@ -3679,7 +3676,7 @@
     .line 133
     .line 134
     .line 135
-    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->h(Landroidx/recyclerview/widget/w1;)V
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->h(Landroidx/recyclerview/widget/u1;)V
 
     .line 136
     .line 137
@@ -3938,1304 +3935,1387 @@
     .line 42
     .line 43
     .line 44
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 45
     .line 46
-    const/4 v6, 0x0
+    invoke-direct {v5, v0, v1}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 47
-    invoke-direct {v5, v0, v6}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
-
     .line 48
     .line 49
-    .line 50
     invoke-static {v0, v5}, Lorg/levimc/launcher/ui/world/WorldUi;->backButton(Landroid/content/Context;Ljava/lang/Runnable;)Landroid/widget/ImageView;
 
+    .line 50
     .line 51
     .line 52
-    .line 53
     move-result-object v5
 
-    .line 54
+    .line 53
     new-instance v6, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 54
     .line 55
-    .line 56
     const/high16 v7, 0x42300000    # 44.0f
 
+    .line 56
     .line 57
-    .line 58
     invoke-direct {v0, v7}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 58
     .line 59
     .line 60
-    .line 61
     move-result v8
 
-    .line 62
+    .line 61
     invoke-direct {v0, v7}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 62
     .line 63
     .line 64
-    .line 65
     move-result v7
 
-    .line 66
+    .line 65
     invoke-direct {v6, v8, v7}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
+    .line 66
     .line 67
     .line 68
-    .line 69
     invoke-virtual {v2, v5, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 69
     .line 70
     .line 71
-    .line 72
     invoke-virtual {v0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
 
+    .line 72
     .line 73
     .line 74
-    .line 75
     move-result-object v5
 
-    .line 76
+    .line 75
     const-string v6, "world_name"
 
+    .line 76
     .line 77
-    .line 78
     invoke-virtual {v5, v6}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
 
+    .line 78
     .line 79
     .line 80
-    .line 81
     move-result-object v5
 
-    .line 82
+    .line 81
     if-nez v5, :cond_0
 
+    .line 82
     .line 83
-    .line 84
     const-string v5, "World"
 
+    .line 84
     .line 85
-    .line 86
     :cond_0
     const/high16 v6, 0x41880000    # 17.0f
 
+    .line 86
     .line 87
-    .line 88
     invoke-static {v0, v5, v6, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
 
+    .line 88
     .line 89
     .line 90
-    .line 91
     move-result-object v5
 
-    .line 92
+    .line 91
     const/4 v6, 0x1
 
-    .line 93
+    .line 92
     invoke-virtual {v5, v6}, Landroid/widget/TextView;->setSingleLine(Z)V
 
+    .line 93
     .line 94
     .line 95
-    .line 96
     sget-object v7, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
 
+    .line 96
     .line 97
-    .line 98
     invoke-virtual {v5, v7}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
 
+    .line 98
     .line 99
     .line 100
-    .line 101
     invoke-direct {v0, v4}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 101
     .line 102
     .line 103
-    .line 104
     move-result v7
 
-    .line 105
+    .line 104
     const/high16 v8, 0x41400000    # 12.0f
 
+    .line 105
     .line 106
-    .line 107
     invoke-direct {v0, v8}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 107
     .line 108
     .line 109
-    .line 110
     move-result v9
 
-    .line 111
+    .line 110
     invoke-virtual {v5, v7, v1, v9, v1}, Landroid/widget/TextView;->setPadding(IIII)V
 
+    .line 111
     .line 112
     .line 113
-    .line 114
     new-instance v7, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 114
     .line 115
-    .line 116
     const/4 v9, -0x2
 
-    .line 117
+    .line 116
     const/high16 v10, 0x3f800000    # 1.0f
 
+    .line 117
     .line 118
-    .line 119
     invoke-direct {v7, v1, v9, v10}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
 
+    .line 119
     .line 120
     .line 121
-    .line 122
     invoke-virtual {v2, v5, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 122
     .line 123
     .line 124
-    .line 125
     new-instance v5, Lcom/google/android/material/tabs/TabLayout;
 
+    .line 125
     .line 126
-    .line 127
     invoke-direct {v5, v0}, Lcom/google/android/material/tabs/TabLayout;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;)V
 
+    .line 127
     .line 128
     .line 129
-    .line 130
     iput-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
+    .line 130
     .line 131
-    .line 132
     invoke-virtual {v5, v6}, Lcom/google/android/material/tabs/TabLayout;->setTabMode(I)V
 
+    .line 132
     .line 133
     .line 134
-    .line 135
     iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
+    .line 135
     .line 136
-    .line 137
     invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
 
+    .line 137
     .line 138
     .line 139
-    .line 140
     move-result v7
 
-    .line 141
+    .line 140
     invoke-virtual {v5, v7}, Lcom/google/android/material/tabs/TabLayout;->setSelectedTabIndicatorColor(I)V
 
+    .line 141
     .line 142
     .line 143
-    .line 144
     iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
+    .line 144
     .line 145
-    .line 146
     sget v7, Lorg/levimc/launcher/R$color;->text_secondary:I
 
+    .line 146
     .line 147
-    .line 148
     invoke-static {v0, v7}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
 
+    .line 148
     .line 149
     .line 150
-    .line 151
     move-result v7
 
-    .line 152
+    .line 151
     invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
 
+    .line 152
     .line 153
     .line 154
-    .line 155
     move-result v11
 
-    .line 156
+    .line 155
     invoke-virtual {v5}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 156
     .line 157
     .line 158
-    .line 159
     invoke-static {v7, v11}, Lcom/google/android/material/tabs/TabLayout;->d(II)Landroid/content/res/ColorStateList;
 
+    .line 159
     .line 160
     .line 161
-    .line 162
     move-result-object v7
 
-    .line 163
+    .line 162
     invoke-virtual {v5, v7}, Lcom/google/android/material/tabs/TabLayout;->setTabTextColors(Landroid/content/res/ColorStateList;)V
 
+    .line 163
     .line 164
     .line 165
-    .line 166
     iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
+    .line 166
     .line 167
-    .line 168
     invoke-virtual {v5, v1}, Landroid/view/View;->setBackgroundColor(I)V
 
+    .line 168
     .line 169
     .line 170
-    .line 171
     const-string v5, "NBT"
 
+    .line 171
     .line 172
-    .line 173
     const-string v7, "Structures"
 
+    .line 173
     .line 174
-    .line 175
     const-string v11, "Map"
 
+    .line 175
     .line 176
-    .line 177
     filled-new-array {v11, v5, v7}, [Ljava/lang/String;
 
+    .line 177
     .line 178
     .line 179
-    .line 180
     move-result-object v5
 
-    .line 181
+    .line 180
     move v7, v1
 
-    .line 182
+    .line 181
     :goto_0
-    const/16 v11, 0x11
+    const/4 v11, 0x3
+
+    .line 182
+    const/16 v12, 0x11
 
     .line 183
     .line 184
-    const/4 v12, -0x1
+    const/4 v13, -0x1
 
     .line 185
-    const/4 v13, 0x3
+    if-ge v7, v11, :cond_7
 
     .line 186
-    if-ge v7, v13, :cond_7
-
     .line 187
-    .line 188
-    aget-object v13, v5, v7
+    aget-object v11, v5, v7
 
+    .line 188
     .line 189
-    .line 190
     const/high16 v14, 0x41500000    # 13.0f
 
+    .line 190
     .line 191
-    .line 192
-    invoke-static {v0, v13, v14, v6}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
+    invoke-static {v0, v11, v14, v6}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
 
+    .line 192
     .line 193
     .line 194
-    .line 195
-    move-result-object v13
-
-    .line 196
-    invoke-virtual {v13, v11}, Landroid/widget/TextView;->setGravity(I)V
-
-    .line 197
-    .line 198
-    .line 199
-    new-instance v11, Landroid/content/res/ColorStateList;
-
-    .line 200
-    .line 201
-    const v14, 0x10100a1
-
-    .line 202
-    .line 203
-    .line 204
-    filled-new-array {v14}, [I
-
-    .line 205
-    .line 206
-    .line 207
-    move-result-object v14
-
-    .line 208
-    new-array v15, v1, [I
-
-    .line 209
-    .line 210
-    filled-new-array {v14, v15}, [[I
-
-    .line 211
-    .line 212
-    .line 213
-    move-result-object v14
-
-    .line 214
-    invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
-
-    .line 215
-    .line 216
-    .line 217
-    move-result v15
-
-    .line 218
-    sget v3, Lorg/levimc/launcher/R$color;->text_secondary:I
-
-    .line 219
-    .line 220
-    invoke-static {v0, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
-
-    .line 221
-    .line 222
-    .line 223
-    move-result v3
-
-    .line 224
-    filled-new-array {v15, v3}, [I
-
-    .line 225
-    .line 226
-    .line 227
-    move-result-object v3
-
-    .line 228
-    invoke-direct {v11, v14, v3}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
-
-    .line 229
-    .line 230
-    .line 231
-    invoke-virtual {v13, v11}, Landroid/widget/TextView;->setTextColor(Landroid/content/res/ColorStateList;)V
-
-    .line 232
-    .line 233
-    .line 234
-    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
-
-    .line 235
-    .line 236
-    invoke-virtual {v3}, Lcom/google/android/material/tabs/TabLayout;->g()Lcom/google/android/material/tabs/TabLayout$Tab;
-
-    .line 237
-    .line 238
-    .line 239
     move-result-object v11
 
-    .line 240
-    iput-object v13, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->b:Landroid/view/View;
+    .line 195
+    invoke-virtual {v11, v12}, Landroid/widget/TextView;->setGravity(I)V
 
-    .line 241
-    .line 242
-    iget-object v13, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->d:Lcom/google/android/material/tabs/c;
+    .line 196
+    .line 197
+    .line 198
+    new-instance v12, Landroid/content/res/ColorStateList;
 
-    .line 243
-    .line 244
-    if-eqz v13, :cond_1
+    .line 199
+    .line 200
+    const v14, 0x10100a1
 
-    .line 245
-    .line 246
-    invoke-virtual {v13}, Lcom/google/android/material/tabs/c;->d()V
+    .line 201
+    .line 202
+    .line 203
+    filled-new-array {v14}, [I
 
-    .line 247
-    .line 248
-    .line 249
-    :cond_1
-    iget-object v13, v3, Lcom/google/android/material/tabs/TabLayout;->d:Ljava/util/ArrayList;
+    .line 204
+    .line 205
+    .line 206
+    move-result-object v14
 
-    .line 250
-    .line 251
-    invoke-virtual {v13}, Ljava/util/ArrayList;->isEmpty()Z
+    .line 207
+    new-array v15, v1, [I
 
-    .line 252
-    .line 253
-    .line 254
-    move-result v14
+    .line 208
+    .line 209
+    filled-new-array {v14, v15}, [[I
 
-    .line 255
-    invoke-virtual {v13}, Ljava/util/ArrayList;->size()I
+    .line 210
+    .line 211
+    .line 212
+    move-result-object v14
 
-    .line 256
-    .line 257
-    .line 258
+    .line 213
+    invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
+
+    .line 214
+    .line 215
+    .line 216
     move-result v15
 
-    .line 259
-    iget-object v4, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->c:Lcom/google/android/material/tabs/TabLayout;
+    .line 217
+    sget v3, Lorg/levimc/launcher/R$color;->text_secondary:I
 
+    .line 218
+    .line 219
+    invoke-static {v0, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
+
+    .line 220
+    .line 221
+    .line 222
+    move-result v3
+
+    .line 223
+    filled-new-array {v15, v3}, [I
+
+    .line 224
+    .line 225
+    .line 226
+    move-result-object v3
+
+    .line 227
+    invoke-direct {v12, v14, v3}, Landroid/content/res/ColorStateList;-><init>([[I[I)V
+
+    .line 228
+    .line 229
+    .line 230
+    invoke-virtual {v11, v12}, Landroid/widget/TextView;->setTextColor(Landroid/content/res/ColorStateList;)V
+
+    .line 231
+    .line 232
+    .line 233
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
+
+    .line 234
+    .line 235
+    invoke-virtual {v3}, Lcom/google/android/material/tabs/TabLayout;->g()Lcom/google/android/material/tabs/TabLayout$Tab;
+
+    .line 236
+    .line 237
+    .line 238
+    move-result-object v12
+
+    .line 239
+    iput-object v11, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->b:Landroid/view/View;
+
+    .line 240
+    .line 241
+    iget-object v11, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->d:Lcom/google/android/material/tabs/c;
+
+    .line 242
+    .line 243
+    if-eqz v11, :cond_1
+
+    .line 244
+    .line 245
+    invoke-virtual {v11}, Lcom/google/android/material/tabs/c;->d()V
+
+    .line 246
+    .line 247
+    .line 248
+    :cond_1
+    iget-object v11, v3, Lcom/google/android/material/tabs/TabLayout;->d:Ljava/util/ArrayList;
+
+    .line 249
+    .line 250
+    invoke-virtual {v11}, Ljava/util/ArrayList;->isEmpty()Z
+
+    .line 251
+    .line 252
+    .line 253
+    move-result v14
+
+    .line 254
+    invoke-virtual {v11}, Ljava/util/ArrayList;->size()I
+
+    .line 255
+    .line 256
+    .line 257
+    move-result v15
+
+    .line 258
+    iget-object v4, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->c:Lcom/google/android/material/tabs/TabLayout;
+
+    .line 259
     .line 260
-    .line 261
     if-ne v4, v3, :cond_6
 
+    .line 261
     .line 262
+    iput v15, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
+
     .line 263
-    iput v15, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
-
     .line 264
-    .line 265
-    invoke-virtual {v13, v15, v11}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
+    invoke-virtual {v11, v15, v12}, Ljava/util/ArrayList;->add(ILjava/lang/Object;)V
 
+    .line 265
     .line 266
     .line 267
-    .line 268
-    invoke-virtual {v13}, Ljava/util/ArrayList;->size()I
+    invoke-virtual {v11}, Ljava/util/ArrayList;->size()I
 
+    .line 268
     .line 269
     .line 270
-    .line 271
     move-result v4
 
-    .line 272
+    .line 271
     add-int/2addr v15, v6
 
-    .line 273
-    move v8, v12
+    .line 272
+    move v8, v13
 
-    .line 274
+    .line 273
     :goto_1
     if-ge v15, v4, :cond_3
 
+    .line 274
     .line 275
-    .line 276
-    invoke-virtual {v13, v15}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v11, v15}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
+    .line 276
     .line 277
     .line 278
-    .line 279
     move-result-object v16
 
-    .line 280
+    .line 279
     move-object/from16 v10, v16
 
+    .line 280
     .line 281
-    .line 282
     check-cast v10, Lcom/google/android/material/tabs/TabLayout$Tab;
 
+    .line 282
     .line 283
-    .line 284
     iget v10, v10, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
 
+    .line 284
     .line 285
-    .line 286
     iget v6, v3, Lcom/google/android/material/tabs/TabLayout;->c:I
 
+    .line 286
     .line 287
-    .line 288
     if-ne v10, v6, :cond_2
 
+    .line 288
     .line 289
-    .line 290
     move v8, v15
 
-    .line 291
+    .line 290
     :cond_2
-    invoke-virtual {v13, v15}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+    invoke-virtual {v11, v15}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
 
+    .line 291
     .line 292
     .line 293
-    .line 294
     move-result-object v6
 
-    .line 295
+    .line 294
     check-cast v6, Lcom/google/android/material/tabs/TabLayout$Tab;
 
+    .line 295
     .line 296
-    .line 297
     iput v15, v6, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
 
+    .line 297
     .line 298
-    .line 299
     add-int/lit8 v15, v15, 0x1
 
+    .line 299
     .line 300
-    .line 301
     const/4 v6, 0x1
 
-    .line 302
+    .line 301
     const/high16 v10, 0x3f800000    # 1.0f
 
+    .line 302
     .line 303
-    .line 304
     goto :goto_1
 
-    .line 305
+    .line 304
     :cond_3
     iput v8, v3, Lcom/google/android/material/tabs/TabLayout;->c:I
 
+    .line 305
     .line 306
-    .line 307
-    iget-object v4, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->d:Lcom/google/android/material/tabs/c;
+    iget-object v4, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->d:Lcom/google/android/material/tabs/c;
 
+    .line 307
     .line 308
-    .line 309
     invoke-virtual {v4, v1}, Lcom/google/android/material/tabs/c;->setSelected(Z)V
 
+    .line 309
     .line 310
     .line 311
-    .line 312
     invoke-virtual {v4, v1}, Landroid/view/View;->setActivated(Z)V
 
+    .line 312
     .line 313
     .line 314
+    iget-object v6, v3, Lcom/google/android/material/tabs/TabLayout;->p:Lz5/c;
+
     .line 315
-    iget-object v6, v3, Lcom/google/android/material/tabs/TabLayout;->q:Lx5/c;
-
     .line 316
-    .line 317
-    iget v8, v11, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
+    iget v8, v12, Lcom/google/android/material/tabs/TabLayout$Tab;->a:I
 
+    .line 317
     .line 318
-    .line 319
     new-instance v10, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 319
     .line 320
-    .line 321
-    invoke-direct {v10, v9, v12}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
+    invoke-direct {v10, v9, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
+    .line 321
     .line 322
     .line 323
-    .line 324
-    iget v12, v3, Lcom/google/android/material/tabs/TabLayout;->V1:I
+    iget v11, v3, Lcom/google/android/material/tabs/TabLayout;->V1:I
 
+    .line 324
     .line 325
-    .line 326
     const/4 v13, 0x1
 
-    .line 327
-    if-ne v12, v13, :cond_4
+    .line 326
+    if-ne v11, v13, :cond_4
 
+    .line 327
     .line 328
-    .line 329
     iget v3, v3, Lcom/google/android/material/tabs/TabLayout;->S1:I
 
+    .line 329
     .line 330
-    .line 331
     if-nez v3, :cond_4
 
+    .line 331
     .line 332
-    .line 333
     iput v1, v10, Landroid/widget/LinearLayout$LayoutParams;->width:I
 
+    .line 333
     .line 334
-    .line 335
     const/high16 v3, 0x3f800000    # 1.0f
 
+    .line 335
     .line 336
-    .line 337
     iput v3, v10, Landroid/widget/LinearLayout$LayoutParams;->weight:F
 
+    .line 337
     .line 338
-    .line 339
     goto :goto_2
 
-    .line 340
+    .line 339
     :cond_4
     iput v9, v10, Landroid/widget/LinearLayout$LayoutParams;->width:I
 
+    .line 340
     .line 341
-    .line 342
     const/4 v3, 0x0
 
-    .line 343
+    .line 342
     iput v3, v10, Landroid/widget/LinearLayout$LayoutParams;->weight:F
 
+    .line 343
     .line 344
-    .line 345
     :goto_2
     invoke-virtual {v6, v4, v8, v10}, Landroid/view/ViewGroup;->addView(Landroid/view/View;ILandroid/view/ViewGroup$LayoutParams;)V
 
+    .line 345
     .line 346
     .line 347
-    .line 348
     if-eqz v14, :cond_5
 
+    .line 348
     .line 349
-    .line 350
-    invoke-virtual {v11}, Lcom/google/android/material/tabs/TabLayout$Tab;->a()V
+    invoke-virtual {v12}, Lcom/google/android/material/tabs/TabLayout$Tab;->a()V
 
+    .line 350
     .line 351
     .line 352
-    .line 353
     :cond_5
     add-int/lit8 v7, v7, 0x1
 
+    .line 353
     .line 354
-    .line 355
     const/16 v3, 0x10
 
+    .line 355
     .line 356
-    .line 357
     const/high16 v4, 0x40800000    # 4.0f
 
+    .line 357
     .line 358
-    .line 359
     const/4 v6, 0x1
 
-    .line 360
+    .line 359
     const/high16 v8, 0x41400000    # 12.0f
 
+    .line 360
     .line 361
-    .line 362
     const/high16 v10, 0x3f800000    # 1.0f
 
+    .line 362
     .line 363
-    .line 364
     goto/16 :goto_0
 
+    .line 364
     .line 365
-    .line 366
     :cond_6
     new-instance v1, Ljava/lang/IllegalArgumentException;
 
+    .line 366
     .line 367
-    .line 368
     const-string v2, "Tab belongs to a different TabLayout."
 
+    .line 368
     .line 369
-    .line 370
     invoke-direct {v1, v2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .line 370
     .line 371
     .line 372
-    .line 373
     throw v1
 
-    .line 374
+    .line 373
     :cond_7
     iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
+    .line 374
     .line 375
-    .line 376
     new-instance v4, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 376
     .line 377
-    .line 378
     const/high16 v5, 0x43860000    # 268.0f
 
+    .line 378
     .line 379
-    .line 380
     invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 380
     .line 381
     .line 382
-    .line 383
     move-result v5
+
+    .line 383
+    invoke-direct {v4, v5, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
     .line 384
-    invoke-direct {v4, v5, v12}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
-
     .line 385
     .line 386
-    .line 387
     invoke-virtual {v2, v3, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 387
     .line 388
     .line 389
-    .line 390
-    new-instance v3, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/a4;
 
+    .line 390
     .line 391
-    .line 392
     const/4 v4, 0x1
 
-    .line 393
-    invoke-direct {v3, v0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 392
+    invoke-direct {v3, v0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
+    .line 393
     .line 394
     .line 395
-    .line 396
     const-string v4, "Save"
 
+    .line 396
     .line 397
-    .line 398
     invoke-static {v0, v4, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->button(Landroid/content/Context;Ljava/lang/String;Ljava/lang/Runnable;)Lcom/google/android/material/button/MaterialButton;
 
+    .line 398
     .line 399
     .line 400
-    .line 401
     move-result-object v3
 
-    .line 402
+    .line 401
     iput-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->saveButton:Lcom/google/android/material/button/MaterialButton;
 
+    .line 402
     .line 403
-    .line 404
     new-instance v4, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 404
     .line 405
-    .line 406
     const/high16 v5, 0x42880000    # 68.0f
 
+    .line 406
     .line 407
-    .line 408
     invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 408
     .line 409
     .line 410
-    .line 411
     move-result v5
 
-    .line 412
+    .line 411
     const/high16 v6, 0x42280000    # 42.0f
 
+    .line 412
     .line 413
-    .line 414
     invoke-direct {v0, v6}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 414
     .line 415
     .line 416
-    .line 417
     move-result v6
 
-    .line 418
+    .line 417
     invoke-direct {v4, v5, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
+    .line 418
     .line 419
     .line 420
-    .line 421
     invoke-virtual {v2, v3, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 421
     .line 422
     .line 423
-    .line 424
     iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
 
+    .line 424
     .line 425
-    .line 426
     new-instance v4, Landroid/widget/LinearLayout$LayoutParams;
 
+    .line 426
     .line 427
-    .line 428
     const/high16 v5, 0x42480000    # 50.0f
 
+    .line 428
     .line 429
-    .line 430
     invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 430
     .line 431
     .line 432
-    .line 433
     move-result v5
+
+    .line 433
+    invoke-direct {v4, v13, v5}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
     .line 434
-    invoke-direct {v4, v12, v5}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
-
     .line 435
     .line 436
-    .line 437
     invoke-virtual {v3, v2, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 437
     .line 438
     .line 439
+    new-instance v3, Landroid/widget/FrameLayout;
+
     .line 440
-    new-instance v2, Landroid/widget/FrameLayout;
-
     .line 441
-    .line 442
-    invoke-direct {v2, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+    invoke-direct {v3, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
+    .line 442
     .line 443
     .line 444
+    new-instance v4, Landroid/widget/FrameLayout;
+
     .line 445
-    new-instance v3, Landroid/widget/FrameLayout;
-
     .line 446
-    .line 447
-    invoke-direct {v3, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+    invoke-direct {v4, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
 
+    .line 447
     .line 448
     .line 449
+    iput-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->pages:Landroid/widget/FrameLayout;
+
     .line 450
-    iput-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->pages:Landroid/widget/FrameLayout;
-
     .line 451
-    .line 452
-    new-instance v4, Landroid/widget/FrameLayout$LayoutParams;
-
-    .line 453
-    .line 454
-    invoke-direct {v4, v12, v12}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
-
-    .line 455
-    .line 456
-    .line 457
-    invoke-virtual {v2, v3, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 458
-    .line 459
-    .line 460
-    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
-
-    .line 461
-    .line 462
-    new-instance v4, Landroid/widget/LinearLayout$LayoutParams;
-
-    .line 463
-    .line 464
-    const/high16 v5, 0x3f800000    # 1.0f
-
-    .line 465
-    .line 466
-    invoke-direct {v4, v12, v1, v5}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
-
-    .line 467
-    .line 468
-    .line 469
-    invoke-virtual {v3, v2, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 470
-    .line 471
-    .line 472
-    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildMap()V
-
-    .line 473
-    .line 474
-    .line 475
-    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildNbt()V
-
-    .line 476
-    .line 477
-    .line 478
-    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildRecords()V
-
-    .line 479
-    .line 480
-    .line 481
-    new-instance v3, Landroid/widget/FrameLayout;
-
-    .line 482
-    .line 483
-    invoke-direct {v3, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
-
-    .line 484
-    .line 485
-    .line 486
-    iput-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
-
-    .line 487
-    .line 488
-    const/4 v13, 0x1
-
-    .line 489
-    invoke-virtual {v3, v13}, Landroid/view/View;->setClickable(Z)V
-
-    .line 490
-    .line 491
-    .line 492
-    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
-
-    .line 493
-    .line 494
-    sget v4, Lorg/levimc/launcher/R$color;->background:I
-
-    .line 495
-    .line 496
-    invoke-static {v0, v4}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
-
-    .line 497
-    .line 498
-    .line 499
-    move-result v4
-
-    .line 500
-    const/16 v5, 0xaf
-
-    .line 501
-    .line 502
-    invoke-static {v4, v5}, Lorg/levimc/launcher/ui/world/WorldUi;->translucent(II)I
-
-    .line 503
-    .line 504
-    .line 505
-    move-result v4
-
-    .line 506
-    invoke-virtual {v3, v4}, Landroid/view/View;->setBackgroundColor(I)V
-
-    .line 507
-    .line 508
-    .line 509
-    const/16 v3, 0xc
-
-    .line 510
-    .line 511
-    invoke-static {v0, v3}, Lorg/levimc/launcher/ui/world/WorldUi;->column(Landroid/content/Context;I)Landroid/widget/LinearLayout;
-
-    .line 512
-    .line 513
-    .line 514
-    move-result-object v3
-
-    .line 515
-    invoke-virtual {v3, v11}, Landroid/widget/LinearLayout;->setGravity(I)V
-
-    .line 516
-    .line 517
-    .line 518
-    new-instance v4, Landroid/widget/ProgressBar;
-
-    .line 519
-    .line 520
-    invoke-direct {v4, v0}, Landroid/widget/ProgressBar;-><init>(Landroid/content/Context;)V
-
-    .line 521
-    .line 522
-    .line 523
-    invoke-virtual {v3, v4}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
-
-    .line 524
-    .line 525
-    .line 526
-    const-string v4, ""
-
-    .line 527
-    .line 528
-    const/high16 v5, 0x41400000    # 12.0f
-
-    .line 529
-    .line 530
-    const/4 v13, 0x1
-
-    .line 531
-    invoke-static {v0, v4, v5, v13}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
-
-    .line 532
-    .line 533
-    .line 534
-    move-result-object v6
-
-    .line 535
-    iput-object v6, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->progressLabel:Landroid/widget/TextView;
-
-    .line 536
-    .line 537
-    invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 538
-    .line 539
-    .line 540
-    move-result v5
-
-    .line 541
-    const/high16 v7, 0x40800000    # 4.0f
-
-    .line 542
-    .line 543
-    invoke-direct {v0, v7}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 544
-    .line 545
-    .line 546
-    move-result v7
-
-    .line 547
-    invoke-virtual {v6, v1, v5, v1, v7}, Landroid/widget/TextView;->setPadding(IIII)V
-
-    .line 548
-    .line 549
-    .line 550
-    iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->progressLabel:Landroid/widget/TextView;
-
-    .line 551
-    .line 552
-    invoke-virtual {v3, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
-
-    .line 553
-    .line 554
-    .line 555
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
-
-    .line 556
-    .line 557
-    const/4 v6, 0x2
-
-    .line 558
-    invoke-direct {v5, v0, v6}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
-
-    .line 559
-    .line 560
-    .line 561
-    const-string v6, "Cancel"
-
-    .line 562
-    .line 563
-    invoke-static {v0, v6, v5}, Lorg/levimc/launcher/ui/world/WorldUi;->button(Landroid/content/Context;Ljava/lang/String;Ljava/lang/Runnable;)Lcom/google/android/material/button/MaterialButton;
-
-    .line 564
-    .line 565
-    .line 566
-    move-result-object v5
-
-    .line 567
-    invoke-virtual {v3, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
-
-    .line 568
-    .line 569
-    .line 570
-    iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
-
-    .line 571
-    .line 572
-    new-instance v6, Landroid/widget/FrameLayout$LayoutParams;
-
-    .line 573
-    .line 574
-    invoke-direct {v6, v9, v9, v11}, Landroid/widget/FrameLayout$LayoutParams;-><init>(III)V
-
-    .line 575
-    .line 576
-    .line 577
-    invoke-virtual {v5, v3, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 578
-    .line 579
-    .line 580
-    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
-
-    .line 581
-    .line 582
     new-instance v5, Landroid/widget/FrameLayout$LayoutParams;
 
-    .line 583
-    .line 584
-    invoke-direct {v5, v12, v12}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+    .line 452
+    .line 453
+    invoke-direct {v5, v13, v13}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
 
+    .line 454
+    .line 455
+    .line 456
+    invoke-virtual {v3, v4, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 457
+    .line 458
+    .line 459
+    iget-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
+
+    .line 460
+    .line 461
+    new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
+
+    .line 462
+    .line 463
+    const/high16 v6, 0x3f800000    # 1.0f
+
+    .line 464
+    .line 465
+    invoke-direct {v5, v13, v1, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
+
+    .line 466
+    .line 467
+    .line 468
+    invoke-virtual {v4, v3, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 469
+    .line 470
+    .line 471
+    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildMap()V
+
+    .line 472
+    .line 473
+    .line 474
+    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildNbt()V
+
+    .line 475
+    .line 476
+    .line 477
+    invoke-direct {v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildRecords()V
+
+    .line 478
+    .line 479
+    .line 480
+    new-instance v4, Landroid/widget/FrameLayout;
+
+    .line 481
+    .line 482
+    invoke-direct {v4, v0}, Landroid/widget/FrameLayout;-><init>(Landroid/content/Context;)V
+
+    .line 483
+    .line 484
+    .line 485
+    iput-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
+
+    .line 486
+    .line 487
+    const/4 v5, 0x1
+
+    .line 488
+    invoke-virtual {v4, v5}, Landroid/view/View;->setClickable(Z)V
+
+    .line 489
+    .line 490
+    .line 491
+    iget-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
+
+    .line 492
+    .line 493
+    sget v5, Lorg/levimc/launcher/R$color;->background:I
+
+    .line 494
+    .line 495
+    invoke-static {v0, v5}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
+
+    .line 496
+    .line 497
+    .line 498
+    move-result v5
+
+    .line 499
+    const/16 v6, 0xaf
+
+    .line 500
+    .line 501
+    invoke-static {v5, v6}, Lorg/levimc/launcher/ui/world/WorldUi;->translucent(II)I
+
+    .line 502
+    .line 503
+    .line 504
+    move-result v5
+
+    .line 505
+    invoke-virtual {v4, v5}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 506
+    .line 507
+    .line 508
+    const/16 v4, 0xc
+
+    .line 509
+    .line 510
+    invoke-static {v0, v4}, Lorg/levimc/launcher/ui/world/WorldUi;->column(Landroid/content/Context;I)Landroid/widget/LinearLayout;
+
+    .line 511
+    .line 512
+    .line 513
+    move-result-object v4
+
+    .line 514
+    invoke-virtual {v4, v12}, Landroid/widget/LinearLayout;->setGravity(I)V
+
+    .line 515
+    .line 516
+    .line 517
+    new-instance v5, Landroid/widget/ProgressBar;
+
+    .line 518
+    .line 519
+    invoke-direct {v5, v0}, Landroid/widget/ProgressBar;-><init>(Landroid/content/Context;)V
+
+    .line 520
+    .line 521
+    .line 522
+    invoke-virtual {v4, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 523
+    .line 524
+    .line 525
+    const-string v5, ""
+
+    .line 526
+    .line 527
+    const/high16 v6, 0x41400000    # 12.0f
+
+    .line 528
+    .line 529
+    const/4 v7, 0x1
+
+    .line 530
+    invoke-static {v0, v5, v6, v7}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
+
+    .line 531
+    .line 532
+    .line 533
+    move-result-object v8
+
+    .line 534
+    iput-object v8, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->progressLabel:Landroid/widget/TextView;
+
+    .line 535
+    .line 536
+    invoke-direct {v0, v6}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 537
+    .line 538
+    .line 539
+    move-result v6
+
+    .line 540
+    const/high16 v7, 0x40800000    # 4.0f
+
+    .line 541
+    .line 542
+    invoke-direct {v0, v7}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 543
+    .line 544
+    .line 545
+    move-result v7
+
+    .line 546
+    invoke-virtual {v8, v1, v6, v1, v7}, Landroid/widget/TextView;->setPadding(IIII)V
+
+    .line 547
+    .line 548
+    .line 549
+    iget-object v6, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->progressLabel:Landroid/widget/TextView;
+
+    .line 550
+    .line 551
+    invoke-virtual {v4, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 552
+    .line 553
+    .line 554
+    new-instance v6, Lorg/levimc/launcher/ui/activities/a4;
+
+    .line 555
+    .line 556
+    const/4 v7, 0x2
+
+    .line 557
+    invoke-direct {v6, v0, v7}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+
+    .line 558
+    .line 559
+    .line 560
+    const-string v8, "Cancel"
+
+    .line 561
+    .line 562
+    invoke-static {v0, v8, v6}, Lorg/levimc/launcher/ui/world/WorldUi;->button(Landroid/content/Context;Ljava/lang/String;Ljava/lang/Runnable;)Lcom/google/android/material/button/MaterialButton;
+
+    .line 563
+    .line 564
+    .line 565
+    move-result-object v6
+
+    .line 566
+    invoke-virtual {v4, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 567
+    .line 568
+    .line 569
+    iget-object v6, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
+
+    .line 570
+    .line 571
+    new-instance v8, Landroid/widget/FrameLayout$LayoutParams;
+
+    .line 572
+    .line 573
+    invoke-direct {v8, v9, v9, v12}, Landroid/widget/FrameLayout$LayoutParams;-><init>(III)V
+
+    .line 574
+    .line 575
+    .line 576
+    invoke-virtual {v6, v4, v8}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 577
+    .line 578
+    .line 579
+    iget-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
+
+    .line 580
+    .line 581
+    new-instance v6, Landroid/widget/FrameLayout$LayoutParams;
+
+    .line 582
+    .line 583
+    invoke-direct {v6, v13, v13}, Landroid/widget/FrameLayout$LayoutParams;-><init>(II)V
+
+    .line 584
     .line 585
     .line 586
-    .line 587
-    invoke-virtual {v2, v3, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {v3, v4, v6}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 587
     .line 588
     .line 589
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
+
     .line 590
-    iget-object v2, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->blocker:Landroid/widget/FrameLayout;
-
     .line 591
+    const/16 v4, 0x8
+
     .line 592
-    const/16 v3, 0x8
-
     .line 593
-    .line 594
-    invoke-virtual {v2, v3}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v3, v4}, Landroid/view/View;->setVisibility(I)V
 
+    .line 594
     .line 595
     .line 596
-    .line 597
-    const/high16 v2, 0x41300000    # 11.0f
+    const/high16 v3, 0x41300000    # 11.0f
 
+    .line 597
     .line 598
+    const/4 v4, 0x1
+
     .line 599
-    const/4 v13, 0x1
+    invoke-static {v0, v5, v3, v4}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
 
     .line 600
-    invoke-static {v0, v4, v2, v13}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
-
     .line 601
     .line 602
+    move-result-object v3
+
     .line 603
-    move-result-object v2
+    iput-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
 
     .line 604
-    iput-object v2, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
-
     .line 605
+    const/high16 v5, 0x41800000    # 16.0f
+
     .line 606
-    const/high16 v3, 0x41800000    # 16.0f
-
     .line 607
-    .line 608
-    invoke-direct {v0, v3}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+    invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 608
     .line 609
     .line 610
+    move-result v6
+
     .line 611
-    move-result v4
+    invoke-direct {v0, v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
     .line 612
-    invoke-direct {v0, v3}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
     .line 613
     .line 614
+    move-result v5
+
     .line 615
-    move-result v3
+    invoke-virtual {v3, v6, v1, v5, v1}, Landroid/widget/TextView;->setPadding(IIII)V
 
     .line 616
-    invoke-virtual {v2, v4, v1, v3, v1}, Landroid/widget/TextView;->setPadding(IIII)V
-
     .line 617
     .line 618
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
+
     .line 619
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
-
     .line 620
+    const/16 v5, 0x10
+
     .line 621
-    const/16 v2, 0x10
-
     .line 622
-    .line 623
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setGravity(I)V
+    invoke-virtual {v3, v5}, Landroid/widget/TextView;->setGravity(I)V
 
+    .line 623
     .line 624
     .line 625
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
+
     .line 626
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
-
     .line 627
-    .line 628
-    invoke-virtual {v1, v13}, Landroid/widget/TextView;->setSingleLine(Z)V
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setSingleLine(Z)V
 
+    .line 628
     .line 629
     .line 630
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
+
     .line 631
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
-
     .line 632
+    sget-object v4, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
+
     .line 633
-    sget-object v2, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
-
     .line 634
-    .line 635
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+    invoke-virtual {v3, v4}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
 
+    .line 635
     .line 636
     .line 637
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
+
     .line 638
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
-
     .line 639
+    iget-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
+
     .line 640
-    iget-object v2, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
-
     .line 641
+    new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
+
     .line 642
-    new-instance v3, Landroid/widget/LinearLayout$LayoutParams;
-
     .line 643
+    const/high16 v6, 0x41c00000    # 24.0f
+
     .line 644
-    const/high16 v4, 0x41c00000    # 24.0f
-
     .line 645
-    .line 646
-    invoke-direct {v0, v4}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+    invoke-direct {v0, v6}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
+    .line 646
     .line 647
     .line 648
+    move-result v6
+
     .line 649
-    move-result v4
+    invoke-direct {v5, v13, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
     .line 650
-    invoke-direct {v3, v12, v4}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
-
     .line 651
     .line 652
-    .line 653
-    invoke-virtual {v1, v2, v3}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-virtual {v3, v4, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    .line 653
     .line 654
     .line 655
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
+
     .line 656
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
-
     .line 657
-    .line 658
-    invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(Landroid/view/View;)V
+    invoke-virtual {v0, v3}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(Landroid/view/View;)V
 
+    .line 658
     .line 659
     .line 660
+    iget-object v3, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->root:Landroid/widget/LinearLayout;
+
     .line 661
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
-
     .line 662
+    iget-object v4, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->mapPanel:Landroid/widget/LinearLayout;
+
     .line 663
-    new-instance v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$1;
-
     .line 664
-    .line 665
-    invoke-direct {v2, v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;)V
+    invoke-virtual {v4, v1}, Landroid/view/ViewGroup;->getChildAt(I)Landroid/view/View;
 
+    .line 665
     .line 666
     .line 667
+    move-result-object v4
+
     .line 668
-    iget-object v1, v1, Lcom/google/android/material/tabs/TabLayout;->e2:Ljava/util/ArrayList;
+    iget-object v5, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->worldNbtButton:Landroid/widget/LinearLayout;
 
     .line 669
     .line 670
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+    iget-object v6, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->localPlayerButton:Landroid/widget/LinearLayout;
 
     .line 671
     .line 672
-    .line 673
-    move-result v3
+    iget-object v8, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->editorPanel:Landroid/widget/FrameLayout;
 
+    .line 673
     .line 674
-    if-nez v3, :cond_8
+    iget-object v9, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->recordsPanel:Landroid/widget/LinearLayout;
 
     .line 675
     .line 676
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+    iget-object v10, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->status:Landroid/widget/TextView;
 
     .line 677
     .line 678
+    const/4 v12, 0x7
+
     .line 679
-    :cond_8
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    new-array v12, v12, [Landroid/view/View;
 
     .line 680
     .line 681
-    const/4 v2, 0x2
+    aput-object v2, v12, v1
 
     .line 682
-    iget v3, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
-
     .line 683
-    .line 684
-    invoke-static {v2, v3}, Ljava/lang/Math;->min(II)I
+    const/16 v16, 0x1
 
+    .line 684
     .line 685
+    aput-object v4, v12, v16
+
     .line 686
     .line 687
-    move-result v2
+    aput-object v5, v12, v7
 
     .line 688
-    iput v2, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
-
     .line 689
-    .line 690
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
+    aput-object v6, v12, v11
 
+    .line 690
     .line 691
+    const/4 v1, 0x4
+
     .line 692
-    iget-object v2, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    aput-object v8, v12, v1
 
     .line 693
     .line 694
-    iget v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+    const/4 v1, 0x5
 
     .line 695
+    aput-object v9, v12, v1
+
     .line 696
-    invoke-virtual {v1, v2}, Lcom/google/android/material/tabs/TabLayout;->f(I)Lcom/google/android/material/tabs/TabLayout$Tab;
-
     .line 697
-    .line 698
-    .line 699
-    move-result-object v1
+    const/4 v1, 0x6
 
+    .line 698
+    aput-object v10, v12, v1
+
+    .line 699
     .line 700
-    invoke-virtual {v1}, Lcom/google/android/material/tabs/TabLayout$Tab;->a()V
+    invoke-static {v3, v12}, Lorg/levimc/launcher/ui/widget/CutoutAvoider;->attachToControls(Landroid/view/View;[Landroid/view/View;)V
 
     .line 701
     .line 702
     .line 703
-    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
 
     .line 704
     .line 705
-    iget v1, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+    new-instance v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$1;
 
     .line 706
     .line 707
-    invoke-direct {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->showTab(I)V
+    invoke-direct {v2, v0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;)V
 
     .line 708
     .line 709
     .line 710
+    iget-object v1, v1, Lcom/google/android/material/tabs/TabLayout;->e2:Ljava/util/ArrayList;
+
+    .line 711
+    .line 712
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
+
+    .line 713
+    .line 714
+    .line 715
+    move-result v3
+
+    .line 716
+    if-nez v3, :cond_8
+
+    .line 717
+    .line 718
+    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 719
+    .line 720
+    .line 721
+    :cond_8
+    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
+    .line 722
+    .line 723
+    iget v2, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+
+    .line 724
+    .line 725
+    invoke-static {v7, v2}, Ljava/lang/Math;->min(II)I
+
+    .line 726
+    .line 727
+    .line 728
+    move-result v2
+
+    .line 729
+    iput v2, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+
+    .line 730
+    .line 731
+    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->tabs:Lcom/google/android/material/tabs/TabLayout;
+
+    .line 732
+    .line 733
+    iget-object v2, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
+    .line 734
+    .line 735
+    iget v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+
+    .line 736
+    .line 737
+    invoke-virtual {v1, v2}, Lcom/google/android/material/tabs/TabLayout;->f(I)Lcom/google/android/material/tabs/TabLayout$Tab;
+
+    .line 738
+    .line 739
+    .line 740
+    move-result-object v1
+
+    .line 741
+    invoke-virtual {v1}, Lcom/google/android/material/tabs/TabLayout$Tab;->a()V
+
+    .line 742
+    .line 743
+    .line 744
+    iget-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
+    .line 745
+    .line 746
+    iget v1, v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->tab:I
+
+    .line 747
+    .line 748
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->showTab(I)V
+
+    .line 749
+    .line 750
+    .line 751
     return-void
 .end method
 
@@ -5363,85 +5443,84 @@
     .locals 5
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Dimension"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Dimension"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Nether"
 
     .line 13
     .line 14
-    const-string v1, "Nether"
+    const-string v2, "The End"
 
     .line 15
     .line 16
-    const-string v2, "The End"
+    const-string v3, "Overworld"
 
     .line 17
     .line 18
-    const-string v3, "Overworld"
+    filled-new-array {v3, v1, v2}, [Ljava/lang/String;
 
     .line 19
     .line 20
-    filled-new-array {v3, v1, v2}, [Ljava/lang/String;
-
     .line 21
-    .line 22
-    .line 23
     move-result-object v1
 
-    .line 24
+    .line 22
     iget-object v2, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
+    .line 23
+    .line 24
+    iget-object v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->settings:Lorg/levimc/launcher/core/content/world/MapSettings;
 
     .line 25
     .line 26
-    iget-object v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->settings:Lorg/levimc/launcher/core/content/world/MapSettings;
+    iget v2, v2, Lorg/levimc/launcher/core/content/world/MapSettings;->dimension:I
 
     .line 27
     .line 28
-    iget v2, v2, Lorg/levimc/launcher/core/content/world/MapSettings;->dimension:I
+    new-instance v3, Lorg/levimc/launcher/ui/activities/j4;
 
     .line 29
     .line 30
-    new-instance v3, Lorg/levimc/launcher/ui/activities/g3;
-
-    .line 31
-    .line 32
     const/4 v4, 0x4
 
-    .line 33
-    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 31
+    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
+    .line 32
+    .line 33
     .line 34
+    invoke-virtual {v0, v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 35
     .line 36
-    invoke-virtual {v0, v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->s([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)V
-
     .line 37
+    move-result-object v0
+
     .line 38
-    .line 39
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 39
     .line 40
     .line 41
-    .line 42
     return-void
 .end method
 
@@ -5449,77 +5528,76 @@
     .locals 5
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Map layer"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Map layer"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    sget-object v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->LAYERS:[Ljava/lang/String;
 
     .line 13
     .line 14
-    sget-object v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->LAYERS:[Ljava/lang/String;
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
     .line 15
     .line 16
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    iget-object v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->settings:Lorg/levimc/launcher/core/content/world/MapSettings;
 
     .line 17
     .line 18
-    iget-object v2, v2, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->settings:Lorg/levimc/launcher/core/content/world/MapSettings;
+    iget-object v2, v2, Lorg/levimc/launcher/core/content/world/MapSettings;->layer:Lorg/levimc/launcher/core/content/world/MapSettings$Layer;
 
     .line 19
     .line 20
-    iget-object v2, v2, Lorg/levimc/launcher/core/content/world/MapSettings;->layer:Lorg/levimc/launcher/core/content/world/MapSettings$Layer;
+    invoke-virtual {v2}, Ljava/lang/Enum;->ordinal()I
 
     .line 21
     .line 22
-    invoke-virtual {v2}, Ljava/lang/Enum;->ordinal()I
-
     .line 23
-    .line 24
-    .line 25
     move-result v2
 
-    .line 26
-    new-instance v3, Lorg/levimc/launcher/ui/activities/g3;
+    .line 24
+    new-instance v3, Lorg/levimc/launcher/ui/activities/j4;
 
-    .line 27
-    .line 28
+    .line 25
+    .line 26
     const/4 v4, 0x0
 
-    .line 29
-    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 27
+    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
+    .line 28
+    .line 29
     .line 30
+    invoke-virtual {v0, v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 31
     .line 32
-    invoke-virtual {v0, v1, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->s([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)V
-
     .line 33
+    move-result-object v0
+
     .line 34
-    .line 35
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 35
     .line 36
     .line 37
-    .line 38
     return-void
 .end method
 
@@ -5661,14 +5739,14 @@
     move-result-object v1
 
     .line 71
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 72
     .line 73
     const/4 v3, 0x5
 
     .line 74
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 75
     .line 76
@@ -5689,26 +5767,26 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/h4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k5;
 
     .line 2
     .line 3
     const/4 v1, 0x2
 
     .line 4
-    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/h4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/k5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/r4;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/u5;
 
     .line 8
     .line 9
     const/4 p2, 0x0
 
     .line 10
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/r4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/u5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -5830,14 +5908,14 @@
 
     .line 8
     .line 9
-    new-instance p1, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 10
     .line 11
     const/4 v0, 0x3
 
     .line 12
-    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 13
     .line 14
@@ -5954,72 +6032,79 @@
 .end method
 
 .method private confirm(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)V
-    .locals 2
+    .locals 1
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v0, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
-
     .line 9
+    move-result-object p1
+
     .line 10
-    iput-object p1, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {p1, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setMessage(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 11
     .line 12
-    iput-object p2, v1, Lg/b;->f:Ljava/lang/CharSequence;
-
     .line 13
+    move-result-object p1
+
     .line 14
-    new-instance p1, Lorg/levimc/launcher/ui/activities/l2;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/j4;
 
     .line 15
     .line 16
-    const/4 p2, 0x1
+    const/16 v0, 0xa
 
     .line 17
-    invoke-direct {p1, p3, p2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Ljava/lang/Object;I)V
-
     .line 18
+    invoke-direct {p2, p3, v0}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
+
     .line 19
     .line 20
-    const-string p2, "Continue"
-
     .line 21
-    .line 22
-    invoke-virtual {v0, p2, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    const-string p3, "Continue"
 
+    .line 22
     .line 23
+    invoke-virtual {p1, p3, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 24
     .line 25
-    const-string p1, "Cancel"
-
     .line 26
+    move-result-object p1
+
     .line 27
-    const/4 p2, 0x0
+    const-string p2, "Cancel"
 
     .line 28
-    invoke-virtual {v0, p1, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
     .line 29
-    .line 30
-    .line 31
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    const/4 p3, 0x0
 
+    .line 30
+    invoke-virtual {p1, p2, p3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 31
     .line 32
     .line 33
+    move-result-object p1
+
     .line 34
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 35
+    .line 36
+    .line 37
     return-void
 .end method
 
@@ -6059,14 +6144,14 @@
     move-result-object v1
 
     .line 17
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 18
     .line 19
     const/4 v3, 0x4
 
     .line 20
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 21
     .line 22
@@ -6299,14 +6384,14 @@
     move-result-object v0
 
     .line 82
-    new-instance v1, Lorg/levimc/launcher/ui/activities/b3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/e4;
 
     .line 83
     .line 84
     const/4 v3, 0x1
 
     .line 85
-    invoke-direct {v1, p0, v2, v3}, Lorg/levimc/launcher/ui/activities/b3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v1, p0, v2, v3}, Lorg/levimc/launcher/ui/activities/e4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 86
     .line 87
@@ -6438,14 +6523,14 @@
     move-result-object v1
 
     .line 13
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 14
     .line 15
     const/4 v3, 0x6
 
     .line 16
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 17
     .line 18
@@ -6486,7 +6571,7 @@
     move-result-object p4
 
     .line 11
-    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/c5;
 
     .line 12
     .line 13
@@ -6505,7 +6590,7 @@
     move v5, p3
 
     .line 18
-    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/c5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
 
     .line 19
     .line 20
@@ -6526,19 +6611,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/h4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k5;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/h4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/k5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -6546,7 +6631,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -6602,7 +6687,7 @@
     move-result-object p2
 
     .line 18
-    invoke-virtual {v0, p2, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, p2, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 19
     .line 20
@@ -6638,7 +6723,7 @@
 
     .line 12
     :cond_0
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 13
     .line 14
@@ -6646,12 +6731,12 @@
 
     .line 15
     .line 16
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 17
     .line 18
     .line 19
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 20
     .line 21
@@ -6659,7 +6744,7 @@
 
     .line 22
     .line 23
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 24
     .line 25
@@ -6827,91 +6912,97 @@
     .line 48
     .line 49
     .line 50
-    new-instance p3, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance p3, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 51
     .line 52
-    invoke-direct {p3, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {p3, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 53
     .line 54
     .line 55
-    iget-object v0, p3, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {p3, p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 56
     .line 57
-    check-cast v0, Lg/b;
-
     .line 58
+    move-result-object p1
+
     .line 59
-    iput-object p1, v0, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {p1, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 60
     .line 61
-    iput-object p2, v0, Lg/b;->s:Landroid/view/View;
-
     .line 62
+    move-result-object p1
+
     .line 63
-    const-string p1, "Apply"
+    const-string p2, "Apply"
 
     .line 64
     .line 65
-    const/4 p2, 0x0
+    const/4 p3, 0x0
 
     .line 66
-    invoke-virtual {p3, p1, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {p1, p2, p3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 67
     .line 68
     .line 69
-    const-string p1, "Cancel"
-
-    .line 70
-    .line 71
-    invoke-virtual {p3, p1, p2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
-    .line 72
-    .line 73
-    .line 74
-    invoke-static {p0, p3}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 75
-    .line 76
-    .line 77
-    move-result-object v4
-
-    .line 78
-    const/4 p1, -0x1
-
-    .line 79
-    invoke-virtual {v4, p1}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 80
-    .line 81
-    .line 82
     move-result-object p1
 
-    .line 83
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l4;
+    .line 70
+    const-string p2, "Cancel"
 
+    .line 71
+    .line 72
+    invoke-virtual {p1, p2, p3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 73
+    .line 74
+    .line 75
+    move-result-object p1
+
+    .line 76
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 77
+    .line 78
+    .line 79
+    move-result-object v4
+
+    .line 80
+    const/4 p1, -0x1
+
+    .line 81
+    invoke-virtual {v4, p1}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
+    .line 82
+    .line 83
     .line 84
+    move-result-object p1
+
     .line 85
-    const/4 v6, 0x0
+    new-instance v1, Lorg/levimc/launcher/ui/activities/o5;
 
     .line 86
-    move-object v3, p4
-
     .line 87
-    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/l4;-><init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+    const/4 v6, 0x0
 
     .line 88
-    .line 89
-    .line 90
-    invoke-virtual {p1, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-object v3, p4
 
+    .line 89
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/o5;-><init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+
+    .line 90
     .line 91
     .line 92
+    invoke-virtual {p1, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 93
+    .line 94
+    .line 95
     return-void
 .end method
 
@@ -7145,81 +7236,80 @@
     .locals 6
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Go to"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Go to"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Bookmarks"
 
     .line 13
     .line 14
-    const-string v1, "Bookmarks"
+    const-string v2, "Add bookmark"
 
     .line 15
     .line 16
-    const-string v2, "Add bookmark"
+    const-string v3, "World spawn"
 
     .line 17
     .line 18
-    const-string v3, "World spawn"
+    const-string v4, "Player"
 
     .line 19
     .line 20
-    const-string v4, "Player"
+    const-string v5, "Coordinates"
 
     .line 21
     .line 22
-    const-string v5, "Coordinates"
+    filled-new-array {v3, v4, v5, v1, v2}, [Ljava/lang/String;
 
     .line 23
     .line 24
-    filled-new-array {v3, v4, v5, v1, v2}, [Ljava/lang/String;
-
     .line 25
-    .line 26
-    .line 27
     move-result-object v1
 
-    .line 28
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    .line 26
+    new-instance v2, Lorg/levimc/launcher/ui/activities/j4;
 
-    .line 29
-    .line 30
+    .line 27
+    .line 28
     const/4 v3, 0x1
 
-    .line 31
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    .line 29
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
+    .line 30
+    .line 31
     .line 32
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 33
     .line 34
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 35
+    move-result-object v0
+
     .line 36
-    .line 37
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 37
     .line 38
     .line 39
-    .line 40
     return-void
 .end method
 
@@ -7227,26 +7317,26 @@
     .locals 3
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
     const/4 v2, 0x2
 
     .line 10
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -7267,26 +7357,26 @@
     .locals 3
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
     const/4 v2, 0x5
 
     .line 10
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -7488,14 +7578,14 @@
 
     .line 64
     .line 65
-    new-instance v0, Lorg/levimc/launcher/ui/activities/v0;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/a1;
 
     .line 66
     .line 67
     const/4 v1, 0x1
 
     .line 68
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/v0;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;II)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/a1;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;II)V
 
     .line 69
     .line 70
@@ -7509,26 +7599,26 @@
 
     .line 75
     :cond_3
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 76
     .line 77
     const/4 v1, 0x2
 
     .line 78
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 79
     .line 80
     .line 81
-    new-instance v1, Lorg/levimc/launcher/ui/activities/z2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/c4;
 
     .line 82
     .line 83
     const/4 v2, 0x1
 
     .line 84
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/z2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/c4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
 
     .line 85
     .line 86
@@ -7636,19 +7726,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/t3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/v4;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/t3;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/v4;-><init>(Ljava/lang/Object;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -7656,7 +7746,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -7697,23 +7787,23 @@
 
     .line 10
     :cond_0
-    new-instance v0, Lorg/levimc/launcher/ui/activities/h4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k5;
 
     .line 11
     .line 12
     const/4 v1, 0x0
 
     .line 13
-    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/h4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/k5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
 
     .line 14
     .line 15
     .line 16
-    new-instance v1, Lorg/levimc/launcher/ui/activities/i4;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l5;
 
     .line 17
     .line 18
-    invoke-direct {v1, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/i4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIZ)V
+    invoke-direct {v1, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/l5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIZ)V
 
     .line 19
     .line 20
@@ -8178,19 +8268,19 @@
     .locals 3
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 2
     .line 3
     const/4 v1, 0x6
 
     .line 4
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -8198,7 +8288,7 @@
 
     .line 10
     .line 11
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -8273,19 +8363,19 @@
     .locals 3
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 2
     .line 3
     const/4 v1, 0x5
 
     .line 4
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -8293,7 +8383,7 @@
 
     .line 10
     .line 11
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -8422,7 +8512,7 @@
     const/4 v0, 0x0
 
     .line 30
-    invoke-virtual {p1, p2, v0}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {p1, p2, v0}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 31
     .line 32
@@ -8454,14 +8544,14 @@
 
     .line 43
     .line 44
-    new-instance p1, Lorg/levimc/launcher/ui/activities/m4;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/p5;
 
     .line 45
     .line 46
     const/4 p2, 0x1
 
     .line 47
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/m4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/p5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 48
     .line 49
@@ -8490,14 +8580,14 @@
 
     .line 60
     .line 61
-    new-instance p1, Lorg/levimc/launcher/ui/activities/m4;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/p5;
 
     .line 62
     .line 63
     const/4 p2, 0x2
 
     .line 64
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/m4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/p5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 65
     .line 66
@@ -8519,7 +8609,7 @@
 
     .line 75
     :cond_5
-    new-instance p1, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 76
     .line 77
@@ -8527,12 +8617,12 @@
 
     .line 78
     .line 79
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 80
     .line 81
     .line 82
-    new-instance p2, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 83
     .line 84
@@ -8540,7 +8630,7 @@
 
     .line 85
     .line 86
-    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 87
     .line 88
@@ -8590,7 +8680,7 @@
 
     .line 15
     .line 16
-    new-instance v5, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 17
     .line 18
@@ -8598,7 +8688,7 @@
 
     .line 19
     .line 20
-    invoke-direct {v5, p0, p3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, p0, p3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 21
     .line 22
@@ -8680,7 +8770,7 @@
     .locals 6
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f5;
 
     .line 2
     .line 3
@@ -8699,12 +8789,12 @@
     move v5, p4
 
     .line 8
-    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/c4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;Ljava/lang/String;Ljava/lang/String;I)V
+    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/f5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;Ljava/lang/String;Ljava/lang/String;I)V
 
     .line 9
     .line 10
     .line 11
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 12
     .line 13
@@ -8712,7 +8802,7 @@
 
     .line 14
     .line 15
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 16
     .line 17
@@ -8943,14 +9033,14 @@
     .line 41
     .line 42
     :goto_1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/n5;
 
     .line 43
     .line 44
     const/4 v1, 0x0
 
     .line 45
-    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/k4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
+    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/n5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
 
     .line 46
     .line 47
@@ -9108,7 +9198,7 @@
     return-void
 .end method
 
-.method private lambda$bookmarks$172(Landroid/content/DialogInterface;I)V
+.method private synthetic lambda$bookmarks$172(Landroid/content/DialogInterface;I)V
     .locals 3
 
     .line 1
@@ -9132,11 +9222,11 @@
 
     .line 10
     .line 11
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 12
     .line 13
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 14
     .line 15
@@ -9145,53 +9235,52 @@
 
     .line 17
     .line 18
-    iget-object v2, v0, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 19
     .line 20
-    check-cast v2, Lg/b;
-
     .line 21
+    move-result-object v0
+
     .line 22
-    iput-object v1, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Go to"
 
     .line 23
     .line 24
-    const-string v1, "Go to"
+    const-string v2, "Delete bookmark"
 
     .line 25
     .line 26
-    const-string v2, "Delete bookmark"
+    filled-new-array {v1, v2}, [Ljava/lang/String;
 
     .line 27
     .line 28
-    filled-new-array {v1, v2}, [Ljava/lang/String;
-
     .line 29
-    .line 30
-    .line 31
     move-result-object v1
 
+    .line 30
+    new-instance v2, Lorg/levimc/launcher/ui/activities/d5;
+
+    .line 31
     .line 32
-    new-instance v2, Lorg/levimc/launcher/ui/activities/a4;
+    invoke-direct {v2, p0, p1, p2}, Lorg/levimc/launcher/ui/activities/d5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldRecords$Marker;I)V
 
     .line 33
     .line 34
-    invoke-direct {v2, p0, p1, p2}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldRecords$Marker;I)V
-
     .line 35
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 36
     .line 37
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 38
-    .line 39
-    .line 40
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 39
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 40
     .line 41
     .line 42
-    .line 43
     return-void
 .end method
 
@@ -9319,7 +9408,7 @@
     const/4 v2, 0x0
 
     .line 15
-    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 16
     .line 17
@@ -10049,7 +10138,7 @@
     return-void
 .end method
 
-.method private lambda$chunkRecords$75(Ljava/util/List;)V
+.method private synthetic lambda$chunkRecords$75(Ljava/util/List;)V
     .locals 4
 
     .line 1
@@ -10078,106 +10167,105 @@
 
     .line 13
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 14
     .line 15
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 16
     .line 17
     .line 18
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Chunk records"
 
     .line 19
     .line 20
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 21
     .line 22
-    const-string v2, "Chunk records"
-
     .line 23
+    move-result-object v0
+
     .line 24
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
 
     .line 25
     .line 26
-    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
     .line 27
-    .line 28
-    .line 29
     move-result-object v1
 
+    .line 28
+    new-instance v2, Lia/d;
+
+    .line 29
     .line 30
-    new-instance v2, Lga/d;
+    const/16 v3, 0x17
 
     .line 31
     .line 32
-    const/16 v3, 0xf
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
     .line 33
     .line 34
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
     .line 35
-    .line 36
-    .line 37
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
+    .line 36
+    .line 37
     .line 38
-    .line 39
-    .line 40
     move-result-object v1
 
-    .line 41
-    new-instance v2, Lorg/levimc/launcher/ui/activities/e3;
+    .line 39
+    new-instance v2, Lorg/levimc/launcher/ui/activities/h4;
 
-    .line 42
-    .line 43
+    .line 40
+    .line 41
     const/4 v3, 0x3
 
-    .line 44
-    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    .line 42
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
+    .line 43
+    .line 44
     .line 45
-    .line 46
-    .line 47
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
 
+    .line 46
+    .line 47
     .line 48
-    .line 49
-    .line 50
     move-result-object v1
 
-    .line 51
+    .line 49
     check-cast v1, [Ljava/lang/CharSequence;
+
+    .line 50
+    .line 51
+    new-instance v2, Lorg/levimc/launcher/ui/activities/i4;
 
     .line 52
     .line 53
-    new-instance v2, Lorg/levimc/launcher/ui/activities/f3;
-
-    .line 54
-    .line 55
     const/4 v3, 0x2
 
-    .line 56
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/f3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
+    .line 54
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/i4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
 
+    .line 55
+    .line 56
     .line 57
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 58
     .line 59
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 60
-    .line 61
-    .line 62
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 61
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 62
     .line 63
     .line 64
-    .line 65
     return-void
 .end method
 
@@ -10379,19 +10467,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/y2;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/b4;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/y2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/b4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -10399,7 +10487,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -10437,7 +10525,7 @@
     .line 8
     .line 9
     .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 11
     .line 12
@@ -10445,7 +10533,7 @@
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 15
     .line 16
@@ -10521,19 +10609,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/b4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/e5;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/b4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/e5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -10541,7 +10629,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -10579,7 +10667,7 @@
     .line 8
     .line 9
     .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 11
     .line 12
@@ -10587,7 +10675,7 @@
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 15
     .line 16
@@ -10686,16 +10774,16 @@
     move-result p1
 
     .line 12
-    new-instance v1, Lorg/levimc/launcher/ui/activities/n4;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/q5;
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v0, p1}, Lorg/levimc/launcher/ui/activities/n4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v1, p0, v0, p1}, Lorg/levimc/launcher/ui/activities/q5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 15
     .line 16
     .line 17
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 18
     .line 19
@@ -10703,7 +10791,7 @@
 
     .line 20
     .line 21
-    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 22
     .line 23
@@ -10756,7 +10844,7 @@
     move-result-object v3
 
     .line 17
-    new-instance v5, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 18
     .line 19
@@ -10764,7 +10852,7 @@
 
     .line 20
     .line 21
-    invoke-direct {v5, p0, p2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, p0, p2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 22
     .line 23
@@ -10852,19 +10940,19 @@
     .line 16
     .line 17
     .line 18
-    new-instance p1, Lorg/levimc/launcher/ui/activities/a3;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/d4;
 
     .line 19
     .line 20
     const/4 p2, 0x1
 
     .line 21
-    invoke-direct {p1, p0, v0, p4, p2}, Lorg/levimc/launcher/ui/activities/a3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;[Ljava/lang/String;I)V
+    invoke-direct {p1, p0, v0, p4, p2}, Lorg/levimc/launcher/ui/activities/d4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;[Ljava/lang/String;I)V
 
     .line 22
     .line 23
     .line 24
-    new-instance p2, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 25
     .line 26
@@ -10872,7 +10960,7 @@
 
     .line 27
     .line 28
-    invoke-direct {p2, p0, p3}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p2, p0, p3}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 29
     .line 30
@@ -11084,7 +11172,7 @@
     return-void
 .end method
 
-.method private lambda$entityRecords$71(Ljava/util/List;)V
+.method private synthetic lambda$entityRecords$71(Ljava/util/List;)V
     .locals 4
 
     .line 1
@@ -11113,106 +11201,105 @@
 
     .line 13
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 14
     .line 15
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 16
     .line 17
     .line 18
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Entities"
 
     .line 19
     .line 20
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 21
     .line 22
-    const-string v2, "Entities"
-
     .line 23
+    move-result-object v0
+
     .line 24
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
 
     .line 25
     .line 26
-    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
     .line 27
-    .line 28
-    .line 29
     move-result-object v1
 
+    .line 28
+    new-instance v2, Lia/d;
+
+    .line 29
     .line 30
-    new-instance v2, Lga/d;
+    const/16 v3, 0x16
 
     .line 31
     .line 32
-    const/16 v3, 0xe
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
     .line 33
     .line 34
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
     .line 35
-    .line 36
-    .line 37
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
+    .line 36
+    .line 37
     .line 38
-    .line 39
-    .line 40
     move-result-object v1
 
-    .line 41
-    new-instance v2, Lorg/levimc/launcher/ui/activities/e3;
+    .line 39
+    new-instance v2, Lorg/levimc/launcher/ui/activities/h4;
 
-    .line 42
-    .line 43
+    .line 40
+    .line 41
     const/4 v3, 0x2
 
-    .line 44
-    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    .line 42
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
+    .line 43
+    .line 44
     .line 45
-    .line 46
-    .line 47
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
 
+    .line 46
+    .line 47
     .line 48
-    .line 49
-    .line 50
     move-result-object v1
 
-    .line 51
+    .line 49
     check-cast v1, [Ljava/lang/CharSequence;
+
+    .line 50
+    .line 51
+    new-instance v2, Lorg/levimc/launcher/ui/activities/i4;
 
     .line 52
     .line 53
-    new-instance v2, Lorg/levimc/launcher/ui/activities/f3;
-
-    .line 54
-    .line 55
     const/4 v3, 0x1
 
-    .line 56
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/f3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
+    .line 54
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/i4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
 
+    .line 55
+    .line 56
     .line 57
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 58
     .line 59
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 60
-    .line 61
-    .line 62
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 61
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 62
     .line 63
     .line 64
-    .line 65
     return-void
 .end method
 
@@ -11328,7 +11415,7 @@
 
     .line 36
     .line 37
-    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 38
     .line 39
@@ -11430,7 +11517,7 @@
     .line 32
     .line 33
     .line 34
-    invoke-virtual {p2}, Lg/d0;->dismiss()V
+    invoke-virtual {p2}, Lg/e0;->dismiss()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -11664,14 +11751,14 @@
     move-result-object p2
 
     .line 65
-    new-instance v0, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 66
     .line 67
     const/4 v1, 0x1
 
     .line 68
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 69
     .line 70
@@ -11889,7 +11976,7 @@
     return-void
 .end method
 
-.method private lambda$goPlayer$59(Ljava/util/List;)V
+.method private synthetic lambda$goPlayer$59(Ljava/util/List;)V
     .locals 4
 
     .line 1
@@ -11943,15 +12030,15 @@
     move-result-object v0
 
     .line 26
-    new-instance v1, Lga/d;
+    new-instance v1, Lia/d;
 
     .line 27
     .line 28
-    const/16 v2, 0x10
+    const/16 v2, 0x18
 
     .line 29
     .line 30
-    invoke-direct {v1, v2}, Lga/d;-><init>(I)V
+    invoke-direct {v1, v2}, Lia/d;-><init>(I)V
 
     .line 31
     .line 32
@@ -11964,14 +12051,14 @@
     move-result-object v0
 
     .line 37
-    new-instance v1, Lorg/levimc/launcher/ui/activities/e3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/h4;
 
     .line 38
     .line 39
     const/4 v2, 0x4
 
     .line 40
-    invoke-direct {v1, v2}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    invoke-direct {v1, v2}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
     .line 41
     .line 42
@@ -11988,53 +12075,52 @@
 
     .line 48
     .line 49
-    new-instance v1, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 50
     .line 51
-    invoke-direct {v1, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 52
     .line 53
     .line 54
-    iget-object v2, v1, Lc5/d;->d:Ljava/lang/Object;
+    const-string v2, "Players"
 
     .line 55
     .line 56
-    check-cast v2, Lg/b;
+    invoke-virtual {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 57
     .line 58
-    const-string v3, "Players"
-
     .line 59
+    move-result-object v1
+
     .line 60
-    iput-object v3, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/i4;
 
     .line 61
     .line 62
-    new-instance v2, Lorg/levimc/launcher/ui/activities/f3;
-
-    .line 63
-    .line 64
     const/4 v3, 0x3
 
-    .line 65
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/f3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
+    .line 63
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/i4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
 
+    .line 64
+    .line 65
     .line 66
+    invoke-virtual {v1, v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 67
     .line 68
-    invoke-virtual {v1, v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 69
-    .line 70
-    .line 71
-    invoke-static {p0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 70
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 71
     .line 72
     .line 73
-    .line 74
     return-void
 .end method
 
@@ -12464,26 +12550,26 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/j3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m4;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p0, p2, p1, v1}, Lorg/levimc/launcher/ui/activities/j3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p2, p1, v1}, Lorg/levimc/launcher/ui/activities/m4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
     const/4 p2, 0x4
 
     .line 10
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -12528,14 +12614,14 @@
     move-result-object v1
 
     .line 13
-    new-instance v2, Lorg/levimc/launcher/ui/activities/l3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/o4;
 
     .line 14
     .line 15
     const/4 v3, 0x1
 
     .line 16
-    invoke-direct {v2, v3, p0, p1}, Lorg/levimc/launcher/ui/activities/l3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v2, v3, p0, p1}, Lorg/levimc/launcher/ui/activities/o4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 17
     .line 18
@@ -13054,121 +13140,117 @@
     return-void
 .end method
 
-.method private lambda$inspect$62(III[Ljava/lang/String;[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;Landroid/content/DialogInterface;I)V
-    .locals 8
+.method private synthetic lambda$inspect$62(III[Ljava/lang/String;[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;Landroid/content/DialogInterface;I)V
+    .locals 7
 
     .line 1
-    new-instance v7, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance p7, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v7, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {p7, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    new-instance v0, Ljava/lang/StringBuilder;
+    new-instance p8, Ljava/lang/StringBuilder;
 
     .line 7
     .line 8
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {p8}, Ljava/lang/StringBuilder;-><init>()V
 
     .line 9
     .line 10
     .line 11
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {p8, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 12
     .line 13
     .line 14
-    const-string v3, ", "
+    const-string v0, ", "
 
     .line 15
     .line 16
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p8, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 17
     .line 18
     .line 19
-    invoke-virtual {v0, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {p8, p2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 20
     .line 21
     .line 22
-    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p8, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 23
     .line 24
     .line 25
-    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {p8, p3}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 26
     .line 27
     .line 28
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {p8}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 29
     .line 30
     .line 31
-    move-result-object v0
+    move-result-object p8
 
     .line 32
-    iget-object v5, v7, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {p7, p8}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 33
     .line 34
-    check-cast v5, Lg/b;
-
     .line 35
+    move-result-object p7
+
     .line 36
-    iput-object v0, v5, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/r5;
 
     .line 37
     .line 38
-    new-instance v0, Lorg/levimc/launcher/ui/activities/o4;
-
-    .line 39
-    .line 40
     move-object v1, p0
 
-    .line 41
+    .line 39
     move v2, p1
 
-    .line 42
+    .line 40
     move v3, p2
 
-    .line 43
+    .line 41
     move v4, p3
 
-    .line 44
+    .line 42
     move-object v5, p5
 
-    .line 45
+    .line 43
     move-object v6, p6
 
-    .line 46
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/o4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;)V
+    .line 44
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/r5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;)V
 
+    .line 45
+    .line 46
     .line 47
+    invoke-virtual {p7, p4, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 48
     .line 49
-    move-object v2, v0
-
     .line 50
-    invoke-virtual {v7, p4, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
+    move-result-object p1
 
     .line 51
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
     .line 52
     .line 53
-    invoke-static {p0, v7}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
     .line 54
-    .line 55
-    .line 56
     return-void
 .end method
 
-.method private lambda$inspect$63(IIZ[Ljava/lang/Object;)V
+.method private synthetic lambda$inspect$63(IIZ[Ljava/lang/Object;)V
     .locals 17
 
     .line 1
@@ -13374,7 +13456,7 @@
 
     .line 106
     .line 107
-    invoke-static {v0, v5}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v5}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 108
     .line 109
@@ -13427,34 +13509,34 @@
     move-result-object v5
 
     .line 133
-    new-instance v8, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v6, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 134
     .line 135
-    invoke-direct {v8, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v6, v1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 136
     .line 137
     .line 138
-    iget-object v6, v8, Lc5/d;->d:Ljava/lang/Object;
+    const-string v8, "Inspect block"
 
     .line 139
     .line 140
-    check-cast v6, Lg/b;
+    invoke-virtual {v6, v8}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 141
     .line 142
-    const-string v9, "Inspect block"
-
     .line 143
+    move-result-object v6
+
     .line 144
-    iput-object v9, v6, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v6, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setMessage(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 145
     .line 146
-    iput-object v0, v6, Lg/b;->f:Ljava/lang/CharSequence;
-
     .line 147
+    move-result-object v8
+
     .line 148
     if-eqz p3, :cond_1
 
@@ -13480,7 +13562,7 @@
 
     .line 157
     :goto_1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/j4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m5;
 
     .line 158
     .line 159
@@ -13488,33 +13570,39 @@
 
     .line 160
     .line 161
-    invoke-direct/range {v0 .. v7}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III[Ljava/lang/String;[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;)V
+    invoke-direct/range {v0 .. v7}, Lorg/levimc/launcher/ui/activities/m5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III[Ljava/lang/String;[Ljava/lang/Object;Lorg/levimc/launcher/core/content/world/WorldChunk;)V
 
     .line 162
     .line 163
     .line 164
-    invoke-virtual {v8, v9, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v8, v9, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 165
     .line 166
     .line 167
-    const-string v0, "Close"
+    move-result-object v0
 
     .line 168
-    .line 169
-    const/4 v2, 0x0
+    const-string v2, "Close"
 
+    .line 169
     .line 170
-    invoke-virtual {v8, v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
+    const/4 v3, 0x0
 
     .line 171
+    invoke-virtual {v0, v2, v3}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 172
     .line 173
-    invoke-static {v1, v8}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
     .line 174
+    move-result-object v0
+
     .line 175
+    invoke-static {v1, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
     .line 176
+    .line 177
+    .line 178
     return-void
 .end method
 
@@ -13591,19 +13679,19 @@
 
     .line 13
     .line 14
-    new-instance p1, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 15
     .line 16
     const/4 p2, 0x7
 
     .line 17
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 18
     .line 19
     .line 20
-    new-instance p2, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 21
     .line 22
@@ -13611,7 +13699,7 @@
 
     .line 23
     .line 24
-    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 25
     .line 26
@@ -14049,14 +14137,14 @@
 
     .line 73
     .line 74
-    new-instance p2, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 75
     .line 76
     const/4 v0, 0x7
 
     .line 77
-    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 78
     .line 79
@@ -14139,7 +14227,7 @@
 
     .line 32
     .line 33
-    new-instance v9, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v9, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 34
     .line 35
@@ -14147,7 +14235,7 @@
 
     .line 36
     .line 37
-    invoke-direct {v9, p0, p1}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v9, p0, p1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 38
     .line 39
@@ -14305,7 +14393,7 @@
     return-void
 .end method
 
-.method private lambda$locate$137(Ljava/util/List;)V
+.method private synthetic lambda$locate$137(Ljava/util/List;)V
     .locals 4
 
     .line 1
@@ -14334,11 +14422,11 @@
 
     .line 13
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 14
     .line 15
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 16
     .line 17
@@ -14416,90 +14504,89 @@
     move-result-object v1
 
     .line 55
-    iget-object v2, v0, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 56
     .line 57
-    check-cast v2, Lg/b;
-
     .line 58
+    move-result-object v0
+
     .line 59
-    iput-object v1, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
 
     .line 60
     .line 61
-    invoke-interface {p1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
     .line 62
-    .line 63
-    .line 64
     move-result-object v1
 
+    .line 63
+    new-instance v2, Lia/d;
+
+    .line 64
     .line 65
-    new-instance v2, Lga/d;
+    const/16 v3, 0x14
 
     .line 66
     .line 67
-    const/16 v3, 0xc
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
     .line 68
     .line 69
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
     .line 70
-    .line 71
-    .line 72
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
+    .line 71
+    .line 72
     .line 73
-    .line 74
-    .line 75
     move-result-object v1
 
-    .line 76
-    new-instance v2, Lorg/levimc/launcher/ui/activities/e3;
+    .line 74
+    new-instance v2, Lorg/levimc/launcher/ui/activities/h4;
 
-    .line 77
-    .line 78
+    .line 75
+    .line 76
     const/4 v3, 0x0
 
-    .line 79
-    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    .line 77
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
+    .line 78
+    .line 79
     .line 80
-    .line 81
-    .line 82
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
 
+    .line 81
+    .line 82
     .line 83
-    .line 84
-    .line 85
     move-result-object v1
 
-    .line 86
+    .line 84
     check-cast v1, [Ljava/lang/CharSequence;
+
+    .line 85
+    .line 86
+    new-instance v2, Lorg/levimc/launcher/ui/activities/i4;
 
     .line 87
     .line 88
-    new-instance v2, Lorg/levimc/launcher/ui/activities/f3;
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/i4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
 
     .line 89
     .line 90
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/f3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;I)V
-
     .line 91
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 92
     .line 93
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 94
-    .line 95
-    .line 96
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 95
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 96
     .line 97
     .line 98
-    .line 99
     return-void
 .end method
 
@@ -14556,7 +14643,7 @@
 
     .line 23
     .line 24
-    new-instance v1, Lorg/levimc/launcher/ui/activities/s3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/u4;
 
     .line 25
     .line 26
@@ -14569,12 +14656,12 @@
     move-object v4, p2
 
     .line 29
-    invoke-direct/range {v1 .. v7}, Lorg/levimc/launcher/ui/activities/s3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I[Ljava/lang/String;III)V
+    invoke-direct/range {v1 .. v7}, Lorg/levimc/launcher/ui/activities/u4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I[Ljava/lang/String;III)V
 
     .line 30
     .line 31
     .line 32
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 33
     .line 34
@@ -14582,7 +14669,7 @@
 
     .line 35
     .line 36
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 37
     .line 38
@@ -14792,14 +14879,14 @@
     move-result-object v0
 
     .line 85
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k4;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n5;
 
     .line 86
     .line 87
     const/4 v2, 0x1
 
     .line 88
-    invoke-direct {v1, p0, p3, v2}, Lorg/levimc/launcher/ui/activities/k4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
+    invoke-direct {v1, p0, p3, v2}, Lorg/levimc/launcher/ui/activities/n5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
 
     .line 89
     .line 90
@@ -15151,7 +15238,7 @@
     .line 71
     .line 72
     .line 73
-    invoke-virtual {p6}, Lg/d0;->dismiss()V
+    invoke-virtual {p6}, Lg/e0;->dismiss()V
 
     .line 74
     .line 75
@@ -15339,16 +15426,16 @@
     .locals 1
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/u3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/w4;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/u3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+    invoke-direct {v0, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/w4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
 
     .line 4
     .line 5
     .line 6
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 7
     .line 8
@@ -15356,7 +15443,7 @@
 
     .line 9
     .line 10
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -15715,16 +15802,16 @@
 
     .line 23
     :cond_1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/p4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/s5;
 
     .line 24
     .line 25
-    invoke-direct {v0, p0, p1, v2, v1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Landroid/net/Uri;Landroid/graphics/Bitmap;[B)V
+    invoke-direct {v0, p0, p1, v2, v1}, Lorg/levimc/launcher/ui/activities/s5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Landroid/net/Uri;Landroid/graphics/Bitmap;[B)V
 
     .line 26
     .line 27
     .line 28
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 29
     .line 30
@@ -15732,7 +15819,7 @@
 
     .line 31
     .line 32
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 33
     .line 34
@@ -15921,23 +16008,23 @@
 
     .line 7
     .line 8
-    new-instance v1, Lorg/levimc/launcher/ui/activities/y2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/b4;
 
     .line 9
     .line 10
     const/4 v2, 0x0
 
     .line 11
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/y2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/b4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
 
     .line 12
     .line 13
     .line 14
-    new-instance p1, Lorg/levimc/launcher/ui/activities/z2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/c4;
 
     .line 15
     .line 16
-    invoke-direct {p1, p0, v0, v2}, Lorg/levimc/launcher/ui/activities/z2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
+    invoke-direct {p1, p0, v0, v2}, Lorg/levimc/launcher/ui/activities/c4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;II)V
 
     .line 17
     .line 18
@@ -16387,23 +16474,23 @@
     .locals 0
 
     .line 1
-    new-instance p2, Lorg/levimc/launcher/ui/activities/q4;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/t5;
 
     .line 2
     .line 3
-    invoke-direct {p2, p3, p1}, Lorg/levimc/launcher/ui/activities/q4;-><init>(I[B)V
+    invoke-direct {p2, p3, p1}, Lorg/levimc/launcher/ui/activities/t5;-><init>(I[B)V
 
     .line 4
     .line 5
     .line 6
-    new-instance p1, Lorg/levimc/launcher/ui/activities/r4;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/u5;
 
     .line 7
     .line 8
     const/4 p3, 0x1
 
     .line 9
-    invoke-direct {p1, p0, p3}, Lorg/levimc/launcher/ui/activities/r4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p3}, Lorg/levimc/launcher/ui/activities/u5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 10
     .line 11
@@ -16646,7 +16733,7 @@
 
     .line 16
     .line 17
-    invoke-static {v0, p3, p2, v1}, Ls1/a;->o(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p3, p2, v1}, Ls1/a;->m(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
 
     .line 18
     .line 19
@@ -16662,7 +16749,7 @@
 
     .line 23
     .line 24
-    invoke-static {p3, p2}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p3, p2}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
 
     .line 25
     .line 26
@@ -16729,7 +16816,7 @@
 
     .line 23
     .line 24
-    new-instance v6, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v6, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 25
     .line 26
@@ -16737,7 +16824,7 @@
 
     .line 27
     .line 28
-    invoke-direct {v6, p0, p1}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v6, p0, p1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 29
     .line 30
@@ -16822,7 +16909,7 @@
     .locals 6
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/i5;
 
     .line 2
     .line 3
@@ -16841,12 +16928,12 @@
     move v5, p4
 
     .line 8
-    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BIII)V
+    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/i5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BIII)V
 
     .line 9
     .line 10
     .line 11
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 12
     .line 13
@@ -16854,7 +16941,7 @@
 
     .line 14
     .line 15
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 16
     .line 17
@@ -16920,7 +17007,7 @@
     move-result v6
 
     .line 22
-    new-instance v1, Lorg/levimc/launcher/ui/activities/c0;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/f0;
 
     .line 23
     .line 24
@@ -16933,7 +17020,7 @@
     move-object v3, p1
 
     .line 27
-    invoke-direct/range {v1 .. v7}, Lorg/levimc/launcher/ui/activities/c0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
+    invoke-direct/range {v1 .. v7}, Lorg/levimc/launcher/ui/activities/f0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
 
     .line 28
     .line 29
@@ -17023,7 +17110,7 @@
 
     .line 21
     .line 22
-    invoke-static {p1, p2, v0}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, p2, v0}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 23
     .line 24
@@ -17097,7 +17184,7 @@
     const/4 v1, 0x0
 
     .line 22
-    invoke-virtual {p1, v0, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {p1, v0, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 23
     .line 24
@@ -17156,26 +17243,26 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/g4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/j5;
 
     .line 2
     .line 3
     const/4 v1, 0x2
 
     .line 4
-    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/g4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/j5;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
     const/4 v1, 0x0
 
     .line 10
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -17219,23 +17306,23 @@
 
     .line 10
     .line 11
-    new-instance p3, Lorg/levimc/launcher/ui/activities/g4;
+    new-instance p3, Lorg/levimc/launcher/ui/activities/j5;
 
     .line 12
     .line 13
     const/4 p4, 0x0
 
     .line 14
-    invoke-direct {p3, p4, p0, p1}, Lorg/levimc/launcher/ui/activities/g4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {p3, p4, p0, p1}, Lorg/levimc/launcher/ui/activities/j5;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 15
     .line 16
     .line 17
-    new-instance p4, Lorg/levimc/launcher/ui/activities/e4;
+    new-instance p4, Lorg/levimc/launcher/ui/activities/h5;
 
     .line 18
     .line 19
-    invoke-direct {p4, p0, p2, p1}, Lorg/levimc/launcher/ui/activities/e4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B)V
+    invoke-direct {p4, p0, p2, p1}, Lorg/levimc/launcher/ui/activities/h5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B)V
 
     .line 20
     .line 21
@@ -17389,14 +17476,14 @@
     move-result-object p2
 
     .line 95
-    new-instance p3, Lorg/levimc/launcher/ui/activities/n3;
+    new-instance p3, Lorg/levimc/launcher/ui/activities/q4;
 
     .line 96
     .line 97
     const/4 p4, 0x3
 
     .line 98
-    invoke-direct {p3, p4, p0, p1}, Lorg/levimc/launcher/ui/activities/n3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {p3, p4, p0, p1}, Lorg/levimc/launcher/ui/activities/q4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 99
     .line 100
@@ -17427,14 +17514,14 @@
 
     .line 112
     .line 113
-    new-instance p2, Lorg/levimc/launcher/ui/activities/n3;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/q4;
 
     .line 114
     .line 115
     const/4 p3, 0x2
 
     .line 116
-    invoke-direct {p2, p3, p0, p1}, Lorg/levimc/launcher/ui/activities/n3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {p2, p3, p0, p1}, Lorg/levimc/launcher/ui/activities/q4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 117
     .line 118
@@ -17483,7 +17570,7 @@
     const/4 p3, 0x0
 
     .line 140
-    invoke-virtual {p1, p2, p3}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {p1, p2, p3}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 141
     .line 142
@@ -17655,14 +17742,14 @@
     move-result-object v0
 
     .line 30
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 31
     .line 32
     const/4 v3, 0x2
 
     .line 33
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 34
     .line 35
@@ -17713,7 +17800,7 @@
     const/4 v2, 0x0
 
     .line 15
-    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 16
     .line 17
@@ -17875,19 +17962,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/g4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/j5;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/g4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/j5;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -17895,7 +17982,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -18344,7 +18431,7 @@
 
     .line 11
     .line 12
-    invoke-virtual {v0, v1, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v1, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 13
     .line 14
@@ -18356,7 +18443,7 @@
     .locals 0
 
     .line 1
-    invoke-virtual {p0}, Lg/d0;->dismiss()V
+    invoke-virtual {p0}, Lg/e0;->dismiss()V
 
     .line 2
     .line 3
@@ -18423,19 +18510,19 @@
     move-result-object p1
 
     .line 9
-    invoke-virtual {p2}, Lg/d0;->dismiss()V
+    invoke-virtual {p2}, Lg/e0;->dismiss()V
 
     .line 10
     .line 11
     .line 12
-    new-instance p2, Lorg/levimc/launcher/ui/activities/t3;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/v4;
 
     .line 13
     .line 14
     const/4 p4, 0x0
 
     .line 15
-    invoke-direct {p2, p1, p4}, Lorg/levimc/launcher/ui/activities/t3;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p2, p1, p4}, Lorg/levimc/launcher/ui/activities/v4;-><init>(Ljava/lang/Object;I)V
 
     .line 16
     .line 17
@@ -18452,7 +18539,7 @@
     return-void
 .end method
 
-.method private lambda$snbt$105(Ljava/util/function/Consumer;Ljava/lang/String;)V
+.method private synthetic lambda$snbt$105(Ljava/util/function/Consumer;Ljava/lang/String;)V
     .locals 9
 
     .line 1
@@ -18557,34 +18644,34 @@
     .line 51
     .line 52
     .line 53
-    new-instance p2, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance p2, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 54
     .line 55
-    invoke-direct {p2, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {p2, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 56
     .line 57
     .line 58
-    iget-object v1, p2, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Edit SNBT"
 
     .line 59
     .line 60
-    check-cast v1, Lg/b;
+    invoke-virtual {p2, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 61
     .line 62
-    const-string v2, "Edit SNBT"
-
     .line 63
+    move-result-object p2
+
     .line 64
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {p2, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 65
     .line 66
-    iput-object v0, v1, Lg/b;->s:Landroid/view/View;
-
     .line 67
+    move-result-object p2
+
     .line 68
     const-string v0, "Apply"
 
@@ -18593,62 +18680,68 @@
     const/4 v1, 0x0
 
     .line 71
-    invoke-virtual {p2, v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {p2, v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 72
     .line 73
     .line 74
-    const-string v0, "Cancel"
-
-    .line 75
-    .line 76
-    invoke-virtual {p2, v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
-    .line 77
-    .line 78
-    .line 79
-    invoke-static {p0, p2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 80
-    .line 81
-    .line 82
-    move-result-object v6
-
-    .line 83
-    const/4 p2, -0x1
-
-    .line 84
-    invoke-virtual {v6, p2}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 85
-    .line 86
-    .line 87
     move-result-object p2
 
-    .line 88
-    new-instance v3, Lorg/levimc/launcher/ui/activities/l4;
+    .line 75
+    const-string v0, "Cancel"
 
+    .line 76
+    .line 77
+    invoke-virtual {p2, v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 78
+    .line 79
+    .line 80
+    move-result-object p2
+
+    .line 81
+    invoke-static {p0, p2}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 82
+    .line 83
+    .line 84
+    move-result-object v6
+
+    .line 85
+    const/4 p2, -0x1
+
+    .line 86
+    invoke-virtual {v6, p2}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
+    .line 87
+    .line 88
     .line 89
+    move-result-object p2
+
     .line 90
-    const/4 v8, 0x3
+    new-instance v3, Lorg/levimc/launcher/ui/activities/o5;
 
     .line 91
-    move-object v4, p0
-
     .line 92
-    move-object v7, p1
+    const/4 v8, 0x3
 
     .line 93
-    invoke-direct/range {v3 .. v8}, Lorg/levimc/launcher/ui/activities/l4;-><init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+    move-object v4, p0
 
     .line 94
-    .line 95
-    .line 96
-    invoke-virtual {p2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-object v7, p1
 
+    .line 95
+    invoke-direct/range {v3 .. v8}, Lorg/levimc/launcher/ui/activities/o5;-><init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+
+    .line 96
     .line 97
     .line 98
+    invoke-virtual {p2, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 99
+    .line 100
+    .line 101
     return-void
 .end method
 
@@ -18673,7 +18766,7 @@
     .line 8
     .line 9
     .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 11
     .line 12
@@ -18681,7 +18774,7 @@
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 15
     .line 16
@@ -18734,7 +18827,7 @@
     .line 8
     .line 9
     .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 11
     .line 12
@@ -18742,7 +18835,7 @@
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 15
     .line 16
@@ -18807,26 +18900,26 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/a3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/d4;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/a3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;[Ljava/lang/String;I)V
+    invoke-direct {v0, p0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/d4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;[Ljava/lang/String;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
     const/4 p2, 0x1
 
     .line 10
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 11
     .line 12
@@ -18933,7 +19026,7 @@
     const/4 v0, 0x0
 
     .line 42
-    invoke-virtual {p1, p2, v0}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {p1, p2, v0}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 43
     .line 44
@@ -18959,19 +19052,19 @@
 
     .line 53
     .line 54
-    new-instance v0, Lorg/levimc/launcher/ui/activities/b4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/e5;
 
     .line 55
     .line 56
     const/4 v1, 0x1
 
     .line 57
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/b4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/e5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 58
     .line 59
     .line 60
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 61
     .line 62
@@ -18979,7 +19072,7 @@
 
     .line 63
     .line 64
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 65
     .line 66
@@ -19028,11 +19121,11 @@
     move-result-object v1
 
     .line 87
-    new-instance v2, Lorg/levimc/launcher/ui/activities/o1;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/d;
 
     .line 88
     .line 89
-    invoke-direct {v2, p0, p1}, Lorg/levimc/launcher/ui/activities/o1;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;)V
+    invoke-direct {v2, p0, p1}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 90
     .line 91
@@ -19467,7 +19560,7 @@
     .locals 7
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/s3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/u4;
 
     .line 2
     .line 3
@@ -19489,19 +19582,19 @@
     move v6, p5
 
     .line 9
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/s3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/u4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
 
     .line 10
     .line 11
     .line 12
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 13
     .line 14
     const/4 p2, 0x7
 
     .line 15
-    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, p2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 16
     .line 17
@@ -19602,7 +19695,7 @@
     move-result-object p5
 
     .line 45
-    new-instance v0, Lorg/levimc/launcher/ui/activities/h3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/k4;
 
     .line 46
     .line 47
@@ -19624,7 +19717,7 @@
     move v3, p6
 
     .line 53
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/h3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/k4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
 
     .line 54
     .line 55
@@ -19641,7 +19734,7 @@
     return-void
 .end method
 
-.method private lambda$teleport$83(IIILjava/util/List;)V
+.method private synthetic lambda$teleport$83(IIILjava/util/List;)V
     .locals 8
 
     .line 1
@@ -19670,118 +19763,117 @@
 
     .line 13
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 14
     .line 15
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 16
     .line 17
     .line 18
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Move saved player"
 
     .line 19
     .line 20
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 21
     .line 22
-    const-string v2, "Move saved player"
-
     .line 23
+    move-result-object v0
+
     .line 24
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-interface {p4}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
 
     .line 25
     .line 26
-    invoke-interface {p4}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
-
     .line 27
-    .line 28
-    .line 29
     move-result-object v1
 
+    .line 28
+    new-instance v2, Lia/d;
+
+    .line 29
     .line 30
-    new-instance v2, Lga/d;
+    const/16 v3, 0x15
 
     .line 31
     .line 32
-    const/16 v3, 0xd
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
     .line 33
     .line 34
-    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
-
     .line 35
-    .line 36
-    .line 37
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
+    .line 36
+    .line 37
     .line 38
-    .line 39
-    .line 40
     move-result-object v1
 
-    .line 41
-    new-instance v2, Lorg/levimc/launcher/ui/activities/e3;
+    .line 39
+    new-instance v2, Lorg/levimc/launcher/ui/activities/h4;
 
-    .line 42
-    .line 43
+    .line 40
+    .line 41
     const/4 v3, 0x1
 
-    .line 44
-    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/e3;-><init>(I)V
+    .line 42
+    invoke-direct {v2, v3}, Lorg/levimc/launcher/ui/activities/h4;-><init>(I)V
 
+    .line 43
+    .line 44
     .line 45
-    .line 46
-    .line 47
     invoke-interface {v1, v2}, Ljava/util/stream/Stream;->toArray(Ljava/util/function/IntFunction;)[Ljava/lang/Object;
 
+    .line 46
+    .line 47
     .line 48
-    .line 49
-    .line 50
     move-result-object v1
 
-    .line 51
+    .line 49
     check-cast v1, [Ljava/lang/CharSequence;
+
+    .line 50
+    .line 51
+    new-instance v2, Lorg/levimc/launcher/ui/activities/l4;
 
     .line 52
     .line 53
-    new-instance v2, Lorg/levimc/launcher/ui/activities/i3;
-
-    .line 54
-    .line 55
     move-object v3, p0
 
-    .line 56
+    .line 54
     move v4, p1
 
-    .line 57
+    .line 55
     move v5, p2
 
-    .line 58
+    .line 56
     move v6, p3
 
-    .line 59
+    .line 57
     move-object v7, p4
 
-    .line 60
-    invoke-direct/range {v2 .. v7}, Lorg/levimc/launcher/ui/activities/i3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;)V
+    .line 58
+    invoke-direct/range {v2 .. v7}, Lorg/levimc/launcher/ui/activities/l4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;)V
 
+    .line 59
+    .line 60
     .line 61
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 62
     .line 63
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 64
-    .line 65
-    .line 66
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 65
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 66
     .line 67
     .line 68
-    .line 69
     return-void
 .end method
 
@@ -19826,7 +19918,7 @@
     .line 8
     .line 9
     .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 11
     .line 12
@@ -19834,7 +19926,7 @@
 
     .line 13
     .line 14
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 15
     .line 16
@@ -19910,19 +20002,19 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/b4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/e5;
 
     .line 2
     .line 3
     const/4 v1, 0x2
 
     .line 4
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/b4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/e5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 8
     .line 9
@@ -19930,7 +20022,7 @@
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
@@ -20158,7 +20250,7 @@
 
     .line 6
     .line 7
-    const/4 v5, 0x4
+    const/4 v5, 0x6
 
     .line 8
     move-object v1, p0
@@ -20171,7 +20263,7 @@
 
     .line 11
     :try_start_1
-    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;ILjava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct/range {v0 .. v5}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Ljava/lang/Object;ILjava/lang/Object;Ljava/lang/Object;I)V
 
     .line 12
     .line 13
@@ -20227,14 +20319,14 @@
 
     .line 29
     :goto_2
-    new-instance p2, Lorg/levimc/launcher/ui/activities/s0;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/c;
 
     .line 30
     .line 31
-    const/4 p3, 0x1
+    const/4 p3, 0x7
 
     .line 32
-    invoke-direct {p2, p0, v2, p1, p3}, Lorg/levimc/launcher/ui/activities/s0;-><init>(Ljava/lang/Object;ILjava/lang/Throwable;I)V
+    invoke-direct {p2, p0, v2, p1, p3}, Lorg/levimc/launcher/ui/activities/c;-><init>(Ljava/lang/Object;ILjava/lang/Object;I)V
 
     .line 33
     .line 34
@@ -20248,7 +20340,7 @@
 .end method
 
 .method private leave()V
-    .locals 4
+    .locals 3
 
     .line 1
     iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->busy:Z
@@ -20305,101 +20397,107 @@
     .line 25
     :cond_2
     :goto_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 26
     .line 27
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 28
     .line 29
     .line 30
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Unsaved world edits"
 
     .line 31
     .line 32
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 33
     .line 34
-    const-string v2, "Unsaved world edits"
-
     .line 35
+    move-result-object v0
+
     .line 36
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Save changes before leaving?"
 
     .line 37
     .line 38
-    const-string v2, "Save changes before leaving?"
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setMessage(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 39
     .line 40
-    iput-object v2, v1, Lg/b;->f:Ljava/lang/CharSequence;
-
     .line 41
+    move-result-object v0
+
     .line 42
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/j4;
 
     .line 43
     .line 44
-    const/4 v3, 0x2
+    const/4 v2, 0x2
 
     .line 45
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
     .line 46
     .line 47
     .line 48
-    const-string v3, "Save"
+    const-string v2, "Save"
 
     .line 49
     .line 50
-    invoke-virtual {v0, v3, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v0, v2, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 51
     .line 52
     .line 53
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    move-result-object v0
 
     .line 54
-    .line 55
-    const/4 v3, 0x3
+    new-instance v1, Lorg/levimc/launcher/ui/activities/j4;
 
+    .line 55
     .line 56
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    const/4 v2, 0x3
 
     .line 57
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
+
     .line 58
     .line 59
-    const-string v3, "Discard"
-
     .line 60
+    const-string v2, "Discard"
+
     .line 61
-    iput-object v3, v1, Lg/b;->k:Ljava/lang/CharSequence;
-
     .line 62
-    .line 63
-    iput-object v2, v1, Lg/b;->l:Landroid/content/DialogInterface$OnClickListener;
+    invoke-virtual {v0, v2, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
+    .line 63
     .line 64
     .line 65
-    const-string v1, "Cancel"
+    move-result-object v0
 
     .line 66
+    const-string v1, "Cancel"
+
     .line 67
+    .line 68
     const/4 v2, 0x0
 
-    .line 68
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
     .line 69
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 70
     .line 71
+    .line 72
+    move-result-object v0
+
+    .line 73
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
-    .line 72
-    .line 73
     .line 74
+    .line 75
+    .line 76
     return-void
 .end method
 
@@ -21376,7 +21474,7 @@
     move-result-object v4
 
     .line 48
-    new-instance v1, Lorg/levimc/launcher/ui/activities/p3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/r4;
 
     .line 49
     .line 50
@@ -21386,16 +21484,16 @@
     move v3, p1
 
     .line 52
-    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/p3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[BLjava/lang/String;[B)V
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/r4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[BLjava/lang/String;[B)V
 
     .line 53
     .line 54
     .line 55
-    new-instance p1, Lorg/levimc/launcher/ui/activities/q3;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/s4;
 
     .line 56
     .line 57
-    invoke-direct {p1, p0, v3}, Lorg/levimc/launcher/ui/activities/q3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z)V
+    invoke-direct {p1, p0, v3}, Lorg/levimc/launcher/ui/activities/s4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z)V
 
     .line 58
     .line 59
@@ -21445,53 +21543,52 @@
     move-result-object v0
 
     .line 15
-    new-instance v1, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 16
     .line 17
-    invoke-direct {v1, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 18
     .line 19
     .line 20
-    iget-object v2, v1, Lc5/d;->d:Ljava/lang/Object;
+    const-string v2, "Advanced locator"
 
     .line 21
     .line 22
-    check-cast v2, Lg/b;
+    invoke-virtual {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 23
     .line 24
-    const-string v3, "Advanced locator"
-
     .line 25
+    move-result-object v1
+
     .line 26
-    iput-object v3, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/x;
 
     .line 27
     .line 28
-    new-instance v2, Lorg/levimc/launcher/ui/activities/w;
-
-    .line 29
-    .line 30
     const/4 v3, 0x2
 
-    .line 31
-    invoke-direct {v2, p0, v0, v3}, Lorg/levimc/launcher/ui/activities/w;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
+    .line 29
+    invoke-direct {v2, p0, v0, v3}, Lorg/levimc/launcher/ui/activities/x;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
 
+    .line 30
+    .line 31
     .line 32
+    invoke-virtual {v1, v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 33
     .line 34
-    invoke-virtual {v1, v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 35
-    .line 36
-    .line 37
-    invoke-static {p0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object v0
 
+    .line 36
+    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 37
     .line 38
     .line 39
-    .line 40
     return-void
 .end method
 
@@ -21596,14 +21693,14 @@
 
     .line 24
     .line 25
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 26
     .line 27
     const/4 v4, 0x0
 
     .line 28
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 29
     .line 30
@@ -21621,14 +21718,14 @@
 
     .line 37
     .line 38
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 39
     .line 40
     const/4 v4, 0x1
 
     .line 41
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 42
     .line 43
@@ -21646,14 +21743,14 @@
 
     .line 50
     .line 51
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 52
     .line 53
     const/4 v4, 0x2
 
     .line 54
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 55
     .line 56
@@ -21671,14 +21768,14 @@
 
     .line 63
     .line 64
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 65
     .line 66
     const/4 v4, 0x3
 
     .line 67
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 68
     .line 69
@@ -21696,14 +21793,14 @@
 
     .line 76
     .line 77
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 78
     .line 79
     const/4 v4, 0x4
 
     .line 80
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 81
     .line 82
@@ -21721,14 +21818,14 @@
 
     .line 89
     .line 90
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 91
     .line 92
     const/4 v4, 0x5
 
     .line 93
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 94
     .line 95
@@ -21746,14 +21843,14 @@
 
     .line 102
     .line 103
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 104
     .line 105
     const/4 v4, 0x6
 
     .line 106
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 107
     .line 108
@@ -21771,14 +21868,14 @@
 
     .line 115
     .line 116
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 117
     .line 118
     const/4 v4, 0x7
 
     .line 119
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 120
     .line 121
@@ -21796,7 +21893,7 @@
 
     .line 128
     .line 129
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 130
     .line 131
@@ -21804,7 +21901,7 @@
 
     .line 132
     .line 133
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 134
     .line 135
@@ -21822,7 +21919,7 @@
 
     .line 142
     .line 143
-    new-instance v3, Lorg/levimc/launcher/ui/activities/v3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/x4;
 
     .line 144
     .line 145
@@ -21830,7 +21927,7 @@
 
     .line 146
     .line 147
-    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/v3;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
+    invoke-direct {v3, v5, v4}, Lorg/levimc/launcher/ui/activities/x4;-><init>(Lorg/levimc/launcher/core/content/world/MapSettings;I)V
 
     .line 148
     .line 149
@@ -21916,34 +22013,34 @@
     move-result-object v6
 
     .line 191
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 192
     .line 193
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 194
     .line 195
     .line 196
-    iget-object v2, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v2, "Map options"
 
     .line 197
     .line 198
-    check-cast v2, Lg/b;
+    invoke-virtual {v0, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 199
     .line 200
-    const-string v3, "Map options"
-
     .line 201
+    move-result-object v0
+
     .line 202
-    iput-object v3, v2, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 203
     .line 204
-    iput-object v1, v2, Lg/b;->s:Landroid/view/View;
-
     .line 205
+    move-result-object v0
+
     .line 206
     const-string v1, "Apply"
 
@@ -21952,56 +22049,62 @@
     const/4 v2, 0x0
 
     .line 209
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 210
     .line 211
     .line 212
-    const-string v1, "Cancel"
-
-    .line 213
-    .line 214
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
-    .line 215
-    .line 216
-    .line 217
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 218
-    .line 219
-    .line 220
-    move-result-object v10
-
-    .line 221
-    const/4 v0, -0x1
-
-    .line 222
-    invoke-virtual {v10, v0}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
-
-    .line 223
-    .line 224
-    .line 225
     move-result-object v0
 
-    .line 226
-    new-instance v3, Lorg/levimc/launcher/ui/activities/w3;
+    .line 213
+    const-string v1, "Cancel"
 
+    .line 214
+    .line 215
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
+    .line 216
+    .line 217
+    .line 218
+    move-result-object v0
+
+    .line 219
+    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 220
+    .line 221
+    .line 222
+    move-result-object v10
+
+    .line 223
+    const/4 v0, -0x1
+
+    .line 224
+    invoke-virtual {v10, v0}, Landroidx/appcompat/app/AlertDialog;->b(I)Landroid/widget/Button;
+
+    .line 225
+    .line 226
     .line 227
+    move-result-object v0
+
     .line 228
-    move-object v4, p0
+    new-instance v3, Lorg/levimc/launcher/ui/activities/y4;
 
     .line 229
-    invoke-direct/range {v3 .. v10}, Lorg/levimc/launcher/ui/activities/w3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/MapSettings;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroidx/appcompat/app/AlertDialog;)V
-
     .line 230
-    .line 231
-    .line 232
-    invoke-virtual {v0, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-object v4, p0
 
+    .line 231
+    invoke-direct/range {v3 .. v10}, Lorg/levimc/launcher/ui/activities/y4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/MapSettings;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroidx/appcompat/app/AlertDialog;)V
+
+    .line 232
     .line 233
     .line 234
+    invoke-virtual {v0, v3}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 235
+    .line 236
+    .line 237
     return-void
 .end method
 
@@ -22149,7 +22252,7 @@
     move-result-object v0
 
     .line 27
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n4;
 
     .line 28
     .line 29
@@ -22168,7 +22271,7 @@
     move v5, p3
 
     .line 34
-    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/k3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/n4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
 
     .line 35
     .line 36
@@ -22333,7 +22436,7 @@
     .line 49
     .line 50
     :cond_0
-    new-instance p1, Lorg/levimc/launcher/ui/activities/e;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/m2;
 
     .line 51
     .line 52
@@ -22341,7 +22444,7 @@
 
     .line 53
     .line 54
-    invoke-direct {p1, p0, p3, p2}, Lorg/levimc/launcher/ui/activities/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {p1, p0, p3, p2}, Lorg/levimc/launcher/ui/activities/m2;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 55
     .line 56
@@ -22465,14 +22568,14 @@
     move-result-object v1
 
     .line 13
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 14
     .line 15
     const/4 v3, 0x3
 
     .line 16
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 17
     .line 18
@@ -22505,14 +22608,14 @@
 
     .line 6
     .line 7
-    new-instance v0, Lorg/levimc/launcher/ui/activities/n3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/q4;
 
     .line 8
     .line 9
     const/4 v1, 0x0
 
     .line 10
-    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/n3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/q4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 11
     .line 12
@@ -22526,73 +22629,72 @@
 
     .line 17
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 18
     .line 19
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 20
     .line 21
     .line 22
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "NBT file format"
 
     .line 23
     .line 24
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 25
     .line 26
-    const-string v2, "NBT file format"
-
     .line 27
+    move-result-object v0
+
     .line 28
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Bedrock level.dat header"
 
     .line 29
     .line 30
-    const-string v1, "Bedrock level.dat header"
+    const-string v2, "Java big-endian"
 
     .line 31
     .line 32
-    const-string v2, "Java big-endian"
+    const-string v3, "Bedrock little-endian"
 
     .line 33
     .line 34
-    const-string v3, "Bedrock little-endian"
+    filled-new-array {v3, v1, v2}, [Ljava/lang/String;
 
     .line 35
     .line 36
-    filled-new-array {v3, v1, v2}, [Ljava/lang/String;
-
     .line 37
-    .line 38
-    .line 39
     move-result-object v1
 
-    .line 40
-    new-instance v2, Lorg/levimc/launcher/ui/activities/w;
+    .line 38
+    new-instance v2, Lorg/levimc/launcher/ui/activities/x;
 
-    .line 41
-    .line 42
+    .line 39
+    .line 40
     const/4 v3, 0x1
 
-    .line 43
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/w;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
+    .line 41
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/x;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
 
+    .line 42
+    .line 43
     .line 44
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 45
     .line 46
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 47
-    .line 48
-    .line 49
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 48
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 49
     .line 50
     .line 51
-    .line 52
     return-void
 .end method
 
@@ -22689,14 +22791,14 @@
 
     .line 42
     .line 43
-    new-instance v0, Lcom/google/firebase/messaging/s;
+    new-instance v0, Lcom/google/firebase/messaging/t;
 
     .line 44
     .line 45
-    const/4 v1, 0x1
+    const/4 v1, 0x2
 
     .line 46
-    invoke-direct {v0, p0, p1, p2, v1}, Lcom/google/firebase/messaging/s;-><init>(Ljava/lang/Object;Ljava/io/Serializable;ZI)V
+    invoke-direct {v0, p0, p1, p2, v1}, Lcom/google/firebase/messaging/t;-><init>(Ljava/lang/Object;Ljava/lang/Object;ZI)V
 
     .line 47
     .line 48
@@ -22710,20 +22812,20 @@
 
     .line 53
     :cond_3
-    new-instance v0, Lorg/levimc/launcher/ui/activities/d4;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/g5;
 
     .line 54
     .line 55
-    invoke-direct {v0, p0, p2, p1}, Lorg/levimc/launcher/ui/activities/d4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B)V
+    invoke-direct {v0, p0, p2, p1}, Lorg/levimc/launcher/ui/activities/g5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B)V
 
     .line 56
     .line 57
     .line 58
-    new-instance v1, Lorg/levimc/launcher/ui/activities/e4;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/h5;
 
     .line 59
     .line 60
-    invoke-direct {v1, p0, p1, p2}, Lorg/levimc/launcher/ui/activities/e4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
+    invoke-direct {v1, p0, p1, p2}, Lorg/levimc/launcher/ui/activities/h5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
 
     .line 61
     .line 62
@@ -22794,7 +22896,7 @@
 
     .line 22
     .line 23
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n4;
 
     .line 24
     .line 25
@@ -22810,7 +22912,7 @@
     move v4, p2
 
     .line 29
-    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/k3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/ui/activities/n4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIII)V
 
     .line 30
     .line 31
@@ -23067,14 +23169,14 @@
     move-result-object v1
 
     .line 69
-    new-instance v2, Lorg/levimc/launcher/ui/activities/l3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/o4;
 
     .line 70
     .line 71
     const/4 v3, 0x0
 
     .line 72
-    invoke-direct {v2, v3, p0, p1}, Lorg/levimc/launcher/ui/activities/l3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v2, v3, p0, p1}, Lorg/levimc/launcher/ui/activities/o4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 73
     .line 74
@@ -23534,11 +23636,11 @@
     .line 55
     .line 56
     :goto_0
-    new-instance v1, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 57
     .line 58
-    invoke-direct {v1, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 59
     .line 60
@@ -23551,37 +23653,36 @@
     move-result-object v2
 
     .line 65
-    iget-object v3, v1, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 66
     .line 67
-    check-cast v3, Lg/b;
-
     .line 68
+    move-result-object v1
+
     .line 69
-    iput-object v2, v3, Lg/b;->d:Ljava/lang/CharSequence;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/g4;
 
     .line 70
     .line 71
-    new-instance v2, Lorg/levimc/launcher/ui/activities/d3;
+    invoke-direct {v2, p0, p1, v0}, Lorg/levimc/launcher/ui/activities/g4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
 
     .line 72
     .line 73
-    invoke-direct {v2, p0, p1, v0}, Lorg/levimc/launcher/ui/activities/d3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
-
     .line 74
+    invoke-virtual {v1, v8, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 75
     .line 76
-    invoke-virtual {v1, v8, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 77
-    .line 78
-    .line 79
-    invoke-static {p0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+    move-result-object p1
 
+    .line 78
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 79
     .line 80
     .line 81
-    .line 82
     return-void
 .end method
 
@@ -23882,14 +23983,14 @@
 
     .line 126
     .line 127
-    new-instance v10, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v10, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 128
     .line 129
     const/4 v11, 0x4
 
     .line 130
-    invoke-direct {v10, p0, v11}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v10, p0, v11}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 131
     .line 132
@@ -23990,14 +24091,14 @@
 
     .line 182
     .line 183
-    new-instance v4, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v4, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 184
     .line 185
     const/4 v6, 0x3
 
     .line 186
-    invoke-direct {v4, p0, v6}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v4, p0, v6}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 187
     .line 188
@@ -24062,7 +24163,7 @@
 
     .line 219
     .line 220
-    invoke-static {v6, v8, v3}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v6, v8, v3}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 221
     .line 222
@@ -24314,14 +24415,14 @@
     .line 348
     .line 349
     .line 350
-    new-instance v2, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 351
     .line 352
     const/4 v3, 0x5
 
     .line 353
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 354
     .line 355
@@ -24343,14 +24444,14 @@
     .line 363
     .line 364
     .line 365
-    new-instance v2, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 366
     .line 367
     const/4 v3, 0x6
 
     .line 368
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 369
     .line 370
@@ -24408,14 +24509,14 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/n3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/q4;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/n3;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
+    invoke-direct {v0, v1, p0, p1}, Lorg/levimc/launcher/ui/activities/q4;-><init>(ILorg/levimc/launcher/ui/activities/WorldEditorActivity;[B)V
 
     .line 5
     .line 6
@@ -24437,7 +24538,7 @@
 .end method
 
 .method private resolveDraft(Ljava/lang/Runnable;)V
-    .locals 4
+    .locals 3
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
@@ -24452,7 +24553,7 @@
 
     .line 6
     .line 7
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 8
     .line 9
@@ -24460,19 +24561,19 @@
 
     .line 10
     .line 11
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 12
     .line 13
     .line 14
-    new-instance v1, Lorg/levimc/launcher/ui/activities/y3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/a5;
 
     .line 15
     .line 16
     const/4 v2, 0x1
 
     .line 17
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/y3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/a5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
 
     .line 18
     .line 19
@@ -24490,101 +24591,107 @@
 
     .line 26
     :cond_0
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 27
     .line 28
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 29
     .line 30
     .line 31
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Unsaved NBT file"
 
     .line 32
     .line 33
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 34
     .line 35
-    const-string v2, "Unsaved NBT file"
-
     .line 36
+    move-result-object v0
+
     .line 37
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Export your changes before closing?"
 
     .line 38
     .line 39
-    const-string v2, "Export your changes before closing?"
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setMessage(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 40
     .line 41
-    iput-object v2, v1, Lg/b;->f:Ljava/lang/CharSequence;
-
     .line 42
+    move-result-object v0
+
     .line 43
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/j4;
 
     .line 44
     .line 45
-    const/4 v3, 0x6
+    const/4 v2, 0x6
 
     .line 46
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
     .line 47
     .line 48
     .line 49
-    const-string v3, "Export"
+    const-string v2, "Export"
 
     .line 50
     .line 51
-    invoke-virtual {v0, v3, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->r(Ljava/lang/String;Landroid/content/DialogInterface$OnClickListener;)V
+    invoke-virtual {v0, v2, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setPositiveButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 52
     .line 53
     .line 54
-    new-instance v2, Lorg/levimc/launcher/ui/activities/w;
+    move-result-object v0
 
     .line 55
-    .line 56
-    const/4 v3, 0x3
+    new-instance v1, Lorg/levimc/launcher/ui/activities/x;
 
+    .line 56
     .line 57
-    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/w;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
+    const/4 v2, 0x3
 
     .line 58
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/x;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;I)V
+
     .line 59
     .line 60
+    .line 61
     const-string p1, "Discard"
 
-    .line 61
     .line 62
-    iput-object p1, v1, Lg/b;->k:Ljava/lang/CharSequence;
-
     .line 63
-    .line 64
-    iput-object v2, v1, Lg/b;->l:Landroid/content/DialogInterface$OnClickListener;
+    invoke-virtual {v0, p1, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNeutralButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
+    .line 64
     .line 65
     .line 66
-    const-string p1, "Cancel"
+    move-result-object p1
 
     .line 67
+    const-string v0, "Cancel"
+
     .line 68
+    .line 69
     const/4 v1, 0x0
 
-    .line 69
-    invoke-virtual {v0, p1, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
-
     .line 70
+    invoke-virtual {p1, v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 71
     .line 72
-    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
     .line 73
+    move-result-object p1
+
     .line 74
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
     .line 75
+    .line 76
+    .line 77
     return-void
 .end method
 
@@ -24682,26 +24789,26 @@
 
     .line 18
     .line 19
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 20
     .line 21
     const/4 v1, 0x4
 
     .line 22
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 23
     .line 24
     .line 25
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 26
     .line 27
     const/4 v2, 0x6
 
     .line 28
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 29
     .line 30
@@ -25585,7 +25692,7 @@
 
     .line 35
     .line 36
-    invoke-virtual {v0, v2, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v2, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 37
     .line 38
@@ -26067,14 +26174,14 @@
     move-result-object v1
 
     .line 159
-    new-instance v2, Lorg/levimc/launcher/ui/activities/m3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 160
     .line 161
     const/4 v3, 0x0
 
     .line 162
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 163
     .line 164
@@ -26124,19 +26231,19 @@
 
     .line 14
     .line 15
-    new-instance v3, Lorg/levimc/launcher/ui/activities/j3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/m4;
 
     .line 16
     .line 17
     const/4 v4, 0x1
 
     .line 18
-    invoke-direct {v3, p0, v0, v1, v4}, Lorg/levimc/launcher/ui/activities/j3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v3, p0, v0, v1, v4}, Lorg/levimc/launcher/ui/activities/m4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 19
     .line 20
     .line 21
-    new-instance v0, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 22
     .line 23
@@ -26144,7 +26251,7 @@
 
     .line 24
     .line 25
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 26
     .line 27
@@ -26569,7 +26676,7 @@
     move-result-object v2
 
     .line 65
-    new-instance v3, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 66
     .line 67
@@ -26577,12 +26684,12 @@
 
     .line 68
     .line 69
-    invoke-direct {v3, v0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v3, v0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 70
     .line 71
     .line 72
-    new-instance v5, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 73
     .line 74
@@ -26590,12 +26697,12 @@
 
     .line 75
     .line 76
-    invoke-direct {v5, v0, v6}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v5, v0, v6}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 77
     .line 78
     .line 79
-    new-instance v7, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v7, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 80
     .line 81
@@ -26603,12 +26710,12 @@
 
     .line 82
     .line 83
-    invoke-direct {v7, v0, v8}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v7, v0, v8}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 84
     .line 85
     .line 86
-    new-instance v9, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v9, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 87
     .line 88
@@ -26616,12 +26723,12 @@
 
     .line 89
     .line 90
-    invoke-direct {v9, v0, v10}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v9, v0, v10}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 91
     .line 92
     .line 93
-    new-instance v10, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v10, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 94
     .line 95
@@ -26629,12 +26736,12 @@
 
     .line 96
     .line 97
-    invoke-direct {v10, v0, v11}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v10, v0, v11}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 98
     .line 99
     .line 100
-    new-instance v11, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v11, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 101
     .line 102
@@ -26642,12 +26749,12 @@
 
     .line 103
     .line 104
-    invoke-direct {v11, v0, v12}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v11, v0, v12}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 105
     .line 106
     .line 107
-    new-instance v12, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v12, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 108
     .line 109
@@ -26655,12 +26762,12 @@
 
     .line 110
     .line 111
-    invoke-direct {v12, v0, v13}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v12, v0, v13}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 112
     .line 113
     .line 114
-    new-instance v13, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v13, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 115
     .line 116
@@ -26668,12 +26775,12 @@
 
     .line 117
     .line 118
-    invoke-direct {v13, v0, v14}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v13, v0, v14}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 119
     .line 120
     .line 121
-    new-instance v15, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v15, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 122
     .line 123
@@ -26685,12 +26792,12 @@
 
     .line 126
     .line 127
-    invoke-direct {v15, v0, v6}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v15, v0, v6}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 128
     .line 129
     .line 130
-    new-instance v6, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v6, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 131
     .line 132
@@ -26698,12 +26805,12 @@
 
     .line 133
     .line 134
-    invoke-direct {v6, v0, v14}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v6, v0, v14}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 135
     .line 136
     .line 137
-    new-instance v14, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v14, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 138
     .line 139
@@ -26715,7 +26822,7 @@
 
     .line 142
     .line 143
-    invoke-direct {v14, v0, v4}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v14, v0, v4}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 144
     .line 145
@@ -26724,7 +26831,7 @@
 
     .line 147
     .line 148
-    new-instance v4, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v4, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 149
     .line 150
@@ -26736,7 +26843,7 @@
 
     .line 153
     .line 154
-    invoke-direct {v4, v0, v1}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v4, v0, v1}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 155
     .line 156
@@ -26847,522 +26954,538 @@
     .line 205
     .line 206
     .line 207
-    new-instance v6, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v6, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 208
     .line 209
-    invoke-direct {v6, v0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v6, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 210
     .line 211
     .line 212
-    iget-object v10, v6, Lc5/d;->d:Ljava/lang/Object;
+    const-string v10, "Tools"
 
     .line 213
     .line 214
-    check-cast v10, Lg/b;
+    invoke-virtual {v6, v10}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 215
     .line 216
-    const-string v11, "Tools"
-
     .line 217
+    move-result-object v6
+
     .line 218
-    iput-object v11, v10, Lg/b;->d:Ljava/lang/CharSequence;
+    invoke-virtual {v6, v4}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setView(Landroid/view/View;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 219
     .line 220
-    iput-object v4, v10, Lg/b;->s:Landroid/view/View;
-
     .line 221
+    move-result-object v4
+
     .line 222
-    const-string v4, "Close"
+    const-string v6, "Close"
 
     .line 223
     .line 224
     const/4 v10, 0x0
 
     .line 225
-    invoke-virtual {v6, v4, v10}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->p(Ljava/lang/String;Lcom/mojang/minecraftpe/d;)V
+    invoke-virtual {v4, v6, v10}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setNegativeButton(Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 226
     .line 227
     .line 228
-    invoke-static {v0, v6}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-
-    .line 229
-    .line 230
-    .line 231
     move-result-object v4
 
+    .line 229
+    invoke-static {v0, v4}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
+
+    .line 230
+    .line 231
     .line 232
-    invoke-virtual {v0}, Lg/g;->getResources()Landroid/content/res/Resources;
+    move-result-object v4
 
     .line 233
+    invoke-virtual {v0}, Lg/i;->getResources()Landroid/content/res/Resources;
+
     .line 234
     .line 235
-    move-result-object v6
-
     .line 236
-    invoke-virtual {v6}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+    move-result-object v6
 
     .line 237
+    invoke-virtual {v6}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
+
     .line 238
     .line 239
+    .line 240
     move-result-object v6
 
-    .line 240
+    .line 241
     iget v6, v6, Landroid/content/res/Configuration;->screenWidthDp:I
 
-    .line 241
     .line 242
+    .line 243
     const/16 v10, 0x2f8
 
-    .line 243
     .line 244
+    .line 245
     if-lt v6, v10, :cond_1
 
-    .line 245
     .line 246
+    .line 247
     move v5, v7
 
-    .line 247
+    .line 248
     :cond_1
     move v6, v8
 
-    .line 248
+    .line 249
     const/16 v7, 0xc
 
-    .line 249
     .line 250
-    :goto_0
-    if-ge v6, v7, :cond_3
-
     .line 251
+    :goto_0
+    if-ge v6, v7, :cond_4
+
     .line 252
+    .line 253
     new-instance v10, Landroid/widget/LinearLayout;
 
-    .line 253
     .line 254
+    .line 255
     invoke-direct {v10, v0}, Landroid/widget/LinearLayout;-><init>(Landroid/content/Context;)V
 
-    .line 255
     .line 256
     .line 257
+    .line 258
     new-instance v11, Landroid/widget/LinearLayout$LayoutParams;
 
-    .line 258
     .line 259
+    .line 260
     const/high16 v12, 0x42a40000    # 82.0f
 
-    .line 260
     .line 261
+    .line 262
     invoke-direct {v0, v12}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
-    .line 262
     .line 263
     .line 264
+    .line 265
     move-result v12
 
-    .line 265
+    .line 266
     const/4 v13, -0x1
 
-    .line 266
+    .line 267
     invoke-direct {v11, v13, v12}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
-    .line 267
     .line 268
     .line 269
+    .line 270
     invoke-virtual {v9, v10, v11}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 270
     .line 271
     .line 272
+    .line 273
     move v11, v6
 
-    .line 273
+    .line 274
     :goto_1
     add-int v12, v6, v5
 
-    .line 274
     .line 275
+    .line 276
     invoke-static {v12, v7}, Ljava/lang/Math;->min(II)I
 
-    .line 276
     .line 277
     .line 278
+    .line 279
     move-result v14
 
-    .line 279
-    if-ge v11, v14, :cond_2
-
     .line 280
+    if-ge v11, v14, :cond_3
+
     .line 281
+    .line 282
     move/from16 v14, v17
 
-    .line 282
     .line 283
+    .line 284
     invoke-static {v0, v14}, Lorg/levimc/launcher/ui/world/WorldUi;->column(Landroid/content/Context;I)Landroid/widget/LinearLayout;
 
-    .line 284
     .line 285
     .line 286
+    .line 287
     move-result-object v12
 
-    .line 287
+    .line 288
     const/16 v15, 0x11
 
-    .line 288
     .line 289
+    .line 290
     invoke-virtual {v12, v15}, Landroid/widget/LinearLayout;->setGravity(I)V
 
-    .line 290
     .line 291
     .line 292
+    .line 293
     sget v15, Lorg/levimc/launcher/R$color;->surface_variant:I
 
-    .line 293
     .line 294
+    .line 295
     invoke-static {v0, v15}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
 
-    .line 295
     .line 296
     .line 297
+    .line 298
     move-result v15
 
-    .line 298
+    .line 299
     invoke-static {v0, v15, v7}, Lorg/levimc/launcher/ui/world/WorldUi;->ripple(Landroid/content/Context;II)Landroid/graphics/drawable/RippleDrawable;
 
-    .line 299
     .line 300
     .line 301
+    .line 302
     move-result-object v15
 
-    .line 302
+    .line 303
     invoke-virtual {v12, v15}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 303
     .line 304
     .line 305
+    .line 306
     new-instance v15, Landroid/widget/ImageView;
 
-    .line 306
     .line 307
+    .line 308
     invoke-direct {v15, v0}, Landroid/widget/ImageView;-><init>(Landroid/content/Context;)V
 
-    .line 308
     .line 309
     .line 310
+    .line 311
     aget v7, v2, v11
 
-    .line 311
     .line 312
+    .line 313
     invoke-virtual {v15, v7}, Landroid/widget/ImageView;->setImageResource(I)V
 
-    .line 313
     .line 314
     .line 315
-    invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
-
     .line 316
+    aget v7, v2, v11
+
     .line 317
     .line 318
-    move-result v7
+    sget v14, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
 
     .line 319
-    invoke-static {v7}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
     .line 320
+    if-eq v7, v14, :cond_2
+
     .line 321
     .line 322
-    move-result-object v7
+    invoke-static {v0}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
 
     .line 323
-    invoke-virtual {v15, v7}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
-
     .line 324
     .line 325
+    move-result v7
+
     .line 326
-    new-instance v7, Landroid/widget/LinearLayout$LayoutParams;
+    invoke-static {v7}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
 
     .line 327
     .line 328
-    const/high16 v14, 0x41c00000    # 24.0f
-
     .line 329
+    move-result-object v7
+
     .line 330
-    invoke-direct {v0, v14}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+    invoke-virtual {v15, v7}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
 
     .line 331
     .line 332
     .line 333
-    move-result v13
+    :cond_2
+    new-instance v7, Landroid/widget/LinearLayout$LayoutParams;
 
     .line 334
-    invoke-direct {v0, v14}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
     .line 335
+    const/high16 v14, 0x41c00000    # 24.0f
+
     .line 336
     .line 337
-    move-result v14
+    invoke-direct {v0, v14}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
     .line 338
-    invoke-direct {v7, v13, v14}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
-
     .line 339
     .line 340
+    move-result v13
+
     .line 341
-    invoke-virtual {v12, v15, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-direct {v0, v14}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
     .line 342
     .line 343
     .line 344
-    aget-object v7, v19, v11
+    move-result v14
 
     .line 345
-    .line 346
-    const/high16 v13, 0x41300000    # 11.0f
+    invoke-direct {v7, v13, v14}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
 
+    .line 346
     .line 347
     .line 348
-    invoke-static {v0, v7, v13, v8}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
+    invoke-virtual {v12, v15, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 349
     .line 350
     .line 351
-    move-result-object v7
+    aget-object v7, v19, v11
 
     .line 352
-    const/16 v15, 0x11
-
     .line 353
-    .line 354
-    invoke-virtual {v7, v15}, Landroid/widget/TextView;->setGravity(I)V
+    const/high16 v13, 0x41300000    # 11.0f
 
+    .line 354
     .line 355
+    invoke-static {v0, v7, v13, v8}, Lorg/levimc/launcher/ui/world/WorldUi;->text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;
+
     .line 356
     .line 357
-    const/high16 v13, 0x40c00000    # 6.0f
-
     .line 358
+    move-result-object v7
+
     .line 359
-    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+    const/16 v15, 0x11
 
     .line 360
     .line 361
+    invoke-virtual {v7, v15}, Landroid/widget/TextView;->setGravity(I)V
+
     .line 362
-    move-result v13
-
     .line 363
-    invoke-virtual {v7, v8, v13, v8, v8}, Landroid/widget/TextView;->setPadding(IIII)V
-
     .line 364
+    const/high16 v13, 0x40c00000    # 6.0f
+
     .line 365
     .line 366
-    invoke-virtual {v12, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
     .line 367
     .line 368
     .line 369
-    invoke-virtual {v12, v3}, Landroid/view/View;->setFocusable(Z)V
-
-    .line 370
-    .line 371
-    .line 372
-    new-instance v7, Lorg/levimc/launcher/ui/activities/z1;
-
-    .line 373
-    .line 374
-    invoke-direct {v7, v4, v1, v11, v3}, Lorg/levimc/launcher/ui/activities/z1;-><init>(Ljava/lang/Object;Ljava/lang/Object;II)V
-
-    .line 375
-    .line 376
-    .line 377
-    invoke-virtual {v12, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 378
-    .line 379
-    .line 380
-    new-instance v7, Landroid/widget/LinearLayout$LayoutParams;
-
-    .line 381
-    .line 382
-    const/high16 v13, 0x3f800000    # 1.0f
-
-    .line 383
-    .line 384
-    const/4 v14, -0x1
-
-    .line 385
-    invoke-direct {v7, v8, v14, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
-
-    .line 386
-    .line 387
-    .line 388
-    const/high16 v13, 0x40800000    # 4.0f
-
-    .line 389
-    .line 390
-    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 391
-    .line 392
-    .line 393
-    move-result v3
-
-    .line 394
-    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 395
-    .line 396
-    .line 397
-    move-result v8
-
-    .line 398
-    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 399
-    .line 400
-    .line 401
-    move-result v14
-
-    .line 402
-    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
-
-    .line 403
-    .line 404
-    .line 405
     move-result v13
 
-    .line 406
-    invoke-virtual {v7, v3, v8, v14, v13}, Landroid/view/ViewGroup$MarginLayoutParams;->setMargins(IIII)V
+    .line 370
+    invoke-virtual {v7, v8, v13, v8, v8}, Landroid/widget/TextView;->setPadding(IIII)V
 
+    .line 371
+    .line 372
+    .line 373
+    invoke-virtual {v12, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 374
+    .line 375
+    .line 376
+    invoke-virtual {v12, v3}, Landroid/view/View;->setFocusable(Z)V
+
+    .line 377
+    .line 378
+    .line 379
+    new-instance v7, Lorg/levimc/launcher/ui/activities/b5;
+
+    .line 380
+    .line 381
+    invoke-direct {v7, v4, v1, v11}, Lorg/levimc/launcher/ui/activities/b5;-><init>(Landroidx/appcompat/app/AlertDialog;[Ljava/lang/Runnable;I)V
+
+    .line 382
+    .line 383
+    .line 384
+    invoke-virtual {v12, v7}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 385
+    .line 386
+    .line 387
+    new-instance v7, Landroid/widget/LinearLayout$LayoutParams;
+
+    .line 388
+    .line 389
+    const/high16 v13, 0x3f800000    # 1.0f
+
+    .line 390
+    .line 391
+    const/4 v14, -0x1
+
+    .line 392
+    invoke-direct {v7, v8, v14, v13}, Landroid/widget/LinearLayout$LayoutParams;-><init>(IIF)V
+
+    .line 393
+    .line 394
+    .line 395
+    const/high16 v13, 0x40800000    # 4.0f
+
+    .line 396
+    .line 397
+    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 398
+    .line 399
+    .line 400
+    move-result v3
+
+    .line 401
+    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 402
+    .line 403
+    .line 404
+    move-result v8
+
+    .line 405
+    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 406
     .line 407
     .line 408
+    move-result v14
+
     .line 409
-    invoke-virtual {v10, v12, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    invoke-direct {v0, v13}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
 
     .line 410
     .line 411
     .line 412
-    add-int/lit8 v11, v11, 0x1
+    move-result v13
 
     .line 413
+    invoke-virtual {v7, v3, v8, v14, v13}, Landroid/view/ViewGroup$MarginLayoutParams;->setMargins(IIII)V
+
     .line 414
-    const/4 v3, 0x1
-
     .line 415
-    const/16 v7, 0xc
-
     .line 416
+    invoke-virtual {v10, v12, v7}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
     .line 417
-    const/4 v8, 0x0
-
     .line 418
-    const/4 v13, -0x1
-
     .line 419
-    const/16 v17, 0x8
+    add-int/lit8 v11, v11, 0x1
 
     .line 420
     .line 421
-    goto/16 :goto_1
+    const/4 v3, 0x1
 
     .line 422
-    .line 423
-    :cond_2
-    move v6, v12
+    const/16 v7, 0xc
 
+    .line 423
     .line 424
-    const/16 v17, 0x8
+    const/4 v8, 0x0
 
     .line 425
+    const/4 v13, -0x1
+
     .line 426
-    goto/16 :goto_0
+    const/16 v17, 0x8
 
     .line 427
     .line 428
-    :cond_3
-    invoke-virtual {v4}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+    goto/16 :goto_1
 
     .line 429
     .line 430
+    :cond_3
+    move v6, v12
+
     .line 431
-    move-result-object v1
+    const/16 v17, 0x8
 
     .line 432
-    if-eqz v1, :cond_4
-
     .line 433
+    goto/16 :goto_0
+
     .line 434
+    .line 435
+    :cond_4
     invoke-virtual {v4}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
-    .line 435
     .line 436
     .line 437
+    .line 438
     move-result-object v1
 
-    .line 438
-    invoke-virtual {v0}, Lg/g;->getResources()Landroid/content/res/Resources;
-
     .line 439
+    if-eqz v1, :cond_5
+
     .line 440
     .line 441
-    move-result-object v2
+    invoke-virtual {v4}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
     .line 442
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
-
     .line 443
     .line 444
+    move-result-object v1
+
     .line 445
-    move-result-object v2
+    invoke-virtual {v0}, Lg/i;->getResources()Landroid/content/res/Resources;
 
     .line 446
-    iget v2, v2, Landroid/content/res/Configuration;->screenWidthDp:I
-
     .line 447
     .line 448
-    add-int/lit8 v2, v2, -0x28
+    move-result-object v2
 
     .line 449
-    .line 450
-    mul-int/lit16 v5, v5, 0x84
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getConfiguration()Landroid/content/res/Configuration;
 
+    .line 450
     .line 451
     .line 452
-    add-int/lit8 v5, v5, 0x28
+    move-result-object v2
 
     .line 453
-    .line 454
-    invoke-static {v2, v5}, Ljava/lang/Math;->min(II)I
+    iget v2, v2, Landroid/content/res/Configuration;->screenWidthDp:I
 
+    .line 454
     .line 455
+    add-int/lit8 v2, v2, -0x28
+
     .line 456
     .line 457
-    move-result v2
+    mul-int/lit16 v5, v5, 0x84
 
     .line 458
-    int-to-float v2, v2
-
     .line 459
-    invoke-direct {v0, v2}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+    add-int/lit8 v5, v5, 0x28
 
     .line 460
     .line 461
+    invoke-static {v2, v5}, Ljava/lang/Math;->min(II)I
+
     .line 462
+    .line 463
+    .line 464
     move-result v2
 
-    .line 463
+    .line 465
+    int-to-float v2, v2
+
+    .line 466
+    invoke-direct {v0, v2}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->dp(F)I
+
+    .line 467
+    .line 468
+    .line 469
+    move-result v2
+
+    .line 470
     const/4 v3, -0x2
 
-    .line 464
+    .line 471
     invoke-virtual {v1, v2, v3}, Landroid/view/Window;->setLayout(II)V
 
-    .line 465
-    .line 466
-    .line 467
-    :cond_4
+    .line 472
+    .line 473
+    .line 474
+    :cond_5
     :goto_2
     return-void
 .end method
@@ -27574,78 +27697,77 @@
     .locals 5
 
     .line 1
-    new-instance v0, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogBuilder;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, v0, Lc5/d;->d:Ljava/lang/Object;
+    const-string v1, "Structures"
 
     .line 7
     .line 8
-    check-cast v1, Lg/b;
+    invoke-virtual {v0, v1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setTitle(Ljava/lang/CharSequence;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
 
     .line 9
     .line 10
-    const-string v2, "Structures"
-
     .line 11
+    move-result-object v0
+
     .line 12
-    iput-object v2, v1, Lg/b;->d:Ljava/lang/CharSequence;
+    const-string v1, "Place a saved structure"
 
     .line 13
     .line 14
-    const-string v1, "Place a saved structure"
+    const-string v2, "Import .mcstructure"
 
     .line 15
     .line 16
-    const-string v2, "Import .mcstructure"
+    const-string v3, "Export selection as .mcstructure"
 
     .line 17
     .line 18
-    const-string v3, "Export selection as .mcstructure"
+    const-string v4, "Save selection in this world"
 
     .line 19
     .line 20
-    const-string v4, "Save selection in this world"
+    filled-new-array {v3, v4, v1, v2}, [Ljava/lang/String;
 
     .line 21
     .line 22
-    filled-new-array {v3, v4, v1, v2}, [Ljava/lang/String;
-
     .line 23
-    .line 24
-    .line 25
     move-result-object v1
 
+    .line 24
+    new-instance v2, Lorg/levimc/launcher/ui/activities/j4;
+
+    .line 25
     .line 26
-    new-instance v2, Lorg/levimc/launcher/ui/activities/g3;
+    const/16 v3, 0x9
 
     .line 27
     .line 28
-    const/16 v3, 0x9
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j4;-><init>(Ljava/lang/Object;I)V
 
     .line 29
     .line 30
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/g3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
-
     .line 31
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;
+
     .line 32
     .line 33
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->n([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)V
-
     .line 34
+    move-result-object v0
+
     .line 35
-    .line 36
     invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
 
+    .line 36
     .line 37
     .line 38
-    .line 39
     return-void
 .end method
 
@@ -27703,23 +27825,23 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 2
     .line 3
     const/4 v1, 0x3
 
     .line 4
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lorg/levimc/launcher/ui/activities/r3;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/t4;
 
     .line 8
     .line 9
-    invoke-direct {v1, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/r3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+    invoke-direct {v1, p0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/t4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
 
     .line 10
     .line 11
@@ -27987,14 +28109,14 @@
     .line 105
     .line 106
     .line 107
-    new-instance p2, Lorg/levimc/launcher/ui/activities/v1;
+    new-instance p2, Lorg/levimc/launcher/ui/activities/i1;
 
     .line 108
     .line 109
-    const/4 p3, 0x1
+    const/4 p3, 0x3
 
     .line 110
-    invoke-direct {p2, p4, p3}, Lorg/levimc/launcher/ui/activities/v1;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p2, p4, p3}, Lorg/levimc/launcher/ui/activities/i1;-><init>(Ljava/lang/Object;I)V
 
     .line 111
     .line 112
@@ -28057,14 +28179,14 @@
 
     .line 8
     .line 9
-    new-instance v3, Lorg/levimc/launcher/ui/activities/b3;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/e4;
 
     .line 10
     .line 11
     const/4 v4, 0x0
 
     .line 12
-    invoke-direct {v3, p0, v0, v4}, Lorg/levimc/launcher/ui/activities/b3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    invoke-direct {v3, p0, v0, v4}, Lorg/levimc/launcher/ui/activities/e4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
 
     .line 13
     .line 14
@@ -28746,7 +28868,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic w3(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/ui/activities/b0;)V
+.method public static bridge synthetic w3(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/ui/activities/e0;)V
     .locals 0
 
     .line 1
@@ -28886,7 +29008,7 @@
 
     .line 54
     .line 55
-    const/4 v7, 0x3
+    const/4 v7, 0x5
 
     .line 56
     move-object v3, p0
@@ -29108,6 +29230,16 @@
 
 
 # virtual methods
+.method public avoidsCutoutWithoutShell()Z
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    return v0
+.end method
+
 .method public changed()V
     .locals 2
 
@@ -29144,14 +29276,14 @@
     .end annotation
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/x3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/z4;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/x3;-><init>(Lorg/levimc/launcher/core/content/nbt/NbtTag;I)V
+    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/z4;-><init>(Lorg/levimc/launcher/core/content/nbt/NbtTag;I)V
 
     .line 5
     .line 6
@@ -29325,47 +29457,50 @@
     .line 2
     .line 3
     .line 4
-    invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLastCustomNonConfigurationInstance()Ljava/lang/Object;
+    sget p1, Landroid/os/Build$VERSION;->SDK_INT:I
 
     .line 5
     .line 6
+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
+
     .line 7
-    move-result-object p1
-
     .line 8
-    instance-of v0, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
-
     .line 9
+    move-result-object v0
+
     .line 10
-    if-eqz v0, :cond_0
+    invoke-virtual {v0}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
     .line 11
     .line 12
-    check-cast p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
-
     .line 13
+    move-result-object v0
+
     .line 14
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    const/16 v1, 0x1e
 
     .line 15
     .line 16
-    goto :goto_0
+    if-lt p1, v1, :cond_0
 
     .line 17
-    :cond_0
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
     .line 18
+    const/4 p1, 0x3
+
     .line 19
+    goto :goto_0
+
     .line 20
-    move-result-object p1
+    :cond_0
+    const/4 p1, 0x1
 
     .line 21
-    const-string v0, "world_path"
+    :goto_0
+    iput p1, v0, Landroid/view/WindowManager$LayoutParams;->layoutInDisplayCutoutMode:I
 
     .line 22
     .line 23
-    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {p0}, Landroid/app/Activity;->getWindow()Landroid/view/Window;
 
     .line 24
     .line 25
@@ -29373,186 +29508,236 @@
     move-result-object p1
 
     .line 27
-    if-nez p1, :cond_1
+    invoke-virtual {p1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
 
     .line 28
     .line 29
-    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->finish()V
-
     .line 30
+    invoke-virtual {p0}, Landroidx/activity/ComponentActivity;->getLastCustomNonConfigurationInstance()Ljava/lang/Object;
+
     .line 31
     .line 32
-    return-void
-
     .line 33
-    :cond_1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    move-result-object p1
 
     .line 34
-    .line 35
-    const/4 v1, 0x0
+    instance-of v0, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
+    .line 35
     .line 36
-    invoke-direct {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;-><init>(I)V
+    if-eqz v0, :cond_1
 
     .line 37
     .line 38
+    check-cast p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
     .line 39
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
-
     .line 40
-    .line 41
-    new-instance v1, Lorg/levimc/launcher/core/content/world/WorldSession;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
+    .line 41
     .line 42
+    goto :goto_1
+
     .line 43
-    new-instance v2, Ljava/io/File;
+    :cond_1
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
 
     .line 44
     .line 45
-    invoke-direct {v2, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-
     .line 46
-    .line 47
-    .line 48
-    invoke-direct {v1, v2}, Lorg/levimc/launcher/core/content/world/WorldSession;-><init>(Ljava/io/File;)V
+    move-result-object p1
 
+    .line 47
+    const-string v0, "world_path"
+
+    .line 48
     .line 49
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
     .line 50
     .line 51
-    iput-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->session:Lorg/levimc/launcher/core/content/world/WorldSession;
-
     .line 52
+    move-result-object p1
+
     .line 53
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+    if-nez p1, :cond_2
 
     .line 54
     .line 55
-    new-instance v0, Lorg/levimc/launcher/core/content/world/WorldMapRenderer;
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->finish()V
 
     .line 56
     .line 57
-    iget-object v1, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->session:Lorg/levimc/launcher/core/content/world/WorldSession;
-
     .line 58
+    return-void
+
     .line 59
-    invoke-direct {v0, v1}, Lorg/levimc/launcher/core/content/world/WorldMapRenderer;-><init>(Lorg/levimc/launcher/core/content/world/WorldSession;)V
+    :cond_2
+    new-instance v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
     .line 60
     .line 61
+    const/4 v1, 0x0
+
     .line 62
-    iput-object v0, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->renderer:Lorg/levimc/launcher/core/content/world/WorldMapRenderer;
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;-><init>(I)V
 
     .line 63
     .line 64
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->loadPreferences()V
-
     .line 65
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
+
     .line 66
     .line 67
-    :goto_0
-    new-instance p1, Lorg/levimc/launcher/ui/activities/o3;
+    new-instance v1, Lorg/levimc/launcher/core/content/world/WorldSession;
 
     .line 68
     .line 69
-    const/4 v0, 0x0
+    new-instance v2, Ljava/io/File;
 
     .line 70
-    invoke-direct {p1, v0}, Lorg/levimc/launcher/ui/activities/o3;-><init>(I)V
-
     .line 71
+    invoke-direct {v2, p1}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
     .line 72
     .line 73
-    invoke-static {p1}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor(Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
-
     .line 74
+    invoke-direct {v1, v2}, Lorg/levimc/launcher/core/content/world/WorldSession;-><init>(Ljava/io/File;)V
+
     .line 75
     .line 76
-    move-result-object p1
-
     .line 77
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->executor:Ljava/util/concurrent/ExecutorService;
+    iput-object v1, v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->session:Lorg/levimc/launcher/core/content/world/WorldSession;
 
     .line 78
     .line 79
-    new-instance p1, Landroidx/fragment/app/w0;
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->state:Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;
 
     .line 80
     .line 81
-    const/4 v0, 0x1
+    new-instance v0, Lorg/levimc/launcher/core/content/world/WorldMapRenderer;
 
     .line 82
-    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
-
     .line 83
+    iget-object v1, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->session:Lorg/levimc/launcher/core/content/world/WorldSession;
+
     .line 84
     .line 85
-    new-instance v0, Lorg/levimc/launcher/ui/activities/m3;
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/core/content/world/WorldMapRenderer;-><init>(Lorg/levimc/launcher/core/content/world/WorldSession;)V
 
     .line 86
     .line 87
-    const/4 v1, 0x7
-
     .line 88
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    iput-object v0, p1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$State;->renderer:Lorg/levimc/launcher/core/content/world/WorldMapRenderer;
 
     .line 89
     .line 90
-    .line 91
-    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->loadPreferences()V
 
+    .line 91
     .line 92
     .line 93
-    .line 94
-    move-result-object p1
+    :goto_1
+    new-instance p1, Lorg/levimc/launcher/core/play/b;
 
+    .line 94
     .line 95
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->exportFile:Landroidx/activity/result/ActivityResultLauncher;
+    const/4 v0, 0x1
 
     .line 96
-    .line 97
-    new-instance p1, Landroidx/fragment/app/w0;
+    invoke-direct {p1, v0}, Lorg/levimc/launcher/core/play/b;-><init>(I)V
 
+    .line 97
     .line 98
     .line 99
-    const/4 v0, 0x2
+    invoke-static {p1}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor(Ljava/util/concurrent/ThreadFactory;)Ljava/util/concurrent/ExecutorService;
 
     .line 100
-    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
-
     .line 101
     .line 102
+    move-result-object p1
+
     .line 103
-    new-instance v0, Lorg/levimc/launcher/ui/activities/m3;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->executor:Ljava/util/concurrent/ExecutorService;
 
     .line 104
     .line 105
-    const/16 v1, 0x8
+    new-instance p1, Landroidx/fragment/app/w0;
 
     .line 106
     .line 107
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
 
     .line 108
     .line 109
     .line 110
-    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/p4;
 
     .line 111
     .line 112
+    const/4 v1, 0x7
+
     .line 113
-    move-result-object p1
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 114
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->importFile:Landroidx/activity/result/ActivityResultLauncher;
-
     .line 115
     .line 116
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildUi()V
+    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
 
     .line 117
     .line 118
     .line 119
+    move-result-object p1
+
+    .line 120
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->exportFile:Landroidx/activity/result/ActivityResultLauncher;
+
+    .line 121
+    .line 122
+    new-instance p1, Landroidx/fragment/app/w0;
+
+    .line 123
+    .line 124
+    const/4 v0, 0x2
+
+    .line 125
+    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+
+    .line 126
+    .line 127
+    .line 128
+    new-instance v0, Lorg/levimc/launcher/ui/activities/p4;
+
+    .line 129
+    .line 130
+    const/16 v1, 0x8
+
+    .line 131
+    .line 132
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/p4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+
+    .line 133
+    .line 134
+    .line 135
+    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
+
+    .line 136
+    .line 137
+    .line 138
+    move-result-object p1
+
+    .line 139
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->importFile:Landroidx/activity/result/ActivityResultLauncher;
+
+    .line 140
+    .line 141
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->buildUi()V
+
+    .line 142
+    .line 143
+    .line 144
     return-void
 .end method
 
@@ -29604,7 +29789,7 @@
 
     .line 22
     .line 23
-    new-instance v1, Lorg/levimc/launcher/ui/activities/x2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/a4;
 
     .line 24
     .line 25
@@ -29612,7 +29797,7 @@
 
     .line 26
     .line 27
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/x2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/a4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 28
     .line 29
@@ -29693,7 +29878,7 @@
     .line 17
     .line 18
     .line 19
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/f4;
 
     .line 20
     .line 21
@@ -29701,12 +29886,12 @@
 
     .line 22
     .line 23
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/f4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 24
     .line 25
     .line 26
-    new-instance v1, Lorg/levimc/launcher/ui/activities/w2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/z3;
 
     .line 27
     .line 28
@@ -29714,7 +29899,7 @@
 
     .line 29
     .line 30
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/w2;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/z3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 31
     .line 32
@@ -29934,14 +30119,14 @@
 
     .line 99
     .line 100
-    new-instance v1, Lorg/levimc/launcher/ui/activities/m4;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/p5;
 
     .line 101
     .line 102
     const/4 v2, 0x0
 
     .line 103
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m4;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/p5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
 
     .line 104
     .line 105
@@ -29964,26 +30149,26 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/t3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/v4;
 
     .line 2
     .line 3
     const/4 v1, 0x2
 
     .line 4
-    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/t3;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/v4;-><init>(Ljava/lang/Object;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/s2;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/z;
 
     .line 8
     .line 9
-    const/4 v1, 0x1
+    const/4 v1, 0x5
 
     .line 10
-    invoke-direct {p1, p2, v1}, Lorg/levimc/launcher/ui/activities/s2;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p2, v1}, Lorg/levimc/launcher/ui/activities/z;-><init>(Ljava/lang/Object;I)V
 
     .line 11
     .line 12
@@ -30023,23 +30208,23 @@
     .end annotation
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/x3;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/z4;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/x3;-><init>(Lorg/levimc/launcher/core/content/nbt/NbtTag;I)V
+    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/ui/activities/z4;-><init>(Lorg/levimc/launcher/core/content/nbt/NbtTag;I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance p1, Lorg/levimc/launcher/ui/activities/y3;
+    new-instance p1, Lorg/levimc/launcher/ui/activities/a5;
 
     .line 8
     .line 9
-    invoke-direct {p1, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/y3;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
+    invoke-direct {p1, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/a5;-><init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/lang/Object;I)V
 
     .line 10
     .line 11

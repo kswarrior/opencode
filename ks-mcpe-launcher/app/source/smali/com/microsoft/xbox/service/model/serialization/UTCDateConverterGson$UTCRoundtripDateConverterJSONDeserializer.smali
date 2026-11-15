@@ -1,9 +1,9 @@
 .class public Lcom/microsoft/xbox/service/model/serialization/UTCDateConverterGson$UTCRoundtripDateConverterJSONDeserializer;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Le8/j;
+.implements Lg8/j;
 
 
 # annotations
@@ -19,7 +19,7 @@
 .annotation system Ldalvik/annotation/Signature;
     value = {
         "Ljava/lang/Object;",
-        "Le8/j;"
+        "Lg8/j;"
     }
 .end annotation
 
@@ -54,11 +54,11 @@
     .locals 0
 
     .line 2
-    invoke-virtual {p1}, Lcom/google/gson/JsonElement;->l()Le8/n;
+    invoke-virtual {p1}, Lcom/google/gson/JsonElement;->m()Lg8/n;
 
     move-result-object p1
 
-    invoke-virtual {p1}, Le8/n;->n()Ljava/lang/String;
+    invoke-virtual {p1}, Lg8/n;->o()Ljava/lang/String;
 
     move-result-object p1
 

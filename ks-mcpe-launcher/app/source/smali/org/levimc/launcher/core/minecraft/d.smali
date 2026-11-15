@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/minecraft/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lkotlin/jvm/functions/Function0;
@@ -52,7 +52,7 @@
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->D(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->E(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
 
     .line 9
     .line 10
@@ -68,7 +68,7 @@
 
     .line 14
     .line 15
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->E(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->F(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
 
     .line 16
     .line 17
@@ -84,7 +84,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->H(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->I(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
 
     .line 23
     .line 24
@@ -100,7 +100,7 @@
 
     .line 28
     .line 29
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->G(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->H(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
 
     .line 30
     .line 31

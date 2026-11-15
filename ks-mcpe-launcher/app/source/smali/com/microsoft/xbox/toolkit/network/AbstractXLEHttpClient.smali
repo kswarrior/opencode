@@ -1,6 +1,6 @@
 .class public abstract Lcom/microsoft/xbox/toolkit/network/AbstractXLEHttpClient;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
@@ -115,7 +115,7 @@
 
     .line 42
     .line 43
-    invoke-interface {v1, p2}, Lqc/h;->getLastHeader(Ljava/lang/String;)Lorg/apache/http/Header;
+    invoke-interface {v1, p2}, Lpc/h;->getLastHeader(Ljava/lang/String;)Lorg/apache/http/Header;
 
     .line 44
     .line 45
@@ -127,7 +127,7 @@
 
     .line 48
     .line 49
-    invoke-interface {v1, p2}, Lqc/h;->getLastHeader(Ljava/lang/String;)Lorg/apache/http/Header;
+    invoke-interface {v1, p2}, Lpc/h;->getLastHeader(Ljava/lang/String;)Lorg/apache/http/Header;
 
     .line 50
     .line 51
@@ -135,7 +135,7 @@
     move-result-object p2
 
     .line 53
-    invoke-interface {p2}, Lqc/p;->getValue()Ljava/lang/String;
+    invoke-interface {p2}, Lpc/p;->getValue()Ljava/lang/String;
 
     .line 54
     .line 55
@@ -152,7 +152,7 @@
 
     .line 60
     .line 61
-    invoke-interface {v1}, Lqc/h;->getAllHeaders()[Lorg/apache/http/Header;
+    invoke-interface {v1}, Lpc/h;->getAllHeaders()[Lorg/apache/http/Header;
 
     .line 62
     .line 63
@@ -193,7 +193,7 @@
 
     .line 78
     .line 79
-    invoke-static {p2}, Lk6/b;->v(Lorg/apache/http/HttpEntity;)[B
+    invoke-static {p2}, Ljb/c;->u0(Lorg/apache/http/HttpEntity;)[B
 
     .line 80
     .line 81
@@ -219,7 +219,7 @@
 
     .line 92
     .line 93
-    invoke-interface {v1, p2}, Lqc/h;->getFirstHeader(Ljava/lang/String;)Lorg/apache/http/Header;
+    invoke-interface {v1, p2}, Lpc/h;->getFirstHeader(Ljava/lang/String;)Lorg/apache/http/Header;
 
     .line 94
     .line 95
@@ -231,7 +231,7 @@
 
     .line 98
     .line 99
-    invoke-interface {p2}, Lqc/p;->getValue()Ljava/lang/String;
+    invoke-interface {p2}, Lpc/p;->getValue()Ljava/lang/String;
 
     .line 100
     .line 101

@@ -1,48 +1,59 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/v0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;
+.implements Lorg/levimc/launcher/ui/widget/CatalogSelect$OnPick;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:I
-
-.field public final synthetic h:Lorg/levimc/launcher/ui/activities/BaseActivity;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/BaseActivity;II)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/v0;->c:I
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/v0;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v0;->h:Lorg/levimc/launcher/ui/activities/BaseActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v0;->d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
 
     .line 4
     .line 5
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/v0;->d:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 2
+.method public onContentClick(Lorg/levimc/launcher/core/curseforge/models/Content;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
+
+    .line 2
+    .line 3
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->w(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;Lorg/levimc/launcher/core/curseforge/models/Content;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public onPick(I)V
+    .locals 1
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/ui/activities/v0;->c:I
@@ -54,52 +65,50 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->h:Lorg/levimc/launcher/ui/activities/BaseActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->A(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
 
     .line 9
     .line 10
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/v0;->d:I
-
     .line 11
+    return-void
+
     .line 12
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->f0(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;I)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
 
     .line 13
     .line 14
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->z(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
+
     .line 15
+    .line 16
+    .line 17
     return-void
 
-    .line 16
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->h:Lorg/levimc/launcher/ui/activities/BaseActivity;
-
-    .line 17
     .line 18
-    check-cast v0, Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v0;->d:Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
 
     .line 19
     .line 20
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/v0;->d:I
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->B(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
 
     .line 21
     .line 22
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;->A(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;I)V
-
     .line 23
-    .line 24
-    .line 25
     return-void
 
-    .line 26
+    .line 24
     nop
 
-    .line 27
+    .line 25
     :pswitch_data_0
-    .packed-switch 0x0
+    .packed-switch 0x1
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

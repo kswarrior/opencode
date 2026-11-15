@@ -1,72 +1,63 @@
-.class public abstract Lcom/google/android/gms/internal/measurement/hg;
-.super Lcom/google/android/gms/internal/measurement/eg;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final synthetic Lcom/google/android/gms/internal/measurement/hg;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lk6/a0;
 
 
 # instance fields
-.field public final x:Lcom/google/android/gms/internal/measurement/ug;
+.field public final synthetic a:Lcom/google/android/gms/internal/measurement/ub;
+
+.field public final synthetic b:I
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;Lcom/google/android/gms/internal/measurement/eg;Lcom/google/android/gms/internal/measurement/ug;Lcom/google/android/gms/internal/measurement/zg;)V
+.method public synthetic constructor <init>(Lcom/google/android/gms/internal/measurement/ub;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2, p4}, Lcom/google/android/gms/internal/measurement/eg;-><init>(Ljava/lang/String;Lcom/google/android/gms/internal/measurement/eg;Lcom/google/android/gms/internal/measurement/zg;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    iget-boolean p1, p3, Lcom/google/android/gms/internal/measurement/ug;->c:Z
-
     .line 3
-    invoke-static {p1}, Lcom/bumptech/glide/d;->e(Z)V
-
-    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/hg;->x:Lcom/google/android/gms/internal/measurement/ug;
-
-    return-void
-.end method
-
-.method public constructor <init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lcom/google/android/gms/internal/measurement/ug;Lcom/google/android/gms/internal/measurement/zg;)V
-    .locals 0
-
     .line 4
-    invoke-direct {p0, p1, p2, p3, p5}, Lcom/google/android/gms/internal/measurement/eg;-><init>(Ljava/lang/String;Ljava/util/UUID;Ljava/lang/String;Lcom/google/android/gms/internal/measurement/zg;)V
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/hg;->a:Lcom/google/android/gms/internal/measurement/ub;
 
     .line 5
-    iget-boolean p1, p4, Lcom/google/android/gms/internal/measurement/ug;->c:Z
-
     .line 6
-    invoke-static {p1}, Lcom/bumptech/glide/d;->e(Z)V
+    iput p2, p0, Lcom/google/android/gms/internal/measurement/hg;->b:I
 
-    iput-object p4, p0, Lcom/google/android/gms/internal/measurement/hg;->x:Lcom/google/android/gms/internal/measurement/ug;
-
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final zzh()Lcom/google/android/gms/internal/measurement/ug;
-    .locals 2
+.method public final synthetic apply(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
+    .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/hg;->x:Lcom/google/android/gms/internal/measurement/ug;
+    check-cast p1, Ljava/lang/Throwable;
 
     .line 2
     .line 3
-    invoke-interface {p0}, Lcom/google/android/gms/internal/measurement/ah;->zzl()Lcom/google/android/gms/internal/measurement/ug;
+    iget-object p1, p0, Lcom/google/android/gms/internal/measurement/hg;->a:Lcom/google/android/gms/internal/measurement/ub;
 
     .line 4
     .line 5
-    .line 6
-    move-result-object v1
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/hg;->b:I
 
+    .line 6
     .line 7
-    invoke-static {v0, v1}, Lcom/google/android/gms/internal/measurement/ug;->a(Lcom/google/android/gms/internal/measurement/ug;Lcom/google/android/gms/internal/measurement/ug;)Lcom/google/android/gms/internal/measurement/ug;
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->I(I)Lk6/s;
 
     .line 8
     .line 9
     .line 10
-    move-result-object v0
+    move-result-object p1
 
     .line 11
-    return-object v0
+    return-object p1
 .end method

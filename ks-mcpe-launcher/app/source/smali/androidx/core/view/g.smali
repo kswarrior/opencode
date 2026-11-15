@@ -1,12 +1,12 @@
 .class public final Landroidx/core/view/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
 .field public final a:Landroid/content/Context;
 
-.field public final b:Lm/i2;
+.field public final b:Lng/a;
 
 .field public c:Landroid/view/VelocityTracker;
 
@@ -22,7 +22,7 @@
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Lm/i2;)V
+.method public constructor <init>(Landroid/content/Context;Lng/a;)V
     .locals 2
 
     .line 1
@@ -70,7 +70,7 @@
 
     .line 22
     .line 23
-    iput-object p2, p0, Landroidx/core/view/g;->b:Lm/i2;
+    iput-object p2, p0, Landroidx/core/view/g;->b:Lng/a;
 
     .line 24
     .line 25

@@ -26,29 +26,29 @@
 
 .field public static friendFinderPageMargin:I = 0x7f07009c
 
-.field public static profileMsaPicSize:I = 0x7f07040e
+.field public static profileMsaPicSize:I = 0x7f070413
 
-.field public static profileSocialButtonsHeight:I = 0x7f07040f
+.field public static profileSocialButtonsHeight:I = 0x7f070414
 
-.field public static profileSocialButtonsTopMargin:I = 0x7f070410
+.field public static profileSocialButtonsTopMargin:I = 0x7f070415
 
-.field public static settingsScreenPropertySeparator:I = 0x7f070411
+.field public static settingsScreenPropertySeparator:I = 0x7f070416
 
-.field public static xbid_bg_stroke_width:I = 0x7f070421
+.field public static xbid_bg_stroke_width:I = 0x7f070426
 
-.field public static xbid_body_padding_horizontal:I = 0x7f070422
+.field public static xbid_body_padding_horizontal:I = 0x7f070427
 
-.field public static xbid_button_border_width:I = 0x7f070423
+.field public static xbid_button_border_width:I = 0x7f070428
 
-.field public static xbid_clickable_view_border_width:I = 0x7f070424
+.field public static xbid_clickable_view_border_width:I = 0x7f070429
 
-.field public static xbid_clickable_view_padding:I = 0x7f070425
+.field public static xbid_clickable_view_padding:I = 0x7f07042a
 
-.field public static xbid_header_image_diameter:I = 0x7f070426
+.field public static xbid_header_image_diameter:I = 0x7f07042b
 
-.field public static xbid_margin_button:I = 0x7f070427
+.field public static xbid_margin_button:I = 0x7f07042c
 
-.field public static xbid_margin_button_top:I = 0x7f070428
+.field public static xbid_margin_button_top:I = 0x7f07042d
 
 
 # direct methods

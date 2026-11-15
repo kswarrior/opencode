@@ -1,6 +1,6 @@
 .class Lcom/microsoft/applications/events/StorageRecordDao_Impl$2;
 .super Landroidx/room/EntityDeletionOrUpdateAdapter;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -29,7 +29,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -52,7 +52,7 @@
     .line 2
     iget-wide v1, p2, Lcom/microsoft/applications/events/StorageRecord;->id:J
 
-    invoke-interface {p1, v0, v1, v2}, Lf2/b;->G(IJ)V
+    invoke-interface {p1, v0, v1, v2}, Lf2/a;->F(IJ)V
 
     return-void
 .end method

@@ -1,142 +1,58 @@
-.class public abstract Lcom/google/android/gms/internal/measurement/xb;
+.class public final synthetic Lcom/google/android/gms/internal/measurement/xb;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ljava/util/concurrent/ThreadFactory;
 
 
 # static fields
-.field public static final a:Landroidx/collection/ArrayMap;
+.field public static final synthetic a:Lcom/google/android/gms/internal/measurement/xb;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public static synthetic constructor <clinit>()V
+    .locals 1
 
     .line 1
-    new-instance v0, Landroidx/collection/ArrayMap;
+    new-instance v0, Lcom/google/android/gms/internal/measurement/xb;
 
     .line 2
     .line 3
-    const/4 v1, 0x0
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 4
-    invoke-direct {v0, v1}, Landroidx/collection/SimpleArrayMap;-><init>(I)V
-
     .line 5
     .line 6
-    .line 7
-    sput-object v0, Lcom/google/android/gms/internal/measurement/xb;->a:Landroidx/collection/ArrayMap;
+    sput-object v0, Lcom/google/android/gms/internal/measurement/xb;->a:Lcom/google/android/gms/internal/measurement/xb;
 
+    .line 7
     .line 8
-    .line 9
     return-void
 .end method
 
-.method public static declared-synchronized a()V
-    .locals 4
+
+# virtual methods
+.method public final synthetic newThread(Ljava/lang/Runnable;)Ljava/lang/Thread;
+    .locals 2
 
     .line 1
-    const-class v0, Lcom/google/android/gms/internal/measurement/xb;
+    sget-object v0, Lcom/google/android/gms/internal/measurement/vb;->j:Ljava/lang/Object;
 
     .line 2
     .line 3
-    monitor-enter v0
+    new-instance v0, Ljava/lang/Thread;
 
     .line 4
-    :try_start_0
-    sget-object v1, Lcom/google/android/gms/internal/measurement/xb;->a:Landroidx/collection/ArrayMap;
-
     .line 5
-    .line 6
-    invoke-virtual {v1}, Landroidx/collection/ArrayMap;->values()Ljava/util/Collection;
+    const-string v1, "ProcessStablePhenotypeFlag"
 
+    .line 6
     .line 7
+    invoke-direct {v0, p1, v1}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
+
     .line 8
     .line 9
-    move-result-object v2
-
     .line 10
-    check-cast v2, Lt/d;
-
-    .line 11
-    .line 12
-    invoke-virtual {v2}, Lt/d;->iterator()Ljava/util/Iterator;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object v2
-
-    .line 16
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
-
-    .line 17
-    .line 18
-    .line 19
-    move-result v3
-
-    .line 20
-    if-nez v3, :cond_0
-
-    .line 21
-    .line 22
-    invoke-virtual {v1}, Landroidx/collection/SimpleArrayMap;->clear()V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 23
-    .line 24
-    .line 25
-    monitor-exit v0
-
-    .line 26
-    return-void
-
-    .line 27
-    :catchall_0
-    move-exception v1
-
-    .line 28
-    goto :goto_0
-
-    .line 29
-    :cond_0
-    :try_start_1
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 30
-    .line 31
-    .line 32
-    move-result-object v1
-
-    .line 33
-    if-nez v1, :cond_1
-
-    .line 34
-    .line 35
-    const/4 v1, 0x0
-
-    .line 36
-    throw v1
-
-    .line 37
-    :cond_1
-    new-instance v1, Ljava/lang/ClassCastException;
-
-    .line 38
-    .line 39
-    invoke-direct {v1}, Ljava/lang/ClassCastException;-><init>()V
-
-    .line 40
-    .line 41
-    .line 42
-    throw v1
-
-    .line 43
-    :goto_0
-    monitor-exit v0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 44
-    throw v1
+    return-object v0
 .end method

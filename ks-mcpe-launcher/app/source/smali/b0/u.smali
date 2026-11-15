@@ -1,12 +1,12 @@
 .class public abstract Lb0/u;
 .super Lb0/c;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public B1:Z
-
 .field public b1:Z
+
+.field public y:Z
 
 
 # virtual methods
@@ -89,7 +89,7 @@
 
     .line 30
     .line 31
-    iput-boolean v4, p0, Lb0/u;->b1:Z
+    iput-boolean v4, p0, Lb0/u;->y:Z
 
     .line 32
     .line 33
@@ -105,7 +105,7 @@
 
     .line 37
     .line 38
-    iput-boolean v4, p0, Lb0/u;->B1:Z
+    iput-boolean v4, p0, Lb0/u;->b1:Z
 
     .line 39
     .line 40
@@ -140,7 +140,7 @@
     .line 2
     .line 3
     .line 4
-    iget-boolean v0, p0, Lb0/u;->b1:Z
+    iget-boolean v0, p0, Lb0/u;->y:Z
 
     .line 5
     .line 6
@@ -148,7 +148,7 @@
 
     .line 7
     .line 8
-    iget-boolean v0, p0, Lb0/u;->B1:Z
+    iget-boolean v0, p0, Lb0/u;->b1:Z
 
     .line 9
     .line 10
@@ -233,7 +233,7 @@
 
     .line 48
     .line 49
-    iget-boolean v5, p0, Lb0/u;->b1:Z
+    iget-boolean v5, p0, Lb0/u;->y:Z
 
     .line 50
     .line 51
@@ -247,7 +247,7 @@
     .line 55
     .line 56
     :cond_1
-    iget-boolean v5, p0, Lb0/u;->B1:Z
+    iget-boolean v5, p0, Lb0/u;->b1:Z
 
     .line 57
     .line 58

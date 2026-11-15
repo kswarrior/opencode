@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/InstancesActivity$2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->X(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->W(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 4
     .line 5
@@ -165,7 +165,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 4
     .line 5
@@ -181,7 +181,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 12
     .line 13
@@ -206,7 +206,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 4
     .line 5
@@ -222,7 +222,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 12
     .line 13
@@ -242,7 +242,7 @@
 
     .line 20
     .line 21
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 22
     .line 23
@@ -283,7 +283,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->X(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->W(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 4
     .line 5
@@ -292,7 +292,7 @@
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->U(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/core/versions/VersionManager;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 9
     .line 10
@@ -309,7 +309,7 @@
 
     .line 16
     .line 17
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Z(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Y(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 18
     .line 19
@@ -318,7 +318,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->P(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->O(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
 
     .line 23
     .line 24
@@ -334,7 +334,7 @@
 
     .line 29
     .line 30
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->P(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->O(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
 
     .line 31
     .line 32
@@ -346,7 +346,7 @@
 
     .line 35
     .line 36
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->U(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/core/versions/VersionManager;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->T(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 37
     .line 38
@@ -371,7 +371,7 @@
 
     .line 48
     .line 49
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->W(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->V(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 50
     .line 51

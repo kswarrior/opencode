@@ -1,76 +1,83 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
+.field public final synthetic c:I
 
-.field public final synthetic d:[Ljava/lang/Runnable;
-
-.field public final synthetic h:Landroidx/recyclerview/widget/RecyclerView;
-
-.field public final synthetic q:Ljava/util/ArrayList;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;[Ljava/lang/Runnable;Landroidx/recyclerview/widget/RecyclerView;Ljava/util/ArrayList;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->d:[Ljava/lang/Runnable;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->h:Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->q:Ljava/util/ArrayList;
-
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 4
+.method public final onClick(Landroid/view/View;)V
+    .locals 1
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->h:Landroidx/recyclerview/widget/RecyclerView;
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->c:I
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->q:Ljava/util/ArrayList;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;
+
     .line 7
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->d:[Ljava/lang/Runnable;
-
     .line 8
-    .line 9
-    invoke-static {v2, v3, v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;[Ljava/lang/Runnable;Landroidx/recyclerview/widget/RecyclerView;Ljava/util/ArrayList;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;Landroid/view/View;)V
 
+    .line 9
     .line 10
     .line 11
-    .line 12
     return-void
+
+    .line 12
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c1;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;
+
+    .line 13
+    .line 14
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->j(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuToggle;Landroid/view/View;)V
+
+    .line 15
+    .line 16
+    .line 17
+    return-void
+
+    .line 18
+    nop
+
+    .line 19
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

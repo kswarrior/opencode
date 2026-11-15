@@ -1,6 +1,6 @@
 .class public Landroidx/emoji2/text/EmojiCompatInitializer;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lj2/b;
@@ -66,7 +66,7 @@
     .line 6
     .line 7
     .line 8
-    invoke-direct {v0, v1}, Landroidx/recyclerview/widget/d1;-><init>(Ld1/h;)V
+    invoke-direct {v0, v1}, Landroidx/recyclerview/widget/b1;-><init>(Ld1/h;)V
 
     .line 9
     .line 10
@@ -74,7 +74,7 @@
     const/4 v1, 0x1
 
     .line 12
-    iput v1, v0, Landroidx/recyclerview/widget/d1;->a:I
+    iput v1, v0, Landroidx/recyclerview/widget/b1;->a:I
 
     .line 13
     .line 14
@@ -240,7 +240,7 @@
     .line 81
     .line 82
     .line 83
-    invoke-virtual {p1, v0}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/r;)V
+    invoke-virtual {p1, v0}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/s;)V
 
     .line 84
     .line 85

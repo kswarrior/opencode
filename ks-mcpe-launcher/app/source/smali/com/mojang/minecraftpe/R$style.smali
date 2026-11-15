@@ -14,11 +14,11 @@
 
 
 # static fields
-.field public static TcuiDialog:I = 0x7f1401e8
+.field public static TcuiDialog:I = 0x7f1401f0
 
-.field public static TcuiDialogAnimations:I = 0x7f1401e9
+.field public static TcuiDialogAnimations:I = 0x7f1401f1
 
-.field public static WebViewTheme:I = 0x7f140366
+.field public static WebViewTheme:I = 0x7f14037a
 
 
 # direct methods

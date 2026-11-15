@@ -1,6 +1,6 @@
 .class public abstract Lb0/c;
 .super Landroid/view/View;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -10,13 +10,13 @@
 
 .field public h:Landroid/content/Context;
 
-.field public q:Ly/i;
+.field public p:Ly/i;
+
+.field public q:Ljava/lang/String;
 
 .field public w:Ljava/lang/String;
 
-.field public x:Ljava/lang/String;
-
-.field public y:Ljava/util/HashMap;
+.field public x:Ljava/util/HashMap;
 
 
 # virtual methods
@@ -276,7 +276,7 @@
 
     .line 115
     .line 116
-    iget-object v0, p0, Lb0/c;->y:Ljava/util/HashMap;
+    iget-object v0, p0, Lb0/c;->x:Ljava/util/HashMap;
 
     .line 117
     .line 118
@@ -1009,7 +1009,7 @@
     move-result-object v2
 
     .line 32
-    iput-object v2, p0, Lb0/c;->w:Ljava/lang/String;
+    iput-object v2, p0, Lb0/c;->q:Ljava/lang/String;
 
     .line 33
     .line 34
@@ -1038,7 +1038,7 @@
     move-result-object v2
 
     .line 46
-    iput-object v2, p0, Lb0/c;->x:Ljava/lang/String;
+    iput-object v2, p0, Lb0/c;->w:Ljava/lang/String;
 
     .line 47
     .line 48
@@ -1096,7 +1096,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lb0/c;->q:Ly/i;
+    iget-object v0, p0, Lb0/c;->p:Ly/i;
 
     .line 2
     .line 3
@@ -1128,7 +1128,7 @@
 
     .line 15
     .line 16
-    iget-object v1, p0, Lb0/c;->q:Ly/i;
+    iget-object v1, p0, Lb0/c;->p:Ly/i;
 
     .line 17
     .line 18
@@ -1150,7 +1150,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lb0/c;->w:Ljava/lang/String;
+    iget-object v0, p0, Lb0/c;->q:Ljava/lang/String;
 
     .line 5
     .line 6
@@ -1164,7 +1164,7 @@
     .line 10
     .line 11
     :cond_0
-    iget-object v0, p0, Lb0/c;->x:Ljava/lang/String;
+    iget-object v0, p0, Lb0/c;->w:Ljava/lang/String;
 
     .line 12
     .line 13
@@ -1207,7 +1207,7 @@
     .locals 3
 
     .line 1
-    iput-object p1, p0, Lb0/c;->w:Ljava/lang/String;
+    iput-object p1, p0, Lb0/c;->q:Ljava/lang/String;
 
     .line 2
     .line 3
@@ -1287,7 +1287,7 @@
     .locals 3
 
     .line 1
-    iput-object p1, p0, Lb0/c;->x:Ljava/lang/String;
+    iput-object p1, p0, Lb0/c;->w:Ljava/lang/String;
 
     .line 2
     .line 3
@@ -1370,7 +1370,7 @@
     const/4 v0, 0x0
 
     .line 2
-    iput-object v0, p0, Lb0/c;->w:Ljava/lang/String;
+    iput-object v0, p0, Lb0/c;->q:Ljava/lang/String;
 
     .line 3
     .line 4
@@ -1422,7 +1422,7 @@
 
     .line 5
     .line 6
-    iget-object p2, p0, Lb0/c;->w:Ljava/lang/String;
+    iget-object p2, p0, Lb0/c;->q:Ljava/lang/String;
 
     .line 7
     .line 8

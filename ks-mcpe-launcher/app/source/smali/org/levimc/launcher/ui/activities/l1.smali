@@ -1,19 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/l1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/MainActivity;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
 
     .line 4
     .line 5
@@ -35,7 +35,7 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
+.method public final run()V
     .locals 1
 
     .line 1
@@ -48,11 +48,11 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
 
     .line 7
     .line 8
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->f0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->R(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;)V
 
     .line 9
     .line 10
@@ -61,11 +61,11 @@
 
     .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
 
     .line 13
     .line 14
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->z(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->L(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;)V
 
     .line 15
     .line 16
@@ -73,166 +73,11 @@
     return-void
 
     .line 18
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 19
-    .line 20
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->w(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 21
-    .line 22
-    .line 23
-    return-void
-
-    .line 24
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 25
-    .line 26
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->e0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
-    :pswitch_3
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 31
-    .line 32
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->C(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 33
-    .line 34
-    .line 35
-    return-void
-
-    .line 36
-    :pswitch_4
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 37
-    .line 38
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->E(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 39
-    .line 40
-    .line 41
-    return-void
-
-    .line 42
-    :pswitch_5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 43
-    .line 44
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->V(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 45
-    .line 46
-    .line 47
-    return-void
-
-    .line 48
-    :pswitch_6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 49
-    .line 50
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->c0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 51
-    .line 52
-    .line 53
-    return-void
-
-    .line 54
-    :pswitch_7
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 55
-    .line 56
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->W(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 57
-    .line 58
-    .line 59
-    return-void
-
-    .line 60
-    :pswitch_8
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 61
-    .line 62
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->D(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 63
-    .line 64
-    .line 65
-    return-void
-
-    .line 66
-    :pswitch_9
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 67
-    .line 68
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->L(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 69
-    .line 70
-    .line 71
-    return-void
-
-    .line 72
-    :pswitch_a
-    return-void
-
-    .line 78
-    :pswitch_b
-    return-void
-
-    .line 84
-    :pswitch_c
-    return-void
-
-    .line 90
-    :pswitch_d
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l1;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
-
-    .line 91
-    .line 92
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->b0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-
-    .line 93
-    .line 94
-    .line 95
-    return-void
-
-    .line 96
     nop
 
-    .line 97
+    .line 19
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_d
-        :pswitch_c
-        :pswitch_b
-        :pswitch_a
-        :pswitch_9
-        :pswitch_8
-        :pswitch_7
-        :pswitch_6
-        :pswitch_5
-        :pswitch_4
-        :pswitch_3
-        :pswitch_2
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

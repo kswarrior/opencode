@@ -1,9 +1,9 @@
 .class public final Landroidx/activity/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroidx/lifecycle/q;
+.implements Landroidx/lifecycle/r;
 .implements Ljava/lang/AutoCloseable;
 
 
@@ -36,11 +36,11 @@
 
 
 # virtual methods
-.method public final a(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/n;)V
+.method public final a(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/o;)V
     .locals 1
 
     .line 1
-    sget-object p1, Landroidx/lifecycle/n;->ON_START:Landroidx/lifecycle/n;
+    sget-object p1, Landroidx/lifecycle/o;->ON_START:Landroidx/lifecycle/o;
 
     .line 2
     .line 3
@@ -64,7 +64,7 @@
 
     .line 12
     :cond_0
-    sget-object p1, Landroidx/lifecycle/n;->ON_STOP:Landroidx/lifecycle/n;
+    sget-object p1, Landroidx/lifecycle/o;->ON_STOP:Landroidx/lifecycle/o;
 
     .line 13
     .line 14
@@ -82,7 +82,7 @@
     .line 20
     :cond_1
     :goto_0
-    sget-object p1, Landroidx/lifecycle/n;->ON_DESTROY:Landroidx/lifecycle/n;
+    sget-object p1, Landroidx/lifecycle/o;->ON_DESTROY:Landroidx/lifecycle/o;
 
     .line 21
     .line 22
@@ -99,7 +99,7 @@
 
     .line 28
     .line 29
-    invoke-virtual {p1, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/r;)V
+    invoke-virtual {p1, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/s;)V
 
     .line 30
     .line 31
@@ -116,7 +116,7 @@
 
     .line 2
     .line 3
-    invoke-virtual {v0, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/r;)V
+    invoke-virtual {v0, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/s;)V
 
     .line 4
     .line 5

@@ -1,6 +1,6 @@
 .class public final Lcom/xbox/httpclient/HttpClientWebSocket;
 .super Lcom/bumptech/glide/f;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -110,7 +110,7 @@
 
     .line 7
     .line 8
-    invoke-virtual {p2}, Lokhttp3/OkHttpClient;->a()Lvb/n;
+    invoke-virtual {p2}, Lokhttp3/OkHttpClient;->a()Lub/r;
 
     .line 9
     .line 10
@@ -130,7 +130,7 @@
 
     .line 17
     .line 18
-    invoke-static {v2, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 19
     .line 20
@@ -139,7 +139,7 @@
 
     .line 22
     .line 23
-    invoke-static {v0, v1, v2}, Lwb/f;->b(JLjava/lang/String;)I
+    invoke-static {v0, v1, v2}, Lvb/f;->b(JLjava/lang/String;)I
 
     .line 24
     .line 25
@@ -147,7 +147,7 @@
     move-result v0
 
     .line 27
-    iput v0, p2, Lvb/n;->z:I
+    iput v0, p2, Lub/r;->B:I
 
     .line 28
     .line 29
@@ -155,7 +155,7 @@
 
     .line 30
     .line 31
-    invoke-direct {v0, p2}, Lokhttp3/OkHttpClient;-><init>(Lvb/n;)V
+    invoke-direct {v0, p2}, Lokhttp3/OkHttpClient;-><init>(Lub/r;)V
 
     .line 32
     .line 33
@@ -169,7 +169,7 @@
     .line 37
     .line 38
     .line 39
-    invoke-virtual {p2, p1}, Lokhttp3/Request$Builder;->d(Ljava/lang/String;)V
+    invoke-virtual {p2, p1}, Lokhttp3/Request$Builder;->e(Ljava/lang/String;)V
 
     .line 40
     .line 41
@@ -178,7 +178,7 @@
 
     .line 43
     .line 44
-    invoke-virtual {p1}, Lokhttp3/Headers$Builder;->b()Lvb/k;
+    invoke-virtual {p1}, Lokhttp3/Headers$Builder;->c()Lub/p;
 
     .line 45
     .line 46
@@ -186,7 +186,7 @@
     move-result-object p1
 
     .line 48
-    invoke-virtual {p1}, Lvb/k;->e()Lokhttp3/Headers$Builder;
+    invoke-virtual {p1}, Lub/p;->e()Lokhttp3/Headers$Builder;
 
     .line 49
     .line 50
@@ -198,16 +198,16 @@
 
     .line 53
     .line 54
-    new-instance v3, Lae/o;
+    new-instance v3, Lokhttp3/Request;
 
     .line 55
     .line 56
-    invoke-direct {v3, p2}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
+    invoke-direct {v3, p2}, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
 
     .line 57
     .line 58
     .line 59
-    new-instance v1, Llc/f;
+    new-instance v1, Lkc/f;
 
     .line 60
     .line 61
@@ -220,559 +220,555 @@
     .line 64
     .line 65
     .line 66
-    iget p1, v0, Lokhttp3/OkHttpClient;->y:I
+    iget p1, v0, Lokhttp3/OkHttpClient;->A:I
 
     .line 67
     .line 68
     int-to-long v6, p1
 
     .line 69
-    iget p1, v0, Lokhttp3/OkHttpClient;->z:I
+    iget p1, v0, Lokhttp3/OkHttpClient;->B:I
 
     .line 70
     .line 71
     int-to-long v10, p1
 
     .line 72
-    iget-object v2, v0, Lokhttp3/OkHttpClient;->C:Lyb/d;
+    iget-object v2, v0, Lokhttp3/OkHttpClient;->E:Lxb/d;
 
     .line 73
     .line 74
-    iget-wide v8, v0, Lokhttp3/OkHttpClient;->A:J
+    iget-wide v8, v0, Lokhttp3/OkHttpClient;->C:J
 
     .line 75
     .line 76
     move-object v4, p0
 
     .line 77
-    invoke-direct/range {v1 .. v11}, Llc/f;-><init>(Lyb/d;Lae/o;Lcom/xbox/httpclient/HttpClientWebSocket;Ljava/util/Random;JJJ)V
+    invoke-direct/range {v1 .. v11}, Lkc/f;-><init>(Lxb/d;Lokhttp3/Request;Lcom/xbox/httpclient/HttpClientWebSocket;Ljava/util/Random;JJJ)V
 
     .line 78
     .line 79
     .line 80
-    iget-object p1, v3, Lae/o;->q:Ljava/lang/Object;
+    iget-object p1, v3, Lokhttp3/Request;->c:Lub/p;
 
     .line 81
     .line 82
-    check-cast p1, Lvb/k;
+    const-string p2, "Sec-WebSocket-Extensions"
 
     .line 83
     .line 84
-    const-string p2, "Sec-WebSocket-Extensions"
+    invoke-virtual {p1, p2}, Lub/p;->c(Ljava/lang/String;)Ljava/lang/String;
 
     .line 85
     .line 86
-    invoke-virtual {p1, p2}, Lvb/k;->c(Ljava/lang/String;)Ljava/lang/String;
-
     .line 87
-    .line 88
-    .line 89
     move-result-object p1
 
-    .line 90
+    .line 88
     const/4 v2, 0x0
 
-    .line 91
+    .line 89
     if-eqz p1, :cond_0
+
+    .line 90
+    .line 91
+    new-instance p1, Ljava/net/ProtocolException;
 
     .line 92
     .line 93
-    new-instance p1, Ljava/net/ProtocolException;
+    const-string p2, "Request header not permitted: \'Sec-WebSocket-Extensions\'"
 
     .line 94
     .line 95
-    const-string p2, "Request header not permitted: \'Sec-WebSocket-Extensions\'"
+    invoke-direct {p1, p2}, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
 
     .line 96
     .line 97
-    invoke-direct {p1, p2}, Ljava/net/ProtocolException;-><init>(Ljava/lang/String;)V
-
     .line 98
-    .line 99
-    .line 100
     const/4 p2, 0x6
 
-    .line 101
-    invoke-static {v1, p1, v2, p2}, Llc/f;->e(Llc/f;Ljava/lang/Exception;Lokhttp3/Response;I)V
+    .line 99
+    invoke-static {v1, p1, v2, p2}, Lkc/f;->e(Lkc/f;Ljava/lang/Exception;Lokhttp3/Response;I)V
 
+    .line 100
+    .line 101
     .line 102
+    goto/16 :goto_2
+
     .line 103
     .line 104
-    goto/16 :goto_2
+    :cond_0
+    invoke-virtual {v0}, Lokhttp3/OkHttpClient;->a()Lub/r;
 
     .line 105
     .line 106
-    :cond_0
-    invoke-virtual {v0}, Lokhttp3/OkHttpClient;->a()Lvb/n;
-
     .line 107
-    .line 108
-    .line 109
     move-result-object p1
 
+    .line 108
+    new-instance v0, Li8/b;
+
+    .line 109
     .line 110
-    new-instance v0, Ll2/t;
+    const/16 v5, 0x1a
 
     .line 111
     .line 112
-    const/16 v5, 0x10
+    invoke-direct {v0, v5}, Li8/b;-><init>(I)V
 
     .line 113
     .line 114
-    invoke-direct {v0, v5}, Ll2/t;-><init>(I)V
-
     .line 115
+    iput-object v0, p1, Lub/r;->e:Li8/b;
+
     .line 116
     .line 117
-    iput-object v0, p1, Lvb/n;->e:Ll2/t;
+    sget-object v0, Lkc/f;->x:Ljava/util/List;
 
     .line 118
     .line 119
-    sget-object v0, Llc/f;->x:Ljava/util/List;
+    const-string v5, "protocols"
 
     .line 120
     .line 121
-    const-string v5, "protocols"
+    invoke-static {v0, v5}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 122
     .line 123
-    invoke-static {v0, v5}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 124
+    invoke-static {v0}, Lt8/j;->R0(Ljava/util/Collection;)Ljava/util/ArrayList;
+
     .line 125
     .line 126
-    invoke-static {v0}, Lr8/j;->R(Ljava/util/Collection;)Ljava/util/ArrayList;
-
     .line 127
-    .line 128
-    .line 129
     move-result-object v0
 
+    .line 128
+    sget-object v5, Lub/s;->x:Lub/s;
+
+    .line 129
     .line 130
-    sget-object v5, Lvb/o;->y:Lvb/o;
+    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
     .line 131
     .line 132
-    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
-
     .line 133
-    .line 134
-    .line 135
     move-result v6
 
-    .line 136
+    .line 134
     if-nez v6, :cond_2
+
+    .line 135
+    .line 136
+    sget-object v6, Lub/s;->p:Lub/s;
 
     .line 137
     .line 138
-    sget-object v6, Lvb/o;->q:Lvb/o;
+    invoke-virtual {v0, v6}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
     .line 139
     .line 140
-    invoke-virtual {v0, v6}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
-
     .line 141
-    .line 142
-    .line 143
     move-result v6
 
-    .line 144
+    .line 142
     if-eqz v6, :cond_1
 
-    .line 145
-    .line 146
+    .line 143
+    .line 144
     goto :goto_0
 
-    .line 147
+    .line 145
     :cond_1
     new-instance p1, Ljava/lang/StringBuilder;
 
+    .line 146
+    .line 147
+    const-string p2, "protocols must contain h2_prior_knowledge or http/1.1: "
+
     .line 148
     .line 149
-    const-string p2, "protocols must contain h2_prior_knowledge or http/1.1: "
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 150
     .line 151
-    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 152
-    .line 153
-    .line 154
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
+    .line 153
+    .line 154
     .line 155
-    .line 156
-    .line 157
     invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 156
+    .line 157
     .line 158
-    .line 159
-    .line 160
     move-result-object p1
 
-    .line 161
+    .line 159
     new-instance p2, Ljava/lang/IllegalArgumentException;
+
+    .line 160
+    .line 161
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     .line 162
     .line 163
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
     .line 164
-    .line 165
-    .line 166
     move-result-object p1
 
-    .line 167
+    .line 165
     invoke-direct {p2, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .line 166
+    .line 167
     .line 168
-    .line 169
-    .line 170
     throw p2
 
-    .line 171
+    .line 169
     :cond_2
     :goto_0
     invoke-virtual {v0, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
+    .line 170
+    .line 171
     .line 172
-    .line 173
-    .line 174
     move-result v5
 
-    .line 175
+    .line 173
     const/4 v6, 0x1
 
-    .line 176
+    .line 174
     if-eqz v5, :cond_4
+
+    .line 175
+    .line 176
+    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
 
     .line 177
     .line 178
-    invoke-virtual {v0}, Ljava/util/ArrayList;->size()I
-
     .line 179
-    .line 180
-    .line 181
     move-result v5
 
-    .line 182
+    .line 180
     if-gt v5, v6, :cond_3
 
-    .line 183
-    .line 184
+    .line 181
+    .line 182
     goto :goto_1
 
-    .line 185
+    .line 183
     :cond_3
     new-instance p1, Ljava/lang/StringBuilder;
 
+    .line 184
+    .line 185
+    const-string p2, "protocols containing h2_prior_knowledge cannot use other protocols: "
+
     .line 186
     .line 187
-    const-string p2, "protocols containing h2_prior_knowledge cannot use other protocols: "
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 188
     .line 189
-    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 190
-    .line 191
-    .line 192
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
+    .line 191
+    .line 192
     .line 193
-    .line 194
-    .line 195
     invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 194
+    .line 195
     .line 196
-    .line 197
-    .line 198
     move-result-object p1
 
-    .line 199
+    .line 197
     new-instance p2, Ljava/lang/IllegalArgumentException;
+
+    .line 198
+    .line 199
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     .line 200
     .line 201
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
     .line 202
-    .line 203
-    .line 204
     move-result-object p1
 
-    .line 205
+    .line 203
     invoke-direct {p2, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .line 204
+    .line 205
     .line 206
-    .line 207
-    .line 208
     throw p2
 
-    .line 209
+    .line 207
     :cond_4
     :goto_1
-    sget-object v5, Lvb/o;->h:Lvb/o;
+    sget-object v5, Lub/s;->h:Lub/s;
+
+    .line 208
+    .line 209
+    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
     .line 210
     .line 211
-    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
-
     .line 212
-    .line 213
-    .line 214
     move-result v5
 
-    .line 215
+    .line 213
     if-nez v5, :cond_7
+
+    .line 214
+    .line 215
+    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
 
     .line 216
     .line 217
-    invoke-virtual {v0, v2}, Ljava/util/ArrayList;->contains(Ljava/lang/Object;)Z
-
     .line 218
-    .line 219
-    .line 220
     move-result v5
 
-    .line 221
+    .line 219
     if-nez v5, :cond_6
+
+    .line 220
+    .line 221
+    sget-object v5, Lub/s;->q:Lub/s;
 
     .line 222
     .line 223
-    sget-object v5, Lvb/o;->w:Lvb/o;
+    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
     .line 224
     .line 225
-    invoke-virtual {v0, v5}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
-
     .line 226
+    iget-object v5, p1, Lub/r;->t:Ljava/util/List;
+
     .line 227
     .line 228
-    iget-object v5, p1, Lvb/n;->s:Ljava/util/List;
+    invoke-virtual {v0, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     .line 229
     .line 230
-    invoke-virtual {v0, v5}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
     .line 231
-    .line 232
-    .line 233
     move-result v5
 
-    .line 234
+    .line 232
     if-nez v5, :cond_5
+
+    .line 233
+    .line 234
+    iput-object v2, p1, Lub/r;->E:Lvg/a;
 
     .line 235
     .line 236
-    iput-object v2, p1, Lvb/n;->C:Lvf/a;
-
-    .line 237
-    .line 238
     :cond_5
     invoke-static {v0}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
 
+    .line 237
+    .line 238
     .line 239
-    .line 240
-    .line 241
     move-result-object v0
 
-    .line 242
+    .line 240
     const-string v2, "unmodifiableList(...)"
+
+    .line 241
+    .line 242
+    invoke-static {v0, v2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 243
     .line 244
-    invoke-static {v0, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 245
+    iput-object v0, p1, Lub/r;->t:Ljava/util/List;
+
     .line 246
     .line 247
-    iput-object v0, p1, Lvb/n;->s:Ljava/util/List;
+    new-instance v0, Lokhttp3/OkHttpClient;
 
     .line 248
     .line 249
-    new-instance v0, Lokhttp3/OkHttpClient;
+    invoke-direct {v0, p1}, Lokhttp3/OkHttpClient;-><init>(Lub/r;)V
 
     .line 250
     .line 251
-    invoke-direct {v0, p1}, Lokhttp3/OkHttpClient;-><init>(Lvb/n;)V
-
     .line 252
+    invoke-virtual {v3}, Lokhttp3/Request;->a()Lokhttp3/Request$Builder;
+
     .line 253
     .line 254
-    invoke-virtual {v3}, Lae/o;->r()Lokhttp3/Request$Builder;
-
     .line 255
-    .line 256
-    .line 257
     move-result-object p1
 
-    .line 258
+    .line 256
     const-string v2, "websocket"
+
+    .line 257
+    .line 258
+    const-string v3, "Upgrade"
 
     .line 259
     .line 260
-    const-string v3, "Upgrade"
+    invoke-virtual {p1, v3, v2}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 261
     .line 262
-    invoke-virtual {p1, v3, v2}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 263
+    const-string v2, "Connection"
+
     .line 264
     .line 265
-    const-string v2, "Connection"
+    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 266
     .line 267
-    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 268
+    const-string v2, "Sec-WebSocket-Key"
+
     .line 269
     .line 270
-    const-string v2, "Sec-WebSocket-Key"
+    iget-object v3, v1, Lkc/f;->g:Ljava/lang/String;
 
     .line 271
     .line 272
-    iget-object v3, v1, Llc/f;->g:Ljava/lang/String;
+    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 273
     .line 274
-    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 275
+    const-string v2, "Sec-WebSocket-Version"
+
     .line 276
     .line 277
-    const-string v2, "Sec-WebSocket-Version"
+    const-string v3, "13"
 
     .line 278
     .line 279
-    const-string v3, "13"
+    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 280
     .line 281
-    invoke-virtual {p1, v2, v3}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 282
+    const-string v2, "permessage-deflate"
+
     .line 283
     .line 284
-    const-string v2, "permessage-deflate"
+    invoke-virtual {p1, p2, v2}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 285
     .line 286
-    invoke-virtual {p1, p2, v2}, Lokhttp3/Request$Builder;->b(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 287
+    new-instance p2, Lokhttp3/Request;
+
     .line 288
     .line 289
-    new-instance p2, Lae/o;
+    invoke-direct {p2, p1}, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
 
     .line 290
     .line 291
-    invoke-direct {p2, p1}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
-
     .line 292
+    new-instance p1, Lyb/o;
+
     .line 293
     .line 294
-    new-instance p1, Lzb/o;
+    invoke-direct {p1, v0, p2, v6}, Lyb/o;-><init>(Lokhttp3/OkHttpClient;Lokhttp3/Request;Z)V
 
     .line 295
     .line 296
-    invoke-direct {p1, v0, p2, v6}, Lzb/o;-><init>(Lokhttp3/OkHttpClient;Lae/o;Z)V
-
     .line 297
+    iput-object p1, v1, Lkc/f;->h:Lyb/o;
+
     .line 298
     .line 299
-    iput-object p1, v1, Llc/f;->h:Lzb/o;
+    new-instance v0, Lk6/g0;
 
     .line 300
     .line 301
-    new-instance v0, Li6/i0;
+    const/4 v2, 0x2
 
     .line 302
+    invoke-direct {v0, v1, p2, v2}, Lk6/g0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 303
-    const/4 v2, 0x5
-
     .line 304
-    invoke-direct {v0, v1, p2, v2}, Li6/i0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 305
+    invoke-virtual {p1, v0}, Lyb/o;->d(Lub/i;)V
+
     .line 306
     .line 307
-    invoke-virtual {p1, v0}, Lzb/o;->e(Lvb/d;)V
-
     .line 308
-    .line 309
-    .line 310
     :goto_2
     iput-object v1, v4, Lcom/xbox/httpclient/HttpClientWebSocket;->socket:Lokhttp3/WebSocket;
 
-    .line 311
-    .line 312
+    .line 309
+    .line 310
     return-void
 
-    .line 313
+    .line 311
     :cond_6
     new-instance p1, Ljava/lang/IllegalArgumentException;
 
+    .line 312
+    .line 313
+    const-string p2, "protocols must not contain null"
+
     .line 314
     .line 315
-    const-string p2, "protocols must not contain null"
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 316
     .line 317
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 318
-    .line 319
-    .line 320
     throw p1
 
-    .line 321
+    .line 319
     :cond_7
     new-instance p1, Ljava/lang/StringBuilder;
 
+    .line 320
+    .line 321
+    const-string p2, "protocols must not contain http/1.0: "
+
     .line 322
     .line 323
-    const-string p2, "protocols must not contain http/1.0: "
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 324
     .line 325
-    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 326
-    .line 327
-    .line 328
     invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
+    .line 327
+    .line 328
     .line 329
-    .line 330
-    .line 331
     invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 330
+    .line 331
     .line 332
-    .line 333
-    .line 334
     move-result-object p1
 
-    .line 335
+    .line 333
     new-instance p2, Ljava/lang/IllegalArgumentException;
+
+    .line 334
+    .line 335
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     .line 336
     .line 337
-    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
-
     .line 338
-    .line 339
-    .line 340
     move-result-object p1
 
-    .line 341
+    .line 339
     invoke-direct {p2, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
+    .line 340
+    .line 341
     .line 342
-    .line 343
-    .line 344
     throw p2
 .end method
 
@@ -845,7 +841,7 @@
     if-eqz p3, :cond_0
 
     .line 1
-    iget p1, p3, Lokhttp3/Response;->q:I
+    iget p1, p3, Lokhttp3/Response;->p:I
 
     goto :goto_0
 
@@ -922,7 +918,7 @@
 
     .line 2
     .line 3
-    sget-object v1, Lokio/ByteString;->q:Lokio/ByteString;
+    sget-object v1, Lokio/ByteString;->p:Lokio/ByteString;
 
     .line 4
     .line 5
@@ -930,7 +926,7 @@
 
     .line 6
     .line 7
-    invoke-static {p1, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     .line 9

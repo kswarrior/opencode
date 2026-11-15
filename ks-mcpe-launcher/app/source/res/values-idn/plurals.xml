@@ -4,6 +4,9 @@
         <item quantity="one">%1$d lapisan • bawah → atas</item>
         <item quantity="other">%1$d lapisan • bawah → atas</item>
     </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="other">%1$d versi</item>
+    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d pilihan</item>
         <item quantity="other">%d pilihan</item>
@@ -15,5 +18,35 @@
     <plurals name="mod_config_items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d item</item>
+    </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="other">%1$d mod</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="other">Anda akan mencopot instalan %1$d paket dari %2$s. Lanjutkan?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="other">%1$d paket dicopot</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="other">%1$d paket dipilih, %2$d di antaranya dapat diperbarui. Lanjutkan?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="other">%1$d paket diperbarui</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="other">Tampilkan %d hasil</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="other">%1$d paket, %2$d diinstal oleh Anda · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="other">%d dependensi</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="other">%d file tercatat</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="other">%d versi</item>
     </plurals>
 </resources>

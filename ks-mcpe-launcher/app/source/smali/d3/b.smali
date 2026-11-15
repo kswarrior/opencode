@@ -1,6 +1,6 @@
 .class public final Ld3/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lu2/y;
@@ -14,11 +14,11 @@
 
 
 # direct methods
-.method public constructor <init>(ILandroid/graphics/drawable/Drawable;)V
+.method public constructor <init>(Landroid/graphics/drawable/Drawable;I)V
     .locals 0
 
     .line 1
-    iput p1, p0, Ld3/b;->d:I
+    iput p2, p0, Ld3/b;->d:I
 
     .line 2
     .line 3
@@ -27,16 +27,16 @@
     .line 4
     .line 5
     .line 6
-    const-string p1, "Argument must not be null"
+    const-string p2, "Argument must not be null"
 
     .line 7
     .line 8
-    invoke-static {p2, p1}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 9
     .line 10
     .line 11
-    iput-object p2, p0, Ld3/b;->c:Landroid/graphics/drawable/Drawable;
+    iput-object p1, p0, Ld3/b;->c:Landroid/graphics/drawable/Drawable;
 
     .line 12
     .line 13
@@ -98,7 +98,7 @@
 
     .line 22
     :cond_0
-    instance-of v1, v0, Lf3/c;
+    instance-of v1, v0, Lf3/d;
 
     .line 23
     .line 24
@@ -106,23 +106,23 @@
 
     .line 25
     .line 26
-    check-cast v0, Lf3/c;
+    check-cast v0, Lf3/d;
 
     .line 27
     .line 28
-    iget-object v0, v0, Lf3/c;->c:Lf3/b;
+    iget-object v0, v0, Lf3/d;->c:Lf3/c;
 
     .line 29
     .line 30
-    iget-object v0, v0, Lf3/b;->b:Ljava/lang/Object;
+    iget-object v0, v0, Lf3/c;->b:Ljava/lang/Object;
 
     .line 31
     .line 32
-    check-cast v0, Lf3/h;
+    check-cast v0, Lf3/i;
 
     .line 33
     .line 34
-    iget-object v0, v0, Lf3/h;->l:Landroid/graphics/Bitmap;
+    iget-object v0, v0, Lf3/i;->l:Landroid/graphics/Bitmap;
 
     .line 35
     .line 36
@@ -141,23 +141,23 @@
 
     .line 41
     .line 42
-    check-cast v0, Lf3/c;
+    check-cast v0, Lf3/d;
 
     .line 43
     .line 44
-    iget-object v0, v0, Lf3/c;->c:Lf3/b;
+    iget-object v0, v0, Lf3/d;->c:Lf3/c;
 
     .line 45
     .line 46
-    iget-object v0, v0, Lf3/b;->b:Ljava/lang/Object;
+    iget-object v0, v0, Lf3/c;->b:Ljava/lang/Object;
 
     .line 47
     .line 48
-    check-cast v0, Lf3/h;
+    check-cast v0, Lf3/i;
 
     .line 49
     .line 50
-    iget-object v0, v0, Lf3/h;->l:Landroid/graphics/Bitmap;
+    iget-object v0, v0, Lf3/i;->l:Landroid/graphics/Bitmap;
 
     .line 51
     .line 52
@@ -195,11 +195,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lf3/c;
+    check-cast v0, Lf3/d;
 
     .line 9
     .line 10
-    invoke-virtual {v0}, Lf3/c;->stop()V
+    invoke-virtual {v0}, Lf3/d;->stop()V
 
     .line 11
     .line 12
@@ -207,27 +207,27 @@
     const/4 v1, 0x1
 
     .line 14
-    iput-boolean v1, v0, Lf3/c;->q:Z
+    iput-boolean v1, v0, Lf3/d;->p:Z
 
     .line 15
     .line 16
-    iget-object v0, v0, Lf3/c;->c:Lf3/b;
+    iget-object v0, v0, Lf3/d;->c:Lf3/c;
 
     .line 17
     .line 18
-    iget-object v0, v0, Lf3/b;->b:Ljava/lang/Object;
+    iget-object v0, v0, Lf3/c;->b:Ljava/lang/Object;
 
     .line 19
     .line 20
-    check-cast v0, Lf3/h;
+    check-cast v0, Lf3/i;
 
     .line 21
     .line 22
-    iget-object v2, v0, Lf3/h;->d:Lcom/bumptech/glide/q;
+    iget-object v2, v0, Lf3/i;->d:Lcom/bumptech/glide/RequestManager;
 
     .line 23
     .line 24
-    iget-object v3, v0, Lf3/h;->c:Ljava/util/ArrayList;
+    iget-object v3, v0, Lf3/i;->c:Ljava/util/ArrayList;
 
     .line 25
     .line 26
@@ -236,7 +236,7 @@
     .line 27
     .line 28
     .line 29
-    iget-object v3, v0, Lf3/h;->l:Landroid/graphics/Bitmap;
+    iget-object v3, v0, Lf3/i;->l:Landroid/graphics/Bitmap;
 
     .line 30
     .line 31
@@ -247,16 +247,16 @@
 
     .line 33
     .line 34
-    iget-object v5, v0, Lf3/h;->e:Lv2/a;
+    iget-object v5, v0, Lf3/i;->e:Lv2/a;
 
     .line 35
     .line 36
-    invoke-interface {v5, v3}, Lv2/a;->b(Landroid/graphics/Bitmap;)V
+    invoke-interface {v5, v3}, Lv2/a;->d(Landroid/graphics/Bitmap;)V
 
     .line 37
     .line 38
     .line 39
-    iput-object v4, v0, Lf3/h;->l:Landroid/graphics/Bitmap;
+    iput-object v4, v0, Lf3/i;->l:Landroid/graphics/Bitmap;
 
     .line 40
     .line 41
@@ -264,11 +264,11 @@
     const/4 v3, 0x0
 
     .line 42
-    iput-boolean v3, v0, Lf3/h;->f:Z
+    iput-boolean v3, v0, Lf3/i;->f:Z
 
     .line 43
     .line 44
-    iget-object v3, v0, Lf3/h;->i:Lf3/e;
+    iget-object v3, v0, Lf3/i;->i:Lf3/f;
 
     .line 45
     .line 46
@@ -276,17 +276,17 @@
 
     .line 47
     .line 48
-    invoke-virtual {v2, v3}, Lcom/bumptech/glide/q;->a(Ll3/e;)V
+    invoke-virtual {v2, v3}, Lcom/bumptech/glide/RequestManager;->b(Ll3/e;)V
 
     .line 49
     .line 50
     .line 51
-    iput-object v4, v0, Lf3/h;->i:Lf3/e;
+    iput-object v4, v0, Lf3/i;->i:Lf3/f;
 
     .line 52
     .line 53
     :cond_1
-    iget-object v3, v0, Lf3/h;->k:Lf3/e;
+    iget-object v3, v0, Lf3/i;->k:Lf3/f;
 
     .line 54
     .line 55
@@ -294,17 +294,17 @@
 
     .line 56
     .line 57
-    invoke-virtual {v2, v3}, Lcom/bumptech/glide/q;->a(Ll3/e;)V
+    invoke-virtual {v2, v3}, Lcom/bumptech/glide/RequestManager;->b(Ll3/e;)V
 
     .line 58
     .line 59
     .line 60
-    iput-object v4, v0, Lf3/h;->k:Lf3/e;
+    iput-object v4, v0, Lf3/i;->k:Lf3/f;
 
     .line 61
     .line 62
     :cond_2
-    iget-object v3, v0, Lf3/h;->m:Lf3/e;
+    iget-object v3, v0, Lf3/i;->m:Lf3/f;
 
     .line 63
     .line 64
@@ -312,21 +312,21 @@
 
     .line 65
     .line 66
-    invoke-virtual {v2, v3}, Lcom/bumptech/glide/q;->a(Ll3/e;)V
+    invoke-virtual {v2, v3}, Lcom/bumptech/glide/RequestManager;->b(Ll3/e;)V
 
     .line 67
     .line 68
     .line 69
-    iput-object v4, v0, Lf3/h;->m:Lf3/e;
+    iput-object v4, v0, Lf3/i;->m:Lf3/f;
 
     .line 70
     .line 71
     :cond_3
-    iget-object v2, v0, Lf3/h;->a:Lr2/d;
+    iget-object v2, v0, Lf3/i;->a:Lr2/d;
 
     .line 72
     .line 73
-    iget-object v3, v2, Lr2/d;->c:Lo7/e;
+    iget-object v3, v2, Lr2/d;->c:Lq7/e;
 
     .line 74
     .line 75
@@ -342,11 +342,11 @@
 
     .line 80
     .line 81
-    iget-object v6, v3, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v6, v3, Lq7/e;->h:Ljava/lang/Object;
 
     .line 82
     .line 83
-    check-cast v6, Lqf/a;
+    check-cast v6, Lig/a;
 
     .line 84
     .line 85
@@ -358,7 +358,7 @@
 
     .line 88
     :cond_4
-    invoke-virtual {v6, v5}, Lqf/a;->g(Ljava/lang/Object;)V
+    invoke-virtual {v6, v5}, Lig/a;->g(Ljava/lang/Object;)V
 
     .line 89
     .line 90
@@ -373,11 +373,11 @@
 
     .line 94
     .line 95
-    iget-object v6, v3, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v6, v3, Lq7/e;->h:Ljava/lang/Object;
 
     .line 96
     .line 97
-    check-cast v6, Lqf/a;
+    check-cast v6, Lig/a;
 
     .line 98
     .line 99
@@ -389,7 +389,7 @@
 
     .line 102
     :cond_6
-    invoke-virtual {v6, v5}, Lqf/a;->g(Ljava/lang/Object;)V
+    invoke-virtual {v6, v5}, Lig/a;->g(Ljava/lang/Object;)V
 
     .line 103
     .line 104
@@ -404,7 +404,7 @@
 
     .line 108
     .line 109
-    iget-object v6, v3, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v6, v3, Lq7/e;->d:Ljava/lang/Object;
 
     .line 110
     .line 111
@@ -412,7 +412,7 @@
 
     .line 112
     .line 113
-    invoke-interface {v6, v5}, Lv2/a;->b(Landroid/graphics/Bitmap;)V
+    invoke-interface {v6, v5}, Lv2/a;->d(Landroid/graphics/Bitmap;)V
 
     .line 114
     .line 115
@@ -438,11 +438,11 @@
 
     .line 125
     .line 126
-    iget-object v3, v3, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v3, v3, Lq7/e;->h:Ljava/lang/Object;
 
     .line 127
     .line 128
-    check-cast v3, Lqf/a;
+    check-cast v3, Lig/a;
 
     .line 129
     .line 130
@@ -454,14 +454,14 @@
 
     .line 133
     :cond_9
-    invoke-virtual {v3, v2}, Lqf/a;->g(Ljava/lang/Object;)V
+    invoke-virtual {v3, v2}, Lig/a;->g(Ljava/lang/Object;)V
 
     .line 134
     .line 135
     .line 136
     :cond_a
     :goto_2
-    iput-boolean v1, v0, Lf3/h;->j:Z
+    iput-boolean v1, v0, Lf3/i;->j:Z
 
     .line 137
     .line 138
@@ -492,23 +492,23 @@
 
     .line 7
     .line 8
-    check-cast v0, Lf3/c;
+    check-cast v0, Lf3/d;
 
     .line 9
     .line 10
-    iget-object v0, v0, Lf3/c;->c:Lf3/b;
+    iget-object v0, v0, Lf3/d;->c:Lf3/c;
 
     .line 11
     .line 12
-    iget-object v0, v0, Lf3/b;->b:Ljava/lang/Object;
+    iget-object v0, v0, Lf3/c;->b:Ljava/lang/Object;
 
     .line 13
     .line 14
-    check-cast v0, Lf3/h;
+    check-cast v0, Lf3/i;
 
     .line 15
     .line 16
-    iget-object v1, v0, Lf3/h;->a:Lr2/d;
+    iget-object v1, v0, Lf3/i;->a:Lr2/d;
 
     .line 17
     .line 18
@@ -548,7 +548,7 @@
     add-int/2addr v1, v2
 
     .line 34
-    iget v0, v0, Lf3/h;->n:I
+    iget v0, v0, Lf3/i;->n:I
 
     .line 35
     .line 36
@@ -619,7 +619,7 @@
     .line 4
     .line 5
     .line 6
-    const-class v0, Lf3/c;
+    const-class v0, Lf3/d;
 
     .line 7
     .line 8

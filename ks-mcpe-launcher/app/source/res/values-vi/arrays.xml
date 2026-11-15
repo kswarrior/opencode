@@ -12,5 +12,11 @@
         <item>Quản lý nhiều tài khoản Xbox ngay trong trình khởi chạy và chuyển đổi giữa chúng một cách liền mạch.</item>
         <item>CurseForge cho phép bạn duyệt và tải xuống nội dung do cộng đồng trực tiếp thực hiện.</item>
         <item>Nhập các bản mod để mở rộng hoặc nâng cao các tính năng và hiệu năng của Minecraft.</item>
+        <item>Bạn cũng có thể dùng GIF động làm hình nền trình khởi chạy.</item>
+        <item>Đổi biểu tượng của bản cài trong phần cài đặt của bản đó.</item>
+        <item>Đánh dấu sao cho mô-đun trong menu mod để tìm nhanh trong Yêu thích.</item>
+        <item>Kéo tiêu đề menu mod để di chuyển hoặc kéo góc dưới bên phải để đổi kích thước.</item>
+        <item>Dùng Chỉ tương thích trong Mod bên ngoài để lọc theo phiên bản Minecraft của bạn.</item>
+        <item>Sao lưu thế giới trước khi chỉnh sửa dữ liệu NBT của nó.</item>
     </string-array>
 </resources>

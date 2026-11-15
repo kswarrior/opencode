@@ -1,6 +1,6 @@
 .class public Landroidx/datastore/preferences/protobuf/a1;
 .super Ljava/util/AbstractSet;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -77,7 +77,7 @@
 
     .line 20
     .line 21
-    check-cast v0, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 22
     .line 23
@@ -101,7 +101,7 @@
     move-result-object p1
 
     .line 33
-    invoke-virtual {v0, v1, p1}, Lcom/google/android/gms/internal/measurement/n2;->c(Ljava/lang/Comparable;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, v1, p1}, Lcom/google/android/gms/internal/measurement/q2;->c(Ljava/lang/Comparable;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 34
     .line 35
@@ -183,6 +183,7 @@
     :goto_1
     return p1
 
+    .line 69
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
@@ -216,11 +217,11 @@
 
     .line 11
     .line 12
-    check-cast v0, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 13
     .line 14
-    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/n2;->clear()V
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/q2;->clear()V
 
     .line 15
     .line 16
@@ -296,11 +297,11 @@
 
     .line 18
     .line 19
-    check-cast v1, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v1, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 20
     .line 21
-    invoke-virtual {v1, v0}, Lcom/google/android/gms/internal/measurement/n2;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v1, v0}, Lcom/google/android/gms/internal/measurement/q2;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 22
     .line 23
@@ -471,14 +472,14 @@
 
     .line 16
     :pswitch_0
-    new-instance v0, Lah/a;
+    new-instance v0, Lcom/google/android/gms/internal/measurement/u;
 
     .line 17
     .line 18
-    const/4 v1, 0x2
+    const/4 v1, 0x1
 
     .line 19
-    invoke-direct {v0, p0, v1}, Lah/a;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, Lcom/google/android/gms/internal/measurement/u;-><init>(Ljava/lang/Object;I)V
 
     .line 20
     .line 21
@@ -495,11 +496,11 @@
 
     .line 26
     .line 27
-    check-cast v1, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v1, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 28
     .line 29
-    invoke-direct {v0, v1}, Landroidx/datastore/preferences/protobuf/z0;-><init>(Lcom/google/android/gms/internal/measurement/n2;)V
+    invoke-direct {v0, v1}, Landroidx/datastore/preferences/protobuf/z0;-><init>(Lcom/google/android/gms/internal/measurement/q2;)V
 
     .line 30
     .line 31
@@ -581,7 +582,7 @@
 
     .line 20
     .line 21
-    check-cast v0, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 22
     .line 23
@@ -593,7 +594,7 @@
     move-result-object p1
 
     .line 27
-    invoke-virtual {v0, p1}, Lcom/google/android/gms/internal/measurement/n2;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, p1}, Lcom/google/android/gms/internal/measurement/q2;->remove(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 28
     .line 29
@@ -704,11 +705,11 @@
 
     .line 14
     .line 15
-    check-cast v0, Lcom/google/android/gms/internal/measurement/pi;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/ui;
 
     .line 16
     .line 17
-    iget v0, v0, Lcom/google/android/gms/internal/measurement/pi;->e:I
+    iget v0, v0, Lcom/google/android/gms/internal/measurement/ui;->e:I
 
     .line 18
     .line 19
@@ -720,11 +721,11 @@
 
     .line 21
     .line 22
-    check-cast v0, Lcom/google/android/gms/internal/measurement/n2;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/q2;
 
     .line 23
     .line 24
-    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/n2;->size()I
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/q2;->size()I
 
     .line 25
     .line 26

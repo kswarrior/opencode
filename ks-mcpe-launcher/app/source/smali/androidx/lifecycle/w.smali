@@ -1,15 +1,15 @@
 .class public final Landroidx/lifecycle/w;
 .super Landroidx/lifecycle/x;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroidx/lifecycle/q;
+.implements Landroidx/lifecycle/r;
 
 
 # instance fields
-.field public final w:Landroidx/lifecycle/LifecycleOwner;
+.field public final q:Landroidx/lifecycle/LifecycleOwner;
 
-.field public final synthetic x:Landroidx/lifecycle/LiveData;
+.field public final synthetic w:Landroidx/lifecycle/LiveData;
 
 
 # direct methods
@@ -17,7 +17,7 @@
     .locals 0
 
     .line 1
-    iput-object p1, p0, Landroidx/lifecycle/w;->x:Landroidx/lifecycle/LiveData;
+    iput-object p1, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LiveData;
 
     .line 2
     .line 3
@@ -26,7 +26,7 @@
     .line 4
     .line 5
     .line 6
-    iput-object p2, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LifecycleOwner;
+    iput-object p2, p0, Landroidx/lifecycle/w;->q:Landroidx/lifecycle/LifecycleOwner;
 
     .line 7
     .line 8
@@ -35,11 +35,11 @@
 
 
 # virtual methods
-.method public final a(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/n;)V
+.method public final a(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/o;)V
     .locals 2
 
     .line 1
-    iget-object p1, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LifecycleOwner;
+    iget-object p1, p0, Landroidx/lifecycle/w;->q:Landroidx/lifecycle/LifecycleOwner;
 
     .line 2
     .line 3
@@ -67,7 +67,7 @@
 
     .line 14
     .line 15
-    iget-object p1, p0, Landroidx/lifecycle/w;->x:Landroidx/lifecycle/LiveData;
+    iget-object p1, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LiveData;
 
     .line 16
     .line 17
@@ -141,7 +141,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LifecycleOwner;
+    iget-object v0, p0, Landroidx/lifecycle/w;->q:Landroidx/lifecycle/LifecycleOwner;
 
     .line 2
     .line 3
@@ -153,7 +153,7 @@
     move-result-object v0
 
     .line 7
-    invoke-virtual {v0, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/r;)V
+    invoke-virtual {v0, p0}, Landroidx/lifecycle/Lifecycle;->c(Landroidx/lifecycle/s;)V
 
     .line 8
     .line 9
@@ -165,7 +165,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LifecycleOwner;
+    iget-object v0, p0, Landroidx/lifecycle/w;->q:Landroidx/lifecycle/LifecycleOwner;
 
     .line 2
     .line 3
@@ -190,7 +190,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Landroidx/lifecycle/w;->w:Landroidx/lifecycle/LifecycleOwner;
+    iget-object v0, p0, Landroidx/lifecycle/w;->q:Landroidx/lifecycle/LifecycleOwner;
 
     .line 2
     .line 3
@@ -210,7 +210,7 @@
     move-result-object v0
 
     .line 11
-    sget-object v1, Landroidx/lifecycle/Lifecycle$State;->q:Landroidx/lifecycle/Lifecycle$State;
+    sget-object v1, Landroidx/lifecycle/Lifecycle$State;->p:Landroidx/lifecycle/Lifecycle$State;
 
     .line 12
     .line 13

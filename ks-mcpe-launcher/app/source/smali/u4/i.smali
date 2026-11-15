@@ -1,6 +1,6 @@
 .class public final Lu4/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/os/Parcelable$Creator;
@@ -55,18 +55,18 @@
 
     .line 12
     .line 13
-    iput v1, v0, Lz4/b;->Y:I
+    iput v1, v0, Lz4/b;->X:I
 
     .line 14
     .line 15
     const/4 v1, -0x2
 
     .line 16
-    iput v1, v0, Lz4/b;->b1:I
+    iput v1, v0, Lz4/b;->Z:I
 
     .line 17
     .line 18
-    iput v1, v0, Lz4/b;->B1:I
+    iput v1, v0, Lz4/b;->b1:I
 
     .line 19
     .line 20
@@ -138,7 +138,7 @@
 
     .line 53
     .line 54
-    iput-object v1, v0, Lz4/b;->q:Ljava/lang/Integer;
+    iput-object v1, v0, Lz4/b;->p:Ljava/lang/Integer;
 
     .line 55
     .line 56
@@ -154,7 +154,7 @@
 
     .line 61
     .line 62
-    iput-object v1, v0, Lz4/b;->w:Ljava/lang/Integer;
+    iput-object v1, v0, Lz4/b;->q:Ljava/lang/Integer;
 
     .line 63
     .line 64
@@ -170,7 +170,7 @@
 
     .line 69
     .line 70
-    iput-object v1, v0, Lz4/b;->x:Ljava/lang/Integer;
+    iput-object v1, v0, Lz4/b;->w:Ljava/lang/Integer;
 
     .line 71
     .line 72
@@ -186,7 +186,7 @@
 
     .line 77
     .line 78
-    iput-object v1, v0, Lz4/b;->y:Ljava/lang/Integer;
+    iput-object v1, v0, Lz4/b;->x:Ljava/lang/Integer;
 
     .line 79
     .line 80
@@ -202,7 +202,7 @@
 
     .line 85
     .line 86
-    iput-object v1, v0, Lz4/b;->X:Ljava/lang/Integer;
+    iput-object v1, v0, Lz4/b;->y:Ljava/lang/Integer;
 
     .line 87
     .line 88
@@ -214,7 +214,7 @@
     move-result v1
 
     .line 92
-    iput v1, v0, Lz4/b;->Y:I
+    iput v1, v0, Lz4/b;->X:I
 
     .line 93
     .line 94
@@ -226,7 +226,7 @@
     move-result-object v1
 
     .line 98
-    iput-object v1, v0, Lz4/b;->Z:Ljava/lang/String;
+    iput-object v1, v0, Lz4/b;->Y:Ljava/lang/String;
 
     .line 99
     .line 100
@@ -238,7 +238,7 @@
     move-result v1
 
     .line 104
-    iput v1, v0, Lz4/b;->b1:I
+    iput v1, v0, Lz4/b;->Z:I
 
     .line 105
     .line 106
@@ -250,7 +250,7 @@
     move-result v1
 
     .line 110
-    iput v1, v0, Lz4/b;->B1:I
+    iput v1, v0, Lz4/b;->b1:I
 
     .line 111
     .line 112
@@ -530,11 +530,11 @@
 
     .line 249
     :pswitch_0
-    new-instance v0, Lv5/g;
+    new-instance v0, Lx5/f;
 
     .line 250
     .line 251
-    invoke-direct {v0, p1}, Lv5/g;-><init>(Landroid/os/Parcel;)V
+    invoke-direct {v0, p1}, Lx5/f;-><init>(Landroid/os/Parcel;)V
 
     .line 252
     .line 253
@@ -543,7 +543,7 @@
 
     .line 255
     :pswitch_1
-    new-instance v0, Lv5/d;
+    new-instance v0, Lx5/c;
 
     .line 256
     .line 257
@@ -560,7 +560,7 @@
     move-result v1
 
     .line 264
-    iput v1, v0, Lv5/d;->c:F
+    iput v1, v0, Lx5/c;->c:F
 
     .line 265
     .line 266
@@ -572,7 +572,7 @@
     move-result v1
 
     .line 270
-    iput v1, v0, Lv5/d;->d:F
+    iput v1, v0, Lx5/c;->d:F
 
     .line 271
     .line 272
@@ -585,7 +585,7 @@
     .line 275
     .line 276
     .line 277
-    iput-object v1, v0, Lv5/d;->h:Ljava/util/ArrayList;
+    iput-object v1, v0, Lx5/c;->h:Ljava/util/ArrayList;
 
     .line 278
     .line 279
@@ -614,7 +614,7 @@
     move-result v1
 
     .line 292
-    iput v1, v0, Lv5/d;->q:F
+    iput v1, v0, Lx5/c;->p:F
 
     .line 293
     .line 294
@@ -633,7 +633,7 @@
 
     .line 300
     .line 301
-    iput-boolean p1, v0, Lv5/d;->w:Z
+    iput-boolean p1, v0, Lx5/c;->q:Z
 
     .line 302
     .line 303
@@ -818,7 +818,7 @@
 
     .line 9
     :pswitch_0
-    new-array p1, p1, [Lv5/g;
+    new-array p1, p1, [Lx5/f;
 
     .line 10
     .line 11
@@ -826,7 +826,7 @@
 
     .line 12
     :pswitch_1
-    new-array p1, p1, [Lv5/d;
+    new-array p1, p1, [Lx5/c;
 
     .line 13
     .line 14

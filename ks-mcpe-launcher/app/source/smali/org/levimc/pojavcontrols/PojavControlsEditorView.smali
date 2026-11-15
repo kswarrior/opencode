@@ -1,6 +1,6 @@
 .class final Lorg/levimc/pojavcontrols/PojavControlsEditorView;
 .super Landroid/widget/FrameLayout;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -1033,7 +1033,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
+    invoke-static {p1}, Ln8/a;->b(Landroid/widget/EditText;)Ljava/lang/String;
 
     .line 4
     .line 5
@@ -1962,221 +1962,380 @@
     iget-object v0, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
 
     .line 2
-    invoke-static {p2}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
-
-    move-result-object p2
-
     .line 3
-    iput-object p2, v0, Lorg/levimc/pojavcontrols/ControlData;->name:Ljava/lang/String;
+    invoke-static {p2}, Ln8/a;->b(Landroid/widget/EditText;)Ljava/lang/String;
 
     .line 4
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    const/4 v0, 0x1
-
-    invoke-static {p3, v0}, Ljava/util/Arrays;->copyOf([II)[I
-
-    move-result-object p3
-
-    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->keycodes:[I
-
     .line 5
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
     .line 6
-    invoke-static {p4}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
-
-    move-result-object p3
+    move-result-object p2
 
     .line 7
-    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->dynamicX:Ljava/lang/String;
+    iput-object p2, v0, Lorg/levimc/pojavcontrols/ControlData;->name:Ljava/lang/String;
 
     .line 8
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
     .line 9
-    invoke-static {p5}, Ln5/h;->a(Landroid/widget/EditText;)Ljava/lang/String;
-
-    move-result-object p3
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
 
     .line 10
-    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->dynamicY:Ljava/lang/String;
-
     .line 11
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->width:F
-
-    invoke-direct {p0, p6, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->width:F
+    const/4 v0, 0x1
 
     .line 12
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->height:F
-
-    invoke-direct {p0, p7, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->height:F
+    invoke-static {p3, v0}, Ljava/util/Arrays;->copyOf([II)[I
 
     .line 13
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->opacity:F
-
-    const/high16 p4, 0x42c80000    # 100.0f
-
-    mul-float/2addr p3, p4
-
-    invoke-direct {p0, p8, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
-
-    move-result p3
-
-    div-float/2addr p3, p4
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->opacity:F
-
     .line 14
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->bgColor:I
-
-    invoke-direct {p0, p9, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->color(Landroid/widget/EditText;I)I
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->bgColor:I
-
     .line 15
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeColor:I
-
-    invoke-direct {p0, p10, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->color(Landroid/widget/EditText;I)I
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeColor:I
+    move-result-object p3
 
     .line 16
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeWidth:F
-
-    invoke-direct {p0, p11, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeWidth:F
+    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->keycodes:[I
 
     .line 17
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->cornerRadius:F
-
-    invoke-direct {p0, p12, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
-
-    move-result p3
-
-    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->cornerRadius:F
-
     .line 18
     iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
 
-    invoke-virtual {p13}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->isToggle:Z
-
     .line 19
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    invoke-virtual {p14}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->isSwipeable:Z
-
     .line 20
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    invoke-virtual/range {p15 .. p15}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->passThruEnabled:Z
+    invoke-static {p4}, Ln8/a;->b(Landroid/widget/EditText;)Ljava/lang/String;
 
     .line 21
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    invoke-virtual/range {p16 .. p16}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->displayInGame:Z
-
     .line 22
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
-
-    invoke-virtual/range {p17 .. p17}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->displayInMenu:Z
-
     .line 23
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->joystick:Lorg/levimc/pojavcontrols/ControlJoystickData;
-
-    if-eqz p2, :cond_0
+    move-result-object p3
 
     .line 24
-    invoke-virtual/range {p18 .. p18}, Landroid/widget/CompoundButton;->isChecked()Z
-
-    move-result p3
-
-    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlJoystickData;->absolute:Z
+    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->dynamicX:Ljava/lang/String;
 
     .line 25
-    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->joystick:Lorg/levimc/pojavcontrols/ControlJoystickData;
+    .line 26
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
 
-    invoke-virtual/range {p19 .. p19}, Landroid/widget/CompoundButton;->isChecked()Z
+    .line 27
+    .line 28
+    invoke-static {p5}, Ln8/a;->b(Landroid/widget/EditText;)Ljava/lang/String;
 
+    .line 29
+    .line 30
+    .line 31
+    move-result-object p3
+
+    .line 32
+    iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlData;->dynamicY:Ljava/lang/String;
+
+    .line 33
+    .line 34
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 35
+    .line 36
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->width:F
+
+    .line 37
+    .line 38
+    invoke-direct {p0, p6, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
+
+    .line 39
+    .line 40
+    .line 41
     move-result p3
 
+    .line 42
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->width:F
+
+    .line 43
+    .line 44
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 45
+    .line 46
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->height:F
+
+    .line 47
+    .line 48
+    invoke-direct {p0, p7, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
+
+    .line 49
+    .line 50
+    .line 51
+    move-result p3
+
+    .line 52
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->height:F
+
+    .line 53
+    .line 54
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 55
+    .line 56
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->opacity:F
+
+    .line 57
+    .line 58
+    const/high16 p4, 0x42c80000    # 100.0f
+
+    .line 59
+    .line 60
+    mul-float/2addr p3, p4
+
+    .line 61
+    invoke-direct {p0, p8, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
+
+    .line 62
+    .line 63
+    .line 64
+    move-result p3
+
+    .line 65
+    div-float/2addr p3, p4
+
+    .line 66
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->opacity:F
+
+    .line 67
+    .line 68
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 69
+    .line 70
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->bgColor:I
+
+    .line 71
+    .line 72
+    invoke-direct {p0, p9, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->color(Landroid/widget/EditText;I)I
+
+    .line 73
+    .line 74
+    .line 75
+    move-result p3
+
+    .line 76
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->bgColor:I
+
+    .line 77
+    .line 78
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 79
+    .line 80
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeColor:I
+
+    .line 81
+    .line 82
+    invoke-direct {p0, p10, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->color(Landroid/widget/EditText;I)I
+
+    .line 83
+    .line 84
+    .line 85
+    move-result p3
+
+    .line 86
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeColor:I
+
+    .line 87
+    .line 88
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 89
+    .line 90
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeWidth:F
+
+    .line 91
+    .line 92
+    invoke-direct {p0, p11, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
+
+    .line 93
+    .line 94
+    .line 95
+    move-result p3
+
+    .line 96
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->strokeWidth:F
+
+    .line 97
+    .line 98
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 99
+    .line 100
+    iget p3, p2, Lorg/levimc/pojavcontrols/ControlData;->cornerRadius:F
+
+    .line 101
+    .line 102
+    invoke-direct {p0, p12, p3}, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->number(Landroid/widget/EditText;F)F
+
+    .line 103
+    .line 104
+    .line 105
+    move-result p3
+
+    .line 106
+    iput p3, p2, Lorg/levimc/pojavcontrols/ControlData;->cornerRadius:F
+
+    .line 107
+    .line 108
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 109
+    .line 110
+    invoke-virtual {p13}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 111
+    .line 112
+    .line 113
+    move-result p3
+
+    .line 114
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->isToggle:Z
+
+    .line 115
+    .line 116
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 117
+    .line 118
+    invoke-virtual {p14}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 119
+    .line 120
+    .line 121
+    move-result p3
+
+    .line 122
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->isSwipeable:Z
+
+    .line 123
+    .line 124
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 125
+    .line 126
+    invoke-virtual/range {p15 .. p15}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 127
+    .line 128
+    .line 129
+    move-result p3
+
+    .line 130
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->passThruEnabled:Z
+
+    .line 131
+    .line 132
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 133
+    .line 134
+    invoke-virtual/range {p16 .. p16}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 135
+    .line 136
+    .line 137
+    move-result p3
+
+    .line 138
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->displayInGame:Z
+
+    .line 139
+    .line 140
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
+
+    .line 141
+    .line 142
+    invoke-virtual/range {p17 .. p17}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 143
+    .line 144
+    .line 145
+    move-result p3
+
+    .line 146
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlData;->displayInMenu:Z
+
+    .line 147
+    .line 148
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->joystick:Lorg/levimc/pojavcontrols/ControlJoystickData;
+
+    .line 149
+    .line 150
+    if-eqz p2, :cond_0
+
+    .line 151
+    .line 152
+    invoke-virtual/range {p18 .. p18}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 153
+    .line 154
+    .line 155
+    move-result p3
+
+    .line 156
+    iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlJoystickData;->absolute:Z
+
+    .line 157
+    .line 158
+    iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->joystick:Lorg/levimc/pojavcontrols/ControlJoystickData;
+
+    .line 159
+    .line 160
+    invoke-virtual/range {p19 .. p19}, Landroid/widget/CompoundButton;->isChecked()Z
+
+    .line 161
+    .line 162
+    .line 163
+    move-result p3
+
+    .line 164
     iput-boolean p3, p2, Lorg/levimc/pojavcontrols/ControlJoystickData;->forwardLock:Z
 
+    .line 165
+    .line 166
     :cond_0
     if-eqz p20, :cond_1
 
-    .line 26
+    .line 167
+    .line 168
     iget-object p2, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->drawer:Lorg/levimc/pojavcontrols/ControlDrawerData;
 
-    .line 27
+    .line 169
+    .line 170
     invoke-virtual/range {p20 .. p20}, Landroid/widget/AdapterView;->getSelectedItem()Ljava/lang/Object;
 
+    .line 171
+    .line 172
+    .line 173
     move-result-object p3
 
+    .line 174
     check-cast p3, Lorg/levimc/pojavcontrols/ControlDrawerData$Orientation;
 
+    .line 175
+    .line 176
     iput-object p3, p2, Lorg/levimc/pojavcontrols/ControlDrawerData;->orientation:Lorg/levimc/pojavcontrols/ControlDrawerData$Orientation;
 
-    .line 28
+    .line 177
+    .line 178
     :cond_1
     iget-object p1, p1, Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;->data:Lorg/levimc/pojavcontrols/ControlData;
 
+    .line 179
+    .line 180
     invoke-virtual {p1}, Lorg/levimc/pojavcontrols/ControlData;->normalize()V
 
-    .line 29
+    .line 181
+    .line 182
+    .line 183
     iget-object p1, p0, Lorg/levimc/pojavcontrols/PojavControlsEditorView;->canvas:Lorg/levimc/pojavcontrols/ControlEditorCanvas;
 
+    .line 184
+    .line 185
     invoke-virtual {p1}, Lorg/levimc/pojavcontrols/ControlEditorCanvas;->rebuild()V
 
+    .line 186
+    .line 187
+    .line 188
     return-void
 .end method
 
@@ -2193,7 +2352,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-virtual {p1}, Lg/d0;->dismiss()V
+    invoke-virtual {p1}, Lg/e0;->dismiss()V
 
     .line 7
     .line 8
@@ -2214,7 +2373,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-virtual {p1}, Lg/d0;->dismiss()V
+    invoke-virtual {p1}, Lg/e0;->dismiss()V
 
     .line 7
     .line 8
@@ -2677,7 +2836,7 @@
     move-result-object v0
 
     .line 29
-    new-instance v1, Lc5/d;
+    new-instance v1, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 30
     .line 31
@@ -2685,7 +2844,7 @@
 
     .line 32
     .line 33
-    invoke-direct {v1, v2}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, v2}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 34
     .line 35
@@ -2694,7 +2853,7 @@
 
     .line 37
     .line 38
-    invoke-virtual {v1, v2}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {v1, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 39
     .line 40
@@ -2711,12 +2870,12 @@
     .line 45
     .line 46
     .line 47
-    invoke-virtual {v1, v0, v2}, Lc5/d;->i([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    invoke-virtual {v1, v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 48
     .line 49
     .line 50
-    invoke-virtual {v1}, Lc5/d;->m()Landroidx/appcompat/app/AlertDialog;
+    invoke-virtual {v1}, Landroidx/appcompat/app/AlertDialog$Builder;->show()Landroidx/appcompat/app/AlertDialog;
 
     .line 51
     .line 52
@@ -2754,7 +2913,7 @@
     .line 9
     .line 10
     .line 11
-    new-instance p1, Lc5/d;
+    new-instance p1, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 12
     .line 13
@@ -2762,7 +2921,7 @@
 
     .line 14
     .line 15
-    invoke-direct {p1, v1}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {p1, v1}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 16
     .line 17
@@ -2771,7 +2930,7 @@
 
     .line 19
     .line 20
-    invoke-virtual {p1, v1}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {p1, v1}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 21
     .line 22
@@ -2807,12 +2966,12 @@
     .line 36
     .line 37
     .line 38
-    invoke-virtual {p1, v1, v2}, Lc5/d;->i([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    invoke-virtual {p1, v1, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 39
     .line 40
     .line 41
-    invoke-virtual {p1}, Lc5/d;->m()Landroidx/appcompat/app/AlertDialog;
+    invoke-virtual {p1}, Landroidx/appcompat/app/AlertDialog$Builder;->show()Landroidx/appcompat/app/AlertDialog;
 
     .line 42
     .line 43
@@ -2937,7 +3096,7 @@
     move-result-object v1
 
     .line 53
-    new-instance v7, Lc5/d;
+    new-instance v7, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 54
     .line 55
@@ -2945,7 +3104,7 @@
 
     .line 56
     .line 57
-    invoke-direct {v7, v2}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v7, v2}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 58
     .line 59
@@ -2954,7 +3113,7 @@
 
     .line 61
     .line 62
-    invoke-virtual {v7, v2}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {v7, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 63
     .line 64
@@ -2971,84 +3130,62 @@
     .line 69
     .line 70
     .line 71
-    iget-object v5, v7, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v7, v0, v4, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setSingleChoiceItems([Ljava/lang/CharSequence;ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 72
     .line 73
-    check-cast v5, Lg/b;
-
     .line 74
-    .line 75
-    iput-object v0, v5, Lg/b;->p:[Ljava/lang/CharSequence;
+    new-instance v0, Lorg/levimc/pojavcontrols/q;
 
+    .line 75
     .line 76
+    const/4 v6, 0x0
+
     .line 77
-    iput-object v2, v5, Lg/b;->r:Landroid/content/DialogInterface$OnClickListener;
+    move-object v2, p1
 
     .line 78
+    move-object v5, p2
+
     .line 79
-    iput v4, v5, Lg/b;->u:I
+    move-object v4, v1
 
     .line 80
+    move-object v1, p0
+
     .line 81
-    const/4 v0, 0x1
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/pojavcontrols/q;-><init>(Landroid/view/KeyEvent$Callback;[ILjava/util/List;[ILandroid/widget/Button;I)V
 
     .line 82
-    iput-boolean v0, v5, Lg/b;->t:Z
-
     .line 83
     .line 84
-    new-instance v0, Lorg/levimc/pojavcontrols/q;
+    const p1, 0x104000a
 
     .line 85
     .line 86
-    const/4 v6, 0x0
-
     .line 87
-    move-object v2, p1
+    invoke-virtual {v7, p1, v0}, Landroidx/appcompat/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 88
-    move-object v5, p2
-
     .line 89
-    move-object v4, v1
-
     .line 90
-    move-object v1, p0
-
-    .line 91
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/pojavcontrols/q;-><init>(Landroid/view/KeyEvent$Callback;[ILjava/util/List;[ILandroid/widget/Button;I)V
-
-    .line 92
-    .line 93
-    .line 94
-    const p1, 0x104000a
-
-    .line 95
-    .line 96
-    .line 97
-    invoke-virtual {v7, p1, v0}, Lc5/d;->k(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
-
-    .line 98
-    .line 99
-    .line 100
     const/high16 p1, 0x1040000
 
-    .line 101
-    .line 102
+    .line 91
+    .line 92
     const/4 p2, 0x0
 
-    .line 103
-    invoke-virtual {v7, p1, p2}, Lc5/d;->j(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    .line 93
+    invoke-virtual {v7, p1, p2}, Landroidx/appcompat/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
-    .line 104
-    .line 105
-    .line 106
-    invoke-virtual {v7}, Lc5/d;->m()Landroidx/appcompat/app/AlertDialog;
+    .line 94
+    .line 95
+    .line 96
+    invoke-virtual {v7}, Landroidx/appcompat/app/AlertDialog$Builder;->show()Landroidx/appcompat/app/AlertDialog;
 
-    .line 107
-    .line 108
-    .line 109
+    .line 97
+    .line 98
+    .line 99
     return-void
 .end method
 
@@ -3162,7 +3299,7 @@
     .line 53
     .line 54
     .line 55
-    new-instance v1, Lc5/d;
+    new-instance v1, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 56
     .line 57
@@ -3170,7 +3307,7 @@
 
     .line 58
     .line 59
-    invoke-direct {v1, v3}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, v3}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 60
     .line 61
@@ -3179,62 +3316,55 @@
 
     .line 63
     .line 64
-    invoke-virtual {v1, v3}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {v1, v3}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 65
     .line 66
     .line 67
-    iget-object v3, v1, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v1, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 68
     .line 69
-    check-cast v3, Lg/b;
-
     .line 70
-    .line 71
-    iput-object v2, v3, Lg/b;->s:Landroid/view/View;
-
-    .line 72
-    .line 73
     new-instance v2, Lorg/levimc/pojavcontrols/m;
+
+    .line 71
+    .line 72
+    const/4 v3, 0x1
+
+    .line 73
+    invoke-direct {v2, p0, v0, v3}, Lorg/levimc/pojavcontrols/m;-><init>(Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
 
     .line 74
     .line 75
-    const/4 v3, 0x1
-
     .line 76
-    invoke-direct {v2, p0, v0, v3}, Lorg/levimc/pojavcontrols/m;-><init>(Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+    const v0, 0x104000a
 
     .line 77
     .line 78
     .line 79
-    const v0, 0x104000a
+    invoke-virtual {v1, v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 80
     .line 81
     .line 82
-    invoke-virtual {v1, v0, v2}, Lc5/d;->k(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    const/high16 v0, 0x1040000
 
     .line 83
     .line 84
+    const/4 v2, 0x0
+
     .line 85
-    const/high16 v0, 0x1040000
+    invoke-virtual {v1, v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 86
     .line 87
-    const/4 v2, 0x0
-
     .line 88
-    invoke-virtual {v1, v0, v2}, Lc5/d;->j(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    invoke-virtual {v1}, Landroidx/appcompat/app/AlertDialog$Builder;->show()Landroidx/appcompat/app/AlertDialog;
 
     .line 89
     .line 90
     .line 91
-    invoke-virtual {v1}, Lc5/d;->m()Landroidx/appcompat/app/AlertDialog;
-
-    .line 92
-    .line 93
-    .line 94
     return-void
 .end method
 
@@ -3294,7 +3424,7 @@
     move-result-object v1
 
     .line 27
-    new-instance v2, Lc5/d;
+    new-instance v2, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 28
     .line 29
@@ -3302,7 +3432,7 @@
 
     .line 30
     .line 31
-    invoke-direct {v2, v3}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, v3}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 32
     .line 33
@@ -3311,7 +3441,7 @@
 
     .line 35
     .line 36
-    invoke-virtual {v2, v3}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {v2, v3}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 37
     .line 38
@@ -3328,12 +3458,12 @@
     .line 43
     .line 44
     .line 45
-    invoke-virtual {v2, v1, v3}, Lc5/d;->i([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    invoke-virtual {v2, v1, v3}, Landroidx/appcompat/app/AlertDialog$Builder;->setItems([Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 46
     .line 47
     .line 48
-    invoke-virtual {v2}, Lc5/d;->m()Landroidx/appcompat/app/AlertDialog;
+    invoke-virtual {v2}, Landroidx/appcompat/app/AlertDialog$Builder;->show()Landroidx/appcompat/app/AlertDialog;
 
     .line 49
     .line 50
@@ -4328,7 +4458,7 @@
     .line 498
     .line 499
     .line 500
-    new-instance v0, Lc5/d;
+    new-instance v0, Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 501
     .line 502
@@ -4336,7 +4466,7 @@
 
     .line 503
     .line 504
-    invoke-direct {v0, v2}, Lc5/d;-><init>(Landroid/content/Context;)V
+    invoke-direct {v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
 
     .line 505
     .line 506
@@ -4345,199 +4475,192 @@
 
     .line 508
     .line 509
-    invoke-virtual {v0, v2}, Lc5/d;->l(I)Lc5/d;
+    invoke-virtual {v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(I)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 510
     .line 511
     .line 512
-    iget-object v2, v0, Lc5/d;->d:Ljava/lang/Object;
+    invoke-virtual {v0, v3}, Landroidx/appcompat/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 513
     .line 514
-    check-cast v2, Lg/b;
-
     .line 515
+    move-object v2, v0
+
     .line 516
-    iput-object v3, v2, Lg/b;->s:Landroid/view/View;
+    new-instance v0, Lorg/levimc/pojavcontrols/k;
 
     .line 517
     .line 518
-    move-object v2, v0
-
-    .line 519
-    new-instance v0, Lorg/levimc/pojavcontrols/k;
-
-    .line 520
-    .line 521
     move-object v8, v10
 
-    .line 522
+    .line 519
     move-object v10, v12
 
-    .line 523
+    .line 520
     move-object v12, v14
 
-    .line 524
+    .line 521
     move-object/from16 v14, v18
 
-    .line 525
-    .line 526
+    .line 522
+    .line 523
     move-object/from16 v18, v22
 
-    .line 527
-    .line 528
+    .line 524
+    .line 525
     const/16 v22, 0x1
 
-    .line 529
-    .line 530
+    .line 526
+    .line 527
     move-object/from16 v32, v2
 
-    .line 531
-    .line 532
+    .line 528
+    .line 529
     move-object/from16 v30, v6
 
-    .line 533
-    .line 534
+    .line 530
+    .line 531
     move-object/from16 v31, v7
 
-    .line 535
-    .line 536
+    .line 532
+    .line 533
     move-object v9, v11
 
-    .line 537
+    .line 534
     move-object v11, v13
 
-    .line 538
+    .line 535
     move-object/from16 v3, v17
 
-    .line 539
-    .line 540
+    .line 536
+    .line 537
     move-object/from16 v4, v19
 
-    .line 541
-    .line 542
+    .line 538
+    .line 539
     move-object/from16 v17, v21
 
-    .line 543
-    .line 544
+    .line 540
+    .line 541
     move-object/from16 v19, v23
 
-    .line 545
-    .line 546
+    .line 542
+    .line 543
     move-object/from16 v16, v24
 
-    .line 547
-    .line 548
+    .line 544
+    .line 545
     move-object/from16 v5, v25
 
-    .line 549
-    .line 550
+    .line 546
+    .line 547
     move-object/from16 v13, v26
 
-    .line 551
-    .line 552
+    .line 548
+    .line 549
     move-object/from16 v6, v27
 
-    .line 553
-    .line 554
+    .line 550
+    .line 551
     move-object/from16 v21, v28
 
-    .line 555
-    .line 556
+    .line 552
+    .line 553
     move-object/from16 v7, v29
 
-    .line 557
-    .line 558
+    .line 554
+    .line 555
     move-object/from16 v2, p1
 
+    .line 556
+    .line 557
+    invoke-direct/range {v0 .. v22}, Lorg/levimc/pojavcontrols/k;-><init>(Landroid/view/KeyEvent$Callback;Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroid/widget/EditText;[ILandroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/Spinner;I)V
+
+    .line 558
     .line 559
     .line 560
-    invoke-direct/range {v0 .. v22}, Lorg/levimc/pojavcontrols/k;-><init>(Landroid/view/KeyEvent$Callback;Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroid/widget/EditText;[ILandroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/CheckBox;Landroid/widget/Spinner;I)V
+    const v1, 0x104000a
 
     .line 561
     .line 562
     .line 563
-    const v1, 0x104000a
+    move-object/from16 v3, v32
 
     .line 564
     .line 565
-    .line 566
-    move-object/from16 v3, v32
+    invoke-virtual {v3, v1, v0}, Landroidx/appcompat/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
+    .line 566
     .line 567
     .line 568
-    invoke-virtual {v3, v1, v0}, Lc5/d;->k(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    const/high16 v0, 0x1040000
 
     .line 569
     .line 570
+    const/4 v1, 0x0
+
     .line 571
-    const/high16 v0, 0x1040000
+    invoke-virtual {v3, v0, v1}, Landroidx/appcompat/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
 
     .line 572
     .line 573
-    const/4 v1, 0x0
-
     .line 574
-    invoke-virtual {v3, v0, v1}, Lc5/d;->j(ILandroid/content/DialogInterface$OnClickListener;)Lc5/d;
+    invoke-virtual {v3}, Landroidx/appcompat/app/AlertDialog$Builder;->create()Landroidx/appcompat/app/AlertDialog;
 
     .line 575
     .line 576
     .line 577
-    invoke-virtual {v3}, Lc5/d;->e()Landroidx/appcompat/app/AlertDialog;
-
-    .line 578
-    .line 579
-    .line 580
     move-result-object v0
 
-    .line 581
+    .line 578
     new-instance v1, Lorg/levimc/pojavcontrols/l;
+
+    .line 579
+    .line 580
+    const/4 v3, 0x2
+
+    .line 581
+    invoke-direct {v1, v2, v0, v3}, Lorg/levimc/pojavcontrols/l;-><init>(Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroidx/appcompat/app/AlertDialog;I)V
 
     .line 582
     .line 583
-    const/4 v3, 0x2
-
     .line 584
-    invoke-direct {v1, v2, v0, v3}, Lorg/levimc/pojavcontrols/l;-><init>(Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroidx/appcompat/app/AlertDialog;I)V
+    move-object/from16 v3, v30
 
     .line 585
     .line 586
-    .line 587
-    move-object/from16 v3, v30
+    invoke-virtual {v3, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    .line 587
     .line 588
     .line 589
-    invoke-virtual {v3, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    new-instance v1, Lorg/levimc/pojavcontrols/l;
 
     .line 590
     .line 591
+    const/4 v3, 0x3
+
     .line 592
-    new-instance v1, Lorg/levimc/pojavcontrols/l;
+    invoke-direct {v1, v2, v0, v3}, Lorg/levimc/pojavcontrols/l;-><init>(Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroidx/appcompat/app/AlertDialog;I)V
 
     .line 593
     .line 594
-    const/4 v3, 0x3
-
     .line 595
-    invoke-direct {v1, v2, v0, v3}, Lorg/levimc/pojavcontrols/l;-><init>(Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;Landroidx/appcompat/app/AlertDialog;I)V
+    move-object/from16 v2, v31
 
     .line 596
     .line 597
-    .line 598
-    move-object/from16 v2, v31
+    invoke-virtual {v2, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    .line 598
     .line 599
     .line 600
-    invoke-virtual {v2, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
     .line 601
     .line 602
     .line 603
-    invoke-virtual {v0}, Landroid/app/Dialog;->show()V
-
-    .line 604
-    .line 605
-    .line 606
     return-void
 .end method
 

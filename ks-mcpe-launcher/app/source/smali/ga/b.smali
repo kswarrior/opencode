@@ -1,65 +1,42 @@
 .class public final Lga/b;
-.super Lga/c;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ljava/lang/Iterable;
+.super Landroidx/datastore/preferences/protobuf/j;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# instance fields
-.field public final d:Lcom/google/gson/JsonArray;
+# static fields
+.field public static final c:Lga/b;
 
 
 # direct methods
-.method public constructor <init>(Lcom/google/gson/JsonArray;)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 2
 
     .line 1
-    invoke-direct {p0, p1}, Lga/c;-><init>(Lcom/google/gson/JsonElement;)V
+    new-instance v0, Lga/b;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Lga/b;->d:Lcom/google/gson/JsonArray;
-
-    .line 5
-    .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final iterator()Ljava/util/Iterator;
-    .locals 3
-
-    .line 1
-    new-instance v0, Lga/a;
-
-    .line 2
-    .line 3
-    iget-object v1, p0, Lga/b;->d:Lcom/google/gson/JsonArray;
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 4
     .line 5
-    iget-object v1, v1, Lcom/google/gson/JsonArray;->c:Ljava/util/ArrayList;
-
     .line 6
+    new-instance v1, Lt8/h;
+
     .line 7
-    invoke-virtual {v1}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
     .line 8
+    invoke-direct {v1}, Lt8/h;-><init>()V
+
     .line 9
     .line 10
-    move-result-object v1
-
     .line 11
-    const/4 v2, 0x0
+    iput-object v1, v0, Landroidx/datastore/preferences/protobuf/j;->b:Ljava/lang/Object;
 
     .line 12
-    invoke-direct {v0, v1, v2}, Lga/a;-><init>(Ljava/util/Iterator;I)V
-
     .line 13
+    sput-object v0, Lga/b;->c:Lga/b;
+
     .line 14
     .line 15
-    return-object v0
+    return-void
 .end method

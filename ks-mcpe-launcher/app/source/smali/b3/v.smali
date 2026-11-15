@@ -1,10 +1,10 @@
-.class public abstract Lb3/v;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final Lb3/v;
+.super Lb3/e;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final a:Landroid/graphics/ColorMatrixColorFilter;
+.field public static final b:[B
 
 
 # direct methods
@@ -12,59 +12,81 @@
     .locals 2
 
     .line 1
-    new-instance v0, Landroid/graphics/ColorMatrixColorFilter;
+    const-string v0, "com.bumptech.glide.load.resource.bitmap.FitCenter"
 
     .line 2
     .line 3
-    const/16 v1, 0x14
+    sget-object v1, Ls2/e;->a:Ljava/nio/charset/Charset;
 
     .line 4
     .line 5
-    new-array v1, v1, [F
+    invoke-virtual {v0, v1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
     .line 6
     .line 7
-    fill-array-data v1, :array_0
-
     .line 8
+    move-result-object v0
+
     .line 9
+    sput-object v0, Lb3/v;->b:[B
+
     .line 10
-    invoke-direct {v0, v1}, Landroid/graphics/ColorMatrixColorFilter;-><init>([F)V
-
     .line 11
-    .line 12
-    .line 13
-    sput-object v0, Lb3/v;->a:Landroid/graphics/ColorMatrixColorFilter;
-
-    .line 14
-    .line 15
     return-void
+.end method
 
-    .line 16
-    nop
 
-    .line 17
-    :array_0
-    .array-data 4
-        0x0
-        0x0
-        0x0
-        0x3f800000    # 1.0f
-        0x0
-        0x0
-        0x0
-        0x0
-        0x3f800000    # 1.0f
-        0x0
-        0x0
-        0x0
-        0x0
-        0x3f800000    # 1.0f
-        0x0
-        0x0
-        0x0
-        0x0
-        0x0
-        0x437f0000    # 255.0f
-    .end array-data
+# virtual methods
+.method public final b(Ljava/security/MessageDigest;)V
+    .locals 1
+
+    .line 1
+    sget-object v0, Lb3/v;->b:[B
+
+    .line 2
+    .line 3
+    invoke-virtual {p1, v0}, Ljava/security/MessageDigest;->update([B)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public final c(Lv2/a;Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+    .locals 0
+
+    .line 1
+    invoke-static {p1, p2, p3, p4}, Lb3/c0;->b(Lv2/a;Landroid/graphics/Bitmap;II)Landroid/graphics/Bitmap;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p1
+
+    .line 5
+    return-object p1
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 0
+
+    .line 1
+    instance-of p1, p1, Lb3/v;
+
+    .line 2
+    .line 3
+    return p1
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    const v0, 0x5db7ce1d
+
+    .line 2
+    .line 3
+    .line 4
+    return v0
 .end method

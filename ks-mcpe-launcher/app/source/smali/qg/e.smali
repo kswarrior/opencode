@@ -1,307 +1,649 @@
-.class public interface abstract Lqg/e;
+.class public final Lqg/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# static fields
-.field public static final a:Lge/o;
+# instance fields
+.field public a:Lorg/spongycastle/crypto/m;
 
-.field public static final b:Lge/o;
+.field public b:Lorg/spongycastle/crypto/a;
 
-.field public static final c:Lge/o;
+.field public c:I
 
-.field public static final d:Lge/o;
+.field public d:I
 
-.field public static final e:Lge/o;
+.field public e:[B
 
-.field public static final f:Lge/o;
+.field public f:[B
 
-.field public static final g:Lge/o;
+.field public g:I
 
-.field public static final h:Lge/o;
-
-.field public static final i:Lge/o;
-
-.field public static final j:Lge/o;
-
-.field public static final k:Lge/o;
-
-.field public static final l:Lge/o;
-
-.field public static final m:Lge/o;
+.field public h:[B
 
 
 # direct methods
-.method static constructor <clinit>()V
+.method public static a([B)V
+    .locals 3
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    move v1, v0
+
+    .line 3
+    :goto_0
+    array-length v2, p0
+
+    .line 4
+    if-eq v1, v2, :cond_0
+
+    .line 5
+    .line 6
+    aput-byte v0, p0, v1
+
+    .line 7
+    .line 8
+    add-int/lit8 v1, v1, 0x1
+
+    .line 9
+    .line 10
+    goto :goto_0
+
+    .line 11
+    :cond_0
+    return-void
+.end method
+
+
+# virtual methods
+.method public final b()[B
     .locals 7
 
     .line 1
-    new-instance v0, Lge/o;
+    iget-object v0, p0, Lqg/e;->a:Lorg/spongycastle/crypto/m;
 
     .line 2
     .line 3
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.5.3.2"
+    invoke-interface {v0}, Lorg/spongycastle/crypto/m;->getDigestSize()I
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    .line 6
+    move-result v1
+
+    .line 7
+    iget v2, p0, Lqg/e;->c:I
+
+    .line 8
+    .line 9
+    const/16 v3, 0xbc
+
+    .line 10
+    .line 11
+    const/16 v4, 0x8
+
+    .line 12
+    .line 13
+    if-ne v2, v3, :cond_0
+
+    .line 14
+    .line 15
+    iget-object v2, p0, Lqg/e;->e:[B
+
+    .line 16
+    .line 17
+    array-length v3, v2
+
+    .line 18
+    sub-int/2addr v3, v1
+
+    .line 19
+    add-int/lit8 v3, v3, -0x1
+
+    .line 20
+    .line 21
+    invoke-interface {v0, v2, v3}, Lorg/spongycastle/crypto/m;->doFinal([BI)I
+
+    .line 22
+    .line 23
+    .line 24
+    iget-object v0, p0, Lqg/e;->e:[B
+
+    .line 25
+    .line 26
+    array-length v2, v0
+
+    .line 27
+    add-int/lit8 v2, v2, -0x1
+
+    .line 28
+    .line 29
+    const/16 v5, -0x44
+
+    .line 30
+    .line 31
+    aput-byte v5, v0, v2
+
+    .line 32
+    .line 33
+    move v0, v4
+
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :cond_0
+    iget-object v3, p0, Lqg/e;->e:[B
+
+    .line 36
+    .line 37
+    array-length v5, v3
+
+    .line 38
+    sub-int/2addr v5, v1
+
+    .line 39
+    add-int/lit8 v5, v5, -0x2
+
+    .line 40
+    .line 41
+    invoke-interface {v0, v3, v5}, Lorg/spongycastle/crypto/m;->doFinal([BI)I
+
+    .line 42
+    .line 43
+    .line 44
+    iget-object v0, p0, Lqg/e;->e:[B
+
+    .line 45
+    .line 46
+    array-length v3, v0
+
+    .line 47
+    add-int/lit8 v3, v3, -0x2
+
+    .line 48
+    .line 49
+    ushr-int/lit8 v6, v2, 0x8
+
+    .line 50
+    .line 51
+    int-to-byte v6, v6
+
+    .line 52
+    aput-byte v6, v0, v3
+
+    .line 53
+    .line 54
+    array-length v3, v0
+
+    .line 55
+    add-int/lit8 v3, v3, -0x1
+
+    .line 56
+    .line 57
+    int-to-byte v2, v2
+
+    .line 58
+    aput-byte v2, v0, v3
+
+    .line 59
+    .line 60
+    const/16 v0, 0x10
+
+    .line 61
+    .line 62
+    move v3, v5
+
+    .line 63
+    :goto_0
+    iget v2, p0, Lqg/e;->g:I
+
+    .line 64
+    .line 65
+    add-int/2addr v1, v2
+
+    .line 66
+    mul-int/2addr v1, v4
+
+    .line 67
+    add-int/2addr v1, v0
+
+    .line 68
+    add-int/lit8 v1, v1, 0x4
+
+    .line 69
+    .line 70
+    iget v0, p0, Lqg/e;->d:I
+
+    .line 71
+    .line 72
+    sub-int/2addr v1, v0
+
+    .line 73
+    const/4 v0, 0x0
+
+    .line 74
+    if-lez v1, :cond_1
+
+    .line 75
+    .line 76
+    add-int/lit8 v1, v1, 0x7
+
+    .line 77
+    .line 78
+    div-int/2addr v1, v4
+
+    .line 79
+    sub-int/2addr v2, v1
+
+    .line 80
+    sub-int/2addr v3, v2
+
+    .line 81
+    iget-object v1, p0, Lqg/e;->f:[B
+
+    .line 82
+    .line 83
+    iget-object v4, p0, Lqg/e;->e:[B
+
+    .line 84
+    .line 85
+    invoke-static {v1, v0, v4, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 86
+    .line 87
+    .line 88
+    new-array v1, v2, [B
+
+    .line 89
+    .line 90
+    iput-object v1, p0, Lqg/e;->h:[B
+
+    .line 91
+    .line 92
+    const/16 v1, 0x60
+
+    .line 93
+    .line 94
+    goto :goto_1
+
+    .line 95
+    :cond_1
+    sub-int/2addr v3, v2
+
+    .line 96
+    iget-object v1, p0, Lqg/e;->f:[B
+
+    .line 97
+    .line 98
+    iget-object v4, p0, Lqg/e;->e:[B
+
+    .line 99
+    .line 100
+    invoke-static {v1, v0, v4, v3, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 101
+    .line 102
+    .line 103
+    iget v1, p0, Lqg/e;->g:I
+
+    .line 104
+    .line 105
+    new-array v1, v1, [B
+
+    .line 106
+    .line 107
+    iput-object v1, p0, Lqg/e;->h:[B
+
+    .line 108
+    .line 109
+    const/16 v1, 0x40
+
+    .line 110
+    .line 111
+    :goto_1
+    add-int/lit8 v3, v3, -0x1
+
+    .line 112
+    .line 113
+    if-lez v3, :cond_3
+
+    .line 114
+    .line 115
+    move v2, v3
+
+    .line 116
+    :goto_2
+    if-eqz v2, :cond_2
+
+    .line 117
+    .line 118
+    iget-object v4, p0, Lqg/e;->e:[B
+
+    .line 119
+    .line 120
+    const/16 v5, -0x45
+
+    .line 121
+    .line 122
+    aput-byte v5, v4, v2
+
+    .line 123
+    .line 124
+    add-int/lit8 v2, v2, -0x1
+
+    .line 125
+    .line 126
+    goto :goto_2
+
+    .line 127
+    :cond_2
+    iget-object v2, p0, Lqg/e;->e:[B
+
+    .line 128
+    .line 129
+    aget-byte v4, v2, v3
+
+    .line 130
+    .line 131
+    xor-int/lit8 v4, v4, 0x1
+
+    .line 132
+    .line 133
+    int-to-byte v4, v4
+
+    .line 134
+    aput-byte v4, v2, v3
+
+    .line 135
+    .line 136
+    const/16 v3, 0xb
+
+    .line 137
+    .line 138
+    aput-byte v3, v2, v0
+
+    .line 139
+    .line 140
+    or-int/2addr v1, v3
+
+    .line 141
+    int-to-byte v1, v1
+
+    .line 142
+    aput-byte v1, v2, v0
+
+    .line 143
+    .line 144
+    goto :goto_3
+
+    .line 145
+    :cond_3
+    iget-object v2, p0, Lqg/e;->e:[B
+
+    .line 146
+    .line 147
+    const/16 v3, 0xa
+
+    .line 148
+    .line 149
+    aput-byte v3, v2, v0
+
+    .line 150
+    .line 151
+    or-int/2addr v1, v3
+
+    .line 152
+    int-to-byte v1, v1
+
+    .line 153
+    aput-byte v1, v2, v0
+
+    .line 154
+    .line 155
+    :goto_3
+    iget-object v1, p0, Lqg/e;->b:Lorg/spongycastle/crypto/a;
+
+    .line 156
+    .line 157
+    iget-object v2, p0, Lqg/e;->e:[B
+
+    .line 158
+    .line 159
+    array-length v3, v2
+
+    .line 160
+    invoke-interface {v1, v0, v3, v2}, Lorg/spongycastle/crypto/a;->b(II[B)[B
+
+    .line 161
+    .line 162
+    .line 163
+    move-result-object v1
+
+    .line 164
+    iget-object v2, p0, Lqg/e;->f:[B
+
+    .line 165
+    .line 166
+    iget-object v3, p0, Lqg/e;->h:[B
+
+    .line 167
+    .line 168
+    array-length v4, v3
+
+    .line 169
+    invoke-static {v2, v0, v3, v0, v4}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 170
+    .line 171
+    .line 172
+    iput v0, p0, Lqg/e;->g:I
+
+    .line 173
+    .line 174
+    iget-object v0, p0, Lqg/e;->f:[B
+
+    .line 175
+    .line 176
+    invoke-static {v0}, Lqg/e;->a([B)V
+
+    .line 177
+    .line 178
+    .line 179
+    iget-object v0, p0, Lqg/e;->e:[B
+
+    .line 180
+    .line 181
+    invoke-static {v0}, Lqg/e;->a([B)V
+
+    .line 182
+    .line 183
+    .line 184
+    return-object v1
+.end method
+
+.method public final c(ZLmg/o0;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lqg/e;->a:Lorg/spongycastle/crypto/m;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lqg/e;->b:Lorg/spongycastle/crypto/a;
+
+    .line 4
+    .line 5
+    invoke-interface {v1, p1, p2}, Lorg/spongycastle/crypto/a;->init(ZLorg/spongycastle/crypto/h;)V
 
     .line 6
     .line 7
     .line 8
-    sput-object v0, Lqg/e;->a:Lge/o;
+    iget-object p1, p2, Lmg/o0;->d:Ljava/math/BigInteger;
 
     .line 9
     .line 10
-    const-string v1, "1"
+    invoke-virtual {p1}, Ljava/math/BigInteger;->bitLength()I
 
     .line 11
     .line 12
-    const-string v2, "2"
-
     .line 13
+    move-result p1
+
     .line 14
-    invoke-static {v0, v1, v0, v2}, Lcom/google/android/gms/internal/measurement/gi;->g(Lge/o;Ljava/lang/String;Lge/o;Ljava/lang/String;)Lge/o;
+    iput p1, p0, Lqg/e;->d:I
 
     .line 15
     .line 16
-    .line 17
-    move-result-object v3
+    add-int/lit8 p1, p1, 0x7
 
+    .line 17
     .line 18
-    sput-object v3, Lqg/e;->b:Lge/o;
+    div-int/lit8 p1, p1, 0x8
 
     .line 19
     .line 20
-    new-instance v3, Lge/o;
+    new-array p2, p1, [B
 
     .line 21
     .line 22
-    const-string v4, "3"
+    iput-object p2, p0, Lqg/e;->e:[B
 
     .line 23
     .line 24
-    invoke-direct {v3, v4, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    iget p2, p0, Lqg/e;->c:I
 
     .line 25
     .line 26
+    const/16 v1, 0xbc
+
     .line 27
-    sput-object v3, Lqg/e;->c:Lge/o;
-
     .line 28
+    if-ne p2, v1, :cond_0
+
     .line 29
-    new-instance v3, Lge/o;
-
     .line 30
-    .line 31
-    const-string v5, "4"
+    invoke-interface {v0}, Lorg/spongycastle/crypto/m;->getDigestSize()I
 
+    .line 31
     .line 32
     .line 33
-    invoke-direct {v3, v5, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    move-result p2
 
     .line 34
+    sub-int/2addr p1, p2
+
     .line 35
+    add-int/lit8 p1, p1, -0x2
+
     .line 36
-    sput-object v3, Lqg/e;->d:Lge/o;
-
     .line 37
+    new-array p1, p1, [B
+
     .line 38
-    new-instance v3, Lge/o;
-
     .line 39
-    .line 40
-    const-string v6, "5"
+    iput-object p1, p0, Lqg/e;->f:[B
 
+    .line 40
     .line 41
+    goto :goto_0
+
     .line 42
-    invoke-direct {v3, v6, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    :cond_0
+    invoke-interface {v0}, Lorg/spongycastle/crypto/m;->getDigestSize()I
 
     .line 43
     .line 44
     .line 45
-    sput-object v3, Lqg/e;->e:Lge/o;
+    move-result p2
 
     .line 46
+    sub-int/2addr p1, p2
+
     .line 47
-    new-instance v0, Lge/o;
+    add-int/lit8 p1, p1, -0x3
 
     .line 48
     .line 49
-    const-string v3, "1.3.6.1.4.1.8301.3.1.3.3"
+    new-array p1, p1, [B
 
     .line 50
     .line 51
-    invoke-direct {v0, v3}, Lge/o;-><init>(Ljava/lang/String;)V
+    iput-object p1, p0, Lqg/e;->f:[B
 
     .line 52
     .line 53
-    .line 54
-    new-instance v3, Lge/o;
+    :goto_0
+    invoke-interface {v0}, Lorg/spongycastle/crypto/m;->reset()V
 
+    .line 54
     .line 55
     .line 56
-    invoke-direct {v3, v1, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    const/4 p1, 0x0
 
     .line 57
+    iput p1, p0, Lqg/e;->g:I
+
     .line 58
     .line 59
-    new-instance v1, Lge/o;
+    iget-object p1, p0, Lqg/e;->f:[B
 
     .line 60
     .line 61
-    invoke-direct {v1, v2, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    invoke-static {p1}, Lqg/e;->a([B)V
 
     .line 62
     .line 63
     .line 64
-    new-instance v1, Lge/o;
+    iget-object p1, p0, Lqg/e;->h:[B
 
     .line 65
     .line 66
-    invoke-direct {v1, v4, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    if-eqz p1, :cond_1
 
     .line 67
     .line 68
-    .line 69
-    new-instance v1, Lge/o;
+    invoke-static {p1}, Lqg/e;->a([B)V
 
+    .line 69
     .line 70
     .line 71
-    invoke-direct {v1, v5, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+    :cond_1
+    const/4 p1, 0x0
 
     .line 72
+    iput-object p1, p0, Lqg/e;->h:[B
+
     .line 73
     .line 74
-    new-instance v1, Lge/o;
+    return-void
+.end method
 
-    .line 75
-    .line 76
-    invoke-direct {v1, v6, v0}, Lge/o;-><init>(Ljava/lang/String;Lge/o;)V
+.method public final d([B)V
+    .locals 1
 
-    .line 77
-    .line 78
-    .line 79
-    new-instance v0, Lge/o;
+    .line 1
+    const/4 v0, 0x0
 
-    .line 80
-    .line 81
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.4.1"
+    .line 2
+    iput v0, p0, Lqg/e;->g:I
 
-    .line 82
-    .line 83
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
+    .line 3
+    .line 4
+    iget-object v0, p0, Lqg/e;->f:[B
 
-    .line 84
-    .line 85
-    .line 86
-    sput-object v0, Lqg/e;->f:Lge/o;
+    .line 5
+    .line 6
+    invoke-static {v0}, Lqg/e;->a([B)V
 
-    .line 87
-    .line 88
-    new-instance v0, Lge/o;
+    .line 7
+    .line 8
+    .line 9
+    invoke-static {p1}, Lqg/e;->a([B)V
 
-    .line 89
-    .line 90
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.4.2"
-
-    .line 91
-    .line 92
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 93
-    .line 94
-    .line 95
-    sput-object v0, Lqg/e;->g:Lge/o;
-
-    .line 96
-    .line 97
-    new-instance v0, Lge/o;
-
-    .line 98
-    .line 99
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.4.2.1"
-
-    .line 100
-    .line 101
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 102
-    .line 103
-    .line 104
-    new-instance v0, Lge/o;
-
-    .line 105
-    .line 106
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.4.2.2"
-
-    .line 107
-    .line 108
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 109
-    .line 110
-    .line 111
-    new-instance v0, Lge/o;
-
-    .line 112
-    .line 113
-    const-string v1, "1.3.6.1.4.1.8301.3.1.3.4.2.3"
-
-    .line 114
-    .line 115
-    invoke-direct {v0, v1}, Lge/o;-><init>(Ljava/lang/String;)V
-
-    .line 116
-    .line 117
-    .line 118
-    sget-object v0, Lie/a;->g:Lge/o;
-
-    .line 119
-    .line 120
-    sput-object v0, Lqg/e;->h:Lge/o;
-
-    .line 121
-    .line 122
-    sget-object v0, Lie/a;->h:Lge/o;
-
-    .line 123
-    .line 124
-    sput-object v0, Lqg/e;->i:Lge/o;
-
-    .line 125
-    .line 126
-    sget-object v0, Lie/a;->i:Lge/o;
-
-    .line 127
-    .line 128
-    sput-object v0, Lqg/e;->j:Lge/o;
-
-    .line 129
-    .line 130
-    sget-object v0, Lie/a;->t:Lge/o;
-
-    .line 131
-    .line 132
-    sput-object v0, Lqg/e;->k:Lge/o;
-
-    .line 133
-    .line 134
-    sget-object v0, Lie/a;->j:Lge/o;
-
-    .line 135
-    .line 136
-    sput-object v0, Lqg/e;->l:Lge/o;
-
-    .line 137
-    .line 138
-    sget-object v0, Lie/a;->o:Lge/o;
-
-    .line 139
-    .line 140
-    sput-object v0, Lqg/e;->m:Lge/o;
-
-    .line 141
-    .line 142
+    .line 10
+    .line 11
+    .line 12
     return-void
 .end method

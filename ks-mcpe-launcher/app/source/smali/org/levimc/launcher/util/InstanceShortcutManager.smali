@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/util/InstanceShortcutManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -240,7 +240,7 @@
 
     .line 98
     :cond_3
-    sget p2, Lorg/levimc/launcher/R$mipmap;->ic_launcher:I
+    sget p2, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
 
     .line 99
     .line 100
@@ -1676,7 +1676,7 @@
 
     .line 17
     .line 18
-    invoke-static {v0, v1}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 19
     .line 20

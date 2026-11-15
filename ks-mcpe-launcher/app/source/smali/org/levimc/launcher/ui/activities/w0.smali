@@ -1,86 +1,139 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/w0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/widget/TextView$OnEditorActionListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;
+.field public final synthetic a:I
 
-.field public final synthetic d:Ljava/lang/String;
-
-.field public final synthetic h:Ljava/util/ArrayList;
-
-.field public final synthetic q:I
-
-.field public final synthetic w:I
+.field public final synthetic b:Lorg/levimc/launcher/ui/activities/BaseActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;Ljava/lang/String;Ljava/util/ArrayList;II)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/w0;->a:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/w0;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/w0;->c:Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/w0;->d:Ljava/lang/String;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/w0;->h:Ljava/util/ArrayList;
-
-    .line 9
-    .line 10
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/w0;->q:I
-
-    .line 11
-    .line 12
-    iput p5, p0, Lorg/levimc/launcher/ui/activities/w0;->w:I
-
-    .line 13
-    .line 14
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 5
+.method public final onEditorAction(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/w0;->q:I
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/w0;->a:I
 
     .line 2
     .line 3
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/w0;->w:I
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/w0;->c:Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/w0;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
     .line 7
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/w0;->d:Ljava/lang/String;
-
     .line 8
+    check-cast v0, Lorg/levimc/launcher/ui/activities/SettingsActivity;
+
     .line 9
-    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/w0;->h:Ljava/util/ArrayList;
-
     .line 10
-    .line 11
-    invoke-static {v2, v3, v4, v0, v1}, Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;->x(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity;Ljava/lang/String;Ljava/util/ArrayList;II)V
+    invoke-static {v0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->R(Lorg/levimc/launcher/ui/activities/SettingsActivity;Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
 
+    .line 11
     .line 12
     .line 13
+    move-result p1
+
     .line 14
-    return-void
+    return p1
+
+    .line 15
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/w0;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    .line 16
+    .line 17
+    check-cast v0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+
+    .line 18
+    .line 19
+    invoke-static {v0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->y(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+
+    .line 20
+    .line 21
+    .line 22
+    move-result p1
+
+    .line 23
+    return p1
+
+    .line 24
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/w0;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    .line 25
+    .line 26
+    check-cast v0, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
+
+    .line 27
+    .line 28
+    invoke-static {v0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->C(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result p1
+
+    .line 32
+    return p1
+
+    .line 33
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/w0;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+
+    .line 34
+    .line 35
+    check-cast v0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
+
+    .line 36
+    .line 37
+    invoke-static {v0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->C(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+
+    .line 38
+    .line 39
+    .line 40
+    move-result p1
+
+    .line 41
+    return p1
+
+    .line 42
+    nop
+
+    .line 43
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

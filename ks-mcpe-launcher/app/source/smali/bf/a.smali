@@ -1,173 +1,167 @@
-.class public final Lbf/a;
-.super Lge/m;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public interface abstract Lbf/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# instance fields
-.field public c:I
+# static fields
+.field public static final a:Lye/n;
 
-.field public d:I
+.field public static final b:Lye/n;
 
-.field public h:I
+.field public static final c:Lye/n;
 
-.field public q:I
+.field public static final d:Lye/n;
+
+.field public static final e:Lye/n;
+
+.field public static final f:Lye/n;
 
 
-# virtual methods
-.method public final d()Lge/s;
-    .locals 7
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
 
     .line 1
-    iget v0, p0, Lbf/a;->d:I
+    new-instance v0, Lye/n;
 
     .line 2
     .line 3
-    new-instance v1, Lge/f;
+    const-string v1, "0.4.0.127.0.7"
 
     .line 4
     .line 5
-    invoke-direct {v1}, Lge/f;-><init>()V
+    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
 
     .line 6
     .line 7
     .line 8
-    new-instance v2, Lge/k;
+    new-instance v1, Lye/n;
 
     .line 9
     .line 10
-    iget v3, p0, Lbf/a;->c:I
+    const-string v2, "1.1"
 
     .line 11
     .line 12
-    int-to-long v3, v3
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 13
-    invoke-direct {v2, v3, v4}, Lge/k;-><init>(J)V
-
     .line 14
     .line 15
-    .line 16
-    invoke-virtual {v1, v2}, Lge/f;->a(Lge/e;)V
+    new-instance v0, Lye/n;
 
+    .line 16
     .line 17
+    const-string v2, "4.1"
+
     .line 18
     .line 19
-    iget v2, p0, Lbf/a;->h:I
+    invoke-direct {v0, v2, v1}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 20
     .line 21
-    if-nez v2, :cond_0
-
     .line 22
+    new-instance v1, Lye/n;
+
     .line 23
-    new-instance v2, Lge/k;
-
     .line 24
-    .line 25
-    int-to-long v3, v0
+    const-string v2, "1"
 
+    .line 25
     .line 26
-    invoke-direct {v2, v3, v4}, Lge/k;-><init>(J)V
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 27
     .line 28
     .line 29
-    invoke-virtual {v1, v2}, Lge/f;->a(Lge/e;)V
+    sput-object v1, Lbf/a;->a:Lye/n;
 
     .line 30
     .line 31
-    .line 32
-    goto :goto_0
+    new-instance v1, Lye/n;
 
+    .line 32
     .line 33
-    :cond_0
-    new-instance v3, Lge/f;
+    const-string v2, "2"
 
     .line 34
     .line 35
-    invoke-direct {v3}, Lge/f;-><init>()V
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 36
     .line 37
     .line 38
-    new-instance v4, Lge/k;
+    sput-object v1, Lbf/a;->b:Lye/n;
 
     .line 39
     .line 40
-    int-to-long v5, v0
+    new-instance v1, Lye/n;
 
     .line 41
-    invoke-direct {v4, v5, v6}, Lge/k;-><init>(J)V
-
     .line 42
+    const-string v2, "3"
+
     .line 43
     .line 44
-    invoke-virtual {v3, v4}, Lge/f;->a(Lge/e;)V
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 45
     .line 46
     .line 47
-    new-instance v0, Lge/k;
+    sput-object v1, Lbf/a;->c:Lye/n;
 
     .line 48
     .line 49
-    int-to-long v4, v2
+    new-instance v1, Lye/n;
 
     .line 50
-    invoke-direct {v0, v4, v5}, Lge/k;-><init>(J)V
-
     .line 51
+    const-string v2, "4"
+
     .line 52
     .line 53
-    invoke-virtual {v3, v0}, Lge/f;->a(Lge/e;)V
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 54
     .line 55
     .line 56
-    new-instance v0, Lge/k;
+    sput-object v1, Lbf/a;->d:Lye/n;
 
     .line 57
     .line 58
-    iget v2, p0, Lbf/a;->q:I
+    new-instance v1, Lye/n;
 
     .line 59
     .line 60
-    int-to-long v4, v2
+    const-string v2, "5"
 
     .line 61
-    invoke-direct {v0, v4, v5}, Lge/k;-><init>(J)V
-
     .line 62
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
+
     .line 63
     .line 64
-    invoke-virtual {v3, v0}, Lge/f;->a(Lge/e;)V
-
     .line 65
+    sput-object v1, Lbf/a;->e:Lye/n;
+
     .line 66
     .line 67
-    new-instance v0, Lge/b1;
+    new-instance v1, Lye/n;
 
     .line 68
     .line 69
-    invoke-direct {v0, v3}, Lge/b1;-><init>(Lge/f;)V
+    const-string v2, "6"
 
     .line 70
     .line 71
-    .line 72
-    invoke-virtual {v1, v0}, Lge/f;->a(Lge/e;)V
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
+    .line 72
     .line 73
     .line 74
+    sput-object v1, Lbf/a;->f:Lye/n;
+
     .line 75
-    :goto_0
-    new-instance v0, Lge/b1;
-
     .line 76
-    .line 77
-    invoke-direct {v0, v1}, Lge/b1;-><init>(Lge/f;)V
-
-    .line 78
-    .line 79
-    .line 80
-    return-object v0
+    return-void
 .end method

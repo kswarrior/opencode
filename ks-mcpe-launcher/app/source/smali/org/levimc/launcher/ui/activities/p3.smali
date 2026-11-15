@@ -1,25 +1,25 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/p3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/util/concurrent/Callable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
-.field public final synthetic b:Z
+.field public final synthetic d:[Ljava/lang/String;
 
-.field public final synthetic c:[B
+.field public final synthetic h:[Ljava/lang/String;
 
-.field public final synthetic d:Ljava/lang/String;
+.field public final synthetic p:Landroid/widget/TextView;
 
-.field public final synthetic e:[B
+.field public final synthetic q:Lorg/levimc/launcher/util/LanguageManager;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[BLjava/lang/String;[B)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/SettingsActivity;[Ljava/lang/String;[Ljava/lang/String;Landroid/widget/TextView;Lorg/levimc/launcher/util/LanguageManager;)V
     .locals 0
 
     .line 1
@@ -28,23 +28,23 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/p3;->a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/p3;->c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 5
     .line 6
-    iput-boolean p2, p0, Lorg/levimc/launcher/ui/activities/p3;->b:Z
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/p3;->d:[Ljava/lang/String;
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/p3;->c:[B
+    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/p3;->h:[Ljava/lang/String;
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/ui/activities/p3;->d:Ljava/lang/String;
+    iput-object p4, p0, Lorg/levimc/launcher/ui/activities/p3;->p:Landroid/widget/TextView;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/p3;->e:[B
+    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/p3;->q:Lorg/levimc/launcher/util/LanguageManager;
 
     .line 13
     .line 14
@@ -53,37 +53,37 @@
 
 
 # virtual methods
-.method public final call()Ljava/lang/Object;
-    .locals 5
+.method public final onClick(Landroid/view/View;)V
+    .locals 6
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/p3;->d:Ljava/lang/String;
+    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/p3;->p:Landroid/widget/TextView;
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/p3;->e:[B
+    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/p3;->q:Lorg/levimc/launcher/util/LanguageManager;
 
     .line 4
     .line 5
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/p3;->a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/p3;->c:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 6
     .line 7
-    iget-boolean v3, p0, Lorg/levimc/launcher/ui/activities/p3;->b:Z
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/p3;->d:[Ljava/lang/String;
 
     .line 8
     .line 9
-    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/p3;->c:[B
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/p3;->h:[Ljava/lang/String;
 
     .line 10
     .line 11
-    invoke-static {v2, v3, v4, v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->W(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[BLjava/lang/String;[B)[Ljava/lang/Object;
+    move-object v5, p1
 
     .line 12
+    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->f0(Lorg/levimc/launcher/ui/activities/SettingsActivity;[Ljava/lang/String;[Ljava/lang/String;Landroid/widget/TextView;Lorg/levimc/launcher/util/LanguageManager;Landroid/view/View;)V
+
     .line 13
     .line 14
-    move-result-object v0
-
     .line 15
-    return-object v0
+    return-void
 .end method

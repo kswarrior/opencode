@@ -1,6 +1,6 @@
 .class public final Lb3/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ls2/j;
@@ -9,11 +9,11 @@
 # instance fields
 .field public final synthetic a:I
 
-.field public final b:Lb3/p;
+.field public final b:Lb3/q;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lb3/p;I)V
+.method public synthetic constructor <init>(Lb3/q;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lb3/f;->b:Lb3/p;
+    iput-object p1, p0, Lb3/f;->b:Lb3/q;
 
     .line 4
     .line 5
@@ -52,28 +52,28 @@
 
     .line 7
     .line 8
-    new-instance v1, Lld/e;
+    new-instance v1, Ljd/d;
 
     .line 9
     .line 10
-    iget-object v0, p0, Lb3/f;->b:Lb3/p;
+    iget-object v0, p0, Lb3/f;->b:Lb3/q;
 
     .line 11
     .line 12
-    iget-object v2, v0, Lb3/p;->d:Ljava/util/ArrayList;
+    iget-object v2, v0, Lb3/q;->d:Ljava/util/ArrayList;
 
     .line 13
     .line 14
-    iget-object v3, v0, Lb3/p;->c:Lqf/a;
+    iget-object v3, v0, Lb3/q;->c:Lig/a;
 
     .line 15
     .line 16
-    invoke-direct {v1, p1, v2, v3}, Lld/e;-><init>(Landroid/os/ParcelFileDescriptor;Ljava/util/ArrayList;Lqf/a;)V
+    invoke-direct {v1, p1, v2, v3}, Ljd/d;-><init>(Landroid/os/ParcelFileDescriptor;Ljava/util/ArrayList;Lig/a;)V
 
     .line 17
     .line 18
     .line 19
-    sget-object v5, Lb3/p;->j:Ln7/d;
+    sget-object v5, Lb3/q;->j:Lv5/f;
 
     .line 20
     .line 21
@@ -86,7 +86,7 @@
     move-object v4, p4
 
     .line 24
-    invoke-virtual/range {v0 .. v5}, Lb3/p;->a(Lb3/x;IILs2/h;Lb3/o;)Lb3/d;
+    invoke-virtual/range {v0 .. v5}, Lb3/q;->a(Lb3/y;IILs2/h;Lb3/p;)Lb3/d;
 
     .line 25
     .line 26
@@ -111,35 +111,35 @@
 
     .line 33
     .line 34
-    new-instance v1, Lld/e;
+    new-instance v1, Ljd/d;
 
     .line 35
     .line 36
-    iget-object v0, p0, Lb3/f;->b:Lb3/p;
+    iget-object v0, p0, Lb3/f;->b:Lb3/q;
 
     .line 37
     .line 38
-    iget-object p2, v0, Lb3/p;->d:Ljava/util/ArrayList;
+    iget-object p2, v0, Lb3/q;->d:Ljava/util/ArrayList;
 
     .line 39
     .line 40
-    iget-object p3, v0, Lb3/p;->c:Lqf/a;
+    iget-object p3, v0, Lb3/q;->c:Lig/a;
 
     .line 41
     .line 42
-    const/4 p4, 0x5
+    const/4 p4, 0x1
 
     .line 43
-    invoke-direct {v1, p1, p2, p3, p4}, Lld/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p1, p2, p3, p4}, Ljd/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 44
     .line 45
     .line 46
-    sget-object v5, Lb3/p;->j:Ln7/d;
+    sget-object v5, Lb3/q;->j:Lv5/f;
 
     .line 47
     .line 48
-    invoke-virtual/range {v0 .. v5}, Lb3/p;->a(Lb3/x;IILs2/h;Lb3/o;)Lb3/d;
+    invoke-virtual/range {v0 .. v5}, Lb3/q;->a(Lb3/y;IILs2/h;Lb3/p;)Lb3/d;
 
     .line 49
     .line 50

@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/adapter/r;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:Ljava/lang/Object;
 
-.field public final synthetic q:Ljava/lang/Object;
+.field public final synthetic p:Ljava/lang/Object;
 
 
 # direct methods
@@ -23,7 +23,7 @@
     .line 1
     iput p4, p0, Lorg/levimc/launcher/ui/adapter/r;->c:I
 
-    iput-object p1, p0, Lorg/levimc/launcher/ui/adapter/r;->q:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/adapter/r;->p:Ljava/lang/Object;
 
     iput-object p2, p0, Lorg/levimc/launcher/ui/adapter/r;->h:Ljava/lang/Object;
 
@@ -48,7 +48,7 @@
 
     iput-object p2, p0, Lorg/levimc/launcher/ui/adapter/r;->h:Ljava/lang/Object;
 
-    iput-object p3, p0, Lorg/levimc/launcher/ui/adapter/r;->q:Ljava/lang/Object;
+    iput-object p3, p0, Lorg/levimc/launcher/ui/adapter/r;->p:Ljava/lang/Object;
 
     return-void
 .end method
@@ -68,7 +68,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/r;->p:Ljava/lang/Object;
 
     .line 7
     .line 8
@@ -117,7 +117,7 @@
 
     .line 29
     .line 30
-    iget-object v2, p0, Lorg/levimc/launcher/ui/adapter/r;->q:Ljava/lang/Object;
+    iget-object v2, p0, Lorg/levimc/launcher/ui/adapter/r;->p:Ljava/lang/Object;
 
     .line 31
     .line 32
@@ -134,7 +134,7 @@
 
     .line 38
     :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/r;->p:Ljava/lang/Object;
 
     .line 39
     .line 40

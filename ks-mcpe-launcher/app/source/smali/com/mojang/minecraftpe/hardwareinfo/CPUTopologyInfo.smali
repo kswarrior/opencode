@@ -1,6 +1,6 @@
 .class public Lcom/mojang/minecraftpe/hardwareinfo/CPUTopologyInfo;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -1078,14 +1078,14 @@
     .line 4
     .line 5
     .line 6
-    new-instance v1, La4/f;
+    new-instance v1, La4/g;
 
     .line 7
     .line 8
     const/4 v2, 0x5
 
     .line 9
-    invoke-direct {v1, p0, v0, v2}, La4/f;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v0, v2}, La4/g;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 10
     .line 11

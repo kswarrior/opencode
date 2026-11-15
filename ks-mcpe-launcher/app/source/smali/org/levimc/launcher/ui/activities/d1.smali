@@ -1,19 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/d1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroidx/activity/result/ActivityResultCallback;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+.field public final synthetic d:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;I)V
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -35,7 +35,7 @@
 
 
 # virtual methods
-.method public final c(Ljava/lang/Object;)V
+.method public final onClick(Landroid/view/View;)V
     .locals 1
 
     .line 1
@@ -48,15 +48,15 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
 
     .line 7
     .line 8
-    check-cast p1, Landroidx/activity/result/ActivityResult;
+    check-cast v0, Lorg/levimc/launcher/ui/activities/ModConfigActivity;
 
     .line 9
     .line 10
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->y(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroidx/activity/result/ActivityResult;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ModConfigActivity;->x(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Landroid/view/View;)V
 
     .line 11
     .line 12
@@ -65,15 +65,15 @@
 
     .line 14
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
 
     .line 15
     .line 16
-    check-cast p1, Landroid/net/Uri;
+    check-cast v0, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
 
     .line 17
     .line 18
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->C(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/net/Uri;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;->y(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;Landroid/view/View;)V
 
     .line 19
     .line 20
@@ -81,11 +81,65 @@
     return-void
 
     .line 22
-    nop
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
 
     .line 23
+    .line 24
+    check-cast v0, Landroid/app/Dialog;
+
+    .line 25
+    .line 26
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->x(Landroid/app/Dialog;Landroid/view/View;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
+
+    .line 31
+    .line 32
+    check-cast v0, Lorg/levimc/launcher/ui/activities/AccountsActivity;
+
+    .line 33
+    .line 34
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->w(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroid/view/View;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    :pswitch_3
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d1;->d:Ljava/lang/Object;
+
+    .line 39
+    .line 40
+    check-cast v0, Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;
+
+    .line 41
+    .line 42
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;->b(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;Landroid/view/View;)V
+
+    .line 43
+    .line 44
+    .line 45
+    return-void
+
+    .line 46
+    nop
+
+    .line 47
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

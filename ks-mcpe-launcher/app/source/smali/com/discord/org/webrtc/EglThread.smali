@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/EglThread;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/discord/org/webrtc/RenderSynchronizer$Listener;
@@ -216,11 +216,11 @@
 
     .line 7
     :cond_0
-    new-instance p0, La4/e;
+    new-instance p0, La4/f;
 
-    const/4 v0, 0x5
+    const/16 v0, 0xe
 
-    invoke-direct {p0, v0}, La4/e;-><init>(I)V
+    invoke-direct {p0, v0}, La4/f;-><init>(I)V
 
     :goto_0
     invoke-direct {p2, p0, v1, p1, p3}, Lcom/discord/org/webrtc/EglThread;-><init>(Lcom/discord/org/webrtc/EglThread$ReleaseMonitor;Lcom/discord/org/webrtc/EglThread$HandlerWithExceptionCallbacks;Lcom/discord/org/webrtc/EglBase$EglConnection;Lcom/discord/org/webrtc/RenderSynchronizer;)V

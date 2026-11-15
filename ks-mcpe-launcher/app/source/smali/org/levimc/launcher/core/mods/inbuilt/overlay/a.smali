@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,25 +9,25 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
+.field public final synthetic d:Ljava/lang/Object;
 
 .field public final synthetic h:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;II)V
+.method public synthetic constructor <init>(IILjava/lang/Object;)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->c:I
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
+    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Ljava/lang/Object;
 
     .line 4
     .line 5
-    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
+    iput p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
 
     .line 6
     .line 7
@@ -54,61 +54,95 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Ljava/lang/Object;
 
     .line 7
     .line 8
-    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
+    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;
 
     .line 9
     .line 10
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
 
     .line 11
     .line 12
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;->d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;I)V
+
     .line 13
+    .line 14
+    .line 15
     return-void
 
-    .line 14
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
-
-    .line 15
     .line 16
-    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Ljava/lang/Object;
 
     .line 17
     .line 18
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
+    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
 
     .line 19
     .line 20
-    .line 21
-    return-void
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
 
+    .line 21
     .line 22
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
 
     .line 23
     .line 24
-    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
-
     .line 25
+    return-void
+
     .line 26
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Ljava/lang/Object;
 
     .line 27
     .line 28
-    .line 29
-    return-void
+    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
 
+    .line 29
     .line 30
-    nop
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
 
     .line 31
+    .line 32
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
+
+    .line 33
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->d:Ljava/lang/Object;
+
+    .line 37
+    .line 38
+    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
+
+    .line 39
+    .line 40
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;->h:I
+
+    .line 41
+    .line 42
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;I)V
+
+    .line 43
+    .line 44
+    .line 45
+    return-void
+
+    .line 46
+    nop
+
+    .line 47
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_2
         :pswitch_1
         :pswitch_0
     .end packed-switch

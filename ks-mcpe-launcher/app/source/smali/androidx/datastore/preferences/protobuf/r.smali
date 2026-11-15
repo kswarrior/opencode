@@ -1,6 +1,6 @@
 .class public final Landroidx/datastore/preferences/protobuf/r;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -76,7 +76,7 @@
     .locals 2
 
     .line 1
-    sget-object v0, Landroidx/datastore/preferences/protobuf/q1;->q:Landroidx/datastore/preferences/protobuf/n1;
+    sget-object v0, Landroidx/datastore/preferences/protobuf/q1;->p:Landroidx/datastore/preferences/protobuf/n1;
 
     .line 2
     .line 3
@@ -91,7 +91,7 @@
     const/4 p1, 0x3
 
     .line 8
-    invoke-virtual {p0, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p0, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 9
     .line 10
@@ -104,7 +104,7 @@
     const/4 p1, 0x4
 
     .line 15
-    invoke-virtual {p0, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p0, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 16
     .line 17
@@ -117,7 +117,7 @@
 
     .line 20
     .line 21
-    invoke-virtual {p0, p2, v0}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p0, p2, v0}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 22
     .line 23
@@ -168,7 +168,7 @@
     xor-long/2addr p1, v0
 
     .line 45
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 46
     .line 47
@@ -200,7 +200,7 @@
     xor-int/2addr p1, p2
 
     .line 60
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 61
     .line 62
@@ -221,7 +221,7 @@
     move-result-wide p1
 
     .line 70
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 71
     .line 72
@@ -242,7 +242,7 @@
     move-result p1
 
     .line 80
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 81
     .line 82
@@ -263,7 +263,7 @@
     move-result p1
 
     .line 90
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->a0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->R(I)V
 
     .line 91
     .line 92
@@ -284,7 +284,7 @@
     move-result p1
 
     .line 100
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 101
     .line 102
@@ -305,7 +305,7 @@
 
     .line 109
     .line 110
-    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->U(Landroidx/datastore/preferences/protobuf/g;)V
+    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->L(Landroidx/datastore/preferences/protobuf/g;)V
 
     .line 111
     .line 112
@@ -321,7 +321,7 @@
     array-length p1, p3
 
     .line 117
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 118
     .line 119
@@ -329,7 +329,7 @@
     const/4 p2, 0x0
 
     .line 121
-    invoke-virtual {p0, p3, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->R([BII)V
+    invoke-virtual {p0, p3, p2, p1}, Landroidx/datastore/preferences/protobuf/m;->I([BII)V
 
     .line 122
     .line 123
@@ -365,7 +365,7 @@
     move-result p1
 
     .line 138
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 139
     .line 140
@@ -404,7 +404,7 @@
 
     .line 156
     .line 157
-    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->U(Landroidx/datastore/preferences/protobuf/g;)V
+    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->L(Landroidx/datastore/preferences/protobuf/g;)V
 
     .line 158
     .line 159
@@ -417,7 +417,7 @@
 
     .line 162
     .line 163
-    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->d0(Ljava/lang/String;)V
+    invoke-virtual {p0, p3}, Landroidx/datastore/preferences/protobuf/m;->U(Ljava/lang/String;)V
 
     .line 164
     .line 165
@@ -441,7 +441,7 @@
     int-to-byte p1, p1
 
     .line 174
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->Q(B)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->H(B)V
 
     .line 175
     .line 176
@@ -462,7 +462,7 @@
     move-result p1
 
     .line 184
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 185
     .line 186
@@ -483,7 +483,7 @@
     move-result-wide p1
 
     .line 194
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 195
     .line 196
@@ -504,7 +504,7 @@
     move-result p1
 
     .line 204
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->a0(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->R(I)V
 
     .line 205
     .line 206
@@ -525,7 +525,7 @@
     move-result-wide p1
 
     .line 214
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 215
     .line 216
@@ -546,7 +546,7 @@
     move-result-wide p1
 
     .line 224
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 225
     .line 226
@@ -575,7 +575,7 @@
     move-result p1
 
     .line 238
-    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p0, p1}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 239
     .line 240
@@ -604,7 +604,7 @@
     move-result-wide p1
 
     .line 252
-    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 253
     .line 254
@@ -949,7 +949,7 @@
 
     .line 147
     .line 148
-    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->w:Ljava/util/Map;
+    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->q:Ljava/util/Map;
 
     .line 149
     .line 150
@@ -973,7 +973,7 @@
 
     .line 159
     :cond_7
-    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->w:Ljava/util/Map;
+    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->q:Ljava/util/Map;
 
     .line 160
     .line 161
@@ -986,7 +986,7 @@
 
     .line 165
     :goto_3
-    iput-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->w:Ljava/util/Map;
+    iput-object v1, v0, Landroidx/datastore/preferences/protobuf/x0;->q:Ljava/util/Map;
 
     .line 166
     .line 167

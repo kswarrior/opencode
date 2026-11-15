@@ -1,23 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/r3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/util/function/Consumer;
+.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 
 # instance fields
-.field public final synthetic a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+.field public final synthetic a:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
-.field public final synthetic b:I
-
-.field public final synthetic c:I
-
-.field public final synthetic d:I
+.field public final synthetic b:Lorg/levimc/launcher/settings/FeatureSettings;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;III)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/SettingsActivity;Lorg/levimc/launcher/settings/FeatureSettings;)V
     .locals 0
 
     .line 1
@@ -26,55 +22,35 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/r3;->a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/r3;->a:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 5
     .line 6
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/r3;->b:I
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/r3;->b:Lorg/levimc/launcher/settings/FeatureSettings;
 
     .line 7
     .line 8
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/r3;->c:I
-
-    .line 9
-    .line 10
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/r3;->d:I
-
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final accept(Ljava/lang/Object;)V
-    .locals 4
+.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+    .locals 2
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/r3;->d:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/r3;->a:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 2
     .line 3
-    check-cast p1, Ljava/util/List;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/r3;->b:Lorg/levimc/launcher/settings/FeatureSettings;
 
     .line 4
     .line 5
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/r3;->a:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->p0(Lorg/levimc/launcher/ui/activities/SettingsActivity;Lorg/levimc/launcher/settings/FeatureSettings;Landroid/widget/CompoundButton;Z)V
 
     .line 6
     .line 7
-    iget v2, p0, Lorg/levimc/launcher/ui/activities/r3;->b:I
-
     .line 8
-    .line 9
-    iget v3, p0, Lorg/levimc/launcher/ui/activities/r3;->c:I
-
-    .line 10
-    .line 11
-    invoke-static {v1, v2, v3, v0, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->i3(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;)V
-
-    .line 12
-    .line 13
-    .line 14
     return-void
 .end method

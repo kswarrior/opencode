@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/a2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
@@ -9,13 +9,11 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:I
-
-.field public final synthetic h:Ljava/lang/Object;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(IILjava/lang/Object;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;I)V
     .locals 0
 
     .line 1
@@ -23,26 +21,22 @@
 
     .line 2
     .line 3
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/a2;->h:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
 
     .line 4
     .line 5
-    iput p1, p0, Lorg/levimc/launcher/ui/activities/a2;->d:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
 .method public final onClick(Landroid/view/View;)V
-    .locals 2
+    .locals 1
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/ui/activities/a2;->c:I
@@ -54,51 +48,106 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->h:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/SettingsActivity;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->K(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
 
     .line 9
     .line 10
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/a2;->d:I
-
     .line 11
+    return-void
+
     .line 12
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->B(Lorg/levimc/launcher/ui/activities/SettingsActivity;ILandroid/view/View;)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
 
     .line 13
     .line 14
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->y(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
+
     .line 15
+    .line 16
+    .line 17
     return-void
 
-    .line 16
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->h:Ljava/lang/Object;
-
-    .line 17
     .line 18
-    check-cast v0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
 
     .line 19
     .line 20
-    iget v1, p0, Lorg/levimc/launcher/ui/activities/a2;->d:I
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->F(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
 
     .line 21
     .line 22
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;->b(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;ILandroid/view/View;)V
-
     .line 23
-    .line 24
-    .line 25
     return-void
 
+    .line 24
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+
+    .line 25
     .line 26
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->A(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_3
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+
+    .line 31
+    .line 32
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->x(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
+
+    .line 33
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    :pswitch_4
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+
+    .line 37
+    .line 38
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->I(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
+
+    .line 39
+    .line 40
+    .line 41
+    return-void
+
+    .line 42
+    :pswitch_5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/a2;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+
+    .line 43
+    .line 44
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->C(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/view/View;)V
+
+    .line 45
+    .line 46
+    .line 47
+    return-void
+
+    .line 48
     nop
 
+    .line 49
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

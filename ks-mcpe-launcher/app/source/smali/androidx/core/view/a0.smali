@@ -1,65 +1,151 @@
-.class public final synthetic Landroidx/core/view/a0;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Landroid/view/WindowInsetsController$OnControllableInsetsChangedListener;
+.class public final Landroidx/core/view/a0;
+.super La1/a;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic a:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-
-# direct methods
-.method public synthetic constructor <init>(Ljava/util/concurrent/atomic/AtomicBoolean;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Landroidx/core/view/a0;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
-
-    .line 5
-    .line 6
-    return-void
-.end method
+.field public h:Landroid/view/View;
 
 
 # virtual methods
-.method public final onControllableInsetsChanged(Landroid/view/WindowInsetsController;I)V
-    .locals 0
+.method public final L()V
+    .locals 6
 
     .line 1
-    iget-object p1, p0, Landroidx/core/view/a0;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v0, p0, Landroidx/core/view/a0;->h:Landroid/view/View;
 
     .line 2
     .line 3
-    and-int/lit8 p2, p2, 0x8
+    if-eqz v0, :cond_0
 
     .line 4
     .line 5
-    if-eqz p2, :cond_0
+    invoke-static {v0}, Landroidx/core/view/y;->k(Landroid/view/View;)Landroid/view/WindowInsetsController;
 
     .line 6
     .line 7
-    const/4 p2, 0x1
-
     .line 8
-    goto :goto_0
+    move-result-object v1
 
     .line 9
-    :cond_0
-    const/4 p2, 0x0
+    goto :goto_0
 
     .line 10
-    :goto_0
-    invoke-virtual {p1, p2}, Ljava/util/concurrent/atomic/AtomicBoolean;->set(Z)V
+    :cond_0
+    const/4 v1, 0x0
 
     .line 11
+    :goto_0
+    if-eqz v1, :cond_2
+
     .line 12
     .line 13
+    new-instance v2, Ljava/util/concurrent/atomic/AtomicBoolean;
+
+    .line 14
+    .line 15
+    const/4 v3, 0x0
+
+    .line 16
+    invoke-direct {v2, v3}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
+    .line 17
+    .line 18
+    .line 19
+    new-instance v4, Landroidx/core/view/z;
+
+    .line 20
+    .line 21
+    invoke-direct {v4, v2}, Landroidx/core/view/z;-><init>(Ljava/util/concurrent/atomic/AtomicBoolean;)V
+
+    .line 22
+    .line 23
+    .line 24
+    invoke-static {v1, v4}, Landroidx/core/view/y;->r(Landroid/view/WindowInsetsController;Landroidx/core/view/z;)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-virtual {v2}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result v2
+
+    .line 31
+    if-nez v2, :cond_1
+
+    .line 32
+    .line 33
+    if-eqz v0, :cond_1
+
+    .line 34
+    .line 35
+    invoke-virtual {v0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v2
+
+    .line 39
+    const-string v5, "input_method"
+
+    .line 40
+    .line 41
+    invoke-virtual {v2, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object v2
+
+    .line 45
+    check-cast v2, Landroid/view/inputmethod/InputMethodManager;
+
+    .line 46
+    .line 47
+    invoke-virtual {v0}, Landroid/view/View;->getWindowToken()Landroid/os/IBinder;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object v0
+
+    .line 51
+    invoke-virtual {v2, v0, v3}, Landroid/view/inputmethod/InputMethodManager;->hideSoftInputFromWindow(Landroid/os/IBinder;I)Z
+
+    .line 52
+    .line 53
+    .line 54
+    :cond_1
+    invoke-static {v1, v4}, Landroidx/core/view/y;->y(Landroid/view/WindowInsetsController;Landroidx/core/view/z;)V
+
+    .line 55
+    .line 56
+    .line 57
+    invoke-static {}, Landroidx/core/view/y;->b()I
+
+    .line 58
+    .line 59
+    .line 60
+    move-result v0
+
+    .line 61
+    invoke-static {v1, v0}, Landroidx/core/view/y;->q(Landroid/view/WindowInsetsController;I)V
+
+    .line 62
+    .line 63
+    .line 64
+    return-void
+
+    .line 65
+    :cond_2
+    invoke-super {p0}, La1/a;->L()V
+
+    .line 66
+    .line 67
+    .line 68
     return-void
 .end method

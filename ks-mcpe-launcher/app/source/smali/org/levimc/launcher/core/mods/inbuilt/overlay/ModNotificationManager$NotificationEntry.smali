@@ -1,6 +1,6 @@
-.class Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager$NotificationEntry;
+.class final Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager$NotificationEntry;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -9,17 +9,31 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x9
+    accessFlags = 0x19
     name = "NotificationEntry"
 .end annotation
 
 
 # instance fields
-.field dismissRunnable:Ljava/lang/Runnable;
+.field bar:Landroid/widget/ProgressBar;
 
-.field index:I
+.field dismiss:Ljava/lang/Runnable;
+
+.field height:I
+
+.field id:Ljava/lang/String;
+
+.field message:Landroid/widget/TextView;
 
 .field params:Landroid/view/WindowManager$LayoutParams;
+
+.field position:I
+
+.field progress:Landroid/animation/ObjectAnimator;
+
+.field removed:Z
+
+.field shownAt:J
 
 .field view:Landroid/view/View;
 

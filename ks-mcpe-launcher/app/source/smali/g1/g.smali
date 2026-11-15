@@ -1,6 +1,6 @@
 .class public final Lg1/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -91,5667 +91,2812 @@
 .method static constructor <clinit>()V
     .locals 144
 
-    .line 1
     const/4 v0, 0x3
 
-    .line 2
+    .line 1
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 3
-    .line 4
-    .line 5
     move-result-object v1
 
-    .line 6
+    .line 2
     const-string v2, "ExifInterface"
 
-    .line 7
-    .line 8
     invoke-static {v2, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
 
-    .line 9
-    .line 10
-    .line 11
     move-result v2
 
-    .line 12
     sput-boolean v2, Lg1/g;->l:Z
 
-    .line 13
-    .line 14
     const/4 v2, 0x1
 
-    .line 15
+    .line 3
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 16
-    .line 17
-    .line 18
     move-result-object v3
 
-    .line 19
     const/4 v4, 0x6
 
-    .line 20
+    .line 4
     invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 21
-    .line 22
-    .line 23
     move-result-object v5
 
-    .line 24
     const/16 v6, 0x8
 
-    .line 25
-    .line 26
     invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 27
-    .line 28
-    .line 29
     move-result-object v7
 
-    .line 30
     filled-new-array {v3, v5, v1, v7}, [Ljava/lang/Integer;
 
-    .line 31
-    .line 32
-    .line 33
     move-result-object v5
 
-    .line 34
+    .line 5
     invoke-static {v5}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
-    .line 35
-    .line 36
-    .line 37
     const/4 v5, 0x2
 
-    .line 38
+    .line 6
     invoke-static {v5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 39
-    .line 40
-    .line 41
     move-result-object v8
 
-    .line 42
     const/4 v9, 0x7
 
-    .line 43
     invoke-static {v9}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 44
-    .line 45
-    .line 46
     move-result-object v10
 
-    .line 47
     const/4 v11, 0x4
 
-    .line 48
     invoke-static {v11}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 49
-    .line 50
-    .line 51
     move-result-object v12
 
-    .line 52
     const/4 v13, 0x5
 
-    .line 53
+    .line 7
     invoke-static {v13}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 54
-    .line 55
-    .line 56
     move-result-object v14
 
-    .line 57
     filled-new-array {v8, v10, v12, v14}, [Ljava/lang/Integer;
 
-    .line 58
-    .line 59
-    .line 60
     move-result-object v12
 
-    .line 61
+    .line 8
     invoke-static {v12}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
-    .line 62
-    .line 63
-    .line 64
+    .line 9
     filled-new-array {v6, v6, v6}, [I
 
-    .line 65
-    .line 66
-    .line 67
     move-result-object v12
 
-    .line 68
     sput-object v12, Lg1/g;->m:[I
 
-    .line 69
-    .line 70
+    .line 10
     filled-new-array {v6}, [I
 
-    .line 71
-    .line 72
-    .line 73
     move-result-object v12
 
-    .line 74
     sput-object v12, Lg1/g;->n:[I
 
-    .line 75
-    .line 76
+    .line 11
     new-array v12, v0, [B
 
-    .line 77
-    .line 78
     fill-array-data v12, :array_0
 
-    .line 79
-    .line 80
-    .line 81
     sput-object v12, Lg1/g;->o:[B
 
-    .line 82
-    .line 83
+    .line 12
     new-array v12, v11, [B
 
-    .line 84
-    .line 85
     fill-array-data v12, :array_1
 
-    .line 86
-    .line 87
-    .line 88
     sput-object v12, Lg1/g;->p:[B
 
-    .line 89
-    .line 90
+    .line 13
     new-array v12, v11, [B
 
-    .line 91
-    .line 92
     fill-array-data v12, :array_2
 
-    .line 93
-    .line 94
-    .line 95
     sput-object v12, Lg1/g;->q:[B
 
-    .line 96
-    .line 97
+    .line 14
     new-array v12, v11, [B
 
-    .line 98
-    .line 99
     fill-array-data v12, :array_3
 
-    .line 100
-    .line 101
-    .line 102
     sput-object v12, Lg1/g;->r:[B
 
-    .line 103
-    .line 104
+    .line 15
     new-array v12, v4, [B
 
-    .line 105
-    .line 106
     fill-array-data v12, :array_4
 
-    .line 107
-    .line 108
-    .line 109
     sput-object v12, Lg1/g;->s:[B
 
-    .line 110
-    .line 111
     const/16 v12, 0xa
 
-    .line 112
-    .line 113
+    .line 16
     new-array v15, v12, [B
 
-    .line 114
-    .line 115
     fill-array-data v15, :array_5
 
-    .line 116
-    .line 117
-    .line 118
     sput-object v15, Lg1/g;->t:[B
 
-    .line 119
-    .line 120
+    .line 17
     new-array v15, v6, [B
 
-    .line 121
-    .line 122
     fill-array-data v15, :array_6
 
-    .line 123
-    .line 124
-    .line 125
     sput-object v15, Lg1/g;->u:[B
 
-    .line 126
-    .line 127
+    .line 18
     new-array v15, v11, [B
 
-    .line 128
-    .line 129
     fill-array-data v15, :array_7
 
-    .line 130
-    .line 131
-    .line 132
     sput-object v15, Lg1/g;->v:[B
 
-    .line 133
-    .line 134
+    .line 19
     new-array v15, v11, [B
 
-    .line 135
-    .line 136
     fill-array-data v15, :array_8
 
-    .line 137
-    .line 138
-    .line 139
     sput-object v15, Lg1/g;->w:[B
 
-    .line 140
-    .line 141
+    .line 20
     new-array v15, v11, [B
 
-    .line 142
-    .line 143
     fill-array-data v15, :array_9
 
-    .line 144
-    .line 145
-    .line 146
     sput-object v15, Lg1/g;->x:[B
 
-    .line 147
-    .line 148
+    .line 21
     new-array v15, v11, [B
 
-    .line 149
-    .line 150
     fill-array-data v15, :array_a
 
-    .line 151
-    .line 152
-    .line 153
     sput-object v15, Lg1/g;->y:[B
 
-    .line 154
-    .line 155
+    .line 22
     new-array v15, v11, [B
 
-    .line 156
-    .line 157
     fill-array-data v15, :array_b
 
-    .line 158
-    .line 159
-    .line 160
     sput-object v15, Lg1/g;->z:[B
 
-    .line 161
-    .line 162
+    .line 23
     new-array v15, v11, [B
 
-    .line 163
-    .line 164
     fill-array-data v15, :array_c
 
-    .line 165
-    .line 166
-    .line 167
     sput-object v15, Lg1/g;->A:[B
 
-    .line 168
-    .line 169
+    .line 24
     const-string v15, "VP8X"
 
-    .line 170
-    .line 171
     invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
 
-    .line 172
-    .line 173
-    .line 174
     move-result-object v12
 
-    .line 175
     invoke-virtual {v15, v12}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 176
-    .line 177
-    .line 178
+    .line 25
     const-string v12, "VP8L"
 
-    .line 179
-    .line 180
     invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
 
-    .line 181
-    .line 182
-    .line 183
     move-result-object v15
 
-    .line 184
     invoke-virtual {v12, v15}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 185
-    .line 186
-    .line 187
+    .line 26
     const-string v12, "VP8 "
 
-    .line 188
-    .line 189
     invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
 
-    .line 190
-    .line 191
-    .line 192
     move-result-object v15
 
-    .line 193
     invoke-virtual {v12, v15}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 194
-    .line 195
-    .line 196
+    .line 27
     const-string v12, "ANIM"
 
-    .line 197
-    .line 198
     invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
 
-    .line 199
-    .line 200
-    .line 201
     move-result-object v15
 
-    .line 202
     invoke-virtual {v12, v15}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 203
-    .line 204
-    .line 205
+    .line 28
     const-string v12, "ANMF"
 
-    .line 206
-    .line 207
     invoke-static {}, Ljava/nio/charset/Charset;->defaultCharset()Ljava/nio/charset/Charset;
 
-    .line 208
-    .line 209
-    .line 210
     move-result-object v15
 
-    .line 211
     invoke-virtual {v12, v15}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 212
-    .line 213
-    .line 214
+    .line 29
     const-string v28, "DOUBLE"
 
-    .line 215
-    .line 216
     const-string v29, "IFD"
 
-    .line 217
-    .line 218
     const-string v16, ""
 
-    .line 219
-    .line 220
     const-string v17, "BYTE"
 
-    .line 221
-    .line 222
     const-string v18, "STRING"
 
-    .line 223
-    .line 224
     const-string v19, "USHORT"
 
-    .line 225
-    .line 226
     const-string v20, "ULONG"
 
-    .line 227
-    .line 228
     const-string v21, "URATIONAL"
 
-    .line 229
-    .line 230
     const-string v22, "SBYTE"
 
-    .line 231
-    .line 232
     const-string v23, "UNDEFINED"
 
-    .line 233
-    .line 234
     const-string v24, "SSHORT"
 
-    .line 235
-    .line 236
     const-string v25, "SLONG"
 
-    .line 237
-    .line 238
     const-string v26, "SRATIONAL"
 
-    .line 239
-    .line 240
     const-string v27, "SINGLE"
 
-    .line 241
-    .line 242
     filled-new-array/range {v16 .. v29}, [Ljava/lang/String;
 
-    .line 243
-    .line 244
-    .line 245
     move-result-object v12
 
-    .line 246
     sput-object v12, Lg1/g;->B:[Ljava/lang/String;
 
-    .line 247
-    .line 248
     const/16 v12, 0xe
 
-    .line 249
-    .line 250
+    .line 30
     new-array v15, v12, [I
 
-    .line 251
-    .line 252
     fill-array-data v15, :array_d
 
-    .line 253
-    .line 254
-    .line 255
     sput-object v15, Lg1/g;->C:[I
 
-    .line 256
-    .line 257
+    .line 31
     new-array v15, v6, [B
 
-    .line 258
-    .line 259
     fill-array-data v15, :array_e
 
-    .line 260
-    .line 261
-    .line 262
     sput-object v15, Lg1/g;->D:[B
 
-    .line 263
-    .line 264
+    .line 32
     new-instance v15, Lg1/d;
 
-    .line 265
-    .line 266
     const-string v12, "NewSubfileType"
 
-    .line 267
-    .line 268
     const/16 v6, 0xfe
 
-    .line 269
-    .line 270
     invoke-direct {v15, v12, v6, v11}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 271
-    .line 272
-    .line 273
     new-instance v6, Lg1/d;
 
-    .line 274
-    .line 275
     const-string v2, "SubfileType"
 
-    .line 276
-    .line 277
     const/16 v9, 0xff
 
-    .line 278
-    .line 279
     invoke-direct {v6, v2, v9, v11}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 280
-    .line 281
-    .line 282
     new-instance v9, Lg1/d;
 
-    .line 283
-    .line 284
     const-string v4, "ImageWidth"
 
-    .line 285
-    .line 286
     const/16 v13, 0x100
 
-    .line 287
-    .line 288
     invoke-direct {v9, v4, v13, v0, v11}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 289
-    .line 290
-    .line 291
     new-instance v4, Lg1/d;
 
-    .line 292
-    .line 293
     const-string v13, "ImageLength"
 
-    .line 294
-    .line 295
     const/16 v5, 0x101
 
-    .line 296
-    .line 297
     invoke-direct {v4, v13, v5, v0, v11}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 298
-    .line 299
-    .line 300
     new-instance v13, Lg1/d;
 
-    .line 301
-    .line 302
     const-string v5, "BitsPerSample"
 
-    .line 303
-    .line 304
     const/16 v11, 0x102
 
-    .line 305
-    .line 306
     invoke-direct {v13, v5, v11, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 307
-    .line 308
-    .line 309
     new-instance v11, Lg1/d;
 
-    .line 310
-    .line 311
     move-object/from16 v19, v4
 
-    .line 312
-    .line 313
     const-string v4, "Compression"
 
-    .line 314
-    .line 315
     move-object/from16 v17, v6
 
-    .line 316
-    .line 317
     const/16 v6, 0x103
 
-    .line 318
-    .line 319
     invoke-direct {v11, v4, v6, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 320
-    .line 321
-    .line 322
     new-instance v6, Lg1/d;
 
-    .line 323
-    .line 324
     move-object/from16 v18, v9
 
-    .line 325
-    .line 326
     const-string v9, "PhotometricInterpretation"
 
-    .line 327
-    .line 328
     move-object/from16 v21, v11
 
-    .line 329
-    .line 330
     const/16 v11, 0x106
 
-    .line 331
-    .line 332
     invoke-direct {v6, v9, v11, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 333
-    .line 334
-    .line 335
     new-instance v11, Lg1/d;
 
-    .line 336
-    .line 337
     const-string v0, "ImageDescription"
 
-    .line 338
-    .line 339
     move-object/from16 v22, v6
 
-    .line 340
-    .line 341
     const/16 v6, 0x10e
 
-    .line 342
-    .line 343
     move-object/from16 v20, v13
 
-    .line 344
-    .line 345
     const/4 v13, 0x2
 
-    .line 346
     invoke-direct {v11, v0, v6, v13}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 347
-    .line 348
-    .line 349
     new-instance v6, Lg1/d;
 
-    .line 350
-    .line 351
     move-object/from16 v23, v11
 
-    .line 352
-    .line 353
     const-string v11, "Make"
 
-    .line 354
-    .line 355
     move-object/from16 v16, v15
 
-    .line 356
-    .line 357
     const/16 v15, 0x10f
 
-    .line 358
-    .line 359
     invoke-direct {v6, v11, v15, v13}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 360
-    .line 361
-    .line 362
     new-instance v15, Lg1/d;
 
-    .line 363
-    .line 364
     move-object/from16 v24, v6
 
-    .line 365
-    .line 366
     const-string v6, "Model"
 
-    .line 367
-    .line 368
     move-object/from16 v63, v7
 
-    .line 369
-    .line 370
     const/16 v7, 0x110
 
-    .line 371
-    .line 372
     invoke-direct {v15, v6, v7, v13}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 373
-    .line 374
-    .line 375
     new-instance v13, Lg1/d;
 
-    .line 376
-    .line 377
     const-string v7, "StripOffsets"
 
-    .line 378
-    .line 379
     move-object/from16 v25, v15
 
-    .line 380
-    .line 381
     const/16 v15, 0x111
 
-    .line 382
-    .line 383
     move-object/from16 v65, v1
 
-    .line 384
-    .line 385
     move-object/from16 v64, v10
 
-    .line 386
-    .line 387
     const/4 v1, 0x4
 
-    .line 388
     const/4 v10, 0x3
 
-    .line 389
     invoke-direct {v13, v7, v15, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 390
-    .line 391
-    .line 392
     new-instance v1, Lg1/d;
 
-    .line 393
-    .line 394
     const-string v15, "Orientation"
 
-    .line 395
-    .line 396
     move-object/from16 v26, v13
 
-    .line 397
-    .line 398
     const/16 v13, 0x112
 
-    .line 399
-    .line 400
     invoke-direct {v1, v15, v13, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 401
-    .line 402
-    .line 403
     new-instance v13, Lg1/d;
 
-    .line 404
-    .line 405
     const-string v15, "SamplesPerPixel"
 
-    .line 406
-    .line 407
     move-object/from16 v27, v1
 
-    .line 408
-    .line 409
     const/16 v1, 0x115
 
-    .line 410
-    .line 411
     invoke-direct {v13, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 412
-    .line 413
-    .line 414
     new-instance v1, Lg1/d;
 
-    .line 415
-    .line 416
     const-string v15, "RowsPerStrip"
 
-    .line 417
-    .line 418
     move-object/from16 v28, v13
 
-    .line 419
-    .line 420
     const/16 v13, 0x116
 
-    .line 421
-    .line 422
     move-object/from16 v66, v8
 
-    .line 423
-    .line 424
     const/4 v8, 0x4
 
-    .line 425
     invoke-direct {v1, v15, v13, v10, v8}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 426
-    .line 427
-    .line 428
     new-instance v13, Lg1/d;
 
-    .line 429
-    .line 430
     const-string v15, "StripByteCounts"
 
-    .line 431
-    .line 432
     move-object/from16 v29, v1
 
-    .line 433
-    .line 434
     const/16 v1, 0x117
 
-    .line 435
-    .line 436
     invoke-direct {v13, v15, v1, v10, v8}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 437
-    .line 438
-    .line 439
     new-instance v1, Lg1/d;
 
-    .line 440
-    .line 441
     const-string v8, "XResolution"
 
-    .line 442
-    .line 443
     const/16 v10, 0x11a
 
-    .line 444
-    .line 445
     const/4 v15, 0x5
 
-    .line 446
     invoke-direct {v1, v8, v10, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 447
-    .line 448
-    .line 449
     new-instance v8, Lg1/d;
 
-    .line 450
-    .line 451
     const-string v10, "YResolution"
 
-    .line 452
-    .line 453
     move-object/from16 v31, v1
 
-    .line 454
-    .line 455
     const/16 v1, 0x11b
 
-    .line 456
-    .line 457
     invoke-direct {v8, v10, v1, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 458
-    .line 459
-    .line 460
     new-instance v1, Lg1/d;
 
-    .line 461
-    .line 462
     const-string v10, "PlanarConfiguration"
 
-    .line 463
-    .line 464
     const/16 v15, 0x11c
 
-    .line 465
-    .line 466
     move-object/from16 v32, v8
 
-    .line 467
-    .line 468
     const/4 v8, 0x3
 
-    .line 469
     invoke-direct {v1, v10, v15, v8}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 470
-    .line 471
-    .line 472
     new-instance v10, Lg1/d;
 
-    .line 473
-    .line 474
     const-string v15, "ResolutionUnit"
 
-    .line 475
-    .line 476
     move-object/from16 v33, v1
 
-    .line 477
-    .line 478
     const/16 v1, 0x128
 
-    .line 479
-    .line 480
     invoke-direct {v10, v15, v1, v8}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 481
-    .line 482
-    .line 483
     new-instance v1, Lg1/d;
 
-    .line 484
-    .line 485
     const-string v15, "TransferFunction"
 
-    .line 486
-    .line 487
     move-object/from16 v34, v10
 
-    .line 488
-    .line 489
     const/16 v10, 0x12d
 
-    .line 490
-    .line 491
     invoke-direct {v1, v15, v10, v8}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 492
-    .line 493
-    .line 494
     new-instance v8, Lg1/d;
 
-    .line 495
-    .line 496
     const-string v10, "Software"
 
-    .line 497
-    .line 498
     const/16 v15, 0x131
 
-    .line 499
-    .line 500
     move-object/from16 v35, v1
 
-    .line 501
-    .line 502
     const/4 v1, 0x2
 
-    .line 503
     invoke-direct {v8, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 504
-    .line 505
-    .line 506
     new-instance v10, Lg1/d;
 
-    .line 507
-    .line 508
     const-string v15, "DateTime"
 
-    .line 509
-    .line 510
     move-object/from16 v36, v8
 
-    .line 511
-    .line 512
     const/16 v8, 0x132
 
-    .line 513
-    .line 514
     invoke-direct {v10, v15, v8, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 515
-    .line 516
-    .line 517
     new-instance v8, Lg1/d;
 
-    .line 518
-    .line 519
     const-string v15, "Artist"
 
-    .line 520
-    .line 521
     move-object/from16 v37, v10
 
-    .line 522
-    .line 523
     const/16 v10, 0x13b
 
-    .line 524
-    .line 525
     invoke-direct {v8, v15, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 526
-    .line 527
-    .line 528
     new-instance v1, Lg1/d;
 
-    .line 529
-    .line 530
     const-string v10, "WhitePoint"
 
-    .line 531
-    .line 532
     const/16 v15, 0x13e
 
-    .line 533
-    .line 534
     move-object/from16 v38, v8
 
-    .line 535
-    .line 536
     const/4 v8, 0x5
 
-    .line 537
     invoke-direct {v1, v10, v15, v8}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 538
-    .line 539
-    .line 540
     new-instance v10, Lg1/d;
 
-    .line 541
-    .line 542
     const-string v15, "PrimaryChromaticities"
 
-    .line 543
-    .line 544
     move-object/from16 v39, v1
 
-    .line 545
-    .line 546
     const/16 v1, 0x13f
 
-    .line 547
-    .line 548
     invoke-direct {v10, v15, v1, v8}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 549
-    .line 550
-    .line 551
     new-instance v1, Lg1/d;
 
-    .line 552
-    .line 553
     const-string v8, "SubIFDPointer"
 
-    .line 554
-    .line 555
     const/16 v15, 0x14a
 
-    .line 556
-    .line 557
     move-object/from16 v40, v10
 
-    .line 558
-    .line 559
     const/4 v10, 0x4
 
-    .line 560
     invoke-direct {v1, v8, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 561
-    .line 562
-    .line 563
     new-instance v15, Lg1/d;
 
-    .line 564
-    .line 565
     move-object/from16 v41, v1
 
-    .line 566
-    .line 567
     const-string v1, "JPEGInterchangeFormat"
 
-    .line 568
-    .line 569
     move-object/from16 v30, v13
 
-    .line 570
-    .line 571
     const/16 v13, 0x201
 
-    .line 572
-    .line 573
     invoke-direct {v15, v1, v13, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 574
-    .line 575
-    .line 576
     new-instance v1, Lg1/d;
 
-    .line 577
-    .line 578
     const-string v13, "JPEGInterchangeFormatLength"
 
-    .line 579
-    .line 580
     move-object/from16 v42, v15
 
-    .line 581
-    .line 582
     const/16 v15, 0x202
 
-    .line 583
-    .line 584
     invoke-direct {v1, v13, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 585
-    .line 586
-    .line 587
     new-instance v10, Lg1/d;
 
-    .line 588
-    .line 589
     const-string v13, "YCbCrCoefficients"
 
-    .line 590
-    .line 591
     const/16 v15, 0x211
 
-    .line 592
-    .line 593
     move-object/from16 v43, v1
 
-    .line 594
-    .line 595
     const/4 v1, 0x5
 
-    .line 596
     invoke-direct {v10, v13, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 597
-    .line 598
-    .line 599
     new-instance v1, Lg1/d;
 
-    .line 600
-    .line 601
     const-string v13, "YCbCrSubSampling"
 
-    .line 602
-    .line 603
     const/16 v15, 0x212
 
-    .line 604
-    .line 605
     move-object/from16 v44, v10
 
-    .line 606
-    .line 607
     const/4 v10, 0x3
 
-    .line 608
     invoke-direct {v1, v13, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 609
-    .line 610
-    .line 611
     new-instance v13, Lg1/d;
 
-    .line 612
-    .line 613
     const-string v15, "YCbCrPositioning"
 
-    .line 614
-    .line 615
     move-object/from16 v45, v1
 
-    .line 616
-    .line 617
     const/16 v1, 0x213
 
-    .line 618
-    .line 619
     invoke-direct {v13, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 620
-    .line 621
-    .line 622
     new-instance v1, Lg1/d;
 
-    .line 623
-    .line 624
     const-string v10, "ReferenceBlackWhite"
 
-    .line 625
-    .line 626
     const/16 v15, 0x214
 
-    .line 627
-    .line 628
     move-object/from16 v46, v13
 
-    .line 629
-    .line 630
     const/4 v13, 0x5
 
-    .line 631
     invoke-direct {v1, v10, v15, v13}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 632
-    .line 633
-    .line 634
     new-instance v10, Lg1/d;
 
-    .line 635
-    .line 636
     const-string v13, "Copyright"
 
-    .line 637
-    .line 638
     const v15, 0x8298
 
-    .line 639
-    .line 640
-    .line 641
     move-object/from16 v47, v1
 
-    .line 642
-    .line 643
     const/4 v1, 0x2
 
-    .line 644
     invoke-direct {v10, v13, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 645
-    .line 646
-    .line 647
     new-instance v1, Lg1/d;
 
-    .line 648
-    .line 649
     const-string v13, "ExifIFDPointer"
 
-    .line 650
-    .line 651
     const v15, 0x8769
 
-    .line 652
-    .line 653
-    .line 654
     move-object/from16 v48, v10
 
-    .line 655
-    .line 656
     const/4 v10, 0x4
 
-    .line 657
     invoke-direct {v1, v13, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 658
-    .line 659
-    .line 660
     new-instance v15, Lg1/d;
 
-    .line 661
-    .line 662
     move-object/from16 v49, v1
 
-    .line 663
-    .line 664
     const-string v1, "GPSInfoIFDPointer"
 
-    .line 665
-    .line 666
     move-object/from16 v67, v3
 
-    .line 667
-    .line 668
     const v3, 0x8825
 
-    .line 669
-    .line 670
-    .line 671
     invoke-direct {v15, v1, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 672
-    .line 673
-    .line 674
     new-instance v3, Lg1/d;
 
-    .line 675
-    .line 676
     move-object/from16 v50, v15
 
-    .line 677
-    .line 678
     const-string v15, "SensorTopBorder"
 
-    .line 679
-    .line 680
     invoke-direct {v3, v15, v10, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 681
-    .line 682
-    .line 683
     new-instance v15, Lg1/d;
 
-    .line 684
-    .line 685
     move-object/from16 v51, v3
 
-    .line 686
-    .line 687
     const-string v3, "SensorLeftBorder"
 
-    .line 688
-    .line 689
     move-object/from16 v68, v14
 
-    .line 690
-    .line 691
     const/4 v14, 0x5
 
-    .line 692
     invoke-direct {v15, v3, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 693
-    .line 694
-    .line 695
     new-instance v3, Lg1/d;
 
-    .line 696
-    .line 697
     const-string v14, "SensorBottomBorder"
 
-    .line 698
-    .line 699
     move-object/from16 v52, v15
 
-    .line 700
-    .line 701
     const/4 v15, 0x6
 
-    .line 702
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 703
-    .line 704
-    .line 705
     new-instance v14, Lg1/d;
 
-    .line 706
-    .line 707
     const-string v15, "SensorRightBorder"
 
-    .line 708
-    .line 709
     move-object/from16 v53, v3
 
-    .line 710
-    .line 711
     const/4 v3, 0x7
 
-    .line 712
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 713
-    .line 714
-    .line 715
     new-instance v10, Lg1/d;
 
-    .line 716
-    .line 717
     const-string v15, "ISO"
 
-    .line 718
-    .line 719
     const/16 v3, 0x17
 
-    .line 720
-    .line 721
     move-object/from16 v54, v14
 
-    .line 722
-    .line 723
     const/4 v14, 0x3
 
-    .line 724
     invoke-direct {v10, v15, v3, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 725
-    .line 726
-    .line 727
     new-instance v3, Lg1/d;
 
-    .line 728
-    .line 729
     const-string v14, "JpgFromRaw"
 
-    .line 730
-    .line 731
     const/16 v15, 0x2e
 
-    .line 732
-    .line 733
     move-object/from16 v55, v10
 
-    .line 734
-    .line 735
     const/4 v10, 0x7
 
-    .line 736
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 737
-    .line 738
-    .line 739
     new-instance v10, Lg1/d;
 
-    .line 740
-    .line 741
     const-string v14, "Xmp"
 
-    .line 742
-    .line 743
     const/16 v15, 0x2bc
 
-    .line 744
-    .line 745
     move-object/from16 v56, v3
 
-    .line 746
-    .line 747
     const/4 v3, 0x1
 
-    .line 748
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 749
-    .line 750
-    .line 751
     move-object/from16 v57, v10
 
-    .line 752
-    .line 753
     filled-new-array/range {v16 .. v57}, [Lg1/d;
 
-    .line 754
-    .line 755
-    .line 756
     move-result-object v69
 
-    .line 757
+    .line 33
     new-instance v3, Lg1/d;
 
-    .line 758
-    .line 759
     const-string v10, "ExposureTime"
 
-    .line 760
-    .line 761
     const v14, 0x829a
 
-    .line 762
-    .line 763
-    .line 764
     const/4 v15, 0x5
 
-    .line 765
     invoke-direct {v3, v10, v14, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 766
-    .line 767
-    .line 768
     new-instance v10, Lg1/d;
 
-    .line 769
-    .line 770
     const-string v14, "FNumber"
 
-    .line 771
-    .line 772
     move-object/from16 v70, v3
 
-    .line 773
-    .line 774
     const v3, 0x829d
 
-    .line 775
-    .line 776
-    .line 777
     invoke-direct {v10, v14, v3, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 778
-    .line 779
-    .line 780
     new-instance v3, Lg1/d;
 
-    .line 781
-    .line 782
     const-string v14, "ExposureProgram"
 
-    .line 783
-    .line 784
     const v15, 0x8822
 
-    .line 785
-    .line 786
-    .line 787
     move-object/from16 v71, v10
 
-    .line 788
-    .line 789
     const/4 v10, 0x3
 
-    .line 790
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 791
-    .line 792
-    .line 793
     new-instance v14, Lg1/d;
 
-    .line 794
-    .line 795
     const-string v15, "SpectralSensitivity"
 
-    .line 796
-    .line 797
     const v10, 0x8824
 
-    .line 798
-    .line 799
-    .line 800
     move-object/from16 v72, v3
 
-    .line 801
-    .line 802
     const/4 v3, 0x2
 
-    .line 803
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 804
-    .line 805
-    .line 806
     new-instance v3, Lg1/d;
 
-    .line 807
-    .line 808
     const-string v10, "PhotographicSensitivity"
 
-    .line 809
-    .line 810
     const v15, 0x8827
 
-    .line 811
-    .line 812
-    .line 813
     move-object/from16 v73, v14
 
-    .line 814
-    .line 815
     const/4 v14, 0x3
 
-    .line 816
     invoke-direct {v3, v10, v15, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 817
-    .line 818
-    .line 819
     new-instance v10, Lg1/d;
 
-    .line 820
-    .line 821
     const-string v15, "OECF"
 
-    .line 822
-    .line 823
     const v14, 0x8828
 
-    .line 824
-    .line 825
-    .line 826
     move-object/from16 v74, v3
 
-    .line 827
-    .line 828
     const/4 v3, 0x7
 
-    .line 829
     invoke-direct {v10, v15, v14, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 830
-    .line 831
-    .line 832
     new-instance v3, Lg1/d;
 
-    .line 833
-    .line 834
     const-string v14, "SensitivityType"
 
-    .line 835
-    .line 836
     const v15, 0x8830
 
-    .line 837
-    .line 838
-    .line 839
     move-object/from16 v75, v10
 
-    .line 840
-    .line 841
     const/4 v10, 0x3
 
-    .line 842
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 843
-    .line 844
-    .line 845
     new-instance v10, Lg1/d;
 
-    .line 846
-    .line 847
     const-string v14, "StandardOutputSensitivity"
 
-    .line 848
-    .line 849
     const v15, 0x8831
 
-    .line 850
-    .line 851
-    .line 852
     move-object/from16 v76, v3
 
-    .line 853
-    .line 854
     const/4 v3, 0x4
 
-    .line 855
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 856
-    .line 857
-    .line 858
     new-instance v14, Lg1/d;
 
-    .line 859
-    .line 860
     const-string v15, "RecommendedExposureIndex"
 
-    .line 861
-    .line 862
     move-object/from16 v77, v10
 
-    .line 863
-    .line 864
     const v10, 0x8832
 
-    .line 865
-    .line 866
-    .line 867
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 868
-    .line 869
-    .line 870
     new-instance v10, Lg1/d;
 
-    .line 871
-    .line 872
     const-string v15, "ISOSpeed"
 
-    .line 873
-    .line 874
     move-object/from16 v78, v14
 
-    .line 875
-    .line 876
     const v14, 0x8833
 
-    .line 877
-    .line 878
-    .line 879
     invoke-direct {v10, v15, v14, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 880
-    .line 881
-    .line 882
     new-instance v14, Lg1/d;
 
-    .line 883
-    .line 884
     const-string v15, "ISOSpeedLatitudeyyy"
 
-    .line 885
-    .line 886
     move-object/from16 v79, v10
 
-    .line 887
-    .line 888
     const v10, 0x8834
 
-    .line 889
-    .line 890
-    .line 891
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 892
-    .line 893
-    .line 894
     new-instance v10, Lg1/d;
 
-    .line 895
-    .line 896
     const-string v15, "ISOSpeedLatitudezzz"
 
-    .line 897
-    .line 898
     move-object/from16 v80, v14
 
-    .line 899
-    .line 900
     const v14, 0x8835
 
-    .line 901
-    .line 902
-    .line 903
     invoke-direct {v10, v15, v14, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 904
-    .line 905
-    .line 906
     new-instance v3, Lg1/d;
 
-    .line 907
-    .line 908
     const-string v14, "ExifVersion"
 
-    .line 909
-    .line 910
     const v15, 0x9000
 
-    .line 911
-    .line 912
-    .line 913
     move-object/from16 v81, v10
 
-    .line 914
-    .line 915
     const/4 v10, 0x2
 
-    .line 916
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 917
-    .line 918
-    .line 919
     new-instance v14, Lg1/d;
 
-    .line 920
-    .line 921
     const-string v15, "DateTimeOriginal"
 
-    .line 922
-    .line 923
     move-object/from16 v82, v3
 
-    .line 924
-    .line 925
     const v3, 0x9003
 
-    .line 926
-    .line 927
-    .line 928
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 929
-    .line 930
-    .line 931
     new-instance v3, Lg1/d;
 
-    .line 932
-    .line 933
     const-string v15, "DateTimeDigitized"
 
-    .line 934
-    .line 935
     move-object/from16 v83, v14
 
-    .line 936
-    .line 937
     const v14, 0x9004
 
-    .line 938
-    .line 939
-    .line 940
     invoke-direct {v3, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 941
-    .line 942
-    .line 943
     new-instance v14, Lg1/d;
 
-    .line 944
-    .line 945
     const-string v15, "OffsetTime"
 
-    .line 946
-    .line 947
     move-object/from16 v84, v3
 
-    .line 948
-    .line 949
     const v3, 0x9010
 
-    .line 950
-    .line 951
-    .line 952
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 953
-    .line 954
-    .line 955
     new-instance v3, Lg1/d;
 
-    .line 956
-    .line 957
     const-string v15, "OffsetTimeOriginal"
 
-    .line 958
-    .line 959
     move-object/from16 v85, v14
 
-    .line 960
-    .line 961
     const v14, 0x9011
 
-    .line 962
-    .line 963
-    .line 964
     invoke-direct {v3, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 965
-    .line 966
-    .line 967
     new-instance v14, Lg1/d;
 
-    .line 968
-    .line 969
     const-string v15, "OffsetTimeDigitized"
 
-    .line 970
-    .line 971
     move-object/from16 v86, v3
 
-    .line 972
-    .line 973
     const v3, 0x9012
 
-    .line 974
-    .line 975
-    .line 976
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 977
-    .line 978
-    .line 979
     new-instance v3, Lg1/d;
 
-    .line 980
-    .line 981
     const-string v10, "ComponentsConfiguration"
 
-    .line 982
-    .line 983
     const v15, 0x9101
 
-    .line 984
-    .line 985
-    .line 986
     move-object/from16 v87, v14
 
-    .line 987
-    .line 988
     const/4 v14, 0x7
 
-    .line 989
     invoke-direct {v3, v10, v15, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 990
-    .line 991
-    .line 992
     new-instance v10, Lg1/d;
 
-    .line 993
-    .line 994
     const-string v14, "CompressedBitsPerPixel"
 
-    .line 995
-    .line 996
     const v15, 0x9102
 
-    .line 997
-    .line 998
-    .line 999
     move-object/from16 v88, v3
 
-    .line 1000
-    .line 1001
     const/4 v3, 0x5
 
-    .line 1002
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1003
-    .line 1004
-    .line 1005
     new-instance v14, Lg1/d;
 
-    .line 1006
-    .line 1007
     const-string v15, "ShutterSpeedValue"
 
-    .line 1008
-    .line 1009
     const v3, 0x9201
 
-    .line 1010
-    .line 1011
-    .line 1012
     move-object/from16 v89, v10
 
-    .line 1013
-    .line 1014
     const/16 v10, 0xa
 
-    .line 1015
-    .line 1016
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1017
-    .line 1018
-    .line 1019
     new-instance v3, Lg1/d;
 
-    .line 1020
-    .line 1021
     const-string v15, "ApertureValue"
 
-    .line 1022
-    .line 1023
     const v10, 0x9202
 
-    .line 1024
-    .line 1025
-    .line 1026
     move-object/from16 v90, v14
 
-    .line 1027
-    .line 1028
     const/4 v14, 0x5
 
-    .line 1029
     invoke-direct {v3, v15, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1030
-    .line 1031
-    .line 1032
     new-instance v10, Lg1/d;
 
-    .line 1033
-    .line 1034
     const-string v14, "BrightnessValue"
 
-    .line 1035
-    .line 1036
     const v15, 0x9203
 
-    .line 1037
-    .line 1038
-    .line 1039
     move-object/from16 v91, v3
 
-    .line 1040
-    .line 1041
     const/16 v3, 0xa
 
-    .line 1042
-    .line 1043
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1044
-    .line 1045
-    .line 1046
     new-instance v14, Lg1/d;
 
-    .line 1047
-    .line 1048
     const-string v15, "ExposureBiasValue"
 
-    .line 1049
-    .line 1050
     move-object/from16 v92, v10
 
-    .line 1051
-    .line 1052
     const v10, 0x9204
 
-    .line 1053
-    .line 1054
-    .line 1055
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1056
-    .line 1057
-    .line 1058
     new-instance v3, Lg1/d;
 
-    .line 1059
-    .line 1060
     const-string v10, "MaxApertureValue"
 
-    .line 1061
-    .line 1062
     const v15, 0x9205
 
-    .line 1063
-    .line 1064
-    .line 1065
     move-object/from16 v93, v14
 
-    .line 1066
-    .line 1067
     const/4 v14, 0x5
 
-    .line 1068
     invoke-direct {v3, v10, v15, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1069
-    .line 1070
-    .line 1071
     new-instance v10, Lg1/d;
 
-    .line 1072
-    .line 1073
     const-string v15, "SubjectDistance"
 
-    .line 1074
-    .line 1075
     move-object/from16 v94, v3
 
-    .line 1076
-    .line 1077
     const v3, 0x9206
 
-    .line 1078
-    .line 1079
-    .line 1080
     invoke-direct {v10, v15, v3, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1081
-    .line 1082
-    .line 1083
     new-instance v3, Lg1/d;
 
-    .line 1084
-    .line 1085
     const-string v14, "MeteringMode"
 
-    .line 1086
-    .line 1087
     const v15, 0x9207
 
-    .line 1088
-    .line 1089
-    .line 1090
     move-object/from16 v95, v10
 
-    .line 1091
-    .line 1092
     const/4 v10, 0x3
 
-    .line 1093
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1094
-    .line 1095
-    .line 1096
     new-instance v14, Lg1/d;
 
-    .line 1097
-    .line 1098
     const-string v15, "LightSource"
 
-    .line 1099
-    .line 1100
     move-object/from16 v96, v3
 
-    .line 1101
-    .line 1102
     const v3, 0x9208
 
-    .line 1103
-    .line 1104
-    .line 1105
     invoke-direct {v14, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1106
-    .line 1107
-    .line 1108
     new-instance v3, Lg1/d;
 
-    .line 1109
-    .line 1110
     const-string v15, "Flash"
 
-    .line 1111
-    .line 1112
     move-object/from16 v97, v14
 
-    .line 1113
-    .line 1114
     const v14, 0x9209
 
-    .line 1115
-    .line 1116
-    .line 1117
     invoke-direct {v3, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1118
-    .line 1119
-    .line 1120
     new-instance v14, Lg1/d;
 
-    .line 1121
-    .line 1122
     const-string v15, "FocalLength"
 
-    .line 1123
-    .line 1124
     const v10, 0x920a
 
-    .line 1125
-    .line 1126
-    .line 1127
     move-object/from16 v98, v3
 
-    .line 1128
-    .line 1129
     const/4 v3, 0x5
 
-    .line 1130
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1131
-    .line 1132
-    .line 1133
     new-instance v3, Lg1/d;
 
-    .line 1134
-    .line 1135
     const-string v10, "SubjectArea"
 
-    .line 1136
-    .line 1137
     const v15, 0x9214
 
-    .line 1138
-    .line 1139
-    .line 1140
     move-object/from16 v99, v14
 
-    .line 1141
-    .line 1142
     const/4 v14, 0x3
 
-    .line 1143
     invoke-direct {v3, v10, v15, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1144
-    .line 1145
-    .line 1146
     new-instance v10, Lg1/d;
 
-    .line 1147
-    .line 1148
     const-string v14, "MakerNote"
 
-    .line 1149
-    .line 1150
     const v15, 0x927c
 
-    .line 1151
-    .line 1152
-    .line 1153
     move-object/from16 v100, v3
 
-    .line 1154
-    .line 1155
     const/4 v3, 0x7
 
-    .line 1156
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1157
-    .line 1158
-    .line 1159
     new-instance v14, Lg1/d;
 
-    .line 1160
-    .line 1161
     const-string v15, "UserComment"
 
-    .line 1162
-    .line 1163
     move-object/from16 v101, v10
 
-    .line 1164
-    .line 1165
     const v10, 0x9286
 
-    .line 1166
-    .line 1167
-    .line 1168
     invoke-direct {v14, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1169
-    .line 1170
-    .line 1171
     new-instance v3, Lg1/d;
 
-    .line 1172
-    .line 1173
     const-string v10, "SubSecTime"
 
-    .line 1174
-    .line 1175
     const v15, 0x9290
 
-    .line 1176
-    .line 1177
-    .line 1178
     move-object/from16 v102, v14
 
-    .line 1179
-    .line 1180
     const/4 v14, 0x2
 
-    .line 1181
     invoke-direct {v3, v10, v15, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1182
-    .line 1183
-    .line 1184
     new-instance v10, Lg1/d;
 
-    .line 1185
-    .line 1186
     const-string v15, "SubSecTimeOriginal"
 
-    .line 1187
-    .line 1188
     move-object/from16 v103, v3
 
-    .line 1189
-    .line 1190
     const v3, 0x9291
 
-    .line 1191
-    .line 1192
-    .line 1193
     invoke-direct {v10, v15, v3, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1194
-    .line 1195
-    .line 1196
     new-instance v3, Lg1/d;
 
-    .line 1197
-    .line 1198
     const-string v15, "SubSecTimeDigitized"
 
-    .line 1199
-    .line 1200
     move-object/from16 v104, v10
 
-    .line 1201
-    .line 1202
     const v10, 0x9292
 
-    .line 1203
-    .line 1204
-    .line 1205
     invoke-direct {v3, v15, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1206
-    .line 1207
-    .line 1208
     new-instance v10, Lg1/d;
 
-    .line 1209
-    .line 1210
     const-string v14, "FlashpixVersion"
 
-    .line 1211
-    .line 1212
     const v15, 0xa000
 
-    .line 1213
-    .line 1214
-    .line 1215
     move-object/from16 v105, v3
 
-    .line 1216
-    .line 1217
     const/4 v3, 0x7
 
-    .line 1218
     invoke-direct {v10, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1219
-    .line 1220
-    .line 1221
     new-instance v3, Lg1/d;
 
-    .line 1222
-    .line 1223
     const-string v14, "ColorSpace"
 
-    .line 1224
-    .line 1225
     const v15, 0xa001
 
-    .line 1226
-    .line 1227
-    .line 1228
     move-object/from16 v106, v10
 
-    .line 1229
-    .line 1230
     const/4 v10, 0x3
 
-    .line 1231
     invoke-direct {v3, v14, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1232
-    .line 1233
-    .line 1234
     new-instance v14, Lg1/d;
 
-    .line 1235
-    .line 1236
     const-string v15, "PixelXDimension"
 
-    .line 1237
-    .line 1238
     move-object/from16 v107, v3
 
-    .line 1239
-    .line 1240
     const v3, 0xa002
 
-    .line 1241
-    .line 1242
-    .line 1243
     move-object/from16 v16, v1
 
-    .line 1244
-    .line 1245
     const/4 v1, 0x4
 
-    .line 1246
     invoke-direct {v14, v15, v3, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 1247
-    .line 1248
-    .line 1249
     new-instance v3, Lg1/d;
 
-    .line 1250
-    .line 1251
     const-string v15, "PixelYDimension"
 
-    .line 1252
-    .line 1253
     move-object/from16 v108, v14
 
-    .line 1254
-    .line 1255
     const v14, 0xa003
 
-    .line 1256
-    .line 1257
-    .line 1258
     invoke-direct {v3, v15, v14, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 1259
-    .line 1260
-    .line 1261
     new-instance v10, Lg1/d;
 
-    .line 1262
-    .line 1263
     const-string v14, "RelatedSoundFile"
 
-    .line 1264
-    .line 1265
     const v15, 0xa004
 
-    .line 1266
-    .line 1267
-    .line 1268
     const/4 v1, 0x2
 
-    .line 1269
     invoke-direct {v10, v14, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1270
-    .line 1271
-    .line 1272
     new-instance v1, Lg1/d;
 
-    .line 1273
-    .line 1274
     const-string v14, "InteroperabilityIFDPointer"
 
-    .line 1275
-    .line 1276
     const v15, 0xa005
 
-    .line 1277
-    .line 1278
-    .line 1279
     move-object/from16 v109, v3
 
-    .line 1280
-    .line 1281
     const/4 v3, 0x4
 
-    .line 1282
     invoke-direct {v1, v14, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1283
-    .line 1284
-    .line 1285
     new-instance v3, Lg1/d;
 
-    .line 1286
-    .line 1287
     const-string v14, "FlashEnergy"
 
-    .line 1288
-    .line 1289
     const v15, 0xa20b
 
-    .line 1290
-    .line 1291
-    .line 1292
     move-object/from16 v111, v1
 
-    .line 1293
-    .line 1294
     const/4 v1, 0x5
 
-    .line 1295
     invoke-direct {v3, v14, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1296
-    .line 1297
-    .line 1298
     new-instance v14, Lg1/d;
 
-    .line 1299
-    .line 1300
     const-string v15, "SpatialFrequencyResponse"
 
-    .line 1301
-    .line 1302
     const v1, 0xa20c
 
-    .line 1303
-    .line 1304
-    .line 1305
     move-object/from16 v112, v3
 
-    .line 1306
-    .line 1307
     const/4 v3, 0x7
 
-    .line 1308
     invoke-direct {v14, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1309
-    .line 1310
-    .line 1311
     new-instance v1, Lg1/d;
 
-    .line 1312
-    .line 1313
     const-string v3, "FocalPlaneXResolution"
 
-    .line 1314
-    .line 1315
     const v15, 0xa20e
 
-    .line 1316
-    .line 1317
-    .line 1318
     move-object/from16 v110, v10
 
-    .line 1319
-    .line 1320
     const/4 v10, 0x5
 
-    .line 1321
     invoke-direct {v1, v3, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1322
-    .line 1323
-    .line 1324
     new-instance v3, Lg1/d;
 
-    .line 1325
-    .line 1326
     const-string v15, "FocalPlaneYResolution"
 
-    .line 1327
-    .line 1328
     move-object/from16 v114, v1
 
-    .line 1329
-    .line 1330
     const v1, 0xa20f
 
-    .line 1331
-    .line 1332
-    .line 1333
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1334
-    .line 1335
-    .line 1336
     new-instance v1, Lg1/d;
 
-    .line 1337
-    .line 1338
     const-string v10, "FocalPlaneResolutionUnit"
 
-    .line 1339
-    .line 1340
     const v15, 0xa210
 
-    .line 1341
-    .line 1342
-    .line 1343
     move-object/from16 v115, v3
 
-    .line 1344
-    .line 1345
     const/4 v3, 0x3
 
-    .line 1346
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1347
-    .line 1348
-    .line 1349
     new-instance v10, Lg1/d;
 
-    .line 1350
-    .line 1351
     const-string v15, "SubjectLocation"
 
-    .line 1352
-    .line 1353
     move-object/from16 v116, v1
 
-    .line 1354
-    .line 1355
     const v1, 0xa214
 
-    .line 1356
-    .line 1357
-    .line 1358
     invoke-direct {v10, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1359
-    .line 1360
-    .line 1361
     new-instance v1, Lg1/d;
 
-    .line 1362
-    .line 1363
     const-string v15, "ExposureIndex"
 
-    .line 1364
-    .line 1365
     const v3, 0xa215
 
-    .line 1366
-    .line 1367
-    .line 1368
     move-object/from16 v117, v10
 
-    .line 1369
-    .line 1370
     const/4 v10, 0x5
 
-    .line 1371
     invoke-direct {v1, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1372
-    .line 1373
-    .line 1374
     new-instance v3, Lg1/d;
 
-    .line 1375
-    .line 1376
     const-string v10, "SensingMethod"
 
-    .line 1377
-    .line 1378
     const v15, 0xa217
 
-    .line 1379
-    .line 1380
-    .line 1381
     move-object/from16 v118, v1
 
-    .line 1382
-    .line 1383
     const/4 v1, 0x3
 
-    .line 1384
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1385
-    .line 1386
-    .line 1387
     new-instance v1, Lg1/d;
 
-    .line 1388
-    .line 1389
     const-string v10, "FileSource"
 
-    .line 1390
-    .line 1391
     const v15, 0xa300
 
-    .line 1392
-    .line 1393
-    .line 1394
     move-object/from16 v119, v3
 
-    .line 1395
-    .line 1396
     const/4 v3, 0x7
 
-    .line 1397
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1398
-    .line 1399
-    .line 1400
     new-instance v10, Lg1/d;
 
-    .line 1401
-    .line 1402
     const-string v15, "SceneType"
 
-    .line 1403
-    .line 1404
     move-object/from16 v120, v1
 
-    .line 1405
-    .line 1406
     const v1, 0xa301
 
-    .line 1407
-    .line 1408
-    .line 1409
     invoke-direct {v10, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1410
-    .line 1411
-    .line 1412
     new-instance v1, Lg1/d;
 
-    .line 1413
-    .line 1414
     const-string v15, "CFAPattern"
 
-    .line 1415
-    .line 1416
     move-object/from16 v121, v10
 
-    .line 1417
-    .line 1418
     const v10, 0xa302
 
-    .line 1419
-    .line 1420
-    .line 1421
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1422
-    .line 1423
-    .line 1424
     new-instance v3, Lg1/d;
 
-    .line 1425
-    .line 1426
     const-string v10, "CustomRendered"
 
-    .line 1427
-    .line 1428
     const v15, 0xa401
 
-    .line 1429
-    .line 1430
-    .line 1431
     move-object/from16 v122, v1
 
-    .line 1432
-    .line 1433
     const/4 v1, 0x3
 
-    .line 1434
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1435
-    .line 1436
-    .line 1437
     new-instance v10, Lg1/d;
 
-    .line 1438
-    .line 1439
     const-string v15, "ExposureMode"
 
-    .line 1440
-    .line 1441
     move-object/from16 v123, v3
 
-    .line 1442
-    .line 1443
     const v3, 0xa402
 
-    .line 1444
-    .line 1445
-    .line 1446
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1447
-    .line 1448
-    .line 1449
     new-instance v3, Lg1/d;
 
-    .line 1450
-    .line 1451
     const-string v15, "WhiteBalance"
 
-    .line 1452
-    .line 1453
     move-object/from16 v124, v10
 
-    .line 1454
-    .line 1455
     const v10, 0xa403
 
-    .line 1456
-    .line 1457
-    .line 1458
     invoke-direct {v3, v15, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1459
-    .line 1460
-    .line 1461
     new-instance v10, Lg1/d;
 
-    .line 1462
-    .line 1463
     const-string v15, "DigitalZoomRatio"
 
-    .line 1464
-    .line 1465
     const v1, 0xa404
 
-    .line 1466
-    .line 1467
-    .line 1468
     move-object/from16 v125, v3
 
-    .line 1469
-    .line 1470
     const/4 v3, 0x5
 
-    .line 1471
     invoke-direct {v10, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1472
-    .line 1473
-    .line 1474
     new-instance v1, Lg1/d;
 
-    .line 1475
-    .line 1476
     const-string v3, "FocalLengthIn35mmFilm"
 
-    .line 1477
-    .line 1478
     const v15, 0xa405
 
-    .line 1479
-    .line 1480
-    .line 1481
     move-object/from16 v126, v10
 
-    .line 1482
-    .line 1483
     const/4 v10, 0x3
 
-    .line 1484
     invoke-direct {v1, v3, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1485
-    .line 1486
-    .line 1487
     new-instance v3, Lg1/d;
 
-    .line 1488
-    .line 1489
     const-string v15, "SceneCaptureType"
 
-    .line 1490
-    .line 1491
     move-object/from16 v127, v1
 
-    .line 1492
-    .line 1493
     const v1, 0xa406
 
-    .line 1494
-    .line 1495
-    .line 1496
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1497
-    .line 1498
-    .line 1499
     new-instance v1, Lg1/d;
 
-    .line 1500
-    .line 1501
     const-string v15, "GainControl"
 
-    .line 1502
-    .line 1503
     move-object/from16 v128, v3
 
-    .line 1504
-    .line 1505
     const v3, 0xa407
 
-    .line 1506
-    .line 1507
-    .line 1508
     invoke-direct {v1, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1509
-    .line 1510
-    .line 1511
     new-instance v3, Lg1/d;
 
-    .line 1512
-    .line 1513
     const-string v15, "Contrast"
 
-    .line 1514
-    .line 1515
     move-object/from16 v129, v1
 
-    .line 1516
-    .line 1517
     const v1, 0xa408
 
-    .line 1518
-    .line 1519
-    .line 1520
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1521
-    .line 1522
-    .line 1523
     new-instance v1, Lg1/d;
 
-    .line 1524
-    .line 1525
     const-string v15, "Saturation"
 
-    .line 1526
-    .line 1527
     move-object/from16 v130, v3
 
-    .line 1528
-    .line 1529
     const v3, 0xa409
 
-    .line 1530
-    .line 1531
-    .line 1532
     invoke-direct {v1, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1533
-    .line 1534
-    .line 1535
     new-instance v3, Lg1/d;
 
-    .line 1536
-    .line 1537
     const-string v15, "Sharpness"
 
-    .line 1538
-    .line 1539
     move-object/from16 v131, v1
 
-    .line 1540
-    .line 1541
     const v1, 0xa40a
 
-    .line 1542
-    .line 1543
-    .line 1544
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1545
-    .line 1546
-    .line 1547
     new-instance v1, Lg1/d;
 
-    .line 1548
-    .line 1549
     const-string v15, "DeviceSettingDescription"
 
-    .line 1550
-    .line 1551
     const v10, 0xa40b
 
-    .line 1552
-    .line 1553
-    .line 1554
     move-object/from16 v132, v3
 
-    .line 1555
-    .line 1556
     const/4 v3, 0x7
 
-    .line 1557
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1558
-    .line 1559
-    .line 1560
     new-instance v3, Lg1/d;
 
-    .line 1561
-    .line 1562
     const-string v10, "SubjectDistanceRange"
 
-    .line 1563
-    .line 1564
     const v15, 0xa40c
 
-    .line 1565
-    .line 1566
-    .line 1567
     move-object/from16 v133, v1
 
-    .line 1568
-    .line 1569
     const/4 v1, 0x3
 
-    .line 1570
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1571
-    .line 1572
-    .line 1573
     new-instance v1, Lg1/d;
 
-    .line 1574
-    .line 1575
     const-string v10, "ImageUniqueID"
 
-    .line 1576
-    .line 1577
     const v15, 0xa420
 
-    .line 1578
-    .line 1579
-    .line 1580
     move-object/from16 v134, v3
 
-    .line 1581
-    .line 1582
     const/4 v3, 0x2
 
-    .line 1583
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1584
-    .line 1585
-    .line 1586
     new-instance v10, Lg1/d;
 
-    .line 1587
-    .line 1588
     const-string v15, "CameraOwnerName"
 
-    .line 1589
-    .line 1590
     move-object/from16 v135, v1
 
-    .line 1591
-    .line 1592
     const v1, 0xa430
 
-    .line 1593
-    .line 1594
-    .line 1595
     invoke-direct {v10, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1596
-    .line 1597
-    .line 1598
     new-instance v1, Lg1/d;
 
-    .line 1599
-    .line 1600
     const-string v15, "BodySerialNumber"
 
-    .line 1601
-    .line 1602
     move-object/from16 v136, v10
 
-    .line 1603
-    .line 1604
     const v10, 0xa431
 
-    .line 1605
-    .line 1606
-    .line 1607
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1608
-    .line 1609
-    .line 1610
     new-instance v10, Lg1/d;
 
-    .line 1611
-    .line 1612
     const-string v15, "LensSpecification"
 
-    .line 1613
-    .line 1614
     const v3, 0xa432
 
-    .line 1615
-    .line 1616
-    .line 1617
     move-object/from16 v137, v1
 
-    .line 1618
-    .line 1619
     const/4 v1, 0x5
 
-    .line 1620
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1621
-    .line 1622
-    .line 1623
     new-instance v1, Lg1/d;
 
-    .line 1624
-    .line 1625
     const-string v3, "LensMake"
 
-    .line 1626
-    .line 1627
     const v15, 0xa433
 
-    .line 1628
-    .line 1629
-    .line 1630
     move-object/from16 v138, v10
 
-    .line 1631
-    .line 1632
     const/4 v10, 0x2
 
-    .line 1633
     invoke-direct {v1, v3, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1634
-    .line 1635
-    .line 1636
     new-instance v3, Lg1/d;
 
-    .line 1637
-    .line 1638
     const-string v15, "LensModel"
 
-    .line 1639
-    .line 1640
     move-object/from16 v139, v1
 
-    .line 1641
-    .line 1642
     const v1, 0xa434
 
-    .line 1643
-    .line 1644
-    .line 1645
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1646
-    .line 1647
-    .line 1648
     new-instance v1, Lg1/d;
 
-    .line 1649
-    .line 1650
     const-string v10, "Gamma"
 
-    .line 1651
-    .line 1652
     const v15, 0xa500
 
-    .line 1653
-    .line 1654
-    .line 1655
     move-object/from16 v140, v3
 
-    .line 1656
-    .line 1657
     const/4 v3, 0x5
 
-    .line 1658
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1659
-    .line 1660
-    .line 1661
     new-instance v3, Lg1/d;
 
-    .line 1662
-    .line 1663
     const-string v10, "DNGVersion"
 
-    .line 1664
-    .line 1665
     const v15, 0xc612
 
-    .line 1666
-    .line 1667
-    .line 1668
     move-object/from16 v141, v1
 
-    .line 1669
-    .line 1670
     const/4 v1, 0x1
 
-    .line 1671
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1672
-    .line 1673
-    .line 1674
     new-instance v10, Lg1/d;
 
-    .line 1675
-    .line 1676
     const-string v15, "DefaultCropSize"
 
-    .line 1677
-    .line 1678
     const v1, 0xc620
 
-    .line 1679
-    .line 1680
-    .line 1681
     move-object/from16 v142, v3
 
-    .line 1682
-    .line 1683
     move-object/from16 v113, v14
 
-    .line 1684
-    .line 1685
     const/4 v3, 0x3
 
-    .line 1686
     const/4 v14, 0x4
 
-    .line 1687
     invoke-direct {v10, v15, v1, v3, v14}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 1688
-    .line 1689
-    .line 1690
     move-object/from16 v143, v10
 
-    .line 1691
-    .line 1692
     filled-new-array/range {v70 .. v143}, [Lg1/d;
 
-    .line 1693
-    .line 1694
-    .line 1695
     move-result-object v70
 
-    .line 1696
+    .line 34
     new-instance v1, Lg1/d;
 
-    .line 1697
-    .line 1698
     const-string v3, "GPSVersionID"
 
-    .line 1699
-    .line 1700
     const/4 v10, 0x0
 
-    .line 1701
     const/4 v14, 0x1
 
-    .line 1702
     invoke-direct {v1, v3, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1703
-    .line 1704
-    .line 1705
     new-instance v3, Lg1/d;
 
-    .line 1706
-    .line 1707
     const-string v15, "GPSLatitudeRef"
 
-    .line 1708
-    .line 1709
     move/from16 v49, v10
 
-    .line 1710
-    .line 1711
     const/4 v10, 0x2
 
-    .line 1712
     invoke-direct {v3, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1713
-    .line 1714
-    .line 1715
     new-instance v14, Lg1/d;
 
-    .line 1716
-    .line 1717
     const-string v15, "GPSLatitude"
 
-    .line 1718
-    .line 1719
     move-object/from16 v17, v1
 
-    .line 1720
-    .line 1721
     move-object/from16 v18, v3
 
-    .line 1722
-    .line 1723
     const/4 v1, 0x5
 
-    .line 1724
     const/16 v3, 0xa
 
-    .line 1725
-    .line 1726
     invoke-direct {v14, v15, v10, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 1727
-    .line 1728
-    .line 1729
     new-instance v15, Lg1/d;
 
-    .line 1730
-    .line 1731
     const-string v1, "GPSLongitudeRef"
 
-    .line 1732
-    .line 1733
     const/4 v3, 0x3
 
-    .line 1734
     invoke-direct {v15, v1, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1735
-    .line 1736
-    .line 1737
     new-instance v1, Lg1/d;
 
-    .line 1738
-    .line 1739
     const-string v3, "GPSLongitude"
 
-    .line 1740
-    .line 1741
     move-object/from16 v19, v14
 
-    .line 1742
-    .line 1743
     move-object/from16 v20, v15
 
-    .line 1744
-    .line 1745
     const/4 v10, 0x4
 
-    .line 1746
     const/4 v14, 0x5
 
-    .line 1747
     const/16 v15, 0xa
 
-    .line 1748
-    .line 1749
     invoke-direct {v1, v3, v10, v14, v15}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 1750
-    .line 1751
-    .line 1752
     new-instance v3, Lg1/d;
 
-    .line 1753
-    .line 1754
     const-string v10, "GPSAltitudeRef"
 
-    .line 1755
-    .line 1756
     const/4 v15, 0x1
 
-    .line 1757
     invoke-direct {v3, v10, v14, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1758
-    .line 1759
-    .line 1760
     new-instance v10, Lg1/d;
 
-    .line 1761
-    .line 1762
     const-string v15, "GPSAltitude"
 
-    .line 1763
-    .line 1764
     move-object/from16 v21, v1
 
-    .line 1765
-    .line 1766
     const/4 v1, 0x6
 
-    .line 1767
     invoke-direct {v10, v15, v1, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1768
-    .line 1769
-    .line 1770
     new-instance v1, Lg1/d;
 
-    .line 1771
-    .line 1772
     const-string v15, "GPSTimeStamp"
 
-    .line 1773
-    .line 1774
     move-object/from16 v22, v3
 
-    .line 1775
-    .line 1776
     const/4 v3, 0x7
 
-    .line 1777
     invoke-direct {v1, v15, v3, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1778
-    .line 1779
-    .line 1780
     new-instance v3, Lg1/d;
 
-    .line 1781
-    .line 1782
     const-string v14, "GPSSatellites"
 
-    .line 1783
-    .line 1784
     move-object/from16 v24, v1
 
-    .line 1785
-    .line 1786
     const/4 v1, 0x2
 
-    .line 1787
     const/16 v15, 0x8
 
-    .line 1788
-    .line 1789
     invoke-direct {v3, v14, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1790
-    .line 1791
-    .line 1792
     new-instance v14, Lg1/d;
 
-    .line 1793
-    .line 1794
     const-string v15, "GPSStatus"
 
-    .line 1795
-    .line 1796
     move-object/from16 v25, v3
 
-    .line 1797
-    .line 1798
     const/16 v3, 0x9
 
-    .line 1799
-    .line 1800
     invoke-direct {v14, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1801
-    .line 1802
-    .line 1803
     new-instance v3, Lg1/d;
 
-    .line 1804
-    .line 1805
     const-string v15, "GPSMeasureMode"
 
-    .line 1806
-    .line 1807
     move-object/from16 v23, v10
 
-    .line 1808
-    .line 1809
     const/16 v10, 0xa
 
-    .line 1810
-    .line 1811
     invoke-direct {v3, v15, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1812
-    .line 1813
-    .line 1814
     new-instance v10, Lg1/d;
 
-    .line 1815
-    .line 1816
     const-string v15, "GPSDOP"
 
-    .line 1817
-    .line 1818
     const/16 v1, 0xb
 
-    .line 1819
-    .line 1820
     move-object/from16 v27, v3
 
-    .line 1821
-    .line 1822
     const/4 v3, 0x5
 
-    .line 1823
     invoke-direct {v10, v15, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1824
-    .line 1825
-    .line 1826
     new-instance v1, Lg1/d;
 
-    .line 1827
-    .line 1828
     const-string v15, "GPSSpeedRef"
 
-    .line 1829
-    .line 1830
     const/16 v3, 0xc
 
-    .line 1831
-    .line 1832
     move-object/from16 v28, v10
 
-    .line 1833
-    .line 1834
     const/4 v10, 0x2
 
-    .line 1835
     invoke-direct {v1, v15, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1836
-    .line 1837
-    .line 1838
     new-instance v3, Lg1/d;
 
-    .line 1839
-    .line 1840
     const-string v15, "GPSSpeed"
 
-    .line 1841
-    .line 1842
     const/16 v10, 0xd
 
-    .line 1843
-    .line 1844
     move-object/from16 v29, v1
 
-    .line 1845
-    .line 1846
     const/4 v1, 0x5
 
-    .line 1847
     invoke-direct {v3, v15, v10, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1848
-    .line 1849
-    .line 1850
     new-instance v10, Lg1/d;
 
-    .line 1851
-    .line 1852
     const-string v15, "GPSTrackRef"
 
-    .line 1853
-    .line 1854
     move-object/from16 v30, v3
 
-    .line 1855
-    .line 1856
     const/4 v1, 0x2
 
-    .line 1857
     const/16 v3, 0xe
 
-    .line 1858
-    .line 1859
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1860
-    .line 1861
-    .line 1862
     new-instance v3, Lg1/d;
 
-    .line 1863
-    .line 1864
     const-string v15, "GPSTrack"
 
-    .line 1865
-    .line 1866
     const/16 v1, 0xf
 
-    .line 1867
-    .line 1868
     move-object/from16 v31, v10
 
-    .line 1869
-    .line 1870
     const/4 v10, 0x5
 
-    .line 1871
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1872
-    .line 1873
-    .line 1874
     new-instance v1, Lg1/d;
 
-    .line 1875
-    .line 1876
     const-string v15, "GPSImgDirectionRef"
 
-    .line 1877
-    .line 1878
     const/16 v10, 0x10
 
-    .line 1879
-    .line 1880
     move-object/from16 v32, v3
 
-    .line 1881
-    .line 1882
     const/4 v3, 0x2
 
-    .line 1883
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1884
-    .line 1885
-    .line 1886
     new-instance v10, Lg1/d;
 
-    .line 1887
-    .line 1888
     const-string v15, "GPSImgDirection"
 
-    .line 1889
-    .line 1890
     const/16 v3, 0x11
 
-    .line 1891
-    .line 1892
     move-object/from16 v33, v1
 
-    .line 1893
-    .line 1894
     const/4 v1, 0x5
 
-    .line 1895
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1896
-    .line 1897
-    .line 1898
     new-instance v1, Lg1/d;
 
-    .line 1899
-    .line 1900
     const-string v3, "GPSMapDatum"
 
-    .line 1901
-    .line 1902
     const/16 v15, 0x12
 
-    .line 1903
-    .line 1904
     move-object/from16 v34, v10
 
-    .line 1905
-    .line 1906
     const/4 v10, 0x2
 
-    .line 1907
     invoke-direct {v1, v3, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1908
-    .line 1909
-    .line 1910
     new-instance v3, Lg1/d;
 
-    .line 1911
-    .line 1912
     const-string v15, "GPSDestLatitudeRef"
 
-    .line 1913
-    .line 1914
     move-object/from16 v35, v1
 
-    .line 1915
-    .line 1916
     const/16 v1, 0x13
 
-    .line 1917
-    .line 1918
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1919
-    .line 1920
-    .line 1921
     new-instance v1, Lg1/d;
 
-    .line 1922
-    .line 1923
     const-string v15, "GPSDestLatitude"
 
-    .line 1924
-    .line 1925
     const/16 v10, 0x14
 
-    .line 1926
-    .line 1927
     move-object/from16 v36, v3
 
-    .line 1928
-    .line 1929
     const/4 v3, 0x5
 
-    .line 1930
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1931
-    .line 1932
-    .line 1933
     new-instance v10, Lg1/d;
 
-    .line 1934
-    .line 1935
     const-string v15, "GPSDestLongitudeRef"
 
-    .line 1936
-    .line 1937
     const/16 v3, 0x15
 
-    .line 1938
-    .line 1939
     move-object/from16 v37, v1
 
-    .line 1940
-    .line 1941
     const/4 v1, 0x2
 
-    .line 1942
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1943
-    .line 1944
-    .line 1945
     new-instance v3, Lg1/d;
 
-    .line 1946
-    .line 1947
     const-string v15, "GPSDestLongitude"
 
-    .line 1948
-    .line 1949
     const/16 v1, 0x16
 
-    .line 1950
-    .line 1951
     move-object/from16 v38, v10
 
-    .line 1952
-    .line 1953
     const/4 v10, 0x5
 
-    .line 1954
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1955
-    .line 1956
-    .line 1957
     new-instance v1, Lg1/d;
 
-    .line 1958
-    .line 1959
     const-string v15, "GPSDestBearingRef"
 
-    .line 1960
-    .line 1961
     const/16 v10, 0x17
 
-    .line 1962
-    .line 1963
     move-object/from16 v39, v3
 
-    .line 1964
-    .line 1965
     const/4 v3, 0x2
 
-    .line 1966
     invoke-direct {v1, v15, v10, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1967
-    .line 1968
-    .line 1969
     new-instance v10, Lg1/d;
 
-    .line 1970
-    .line 1971
     const-string v15, "GPSDestBearing"
 
-    .line 1972
-    .line 1973
     const/16 v3, 0x18
 
-    .line 1974
-    .line 1975
     move-object/from16 v40, v1
 
-    .line 1976
-    .line 1977
     const/4 v1, 0x5
 
-    .line 1978
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1979
-    .line 1980
-    .line 1981
     new-instance v3, Lg1/d;
 
-    .line 1982
-    .line 1983
     const-string v15, "GPSDestDistanceRef"
 
-    .line 1984
-    .line 1985
     const/16 v1, 0x19
 
-    .line 1986
-    .line 1987
     move-object/from16 v41, v10
 
-    .line 1988
-    .line 1989
     const/4 v10, 0x2
 
-    .line 1990
     invoke-direct {v3, v15, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 1991
-    .line 1992
-    .line 1993
     new-instance v1, Lg1/d;
 
-    .line 1994
-    .line 1995
     const-string v10, "GPSDestDistance"
 
-    .line 1996
-    .line 1997
     const/16 v15, 0x1a
 
-    .line 1998
-    .line 1999
     move-object/from16 v42, v3
 
-    .line 2000
-    .line 2001
     const/4 v3, 0x5
 
-    .line 2002
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2003
-    .line 2004
-    .line 2005
     new-instance v3, Lg1/d;
 
-    .line 2006
-    .line 2007
     const-string v10, "GPSProcessingMethod"
 
-    .line 2008
-    .line 2009
     const/16 v15, 0x1b
 
-    .line 2010
-    .line 2011
     move-object/from16 v43, v1
 
-    .line 2012
-    .line 2013
     const/4 v1, 0x7
 
-    .line 2014
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2015
-    .line 2016
-    .line 2017
     new-instance v10, Lg1/d;
 
-    .line 2018
-    .line 2019
     const-string v15, "GPSAreaInformation"
 
-    .line 2020
-    .line 2021
     move-object/from16 v44, v3
 
-    .line 2022
-    .line 2023
     const/16 v3, 0x1c
 
-    .line 2024
-    .line 2025
     invoke-direct {v10, v15, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2026
-    .line 2027
-    .line 2028
     new-instance v1, Lg1/d;
 
-    .line 2029
-    .line 2030
     const-string v3, "GPSDateStamp"
 
-    .line 2031
-    .line 2032
     const/16 v15, 0x1d
 
-    .line 2033
-    .line 2034
     move-object/from16 v45, v10
 
-    .line 2035
-    .line 2036
     const/4 v10, 0x2
 
-    .line 2037
     invoke-direct {v1, v3, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2038
-    .line 2039
-    .line 2040
     new-instance v3, Lg1/d;
 
-    .line 2041
-    .line 2042
     const-string v10, "GPSDifferential"
 
-    .line 2043
-    .line 2044
     const/16 v15, 0x1e
 
-    .line 2045
-    .line 2046
     move-object/from16 v46, v1
 
-    .line 2047
-    .line 2048
     const/4 v1, 0x3
 
-    .line 2049
     invoke-direct {v3, v10, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2050
-    .line 2051
-    .line 2052
     new-instance v1, Lg1/d;
 
-    .line 2053
-    .line 2054
     const-string v10, "GPSHPositioningError"
 
-    .line 2055
-    .line 2056
     const/16 v15, 0x1f
 
-    .line 2057
-    .line 2058
     move-object/from16 v47, v3
 
-    .line 2059
-    .line 2060
     const/4 v3, 0x5
 
-    .line 2061
     invoke-direct {v1, v10, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2062
-    .line 2063
-    .line 2064
     move-object/from16 v48, v1
 
-    .line 2065
-    .line 2066
     move-object/from16 v26, v14
 
-    .line 2067
-    .line 2068
     filled-new-array/range {v17 .. v48}, [Lg1/d;
 
-    .line 2069
-    .line 2070
-    .line 2071
     move-result-object v71
 
-    .line 2072
+    .line 35
     new-instance v1, Lg1/d;
 
-    .line 2073
-    .line 2074
     const-string v3, "InteroperabilityIndex"
 
-    .line 2075
-    .line 2076
     const/4 v10, 0x2
 
-    .line 2077
     const/4 v14, 0x1
 
-    .line 2078
     invoke-direct {v1, v3, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2079
-    .line 2080
-    .line 2081
     filled-new-array {v1}, [Lg1/d;
 
-    .line 2082
-    .line 2083
-    .line 2084
     move-result-object v72
 
-    .line 2085
+    .line 36
     new-instance v1, Lg1/d;
 
-    .line 2086
-    .line 2087
     const/16 v3, 0xfe
 
-    .line 2088
-    .line 2089
     const/4 v10, 0x4
 
-    .line 2090
     invoke-direct {v1, v12, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2091
-    .line 2092
-    .line 2093
     new-instance v3, Lg1/d;
 
-    .line 2094
-    .line 2095
     const/16 v12, 0xff
 
-    .line 2096
-    .line 2097
     invoke-direct {v3, v2, v12, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2098
-    .line 2099
-    .line 2100
     new-instance v2, Lg1/d;
 
-    .line 2101
-    .line 2102
     const-string v12, "ThumbnailImageWidth"
 
-    .line 2103
-    .line 2104
     const/4 v14, 0x3
 
-    .line 2105
     const/16 v15, 0x100
 
-    .line 2106
-    .line 2107
     invoke-direct {v2, v12, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2108
-    .line 2109
-    .line 2110
     new-instance v12, Lg1/d;
 
-    .line 2111
-    .line 2112
     const-string v15, "ThumbnailImageLength"
 
-    .line 2113
-    .line 2114
     move-object/from16 v73, v1
 
-    .line 2115
-    .line 2116
     const/16 v1, 0x101
 
-    .line 2117
-    .line 2118
     invoke-direct {v12, v15, v1, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2119
-    .line 2120
-    .line 2121
     new-instance v1, Lg1/d;
 
-    .line 2122
-    .line 2123
     const/16 v10, 0x102
 
-    .line 2124
-    .line 2125
     invoke-direct {v1, v5, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2126
-    .line 2127
-    .line 2128
     new-instance v5, Lg1/d;
 
-    .line 2129
-    .line 2130
     const/16 v10, 0x103
 
-    .line 2131
-    .line 2132
     invoke-direct {v5, v4, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2133
-    .line 2134
-    .line 2135
     new-instance v4, Lg1/d;
 
-    .line 2136
-    .line 2137
     const/16 v10, 0x106
 
-    .line 2138
-    .line 2139
     invoke-direct {v4, v9, v10, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2140
-    .line 2141
-    .line 2142
     new-instance v9, Lg1/d;
 
-    .line 2143
-    .line 2144
     const/4 v10, 0x2
 
-    .line 2145
     const/16 v15, 0x10e
 
-    .line 2146
-    .line 2147
     invoke-direct {v9, v0, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2148
-    .line 2149
-    .line 2150
     new-instance v0, Lg1/d;
 
-    .line 2151
-    .line 2152
     const/16 v15, 0x10f
 
-    .line 2153
-    .line 2154
     invoke-direct {v0, v11, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2155
-    .line 2156
-    .line 2157
     new-instance v11, Lg1/d;
 
-    .line 2158
-    .line 2159
     const/16 v15, 0x110
 
-    .line 2160
-    .line 2161
     invoke-direct {v11, v6, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2162
-    .line 2163
-    .line 2164
     new-instance v6, Lg1/d;
 
-    .line 2165
-    .line 2166
     const/4 v10, 0x4
 
-    .line 2167
     const/16 v15, 0x111
 
-    .line 2168
-    .line 2169
     invoke-direct {v6, v7, v15, v14, v10}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2170
-    .line 2171
-    .line 2172
     new-instance v10, Lg1/d;
 
-    .line 2173
-    .line 2174
     const-string v15, "ThumbnailOrientation"
 
-    .line 2175
-    .line 2176
     move-object/from16 v81, v0
 
-    .line 2177
-    .line 2178
     const/16 v0, 0x112
 
-    .line 2179
-    .line 2180
     invoke-direct {v10, v15, v0, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2181
-    .line 2182
-    .line 2183
     new-instance v0, Lg1/d;
 
-    .line 2184
-    .line 2185
     const-string v15, "SamplesPerPixel"
 
-    .line 2186
-    .line 2187
     move-object/from16 v77, v1
 
-    .line 2188
-    .line 2189
     const/16 v1, 0x115
 
-    .line 2190
-    .line 2191
     invoke-direct {v0, v15, v1, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2192
-    .line 2193
-    .line 2194
     new-instance v1, Lg1/d;
 
-    .line 2195
-    .line 2196
     const-string v15, "RowsPerStrip"
 
-    .line 2197
-    .line 2198
     move-object/from16 v85, v0
 
-    .line 2199
-    .line 2200
     const/16 v0, 0x116
 
-    .line 2201
-    .line 2202
     move-object/from16 v75, v2
 
-    .line 2203
-    .line 2204
     const/4 v2, 0x4
 
-    .line 2205
     invoke-direct {v1, v15, v0, v14, v2}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2206
-    .line 2207
-    .line 2208
     new-instance v0, Lg1/d;
 
-    .line 2209
-    .line 2210
     const-string v15, "StripByteCounts"
 
-    .line 2211
-    .line 2212
     move-object/from16 v86, v1
 
-    .line 2213
-    .line 2214
     const/16 v1, 0x117
 
-    .line 2215
-    .line 2216
     invoke-direct {v0, v15, v1, v14, v2}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2217
-    .line 2218
-    .line 2219
     new-instance v1, Lg1/d;
 
-    .line 2220
-    .line 2221
     const-string v2, "XResolution"
 
-    .line 2222
-    .line 2223
     const/16 v14, 0x11a
 
-    .line 2224
-    .line 2225
     const/4 v15, 0x5
 
-    .line 2226
     invoke-direct {v1, v2, v14, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2227
-    .line 2228
-    .line 2229
     new-instance v2, Lg1/d;
 
-    .line 2230
-    .line 2231
     const-string v14, "YResolution"
 
-    .line 2232
-    .line 2233
     move-object/from16 v87, v0
 
-    .line 2234
-    .line 2235
     const/16 v0, 0x11b
 
-    .line 2236
-    .line 2237
     invoke-direct {v2, v14, v0, v15}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2238
-    .line 2239
-    .line 2240
     new-instance v0, Lg1/d;
 
-    .line 2241
-    .line 2242
     const-string v14, "PlanarConfiguration"
 
-    .line 2243
-    .line 2244
     const/16 v15, 0x11c
 
-    .line 2245
-    .line 2246
     move-object/from16 v88, v1
 
-    .line 2247
-    .line 2248
     const/4 v1, 0x3
 
-    .line 2249
     invoke-direct {v0, v14, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2250
-    .line 2251
-    .line 2252
     new-instance v14, Lg1/d;
 
-    .line 2253
-    .line 2254
     const-string v15, "ResolutionUnit"
 
-    .line 2255
-    .line 2256
     move-object/from16 v90, v0
 
-    .line 2257
-    .line 2258
     const/16 v0, 0x128
 
-    .line 2259
-    .line 2260
     invoke-direct {v14, v15, v0, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2261
-    .line 2262
-    .line 2263
     new-instance v0, Lg1/d;
 
-    .line 2264
-    .line 2265
     const-string v15, "TransferFunction"
 
-    .line 2266
-    .line 2267
     move-object/from16 v89, v2
 
-    .line 2268
-    .line 2269
     const/16 v2, 0x12d
 
-    .line 2270
-    .line 2271
     invoke-direct {v0, v15, v2, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2272
-    .line 2273
-    .line 2274
     new-instance v1, Lg1/d;
 
-    .line 2275
-    .line 2276
     const-string v2, "Software"
 
-    .line 2277
-    .line 2278
     const/16 v15, 0x131
 
-    .line 2279
-    .line 2280
     move-object/from16 v92, v0
 
-    .line 2281
-    .line 2282
     const/4 v0, 0x2
 
-    .line 2283
     invoke-direct {v1, v2, v15, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2284
-    .line 2285
-    .line 2286
     new-instance v2, Lg1/d;
 
-    .line 2287
-    .line 2288
     const-string v15, "DateTime"
 
-    .line 2289
-    .line 2290
     move-object/from16 v93, v1
 
-    .line 2291
-    .line 2292
     const/16 v1, 0x132
 
-    .line 2293
-    .line 2294
     invoke-direct {v2, v15, v1, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2295
-    .line 2296
-    .line 2297
     new-instance v1, Lg1/d;
 
-    .line 2298
-    .line 2299
     const-string v15, "Artist"
 
-    .line 2300
-    .line 2301
     move-object/from16 v94, v2
 
-    .line 2302
-    .line 2303
     const/16 v2, 0x13b
 
-    .line 2304
-    .line 2305
     invoke-direct {v1, v15, v2, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2306
-    .line 2307
-    .line 2308
     new-instance v0, Lg1/d;
 
-    .line 2309
-    .line 2310
     const-string v2, "WhitePoint"
 
-    .line 2311
-    .line 2312
     const/16 v15, 0x13e
 
-    .line 2313
-    .line 2314
     move-object/from16 v95, v1
 
-    .line 2315
-    .line 2316
     const/4 v1, 0x5
 
-    .line 2317
     invoke-direct {v0, v2, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2318
-    .line 2319
-    .line 2320
     new-instance v2, Lg1/d;
 
-    .line 2321
-    .line 2322
     const-string v15, "PrimaryChromaticities"
 
-    .line 2323
-    .line 2324
     move-object/from16 v96, v0
 
-    .line 2325
-    .line 2326
     const/16 v0, 0x13f
 
-    .line 2327
-    .line 2328
     invoke-direct {v2, v15, v0, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2329
-    .line 2330
-    .line 2331
     new-instance v0, Lg1/d;
 
-    .line 2332
-    .line 2333
     const/4 v1, 0x4
 
-    .line 2334
     const/16 v15, 0x14a
 
-    .line 2335
-    .line 2336
     invoke-direct {v0, v8, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2337
-    .line 2338
-    .line 2339
     new-instance v15, Lg1/d;
 
-    .line 2340
-    .line 2341
     move-object/from16 v98, v0
 
-    .line 2342
-    .line 2343
     const-string v0, "JPEGInterchangeFormat"
 
-    .line 2344
-    .line 2345
     move-object/from16 v97, v2
 
-    .line 2346
-    .line 2347
     const/16 v2, 0x201
 
-    .line 2348
-    .line 2349
     invoke-direct {v15, v0, v2, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2350
-    .line 2351
-    .line 2352
     new-instance v0, Lg1/d;
 
-    .line 2353
-    .line 2354
     const-string v2, "JPEGInterchangeFormatLength"
 
-    .line 2355
-    .line 2356
     move-object/from16 v74, v3
 
-    .line 2357
-    .line 2358
     const/16 v3, 0x202
 
-    .line 2359
-    .line 2360
     invoke-direct {v0, v2, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2361
-    .line 2362
-    .line 2363
     new-instance v1, Lg1/d;
 
-    .line 2364
-    .line 2365
     const-string v2, "YCbCrCoefficients"
 
-    .line 2366
-    .line 2367
     const/16 v3, 0x211
 
-    .line 2368
-    .line 2369
     move-object/from16 v100, v0
 
-    .line 2370
-    .line 2371
     const/4 v0, 0x5
 
-    .line 2372
     invoke-direct {v1, v2, v3, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2373
-    .line 2374
-    .line 2375
     new-instance v0, Lg1/d;
 
-    .line 2376
-    .line 2377
     const-string v2, "YCbCrSubSampling"
 
-    .line 2378
-    .line 2379
     const/16 v3, 0x212
 
-    .line 2380
-    .line 2381
     move-object/from16 v101, v1
 
-    .line 2382
-    .line 2383
     const/4 v1, 0x3
 
-    .line 2384
     invoke-direct {v0, v2, v3, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2385
-    .line 2386
-    .line 2387
     new-instance v2, Lg1/d;
 
-    .line 2388
-    .line 2389
     const-string v3, "YCbCrPositioning"
 
-    .line 2390
-    .line 2391
     move-object/from16 v102, v0
 
-    .line 2392
-    .line 2393
     const/16 v0, 0x213
 
-    .line 2394
-    .line 2395
     invoke-direct {v2, v3, v0, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2396
-    .line 2397
-    .line 2398
     new-instance v0, Lg1/d;
 
-    .line 2399
-    .line 2400
     const-string v1, "ReferenceBlackWhite"
 
-    .line 2401
-    .line 2402
     const/16 v3, 0x214
 
-    .line 2403
-    .line 2404
     move-object/from16 v103, v2
 
-    .line 2405
-    .line 2406
     const/4 v2, 0x5
 
-    .line 2407
     invoke-direct {v0, v1, v3, v2}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2408
-    .line 2409
-    .line 2410
     new-instance v1, Lg1/d;
 
-    .line 2411
-    .line 2412
     const-string v2, "Copyright"
 
-    .line 2413
-    .line 2414
     const v3, 0x8298
 
-    .line 2415
-    .line 2416
-    .line 2417
     move-object/from16 v104, v0
 
-    .line 2418
-    .line 2419
     const/4 v0, 0x2
 
-    .line 2420
     invoke-direct {v1, v2, v3, v0}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2421
-    .line 2422
-    .line 2423
     new-instance v0, Lg1/d;
 
-    .line 2424
-    .line 2425
     const v2, 0x8769
 
-    .line 2426
-    .line 2427
-    .line 2428
     const/4 v3, 0x4
 
-    .line 2429
     invoke-direct {v0, v13, v2, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2430
-    .line 2431
-    .line 2432
     new-instance v2, Lg1/d;
 
-    .line 2433
-    .line 2434
     move-object/from16 v106, v0
 
-    .line 2435
-    .line 2436
     move-object/from16 v105, v1
 
-    .line 2437
-    .line 2438
     move-object/from16 v0, v16
 
-    .line 2439
-    .line 2440
     const v1, 0x8825
 
-    .line 2441
-    .line 2442
-    .line 2443
     invoke-direct {v2, v0, v1, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2444
-    .line 2445
-    .line 2446
     new-instance v1, Lg1/d;
 
-    .line 2447
-    .line 2448
     const-string v3, "DNGVersion"
 
-    .line 2449
-    .line 2450
     move-object/from16 v107, v2
 
-    .line 2451
-    .line 2452
     const v2, 0xc612
 
-    .line 2453
-    .line 2454
-    .line 2455
     move-object/from16 v79, v4
 
-    .line 2456
-    .line 2457
     const/4 v4, 0x1
 
-    .line 2458
     invoke-direct {v1, v3, v2, v4}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2459
-    .line 2460
-    .line 2461
     new-instance v2, Lg1/d;
 
-    .line 2462
-    .line 2463
     const-string v3, "DefaultCropSize"
 
-    .line 2464
-    .line 2465
     const v4, 0xc620
 
-    .line 2466
-    .line 2467
-    .line 2468
     move-object/from16 v108, v1
 
-    .line 2469
-    .line 2470
     move-object/from16 v78, v5
 
-    .line 2471
-    .line 2472
     const/4 v1, 0x3
 
-    .line 2473
     const/4 v5, 0x4
 
-    .line 2474
     invoke-direct {v2, v3, v4, v1, v5}, Lg1/d;-><init>(Ljava/lang/String;III)V
 
-    .line 2475
-    .line 2476
-    .line 2477
     move-object/from16 v109, v2
 
-    .line 2478
-    .line 2479
     move-object/from16 v83, v6
 
-    .line 2480
-    .line 2481
     move-object/from16 v80, v9
 
-    .line 2482
-    .line 2483
     move-object/from16 v84, v10
 
-    .line 2484
-    .line 2485
     move-object/from16 v82, v11
 
-    .line 2486
-    .line 2487
     move-object/from16 v76, v12
 
-    .line 2488
-    .line 2489
     move-object/from16 v91, v14
 
-    .line 2490
-    .line 2491
     move-object/from16 v99, v15
 
-    .line 2492
-    .line 2493
     filled-new-array/range {v73 .. v109}, [Lg1/d;
 
-    .line 2494
-    .line 2495
-    .line 2496
     move-result-object v73
 
-    .line 2497
+    .line 37
     new-instance v2, Lg1/d;
 
-    .line 2498
-    .line 2499
     const/16 v15, 0x111
 
-    .line 2500
-    .line 2501
     invoke-direct {v2, v7, v15, v1}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2502
-    .line 2503
-    .line 2504
     sput-object v2, Lg1/g;->E:Lg1/d;
 
-    .line 2505
-    .line 2506
+    .line 38
     new-instance v1, Lg1/d;
 
-    .line 2507
-    .line 2508
     const-string v2, "ThumbnailImage"
 
-    .line 2509
-    .line 2510
     const/4 v3, 0x7
 
-    .line 2511
     const/16 v15, 0x100
 
-    .line 2512
-    .line 2513
     invoke-direct {v1, v2, v15, v3}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2514
-    .line 2515
-    .line 2516
     new-instance v2, Lg1/d;
 
-    .line 2517
-    .line 2518
     const-string v3, "CameraSettingsIFDPointer"
 
-    .line 2519
-    .line 2520
     const/16 v4, 0x2020
 
-    .line 2521
-    .line 2522
     invoke-direct {v2, v3, v4, v5}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2523
-    .line 2524
-    .line 2525
     new-instance v3, Lg1/d;
 
-    .line 2526
-    .line 2527
     const-string v4, "ImageProcessingIFDPointer"
 
-    .line 2528
-    .line 2529
     const/16 v6, 0x2040
 
-    .line 2530
-    .line 2531
     invoke-direct {v3, v4, v6, v5}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2532
-    .line 2533
-    .line 2534
     filled-new-array {v1, v2, v3}, [Lg1/d;
 
-    .line 2535
-    .line 2536
-    .line 2537
     move-result-object v75
 
-    .line 2538
+    .line 39
     new-instance v1, Lg1/d;
 
-    .line 2539
-    .line 2540
     const-string v2, "PreviewImageStart"
 
-    .line 2541
-    .line 2542
     const/16 v3, 0x101
 
-    .line 2543
-    .line 2544
     invoke-direct {v1, v2, v3, v5}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2545
-    .line 2546
-    .line 2547
     new-instance v2, Lg1/d;
 
-    .line 2548
-    .line 2549
     const-string v3, "PreviewImageLength"
 
-    .line 2550
-    .line 2551
     const/16 v10, 0x102
 
-    .line 2552
-    .line 2553
     invoke-direct {v2, v3, v10, v5}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2554
-    .line 2555
-    .line 2556
     filled-new-array {v1, v2}, [Lg1/d;
 
-    .line 2557
-    .line 2558
-    .line 2559
     move-result-object v76
 
-    .line 2560
+    .line 40
     new-instance v1, Lg1/d;
 
-    .line 2561
-    .line 2562
     const-string v2, "AspectFrame"
 
-    .line 2563
-    .line 2564
     const/16 v3, 0x1113
 
-    .line 2565
-    .line 2566
     const/4 v10, 0x3
 
-    .line 2567
     invoke-direct {v1, v2, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2568
-    .line 2569
-    .line 2570
     filled-new-array {v1}, [Lg1/d;
 
-    .line 2571
-    .line 2572
-    .line 2573
     move-result-object v77
 
-    .line 2574
+    .line 41
     new-instance v1, Lg1/d;
 
-    .line 2575
-    .line 2576
     const-string v2, "ColorSpace"
 
-    .line 2577
-    .line 2578
     const/16 v3, 0x37
 
-    .line 2579
-    .line 2580
     invoke-direct {v1, v2, v3, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2581
-    .line 2582
-    .line 2583
     filled-new-array {v1}, [Lg1/d;
 
-    .line 2584
-    .line 2585
-    .line 2586
     move-result-object v78
 
-    .line 2587
     move-object/from16 v74, v69
 
-    .line 2588
-    .line 2589
+    .line 42
     filled-new-array/range {v69 .. v78}, [[Lg1/d;
 
-    .line 2590
-    .line 2591
-    .line 2592
     move-result-object v1
 
-    .line 2593
     sput-object v1, Lg1/g;->F:[[Lg1/d;
 
-    .line 2594
-    .line 2595
+    .line 43
     new-instance v2, Lg1/d;
 
-    .line 2596
-    .line 2597
     const/4 v10, 0x4
 
-    .line 2598
     const/16 v15, 0x14a
 
-    .line 2599
-    .line 2600
     invoke-direct {v2, v8, v15, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2601
-    .line 2602
-    .line 2603
     new-instance v3, Lg1/d;
 
-    .line 2604
-    .line 2605
     const v1, 0x8769
 
-    .line 2606
-    .line 2607
-    .line 2608
     invoke-direct {v3, v13, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2609
-    .line 2610
-    .line 2611
     new-instance v4, Lg1/d;
 
-    .line 2612
-    .line 2613
     const v1, 0x8825
 
-    .line 2614
-    .line 2615
-    .line 2616
     invoke-direct {v4, v0, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2617
-    .line 2618
-    .line 2619
     new-instance v5, Lg1/d;
 
-    .line 2620
-    .line 2621
     const-string v0, "InteroperabilityIFDPointer"
 
-    .line 2622
-    .line 2623
     const v1, 0xa005
 
-    .line 2624
-    .line 2625
-    .line 2626
     invoke-direct {v5, v0, v1, v10}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2627
-    .line 2628
-    .line 2629
     new-instance v6, Lg1/d;
 
-    .line 2630
-    .line 2631
     const-string v0, "CameraSettingsIFDPointer"
 
-    .line 2632
-    .line 2633
     const/16 v1, 0x2020
 
-    .line 2634
-    .line 2635
     const/4 v14, 0x1
 
-    .line 2636
     invoke-direct {v6, v0, v1, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2637
-    .line 2638
-    .line 2639
     new-instance v7, Lg1/d;
 
-    .line 2640
-    .line 2641
     const-string v0, "ImageProcessingIFDPointer"
 
-    .line 2642
-    .line 2643
     const/16 v1, 0x2040
 
-    .line 2644
-    .line 2645
     invoke-direct {v7, v0, v1, v14}, Lg1/d;-><init>(Ljava/lang/String;II)V
 
-    .line 2646
-    .line 2647
-    .line 2648
     filled-new-array/range {v2 .. v7}, [Lg1/d;
 
-    .line 2649
-    .line 2650
-    .line 2651
     move-result-object v0
 
-    .line 2652
     sput-object v0, Lg1/g;->G:[Lg1/d;
 
-    .line 2653
-    .line 2654
     const/16 v3, 0xa
 
-    .line 2655
-    .line 2656
+    .line 44
     new-array v0, v3, [Ljava/util/HashMap;
 
-    .line 2657
-    .line 2658
     sput-object v0, Lg1/g;->H:[Ljava/util/HashMap;
 
-    .line 2659
-    .line 2660
+    .line 45
     new-array v0, v3, [Ljava/util/HashMap;
 
-    .line 2661
-    .line 2662
     sput-object v0, Lg1/g;->I:[Ljava/util/HashMap;
 
-    .line 2663
-    .line 2664
+    .line 46
     new-instance v0, Ljava/util/HashSet;
 
-    .line 2665
-    .line 2666
     const-string v1, "SubjectDistance"
 
-    .line 2667
-    .line 2668
     const-string v2, "GPSTimeStamp"
 
-    .line 2669
-    .line 2670
     const-string v3, "FNumber"
 
-    .line 2671
-    .line 2672
     const-string v4, "DigitalZoomRatio"
 
-    .line 2673
-    .line 2674
     const-string v5, "ExposureTime"
 
-    .line 2675
-    .line 2676
     filled-new-array {v3, v4, v5, v1, v2}, [Ljava/lang/String;
 
-    .line 2677
-    .line 2678
-    .line 2679
     move-result-object v1
 
-    .line 2680
     invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
-    .line 2681
-    .line 2682
-    .line 2683
     move-result-object v1
 
-    .line 2684
     invoke-direct {v0, v1}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
 
-    .line 2685
-    .line 2686
-    .line 2687
     sput-object v0, Lg1/g;->J:Ljava/util/HashSet;
 
-    .line 2688
-    .line 2689
+    .line 47
     new-instance v0, Ljava/util/HashMap;
 
-    .line 2690
-    .line 2691
     invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
-    .line 2692
-    .line 2693
-    .line 2694
     sput-object v0, Lg1/g;->K:Ljava/util/HashMap;
 
-    .line 2695
-    .line 2696
+    .line 48
     const-string v0, "US-ASCII"
 
-    .line 2697
-    .line 2698
     invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
-    .line 2699
-    .line 2700
-    .line 2701
     move-result-object v0
 
-    .line 2702
     sput-object v0, Lg1/g;->L:Ljava/nio/charset/Charset;
 
-    .line 2703
-    .line 2704
+    .line 49
     const-string v1, "Exif\u0000\u0000"
 
-    .line 2705
-    .line 2706
     invoke-virtual {v1, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 2707
-    .line 2708
-    .line 2709
     move-result-object v1
 
-    .line 2710
     sput-object v1, Lg1/g;->M:[B
 
-    .line 2711
-    .line 2712
+    .line 50
     const-string v1, "http://ns.adobe.com/xap/1.0/\u0000"
 
-    .line 2713
-    .line 2714
+    .line 51
     invoke-virtual {v1, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
 
-    .line 2715
-    .line 2716
-    .line 2717
     move-result-object v0
 
-    .line 2718
     sput-object v0, Lg1/g;->N:[B
 
-    .line 2719
-    .line 2720
+    .line 52
     new-instance v0, Ljava/text/SimpleDateFormat;
 
-    .line 2721
-    .line 2722
     sget-object v1, Ljava/util/Locale;->US:Ljava/util/Locale;
 
-    .line 2723
-    .line 2724
     const-string v2, "yyyy:MM:dd HH:mm:ss"
 
-    .line 2725
-    .line 2726
     invoke-direct {v0, v2, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
 
-    .line 2727
-    .line 2728
-    .line 2729
+    .line 53
     const-string v2, "UTC"
 
-    .line 2730
-    .line 2731
     invoke-static {v2}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
 
-    .line 2732
-    .line 2733
-    .line 2734
     move-result-object v2
 
-    .line 2735
     invoke-virtual {v0, v2}, Ljava/text/DateFormat;->setTimeZone(Ljava/util/TimeZone;)V
 
-    .line 2736
-    .line 2737
-    .line 2738
+    .line 54
     new-instance v0, Ljava/text/SimpleDateFormat;
 
-    .line 2739
-    .line 2740
     const-string v2, "yyyy-MM-dd HH:mm:ss"
 
-    .line 2741
-    .line 2742
     invoke-direct {v0, v2, v1}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
 
-    .line 2743
-    .line 2744
-    .line 2745
+    .line 55
     const-string v1, "UTC"
 
-    .line 2746
-    .line 2747
     invoke-static {v1}, Ljava/util/TimeZone;->getTimeZone(Ljava/lang/String;)Ljava/util/TimeZone;
 
-    .line 2748
-    .line 2749
-    .line 2750
     move-result-object v1
 
-    .line 2751
     invoke-virtual {v0, v1}, Ljava/text/DateFormat;->setTimeZone(Ljava/util/TimeZone;)V
 
-    .line 2752
-    .line 2753
-    .line 2754
     move/from16 v0, v49
 
-    .line 2755
-    .line 2756
+    .line 56
     :goto_0
     sget-object v1, Lg1/g;->F:[[Lg1/d;
 
-    .line 2757
-    .line 2758
     array-length v2, v1
 
-    .line 2759
     if-ge v0, v2, :cond_1
 
-    .line 2760
-    .line 2761
+    .line 57
     sget-object v2, Lg1/g;->H:[Ljava/util/HashMap;
 
-    .line 2762
-    .line 2763
     new-instance v3, Ljava/util/HashMap;
 
-    .line 2764
-    .line 2765
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
-    .line 2766
-    .line 2767
-    .line 2768
     aput-object v3, v2, v0
 
-    .line 2769
-    .line 2770
+    .line 58
     sget-object v2, Lg1/g;->I:[Ljava/util/HashMap;
 
-    .line 2771
-    .line 2772
     new-instance v3, Ljava/util/HashMap;
 
-    .line 2773
-    .line 2774
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
-    .line 2775
-    .line 2776
-    .line 2777
     aput-object v3, v2, v0
 
-    .line 2778
-    .line 2779
+    .line 59
     aget-object v1, v1, v0
 
-    .line 2780
-    .line 2781
     array-length v2, v1
 
-    .line 2782
     move/from16 v3, v49
 
-    .line 2783
-    .line 2784
     :goto_1
     if-ge v3, v2, :cond_0
 
-    .line 2785
-    .line 2786
     aget-object v4, v1, v3
 
-    .line 2787
-    .line 2788
+    .line 60
     sget-object v5, Lg1/g;->H:[Ljava/util/HashMap;
 
-    .line 2789
-    .line 2790
     aget-object v5, v5, v0
 
-    .line 2791
-    .line 2792
     iget v6, v4, Lg1/d;->a:I
 
-    .line 2793
-    .line 2794
     invoke-static {v6}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2795
-    .line 2796
-    .line 2797
     move-result-object v6
 
-    .line 2798
     invoke-virtual {v5, v6, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2799
-    .line 2800
-    .line 2801
+    .line 61
     sget-object v5, Lg1/g;->I:[Ljava/util/HashMap;
 
-    .line 2802
-    .line 2803
     aget-object v5, v5, v0
 
-    .line 2804
-    .line 2805
     iget-object v6, v4, Lg1/d;->b:Ljava/lang/String;
 
-    .line 2806
-    .line 2807
     invoke-virtual {v5, v6, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2808
-    .line 2809
-    .line 2810
     add-int/lit8 v3, v3, 0x1
 
-    .line 2811
-    .line 2812
     goto :goto_1
 
-    .line 2813
     :cond_0
     add-int/lit8 v0, v0, 0x1
 
-    .line 2814
-    .line 2815
     goto :goto_0
 
-    .line 2816
+    .line 62
     :cond_1
     sget-object v0, Lg1/g;->K:Ljava/util/HashMap;
 
-    .line 2817
-    .line 2818
     sget-object v1, Lg1/g;->G:[Lg1/d;
 
-    .line 2819
-    .line 2820
     aget-object v2, v1, v49
 
-    .line 2821
-    .line 2822
     iget v2, v2, Lg1/d;->a:I
 
-    .line 2823
-    .line 2824
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2825
-    .line 2826
-    .line 2827
     move-result-object v2
 
-    .line 2828
     move-object/from16 v3, v68
 
-    .line 2829
-    .line 2830
     invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2831
-    .line 2832
-    .line 2833
     const/16 v58, 0x1
 
-    .line 2834
-    .line 2835
+    .line 63
     aget-object v2, v1, v58
 
-    .line 2836
-    .line 2837
     iget v2, v2, Lg1/d;->a:I
 
-    .line 2838
-    .line 2839
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2840
-    .line 2841
-    .line 2842
     move-result-object v2
 
-    .line 2843
     move-object/from16 v3, v67
 
-    .line 2844
-    .line 2845
     invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2846
-    .line 2847
-    .line 2848
     const/16 v60, 0x2
 
-    .line 2849
-    .line 2850
+    .line 64
     aget-object v2, v1, v60
 
-    .line 2851
-    .line 2852
     iget v2, v2, Lg1/d;->a:I
 
-    .line 2853
-    .line 2854
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2855
-    .line 2856
-    .line 2857
     move-result-object v2
 
-    .line 2858
     move-object/from16 v3, v66
 
-    .line 2859
-    .line 2860
     invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2861
-    .line 2862
-    .line 2863
     const/16 v62, 0x3
 
-    .line 2864
-    .line 2865
+    .line 65
     aget-object v2, v1, v62
 
-    .line 2866
-    .line 2867
     iget v2, v2, Lg1/d;->a:I
 
-    .line 2868
-    .line 2869
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2870
-    .line 2871
-    .line 2872
     move-result-object v2
 
-    .line 2873
     move-object/from16 v3, v65
 
-    .line 2874
-    .line 2875
     invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2876
-    .line 2877
-    .line 2878
     const/16 v61, 0x4
 
-    .line 2879
-    .line 2880
+    .line 66
     aget-object v2, v1, v61
 
-    .line 2881
-    .line 2882
     iget v2, v2, Lg1/d;->a:I
 
-    .line 2883
-    .line 2884
     invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2885
-    .line 2886
-    .line 2887
     move-result-object v2
 
-    .line 2888
     move-object/from16 v3, v64
 
-    .line 2889
-    .line 2890
     invoke-virtual {v0, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2891
-    .line 2892
-    .line 2893
     const/16 v59, 0x5
 
-    .line 2894
-    .line 2895
+    .line 67
     aget-object v1, v1, v59
 
-    .line 2896
-    .line 2897
     iget v1, v1, Lg1/d;->a:I
 
-    .line 2898
-    .line 2899
     invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    .line 2900
-    .line 2901
-    .line 2902
     move-result-object v1
 
-    .line 2903
     move-object/from16 v2, v63
 
-    .line 2904
-    .line 2905
     invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 2906
-    .line 2907
-    .line 2908
+    .line 68
     const-string v0, ".*[1-9].*"
 
-    .line 2909
-    .line 2910
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
-    .line 2911
-    .line 2912
-    .line 2913
+    .line 69
     const-string v0, "^(\\d{2}):(\\d{2}):(\\d{2})$"
 
-    .line 2914
-    .line 2915
+    .line 70
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
-    .line 2916
-    .line 2917
-    .line 2918
+    .line 71
     const-string v0, "^(\\d{4}):(\\d{2}):(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$"
 
-    .line 2919
-    .line 2920
+    .line 72
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
-    .line 2921
-    .line 2922
-    .line 2923
+    .line 73
     const-string v0, "^(\\d{4})-(\\d{2})-(\\d{2})\\s(\\d{2}):(\\d{2}):(\\d{2})$"
 
-    .line 2924
-    .line 2925
+    .line 74
     invoke-static {v0}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
-    .line 2926
-    .line 2927
-    .line 2928
     return-void
 
-    .line 2929
     :array_0
     .array-data 1
         -0x1t
@@ -5759,12 +2904,6 @@
         -0x1t
     .end array-data
 
-    .line 2930
-    .line 2931
-    .line 2932
-    .line 2933
-    .line 2934
-    .line 2935
     :array_1
     .array-data 1
         0x66t
@@ -5773,12 +2912,6 @@
         0x70t
     .end array-data
 
-    .line 2936
-    .line 2937
-    .line 2938
-    .line 2939
-    .line 2940
-    .line 2941
     :array_2
     .array-data 1
         0x6dt
@@ -5787,12 +2920,6 @@
         0x31t
     .end array-data
 
-    .line 2942
-    .line 2943
-    .line 2944
-    .line 2945
-    .line 2946
-    .line 2947
     :array_3
     .array-data 1
         0x68t
@@ -5801,12 +2928,6 @@
         0x63t
     .end array-data
 
-    .line 2948
-    .line 2949
-    .line 2950
-    .line 2951
-    .line 2952
-    .line 2953
     :array_4
     .array-data 1
         0x4ft
@@ -5817,16 +2938,8 @@
         0x0t
     .end array-data
 
-    .line 2954
-    .line 2955
-    .line 2956
-    .line 2957
-    .line 2958
-    .line 2959
-    .line 2960
     nop
 
-    .line 2961
     :array_5
     .array-data 1
         0x4ft
@@ -5841,18 +2954,8 @@
         0x49t
     .end array-data
 
-    .line 2962
-    .line 2963
-    .line 2964
-    .line 2965
-    .line 2966
-    .line 2967
-    .line 2968
-    .line 2969
-    .line 2970
     nop
 
-    .line 2971
     :array_6
     .array-data 1
         -0x77t
@@ -5865,14 +2968,6 @@
         0xat
     .end array-data
 
-    .line 2972
-    .line 2973
-    .line 2974
-    .line 2975
-    .line 2976
-    .line 2977
-    .line 2978
-    .line 2979
     :array_7
     .array-data 1
         0x65t
@@ -5881,12 +2976,6 @@
         0x66t
     .end array-data
 
-    .line 2980
-    .line 2981
-    .line 2982
-    .line 2983
-    .line 2984
-    .line 2985
     :array_8
     .array-data 1
         0x49t
@@ -5895,12 +2984,6 @@
         0x52t
     .end array-data
 
-    .line 2986
-    .line 2987
-    .line 2988
-    .line 2989
-    .line 2990
-    .line 2991
     :array_9
     .array-data 1
         0x49t
@@ -5909,12 +2992,6 @@
         0x44t
     .end array-data
 
-    .line 2992
-    .line 2993
-    .line 2994
-    .line 2995
-    .line 2996
-    .line 2997
     :array_a
     .array-data 1
         0x52t
@@ -5923,12 +3000,6 @@
         0x46t
     .end array-data
 
-    .line 2998
-    .line 2999
-    .line 3000
-    .line 3001
-    .line 3002
-    .line 3003
     :array_b
     .array-data 1
         0x57t
@@ -5937,12 +3008,6 @@
         0x50t
     .end array-data
 
-    .line 3004
-    .line 3005
-    .line 3006
-    .line 3007
-    .line 3008
-    .line 3009
     :array_c
     .array-data 1
         0x45t
@@ -5951,12 +3016,6 @@
         0x46t
     .end array-data
 
-    .line 3010
-    .line 3011
-    .line 3012
-    .line 3013
-    .line 3014
-    .line 3015
     :array_d
     .array-data 4
         0x0
@@ -5975,38 +3034,6 @@
         0x1
     .end array-data
 
-    .line 3016
-    .line 3017
-    .line 3018
-    .line 3019
-    .line 3020
-    .line 3021
-    .line 3022
-    .line 3023
-    .line 3024
-    .line 3025
-    .line 3026
-    .line 3027
-    .line 3028
-    .line 3029
-    .line 3030
-    .line 3031
-    .line 3032
-    .line 3033
-    .line 3034
-    .line 3035
-    .line 3036
-    .line 3037
-    .line 3038
-    .line 3039
-    .line 3040
-    .line 3041
-    .line 3042
-    .line 3043
-    .line 3044
-    .line 3045
-    .line 3046
-    .line 3047
     :array_e
     .array-data 1
         0x41t
@@ -9115,6 +6142,16 @@
 
     .line 500
     .line 501
+    .line 502
+    .line 503
+    .line 504
+    .line 505
+    .line 506
+    .line 507
+    .line 508
+    .line 509
+    .line 510
+    .line 511
     :pswitch_data_1
     .packed-switch -0x3b
         :pswitch_0
@@ -9122,6 +6159,16 @@
         :pswitch_0
     .end packed-switch
 
+    .line 512
+    .line 513
+    .line 514
+    .line 515
+    .line 516
+    .line 517
+    .line 518
+    .line 519
+    .line 520
+    .line 521
     :pswitch_data_2
     .packed-switch -0x37
         :pswitch_0
@@ -9129,6 +6176,16 @@
         :pswitch_0
     .end packed-switch
 
+    .line 522
+    .line 523
+    .line 524
+    .line 525
+    .line 526
+    .line 527
+    .line 528
+    .line 529
+    .line 530
+    .line 531
     :pswitch_data_3
     .packed-switch -0x33
         :pswitch_0
@@ -10983,7 +8040,7 @@
     .line 181
     .line 182
     .line 183
-    invoke-static {v3}, Lcom/bumptech/glide/c;->e([B)Ljava/lang/String;
+    invoke-static {v3}, Lk4/f;->d([B)Ljava/lang/String;
 
     .line 184
     .line 185
@@ -11275,7 +8332,7 @@
 
     .line 107
     .line 108
-    invoke-static {v2, v3, v0}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v3, v0}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 109
     .line 110
@@ -12013,7 +9070,7 @@
     .line 105
     .line 106
     .line 107
-    invoke-static {v3}, Lcom/bumptech/glide/c;->e([B)Ljava/lang/String;
+    invoke-static {v3}, Lk4/f;->d([B)Ljava/lang/String;
 
     .line 108
     .line 109
@@ -12567,7 +9624,7 @@
 
     .line 70
     .line 71
-    invoke-static {v0, v1}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
 
     .line 72
     .line 73
@@ -12610,7 +9667,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v2, v3}, Ls1/a;->u(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v0, v2, v3}, Ls1/a;->t(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 12
     .line 13
@@ -12911,7 +9968,7 @@
 
     .line 29
     .line 30
-    invoke-static {v3, v7, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v3, v7, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 31
     .line 32
@@ -13145,7 +10202,7 @@
 
     .line 139
     .line 140
-    invoke-static {v13, v12, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v13, v12, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 141
     .line 142
@@ -13432,7 +10489,7 @@
 
     .line 266
     .line 267
-    invoke-static {v15, v6, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v15, v6, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 268
     .line 269
@@ -13454,7 +10511,7 @@
 
     .line 275
     .line 276
-    invoke-static {v14, v6, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v14, v6, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 277
     .line 278
@@ -13523,7 +10580,7 @@
 
     .line 307
     .line 308
-    invoke-static {v6, v3, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v6, v3, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 309
     .line 310
@@ -14560,7 +11617,7 @@
 
     .line 809
     .line 810
-    invoke-static {v2, v1, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v1, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 811
     .line 812
@@ -14577,7 +11634,7 @@
 
     .line 817
     .line 818
-    invoke-static {v2, v1, v5}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v2, v1, v5}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 819
     .line 820
@@ -14941,7 +11998,7 @@
     move-result-object v3
 
     .line 135
-    invoke-static {v3}, Lcom/bumptech/glide/c;->g(Ljava/io/Serializable;)[J
+    invoke-static {v3}, Lk4/f;->e(Ljava/io/Serializable;)[J
 
     .line 136
     .line 137
@@ -14961,7 +12018,7 @@
     move-result-object v2
 
     .line 145
-    invoke-static {v2}, Lcom/bumptech/glide/c;->g(Ljava/io/Serializable;)[J
+    invoke-static {v2}, Lk4/f;->e(Ljava/io/Serializable;)[J
 
     .line 146
     .line 147

@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;
 .super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -17,7 +17,13 @@
 # instance fields
 .field final author:Landroid/widget/TextView;
 
+.field final categoryTag:Landroid/widget/TextView;
+
 .field final description:Landroid/widget/TextView;
+
+.field final divider:Landroid/view/View;
+
+.field final downloadsTag:Landroid/widget/TextView;
 
 .field final icon:Landroid/widget/ImageView;
 
@@ -25,10 +31,12 @@
 
 .field final title:Landroid/widget/TextView;
 
+.field final viewButton:Landroid/view/View;
+
 
 # direct methods
 .method public constructor <init>(Landroid/view/View;)V
-    .locals 3
+    .locals 2
 
     .line 1
     invoke-direct {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;-><init>(Landroid/view/View;)V
@@ -116,7 +124,7 @@
 
     .line 43
     .line 44
-    sget v0, Lorg/levimc/launcher/R$id;->mod_metadata:I
+    sget v0, Lorg/levimc/launcher/R$id;->mod_tag_category:I
 
     .line 45
     .line 46
@@ -132,58 +140,112 @@
 
     .line 51
     .line 52
-    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
+    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->categoryTag:Landroid/widget/TextView;
 
     .line 53
     .line 54
-    new-instance v1, Lorg/levimc/launcher/util/PersonalizationManager;
+    sget v0, Lorg/levimc/launcher/R$id;->mod_tag_downloads:I
 
     .line 55
     .line 56
-    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     .line 57
     .line 58
     .line 59
-    move-result-object v2
+    move-result-object v0
 
     .line 60
-    invoke-direct {v1, v2}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
+    check-cast v0, Landroid/widget/TextView;
 
     .line 61
     .line 62
-    .line 63
-    invoke-virtual {v1}, Lorg/levimc/launcher/util/PersonalizationManager;->hasCustomAccent()Z
+    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->downloadsTag:Landroid/widget/TextView;
 
+    .line 63
     .line 64
+    sget v0, Lorg/levimc/launcher/R$id;->mod_metadata:I
+
     .line 65
     .line 66
-    move-result v2
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     .line 67
-    if-eqz v2, :cond_0
-
     .line 68
     .line 69
-    invoke-virtual {v1}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor()I
+    move-result-object v0
 
     .line 70
+    check-cast v0, Landroid/widget/TextView;
+
     .line 71
     .line 72
-    move-result v2
+    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
 
     .line 73
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setTextColor(I)V
-
     .line 74
+    sget v0, Lorg/levimc/launcher/R$id;->mod_view:I
+
     .line 75
     .line 76
-    :cond_0
-    invoke-virtual {v1, p1}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;)V
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
     .line 77
     .line 78
     .line 79
+    move-result-object v0
+
+    .line 80
+    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->viewButton:Landroid/view/View;
+
+    .line 81
+    .line 82
+    sget v0, Lorg/levimc/launcher/R$id;->mod_divider:I
+
+    .line 83
+    .line 84
+    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 85
+    .line 86
+    .line 87
+    move-result-object v0
+
+    .line 88
+    iput-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->divider:Landroid/view/View;
+
+    .line 89
+    .line 90
+    new-instance v0, Lorg/levimc/launcher/util/PersonalizationManager;
+
+    .line 91
+    .line 92
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 93
+    .line 94
+    .line 95
+    move-result-object v1
+
+    .line 96
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
+
+    .line 97
+    .line 98
+    .line 99
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    .line 100
+    .line 101
+    .line 102
+    move-result-object v1
+
+    .line 103
+    invoke-virtual {v0, p1, v1}, Lorg/levimc/launcher/util/PersonalizationManager;->applyAccentToView(Landroid/view/View;Landroid/content/Context;)V
+
+    .line 104
+    .line 105
+    .line 106
     return-void
 .end method
 
@@ -197,6 +259,140 @@
     .line 3
     .line 4
     return-void
+.end method
+
+.method private static formatCount(D)Ljava/lang/String;
+    .locals 3
+
+    .line 1
+    const-wide v0, 0x412e848000000000L    # 1000000.0
+
+    .line 2
+    .line 3
+    .line 4
+    .line 5
+    .line 6
+    cmpl-double v2, p0, v0
+
+    .line 7
+    .line 8
+    if-ltz v2, :cond_0
+
+    .line 9
+    .line 10
+    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object v2
+
+    .line 14
+    div-double/2addr p0, v0
+
+    .line 15
+    invoke-static {p0, p1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object p0
+
+    .line 19
+    filled-new-array {p0}, [Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p0
+
+    .line 23
+    const-string p1, "%.1fM"
+
+    .line 24
+    .line 25
+    invoke-static {v2, p1, p0}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object p0
+
+    .line 29
+    return-object p0
+
+    .line 30
+    :cond_0
+    const-wide v0, 0x408f400000000000L    # 1000.0
+
+    .line 31
+    .line 32
+    .line 33
+    .line 34
+    .line 35
+    cmpl-double v2, p0, v0
+
+    .line 36
+    .line 37
+    if-ltz v2, :cond_1
+
+    .line 38
+    .line 39
+    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v2
+
+    .line 43
+    div-double/2addr p0, v0
+
+    .line 44
+    invoke-static {p0, p1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 45
+    .line 46
+    .line 47
+    move-result-object p0
+
+    .line 48
+    filled-new-array {p0}, [Ljava/lang/Object;
+
+    .line 49
+    .line 50
+    .line 51
+    move-result-object p0
+
+    .line 52
+    const-string p1, "%.1fK"
+
+    .line 53
+    .line 54
+    invoke-static {v2, p1, p0}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object p0
+
+    .line 58
+    return-object p0
+
+    .line 59
+    :cond_1
+    double-to-long p0, p0
+
+    .line 60
+    invoke-static {p0, p1}, Ljava/lang/String;->valueOf(J)Ljava/lang/String;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object p0
+
+    .line 64
+    return-object p0
 .end method
 
 .method private static synthetic lambda$bind$0(Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;Lorg/levimc/launcher/core/curseforge/models/Content;Landroid/view/View;)V
@@ -213,8 +409,8 @@
 
 
 # virtual methods
-.method public bind(Lorg/levimc/launcher/core/curseforge/models/Content;Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;)V
-    .locals 7
+.method public bind(Lorg/levimc/launcher/core/curseforge/models/Content;ZLorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;)V
+    .locals 8
 
     .line 1
     iget-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
@@ -375,134 +571,134 @@
 
     .line 72
     .line 73
-    sget v2, Lorg/levimc/launcher/R$string;->mod_author_byline:I
+    new-instance v2, Ljava/lang/StringBuilder;
 
     .line 74
     .line 75
-    iget-object v3, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->authors:Ljava/util/List;
+    const-string v3, "| "
 
     .line 76
     .line 77
-    invoke-interface {v3, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 78
     .line 79
     .line 80
-    move-result-object v3
+    sget v3, Lorg/levimc/launcher/R$string;->pkg_by_author:I
 
     .line 81
-    check-cast v3, Lorg/levimc/launcher/core/curseforge/models/ContentAuthor;
-
     .line 82
+    iget-object v6, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->authors:Ljava/util/List;
+
     .line 83
-    iget-object v3, v3, Lorg/levimc/launcher/core/curseforge/models/ContentAuthor;->name:Ljava/lang/String;
-
     .line 84
-    .line 85
-    filled-new-array {v3}, [Ljava/lang/Object;
+    invoke-interface {v6, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
+    .line 85
     .line 86
     .line 87
+    move-result-object v6
+
     .line 88
-    move-result-object v3
+    check-cast v6, Lorg/levimc/launcher/core/curseforge/models/ContentAuthor;
 
     .line 89
-    invoke-virtual {v0, v2, v3}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
     .line 90
+    iget-object v6, v6, Lorg/levimc/launcher/core/curseforge/models/ContentAuthor;->name:Ljava/lang/String;
+
     .line 91
     .line 92
-    move-result-object v0
+    filled-new-array {v6}, [Ljava/lang/Object;
 
     .line 93
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
     .line 94
     .line 95
+    move-result-object v6
+
     .line 96
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
+    invoke-virtual {v0, v3, v6}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 97
     .line 98
-    invoke-virtual {v0, v5}, Landroid/view/View;->setVisibility(I)V
-
     .line 99
+    move-result-object v3
+
     .line 100
+    invoke-virtual {v2, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 101
-    goto :goto_4
-
     .line 102
-    :cond_4
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
-
     .line 103
-    .line 104
-    invoke-virtual {v0, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 104
     .line 105
     .line 106
+    move-result-object v2
+
     .line 107
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 108
     .line 109
-    invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
-
     .line 110
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
+
     .line 111
     .line 112
-    :goto_4
-    new-instance v0, Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v5}, Landroid/view/View;->setVisibility(I)V
 
     .line 113
     .line 114
-    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
-
     .line 115
+    goto :goto_4
+
     .line 116
+    :cond_4
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
+
     .line 117
-    iget-wide v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->downloadCount:J
-
     .line 118
+    invoke-virtual {v1, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
     .line 119
-    long-to-double v1, v1
-
     .line 120
-    const-wide v3, 0x412e848000000000L    # 1000000.0
-
     .line 121
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->author:Landroid/widget/TextView;
+
     .line 122
     .line 123
+    invoke-virtual {v1, v4}, Landroid/view/View;->setVisibility(I)V
+
     .line 124
     .line 125
-    cmpl-double v6, v1, v3
-
     .line 126
+    :goto_4
+    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
+
     .line 127
-    if-ltz v6, :cond_5
-
     .line 128
-    .line 129
-    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+    if-eqz v1, :cond_5
 
+    .line 129
     .line 130
+    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
+
     .line 131
     .line 132
-    move-result-object v6
-
     .line 133
-    div-double/2addr v1, v3
+    move-result v1
 
     .line 134
-    invoke-static {v1, v2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    if-nez v1, :cond_5
 
     .line 135
     .line 136
-    .line 137
-    move-result-object v1
+    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
 
+    .line 137
     .line 138
-    filled-new-array {v1}, [Ljava/lang/Object;
+    invoke-interface {v1, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     .line 139
     .line 140
@@ -510,310 +706,316 @@
     move-result-object v1
 
     .line 142
-    const-string v2, "%.1fM"
+    if-eqz v1, :cond_5
 
     .line 143
     .line 144
-    invoke-static {v6, v2, v1}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
 
     .line 145
     .line 146
+    invoke-interface {v1, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
     .line 147
+    .line 148
+    .line 149
     move-result-object v1
 
-    .line 148
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 149
     .line 150
-    .line 151
-    goto :goto_5
+    check-cast v1, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;
 
+    .line 151
     .line 152
-    :cond_5
-    const-wide v3, 0x408f400000000000L    # 1000.0
+    iget-object v1, v1, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;->name:Ljava/lang/String;
 
     .line 153
     .line 154
+    if-eqz v1, :cond_5
+
     .line 155
     .line 156
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->categoryTag:Landroid/widget/TextView;
+
     .line 157
-    cmpl-double v6, v1, v3
-
     .line 158
+    iget-object v2, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
+
     .line 159
-    if-ltz v6, :cond_6
-
     .line 160
-    .line 161
-    invoke-static {}, Ljava/util/Locale;->getDefault()Ljava/util/Locale;
+    invoke-interface {v2, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
+    .line 161
     .line 162
     .line 163
+    move-result-object v2
+
     .line 164
-    move-result-object v6
+    check-cast v2, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;
 
     .line 165
-    div-double/2addr v1, v3
-
     .line 166
-    invoke-static {v1, v2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    iget-object v2, v2, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;->name:Ljava/lang/String;
 
     .line 167
     .line 168
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
     .line 169
-    move-result-object v1
-
     .line 170
-    filled-new-array {v1}, [Ljava/lang/Object;
-
     .line 171
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->categoryTag:Landroid/widget/TextView;
+
     .line 172
     .line 173
-    move-result-object v1
+    invoke-virtual {v1, v5}, Landroid/view/View;->setVisibility(I)V
 
     .line 174
-    const-string v2, "%.1fK"
-
     .line 175
     .line 176
-    invoke-static {v6, v2, v1}, Ljava/lang/String;->format(Ljava/util/Locale;Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 177
-    .line 178
-    .line 179
-    move-result-object v1
-
-    .line 180
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 181
-    .line 182
-    .line 183
     goto :goto_5
 
+    .line 177
+    :cond_5
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->categoryTag:Landroid/widget/TextView;
+
+    .line 178
+    .line 179
+    invoke-virtual {v1, v4}, Landroid/view/View;->setVisibility(I)V
+
+    .line 180
+    .line 181
+    .line 182
+    :goto_5
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->downloadsTag:Landroid/widget/TextView;
+
+    .line 183
     .line 184
-    :cond_6
-    double-to-long v1, v1
+    sget v2, Lorg/levimc/launcher/R$string;->catalog_cf_downloads:I
 
     .line 185
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
     .line 186
+    iget-wide v6, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->downloadCount:J
+
     .line 187
     .line 188
-    :goto_5
-    const-string v1, " downloads"
+    long-to-double v6, v6
 
     .line 189
-    .line 190
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v6, v7}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->formatCount(D)Ljava/lang/String;
 
+    .line 190
     .line 191
     .line 192
+    move-result-object v3
+
     .line 193
-    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
+    filled-new-array {v3}, [Ljava/lang/Object;
 
     .line 194
     .line 195
-    const-string v2, "  \u00b7  "
-
     .line 196
+    move-result-object v3
+
     .line 197
-    if-eqz v1, :cond_7
+    invoke-virtual {v0, v2, v3}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 198
     .line 199
-    invoke-interface {v1}, Ljava/util/List;->isEmpty()Z
-
     .line 200
+    move-result-object v0
+
     .line 201
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
     .line 202
-    move-result v1
-
     .line 203
-    if-nez v1, :cond_7
-
     .line 204
+    iget-object v0, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->dateModified:Ljava/lang/String;
+
     .line 205
-    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
-
     .line 206
-    .line 207
-    invoke-interface {v1, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    if-eqz v0, :cond_6
 
+    .line 207
     .line 208
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
     .line 209
     .line 210
-    move-result-object v1
-
     .line 211
-    if-eqz v1, :cond_7
+    move-result v0
 
     .line 212
-    .line 213
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const/16 v1, 0xa
 
+    .line 213
     .line 214
+    if-lt v0, v1, :cond_6
+
     .line 215
     .line 216
-    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->categories:Ljava/util/List;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
 
     .line 217
     .line 218
-    invoke-interface {v1, v5}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    iget-object v2, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->dateModified:Ljava/lang/String;
 
     .line 219
     .line 220
+    invoke-virtual {v2, v5, v1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
     .line 221
+    .line 222
+    .line 223
     move-result-object v1
 
-    .line 222
-    check-cast v1, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;
-
-    .line 223
     .line 224
-    iget-object v1, v1, Lorg/levimc/launcher/core/curseforge/models/ContentCategory;->name:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 225
     .line 226
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 227
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
+
     .line 228
     .line 229
-    :cond_7
-    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->dateModified:Ljava/lang/String;
+    invoke-virtual {v0, v5}, Landroid/view/View;->setVisibility(I)V
 
     .line 230
     .line 231
-    if-eqz v1, :cond_8
-
     .line 232
+    goto :goto_6
+
     .line 233
-    invoke-virtual {v1}, Ljava/lang/String;->length()I
+    :cond_6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
 
     .line 234
     .line 235
+    invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
+
     .line 236
-    move-result v1
-
     .line 237
-    const/16 v3, 0xa
-
     .line 238
+    :goto_6
+    iget-object v0, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->logo:Lorg/levimc/launcher/core/curseforge/models/ContentAsset;
+
     .line 239
-    if-lt v1, v3, :cond_8
-
     .line 240
-    .line 241
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-eqz v0, :cond_7
 
+    .line 241
     .line 242
+    iget-object v0, v0, Lorg/levimc/launcher/core/curseforge/models/ContentAsset;->thumbnailUrl:Ljava/lang/String;
+
     .line 243
     .line 244
-    iget-object v1, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->dateModified:Ljava/lang/String;
+    goto :goto_7
 
     .line 245
+    :cond_7
+    const/4 v0, 0x0
+
     .line 246
-    invoke-virtual {v0, v1, v5, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/CharSequence;II)Ljava/lang/StringBuilder;
+    :goto_7
+    if-eqz v0, :cond_8
 
     .line 247
     .line 248
-    .line 249
-    :cond_8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->metadata:Landroid/widget/TextView;
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
 
+    .line 249
     .line 250
     .line 251
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    move-result v1
 
     .line 252
+    if-nez v1, :cond_8
+
     .line 253
     .line 254
-    move-result-object v0
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
 
     .line 255
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
     .line 256
+    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/RequestManager;
+
     .line 257
     .line 258
-    iget-object v0, p1, Lorg/levimc/launcher/core/curseforge/models/Content;->logo:Lorg/levimc/launcher/core/curseforge/models/ContentAsset;
-
     .line 259
+    move-result-object v1
+
     .line 260
-    if-eqz v0, :cond_9
+    invoke-virtual {v1, v0}, Lcom/bumptech/glide/RequestManager;->d(Ljava/lang/String;)Lcom/bumptech/glide/n;
 
     .line 261
     .line 262
-    iget-object v0, v0, Lorg/levimc/launcher/core/curseforge/models/ContentAsset;->thumbnailUrl:Ljava/lang/String;
-
     .line 263
+    move-result-object v0
+
     .line 264
-    goto :goto_6
+    invoke-virtual {v0}, Lk3/a;->b()Lk3/a;
 
     .line 265
-    :cond_9
-    const/4 v0, 0x0
-
     .line 266
-    :goto_6
-    if-eqz v0, :cond_a
-
     .line 267
+    move-result-object v0
+
     .line 268
-    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    check-cast v0, Lcom/bumptech/glide/n;
 
     .line 269
     .line 270
-    .line 271
-    move-result v1
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
 
+    .line 271
     .line 272
-    if-nez v1, :cond_a
+    invoke-virtual {v0, v1}, Lk3/a;->l(I)Lk3/a;
 
     .line 273
     .line 274
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
-
     .line 275
+    move-result-object v0
+
     .line 276
-    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/q;
+    check-cast v0, Lcom/bumptech/glide/n;
 
     .line 277
     .line 278
-    .line 279
-    move-result-object v1
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
 
+    .line 279
     .line 280
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v0, v1}, Lk3/a;->f(I)Lk3/a;
 
     .line 281
     .line 282
     .line 283
-    new-instance v2, Lcom/bumptech/glide/n;
+    move-result-object v0
 
     .line 284
+    check-cast v0, Lcom/bumptech/glide/n;
+
     .line 285
-    iget-object v3, v1, Lcom/bumptech/glide/q;->c:Lcom/bumptech/glide/b;
-
     .line 286
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
+
     .line 287
-    iget-object v4, v1, Lcom/bumptech/glide/q;->d:Landroid/content/Context;
-
     .line 288
-    .line 289
-    const-class v6, Landroid/graphics/drawable/Drawable;
+    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->B(Landroid/widget/ImageView;)V
 
+    .line 289
     .line 290
     .line 291
-    invoke-direct {v2, v3, v1, v6, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/q;Ljava/lang/Class;Landroid/content/Context;)V
+    goto :goto_8
 
     .line 292
+    :cond_8
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
+
     .line 293
     .line 294
-    invoke-virtual {v2, v0}, Lcom/bumptech/glide/n;->z(Ljava/lang/Object;)Lcom/bumptech/glide/n;
+    invoke-static {v0}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/RequestManager;
 
     .line 295
     .line 296
@@ -821,147 +1023,91 @@
     move-result-object v0
 
     .line 298
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
 
     .line 299
     .line 300
-    .line 301
-    sget-object v1, Lb3/n;->b:Lb3/n;
+    invoke-virtual {v0, v1}, Lcom/bumptech/glide/RequestManager;->a(Landroid/view/View;)V
 
+    .line 301
     .line 302
     .line 303
-    new-instance v1, Lb3/h;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
 
     .line 304
     .line 305
-    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
 
     .line 306
     .line 307
-    .line 308
-    invoke-virtual {v0, v1}, Lk3/a;->p(Lb3/h;)Lk3/a;
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
 
+    .line 308
     .line 309
     .line 310
-    .line 311
-    move-result-object v0
+    :goto_8
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->divider:Landroid/view/View;
 
+    .line 311
     .line 312
-    check-cast v0, Lcom/bumptech/glide/n;
+    if-eqz p2, :cond_9
 
     .line 313
     .line 314
-    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
+    goto :goto_9
 
     .line 315
+    :cond_9
+    move v4, v5
+
     .line 316
-    invoke-virtual {v0, v1}, Lk3/a;->j(I)Lk3/a;
+    :goto_9
+    invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
 
     .line 317
     .line 318
     .line 319
-    move-result-object v0
+    new-instance p2, Lorg/levimc/launcher/ui/adapter/b;
 
     .line 320
-    check-cast v0, Lcom/bumptech/glide/n;
-
     .line 321
+    const/4 v0, 0x0
+
     .line 322
-    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
+    invoke-direct {p2, p3, p1, v0}, Lorg/levimc/launcher/ui/adapter/b;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 323
     .line 324
-    invoke-virtual {v0, v1}, Lk3/a;->e(I)Lk3/a;
-
     .line 325
+    iget-object p1, p0, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
+
     .line 326
     .line 327
-    move-result-object v0
+    sget p3, Lorg/levimc/launcher/R$id;->cf_row:I
 
     .line 328
-    check-cast v0, Lcom/bumptech/glide/n;
-
     .line 329
-    .line 330
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
+    invoke-virtual {p1, p3}, Landroid/view/View;->findViewById(I)Landroid/view/View;
 
+    .line 330
     .line 331
     .line 332
-    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->x(Landroid/widget/ImageView;)V
+    move-result-object p1
 
     .line 333
+    invoke-virtual {p1, p2}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 334
     .line 335
-    goto :goto_7
-
     .line 336
-    :cond_a
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
+    iget-object p1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->viewButton:Landroid/view/View;
 
     .line 337
     .line 338
-    invoke-static {v0}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/q;
+    invoke-virtual {p1, p2}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 339
     .line 340
     .line 341
-    move-result-object v0
-
-    .line 342
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
-
-    .line 343
-    .line 344
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 345
-    .line 346
-    .line 347
-    new-instance v2, Lcom/bumptech/glide/o;
-
-    .line 348
-    .line 349
-    invoke-direct {v2, v1}, Lcom/bumptech/glide/o;-><init>(Landroid/view/View;)V
-
-    .line 350
-    .line 351
-    .line 352
-    invoke-virtual {v0, v2}, Lcom/bumptech/glide/q;->a(Ll3/e;)V
-
-    .line 353
-    .line 354
-    .line 355
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->icon:Landroid/widget/ImageView;
-
-    .line 356
-    .line 357
-    sget v1, Lorg/levimc/launcher/R$drawable;->ic_minecraft_cube:I
-
-    .line 358
-    .line 359
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageResource(I)V
-
-    .line 360
-    .line 361
-    .line 362
-    :goto_7
-    iget-object v0, p0, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
-
-    .line 363
-    .line 364
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/b;
-
-    .line 365
-    .line 366
-    invoke-direct {v1, p2, p1, v5}, Lorg/levimc/launcher/ui/adapter/b;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
-    .line 367
-    .line 368
-    .line 369
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 370
-    .line 371
-    .line 372
     return-void
 .end method

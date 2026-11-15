@@ -1,6 +1,6 @@
 .class public Lorg/spongycastle/crypto/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -31,7 +31,7 @@
 
     .line 5
     .line 6
-    invoke-interface {p1}, Lorg/spongycastle/crypto/d;->f()I
+    invoke-interface {p1}, Lorg/spongycastle/crypto/d;->e()I
 
     .line 7
     .line 8
@@ -216,7 +216,7 @@
 
     .line 18
     .line 19
-    invoke-interface {v0, v1, v1, v2, v2}, Lorg/spongycastle/crypto/d;->e(II[B[B)I
+    invoke-interface {v0, v1, v1, v2, v2}, Lorg/spongycastle/crypto/d;->d(II[B[B)I
 
     .line 20
     .line 21
@@ -365,7 +365,7 @@
 
     .line 18
     .line 19
-    invoke-interface {v1}, Lorg/spongycastle/crypto/d;->f()I
+    invoke-interface {v1}, Lorg/spongycastle/crypto/d;->e()I
 
     .line 20
     .line 21
@@ -480,7 +480,7 @@
 
     .line 16
     .line 17
-    invoke-interface {p1, v1, p3, v0, p2}, Lorg/spongycastle/crypto/d;->e(II[B[B)I
+    invoke-interface {p1, v1, p3, v0, p2}, Lorg/spongycastle/crypto/d;->d(II[B[B)I
 
     .line 18
     .line 19
@@ -511,7 +511,7 @@
 
     .line 4
     .line 5
-    invoke-interface {v0}, Lorg/spongycastle/crypto/d;->f()I
+    invoke-interface {v0}, Lorg/spongycastle/crypto/d;->e()I
 
     .line 6
     .line 7
@@ -597,7 +597,7 @@
 
     .line 43
     .line 44
-    invoke-interface {v1, v4, p5, v3, p4}, Lorg/spongycastle/crypto/d;->e(II[B[B)I
+    invoke-interface {v1, v4, p5, v3, p4}, Lorg/spongycastle/crypto/d;->d(II[B[B)I
 
     .line 45
     .line 46
@@ -635,7 +635,7 @@
 
     .line 60
     .line 61
-    invoke-interface {v2, p2, v3, p1, p4}, Lorg/spongycastle/crypto/d;->e(II[B[B)I
+    invoke-interface {v2, p2, v3, p1, p4}, Lorg/spongycastle/crypto/d;->d(II[B[B)I
 
     .line 62
     .line 63
@@ -702,7 +702,7 @@
     add-int/2addr p5, v1
 
     .line 90
-    invoke-interface {p1, v4, p5, p2, p4}, Lorg/spongycastle/crypto/d;->e(II[B[B)I
+    invoke-interface {p1, v4, p5, p2, p4}, Lorg/spongycastle/crypto/d;->d(II[B[B)I
 
     .line 91
     .line 92

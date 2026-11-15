@@ -1,6 +1,6 @@
 .class public Lra/a;
-.super Lqa/a;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Lnet/lenni0451/commons/httpclient/requests/HttpRequest;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
@@ -12,7 +12,7 @@
 
     .line 2
     .line 3
-    invoke-direct {p0, v0, p1}, Lqa/a;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {p0, v0, p1}, Lnet/lenni0451/commons/httpclient/requests/HttpRequest;-><init>(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 4
     .line 5

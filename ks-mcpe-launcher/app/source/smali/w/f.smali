@@ -1,17 +1,15 @@
 .class public final Lw/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Comparable;
 
 
 # instance fields
-.field public B1:I
+.field public X:[Lw/b;
 
-.field public final X:[F
-
-.field public Y:[Lw/b;
+.field public Y:I
 
 .field public Z:I
 
@@ -23,11 +21,13 @@
 
 .field public h:I
 
-.field public q:I
+.field public p:I
 
-.field public w:F
+.field public q:F
 
-.field public x:Z
+.field public w:Z
+
+.field public final x:[F
 
 .field public final y:[F
 
@@ -56,11 +56,11 @@
     const/4 v0, 0x0
 
     .line 10
-    iput v0, p0, Lw/f;->q:I
+    iput v0, p0, Lw/f;->p:I
 
     .line 11
     .line 12
-    iput-boolean v0, p0, Lw/f;->x:Z
+    iput-boolean v0, p0, Lw/f;->w:Z
 
     .line 13
     .line 14
@@ -72,7 +72,7 @@
 
     .line 17
     .line 18
-    iput-object v2, p0, Lw/f;->y:[F
+    iput-object v2, p0, Lw/f;->x:[F
 
     .line 19
     .line 20
@@ -80,7 +80,7 @@
 
     .line 21
     .line 22
-    iput-object v1, p0, Lw/f;->X:[F
+    iput-object v1, p0, Lw/f;->y:[F
 
     .line 23
     .line 24
@@ -92,19 +92,19 @@
 
     .line 27
     .line 28
-    iput-object v1, p0, Lw/f;->Y:[Lw/b;
+    iput-object v1, p0, Lw/f;->X:[Lw/b;
 
     .line 29
     .line 30
-    iput v0, p0, Lw/f;->Z:I
+    iput v0, p0, Lw/f;->Y:I
 
     .line 31
     .line 32
-    iput v0, p0, Lw/f;->b1:I
+    iput v0, p0, Lw/f;->Z:I
 
     .line 33
     .line 34
-    iput p1, p0, Lw/f;->B1:I
+    iput p1, p0, Lw/f;->b1:I
 
     .line 35
     .line 36
@@ -121,7 +121,7 @@
 
     .line 2
     :goto_0
-    iget v1, p0, Lw/f;->Z:I
+    iget v1, p0, Lw/f;->Y:I
 
     .line 3
     .line 4
@@ -129,7 +129,7 @@
 
     .line 5
     .line 6
-    iget-object v1, p0, Lw/f;->Y:[Lw/b;
+    iget-object v1, p0, Lw/f;->X:[Lw/b;
 
     .line 7
     .line 8
@@ -153,7 +153,7 @@
 
     .line 16
     :cond_1
-    iget-object v0, p0, Lw/f;->Y:[Lw/b;
+    iget-object v0, p0, Lw/f;->X:[Lw/b;
 
     .line 17
     .line 18
@@ -183,16 +183,16 @@
 
     .line 29
     .line 30
-    iput-object v0, p0, Lw/f;->Y:[Lw/b;
+    iput-object v0, p0, Lw/f;->X:[Lw/b;
 
     .line 31
     .line 32
     :cond_2
-    iget-object v0, p0, Lw/f;->Y:[Lw/b;
+    iget-object v0, p0, Lw/f;->X:[Lw/b;
 
     .line 33
     .line 34
-    iget v1, p0, Lw/f;->Z:I
+    iget v1, p0, Lw/f;->Y:I
 
     .line 35
     .line 36
@@ -204,7 +204,7 @@
 
     .line 39
     .line 40
-    iput v1, p0, Lw/f;->Z:I
+    iput v1, p0, Lw/f;->Y:I
 
     .line 41
     .line 42
@@ -215,7 +215,7 @@
     .locals 4
 
     .line 1
-    iget v0, p0, Lw/f;->Z:I
+    iget v0, p0, Lw/f;->Y:I
 
     .line 2
     .line 3
@@ -227,7 +227,7 @@
 
     .line 5
     .line 6
-    iget-object v2, p0, Lw/f;->Y:[Lw/b;
+    iget-object v2, p0, Lw/f;->X:[Lw/b;
 
     .line 7
     .line 8
@@ -248,7 +248,7 @@
 
     .line 15
     .line 16
-    iget-object p1, p0, Lw/f;->Y:[Lw/b;
+    iget-object p1, p0, Lw/f;->X:[Lw/b;
 
     .line 17
     .line 18
@@ -271,7 +271,7 @@
 
     .line 26
     :cond_0
-    iget p1, p0, Lw/f;->Z:I
+    iget p1, p0, Lw/f;->Y:I
 
     .line 27
     .line 28
@@ -279,7 +279,7 @@
 
     .line 29
     .line 30
-    iput p1, p0, Lw/f;->Z:I
+    iput p1, p0, Lw/f;->Y:I
 
     .line 31
     .line 32
@@ -305,14 +305,14 @@
     const/4 v0, 0x5
 
     .line 2
-    iput v0, p0, Lw/f;->B1:I
+    iput v0, p0, Lw/f;->b1:I
 
     .line 3
     .line 4
     const/4 v0, 0x0
 
     .line 5
-    iput v0, p0, Lw/f;->q:I
+    iput v0, p0, Lw/f;->p:I
 
     .line 6
     .line 7
@@ -330,15 +330,15 @@
     const/4 v1, 0x0
 
     .line 13
-    iput v1, p0, Lw/f;->w:F
+    iput v1, p0, Lw/f;->q:F
 
     .line 14
     .line 15
-    iput-boolean v0, p0, Lw/f;->x:Z
+    iput-boolean v0, p0, Lw/f;->w:Z
 
     .line 16
     .line 17
-    iget v2, p0, Lw/f;->Z:I
+    iget v2, p0, Lw/f;->Y:I
 
     .line 18
     .line 19
@@ -350,7 +350,7 @@
 
     .line 21
     .line 22
-    iget-object v4, p0, Lw/f;->Y:[Lw/b;
+    iget-object v4, p0, Lw/f;->X:[Lw/b;
 
     .line 23
     .line 24
@@ -369,11 +369,11 @@
 
     .line 30
     :cond_0
-    iput v0, p0, Lw/f;->Z:I
+    iput v0, p0, Lw/f;->Y:I
 
     .line 31
     .line 32
-    iput v0, p0, Lw/f;->b1:I
+    iput v0, p0, Lw/f;->Z:I
 
     .line 33
     .line 34
@@ -381,7 +381,7 @@
 
     .line 35
     .line 36
-    iget-object v0, p0, Lw/f;->X:[F
+    iget-object v0, p0, Lw/f;->y:[F
 
     .line 37
     .line 38
@@ -419,18 +419,18 @@
     .locals 3
 
     .line 1
-    iput p2, p0, Lw/f;->w:F
+    iput p2, p0, Lw/f;->q:F
 
     .line 2
     .line 3
     const/4 p2, 0x1
 
     .line 4
-    iput-boolean p2, p0, Lw/f;->x:Z
+    iput-boolean p2, p0, Lw/f;->w:Z
 
     .line 5
     .line 6
-    iget p2, p0, Lw/f;->Z:I
+    iget p2, p0, Lw/f;->Y:I
 
     .line 7
     .line 8
@@ -452,7 +452,7 @@
 
     .line 14
     .line 15
-    iget-object v2, p0, Lw/f;->Y:[Lw/b;
+    iget-object v2, p0, Lw/f;->X:[Lw/b;
 
     .line 16
     .line 17
@@ -473,7 +473,7 @@
 
     .line 25
     :cond_0
-    iput v0, p0, Lw/f;->Z:I
+    iput v0, p0, Lw/f;->Y:I
 
     .line 26
     .line 27
@@ -484,7 +484,7 @@
     .locals 4
 
     .line 1
-    iget v0, p0, Lw/f;->Z:I
+    iget v0, p0, Lw/f;->Y:I
 
     .line 2
     .line 3
@@ -499,7 +499,7 @@
 
     .line 6
     .line 7
-    iget-object v3, p0, Lw/f;->Y:[Lw/b;
+    iget-object v3, p0, Lw/f;->X:[Lw/b;
 
     .line 8
     .line 9
@@ -520,7 +520,7 @@
 
     .line 17
     :cond_0
-    iput v1, p0, Lw/f;->Z:I
+    iput v1, p0, Lw/f;->Y:I
 
     .line 18
     .line 19

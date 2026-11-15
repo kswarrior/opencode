@@ -1,53 +1,108 @@
-.class public final Landroidx/recyclerview/widget/q0;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Landroid/animation/ValueAnimator$AnimatorUpdateListener;
+.class public abstract Landroidx/recyclerview/widget/q0;
+.super Landroidx/recyclerview/widget/m0;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic a:Landroidx/recyclerview/widget/r0;
+.field private mDefaultDragDirs:I
+
+.field private mDefaultSwipeDirs:I
 
 
 # direct methods
-.method public constructor <init>(Landroidx/recyclerview/widget/r0;)V
+.method public constructor <init>(II)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0}, Landroidx/recyclerview/widget/m0;-><init>()V
 
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Landroidx/recyclerview/widget/q0;->a:Landroidx/recyclerview/widget/r0;
+    iput p2, p0, Landroidx/recyclerview/widget/q0;->mDefaultSwipeDirs:I
 
     .line 5
     .line 6
+    iput p1, p0, Landroidx/recyclerview/widget/q0;->mDefaultDragDirs:I
+
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final onAnimationUpdate(Landroid/animation/ValueAnimator;)V
-    .locals 1
+.method public getDragDirs(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/q0;->a:Landroidx/recyclerview/widget/r0;
+    iget p1, p0, Landroidx/recyclerview/widget/q0;->mDefaultDragDirs:I
 
     .line 2
     .line 3
-    invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedFraction()F
+    return p1
+.end method
 
+.method public getMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/q0;->getDragDirs(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+
+    .line 2
+    .line 3
     .line 4
+    move-result v0
+
     .line 5
+    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/q0;->getSwipeDirs(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+
     .line 6
+    .line 7
+    .line 8
     move-result p1
 
-    .line 7
-    iput p1, v0, Landroidx/recyclerview/widget/r0;->m:F
-
-    .line 8
     .line 9
+    invoke-static {v0, p1}, Landroidx/recyclerview/widget/m0;->makeMovementFlags(II)I
+
+    .line 10
+    .line 11
+    .line 12
+    move-result p1
+
+    .line 13
+    return p1
+.end method
+
+.method public getSwipeDirs(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    .locals 0
+
+    .line 1
+    iget p1, p0, Landroidx/recyclerview/widget/q0;->mDefaultSwipeDirs:I
+
+    .line 2
+    .line 3
+    return p1
+.end method
+
+.method public setDefaultDragDirs(I)V
+    .locals 0
+
+    .line 1
+    iput p1, p0, Landroidx/recyclerview/widget/q0;->mDefaultDragDirs:I
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public setDefaultSwipeDirs(I)V
+    .locals 0
+
+    .line 1
+    iput p1, p0, Landroidx/recyclerview/widget/q0;->mDefaultSwipeDirs:I
+
+    .line 2
+    .line 3
     return-void
 .end method

@@ -1,6 +1,6 @@
 .class public final synthetic Lg2/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/database/sqlite/SQLiteDatabase$CursorFactory;
@@ -64,7 +64,7 @@
 
     .line 13
     .line 14
-    invoke-static {p4}, Lf9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p4}, Lh9/i;->b(Ljava/lang/Object;)V
 
     .line 15
     .line 16
@@ -74,7 +74,7 @@
     .line 18
     .line 19
     .line 20
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteQuery;->v(Lf2/b;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteQuery;->b(Lf2/a;)V
 
     .line 21
     .line 22
@@ -104,7 +104,7 @@
 
     .line 34
     .line 35
-    invoke-static {p4}, Lf9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p4}, Lh9/i;->b(Ljava/lang/Object;)V
 
     .line 36
     .line 37
@@ -114,7 +114,7 @@
     .line 39
     .line 40
     .line 41
-    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteQuery;->v(Lf2/b;)V
+    invoke-interface {p1, v0}, Landroidx/sqlite/db/SupportSQLiteQuery;->b(Lf2/a;)V
 
     .line 42
     .line 43

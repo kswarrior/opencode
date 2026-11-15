@@ -1,6 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="com.google.firebase.crashlytics.build_ids_arch">
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>x86_64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
+        <item>aarch64</item>
         <item>arm</item>
         <item>arm</item>
         <item>arm</item>
@@ -19,124 +45,98 @@
         <item>x86</item>
         <item>x86</item>
         <item>x86</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>aarch64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
-        <item>x86_64</item>
     </string-array>
     <string-array name="com.google.firebase.crashlytics.build_ids_build_id">
-        <item>0d1e3c97140902c491ce5b0f83d29c21</item>
-        <item>bb380544b5651d27afc1e54eea2b2d18ce61759c</item>
-        <item>ec5bb8b27d61b40cb9ef02b442fbb5e6e96c42e3</item>
-        <item>8bd3ff61d562d4057c239bd3ec22768f5d61deb9</item>
-        <item>feecad5e8b6ad061095f024a390da53f59b8b632</item>
-        <item>7e329e9a7eec1b79ac7edb9690ab3cef44a604e2</item>
-        <item>c2c541cc4337a0fc28271329ef238d6bddf6d70d</item>
-        <item>30bd97143f59a526fc42d223b94b27d4d96f0800</item>
-        <item>eec038e47f2f26b111bece64cf90977deef9a15d</item>
-        <item>5fd8cb2323d5381cb6e5e1f2fab06b43</item>
-        <item>27f0219f2e9c2949a31c80690de15adf5cebc630</item>
-        <item>906f3b65736fb2517f0cd1a3c535053ad626dfe6</item>
-        <item>ec7e9fda3fbcea95d1f9d4f1001bcaeced58e765</item>
-        <item>f7fad79415c39626904e8254abf7f4e38aa5c404</item>
-        <item>8dd9900d641130c9f08077112c5bf224da4869bc</item>
-        <item>cf60dc0a5664876a021857e4948f6798ee0ca150</item>
-        <item>302d9f00b48efd6d7591d9046b22c66b5d1635be</item>
-        <item>3727c2b55fbf4f49e82bf50453d4f1b95e669392</item>
-        <item>358383fd3a2b96ebc0c328f3925bb84891ac1bf1</item>
-        <item>7befe631535aa853c4f4ac1293e49dcea34c9b6e</item>
-        <item>b917347ba976fcaff30d734d9b00fb13</item>
-        <item>e13b4e4b977b9cec393f3b1277a2ab50b466c15b</item>
-        <item>dd9c2df137611bdc673e61ef4198568d</item>
-        <item>df3a2691aecfdd5cf6c022ec04edd5b6722279b9</item>
-        <item>9fcfe50436d33759b34c7d845a85e1d079bd9b08</item>
-        <item>c836e15e6d458e39d39ab6f397486957</item>
-        <item>d2083bd8b8aa8751b6a18545efafdbc501fb4d78</item>
-        <item>b4fb680b6be8da236e5068b7a237f5311c7f4ed8</item>
-        <item>a8bed1c6d879ca2a03a91b7fd072e57f799da3fe</item>
-        <item>d1c3ad0ad26f2e97e038c38101428c0e7496ff35</item>
-        <item>beb6fb2bcc200d3a6fc33c0402f2e65fbf4a4d6b</item>
-        <item>95d171b91476eeb5716dbb446304b260785bfb7a</item>
-        <item>17db37bd6770ac00dd2d1d2828839fd23a7959a3</item>
-        <item>f1446306c60470b344a50f938f9632ca54d8b4e4</item>
-        <item>69ddcfdf107218859277e79e9d831a64fb01ad0b</item>
-        <item>1f23c0578c781063f64b91b6c597a81d</item>
-        <item>9b436ab3c2fbfd8a85d8d02da3409b8b3d2e8187</item>
-        <item>46d0cc4ebfc96bbc3814a028cba2a7fbfe6b9390</item>
-        <item>c4c30260f3293d0a84aeab5b58c45142bdf70a91</item>
         <item>5a4141336ac4aa725b18dd6659d62512706086e0</item>
-        <item>efa30781e14db4e7db9bc665b0505834674ec668</item>
-        <item>c6ef0802be059f5f59b23f1205d040dbc5b1ccad</item>
-        <item>3621658b2843172a3cbf7731edb2012b0d1ef383</item>
+        <item>1f23c0578c781063f64b91b6c597a81d</item>
         <item>8df6117f62e9f861227f12c079de9a073c4110aa</item>
+        <item>efa30781e14db4e7db9bc665b0505834674ec668</item>
+        <item>c4c30260f3293d0a84aeab5b58c45142bdf70a91</item>
+        <item>9b436ab3c2fbfd8a85d8d02da3409b8b3d2e8187</item>
+        <item>3621658b2843172a3cbf7731edb2012b0d1ef383</item>
+        <item>c6ef0802be059f5f59b23f1205d040dbc5b1ccad</item>
+        <item>46d0cc4ebfc96bbc3814a028cba2a7fbfe6b9390</item>
+        <item>d2083bd8b8aa8751b6a18545efafdbc501fb4d78</item>
+        <item>b917347ba976fcaff30d734d9b00fb13</item>
+        <item>69ddcfdf107218859277e79e9d831a64fb01ad0b</item>
+        <item>c836e15e6d458e39d39ab6f397486957</item>
+        <item>a8bed1c6d879ca2a03a91b7fd072e57f799da3fe</item>
+        <item>082a08c06a6f12c4c446a67cf6d79740a1055404</item>
+        <item>9fcfe50436d33759b34c7d845a85e1d079bd9b08</item>
+        <item>dd5c2df137f11afc672262cf4150568d</item>
+        <item>e13b4e4b977b9cec393f3b1277a2ab50b466c15b</item>
+        <item>f1446306c60470b344a50f938f9632ca54d8b4e4</item>
+        <item>30b319979f2dee75181a2e105792cc7894aefc84</item>
+        <item>95d171b91476eeb5716dbb446304b260785bfb7a</item>
+        <item>7befe631535aa853c4f4ac1293e49dcea34c9b6e</item>
+        <item>17db37bd6770ac00dd2d1d2828839fd23a7959a3</item>
+        <item>df3a2691aecfdd5cf6c022ec04edd5b6722279b9</item>
+        <item>d1c3ad0ad26f2e97e038c38101428c0e7496ff35</item>
+        <item>358383fd3a2b96ebc0c328f3925bb84891ac1bf1</item>
+        <item>feecad5e8b6ad061095f024a390da53f59b8b632</item>
+        <item>0d1e3c97140902c491ce5b0f83d29c21</item>
+        <item>eec038e47f2f26b111bece64cf90977deef9a15d</item>
+        <item>7e329e9a7eec1b79ac7edb9690ab3cef44a604e2</item>
+        <item>8bd3ff61d562d4057c239bd3ec22768f5d61deb9</item>
+        <item>bb380544b5651d27afc1e54eea2b2d18ce61759c</item>
+        <item>30bd97143f59a526fc42d223b94b27d4d96f0800</item>
+        <item>c2c541cc4337a0fc28271329ef238d6bddf6d70d</item>
+        <item>ec5bb8b27d61b40cb9ef02b442fbb5e6e96c42e3</item>
+        <item>f7fad79415c39626904e8254abf7f4e38aa5c404</item>
+        <item>5fd8cb2323d5381cb6e5e1f2fab06b43</item>
+        <item>3727c2b55fbf4f49e82bf50453d4f1b95e669392</item>
+        <item>8dd9900d641130c9f08077112c5bf224da4869bc</item>
+        <item>ec7e9fda3fbcea95d1f9d4f1001bcaeced58e765</item>
+        <item>27f0219f2e9c2949a31c80690de15adf5cebc630</item>
+        <item>302d9f00b48efd6d7591d9046b22c66b5d1635be</item>
+        <item>cf60dc0a5664876a021857e4948f6798ee0ca150</item>
+        <item>906f3b65736fb2517f0cd1a3c535053ad626dfe6</item>
     </string-array>
     <string-array name="com.google.firebase.crashlytics.build_ids_lib">
-        <item>libdiscord_partner_sdk.so</item>
-        <item>libcrashlytics.so</item>
-        <item>libxcrash_dumper.so</item>
-        <item>libcrashlytics-common.so</item>
         <item>libxcrash.so</item>
-        <item>libcrashlytics-trampoline.so</item>
-        <item>libdatastore_shared_counter.so</item>
-        <item>libconscrypt_jni.so</item>
-        <item>libcrashlytics-handler.so</item>
         <item>libdiscord_partner_sdk.so</item>
-        <item>libcrashlytics.so</item>
-        <item>libxcrash_dumper.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
         <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libconscrypt_jni.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libxcrash_dumper.so</item>
         <item>libxcrash.so</item>
-        <item>libcrashlytics-trampoline.so</item>
-        <item>libdatastore_shared_counter.so</item>
-        <item>libconscrypt_jni.so</item>
-        <item>libcrashlytics-handler.so</item>
-        <item>libmaesdk.so</item>
-        <item>libc++_shared.so</item>
         <item>libdiscord_partner_sdk.so</item>
-        <item>libcrashlytics.so</item>
-        <item>libHttpClient.Android.so</item>
-        <item>libxcrash_dumper.so</item>
-        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics-handler.so</item>
         <item>libgxcore.so</item>
-        <item>libxcrash.so</item>
-        <item>libpreloader.so</item>
         <item>libcrashlytics-trampoline.so</item>
-        <item>libPlayFabMultiplayer.so</item>
+        <item>libpreloader.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libHttpClient.Android.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libconscrypt_jni.so</item>
         <item>libleviworld.so</item>
         <item>libinbuiltmods.so</item>
+        <item>libc++_shared.so</item>
         <item>libdatastore_shared_counter.so</item>
-        <item>libconscrypt_jni.so</item>
-        <item>libcrashlytics-handler.so</item>
-        <item>libdiscord_partner_sdk.so</item>
-        <item>libcrashlytics.so</item>
         <item>libxcrash_dumper.so</item>
-        <item>libcrashlytics-common.so</item>
+        <item>libPlayFabMultiplayer.so</item>
+        <item>libmaesdk.so</item>
         <item>libxcrash.so</item>
-        <item>libcrashlytics-trampoline.so</item>
-        <item>libdatastore_shared_counter.so</item>
-        <item>libconscrypt_jni.so</item>
+        <item>libdiscord_partner_sdk.so</item>
         <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libconscrypt_jni.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libxcrash_dumper.so</item>
+        <item>libxcrash.so</item>
+        <item>libdiscord_partner_sdk.so</item>
+        <item>libcrashlytics-handler.so</item>
+        <item>libcrashlytics-trampoline.so</item>
+        <item>libcrashlytics-common.so</item>
+        <item>libcrashlytics.so</item>
+        <item>libconscrypt_jni.so</item>
+        <item>libdatastore_shared_counter.so</item>
+        <item>libxcrash_dumper.so</item>
     </string-array>
     <string-array name="launcher_tips">
         <item>Settings lets you adjust theme, color, background, and other appearance options to match your setup.</item>
@@ -150,5 +150,11 @@
         <item>Manage multiple Xbox accounts inside the launcher and switch between them seamlessly.</item>
         <item>CurseForge lets you browse and download community content directly.</item>
         <item>Import mods to extend or enhance Minecraft features and performance.</item>
+        <item>Animated GIFs work as launcher wallpapers too.</item>
+        <item>Change an instance’s icon from its settings.</item>
+        <item>Star modules in the mod menu to find them in Favorites.</item>
+        <item>Drag the mod-menu title to move it, or its bottom-right corner to resize it.</item>
+        <item>Use Compatible only in External Mods to filter for your Minecraft version.</item>
+        <item>Back up your world before editing its NBT data.</item>
     </string-array>
 </resources>

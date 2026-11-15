@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -173,14 +173,14 @@
 .end method
 
 .method public onBindViewHolder(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
-    .locals 2
+    .locals 3
 
     .line 1
     instance-of v0, p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;
 
     .line 2
     .line 3
-    if-eqz v0, :cond_0
+    if-eqz v0, :cond_1
 
     .line 4
     .line 5
@@ -197,56 +197,86 @@
     .line 10
     .line 11
     .line 12
-    move-result-object p2
+    move-result-object v0
 
     .line 13
-    check-cast p2, Lorg/levimc/launcher/core/curseforge/models/Content;
+    check-cast v0, Lorg/levimc/launcher/core/curseforge/models/Content;
 
     .line 14
     .line 15
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->listener:Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->contents:Ljava/util/List;
 
     .line 16
     .line 17
-    invoke-virtual {p1, p2, v0}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->bind(Lorg/levimc/launcher/core/curseforge/models/Content;Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;)V
+    invoke-interface {v1}, Ljava/util/List;->size()I
 
     .line 18
     .line 19
     .line 20
-    return-void
+    move-result v1
 
     .line 21
-    :cond_0
-    instance-of p2, p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;
+    const/4 v2, 0x1
 
     .line 22
+    sub-int/2addr v1, v2
+
     .line 23
-    if-eqz p2, :cond_1
+    if-ne p2, v1, :cond_0
 
     .line 24
     .line 25
-    check-cast p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;
+    goto :goto_0
 
     .line 26
+    :cond_0
+    const/4 v2, 0x0
+
     .line 27
-    iget p2, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->currentPage:I
+    :goto_0
+    iget-object p2, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->listener:Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;
 
     .line 28
     .line 29
-    iget v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->totalPages:I
+    invoke-virtual {p1, v0, v2, p2}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;->bind(Lorg/levimc/launcher/core/curseforge/models/Content;ZLorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnContentClickListener;)V
 
     .line 30
     .line 31
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->pageChangeListener:Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnPageChangeListener;
-
     .line 32
+    return-void
+
     .line 33
-    invoke-virtual {p1, p2, v0, v1}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;->bind(IILorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnPageChangeListener;)V
+    :cond_1
+    instance-of p2, p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;
 
     .line 34
     .line 35
+    if-eqz p2, :cond_2
+
     .line 36
-    :cond_1
+    .line 37
+    check-cast p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;
+
+    .line 38
+    .line 39
+    iget p2, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->currentPage:I
+
+    .line 40
+    .line 41
+    iget v0, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->totalPages:I
+
+    .line 42
+    .line 43
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;->pageChangeListener:Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnPageChangeListener;
+
+    .line 44
+    .line 45
+    invoke-virtual {p1, p2, v0, v1}, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$FooterViewHolder;->bind(IILorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnPageChangeListener;)V
+
+    .line 46
+    .line 47
+    .line 48
+    :cond_2
     return-void
 .end method
 
@@ -331,7 +361,7 @@
 .end method
 
 .method public onViewRecycled(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
-    .locals 3
+    .locals 2
 
     .line 1
     instance-of v0, p1, Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$ContentViewHolder;
@@ -353,7 +383,7 @@
 
     .line 9
     .line 10
-    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/q;
+    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/RequestManager;
 
     .line 11
     .line 12
@@ -365,31 +395,17 @@
 
     .line 15
     .line 16
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v1, v0}, Lcom/bumptech/glide/RequestManager;->a(Landroid/view/View;)V
 
     .line 17
     .line 18
     .line 19
-    new-instance v2, Lcom/bumptech/glide/o;
-
-    .line 20
-    .line 21
-    invoke-direct {v2, v0}, Lcom/bumptech/glide/o;-><init>(Landroid/view/View;)V
-
-    .line 22
-    .line 23
-    .line 24
-    invoke-virtual {v1, v2}, Lcom/bumptech/glide/q;->a(Ll3/e;)V
-
-    .line 25
-    .line 26
-    .line 27
     :cond_0
     invoke-super {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$Adapter;->onViewRecycled(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
-    .line 28
-    .line 29
-    .line 30
+    .line 20
+    .line 21
+    .line 22
     return-void
 .end method
 

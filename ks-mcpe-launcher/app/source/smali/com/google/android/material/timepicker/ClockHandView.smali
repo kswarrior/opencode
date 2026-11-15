@@ -1,6 +1,6 @@
 .class Lcom/google/android/material/timepicker/ClockHandView;
 .super Landroid/view/View;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -8,8 +8,6 @@
 
 
 # instance fields
-.field public B1:F
-
 .field public C1:Z
 
 .field public D1:D
@@ -18,7 +16,7 @@
 
 .field public F1:I
 
-.field public final b1:I
+.field public b1:F
 
 .field public final c:Landroid/animation/ValueAnimator;
 
@@ -26,13 +24,15 @@
 
 .field public final h:Ljava/util/ArrayList;
 
-.field public final q:I
+.field public final p:I
 
-.field public final w:F
+.field public final q:F
 
-.field public final x:Landroid/graphics/Paint;
+.field public final w:Landroid/graphics/Paint;
 
-.field public final y:Landroid/graphics/RectF;
+.field public final x:Landroid/graphics/RectF;
+
+.field public final y:I
 
 
 # direct methods
@@ -85,7 +85,7 @@
     .line 24
     .line 25
     .line 26
-    iput-object v2, p0, Lcom/google/android/material/timepicker/ClockHandView;->x:Landroid/graphics/Paint;
+    iput-object v2, p0, Lcom/google/android/material/timepicker/ClockHandView;->w:Landroid/graphics/Paint;
 
     .line 27
     .line 28
@@ -98,7 +98,7 @@
     .line 31
     .line 32
     .line 33
-    iput-object v3, p0, Lcom/google/android/material/timepicker/ClockHandView;->y:Landroid/graphics/RectF;
+    iput-object v3, p0, Lcom/google/android/material/timepicker/ClockHandView;->x:Landroid/graphics/RectF;
 
     .line 34
     .line 35
@@ -109,11 +109,11 @@
 
     .line 37
     .line 38
-    sget-object v4, Lw4/a;->i:[I
+    sget-object v4, Lw4/a;->j:[I
 
     .line 39
     .line 40
-    const v5, 0x7f1404f6
+    const v5, 0x7f14051f
 
     .line 41
     .line 42
@@ -135,7 +135,7 @@
 
     .line 51
     .line 52
-    invoke-static {p1, v0, v4}, Lcom/bumptech/glide/c;->O(Landroid/content/Context;II)I
+    invoke-static {p1, v0, v4}, La7/t1;->A(Landroid/content/Context;II)I
 
     .line 53
     .line 54
@@ -149,7 +149,7 @@
 
     .line 59
     .line 60
-    invoke-static {p1, v0, v4}, Lcom/bumptech/glide/c;->P(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
+    invoke-static {p1, v0, v4}, La7/t1;->B(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
 
     .line 61
     .line 62
@@ -180,7 +180,7 @@
     move-result v5
 
     .line 75
-    iput v5, p0, Lcom/google/android/material/timepicker/ClockHandView;->q:I
+    iput v5, p0, Lcom/google/android/material/timepicker/ClockHandView;->p:I
 
     .line 76
     .line 77
@@ -192,7 +192,7 @@
     move-result-object v5
 
     .line 81
-    const v6, 0x7f070315
+    const v6, 0x7f070319
 
     .line 82
     .line 83
@@ -205,11 +205,11 @@
     move-result v6
 
     .line 88
-    iput v6, p0, Lcom/google/android/material/timepicker/ClockHandView;->b1:I
+    iput v6, p0, Lcom/google/android/material/timepicker/ClockHandView;->y:I
 
     .line 89
     .line 90
-    const v6, 0x7f070313
+    const v6, 0x7f070317
 
     .line 91
     .line 92
@@ -225,7 +225,7 @@
     int-to-float v5, v5
 
     .line 98
-    iput v5, p0, Lcom/google/android/material/timepicker/ClockHandView;->w:F
+    iput v5, p0, Lcom/google/android/material/timepicker/ClockHandView;->q:F
 
     .line 99
     .line 100
@@ -388,7 +388,7 @@
     rem-float/2addr p1, v0
 
     .line 4
-    iput p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->B1:F
+    iput p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->b1:F
 
     .line 5
     .line 6
@@ -502,7 +502,7 @@
     add-float/2addr v2, v0
 
     .line 56
-    iget v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->q:I
+    iget v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->p:I
 
     .line 57
     .line 58
@@ -523,7 +523,7 @@
     add-float/2addr v2, v0
 
     .line 65
-    iget-object v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->y:Landroid/graphics/RectF;
+    iget-object v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->x:Landroid/graphics/RectF;
 
     .line 66
     .line 67
@@ -725,7 +725,7 @@
     const/4 v7, 0x0
 
     .line 45
-    iget-object v8, p0, Lcom/google/android/material/timepicker/ClockHandView;->x:Landroid/graphics/Paint;
+    iget-object v8, p0, Lcom/google/android/material/timepicker/ClockHandView;->w:Landroid/graphics/Paint;
 
     .line 46
     .line 47
@@ -734,7 +734,7 @@
     .line 48
     .line 49
     .line 50
-    iget v7, p0, Lcom/google/android/material/timepicker/ClockHandView;->q:I
+    iget v7, p0, Lcom/google/android/material/timepicker/ClockHandView;->p:I
 
     .line 51
     .line 52
@@ -803,7 +803,7 @@
     int-to-float v7, v0
 
     .line 79
-    iget v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->b1:I
+    iget v0, p0, Lcom/google/android/material/timepicker/ClockHandView;->y:I
 
     .line 80
     .line 81
@@ -823,7 +823,7 @@
     .line 87
     .line 88
     .line 89
-    iget p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->w:F
+    iget p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->q:F
 
     .line 90
     .line 91
@@ -863,7 +863,7 @@
 
     .line 12
     .line 13
-    iget p2, p1, Lcom/google/android/material/timepicker/ClockHandView;->B1:F
+    iget p2, p1, Lcom/google/android/material/timepicker/ClockHandView;->b1:F
 
     .line 14
     .line 15
@@ -1020,7 +1020,7 @@
 
     .line 63
     .line 64
-    invoke-static {v7, v8}, Ln5/p;->a(Landroid/content/Context;I)F
+    invoke-static {v7, v8}, Ln5/o;->a(Landroid/content/Context;I)F
 
     .line 65
     .line 66
@@ -1152,7 +1152,7 @@
     .line 117
     .line 118
     :cond_4
-    iget p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->B1:F
+    iget p1, p0, Lcom/google/android/material/timepicker/ClockHandView;->b1:F
 
     .line 119
     .line 120

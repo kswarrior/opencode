@@ -1,6 +1,6 @@
 .class public abstract Lcom/microsoft/xbox/toolkit/XLEAsyncTask;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -58,15 +58,15 @@
 
     .line 13
     .line 14
-    new-instance p1, Landroidx/lifecycle/z;
+    new-instance p1, La6/d;
 
     .line 15
     .line 16
-    const/16 v0, 0x8
+    const/16 v0, 0xc
 
     .line 17
     .line 18
-    invoke-direct {p1, p0, v0}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p0, v0}, La6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 19
     .line 20
@@ -233,14 +233,14 @@
 
     .line 11
     :goto_0
-    new-instance v1, Landroidx/room/n0;
+    new-instance v1, Landroidx/room/p0;
 
     .line 12
     .line 13
-    const/4 v2, 0x7
+    const/4 v2, 0x6
 
     .line 14
-    invoke-direct {v1, p0, v0, v2}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v0, v2}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 15
     .line 16

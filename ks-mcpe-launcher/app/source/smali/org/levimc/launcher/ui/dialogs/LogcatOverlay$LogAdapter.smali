@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/dialogs/LogcatOverlay$LogAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -242,7 +242,7 @@
     .line 6
     iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay$LogAdapter;->this$0:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->C(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)F
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->F(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)F
 
     move-result v0
 
@@ -261,11 +261,11 @@
     invoke-virtual {p2, v0}, Landroid/widget/TextView;->setHighlightColor(I)V
 
     .line 9
-    new-instance v0, Landroidx/recyclerview/widget/s1;
+    new-instance v0, Landroidx/recyclerview/widget/q1;
 
     const/4 v1, -0x2
 
-    invoke-direct {v0, p1, v1}, Landroidx/recyclerview/widget/s1;-><init>(II)V
+    invoke-direct {v0, p1, v1}, Landroidx/recyclerview/widget/q1;-><init>(II)V
 
     invoke-virtual {p2, v0}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
 

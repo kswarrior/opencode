@@ -1,6 +1,6 @@
 .class public Lcom/google/android/datatransport/runtime/scheduling/jobscheduling/AlarmManagerSchedulerBroadcastReceiver;
 .super Landroid/content/BroadcastReceiver;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -122,12 +122,12 @@
     move-result v7
 
     .line 49
-    invoke-static {p1}, Lt3/q;->b(Landroid/content/Context;)V
+    invoke-static {p1}, Lt3/p;->b(Landroid/content/Context;)V
 
     .line 50
     .line 51
     .line 52
-    invoke-static {}, Lt3/i;->a()Lkd/d;
+    invoke-static {}, Lt3/i;->a()Lkd/e;
 
     .line 53
     .line 54
@@ -135,7 +135,7 @@
     move-result-object p1
 
     .line 56
-    invoke-virtual {p1, v0}, Lkd/d;->E(Ljava/lang/String;)V
+    invoke-virtual {p1, v0}, Lkd/e;->H(Ljava/lang/String;)V
 
     .line 57
     .line 58
@@ -148,7 +148,7 @@
     move-result-object p2
 
     .line 63
-    iput-object p2, p1, Lkd/d;->q:Ljava/lang/Object;
+    iput-object p2, p1, Lkd/e;->p:Ljava/lang/Object;
 
     .line 64
     .line 65
@@ -167,12 +167,12 @@
     move-result-object p2
 
     .line 72
-    iput-object p2, p1, Lkd/d;->h:Ljava/lang/Object;
+    iput-object p2, p1, Lkd/e;->h:Ljava/lang/Object;
 
     .line 73
     .line 74
     :cond_0
-    invoke-static {}, Lt3/q;->a()Lt3/q;
+    invoke-static {}, Lt3/p;->a()Lt3/p;
 
     .line 75
     .line 76
@@ -180,11 +180,11 @@
     move-result-object p2
 
     .line 78
-    iget-object v5, p2, Lt3/q;->d:Lae/h;
+    iget-object v5, p2, Lt3/p;->d:Lf7/e;
 
     .line 79
     .line 80
-    invoke-virtual {p1}, Lkd/d;->u()Lt3/i;
+    invoke-virtual {p1}, Lkd/e;->y()Lt3/i;
 
     .line 81
     .line 82
@@ -205,7 +205,7 @@
     .line 89
     .line 90
     .line 91
-    iget-object p1, v5, Lae/h;->e:Ljava/lang/Object;
+    iget-object p1, v5, Lf7/e;->e:Ljava/lang/Object;
 
     .line 92
     .line 93
@@ -217,18 +217,19 @@
 
     .line 96
     .line 97
-    const/4 v9, 0x5
+    const/16 v9, 0xb
 
     .line 98
+    .line 99
     invoke-direct/range {v4 .. v9}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;I)V
 
-    .line 99
     .line 100
     .line 101
+    .line 102
     invoke-interface {p1, v4}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
-    .line 102
     .line 103
     .line 104
+    .line 105
     return-void
 .end method

@@ -1,149 +1,36 @@
-.class public final synthetic Landroidx/core/view/m;
+.class public final Landroidx/core/view/m;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Landroidx/lifecycle/q;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final a:Landroidx/lifecycle/Lifecycle;
 
-.field public final synthetic d:Ljava/lang/Object;
-
-.field public final synthetic h:Ljava/lang/Object;
+.field public b:Landroidx/lifecycle/r;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public constructor <init>(Landroidx/lifecycle/Lifecycle;Landroidx/lifecycle/r;)V
     .locals 0
 
     .line 1
-    iput p3, p0, Landroidx/core/view/m;->c:I
-
-    .line 2
-    .line 3
-    iput-object p1, p0, Landroidx/core/view/m;->d:Ljava/lang/Object;
-
-    .line 4
-    .line 5
-    iput-object p2, p0, Landroidx/core/view/m;->h:Ljava/lang/Object;
-
-    .line 6
-    .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 8
-    .line 9
-    .line 10
-    return-void
-.end method
-
-
-# virtual methods
-.method public final a(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/n;)V
-    .locals 2
-
-    .line 1
-    iget p1, p0, Landroidx/core/view/m;->c:I
-
     .line 2
     .line 3
-    iget-object v0, p0, Landroidx/core/view/m;->h:Ljava/lang/Object;
-
     .line 4
+    iput-object p1, p0, Landroidx/core/view/m;->a:Landroidx/lifecycle/Lifecycle;
+
     .line 5
-    iget-object v1, p0, Landroidx/core/view/m;->d:Ljava/lang/Object;
-
     .line 6
-    .line 7
-    packed-switch p1, :pswitch_data_0
+    iput-object p2, p0, Landroidx/core/view/m;->b:Landroidx/lifecycle/r;
 
+    .line 7
     .line 8
+    invoke-virtual {p1, p2}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/s;)V
+
     .line 9
     .line 10
-    check-cast v1, Landroidx/activity/OnBackPressedDispatcher;
-
     .line 11
-    .line 12
-    check-cast v0, Landroidx/activity/ComponentActivity;
-
-    .line 13
-    .line 14
-    sget p1, Landroidx/activity/ComponentActivity;->c:I
-
-    .line 15
-    .line 16
-    sget-object p1, Landroidx/lifecycle/n;->ON_CREATE:Landroidx/lifecycle/n;
-
-    .line 17
-    .line 18
-    if-ne p2, p1, :cond_0
-
-    .line 19
-    .line 20
-    invoke-static {v0}, Lc/b;->i(Landroidx/activity/ComponentActivity;)Landroid/window/OnBackInvokedDispatcher;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object p1
-
-    .line 24
-    const-string p2, "getOnBackInvokedDispatcher(...)"
-
-    .line 25
-    .line 26
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 27
-    .line 28
-    .line 29
-    invoke-virtual {v1, p1}, Landroidx/activity/OnBackPressedDispatcher;->b(Landroid/window/OnBackInvokedDispatcher;)V
-
-    .line 30
-    .line 31
-    .line 32
-    :cond_0
     return-void
-
-    .line 33
-    :pswitch_0
-    check-cast v1, Landroidx/core/view/MenuHostHelper;
-
-    .line 34
-    .line 35
-    check-cast v0, Landroidx/core/view/MenuProvider;
-
-    .line 36
-    .line 37
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 38
-    .line 39
-    .line 40
-    sget-object p1, Landroidx/lifecycle/n;->ON_DESTROY:Landroidx/lifecycle/n;
-
-    .line 41
-    .line 42
-    if-ne p2, p1, :cond_1
-
-    .line 43
-    .line 44
-    invoke-virtual {v1, v0}, Landroidx/core/view/MenuHostHelper;->a(Landroidx/core/view/MenuProvider;)V
-
-    .line 45
-    .line 46
-    .line 47
-    :cond_1
-    return-void
-
-    .line 48
-    nop
-
-    .line 49
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

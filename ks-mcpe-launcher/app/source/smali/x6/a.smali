@@ -1,208 +1,67 @@
 .class public final Lx6/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Li7/d;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# static fields
-.field public static final a:Lx6/a;
+# instance fields
+.field public final a:Ljava/lang/String;
 
-.field public static final b:Li7/c;
+.field public final b:Ljava/lang/String;
 
-.field public static final c:Li7/c;
+.field public final c:Ljava/util/ArrayList;
 
-.field public static final d:Li7/c;
+.field public final d:Ljava/lang/String;
 
-.field public static final e:Li7/c;
+.field public final e:Ljava/lang/String;
 
-.field public static final f:Li7/c;
+.field public final f:Ljava/lang/String;
+
+.field public final g:Ljava/lang/String;
+
+.field public final h:Lu6/c;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/util/ArrayList;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lu6/c;)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lx6/a;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
     .line 4
+    iput-object p1, p0, Lx6/a;->a:Ljava/lang/String;
+
     .line 5
     .line 6
-    sput-object v0, Lx6/a;->a:Lx6/a;
+    iput-object p2, p0, Lx6/a;->b:Ljava/lang/String;
 
     .line 7
     .line 8
-    const-string v0, "rolloutId"
+    iput-object p3, p0, Lx6/a;->c:Ljava/util/ArrayList;
 
     .line 9
     .line 10
-    invoke-static {v0}, Li7/c;->a(Ljava/lang/String;)Li7/c;
+    iput-object p4, p0, Lx6/a;->d:Ljava/lang/String;
 
     .line 11
     .line 12
-    .line 13
-    move-result-object v0
+    iput-object p5, p0, Lx6/a;->e:Ljava/lang/String;
 
+    .line 13
     .line 14
-    sput-object v0, Lx6/a;->b:Li7/c;
+    iput-object p6, p0, Lx6/a;->f:Ljava/lang/String;
 
     .line 15
     .line 16
-    const-string v0, "parameterKey"
+    iput-object p7, p0, Lx6/a;->g:Ljava/lang/String;
 
     .line 17
     .line 18
-    invoke-static {v0}, Li7/c;->a(Ljava/lang/String;)Li7/c;
+    iput-object p8, p0, Lx6/a;->h:Lu6/c;
 
     .line 19
     .line 20
-    .line 21
-    move-result-object v0
-
-    .line 22
-    sput-object v0, Lx6/a;->c:Li7/c;
-
-    .line 23
-    .line 24
-    const-string v0, "parameterValue"
-
-    .line 25
-    .line 26
-    invoke-static {v0}, Li7/c;->a(Ljava/lang/String;)Li7/c;
-
-    .line 27
-    .line 28
-    .line 29
-    move-result-object v0
-
-    .line 30
-    sput-object v0, Lx6/a;->d:Li7/c;
-
-    .line 31
-    .line 32
-    const-string v0, "variantId"
-
-    .line 33
-    .line 34
-    invoke-static {v0}, Li7/c;->a(Ljava/lang/String;)Li7/c;
-
-    .line 35
-    .line 36
-    .line 37
-    move-result-object v0
-
-    .line 38
-    sput-object v0, Lx6/a;->e:Li7/c;
-
-    .line 39
-    .line 40
-    const-string v0, "templateVersion"
-
-    .line 41
-    .line 42
-    invoke-static {v0}, Li7/c;->a(Ljava/lang/String;)Li7/c;
-
-    .line 43
-    .line 44
-    .line 45
-    move-result-object v0
-
-    .line 46
-    sput-object v0, Lx6/a;->f:Li7/c;
-
-    .line 47
-    .line 48
-    return-void
-.end method
-
-
-# virtual methods
-.method public final a(Ljava/lang/Object;Ljava/lang/Object;)V
-    .locals 3
-
-    .line 1
-    check-cast p1, Lx6/n;
-
-    .line 2
-    .line 3
-    check-cast p2, Li7/e;
-
-    .line 4
-    .line 5
-    check-cast p1, Lx6/b;
-
-    .line 6
-    .line 7
-    iget-object v0, p1, Lx6/b;->b:Ljava/lang/String;
-
-    .line 8
-    .line 9
-    sget-object v1, Lx6/a;->b:Li7/c;
-
-    .line 10
-    .line 11
-    invoke-interface {p2, v1, v0}, Li7/e;->e(Li7/c;Ljava/lang/Object;)Li7/e;
-
-    .line 12
-    .line 13
-    .line 14
-    sget-object v0, Lx6/a;->c:Li7/c;
-
-    .line 15
-    .line 16
-    iget-object v1, p1, Lx6/b;->c:Ljava/lang/String;
-
-    .line 17
-    .line 18
-    invoke-interface {p2, v0, v1}, Li7/e;->e(Li7/c;Ljava/lang/Object;)Li7/e;
-
-    .line 19
-    .line 20
-    .line 21
-    sget-object v0, Lx6/a;->d:Li7/c;
-
-    .line 22
-    .line 23
-    iget-object v1, p1, Lx6/b;->d:Ljava/lang/String;
-
-    .line 24
-    .line 25
-    invoke-interface {p2, v0, v1}, Li7/e;->e(Li7/c;Ljava/lang/Object;)Li7/e;
-
-    .line 26
-    .line 27
-    .line 28
-    sget-object v0, Lx6/a;->e:Li7/c;
-
-    .line 29
-    .line 30
-    iget-object v1, p1, Lx6/b;->e:Ljava/lang/String;
-
-    .line 31
-    .line 32
-    invoke-interface {p2, v0, v1}, Li7/e;->e(Li7/c;Ljava/lang/Object;)Li7/e;
-
-    .line 33
-    .line 34
-    .line 35
-    sget-object v0, Lx6/a;->f:Li7/c;
-
-    .line 36
-    .line 37
-    iget-wide v1, p1, Lx6/b;->f:J
-
-    .line 38
-    .line 39
-    invoke-interface {p2, v0, v1, v2}, Li7/e;->c(Li7/c;J)Li7/e;
-
-    .line 40
-    .line 41
-    .line 42
     return-void
 .end method

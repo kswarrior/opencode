@@ -1,478 +1,152 @@
-.class public abstract synthetic Landroidx/core/view/j1;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final Landroidx/core/view/j1;
+.super Landroidx/core/view/i1;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# direct methods
-.method public static bridge synthetic A()I
-    .locals 1
-
-    .line 1
-    const v0, 0xf4240
-
-    .line 2
-    .line 3
-    .line 4
-    invoke-static {v0}, Landroid/os/ext/SdkExtensions;->getExtensionVersion(I)I
-
-    .line 5
-    .line 6
-    .line 7
-    move-result v0
-
-    .line 8
-    return v0
-.end method
-
-.method public static bridge synthetic B(Landroid/view/WindowInsetsController;)V
+# virtual methods
+.method public final H(Z)V
     .locals 2
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    const/16 v1, 0x8
-
-    .line 3
-    .line 4
-    invoke-interface {p0, v0, v1}, Landroid/view/WindowInsetsController;->setSystemBarsAppearance(II)V
-
-    .line 5
-    .line 6
-    .line 7
-    return-void
-.end method
-
-.method public static bridge synthetic C(Landroid/view/WindowInsetsController;)V
-    .locals 1
 
     .line 1
     const/16 v0, 0x10
 
     .line 2
     .line 3
-    invoke-interface {p0, v0, v0}, Landroid/view/WindowInsetsController;->setSystemBarsAppearance(II)V
+    if-eqz p1, :cond_0
 
     .line 4
     .line 5
-    .line 6
-    return-void
-.end method
+    const/high16 p1, 0x8000000
 
-.method public static bridge synthetic D(Landroid/view/WindowInsetsController;)V
-    .locals 2
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    const/16 v1, 0x10
-
-    .line 3
-    .line 4
-    invoke-interface {p0, v0, v1}, Landroid/view/WindowInsetsController;->setSystemBarsAppearance(II)V
-
-    .line 5
     .line 6
     .line 7
-    return-void
-.end method
-
-.method public static bridge synthetic a()I
-    .locals 1
-
-    .line 1
-    invoke-static {}, Landroid/view/WindowInsets$Type;->displayCutout()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    return v0
-.end method
-
-.method public static bridge synthetic b(Landroid/app/ApplicationExitInfo;)I
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getStatus()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic c(Landroid/view/WindowInsetsController;)I
-    .locals 0
-
-    .line 1
-    invoke-interface {p0}, Landroid/view/WindowInsetsController;->getSystemBarsAppearance()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic d(Landroid/content/pm/PackageManager;)Landroid/content/pm/InstallSourceInfo;
-    .locals 1
-
-    .line 1
-    const-string v0, "com.mojang.minecraftpe"
-
-    .line 2
-    .line 3
-    invoke-virtual {p0, v0}, Landroid/content/pm/PackageManager;->getInstallSourceInfo(Ljava/lang/String;)Landroid/content/pm/InstallSourceInfo;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object p0
-
-    .line 7
-    return-object p0
-.end method
-
-.method public static synthetic e()Landroid/util/CloseGuard;
-    .locals 1
-
-    .line 1
-    new-instance v0, Landroid/util/CloseGuard;
-
-    .line 2
-    .line 3
-    invoke-direct {v0}, Landroid/util/CloseGuard;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-object v0
-.end method
-
-.method public static bridge synthetic f(Ljava/lang/Object;)Landroid/util/CloseGuard;
-    .locals 0
-
-    .line 1
-    check-cast p0, Landroid/util/CloseGuard;
-
-    .line 2
-    .line 3
-    return-object p0
-.end method
-
-.method public static bridge synthetic g(Landroid/view/Window;)Landroid/view/WindowInsetsController;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/view/Window;->getInsetsController()Landroid/view/WindowInsetsController;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic h()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
-    .locals 1
-
-    .line 1
-    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_PRESS_AND_HOLD:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public static bridge synthetic i(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getDescription()Ljava/lang/String;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic j(Landroid/content/pm/InstallSourceInfo;)Ljava/lang/String;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/content/pm/InstallSourceInfo;->getInstallingPackageName()Ljava/lang/String;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic k(Landroid/app/ActivityManager;)Ljava/util/List;
-    .locals 3
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    const/4 v1, 0x1
-
-    .line 3
-    const/4 v2, 0x0
-
-    .line 4
-    invoke-virtual {p0, v2, v0, v1}, Landroid/app/ActivityManager;->getHistoricalProcessExitReasons(Ljava/lang/String;II)Ljava/util/List;
-
-    .line 5
-    .line 6
-    .line 7
-    move-result-object p0
+    iget-object v1, p0, Landroidx/core/view/i1;->a:Landroid/view/Window;
 
     .line 8
-    return-object p0
-.end method
+    .line 9
+    invoke-virtual {v1, p1}, Landroid/view/Window;->clearFlags(I)V
 
-.method public static bridge synthetic l(Landroid/app/ActivityManager;[B)V
-    .locals 0
+    .line 10
+    .line 11
+    .line 12
+    const/high16 p1, -0x80000000
 
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/app/ActivityManager;->setProcessStateSummary([B)V
+    .line 13
+    .line 14
+    invoke-virtual {v1, p1}, Landroid/view/Window;->addFlags(I)V
 
-    .line 2
-    .line 3
-    .line 4
+    .line 15
+    .line 16
+    .line 17
+    invoke-virtual {p0, v0}, Landroidx/core/view/i1;->O(I)V
+
+    .line 18
+    .line 19
+    .line 20
+    return-void
+
+    .line 21
+    :cond_0
+    invoke-virtual {p0, v0}, Landroidx/core/view/i1;->P(I)V
+
+    .line 22
+    .line 23
+    .line 24
     return-void
 .end method
 
-.method public static bridge synthetic m(Landroid/graphics/Outline;Landroid/graphics/Path;)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/graphics/Outline;->setPath(Landroid/graphics/Path;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic n(Landroid/util/CloseGuard;)V
-    .locals 1
-
-    .line 1
-    const-string v0, "response.body().close()"
-
-    .line 2
-    .line 3
-    invoke-virtual {p0, v0}, Landroid/util/CloseGuard;->open(Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public static bridge synthetic o(Landroid/view/Window;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    invoke-virtual {p0, v0}, Landroid/view/Window;->setDecorFitsSystemWindows(Z)V
-
-    .line 3
-    .line 4
-    .line 5
-    return-void
-.end method
-
-.method public static bridge synthetic p(Landroid/view/WindowInsetsController;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    invoke-interface {p0, v0, v0}, Landroid/view/WindowInsetsController;->setSystemBarsAppearance(II)V
-
-    .line 3
-    .line 4
-    .line 5
-    return-void
-.end method
-
-.method public static bridge synthetic q()Z
-    .locals 1
-
-    .line 1
-    invoke-static {}, Landroid/app/ActivityManager;->isLowMemoryKillReportSupported()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    return v0
-.end method
-
-.method public static bridge synthetic r(Landroid/util/SparseArray;I)Z
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/util/SparseArray;->contains(I)Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic s(Landroid/app/ApplicationExitInfo;)[B
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/app/ApplicationExitInfo;->getProcessStateSummary()[B
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static bridge synthetic t()I
-    .locals 1
-
-    .line 1
-    const/16 v0, 0x1e
-
-    .line 2
-    .line 3
-    invoke-static {v0}, Landroid/os/ext/SdkExtensions;->getExtensionVersion(I)I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    return v0
-.end method
-
-.method public static bridge synthetic u()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
-    .locals 1
-
-    .line 1
-    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_IME_ENTER:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public static bridge synthetic v(Landroid/app/ActivityManager;)Ljava/util/List;
+.method public final I(Z)V
     .locals 2
 
     .line 1
-    const/4 v0, 0x0
+    const/16 v0, 0x2000
 
     .line 2
-    const/4 v1, 0x0
-
     .line 3
-    invoke-virtual {p0, v0, v1, v1}, Landroid/app/ActivityManager;->getHistoricalProcessExitReasons(Ljava/lang/String;II)Ljava/util/List;
+    if-eqz p1, :cond_0
+
+    .line 4
+    .line 5
+    const/high16 p1, 0x4000000
+
+    .line 6
+    .line 7
+    iget-object v1, p0, Landroidx/core/view/i1;->a:Landroid/view/Window;
+
+    .line 8
+    .line 9
+    invoke-virtual {v1, p1}, Landroid/view/Window;->clearFlags(I)V
+
+    .line 10
+    .line 11
+    .line 12
+    const/high16 p1, -0x80000000
+
+    .line 13
+    .line 14
+    invoke-virtual {v1, p1}, Landroid/view/Window;->addFlags(I)V
+
+    .line 15
+    .line 16
+    .line 17
+    invoke-virtual {p0, v0}, Landroidx/core/view/i1;->O(I)V
+
+    .line 18
+    .line 19
+    .line 20
+    return-void
+
+    .line 21
+    :cond_0
+    invoke-virtual {p0, v0}, Landroidx/core/view/i1;->P(I)V
+
+    .line 22
+    .line 23
+    .line 24
+    return-void
+.end method
+
+.method public final y()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/view/i1;->a:Landroid/view/Window;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Landroid/view/Window;->getDecorView()Landroid/view/View;
 
     .line 4
     .line 5
     .line 6
-    move-result-object p0
+    move-result-object v0
 
     .line 7
-    return-object p0
-.end method
+    invoke-virtual {v0}, Landroid/view/View;->getSystemUiVisibility()I
 
-.method public static bridge synthetic w(Landroid/util/CloseGuard;)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/util/CloseGuard;->warnIfOpen()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic x(Landroid/view/WindowInsetsController;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x2
-
-    .line 2
-    invoke-interface {p0, v0}, Landroid/view/WindowInsetsController;->setSystemBarsBehavior(I)V
-
-    .line 3
-    .line 4
-    .line 5
-    return-void
-.end method
-
-.method public static bridge synthetic y()I
-    .locals 1
-
-    .line 1
-    const/16 v0, 0x1f
-
-    .line 2
-    .line 3
-    invoke-static {v0}, Landroid/os/ext/SdkExtensions;->getExtensionVersion(I)I
-
-    .line 4
-    .line 5
-    .line 6
+    .line 8
+    .line 9
+    .line 10
     move-result v0
 
-    .line 7
+    .line 11
+    and-int/lit16 v0, v0, 0x2000
+
+    .line 12
+    .line 13
+    if-eqz v0, :cond_0
+
+    .line 14
+    .line 15
+    const/4 v0, 0x1
+
+    .line 16
     return v0
-.end method
 
-.method public static bridge synthetic z(Landroid/view/WindowInsetsController;)V
-    .locals 1
+    .line 17
+    :cond_0
+    const/4 v0, 0x0
 
-    .line 1
-    const/16 v0, 0x8
-
-    .line 2
-    .line 3
-    invoke-interface {p0, v0, v0}, Landroid/view/WindowInsetsController;->setSystemBarsAppearance(II)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
+    .line 18
+    return v0
 .end method

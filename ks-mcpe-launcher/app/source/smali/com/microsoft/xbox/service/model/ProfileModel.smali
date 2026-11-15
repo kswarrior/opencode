@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/service/model/ProfileModel;
 .super Lcom/microsoft/xbox/service/model/ModelBase;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -2280,7 +2280,7 @@
 
     .line 131
     .line 132
-    invoke-static {v6, v4, v7}, Lcom/google/android/gms/internal/measurement/gi;->m(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v6, v4, v7}, Lcom/google/android/gms/internal/measurement/x;->q(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 133
     .line 134

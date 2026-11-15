@@ -1,6 +1,6 @@
 .class public final Landroidx/dynamicanimation/animation/SpringAnimation;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -30,7 +30,7 @@
 
 .field public final d:Ljava/lang/Object;
 
-.field public final e:Lgc/h;
+.field public final e:La/a;
 
 .field public f:Z
 
@@ -190,10 +190,12 @@
 .end method
 
 .method public constructor <init>(Landroid/view/View;Lc1/d;F)V
-    .locals 0
+    .locals 1
+
+    const/4 v0, 0x0
 
     .line 5
-    invoke-direct {p0, p1, p2}, Landroidx/dynamicanimation/animation/SpringAnimation;-><init>(Ljava/lang/Object;Lgc/h;)V
+    invoke-direct {p0, p1, p2, v0}, Landroidx/dynamicanimation/animation/SpringAnimation;-><init>(Ljava/lang/Object;La/a;I)V
 
     const/4 p1, 0x0
 
@@ -205,10 +207,8 @@
     .line 7
     iput p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->n:F
 
-    const/4 p1, 0x0
-
     .line 8
-    iput-boolean p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->o:Z
+    iput-boolean v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->o:Z
 
     .line 9
     new-instance p1, Lc1/h;
@@ -281,7 +281,7 @@
 
     invoke-direct {v3, p1}, Lc1/e;-><init>(Lc1/g;)V
 
-    iput-object v3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:Lgc/h;
+    iput-object v3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:La/a;
 
     const/high16 p1, 0x3f800000    # 1.0f
 
@@ -300,37 +300,61 @@
     return-void
 .end method
 
-.method public constructor <init>(Ljava/lang/Object;Lgc/h;)V
+.method public constructor <init>(Ljava/lang/Object;La/a;)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    .line 1
+    invoke-direct {p0, p1, p2, v0}, Landroidx/dynamicanimation/animation/SpringAnimation;-><init>(Ljava/lang/Object;La/a;I)V
+
+    const/4 p1, 0x0
+
+    .line 2
+    iput-object p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->m:Lc1/h;
+
+    const p1, 0x7f7fffff    # Float.MAX_VALUE
+
+    .line 3
+    iput p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->n:F
+
+    .line 4
+    iput-boolean v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->o:Z
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/Object;La/a;I)V
     .locals 2
 
     .line 26
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    const/4 v0, 0x0
+    const/4 p3, 0x0
 
     .line 27
-    iput v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->a:F
+    iput p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->a:F
 
-    const v0, 0x7f7fffff    # Float.MAX_VALUE
+    const p3, 0x7f7fffff    # Float.MAX_VALUE
 
     .line 28
-    iput v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->b:F
+    iput p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->b:F
 
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
     .line 29
-    iput-boolean v1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->c:Z
+    iput-boolean v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->c:Z
 
     .line 30
-    iput-boolean v1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->f:Z
+    iput-boolean v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->f:Z
 
     .line 31
-    iput v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->g:F
+    iput p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->g:F
 
-    const v0, -0x800001
+    const p3, -0x800001
 
     .line 32
-    iput v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->h:F
+    iput p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->h:F
 
     const-wide/16 v0, 0x0
 
@@ -338,24 +362,24 @@
     iput-wide v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->i:J
 
     .line 34
-    new-instance v0, Ljava/util/ArrayList;
+    new-instance p3, Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {p3}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->k:Ljava/util/ArrayList;
+    iput-object p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->k:Ljava/util/ArrayList;
 
     .line 35
-    new-instance v0, Ljava/util/ArrayList;
+    new-instance p3, Ljava/util/ArrayList;
 
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {p3}, Ljava/util/ArrayList;-><init>()V
 
-    iput-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->l:Ljava/util/ArrayList;
+    iput-object p3, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->l:Ljava/util/ArrayList;
 
     .line 36
     iput-object p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->d:Ljava/lang/Object;
 
     .line 37
-    iput-object p2, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:Lgc/h;
+    iput-object p2, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:La/a;
 
     .line 38
     sget-object p1, Landroidx/dynamicanimation/animation/SpringAnimation;->t:Lc1/d;
@@ -424,32 +448,8 @@
     return-void
 .end method
 
-.method public constructor <init>(Lt5/y;Lgc/h;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1, p2}, Landroidx/dynamicanimation/animation/SpringAnimation;-><init>(Ljava/lang/Object;Lgc/h;)V
-
-    const/4 p1, 0x0
-
-    .line 2
-    iput-object p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->m:Lc1/h;
-
-    const p1, 0x7f7fffff    # Float.MAX_VALUE
-
-    .line 3
-    iput p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->n:F
-
-    const/4 p1, 0x0
-
-    .line 4
-    iput-boolean p1, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->o:Z
-
-    return-void
-.end method
-
 .method public static b()Lc1/c;
-    .locals 3
+    .locals 4
 
     .line 1
     sget-object v0, Lc1/c;->i:Ljava/lang/ThreadLocal;
@@ -472,38 +472,42 @@
 
     .line 10
     .line 11
-    new-instance v2, Lo7/e;
+    new-instance v2, Lq7/e;
 
     .line 12
     .line 13
-    invoke-direct {v2}, Lo7/e;-><init>()V
+    const/16 v3, 0xd
 
     .line 14
     .line 15
-    .line 16
-    invoke-direct {v1, v2}, Lc1/c;-><init>(Lo7/e;)V
+    invoke-direct {v2, v3}, Lq7/e;-><init>(I)V
 
+    .line 16
     .line 17
     .line 18
-    .line 19
-    invoke-virtual {v0, v1}, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+    invoke-direct {v1, v2}, Lc1/c;-><init>(Lq7/e;)V
 
+    .line 19
     .line 20
     .line 21
+    invoke-virtual {v0, v1}, Ljava/lang/ThreadLocal;->set(Ljava/lang/Object;)V
+
     .line 22
+    .line 23
+    .line 24
     :cond_0
     invoke-virtual {v0}, Ljava/lang/ThreadLocal;->get()Ljava/lang/Object;
 
-    .line 23
-    .line 24
     .line 25
+    .line 26
+    .line 27
     move-result-object v0
 
-    .line 26
+    .line 28
     check-cast v0, Lc1/c;
 
-    .line 27
-    .line 28
+    .line 29
+    .line 30
     return-object v0
 .end method
 
@@ -574,7 +578,7 @@
     .locals 7
 
     .line 1
-    iget-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:Lgc/h;
+    iget-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:La/a;
 
     .line 2
     .line 3
@@ -582,7 +586,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, v1, p1}, Lgc/h;->d0(Ljava/lang/Object;F)V
+    invoke-virtual {v0, v1, p1}, La/a;->w(Ljava/lang/Object;F)V
 
     .line 6
     .line 7
@@ -635,11 +639,11 @@
 
     .line 30
     .line 31
-    iget-object v2, v0, Ll2/r;->g:Ll2/b0;
+    iget-object v2, v0, Ll2/r;->g:Ll2/a0;
 
     .line 32
     .line 33
-    iget-wide v3, v2, Ll2/v;->N1:J
+    iget-wide v3, v2, Ll2/u;->N1:J
 
     .line 34
     .line 35
@@ -685,7 +689,7 @@
 
     .line 54
     .line 55
-    invoke-virtual {v2, v3, v4, v5, v6}, Ll2/b0;->F(JJ)V
+    invoke-virtual {v2, v3, v4, v5, v6}, Ll2/a0;->E(JJ)V
 
     .line 56
     .line 57
@@ -781,7 +785,7 @@
     move-result-object v0
 
     .line 15
-    iget-object v0, v0, Lc1/c;->e:Lo7/e;
+    iget-object v0, v0, Lc1/c;->e:Lq7/e;
 
     .line 16
     .line 17
@@ -798,7 +802,7 @@
     move-result-object v1
 
     .line 24
-    iget-object v0, v0, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v0, v0, Lq7/e;->h:Ljava/lang/Object;
 
     .line 25
     .line 26
@@ -971,7 +975,7 @@
     move-result-object v0
 
     .line 47
-    iget-object v0, v0, Lc1/c;->e:Lo7/e;
+    iget-object v0, v0, Lc1/c;->e:Lq7/e;
 
     .line 48
     .line 49
@@ -988,7 +992,7 @@
     move-result-object v1
 
     .line 56
-    iget-object v0, v0, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v0, v0, Lq7/e;->h:Ljava/lang/Object;
 
     .line 57
     .line 58
@@ -1035,7 +1039,7 @@
 
     .line 78
     .line 79
-    iget-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:Lgc/h;
+    iget-object v0, p0, Landroidx/dynamicanimation/animation/SpringAnimation;->e:La/a;
 
     .line 80
     .line 81
@@ -1043,7 +1047,7 @@
 
     .line 82
     .line 83
-    invoke-virtual {v0, v1}, Lgc/h;->M(Ljava/lang/Object;)F
+    invoke-virtual {v0, v1}, La/a;->o(Ljava/lang/Object;)F
 
     .line 84
     .line 85
@@ -1108,15 +1112,15 @@
 
     .line 114
     .line 115
-    iget-object v2, v0, Lc1/c;->e:Lo7/e;
+    iget-object v2, v0, Lc1/c;->e:Lq7/e;
 
     .line 116
     .line 117
-    iget-object v3, v0, Lc1/c;->d:Landroidx/lifecycle/z;
+    iget-object v3, v0, Lc1/c;->d:La6/d;
 
     .line 118
     .line 119
-    iget-object v2, v2, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v2, v2, Lq7/e;->d:Ljava/lang/Object;
 
     .line 120
     .line 121
@@ -1162,7 +1166,7 @@
 
     .line 142
     .line 143
-    iget-object v2, v0, Lc1/c;->h:Lo7/e;
+    iget-object v2, v0, Lc1/c;->h:Lq7/e;
 
     .line 144
     .line 145
@@ -1170,25 +1174,25 @@
 
     .line 146
     .line 147
-    new-instance v2, Lo7/e;
+    new-instance v2, Lq7/e;
 
     .line 148
     .line 149
-    invoke-direct {v2, v0}, Lo7/e;-><init>(Lc1/c;)V
+    invoke-direct {v2, v0}, Lq7/e;-><init>(Lc1/c;)V
 
     .line 150
     .line 151
     .line 152
-    iput-object v2, v0, Lc1/c;->h:Lo7/e;
+    iput-object v2, v0, Lc1/c;->h:Lq7/e;
 
     .line 153
     .line 154
     :cond_1
-    iget-object v0, v0, Lc1/c;->h:Lo7/e;
+    iget-object v0, v0, Lc1/c;->h:Lq7/e;
 
     .line 155
     .line 156
-    iget-object v2, v0, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v2, v0, Lq7/e;->d:Ljava/lang/Object;
 
     .line 157
     .line 158
@@ -1204,16 +1208,16 @@
 
     .line 163
     .line 164
-    invoke-direct {v2, v0}, Lc1/a;-><init>(Lo7/e;)V
+    invoke-direct {v2, v0}, Lc1/a;-><init>(Lq7/e;)V
 
     .line 165
     .line 166
     .line 167
-    iput-object v2, v0, Lo7/e;->d:Ljava/lang/Object;
+    iput-object v2, v0, Lq7/e;->d:Ljava/lang/Object;
 
     .line 168
     .line 169
-    invoke-static {v2}, Lc/b;->u(Lc1/a;)Z
+    invoke-static {v2}, Lc/b;->p(Lc1/a;)Z
 
     .line 170
     .line 171

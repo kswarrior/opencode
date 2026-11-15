@@ -1,6 +1,6 @@
 .class public final Lb3/h;
 .super Lb3/e;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -57,7 +57,7 @@
     .locals 7
 
     .line 1
-    sget-object v0, Lb3/b0;->a:Landroid/graphics/Paint;
+    sget-object v0, Lb3/c0;->a:Landroid/graphics/Paint;
 
     .line 2
     .line 3
@@ -282,7 +282,7 @@
     .line 96
     .line 97
     :goto_1
-    invoke-interface {p1, p3, p4, v1}, Lv2/a;->c(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    invoke-interface {p1, p3, p4, v1}, Lv2/a;->i(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     .line 98
     .line 99
@@ -303,7 +303,7 @@
     .line 106
     .line 107
     .line 108
-    invoke-static {p2, p1, v0}, Lb3/b0;->a(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V
+    invoke-static {p2, p1, v0}, Lb3/c0;->a(Landroid/graphics/Bitmap;Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V
 
     .line 109
     .line 110

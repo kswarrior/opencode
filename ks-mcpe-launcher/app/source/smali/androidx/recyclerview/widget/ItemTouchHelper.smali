@@ -1,9 +1,9 @@
 .class public final Landroidx/recyclerview/widget/ItemTouchHelper;
-.super Landroidx/recyclerview/widget/p1;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Landroidx/recyclerview/widget/n1;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroidx/recyclerview/widget/t1;
+.implements Landroidx/recyclerview/widget/r1;
 
 
 # instance fields
@@ -35,7 +35,7 @@
 
 .field public l:I
 
-.field public final m:Landroidx/recyclerview/widget/s0;
+.field public final m:Landroidx/recyclerview/widget/q0;
 
 .field public n:I
 
@@ -47,7 +47,7 @@
 
 .field public r:Landroidx/recyclerview/widget/RecyclerView;
 
-.field public final s:Landroidx/recyclerview/widget/j0;
+.field public final s:Landroidx/recyclerview/widget/h0;
 
 .field public t:Landroid/view/VelocityTracker;
 
@@ -57,15 +57,15 @@
 
 .field public w:Landroid/view/View;
 
-.field public x:Ljd/k;
+.field public x:La4/e;
 
-.field public y:Landroidx/recyclerview/widget/p0;
+.field public y:Landroidx/recyclerview/widget/n0;
 
-.field public final z:Landroidx/recyclerview/widget/k0;
+.field public final z:Landroidx/recyclerview/widget/i0;
 
 
 # direct methods
-.method public constructor <init>(Landroidx/recyclerview/widget/s0;)V
+.method public constructor <init>(Landroidx/recyclerview/widget/q0;)V
     .locals 2
 
     .line 1
@@ -132,16 +132,16 @@
 
     .line 31
     .line 32
-    new-instance v1, Landroidx/recyclerview/widget/j0;
+    new-instance v1, Landroidx/recyclerview/widget/h0;
 
     .line 33
     .line 34
-    invoke-direct {v1, p0}, Landroidx/recyclerview/widget/j0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
+    invoke-direct {v1, p0}, Landroidx/recyclerview/widget/h0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
 
     .line 35
     .line 36
     .line 37
-    iput-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->s:Landroidx/recyclerview/widget/j0;
+    iput-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->s:Landroidx/recyclerview/widget/h0;
 
     .line 38
     .line 39
@@ -149,20 +149,20 @@
 
     .line 40
     .line 41
-    new-instance v0, Landroidx/recyclerview/widget/k0;
+    new-instance v0, Landroidx/recyclerview/widget/i0;
 
     .line 42
     .line 43
-    invoke-direct {v0, p0}, Landroidx/recyclerview/widget/k0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
+    invoke-direct {v0, p0}, Landroidx/recyclerview/widget/i0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
 
     .line 44
     .line 45
     .line 46
-    iput-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->z:Landroidx/recyclerview/widget/k0;
+    iput-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->z:Landroidx/recyclerview/widget/i0;
 
     .line 47
     .line 48
-    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 49
     .line 50
@@ -265,7 +265,7 @@
     .line 6
     .line 7
     :cond_0
-    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->z:Landroidx/recyclerview/widget/k0;
+    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->z:Landroidx/recyclerview/widget/i0;
 
     .line 8
     .line 9
@@ -273,7 +273,7 @@
 
     .line 10
     .line 11
-    invoke-virtual {v0, p0}, Landroidx/recyclerview/widget/RecyclerView;->Y(Landroidx/recyclerview/widget/p1;)V
+    invoke-virtual {v0, p0}, Landroidx/recyclerview/widget/RecyclerView;->Y(Landroidx/recyclerview/widget/n1;)V
 
     .line 12
     .line 13
@@ -291,7 +291,7 @@
     .line 19
     .line 20
     .line 21
-    iget-object v2, v0, Landroidx/recyclerview/widget/RecyclerView;->J1:Landroidx/recyclerview/widget/v1;
+    iget-object v2, v0, Landroidx/recyclerview/widget/RecyclerView;->J1:Landroidx/recyclerview/widget/t1;
 
     .line 22
     .line 23
@@ -302,7 +302,7 @@
 
     .line 25
     .line 26
-    iput-object v3, v0, Landroidx/recyclerview/widget/RecyclerView;->J1:Landroidx/recyclerview/widget/v1;
+    iput-object v3, v0, Landroidx/recyclerview/widget/RecyclerView;->J1:Landroidx/recyclerview/widget/t1;
 
     .line 27
     .line 28
@@ -361,11 +361,11 @@
     move-result-object v4
 
     .line 53
-    check-cast v4, Landroidx/recyclerview/widget/r0;
+    check-cast v4, Landroidx/recyclerview/widget/p0;
 
     .line 54
     .line 55
-    iget-object v5, v4, Landroidx/recyclerview/widget/r0;->g:Landroid/animation/ValueAnimator;
+    iget-object v5, v4, Landroidx/recyclerview/widget/p0;->g:Landroid/animation/ValueAnimator;
 
     .line 56
     .line 57
@@ -378,15 +378,15 @@
 
     .line 61
     .line 62
-    iget-object v4, v4, Landroidx/recyclerview/widget/r0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    iget-object v4, v4, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 63
     .line 64
-    iget-object v6, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v6, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 65
     .line 66
-    invoke-virtual {v6, v5, v4}, Landroidx/recyclerview/widget/o0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    invoke-virtual {v6, v5, v4}, Landroidx/recyclerview/widget/m0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
     .line 67
     .line 68
@@ -426,7 +426,7 @@
     .line 85
     .line 86
     :cond_4
-    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/p0;
+    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/n0;
 
     .line 87
     .line 88
@@ -434,16 +434,16 @@
 
     .line 89
     .line 90
-    iput-boolean v4, v0, Landroidx/recyclerview/widget/p0;->a:Z
+    iput-boolean v4, v0, Landroidx/recyclerview/widget/n0;->a:Z
 
     .line 91
     .line 92
-    iput-object v3, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/p0;
+    iput-object v3, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/n0;
 
     .line 93
     .line 94
     :cond_5
-    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:Ljd/k;
+    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:La4/e;
 
     .line 95
     .line 96
@@ -451,7 +451,7 @@
 
     .line 97
     .line 98
-    iput-object v3, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:Ljd/k;
+    iput-object v3, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:La4/e;
 
     .line 99
     .line 100
@@ -542,7 +542,7 @@
 
     .line 143
     .line 144
-    invoke-virtual {p1, p0}, Landroidx/recyclerview/widget/RecyclerView;->g(Landroidx/recyclerview/widget/p1;)V
+    invoke-virtual {p1, p0}, Landroidx/recyclerview/widget/RecyclerView;->g(Landroidx/recyclerview/widget/n1;)V
 
     .line 145
     .line 146
@@ -595,20 +595,20 @@
     .line 170
     .line 171
     .line 172
-    new-instance p1, Landroidx/recyclerview/widget/p0;
+    new-instance p1, Landroidx/recyclerview/widget/n0;
 
     .line 173
     .line 174
-    invoke-direct {p1, p0}, Landroidx/recyclerview/widget/p0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
+    invoke-direct {p1, p0}, Landroidx/recyclerview/widget/n0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
 
     .line 175
     .line 176
     .line 177
-    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/p0;
+    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/n0;
 
     .line 178
     .line 179
-    new-instance p1, Ljd/k;
+    new-instance p1, La4/e;
 
     .line 180
     .line 181
@@ -624,16 +624,16 @@
     move-result-object v0
 
     .line 187
-    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/p0;
+    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->y:Landroidx/recyclerview/widget/n0;
 
     .line 188
     .line 189
-    invoke-direct {p1, v0, v1}, Ljd/k;-><init>(Landroid/content/Context;Landroid/view/GestureDetector$OnGestureListener;)V
+    invoke-direct {p1, v0, v1}, La4/e;-><init>(Landroid/content/Context;Landroid/view/GestureDetector$OnGestureListener;)V
 
     .line 190
     .line 191
     .line 192
-    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:Ljd/k;
+    iput-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:La4/e;
 
     .line 193
     .line 194
@@ -691,7 +691,7 @@
 
     .line 19
     .line 20
-    iget-object v5, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v5, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 21
     .line 22
@@ -714,7 +714,7 @@
 
     .line 30
     .line 31
-    invoke-virtual {v5, v6}, Landroidx/recyclerview/widget/o0;->getSwipeVelocityThreshold(F)F
+    invoke-virtual {v5, v6}, Landroidx/recyclerview/widget/m0;->getSwipeVelocityThreshold(F)F
 
     .line 32
     .line 33
@@ -799,7 +799,7 @@
 
     .line 72
     .line 73
-    invoke-virtual {v5, v3}, Landroidx/recyclerview/widget/o0;->getSwipeEscapeVelocity(F)F
+    invoke-virtual {v5, v3}, Landroidx/recyclerview/widget/m0;->getSwipeEscapeVelocity(F)F
 
     .line 74
     .line 75
@@ -850,7 +850,7 @@
     int-to-float v1, v1
 
     .line 97
-    invoke-virtual {v5, p1}, Landroidx/recyclerview/widget/o0;->getSwipeThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
+    invoke-virtual {v5, p1}, Landroidx/recyclerview/widget/m0;->getSwipeThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
 
     .line 98
     .line 99
@@ -925,11 +925,11 @@
 
     .line 11
     .line 12
-    iget-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object p1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 13
     .line 14
-    invoke-virtual {p1}, Landroidx/recyclerview/widget/o0;->isItemViewSwipeEnabled()Z
+    invoke-virtual {p1}, Landroidx/recyclerview/widget/m0;->isItemViewSwipeEnabled()Z
 
     .line 15
     .line 16
@@ -974,7 +974,7 @@
 
     .line 34
     .line 35
-    invoke-virtual {v1}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/r1;
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/p1;
 
     .line 36
     .line 37
@@ -1089,7 +1089,7 @@
 
     .line 87
     .line 88
-    invoke-virtual {v1}, Landroidx/recyclerview/widget/r1;->d()Z
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/p1;->d()Z
 
     .line 89
     .line 90
@@ -1113,7 +1113,7 @@
 
     .line 98
     .line 99
-    invoke-virtual {v1}, Landroidx/recyclerview/widget/r1;->e()Z
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/p1;->e()Z
 
     .line 100
     .line 101
@@ -1171,7 +1171,7 @@
 
     .line 124
     .line 125
-    invoke-virtual {p1, v1, v5}, Landroidx/recyclerview/widget/o0;->getAbsoluteMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    invoke-virtual {p1, v1, v5}, Landroidx/recyclerview/widget/m0;->getAbsoluteMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
 
     .line 126
     .line 127
@@ -1443,7 +1443,7 @@
 
     .line 18
     .line 19
-    iget-object v5, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v5, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 20
     .line 21
@@ -1466,7 +1466,7 @@
 
     .line 29
     .line 30
-    invoke-virtual {v5, v6}, Landroidx/recyclerview/widget/o0;->getSwipeVelocityThreshold(F)F
+    invoke-virtual {v5, v6}, Landroidx/recyclerview/widget/m0;->getSwipeVelocityThreshold(F)F
 
     .line 31
     .line 32
@@ -1551,7 +1551,7 @@
 
     .line 71
     .line 72
-    invoke-virtual {v5, v3}, Landroidx/recyclerview/widget/o0;->getSwipeEscapeVelocity(F)F
+    invoke-virtual {v5, v3}, Landroidx/recyclerview/widget/m0;->getSwipeEscapeVelocity(F)F
 
     .line 73
     .line 74
@@ -1602,7 +1602,7 @@
     int-to-float v1, v1
 
     .line 96
-    invoke-virtual {v5, p1}, Landroidx/recyclerview/widget/o0;->getSwipeThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
+    invoke-virtual {v5, p1}, Landroidx/recyclerview/widget/m0;->getSwipeThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
 
     .line 97
     .line 98
@@ -1695,11 +1695,11 @@
     move-result-object v2
 
     .line 15
-    check-cast v2, Landroidx/recyclerview/widget/r0;
+    check-cast v2, Landroidx/recyclerview/widget/p0;
 
     .line 16
     .line 17
-    iget-object v3, v2, Landroidx/recyclerview/widget/r0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    iget-object v3, v2, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 18
     .line 19
@@ -1707,18 +1707,18 @@
 
     .line 20
     .line 21
-    iget-boolean p1, v2, Landroidx/recyclerview/widget/r0;->k:Z
+    iget-boolean p1, v2, Landroidx/recyclerview/widget/p0;->k:Z
 
     .line 22
     .line 23
     or-int/2addr p1, p2
 
     .line 24
-    iput-boolean p1, v2, Landroidx/recyclerview/widget/r0;->k:Z
+    iput-boolean p1, v2, Landroidx/recyclerview/widget/p0;->k:Z
 
     .line 25
     .line 26
-    iget-boolean p1, v2, Landroidx/recyclerview/widget/r0;->l:Z
+    iget-boolean p1, v2, Landroidx/recyclerview/widget/p0;->l:Z
 
     .line 27
     .line 28
@@ -1726,7 +1726,7 @@
 
     .line 29
     .line 30
-    iget-object p1, v2, Landroidx/recyclerview/widget/r0;->g:Landroid/animation/ValueAnimator;
+    iget-object p1, v2, Landroidx/recyclerview/widget/p0;->g:Landroid/animation/ValueAnimator;
 
     .line 31
     .line 32
@@ -1855,11 +1855,11 @@
     move-result-object v3
 
     .line 46
-    check-cast v3, Landroidx/recyclerview/widget/r0;
+    check-cast v3, Landroidx/recyclerview/widget/p0;
 
     .line 47
     .line 48
-    iget-object v4, v3, Landroidx/recyclerview/widget/r0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    iget-object v4, v3, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 49
     .line 50
@@ -1867,11 +1867,11 @@
 
     .line 51
     .line 52
-    iget v5, v3, Landroidx/recyclerview/widget/r0;->i:F
+    iget v5, v3, Landroidx/recyclerview/widget/p0;->i:F
 
     .line 53
     .line 54
-    iget v3, v3, Landroidx/recyclerview/widget/r0;->j:F
+    iget v3, v3, Landroidx/recyclerview/widget/p0;->j:F
 
     .line 55
     .line 56
@@ -1903,11 +1903,11 @@
 
     .line 67
     .line 68
-    iget-object v2, v1, Landroidx/recyclerview/widget/RecyclerView;->w:Landroidx/recyclerview/widget/f;
+    iget-object v2, v1, Landroidx/recyclerview/widget/RecyclerView;->q:Landroidx/recyclerview/widget/e;
 
     .line 69
     .line 70
-    invoke-virtual {v2}, Landroidx/recyclerview/widget/f;->e()I
+    invoke-virtual {v2}, Landroidx/recyclerview/widget/e;->e()I
 
     .line 71
     .line 72
@@ -1924,11 +1924,11 @@
 
     .line 77
     .line 78
-    iget-object v3, v1, Landroidx/recyclerview/widget/RecyclerView;->w:Landroidx/recyclerview/widget/f;
+    iget-object v3, v1, Landroidx/recyclerview/widget/RecyclerView;->q:Landroidx/recyclerview/widget/e;
 
     .line 79
     .line 80
-    invoke-virtual {v3, v2}, Landroidx/recyclerview/widget/f;->d(I)Landroid/view/View;
+    invoke-virtual {v3, v2}, Landroidx/recyclerview/widget/e;->d(I)Landroid/view/View;
 
     .line 81
     .line 82
@@ -2267,11 +2267,11 @@
     .line 21
     .line 22
     :cond_1
-    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 23
     .line 24
-    invoke-virtual {v1, v3}, Landroidx/recyclerview/widget/o0;->getMoveThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
+    invoke-virtual {v1, v3}, Landroidx/recyclerview/widget/m0;->getMoveThreshold(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)F
 
     .line 25
     .line 26
@@ -2471,7 +2471,7 @@
     .line 118
     .line 119
     :goto_0
-    invoke-virtual {v1}, Landroidx/recyclerview/widget/o0;->getBoundingBoxMargin()I
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/m0;->getBoundingBoxMargin()I
 
     .line 120
     .line 121
@@ -2580,7 +2580,7 @@
 
     .line 167
     .line 168
-    invoke-virtual {v12}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/r1;
+    invoke-virtual {v12}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/p1;
 
     .line 169
     .line 170
@@ -2588,7 +2588,7 @@
     move-result-object v12
 
     .line 172
-    invoke-virtual {v12}, Landroidx/recyclerview/widget/r1;->v()I
+    invoke-virtual {v12}, Landroidx/recyclerview/widget/p1;->v()I
 
     .line 173
     .line 174
@@ -2608,7 +2608,7 @@
 
     .line 180
     .line 181
-    invoke-virtual {v12, v15}, Landroidx/recyclerview/widget/r1;->u(I)Landroid/view/View;
+    invoke-virtual {v12, v15}, Landroidx/recyclerview/widget/p1;->u(I)Landroid/view/View;
 
     .line 182
     .line 183
@@ -2724,7 +2724,7 @@
 
     .line 235
     .line 236
-    invoke-virtual {v1, v2, v4, v14}, Landroidx/recyclerview/widget/o0;->canDropOver(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
+    invoke-virtual {v1, v2, v4, v14}, Landroidx/recyclerview/widget/m0;->canDropOver(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
 
     .line 237
     .line 238
@@ -2967,7 +2967,7 @@
 
     .line 352
     :cond_a
-    invoke-virtual {v1, v3, v2, v7, v8}, Landroidx/recyclerview/widget/o0;->chooseDropTarget(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;II)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    invoke-virtual {v1, v3, v2, v7, v8}, Landroidx/recyclerview/widget/m0;->chooseDropTarget(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;II)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 353
     .line 354
@@ -3021,7 +3021,7 @@
 
     .line 378
     .line 379
-    invoke-virtual {v1, v2, v3, v5}, Landroidx/recyclerview/widget/o0;->onMove(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
+    invoke-virtual {v1, v2, v3, v5}, Landroidx/recyclerview/widget/m0;->onMove(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
 
     .line 380
     .line 381
@@ -3033,7 +3033,7 @@
 
     .line 384
     .line 385
-    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 386
     .line 387
@@ -3041,7 +3041,7 @@
 
     .line 388
     .line 389
-    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/o0;->onMoved(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;ILandroidx/recyclerview/widget/RecyclerView$ViewHolder;III)V
+    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/m0;->onMoved(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;ILandroidx/recyclerview/widget/RecyclerView$ViewHolder;III)V
 
     .line 390
     .line 391
@@ -3198,7 +3198,7 @@
 
     .line 56
     .line 57
-    iget-object v0, v1, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v0, v1, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 58
     .line 59
@@ -3254,7 +3254,7 @@
 
     .line 80
     .line 81
-    invoke-virtual {v0, v5, v2}, Landroidx/recyclerview/widget/s0;->getMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    invoke-virtual {v0, v5, v2}, Landroidx/recyclerview/widget/q0;->getMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
 
     .line 82
     .line 83
@@ -3266,7 +3266,7 @@
 
     .line 86
     .line 87
-    sget-object v8, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
+    sget-object v8, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
 
     .line 88
     .line 89
@@ -3278,7 +3278,7 @@
     move-result v7
 
     .line 93
-    invoke-virtual {v0, v5, v7}, Landroidx/recyclerview/widget/o0;->convertToAbsoluteDirection(II)I
+    invoke-virtual {v0, v5, v7}, Landroidx/recyclerview/widget/m0;->convertToAbsoluteDirection(II)I
 
     .line 94
     .line 95
@@ -3374,7 +3374,7 @@
     move-result v5
 
     .line 138
-    invoke-static {v8, v5}, Landroidx/recyclerview/widget/o0;->convertToRelativeDirection(II)I
+    invoke-static {v8, v5}, Landroidx/recyclerview/widget/m0;->convertToRelativeDirection(II)I
 
     .line 139
     .line 140
@@ -3449,7 +3449,7 @@
     move-result v5
 
     .line 172
-    invoke-static {v8, v5}, Landroidx/recyclerview/widget/o0;->convertToRelativeDirection(II)I
+    invoke-static {v8, v5}, Landroidx/recyclerview/widget/m0;->convertToRelativeDirection(II)I
 
     .line 173
     .line 174
@@ -3656,7 +3656,7 @@
 
     .line 263
     .line 264
-    new-instance v0, Landroidx/recyclerview/widget/l0;
+    new-instance v0, Landroidx/recyclerview/widget/j0;
 
     .line 265
     .line 266
@@ -3686,7 +3686,7 @@
 
     .line 277
     .line 278
-    invoke-direct/range {v0 .. v9}, Landroidx/recyclerview/widget/l0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;IFFFFILandroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    invoke-direct/range {v0 .. v9}, Landroidx/recyclerview/widget/j0;-><init>(Landroidx/recyclerview/widget/ItemTouchHelper;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;IFFFFILandroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
     .line 279
     .line 280
@@ -3703,7 +3703,7 @@
 
     .line 286
     .line 287
-    invoke-virtual {v13, v3, v12, v4, v5}, Landroidx/recyclerview/widget/o0;->getAnimationDuration(Landroidx/recyclerview/widget/RecyclerView;IFF)J
+    invoke-virtual {v13, v3, v12, v4, v5}, Landroidx/recyclerview/widget/m0;->getAnimationDuration(Landroidx/recyclerview/widget/RecyclerView;IFF)J
 
     .line 288
     .line 289
@@ -3711,7 +3711,7 @@
     move-result-wide v3
 
     .line 291
-    iget-object v5, v0, Landroidx/recyclerview/widget/r0;->g:Landroid/animation/ValueAnimator;
+    iget-object v5, v0, Landroidx/recyclerview/widget/p0;->g:Landroid/animation/ValueAnimator;
 
     .line 292
     .line 293
@@ -3773,7 +3773,7 @@
 
     .line 320
     .line 321
-    invoke-virtual {v13, v0, v2}, Landroidx/recyclerview/widget/o0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    invoke-virtual {v13, v0, v2}, Landroidx/recyclerview/widget/m0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
     .line 322
     .line 323
@@ -3815,7 +3815,7 @@
 
     .line 337
     .line 338
-    invoke-virtual {v13, v0, v10}, Landroidx/recyclerview/widget/o0;->getAbsoluteMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
+    invoke-virtual {v13, v0, v10}, Landroidx/recyclerview/widget/m0;->getAbsoluteMovementFlags(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)I
 
     .line 339
     .line 340
@@ -3942,7 +3942,7 @@
 
     .line 397
     .line 398
-    invoke-virtual {v0}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/r1;
+    invoke-virtual {v0}, Landroidx/recyclerview/widget/RecyclerView;->getLayoutManager()Landroidx/recyclerview/widget/p1;
 
     .line 399
     .line 400
@@ -3953,7 +3953,7 @@
     const/4 v2, 0x1
 
     .line 403
-    iput-boolean v2, v0, Landroidx/recyclerview/widget/r1;->f:Z
+    iput-boolean v2, v0, Landroidx/recyclerview/widget/p1;->f:Z
 
     .line 404
     .line 405
@@ -3966,7 +3966,7 @@
 
     .line 408
     .line 409
-    invoke-virtual {v13, v0, v2}, Landroidx/recyclerview/widget/o0;->onSelectedChanged(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+    invoke-virtual {v13, v0, v2}, Landroidx/recyclerview/widget/m0;->onSelectedChanged(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
 
     .line 410
     .line 411
@@ -3987,7 +3987,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v0, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 2
     .line 3
@@ -3995,7 +3995,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, v1, p1}, Landroidx/recyclerview/widget/o0;->hasDragFlag(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
+    invoke-virtual {v0, v1, p1}, Landroidx/recyclerview/widget/m0;->hasDragFlag(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
 
     .line 6
     .line 7
@@ -4172,7 +4172,7 @@
 
     .line 27
     .line 28
-    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 29
     .line 30
@@ -4182,7 +4182,7 @@
     move-object v3, p2
 
     .line 32
-    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/o0;->onDraw(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;IFF)V
+    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/m0;->onDraw(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;IFF)V
 
     .line 33
     .line 34
@@ -4257,7 +4257,7 @@
 
     .line 27
     .line 28
-    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
+    iget-object v1, p0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
 
     .line 29
     .line 30
@@ -4267,7 +4267,7 @@
     move-object v3, p2
 
     .line 32
-    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/o0;->onDrawOver(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;IFF)V
+    invoke-virtual/range {v1 .. v8}, Landroidx/recyclerview/widget/m0;->onDrawOver(Landroid/graphics/Canvas;Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Ljava/util/List;IFF)V
 
     .line 33
     .line 34

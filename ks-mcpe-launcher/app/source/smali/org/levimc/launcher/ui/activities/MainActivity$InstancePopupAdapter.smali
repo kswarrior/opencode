@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -429,7 +429,7 @@
 
     .line 38
     .line 39
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->n0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->f0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
     .line 40
     .line 41
@@ -640,14 +640,14 @@
     :goto_0
     iget-object v2, p1, Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter$VH;->name:Landroid/widget/TextView;
 
-    invoke-static {p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->n0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-static {p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->f0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
     move-result-object v3
 
     invoke-virtual {v2, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 6
-    invoke-static {p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->o0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-static {p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->g0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -683,6 +683,11 @@
     invoke-virtual {v2, v0}, Landroid/view/View;->setActivated(Z)V
 
     .line 10
+    iget-object v2, p1, Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter$VH;->icon:Landroid/widget/ImageView;
+
+    invoke-static {v2, p2}, Lorg/levimc/launcher/util/InstanceIcons;->bind(Landroid/widget/ImageView;Lorg/levimc/launcher/core/versions/GameVersion;)V
+
+    .line 11
     iget-object v2, p1, Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter$VH;->check:Landroid/widget/ImageView;
 
     if-eqz v0, :cond_2
@@ -695,22 +700,22 @@
     :goto_2
     invoke-virtual {v2, v1}, Landroid/widget/ImageView;->setVisibility(I)V
 
-    .line 11
+    .line 12
     iget-object v1, p1, Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter$VH;->tag:Landroid/widget/TextView;
 
     invoke-virtual {v1, v4}, Landroid/view/View;->setVisibility(I)V
 
-    .line 12
+    .line 13
     invoke-static {p1, v0}, Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter;->applyInstanceSelectionStyle(Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter$VH;Z)V
 
-    .line 13
+    .line 14
     iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
-    new-instance v0, Lorg/levimc/launcher/ui/activities/e;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m2;
 
-    const/4 v1, 0x2
+    const/4 v1, 0x1
 
-    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/m2;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 

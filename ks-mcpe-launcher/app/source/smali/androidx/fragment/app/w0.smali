@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/w0;
 .super Landroidx/activity/result/contract/ActivityResultContract;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -47,7 +47,7 @@
 
     .line 9
     .line 10
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 11
     .line 12
@@ -81,7 +81,7 @@
 
     .line 27
     .line 28
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 29
     .line 30
@@ -98,7 +98,7 @@
 
     .line 35
     .line 36
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 37
     .line 38
@@ -115,7 +115,7 @@
 
     .line 43
     .line 44
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 45
     .line 46
@@ -157,7 +157,7 @@
 
     .line 65
     .line 66
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 67
     .line 68
@@ -174,7 +174,7 @@
 
     .line 73
     .line 74
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 75
     .line 76
@@ -208,7 +208,7 @@
 
     .line 91
     .line 92
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 93
     .line 94
@@ -225,7 +225,7 @@
 
     .line 99
     .line 100
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 101
     .line 102
@@ -257,7 +257,7 @@
 
     .line 114
     .line 115
-    invoke-static {}, Landroidx/core/view/j1;->t()I
+    invoke-static {}, Landroidx/core/view/g1;->u()I
 
     .line 116
     .line 117
@@ -290,7 +290,7 @@
 
     .line 130
     .line 131
-    invoke-static {v0}, Lk4/f;->w(Le/d;)Ljava/lang/String;
+    invoke-static {v0}, Lm6/b;->r(Le/d;)Ljava/lang/String;
 
     .line 132
     .line 133
@@ -426,7 +426,7 @@
 
     .line 201
     .line 202
-    invoke-static {p1}, Lk4/f;->w(Le/d;)Ljava/lang/String;
+    invoke-static {p1}, Lm6/b;->r(Le/d;)Ljava/lang/String;
 
     .line 203
     .line 204
@@ -498,7 +498,7 @@
 
     .line 237
     .line 238
-    invoke-static {p2}, Lk4/f;->w(Le/d;)Ljava/lang/String;
+    invoke-static {p2}, Lm6/b;->r(Le/d;)Ljava/lang/String;
 
     .line 239
     .line 240
@@ -563,307 +563,340 @@
 
     .line 270
     :pswitch_4
-    check-cast p2, [Ljava/lang/String;
+    check-cast p2, Landroid/net/Uri;
 
     .line 271
     .line 272
-    const-string p1, "input"
+    new-instance p1, Landroid/content/Intent;
 
     .line 273
     .line 274
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string v0, "android.intent.action.OPEN_DOCUMENT_TREE"
 
     .line 275
     .line 276
-    .line 277
-    new-instance p1, Landroid/content/Intent;
+    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
+    .line 277
     .line 278
     .line 279
-    const-string v0, "android.intent.action.OPEN_DOCUMENT"
+    if-eqz p2, :cond_5
 
     .line 280
     .line 281
-    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    const-string v0, "android.provider.extra.INITIAL_URI"
 
     .line 282
     .line 283
-    .line 284
-    const-string v0, "android.intent.extra.MIME_TYPES"
+    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
+    .line 284
     .line 285
     .line 286
-    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
+    :cond_5
+    return-object p1
 
     .line 287
+    :pswitch_5
+    check-cast p2, [Ljava/lang/String;
+
     .line 288
     .line 289
-    move-result-object p1
+    const-string p1, "input"
 
     .line 290
-    const-string p2, "*/*"
-
     .line 291
-    .line 292
-    invoke-virtual {p1, p2}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 292
     .line 293
     .line 294
-    .line 295
-    move-result-object p1
+    new-instance p1, Landroid/content/Intent;
 
+    .line 295
     .line 296
-    const-string p2, "setType(...)"
+    const-string v0, "android.intent.action.OPEN_DOCUMENT"
 
     .line 297
     .line 298
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 299
     .line 300
     .line 301
-    return-object p1
+    const-string v0, "android.intent.extra.MIME_TYPES"
 
     .line 302
-    :pswitch_5
-    check-cast p2, Ljava/lang/String;
-
     .line 303
-    .line 304
-    const-string p1, "input"
+    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;[Ljava/lang/String;)Landroid/content/Intent;
 
+    .line 304
     .line 305
     .line 306
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    move-result-object p1
 
     .line 307
+    const-string p2, "*/*"
+
     .line 308
     .line 309
-    new-instance p1, Landroid/content/Intent;
+    invoke-virtual {p1, p2}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
     .line 310
     .line 311
-    const-string v0, "android.intent.action.CREATE_DOCUMENT"
-
     .line 312
+    move-result-object p1
+
     .line 313
-    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    const-string p2, "setType(...)"
 
     .line 314
     .line 315
-    .line 316
-    const-string v0, "application/octet-stream"
+    invoke-static {p1, p2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 316
     .line 317
     .line 318
-    invoke-virtual {p1, v0}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
+    return-object p1
 
     .line 319
+    :pswitch_6
+    check-cast p2, Ljava/lang/String;
+
     .line 320
     .line 321
-    move-result-object p1
+    const-string p1, "input"
 
     .line 322
-    const-string v0, "android.intent.extra.TITLE"
-
     .line 323
-    .line 324
-    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 324
     .line 325
     .line 326
-    .line 327
-    move-result-object p1
+    new-instance p1, Landroid/content/Intent;
 
+    .line 327
     .line 328
-    const-string p2, "putExtra(...)"
+    const-string v0, "android.intent.action.CREATE_DOCUMENT"
 
     .line 329
     .line 330
-    invoke-static {p1, p2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
     .line 331
     .line 332
     .line 333
-    return-object p1
+    const-string v0, "application/octet-stream"
 
     .line 334
-    :pswitch_6
-    check-cast p2, Ld/f;
-
     .line 335
-    .line 336
-    new-instance p1, Landroid/content/Intent;
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->setType(Ljava/lang/String;)Landroid/content/Intent;
 
+    .line 336
     .line 337
     .line 338
-    const-string v0, "androidx.activity.result.contract.action.INTENT_SENDER_REQUEST"
+    move-result-object p1
 
     .line 339
-    .line 340
-    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
+    const-string v0, "android.intent.extra.TITLE"
 
+    .line 340
     .line 341
+    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
     .line 342
     .line 343
-    iget-object v0, p2, Ld/f;->d:Landroid/content/Intent;
-
     .line 344
+    move-result-object p1
+
     .line 345
-    if-eqz v0, :cond_5
+    const-string p2, "putExtra(...)"
 
     .line 346
     .line 347
-    const-string v1, "androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE"
+    invoke-static {p1, p2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 348
     .line 349
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;
-
     .line 350
-    .line 351
-    .line 352
-    move-result-object v2
+    return-object p1
 
+    .line 351
+    :pswitch_7
+    check-cast p2, Ld/f;
+
+    .line 352
     .line 353
-    if-eqz v2, :cond_5
+    new-instance p1, Landroid/content/Intent;
 
     .line 354
     .line 355
-    invoke-virtual {p1, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
+    const-string v0, "androidx.activity.result.contract.action.INTENT_SENDER_REQUEST"
 
     .line 356
     .line 357
-    .line 358
-    invoke-virtual {v0, v1}, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
+    invoke-direct {p1, v0}, Landroid/content/Intent;-><init>(Ljava/lang/String;)V
 
+    .line 358
     .line 359
     .line 360
+    iget-object v0, p2, Ld/f;->d:Landroid/content/Intent;
+
     .line 361
-    const-string v1, "androidx.fragment.extra.ACTIVITY_OPTIONS_BUNDLE"
-
     .line 362
-    .line 363
-    const/4 v2, 0x0
+    if-eqz v0, :cond_6
 
+    .line 363
     .line 364
-    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+    const-string v1, "androidx.activity.result.contract.extra.ACTIVITY_OPTIONS_BUNDLE"
 
     .line 365
     .line 366
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->getBundleExtra(Ljava/lang/String;)Landroid/os/Bundle;
+
     .line 367
-    move-result v0
-
     .line 368
-    if-eqz v0, :cond_5
-
     .line 369
+    move-result-object v2
+
     .line 370
-    iget-object v0, p2, Ld/f;->c:Landroid/content/IntentSender;
+    if-eqz v2, :cond_6
 
     .line 371
     .line 372
-    const-string v1, "intentSender"
+    invoke-virtual {p1, v1, v2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Bundle;)Landroid/content/Intent;
 
     .line 373
     .line 374
-    invoke-static {v0, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 375
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
+
     .line 376
     .line 377
-    iget v1, p2, Ld/f;->q:I
-
     .line 378
-    .line 379
-    iget p2, p2, Ld/f;->h:I
+    const-string v1, "androidx.fragment.extra.ACTIVITY_OPTIONS_BUNDLE"
 
+    .line 379
     .line 380
+    const/4 v2, 0x0
+
     .line 381
-    new-instance v2, Ld/f;
+    invoke-virtual {v0, v1, v2}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
 
     .line 382
     .line 383
-    const/4 v3, 0x0
-
     .line 384
-    invoke-direct {v2, v0, v3, p2, v1}, Ld/f;-><init>(Landroid/content/IntentSender;Landroid/content/Intent;II)V
+    move-result v0
 
     .line 385
+    if-eqz v0, :cond_6
+
     .line 386
     .line 387
-    move-object p2, v2
+    iget-object v0, p2, Ld/f;->c:Landroid/content/IntentSender;
 
     .line 388
-    :cond_5
-    const-string v0, "androidx.activity.result.contract.extra.INTENT_SENDER_REQUEST"
-
     .line 389
-    .line 390
-    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
+    const-string v1, "intentSender"
 
+    .line 390
     .line 391
+    invoke-static {v0, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 392
     .line 393
-    const/4 p2, 0x2
-
     .line 394
-    invoke-static {p2}, Landroidx/fragment/app/FragmentManager;->K(I)Z
+    iget v1, p2, Ld/f;->p:I
 
     .line 395
     .line 396
-    .line 397
-    move-result p2
+    iget p2, p2, Ld/f;->h:I
 
+    .line 397
     .line 398
-    if-eqz p2, :cond_6
+    new-instance v2, Ld/f;
 
     .line 399
     .line 400
-    new-instance p2, Ljava/lang/StringBuilder;
+    const/4 v3, 0x0
 
     .line 401
-    .line 402
-    const-string v0, "CreateIntent created the following intent: "
+    invoke-direct {v2, v0, v3, p2, v1}, Ld/f;-><init>(Landroid/content/IntentSender;Landroid/content/Intent;II)V
 
+    .line 402
     .line 403
     .line 404
-    invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    move-object p2, v2
 
     .line 405
+    :cond_6
+    const-string v0, "androidx.activity.result.contract.extra.INTENT_SENDER_REQUEST"
+
     .line 406
     .line 407
-    invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-virtual {p1, v0, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
 
     .line 408
     .line 409
     .line 410
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const/4 p2, 0x2
 
     .line 411
+    invoke-static {p2}, Landroidx/fragment/app/FragmentManager;->K(I)Z
+
     .line 412
     .line 413
-    move-result-object p2
-
     .line 414
-    const-string v0, "FragmentManager"
+    move-result p2
 
     .line 415
-    .line 416
-    invoke-static {v0, p2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+    if-eqz p2, :cond_7
 
+    .line 416
     .line 417
+    new-instance p2, Ljava/lang/StringBuilder;
+
     .line 418
     .line 419
-    :cond_6
-    return-object p1
+    const-string v0, "CreateIntent created the following intent: "
 
     .line 420
-    nop
-
     .line 421
+    invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 422
+    .line 423
+    .line 424
+    invoke-virtual {p2, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 425
+    .line 426
+    .line 427
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 428
+    .line 429
+    .line 430
+    move-result-object p2
+
+    .line 431
+    const-string v0, "FragmentManager"
+
+    .line 432
+    .line 433
+    invoke-static {v0, p2}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 434
+    .line 435
+    .line 436
+    :cond_7
+    return-object p1
+
+    .line 437
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_7
         :pswitch_6
         :pswitch_5
         :pswitch_4
@@ -874,7 +907,7 @@
     .end packed-switch
 .end method
 
-.method public b(Landroid/content/Context;Ljava/lang/Object;)Ljd/k;
+.method public b(Landroid/content/Context;Ljava/lang/Object;)La4/e;
     .locals 4
 
     .line 1
@@ -887,7 +920,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-super {p0, p1, p2}, Landroidx/activity/result/contract/ActivityResultContract;->b(Landroid/content/Context;Ljava/lang/Object;)Ljd/k;
+    invoke-super {p0, p1, p2}, Landroidx/activity/result/contract/ActivityResultContract;->b(Landroid/content/Context;Ljava/lang/Object;)La4/e;
 
     .line 7
     .line 8
@@ -907,7 +940,7 @@
 
     .line 14
     .line 15
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 16
     .line 17
@@ -924,7 +957,7 @@
 
     .line 23
     .line 24
-    new-instance p1, Ljd/k;
+    new-instance p1, La4/e;
 
     .line 25
     .line 26
@@ -932,11 +965,11 @@
 
     .line 27
     .line 28
-    const/16 v0, 0x14
+    const/16 v0, 0x11
 
     .line 29
     .line 30
-    invoke-direct {p1, p2, v0}, Ljd/k;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p2, v0}, La4/e;-><init>(Ljava/lang/Object;I)V
 
     .line 31
     .line 32
@@ -961,7 +994,7 @@
 
     .line 39
     .line 40
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 41
     .line 42
@@ -973,19 +1006,19 @@
 
     .line 45
     .line 46
-    new-instance p1, Ljd/k;
+    new-instance p1, La4/e;
 
     .line 47
     .line 48
-    sget-object p2, Lr8/q;->c:Lr8/q;
+    sget-object p2, Lt8/q;->c:Lt8/q;
 
     .line 49
     .line 50
-    const/16 v0, 0x14
+    const/16 v0, 0x11
 
     .line 51
     .line 52
-    invoke-direct {p1, p2, v0}, Ljd/k;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p2, v0}, La4/e;-><init>(Ljava/lang/Object;I)V
 
     .line 53
     .line 54
@@ -1042,7 +1075,7 @@
     array-length p1, p2
 
     .line 75
-    invoke-static {p1}, Lr8/s;->O(I)I
+    invoke-static {p1}, Lt8/s;->P(I)I
 
     .line 76
     .line 77
@@ -1100,15 +1133,15 @@
 
     .line 102
     :cond_5
-    new-instance p1, Ljd/k;
+    new-instance p1, La4/e;
 
     .line 103
     .line 104
-    const/16 p2, 0x14
+    const/16 p2, 0x11
 
     .line 105
     .line 106
-    invoke-direct {p1, v0, p2}, Ljd/k;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, v0, p2}, La4/e;-><init>(Ljava/lang/Object;I)V
 
     .line 107
     .line 108
@@ -1126,7 +1159,7 @@
 
     .line 113
     .line 114
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 115
     .line 116
@@ -1139,41 +1172,53 @@
 
     .line 119
     :pswitch_3
-    check-cast p2, [Ljava/lang/String;
+    check-cast p2, Landroid/net/Uri;
 
     .line 120
     .line 121
-    const-string p1, "input"
+    goto :goto_4
 
     .line 122
-    .line 123
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 124
-    .line 125
-    .line 126
-    goto :goto_4
-
-    .line 127
     :pswitch_4
-    check-cast p2, Ljava/lang/String;
+    check-cast p2, [Ljava/lang/String;
 
-    .line 128
-    .line 129
+    .line 123
+    .line 124
     const-string p1, "input"
 
-    .line 130
-    .line 131
-    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    .line 125
+    .line 126
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 132
-    .line 133
-    .line 134
+    .line 127
+    .line 128
+    .line 129
     goto :goto_4
 
+    .line 130
+    :pswitch_5
+    check-cast p2, Ljava/lang/String;
+
+    .line 131
+    .line 132
+    const-string p1, "input"
+
+    .line 133
+    .line 134
+    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 135
+    .line 136
+    .line 137
+    goto :goto_4
+
+    .line 138
+    nop
+
+    .line 139
     :pswitch_data_0
     .packed-switch 0x1
+        :pswitch_5
         :pswitch_4
         :pswitch_3
         :pswitch_2
@@ -1435,7 +1480,7 @@
 
     .line 108
     :cond_8
-    invoke-static {p1}, Lr8/i;->U([Ljava/lang/Object;)Ljava/util/ArrayList;
+    invoke-static {p1}, Lt8/i;->U([Ljava/lang/Object;)Ljava/util/ArrayList;
 
     .line 109
     .line 110
@@ -1467,7 +1512,7 @@
 
     .line 123
     .line 124
-    invoke-static {p1, v3}, Lr8/l;->E(Ljava/lang/Iterable;I)I
+    invoke-static {v3, p1}, Lt8/l;->D0(ILjava/lang/Iterable;)I
 
     .line 125
     .line 126
@@ -1475,7 +1520,7 @@
     move-result p1
 
     .line 128
-    invoke-static {v0, v3}, Lr8/l;->E(Ljava/lang/Iterable;I)I
+    invoke-static {v3, v0}, Lt8/l;->D0(ILjava/lang/Iterable;)I
 
     .line 129
     .line 130
@@ -1537,11 +1582,11 @@
     move-result-object v0
 
     .line 159
-    new-instance v3, Lq8/e;
+    new-instance v3, Ls8/e;
 
     .line 160
     .line 161
-    invoke-direct {v3, p1, v0}, Lq8/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-direct {v3, p1, v0}, Ls8/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 162
     .line 163
@@ -1555,7 +1600,7 @@
 
     .line 168
     :cond_9
-    invoke-static {v2}, Lr8/s;->Q(Ljava/util/ArrayList;)Ljava/util/Map;
+    invoke-static {v2}, Lt8/s;->R(Ljava/util/ArrayList;)Ljava/util/Map;
 
     .line 169
     .line 170
@@ -1568,7 +1613,7 @@
     .line 173
     :cond_a
     :goto_7
-    sget-object p1, Lr8/q;->c:Lr8/q;
+    sget-object p1, Lt8/q;->c:Lt8/q;
 
     .line 174
     .line 175
@@ -1665,7 +1710,7 @@
 
     .line 216
     .line 217
-    sget-object p1, Lr8/p;->c:Lr8/p;
+    sget-object p1, Lt8/p;->c:Lt8/p;
 
     .line 218
     .line 219
@@ -1852,20 +1897,59 @@
 
     .line 293
     :pswitch_6
-    new-instance v0, Landroidx/activity/result/ActivityResult;
+    const/4 v0, -0x1
 
     .line 294
+    const/4 v1, 0x0
+
     .line 295
-    invoke-direct {v0, p1, p2}, Landroidx/activity/result/ActivityResult;-><init>(ILandroid/content/Intent;)V
+    if-ne p1, v0, :cond_17
 
     .line 296
     .line 297
+    goto :goto_10
+
     .line 298
-    return-object v0
+    :cond_17
+    move-object p2, v1
 
     .line 299
+    :goto_10
+    if-eqz p2, :cond_18
+
+    .line 300
+    .line 301
+    invoke-virtual {p2}, Landroid/content/Intent;->getData()Landroid/net/Uri;
+
+    .line 302
+    .line 303
+    .line 304
+    move-result-object v1
+
+    .line 305
+    :cond_18
+    return-object v1
+
+    .line 306
+    :pswitch_7
+    new-instance v0, Landroidx/activity/result/ActivityResult;
+
+    .line 307
+    .line 308
+    invoke-direct {v0, p1, p2}, Landroidx/activity/result/ActivityResult;-><init>(ILandroid/content/Intent;)V
+
+    .line 309
+    .line 310
+    .line 311
+    return-object v0
+
+    .line 312
+    nop
+
+    .line 313
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_7
         :pswitch_6
         :pswitch_5
         :pswitch_4

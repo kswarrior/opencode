@@ -1,6 +1,6 @@
 .class public Landroidx/lifecycle/MutableLiveData;
 .super Landroidx/lifecycle/LiveData;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # virtual methods
@@ -56,7 +56,7 @@
 
     .line 19
     :cond_1
-    invoke-static {}, Ln/b;->q0()Ln/b;
+    invoke-static {}, Ln/b;->O()Ln/b;
 
     .line 20
     .line 21
@@ -64,7 +64,7 @@
     move-result-object p1
 
     .line 23
-    iget-object v0, p0, Landroidx/lifecycle/LiveData;->j:Landroidx/lifecycle/u;
+    iget-object v0, p0, Landroidx/lifecycle/LiveData;->j:La6/f0;
 
     .line 24
     .line 25

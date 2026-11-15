@@ -1,63 +1,91 @@
 .class public final Lcom/google/android/gms/internal/measurement/m3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lcom/google/android/gms/internal/measurement/k3;
+.implements Lf6/k;
 
 
 # static fields
-.field public static final a:Lcom/google/android/gms/internal/measurement/ed;
+.field public static final d:Lcom/google/android/gms/internal/measurement/m3;
 
-.field public static final b:Lcom/google/android/gms/internal/measurement/ed;
+
+# instance fields
+.field public final c:Lf6/n;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 3
+    .locals 1
 
     .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/c3;->c:Lcom/google/android/gms/internal/measurement/o6;
+    new-instance v0, Lcom/google/android/gms/internal/measurement/m3;
 
     .line 2
     .line 3
-    const-string v1, "measurement.set_default_event_parameters.fix_app_update_logging"
+    invoke-direct {v0}, Lcom/google/android/gms/internal/measurement/m3;-><init>()V
 
     .line 4
     .line 5
-    const/4 v2, 0x1
-
     .line 6
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/o6;->c(Ljava/lang/String;Z)Lcom/google/android/gms/internal/measurement/ed;
+    sput-object v0, Lcom/google/android/gms/internal/measurement/m3;->d:Lcom/google/android/gms/internal/measurement/m3;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 2
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Lcom/google/android/gms/internal/measurement/p3;
+
+    .line 5
+    .line 6
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 7
     .line 8
     .line 9
-    move-result-object v1
+    new-instance v1, Lf6/n;
 
     .line 10
-    sput-object v1, Lcom/google/android/gms/internal/measurement/m3;->a:Lcom/google/android/gms/internal/measurement/ed;
-
     .line 11
-    .line 12
-    const-string v1, "measurement.set_default_event_parameters.fix_service_request_ordering"
+    invoke-direct {v1, v0}, Lf6/n;-><init>(Ljava/lang/Object;)V
 
+    .line 12
     .line 13
     .line 14
-    const/4 v2, 0x0
+    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/m3;->c:Lf6/n;
 
     .line 15
-    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/o6;->c(Ljava/lang/String;Z)Lcom/google/android/gms/internal/measurement/ed;
-
     .line 16
-    .line 17
-    .line 18
-    move-result-object v0
-
-    .line 19
-    sput-object v0, Lcom/google/android/gms/internal/measurement/m3;->b:Lcom/google/android/gms/internal/measurement/ed;
-
-    .line 20
-    .line 21
     return-void
+.end method
+
+
+# virtual methods
+.method public final get()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/m3;->c:Lf6/n;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Lf6/n;->c:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    check-cast v0, Lcom/google/android/gms/internal/measurement/n3;
+
+    .line 6
+    .line 7
+    return-object v0
 .end method

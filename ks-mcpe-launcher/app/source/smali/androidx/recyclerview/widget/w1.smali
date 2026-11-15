@@ -1,15 +1,53 @@
-.class public abstract Landroidx/recyclerview/widget/w1;
+.class public final Landroidx/recyclerview/widget/w1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+
+# instance fields
+.field public a:Landroid/util/SparseArray;
+
+.field public b:I
 
 
 # virtual methods
-.method public onScrollStateChanged(Landroidx/recyclerview/widget/RecyclerView;I)V
-    .locals 0
+.method public final a(I)Landroidx/recyclerview/widget/v1;
+    .locals 2
 
     .line 1
-    return-void
-.end method
+    iget-object v0, p0, Landroidx/recyclerview/widget/w1;->a:Landroid/util/SparseArray;
 
-.method public abstract onScrolled(Landroidx/recyclerview/widget/RecyclerView;II)V
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    check-cast v1, Landroidx/recyclerview/widget/v1;
+
+    .line 8
+    .line 9
+    if-nez v1, :cond_0
+
+    .line 10
+    .line 11
+    new-instance v1, Landroidx/recyclerview/widget/v1;
+
+    .line 12
+    .line 13
+    invoke-direct {v1}, Landroidx/recyclerview/widget/v1;-><init>()V
+
+    .line 14
+    .line 15
+    .line 16
+    invoke-virtual {v0, p1, v1}, Landroid/util/SparseArray;->put(ILjava/lang/Object;)V
+
+    .line 17
+    .line 18
+    .line 19
+    :cond_0
+    return-object v1
 .end method

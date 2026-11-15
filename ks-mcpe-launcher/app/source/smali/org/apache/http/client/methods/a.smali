@@ -1,6 +1,6 @@
 .class public abstract Lorg/apache/http/client/methods/a;
-.super Luc/b;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ltc/b;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/apache/http/client/methods/HttpUriRequest;
@@ -50,7 +50,7 @@
     move-result-object v0
 
     .line 10
-    invoke-static {v0}, Lgc/h;->N(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/ProtocolVersion;
+    invoke-static {v0}, Lcom/bumptech/glide/e;->C(Lorg/apache/http/params/HttpParams;)Lorg/apache/http/ProtocolVersion;
 
     .line 11
     .line 12
@@ -158,7 +158,7 @@
     .locals 0
 
     .line 1
-    invoke-virtual {p0}, Luc/b;->reset()V
+    invoke-virtual {p0}, Ltc/b;->reset()V
 
     .line 2
     .line 3

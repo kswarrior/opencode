@@ -1,350 +1,244 @@
 .class public final Lsb/c;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Lra/a;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lnet/raphimc/minecraftauth/util/Expirable;
-
-
-# instance fields
-.field public final a:J
-
-.field public final b:Ljava/lang/String;
-
-.field public final c:Ljava/lang/String;
-
-
-# direct methods
-.method public constructor <init>(JLjava/lang/String;Ljava/lang/String;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-wide p1, p0, Lsb/c;->a:J
-
-    .line 5
-    .line 6
-    iput-object p3, p0, Lsb/c;->b:Ljava/lang/String;
-
-    .line 7
-    .line 8
-    iput-object p4, p0, Lsb/c;->c:Ljava/lang/String;
-
-    .line 9
-    .line 10
-    return-void
-.end method
+.implements Ltb/a;
 
 
 # virtual methods
-.method public final b()J
-    .locals 2
+.method public final handle(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/lang/Object;
+    .locals 4
 
     .line 1
-    iget-wide v0, p0, Lsb/c;->a:J
+    const-string p1, "profileUsers"
 
     .line 2
     .line 3
-    return-wide v0
-.end method
+    invoke-virtual {p2, p1}, Lnet/lenni0451/commons/gson/elements/GsonObject;->l(Ljava/lang/String;)Lia/b;
 
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 7
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
 
-    .line 1
+    .line 7
+    iget-object p1, p1, Lia/b;->d:Lcom/google/gson/JsonArray;
+
+    .line 8
+    .line 9
+    iget-object p2, p1, Lcom/google/gson/JsonArray;->c:Ljava/util/ArrayList;
+
+    .line 10
+    .line 11
+    invoke-virtual {p2}, Ljava/util/ArrayList;->size()I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p2
+
+    .line 15
     const/4 v0, 0x1
 
-    .line 2
-    if-ne p1, p0, :cond_0
-
-    .line 3
-    .line 4
-    return v0
-
-    .line 5
-    :cond_0
-    instance-of v1, p1, Lsb/c;
-
-    .line 6
-    .line 7
-    const/4 v2, 0x0
-
-    .line 8
-    if-nez v1, :cond_1
-
-    .line 9
-    .line 10
-    return v2
-
-    .line 11
-    :cond_1
-    check-cast p1, Lsb/c;
-
-    .line 12
-    .line 13
-    iget-wide v3, p0, Lsb/c;->a:J
-
-    .line 14
-    .line 15
-    iget-wide v5, p1, Lsb/c;->a:J
-
     .line 16
-    .line 17
-    cmp-long v1, v3, v5
+    if-ne p2, v0, :cond_0
 
+    .line 17
     .line 18
+    const/4 p2, 0x0
+
     .line 19
-    if-eqz v1, :cond_2
+    invoke-virtual {p1, p2}, Lcom/google/gson/JsonArray;->s(I)Lcom/google/gson/JsonElement;
 
     .line 20
     .line 21
-    return v2
-
     .line 22
-    :cond_2
-    iget-object v1, p1, Lsb/c;->b:Ljava/lang/String;
+    move-result-object p1
 
     .line 23
-    .line 24
-    iget-object v3, p0, Lsb/c;->b:Ljava/lang/String;
+    invoke-static {p1}, Lia/c;->d(Lcom/google/gson/JsonElement;)Lia/c;
 
+    .line 24
     .line 25
     .line 26
-    if-nez v3, :cond_3
+    move-result-object p1
 
     .line 27
-    .line 28
-    if-eqz v1, :cond_4
+    invoke-virtual {p1}, Lia/c;->c()Lnet/lenni0451/commons/gson/elements/GsonObject;
 
+    .line 28
     .line 29
     .line 30
-    goto :goto_0
+    move-result-object p1
 
     .line 31
-    :cond_3
-    invoke-virtual {v3, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    new-instance v0, Lrb/d;
 
     .line 32
     .line 33
-    .line 34
-    move-result v1
+    const-string v1, "id"
 
+    .line 34
     .line 35
-    if-nez v1, :cond_4
+    invoke-virtual {p1, v1}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
     .line 36
     .line 37
-    :goto_0
-    return v2
-
     .line 38
-    :cond_4
-    iget-object p1, p1, Lsb/c;->c:Ljava/lang/String;
+    move-result-object v1
 
     .line 39
+    const-string v2, "settings"
+
     .line 40
-    iget-object v1, p0, Lsb/c;->c:Ljava/lang/String;
-
     .line 41
-    .line 42
-    if-nez v1, :cond_5
+    invoke-virtual {p1, v2}, Lnet/lenni0451/commons/gson/elements/GsonObject;->l(Ljava/lang/String;)Lia/b;
 
+    .line 42
     .line 43
     .line 44
-    if-eqz p1, :cond_6
+    move-result-object p1
 
     .line 45
+    invoke-interface {p1}, Ljava/lang/Iterable;->spliterator()Ljava/util/Spliterator;
+
     .line 46
-    goto :goto_1
-
     .line 47
-    :cond_5
-    invoke-virtual {v1, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
     .line 48
+    move-result-object p1
+
     .line 49
+    invoke-static {p1, p2}, Ljava/util/stream/StreamSupport;->stream(Ljava/util/Spliterator;Z)Ljava/util/stream/Stream;
+
     .line 50
-    move-result p1
-
     .line 51
-    if-nez p1, :cond_6
-
     .line 52
+    move-result-object p1
+
     .line 53
-    :goto_1
-    return v2
+    new-instance p2, Lia/d;
 
     .line 54
-    :cond_6
-    return v0
-.end method
+    .line 55
+    const/16 v2, 0x1a
 
-.method public final hashCode()I
-    .locals 5
+    .line 56
+    .line 57
+    invoke-direct {p2, v2}, Lia/d;-><init>(I)V
 
-    .line 1
-    const/16 v0, 0x20
+    .line 58
+    .line 59
+    .line 60
+    invoke-interface {p1, p2}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
 
-    .line 2
-    .line 3
-    iget-wide v1, p0, Lsb/c;->a:J
+    .line 61
+    .line 62
+    .line 63
+    move-result-object p1
 
-    .line 4
-    .line 5
-    ushr-long v3, v1, v0
+    .line 64
+    new-instance p2, Lia/d;
 
-    .line 6
-    .line 7
-    xor-long v0, v3, v1
+    .line 65
+    .line 66
+    const/16 v2, 0x1b
 
-    .line 8
-    .line 9
-    long-to-int v0, v0
+    .line 67
+    .line 68
+    invoke-direct {p2, v2}, Lia/d;-><init>(I)V
 
-    .line 10
-    const/16 v1, 0x3b
+    .line 69
+    .line 70
+    .line 71
+    new-instance v2, Lia/d;
 
-    .line 11
-    .line 12
-    add-int/2addr v0, v1
+    .line 72
+    .line 73
+    const/16 v3, 0x1c
 
-    .line 13
-    mul-int/2addr v0, v1
+    .line 74
+    .line 75
+    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
 
-    .line 14
-    const/16 v2, 0x2b
+    .line 76
+    .line 77
+    .line 78
+    invoke-static {p2, v2}, Ljava/util/stream/Collectors;->toMap(Ljava/util/function/Function;Ljava/util/function/Function;)Ljava/util/stream/Collector;
 
-    .line 15
-    .line 16
-    iget-object v3, p0, Lsb/c;->b:Ljava/lang/String;
+    .line 79
+    .line 80
+    .line 81
+    move-result-object p2
 
-    .line 17
-    .line 18
-    if-nez v3, :cond_0
+    .line 82
+    invoke-interface {p1, p2}, Ljava/util/stream/Stream;->collect(Ljava/util/stream/Collector;)Ljava/lang/Object;
 
-    .line 19
-    .line 20
-    move v3, v2
+    .line 83
+    .line 84
+    .line 85
+    move-result-object p1
 
-    .line 21
-    goto :goto_0
+    .line 86
+    check-cast p1, Ljava/util/Map;
 
-    .line 22
+    .line 87
+    .line 88
+    invoke-direct {v0, v1, p1}, Lrb/d;-><init>(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 89
+    .line 90
+    .line 91
+    return-object v0
+
+    .line 92
     :cond_0
-    invoke-virtual {v3}, Ljava/lang/Object;->hashCode()I
+    new-instance p2, Ljava/lang/IllegalStateException;
 
-    .line 23
-    .line 24
-    .line 25
-    move-result v3
-
-    .line 26
-    :goto_0
-    add-int/2addr v0, v3
-
-    .line 27
-    mul-int/2addr v0, v1
-
-    .line 28
-    iget-object v1, p0, Lsb/c;->c:Ljava/lang/String;
-
-    .line 29
-    .line 30
-    if-nez v1, :cond_1
-
-    .line 31
-    .line 32
-    goto :goto_1
-
-    .line 33
-    :cond_1
-    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
-
-    .line 34
-    .line 35
-    .line 36
-    move-result v2
-
-    .line 37
-    :goto_1
-    add-int/2addr v0, v2
-
-    .line 38
-    return v0
-.end method
-
-.method public final toString()Ljava/lang/String;
-    .locals 3
-
-    .line 1
+    .line 93
+    .line 94
     new-instance v0, Ljava/lang/StringBuilder;
 
-    .line 2
-    .line 3
-    const-string v1, "XblTitleToken(expireTimeMs="
+    .line 95
+    .line 96
+    const-string v1, "Expected 1 profile user, but got "
 
-    .line 4
-    .line 5
+    .line 97
+    .line 98
     invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
-    .line 6
-    .line 7
-    .line 8
-    iget-wide v1, p0, Lsb/c;->a:J
+    .line 99
+    .line 100
+    .line 101
+    iget-object p1, p1, Lcom/google/gson/JsonArray;->c:Ljava/util/ArrayList;
 
-    .line 9
-    .line 10
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+    .line 102
+    .line 103
+    invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
 
-    .line 11
-    .line 12
-    .line 13
-    const-string v1, ", token="
+    .line 104
+    .line 105
+    .line 106
+    move-result p1
 
-    .line 14
-    .line 15
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 107
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
-    .line 16
-    .line 17
-    .line 18
-    iget-object v1, p0, Lsb/c;->b:Ljava/lang/String;
+    .line 108
+    .line 109
+    .line 110
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
-    .line 19
-    .line 20
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 111
+    .line 112
+    .line 113
+    move-result-object p1
 
-    .line 21
-    .line 22
-    .line 23
-    const-string v1, ", titleId="
+    .line 114
+    invoke-direct {p2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    .line 24
-    .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    .line 28
-    iget-object v1, p0, Lsb/c;->c:Ljava/lang/String;
-
-    .line 29
-    .line 30
-    const-string v2, ")"
-
-    .line 31
-    .line 32
-    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 33
-    .line 34
-    .line 35
-    move-result-object v0
-
-    .line 36
-    return-object v0
+    .line 115
+    .line 116
+    .line 117
+    throw p2
 .end method

@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,21 +8,21 @@
 
 .field public final loadingBar:Landroid/widget/ProgressBar;
 
-.field public final logoGlow:Landroid/view/View;
-
-.field public final orbitDot:Landroid/view/View;
-
-.field public final orbitRing:Landroid/view/View;
-
 .field private final rootView:Landroidx/constraintlayout/widget/ConstraintLayout;
+
+.field public final splashBrand:Landroid/widget/LinearLayout;
+
+.field public final splashFooter:Landroid/widget/LinearLayout;
 
 .field public final tvAppName:Landroid/widget/TextView;
 
 .field public final tvPreparing:Landroid/widget/TextView;
 
+.field public final tvVersion:Landroid/widget/TextView;
+
 
 # direct methods
-.method private constructor <init>(Landroidx/constraintlayout/widget/ConstraintLayout;Landroid/widget/ImageView;Landroid/widget/ProgressBar;Landroid/view/View;Landroid/view/View;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroidx/constraintlayout/widget/ConstraintLayout;Landroid/widget/ImageView;Landroid/widget/ProgressBar;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -43,23 +43,23 @@
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->splashBrand:Landroid/widget/LinearLayout;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->splashFooter:Landroid/widget/LinearLayout;
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
 
     .line 15
     .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
 
     .line 17
     .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvVersion:Landroid/widget/TextView;
 
     .line 19
     .line 20
@@ -74,7 +74,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -97,7 +97,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 15
     .line 16
@@ -116,157 +116,178 @@
 
     .line 22
     .line 23
-    sget v0, Lorg/levimc/launcher/R$id;->logoGlow:I
+    sget v0, Lorg/levimc/launcher/R$id;->splash_brand:I
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 26
     .line 27
     .line 28
-    move-result-object v6
+    move-result-object v1
 
     .line 29
-    if-eqz v6, :cond_0
+    move-object v6, v1
 
     .line 30
+    check-cast v6, Landroid/widget/LinearLayout;
+
     .line 31
-    sget v0, Lorg/levimc/launcher/R$id;->orbitDot:I
-
     .line 32
-    .line 33
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v6, :cond_0
 
+    .line 33
     .line 34
+    sget v0, Lorg/levimc/launcher/R$id;->splash_footer:I
+
     .line 35
     .line 36
-    move-result-object v7
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 37
-    if-eqz v7, :cond_0
-
     .line 38
     .line 39
-    sget v0, Lorg/levimc/launcher/R$id;->orbitRing:I
+    move-result-object v1
 
     .line 40
+    move-object v7, v1
+
     .line 41
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    check-cast v7, Landroid/widget/LinearLayout;
 
     .line 42
     .line 43
-    .line 44
-    move-result-object v8
+    if-eqz v7, :cond_0
 
+    .line 44
     .line 45
-    if-eqz v8, :cond_0
+    sget v0, Lorg/levimc/launcher/R$id;->tvAppName:I
 
     .line 46
     .line 47
-    sget v0, Lorg/levimc/launcher/R$id;->tvAppName:I
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 48
     .line 49
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
     .line 50
-    .line 51
-    .line 52
     move-result-object v1
 
-    .line 53
-    move-object v9, v1
+    .line 51
+    move-object v8, v1
 
+    .line 52
+    check-cast v8, Landroid/widget/TextView;
+
+    .line 53
     .line 54
-    check-cast v9, Landroid/widget/TextView;
+    if-eqz v8, :cond_0
 
     .line 55
     .line 56
-    if-eqz v9, :cond_0
+    sget v0, Lorg/levimc/launcher/R$id;->tvPreparing:I
 
     .line 57
     .line 58
-    sget v0, Lorg/levimc/launcher/R$id;->tvPreparing:I
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 59
     .line 60
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
     .line 61
-    .line 62
-    .line 63
     move-result-object v1
 
-    .line 64
-    move-object v10, v1
+    .line 62
+    move-object v9, v1
 
+    .line 63
+    check-cast v9, Landroid/widget/TextView;
+
+    .line 64
     .line 65
-    check-cast v10, Landroid/widget/TextView;
+    if-eqz v9, :cond_0
 
     .line 66
     .line 67
-    if-eqz v10, :cond_0
+    sget v0, Lorg/levimc/launcher/R$id;->tvVersion:I
 
     .line 68
     .line 69
-    new-instance v2, Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 70
     .line 71
-    move-object v3, p0
-
     .line 72
-    check-cast v3, Landroidx/constraintlayout/widget/ConstraintLayout;
+    move-result-object v1
 
     .line 73
+    move-object v10, v1
+
     .line 74
-    invoke-direct/range {v2 .. v10}, Lorg/levimc/launcher/databinding/ActivitySplashBinding;-><init>(Landroidx/constraintlayout/widget/ConstraintLayout;Landroid/widget/ImageView;Landroid/widget/ProgressBar;Landroid/view/View;Landroid/view/View;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/TextView;)V
+    check-cast v10, Landroid/widget/TextView;
 
     .line 75
     .line 76
-    .line 77
-    return-object v2
+    if-eqz v10, :cond_0
 
+    .line 77
     .line 78
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+    new-instance v2, Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
     .line 79
     .line 80
+    move-object v3, p0
+
     .line 81
-    move-result-object p0
+    check-cast v3, Landroidx/constraintlayout/widget/ConstraintLayout;
 
     .line 82
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
-
     .line 83
+    invoke-direct/range {v2 .. v10}, Lorg/levimc/launcher/databinding/ActivitySplashBinding;-><init>(Landroidx/constraintlayout/widget/ConstraintLayout;Landroid/widget/ImageView;Landroid/widget/ProgressBar;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
+
     .line 84
     .line 85
-    move-result-object p0
-
     .line 86
-    new-instance v0, Ljava/lang/NullPointerException;
+    return-object v2
 
     .line 87
-    .line 88
-    const-string v1, "Missing required view with ID: "
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
 
+    .line 88
     .line 89
     .line 90
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 91
-    .line 92
-    .line 93
     move-result-object p0
 
+    .line 91
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 92
+    .line 93
     .line 94
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+    move-result-object p0
 
     .line 95
+    new-instance v0, Ljava/lang/NullPointerException;
+
     .line 96
     .line 97
+    const-string v1, "Missing required view with ID: "
+
+    .line 98
+    .line 99
+    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 100
+    .line 101
+    .line 102
+    move-result-object p0
+
+    .line 103
+    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 104
+    .line 105
+    .line 106
     throw v0
 .end method
 

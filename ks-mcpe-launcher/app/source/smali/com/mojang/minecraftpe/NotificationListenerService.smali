@@ -1,6 +1,6 @@
 .class public Lcom/mojang/minecraftpe/NotificationListenerService;
 .super Lcom/google/firebase/messaging/FirebaseMessagingService;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -1236,7 +1236,7 @@
 
     .line 38
     .line 39
-    new-instance v3, Lk6/h;
+    new-instance v3, Lm6/h;
 
     .line 40
     .line 41
@@ -1249,7 +1249,7 @@
     const/4 v6, 0x0
 
     .line 44
-    invoke-direct/range {v3 .. v10}, Lk6/h;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct/range {v3 .. v10}, Lm6/h;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 45
     .line 46
@@ -1258,7 +1258,7 @@
 
     .line 48
     .line 49
-    invoke-static {v1, v0, v3}, Lcom/google/firebase/FirebaseApp;->k(Landroid/content/Context;Ljava/lang/String;Lk6/h;)Lcom/google/firebase/FirebaseApp;
+    invoke-static {v1, v0, v3}, Lcom/google/firebase/FirebaseApp;->k(Landroid/content/Context;Ljava/lang/String;Lm6/h;)Lcom/google/firebase/FirebaseApp;
 
     .line 50
     .line 51
@@ -1530,7 +1530,7 @@
     invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 21
-    invoke-static {v0, v1, p1}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, p1}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 
@@ -2036,15 +2036,15 @@
 
     .line 16
     .line 17
-    new-instance v1, Landroidx/lifecycle/z;
+    new-instance v1, La6/d;
 
     .line 18
     .line 19
-    const/16 v2, 0xb
+    const/16 v2, 0xf
 
     .line 20
     .line 21
-    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v2}, La6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 22
     .line 23
@@ -2231,7 +2231,7 @@
 
     .line 79
     .line 80
-    invoke-static {v0, p0, v1}, Ln5/h;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p0, v1}, Lu7/d;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 81
     .line 82

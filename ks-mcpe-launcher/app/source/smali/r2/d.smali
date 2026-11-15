@@ -1,6 +1,6 @@
 .class public final Lr2/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,7 +8,7 @@
 
 .field public final b:[I
 
-.field public final c:Lo7/e;
+.field public final c:Lq7/e;
 
 .field public d:Ljava/nio/ByteBuffer;
 
@@ -46,7 +46,7 @@
 
 
 # direct methods
-.method public constructor <init>(Lo7/e;Lr2/b;Ljava/nio/ByteBuffer;I)V
+.method public constructor <init>(Lq7/e;Lr2/b;Ljava/nio/ByteBuffer;I)V
     .locals 1
 
     .line 1
@@ -75,7 +75,7 @@
 
     .line 13
     .line 14
-    iput-object p1, p0, Lr2/d;->c:Lo7/e;
+    iput-object p1, p0, Lr2/d;->c:Lq7/e;
 
     .line 15
     .line 16
@@ -259,18 +259,18 @@
 
     .line 100
     .line 101
-    iget-object p1, p0, Lr2/d;->c:Lo7/e;
+    iget-object p1, p0, Lr2/d;->c:Lq7/e;
 
     .line 102
     .line 103
     mul-int/2addr p3, p2
 
     .line 104
-    iget-object p1, p1, Lo7/e;->h:Ljava/lang/Object;
+    iget-object p1, p1, Lq7/e;->h:Ljava/lang/Object;
 
     .line 105
     .line 106
-    check-cast p1, Lqf/a;
+    check-cast p1, Lig/a;
 
     .line 107
     .line 108
@@ -290,7 +290,7 @@
 
     .line 114
     .line 115
-    invoke-virtual {p1, p3, p2}, Lqf/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {p1, p3, p2}, Lig/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
 
     .line 116
     .line 117
@@ -307,7 +307,7 @@
 
     .line 122
     .line 123
-    iget-object p1, p0, Lr2/d;->c:Lo7/e;
+    iget-object p1, p0, Lr2/d;->c:Lq7/e;
 
     .line 124
     .line 125
@@ -322,11 +322,11 @@
     mul-int/2addr p2, p3
 
     .line 130
-    iget-object p1, p1, Lo7/e;->h:Ljava/lang/Object;
+    iget-object p1, p1, Lq7/e;->h:Ljava/lang/Object;
 
     .line 131
     .line 132
-    check-cast p1, Lqf/a;
+    check-cast p1, Lig/a;
 
     .line 133
     .line 134
@@ -346,7 +346,7 @@
 
     .line 140
     .line 141
-    invoke-virtual {p1, p2, p3}, Lqf/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {p1, p2, p3}, Lig/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
 
     .line 142
     .line 143
@@ -460,11 +460,11 @@
     .line 16
     .line 17
     :goto_1
-    iget-object v1, p0, Lr2/d;->c:Lo7/e;
+    iget-object v1, p0, Lr2/d;->c:Lq7/e;
 
     .line 18
     .line 19
-    iget-object v1, v1, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v1, v1, Lq7/e;->d:Ljava/lang/Object;
 
     .line 20
     .line 21
@@ -480,7 +480,7 @@
 
     .line 26
     .line 27
-    invoke-interface {v1, v2, v3, v0}, Lv2/a;->a(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    invoke-interface {v1, v2, v3, v0}, Lv2/a;->b(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     .line 28
     .line 29
@@ -675,15 +675,15 @@
 
     .line 81
     .line 82
-    iget-object v2, p0, Lr2/d;->c:Lo7/e;
+    iget-object v2, p0, Lr2/d;->c:Lq7/e;
 
     .line 83
     .line 84
-    iget-object v2, v2, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v2, v2, Lq7/e;->h:Ljava/lang/Object;
 
     .line 85
     .line 86
-    check-cast v2, Lqf/a;
+    check-cast v2, Lig/a;
 
     .line 87
     .line 88
@@ -707,7 +707,7 @@
 
     .line 96
     .line 97
-    invoke-virtual {v2, v7, v8}, Lqf/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {v2, v7, v8}, Lig/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
 
     .line 98
     .line 99
@@ -1148,7 +1148,7 @@
 
     .line 6
     .line 7
-    iget-object v3, v0, Lr2/d;->c:Lo7/e;
+    iget-object v3, v0, Lr2/d;->c:Lq7/e;
 
     .line 8
     .line 9
@@ -1171,7 +1171,7 @@
 
     .line 17
     .line 18
-    iget-object v7, v3, Lo7/e;->d:Ljava/lang/Object;
+    iget-object v7, v3, Lq7/e;->d:Ljava/lang/Object;
 
     .line 19
     .line 20
@@ -1179,7 +1179,7 @@
 
     .line 21
     .line 22
-    invoke-interface {v7, v5}, Lv2/a;->b(Landroid/graphics/Bitmap;)V
+    invoke-interface {v7, v5}, Lv2/a;->d(Landroid/graphics/Bitmap;)V
 
     .line 23
     .line 24
@@ -1453,11 +1453,11 @@
     .line 144
     .line 145
     :cond_8
-    iget-object v3, v3, Lo7/e;->h:Ljava/lang/Object;
+    iget-object v3, v3, Lq7/e;->h:Ljava/lang/Object;
 
     .line 146
     .line 147
-    check-cast v3, Lqf/a;
+    check-cast v3, Lig/a;
 
     .line 148
     .line 149
@@ -1477,7 +1477,7 @@
 
     .line 155
     .line 156
-    invoke-virtual {v3, v2, v5}, Lqf/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {v3, v2, v5}, Lig/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
 
     .line 157
     .line 158

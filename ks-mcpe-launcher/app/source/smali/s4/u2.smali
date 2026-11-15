@@ -1,57 +1,44 @@
-.class public final synthetic Ls4/u2;
+.class public interface abstract Ls4/u2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ljava/util/function/Function;
-
-
-# static fields
-.field public static final synthetic a:Ls4/u2;
-
-
-# direct methods
-.method public static synthetic constructor <clinit>()V
-    .locals 1
-
-    .line 1
-    new-instance v0, Ls4/u2;
-
-    .line 2
-    .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    sput-object v0, Ls4/u2;->a:Ls4/u2;
-
-    .line 7
-    .line 8
-    return-void
-.end method
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # virtual methods
-.method public final synthetic apply(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 2
+.method public abstract a(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+.end method
 
-    .line 1
-    check-cast p1, Ls4/c4;
+.method public abstract b(Landroid/os/Bundle;)V
+.end method
 
-    .line 2
-    .line 3
-    iget-wide v0, p1, Ls4/c4;->d:J
+.method public abstract c(Ljava/lang/String;)V
+.end method
 
-    .line 4
-    .line 5
-    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+.method public abstract d(Ljava/lang/String;)V
+.end method
 
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
+.method public abstract e(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+.end method
 
-    .line 9
-    return-object p1
+.method public abstract f(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+.end method
+
+.method public abstract g(Ljava/lang/String;)I
+.end method
+
+.method public abstract h(Ljava/lang/String;Ljava/lang/String;Z)Ljava/util/Map;
+.end method
+
+.method public abstract zzh()Ljava/lang/String;
+.end method
+
+.method public abstract zzi()Ljava/lang/String;
+.end method
+
+.method public abstract zzj()Ljava/lang/String;
+.end method
+
+.method public abstract zzk()Ljava/lang/String;
+.end method
+
+.method public abstract zzl()J
 .end method

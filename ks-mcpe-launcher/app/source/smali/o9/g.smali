@@ -1,166 +1,218 @@
-.class public final synthetic Lo9/g;
+.class public final Lo9/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Le9/o;
+.implements Ljava/io/Serializable;
 
 
 # instance fields
-.field public final synthetic c:I
-
-.field public final synthetic d:Ljava/lang/Object;
+.field public final c:Ljava/util/regex/Pattern;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
-    .locals 0
+.method public constructor <init>(Ljava/lang/String;)V
+    .locals 1
 
     .line 1
-    iput p2, p0, Lo9/g;->c:I
-
-    iput-object p1, p0, Lo9/g;->d:Ljava/lang/Object;
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>(Lw9/c;Lw9/b;)V
-    .locals 0
+    invoke-static {p1}, Ljava/util/regex/Pattern;->compile(Ljava/lang/String;)Ljava/util/regex/Pattern;
 
     .line 2
-    const/4 p2, 0x1
+    .line 3
+    .line 4
+    move-result-object p1
 
-    iput p2, p0, Lo9/g;->c:I
+    .line 5
+    const-string v0, "compile(...)"
 
+    .line 6
+    .line 7
+    invoke-static {p1, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 8
+    .line 9
+    .line 10
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lo9/g;->d:Ljava/lang/Object;
+    .line 11
+    .line 12
+    .line 13
+    iput-object p1, p0, Lo9/g;->c:Ljava/util/regex/Pattern;
 
+    .line 14
+    .line 15
     return-void
 .end method
 
 
 # virtual methods
-.method public final f(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+.method public final a(ILjava/lang/String;)Lkd/e;
+    .locals 2
 
     .line 1
-    iget v0, p0, Lo9/g;->c:I
+    const-string v0, "input"
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lo9/g;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lo9/g;->c:Ljava/util/regex/Pattern;
 
     .line 7
     .line 8
-    check-cast v0, Lw9/g;
+    invoke-virtual {v0, p2}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
 
     .line 9
     .line 10
-    check-cast p1, Ljava/lang/Throwable;
-
     .line 11
+    move-result-object v0
+
     .line 12
-    check-cast p2, Lq8/k;
+    const/4 v1, 0x0
 
     .line 13
-    .line 14
-    check-cast p3, Lkotlin/coroutines/CoroutineContext;
+    invoke-virtual {v0, v1}, Ljava/util/regex/Matcher;->useAnchoringBounds(Z)Ljava/util/regex/Matcher;
 
+    .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lw9/g;->d()V
+    move-result-object v0
 
     .line 17
-    .line 18
-    .line 19
-    :goto_0
-    sget-object p1, Lq8/k;->a:Lq8/k;
+    const/4 v1, 0x1
 
+    .line 18
+    invoke-virtual {v0, v1}, Ljava/util/regex/Matcher;->useTransparentBounds(Z)Ljava/util/regex/Matcher;
+
+    .line 19
     .line 20
     .line 21
-    return-object p1
+    move-result-object v0
 
     .line 22
-    :pswitch_0
-    iget-object v0, p0, Lo9/g;->d:Ljava/lang/Object;
+    invoke-virtual {p2}, Ljava/lang/String;->length()I
 
     .line 23
     .line 24
-    check-cast v0, Lw9/c;
-
     .line 25
+    move-result v1
+
     .line 26
-    check-cast p1, Ljava/lang/Throwable;
+    invoke-virtual {v0, p1, v1}, Ljava/util/regex/Matcher;->region(II)Ljava/util/regex/Matcher;
 
     .line 27
     .line 28
-    check-cast p2, Lq8/k;
-
     .line 29
+    move-result-object p1
+
     .line 30
-    check-cast p3, Lkotlin/coroutines/CoroutineContext;
+    invoke-virtual {p1}, Ljava/util/regex/Matcher;->lookingAt()Z
 
     .line 31
     .line 32
-    sget-object p1, Lw9/c;->X:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
-
     .line 33
+    move-result v0
+
     .line 34
-    const/4 p2, 0x0
+    if-eqz v0, :cond_0
 
     .line 35
-    invoke-virtual {p1, v0, p2}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->set(Ljava/lang/Object;Ljava/lang/Object;)V
-
     .line 36
+    new-instance v0, Lkd/e;
+
     .line 37
     .line 38
-    invoke-virtual {v0, p2}, Lw9/c;->b(Ljava/lang/Object;)V
+    invoke-direct {v0, p1, p2}, Lkd/e;-><init>(Ljava/util/regex/Matcher;Ljava/lang/CharSequence;)V
 
     .line 39
     .line 40
     .line 41
-    goto :goto_0
+    return-object v0
 
     .line 42
-    :pswitch_1
-    iget-object p2, p0, Lo9/g;->d:Ljava/lang/Object;
+    :cond_0
+    const/4 p1, 0x0
 
     .line 43
-    .line 44
-    check-cast p2, Landroidx/room/s;
+    return-object p1
+.end method
 
-    .line 45
-    .line 46
-    check-cast p1, Ljava/lang/Throwable;
+.method public final b(Ljava/lang/String;)Ljava/lang/String;
+    .locals 1
 
-    .line 47
-    .line 48
-    check-cast p3, Lkotlin/coroutines/CoroutineContext;
+    .line 1
+    const-string v0, "input"
 
-    .line 49
-    .line 50
-    invoke-virtual {p2, p1}, Landroidx/room/s;->g(Ljava/lang/Object;)Ljava/lang/Object;
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 51
-    .line 52
-    .line 53
-    goto :goto_0
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Lo9/g;->c:Ljava/util/regex/Pattern;
 
-    .line 54
-    nop
+    .line 7
+    .line 8
+    invoke-virtual {v0, p1}, Ljava/util/regex/Pattern;->matcher(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
 
-    .line 55
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    const-string v0, ""
+
+    .line 13
+    .line 14
+    invoke-virtual {p1, v0}, Ljava/util/regex/Matcher;->replaceAll(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object p1
+
+    .line 18
+    const-string v0, "replaceAll(...)"
+
+    .line 19
+    .line 20
+    invoke-static {p1, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 21
+    .line 22
+    .line 23
+    return-object p1
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lo9/g;->c:Ljava/util/regex/Pattern;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/util/regex/Pattern;->toString()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    const-string v1, "toString(...)"
+
+    .line 8
+    .line 9
+    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 10
+    .line 11
+    .line 12
+    return-object v0
 .end method

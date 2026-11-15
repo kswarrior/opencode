@@ -1,0 +1,39 @@
+.class public Lorg/spongycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi$DefPKCS12KeyStore;
+.super Lorg/spongycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lorg/spongycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x9
+    name = "DefPKCS12KeyStore"
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 3
+
+    .line 1
+    sget-object v0, Lqf/n;->C0:Lye/n;
+
+    .line 2
+    .line 3
+    sget-object v1, Lqf/n;->F0:Lye/n;
+
+    .line 4
+    .line 5
+    const/4 v2, 0x0
+
+    .line 6
+    invoke-direct {p0, v2, v0, v1}, Lorg/spongycastle/jcajce/provider/keystore/pkcs12/PKCS12KeyStoreSpi;-><init>(Ljava/security/Provider;Lye/n;Lye/n;)V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+.end method

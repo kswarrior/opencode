@@ -1,13 +1,13 @@
 .class public final Lcom/google/android/gms/internal/measurement/u4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/google/android/gms/internal/measurement/t4;
 
 
 # static fields
-.field public static final a:Lcom/google/android/gms/internal/measurement/e6;
+.field public static final a:Lcom/google/android/gms/internal/measurement/h6;
 
 
 # direct methods
@@ -15,26 +15,25 @@
     .locals 3
 
     .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/c3;->c:Lcom/google/android/gms/internal/measurement/o6;
+    sget-object v0, Lcom/google/android/gms/internal/measurement/f3;->c:Lcom/google/android/gms/internal/measurement/r6;
 
     .line 2
     .line 3
-    new-instance v1, Lcom/google/android/gms/internal/measurement/e6;
+    new-instance v1, Lcom/google/android/gms/internal/measurement/h6;
 
     .line 4
     .line 5
-    const/16 v2, 0xb
+    const/4 v2, 0x6
 
     .line 6
-    .line 7
-    invoke-direct {v1, v0, v2}, Lcom/google/android/gms/internal/measurement/e6;-><init>(Lcom/google/android/gms/internal/measurement/o6;I)V
+    invoke-direct {v1, v0, v2}, Lcom/google/android/gms/internal/measurement/h6;-><init>(Lcom/google/android/gms/internal/measurement/r6;I)V
 
+    .line 7
     .line 8
     .line 9
-    .line 10
-    sput-object v1, Lcom/google/android/gms/internal/measurement/u4;->a:Lcom/google/android/gms/internal/measurement/e6;
+    sput-object v1, Lcom/google/android/gms/internal/measurement/u4;->a:Lcom/google/android/gms/internal/measurement/h6;
 
+    .line 10
     .line 11
-    .line 12
     return-void
 .end method

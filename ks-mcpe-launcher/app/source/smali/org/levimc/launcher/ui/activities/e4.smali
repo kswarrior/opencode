@@ -1,67 +1,51 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/e4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/util/function/Consumer;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final synthetic b:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-.field public final synthetic c:Z
-
-.field public final synthetic d:[B
+.field public final synthetic h:Lorg/levimc/launcher/core/content/world/WorldOperations$Region;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B)V
-    .locals 1
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;I)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x1
-
-    iput v0, p0, Lorg/levimc/launcher/ui/activities/e4;->a:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/e4;->b:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
-    iput-boolean p2, p0, Lorg/levimc/launcher/ui/activities/e4;->c:Z
-
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/e4;->d:[B
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
-    .locals 1
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/e4;->c:I
 
     .line 2
-    const/4 v0, 0x0
+    .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/e4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-    iput v0, p0, Lorg/levimc/launcher/ui/activities/e4;->a:I
+    .line 4
+    .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/e4;->h:Lorg/levimc/launcher/core/content/world/WorldOperations$Region;
 
+    .line 6
+    .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/e4;->b:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/e4;->d:[B
-
-    iput-boolean p3, p0, Lorg/levimc/launcher/ui/activities/e4;->c:Z
-
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final accept(Ljava/lang/Object;)V
-    .locals 3
+.method public final run()V
+    .locals 2
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/e4;->a:I
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/e4;->c:I
 
     .line 2
     .line 3
@@ -70,58 +54,42 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e4;->d:[B
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
     .line 7
     .line 8
-    check-cast p1, [B
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e4;->h:Lorg/levimc/launcher/core/content/world/WorldOperations$Region;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e4;->b:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->N0(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;)V
 
     .line 11
     .line 12
-    iget-boolean v2, p0, Lorg/levimc/launcher/ui/activities/e4;->c:Z
-
     .line 13
+    return-void
+
     .line 14
-    invoke-static {v1, v2, v0, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->h3(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Z[B[B)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/e4;->d:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
     .line 15
     .line 16
-    .line 17
-    return-void
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e4;->h:Lorg/levimc/launcher/core/content/world/WorldOperations$Region;
 
+    .line 17
     .line 18
-    :pswitch_0
-    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/e4;->c:Z
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->m1(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Lorg/levimc/launcher/core/content/world/WorldOperations$Region;)V
 
     .line 19
     .line 20
-    check-cast p1, [Ljava/lang/Object;
-
     .line 21
-    .line 22
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/e4;->b:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
-    .line 23
-    .line 24
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/e4;->d:[B
-
-    .line 25
-    .line 26
-    invoke-static {v1, v2, v0, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->f2(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ[Ljava/lang/Object;)V
-
-    .line 27
-    .line 28
-    .line 29
     return-void
 
-    .line 30
+    .line 22
     nop
 
-    .line 31
+    .line 23
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

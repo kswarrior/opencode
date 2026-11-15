@@ -1,13 +1,13 @@
 .class public abstract Lcom/google/gson/JsonElement;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # virtual methods
 .method public abstract c()Lcom/google/gson/JsonElement;
 .end method
 
-.method public d()Z
+.method public d()Ljava/math/BigDecimal;
     .locals 2
 
     .line 1
@@ -39,7 +39,7 @@
     throw v0
 .end method
 
-.method public e()D
+.method public e()Z
     .locals 2
 
     .line 1
@@ -71,7 +71,7 @@
     throw v0
 .end method
 
-.method public h()I
+.method public h()D
     .locals 2
 
     .line 1
@@ -103,7 +103,39 @@
     throw v0
 .end method
 
-.method public final j()Lcom/google/gson/JsonArray;
+.method public j()I
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    invoke-virtual {v1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v1
+
+    .line 11
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    .line 12
+    .line 13
+    .line 14
+    throw v0
+.end method
+
+.method public final k()Lcom/google/gson/JsonArray;
     .locals 3
 
     .line 1
@@ -164,7 +196,7 @@
     throw v0
 .end method
 
-.method public final k()Lcom/google/gson/JsonObject;
+.method public final l()Lcom/google/gson/JsonObject;
     .locals 3
 
     .line 1
@@ -225,11 +257,11 @@
     throw v0
 .end method
 
-.method public final l()Le8/n;
+.method public final m()Lg8/n;
     .locals 3
 
     .line 1
-    instance-of v0, p0, Le8/n;
+    instance-of v0, p0, Lg8/n;
 
     .line 2
     .line 3
@@ -240,7 +272,7 @@
     move-object v0, p0
 
     .line 6
-    check-cast v0, Le8/n;
+    check-cast v0, Lg8/n;
 
     .line 7
     .line 8
@@ -286,7 +318,7 @@
     throw v0
 .end method
 
-.method public m()J
+.method public n()J
     .locals 2
 
     .line 1
@@ -318,7 +350,7 @@
     throw v0
 .end method
 
-.method public n()Ljava/lang/String;
+.method public o()Ljava/lang/String;
     .locals 2
 
     .line 1
@@ -368,7 +400,7 @@
 
     .line 7
     .line 8
-    invoke-static {v0}, Lg8/g;->n(Ljava/lang/Appendable;)Ljava/io/Writer;
+    invoke-static {v0}, Li8/h;->n(Ljava/lang/Appendable;)Ljava/io/Writer;
 
     .line 9
     .line 10
@@ -384,11 +416,11 @@
     const/4 v2, 0x1
 
     .line 16
-    iput v2, v1, Lcom/google/gson/stream/JsonWriter;->X:I
+    iput v2, v1, Lcom/google/gson/stream/JsonWriter;->y:I
 
     .line 17
     .line 18
-    sget-object v2, Lh8/q;->a:Lh8/q;
+    sget-object v2, Lj8/q;->a:Lj8/q;
 
     .line 19
     .line 20
@@ -397,7 +429,7 @@
     .line 21
     .line 22
     .line 23
-    invoke-static {p0, v1}, Lh8/q;->c(Lcom/google/gson/JsonElement;Lcom/google/gson/stream/JsonWriter;)V
+    invoke-static {p0, v1}, Lj8/q;->c(Lcom/google/gson/JsonElement;Lcom/google/gson/stream/JsonWriter;)V
 
     .line 24
     .line 25

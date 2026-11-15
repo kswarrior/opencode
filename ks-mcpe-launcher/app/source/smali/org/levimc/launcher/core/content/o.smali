@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/content/o;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,11 +13,11 @@
 
 .field public final synthetic h:I
 
-.field public final synthetic q:J
+.field public final synthetic p:J
 
-.field public final synthetic w:Ljava/util/function/Consumer;
+.field public final synthetic q:Ljava/util/function/Consumer;
 
-.field public final synthetic x:Ljava/lang/Object;
+.field public final synthetic w:Ljava/lang/Object;
 
 
 # direct methods
@@ -42,15 +42,15 @@
 
     .line 9
     .line 10
-    iput-wide p5, p0, Lorg/levimc/launcher/core/content/o;->q:J
+    iput-wide p5, p0, Lorg/levimc/launcher/core/content/o;->p:J
 
     .line 11
     .line 12
-    iput-object p7, p0, Lorg/levimc/launcher/core/content/o;->w:Ljava/util/function/Consumer;
+    iput-object p7, p0, Lorg/levimc/launcher/core/content/o;->q:Ljava/util/function/Consumer;
 
     .line 13
     .line 14
-    iput-object p8, p0, Lorg/levimc/launcher/core/content/o;->x:Ljava/lang/Object;
+    iput-object p8, p0, Lorg/levimc/launcher/core/content/o;->w:Ljava/lang/Object;
 
     .line 15
     .line 16
@@ -63,11 +63,11 @@
     .locals 8
 
     .line 1
-    iget-object v6, p0, Lorg/levimc/launcher/core/content/o;->w:Ljava/util/function/Consumer;
+    iget-object v6, p0, Lorg/levimc/launcher/core/content/o;->q:Ljava/util/function/Consumer;
 
     .line 2
     .line 3
-    iget-object v7, p0, Lorg/levimc/launcher/core/content/o;->x:Ljava/lang/Object;
+    iget-object v7, p0, Lorg/levimc/launcher/core/content/o;->w:Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -83,7 +83,7 @@
 
     .line 10
     .line 11
-    iget-wide v4, p0, Lorg/levimc/launcher/core/content/o;->q:J
+    iget-wide v4, p0, Lorg/levimc/launcher/core/content/o;->p:J
 
     .line 12
     .line 13

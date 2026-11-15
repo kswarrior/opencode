@@ -1,196 +1,270 @@
-.class public final synthetic Lp9/c;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final enum Lp9/c;
+.super Ljava/lang/Enum;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
-# interfaces
-.implements Lo9/g0;
+
+# static fields
+.field public static final enum d:Lp9/c;
+
+.field public static final enum h:Lp9/c;
+
+.field public static final enum p:Lp9/c;
+
+.field public static final enum q:Lp9/c;
+
+.field public static final enum w:Lp9/c;
+
+.field public static final enum x:Lp9/c;
+
+.field public static final synthetic y:[Lp9/c;
 
 
 # instance fields
-.field public final synthetic c:I
-
-.field public final synthetic d:Ljava/lang/Object;
-
-.field public final synthetic h:Ljava/lang/Object;
+.field public final c:Ljava/util/concurrent/TimeUnit;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 10
 
     .line 1
-    iput p3, p0, Lp9/c;->c:I
+    new-instance v0, Lp9/c;
 
     .line 2
     .line 3
-    iput-object p1, p0, Lp9/c;->d:Ljava/lang/Object;
+    const/4 v1, 0x0
 
     .line 4
-    .line 5
-    iput-object p2, p0, Lp9/c;->h:Ljava/lang/Object;
+    sget-object v2, Ljava/util/concurrent/TimeUnit;->NANOSECONDS:Ljava/util/concurrent/TimeUnit;
 
-    .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 8
-    .line 9
-    .line 10
-    return-void
-.end method
-
-
-# virtual methods
-.method public final dispose()V
-    .locals 6
-
-    .line 1
-    iget v0, p0, Lp9/c;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lp9/c;->d:Ljava/lang/Object;
+    const-string v3, "NANOSECONDS"
 
     .line 7
     .line 8
-    check-cast v0, Ljava/lang/String;
+    invoke-direct {v0, v3, v1, v2}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
 
     .line 9
     .line 10
-    iget-object v1, p0, Lp9/c;->h:Ljava/lang/Object;
-
     .line 11
+    sput-object v0, Lp9/c;->d:Lp9/c;
+
     .line 12
-    check-cast v1, Ls1/b;
-
     .line 13
-    .line 14
-    sget-object v2, Lw0/v0;->b:Ljava/lang/Object;
+    new-instance v1, Lp9/c;
 
+    .line 14
     .line 15
+    const/4 v2, 0x1
+
     .line 16
-    monitor-enter v2
+    sget-object v3, Ljava/util/concurrent/TimeUnit;->MICROSECONDS:Ljava/util/concurrent/TimeUnit;
 
     .line 17
-    :try_start_0
-    sget-object v3, Lw0/v0;->c:Ljava/util/LinkedHashMap;
-
     .line 18
-    .line 19
-    invoke-virtual {v3, v0}, Ljava/util/LinkedHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    const-string v4, "MICROSECONDS"
 
+    .line 19
     .line 20
+    invoke-direct {v1, v4, v2, v3}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
+
     .line 21
     .line 22
-    move-result-object v4
-
     .line 23
-    check-cast v4, Lw0/v0;
+    new-instance v2, Lp9/c;
 
     .line 24
     .line 25
-    if-eqz v4, :cond_0
+    const/4 v3, 0x2
 
     .line 26
+    sget-object v4, Ljava/util/concurrent/TimeUnit;->MILLISECONDS:Ljava/util/concurrent/TimeUnit;
+
     .line 27
-    iget-object v5, v4, Lw0/v0;->a:Ljava/util/concurrent/CopyOnWriteArrayList;
-
     .line 28
-    .line 29
-    invoke-virtual {v5, v1}, Ljava/util/concurrent/CopyOnWriteArrayList;->remove(Ljava/lang/Object;)Z
+    const-string v5, "MILLISECONDS"
 
+    .line 29
     .line 30
+    invoke-direct {v2, v5, v3, v4}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
+
     .line 31
     .line 32
-    iget-object v1, v4, Lw0/v0;->a:Ljava/util/concurrent/CopyOnWriteArrayList;
-
     .line 33
-    .line 34
-    invoke-virtual {v1}, Ljava/util/concurrent/CopyOnWriteArrayList;->isEmpty()Z
+    sput-object v2, Lp9/c;->h:Lp9/c;
 
+    .line 34
     .line 35
+    new-instance v3, Lp9/c;
+
     .line 36
     .line 37
-    move-result v1
+    const/4 v4, 0x3
 
     .line 38
-    if-eqz v1, :cond_0
+    sget-object v5, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
 
     .line 39
     .line 40
-    invoke-interface {v3, v0}, Ljava/util/Map;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+    const-string v6, "SECONDS"
 
     .line 41
     .line 42
-    .line 43
-    invoke-virtual {v4}, Landroid/os/FileObserver;->stopWatching()V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    invoke-direct {v3, v6, v4, v5}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
 
+    .line 43
     .line 44
     .line 45
-    .line 46
-    goto :goto_0
+    sput-object v3, Lp9/c;->p:Lp9/c;
 
+    .line 46
     .line 47
-    :catchall_0
-    move-exception v0
+    new-instance v4, Lp9/c;
 
     .line 48
-    goto :goto_1
-
     .line 49
-    :cond_0
-    :goto_0
-    monitor-exit v2
+    const/4 v5, 0x4
 
     .line 50
-    return-void
+    sget-object v6, Ljava/util/concurrent/TimeUnit;->MINUTES:Ljava/util/concurrent/TimeUnit;
 
     .line 51
-    :goto_1
-    monitor-exit v2
-
     .line 52
-    throw v0
+    const-string v7, "MINUTES"
 
     .line 53
-    :pswitch_0
-    iget-object v0, p0, Lp9/c;->d:Ljava/lang/Object;
-
     .line 54
-    .line 55
-    check-cast v0, Lp9/d;
+    invoke-direct {v4, v7, v5, v6}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
 
+    .line 55
     .line 56
     .line 57
-    iget-object v1, p0, Lp9/c;->h:Ljava/lang/Object;
+    sput-object v4, Lp9/c;->q:Lp9/c;
 
     .line 58
     .line 59
-    check-cast v1, Lo9/k1;
+    new-instance v5, Lp9/c;
 
     .line 60
     .line 61
-    iget-object v0, v0, Lp9/d;->h:Landroid/os/Handler;
+    const/4 v6, 0x5
 
     .line 62
-    .line 63
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    sget-object v7, Ljava/util/concurrent/TimeUnit;->HOURS:Ljava/util/concurrent/TimeUnit;
 
+    .line 63
     .line 64
+    const-string v8, "HOURS"
+
     .line 65
     .line 66
-    return-void
+    invoke-direct {v5, v8, v6, v7}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
 
     .line 67
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 68
+    .line 69
+    sput-object v5, Lp9/c;->w:Lp9/c;
+
+    .line 70
+    .line 71
+    new-instance v6, Lp9/c;
+
+    .line 72
+    .line 73
+    const/4 v7, 0x6
+
+    .line 74
+    sget-object v8, Ljava/util/concurrent/TimeUnit;->DAYS:Ljava/util/concurrent/TimeUnit;
+
+    .line 75
+    .line 76
+    const-string v9, "DAYS"
+
+    .line 77
+    .line 78
+    invoke-direct {v6, v9, v7, v8}, Lp9/c;-><init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
+
+    .line 79
+    .line 80
+    .line 81
+    sput-object v6, Lp9/c;->x:Lp9/c;
+
+    .line 82
+    .line 83
+    filled-new-array/range {v0 .. v6}, [Lp9/c;
+
+    .line 84
+    .line 85
+    .line 86
+    move-result-object v0
+
+    .line 87
+    sput-object v0, Lp9/c;->y:[Lp9/c;
+
+    .line 88
+    .line 89
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/lang/String;ILjava/util/concurrent/TimeUnit;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p3, p0, Lp9/c;->c:Ljava/util/concurrent/TimeUnit;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Lp9/c;
+    .locals 1
+
+    .line 1
+    const-class v0, Lp9/c;
+
+    .line 2
+    .line 3
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    check-cast p0, Lp9/c;
+
+    .line 8
+    .line 9
+    return-object p0
+.end method
+
+.method public static values()[Lp9/c;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lp9/c;->y:[Lp9/c;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, [Lp9/c;
+
+    .line 8
+    .line 9
+    return-object v0
 .end method

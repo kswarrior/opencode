@@ -1,28 +1,28 @@
 .class public final Lv9/m;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final synthetic b:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+.field public static final synthetic e:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
 
-.field public static final synthetic c:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+.field public static final synthetic f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
 
-.field public static final synthetic d:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
-
-.field public static final synthetic e:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+.field public static final g:Ld1/p;
 
 
 # instance fields
-.field public final a:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+.field private volatile synthetic _next$volatile:Ljava/lang/Object;
 
-.field private volatile synthetic blockingTasksInBuffer$volatile:I
+.field private volatile synthetic _state$volatile:J
 
-.field private volatile synthetic consumerIndex$volatile:I
+.field public final a:I
 
-.field private volatile synthetic lastScheduledTask$volatile:Ljava/lang/Object;
+.field public final b:Z
 
-.field private volatile synthetic producerIndex$volatile:I
+.field public final c:I
+
+.field public final synthetic d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
 
 
 # direct methods
@@ -34,7 +34,7 @@
 
     .line 2
     .line 3
-    const-string v1, "lastScheduledTask$volatile"
+    const-string v1, "_next$volatile"
 
     .line 4
     .line 5
@@ -50,15 +50,15 @@
     move-result-object v0
 
     .line 11
-    sput-object v0, Lv9/m;->b:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+    sput-object v0, Lv9/m;->e:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
 
     .line 12
     .line 13
-    const-string v0, "producerIndex$volatile"
+    const-string v0, "_state$volatile"
 
     .line 14
     .line 15
-    invoke-static {v2, v0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    invoke-static {v2, v0}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
 
     .line 16
     .line 17
@@ -66,46 +66,34 @@
     move-result-object v0
 
     .line 19
-    sput-object v0, Lv9/m;->c:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    sput-object v0, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
 
     .line 20
     .line 21
-    const-string v0, "consumerIndex$volatile"
+    new-instance v0, Ld1/p;
 
     .line 22
     .line 23
-    invoke-static {v2, v0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    const-string v1, "REMOVE_FROZEN"
 
     .line 24
     .line 25
+    const/4 v2, 0x3
+
     .line 26
-    move-result-object v0
+    invoke-direct {v0, v1, v2}, Ld1/p;-><init>(Ljava/lang/String;I)V
 
     .line 27
-    sput-object v0, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
-
     .line 28
     .line 29
-    const-string v0, "blockingTasksInBuffer$volatile"
+    sput-object v0, Lv9/m;->g:Ld1/p;
 
     .line 30
     .line 31
-    invoke-static {v2, v0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
-
-    .line 32
-    .line 33
-    .line 34
-    move-result-object v0
-
-    .line 35
-    sput-object v0, Lv9/m;->e:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
-
-    .line 36
-    .line 37
     return-void
 .end method
 
-.method public constructor <init>()V
+.method public constructor <init>(IZ)V
     .locals 2
 
     .line 1
@@ -114,220 +102,1100 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    iput p1, p0, Lv9/m;->a:I
 
     .line 5
     .line 6
-    const/16 v1, 0x80
+    iput-boolean p2, p0, Lv9/m;->b:Z
 
     .line 7
     .line 8
-    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+    add-int/lit8 p2, p1, -0x1
 
     .line 9
     .line 10
-    .line 11
-    iput-object v0, p0, Lv9/m;->a:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    iput p2, p0, Lv9/m;->c:I
 
+    .line 11
     .line 12
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
     .line 13
+    .line 14
+    invoke-direct {v0, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;-><init>(I)V
+
+    .line 15
+    .line 16
+    .line 17
+    iput-object v0, p0, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 18
+    .line 19
+    const v0, 0x3fffffff    # 1.9999999f
+
+    .line 20
+    .line 21
+    .line 22
+    const-string v1, "Check failed."
+
+    .line 23
+    .line 24
+    if-gt p2, v0, :cond_1
+
+    .line 25
+    .line 26
+    and-int/2addr p1, p2
+
+    .line 27
+    if-nez p1, :cond_0
+
+    .line 28
+    .line 29
     return-void
+
+    .line 30
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 31
+    .line 32
+    invoke-direct {p1, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 33
+    .line 34
+    .line 35
+    throw p1
+
+    .line 36
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalStateException;
+
+    .line 37
+    .line 38
+    invoke-direct {p1, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 39
+    .line 40
+    .line 41
+    throw p1
 .end method
 
 
 # virtual methods
-.method public final a()Lv9/i;
-    .locals 5
+.method public final a(Ljava/lang/Object;)I
+    .locals 14
 
     .line 1
     :cond_0
-    :goto_0
-    sget-object v0, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    sget-object v0, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
 
     .line 4
     .line 5
     .line 6
-    move-result v1
+    move-result-wide v3
 
     .line 7
-    sget-object v2, Lv9/m;->c:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    const-wide/high16 v1, 0x3000000000000000L    # 1.727233711018889E-77
 
     .line 8
     .line 9
-    invoke-virtual {v2, p0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
+    and-long/2addr v1, v3
 
     .line 10
+    const-wide/16 v7, 0x0
+
     .line 11
     .line 12
-    move-result v2
+    cmp-long v1, v1, v7
 
     .line 13
-    sub-int v2, v1, v2
-
     .line 14
-    .line 15
-    const/4 v3, 0x0
+    if-eqz v1, :cond_1
 
+    .line 15
     .line 16
-    if-nez v2, :cond_1
+    const-wide/high16 v0, 0x2000000000000000L
 
     .line 17
     .line 18
-    return-object v3
+    and-long/2addr v0, v3
 
     .line 19
-    :cond_1
-    and-int/lit8 v2, v1, 0x7f
+    cmp-long p1, v0, v7
 
     .line 20
     .line 21
-    add-int/lit8 v4, v1, 0x1
+    if-eqz p1, :cond_3
 
     .line 22
     .line 23
-    invoke-virtual {v0, p0, v1, v4}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->compareAndSet(Ljava/lang/Object;II)Z
+    const/4 p1, 0x2
 
     .line 24
+    return p1
+
     .line 25
+    :cond_1
+    const-wide/32 v1, 0x3fffffff
+
     .line 26
-    move-result v0
-
     .line 27
-    if-eqz v0, :cond_0
-
     .line 28
+    and-long/2addr v1, v3
+
     .line 29
-    iget-object v0, p0, Lv9/m;->a:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    long-to-int v1, v1
 
     .line 30
-    .line 31
-    invoke-virtual {v0, v2, v3}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->getAndSet(ILjava/lang/Object;)Ljava/lang/Object;
+    const-wide v5, 0xfffffffc0000000L
 
+    .line 31
     .line 32
     .line 33
     .line 34
-    move-result-object v0
-
     .line 35
-    check-cast v0, Lv9/i;
+    and-long/2addr v5, v3
 
     .line 36
-    .line 37
-    if-nez v0, :cond_2
+    const/16 v2, 0x1e
 
+    .line 37
     .line 38
+    shr-long/2addr v5, v2
+
     .line 39
-    goto :goto_0
+    long-to-int v9, v5
 
     .line 40
-    :cond_2
-    iget-boolean v1, v0, Lv9/i;->d:Z
+    add-int/lit8 v5, v9, 0x2
 
     .line 41
     .line 42
-    if-eqz v1, :cond_3
+    iget v10, p0, Lv9/m;->c:I
 
     .line 43
     .line 44
-    sget-object v1, Lv9/m;->e:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    and-int/2addr v5, v10
 
     .line 45
-    .line 46
-    invoke-virtual {v1, p0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->decrementAndGet(Ljava/lang/Object;)I
+    and-int v6, v1, v10
 
+    .line 46
     .line 47
+    if-ne v5, v6, :cond_2
+
     .line 48
     .line 49
+    goto :goto_0
+
+    .line 50
+    :cond_2
+    iget-boolean v5, p0, Lv9/m;->b:Z
+
+    .line 51
+    .line 52
+    const v6, 0x3fffffff    # 1.9999999f
+
+    .line 53
+    .line 54
+    .line 55
+    iget-object v11, p0, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 56
+    .line 57
+    if-nez v5, :cond_4
+
+    .line 58
+    .line 59
+    and-int v5, v9, v10
+
+    .line 60
+    .line 61
+    invoke-virtual {v11, v5}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+
+    .line 62
+    .line 63
+    .line 64
+    move-result-object v5
+
+    .line 65
+    if-eqz v5, :cond_4
+
+    .line 66
+    .line 67
+    const/16 v0, 0x400
+
+    .line 68
+    .line 69
+    iget v2, p0, Lv9/m;->a:I
+
+    .line 70
+    .line 71
+    if-lt v2, v0, :cond_3
+
+    .line 72
+    .line 73
+    sub-int/2addr v9, v1
+
+    .line 74
+    and-int v0, v9, v6
+
+    .line 75
+    .line 76
+    shr-int/lit8 v1, v2, 0x1
+
+    .line 77
+    .line 78
+    if-le v0, v1, :cond_0
+
+    .line 79
+    .line 80
     :cond_3
-    return-object v0
+    :goto_0
+    const/4 p1, 0x1
+
+    .line 81
+    return p1
+
+    .line 82
+    :cond_4
+    add-int/lit8 v1, v9, 0x1
+
+    .line 83
+    .line 84
+    and-int/2addr v1, v6
+
+    .line 85
+    const-wide v5, -0xfffffffc0000001L    # -3.1050369248997324E231
+
+    .line 86
+    .line 87
+    .line 88
+    .line 89
+    .line 90
+    and-long/2addr v5, v3
+
+    .line 91
+    int-to-long v12, v1
+
+    .line 92
+    shl-long v1, v12, v2
+
+    .line 93
+    .line 94
+    or-long/2addr v5, v1
+
+    .line 95
+    sget-object v1, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 96
+    .line 97
+    move-object v2, p0
+
+    .line 98
+    invoke-virtual/range {v1 .. v6}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object;JJ)Z
+
+    .line 99
+    .line 100
+    .line 101
+    move-result v1
+
+    .line 102
+    if-eqz v1, :cond_0
+
+    .line 103
+    .line 104
+    and-int v1, v9, v10
+
+    .line 105
+    .line 106
+    invoke-virtual {v11, v1, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+
+    .line 107
+    .line 108
+    .line 109
+    move-object v1, p0
+
+    .line 110
+    :cond_5
+    invoke-virtual {v0, v1}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+
+    .line 111
+    .line 112
+    .line 113
+    move-result-wide v2
+
+    .line 114
+    const-wide/high16 v4, 0x1000000000000000L
+
+    .line 115
+    .line 116
+    and-long/2addr v2, v4
+
+    .line 117
+    cmp-long v2, v2, v7
+
+    .line 118
+    .line 119
+    if-eqz v2, :cond_7
+
+    .line 120
+    .line 121
+    invoke-virtual {v1}, Lv9/m;->c()Lv9/m;
+
+    .line 122
+    .line 123
+    .line 124
+    move-result-object v1
+
+    .line 125
+    iget-object v2, v1, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 126
+    .line 127
+    iget v3, v1, Lv9/m;->c:I
+
+    .line 128
+    .line 129
+    and-int/2addr v3, v9
+
+    .line 130
+    invoke-virtual {v2, v3}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+
+    .line 131
+    .line 132
+    .line 133
+    move-result-object v4
+
+    .line 134
+    instance-of v5, v4, Lv9/l;
+
+    .line 135
+    .line 136
+    if-eqz v5, :cond_6
+
+    .line 137
+    .line 138
+    check-cast v4, Lv9/l;
+
+    .line 139
+    .line 140
+    iget v4, v4, Lv9/l;->a:I
+
+    .line 141
+    .line 142
+    if-ne v4, v9, :cond_6
+
+    .line 143
+    .line 144
+    invoke-virtual {v2, v3, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+
+    .line 145
+    .line 146
+    .line 147
+    goto :goto_1
+
+    .line 148
+    :cond_6
+    const/4 v1, 0x0
+
+    .line 149
+    :goto_1
+    if-nez v1, :cond_5
+
+    .line 150
+    .line 151
+    :cond_7
+    const/4 p1, 0x0
+
+    .line 152
+    return p1
 .end method
 
-.method public final b(IZ)Lv9/i;
-    .locals 4
+.method public final b()Z
+    .locals 12
 
     .line 1
-    and-int/lit8 p1, p1, 0x7f
+    :cond_0
+    sget-object v0, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
 
     .line 2
     .line 3
-    iget-object v0, p0, Lv9/m;->a:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+    .line 6
+    move-result-wide v2
+
+    .line 7
+    const-wide/high16 v4, 0x2000000000000000L
+
+    .line 8
+    .line 9
+    and-long v6, v2, v4
+
+    .line 10
+    .line 11
+    const-wide/16 v8, 0x0
+
+    .line 12
+    .line 13
+    cmp-long v1, v6, v8
+
+    .line 14
+    .line 15
+    const/4 v6, 0x1
+
+    .line 16
+    if-eqz v1, :cond_1
+
+    .line 17
+    .line 18
+    return v6
+
+    .line 19
+    :cond_1
+    const-wide/high16 v10, 0x1000000000000000L
+
+    .line 20
+    .line 21
+    and-long/2addr v10, v2
+
+    .line 22
+    cmp-long v1, v10, v8
+
+    .line 23
+    .line 24
+    if-eqz v1, :cond_2
+
+    .line 25
+    .line 26
+    const/4 v0, 0x0
+
+    .line 27
+    return v0
+
+    .line 28
+    :cond_2
+    or-long/2addr v4, v2
+
+    .line 29
+    move-object v1, p0
+
+    .line 30
+    invoke-virtual/range {v0 .. v5}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object;JJ)Z
+
+    .line 31
+    .line 32
+    .line 33
+    move-result v0
+
+    .line 34
+    if-eqz v0, :cond_0
+
+    .line 35
+    .line 36
+    return v6
+.end method
+
+.method public final c()Lv9/m;
+    .locals 11
+
+    .line 1
+    :cond_0
+    sget-object v0, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p0}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-wide v2
+
+    .line 7
+    const-wide/high16 v4, 0x1000000000000000L
+
+    .line 8
+    .line 9
+    and-long v6, v2, v4
+
+    .line 10
+    .line 11
+    const-wide/16 v8, 0x0
+
+    .line 12
+    .line 13
+    cmp-long v1, v6, v8
+
+    .line 14
+    .line 15
+    if-eqz v1, :cond_1
+
+    .line 16
+    .line 17
+    move-object v1, p0
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :cond_1
+    or-long/2addr v4, v2
+
+    .line 20
+    move-object v1, p0
+
+    .line 21
+    invoke-virtual/range {v0 .. v5}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object;JJ)Z
+
+    .line 22
+    .line 23
+    .line 24
+    move-result v2
+
+    .line 25
+    if-eqz v2, :cond_0
+
+    .line 26
+    .line 27
+    move-wide v2, v4
+
+    .line 28
+    :goto_0
+    sget-object v4, Lv9/m;->e:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+
+    .line 29
+    .line 30
+    invoke-virtual {v4, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v5
+
+    .line 34
+    check-cast v5, Lv9/m;
+
+    .line 35
+    .line 36
+    if-eqz v5, :cond_2
+
+    .line 37
+    .line 38
+    return-object v5
+
+    .line 39
+    :cond_2
+    new-instance v5, Lv9/m;
+
+    .line 40
+    .line 41
+    iget v6, v1, Lv9/m;->a:I
+
+    .line 42
+    .line 43
+    mul-int/lit8 v6, v6, 0x2
+
+    .line 44
+    .line 45
+    iget-boolean v7, v1, Lv9/m;->b:Z
+
+    .line 46
+    .line 47
+    invoke-direct {v5, v6, v7}, Lv9/m;-><init>(IZ)V
+
+    .line 48
+    .line 49
+    .line 50
+    const-wide/32 v6, 0x3fffffff
+
+    .line 51
+    .line 52
+    .line 53
+    and-long/2addr v6, v2
+
+    .line 54
+    long-to-int v6, v6
+
+    .line 55
+    const-wide v7, 0xfffffffc0000000L
+
+    .line 56
+    .line 57
+    .line 58
+    .line 59
+    .line 60
+    and-long/2addr v7, v2
+
+    .line 61
+    const/16 v9, 0x1e
+
+    .line 62
+    .line 63
+    shr-long/2addr v7, v9
+
+    .line 64
+    long-to-int v7, v7
+
+    .line 65
+    :goto_1
+    iget v8, v1, Lv9/m;->c:I
+
+    .line 66
+    .line 67
+    and-int v9, v6, v8
+
+    .line 68
+    .line 69
+    and-int/2addr v8, v7
+
+    .line 70
+    if-eq v9, v8, :cond_4
+
+    .line 71
+    .line 72
+    iget-object v8, v1, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 73
+    .line 74
+    invoke-virtual {v8, v9}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+
+    .line 75
+    .line 76
+    .line 77
+    move-result-object v8
+
+    .line 78
+    if-nez v8, :cond_3
+
+    .line 79
+    .line 80
+    new-instance v8, Lv9/l;
+
+    .line 81
+    .line 82
+    invoke-direct {v8, v6}, Lv9/l;-><init>(I)V
+
+    .line 83
+    .line 84
+    .line 85
+    :cond_3
+    iget v9, v5, Lv9/m;->c:I
+
+    .line 86
+    .line 87
+    and-int/2addr v9, v6
+
+    .line 88
+    iget-object v10, v5, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 89
+    .line 90
+    invoke-virtual {v10, v9, v8}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+
+    .line 91
+    .line 92
+    .line 93
+    add-int/lit8 v6, v6, 0x1
+
+    .line 94
+    .line 95
+    goto :goto_1
+
+    .line 96
+    :cond_4
+    const-wide v6, -0x1000000000000001L    # -3.1050361846014175E231
+
+    .line 97
+    .line 98
+    .line 99
+    .line 100
+    .line 101
+    and-long/2addr v6, v2
+
+    .line 102
+    invoke-virtual {v0, v5, v6, v7}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->set(Ljava/lang/Object;J)V
+
+    .line 103
+    .line 104
+    .line 105
+    :cond_5
+    const/4 v6, 0x0
+
+    .line 106
+    invoke-virtual {v4, p0, v6, v5}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
+
+    .line 107
+    .line 108
+    .line 109
+    move-result v6
+
+    .line 110
+    if-eqz v6, :cond_6
+
+    .line 111
+    .line 112
+    goto :goto_0
+
+    .line 113
+    :cond_6
+    invoke-virtual {v4, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 114
+    .line 115
+    .line 116
+    move-result-object v6
+
+    .line 117
+    if-eqz v6, :cond_5
+
+    .line 118
+    .line 119
+    goto :goto_0
+.end method
+
+.method public final d()Ljava/lang/Object;
+    .locals 30
+
+    .line 1
+    move-object/from16 v1, p0
+
+    .line 2
+    .line 3
+    :cond_0
+    sget-object v6, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 4
+    .line 5
+    invoke-virtual {v6, v1}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
 
     .line 6
     .line 7
     .line 8
-    move-result-object v1
+    move-result-wide v2
 
     .line 9
-    check-cast v1, Lv9/i;
+    const-wide/high16 v7, 0x1000000000000000L
 
     .line 10
     .line 11
-    const/4 v2, 0x0
+    and-long v4, v2, v7
 
     .line 12
-    if-eqz v1, :cond_3
-
     .line 13
+    const-wide/16 v9, 0x0
+
     .line 14
-    iget-boolean v3, v1, Lv9/i;->d:Z
-
     .line 15
+    cmp-long v0, v4, v9
+
     .line 16
-    if-ne v3, p2, :cond_3
-
     .line 17
-    .line 18
-    :cond_0
-    invoke-virtual {v0, p1, v1, v2}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->compareAndSet(ILjava/lang/Object;Ljava/lang/Object;)Z
+    if-eqz v0, :cond_1
 
+    .line 18
     .line 19
+    sget-object v0, Lv9/m;->g:Ld1/p;
+
     .line 20
     .line 21
-    move-result v3
+    return-object v0
 
     .line 22
-    if-eqz v3, :cond_2
+    :cond_1
+    const-wide/32 v11, 0x3fffffff
 
     .line 23
     .line 24
-    if-eqz p2, :cond_1
-
     .line 25
-    .line 26
-    sget-object p1, Lv9/m;->e:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
+    and-long v4, v2, v11
 
+    .line 26
     .line 27
+    long-to-int v0, v4
+
     .line 28
-    invoke-virtual {p1, p0}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->decrementAndGet(Ljava/lang/Object;)I
+    const-wide v4, 0xfffffffc0000000L
 
     .line 29
     .line 30
     .line 31
-    :cond_1
-    return-object v1
-
     .line 32
-    :cond_2
-    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
-
     .line 33
-    .line 34
-    .line 35
-    move-result-object v3
+    and-long/2addr v4, v2
 
+    .line 34
+    const/16 v13, 0x1e
+
+    .line 35
     .line 36
-    if-eq v3, v1, :cond_0
+    shr-long/2addr v4, v13
 
     .line 37
+    long-to-int v4, v4
+
     .line 38
+    iget v5, v1, Lv9/m;->c:I
+
+    .line 39
+    .line 40
+    and-int/2addr v4, v5
+
+    .line 41
+    and-int v13, v0, v5
+
+    .line 42
+    .line 43
+    const/4 v14, 0x0
+
+    .line 44
+    if-ne v4, v13, :cond_2
+
+    .line 45
+    .line 46
+    goto :goto_0
+
+    .line 47
+    :cond_2
+    iget-object v15, v1, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 48
+    .line 49
+    invoke-virtual {v15, v13}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->get(I)Ljava/lang/Object;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v4
+
+    .line 53
+    iget-boolean v5, v1, Lv9/m;->b:Z
+
+    .line 54
+    .line 55
+    if-nez v4, :cond_3
+
+    .line 56
+    .line 57
+    if-eqz v5, :cond_0
+
+    .line 58
+    .line 59
+    goto :goto_0
+
+    .line 60
     :cond_3
-    return-object v2
+    move-wide/from16 v16, v7
+
+    .line 61
+    .line 62
+    instance-of v7, v4, Lv9/l;
+
+    .line 63
+    .line 64
+    if-eqz v7, :cond_4
+
+    .line 65
+    .line 66
+    :goto_0
+    return-object v14
+
+    .line 67
+    :cond_4
+    add-int/lit8 v0, v0, 0x1
+
+    .line 68
+    .line 69
+    const v7, 0x3fffffff    # 1.9999999f
+
+    .line 70
+    .line 71
+    .line 72
+    and-int/2addr v0, v7
+
+    .line 73
+    const-wide/32 v7, -0x40000000
+
+    .line 74
+    .line 75
+    .line 76
+    and-long v18, v2, v7
+
+    .line 77
+    .line 78
+    move-wide/from16 v20, v7
+
+    .line 79
+    .line 80
+    int-to-long v7, v0
+
+    .line 81
+    or-long v18, v18, v7
+
+    .line 82
+    .line 83
+    sget-object v0, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 84
+    .line 85
+    move-wide/from16 v28, v18
+
+    .line 86
+    .line 87
+    move-object/from16 v18, v4
+
+    .line 88
+    .line 89
+    move/from16 v19, v5
+
+    .line 90
+    .line 91
+    move-wide/from16 v4, v28
+
+    .line 92
+    .line 93
+    invoke-virtual/range {v0 .. v5}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object;JJ)Z
+
+    .line 94
+    .line 95
+    .line 96
+    move-result v0
+
+    .line 97
+    if-eqz v0, :cond_5
+
+    .line 98
+    .line 99
+    invoke-virtual {v15, v13, v14}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+
+    .line 100
+    .line 101
+    .line 102
+    return-object v18
+
+    .line 103
+    :cond_5
+    move-object/from16 v1, p0
+
+    .line 104
+    .line 105
+    if-eqz v19, :cond_0
+
+    .line 106
+    .line 107
+    :cond_6
+    :goto_1
+    invoke-virtual {v6, v1}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->get(Ljava/lang/Object;)J
+
+    .line 108
+    .line 109
+    .line 110
+    move-result-wide v24
+
+    .line 111
+    and-long v2, v24, v11
+
+    .line 112
+    .line 113
+    long-to-int v0, v2
+
+    .line 114
+    and-long v2, v24, v16
+
+    .line 115
+    .line 116
+    cmp-long v2, v2, v9
+
+    .line 117
+    .line 118
+    if-eqz v2, :cond_7
+
+    .line 119
+    .line 120
+    invoke-virtual {v1}, Lv9/m;->c()Lv9/m;
+
+    .line 121
+    .line 122
+    .line 123
+    move-result-object v0
+
+    .line 124
+    move-object v1, v0
+
+    .line 125
+    goto :goto_2
+
+    .line 126
+    :cond_7
+    and-long v2, v24, v20
+
+    .line 127
+    .line 128
+    or-long v26, v2, v7
+
+    .line 129
+    .line 130
+    sget-object v22, Lv9/m;->f:Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;
+
+    .line 131
+    .line 132
+    move-object/from16 v23, v1
+
+    .line 133
+    .line 134
+    invoke-virtual/range {v22 .. v27}, Ljava/util/concurrent/atomic/AtomicLongFieldUpdater;->compareAndSet(Ljava/lang/Object;JJ)Z
+
+    .line 135
+    .line 136
+    .line 137
+    move-result v1
+
+    .line 138
+    move-object/from16 v2, v23
+
+    .line 139
+    .line 140
+    if-eqz v1, :cond_8
+
+    .line 141
+    .line 142
+    iget-object v1, v2, Lv9/m;->d:Ljava/util/concurrent/atomic/AtomicReferenceArray;
+
+    .line 143
+    .line 144
+    iget v2, v2, Lv9/m;->c:I
+
+    .line 145
+    .line 146
+    and-int/2addr v0, v2
+
+    .line 147
+    invoke-virtual {v1, v0, v14}, Ljava/util/concurrent/atomic/AtomicReferenceArray;->set(ILjava/lang/Object;)V
+
+    .line 148
+    .line 149
+    .line 150
+    move-object v1, v14
+
+    .line 151
+    :goto_2
+    if-nez v1, :cond_6
+
+    .line 152
+    .line 153
+    return-object v18
+
+    .line 154
+    :cond_8
+    move-object v1, v2
+
+    .line 155
+    goto :goto_1
 .end method

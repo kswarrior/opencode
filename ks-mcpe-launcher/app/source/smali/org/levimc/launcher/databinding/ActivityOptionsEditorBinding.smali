@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,11 +8,17 @@
 
 .field public final loadingProgress:Landroid/widget/ProgressBar;
 
+.field public final optionsCategoryButton:Lcom/google/android/material/button/MaterialButton;
+
+.field public final optionsEditorInfo:Landroid/widget/TextView;
+
+.field public final optionsEditorStatus:Landroid/widget/TextView;
+
 .field public final optionsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
 
-.field private final rootView:Landroid/widget/FrameLayout;
+.field private final rootView:Landroid/widget/LinearLayout;
 
-.field public final saveButton:Landroid/widget/Button;
+.field public final saveButton:Lcom/google/android/material/button/MaterialButton;
 
 .field public final searchEditText:Landroid/widget/EditText;
 
@@ -20,7 +26,7 @@
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ProgressBar;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/EditText;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -29,7 +35,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->rootView:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->rootView:Landroid/widget/LinearLayout;
 
     .line 5
     .line 6
@@ -41,34 +47,46 @@
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->optionsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->optionsCategoryButton:Lcom/google/android/material/button/MaterialButton;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->saveButton:Landroid/widget/Button;
+    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->optionsEditorInfo:Landroid/widget/TextView;
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->searchEditText:Landroid/widget/EditText;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->optionsEditorStatus:Landroid/widget/TextView;
 
     .line 15
     .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->titleText:Landroid/widget/TextView;
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->optionsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 17
     .line 18
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->saveButton:Lcom/google/android/material/button/MaterialButton;
+
+    .line 19
+    .line 20
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->searchEditText:Landroid/widget/EditText;
+
+    .line 21
+    .line 22
+    iput-object p10, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->titleText:Landroid/widget/TextView;
+
+    .line 23
+    .line 24
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;
-    .locals 10
+    .locals 13
 
     .line 1
     sget v0, Lorg/levimc/launcher/R$id;->empty_text:I
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -91,7 +109,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 15
     .line 16
@@ -110,11 +128,11 @@
 
     .line 22
     .line 23
-    sget v0, Lorg/levimc/launcher/R$id;->options_recycler_view:I
+    sget v0, Lorg/levimc/launcher/R$id;->options_category_button:I
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 26
     .line 27
@@ -125,7 +143,7 @@
     move-object v6, v1
 
     .line 30
-    check-cast v6, Landroidx/recyclerview/widget/RecyclerView;
+    check-cast v6, Lcom/google/android/material/button/MaterialButton;
 
     .line 31
     .line 32
@@ -133,11 +151,11 @@
 
     .line 33
     .line 34
-    sget v0, Lorg/levimc/launcher/R$id;->save_button:I
+    sget v0, Lorg/levimc/launcher/R$id;->options_editor_info:I
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 37
     .line 38
@@ -148,7 +166,7 @@
     move-object v7, v1
 
     .line 41
-    check-cast v7, Landroid/widget/Button;
+    check-cast v7, Landroid/widget/TextView;
 
     .line 42
     .line 43
@@ -156,11 +174,11 @@
 
     .line 44
     .line 45
-    sget v0, Lorg/levimc/launcher/R$id;->search_edit_text:I
+    sget v0, Lorg/levimc/launcher/R$id;->options_editor_status:I
 
     .line 46
     .line 47
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 48
     .line 49
@@ -171,7 +189,7 @@
     move-object v8, v1
 
     .line 52
-    check-cast v8, Landroid/widget/EditText;
+    check-cast v8, Landroid/widget/TextView;
 
     .line 53
     .line 54
@@ -179,11 +197,11 @@
 
     .line 55
     .line 56
-    sget v0, Lorg/levimc/launcher/R$id;->title_text:I
+    sget v0, Lorg/levimc/launcher/R$id;->options_recycler_view:I
 
     .line 57
     .line 58
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 59
     .line 60
@@ -194,7 +212,7 @@
     move-object v9, v1
 
     .line 63
-    check-cast v9, Landroid/widget/TextView;
+    check-cast v9, Landroidx/recyclerview/widget/RecyclerView;
 
     .line 64
     .line 65
@@ -202,63 +220,132 @@
 
     .line 66
     .line 67
-    new-instance v2, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;
+    sget v0, Lorg/levimc/launcher/R$id;->save_button:I
 
     .line 68
     .line 69
-    move-object v3, p0
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 70
-    check-cast v3, Landroid/widget/FrameLayout;
-
     .line 71
     .line 72
-    invoke-direct/range {v2 .. v9}, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;-><init>(Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/Button;Landroid/widget/EditText;Landroid/widget/TextView;)V
+    move-result-object v1
 
     .line 73
-    .line 74
-    .line 75
-    return-object v2
+    move-object v10, v1
 
+    .line 74
+    check-cast v10, Lcom/google/android/material/button/MaterialButton;
+
+    .line 75
     .line 76
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+    if-eqz v10, :cond_0
 
     .line 77
     .line 78
-    .line 79
-    move-result-object p0
+    sget v0, Lorg/levimc/launcher/R$id;->search_edit_text:I
 
+    .line 79
     .line 80
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 81
     .line 82
     .line 83
-    move-result-object p0
+    move-result-object v1
 
     .line 84
-    new-instance v0, Ljava/lang/NullPointerException;
+    move-object v11, v1
 
     .line 85
+    check-cast v11, Landroid/widget/EditText;
+
     .line 86
-    const-string v1, "Missing required view with ID: "
-
     .line 87
-    .line 88
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    if-eqz v11, :cond_0
 
+    .line 88
     .line 89
+    sget v0, Lorg/levimc/launcher/R$id;->title_text:I
+
     .line 90
     .line 91
-    move-result-object p0
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 92
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
     .line 93
     .line 94
+    move-result-object v1
+
     .line 95
+    move-object v12, v1
+
+    .line 96
+    check-cast v12, Landroid/widget/TextView;
+
+    .line 97
+    .line 98
+    if-eqz v12, :cond_0
+
+    .line 99
+    .line 100
+    new-instance v2, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;
+
+    .line 101
+    .line 102
+    move-object v3, p0
+
+    .line 103
+    check-cast v3, Landroid/widget/LinearLayout;
+
+    .line 104
+    .line 105
+    invoke-direct/range {v2 .. v12}, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ProgressBar;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/EditText;Landroid/widget/TextView;)V
+
+    .line 106
+    .line 107
+    .line 108
+    return-object v2
+
+    .line 109
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 110
+    .line 111
+    .line 112
+    move-result-object p0
+
+    .line 113
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 114
+    .line 115
+    .line 116
+    move-result-object p0
+
+    .line 117
+    new-instance v0, Ljava/lang/NullPointerException;
+
+    .line 118
+    .line 119
+    const-string v1, "Missing required view with ID: "
+
+    .line 120
+    .line 121
+    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 122
+    .line 123
+    .line 124
+    move-result-object p0
+
+    .line 125
+    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 126
+    .line 127
+    .line 128
     throw v0
 .end method
 
@@ -309,18 +396,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->getRoot()Landroid/widget/FrameLayout;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->getRoot()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Landroid/widget/FrameLayout;
+.method public getRoot()Landroid/widget/LinearLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->rootView:Landroid/widget/FrameLayout;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/ActivityOptionsEditorBinding;->rootView:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method

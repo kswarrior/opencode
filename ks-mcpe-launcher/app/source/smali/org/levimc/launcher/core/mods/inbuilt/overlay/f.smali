@@ -1,19 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnTouchListener;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;
 
     .line 4
     .line 5
@@ -35,7 +35,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
     .locals 1
 
     .line 1
@@ -48,64 +48,42 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;)V
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
 
     .line 9
     .line 10
     .line 11
-    return-void
+    move-result p1
 
     .line 12
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+    return p1
 
     .line 13
-    .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;
 
+    .line 14
     .line 15
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
+
     .line 16
     .line 17
-    return-void
-
     .line 18
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
+    move-result p1
 
     .line 19
+    return p1
+
     .line 20
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->releaseKeybinds()V
-
-    .line 21
-    .line 22
-    .line 23
-    return-void
-
-    .line 24
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
-
-    .line 25
-    .line 26
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
     nop
 
-    .line 31
+    .line 21
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

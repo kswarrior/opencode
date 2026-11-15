@@ -1,10 +1,10 @@
 .class public final Lcom/google/android/gms/internal/measurement/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final a:Lcom/google/android/gms/internal/measurement/b0;
+.field public final a:Lcom/google/android/gms/internal/measurement/d0;
 
 .field public final b:Ljava/lang/String;
 
@@ -14,7 +14,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/b0;->d:Lcom/google/android/gms/internal/measurement/b0;
+    sget-object v0, Lcom/google/android/gms/internal/measurement/d0;->d:Lcom/google/android/gms/internal/measurement/d0;
 
     .line 2
     .line 3
@@ -23,7 +23,7 @@
     .line 4
     .line 5
     .line 6
-    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/b0;
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/d0;
 
     .line 7
     .line 8
@@ -52,11 +52,11 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/b0;
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/d0;
 
     .line 8
     .line 9
-    iget-object v1, p1, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/b0;
+    iget-object v1, p1, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/d0;
 
     .line 10
     .line 11
@@ -109,7 +109,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/b0;
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/g;->a:Lcom/google/android/gms/internal/measurement/d0;
 
     .line 2
     .line 3

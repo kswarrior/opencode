@@ -1,9 +1,9 @@
 .class public final synthetic Lorg/levimc/launcher/util/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
@@ -41,7 +41,7 @@
 
 
 # virtual methods
-.method public final run()V
+.method public final onClick(Landroid/view/View;)V
     .locals 2
 
     .line 1
@@ -70,7 +70,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/ResourcepackHandler;->c(Lorg/levimc/launcher/util/ResourcepackHandler;Landroid/content/Intent;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/ResourcepackHandler;->a(Lorg/levimc/launcher/util/ResourcepackHandler;Landroid/content/Intent;Landroid/view/View;)V
 
     .line 15
     .line 16
@@ -83,7 +83,7 @@
 
     .line 19
     .line 20
-    check-cast v0, Lorg/levimc/launcher/util/PermissionsHandler$PermissionResultCallback;
+    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 21
     .line 22
@@ -91,11 +91,11 @@
 
     .line 23
     .line 24
-    check-cast v1, Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;
+    check-cast v1, Ljava/lang/String;
 
     .line 25
     .line 26
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/PermissionsHandler;->e(Lorg/levimc/launcher/util/PermissionsHandler$PermissionResultCallback;Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->b(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
 
     .line 27
     .line 28
@@ -108,7 +108,7 @@
 
     .line 31
     .line 32
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater$4;
+    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 33
     .line 34
@@ -116,11 +116,11 @@
 
     .line 35
     .line 36
-    check-cast v1, Ljava/io/File;
+    check-cast v1, Ljava/lang/String;
 
     .line 37
     .line 38
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater$4;->b(Lorg/levimc/launcher/util/GithubReleaseUpdater$4;Ljava/io/File;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->a(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
 
     .line 39
     .line 40
@@ -133,7 +133,7 @@
 
     .line 43
     .line 44
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater$3;
+    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 45
     .line 46
@@ -141,11 +141,11 @@
 
     .line 47
     .line 48
-    check-cast v1, Ljava/io/IOException;
+    check-cast v1, Ljava/lang/String;
 
     .line 49
     .line 50
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater$3;->c(Lorg/levimc/launcher/util/GithubReleaseUpdater$3;Ljava/io/IOException;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->f(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
 
     .line 51
     .line 52
@@ -153,63 +153,11 @@
     return-void
 
     .line 54
-    :pswitch_3
-    iget-object v0, p0, Lorg/levimc/launcher/util/h;->d:Ljava/lang/Object;
-
-    .line 55
-    .line 56
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater$3;
-
-    .line 57
-    .line 58
-    iget-object v1, p0, Lorg/levimc/launcher/util/h;->h:Ljava/lang/Object;
-
-    .line 59
-    .line 60
-    check-cast v1, Ljava/lang/Exception;
-
-    .line 61
-    .line 62
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater$3;->b(Lorg/levimc/launcher/util/GithubReleaseUpdater$3;Ljava/lang/Exception;)V
-
-    .line 63
-    .line 64
-    .line 65
-    return-void
-
-    .line 66
-    :pswitch_4
-    iget-object v0, p0, Lorg/levimc/launcher/util/h;->d:Ljava/lang/Object;
-
-    .line 67
-    .line 68
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater$1;
-
-    .line 69
-    .line 70
-    iget-object v1, p0, Lorg/levimc/launcher/util/h;->h:Ljava/lang/Object;
-
-    .line 71
-    .line 72
-    check-cast v1, Ljava/lang/String;
-
-    .line 73
-    .line 74
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater$1;->a(Lorg/levimc/launcher/util/GithubReleaseUpdater$1;Ljava/lang/String;)V
-
-    .line 75
-    .line 76
-    .line 77
-    return-void
-
-    .line 78
     nop
 
-    .line 79
+    .line 55
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_4
-        :pswitch_3
         :pswitch_2
         :pswitch_1
         :pswitch_0

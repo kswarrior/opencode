@@ -1,556 +1,670 @@
 .class public final Lf7/b;
-.super Lw8/g;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lkotlin/jvm/functions/Function2;
+.implements Lk4/b;
 
 
 # instance fields
-.field public final synthetic w:I
-
-.field public x:I
-
-.field public final synthetic y:Ljava/lang/Object;
+.field public final c:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Lkotlin/coroutines/Continuation;I)V
+.method public constructor <init>()V
+    .locals 2
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    const-string v0, "Wait for continue time"
+
+    const/16 v1, 0xbb8
+
+    invoke-static {v1, v0}, Lcom/bumptech/glide/e;->Z(ILjava/lang/String;)V
+
+    iput v1, p0, Lf7/b;->c:I
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lf7/b;->w:I
+    iput p1, p0, Lf7/b;->c:I
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public static a(Lpc/i;Lorg/apache/http/HttpResponse;)Z
+    .locals 1
+
+    .line 1
+    invoke-interface {p0}, Lpc/i;->getRequestLine()Lorg/apache/http/RequestLine;
 
     .line 2
     .line 3
-    iput-object p1, p0, Lf7/b;->y:Ljava/lang/Object;
+    .line 4
+    move-result-object p0
+
+    .line 5
+    invoke-interface {p0}, Lorg/apache/http/RequestLine;->getMethod()Ljava/lang/String;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object p0
+
+    .line 9
+    const-string v0, "HEAD"
+
+    .line 10
+    .line 11
+    invoke-virtual {v0, p0}, Ljava/lang/String;->equalsIgnoreCase(Ljava/lang/String;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p0
+
+    .line 15
+    if-eqz p0, :cond_0
+
+    .line 16
+    .line 17
+    goto :goto_0
+
+    .line 18
+    :cond_0
+    invoke-interface {p1}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object p0
+
+    .line 22
+    iget p0, p0, Lorg/apache/http/message/m;->d:I
+
+    .line 23
+    .line 24
+    const/16 p1, 0xc8
+
+    .line 25
+    .line 26
+    if-lt p0, p1, :cond_1
+
+    .line 27
+    .line 28
+    const/16 p1, 0xcc
+
+    .line 29
+    .line 30
+    if-eq p0, p1, :cond_1
+
+    .line 31
+    .line 32
+    const/16 p1, 0x130
+
+    .line 33
+    .line 34
+    if-eq p0, p1, :cond_1
+
+    .line 35
+    .line 36
+    const/16 p1, 0xcd
+
+    .line 37
+    .line 38
+    if-eq p0, p1, :cond_1
+
+    .line 39
+    .line 40
+    const/4 p0, 0x1
+
+    .line 41
+    return p0
+
+    .line 42
+    :cond_1
+    :goto_0
+    const/4 p0, 0x0
+
+    .line 43
+    return p0
+.end method
+
+.method public static b(Lpc/i;Lpc/b;Lqd/c;)Lorg/apache/http/HttpResponse;
+    .locals 2
+
+    .line 1
+    const-string p2, "Client connection"
+
+    .line 2
+    .line 3
+    invoke-static {p1, p2}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
-    const/4 p1, 0x2
-
     .line 6
-    invoke-direct {p0, p1, p2}, Lw8/g;-><init>(ILkotlin/coroutines/Continuation;)V
+    const/4 p2, 0x0
 
     .line 7
+    const/4 v0, 0x0
+
     .line 8
+    :cond_0
+    :goto_0
+    if-eqz p2, :cond_2
+
     .line 9
-    return-void
+    .line 10
+    const/16 v1, 0xc8
+
+    .line 11
+    .line 12
+    if-ge v0, v1, :cond_1
+
+    .line 13
+    .line 14
+    goto :goto_1
+
+    .line 15
+    :cond_1
+    return-object p2
+
+    .line 16
+    :cond_2
+    :goto_1
+    invoke-interface {p1}, Lpc/b;->j0()Lorg/apache/http/HttpResponse;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object p2
+
+    .line 20
+    invoke-interface {p2}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v0
+
+    .line 24
+    iget v0, v0, Lorg/apache/http/message/m;->d:I
+
+    .line 25
+    .line 26
+    const/16 v1, 0x64
+
+    .line 27
+    .line 28
+    if-lt v0, v1, :cond_3
+
+    .line 29
+    .line 30
+    invoke-static {p0, p2}, Lf7/b;->a(Lpc/i;Lorg/apache/http/HttpResponse;)Z
+
+    .line 31
+    .line 32
+    .line 33
+    move-result v1
+
+    .line 34
+    if-eqz v1, :cond_0
+
+    .line 35
+    .line 36
+    invoke-interface {p1, p2}, Lpc/b;->Z(Lorg/apache/http/HttpResponse;)V
+
+    .line 37
+    .line 38
+    .line 39
+    goto :goto_0
+
+    .line 40
+    :cond_3
+    new-instance p0, Lpc/s;
+
+    .line 41
+    .line 42
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    .line 43
+    .line 44
+    const-string v0, "Invalid response: "
+
+    .line 45
+    .line 46
+    invoke-direct {p1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 47
+    .line 48
+    .line 49
+    invoke-interface {p2}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object p2
+
+    .line 53
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 54
+    .line 55
+    .line 56
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 57
+    .line 58
+    .line 59
+    move-result-object p1
+
+    .line 60
+    invoke-direct {p0, p1}, Lpc/e;-><init>(Ljava/lang/String;)V
+
+    .line 61
+    .line 62
+    .line 63
+    throw p0
 .end method
 
 
 # virtual methods
-.method public final h(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+.method public c(Lpc/i;Lpc/b;Lqd/c;)Lorg/apache/http/HttpResponse;
+    .locals 6
 
     .line 1
-    iget v0, p0, Lf7/b;->w:I
+    const-string v0, "Client connection"
 
     .line 2
     .line 3
-    check-cast p1, Lkotlinx/coroutines/CoroutineScope;
-
-    .line 4
-    .line 5
-    check-cast p2, Lkotlin/coroutines/Continuation;
-
-    .line 6
-    .line 7
-    packed-switch v0, :pswitch_data_0
-
-    .line 8
-    .line 9
-    .line 10
-    invoke-virtual {p0, p1, p2}, Lf7/b;->l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
-
-    .line 11
-    .line 12
-    .line 13
-    move-result-object p1
-
-    .line 14
-    check-cast p1, Lf7/b;
-
-    .line 15
-    .line 16
-    sget-object p2, Lq8/k;->a:Lq8/k;
-
-    .line 17
-    .line 18
-    invoke-virtual {p1, p2}, Lf7/b;->n(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object p1
-
-    .line 22
-    return-object p1
-
-    .line 23
-    :pswitch_0
-    invoke-virtual {p0, p1, p2}, Lf7/b;->l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
-
-    .line 24
-    .line 25
-    .line 26
-    move-result-object p1
-
-    .line 27
-    check-cast p1, Lf7/b;
-
-    .line 28
-    .line 29
-    sget-object p2, Lq8/k;->a:Lq8/k;
-
-    .line 30
-    .line 31
-    invoke-virtual {p1, p2}, Lf7/b;->n(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 32
-    .line 33
-    .line 34
-    move-result-object p1
-
-    .line 35
-    return-object p1
-
-    .line 36
-    :pswitch_1
-    invoke-virtual {p0, p1, p2}, Lf7/b;->l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
-
-    .line 37
-    .line 38
-    .line 39
-    move-result-object p1
-
-    .line 40
-    check-cast p1, Lf7/b;
-
-    .line 41
-    .line 42
-    sget-object p2, Lq8/k;->a:Lq8/k;
-
-    .line 43
-    .line 44
-    invoke-virtual {p1, p2}, Lf7/b;->n(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 45
-    .line 46
-    .line 47
-    move-result-object p1
-
-    .line 48
-    return-object p1
-
-    .line 49
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
-    .locals 2
-
-    .line 1
-    iget p1, p0, Lf7/b;->w:I
-
-    .line 2
-    .line 3
-    packed-switch p1, :pswitch_data_0
+    invoke-static {p2, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
     .line 6
-    new-instance p1, Lf7/b;
+    const-string v0, "http.connection"
 
     .line 7
     .line 8
-    iget-object v0, p0, Lf7/b;->y:Ljava/lang/Object;
+    invoke-interface {p3, v0, p2}, Lqd/c;->f(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 9
     .line 10
-    check-cast v0, Lo9/n;
-
     .line 11
-    .line 12
-    const/4 v1, 0x2
-
-    .line 13
-    invoke-direct {p1, v0, p2, v1}, Lf7/b;-><init>(Ljava/lang/Object;Lkotlin/coroutines/Continuation;I)V
-
-    .line 14
-    .line 15
-    .line 16
-    return-object p1
-
-    .line 17
-    :pswitch_0
-    new-instance p1, Lf7/b;
-
-    .line 18
-    .line 19
-    iget-object v0, p0, Lf7/b;->y:Ljava/lang/Object;
-
-    .line 20
-    .line 21
-    check-cast v0, Lt1/a;
-
-    .line 22
-    .line 23
-    const/4 v1, 0x1
-
-    .line 24
-    invoke-direct {p1, v0, p2, v1}, Lf7/b;-><init>(Ljava/lang/Object;Lkotlin/coroutines/Continuation;I)V
-
-    .line 25
-    .line 26
-    .line 27
-    return-object p1
-
-    .line 28
-    :pswitch_1
-    new-instance p1, Lf7/b;
-
-    .line 29
-    .line 30
-    iget-object v0, p0, Lf7/b;->y:Ljava/lang/Object;
-
-    .line 31
-    .line 32
-    check-cast v0, Lf7/d;
-
-    .line 33
-    .line 34
-    const/4 v1, 0x0
-
-    .line 35
-    invoke-direct {p1, v0, p2, v1}, Lf7/b;-><init>(Ljava/lang/Object;Lkotlin/coroutines/Continuation;I)V
-
-    .line 36
-    .line 37
-    .line 38
-    return-object p1
-
-    .line 39
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 2
-
-    .line 1
-    iget v0, p0, Lf7/b;->w:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    iget v0, p0, Lf7/b;->x:I
-
-    .line 7
-    .line 8
-    const/4 v1, 0x1
-
-    .line 9
-    if-eqz v0, :cond_1
-
-    .line 10
-    .line 11
-    if-ne v0, v1, :cond_0
+    sget-object v0, Ljava/lang/Boolean;->FALSE:Ljava/lang/Boolean;
 
     .line 12
     .line 13
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
+    const-string v1, "http.request_sent"
 
     .line 14
     .line 15
+    invoke-interface {p3, v1, v0}, Lqd/c;->f(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 16
-    goto :goto_0
-
     .line 17
-    :cond_0
-    new-instance p1, Ljava/lang/IllegalStateException;
-
     .line 18
-    .line 19
-    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+    invoke-interface {p2, p1}, Lpc/b;->p(Lpc/i;)V
 
+    .line 19
     .line 20
     .line 21
-    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    instance-of v0, p1, Lpc/d;
 
     .line 22
     .line 23
+    const/4 v2, 0x0
+
     .line 24
-    throw p1
-
-    .line 25
-    :cond_1
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
-
-    .line 26
-    .line 27
-    .line 28
-    iget-object p1, p0, Lf7/b;->y:Ljava/lang/Object;
-
-    .line 29
-    .line 30
-    check-cast p1, Lo9/n;
-
-    .line 31
-    .line 32
-    iput v1, p0, Lf7/b;->x:I
-
-    .line 33
-    .line 34
-    invoke-virtual {p1, p0}, Lo9/n;->X(Lw8/g;)Ljava/lang/Object;
-
-    .line 35
-    .line 36
-    .line 37
-    move-result-object p1
-
-    .line 38
-    sget-object v0, Lv8/a;->c:Lv8/a;
-
-    .line 39
-    .line 40
-    if-ne p1, v0, :cond_2
-
-    .line 41
-    .line 42
-    move-object p1, v0
-
-    .line 43
-    :cond_2
-    :goto_0
-    return-object p1
-
-    .line 44
-    :pswitch_0
-    iget v0, p0, Lf7/b;->x:I
-
-    .line 45
-    .line 46
-    const/4 v1, 0x1
-
-    .line 47
     if-eqz v0, :cond_4
 
+    .line 25
+    .line 26
+    invoke-interface {p1}, Lpc/i;->getRequestLine()Lorg/apache/http/RequestLine;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object v0
+
+    .line 30
+    invoke-interface {v0}, Lorg/apache/http/RequestLine;->getProtocolVersion()Lorg/apache/http/ProtocolVersion;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v0
+
+    .line 34
+    move-object v3, p1
+
+    .line 35
+    check-cast v3, Lpc/d;
+
+    .line 36
+    .line 37
+    invoke-interface {v3}, Lpc/d;->expectContinue()Z
+
+    .line 38
+    .line 39
+    .line 40
+    move-result v4
+
+    .line 41
+    const/4 v5, 0x1
+
+    .line 42
+    if-eqz v4, :cond_3
+
+    .line 43
+    .line 44
+    sget-object v4, Lpc/m;->q:Lpc/m;
+
+    .line 45
+    .line 46
+    invoke-virtual {v0, v4}, Lorg/apache/http/ProtocolVersion;->b(Lorg/apache/http/ProtocolVersion;)Z
+
+    .line 47
     .line 48
     .line 49
-    if-ne v0, v1, :cond_3
+    move-result v0
 
     .line 50
-    .line 51
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
+    if-nez v0, :cond_3
 
+    .line 51
     .line 52
+    invoke-interface {p2}, Lpc/b;->flush()V
+
     .line 53
     .line 54
-    goto :goto_1
-
     .line 55
-    :cond_3
-    new-instance p1, Ljava/lang/IllegalStateException;
+    iget v0, p0, Lf7/b;->c:I
 
     .line 56
     .line 57
-    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+    invoke-interface {p2, v0}, Lpc/b;->a0(I)Z
 
     .line 58
     .line 59
-    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
     .line 60
-    .line 61
-    .line 62
-    throw p1
+    move-result v0
 
+    .line 61
+    if-eqz v0, :cond_3
+
+    .line 62
     .line 63
-    :cond_4
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
+    invoke-interface {p2}, Lpc/b;->j0()Lorg/apache/http/HttpResponse;
 
     .line 64
     .line 65
     .line 66
-    iget-object p1, p0, Lf7/b;->y:Ljava/lang/Object;
+    move-result-object v0
 
     .line 67
-    .line 68
-    check-cast p1, Lt1/a;
+    invoke-static {p1, v0}, Lf7/b;->a(Lpc/i;Lorg/apache/http/HttpResponse;)Z
 
+    .line 68
     .line 69
     .line 70
-    iget-object p1, p1, Lt1/a;->a:Lu1/d;
+    move-result p1
 
     .line 71
+    if-eqz p1, :cond_0
+
     .line 72
-    iput v1, p0, Lf7/b;->x:I
-
     .line 73
-    .line 74
-    invoke-virtual {p1, p0}, Lu1/d;->c(Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    invoke-interface {p2, v0}, Lpc/b;->Z(Lorg/apache/http/HttpResponse;)V
 
+    .line 74
     .line 75
     .line 76
+    :cond_0
+    invoke-interface {v0}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
+
     .line 77
+    .line 78
+    .line 79
     move-result-object p1
 
-    .line 78
-    sget-object v0, Lv8/a;->c:Lv8/a;
-
-    .line 79
     .line 80
-    if-ne p1, v0, :cond_5
+    iget p1, p1, Lorg/apache/http/message/m;->d:I
 
     .line 81
     .line 82
-    move-object p1, v0
+    const/16 v4, 0xc8
 
     .line 83
-    :cond_5
-    :goto_1
-    return-object p1
-
     .line 84
-    :pswitch_1
-    iget v0, p0, Lf7/b;->x:I
+    if-ge p1, v4, :cond_2
 
     .line 85
     .line 86
-    const/4 v1, 0x1
+    const/16 v4, 0x64
 
     .line 87
-    if-eqz v0, :cond_7
-
     .line 88
-    .line 89
-    if-ne v0, v1, :cond_6
+    if-ne p1, v4, :cond_1
 
+    .line 89
     .line 90
+    goto :goto_0
+
     .line 91
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
+    :cond_1
+    new-instance p1, Lpc/s;
 
     .line 92
     .line 93
-    .line 94
-    goto :goto_2
+    new-instance p2, Ljava/lang/StringBuilder;
 
+    .line 94
     .line 95
-    :cond_6
-    new-instance p1, Ljava/lang/IllegalStateException;
+    const-string p3, "Unexpected response: "
 
     .line 96
     .line 97
-    const-string v0, "call to \'resume\' before \'invoke\' with coroutine"
+    invoke-direct {p2, p3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 98
     .line 99
-    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
     .line 100
+    invoke-interface {v0}, Lorg/apache/http/HttpResponse;->a()Lorg/apache/http/message/m;
+
     .line 101
     .line 102
-    throw p1
-
     .line 103
-    :cond_7
-    invoke-static {p1}, Lcom/bumptech/glide/d;->U(Ljava/lang/Object;)V
+    move-result-object p3
 
     .line 104
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 105
     .line 106
-    iget-object p1, p0, Lf7/b;->y:Ljava/lang/Object;
-
     .line 107
-    .line 108
-    check-cast p1, Lf7/d;
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 108
     .line 109
     .line 110
-    iget-object p1, p1, Lf7/d;->c:La1/d;
+    move-result-object p2
 
     .line 111
-    .line 112
-    iget-object p1, p1, La1/d;->a:Lw0/g;
+    invoke-direct {p1, p2}, Lpc/e;-><init>(Ljava/lang/String;)V
 
+    .line 112
     .line 113
     .line 114
-    invoke-interface {p1}, Lw0/g;->getData()Lr9/c;
+    throw p1
 
     .line 115
+    :cond_2
+    const/4 v5, 0x0
+
     .line 116
+    move-object v2, v0
+
     .line 117
-    move-result-object p1
+    :cond_3
+    :goto_0
+    if-eqz v5, :cond_4
 
     .line 118
-    iput v1, p0, Lf7/b;->x:I
-
     .line 119
-    .line 120
-    invoke-static {p1, p0}, Lr9/z;->f(Lr9/c;Lw8/c;)Ljava/lang/Object;
+    invoke-interface {p2, v3}, Lpc/b;->b0(Lpc/d;)V
 
+    .line 120
     .line 121
     .line 122
+    :cond_4
+    invoke-interface {p2}, Lpc/b;->flush()V
+
     .line 123
-    move-result-object p1
-
     .line 124
-    sget-object v0, Lv8/a;->c:Lv8/a;
-
     .line 125
+    sget-object p1, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+
     .line 126
-    if-ne p1, v0, :cond_8
-
     .line 127
+    invoke-interface {p3, v1, p1}, Lqd/c;->f(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 128
-    goto :goto_3
-
     .line 129
-    :cond_8
-    :goto_2
-    check-cast p1, La1/b;
-
     .line 130
-    .line 131
-    if-eqz p1, :cond_9
+    return-object v2
+.end method
 
-    .line 132
-    .line 133
-    invoke-virtual {p1}, La1/b;->a()Ljava/util/Map;
+.method public d(Lpc/i;Lpc/b;Lqd/c;)Lorg/apache/http/HttpResponse;
+    .locals 1
 
-    .line 134
-    .line 135
-    .line 136
+    .line 1
+    const-string v0, "Client connection"
+
+    .line 2
+    .line 3
+    invoke-static {p2, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    :try_start_0
+    invoke-virtual {p0, p1, p2, p3}, Lf7/b;->c(Lpc/i;Lpc/b;Lqd/c;)Lorg/apache/http/HttpResponse;
+
+    .line 7
+    .line 8
+    .line 9
     move-result-object v0
 
-    .line 137
-    goto :goto_3
+    .line 10
+    if-nez v0, :cond_0
 
-    .line 138
-    :cond_9
-    sget-object v0, Lr8/q;->c:Lr8/q;
+    .line 11
+    .line 12
+    invoke-static {p1, p2, p3}, Lf7/b;->b(Lpc/i;Lpc/b;Lqd/c;)Lorg/apache/http/HttpResponse;
 
-    .line 139
-    .line 140
-    :goto_3
+    .line 13
+    .line 14
+    .line 15
+    move-result-object p1
+    :try_end_0
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_2
+    .catch Lpc/e; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/RuntimeException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 16
+    return-object p1
+
+    .line 17
+    :catch_0
+    move-exception p1
+
+    .line 18
+    goto :goto_0
+
+    .line 19
+    :catch_1
+    move-exception p1
+
+    .line 20
+    goto :goto_1
+
+    .line 21
+    :catch_2
+    move-exception p1
+
+    .line 22
+    goto :goto_2
+
+    .line 23
+    :cond_0
     return-object v0
 
-    .line 141
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    .line 24
+    :goto_0
+    :try_start_1
+    invoke-interface {p2}, Ljava/io/Closeable;->close()V
+    :try_end_1
+    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_3
+
+    .line 25
+    .line 26
+    .line 27
+    :catch_3
+    throw p1
+
+    .line 28
+    :goto_1
+    :try_start_2
+    invoke-interface {p2}, Ljava/io/Closeable;->close()V
+    :try_end_2
+    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_4
+
+    .line 29
+    .line 30
+    .line 31
+    :catch_4
+    throw p1
+
+    .line 32
+    :goto_2
+    :try_start_3
+    invoke-interface {p2}, Ljava/io/Closeable;->close()V
+    :try_end_3
+    .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_5
+
+    .line 33
+    .line 34
+    .line 35
+    :catch_5
+    throw p1
+.end method
+
+.method public e(Landroid/content/Context;Ljava/lang/String;Z)I
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x0
+
+    .line 2
+    return p1
+.end method
+
+.method public f(Landroid/content/Context;Ljava/lang/String;)I
+    .locals 0
+
+    .line 1
+    iget p1, p0, Lf7/b;->c:I
+
+    .line 2
+    .line 3
+    return p1
 .end method

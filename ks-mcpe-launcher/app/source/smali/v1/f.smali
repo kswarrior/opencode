@@ -1,6 +1,6 @@
 .class public abstract Lv1/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -8,7 +8,7 @@
 
 .field public static final b:Ljava/lang/Object;
 
-.field public static c:Ls4/e0;
+.field public static c:Ls4/b0;
 
 
 # direct methods
@@ -45,7 +45,7 @@
     const/4 v0, 0x0
 
     .line 16
-    sput-object v0, Lv1/f;->c:Ls4/e0;
+    sput-object v0, Lv1/f;->c:Ls4/b0;
 
     .line 17
     .line 18
@@ -126,11 +126,11 @@
     return-wide v0
 .end method
 
-.method public static b()Ls4/e0;
+.method public static b()Ls4/b0;
     .locals 2
 
     .line 1
-    new-instance v0, Ls4/e0;
+    new-instance v0, Ls4/b0;
 
     .line 2
     .line 3
@@ -138,12 +138,12 @@
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ls4/e0;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/b0;-><init>(I)V
 
     .line 6
     .line 7
     .line 8
-    sput-object v0, Lv1/f;->c:Ls4/e0;
+    sput-object v0, Lv1/f;->c:Ls4/b0;
 
     .line 9
     .line 10
@@ -156,7 +156,7 @@
     .line 13
     .line 14
     .line 15
-    sget-object v0, Lv1/f;->c:Ls4/e0;
+    sget-object v0, Lv1/f;->c:Ls4/b0;
 
     .line 16
     .line 17
@@ -171,7 +171,7 @@
 
     .line 2
     .line 3
-    sget-object v0, Lv1/f;->c:Ls4/e0;
+    sget-object v0, Lv1/f;->c:Ls4/b0;
 
     .line 4
     .line 5
@@ -196,7 +196,7 @@
     .line 13
     .line 14
     :try_start_0
-    sget-object v0, Lv1/f;->c:Ls4/e0;
+    sget-object v0, Lv1/f;->c:Ls4/b0;
 
     .line 15
     .line 16
@@ -355,7 +355,7 @@
 
     .line 71
     .line 72
-    invoke-static {}, Lv1/f;->b()Ls4/e0;
+    invoke-static {}, Lv1/f;->b()Ls4/b0;
 
     .line 73
     .line 74
@@ -581,7 +581,7 @@
     .line 174
     :catch_1
     :try_start_a
-    invoke-static {}, Lv1/f;->b()Ls4/e0;
+    invoke-static {}, Lv1/f;->b()Ls4/b0;
 
     .line 175
     .line 176
@@ -764,7 +764,7 @@
     :catch_2
     :cond_10
     :try_start_c
-    invoke-static {}, Lv1/f;->b()Ls4/e0;
+    invoke-static {}, Lv1/f;->b()Ls4/b0;
 
     .line 251
     .line 252
@@ -776,7 +776,7 @@
 
     .line 255
     :catch_3
-    invoke-static {}, Lv1/f;->b()Ls4/e0;
+    invoke-static {}, Lv1/f;->b()Ls4/b0;
 
     .line 256
     .line 257

@@ -1,6 +1,6 @@
 .class public abstract Landroidx/room/EntityInsertionAdapter;
 .super Landroidx/room/SharedSQLiteStatement;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # virtual methods
@@ -20,7 +20,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 10
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -48,7 +48,7 @@
     invoke-virtual {p0, v0, v1}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 13
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -91,7 +91,7 @@
     invoke-virtual {p0, v0, p1}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 3
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -120,7 +120,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 5
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -142,7 +142,7 @@
     invoke-virtual {p0, v0, v3}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 8
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -192,7 +192,7 @@
     .line 6
     .line 7
     .line 8
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     .line 9
     .line 10
@@ -235,7 +235,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -276,7 +276,7 @@
     invoke-virtual {p0, v0, v3}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 5
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v5
 
@@ -293,7 +293,7 @@
 
     .line 6
     :cond_0
-    invoke-static {}, Lr8/k;->D()V
+    invoke-static {}, Lt8/k;->C0()V
 
     const/4 p1, 0x0
 
@@ -325,7 +325,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -356,7 +356,7 @@
     invoke-virtual {p0, v0, v5}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 12
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v7
 
@@ -401,7 +401,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -435,7 +435,7 @@
     invoke-virtual {p0, v0, v4}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 6
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v4
 
@@ -481,7 +481,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -517,7 +517,7 @@
     invoke-virtual {p0, v0, v4}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 12
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v6
 
@@ -582,7 +582,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -591,7 +591,7 @@
 
     .line 9
     :try_start_0
-    invoke-static {}, Ly6/t1;->h()Ls8/c;
+    invoke-static {}, Ljb/c;->v()Lu8/c;
 
     move-result-object v1
 
@@ -615,7 +615,7 @@
     invoke-virtual {p0, v0, v2}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 12
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v2
 
@@ -623,7 +623,7 @@
 
     move-result-object v2
 
-    invoke-virtual {v1, v2}, Ls8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Lu8/c;->add(Ljava/lang/Object;)Z
 
     goto :goto_0
 
@@ -634,7 +634,7 @@
 
     .line 13
     :cond_0
-    invoke-static {v1}, Ly6/t1;->a(Ls8/c;)Ls8/c;
+    invoke-static {v1}, Ljb/c;->i(Lu8/c;)Lu8/c;
 
     move-result-object p1
     :try_end_0
@@ -666,7 +666,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -675,7 +675,7 @@
 
     .line 2
     :try_start_0
-    invoke-static {}, Ly6/t1;->h()Ls8/c;
+    invoke-static {}, Ljb/c;->v()Lu8/c;
 
     move-result-object v1
 
@@ -693,7 +693,7 @@
     invoke-virtual {p0, v0, v4}, Landroidx/room/EntityInsertionAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 5
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->v0()J
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->x0()J
 
     move-result-wide v4
 
@@ -701,7 +701,7 @@
 
     move-result-object v4
 
-    invoke-virtual {v1, v4}, Ls8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v4}, Lu8/c;->add(Ljava/lang/Object;)Z
 
     add-int/lit8 v3, v3, 0x1
 
@@ -714,7 +714,7 @@
 
     .line 6
     :cond_0
-    invoke-static {v1}, Ly6/t1;->a(Ls8/c;)Ls8/c;
+    invoke-static {v1}, Ljb/c;->i(Lu8/c;)Lu8/c;
 
     move-result-object p1
     :try_end_0

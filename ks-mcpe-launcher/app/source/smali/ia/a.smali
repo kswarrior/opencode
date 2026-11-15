@@ -1,82 +1,287 @@
-.class public abstract Lia/a;
+.class public final Lia/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ljava/util/Iterator;
 
 
-# static fields
-.field public static final a:Loa/a;
+# instance fields
+.field public final synthetic c:I
 
-.field public static final b:Loa/a;
-
-.field public static final c:Loa/a;
+.field public final d:Ljava/util/Iterator;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 4
+.method public synthetic constructor <init>(Ljava/util/Iterator;I)V
+    .locals 0
 
     .line 1
-    sget-object v0, Ljava/nio/charset/StandardCharsets;->ISO_8859_1:Ljava/nio/charset/Charset;
+    iput p2, p0, Lia/a;->c:I
+
+    iput-object p1, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ls4/u;)V
+    .locals 1
+
+    const/4 v0, 0x2
+
+    iput v0, p0, Lia/a;->c:I
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    iget-object p1, p1, Ls4/u;->c:Landroid/os/Bundle;
+
+    .line 4
+    invoke-virtual {p1}, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+
+    move-result-object p1
+
+    invoke-interface {p1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final hasNext()Z
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lia/a;->c:I
 
     .line 2
     .line 3
-    new-instance v1, Loa/a;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    const-string v2, "application/x-www-form-urlencoded"
-
     .line 6
-    .line 7
-    const/4 v3, 0x0
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
 
+    .line 7
     .line 8
-    invoke-direct {v1, v2, v0, v3}, Loa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     .line 9
     .line 10
     .line 11
-    sput-object v1, Lia/a;->a:Loa/a;
+    move-result v0
 
     .line 12
+    return v0
+
     .line 13
-    new-instance v0, Loa/a;
+    :pswitch_0
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
 
     .line 14
     .line 15
-    const-string v1, "application/json"
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     .line 16
     .line 17
-    sget-object v2, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
+    .line 18
+    move-result v0
+
+    .line 19
+    return v0
+
+    .line 20
+    :pswitch_1
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    .line 21
+    .line 22
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v0
+
+    .line 26
+    return v0
+
+    .line 27
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final next()Ljava/lang/Object;
+    .locals 2
+
+    .line 1
+    iget v0, p0, Lia/a;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    .line 7
+    .line 8
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v0
+
+    .line 12
+    check-cast v0, Ljava/lang/String;
+
+    .line 13
+    .line 14
+    return-object v0
+
+    .line 15
+    :pswitch_0
+    new-instance v0, Lia/e;
+
+    .line 16
+    .line 17
+    iget-object v1, p0, Lia/a;->d:Ljava/util/Iterator;
 
     .line 18
     .line 19
-    invoke-direct {v0, v1, v2, v3}, Loa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     .line 20
     .line 21
     .line 22
-    sput-object v0, Lia/a;->b:Loa/a;
+    move-result-object v1
 
     .line 23
+    check-cast v1, Ljava/util/Map$Entry;
+
     .line 24
-    new-instance v0, Loa/a;
-
     .line 25
-    .line 26
-    const-string v1, "application/octet-stream"
+    invoke-direct {v0, v1}, Lia/e;-><init>(Ljava/util/Map$Entry;)V
 
+    .line 26
     .line 27
     .line 28
-    invoke-direct {v0, v1, v3, v3}, Loa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
+    return-object v0
 
     .line 29
+    :pswitch_1
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
+
     .line 30
     .line 31
-    sput-object v0, Lia/a;->c:Loa/a;
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     .line 32
     .line 33
+    .line 34
+    move-result-object v0
+
+    .line 35
+    check-cast v0, Lcom/google/gson/JsonElement;
+
+    .line 36
+    .line 37
+    invoke-static {v0}, Lia/c;->d(Lcom/google/gson/JsonElement;)Lia/c;
+
+    .line 38
+    .line 39
+    .line 40
+    move-result-object v0
+
+    .line 41
+    return-object v0
+
+    .line 42
+    nop
+
+    .line 43
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final remove()V
+    .locals 2
+
+    .line 1
+    iget v0, p0, Lia/a;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    .line 7
+    .line 8
+    const-string v1, "Remove not supported"
+
+    .line 9
+    .line 10
+    invoke-direct {v0, v1}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
+
+    .line 11
+    .line 12
+    .line 13
+    throw v0
+
+    .line 14
+    :pswitch_0
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    .line 15
+    .line 16
+    invoke-interface {v0}, Ljava/util/Iterator;->remove()V
+
+    .line 17
+    .line 18
+    .line 19
     return-void
+
+    .line 20
+    :pswitch_1
+    iget-object v0, p0, Lia/a;->d:Ljava/util/Iterator;
+
+    .line 21
+    .line 22
+    invoke-interface {v0}, Ljava/util/Iterator;->remove()V
+
+    .line 23
+    .line 24
+    .line 25
+    return-void
+
+    .line 26
+    nop
+
+    .line 27
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

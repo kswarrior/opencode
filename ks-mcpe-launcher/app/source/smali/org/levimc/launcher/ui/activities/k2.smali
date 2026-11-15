@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/k2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,40 +9,34 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
-.field public final synthetic h:Ljava/lang/Exception;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/MainActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;Ljava/lang/Exception;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/k2;->c:I
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/k2;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/k2;->h:Ljava/lang/Exception;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
 .method public final run()V
-    .locals 2
+    .locals 1
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/ui/activities/k2;->c:I
@@ -54,44 +48,64 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/k2;->h:Ljava/lang/Exception;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->Z(Lorg/levimc/launcher/ui/activities/MainActivity;)V
 
     .line 9
     .line 10
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->x(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;Ljava/lang/Exception;)V
-
     .line 11
-    .line 12
-    .line 13
     return-void
 
-    .line 14
+    .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
+
+    .line 13
+    .line 14
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->E(Lorg/levimc/launcher/ui/activities/MainActivity;)V
 
     .line 15
     .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/k2;->h:Ljava/lang/Exception;
-
     .line 17
+    return-void
+
     .line 18
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->G(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;Ljava/lang/Exception;)V
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 19
     .line 20
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->Q(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+
     .line 21
+    .line 22
+    .line 23
     return-void
 
-    .line 22
+    .line 24
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k2;->d:Lorg/levimc/launcher/ui/activities/MainActivity;
+
+    .line 25
+    .line 26
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->A(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
     nop
 
-    .line 23
+    .line 31
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

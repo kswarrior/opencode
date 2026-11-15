@@ -1,406 +1,237 @@
 .class public final Lp6/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ls4/f2;
 
 
 # instance fields
-.field public final a:Ljava/lang/String;
+.field public final synthetic a:I
 
-.field public final b:Ljava/util/Set;
-
-.field public final c:Ljava/util/Set;
-
-.field public final d:I
-
-.field public final e:I
-
-.field public final f:Lp6/e;
-
-.field public final g:Ljava/util/Set;
+.field public final synthetic b:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;Ljava/util/Set;Ljava/util/Set;IILp6/e;Ljava/util/Set;)V
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
+    iput p2, p0, Lp6/b;->a:I
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Lp6/b;->b:Ljava/lang/Object;
+
+    .line 4
+    .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lp6/b;->a:Ljava/lang/String;
-
-    .line 5
     .line 6
-    invoke-static {p2}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
-
     .line 7
     .line 8
-    .line 9
-    move-result-object p1
-
-    .line 10
-    iput-object p1, p0, Lp6/b;->b:Ljava/util/Set;
-
-    .line 11
-    .line 12
-    invoke-static {p3}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object p1
-
-    .line 16
-    iput-object p1, p0, Lp6/b;->c:Ljava/util/Set;
-
-    .line 17
-    .line 18
-    iput p4, p0, Lp6/b;->d:I
-
-    .line 19
-    .line 20
-    iput p5, p0, Lp6/b;->e:I
-
-    .line 21
-    .line 22
-    iput-object p6, p0, Lp6/b;->f:Lp6/e;
-
-    .line 23
-    .line 24
-    invoke-static {p7}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
-
-    .line 25
-    .line 26
-    .line 27
-    move-result-object p1
-
-    .line 28
-    iput-object p1, p0, Lp6/b;->g:Ljava/util/Set;
-
-    .line 29
-    .line 30
     return-void
-.end method
-
-.method public static a(Ljava/lang/Class;)Lp6/a;
-    .locals 2
-
-    .line 1
-    new-instance v0, Lp6/a;
-
-    .line 2
-    .line 3
-    const/4 v1, 0x0
-
-    .line 4
-    new-array v1, v1, [Ljava/lang/Class;
-
-    .line 5
-    .line 6
-    invoke-direct {v0, p0, v1}, Lp6/a;-><init>(Ljava/lang/Class;[Ljava/lang/Class;)V
-
-    .line 7
-    .line 8
-    .line 9
-    return-object v0
-.end method
-
-.method public static b(Lp6/q;)Lp6/a;
-    .locals 2
-
-    .line 1
-    new-instance v0, Lp6/a;
-
-    .line 2
-    .line 3
-    const/4 v1, 0x0
-
-    .line 4
-    new-array v1, v1, [Lp6/q;
-
-    .line 5
-    .line 6
-    invoke-direct {v0, p0, v1}, Lp6/a;-><init>(Lp6/q;[Lp6/q;)V
-
-    .line 7
-    .line 8
-    .line 9
-    return-object v0
-.end method
-
-.method public static varargs c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lp6/b;
-    .locals 10
-
-    .line 1
-    new-instance v0, Ljava/util/HashSet;
-
-    .line 2
-    .line 3
-    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    new-instance v1, Ljava/util/HashSet;
-
-    .line 7
-    .line 8
-    invoke-direct {v1}, Ljava/util/HashSet;-><init>()V
-
-    .line 9
-    .line 10
-    .line 11
-    new-instance v9, Ljava/util/HashSet;
-
-    .line 12
-    .line 13
-    invoke-direct {v9}, Ljava/util/HashSet;-><init>()V
-
-    .line 14
-    .line 15
-    .line 16
-    invoke-static {p1}, Lp6/q;->a(Ljava/lang/Class;)Lp6/q;
-
-    .line 17
-    .line 18
-    .line 19
-    move-result-object p1
-
-    .line 20
-    invoke-virtual {v0, p1}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
-
-    .line 21
-    .line 22
-    .line 23
-    array-length p1, p2
-
-    .line 24
-    const/4 v6, 0x0
-
-    .line 25
-    move v2, v6
-
-    .line 26
-    :goto_0
-    if-ge v2, p1, :cond_0
-
-    .line 27
-    .line 28
-    aget-object v3, p2, v2
-
-    .line 29
-    .line 30
-    const-string v4, "Null interface"
-
-    .line 31
-    .line 32
-    invoke-static {v3, v4}, Lkb/c;->h(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 33
-    .line 34
-    .line 35
-    invoke-static {v3}, Lp6/q;->a(Ljava/lang/Class;)Lp6/q;
-
-    .line 36
-    .line 37
-    .line 38
-    move-result-object v3
-
-    .line 39
-    invoke-virtual {v0, v3}, Ljava/util/HashSet;->add(Ljava/lang/Object;)Z
-
-    .line 40
-    .line 41
-    .line 42
-    add-int/lit8 v2, v2, 0x1
-
-    .line 43
-    .line 44
-    goto :goto_0
-
-    .line 45
-    :cond_0
-    new-instance v8, Lc/m;
-
-    .line 46
-    .line 47
-    const/16 p1, 0xb
-
-    .line 48
-    .line 49
-    invoke-direct {v8, p0, p1}, Lc/m;-><init>(Ljava/lang/Object;I)V
-
-    .line 50
-    .line 51
-    .line 52
-    new-instance v2, Lp6/b;
-
-    .line 53
-    .line 54
-    new-instance v4, Ljava/util/HashSet;
-
-    .line 55
-    .line 56
-    invoke-direct {v4, v0}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
-
-    .line 57
-    .line 58
-    .line 59
-    new-instance v5, Ljava/util/HashSet;
-
-    .line 60
-    .line 61
-    invoke-direct {v5, v1}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
-
-    .line 62
-    .line 63
-    .line 64
-    const/4 v3, 0x0
-
-    .line 65
-    move v7, v6
-
-    .line 66
-    invoke-direct/range {v2 .. v9}, Lp6/b;-><init>(Ljava/lang/String;Ljava/util/Set;Ljava/util/Set;IILp6/e;Ljava/util/Set;)V
-
-    .line 67
-    .line 68
-    .line 69
-    return-object v2
 .end method
 
 
 # virtual methods
-.method public final toString()Ljava/lang/String;
+.method public final a(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;J)V
     .locals 2
 
     .line 1
-    new-instance v0, Ljava/lang/StringBuilder;
+    iget v0, p0, Lp6/b;->a:I
 
     .line 2
     .line 3
-    const-string v1, "Component<"
+    iget-object v1, p0, Lp6/b;->b:Ljava/lang/Object;
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    packed-switch v0, :pswitch_data_0
 
     .line 6
     .line 7
     .line 8
-    iget-object v1, p0, Lp6/b;->b:Ljava/util/Set;
+    if-eqz p1, :cond_0
 
     .line 9
     .line 10
-    invoke-interface {v1}, Ljava/util/Set;->toArray()[Ljava/lang/Object;
+    sget-object p1, Lp6/a;->a:Lg6/i;
 
     .line 11
     .line 12
+    invoke-virtual {p1, p2}, Lg6/b;->contains(Ljava/lang/Object;)Z
+
     .line 13
-    move-result-object v1
-
     .line 14
-    invoke-static {v1}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
-
     .line 15
-    .line 16
-    .line 17
-    move-result-object v1
+    move-result p1
 
+    .line 16
+    if-nez p1, :cond_0
+
+    .line 17
     .line 18
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance p1, Landroid/os/Bundle;
 
     .line 19
     .line 20
-    .line 21
-    const-string v1, ">{"
+    invoke-direct {p1}, Landroid/os/Bundle;-><init>()V
 
+    .line 21
     .line 22
     .line 23
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string v0, "name"
 
     .line 24
     .line 25
-    .line 26
-    iget v1, p0, Lp6/b;->d:I
+    invoke-virtual {p1, v0, p2}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
+    .line 26
     .line 27
     .line 28
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    const-string p2, "timestampInMillis"
 
     .line 29
     .line 30
-    .line 31
-    const-string v1, ", type="
+    invoke-virtual {p1, p2, p4, p5}, Landroid/os/BaseBundle;->putLong(Ljava/lang/String;J)V
 
+    .line 31
     .line 32
     .line 33
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    const-string p2, "params"
 
     .line 34
     .line 35
-    .line 36
-    iget v1, p0, Lp6/b;->e:I
+    invoke-virtual {p1, p2, p3}, Landroid/os/Bundle;->putBundle(Ljava/lang/String;Landroid/os/Bundle;)V
 
+    .line 36
     .line 37
     .line 38
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    check-cast v1, Lng/a;
 
     .line 39
     .line 40
+    iget-object p2, v1, Lng/a;->d:Ljava/lang/Object;
+
     .line 41
-    const-string v1, ", deps="
-
     .line 42
+    check-cast p2, Lk6/g0;
+
     .line 43
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 44
-    .line 45
-    .line 46
-    iget-object v1, p0, Lp6/b;->c:Ljava/util/Set;
+    const/4 p3, 0x3
 
+    .line 45
+    invoke-virtual {p2, p3, p1}, Lk6/g0;->C(ILandroid/os/Bundle;)V
+
+    .line 46
     .line 47
     .line 48
-    invoke-interface {v1}, Ljava/util/Set;->toArray()[Ljava/lang/Object;
+    :cond_0
+    return-void
 
     .line 49
+    :pswitch_0
+    check-cast v1, Lk6/g0;
+
     .line 50
     .line 51
-    move-result-object v1
+    iget-object p1, v1, Lk6/g0;->d:Ljava/lang/Object;
 
     .line 52
-    invoke-static {v1}, Ljava/util/Arrays;->toString([Ljava/lang/Object;)Ljava/lang/String;
-
     .line 53
+    check-cast p1, Ljava/util/HashSet;
+
     .line 54
     .line 55
-    move-result-object v1
+    invoke-virtual {p1, p2}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
 
     .line 56
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 57
     .line 58
+    move-result p1
+
     .line 59
-    const-string v1, "}"
+    if-nez p1, :cond_1
 
     .line 60
     .line 61
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    goto :goto_0
 
     .line 62
+    :cond_1
+    new-instance p1, Landroid/os/Bundle;
+
     .line 63
     .line 64
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {p1}, Landroid/os/Bundle;-><init>()V
 
     .line 65
     .line 66
     .line 67
-    move-result-object v0
+    sget-object p3, Lp6/a;->a:Lg6/i;
 
     .line 68
-    return-object v0
+    .line 69
+    sget-object p3, Ls4/e2;->f:[Ljava/lang/String;
+
+    .line 70
+    .line 71
+    sget-object p4, Ls4/e2;->a:[Ljava/lang/String;
+
+    .line 72
+    .line 73
+    invoke-static {p2, p3, p4}, Ls4/e2;->f(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)Ljava/lang/String;
+
+    .line 74
+    .line 75
+    .line 76
+    move-result-object p3
+
+    .line 77
+    if-eqz p3, :cond_2
+
+    .line 78
+    .line 79
+    move-object p2, p3
+
+    .line 80
+    :cond_2
+    const-string p3, "events"
+
+    .line 81
+    .line 82
+    invoke-virtual {p1, p3, p2}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 83
+    .line 84
+    .line 85
+    iget-object p2, v1, Lk6/g0;->h:Ljava/lang/Object;
+
+    .line 86
+    .line 87
+    check-cast p2, Lk6/g0;
+
+    .line 88
+    .line 89
+    const/4 p3, 0x2
+
+    .line 90
+    invoke-virtual {p2, p3, p1}, Lk6/g0;->C(ILandroid/os/Bundle;)V
+
+    .line 91
+    .line 92
+    .line 93
+    :goto_0
+    return-void
+
+    .line 94
+    nop
+
+    .line 95
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

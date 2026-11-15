@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;
 .super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -136,11 +136,11 @@
 
     .line 51
     .line 52
-    new-instance v3, Lorg/levimc/launcher/ui/activities/x0;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/c1;
 
     .line 53
     .line 54
-    invoke-direct {v3, p0}, Lorg/levimc/launcher/ui/activities/x0;-><init>(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;)V
+    invoke-direct {v3, p0}, Lorg/levimc/launcher/ui/activities/c1;-><init>(Lorg/levimc/launcher/ui/activities/CustomFlatWorldActivity$LayersAdapter$LayerViewHolder;)V
 
     .line 55
     .line 56
@@ -150,14 +150,14 @@
     .line 58
     .line 59
     .line 60
-    new-instance v2, Lorg/levimc/launcher/ui/activities/y0;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/d1;
 
     .line 61
     .line 62
     const/4 v3, 0x0
 
     .line 63
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/y0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/d1;-><init>(Ljava/lang/Object;I)V
 
     .line 64
     .line 65

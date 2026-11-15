@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -13,6 +13,8 @@
 
 # static fields
 .field public static final EXTRA_GAME_VERSION:Ljava/lang/String; = "org.levimc.launcher.extra.GAME_VERSION"
+
+.field public static final EXTRA_MOD_MENU_ENABLED:Ljava/lang/String; = "org.levimc.launcher.extra.MOD_MENU_ENABLED"
 
 .field public static final EXTRA_STORAGE_CACHE_DIR:Ljava/lang/String; = "org.levimc.launcher.extra.STORAGE_CACHE_DIR"
 
@@ -784,7 +786,7 @@
     .line 65
     .line 66
     .line 67
-    invoke-static {p3, p1}, Ln5/h;->b(Ljava/lang/Exception;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p3, p1}, Lcom/google/android/gms/internal/measurement/x;->n(Ljava/lang/Exception;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 68
     .line 69
@@ -1007,60 +1009,89 @@
     .line 79
     .line 80
     .line 81
-    const-string p3, "VERSION_ISOLATION"
+    iget-object p3, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->context:Landroid/content/Context;
 
     .line 82
     .line 83
-    iget-boolean p2, p2, Lorg/levimc/launcher/core/versions/GameVersion;->versionIsolation:Z
+    invoke-static {p3}, Lorg/levimc/launcher/core/versions/VersionManager;->get(Landroid/content/Context;)Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 84
     .line 85
-    invoke-virtual {p1, p3, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
-
     .line 86
-    .line 87
-    .line 88
-    const-string p2, "LAUNCH_WITH_URI"
+    move-result-object p3
 
+    .line 87
+    invoke-virtual {p3, p2}, Lorg/levimc/launcher/core/versions/VersionManager;->isInstanceModMenuEnabled(Lorg/levimc/launcher/core/versions/GameVersion;)Z
+
+    .line 88
     .line 89
     .line 90
-    invoke-virtual {p1, p2}, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
+    move-result p3
 
     .line 91
+    const-string v2, "org.levimc.launcher.extra.MOD_MENU_ENABLED"
+
     .line 92
     .line 93
-    invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->suspendForMinecraft()V
+    invoke-virtual {p1, v2, p3}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
     .line 94
     .line 95
     .line 96
-    invoke-virtual {v0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+    const-string p3, "VERSION_ISOLATION"
 
     .line 97
     .line 98
+    iget-boolean p2, p2, Lorg/levimc/launcher/core/versions/GameVersion;->versionIsolation:Z
+
     .line 99
-    sget p1, Lorg/levimc/launcher/R$anim;->fade_in:I
-
     .line 100
-    .line 101
-    sget p2, Lorg/levimc/launcher/R$anim;->fade_out:I
+    invoke-virtual {p1, p3, p2}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Z)Landroid/content/Intent;
 
+    .line 101
     .line 102
     .line 103
-    invoke-virtual {v0, p1, p2}, Landroid/app/Activity;->overridePendingTransition(II)V
+    const-string p2, "LAUNCH_WITH_URI"
 
     .line 104
     .line 105
-    .line 106
-    const-string p1, "MinecraftLoadingActivity startActivity called"
+    invoke-virtual {p1, p2}, Landroid/content/Intent;->removeExtra(Ljava/lang/String;)V
 
+    .line 106
     .line 107
     .line 108
-    invoke-virtual {v1, p1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->mark(Ljava/lang/String;)V
+    invoke-static {}, Lorg/levimc/launcher/util/LauncherBackgroundController;->suspendForMinecraft()V
 
     .line 109
     .line 110
     .line 111
+    invoke-virtual {v0, p1}, Landroid/app/Activity;->startActivity(Landroid/content/Intent;)V
+
+    .line 112
+    .line 113
+    .line 114
+    sget p1, Lorg/levimc/launcher/R$anim;->fade_in:I
+
+    .line 115
+    .line 116
+    sget p2, Lorg/levimc/launcher/R$anim;->fade_out:I
+
+    .line 117
+    .line 118
+    invoke-virtual {v0, p1, p2}, Landroid/app/Activity;->overridePendingTransition(II)V
+
+    .line 119
+    .line 120
+    .line 121
+    const-string p1, "MinecraftLoadingActivity startActivity called"
+
+    .line 122
+    .line 123
+    invoke-virtual {v1, p1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->mark(Ljava/lang/String;)V
+
+    .line 124
+    .line 125
+    .line 126
     return-void
 .end method
 
@@ -1110,15 +1141,15 @@
 
     .line 4
     .line 5
-    new-instance v1, Landroidx/room/n0;
+    new-instance v1, Landroidx/room/p0;
 
     .line 6
     .line 7
-    const/16 v2, 0xf
+    const/16 v2, 0x10
 
     .line 8
     .line 9
-    invoke-direct {v1, v0, p1, v2}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, v0, p1, v2}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 10
     .line 11
@@ -1595,11 +1626,11 @@
 
     .line 16
     :cond_3
-    new-instance v0, Landroidx/lifecycle/z;
+    new-instance v0, La6/d;
 
-    const/16 v1, 0xf
+    const/16 v1, 0x12
 
-    invoke-direct {v0, v6, v1}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, v6, v1}, La6/d;-><init>(Ljava/lang/Object;I)V
 
     invoke-virtual {v6, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
@@ -1628,11 +1659,11 @@
 
     .line 19
     :try_start_4
-    new-instance p1, Landroidx/room/n0;
+    new-instance p1, Landroidx/room/p0;
 
-    const/16 v0, 0xe
+    const/16 v0, 0xf
 
-    invoke-direct {p1, v6, p2, v0}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {p1, v6, p2, v0}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v6, p1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
@@ -1654,7 +1685,7 @@
     .line 21
     :cond_5
     :try_start_5
-    new-instance v4, Li6/f0;
+    new-instance v4, Lk6/f0;
     :try_end_5
     .catch Ljava/lang/Exception; {:try_start_5 .. :try_end_5} :catch_3
 
@@ -1669,7 +1700,7 @@
     move-object v7, p3
 
     :try_start_6
-    invoke-direct/range {v4 .. v10}, Li6/f0;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct/range {v4 .. v10}, Lk6/f0;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v6, v4}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
     :try_end_6
@@ -1720,7 +1751,7 @@
     invoke-direct {p2, p3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 24
-    invoke-static {p1, p2}, Ln5/h;->b(Ljava/lang/Exception;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p1, p2}, Lcom/google/android/gms/internal/measurement/x;->n(Ljava/lang/Exception;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     move-result-object p2
 

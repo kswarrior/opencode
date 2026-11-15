@@ -1,205 +1,212 @@
-.class public final Landroidx/recyclerview/widget/p0;
-.super Landroid/view/GestureDetector$SimpleOnGestureListener;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public abstract Landroidx/recyclerview/widget/p0;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Landroid/animation/Animator$AnimatorListener;
 
 
 # instance fields
-.field public a:Z
+.field public final a:F
 
-.field public final synthetic b:Landroidx/recyclerview/widget/ItemTouchHelper;
+.field public final b:F
+
+.field public final c:F
+
+.field public final d:F
+
+.field public final e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+.field public final f:I
+
+.field public final g:Landroid/animation/ValueAnimator;
+
+.field public h:Z
+
+.field public i:F
+
+.field public j:F
+
+.field public k:Z
+
+.field public l:Z
+
+.field public m:F
 
 
 # direct methods
-.method public constructor <init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
-    .locals 0
+.method public constructor <init>(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;IFFFF)V
+    .locals 1
 
     .line 1
-    iput-object p1, p0, Landroidx/recyclerview/widget/p0;->b:Landroidx/recyclerview/widget/ItemTouchHelper;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0}, Landroid/view/GestureDetector$SimpleOnGestureListener;-><init>()V
-
     .line 4
+    const/4 v0, 0x0
+
     .line 5
-    .line 6
-    const/4 p1, 0x1
-
-    .line 7
-    iput-boolean p1, p0, Landroidx/recyclerview/widget/p0;->a:Z
-
-    .line 8
-    .line 9
-    return-void
-.end method
-
-
-# virtual methods
-.method public final onDown(Landroid/view/MotionEvent;)Z
-    .locals 0
-
-    .line 1
-    const/4 p1, 0x1
-
-    .line 2
-    return p1
-.end method
-
-.method public final onLongPress(Landroid/view/MotionEvent;)V
-    .locals 5
-
-    .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/p0;->b:Landroidx/recyclerview/widget/ItemTouchHelper;
-
-    .line 2
-    .line 3
-    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/s0;
-
-    .line 4
-    .line 5
-    iget-boolean v2, p0, Landroidx/recyclerview/widget/p0;->a:Z
+    iput-boolean v0, p0, Landroidx/recyclerview/widget/p0;->k:Z
 
     .line 6
     .line 7
-    if-nez v2, :cond_0
+    iput-boolean v0, p0, Landroidx/recyclerview/widget/p0;->l:Z
 
     .line 8
     .line 9
-    goto :goto_0
+    iput p2, p0, Landroidx/recyclerview/widget/p0;->f:I
 
     .line 10
-    :cond_0
-    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->i(Landroid/view/MotionEvent;)Landroid/view/View;
-
     .line 11
+    iput-object p1, p0, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
     .line 12
     .line 13
-    move-result-object v2
+    iput p3, p0, Landroidx/recyclerview/widget/p0;->a:F
 
     .line 14
-    if-eqz v2, :cond_2
-
     .line 15
+    iput p4, p0, Landroidx/recyclerview/widget/p0;->b:F
+
     .line 16
-    iget-object v3, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->r:Landroidx/recyclerview/widget/RecyclerView;
-
     .line 17
-    .line 18
-    invoke-virtual {v3, v2}, Landroidx/recyclerview/widget/RecyclerView;->I(Landroid/view/View;)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    iput p5, p0, Landroidx/recyclerview/widget/p0;->c:F
 
+    .line 18
     .line 19
+    iput p6, p0, Landroidx/recyclerview/widget/p0;->d:F
+
     .line 20
     .line 21
-    move-result-object v2
+    const/4 p2, 0x2
 
     .line 22
-    if-eqz v2, :cond_2
+    new-array p2, p2, [F
 
     .line 23
     .line 24
-    iget-object v3, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->r:Landroidx/recyclerview/widget/RecyclerView;
+    fill-array-data p2, :array_0
 
     .line 25
     .line 26
-    invoke-virtual {v1, v3, v2}, Landroidx/recyclerview/widget/o0;->hasDragFlag(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)Z
-
     .line 27
+    invoke-static {p2}, Landroid/animation/ValueAnimator;->ofFloat([F)Landroid/animation/ValueAnimator;
+
     .line 28
     .line 29
-    move-result v3
-
     .line 30
-    if-nez v3, :cond_1
+    move-result-object p2
 
     .line 31
-    .line 32
-    goto :goto_0
+    iput-object p2, p0, Landroidx/recyclerview/widget/p0;->g:Landroid/animation/ValueAnimator;
 
+    .line 32
     .line 33
-    :cond_1
-    const/4 v3, 0x0
+    new-instance p3, Landroidx/recyclerview/widget/o0;
 
     .line 34
-    invoke-virtual {p1, v3}, Landroid/view/MotionEvent;->getPointerId(I)I
-
     .line 35
+    invoke-direct {p3, p0}, Landroidx/recyclerview/widget/o0;-><init>(Landroidx/recyclerview/widget/p0;)V
+
     .line 36
     .line 37
-    move-result v3
-
     .line 38
-    iget v4, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+    invoke-virtual {p2, p3}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
 
     .line 39
     .line 40
-    if-ne v3, v4, :cond_2
-
     .line 41
-    .line 42
-    invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->findPointerIndex(I)I
+    iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
+    .line 42
     .line 43
+    invoke-virtual {p2, p1}, Landroid/animation/Animator;->setTarget(Ljava/lang/Object;)V
+
     .line 44
     .line 45
-    move-result v3
-
     .line 46
-    invoke-virtual {p1, v3}, Landroid/view/MotionEvent;->getX(I)F
+    invoke-virtual {p2, p0}, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
     .line 47
     .line 48
     .line 49
-    move-result v4
+    const/4 p1, 0x0
 
     .line 50
-    invoke-virtual {p1, v3}, Landroid/view/MotionEvent;->getY(I)F
+    iput p1, p0, Landroidx/recyclerview/widget/p0;->m:F
 
     .line 51
     .line 52
+    return-void
+
     .line 53
-    move-result p1
+    :array_0
+    .array-data 4
+        0x0
+        0x3f800000    # 1.0f
+    .end array-data
+.end method
 
-    .line 54
-    iput v4, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->d:F
 
-    .line 55
-    .line 56
-    iput p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->e:F
+# virtual methods
+.method public final onAnimationCancel(Landroid/animation/Animator;)V
+    .locals 0
 
-    .line 57
-    .line 58
-    const/4 p1, 0x0
+    .line 1
+    const/high16 p1, 0x3f800000    # 1.0f
 
-    .line 59
-    iput p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->i:F
+    .line 2
+    .line 3
+    iput p1, p0, Landroidx/recyclerview/widget/p0;->m:F
 
-    .line 60
-    .line 61
-    iput p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->h:F
+    .line 4
+    .line 5
+    return-void
+.end method
 
-    .line 62
-    .line 63
-    invoke-virtual {v1}, Landroidx/recyclerview/widget/o0;->isLongPressDragEnabled()Z
+.method public onAnimationEnd(Landroid/animation/Animator;)V
+    .locals 1
 
-    .line 64
-    .line 65
-    .line 66
-    move-result p1
+    .line 1
+    iget-boolean p1, p0, Landroidx/recyclerview/widget/p0;->l:Z
 
-    .line 67
-    if-eqz p1, :cond_2
+    .line 2
+    .line 3
+    const/4 v0, 0x1
 
-    .line 68
-    .line 69
-    const/4 p1, 0x2
+    .line 4
+    if-nez p1, :cond_0
 
-    .line 70
-    invoke-virtual {v0, v2, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->n(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+    .line 5
+    .line 6
+    iget-object p1, p0, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
-    .line 71
-    .line 72
-    .line 73
-    :cond_2
-    :goto_0
+    .line 7
+    .line 8
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->setIsRecyclable(Z)V
+
+    .line 9
+    .line 10
+    .line 11
+    :cond_0
+    iput-boolean v0, p0, Landroidx/recyclerview/widget/p0;->l:Z
+
+    .line 12
+    .line 13
+    return-void
+.end method
+
+.method public final onAnimationRepeat(Landroid/animation/Animator;)V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public final onAnimationStart(Landroid/animation/Animator;)V
+    .locals 0
+
+    .line 1
     return-void
 .end method

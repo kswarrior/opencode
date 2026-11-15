@@ -1,6 +1,6 @@
 .class public abstract Landroidx/datastore/preferences/protobuf/w0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -190,7 +190,7 @@
     int-to-long v3, v3
 
     .line 23
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 24
     .line 25
@@ -235,7 +235,7 @@
 
     .line 9
     :cond_0
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
 
     .line 10
     .line 11
@@ -276,7 +276,7 @@
 
     .line 9
     :cond_0
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
 
     .line 10
     .line 11
@@ -348,7 +348,7 @@
     int-to-long v3, v3
 
     .line 23
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 24
     .line 25
@@ -421,7 +421,7 @@
     move-result-wide v3
 
     .line 22
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 23
     .line 24
@@ -505,7 +505,7 @@
     xor-int/2addr v3, v4
 
     .line 27
-    invoke-static {v3}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
+    invoke-static {v3}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
 
     .line 28
     .line 29
@@ -595,7 +595,7 @@
     xor-long/2addr v3, v5
 
     .line 29
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 30
     .line 31
@@ -668,7 +668,7 @@
     move-result v3
 
     .line 22
-    invoke-static {v3}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
+    invoke-static {v3}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
 
     .line 23
     .line 24
@@ -741,7 +741,7 @@
     move-result-wide v3
 
     .line 22
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 23
     .line 24
@@ -1107,7 +1107,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -1148,7 +1148,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -1164,7 +1164,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -1205,7 +1205,7 @@
     int-to-byte p0, p0
 
     .line 64
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->Q(B)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->H(B)V
 
     .line 65
     .line 66
@@ -1251,7 +1251,7 @@
     move-result p3
 
     .line 86
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->S(IZ)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->J(IZ)V
 
     .line 87
     .line 88
@@ -1305,7 +1305,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -1346,7 +1346,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -1362,7 +1362,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -1408,7 +1408,7 @@
     move-result-wide v1
 
     .line 67
-    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 68
     .line 69
@@ -1467,7 +1467,7 @@
     move-result-wide v1
 
     .line 96
-    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->X(IJ)V
+    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->O(IJ)V
 
     .line 97
     .line 98
@@ -1521,7 +1521,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -1568,7 +1568,7 @@
     int-to-long v1, v1
 
     .line 39
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 40
     .line 41
@@ -1587,7 +1587,7 @@
 
     .line 47
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 48
     .line 49
@@ -1625,7 +1625,7 @@
     move-result p0
 
     .line 66
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->a0(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->R(I)V
 
     .line 67
     .line 68
@@ -1671,7 +1671,7 @@
     move-result p3
 
     .line 88
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->Z(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->Q(II)V
 
     .line 89
     .line 90
@@ -1725,7 +1725,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -1766,7 +1766,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -1782,7 +1782,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -1820,7 +1820,7 @@
     move-result p0
 
     .line 63
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 64
     .line 65
@@ -1866,7 +1866,7 @@
     move-result p3
 
     .line 85
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->M(II)V
 
     .line 86
     .line 87
@@ -1920,7 +1920,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -1961,7 +1961,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -1977,7 +1977,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -2015,7 +2015,7 @@
     move-result-wide v1
 
     .line 63
-    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 64
     .line 65
@@ -2061,7 +2061,7 @@
     move-result-wide v1
 
     .line 85
-    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->X(IJ)V
+    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->O(IJ)V
 
     .line 86
     .line 87
@@ -2115,7 +2115,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -2156,7 +2156,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -2172,7 +2172,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -2218,7 +2218,7 @@
     move-result p0
 
     .line 67
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 68
     .line 69
@@ -2277,7 +2277,7 @@
     move-result p3
 
     .line 96
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->M(II)V
 
     .line 97
     .line 98
@@ -2331,7 +2331,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -2378,7 +2378,7 @@
     int-to-long v1, v1
 
     .line 39
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 40
     .line 41
@@ -2397,7 +2397,7 @@
 
     .line 47
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 48
     .line 49
@@ -2435,7 +2435,7 @@
     move-result p0
 
     .line 66
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->a0(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->R(I)V
 
     .line 67
     .line 68
@@ -2481,7 +2481,7 @@
     move-result p3
 
     .line 88
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->Z(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->Q(II)V
 
     .line 89
     .line 90
@@ -2535,7 +2535,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -2579,7 +2579,7 @@
     move-result-wide v1
 
     .line 38
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 39
     .line 40
@@ -2598,7 +2598,7 @@
 
     .line 46
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 47
     .line 48
@@ -2636,7 +2636,7 @@
     move-result-wide v1
 
     .line 65
-    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 66
     .line 67
@@ -2682,7 +2682,7 @@
     move-result-wide v1
 
     .line 87
-    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->h0(IJ)V
+    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Y(IJ)V
 
     .line 88
     .line 89
@@ -2736,7 +2736,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -2777,7 +2777,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -2793,7 +2793,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -2831,7 +2831,7 @@
     move-result p0
 
     .line 63
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->W(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->N(I)V
 
     .line 64
     .line 65
@@ -2877,7 +2877,7 @@
     move-result p3
 
     .line 85
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->M(II)V
 
     .line 86
     .line 87
@@ -2931,7 +2931,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -2972,7 +2972,7 @@
     .line 35
     .line 36
     .line 37
-    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->f:Ljava/util/logging/Logger;
+    sget-object v1, Landroidx/datastore/preferences/protobuf/m;->y:Ljava/util/logging/Logger;
 
     .line 38
     .line 39
@@ -2988,7 +2988,7 @@
 
     .line 44
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 45
     .line 46
@@ -3026,7 +3026,7 @@
     move-result-wide v1
 
     .line 63
-    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Y(J)V
+    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->P(J)V
 
     .line 64
     .line 65
@@ -3072,7 +3072,7 @@
     move-result-wide v1
 
     .line 85
-    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->X(IJ)V
+    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->O(IJ)V
 
     .line 86
     .line 87
@@ -3126,7 +3126,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -3181,7 +3181,7 @@
     xor-int/2addr v1, v2
 
     .line 43
-    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
+    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
 
     .line 44
     .line 45
@@ -3200,7 +3200,7 @@
 
     .line 51
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 52
     .line 53
@@ -3249,7 +3249,7 @@
     xor-int/2addr p0, p3
 
     .line 75
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 76
     .line 77
@@ -3306,7 +3306,7 @@
     xor-int/2addr p3, v1
 
     .line 102
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->f0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->W(II)V
 
     .line 103
     .line 104
@@ -3367,7 +3367,7 @@
     const/4 p3, 0x2
 
     .line 20
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 21
     .line 22
@@ -3421,7 +3421,7 @@
     xor-long/2addr v3, v5
 
     .line 45
-    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v3, v4}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 46
     .line 47
@@ -3440,7 +3440,7 @@
 
     .line 53
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 54
     .line 55
@@ -3488,7 +3488,7 @@
     xor-long/2addr v3, v5
 
     .line 76
-    invoke-virtual {p2, v3, v4}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p2, v3, v4}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 77
     .line 78
@@ -3544,7 +3544,7 @@
     xor-long/2addr v3, v5
 
     .line 102
-    invoke-virtual {p2, p0, v3, v4}, Landroidx/datastore/preferences/protobuf/m;->h0(IJ)V
+    invoke-virtual {p2, p0, v3, v4}, Landroidx/datastore/preferences/protobuf/m;->Y(IJ)V
 
     .line 103
     .line 104
@@ -3598,7 +3598,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -3642,7 +3642,7 @@
     move-result v1
 
     .line 38
-    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
+    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
 
     .line 39
     .line 40
@@ -3661,7 +3661,7 @@
 
     .line 46
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 47
     .line 48
@@ -3699,7 +3699,7 @@
     move-result p0
 
     .line 65
-    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p0}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 66
     .line 67
@@ -3745,7 +3745,7 @@
     move-result p3
 
     .line 87
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->f0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->W(II)V
 
     .line 88
     .line 89
@@ -3799,7 +3799,7 @@
     const/4 p3, 0x2
 
     .line 17
-    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
+    invoke-virtual {p2, p0, p3}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
 
     .line 18
     .line 19
@@ -3843,7 +3843,7 @@
     move-result-wide v1
 
     .line 38
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
 
     .line 39
     .line 40
@@ -3862,7 +3862,7 @@
 
     .line 46
     :cond_0
-    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->g0(I)V
+    invoke-virtual {p2, p3}, Landroidx/datastore/preferences/protobuf/m;->X(I)V
 
     .line 47
     .line 48
@@ -3900,7 +3900,7 @@
     move-result-wide v1
 
     .line 65
-    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->i0(J)V
+    invoke-virtual {p2, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Z(J)V
 
     .line 66
     .line 67
@@ -3946,7 +3946,7 @@
     move-result-wide v1
 
     .line 87
-    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->h0(IJ)V
+    invoke-virtual {p2, p0, v1, v2}, Landroidx/datastore/preferences/protobuf/m;->Y(IJ)V
 
     .line 88
     .line 89

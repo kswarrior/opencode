@@ -1,180 +1,118 @@
-.class public final Lv9/d;
-.super Lo9/o0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ljava/util/concurrent/Executor;
+.class public abstract Lv9/d;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final h:Lv9/d;
-
-.field public static final q:Lo9/s;
+.field public static final a:Ljava/util/List;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 4
+    .locals 3
 
     .line 1
-    new-instance v0, Lv9/d;
+    :try_start_0
+    new-instance v0, Lr9/b;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lo9/s;-><init>()V
+    invoke-direct {v0}, Lr9/b;-><init>()V
 
     .line 4
     .line 5
     .line 6
-    sput-object v0, Lv9/d;->h:Lv9/d;
+    filled-new-array {v0}, [Lr9/b;
 
     .line 7
     .line 8
-    sget-object v0, Lv9/l;->h:Lv9/l;
-
     .line 9
+    move-result-object v0
+
     .line 10
-    sget v1, Lt9/t;->a:I
+    invoke-static {v0}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
 
     .line 11
     .line 12
-    const/16 v2, 0x40
-
     .line 13
+    move-result-object v0
+
     .line 14
-    if-ge v2, v1, :cond_0
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     .line 15
     .line 16
-    goto :goto_0
-
     .line 17
-    :cond_0
-    move v1, v2
+    move-result-object v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 18
-    :goto_0
-    const/16 v2, 0xc
+    const-string v1, "<this>"
 
     .line 19
     .line 20
-    const-string v3, "kotlinx.coroutines.io.parallelism"
+    invoke-static {v0, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 21
     .line 22
-    invoke-static {v1, v2, v3}, Lt9/a;->j(IILjava/lang/String;)I
-
     .line 23
+    new-instance v1, Ln9/g;
+
     .line 24
     .line 25
-    move-result v1
+    const/4 v2, 0x0
 
     .line 26
-    invoke-virtual {v0, v1}, Lv9/l;->n0(I)Lo9/s;
+    invoke-direct {v1, v0, v2}, Ln9/g;-><init>(Ljava/lang/Object;I)V
 
     .line 27
     .line 28
     .line 29
-    move-result-object v0
+    new-instance v0, Ln9/a;
 
     .line 30
-    sput-object v0, Lv9/d;->q:Lo9/s;
-
     .line 31
+    invoke-direct {v0, v1}, Ln9/a;-><init>(Ln9/e;)V
+
     .line 32
+    .line 33
+    .line 34
+    invoke-static {v0}, Ln9/f;->G(Ln9/e;)Ljava/util/List;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object v0
+
+    .line 38
+    sput-object v0, Lv9/d;->a:Ljava/util/List;
+
+    .line 39
+    .line 40
     return-void
-.end method
 
+    .line 41
+    :catchall_0
+    move-exception v0
 
-# virtual methods
-.method public final b0(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Runnable;)V
-    .locals 1
+    .line 42
+    new-instance v1, Ljava/util/ServiceConfigurationError;
 
-    .line 1
-    sget-object v0, Lv9/d;->q:Lo9/s;
+    .line 43
+    .line 44
+    invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
 
-    .line 2
-    .line 3
-    invoke-virtual {v0, p1, p2}, Lo9/s;->b0(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Runnable;)V
+    .line 45
+    .line 46
+    .line 47
+    move-result-object v2
 
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
+    .line 48
+    invoke-direct {v1, v2, v0}, Ljava/util/ServiceConfigurationError;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
-.method public final close()V
-    .locals 2
-
-    .line 1
-    new-instance v0, Ljava/lang/IllegalStateException;
-
-    .line 2
-    .line 3
-    const-string v1, "Cannot be invoked on Dispatchers.IO"
-
-    .line 4
-    .line 5
-    invoke-direct {v0, v1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 6
-    .line 7
-    .line 8
-    throw v0
-.end method
-
-.method public final execute(Ljava/lang/Runnable;)V
-    .locals 1
-
-    .line 1
-    sget-object v0, Lu8/g;->c:Lu8/g;
-
-    .line 2
-    .line 3
-    invoke-virtual {p0, v0, p1}, Lv9/d;->b0(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Runnable;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final n0(I)Lo9/s;
-    .locals 1
-
-    .line 1
-    const/4 p1, 0x1
-
-    .line 2
-    sget-object v0, Lv9/l;->h:Lv9/l;
-
-    .line 3
-    .line 4
-    invoke-virtual {v0, p1}, Lv9/l;->n0(I)Lo9/s;
-
-    .line 5
-    .line 6
-    .line 7
-    move-result-object p1
-
-    .line 8
-    return-object p1
-.end method
-
-.method public final toString()Ljava/lang/String;
-    .locals 1
-
-    .line 1
-    const-string v0, "Dispatchers.IO"
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public final u0()Ljava/util/concurrent/Executor;
-    .locals 0
-
-    .line 1
-    return-object p0
+    .line 49
+    .line 50
+    .line 51
+    throw v1
 .end method

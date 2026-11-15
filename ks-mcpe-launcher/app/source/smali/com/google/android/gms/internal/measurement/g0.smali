@@ -1,395 +1,228 @@
-.class public final enum Lcom/google/android/gms/internal/measurement/g0;
-.super Ljava/lang/Enum;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Lcom/google/android/gms/internal/measurement/j1;
-
-
-# static fields
-.field public static final enum X:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum Y:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final synthetic Z:[Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum d:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum h:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum q:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum w:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum x:Lcom/google/android/gms/internal/measurement/g0;
-
-.field public static final enum y:Lcom/google/android/gms/internal/measurement/g0;
+.class public final Lcom/google/android/gms/internal/measurement/g0;
+.super Ljava/lang/ThreadLocal;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final c:I
+.field public final synthetic a:I
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 16
-
-    .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 2
-    .line 3
-    const-string v1, "IAB_TCF_PURPOSE_UNKNOWN"
-
-    .line 4
-    .line 5
-    const/4 v2, 0x0
-
-    .line 6
-    invoke-direct {v0, v1, v2, v2}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 7
-    .line 8
-    .line 9
-    new-instance v1, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 10
-    .line 11
-    const-string v2, "IAB_TCF_PURPOSE_STORE_AND_ACCESS_INFORMATION_ON_A_DEVICE"
-
-    .line 12
-    .line 13
-    const/4 v3, 0x1
-
-    .line 14
-    invoke-direct {v1, v2, v3, v3}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 15
-    .line 16
-    .line 17
-    sput-object v1, Lcom/google/android/gms/internal/measurement/g0;->d:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 18
-    .line 19
-    new-instance v2, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 20
-    .line 21
-    const-string v3, "IAB_TCF_PURPOSE_SELECT_BASIC_ADS"
-
-    .line 22
-    .line 23
-    const/4 v4, 0x2
-
-    .line 24
-    invoke-direct {v2, v3, v4, v4}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 25
-    .line 26
-    .line 27
-    sput-object v2, Lcom/google/android/gms/internal/measurement/g0;->h:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 28
-    .line 29
-    new-instance v3, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 30
-    .line 31
-    const-string v4, "IAB_TCF_PURPOSE_CREATE_A_PERSONALISED_ADS_PROFILE"
-
-    .line 32
-    .line 33
-    const/4 v5, 0x3
-
-    .line 34
-    invoke-direct {v3, v4, v5, v5}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 35
-    .line 36
-    .line 37
-    sput-object v3, Lcom/google/android/gms/internal/measurement/g0;->q:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 38
-    .line 39
-    new-instance v4, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 40
-    .line 41
-    const-string v5, "IAB_TCF_PURPOSE_SELECT_PERSONALISED_ADS"
-
-    .line 42
-    .line 43
-    const/4 v6, 0x4
-
-    .line 44
-    invoke-direct {v4, v5, v6, v6}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 45
-    .line 46
-    .line 47
-    sput-object v4, Lcom/google/android/gms/internal/measurement/g0;->w:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 48
-    .line 49
-    new-instance v5, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 50
-    .line 51
-    const-string v6, "IAB_TCF_PURPOSE_CREATE_A_PERSONALISED_CONTENT_PROFILE"
-
-    .line 52
-    .line 53
-    const/4 v7, 0x5
-
-    .line 54
-    invoke-direct {v5, v6, v7, v7}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 55
-    .line 56
-    .line 57
-    new-instance v6, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 58
-    .line 59
-    const-string v7, "IAB_TCF_PURPOSE_SELECT_PERSONALISED_CONTENT"
-
-    .line 60
-    .line 61
-    const/4 v8, 0x6
-
-    .line 62
-    invoke-direct {v6, v7, v8, v8}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 63
-    .line 64
-    .line 65
-    new-instance v7, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 66
-    .line 67
-    const-string v8, "IAB_TCF_PURPOSE_MEASURE_AD_PERFORMANCE"
-
-    .line 68
-    .line 69
-    const/4 v9, 0x7
-
-    .line 70
-    invoke-direct {v7, v8, v9, v9}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 71
-    .line 72
-    .line 73
-    sput-object v7, Lcom/google/android/gms/internal/measurement/g0;->x:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 74
-    .line 75
-    new-instance v8, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 76
-    .line 77
-    const-string v9, "IAB_TCF_PURPOSE_MEASURE_CONTENT_PERFORMANCE"
-
-    .line 78
-    .line 79
-    const/16 v10, 0x8
-
-    .line 80
-    .line 81
-    invoke-direct {v8, v9, v10, v10}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 82
-    .line 83
-    .line 84
-    new-instance v9, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 85
-    .line 86
-    const-string v10, "IAB_TCF_PURPOSE_APPLY_MARKET_RESEARCH_TO_GENERATE_AUDIENCE_INSIGHTS"
-
-    .line 87
-    .line 88
-    const/16 v11, 0x9
-
-    .line 89
-    .line 90
-    invoke-direct {v9, v10, v11, v11}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 91
-    .line 92
-    .line 93
-    sput-object v9, Lcom/google/android/gms/internal/measurement/g0;->y:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 94
-    .line 95
-    new-instance v10, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 96
-    .line 97
-    const-string v11, "IAB_TCF_PURPOSE_DEVELOP_AND_IMPROVE_PRODUCTS"
-
-    .line 98
-    .line 99
-    const/16 v12, 0xa
-
-    .line 100
-    .line 101
-    invoke-direct {v10, v11, v12, v12}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 102
-    .line 103
-    .line 104
-    sput-object v10, Lcom/google/android/gms/internal/measurement/g0;->X:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 105
-    .line 106
-    new-instance v11, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 107
-    .line 108
-    const-string v12, "IAB_TCF_PURPOSE_USE_LIMITED_DATA_TO_SELECT_CONTENT"
-
-    .line 109
-    .line 110
-    const/16 v13, 0xb
-
-    .line 111
-    .line 112
-    invoke-direct {v11, v12, v13, v13}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 113
-    .line 114
-    .line 115
-    new-instance v12, Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 116
-    .line 117
-    const/16 v13, 0xc
-
-    .line 118
-    .line 119
-    const/4 v14, -0x1
-
-    .line 120
-    const-string v15, "UNRECOGNIZED"
-
-    .line 121
-    .line 122
-    invoke-direct {v12, v15, v13, v14}, Lcom/google/android/gms/internal/measurement/g0;-><init>(Ljava/lang/String;II)V
-
-    .line 123
-    .line 124
-    .line 125
-    sput-object v12, Lcom/google/android/gms/internal/measurement/g0;->Y:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 126
-    .line 127
-    filled-new-array/range {v0 .. v12}, [Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 128
-    .line 129
-    .line 130
-    move-result-object v0
-
-    .line 131
-    sput-object v0, Lcom/google/android/gms/internal/measurement/g0;->Z:[Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 132
-    .line 133
-    return-void
-.end method
-
-.method public constructor <init>(Ljava/lang/String;II)V
+.method public synthetic constructor <init>(I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+    iput p1, p0, Lcom/google/android/gms/internal/measurement/g0;->a:I
 
     .line 2
     .line 3
-    .line 4
-    iput p3, p0, Lcom/google/android/gms/internal/measurement/g0;->c:I
+    invoke-direct {p0}, Ljava/lang/ThreadLocal;-><init>()V
 
+    .line 4
     .line 5
     .line 6
     return-void
-.end method
-
-.method public static values()[Lcom/google/android/gms/internal/measurement/g0;
-    .locals 1
-
-    .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/g0;->Z:[Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, [Lcom/google/android/gms/internal/measurement/g0;->clone()Ljava/lang/Object;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v0
-
-    .line 7
-    check-cast v0, [Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 8
-    .line 9
-    return-object v0
 .end method
 
 
 # virtual methods
-.method public final toString()Ljava/lang/String;
-    .locals 1
+.method public final initialValue()Ljava/lang/Object;
+    .locals 3
 
     .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/measurement/g0;->c:I
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/g0;->a:I
 
     .line 2
     .line 3
-    invoke-static {v0}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    move-result-object v0
+    new-instance v0, Ljava/text/SimpleDateFormat;
 
     .line 7
-    return-object v0
-.end method
-
-.method public final zza()I
-    .locals 2
-
-    .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/g0;->Y:Lcom/google/android/gms/internal/measurement/g0;
-
-    .line 2
-    .line 3
-    if-eq p0, v0, :cond_0
-
-    .line 4
-    .line 5
-    iget v0, p0, Lcom/google/android/gms/internal/measurement/g0;->c:I
-
-    .line 6
-    .line 7
-    return v0
-
     .line 8
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    const-string v1, "EEE, dd MMM yyyy HH:mm:ss \'GMT\'"
 
     .line 9
     .line 10
-    const-string v1, "Can\'t get the number of an unknown enum value."
+    sget-object v2, Ljava/util/Locale;->US:Ljava/util/Locale;
 
     .line 11
     .line 12
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1, v2}, Ljava/text/SimpleDateFormat;-><init>(Ljava/lang/String;Ljava/util/Locale;)V
 
     .line 13
     .line 14
     .line 15
+    const/4 v1, 0x0
+
+    .line 16
+    invoke-virtual {v0, v1}, Ljava/text/DateFormat;->setLenient(Z)V
+
+    .line 17
+    .line 18
+    .line 19
+    sget-object v1, Lvb/f;->a:Ljava/util/TimeZone;
+
+    .line 20
+    .line 21
+    invoke-virtual {v0, v1}, Ljava/text/DateFormat;->setTimeZone(Ljava/util/TimeZone;)V
+
+    .line 22
+    .line 23
+    .line 24
+    return-object v0
+
+    .line 25
+    :pswitch_0
+    const-wide/16 v0, 0x0
+
+    .line 26
+    .line 27
+    invoke-static {v0, v1}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object v0
+
+    .line 31
+    return-object v0
+
+    .line 32
+    :pswitch_1
+    new-instance v0, Ljava/util/Random;
+
+    .line 33
+    .line 34
+    invoke-direct {v0}, Ljava/util/Random;-><init>()V
+
+    .line 35
+    .line 36
+    .line 37
+    return-object v0
+
+    .line 38
+    :pswitch_2
+    new-instance v0, Ljava/util/Random;
+
+    .line 39
+    .line 40
+    invoke-direct {v0}, Ljava/util/Random;-><init>()V
+
+    .line 41
+    .line 42
+    .line 43
+    return-object v0
+
+    .line 44
+    :pswitch_3
+    new-instance v0, Lcom/google/android/gms/internal/measurement/fh;
+
+    .line 45
+    .line 46
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 47
+    .line 48
+    .line 49
+    move-result-object v1
+
+    .line 50
+    invoke-static {v1}, Lcom/google/android/gms/internal/measurement/g1;->d(Ljava/lang/Thread;)Z
+
+    .line 51
+    .line 52
+    .line 53
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 54
+    .line 55
+    .line 56
+    const/4 v1, 0x0
+
+    .line 57
+    iput-boolean v1, v0, Lcom/google/android/gms/internal/measurement/fh;->a:Z
+
+    .line 58
+    .line 59
+    const/4 v1, 0x0
+
+    .line 60
+    iput-object v1, v0, Lcom/google/android/gms/internal/measurement/fh;->b:Lcom/google/android/gms/internal/measurement/gh;
+
+    .line 61
+    .line 62
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 63
+    .line 64
+    .line 65
+    move-result-object v1
+
+    .line 66
+    sget-object v2, Lcom/google/android/gms/internal/measurement/qg;->c:Ljava/util/WeakHashMap;
+
+    .line 67
+    .line 68
+    monitor-enter v2
+
+    .line 69
+    :try_start_0
+    invoke-virtual {v2, v1, v0}, Ljava/util/WeakHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 70
+    .line 71
+    .line 72
+    monitor-exit v2
+
+    .line 73
+    return-object v0
+
+    .line 74
+    :catchall_0
+    move-exception v0
+
+    .line 75
+    monitor-exit v2
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 76
     throw v0
+
+    .line 77
+    :pswitch_4
+    new-instance v0, Lcom/google/android/gms/internal/measurement/h0;
+
+    .line 78
+    .line 79
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 80
+    .line 81
+    .line 82
+    const/4 v1, 0x0
+
+    .line 83
+    iput v1, v0, Lcom/google/android/gms/internal/measurement/h0;->c:I
+
+    .line 84
+    .line 85
+    return-object v0
+
+    .line 86
+    nop
+
+    .line 87
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

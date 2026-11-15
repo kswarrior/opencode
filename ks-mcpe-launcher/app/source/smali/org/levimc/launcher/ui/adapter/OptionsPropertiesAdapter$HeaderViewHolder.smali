@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$HeaderViewHolder;
 .super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -54,21 +54,41 @@
 
 # virtual methods
 .method public bind(Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$HeaderItem;)V
-    .locals 1
+    .locals 2
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$HeaderViewHolder;->headerText:Landroid/widget/TextView;
 
     .line 2
     .line 3
-    iget-object p1, p1, Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$HeaderItem;->title:Ljava/lang/String;
+    iget-object v1, p0, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    invoke-virtual {v1}, Landroid/view/View;->getContext()Landroid/content/Context;
 
     .line 6
     .line 7
     .line 8
+    move-result-object v1
+
+    .line 9
+    iget-object p1, p1, Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$HeaderItem;->title:Ljava/lang/String;
+
+    .line 10
+    .line 11
+    invoke-static {v1, p1}, Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter;->categoryLabel(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p1
+
+    .line 15
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 16
+    .line 17
+    .line 18
     return-void
 .end method

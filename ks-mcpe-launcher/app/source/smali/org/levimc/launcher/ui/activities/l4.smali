@@ -1,51 +1,51 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/l4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public final synthetic d:I
 
-.field public final synthetic h:Ljava/lang/Object;
+.field public final synthetic h:I
 
-.field public final synthetic q:Landroid/view/KeyEvent$Callback;
+.field public final synthetic p:I
 
-.field public final synthetic w:Ljava/lang/Object;
+.field public final synthetic q:Ljava/util/List;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/KeyEvent$Callback;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;)V
     .locals 0
 
     .line 1
-    iput p5, p0, Lorg/levimc/launcher/ui/activities/l4;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/l4;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/l4;->h:Ljava/lang/Object;
-
     .line 6
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/l4;->d:I
+
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Landroid/view/KeyEvent$Callback;
-
     .line 8
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/l4;->h:I
+
     .line 9
-    iput-object p4, p0, Lorg/levimc/launcher/ui/activities/l4;->w:Ljava/lang/Object;
-
     .line 10
-    .line 11
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lorg/levimc/launcher/ui/activities/l4;->p:I
 
+    .line 11
     .line 12
+    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Ljava/util/List;
+
     .line 13
     .line 14
     return-void
@@ -53,147 +53,40 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 4
+.method public final onClick(Landroid/content/DialogInterface;I)V
+    .locals 7
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/l4;->c:I
+    iget v3, p0, Lorg/levimc/launcher/ui/activities/l4;->p:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Ljava/util/List;
 
     .line 4
     .line 5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
-
     .line 7
+    iget v1, p0, Lorg/levimc/launcher/ui/activities/l4;->d:I
+
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
-
     .line 9
-    .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l4;->h:Ljava/lang/Object;
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/l4;->h:I
 
+    .line 10
     .line 11
+    move-object v5, p1
+
     .line 12
-    check-cast v1, Landroid/widget/EditText;
+    move v6, p2
 
     .line 13
-    .line 14
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Landroid/view/KeyEvent$Callback;
+    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->J0(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;Landroid/content/DialogInterface;I)V
 
+    .line 14
     .line 15
     .line 16
-    check-cast v2, Landroidx/appcompat/app/AlertDialog;
-
-    .line 17
-    .line 18
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/l4;->w:Ljava/lang/Object;
-
-    .line 19
-    .line 20
-    check-cast v3, Ljava/util/function/Consumer;
-
-    .line 21
-    .line 22
-    invoke-static {v0, v1, v2, v3, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->v1(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Landroid/widget/EditText;Landroidx/appcompat/app/AlertDialog;Ljava/util/function/Consumer;Landroid/view/View;)V
-
-    .line 23
-    .line 24
-    .line 25
     return-void
-
-    .line 46
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
-
-    .line 47
-    .line 48
-    check-cast v0, Lorg/levimc/launcher/ui/activities/ContentListActivity;
-
-    .line 49
-    .line 50
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l4;->h:Ljava/lang/Object;
-
-    .line 51
-    .line 52
-    check-cast v1, Landroid/widget/EditText;
-
-    .line 53
-    .line 54
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Landroid/view/KeyEvent$Callback;
-
-    .line 55
-    .line 56
-    check-cast v2, Landroid/widget/EditText;
-
-    .line 57
-    .line 58
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/l4;->w:Ljava/lang/Object;
-
-    .line 59
-    .line 60
-    check-cast v3, Landroid/widget/EditText;
-
-    .line 61
-    .line 62
-    invoke-static {v0, v1, v2, v3, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->j0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 63
-    .line 64
-    .line 65
-    return-void
-
-    .line 66
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l4;->d:Ljava/lang/Object;
-
-    .line 67
-    .line 68
-    check-cast v0, Ljava/util/ArrayList;
-
-    .line 69
-    .line 70
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l4;->h:Ljava/lang/Object;
-
-    .line 71
-    .line 72
-    check-cast v1, Lorg/levimc/launcher/ui/activities/WorldEditorActivity$Values;
-
-    .line 73
-    .line 74
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/l4;->q:Landroid/view/KeyEvent$Callback;
-
-    .line 75
-    .line 76
-    check-cast v2, Landroidx/appcompat/app/AlertDialog;
-
-    .line 77
-    .line 78
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/l4;->w:Ljava/lang/Object;
-
-    .line 79
-    .line 80
-    check-cast v3, Landroid/widget/TextView;
-
-    .line 81
-    .line 82
-    invoke-static {v0, v1, v2, v3, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->v0(Ljava/util/ArrayList;Lorg/levimc/launcher/ui/activities/WorldEditorActivity$Values;Landroidx/appcompat/app/AlertDialog;Landroid/widget/TextView;Landroid/view/View;)V
-
-    .line 83
-    .line 84
-    .line 85
-    return-void
-
-    .line 86
-    nop
-
-    .line 87
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
-    .end packed-switch
 .end method

@@ -1,6 +1,6 @@
 .class public final Lu4/a;
 .super Lcom/google/android/gms/common/internal/GmsClient;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/google/android/gms/signin/zae;
@@ -531,7 +531,7 @@
     .line 56
     .line 57
     :try_start_1
-    invoke-static {v3}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->C0(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+    invoke-static {v3}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->E0(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
 
     .line 58
     .line 59

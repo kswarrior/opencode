@@ -1,751 +1,398 @@
-.class public final Lfc/a;
-.super Lfc/e;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Lfc/d;
-
-
-# static fields
-.field public static final e:Z
-
-
-# instance fields
-.field public c:Landroid/content/Context;
-
-.field public final d:Ljava/util/ArrayList;
+.class public abstract synthetic Lfc/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public static bridge synthetic A()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
+    .locals 1
 
     .line 1
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_PAGE_LEFT:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     .line 2
     .line 3
-    const/16 v1, 0x1d
-
-    .line 4
-    .line 5
-    if-lt v0, v1, :cond_0
-
-    .line 6
-    .line 7
-    const/4 v0, 0x1
-
-    .line 8
-    goto :goto_0
-
-    .line 9
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 10
-    :goto_0
-    sput-boolean v0, Lfc/a;->e:Z
-
-    .line 11
-    .line 12
-    return-void
+    return-object v0
 .end method
 
-.method public constructor <init>()V
-    .locals 6
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    .line 5
-    .line 6
-    const/16 v1, 0x1d
-
-    .line 7
-    .line 8
-    if-lt v0, v1, :cond_0
-
-    .line 9
-    .line 10
-    new-instance v0, Lgc/b;
-
-    .line 11
-    .line 12
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    .line 13
-    .line 14
-    .line 15
-    goto :goto_0
-
-    .line 16
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 17
-    :goto_0
-    new-instance v1, Lgc/m;
-
-    .line 18
-    .line 19
-    sget-object v2, Lgc/f;->e:Lt5/f;
-
-    .line 20
-    .line 21
-    invoke-direct {v1, v2}, Lgc/m;-><init>(Lgc/l;)V
-
-    .line 22
-    .line 23
-    .line 24
-    new-instance v2, Lgc/m;
-
-    .line 25
-    .line 26
-    sget-object v3, Lgc/k;->a:Lce/b;
-
-    .line 27
-    .line 28
-    invoke-direct {v2, v3}, Lgc/m;-><init>(Lgc/l;)V
-
-    .line 29
-    .line 30
-    .line 31
-    new-instance v3, Lgc/m;
-
-    .line 32
-    .line 33
-    sget-object v4, Lgc/i;->a:Lgc/g;
-
-    .line 34
-    .line 35
-    invoke-direct {v3, v4}, Lgc/m;-><init>(Lgc/l;)V
-
-    .line 36
-    .line 37
-    .line 38
-    const/4 v4, 0x4
-
-    .line 39
-    new-array v4, v4, [Lgc/n;
-
-    .line 40
-    .line 41
-    const/4 v5, 0x0
-
-    .line 42
-    aput-object v0, v4, v5
-
-    .line 43
-    .line 44
-    const/4 v0, 0x1
-
-    .line 45
-    aput-object v1, v4, v0
-
-    .line 46
-    .line 47
-    const/4 v0, 0x2
-
-    .line 48
-    aput-object v2, v4, v0
-
-    .line 49
-    .line 50
-    const/4 v0, 0x3
-
-    .line 51
-    aput-object v3, v4, v0
-
-    .line 52
-    .line 53
-    invoke-static {v4}, Lr8/i;->U([Ljava/lang/Object;)Ljava/util/ArrayList;
-
-    .line 54
-    .line 55
-    .line 56
-    move-result-object v0
-
-    .line 57
-    new-instance v1, Ljava/util/ArrayList;
-
-    .line 58
-    .line 59
-    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
-
-    .line 60
-    .line 61
-    .line 62
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
-    .line 63
-    .line 64
-    .line 65
-    move-result-object v0
-
-    .line 66
-    :cond_1
-    :goto_1
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    .line 67
-    .line 68
-    .line 69
-    move-result v2
-
-    .line 70
-    if-eqz v2, :cond_2
-
-    .line 71
-    .line 72
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 73
-    .line 74
-    .line 75
-    move-result-object v2
-
-    .line 76
-    move-object v3, v2
-
-    .line 77
-    check-cast v3, Lgc/n;
-
-    .line 78
-    .line 79
-    invoke-interface {v3}, Lgc/n;->a()Z
-
-    .line 80
-    .line 81
-    .line 82
-    move-result v3
-
-    .line 83
-    if-eqz v3, :cond_1
-
-    .line 84
-    .line 85
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 86
-    .line 87
-    .line 88
-    goto :goto_1
-
-    .line 89
-    :cond_2
-    iput-object v1, p0, Lfc/a;->d:Ljava/util/ArrayList;
-
-    .line 90
-    .line 91
-    return-void
-.end method
-
-
-# virtual methods
-.method public final a(Landroid/content/Context;)V
+.method public static bridge synthetic B(Landroid/view/View;Landroid/graphics/Matrix;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lfc/a;->c:Landroid/content/Context;
+    invoke-virtual {p0, p1}, Landroid/view/View;->transformMatrixToLocal(Landroid/graphics/Matrix;)V
 
     .line 2
     .line 3
+    .line 4
     return-void
 .end method
 
-.method public final b()Landroid/content/Context;
+.method public static bridge synthetic C(Landroid/graphics/Insets;)I
+    .locals 0
+
+    .line 1
+    iget p0, p0, Landroid/graphics/Insets;->bottom:I
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic D()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lfc/a;->c:Landroid/content/Context;
+    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_PAGE_RIGHT:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     .line 2
     .line 3
     return-object v0
 .end method
 
-.method public final c(Ljavax/net/ssl/X509TrustManager;)Lcom/bumptech/glide/e;
+.method public static bridge synthetic a(Landroid/view/View;)F
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/view/View;->getTransitionAlpha()F
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic b(Landroid/graphics/Insets;)I
+    .locals 0
+
+    .line 1
+    iget p0, p0, Landroid/graphics/Insets;->left:I
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic c(Landroid/graphics/drawable/StateListDrawable;)I
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/graphics/drawable/StateListDrawable;->getStateCount()I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic d(Landroid/view/accessibility/AccessibilityManager;)I
     .locals 2
+
+    .line 1
+    const/16 v0, 0x2710
+
+    .line 2
+    .line 3
+    const/4 v1, 0x6
+
+    .line 4
+    invoke-virtual {p0, v0, v1}, Landroid/view/accessibility/AccessibilityManager;->getRecommendedTimeoutMillis(II)I
+
+    .line 5
+    .line 6
+    .line 7
+    move-result p0
+
+    .line 8
+    return p0
+.end method
+
+.method public static bridge synthetic e(Landroid/graphics/drawable/ColorStateListDrawable;)Landroid/content/res/ColorStateList;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/graphics/drawable/ColorStateListDrawable;->getColorStateList()Landroid/content/res/ColorStateList;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic f(Landroid/graphics/drawable/Drawable;)Landroid/graphics/drawable/ColorStateListDrawable;
+    .locals 0
+
+    .line 1
+    check-cast p0, Landroid/graphics/drawable/ColorStateListDrawable;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic g(Landroid/graphics/drawable/StateListDrawable;I)Landroid/graphics/drawable/Drawable;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/graphics/drawable/StateListDrawable;->getStateDrawable(I)Landroid/graphics/drawable/Drawable;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic h()Landroid/net/Uri;
+    .locals 1
+
+    .line 1
+    sget-object v0, Landroid/provider/MediaStore$Downloads;->EXTERNAL_CONTENT_URI:Landroid/net/Uri;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public static synthetic i()Landroid/view/WindowInsets$Builder;
+    .locals 1
+
+    .line 1
+    new-instance v0, Landroid/view/WindowInsets$Builder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Landroid/view/WindowInsets$Builder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-object v0
+.end method
+
+.method public static bridge synthetic j(Landroid/view/WindowInsets$Builder;)Landroid/view/WindowInsets;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/view/WindowInsets$Builder;->build()Landroid/view/WindowInsets;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic k()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
+    .locals 1
+
+    .line 1
+    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_PAGE_UP:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public static bridge synthetic l(Landroid/content/Context;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/content/Context;->getOpPackageName()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic m(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Ljavax/net/ssl/SSLSocket;->getApplicationProtocol()Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic n(ILandroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p1, p0}, Landroid/view/View;->setTransitionVisibility(I)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic o(Landroid/view/View;F)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/view/View;->setTransitionAlpha(F)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic p(Landroid/view/View;IIII)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1, p2, p3, p4}, Landroid/view/View;->setLeftTopRightBottom(IIII)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic q(Landroid/view/View;Landroid/graphics/Matrix;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/view/View;->setAnimationMatrix(Landroid/graphics/Matrix;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic r(Landroid/view/Window;)V
+    .locals 1
 
     .line 1
     const/4 v0, 0x0
 
     .line 2
-    :try_start_0
-    new-instance v1, Landroid/net/http/X509TrustManagerExtensions;
+    invoke-virtual {p0, v0}, Landroid/view/Window;->setStatusBarContrastEnforced(Z)V
 
     .line 3
     .line 4
-    invoke-direct {v1, p1}, Landroid/net/http/X509TrustManagerExtensions;-><init>(Ljavax/net/ssl/X509TrustManager;)V
-    :try_end_0
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
-
     .line 5
-    .line 6
-    .line 7
-    goto :goto_0
-
-    .line 8
-    :catch_0
-    move-object v1, v0
-
-    .line 9
-    :goto_0
-    if-eqz v1, :cond_0
-
-    .line 10
-    .line 11
-    new-instance v0, Lgc/c;
-
-    .line 12
-    .line 13
-    invoke-direct {v0, p1, v1}, Lgc/c;-><init>(Ljavax/net/ssl/X509TrustManager;Landroid/net/http/X509TrustManagerExtensions;)V
-
-    .line 14
-    .line 15
-    .line 16
-    :cond_0
-    if-eqz v0, :cond_1
-
-    .line 17
-    .line 18
-    return-object v0
-
-    .line 19
-    :cond_1
-    new-instance v0, Ljc/a;
-
-    .line 20
-    .line 21
-    invoke-virtual {p0, p1}, Lfc/a;->d(Ljavax/net/ssl/X509TrustManager;)Ljc/d;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object p1
-
-    .line 25
-    invoke-direct {v0, p1}, Ljc/a;-><init>(Ljc/d;)V
-
-    .line 26
-    .line 27
-    .line 28
-    return-object v0
+    return-void
 .end method
 
-.method public final d(Ljavax/net/ssl/X509TrustManager;)Ljc/d;
+.method public static bridge synthetic s(Landroid/widget/SeekBar;I)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/widget/SeekBar;->setMinHeight(I)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic t(Landroid/graphics/drawable/Drawable;)Z
+    .locals 0
+
+    .line 1
+    instance-of p0, p0, Landroid/graphics/drawable/ColorStateListDrawable;
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic u(Landroid/os/Handler;Ljava/lang/Runnable;)Z
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/os/Handler;->hasCallbacks(Ljava/lang/Runnable;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic v(Landroid/graphics/Insets;)I
+    .locals 0
+
+    .line 1
+    iget p0, p0, Landroid/graphics/Insets;->top:I
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic w()Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
     .locals 1
 
     .line 1
-    const-string v0, "buildTrustRootIndex"
+    sget-object v0, Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;->ACTION_PAGE_DOWN:Landroid/view/accessibility/AccessibilityNodeInfo$AccessibilityAction;
 
     .line 2
     .line 3
-    invoke-static {v0}, Landroid/os/StrictMode;->noteSlowCall(Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    invoke-super {p0, p1}, Lfc/e;->d(Ljavax/net/ssl/X509TrustManager;)Ljc/d;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object p1
-
-    .line 10
-    return-object p1
+    return-object v0
 .end method
 
-.method public final e(Ljavax/net/ssl/SSLSocket;Ljava/lang/String;Ljava/util/List;)V
-    .locals 3
+.method public static bridge synthetic x(Landroid/view/View;Landroid/graphics/Matrix;)V
+    .locals 0
 
     .line 1
-    const-string v0, "protocols"
+    invoke-virtual {p0, p1}, Landroid/view/View;->transformMatrixToGlobal(Landroid/graphics/Matrix;)V
 
     .line 2
     .line 3
-    invoke-static {p3, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 4
-    .line 5
-    .line 6
-    iget-object v0, p0, Lfc/a;->d:Ljava/util/ArrayList;
-
-    .line 7
-    .line 8
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
-    .line 9
-    .line 10
-    .line 11
-    move-result-object v0
-
-    .line 12
-    :cond_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    .line 13
-    .line 14
-    .line 15
-    move-result v1
-
-    .line 16
-    if-eqz v1, :cond_1
-
-    .line 17
-    .line 18
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v1
-
-    .line 22
-    move-object v2, v1
-
-    .line 23
-    check-cast v2, Lgc/n;
-
-    .line 24
-    .line 25
-    invoke-interface {v2, p1}, Lgc/n;->b(Ljavax/net/ssl/SSLSocket;)Z
-
-    .line 26
-    .line 27
-    .line 28
-    move-result v2
-
-    .line 29
-    if-eqz v2, :cond_0
-
-    .line 30
-    .line 31
-    goto :goto_0
-
-    .line 32
-    :cond_1
-    const/4 v1, 0x0
-
-    .line 33
-    :goto_0
-    check-cast v1, Lgc/n;
-
-    .line 34
-    .line 35
-    if-eqz v1, :cond_2
-
-    .line 36
-    .line 37
-    invoke-interface {v1, p1, p2, p3}, Lgc/n;->d(Ljavax/net/ssl/SSLSocket;Ljava/lang/String;Ljava/util/List;)V
-
-    .line 38
-    .line 39
-    .line 40
-    :cond_2
     return-void
 .end method
 
-.method public final g(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
-    .locals 4
-
-    .line 1
-    iget-object v0, p0, Lfc/a;->d:Ljava/util/ArrayList;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v0
-
-    .line 7
-    :cond_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    .line 8
-    .line 9
-    .line 10
-    move-result v1
-
-    .line 11
-    const/4 v2, 0x0
-
-    .line 12
-    if-eqz v1, :cond_1
-
-    .line 13
-    .line 14
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 15
-    .line 16
-    .line 17
-    move-result-object v1
-
-    .line 18
-    move-object v3, v1
-
-    .line 19
-    check-cast v3, Lgc/n;
-
-    .line 20
-    .line 21
-    invoke-interface {v3, p1}, Lgc/n;->b(Ljavax/net/ssl/SSLSocket;)Z
-
-    .line 22
-    .line 23
-    .line 24
-    move-result v3
-
-    .line 25
-    if-eqz v3, :cond_0
-
-    .line 26
-    .line 27
-    goto :goto_0
-
-    .line 28
-    :cond_1
-    move-object v1, v2
-
-    .line 29
-    :goto_0
-    check-cast v1, Lgc/n;
-
-    .line 30
-    .line 31
-    if-eqz v1, :cond_2
-
-    .line 32
-    .line 33
-    invoke-interface {v1, p1}, Lgc/n;->c(Ljavax/net/ssl/SSLSocket;)Ljava/lang/String;
-
-    .line 34
-    .line 35
-    .line 36
-    move-result-object p1
-
-    .line 37
-    return-object p1
-
-    .line 38
-    :cond_2
-    return-object v2
-.end method
-
-.method public final h()Ljava/lang/Object;
-    .locals 2
-
-    .line 1
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    .line 2
-    .line 3
-    const/16 v1, 0x1e
-
-    .line 4
-    .line 5
-    if-lt v0, v1, :cond_0
-
-    .line 6
-    .line 7
-    invoke-static {}, Landroidx/core/view/j1;->e()Landroid/util/CloseGuard;
-
-    .line 8
-    .line 9
-    .line 10
-    move-result-object v0
-
-    .line 11
-    invoke-static {v0}, Landroidx/core/view/j1;->n(Landroid/util/CloseGuard;)V
-
-    .line 12
-    .line 13
-    .line 14
-    return-object v0
-
-    .line 15
-    :cond_0
-    invoke-super {p0}, Lfc/e;->h()Ljava/lang/Object;
-
-    .line 16
-    .line 17
-    .line 18
-    move-result-object v0
-
-    .line 19
-    return-object v0
-.end method
-
-.method public final i(Ljava/lang/String;)Z
+.method public static bridge synthetic y(Landroid/view/Window;)V
     .locals 1
 
     .line 1
-    const-string v0, "hostname"
+    const/4 v0, 0x0
 
     .line 2
-    .line 3
-    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-virtual {p0, v0}, Landroid/view/Window;->setNavigationBarContrastEnforced(Z)V
 
+    .line 3
     .line 4
     .line 5
-    .line 6
-    invoke-static {}, Landroid/security/NetworkSecurityPolicy;->getInstance()Landroid/security/NetworkSecurityPolicy;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object v0
-
-    .line 10
-    invoke-virtual {v0, p1}, Landroid/security/NetworkSecurityPolicy;->isCleartextTrafficPermitted(Ljava/lang/String;)Z
-
-    .line 11
-    .line 12
-    .line 13
-    move-result p1
-
-    .line 14
-    return p1
-.end method
-
-.method public final j(ILjava/lang/String;Ljava/lang/Throwable;)V
-    .locals 2
-
-    .line 1
-    const-string v0, "message"
-
-    .line 2
-    .line 3
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    const/4 v0, 0x5
-
-    .line 7
-    const-string v1, "OkHttp"
-
-    .line 8
-    .line 9
-    if-ne p1, v0, :cond_0
-
-    .line 10
-    .line 11
-    sget-boolean p1, Lfc/c;->e:Z
-
-    .line 12
-    .line 13
-    invoke-static {v1, p2, p3}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 14
-    .line 15
-    .line 16
-    return-void
-
-    .line 17
-    :cond_0
-    sget-boolean p1, Lfc/c;->e:Z
-
-    .line 18
-    .line 19
-    invoke-static {v1, p2, p3}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 20
-    .line 21
-    .line 22
     return-void
 .end method
 
-.method public final k(Ljava/lang/Object;Ljava/lang/String;)V
-    .locals 2
+.method public static bridge synthetic z(Landroid/graphics/Insets;)I
+    .locals 0
 
     .line 1
-    const-string v0, "message"
+    iget p0, p0, Landroid/graphics/Insets;->right:I
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    .line 7
-    .line 8
-    const/16 v1, 0x1e
-
-    .line 9
-    .line 10
-    if-lt v0, v1, :cond_0
-
-    .line 11
-    .line 12
-    const-string p2, "null cannot be cast to non-null type android.util.CloseGuard"
-
-    .line 13
-    .line 14
-    invoke-static {p1, p2}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 15
-    .line 16
-    .line 17
-    invoke-static {p1}, Landroidx/core/view/j1;->f(Ljava/lang/Object;)Landroid/util/CloseGuard;
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object p1
-
-    .line 21
-    invoke-static {p1}, Landroidx/core/view/j1;->w(Landroid/util/CloseGuard;)V
-
-    .line 22
-    .line 23
-    .line 24
-    return-void
-
-    .line 25
-    :cond_0
-    invoke-super {p0, p1, p2}, Lfc/e;->k(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 26
-    .line 27
-    .line 28
-    return-void
-.end method
-
-.method public final l()Ljavax/net/ssl/SSLContext;
-    .locals 1
-
-    .line 1
-    const-string v0, "newSSLContext"
-
-    .line 2
-    .line 3
-    invoke-static {v0}, Landroid/os/StrictMode;->noteSlowCall(Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    invoke-super {p0}, Lfc/e;->l()Ljavax/net/ssl/SSLContext;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object v0
-
-    .line 10
-    return-object v0
+    return p0
 .end method

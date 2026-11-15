@@ -1,78 +1,139 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/widget/AdapterView$OnItemClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
+.field public final synthetic c:I
 
-.field public final synthetic d:Ljava/util/ArrayList;
-
-.field public final synthetic h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Ljava/util/ArrayList;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
-
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 8
+.method public final run()V
+    .locals 1
 
     .line 1
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Ljava/util/ArrayList;
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->c:I
 
     .line 2
     .line 3
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
-
     .line 6
-    .line 7
-    move-object v3, p1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
+    .line 7
     .line 8
-    move-object v4, p2
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 9
-    move v5, p3
-
     .line 10
-    move-wide v6, p4
-
     .line 11
-    invoke-static/range {v0 .. v7}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->j(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+    return-void
 
     .line 12
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
     .line 13
     .line 14
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+
+    .line 15
+    .line 16
+    .line 17
     return-void
+
+    .line 18
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    .line 19
+    .line 20
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->o(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+
+    .line 21
+    .line 22
+    .line 23
+    return-void
+
+    .line 24
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    .line 25
+    .line 26
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->r(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_3
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    .line 31
+    .line 32
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->t(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+
+    .line 33
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    :pswitch_4
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/s0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    .line 37
+    .line 38
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->U(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+
+    .line 39
+    .line 40
+    .line 41
+    return-void
+
+    .line 42
+    nop
+
+    .line 43
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

@@ -1,122 +1,120 @@
 .class public final Ls4/g3;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Lcom/google/android/gms/internal/measurement/m6;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Ls4/j0;
 
 
 # instance fields
-.field public final synthetic c:I
-
-.field public final synthetic d:Ls4/h3;
+.field public final synthetic d:Ljava/util/concurrent/atomic/AtomicReference;
 
 
 # direct methods
-.method public constructor <init>(Ls4/h3;I)V
+.method public constructor <init>(Ls4/n3;Ljava/util/concurrent/atomic/AtomicReference;)V
     .locals 0
 
     .line 1
-    iput p2, p0, Ls4/g3;->c:I
+    iput-object p2, p0, Ls4/g3;->d:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 2
     .line 3
-    packed-switch p2, :pswitch_data_0
+    const-string p1, "com.google.android.gms.measurement.internal.ITriggerUrisCallback"
 
     .line 4
     .line 5
-    .line 6
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, p1}, Lcom/google/android/gms/internal/measurement/m6;-><init>(Ljava/lang/String;)V
 
+    .line 6
     .line 7
     .line 8
-    .line 9
-    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    .line 12
-    iput-object p1, p0, Ls4/g3;->d:Ls4/h3;
-
-    .line 13
-    .line 14
     return-void
-
-    .line 15
-    :pswitch_0
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 16
-    .line 17
-    .line 18
-    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 19
-    .line 20
-    .line 21
-    iput-object p1, p0, Ls4/g3;->d:Ls4/h3;
-
-    .line 22
-    .line 23
-    return-void
-
-    .line 24
-    nop
-
-    .line 25
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-    .end packed-switch
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 2
+.method public final E(ILandroid/os/Parcel;Landroid/os/Parcel;)Z
+    .locals 0
 
     .line 1
-    iget v0, p0, Ls4/g3;->c:I
+    const/4 p3, 0x2
 
     .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
+    if-ne p1, p3, :cond_0
 
+    .line 3
     .line 4
+    sget-object p1, Ls4/z3;->CREATOR:Landroid/os/Parcelable$Creator;
+
     .line 5
     .line 6
-    iget-object v0, p0, Ls4/g3;->d:Ls4/h3;
+    invoke-virtual {p2, p1}, Landroid/os/Parcel;->createTypedArrayList(Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
 
     .line 7
     .line 8
-    const/4 v1, 0x0
-
     .line 9
-    iput-object v1, v0, Ls4/h3;->Z:Ls4/e3;
+    move-result-object p1
 
     .line 10
+    invoke-static {p2}, Lcom/google/android/gms/internal/measurement/n6;->d(Landroid/os/Parcel;)V
+
+    .line 11
+    .line 12
+    .line 13
+    invoke-virtual {p0, p1}, Ls4/g3;->v(Ljava/util/List;)V
+
+    .line 14
+    .line 15
+    .line 16
+    const/4 p1, 0x1
+
+    .line 17
+    return p1
+
+    .line 18
+    :cond_0
+    const/4 p1, 0x0
+
+    .line 19
+    return p1
+.end method
+
+.method public final v(Ljava/util/List;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/g3;->d:Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 2
+    .line 3
+    monitor-enter v0
+
+    .line 4
+    :try_start_0
+    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
+
+    .line 5
+    .line 6
+    .line 7
+    invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
+
+    .line 8
+    .line 9
+    .line 10
+    monitor-exit v0
+
     .line 11
     return-void
 
     .line 12
-    :pswitch_0
-    iget-object v0, p0, Ls4/g3;->d:Ls4/h3;
+    :catchall_0
+    move-exception p1
 
     .line 13
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     .line 14
-    iget-object v1, v0, Ls4/h3;->Z:Ls4/e3;
-
-    .line 15
-    .line 16
-    iput-object v1, v0, Ls4/h3;->w:Ls4/e3;
-
-    .line 17
-    .line 18
-    return-void
-
-    .line 19
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    throw p1
 .end method

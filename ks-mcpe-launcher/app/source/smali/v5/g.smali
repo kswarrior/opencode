@@ -1,120 +1,198 @@
 .class public final Lv5/g;
-.super Landroid/view/AbsSavedState;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-
-# static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Landroid/os/Parcelable$Creator<",
-            "Lv5/g;",
-            ">;"
-        }
-    .end annotation
-.end field
+.super Lv5/f;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public c:F
-
-.field public d:I
+.field public final d:F
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(F)V
+    .locals 1
 
     .line 1
-    new-instance v0, Lu4/i;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    const/4 v1, 0x2
-
     .line 4
-    invoke-direct {v0, v1}, Lu4/i;-><init>(I)V
+    const v0, 0x3a83126f    # 0.001f
 
     .line 5
     .line 6
     .line 7
-    sput-object v0, Lv5/g;->CREATOR:Landroid/os/Parcelable$Creator;
+    sub-float/2addr p1, v0
 
     .line 8
+    iput p1, p0, Lv5/g;->d:F
+
     .line 9
-    return-void
-.end method
-
-.method public constructor <init>(Landroid/os/Parcel;)V
-    .locals 1
-
-    .line 2
-    const-class v0, Lv5/g;
-
-    invoke-virtual {v0}, Ljava/lang/Class;->getClassLoader()Ljava/lang/ClassLoader;
-
-    move-result-object v0
-
-    invoke-virtual {p1, v0}, Landroid/os/Parcel;->readParcelable(Ljava/lang/ClassLoader;)Landroid/os/Parcelable;
-
-    move-result-object v0
-
-    invoke-direct {p0, v0}, Landroid/view/AbsSavedState;-><init>(Landroid/os/Parcelable;)V
-
-    .line 3
-    invoke-virtual {p1}, Landroid/os/Parcel;->readFloat()F
-
-    move-result v0
-
-    iput v0, p0, Lv5/g;->c:F
-
-    .line 4
-    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
-
-    move-result p1
-
-    iput p1, p0, Lv5/g;->d:I
-
-    return-void
-.end method
-
-.method public constructor <init>(Lv5/d;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Landroid/view/AbsSavedState;-><init>(Landroid/os/Parcelable;)V
-
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final writeToParcel(Landroid/os/Parcel;I)V
-    .locals 0
+.method public final w(FFFLv5/x;)V
+    .locals 8
 
     .line 1
-    invoke-super {p0, p1, p2}, Landroid/view/AbsSavedState;->writeToParcel(Landroid/os/Parcel;I)V
+    iget p1, p0, Lv5/g;->d:F
 
     .line 2
     .line 3
+    float-to-double v0, p1
+
     .line 4
-    iget p2, p0, Lv5/g;->c:F
+    const-wide/high16 v2, 0x4000000000000000L    # 2.0
 
     .line 5
     .line 6
-    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeFloat(F)V
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
 
     .line 7
     .line 8
     .line 9
-    iget p2, p0, Lv5/g;->d:I
+    move-result-wide v4
 
     .line 10
+    mul-double/2addr v4, v0
+
     .line 11
-    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
+    div-double/2addr v4, v2
 
     .line 12
+    double-to-float p1, v4
+
     .line 13
+    invoke-static {v0, v1, v2, v3}, Ljava/lang/Math;->pow(DD)D
+
     .line 14
+    .line 15
+    .line 16
+    move-result-wide v4
+
+    .line 17
+    float-to-double v6, p1
+
+    .line 18
+    invoke-static {v6, v7, v2, v3}, Ljava/lang/Math;->pow(DD)D
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-wide v6
+
+    .line 22
+    sub-double/2addr v4, v6
+
+    .line 23
+    invoke-static {v4, v5}, Ljava/lang/Math;->sqrt(D)D
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-wide v4
+
+    .line 27
+    double-to-float p3, v4
+
+    .line 28
+    sub-float v4, p2, p1
+
+    .line 29
+    .line 30
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-wide v5
+
+    .line 34
+    mul-double/2addr v5, v0
+
+    .line 35
+    sub-double/2addr v5, v0
+
+    .line 36
+    neg-double v5, v5
+
+    .line 37
+    double-to-float v5, v5
+
+    .line 38
+    add-float/2addr v5, p3
+
+    .line 39
+    const/high16 v6, 0x43870000    # 270.0f
+
+    .line 40
+    .line 41
+    const/4 v7, 0x0
+
+    .line 42
+    invoke-virtual {p4, v4, v5, v6, v7}, Lv5/x;->d(FFFF)V
+
+    .line 43
+    .line 44
+    .line 45
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
+
+    .line 46
+    .line 47
+    .line 48
+    move-result-wide v4
+
+    .line 49
+    mul-double/2addr v4, v0
+
+    .line 50
+    sub-double/2addr v4, v0
+
+    .line 51
+    neg-double v4, v4
+
+    .line 52
+    double-to-float v4, v4
+
+    .line 53
+    invoke-virtual {p4, p2, v4}, Lv5/x;->c(FF)V
+
+    .line 54
+    .line 55
+    .line 56
+    add-float/2addr p2, p1
+
+    .line 57
+    invoke-static {v2, v3}, Ljava/lang/Math;->sqrt(D)D
+
+    .line 58
+    .line 59
+    .line 60
+    move-result-wide v2
+
+    .line 61
+    mul-double/2addr v2, v0
+
+    .line 62
+    sub-double/2addr v2, v0
+
+    .line 63
+    neg-double v0, v2
+
+    .line 64
+    double-to-float p1, v0
+
+    .line 65
+    add-float/2addr p1, p3
+
+    .line 66
+    invoke-virtual {p4, p2, p1}, Lv5/x;->c(FF)V
+
+    .line 67
+    .line 68
+    .line 69
     return-void
 .end method

@@ -1,206 +1,97 @@
 .class public final Lcom/google/android/gms/internal/play_billing/t0;
-.super Lcom/google/android/gms/internal/play_billing/v0;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ljava/security/PrivilegedExceptionAction;
 
 
 # virtual methods
-.method public final a(JLjava/lang/Object;)D
-    .locals 1
+.method public final bridge synthetic run()Ljava/lang/Object;
+    .locals 7
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/v0;->a:Lsun/misc/Unsafe;
+    const-class v0, Lsun/misc/Unsafe;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p3, p1, p2}, Lsun/misc/Unsafe;->getLong(Ljava/lang/Object;J)J
+    invoke-virtual {v0}, Ljava/lang/Class;->getDeclaredFields()[Ljava/lang/reflect/Field;
 
     .line 4
     .line 5
     .line 6
-    move-result-wide p1
+    move-result-object v1
 
     .line 7
-    invoke-static {p1, p2}, Ljava/lang/Double;->longBitsToDouble(J)D
+    array-length v2, v1
 
     .line 8
-    .line 9
-    .line 10
-    move-result-wide p1
-
-    .line 11
-    return-wide p1
-.end method
-
-.method public final b(JLjava/lang/Object;)F
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/v0;->a:Lsun/misc/Unsafe;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0, p3, p1, p2}, Lsun/misc/Unsafe;->getInt(Ljava/lang/Object;J)I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result p1
-
-    .line 7
-    invoke-static {p1}, Ljava/lang/Float;->intBitsToFloat(I)F
-
-    .line 8
-    .line 9
-    .line 10
-    move-result p1
-
-    .line 11
-    return p1
-.end method
-
-.method public final c(Ljava/lang/Object;JZ)V
-    .locals 1
-
-    .line 1
-    sget-boolean v0, Lcom/google/android/gms/internal/play_billing/w0;->g:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-static {p1, p2, p3, p4}, Lcom/google/android/gms/internal/play_billing/w0;->c(Ljava/lang/Object;JB)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
+    const/4 v3, 0x0
 
     .line 9
-    :cond_0
-    invoke-static {p1, p2, p3, p4}, Lcom/google/android/gms/internal/play_billing/w0;->d(Ljava/lang/Object;JB)V
+    :goto_0
+    const/4 v4, 0x0
 
     .line 10
-    .line 11
-    .line 12
-    return-void
-.end method
-
-.method public final d(Ljava/lang/Object;JB)V
-    .locals 1
-
-    .line 1
-    sget-boolean v0, Lcom/google/android/gms/internal/play_billing/w0;->g:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-static {p1, p2, p3, p4}, Lcom/google/android/gms/internal/play_billing/w0;->c(Ljava/lang/Object;JB)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-
-    .line 9
-    :cond_0
-    invoke-static {p1, p2, p3, p4}, Lcom/google/android/gms/internal/play_billing/w0;->d(Ljava/lang/Object;JB)V
-
-    .line 10
-    .line 11
-    .line 12
-    return-void
-.end method
-
-.method public final e(Ljava/lang/Object;JD)V
-    .locals 6
-
-    .line 1
-    invoke-static {p4, p5}, Ljava/lang/Double;->doubleToLongBits(D)J
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-wide v4
-
-    .line 5
-    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/v0;->a:Lsun/misc/Unsafe;
-
-    .line 6
-    .line 7
-    move-object v1, p1
-
-    .line 8
-    move-wide v2, p2
-
-    .line 9
-    invoke-virtual/range {v0 .. v5}, Lsun/misc/Unsafe;->putLong(Ljava/lang/Object;JJ)V
-
-    .line 10
-    .line 11
-    .line 12
-    return-void
-.end method
-
-.method public final f(Ljava/lang/Object;JF)V
-    .locals 1
-
-    .line 1
-    invoke-static {p4}, Ljava/lang/Float;->floatToIntBits(F)I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p4
-
-    .line 5
-    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/v0;->a:Lsun/misc/Unsafe;
-
-    .line 6
-    .line 7
-    invoke-virtual {v0, p1, p2, p3, p4}, Lsun/misc/Unsafe;->putInt(Ljava/lang/Object;JI)V
-
-    .line 8
-    .line 9
-    .line 10
-    return-void
-.end method
-
-.method public final g(JLjava/lang/Object;)Z
-    .locals 1
-
-    .line 1
-    sget-boolean v0, Lcom/google/android/gms/internal/play_billing/w0;->g:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-static {p1, p2, p3}, Lcom/google/android/gms/internal/play_billing/w0;->m(JLjava/lang/Object;)Z
-
-    .line 6
-    .line 7
-    .line 8
-    move-result p1
-
-    .line 9
-    return p1
-
-    .line 10
-    :cond_0
-    invoke-static {p1, p2, p3}, Lcom/google/android/gms/internal/play_billing/w0;->n(JLjava/lang/Object;)Z
+    if-ge v3, v2, :cond_1
 
     .line 11
     .line 12
+    aget-object v5, v1, v3
+
     .line 13
-    move-result p1
-
     .line 14
-    return p1
+    const/4 v6, 0x1
+
+    .line 15
+    invoke-virtual {v5, v6}, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-virtual {v5, v4}, Ljava/lang/reflect/Field;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v4
+
+    .line 22
+    invoke-virtual {v0, v4}, Ljava/lang/Class;->isInstance(Ljava/lang/Object;)Z
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v5
+
+    .line 26
+    if-eqz v5, :cond_0
+
+    .line 27
+    .line 28
+    invoke-virtual {v0, v4}, Ljava/lang/Class;->cast(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object v0
+
+    .line 32
+    check-cast v0, Lsun/misc/Unsafe;
+
+    .line 33
+    .line 34
+    return-object v0
+
+    .line 35
+    :cond_0
+    add-int/lit8 v3, v3, 0x1
+
+    .line 36
+    .line 37
+    goto :goto_0
+
+    .line 38
+    :cond_1
+    return-object v4
 .end method

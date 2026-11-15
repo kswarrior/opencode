@@ -1,6 +1,6 @@
 .class Lcom/microsoft/xbox/toolkit/ui/TextureManager$TextureManagerDownloadThreadWorker;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -101,7 +101,7 @@
     move-result-object v1
 
     .line 10
-    new-instance v2, Luc/d;
+    new-instance v2, Ltc/d;
 
     .line 11
     .line 12
@@ -113,7 +113,7 @@
     move-result-object p1
 
     .line 16
-    invoke-direct {v2, p1}, Luc/d;-><init>(Ljava/net/URI;)V
+    invoke-direct {v2, p1}, Ltc/d;-><init>(Ljava/net/URI;)V
 
     .line 17
     .line 18

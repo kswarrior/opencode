@@ -1,87 +1,82 @@
-.class public Lka/a;
-.super Lja/a;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public abstract Lka/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# instance fields
-.field public final d:[B
+# static fields
+.field public static final a:Lpa/a;
 
-.field public final e:I
+.field public static final b:Lpa/a;
+
+.field public static final c:Lpa/a;
 
 
 # direct methods
-.method public constructor <init>(Loa/a;[B)V
-    .locals 1
-
-    .line 1
-    array-length v0, p2
-
-    .line 2
-    invoke-direct {p0, p1}, Lja/a;-><init>(Loa/a;)V
-
-    .line 3
-    .line 4
-    .line 5
-    iput-object p2, p0, Lka/a;->d:[B
-
-    .line 6
-    .line 7
-    iput v0, p0, Lka/a;->e:I
-
-    .line 8
-    .line 9
-    return-void
-.end method
-
-
-# virtual methods
-.method public final a()Z
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
-.end method
-
-.method public final b()Ljava/io/InputStream;
+.method static constructor <clinit>()V
     .locals 4
 
     .line 1
-    new-instance v0, Ljava/io/ByteArrayInputStream;
+    sget-object v0, Ljava/nio/charset/StandardCharsets;->ISO_8859_1:Ljava/nio/charset/Charset;
 
     .line 2
     .line 3
-    const/4 v1, 0x0
+    new-instance v1, Lpa/a;
 
     .line 4
-    iget v2, p0, Lka/a;->e:I
-
     .line 5
-    .line 6
-    iget-object v3, p0, Lka/a;->d:[B
+    const-string v2, "application/x-www-form-urlencoded"
 
+    .line 6
     .line 7
+    const/4 v3, 0x0
+
     .line 8
-    invoke-direct {v0, v3, v1, v2}, Ljava/io/ByteArrayInputStream;-><init>([BII)V
+    invoke-direct {v1, v2, v0, v3}, Lpa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
 
     .line 9
     .line 10
     .line 11
-    return-object v0
-.end method
+    sput-object v1, Lka/a;->a:Lpa/a;
 
-.method public final d()I
-    .locals 1
+    .line 12
+    .line 13
+    new-instance v0, Lpa/a;
 
-    .line 1
-    iget-object v0, p0, Lka/a;->d:[B
+    .line 14
+    .line 15
+    const-string v1, "application/json"
 
-    .line 2
-    .line 3
-    array-length v0, v0
+    .line 16
+    .line 17
+    sget-object v2, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
 
-    .line 4
-    return v0
+    .line 18
+    .line 19
+    invoke-direct {v0, v1, v2, v3}, Lpa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
+
+    .line 20
+    .line 21
+    .line 22
+    sput-object v0, Lka/a;->b:Lpa/a;
+
+    .line 23
+    .line 24
+    new-instance v0, Lpa/a;
+
+    .line 25
+    .line 26
+    const-string v1, "application/octet-stream"
+
+    .line 27
+    .line 28
+    invoke-direct {v0, v1, v3, v3}, Lpa/a;-><init>(Ljava/lang/String;Ljava/nio/charset/Charset;Ljava/lang/String;)V
+
+    .line 29
+    .line 30
+    .line 31
+    sput-object v0, Lka/a;->c:Lpa/a;
+
+    .line 32
+    .line 33
+    return-void
 .end method

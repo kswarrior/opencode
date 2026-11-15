@@ -1,6 +1,6 @@
 .class public final Landroidx/core/app/TaskStackBuilder;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Iterable;
@@ -9,11 +9,11 @@
 # instance fields
 .field public final c:Ljava/util/ArrayList;
 
-.field public final d:Lg/g;
+.field public final d:Lg/i;
 
 
 # direct methods
-.method public constructor <init>(Lg/g;)V
+.method public constructor <init>(Lg/i;)V
     .locals 1
 
     .line 1
@@ -35,7 +35,7 @@
 
     .line 10
     .line 11
-    iput-object p1, p0, Landroidx/core/app/TaskStackBuilder;->d:Lg/g;
+    iput-object p1, p0, Landroidx/core/app/TaskStackBuilder;->d:Lg/i;
 
     .line 12
     .line 13

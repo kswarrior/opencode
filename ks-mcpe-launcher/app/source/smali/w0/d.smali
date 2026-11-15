@@ -1,16 +1,16 @@
 .class public final Lw0/d;
-.super Lw8/c;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ly8/c;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public q:Ljava/io/Serializable;
+.field public p:Ljava/io/Serializable;
 
-.field public w:Ljava/util/Iterator;
+.field public q:Ljava/util/Iterator;
 
-.field public synthetic x:Ljava/lang/Object;
+.field public synthetic w:Ljava/lang/Object;
 
-.field public y:I
+.field public x:I
 
 
 # virtual methods
@@ -18,11 +18,11 @@
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lw0/d;->x:Ljava/lang/Object;
+    iput-object p1, p0, Lw0/d;->w:Ljava/lang/Object;
 
     .line 2
     .line 3
-    iget p1, p0, Lw0/d;->y:I
+    iget p1, p0, Lw0/d;->x:I
 
     .line 4
     .line 5
@@ -33,14 +33,14 @@
     or-int/2addr p1, v0
 
     .line 8
-    iput p1, p0, Lw0/d;->y:I
+    iput p1, p0, Lw0/d;->x:I
 
     .line 9
     .line 10
     const/4 p1, 0x0
 
     .line 11
-    invoke-static {p1, p1, p0}, Lk4/f;->b(Ljava/util/List;Lw0/j;Lw8/c;)Ljava/lang/Object;
+    invoke-static {p1, p1, p0}, Lfc/h;->e(Ljava/util/List;Lw0/j;Ly8/c;)Ljava/lang/Object;
 
     .line 12
     .line 13

@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/auth/MsftAccountStore;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -1156,7 +1156,7 @@
     move-exception p0
 
     .line 40
-    goto :goto_2
+    goto :goto_3
 
     .line 41
     :cond_1
@@ -1264,26 +1264,43 @@
     .line 89
     .line 90
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->exportActiveAccount(Landroid/content/Context;)V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 91
     .line 92
     .line 93
-    :cond_5
-    monitor-exit v0
+    goto :goto_2
 
     .line 94
-    return-void
+    :cond_5
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->getActive(Landroid/content/Context;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 95
+    .line 96
+    .line 97
+    move-result-object p1
+
+    .line 98
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 99
+    .line 100
+    .line 101
     :goto_2
+    monitor-exit v0
+
+    .line 102
+    return-void
+
+    .line 103
+    :goto_3
     :try_start_1
     monitor-exit v0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 96
+    .line 104
     throw p0
 .end method
 
@@ -1344,7 +1361,7 @@
 
     .line 18
     .line 19
-    invoke-virtual {v2, p1}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v2, p1}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 20
     .line 21
@@ -1438,6 +1455,146 @@
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
     .line 57
+    throw p0
+.end method
+
+.method public static declared-synchronized selectSavedAccount(Landroid/content/Context;Ljava/lang/String;)V
+    .locals 6
+
+    .line 1
+    const-class v0, Lorg/levimc/launcher/core/auth/MsftAccountStore;
+
+    .line 2
+    .line 3
+    monitor-enter v0
+
+    .line 4
+    :try_start_0
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v1
+
+    .line 8
+    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v2
+
+    .line 12
+    const/4 v3, 0x0
+
+    .line 13
+    :cond_0
+    :goto_0
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v4
+
+    .line 17
+    if-eqz v4, :cond_1
+
+    .line 18
+    .line 19
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v4
+
+    .line 23
+    check-cast v4, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 24
+    .line 25
+    iget-object v5, v4, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    .line 26
+    .line 27
+    invoke-virtual {p1, v5}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 28
+    .line 29
+    .line 30
+    move-result v5
+
+    .line 31
+    iput-boolean v5, v4, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->active:Z
+
+    .line 32
+    .line 33
+    if-eqz v5, :cond_0
+
+    .line 34
+    .line 35
+    move-object v3, v4
+
+    .line 36
+    goto :goto_0
+
+    .line 37
+    :catchall_0
+    move-exception p0
+
+    .line 38
+    goto :goto_1
+
+    .line 39
+    :cond_1
+    if-eqz v3, :cond_2
+
+    .line 40
+    .line 41
+    invoke-static {p0, v3}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Z
+
+    .line 42
+    .line 43
+    .line 44
+    invoke-static {p0, v1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->save(Landroid/content/Context;Ljava/util/List;)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 45
+    .line 46
+    .line 47
+    monitor-exit v0
+
+    .line 48
+    return-void
+
+    .line 49
+    :cond_2
+    :try_start_1
+    new-instance p0, Ljava/lang/IllegalStateException;
+
+    .line 50
+    .line 51
+    const-string p1, "The Microsoft account is no longer available."
+
+    .line 52
+    .line 53
+    invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 54
+    .line 55
+    .line 56
+    throw p0
+
+    .line 57
+    :goto_1
+    monitor-exit v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 58
     throw p0
 .end method
 
@@ -1576,14 +1733,6 @@
     .line 61
     .line 62
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->exportActiveAccountOrThrow(Landroid/content/Context;)V
-
-    invoke-static {}, Lorg/levimc/launcher/settings/FeatureSettings;->getInstance()Lorg/levimc/launcher/settings/FeatureSettings;
-
-    move-result-object v2
-
-    const/4 v3, 0x1
-
-    invoke-virtual {v2, v3}, Lorg/levimc/launcher/settings/FeatureSettings;->setLauncherManagedMcLoginEnabled(Z)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

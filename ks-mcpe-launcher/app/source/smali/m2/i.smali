@@ -1,6 +1,6 @@
 .class public final Lm2/i;
 .super Lm2/j;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -281,9 +281,9 @@
     iput v5, v4, Lm2/h;->n:F
 
     .line 53
-    iget-object v5, v3, Lm2/h;->d:Lac/k;
+    iget-object v5, v3, Lm2/h;->d:Lcom/google/android/gms/internal/play_billing/g;
 
-    iput-object v5, v4, Lm2/h;->d:Lac/k;
+    iput-object v5, v4, Lm2/h;->d:Lcom/google/android/gms/internal/play_billing/g;
 
     .line 54
     iget v5, v3, Lm2/h;->e:F
@@ -296,9 +296,9 @@
     iput v5, v4, Lm2/h;->g:F
 
     .line 56
-    iget-object v5, v3, Lm2/h;->f:Lac/k;
+    iget-object v5, v3, Lm2/h;->f:Lcom/google/android/gms/internal/play_billing/g;
 
-    iput-object v5, v4, Lm2/h;->f:Lac/k;
+    iput-object v5, v4, Lm2/h;->f:Lcom/google/android/gms/internal/play_billing/g;
 
     .line 57
     iget v5, v3, Lm2/k;->c:I

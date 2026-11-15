@@ -1,18 +1,18 @@
 .class public final Ll0/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
 .field public a:Z
 
-.field public b:La4/g;
+.field public b:Z
 
-.field public c:Z
+.field public c:Ljava/lang/Object;
 
 
 # virtual methods
-.method public final a()V
+.method public a()V
     .locals 4
 
     .line 1
@@ -49,160 +49,164 @@
 
     .line 12
     .line 13
-    iput-boolean v0, p0, Ll0/c;->c:Z
+    iput-boolean v0, p0, Ll0/c;->b:Z
 
     .line 14
     .line 15
-    iget-object v0, p0, Ll0/c;->b:La4/g;
+    iget-object v0, p0, Ll0/c;->c:Ljava/lang/Object;
 
     .line 16
     .line 17
+    check-cast v0, La4/h;
+
+    .line 18
+    .line 19
     monitor-exit p0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 18
+    .line 20
     const/4 v1, 0x0
 
-    .line 19
-    if-eqz v0, :cond_2
-
-    .line 20
     .line 21
-    :try_start_1
-    iget-object v2, v0, La4/g;->d:Ljava/lang/Object;
+    if-eqz v0, :cond_2
 
     .line 22
     .line 23
-    check-cast v2, Ljava/lang/Runnable;
+    :try_start_1
+    iget-object v2, v0, La4/h;->d:Ljava/lang/Object;
 
     .line 24
     .line 25
-    iget-object v3, v0, La4/g;->q:Ljava/lang/Object;
+    check-cast v2, Ljava/lang/Runnable;
 
     .line 26
     .line 27
-    check-cast v3, Ll2/v;
+    iget-object v3, v0, La4/h;->p:Ljava/lang/Object;
 
     .line 28
     .line 29
-    iget-object v0, v0, La4/g;->h:Ljava/lang/Object;
+    check-cast v3, Ll2/u;
 
     .line 30
     .line 31
-    check-cast v0, Ljava/lang/Runnable;
+    iget-object v0, v0, La4/h;->h:Ljava/lang/Object;
 
     .line 32
     .line 33
-    if-nez v2, :cond_1
+    check-cast v0, Ljava/lang/Runnable;
 
     .line 34
     .line 35
-    invoke-virtual {v3}, Ll2/v;->d()V
+    if-nez v2, :cond_1
 
     .line 36
     .line 37
-    .line 38
-    invoke-interface {v0}, Ljava/lang/Runnable;->run()V
+    invoke-virtual {v3}, Ll2/u;->cancel()V
 
+    .line 38
     .line 39
     .line 40
+    invoke-interface {v0}, Ljava/lang/Runnable;->run()V
+
     .line 41
+    .line 42
+    .line 43
     goto :goto_1
 
-    .line 42
+    .line 44
     :catchall_1
     move-exception v0
 
-    .line 43
+    .line 45
     goto :goto_0
 
-    .line 44
+    .line 46
     :cond_1
     invoke-interface {v2}, Ljava/lang/Runnable;->run()V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 45
-    .line 46
     .line 47
+    .line 48
+    .line 49
     goto :goto_1
 
-    .line 48
+    .line 50
     :goto_0
     monitor-enter p0
 
-    .line 49
-    :try_start_2
-    iput-boolean v1, p0, Ll0/c;->c:Z
-
-    .line 50
     .line 51
-    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
+    :try_start_2
+    iput-boolean v1, p0, Ll0/c;->b:Z
 
     .line 52
     .line 53
+    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
+
     .line 54
+    .line 55
+    .line 56
     monitor-exit p0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_2
 
-    .line 55
+    .line 57
     throw v0
 
-    .line 56
+    .line 58
     :catchall_2
     move-exception v0
 
-    .line 57
+    .line 59
     :try_start_3
     monitor-exit p0
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_2
 
-    .line 58
+    .line 60
     throw v0
 
-    .line 59
+    .line 61
     :cond_2
     :goto_1
     monitor-enter p0
 
-    .line 60
-    :try_start_4
-    iput-boolean v1, p0, Ll0/c;->c:Z
-
-    .line 61
     .line 62
-    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
+    :try_start_4
+    iput-boolean v1, p0, Ll0/c;->b:Z
 
     .line 63
     .line 64
+    invoke-virtual {p0}, Ljava/lang/Object;->notifyAll()V
+
     .line 65
+    .line 66
+    .line 67
     monitor-exit p0
 
-    .line 66
+    .line 68
     return-void
 
-    .line 67
+    .line 69
     :catchall_3
     move-exception v0
 
-    .line 68
+    .line 70
     monitor-exit p0
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_3
 
-    .line 69
+    .line 71
     throw v0
 
-    .line 70
+    .line 72
     :goto_2
     :try_start_5
     monitor-exit p0
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 71
+    .line 73
     throw v0
 .end method

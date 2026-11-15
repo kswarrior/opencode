@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 .super Landroid/app/Dialog;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -457,14 +457,14 @@
 
     .line 39
     .line 40
-    new-instance v1, Lorg/levimc/launcher/ui/dialogs/b;
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/i;
 
     .line 41
     .line 42
-    const/4 v2, 0x3
+    const/4 v2, 0x4
 
     .line 43
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/dialogs/b;-><init>(Landroid/view/KeyEvent$Callback;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/dialogs/i;-><init>(Ljava/lang/Object;I)V
 
     .line 44
     .line 45
@@ -512,309 +512,318 @@
     .line 11
     .line 12
     .line 13
-    sget p1, Lorg/levimc/launcher/R$id;->progress_bar:I
+    const/16 p1, 0x1e0
 
     .line 14
     .line 15
-    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->bind(Landroid/app/Dialog;I)V
 
     .line 16
     .line 17
     .line 18
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$id;->progress_bar:I
 
     .line 19
-    check-cast p1, Landroid/widget/ProgressBar;
-
     .line 20
-    .line 21
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->progressBar:Landroid/widget/ProgressBar;
+    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
 
+    .line 21
     .line 22
     .line 23
-    sget p1, Lorg/levimc/launcher/R$id;->tv_progress_percent:I
+    move-result-object p1
 
     .line 24
-    .line 25
-    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
+    check-cast p1, Landroid/widget/ProgressBar;
 
+    .line 25
     .line 26
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->progressBar:Landroid/widget/ProgressBar;
+
     .line 27
     .line 28
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$id;->tv_progress_percent:I
 
     .line 29
-    check-cast p1, Landroid/widget/TextView;
-
     .line 30
-    .line 31
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->progressText:Landroid/widget/TextView;
+    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
 
+    .line 31
     .line 32
     .line 33
-    sget p1, Lorg/levimc/launcher/R$id;->tv_title:I
+    move-result-object p1
 
     .line 34
-    .line 35
-    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
+    check-cast p1, Landroid/widget/TextView;
 
+    .line 35
     .line 36
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->progressText:Landroid/widget/TextView;
+
     .line 37
     .line 38
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$id;->tv_title:I
 
     .line 39
-    check-cast p1, Landroid/widget/TextView;
-
     .line 40
-    .line 41
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->titleText:Landroid/widget/TextView;
-
-    .line 42
-    .line 43
-    sget p1, Lorg/levimc/launcher/R$id;->tv_progress_status:I
-
-    .line 44
-    .line 45
     invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
 
-    .line 46
-    .line 47
-    .line 48
+    .line 41
+    .line 42
+    .line 43
     move-result-object p1
 
-    .line 49
+    .line 44
     check-cast p1, Landroid/widget/TextView;
 
-    .line 50
-    .line 51
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->statusText:Landroid/widget/TextView;
+    .line 45
+    .line 46
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->titleText:Landroid/widget/TextView;
 
+    .line 47
+    .line 48
+    sget p1, Lorg/levimc/launcher/R$id;->tv_progress_status:I
+
+    .line 49
+    .line 50
+    invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
+
+    .line 51
     .line 52
     .line 53
-    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->pendingTitle:Ljava/lang/CharSequence;
+    move-result-object p1
 
     .line 54
+    check-cast p1, Landroid/widget/TextView;
+
     .line 55
+    .line 56
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->statusText:Landroid/widget/TextView;
+
+    .line 57
+    .line 58
+    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->pendingTitle:Ljava/lang/CharSequence;
+
+    .line 59
+    .line 60
     if-eqz p1, :cond_0
 
-    .line 56
-    .line 57
+    .line 61
+    .line 62
     iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->titleText:Landroid/widget/TextView;
 
-    .line 58
-    .line 59
-    if-eqz v0, :cond_0
-
-    .line 60
-    .line 61
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 62
     .line 63
     .line 64
-    :cond_0
-    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->pendingStatus:Ljava/lang/CharSequence;
+    if-eqz v0, :cond_0
 
     .line 65
     .line 66
-    if-eqz p1, :cond_1
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 67
     .line 68
+    .line 69
+    :cond_0
+    iget-object p1, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->pendingStatus:Ljava/lang/CharSequence;
+
+    .line 70
+    .line 71
+    if-eqz p1, :cond_1
+
+    .line 72
+    .line 73
     iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->statusText:Landroid/widget/TextView;
 
-    .line 69
-    .line 70
-    if-eqz v0, :cond_1
-
-    .line 71
-    .line 72
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 73
     .line 74
     .line 75
-    :cond_1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->applyPersonalization()V
+    if-eqz v0, :cond_1
 
     .line 76
     .line 77
-    .line 78
-    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
+    .line 78
     .line 79
     .line 80
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->applyPersonalization()V
+
     .line 81
-    move-result-object p1
-
     .line 82
-    if-eqz p1, :cond_2
-
     .line 83
-    .line 84
-    const v0, 0x106000d
+    invoke-virtual {p0}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
+    .line 84
     .line 85
     .line 86
+    move-result-object p1
+
     .line 87
-    invoke-virtual {p1, v0}, Landroid/view/Window;->setBackgroundDrawableResource(I)V
+    if-eqz p1, :cond_2
 
     .line 88
     .line 89
-    .line 90
-    invoke-virtual {p1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+    const v0, 0x106000d
 
+    .line 90
     .line 91
     .line 92
+    invoke-virtual {p1, v0}, Landroid/view/Window;->setBackgroundDrawableResource(I)V
+
     .line 93
-    move-result-object v0
-
     .line 94
-    invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
-
     .line 95
+    invoke-virtual {p1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
+
     .line 96
     .line 97
-    move-result-object v1
-
     .line 98
-    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    move-result-object v0
 
     .line 99
-    .line 100
-    .line 101
-    move-result-object v1
-
-    .line 102
-    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
-
-    .line 103
-    .line 104
-    .line 105
-    move-result-object v1
-
-    .line 106
-    iget v1, v1, Landroid/util/DisplayMetrics;->density:F
-
-    .line 107
-    .line 108
     invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
 
+    .line 100
+    .line 101
+    .line 102
+    move-result-object v1
+
+    .line 103
+    invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 104
+    .line 105
+    .line 106
+    move-result-object v1
+
+    .line 107
+    invoke-virtual {v1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 108
     .line 109
     .line 110
+    move-result-object v1
+
     .line 111
-    move-result-object v2
+    iget v1, v1, Landroid/util/DisplayMetrics;->density:F
 
     .line 112
-    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
     .line 113
+    invoke-virtual {p0}, Landroid/app/Dialog;->getContext()Landroid/content/Context;
+
     .line 114
     .line 115
-    move-result-object v2
-
     .line 116
-    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    move-result-object v2
 
     .line 117
+    invoke-virtual {v2}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
     .line 118
     .line 119
+    .line 120
     move-result-object v2
 
-    .line 120
-    iget v2, v2, Landroid/util/DisplayMetrics;->widthPixels:I
-
     .line 121
-    .line 122
-    const/high16 v3, 0x43c80000    # 400.0f
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
+    .line 122
     .line 123
     .line 124
-    mul-float/2addr v1, v3
+    move-result-object v2
 
     .line 125
-    float-to-int v1, v1
+    iget v2, v2, Landroid/util/DisplayMetrics;->widthPixels:I
 
     .line 126
-    int-to-float v2, v2
-
     .line 127
-    const v3, 0x3f666666    # 0.9f
+    const/high16 v3, 0x43c80000    # 400.0f
 
     .line 128
     .line 129
+    mul-float/2addr v1, v3
+
     .line 130
-    mul-float/2addr v2, v3
+    float-to-int v1, v1
 
     .line 131
-    float-to-int v2, v2
+    int-to-float v2, v2
 
     .line 132
-    invoke-static {v2, v1}, Ljava/lang/Math;->min(II)I
+    const v3, 0x3f666666    # 0.9f
 
     .line 133
     .line 134
     .line 135
-    move-result v1
+    mul-float/2addr v2, v3
 
     .line 136
-    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->width:I
+    float-to-int v2, v2
 
     .line 137
+    invoke-static {v2, v1}, Ljava/lang/Math;->min(II)I
+
     .line 138
-    const/4 v1, -0x2
-
     .line 139
-    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->height:I
-
     .line 140
+    move-result v1
+
     .line 141
-    const v1, 0x3f19999a    # 0.6f
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->width:I
 
     .line 142
     .line 143
+    const/4 v1, -0x2
+
     .line 144
-    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->dimAmount:F
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->height:I
 
     .line 145
     .line 146
-    invoke-virtual {p1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+    const v1, 0x3f19999a    # 0.6f
 
     .line 147
     .line 148
     .line 149
-    const/4 v0, 0x2
+    iput v1, v0, Landroid/view/WindowManager$LayoutParams;->dimAmount:F
 
     .line 150
-    invoke-virtual {p1, v0}, Landroid/view/Window;->addFlags(I)V
-
     .line 151
+    invoke-virtual {p1, v0}, Landroid/view/Window;->setAttributes(Landroid/view/WindowManager$LayoutParams;)V
+
     .line 152
     .line 153
+    .line 154
+    const/4 v0, 0x2
+
+    .line 155
+    invoke-virtual {p1, v0}, Landroid/view/Window;->addFlags(I)V
+
+    .line 156
+    .line 157
+    .line 158
     :cond_2
     const p1, 0x1020002
 
-    .line 154
-    .line 155
-    .line 156
+    .line 159
+    .line 160
+    .line 161
     invoke-virtual {p0, p1}, Landroid/app/Dialog;->findViewById(I)Landroid/view/View;
 
-    .line 157
-    .line 158
-    .line 159
-    move-result-object p1
-
-    .line 160
-    if-eqz p1, :cond_3
-
-    .line 161
     .line 162
-    invoke-static {p1}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->animateDialogShow(Landroid/view/View;)V
-
     .line 163
     .line 164
+    move-result-object p1
+
     .line 165
+    if-eqz p1, :cond_3
+
+    .line 166
+    .line 167
+    invoke-static {p1}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->animateDialogShow(Landroid/view/View;)V
+
+    .line 168
+    .line 169
+    .line 170
     :cond_3
     return-void
 .end method
@@ -976,14 +985,14 @@
 
     .line 75
     .line 76
-    new-instance v0, Lorg/levimc/launcher/ui/dialogs/d;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/h;
 
     .line 77
     .line 78
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
     .line 79
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/dialogs/d;-><init>(Landroid/app/Dialog;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/dialogs/h;-><init>(Landroid/app/Dialog;I)V
 
     .line 80
     .line 81

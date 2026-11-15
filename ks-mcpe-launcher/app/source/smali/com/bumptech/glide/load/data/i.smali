@@ -1,6 +1,6 @@
 .class public final Lcom/bumptech/glide/load/data/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/d;
@@ -13,7 +13,7 @@
 
 .field public h:Ljava/lang/Object;
 
-.field public final synthetic q:I
+.field public final synthetic p:I
 
 
 # direct methods
@@ -21,7 +21,7 @@
     .locals 0
 
     .line 1
-    iput p3, p0, Lcom/bumptech/glide/load/data/i;->q:I
+    iput p3, p0, Lcom/bumptech/glide/load/data/i;->p:I
 
     .line 2
     .line 3
@@ -47,7 +47,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/bumptech/glide/load/data/i;->q:I
+    iget v0, p0, Lcom/bumptech/glide/load/data/i;->p:I
 
     .line 2
     .line 3
@@ -97,7 +97,7 @@
     .line 6
     :cond_0
     :try_start_0
-    iget v1, p0, Lcom/bumptech/glide/load/data/i;->q:I
+    iget v1, p0, Lcom/bumptech/glide/load/data/i;->p:I
 
     .line 7
     .line 8
@@ -141,7 +141,14 @@
     .end packed-switch
 .end method
 
-.method public final c()I
+.method public final cancel()V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public final d()I
     .locals 1
 
     .line 1
@@ -149,13 +156,6 @@
 
     .line 2
     return v0
-.end method
-
-.method public final cancel()V
-    .locals 0
-
-    .line 1
-    return-void
 .end method
 
 .method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
@@ -171,7 +171,7 @@
 
     .line 4
     .line 5
-    iget v1, p0, Lcom/bumptech/glide/load/data/i;->q:I
+    iget v1, p0, Lcom/bumptech/glide/load/data/i;->p:I
 
     .line 6
     .line 7
@@ -248,7 +248,7 @@
     .line 39
     .line 40
     :cond_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
 
     .line 41
     .line 42

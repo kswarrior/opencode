@@ -1,6 +1,6 @@
 .class public final Lb3/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ls2/j;
@@ -24,12 +24,12 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    new-instance v0, Ls4/c0;
+    new-instance v0, Ls4/z;
 
     const/16 v1, 0x10
 
     .line 3
-    invoke-direct {v0, v1}, Ls4/c0;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/z;-><init>(I)V
 
     .line 4
     iput-object v0, p0, Lb3/c;->b:Lv2/a;
@@ -301,7 +301,7 @@
 
     .line 74
     .line 75
-    check-cast p3, Ls4/c0;
+    check-cast p3, Ls4/z;
 
     .line 76
     .line 77

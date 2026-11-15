@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/MsftLoginActivity$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->W(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->X(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
 
     .line 4
     .line 5
@@ -64,7 +64,7 @@
 
     .line 10
     .line 11
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->V(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->W(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 12
     .line 13
@@ -88,7 +88,7 @@
 
     .line 22
     .line 23
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->U(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicBoolean;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->V(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 24
     .line 25
@@ -112,7 +112,7 @@
 
     .line 34
     .line 35
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->Y(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)J
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->Z(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)J
 
     .line 36
     .line 37
@@ -124,7 +124,7 @@
 
     .line 40
     .line 41
-    invoke-static {v3}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->Z(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicLong;
+    invoke-static {v3}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->a0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Ljava/util/concurrent/atomic/AtomicLong;
 
     .line 42
     .line 43
@@ -208,7 +208,7 @@
 
     .line 79
     .line 80
-    invoke-static {v8}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->X(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Landroid/widget/TextView;
+    invoke-static {v8}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->Y(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Landroid/widget/TextView;
 
     .line 81
     .line 82
@@ -273,7 +273,7 @@
 
     .line 112
     .line 113
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->a0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Landroid/os/Handler;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->b0(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)Landroid/os/Handler;
 
     .line 114
     .line 115

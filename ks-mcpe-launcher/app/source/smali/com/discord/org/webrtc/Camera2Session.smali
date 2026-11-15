@@ -1,6 +1,6 @@
 .class Lcom/discord/org/webrtc/Camera2Session;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/discord/org/webrtc/CameraSession;
@@ -1327,7 +1327,7 @@
 
     .line 76
     .line 77
-    invoke-static {v1, v0}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v0}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 78
     .line 79

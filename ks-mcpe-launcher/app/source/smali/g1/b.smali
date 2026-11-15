@@ -1,15 +1,15 @@
 .class public Lg1/b;
 .super Ljava/io/InputStream;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/io/DataInput;
 
 
 # static fields
-.field public static final w:Ljava/nio/ByteOrder;
+.field public static final q:Ljava/nio/ByteOrder;
 
-.field public static final x:Ljava/nio/ByteOrder;
+.field public static final w:Ljava/nio/ByteOrder;
 
 
 # instance fields
@@ -19,7 +19,7 @@
 
 .field public h:I
 
-.field public q:[B
+.field public p:[B
 
 
 # direct methods
@@ -31,7 +31,7 @@
 
     .line 2
     .line 3
-    sput-object v0, Lg1/b;->w:Ljava/nio/ByteOrder;
+    sput-object v0, Lg1/b;->q:Ljava/nio/ByteOrder;
 
     .line 4
     .line 5
@@ -39,7 +39,7 @@
 
     .line 6
     .line 7
-    sput-object v0, Lg1/b;->x:Ljava/nio/ByteOrder;
+    sput-object v0, Lg1/b;->w:Ljava/nio/ByteOrder;
 
     .line 8
     .line 9
@@ -151,7 +151,7 @@
 
     .line 16
     .line 17
-    iget-object v3, p0, Lg1/b;->q:[B
+    iget-object v3, p0, Lg1/b;->p:[B
 
     .line 18
     .line 19
@@ -167,7 +167,7 @@
 
     .line 24
     .line 25
-    iput-object v3, p0, Lg1/b;->q:[B
+    iput-object v3, p0, Lg1/b;->p:[B
 
     .line 26
     .line 27
@@ -180,7 +180,7 @@
     move-result v2
 
     .line 31
-    iget-object v3, p0, Lg1/b;->q:[B
+    iget-object v3, p0, Lg1/b;->p:[B
 
     .line 32
     .line 33
@@ -215,7 +215,7 @@
 
     .line 46
     .line 47
-    invoke-static {p1, v1, v2}, Ls1/a;->k(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v1, v2}, Ls1/a;->i(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 48
     .line 49
@@ -600,7 +600,7 @@
 
     .line 32
     .line 33
-    sget-object v5, Lg1/b;->w:Ljava/nio/ByteOrder;
+    sget-object v5, Lg1/b;->q:Ljava/nio/ByteOrder;
 
     .line 34
     .line 35
@@ -633,7 +633,7 @@
 
     .line 47
     :cond_0
-    sget-object v5, Lg1/b;->x:Ljava/nio/ByteOrder;
+    sget-object v5, Lg1/b;->w:Ljava/nio/ByteOrder;
 
     .line 48
     .line 49
@@ -865,7 +865,7 @@
 
     .line 55
     .line 56
-    sget-object v11, Lg1/b;->w:Ljava/nio/ByteOrder;
+    sget-object v11, Lg1/b;->q:Ljava/nio/ByteOrder;
 
     .line 57
     .line 58
@@ -981,7 +981,7 @@
 
     .line 103
     .line 104
-    sget-object v11, Lg1/b;->x:Ljava/nio/ByteOrder;
+    sget-object v11, Lg1/b;->w:Ljava/nio/ByteOrder;
 
     .line 105
     .line 106
@@ -1164,7 +1164,7 @@
 
     .line 22
     .line 23
-    sget-object v3, Lg1/b;->w:Ljava/nio/ByteOrder;
+    sget-object v3, Lg1/b;->q:Ljava/nio/ByteOrder;
 
     .line 24
     .line 25
@@ -1186,7 +1186,7 @@
 
     .line 32
     :cond_0
-    sget-object v3, Lg1/b;->x:Ljava/nio/ByteOrder;
+    sget-object v3, Lg1/b;->w:Ljava/nio/ByteOrder;
 
     .line 33
     .line 34
@@ -1373,7 +1373,7 @@
 
     .line 22
     .line 23
-    sget-object v3, Lg1/b;->w:Ljava/nio/ByteOrder;
+    sget-object v3, Lg1/b;->q:Ljava/nio/ByteOrder;
 
     .line 24
     .line 25
@@ -1392,7 +1392,7 @@
 
     .line 31
     :cond_0
-    sget-object v3, Lg1/b;->x:Ljava/nio/ByteOrder;
+    sget-object v3, Lg1/b;->w:Ljava/nio/ByteOrder;
 
     .line 32
     .line 33

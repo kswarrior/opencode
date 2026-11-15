@@ -108,117 +108,117 @@
 
 .field public static TextInput_Confirm:I = 0x7f13002e
 
-.field public static app_name:I = 0x7f130067
+.field public static app_name:I = 0x7f13008e
 
-.field public static appcenter_android_id:I = 0x7f130069
+.field public static appcenter_android_id:I = 0x7f130090
 
-.field public static common_google_play_services_enable_button:I = 0x7f1300b1
+.field public static common_google_play_services_enable_button:I = 0x7f1300eb
 
-.field public static common_google_play_services_enable_text:I = 0x7f1300b2
+.field public static common_google_play_services_enable_text:I = 0x7f1300ec
 
-.field public static common_google_play_services_enable_title:I = 0x7f1300b3
+.field public static common_google_play_services_enable_title:I = 0x7f1300ed
 
-.field public static common_google_play_services_install_button:I = 0x7f1300b4
+.field public static common_google_play_services_install_button:I = 0x7f1300ee
 
-.field public static common_google_play_services_install_text:I = 0x7f1300b5
+.field public static common_google_play_services_install_text:I = 0x7f1300ef
 
-.field public static common_google_play_services_install_title:I = 0x7f1300b6
+.field public static common_google_play_services_install_title:I = 0x7f1300f0
 
-.field public static common_google_play_services_notification_channel_name:I = 0x7f1300b7
+.field public static common_google_play_services_notification_channel_name:I = 0x7f1300f1
 
-.field public static common_google_play_services_notification_ticker:I = 0x7f1300b8
+.field public static common_google_play_services_notification_ticker:I = 0x7f1300f2
 
-.field public static common_google_play_services_unknown_issue:I = 0x7f1300b9
+.field public static common_google_play_services_unknown_issue:I = 0x7f1300f3
 
-.field public static common_google_play_services_unsupported_text:I = 0x7f1300ba
+.field public static common_google_play_services_unsupported_text:I = 0x7f1300f4
 
-.field public static common_google_play_services_update_button:I = 0x7f1300bb
+.field public static common_google_play_services_update_button:I = 0x7f1300f5
 
-.field public static common_google_play_services_update_text:I = 0x7f1300bc
+.field public static common_google_play_services_update_text:I = 0x7f1300f6
 
-.field public static common_google_play_services_update_title:I = 0x7f1300bd
+.field public static common_google_play_services_update_title:I = 0x7f1300f7
 
-.field public static common_google_play_services_updating_text:I = 0x7f1300be
+.field public static common_google_play_services_updating_text:I = 0x7f1300f8
 
-.field public static common_google_play_services_wear_update_text:I = 0x7f1300bf
+.field public static common_google_play_services_wear_update_text:I = 0x7f1300f9
 
-.field public static common_open_on_phone:I = 0x7f1300c0
+.field public static common_open_on_phone:I = 0x7f1300fa
 
-.field public static common_signin_button_text:I = 0x7f1300c1
+.field public static common_signin_button_text:I = 0x7f1300fb
 
-.field public static common_signin_button_text_long:I = 0x7f1300c2
+.field public static common_signin_button_text_long:I = 0x7f1300fc
 
-.field public static default_web_client_id:I = 0x7f1300f2
+.field public static default_web_client_id:I = 0x7f130160
 
-.field public static fcm_fallback_notification_channel_label:I = 0x7f13016f
+.field public static fcm_fallback_notification_channel_label:I = 0x7f1301e5
 
-.field public static firebase_database_url:I = 0x7f130173
+.field public static firebase_database_url:I = 0x7f1301e9
 
-.field public static gcm_defaultSenderId:I = 0x7f130179
+.field public static gcm_defaultSenderId:I = 0x7f130243
 
-.field public static google_app_id:I = 0x7f13017e
+.field public static google_app_id:I = 0x7f130248
 
-.field public static google_storage_bucket:I = 0x7f130180
+.field public static google_storage_bucket:I = 0x7f13024a
 
-.field public static http_auth_dialog_cancel:I = 0x7f130185
+.field public static http_auth_dialog_cancel:I = 0x7f130255
 
-.field public static http_auth_dialog_login:I = 0x7f130186
+.field public static http_auth_dialog_login:I = 0x7f130256
 
-.field public static http_auth_dialog_password:I = 0x7f130187
+.field public static http_auth_dialog_password:I = 0x7f130257
 
-.field public static http_auth_dialog_title:I = 0x7f130188
+.field public static http_auth_dialog_title:I = 0x7f130258
 
-.field public static http_auth_dialog_username:I = 0x7f130189
+.field public static http_auth_dialog_username:I = 0x7f130259
 
-.field public static ic_ApplicationLaunch:I = 0x7f13018c
+.field public static ic_ApplicationLaunch:I = 0x7f13025c
 
-.field public static ic_BadRecommendation:I = 0x7f13018d
+.field public static ic_BadRecommendation:I = 0x7f13025d
 
-.field public static ic_Close:I = 0x7f13018e
+.field public static ic_Close:I = 0x7f13025e
 
-.field public static ic_Complaint:I = 0x7f13018f
+.field public static ic_Complaint:I = 0x7f13025f
 
-.field public static ic_Favorite:I = 0x7f130190
+.field public static ic_Favorite:I = 0x7f130260
 
-.field public static ic_GamerScore:I = 0x7f130191
+.field public static ic_GamerScore:I = 0x7f130261
 
-.field public static ic_PlayerAdd:I = 0x7f130192
+.field public static ic_PlayerAdd:I = 0x7f130262
 
-.field public static ic_RemoveFriend:I = 0x7f130193
+.field public static ic_RemoveFriend:I = 0x7f130263
 
-.field public static ic_VolumeDisabled2:I = 0x7f130194
+.field public static ic_VolumeDisabled2:I = 0x7f130264
 
-.field public static ic_VolumeMute:I = 0x7f130195
+.field public static ic_VolumeMute:I = 0x7f130265
 
-.field public static ic_changeFriendShip:I = 0x7f130196
+.field public static ic_changeFriendShip:I = 0x7f130266
 
-.field public static project_id:I = 0x7f13042c
+.field public static project_id:I = 0x7f130732
 
-.field public static status_bar_notification_info_overflow:I = 0x7f13049f
+.field public static status_bar_notification_info_overflow:I = 0x7f1307ec
 
-.field public static xal_token:I = 0x7f1304e9
+.field public static xal_token:I = 0x7f13083d
 
-.field public static xbid_ban_error_body_android:I = 0x7f1304ea
+.field public static xbid_ban_error_body_android:I = 0x7f13083e
 
-.field public static xbid_catchall_error_android:I = 0x7f1304eb
+.field public static xbid_catchall_error_android:I = 0x7f13083f
 
-.field public static xbid_creation_error_android:I = 0x7f1304ec
+.field public static xbid_creation_error_android:I = 0x7f130840
 
-.field public static xbid_error_offline_android:I = 0x7f1304ed
+.field public static xbid_error_offline_android:I = 0x7f130841
 
-.field public static xbid_first_and_last_name_android:I = 0x7f1304ee
+.field public static xbid_first_and_last_name_android:I = 0x7f130842
 
-.field public static xbid_more_info:I = 0x7f1304ef
+.field public static xbid_more_info:I = 0x7f130843
 
-.field public static xbid_try_again:I = 0x7f1304f0
+.field public static xbid_try_again:I = 0x7f130844
 
-.field public static xbid_voice_over_close_button_text:I = 0x7f1304f1
+.field public static xbid_voice_over_close_button_text:I = 0x7f130845
 
-.field public static xbox_live_game_invite_body:I = 0x7f1304f3
+.field public static xbox_live_game_invite_body:I = 0x7f130847
 
-.field public static xbox_live_game_invite_title:I = 0x7f1304f4
+.field public static xbox_live_game_invite_title:I = 0x7f130848
 
-.field public static xperiaplayoptimized_content:I = 0x7f1304f5
+.field public static xperiaplayoptimized_content:I = 0x7f130849
 
 
 # direct methods

@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/service/network/managers/xblshared/SLSXsapiServiceManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/microsoft/xbox/service/network/managers/xblshared/ISLSServiceManager;
@@ -889,144 +889,145 @@
     .line 77
     .line 78
     .line 79
-    new-instance v2, La4/f;
+    new-instance v2, La4/g;
 
     .line 80
     .line 81
-    const/4 v3, 0x7
+    const/16 v3, 0x8
 
     .line 82
-    invoke-direct {v2, v1, p1, v3}, La4/f;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 83
+    invoke-direct {v2, v1, p1, v3}, La4/g;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 84
     .line 85
+    .line 86
     invoke-virtual {v0, v2}, Lcom/microsoft/xbox/idp/util/HttpCall;->getResponseAsync(Lcom/microsoft/xbox/idp/util/HttpCall$Callback;)V
 
-    .line 86
     .line 87
     .line 88
+    .line 89
     monitor-enter v1
 
-    .line 89
+    .line 90
     :catch_0
     :goto_1
     :try_start_0
     invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
 
-    .line 90
     .line 91
     .line 92
+    .line 93
     move-result-object p1
 
-    .line 93
+    .line 94
     check-cast p1, Landroid/util/Pair;
 
-    .line 94
     .line 95
+    .line 96
     iget-object p1, p1, Landroid/util/Pair;->first:Ljava/lang/Object;
 
-    .line 96
     .line 97
+    .line 98
     check-cast p1, Ljava/lang/Boolean;
 
-    .line 98
     .line 99
+    .line 100
     invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
 
-    .line 100
     .line 101
     .line 102
+    .line 103
     move-result p1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 103
+    .line 104
     if-nez p1, :cond_1
 
-    .line 104
     .line 105
+    .line 106
     :try_start_1
     invoke-virtual {v1}, Ljava/lang/Object;->wait()V
     :try_end_1
     .catch Ljava/lang/InterruptedException; {:try_start_1 .. :try_end_1} :catch_0
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 106
     .line 107
     .line 108
+    .line 109
     goto :goto_1
 
-    .line 109
+    .line 110
     :catchall_0
     move-exception p1
 
-    .line 110
+    .line 111
     goto :goto_2
 
-    .line 111
+    .line 112
     :cond_1
     :try_start_2
     monitor-exit v1
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 112
+    .line 113
     invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
 
-    .line 113
     .line 114
     .line 115
-    move-result-object p1
-
     .line 116
-    check-cast p1, Landroid/util/Pair;
+    move-result-object p1
 
     .line 117
-    .line 118
-    iget-object p1, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
-
-    .line 119
-    .line 120
-    check-cast p1, Lcom/microsoft/xbox/service/network/managers/AddFollowingUserResponseContainer$AddFollowingUserResponse;
-
-    .line 121
-    .line 122
-    invoke-static {p1}, Lcom/microsoft/xbox/toolkit/TcuiHttpUtil;->throwIfNullOrFalse(Ljava/lang/Object;)V
-
-    .line 123
-    .line 124
-    .line 125
-    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
-
-    .line 126
-    .line 127
-    .line 128
-    move-result-object p1
-
-    .line 129
     check-cast p1, Landroid/util/Pair;
 
-    .line 130
-    .line 131
+    .line 118
+    .line 119
     iget-object p1, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
 
-    .line 132
-    .line 133
+    .line 120
+    .line 121
     check-cast p1, Lcom/microsoft/xbox/service/network/managers/AddFollowingUserResponseContainer$AddFollowingUserResponse;
 
+    .line 122
+    .line 123
+    invoke-static {p1}, Lcom/microsoft/xbox/toolkit/TcuiHttpUtil;->throwIfNullOrFalse(Ljava/lang/Object;)V
+
+    .line 124
+    .line 125
+    .line 126
+    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+
+    .line 127
+    .line 128
+    .line 129
+    move-result-object p1
+
+    .line 130
+    check-cast p1, Landroid/util/Pair;
+
+    .line 131
+    .line 132
+    iget-object p1, p1, Landroid/util/Pair;->second:Ljava/lang/Object;
+
+    .line 133
     .line 134
+    check-cast p1, Lcom/microsoft/xbox/service/network/managers/AddFollowingUserResponseContainer$AddFollowingUserResponse;
+
     .line 135
+    .line 136
     return-object p1
 
-    .line 136
+    .line 137
     :goto_2
     :try_start_3
     monitor-exit v1
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 137
+    .line 138
     throw p1
 .end method
 

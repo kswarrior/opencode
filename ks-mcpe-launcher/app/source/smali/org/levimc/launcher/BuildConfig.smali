@@ -1,10 +1,10 @@
 .class public final Lorg/levimc/launcher/BuildConfig;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final APPLICATION_ID:Ljava/lang/String; = "com.ks.mcpe.launcher"
+.field public static final APPLICATION_ID:Ljava/lang/String; = "org.levimc.launcher"
 
 .field public static final BUILD_TYPE:Ljava/lang/String; = "release"
 
@@ -18,9 +18,11 @@
 
 .field public static final IS_BETA:Z = false
 
-.field public static final VERSION_CODE:I = 0x2717
+.field public static final SKIP_PLAY_STORE_CHECK:Z = false
 
-.field public static final VERSION_NAME:Ljava/lang/String; = "1.0.8"
+.field public static final VERSION_CODE:I = 0x384b5ee
+
+.field public static final VERSION_NAME:Ljava/lang/String; = "1.7.0"
 
 
 # direct methods

@@ -1,17 +1,17 @@
-.class public final synthetic Lv5/a;
+.class public final Lv5/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/ViewTreeObserver$OnScrollChangedListener;
+.implements Lv5/d;
 
 
 # instance fields
-.field public final synthetic a:Lcom/google/android/material/slider/RangeSlider;
+.field public final a:F
 
 
 # direct methods
-.method public synthetic constructor <init>(Lcom/google/android/material/slider/RangeSlider;)V
+.method public constructor <init>(F)V
     .locals 0
 
     .line 1
@@ -20,7 +20,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lv5/a;->a:Lcom/google/android/material/slider/RangeSlider;
+    iput p1, p0, Lv5/a;->a:F
 
     .line 5
     .line 6
@@ -29,18 +29,147 @@
 
 
 # virtual methods
-.method public final onScrollChanged()V
-    .locals 1
+.method public final a(Landroid/graphics/RectF;)F
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Lv5/a;->a:Lcom/google/android/material/slider/RangeSlider;
+    iget p1, p0, Lv5/a;->a:F
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Lv5/e;->D()V
+    return p1
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 3
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p0, p1, :cond_0
+
+    .line 3
+    .line 4
+    return v0
+
+    .line 5
+    :cond_0
+    instance-of v1, p1, Lv5/a;
+
+    .line 6
+    .line 7
+    const/4 v2, 0x0
+
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
+    .line 10
+    return v2
+
+    .line 11
+    :cond_1
+    check-cast p1, Lv5/a;
+
+    .line 12
+    .line 13
+    iget v1, p0, Lv5/a;->a:F
+
+    .line 14
+    .line 15
+    iget p1, p1, Lv5/a;->a:F
+
+    .line 16
+    .line 17
+    cmpl-float p1, v1, p1
+
+    .line 18
+    .line 19
+    if-nez p1, :cond_2
+
+    .line 20
+    .line 21
+    return v0
+
+    .line 22
+    :cond_2
+    return v2
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lv5/a;->a:F
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     .line 4
     .line 5
     .line 6
-    return-void
+    move-result-object v0
+
+    .line 7
+    filled-new-array {v0}, [Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v0
+
+    .line 11
+    invoke-static {v0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget v1, p0, Lv5/a;->a:F
+
+    .line 7
+    .line 8
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+
+    .line 9
+    .line 10
+    .line 11
+    const-string v1, "px"
+
+    .line 12
+    .line 13
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 14
+    .line 15
+    .line 16
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object v0
+
+    .line 20
+    return-object v0
 .end method

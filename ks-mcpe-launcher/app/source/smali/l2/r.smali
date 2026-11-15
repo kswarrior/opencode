@@ -1,6 +1,6 @@
 .class public final Ll2/r;
-.super Ll2/w;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Ll2/v;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -12,15 +12,15 @@
 
 .field public d:Landroidx/dynamicanimation/animation/SpringAnimation;
 
-.field public final e:Lac/k;
+.field public final e:Lcom/google/android/gms/internal/play_billing/g;
 
 .field public f:Landroidx/fragment/app/e;
 
-.field public final synthetic g:Ll2/b0;
+.field public final synthetic g:Ll2/a0;
 
 
 # direct methods
-.method public constructor <init>(Ll2/b0;)V
+.method public constructor <init>(Ll2/a0;)V
     .locals 4
 
     .line 1
@@ -29,7 +29,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Ll2/r;->g:Ll2/b0;
+    iput-object p1, p0, Ll2/r;->g:Ll2/a0;
 
     .line 5
     .line 6
@@ -41,68 +41,67 @@
 
     .line 9
     .line 10
-    new-instance p1, Lac/k;
+    new-instance p1, Lcom/google/android/gms/internal/play_billing/g;
 
     .line 11
     .line 12
-    const/16 v0, 0x8
+    const/4 v0, 0x4
 
     .line 13
-    .line 14
     const/4 v1, 0x0
 
-    .line 15
-    invoke-direct {p1, v1, v0}, Lac/k;-><init>(BI)V
+    .line 14
+    invoke-direct {p1, v1, v0}, Lcom/google/android/gms/internal/play_billing/g;-><init>(BI)V
 
+    .line 15
     .line 16
     .line 17
-    .line 18
     const/16 v0, 0x14
 
+    .line 18
     .line 19
-    .line 20
     new-array v1, v0, [J
 
+    .line 20
     .line 21
-    .line 22
-    iput-object v1, p1, Lac/k;->d:Ljava/lang/Object;
+    iput-object v1, p1, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
 
+    .line 22
     .line 23
-    .line 24
     new-array v0, v0, [F
 
+    .line 24
     .line 25
-    .line 26
-    iput-object v0, p1, Lac/k;->c:Ljava/lang/Object;
+    iput-object v0, p1, Lcom/google/android/gms/internal/play_billing/g;->d:Ljava/lang/Object;
 
+    .line 26
     .line 27
-    .line 28
     const/4 v0, 0x0
 
-    .line 29
-    iput v0, p1, Lac/k;->b:I
+    .line 28
+    iput v0, p1, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
+    .line 29
     .line 30
-    .line 31
     const-wide/high16 v2, -0x8000000000000000L
 
+    .line 31
     .line 32
-    .line 33
     invoke-static {v1, v2, v3}, Ljava/util/Arrays;->fill([JJ)V
 
+    .line 33
     .line 34
     .line 35
-    .line 36
-    iput-object p1, p0, Ll2/r;->e:Lac/k;
+    iput-object p1, p0, Ll2/r;->e:Lcom/google/android/gms/internal/play_billing/g;
 
+    .line 36
     .line 37
-    .line 38
     return-void
 .end method
 
 
 # virtual methods
-.method public final d(Ll2/v;)V
+.method public final d(Ll2/u;)V
     .locals 0
 
     .line 1
@@ -152,15 +151,15 @@
     long-to-float v3, v3
 
     .line 16
-    iget-object v4, v0, Ll2/r;->e:Lac/k;
+    iget-object v4, v0, Ll2/r;->e:Lcom/google/android/gms/internal/play_billing/g;
 
     .line 17
     .line 18
-    iget v5, v4, Lac/k;->b:I
+    iget v5, v4, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
     .line 19
     .line 20
-    iget-object v6, v4, Lac/k;->c:Ljava/lang/Object;
+    iget-object v6, v4, Lcom/google/android/gms/internal/play_billing/g;->d:Ljava/lang/Object;
 
     .line 21
     .line 22
@@ -168,7 +167,7 @@
 
     .line 23
     .line 24
-    iget-object v7, v4, Lac/k;->d:Ljava/lang/Object;
+    iget-object v7, v4, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
 
     .line 25
     .line 26
@@ -189,7 +188,7 @@
     rem-int/2addr v5, v9
 
     .line 33
-    iput v5, v4, Lac/k;->b:I
+    iput v5, v4, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
     .line 34
     .line 35
@@ -314,7 +313,7 @@
 
     .line 96
     .line 97
-    iget v2, v4, Lac/k;->b:I
+    iget v2, v4, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
     .line 98
     .line 99
@@ -476,7 +475,7 @@
 
     .line 167
     .line 168
-    iget v2, v4, Lac/k;->b:I
+    iget v2, v4, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
     .line 169
     .line 170
@@ -547,7 +546,7 @@
     .line 198
     .line 199
     :cond_b
-    iget v2, v4, Lac/k;->b:I
+    iget v2, v4, Lcom/google/android/gms/internal/play_billing/g;->c:I
 
     .line 200
     .line 201
@@ -811,11 +810,11 @@
 
     .line 314
     .line 315
-    iget-object v2, v0, Ll2/r;->g:Ll2/b0;
+    iget-object v2, v0, Ll2/r;->g:Ll2/a0;
 
     .line 316
     .line 317
-    iget-wide v2, v2, Ll2/v;->N1:J
+    iget-wide v2, v2, Ll2/u;->N1:J
 
     .line 318
     .line 319

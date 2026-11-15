@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/discord/org/webrtc/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,9 +13,9 @@
 
 .field public final synthetic h:Lcom/discord/org/webrtc/EglRenderer$FrameListener;
 
-.field public final synthetic q:F
+.field public final synthetic p:F
 
-.field public final synthetic w:Z
+.field public final synthetic q:Z
 
 
 # direct methods
@@ -40,11 +40,11 @@
 
     .line 9
     .line 10
-    iput p4, p0, Lcom/discord/org/webrtc/f;->q:F
+    iput p4, p0, Lcom/discord/org/webrtc/f;->p:F
 
     .line 11
     .line 12
-    iput-boolean p5, p0, Lcom/discord/org/webrtc/f;->w:Z
+    iput-boolean p5, p0, Lcom/discord/org/webrtc/f;->q:Z
 
     .line 13
     .line 14
@@ -57,11 +57,11 @@
     .locals 5
 
     .line 1
-    iget v0, p0, Lcom/discord/org/webrtc/f;->q:F
+    iget v0, p0, Lcom/discord/org/webrtc/f;->p:F
 
     .line 2
     .line 3
-    iget-boolean v1, p0, Lcom/discord/org/webrtc/f;->w:Z
+    iget-boolean v1, p0, Lcom/discord/org/webrtc/f;->q:Z
 
     .line 4
     .line 5

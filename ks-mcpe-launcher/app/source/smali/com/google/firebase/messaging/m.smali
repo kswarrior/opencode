@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/google/firebase/messaging/m;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -56,12 +56,12 @@
 
     .line 9
     .line 10
-    invoke-static {v1}, Lgc/h;->T(Landroid/content/Context;)V
+    invoke-static {v1}, La7/t1;->p(Landroid/content/Context;)V
 
     .line 11
     .line 12
     .line 13
-    iget-object v2, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->d:Lae/o;
+    iget-object v2, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->d:Lcom/google/android/gms/internal/measurement/ub;
 
     .line 14
     .line 15
@@ -93,7 +93,7 @@
 
     .line 28
     :cond_0
-    invoke-static {v1}, Lk4/f;->u(Landroid/content/Context;)Landroid/content/SharedPreferences;
+    invoke-static {v1}, Landroidx/room/i0;->s(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 29
     .line 30
@@ -132,7 +132,7 @@
 
     .line 46
     :cond_1
-    iget-object v2, v2, Lae/o;->q:Ljava/lang/Object;
+    iget-object v2, v2, Lcom/google/android/gms/internal/measurement/ub;->h:Ljava/lang/Object;
 
     .line 47
     .line 48
@@ -179,7 +179,7 @@
 
     .line 70
     .line 71
-    invoke-static {v2}, Li4/m;->b(Landroid/content/Context;)Li4/m;
+    invoke-static {v2}, Li4/l;->b(Landroid/content/Context;)Li4/l;
 
     .line 72
     .line 73
@@ -187,7 +187,7 @@
     move-result-object v2
 
     .line 75
-    new-instance v4, Li4/l;
+    new-instance v4, Li4/k;
 
     .line 76
     .line 77
@@ -195,7 +195,7 @@
 
     .line 78
     :try_start_0
-    iget v6, v2, Li4/m;->c:I
+    iget v6, v2, Li4/l;->c:I
 
     .line 79
     .line 80
@@ -203,7 +203,7 @@
 
     .line 81
     .line 82
-    iput v7, v2, Li4/m;->c:I
+    iput v7, v2, Li4/l;->c:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -218,12 +218,12 @@
     const/4 v8, 0x4
 
     .line 87
-    invoke-direct {v4, v6, v8, v5, v7}, Li4/l;-><init>(IILandroid/os/Bundle;I)V
+    invoke-direct {v4, v6, v8, v5, v7}, Li4/k;-><init>(IILandroid/os/Bundle;I)V
 
     .line 88
     .line 89
     .line 90
-    invoke-virtual {v2, v4}, Li4/m;->c(Li4/l;)Lcom/google/android/gms/tasks/Task;
+    invoke-virtual {v2, v4}, Li4/l;->c(Li4/k;)Lcom/google/android/gms/tasks/Task;
 
     .line 91
     .line 92
@@ -282,11 +282,11 @@
     .line 113
     .line 114
     .line 115
-    new-instance v5, Lcom/google/firebase/messaging/t;
+    new-instance v5, Lcom/google/firebase/messaging/u;
 
     .line 116
     .line 117
-    invoke-direct {v5, v1, v3}, Lcom/google/firebase/messaging/t;-><init>(Landroid/content/Context;Z)V
+    invoke-direct {v5, v1, v3}, Lcom/google/firebase/messaging/u;-><init>(Ljava/lang/Object;Z)V
 
     .line 118
     .line 119
@@ -323,11 +323,11 @@
 
     .line 134
     .line 135
-    iget-object v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->f:Lae/w1;
+    iget-object v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->f:Lcom/google/firebase/messaging/o;
 
     .line 136
     .line 137
-    invoke-virtual {v1}, Lae/w1;->f()Z
+    invoke-virtual {v1}, Lcom/google/firebase/messaging/o;->h()Z
 
     .line 138
     .line 139
@@ -339,7 +339,7 @@
 
     .line 142
     .line 143
-    iget-object v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->b:Lp7/a;
+    iget-object v1, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->b:Lr7/a;
 
     .line 144
     .line 145
@@ -347,11 +347,11 @@
 
     .line 146
     .line 147
-    check-cast v1, Lo7/d;
+    check-cast v1, Lq7/d;
 
     .line 148
     .line 149
-    iget-object v0, v1, Lo7/d;->a:Lcom/google/firebase/iid/FirebaseInstanceId;
+    iget-object v0, v1, Lq7/d;->a:Lcom/google/firebase/iid/FirebaseInstanceId;
 
     .line 150
     .line 151
@@ -364,7 +364,7 @@
 
     .line 155
     :cond_4
-    invoke-virtual {v0}, Lcom/google/firebase/messaging/FirebaseMessaging;->d()Lcom/google/firebase/messaging/v;
+    invoke-virtual {v0}, Lcom/google/firebase/messaging/FirebaseMessaging;->d()Lcom/google/firebase/messaging/w;
 
     .line 156
     .line 157
@@ -372,7 +372,7 @@
     move-result-object v1
 
     .line 159
-    invoke-virtual {v0, v1}, Lcom/google/firebase/messaging/FirebaseMessaging;->i(Lcom/google/firebase/messaging/v;)Z
+    invoke-virtual {v0, v1}, Lcom/google/firebase/messaging/FirebaseMessaging;->i(Lcom/google/firebase/messaging/w;)Z
 
     .line 160
     .line 161

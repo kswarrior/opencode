@@ -1,34 +1,38 @@
 .class public final Lorg/levimc/launcher/databinding/ItemExternalModBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final externalModAction:Landroid/widget/Button;
+.field public final externalModAction:Lcom/google/android/material/button/MaterialButton;
 
 .field public final externalModAuthor:Landroid/widget/TextView;
 
-.field public final externalModCard:Lcom/google/android/material/card/MaterialCardView;
+.field public final externalModCard:Landroid/widget/LinearLayout;
 
 .field public final externalModDescription:Landroid/widget/TextView;
+
+.field public final externalModDivider:Landroid/view/View;
 
 .field public final externalModDownloadType:Landroid/widget/TextView;
 
 .field public final externalModIcon:Landroid/widget/ImageView;
 
+.field public final externalModIconChip:Landroid/widget/FrameLayout;
+
 .field public final externalModName:Landroid/widget/TextView;
 
-.field public final externalModTags:Landroid/widget/TextView;
+.field public final externalModTags:Lcom/google/android/material/chip/ChipGroup;
 
 .field public final externalModVersion:Landroid/widget/TextView;
 
 .field public final externalModVersions:Landroid/widget/TextView;
 
-.field private final rootView:Lcom/google/android/material/card/MaterialCardView;
+.field private final rootView:Landroid/widget/LinearLayout;
 
 
 # direct methods
-.method private constructor <init>(Lcom/google/android/material/card/MaterialCardView;Landroid/widget/Button;Landroid/widget/TextView;Lcom/google/android/material/card/MaterialCardView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Lcom/google/android/material/chip/ChipGroup;Landroid/widget/TextView;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -37,11 +41,11 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->rootView:Lcom/google/android/material/card/MaterialCardView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->rootView:Landroid/widget/LinearLayout;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModAction:Landroid/widget/Button;
+    iput-object p2, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModAction:Lcom/google/android/material/button/MaterialButton;
 
     .line 7
     .line 8
@@ -49,7 +53,7 @@
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModCard:Lcom/google/android/material/card/MaterialCardView;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModCard:Landroid/widget/LinearLayout;
 
     .line 11
     .line 12
@@ -57,305 +61,357 @@
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModDownloadType:Landroid/widget/TextView;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModDivider:Landroid/view/View;
 
     .line 15
     .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModIcon:Landroid/widget/ImageView;
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModDownloadType:Landroid/widget/TextView;
 
     .line 17
     .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModName:Landroid/widget/TextView;
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModIcon:Landroid/widget/ImageView;
 
     .line 19
     .line 20
-    iput-object p9, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModTags:Landroid/widget/TextView;
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModIconChip:Landroid/widget/FrameLayout;
 
     .line 21
     .line 22
-    iput-object p10, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModVersion:Landroid/widget/TextView;
+    iput-object p10, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModName:Landroid/widget/TextView;
 
     .line 23
     .line 24
-    iput-object p11, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModVersions:Landroid/widget/TextView;
+    iput-object p11, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModTags:Lcom/google/android/material/chip/ChipGroup;
 
     .line 25
     .line 26
+    iput-object p12, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModVersion:Landroid/widget/TextView;
+
+    .line 27
+    .line 28
+    iput-object p13, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->externalModVersions:Landroid/widget/TextView;
+
+    .line 29
+    .line 30
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ItemExternalModBinding;
-    .locals 14
+    .locals 17
 
     .line 1
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_action:I
+    move-object/from16 v0, p0
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_action:I
 
     .line 4
     .line 5
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 6
-    move-result-object v1
-
     .line 7
-    move-object v4, v1
-
     .line 8
-    check-cast v4, Landroid/widget/Button;
+    move-result-object v2
 
     .line 9
+    move-object v5, v2
+
     .line 10
-    if-eqz v4, :cond_0
+    check-cast v5, Lcom/google/android/material/button/MaterialButton;
 
     .line 11
     .line 12
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_author:I
+    if-eqz v5, :cond_0
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_author:I
 
     .line 15
     .line 16
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 17
-    move-result-object v1
-
     .line 18
-    move-object v5, v1
-
     .line 19
-    check-cast v5, Landroid/widget/TextView;
+    move-result-object v2
 
     .line 20
+    move-object v6, v2
+
     .line 21
-    if-eqz v5, :cond_0
+    check-cast v6, Landroid/widget/TextView;
 
     .line 22
     .line 23
-    move-object v3, p0
+    if-eqz v6, :cond_0
 
     .line 24
-    check-cast v3, Lcom/google/android/material/card/MaterialCardView;
-
     .line 25
+    move-object v4, v0
+
     .line 26
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_description:I
+    check-cast v4, Landroid/widget/LinearLayout;
 
     .line 27
     .line 28
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_description:I
 
     .line 29
     .line 30
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 31
-    move-result-object v1
-
     .line 32
-    move-object v7, v1
-
     .line 33
-    check-cast v7, Landroid/widget/TextView;
+    move-result-object v2
 
     .line 34
+    move-object v8, v2
+
     .line 35
-    if-eqz v7, :cond_0
+    check-cast v8, Landroid/widget/TextView;
 
     .line 36
     .line 37
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_download_type:I
+    if-eqz v8, :cond_0
 
     .line 38
     .line 39
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_divider:I
 
     .line 40
     .line 41
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 42
-    move-result-object v1
-
     .line 43
-    move-object v8, v1
-
     .line 44
-    check-cast v8, Landroid/widget/TextView;
+    move-result-object v9
 
     .line 45
-    .line 46
-    if-eqz v8, :cond_0
-
-    .line 47
-    .line 48
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_icon:I
-
-    .line 49
-    .line 50
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
-
-    .line 51
-    .line 52
-    .line 53
-    move-result-object v1
-
-    .line 54
-    move-object v9, v1
-
-    .line 55
-    check-cast v9, Landroid/widget/ImageView;
-
-    .line 56
-    .line 57
     if-eqz v9, :cond_0
 
-    .line 58
-    .line 59
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_name:I
+    .line 46
+    .line 47
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_download_type:I
 
-    .line 60
-    .line 61
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    .line 48
+    .line 49
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
-    .line 62
-    .line 63
-    .line 64
-    move-result-object v1
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v2
 
-    .line 65
-    move-object v10, v1
+    .line 53
+    move-object v10, v2
 
-    .line 66
+    .line 54
     check-cast v10, Landroid/widget/TextView;
 
-    .line 67
-    .line 68
+    .line 55
+    .line 56
     if-eqz v10, :cond_0
 
-    .line 69
-    .line 70
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_tags:I
+    .line 57
+    .line 58
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_icon:I
 
-    .line 71
-    .line 72
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    .line 59
+    .line 60
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
-    .line 73
-    .line 74
-    .line 75
-    move-result-object v1
+    .line 61
+    .line 62
+    .line 63
+    move-result-object v2
 
-    .line 76
-    move-object v11, v1
+    .line 64
+    move-object v11, v2
 
-    .line 77
-    check-cast v11, Landroid/widget/TextView;
+    .line 65
+    check-cast v11, Landroid/widget/ImageView;
 
-    .line 78
-    .line 79
+    .line 66
+    .line 67
     if-eqz v11, :cond_0
 
-    .line 80
-    .line 81
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_version:I
+    .line 68
+    .line 69
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_icon_chip:I
 
-    .line 82
-    .line 83
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    .line 70
+    .line 71
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
-    .line 84
-    .line 85
-    .line 86
-    move-result-object v1
+    .line 72
+    .line 73
+    .line 74
+    move-result-object v2
 
-    .line 87
-    move-object v12, v1
+    .line 75
+    move-object v12, v2
 
-    .line 88
-    check-cast v12, Landroid/widget/TextView;
+    .line 76
+    check-cast v12, Landroid/widget/FrameLayout;
 
-    .line 89
-    .line 90
+    .line 77
+    .line 78
     if-eqz v12, :cond_0
 
-    .line 91
-    .line 92
-    sget v0, Lorg/levimc/launcher/R$id;->external_mod_versions:I
+    .line 79
+    .line 80
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_name:I
 
-    .line 93
-    .line 94
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    .line 81
+    .line 82
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
-    .line 95
-    .line 96
-    .line 97
-    move-result-object v1
+    .line 83
+    .line 84
+    .line 85
+    move-result-object v2
 
-    .line 98
-    move-object v13, v1
+    .line 86
+    move-object v13, v2
 
-    .line 99
+    .line 87
     check-cast v13, Landroid/widget/TextView;
 
-    .line 100
-    .line 101
+    .line 88
+    .line 89
     if-eqz v13, :cond_0
 
+    .line 90
+    .line 91
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_tags:I
+
+    .line 92
+    .line 93
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 94
+    .line 95
+    .line 96
+    move-result-object v2
+
+    .line 97
+    move-object v14, v2
+
+    .line 98
+    check-cast v14, Lcom/google/android/material/chip/ChipGroup;
+
+    .line 99
+    .line 100
+    if-eqz v14, :cond_0
+
+    .line 101
     .line 102
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_version:I
+
     .line 103
-    new-instance v2, Lorg/levimc/launcher/databinding/ItemExternalModBinding;
-
     .line 104
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 105
-    move-object v6, v3
-
     .line 106
-    invoke-direct/range {v2 .. v13}, Lorg/levimc/launcher/databinding/ItemExternalModBinding;-><init>(Lcom/google/android/material/card/MaterialCardView;Landroid/widget/Button;Landroid/widget/TextView;Lcom/google/android/material/card/MaterialCardView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
-
     .line 107
+    move-result-object v2
+
     .line 108
+    move-object v15, v2
+
     .line 109
-    return-object v2
+    check-cast v15, Landroid/widget/TextView;
 
     .line 110
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
-
     .line 111
+    if-eqz v15, :cond_0
+
     .line 112
     .line 113
-    move-result-object p0
+    sget v1, Lorg/levimc/launcher/R$id;->external_mod_versions:I
 
     .line 114
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
-
     .line 115
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 116
     .line 117
-    move-result-object p0
-
     .line 118
-    new-instance v0, Ljava/lang/NullPointerException;
+    move-result-object v2
 
     .line 119
+    move-object/from16 v16, v2
+
     .line 120
-    const-string v1, "Missing required view with ID: "
-
     .line 121
-    .line 122
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v16, Landroid/widget/TextView;
 
+    .line 122
     .line 123
+    if-eqz v16, :cond_0
+
     .line 124
     .line 125
-    move-result-object p0
+    new-instance v3, Lorg/levimc/launcher/databinding/ItemExternalModBinding;
 
     .line 126
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
     .line 127
+    move-object v7, v4
+
     .line 128
+    invoke-direct/range {v3 .. v16}, Lorg/levimc/launcher/databinding/ItemExternalModBinding;-><init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Lcom/google/android/material/chip/ChipGroup;Landroid/widget/TextView;Landroid/widget/TextView;)V
+
     .line 129
-    throw v0
+    .line 130
+    .line 131
+    return-object v3
+
+    .line 132
+    :cond_0
+    invoke-virtual {v0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 133
+    .line 134
+    .line 135
+    move-result-object v0
+
+    .line 136
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 137
+    .line 138
+    .line 139
+    move-result-object v0
+
+    .line 140
+    new-instance v1, Ljava/lang/NullPointerException;
+
+    .line 141
+    .line 142
+    const-string v2, "Missing required view with ID: "
+
+    .line 143
+    .line 144
+    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 145
+    .line 146
+    .line 147
+    move-result-object v0
+
+    .line 148
+    invoke-direct {v1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 149
+    .line 150
+    .line 151
+    throw v1
 .end method
 
 .method public static inflate(Landroid/view/LayoutInflater;)Lorg/levimc/launcher/databinding/ItemExternalModBinding;
@@ -405,18 +461,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->getRoot()Lcom/google/android/material/card/MaterialCardView;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->getRoot()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Lcom/google/android/material/card/MaterialCardView;
+.method public getRoot()Landroid/widget/LinearLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->rootView:Lcom/google/android/material/card/MaterialCardView;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/ItemExternalModBinding;->rootView:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method

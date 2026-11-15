@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/ContentDetailsActivity$2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/curseforge/CurseForgeClient$CurseForgeCallback;
@@ -99,7 +99,7 @@
 
     .line 18
     .line 19
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->F(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/webkit/WebView;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->G(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/webkit/WebView;
 
     .line 20
     .line 21
@@ -152,7 +152,7 @@
 
     .line 44
     .line 45
-    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->G(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;I)Ljava/lang/String;
+    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->H(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;I)Ljava/lang/String;
 
     .line 46
     .line 47
@@ -182,7 +182,7 @@
 
     .line 60
     .line 61
-    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->G(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;I)Ljava/lang/String;
+    invoke-static {v1, v2}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->H(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;I)Ljava/lang/String;
 
     .line 62
     .line 63
@@ -230,7 +230,7 @@
 
     .line 86
     .line 87
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->F(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/webkit/WebView;
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->G(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/webkit/WebView;
 
     .line 88
     .line 89
@@ -289,11 +289,11 @@
     .line 2
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity$2;->this$0:Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;
 
-    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/k;
 
-    const/4 v2, 0x3
+    const/4 v2, 0x0
 
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 

@@ -1,56 +1,23 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/x0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/widget/RadioGroup$OnCheckedChangeListener;
-
-
-# instance fields
-.field public final synthetic a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
-.field public final synthetic b:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
-
-
-# direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/x0;->a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
-    .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/x0;->b:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
-
-    .line 7
-    .line 8
-    return-void
-.end method
+.implements Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot$ShortcutHandler;
 
 
 # virtual methods
-.method public final onCheckedChanged(Landroid/widget/RadioGroup;I)V
-    .locals 2
+.method public final handle(Landroid/view/KeyEvent;)Z
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/x0;->a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->W(Landroid/view/KeyEvent;)Z
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/x0;->b:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
-
     .line 4
-    .line 5
-    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Landroid/widget/RadioGroup;I)V
+    move-result p1
 
-    .line 6
-    .line 7
-    .line 8
-    return-void
+    .line 5
+    return p1
 .end method

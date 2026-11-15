@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -24,12 +24,43 @@
 
 .field public static final PROFILE_FILE_NAME:Ljava/lang/String; = "profile.json"
 
+.field private static final PROFILE_LOCKS:Ljava/util/concurrent/ConcurrentHashMap;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Ljava/util/concurrent/ConcurrentHashMap<",
+            "Ljava/lang/String;",
+            "Ljava/lang/Object;",
+            ">;"
+        }
+    .end annotation
+.end field
+
 
 # instance fields
 .field private final gson:Lcom/google/gson/Gson;
 
 
 # direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->PROFILE_LOCKS:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
 .method public constructor <init>()V
     .locals 2
 
@@ -76,19 +107,19 @@
     return-void
 .end method
 
-.method public static bridge synthetic a(Ljava/lang/String;)Z
+.method public static synthetic a(Ljava/lang/String;)Ljava/lang/Object;
     .locals 0
 
     .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->isBlank(Ljava/lang/String;)Z
+    invoke-static {p0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->lambda$profileLock$0(Ljava/lang/String;)Ljava/lang/Object;
 
     .line 2
     .line 3
     .line 4
-    move-result p0
+    move-result-object p0
 
     .line 5
-    return p0
+    return-object p0
 .end method
 
 .method private applyMissingDefaults(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Z
@@ -284,6 +315,21 @@
     return v0
 .end method
 
+.method public static bridge synthetic b(Ljava/lang/String;)Z
+    .locals 0
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->isBlank(Ljava/lang/String;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
 .method private fromDefaults(Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
     .locals 2
 
@@ -365,22 +411,22 @@
 .end method
 
 .method private hasMissingSchemaFields(Lcom/google/gson/JsonObject;)Z
-    .locals 2
+    .locals 3
 
     .line 1
-    iget-object v0, p1, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p1, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 2
     .line 3
-    iget-object p1, p1, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v1, p1, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 4
     .line 5
-    const-string v1, "schemaVersion"
+    const-string v2, "schemaVersion"
 
     .line 6
     .line 7
-    invoke-virtual {v0, v1}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 8
     .line 9
@@ -396,7 +442,7 @@
 
     .line 14
     .line 15
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 16
     .line 17
@@ -412,7 +458,7 @@
 
     .line 22
     .line 23
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 24
     .line 25
@@ -428,7 +474,7 @@
 
     .line 30
     .line 31
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 32
     .line 33
@@ -444,7 +490,7 @@
 
     .line 38
     .line 39
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 40
     .line 41
@@ -460,7 +506,7 @@
 
     .line 46
     .line 47
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 48
     .line 49
@@ -476,7 +522,7 @@
 
     .line 54
     .line 55
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 56
     .line 57
@@ -488,69 +534,106 @@
 
     .line 60
     .line 61
-    const-string v0, "installed"
+    const-string v0, "modMenuEnabled"
 
     .line 62
     .line 63
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 64
     .line 65
     .line 66
-    move-result v0
+    move-result v2
 
     .line 67
-    if-eqz v0, :cond_1
+    if-eqz v2, :cond_1
 
     .line 68
     .line 69
-    const-string v0, "packageName"
+    invoke-virtual {p1, v0}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 70
     .line 71
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
-
     .line 72
+    move-result-object p1
+
     .line 73
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
     .line 74
-    move-result v0
-
     .line 75
-    if-eqz v0, :cond_1
-
     .line 76
+    instance-of p1, p1, Lg8/l;
+
     .line 77
-    const-string v0, "updatedAt"
-
     .line 78
-    .line 79
-    invoke-virtual {p1, v0}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    if-nez p1, :cond_1
 
+    .line 79
     .line 80
+    const-string p1, "installed"
+
     .line 81
     .line 82
-    move-result p1
+    invoke-virtual {v1, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 83
-    if-nez p1, :cond_0
-
     .line 84
     .line 85
-    goto :goto_0
+    move-result p1
 
     .line 86
+    if-eqz p1, :cond_1
+
+    .line 87
+    .line 88
+    const-string p1, "packageName"
+
+    .line 89
+    .line 90
+    invoke-virtual {v1, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+
+    .line 91
+    .line 92
+    .line 93
+    move-result p1
+
+    .line 94
+    if-eqz p1, :cond_1
+
+    .line 95
+    .line 96
+    const-string p1, "updatedAt"
+
+    .line 97
+    .line 98
+    invoke-virtual {v1, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+
+    .line 99
+    .line 100
+    .line 101
+    move-result p1
+
+    .line 102
+    if-nez p1, :cond_0
+
+    .line 103
+    .line 104
+    goto :goto_0
+
+    .line 105
     :cond_0
     const/4 p1, 0x0
 
-    .line 87
+    .line 106
     return p1
 
-    .line 88
+    .line 107
     :cond_1
     :goto_0
     const/4 p1, 0x1
 
-    .line 89
+    .line 108
     return p1
 .end method
 
@@ -621,337 +704,558 @@
     return p1
 .end method
 
-.method private readJson(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
-    .locals 6
+.method private static synthetic lambda$profileLock$0(Ljava/lang/String;)Ljava/lang/Object;
+    .locals 0
 
     .line 1
-    const/4 v0, 0x0
+    new-instance p0, Ljava/lang/Object;
 
     .line 2
-    if-eqz p1, :cond_6
-
     .line 3
-    .line 4
-    invoke-virtual {p1}, Ljava/io/File;->isFile()Z
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 4
     .line 5
     .line 6
-    .line 7
-    move-result v1
+    return-object p0
+.end method
 
+.method private loadLocked(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->getProfileFile(Ljava/io/File;)Ljava/io/File;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-direct {p0, v0, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->readJson(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
+
+    .line 6
+    .line 7
     .line 8
-    if-eqz v1, :cond_6
+    move-result-object v0
 
     .line 9
+    if-nez v0, :cond_0
+
     .line 10
-    invoke-virtual {p1}, Ljava/io/File;->length()J
+    .line 11
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->readLegacyOrDefault(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p2
+
+    .line 15
+    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+
+    .line 16
+    .line 17
+    .line 18
+    return-object p2
+
+    .line 19
+    :cond_0
+    iget-object v1, v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;->metadata:Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+
+    .line 20
+    .line 21
+    invoke-direct {p0, v1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->applyMissingDefaults(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Z
+
+    .line 22
+    .line 23
+    .line 24
+    move-result p2
+
+    .line 25
+    if-nez p2, :cond_2
+
+    .line 26
+    .line 27
+    iget-boolean p2, v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;->completedMissingFields:Z
+
+    .line 28
+    .line 29
+    if-eqz p2, :cond_1
+
+    .line 30
+    .line 31
+    goto :goto_0
+
+    .line 32
+    :cond_1
+    return-object v1
+
+    .line 33
+    :cond_2
+    :goto_0
+    invoke-virtual {p0, p1, v1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+
+    .line 34
+    .line 35
+    .line 36
+    return-object v1
+.end method
+
+.method private static profileLock(Ljava/io/File;)Ljava/lang/Object;
+    .locals 3
+
+    .line 1
+    if-nez p0, :cond_0
+
+    .line 2
+    .line 3
+    const-string p0, ""
+
+    .line 4
+    .line 5
+    goto :goto_0
+
+    .line 6
+    :cond_0
+    invoke-virtual {p0}, Ljava/io/File;->getAbsoluteFile()Ljava/io/File;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p0
+
+    .line 10
+    invoke-virtual {p0}, Ljava/io/File;->toPath()Ljava/nio/file/Path;
 
     .line 11
     .line 12
     .line 13
-    move-result-wide v1
+    move-result-object p0
 
     .line 14
-    const-wide/16 v3, 0x0
+    invoke-interface {p0}, Ljava/nio/file/Path;->normalize()Ljava/nio/file/Path;
 
     .line 15
     .line 16
-    cmp-long v1, v1, v3
-
     .line 17
+    move-result-object p0
+
     .line 18
-    if-gtz v1, :cond_0
+    invoke-interface {p0}, Ljava/nio/file/Path;->toString()Ljava/lang/String;
 
     .line 19
     .line 20
-    goto/16 :goto_4
-
     .line 21
+    move-result-object p0
+
     .line 22
-    :cond_0
-    :try_start_0
-    new-instance v1, Ljava/io/InputStreamReader;
+    :goto_0
+    sget-object v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->PROFILE_LOCKS:Ljava/util/concurrent/ConcurrentHashMap;
 
     .line 23
     .line 24
-    new-instance v2, Ljava/io/FileInputStream;
+    new-instance v1, Lia/d;
 
     .line 25
     .line 26
-    invoke-direct {v2, p1}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+    const/16 v2, 0xc
 
     .line 27
     .line 28
-    .line 29
-    sget-object p1, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
+    invoke-direct {v1, v2}, Lia/d;-><init>(I)V
 
+    .line 29
     .line 30
     .line 31
-    invoke-direct {v1, v2, p1}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v0, p0, v1}, Ljava/util/concurrent/ConcurrentHashMap;->computeIfAbsent(Ljava/lang/Object;Ljava/util/function/Function;)Ljava/lang/Object;
 
     .line 32
     .line 33
     .line 34
-    :try_start_1
-    invoke-static {v1}, Lcom/bumptech/glide/f;->w(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+    move-result-object p0
 
     .line 35
+    return-object p0
+.end method
+
+.method private readJson(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
+    .locals 7
+
+    .line 1
+    const-string v0, "modMenuEnabled"
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    if-eqz p1, :cond_8
+
+    .line 5
+    .line 6
+    invoke-virtual {p1}, Ljava/io/File;->isFile()Z
+
+    .line 7
+    .line 8
+    .line 9
+    move-result v2
+
+    .line 10
+    if-eqz v2, :cond_8
+
+    .line 11
+    .line 12
+    invoke-virtual {p1}, Ljava/io/File;->length()J
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-wide v2
+
+    .line 16
+    const-wide/16 v4, 0x0
+
+    .line 17
+    .line 18
+    cmp-long v2, v2, v4
+
+    .line 19
+    .line 20
+    if-gtz v2, :cond_0
+
+    .line 21
+    .line 22
+    goto/16 :goto_4
+
+    .line 23
+    .line 24
+    :cond_0
+    :try_start_0
+    new-instance v2, Ljava/io/InputStreamReader;
+
+    .line 25
+    .line 26
+    new-instance v3, Ljava/io/FileInputStream;
+
+    .line 27
+    .line 28
+    invoke-direct {v3, p1}, Ljava/io/FileInputStream;-><init>(Ljava/io/File;)V
+
+    .line 29
+    .line 30
+    .line 31
+    sget-object p1, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
+
+    .line 32
+    .line 33
+    invoke-direct {v2, v3, p1}, Ljava/io/InputStreamReader;-><init>(Ljava/io/InputStream;Ljava/nio/charset/Charset;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 34
+    .line 35
     .line 36
+    :try_start_1
+    invoke-static {v2}, Lfc/h;->A(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+
     .line 37
+    .line 38
+    .line 39
     move-result-object p1
 
-    .line 38
-    instance-of v2, p1, Lcom/google/gson/JsonObject;
+    .line 40
+    instance-of v3, p1, Lcom/google/gson/JsonObject;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 39
-    .line 40
-    if-nez v2, :cond_1
-
     .line 41
     .line 42
-    :try_start_2
-    invoke-virtual {v1}, Ljava/io/Reader;->close()V
-    :try_end_2
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    if-nez v3, :cond_1
 
     .line 43
     .line 44
-    .line 45
-    return-object v0
+    :try_start_2
+    invoke-virtual {v2}, Ljava/io/Reader;->close()V
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
 
+    .line 45
     .line 46
+    .line 47
+    return-object v1
+
+    .line 48
     :cond_1
     :try_start_3
-    invoke-virtual {p1}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonObject;
+    invoke-virtual {p1}, Lcom/google/gson/JsonElement;->l()Lcom/google/gson/JsonObject;
 
-    .line 47
-    .line 48
     .line 49
+    .line 50
+    .line 51
     move-result-object p1
 
-    .line 50
-    iget-object v2, p1, Lcom/google/gson/JsonObject;->c:Lg8/m;
-
-    .line 51
     .line 52
-    iget-object v3, p0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->gson:Lcom/google/gson/Gson;
+    iget-object v3, p1, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 53
     .line 54
-    const-class v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+    iget-object v4, p0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->gson:Lcom/google/gson/Gson;
 
     .line 55
     .line 56
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    const-class v5, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
 
     .line 57
     .line 58
-    .line 59
-    invoke-static {v4}, Lcom/google/gson/reflect/TypeToken;->get(Ljava/lang/Class;)Lcom/google/gson/reflect/TypeToken;
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
+    .line 59
     .line 60
     .line 61
+    invoke-static {v5}, Lcom/google/gson/reflect/TypeToken;->get(Ljava/lang/Class;)Lcom/google/gson/reflect/TypeToken;
+
     .line 62
-    move-result-object v4
-
     .line 63
-    new-instance v5, Lh8/s;
-
     .line 64
+    move-result-object v5
+
     .line 65
-    invoke-direct {v5, p1}, Lh8/s;-><init>(Lcom/google/gson/JsonElement;)V
+    new-instance v6, Lj8/s;
 
     .line 66
     .line 67
-    .line 68
-    invoke-virtual {v3, v5, v4}, Lcom/google/gson/Gson;->a(Lcom/google/gson/stream/JsonReader;Lcom/google/gson/reflect/TypeToken;)Ljava/lang/Object;
+    invoke-direct {v6, p1}, Lj8/s;-><init>(Lcom/google/gson/JsonElement;)V
 
+    .line 68
     .line 69
     .line 70
+    invoke-virtual {v4, v6, v5}, Lcom/google/gson/Gson;->a(Lcom/google/gson/stream/JsonReader;Lcom/google/gson/reflect/TypeToken;)Ljava/lang/Object;
+
     .line 71
-    move-result-object v3
-
     .line 72
-    check-cast v3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
-
     .line 73
+    move-result-object v4
+
     .line 74
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->hasMissingSchemaFields(Lcom/google/gson/JsonObject;)Z
+    check-cast v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
 
     .line 75
     .line 76
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->hasMissingSchemaFields(Lcom/google/gson/JsonObject;)Z
+
     .line 77
-    move-result p1
-
     .line 78
-    if-eqz v3, :cond_4
-
     .line 79
+    move-result v5
+
     .line 80
-    const-string v4, "versionIsolation"
+    if-eqz v4, :cond_6
 
     .line 81
     .line 82
-    invoke-virtual {v2, v4}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    const-string v6, "versionIsolation"
 
     .line 83
     .line 84
+    invoke-virtual {v3, v6}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+
     .line 85
-    move-result v4
-
     .line 86
-    if-nez v4, :cond_2
-
     .line 87
+    move-result v6
+
     .line 88
-    iget-boolean v4, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->versionIsolation:Z
+    if-nez v6, :cond_2
 
     .line 89
     .line 90
-    iput-boolean v4, v3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->versionIsolation:Z
+    iget-boolean v6, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->versionIsolation:Z
 
     .line 91
     .line 92
-    goto :goto_0
+    iput-boolean v6, v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->versionIsolation:Z
 
     .line 93
+    .line 94
+    goto :goto_0
+
+    .line 95
     :catchall_0
     move-exception p1
 
-    .line 94
+    .line 96
     goto :goto_2
 
-    .line 95
+    .line 97
     :cond_2
     :goto_0
-    const-string v4, "launchVertically"
-
-    .line 96
-    .line 97
-    invoke-virtual {v2, v4}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    const-string v6, "launchVertically"
 
     .line 98
     .line 99
+    invoke-virtual {v3, v6}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+
     .line 100
-    move-result v4
-
     .line 101
-    if-nez v4, :cond_3
-
     .line 102
+    move-result v6
+
     .line 103
-    iget-boolean v4, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->launchVertically:Z
+    if-nez v6, :cond_3
 
     .line 104
     .line 105
-    iput-boolean v4, v3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->launchVertically:Z
+    iget-boolean v6, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->launchVertically:Z
 
     .line 106
     .line 107
-    :cond_3
-    const-string v4, "installed"
+    iput-boolean v6, v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->launchVertically:Z
 
     .line 108
     .line 109
-    invoke-virtual {v2, v4}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    :cond_3
+    invoke-virtual {v3, v0}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 110
     .line 111
     .line 112
-    move-result v2
+    move-result v6
 
     .line 113
-    if-nez v2, :cond_4
+    if-eqz v6, :cond_4
 
     .line 114
     .line 115
-    iget-boolean p2, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->installed:Z
+    invoke-virtual {p1, v0}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 116
     .line 117
-    iput-boolean p2, v3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->installed:Z
-
     .line 118
+    move-result-object p1
+
     .line 119
-    :cond_4
-    invoke-direct {p0, v3}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->isUsable(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)Z
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 120
     .line 121
     .line 122
-    move-result p2
+    instance-of p1, p1, Lg8/l;
 
     .line 123
-    if-eqz p2, :cond_5
-
     .line 124
-    .line 125
-    new-instance p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
+    if-eqz p1, :cond_5
 
+    .line 125
     .line 126
+    :cond_4
+    const/4 p1, 0x1
+
     .line 127
-    invoke-direct {p2, v3, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;-><init>(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;Z)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+    iput-boolean p1, v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->modMenuEnabled:Z
 
     .line 128
     .line 129
-    .line 130
-    goto :goto_1
-
-    .line 131
     :cond_5
-    move-object p2, v0
+    const-string p1, "installed"
+
+    .line 130
+    .line 131
+    invoke-virtual {v3, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 132
-    :goto_1
-    :try_start_4
-    invoke-virtual {v1}, Ljava/io/Reader;->close()V
-    :try_end_4
-    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
-
     .line 133
     .line 134
+    move-result p1
+
     .line 135
-    return-object p2
+    if-nez p1, :cond_6
 
     .line 136
-    :goto_2
-    :try_start_5
-    invoke-virtual {v1}, Ljava/io/Reader;->close()V
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_1
-
     .line 137
+    iget-boolean p1, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;->installed:Z
+
     .line 138
     .line 139
-    goto :goto_3
+    iput-boolean p1, v4, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->installed:Z
 
     .line 140
-    :catchall_1
-    move-exception p2
-
     .line 141
-    :try_start_6
-    invoke-virtual {p1, p2}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+    :cond_6
+    invoke-direct {p0, v4}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->isUsable(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)Z
 
     .line 142
     .line 143
     .line 144
+    move-result p1
+
+    .line 145
+    if-eqz p1, :cond_7
+
+    .line 146
+    .line 147
+    new-instance p1, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
+
+    .line 148
+    .line 149
+    invoke-direct {p1, v4, v5}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;-><init>(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;Z)V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 150
+    .line 151
+    .line 152
+    goto :goto_1
+
+    .line 153
+    :cond_7
+    move-object p1, v1
+
+    .line 154
+    :goto_1
+    :try_start_4
+    invoke-virtual {v2}, Ljava/io/Reader;->close()V
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
+
+    .line 155
+    .line 156
+    .line 157
+    return-object p1
+
+    .line 158
+    :goto_2
+    :try_start_5
+    invoke-virtual {v2}, Ljava/io/Reader;->close()V
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_1
+
+    .line 159
+    .line 160
+    .line 161
+    goto :goto_3
+
+    .line 162
+    :catchall_1
+    move-exception p2
+
+    .line 163
+    :try_start_6
+    invoke-virtual {p1, p2}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 164
+    .line 165
+    .line 166
     :goto_3
     throw p1
     :try_end_6
     .catch Ljava/lang/Exception; {:try_start_6 .. :try_end_6} :catch_0
 
-    .line 145
+    .line 167
     :catch_0
-    :cond_6
+    :cond_8
     :goto_4
-    return-object v0
+    return-object v1
 .end method
 
 .method private readLegacyOrDefault(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
@@ -1411,111 +1715,7 @@
     return-void
 .end method
 
-
-# virtual methods
-.method public getProfileFile(Ljava/io/File;)Ljava/io/File;
-    .locals 2
-
-    .line 1
-    new-instance v0, Ljava/io/File;
-
-    .line 2
-    .line 3
-    const-string v1, "profile.json"
-
-    .line 4
-    .line 5
-    invoke-direct {v0, p1, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-object v0
-.end method
-
-.method public loadOrCreate(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
-    .locals 2
-
-    .line 1
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->getProfileFile(Ljava/io/File;)Ljava/io/File;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    invoke-direct {p0, v0, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->readJson(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
-
-    .line 9
-    if-nez v0, :cond_0
-
-    .line 10
-    .line 11
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->readLegacyOrDefault(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
-
-    .line 12
-    .line 13
-    .line 14
-    move-result-object p2
-
-    .line 15
-    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
-
-    .line 16
-    .line 17
-    .line 18
-    return-object p2
-
-    .line 19
-    :cond_0
-    iget-object v1, v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;->metadata:Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
-
-    .line 20
-    .line 21
-    iget-boolean v0, v0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$JsonReadResult;->completedMissingFields:Z
-
-    .line 22
-    .line 23
-    if-nez v0, :cond_2
-
-    .line 24
-    .line 25
-    invoke-direct {p0, v1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->applyMissingDefaults(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Z
-
-    .line 26
-    .line 27
-    .line 28
-    move-result p2
-
-    .line 29
-    if-eqz p2, :cond_1
-
-    .line 30
-    .line 31
-    goto :goto_0
-
-    .line 32
-    :cond_1
-    return-object v1
-
-    .line 33
-    :cond_2
-    :goto_0
-    invoke-virtual {p0, p1, v1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
-
-    .line 34
-    .line 35
-    .line 36
-    return-object v1
-.end method
-
-.method public save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+.method private saveLocked(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
     .locals 6
 
     .line 1
@@ -1555,367 +1755,483 @@
 
     .line 17
     .line 18
-    new-instance v0, Ljava/lang/StringBuilder;
+    const-string v0, "Failed to create metadata directory: "
 
     .line 19
     .line 20
-    const-string v1, "Failed to create metadata directory: "
+    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
 
     .line 21
     .line 22
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 23
-    .line 24
-    .line 25
-    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    .line 28
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 29
-    .line 30
-    .line 31
     move-result-object p1
 
-    .line 32
+    .line 24
     invoke-direct {p2, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    .line 33
-    .line 34
-    .line 35
+    .line 25
+    .line 26
+    .line 27
     throw p2
 
-    .line 36
+    .line 28
     :cond_1
     :goto_0
     const/4 v0, 0x1
 
-    .line 37
+    .line 29
     iput v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->schemaVersion:I
 
-    .line 38
-    .line 39
+    .line 30
+    .line 31
     iget-object v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->profileId:Ljava/lang/String;
+
+    .line 32
+    .line 33
+    if-eqz v0, :cond_2
+
+    .line 34
+    .line 35
+    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object v0
+
+    .line 39
+    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
 
     .line 40
     .line 41
-    if-eqz v0, :cond_2
-
     .line 42
+    move-result v0
+
     .line 43
-    invoke-virtual {v0}, Ljava/lang/String;->trim()Ljava/lang/String;
+    if-eqz v0, :cond_3
 
     .line 44
     .line 45
-    .line 46
-    move-result-object v0
+    :cond_2
+    iget-object v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->directoryName:Ljava/lang/String;
 
+    .line 46
     .line 47
-    invoke-virtual {v0}, Ljava/lang/String;->isEmpty()Z
+    invoke-static {v0}, Lorg/levimc/launcher/util/LauncherStorage;->sanitizeProfileId(Ljava/lang/String;)Ljava/lang/String;
 
     .line 48
     .line 49
     .line 50
-    move-result v0
+    move-result-object v0
 
     .line 51
-    if-eqz v0, :cond_3
+    iput-object v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->profileId:Ljava/lang/String;
 
     .line 52
     .line 53
-    :cond_2
-    iget-object v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->directoryName:Ljava/lang/String;
-
-    .line 54
-    .line 55
-    invoke-static {v0}, Lorg/levimc/launcher/util/LauncherStorage;->sanitizeProfileId(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 56
-    .line 57
-    .line 58
-    move-result-object v0
-
-    .line 59
-    iput-object v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->profileId:Ljava/lang/String;
-
-    .line 60
-    .line 61
     :cond_3
     invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
-    .line 62
-    .line 63
-    .line 64
+    .line 54
+    .line 55
+    .line 56
     move-result-wide v0
 
-    .line 65
+    .line 57
     iput-wide v0, p2, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->updatedAt:J
+
+    .line 58
+    .line 59
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->getProfileFile(Ljava/io/File;)Ljava/io/File;
+
+    .line 60
+    .line 61
+    .line 62
+    move-result-object v0
+
+    .line 63
+    new-instance v1, Ljava/io/File;
+
+    .line 64
+    .line 65
+    const-string v2, "profile.json.tmp"
 
     .line 66
     .line 67
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->getProfileFile(Ljava/io/File;)Ljava/io/File;
+    invoke-direct {v1, p1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
     .line 68
     .line 69
     .line 70
-    move-result-object v0
+    new-instance p1, Ljava/io/FileOutputStream;
 
     .line 71
-    new-instance v1, Ljava/io/File;
-
     .line 72
+    const/4 v2, 0x0
+
     .line 73
-    const-string v2, "profile.json.tmp"
+    invoke-direct {p1, v1, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;Z)V
 
     .line 74
     .line 75
-    invoke-direct {v1, p1, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
     .line 76
-    .line 77
-    .line 78
-    new-instance p1, Ljava/io/FileOutputStream;
-
-    .line 79
-    .line 80
-    const/4 v2, 0x0
-
-    .line 81
-    invoke-direct {p1, v1, v2}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;Z)V
-
-    .line 82
-    .line 83
-    .line 84
     :try_start_0
     new-instance v2, Ljava/io/OutputStreamWriter;
 
-    .line 85
-    .line 86
+    .line 77
+    .line 78
     sget-object v3, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
 
-    .line 87
-    .line 88
+    .line 79
+    .line 80
     invoke-direct {v2, p1, v3}, Ljava/io/OutputStreamWriter;-><init>(Ljava/io/OutputStream;Ljava/nio/charset/Charset;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 89
-    .line 90
-    .line 91
+    .line 81
+    .line 82
+    .line 83
     :try_start_1
     iget-object v3, p0, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->gson:Lcom/google/gson/Gson;
 
-    .line 92
-    .line 93
+    .line 84
+    .line 85
     invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 94
-    .line 95
-    .line 96
+    .line 86
+    .line 87
+    .line 88
     invoke-virtual {p2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 97
-    .line 98
-    .line 99
+    .line 89
+    .line 90
+    .line 91
     move-result-object v4
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 100
+    .line 92
     :try_start_2
-    invoke-static {v2}, Lg8/g;->n(Ljava/lang/Appendable;)Ljava/io/Writer;
+    invoke-static {v2}, Li8/h;->n(Ljava/lang/Appendable;)Ljava/io/Writer;
 
-    .line 101
-    .line 102
-    .line 103
+    .line 93
+    .line 94
+    .line 95
     move-result-object v5
 
-    .line 104
-    invoke-virtual {v3, v5}, Lcom/google/gson/Gson;->g(Ljava/io/Writer;)Lcom/google/gson/stream/JsonWriter;
+    .line 96
+    invoke-virtual {v3, v5}, Lcom/google/gson/Gson;->h(Ljava/io/Writer;)Lcom/google/gson/stream/JsonWriter;
 
-    .line 105
-    .line 106
-    .line 107
+    .line 97
+    .line 98
+    .line 99
     move-result-object v5
 
-    .line 108
-    invoke-virtual {v3, p2, v4, v5}, Lcom/google/gson/Gson;->l(Ljava/lang/Object;Ljava/lang/Class;Lcom/google/gson/stream/JsonWriter;)V
+    .line 100
+    invoke-virtual {v3, p2, v4, v5}, Lcom/google/gson/Gson;->m(Ljava/lang/Object;Ljava/lang/Class;Lcom/google/gson/stream/JsonWriter;)V
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 109
-    .line 110
-    .line 111
+    .line 101
+    .line 102
+    .line 103
     :try_start_3
     invoke-virtual {v2}, Ljava/io/Writer;->flush()V
 
-    .line 112
-    .line 113
-    .line 114
+    .line 104
+    .line 105
+    .line 106
     invoke-virtual {p1}, Ljava/io/FileOutputStream;->getFD()Ljava/io/FileDescriptor;
 
-    .line 115
-    .line 116
-    .line 117
+    .line 107
+    .line 108
+    .line 109
     move-result-object p2
 
-    .line 118
+    .line 110
     invoke-virtual {p2}, Ljava/io/FileDescriptor;->sync()V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 119
-    .line 120
-    .line 121
+    .line 111
+    .line 112
+    .line 113
     :try_start_4
     invoke-virtual {v2}, Ljava/io/Writer;->close()V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    .line 122
-    .line 123
-    .line 124
+    .line 114
+    .line 115
+    .line 116
     invoke-virtual {p1}, Ljava/io/FileOutputStream;->close()V
 
-    .line 125
-    .line 126
-    .line 127
+    .line 117
+    .line 118
+    .line 119
     invoke-direct {p0, v1, v0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->replaceFile(Ljava/io/File;Ljava/io/File;)V
 
-    .line 128
-    .line 129
-    .line 130
+    .line 120
+    .line 121
+    .line 122
     return-void
 
-    .line 131
+    .line 123
     :catchall_0
     move-exception p2
 
-    .line 132
+    .line 124
     goto :goto_3
 
-    .line 133
+    .line 125
     :catchall_1
     move-exception p2
 
-    .line 134
+    .line 126
     goto :goto_1
 
-    .line 135
+    .line 127
     :catch_0
     move-exception p2
 
-    .line 136
+    .line 128
     :try_start_5
-    new-instance v0, Le8/k;
+    new-instance v0, Lg8/k;
 
-    .line 137
-    .line 138
+    .line 129
+    .line 130
     invoke-direct {v0, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
 
-    .line 139
-    .line 140
-    .line 141
+    .line 131
+    .line 132
+    .line 133
     throw v0
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 142
+    .line 134
     :goto_1
     :try_start_6
     invoke-virtual {v2}, Ljava/io/Writer;->close()V
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_2
 
-    .line 143
-    .line 144
-    .line 145
+    .line 135
+    .line 136
+    .line 137
     goto :goto_2
 
-    .line 146
+    .line 138
     :catchall_2
     move-exception v0
 
-    .line 147
+    .line 139
     :try_start_7
     invoke-virtual {p2, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
 
-    .line 148
-    .line 149
-    .line 150
+    .line 140
+    .line 141
+    .line 142
     :goto_2
     throw p2
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_0
 
-    .line 151
+    .line 143
     :goto_3
     :try_start_8
     invoke-virtual {p1}, Ljava/io/FileOutputStream;->close()V
     :try_end_8
     .catchall {:try_start_8 .. :try_end_8} :catchall_3
 
-    .line 152
-    .line 153
-    .line 154
+    .line 144
+    .line 145
+    .line 146
     goto :goto_4
 
-    .line 155
+    .line 147
     :catchall_3
     move-exception p1
 
-    .line 156
+    .line 148
     invoke-virtual {p2, p1}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 149
+    .line 150
+    .line 151
+    :goto_4
+    throw p2
+
+    .line 152
+    :cond_4
+    new-instance p1, Ljava/io/IOException;
+
+    .line 153
+    .line 154
+    const-string p2, "metadataDir is null"
+
+    .line 155
+    .line 156
+    invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 157
     .line 158
     .line 159
-    :goto_4
-    throw p2
-
-    .line 160
-    :cond_4
-    new-instance p1, Ljava/io/IOException;
-
-    .line 161
-    .line 162
-    const-string p2, "metadataDir is null"
-
-    .line 163
-    .line 164
-    invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    .line 165
-    .line 166
-    .line 167
     throw p1
 .end method
 
-.method public update(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Mutator;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
-    .locals 0
+
+# virtual methods
+.method public getProfileFile(Ljava/io/File;)Ljava/io/File;
+    .locals 2
 
     .line 1
-    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->loadOrCreate(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+    new-instance v0, Ljava/io/File;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object p2
+    const-string v1, "profile.json"
 
+    .line 4
     .line 5
-    invoke-interface {p3, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Mutator;->mutate(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+    invoke-direct {v0, p1, v1}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
     .line 6
     .line 7
     .line 8
+    return-object v0
+.end method
+
+.method public loadOrCreate(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+    .locals 1
+
+    .line 1
+    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->profileLock(Ljava/io/File;)Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->loadLocked(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p1
+
+    .line 10
+    monitor-exit v0
+
+    .line 11
+    return-object p1
+
+    .line 12
+    :catchall_0
+    move-exception p1
+
+    .line 13
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 14
+    throw p1
+.end method
+
+.method public save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+    .locals 1
+
+    .line 1
+    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->profileLock(Ljava/io/File;)Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->saveLocked(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+
+    .line 7
+    .line 8
+    .line 9
+    monitor-exit v0
+
+    .line 10
+    return-void
+
+    .line 11
+    :catchall_0
+    move-exception p1
+
+    .line 12
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 13
+    throw p1
+.end method
+
+.method public update(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Mutator;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+    .locals 1
+
+    .line 1
+    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->profileLock(Ljava/io/File;)Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    monitor-enter v0
+
+    .line 6
+    :try_start_0
+    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->loadOrCreate(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;)Lorg/levimc/launcher/core/versions/VersionProfileMetadata;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p2
+
+    .line 10
+    invoke-interface {p3, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Mutator;->mutate(Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
+
+    .line 11
+    .line 12
+    .line 13
     invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->save(Ljava/io/File;Lorg/levimc/launcher/core/versions/VersionProfileMetadata;)V
 
-    .line 9
-    .line 10
-    .line 11
+    .line 14
+    .line 15
+    .line 16
+    monitor-exit v0
+
+    .line 17
     return-object p2
+
+    .line 18
+    :catchall_0
+    move-exception p1
+
+    .line 19
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 20
+    throw p1
 .end method

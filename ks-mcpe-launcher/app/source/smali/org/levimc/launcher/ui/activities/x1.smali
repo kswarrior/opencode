@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/x1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,11 +9,11 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
 
     .line 4
     .line 5
@@ -48,11 +48,11 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->y(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;->w(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;)V
 
     .line 9
     .line 10
@@ -61,11 +61,11 @@
 
     .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/x1;->d:Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
 
     .line 13
     .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->C(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;->z(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;)V
 
     .line 15
     .line 16

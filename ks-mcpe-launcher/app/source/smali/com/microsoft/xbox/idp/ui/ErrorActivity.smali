@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/idp/ui/ErrorActivity;
 .super Lcom/microsoft/xbox/idp/compat/BaseActivity;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/microsoft/xbox/idp/ui/HeaderFragment$Callbacks;
@@ -387,7 +387,7 @@
 
     .line 12
     .line 13
-    invoke-virtual {p0, p1}, Lg/g;->setContentView(I)V
+    invoke-virtual {p0, p1}, Lg/i;->setContentView(I)V
 
     .line 14
     .line 15

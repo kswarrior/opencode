@@ -1,6 +1,6 @@
 .class public final Lw2/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,7 +8,7 @@
 
 .field public final b:Landroid/app/ActivityManager;
 
-.field public final c:Lvf/a;
+.field public final c:Lng/a;
 
 .field public final d:F
 
@@ -57,7 +57,7 @@
 
     .line 19
     .line 20
-    new-instance v1, Lvf/a;
+    new-instance v1, Lng/a;
 
     .line 21
     .line 22
@@ -77,37 +77,38 @@
     move-result-object p1
 
     .line 30
-    const/4 v2, 0x3
+    const/16 v2, 0x15
 
     .line 31
-    invoke-direct {v1, p1, v2}, Lvf/a;-><init>(Ljava/lang/Object;I)V
-
     .line 32
+    invoke-direct {v1, p1, v2}, Lng/a;-><init>(Ljava/lang/Object;I)V
+
     .line 33
     .line 34
-    iput-object v1, p0, Lw2/d;->c:Lvf/a;
-
     .line 35
+    iput-object v1, p0, Lw2/d;->c:Lng/a;
+
     .line 36
+    .line 37
     invoke-virtual {v0}, Landroid/app/ActivityManager;->isLowRamDevice()Z
 
-    .line 37
     .line 38
     .line 39
+    .line 40
     move-result p1
 
-    .line 40
+    .line 41
     if-eqz p1, :cond_0
 
-    .line 41
     .line 42
+    .line 43
     const/4 p1, 0x0
 
-    .line 43
+    .line 44
     iput p1, p0, Lw2/d;->d:F
 
-    .line 44
     .line 45
+    .line 46
     :cond_0
     return-void
 .end method

@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore$Defaults;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -93,7 +93,7 @@
     move-object v2, p0
 
     .line 6
-    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->a(Ljava/lang/String;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->b(Ljava/lang/String;)Z
 
     .line 7
     .line 8
@@ -155,7 +155,7 @@
     .locals 9
 
     .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->a(Ljava/lang/String;)Z
+    invoke-static {p0}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->b(Ljava/lang/String;)Z
 
     .line 2
     .line 3
@@ -175,7 +175,7 @@
     move-object v8, p0
 
     .line 10
-    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->a(Ljava/lang/String;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/core/versions/VersionProfileMetadataStore;->b(Ljava/lang/String;)Z
 
     .line 11
     .line 12

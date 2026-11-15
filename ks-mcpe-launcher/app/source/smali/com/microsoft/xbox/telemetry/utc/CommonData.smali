@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/telemetry/utc/CommonData;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -290,7 +290,7 @@
 
     .line 68
     .line 69
-    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
 
     .line 70
     .line 71
@@ -569,7 +569,7 @@
     .line 126
     .line 127
     .line 128
-    invoke-virtual {v3, v2}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v3, v2}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 129
     .line 130
@@ -1161,14 +1161,14 @@
 
     .line 15
     .line 16
-    invoke-virtual {v1, v0}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v1, v0}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 17
     .line 18
     .line 19
     move-result-object v0
     :try_end_0
-    .catch Le8/k; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Lg8/k; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 20
     return-object v0
@@ -1265,14 +1265,14 @@
     .line 12
     .line 13
     .line 14
-    invoke-virtual {v1, p0}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v1, p0}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 15
     .line 16
     .line 17
     move-result-object v0
     :try_end_0
-    .catch Le8/k; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Lg8/k; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 18
     return-object v0

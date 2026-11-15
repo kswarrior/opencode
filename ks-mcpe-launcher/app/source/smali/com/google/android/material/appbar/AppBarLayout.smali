@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/appbar/AppBarLayout;
 .super Landroid/widget/LinearLayout;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ld0/a;
@@ -21,8 +21,6 @@
 
 
 # instance fields
-.field public B1:Z
-
 .field public C1:Z
 
 .field public D1:Z
@@ -65,13 +63,15 @@
 
 .field public h:I
 
-.field public q:I
+.field public p:I
 
-.field public w:Z
+.field public q:Z
 
-.field public x:I
+.field public w:I
 
-.field public y:Landroidx/core/view/WindowInsetsCompat;
+.field public x:Landroidx/core/view/WindowInsetsCompat;
+
+.field public y:Z
 
 
 # direct methods
@@ -79,7 +79,7 @@
     .locals 9
 
     .line 1
-    const v0, 0x7f1403b2
+    const v0, 0x7f1403c6
 
     .line 2
     .line 3
@@ -89,7 +89,7 @@
     .line 5
     .line 6
     .line 7
-    invoke-static {p1, p2, v4, v0}, La6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    invoke-static {p1, p2, v4, v0}, Lc6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
 
     .line 8
     .line 9
@@ -113,14 +113,14 @@
 
     .line 18
     .line 19
-    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->q:I
+    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->p:I
 
     .line 20
     .line 21
     const/4 v0, 0x0
 
     .line 22
-    iput v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:I
+    iput v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->w:I
 
     .line 23
     .line 24
@@ -200,7 +200,7 @@
     move-result-object v1
 
     .line 63
-    sget-object v3, Ly4/g;->a:[I
+    sget-object v3, Ly4/f;->a:[I
 
     .line 64
     .line 65
@@ -208,7 +208,7 @@
 
     .line 66
     .line 67
-    const v5, 0x7f1403b2
+    const v5, 0x7f1403c6
 
     .line 68
     .line 69
@@ -216,7 +216,7 @@
     move-object v2, p2
 
     .line 71
-    invoke-static/range {v1 .. v6}, Ln5/n;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
+    invoke-static/range {v1 .. v6}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
 
     .line 72
     .line 73
@@ -281,7 +281,7 @@
     .line 98
     .line 99
     .line 100
-    const v5, 0x7f1403b2
+    const v5, 0x7f1403c6
 
     .line 101
     .line 102
@@ -297,7 +297,7 @@
     move-object v1, v7
 
     .line 108
-    invoke-static/range {v1 .. v6}, Ln5/n;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
+    invoke-static/range {v1 .. v6}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
 
     .line 109
     .line 110
@@ -308,7 +308,7 @@
     const/4 v2, 0x6
 
     .line 113
-    invoke-static {v1, p2, v2}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v1, p2, v2}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 114
     .line 115
@@ -346,7 +346,7 @@
     .line 131
     .line 132
     .line 133
-    invoke-static {v1, v3, v2}, Lcom/bumptech/glide/c;->O(Landroid/content/Context;II)I
+    invoke-static {v1, v3, v2}, La7/t1;->A(Landroid/content/Context;II)I
 
     .line 134
     .line 135
@@ -370,7 +370,7 @@
 
     .line 144
     .line 145
-    invoke-static {v1, v2, v3}, Lcom/bumptech/glide/c;->P(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
+    invoke-static {v1, v2, v3}, La7/t1;->B(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
 
     .line 146
     .line 147
@@ -437,7 +437,7 @@
     int-to-float v1, v1
 
     .line 177
-    invoke-static {p0, v1}, Ly4/g;->a(Lcom/google/android/material/appbar/AppBarLayout;F)V
+    invoke-static {p0, v1}, Ly4/f;->a(Lcom/google/android/material/appbar/AppBarLayout;F)V
 
     .line 178
     .line 179
@@ -476,10 +476,10 @@
     .line 195
     .line 196
     .line 197
-    move-result v2
+    move-result v1
 
     .line 198
-    invoke-virtual {p0, v2}, Landroid/view/View;->setKeyboardNavigationCluster(Z)V
+    invoke-virtual {p0, v1}, Landroid/view/View;->setKeyboardNavigationCluster(Z)V
 
     .line 199
     .line 200
@@ -490,10 +490,10 @@
     .line 202
     .line 203
     .line 204
-    move-result v2
+    move-result v1
 
     .line 205
-    if-eqz v2, :cond_5
+    if-eqz v1, :cond_5
 
     .line 206
     .line 207
@@ -502,10 +502,10 @@
     .line 208
     .line 209
     .line 210
-    move-result v2
+    move-result v1
 
     .line 211
-    invoke-virtual {p0, v2}, Landroid/view/ViewGroup;->setTouchscreenBlocksFocus(Z)V
+    invoke-virtual {p0, v1}, Landroid/view/ViewGroup;->setTouchscreenBlocksFocus(Z)V
 
     .line 212
     .line 213
@@ -516,30 +516,30 @@
     .line 215
     .line 216
     .line 217
-    move-result-object v2
+    move-result-object v1
 
     .line 218
-    const v3, 0x7f070064
+    const v2, 0x7f070064
 
     .line 219
     .line 220
     .line 221
-    invoke-virtual {v2, v3}, Landroid/content/res/Resources;->getDimension(I)F
+    invoke-virtual {v1, v2}, Landroid/content/res/Resources;->getDimension(I)F
 
     .line 222
     .line 223
     .line 224
-    move-result v2
+    move-result v1
 
     .line 225
-    iput v2, p0, Lcom/google/android/material/appbar/AppBarLayout;->R1:F
+    iput v1, p0, Lcom/google/android/material/appbar/AppBarLayout;->R1:F
 
     .line 226
     .line 227
-    const/4 v2, 0x5
+    const/4 v1, 0x5
 
     .line 228
-    invoke-virtual {p2, v2, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+    invoke-virtual {p2, v1, v0}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
 
     .line 229
     .line 230
@@ -588,37 +588,41 @@
     .line 251
     .line 252
     .line 253
-    new-instance p1, Ly2/b;
+    new-instance p1, Lvg/a;
 
     .line 254
     .line 255
-    invoke-direct {p1, p0, v1}, Ly2/b;-><init>(Ljava/lang/Object;I)V
+    const/16 p2, 0xa
 
     .line 256
     .line 257
-    .line 258
-    sget-object p2, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
+    invoke-direct {p1, p0, p2}, Lvg/a;-><init>(Ljava/lang/Object;I)V
 
+    .line 258
     .line 259
     .line 260
-    invoke-static {p0, p1}, Landroidx/core/view/l0;->k(Landroid/view/View;Landroidx/core/view/t;)V
+    sget-object p2, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
 
     .line 261
     .line 262
+    invoke-static {p0, p1}, Landroidx/core/view/k0;->k(Landroid/view/View;Landroidx/core/view/s;)V
+
     .line 263
+    .line 264
+    .line 265
     return-void
 
-    .line 264
+    .line 266
     :goto_1
     invoke-virtual {p2}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 265
-    .line 266
     .line 267
+    .line 268
+    .line 269
     throw p1
 .end method
 
-.method public static b(Landroid/view/ViewGroup$LayoutParams;)Ly4/c;
+.method public static b(Landroid/view/ViewGroup$LayoutParams;)Ly4/b;
     .locals 2
 
     .line 1
@@ -633,7 +637,7 @@
 
     .line 5
     .line 6
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     .line 7
     .line 8
@@ -646,7 +650,7 @@
     .line 11
     .line 12
     .line 13
-    iput v1, v0, Ly4/c;->a:I
+    iput v1, v0, Ly4/b;->a:I
 
     .line 14
     .line 15
@@ -662,7 +666,7 @@
 
     .line 19
     .line 20
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     .line 21
     .line 22
@@ -675,7 +679,7 @@
     .line 25
     .line 26
     .line 27
-    iput v1, v0, Ly4/c;->a:I
+    iput v1, v0, Ly4/b;->a:I
 
     .line 28
     .line 29
@@ -683,7 +687,7 @@
 
     .line 30
     :cond_1
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     .line 31
     .line 32
@@ -692,7 +696,7 @@
     .line 33
     .line 34
     .line 35
-    iput v1, v0, Ly4/c;->a:I
+    iput v1, v0, Ly4/b;->a:I
 
     .line 36
     .line 37
@@ -701,11 +705,11 @@
 
 
 # virtual methods
-.method public final a(Landroid/util/AttributeSet;)Ly4/c;
+.method public final a(Landroid/util/AttributeSet;)Ly4/b;
     .locals 5
 
     .line 1
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     .line 2
     .line 3
@@ -725,7 +729,7 @@
     const/4 v2, 0x1
 
     .line 11
-    iput v2, v0, Ly4/c;->a:I
+    iput v2, v0, Ly4/b;->a:I
 
     .line 12
     .line 13
@@ -752,7 +756,7 @@
     move-result v4
 
     .line 24
-    iput v4, v0, Ly4/c;->a:I
+    iput v4, v0, Ly4/b;->a:I
 
     .line 25
     .line 26
@@ -775,21 +779,21 @@
 
     .line 34
     :cond_0
-    new-instance v2, Lu2/c0;
+    new-instance v2, Lt9/j;
 
     .line 35
     .line 36
-    const/16 v4, 0xe
+    const/16 v4, 0x13
 
     .line 37
     .line 38
-    invoke-direct {v2, v4}, Lu2/c0;-><init>(I)V
+    invoke-direct {v2, v4}, Lt9/j;-><init>(I)V
 
     .line 39
     .line 40
     .line 41
     :goto_0
-    iput-object v2, v0, Ly4/c;->b:Lu2/c0;
+    iput-object v2, v0, Ly4/b;->b:Lt9/j;
 
     .line 42
     .line 43
@@ -824,7 +828,7 @@
     move-result-object v1
 
     .line 58
-    iput-object v1, v0, Ly4/c;->c:Landroid/view/animation/Interpolator;
+    iput-object v1, v0, Ly4/b;->c:Landroid/view/animation/Interpolator;
 
     .line 59
     .line 60
@@ -860,7 +864,7 @@
 
     .line 9
     .line 10
-    iget v2, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:I
+    iget v2, p0, Lcom/google/android/material/appbar/AppBarLayout;->w:I
 
     .line 11
     .line 12
@@ -901,7 +905,7 @@
 
     .line 26
     .line 27
-    iput v1, p0, Lcom/google/android/material/appbar/AppBarLayout;->q:I
+    iput v1, p0, Lcom/google/android/material/appbar/AppBarLayout;->p:I
 
     .line 28
     .line 29
@@ -938,7 +942,7 @@
     .locals 0
 
     .line 1
-    instance-of p1, p1, Ly4/c;
+    instance-of p1, p1, Ly4/b;
 
     .line 2
     .line 3
@@ -997,7 +1001,7 @@
     or-int/2addr p1, v0
 
     .line 18
-    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:I
+    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->w:I
 
     .line 19
     .line 20
@@ -1144,7 +1148,7 @@
     .locals 3
 
     .line 1
-    iget-boolean v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
+    iget-boolean v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->y:Z
 
     .line 2
     .line 3
@@ -1177,7 +1181,7 @@
     move-result-object v0
 
     .line 18
-    instance-of v0, v0, Lt5/j;
+    instance-of v0, v0, Lv5/j;
 
     .line 19
     .line 20
@@ -1581,7 +1585,7 @@
     .locals 3
 
     .line 1
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     const/4 v1, -0x1
 
@@ -1593,7 +1597,7 @@
     const/4 v1, 0x1
 
     .line 3
-    iput v1, v0, Ly4/c;->a:I
+    iput v1, v0, Ly4/b;->a:I
 
     return-object v0
 .end method
@@ -1602,7 +1606,7 @@
     .locals 3
 
     .line 4
-    new-instance v0, Ly4/c;
+    new-instance v0, Ly4/b;
 
     const/4 v1, -0x1
 
@@ -1614,7 +1618,7 @@
     const/4 v1, 0x1
 
     .line 6
-    iput v1, v0, Ly4/c;->a:I
+    iput v1, v0, Ly4/b;->a:I
 
     return-object v0
 .end method
@@ -1623,7 +1627,7 @@
     .locals 0
 
     .line 1
-    invoke-virtual {p0, p1}, Lcom/google/android/material/appbar/AppBarLayout;->a(Landroid/util/AttributeSet;)Ly4/c;
+    invoke-virtual {p0, p1}, Lcom/google/android/material/appbar/AppBarLayout;->a(Landroid/util/AttributeSet;)Ly4/b;
 
     move-result-object p1
 
@@ -1634,7 +1638,7 @@
     .locals 0
 
     .line 2
-    invoke-static {p1}, Lcom/google/android/material/appbar/AppBarLayout;->b(Landroid/view/ViewGroup$LayoutParams;)Ly4/c;
+    invoke-static {p1}, Lcom/google/android/material/appbar/AppBarLayout;->b(Landroid/view/ViewGroup$LayoutParams;)Ly4/b;
 
     move-result-object p1
 
@@ -1645,7 +1649,7 @@
     .locals 0
 
     .line 3
-    invoke-virtual {p0, p1}, Lcom/google/android/material/appbar/AppBarLayout;->a(Landroid/util/AttributeSet;)Ly4/c;
+    invoke-virtual {p0, p1}, Lcom/google/android/material/appbar/AppBarLayout;->a(Landroid/util/AttributeSet;)Ly4/b;
 
     move-result-object p1
 
@@ -1656,7 +1660,7 @@
     .locals 0
 
     .line 4
-    invoke-static {p1}, Lcom/google/android/material/appbar/AppBarLayout;->b(Landroid/view/ViewGroup$LayoutParams;)Ly4/c;
+    invoke-static {p1}, Lcom/google/android/material/appbar/AppBarLayout;->b(Landroid/view/ViewGroup$LayoutParams;)Ly4/b;
 
     move-result-object p1
 
@@ -1767,7 +1771,7 @@
     move-result-object v4
 
     .line 34
-    check-cast v4, Ly4/c;
+    check-cast v4, Ly4/b;
 
     .line 35
     .line 36
@@ -1779,7 +1783,7 @@
     move-result v5
 
     .line 40
-    iget v6, v4, Ly4/c;->a:I
+    iget v6, v4, Ly4/b;->a:I
 
     .line 41
     .line 42
@@ -1938,7 +1942,7 @@
     .locals 9
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->q:I
+    iget v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->p:I
 
     .line 2
     .line 3
@@ -2011,7 +2015,7 @@
     move-result-object v5
 
     .line 33
-    check-cast v5, Ly4/c;
+    check-cast v5, Ly4/b;
 
     .line 34
     .line 35
@@ -2037,7 +2041,7 @@
     add-int/2addr v7, v6
 
     .line 45
-    iget v5, v5, Ly4/c;->a:I
+    iget v5, v5, Ly4/b;->a:I
 
     .line 46
     .line 47
@@ -2093,7 +2097,7 @@
     move-result v0
 
     .line 69
-    iput v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->q:I
+    iput v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->p:I
 
     .line 70
     .line 71
@@ -2111,7 +2115,7 @@
     return v0
 .end method
 
-.method public getMaterialShapeBackground()Lt5/j;
+.method public getMaterialShapeBackground()Lv5/j;
     .locals 2
 
     .line 1
@@ -2123,7 +2127,7 @@
     move-result-object v0
 
     .line 5
-    instance-of v1, v0, Lt5/j;
+    instance-of v1, v0, Lv5/j;
 
     .line 6
     .line 7
@@ -2131,7 +2135,7 @@
 
     .line 8
     .line 9
-    check-cast v0, Lt5/j;
+    check-cast v0, Lv5/j;
 
     .line 10
     .line 11
@@ -2294,7 +2298,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:I
+    iget v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->w:I
 
     .line 2
     .line 3
@@ -2328,7 +2332,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->y:Landroidx/core/view/WindowInsetsCompat;
+    iget-object v0, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:Landroidx/core/view/WindowInsetsCompat;
 
     .line 2
     .line 3
@@ -2431,7 +2435,7 @@
     move-result-object v5
 
     .line 33
-    check-cast v5, Ly4/c;
+    check-cast v5, Ly4/b;
 
     .line 34
     .line 35
@@ -2443,7 +2447,7 @@
     move-result v6
 
     .line 39
-    iget v7, v5, Ly4/c;->a:I
+    iget v7, v5, Ly4/b;->a:I
 
     .line 40
     .line 41
@@ -2583,7 +2587,7 @@
     move-result-object v0
 
     .line 8
-    instance-of v1, v0, Lt5/j;
+    instance-of v1, v0, Lv5/j;
 
     .line 9
     .line 10
@@ -2591,11 +2595,11 @@
 
     .line 11
     .line 12
-    check-cast v0, Lt5/j;
+    check-cast v0, Lv5/j;
 
     .line 13
     .line 14
-    invoke-static {p0, v0}, Lcom/bumptech/glide/d;->Q(Landroid/view/View;Lt5/j;)V
+    invoke-static {p0, v0}, La7/t1;->E(Landroid/view/View;Lv5/j;)V
 
     .line 15
     .line 16
@@ -2646,7 +2650,7 @@
     move-result-object p1
 
     .line 18
-    iget-boolean v1, p0, Lcom/google/android/material/appbar/AppBarLayout;->B1:Z
+    iget-boolean v1, p0, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
 
     .line 19
     .line 20
@@ -2924,7 +2928,7 @@
     move-result-object v0
 
     .line 52
-    sget-object v1, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
+    sget-object v1, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
 
     .line 53
     .line 54
@@ -2946,7 +2950,7 @@
     .line 61
     .line 62
     .line 63
-    iput-boolean p4, p1, Lcom/google/android/material/appbar/AppBarLayout;->w:Z
+    iput-boolean p4, p1, Lcom/google/android/material/appbar/AppBarLayout;->q:Z
 
     .line 64
     .line 65
@@ -2982,11 +2986,11 @@
     move-result-object v0
 
     .line 80
-    check-cast v0, Ly4/c;
+    check-cast v0, Ly4/b;
 
     .line 81
     .line 82
-    iget-object v0, v0, Ly4/c;->c:Landroid/view/animation/Interpolator;
+    iget-object v0, v0, Ly4/b;->c:Landroid/view/animation/Interpolator;
 
     .line 83
     .line 84
@@ -2994,7 +2998,7 @@
 
     .line 85
     .line 86
-    iput-boolean p3, p1, Lcom/google/android/material/appbar/AppBarLayout;->w:Z
+    iput-boolean p3, p1, Lcom/google/android/material/appbar/AppBarLayout;->q:Z
 
     .line 87
     .line 88
@@ -3041,7 +3045,7 @@
     .line 106
     .line 107
     :cond_3
-    iget-boolean p2, p1, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
+    iget-boolean p2, p1, Lcom/google/android/material/appbar/AppBarLayout;->y:Z
 
     .line 108
     .line 109
@@ -3089,11 +3093,11 @@
     move-result-object v0
 
     .line 130
-    check-cast v0, Ly4/c;
+    check-cast v0, Ly4/b;
 
     .line 131
     .line 132
-    iget v0, v0, Ly4/c;->a:I
+    iget v0, v0, Ly4/b;->a:I
 
     .line 133
     .line 134
@@ -3130,7 +3134,7 @@
     .line 147
     :cond_6
     :goto_4
-    iget-boolean p2, p1, Lcom/google/android/material/appbar/AppBarLayout;->B1:Z
+    iget-boolean p2, p1, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
 
     .line 148
     .line 149
@@ -3138,7 +3142,7 @@
 
     .line 150
     .line 151
-    iput-boolean p3, p1, Lcom/google/android/material/appbar/AppBarLayout;->B1:Z
+    iput-boolean p3, p1, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
 
     .line 152
     .line 153
@@ -3305,7 +3309,7 @@
     move-result p1
 
     .line 73
-    invoke-static {v1, v0, p1}, Lcom/bumptech/glide/f;->i(III)I
+    invoke-static {v1, v0, p1}, Lcom/bumptech/glide/d;->p(III)I
 
     .line 74
     .line 75
@@ -3348,7 +3352,7 @@
     move-result-object v0
 
     .line 5
-    instance-of v1, p1, Lt5/j;
+    instance-of v1, p1, Lv5/j;
 
     .line 6
     .line 7
@@ -3362,7 +3366,7 @@
     move-object v1, p1
 
     .line 11
-    check-cast v1, Lt5/j;
+    check-cast v1, Lv5/j;
 
     .line 12
     .line 13
@@ -3370,7 +3374,7 @@
 
     .line 14
     :cond_0
-    invoke-static {p1}, Lgc/h;->z(Landroid/graphics/drawable/Drawable;)Landroid/content/res/ColorStateList;
+    invoke-static {p1}, Lcom/bumptech/glide/f;->n(Landroid/graphics/drawable/Drawable;)Landroid/content/res/ColorStateList;
 
     .line 15
     .line 16
@@ -3389,16 +3393,16 @@
 
     .line 22
     :cond_1
-    new-instance v3, Lt5/j;
+    new-instance v3, Lv5/j;
 
     .line 23
     .line 24
-    invoke-direct {v3}, Lt5/j;-><init>()V
+    invoke-direct {v3}, Lv5/j;-><init>()V
 
     .line 25
     .line 26
     .line 27
-    invoke-virtual {v3, v1}, Lt5/j;->q(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v3, v1}, Lv5/j;->r(Landroid/content/res/ColorStateList;)V
 
     .line 28
     .line 29
@@ -3411,11 +3415,11 @@
 
     .line 32
     .line 33
-    iget-object v3, v1, Lt5/j;->d:Lt5/h;
+    iget-object v3, v1, Lv5/j;->d:Lv5/h;
 
     .line 34
     .line 35
-    iget-object v3, v3, Lt5/h;->d:Landroid/content/res/ColorStateList;
+    iget-object v3, v3, Lv5/h;->d:Landroid/content/res/ColorStateList;
 
     .line 36
     .line 37
@@ -3460,7 +3464,7 @@
     .line 55
     .line 56
     .line 57
-    invoke-static {v0, v3}, Lkb/c;->E(Landroid/content/Context;I)Landroid/util/TypedValue;
+    invoke-static {v0, v3}, Ljb/c;->g0(Landroid/content/Context;I)Landroid/util/TypedValue;
 
     .line 58
     .line 59
@@ -3510,7 +3514,7 @@
 
     .line 79
     .line 80
-    invoke-direct {v0, p0, p1, v1, v2}, Ly4/a;-><init>(Lcom/google/android/material/appbar/AppBarLayout;Landroid/content/res/ColorStateList;Lt5/j;Ljava/lang/Integer;)V
+    invoke-direct {v0, p0, p1, v1, v2}, Ly4/a;-><init>(Lcom/google/android/material/appbar/AppBarLayout;Landroid/content/res/ColorStateList;Lv5/j;Ljava/lang/Integer;)V
 
     .line 81
     .line 82
@@ -3527,34 +3531,37 @@
 
     .line 87
     :cond_5
-    invoke-virtual {v1, v0}, Lt5/j;->m(Landroid/content/Context;)V
+    invoke-virtual {v1, v0}, Lv5/j;->n(Landroid/content/Context;)V
 
     .line 88
     .line 89
     .line 90
-    new-instance p1, Ly4/b;
+    new-instance p1, Lq5/e;
 
     .line 91
     .line 92
-    invoke-direct {p1, p0, v1}, Ly4/b;-><init>(Lcom/google/android/material/appbar/AppBarLayout;Lt5/j;)V
+    const/4 v0, 0x1
 
     .line 93
+    invoke-direct {p1, p0, v1, v0}, Lq5/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 94
     .line 95
+    .line 96
     iput-object p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->I1:Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
-    .line 96
     .line 97
+    .line 98
     goto :goto_2
 
-    .line 98
+    .line 99
     :cond_6
     :goto_3
     invoke-super {p0, p1}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 99
     .line 100
     .line 101
+    .line 102
     return-void
 .end method
 
@@ -3575,7 +3582,7 @@
     move-result-object v0
 
     .line 8
-    instance-of v1, v0, Lt5/j;
+    instance-of v1, v0, Lv5/j;
 
     .line 9
     .line 10
@@ -3583,11 +3590,11 @@
 
     .line 11
     .line 12
-    check-cast v0, Lt5/j;
+    check-cast v0, Lv5/j;
 
     .line 13
     .line 14
-    invoke-virtual {v0, p1}, Lt5/j;->p(F)V
+    invoke-virtual {v0, p1}, Lv5/j;->q(F)V
 
     .line 15
     .line 16
@@ -3755,7 +3762,7 @@
     .locals 0
 
     .line 1
-    iput-boolean p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->b1:Z
+    iput-boolean p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->y:Z
 
     .line 2
     .line 3
@@ -3802,7 +3809,7 @@
     .locals 0
 
     .line 1
-    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->x:I
+    iput p1, p0, Lcom/google/android/material/appbar/AppBarLayout;->w:I
 
     .line 2
     .line 3
@@ -3858,7 +3865,7 @@
 
     .line 20
     .line 21
-    instance-of v0, p1, Lt5/j;
+    instance-of v0, p1, Lv5/j;
 
     .line 22
     .line 23
@@ -3866,11 +3873,11 @@
 
     .line 24
     .line 25
-    check-cast p1, Lt5/j;
+    check-cast p1, Lv5/j;
 
     .line 26
     .line 27
-    iget p1, p1, Lt5/j;->L1:I
+    iget p1, p1, Lv5/j;->L1:I
 
     .line 28
     .line 29
@@ -3886,7 +3893,7 @@
 
     .line 34
     :cond_2
-    invoke-static {p1}, Lgc/h;->z(Landroid/graphics/drawable/Drawable;)Landroid/content/res/ColorStateList;
+    invoke-static {p1}, Lcom/bumptech/glide/f;->n(Landroid/graphics/drawable/Drawable;)Landroid/content/res/ColorStateList;
 
     .line 35
     .line 36
@@ -4098,7 +4105,7 @@
     move-result-object v0
 
     .line 5
-    invoke-static {v0, p1}, Leh/k;->q(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v0, p1}, Ljb/c;->G(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
     .line 6
     .line 7
@@ -4120,7 +4127,7 @@
     .end annotation
 
     .line 1
-    invoke-static {p0, p1}, Ly4/g;->a(Lcom/google/android/material/appbar/AppBarLayout;F)V
+    invoke-static {p0, p1}, Ly4/f;->a(Lcom/google/android/material/appbar/AppBarLayout;F)V
 
     .line 2
     .line 3

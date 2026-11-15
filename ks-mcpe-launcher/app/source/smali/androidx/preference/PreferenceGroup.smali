@@ -1,6 +1,6 @@
 .class public abstract Landroidx/preference/PreferenceGroup;
 .super Landroidx/preference/Preference;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
@@ -44,7 +44,7 @@
     invoke-direct {p4}, Ljava/util/ArrayList;-><init>()V
 
     .line 6
-    sget-object p4, Lq1/b;->g:[I
+    sget-object p4, Lq1/d;->g:[I
 
     invoke-virtual {p1, p2, p4, p3, v0}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
@@ -84,7 +84,7 @@
     if-eq p3, p2, :cond_0
 
     .line 12
-    iget-object p2, p0, Landroidx/preference/Preference;->w:Ljava/lang/String;
+    iget-object p2, p0, Landroidx/preference/Preference;->q:Ljava/lang/String;
 
     invoke-static {p2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 

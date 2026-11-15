@@ -1,6 +1,6 @@
 .class public final Ly1/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Le2/a;
@@ -29,7 +29,7 @@
 
 
 # virtual methods
-.method public final I()Z
+.method public final H()Z
     .locals 1
 
     .line 1
@@ -37,7 +37,7 @@
 
     .line 2
     .line 3
-    invoke-interface {v0}, Le2/a;->I()Z
+    invoke-interface {v0}, Le2/a;->H()Z
 
     .line 4
     .line 5
@@ -48,7 +48,7 @@
     return v0
 .end method
 
-.method public final V(I)Ljava/lang/String;
+.method public final X(I)Ljava/lang/String;
     .locals 1
 
     .line 1
@@ -56,7 +56,7 @@
 
     .line 2
     .line 3
-    invoke-interface {v0, p1}, Le2/a;->V(I)Ljava/lang/String;
+    invoke-interface {v0, p1}, Le2/a;->X(I)Ljava/lang/String;
 
     .line 4
     .line 5
@@ -196,7 +196,7 @@
     return-void
 .end method
 
-.method public final s0()Z
+.method public final t0()Z
     .locals 1
 
     .line 1
@@ -204,7 +204,7 @@
 
     .line 2
     .line 3
-    invoke-interface {v0}, Le2/a;->s0()Z
+    invoke-interface {v0}, Le2/a;->t0()Z
 
     .line 4
     .line 5

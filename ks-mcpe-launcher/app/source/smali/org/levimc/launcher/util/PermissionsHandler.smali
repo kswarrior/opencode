@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/PermissionsHandler;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -425,7 +425,7 @@
     const/4 v1, 0x0
 
     .line 37
-    invoke-virtual {v0, p1, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, p1, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 38
     .line 39
@@ -507,14 +507,14 @@
     move-result-object v1
 
     .line 36
-    new-instance v2, Lorg/levimc/launcher/util/q;
+    new-instance v2, Lorg/levimc/launcher/util/r;
 
     .line 37
     .line 38
     const/4 v3, 0x0
 
     .line 39
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 40
     .line 41
@@ -543,14 +543,14 @@
     move-result-object v1
 
     .line 54
-    new-instance v2, Lorg/levimc/launcher/util/q;
+    new-instance v2, Lorg/levimc/launcher/util/r;
 
     .line 55
     .line 56
     const/4 v3, 0x1
 
     .line 57
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 58
     .line 59
@@ -684,7 +684,7 @@
     const/4 v1, 0x0
 
     .line 37
-    invoke-virtual {v0, p1, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, p1, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
 
     .line 38
     .line 39
@@ -802,14 +802,14 @@
     move-result-object v1
 
     .line 40
-    new-instance v2, Lorg/levimc/launcher/util/q;
+    new-instance v2, Lorg/levimc/launcher/util/r;
 
     .line 41
     .line 42
     const/4 v3, 0x2
 
     .line 43
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 44
     .line 45
@@ -838,14 +838,14 @@
     move-result-object v1
 
     .line 58
-    new-instance v2, Lorg/levimc/launcher/util/q;
+    new-instance v2, Lorg/levimc/launcher/util/r;
 
     .line 59
     .line 60
     const/4 v3, 0x3
 
     .line 61
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 62
     .line 63
@@ -886,14 +886,14 @@
 
     .line 8
     .line 9
-    new-instance v0, Lorg/levimc/launcher/util/p;
+    new-instance v0, Lorg/levimc/launcher/util/q;
 
     .line 10
     .line 11
     const/4 v1, 0x1
 
     .line 12
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/util/p;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 13
     .line 14
@@ -927,14 +927,14 @@
 
     .line 8
     .line 9
-    new-instance v0, Lorg/levimc/launcher/util/p;
+    new-instance v0, Lorg/levimc/launcher/util/q;
 
     .line 10
     .line 11
     const/4 v1, 0x0
 
     .line 12
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/util/p;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/util/q;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;I)V
 
     .line 13
     .line 14
@@ -1124,14 +1124,14 @@
 
     .line 14
     .line 15
-    new-instance p2, Lorg/levimc/launcher/util/r;
+    new-instance p2, Lorg/levimc/launcher/util/s;
 
     .line 16
     .line 17
     const/4 v0, 0x0
 
     .line 18
-    invoke-direct {p2, p0, p1, v0}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;I)V
+    invoke-direct {p2, p0, p1, v0}, Lorg/levimc/launcher/util/s;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;I)V
 
     .line 19
     .line 20
@@ -1145,14 +1145,14 @@
 
     .line 25
     :cond_1
-    new-instance p2, Lorg/levimc/launcher/util/r;
+    new-instance p2, Lorg/levimc/launcher/util/s;
 
     .line 26
     .line 27
     const/4 v0, 0x1
 
     .line 28
-    invoke-direct {p2, p0, p1, v0}, Lorg/levimc/launcher/util/r;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;I)V
+    invoke-direct {p2, p0, p1, v0}, Lorg/levimc/launcher/util/s;-><init>(Lorg/levimc/launcher/util/PermissionsHandler;Lorg/levimc/launcher/util/PermissionsHandler$PermissionType;I)V
 
     .line 29
     .line 30
@@ -1197,14 +1197,14 @@
 
     .line 14
     .line 15
-    new-instance v0, Lorg/levimc/launcher/util/h;
+    new-instance v0, Lorg/levimc/launcher/util/i;
 
     .line 16
     .line 17
     const/4 v1, 0x4
 
     .line 18
-    invoke-direct {v0, p2, p1, v1}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p2, p1, v1}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 19
     .line 20

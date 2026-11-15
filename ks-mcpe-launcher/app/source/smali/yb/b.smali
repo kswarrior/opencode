@@ -1,108 +1,94 @@
-.class public final Lyb/b;
-.super Lyb/a;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final synthetic Lyb/b;
+.super Ljava/lang/Object;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
 
 
 # instance fields
-.field public final synthetic e:I
+.field public final synthetic c:Lub/j;
 
-.field public final synthetic f:Lkotlin/jvm/functions/Function0;
+.field public final synthetic d:Lub/o;
+
+.field public final synthetic h:Lub/a;
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V
-    .locals 1
-
-    const/4 v0, 0x1
-
-    iput v0, p0, Lyb/b;->e:I
-
-    iput-object p2, p0, Lyb/b;->f:Lkotlin/jvm/functions/Function0;
-
-    const/4 p2, 0x1
+.method public synthetic constructor <init>(Lub/j;Lub/o;Lub/a;)V
+    .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2}, Lyb/a;-><init>(Ljava/lang/String;Z)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Ljava/lang/String;ZLkotlin/jvm/functions/Function0;)V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput v0, p0, Lyb/b;->e:I
-
-    iput-object p3, p0, Lyb/b;->f:Lkotlin/jvm/functions/Function0;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    invoke-direct {p0, p1, p2}, Lyb/a;-><init>(Ljava/lang/String;Z)V
+    .line 3
+    .line 4
+    iput-object p1, p0, Lyb/b;->c:Lub/j;
 
+    .line 5
+    .line 6
+    iput-object p2, p0, Lyb/b;->d:Lub/o;
+
+    .line 7
+    .line 8
+    iput-object p3, p0, Lyb/b;->h:Lub/a;
+
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()J
-    .locals 2
+.method public final a()Ljava/lang/Object;
+    .locals 3
 
     .line 1
-    iget v0, p0, Lyb/b;->e:I
+    iget-object v0, p0, Lyb/b;->c:Lub/j;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v0, v0, Lub/j;->b:La/a;
 
     .line 4
     .line 5
-    .line 6
-    iget-object v0, p0, Lyb/b;->f:Lkotlin/jvm/functions/Function0;
+    invoke-static {v0}, Lh9/i;->b(Ljava/lang/Object;)V
 
+    .line 6
     .line 7
     .line 8
-    invoke-interface {v0}, Lkotlin/jvm/functions/Function0;->a()Ljava/lang/Object;
+    iget-object v1, p0, Lyb/b;->d:Lub/o;
 
     .line 9
     .line 10
+    invoke-virtual {v1}, Lub/o;->a()Ljava/util/List;
+
     .line 11
-    move-result-object v0
-
     .line 12
-    check-cast v0, Ljava/lang/Number;
-
     .line 13
+    move-result-object v1
+
     .line 14
-    invoke-virtual {v0}, Ljava/lang/Number;->longValue()J
+    iget-object v2, p0, Lyb/b;->h:Lub/a;
 
     .line 15
     .line 16
-    .line 17
-    move-result-wide v0
+    iget-object v2, v2, Lub/a;->h:Lokhttp3/HttpUrl;
 
+    .line 17
     .line 18
-    return-wide v0
+    iget-object v2, v2, Lokhttp3/HttpUrl;->d:Ljava/lang/String;
 
     .line 19
-    :pswitch_0
-    iget-object v0, p0, Lyb/b;->f:Lkotlin/jvm/functions/Function0;
-
     .line 20
-    .line 21
-    invoke-interface {v0}, Lkotlin/jvm/functions/Function0;->a()Ljava/lang/Object;
+    invoke-virtual {v0, v2, v1}, La/a;->e(Ljava/lang/String;Ljava/util/List;)Ljava/util/List;
 
+    .line 21
     .line 22
     .line 23
+    move-result-object v0
+
     .line 24
-    const-wide/16 v0, -0x1
-
-    .line 25
-    .line 26
-    return-wide v0
-
-    .line 27
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    return-object v0
 .end method

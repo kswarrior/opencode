@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/adapter/ServersAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -184,17 +184,26 @@
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 5
+    iget-object v0, p1, Lorg/levimc/launcher/ui/adapter/ServersAdapter$ViewHolder;->chip:Landroid/view/View;
+
+    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ServersAdapter$ViewHolder;->icon:Landroid/widget/ImageView;
+
+    const v2, -0x9c990f
+
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
+
+    .line 6
     iget-object v0, p1, Lorg/levimc/launcher/ui/adapter/ServersAdapter$ViewHolder;->deleteButton:Landroid/widget/Button;
 
     new-instance v1, Lorg/levimc/launcher/ui/adapter/b;
 
-    const/4 v2, 0x4
+    const/4 v2, 0x5
 
     invoke-direct {v1, p0, p2, v2}, Lorg/levimc/launcher/ui/adapter/b;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 6
+    .line 7
     new-instance p2, Lorg/levimc/launcher/util/PersonalizationManager;
 
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
@@ -205,12 +214,12 @@
 
     invoke-direct {p2, v0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
 
-    .line 7
+    .line 8
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     invoke-virtual {p2, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;)V
 
-    .line 8
+    .line 9
     iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;

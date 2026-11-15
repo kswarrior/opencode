@@ -24,29 +24,29 @@
 
 .field public static common_button_textcolor:I = 0x7f06003b
 
-.field public static generic_page_background:I = 0x7f060078
+.field public static generic_page_background:I = 0x7f060079
 
-.field public static mojang_red:I = 0x7f060380
+.field public static mojang_red:I = 0x7f060381
 
-.field public static textGray3:I = 0x7f0603e2
+.field public static textGray3:I = 0x7f0603e9
 
-.field public static textSoftWhite:I = 0x7f0603e3
+.field public static textSoftWhite:I = 0x7f0603ea
 
-.field public static white_10_percent:I = 0x7f0603e9
+.field public static white_10_percent:I = 0x7f0603ff
 
-.field public static white_60_percent:I = 0x7f0603ea
+.field public static white_60_percent:I = 0x7f060400
 
-.field public static xbid_button_background:I = 0x7f0603eb
+.field public static xbid_button_background:I = 0x7f060401
 
-.field public static xbid_button_background_pressed:I = 0x7f0603ec
+.field public static xbid_button_background_pressed:I = 0x7f060402
 
-.field public static xbid_button_border:I = 0x7f0603ed
+.field public static xbid_button_border:I = 0x7f060403
 
-.field public static xbid_clickable_view_background_pressed:I = 0x7f0603ee
+.field public static xbid_clickable_view_background_pressed:I = 0x7f060404
 
-.field public static xbid_clickable_view_border:I = 0x7f0603ef
+.field public static xbid_clickable_view_border:I = 0x7f060405
 
-.field public static xbid_header_background:I = 0x7f0603f0
+.field public static xbid_header_background:I = 0x7f060406
 
 
 # direct methods

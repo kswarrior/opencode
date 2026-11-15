@@ -12,5 +12,11 @@
         <item>Gerencie várias contas Xbox dentro do launcher e alterne entre elas com facilidade.</item>
         <item>O CurseForge permite que você baixe conteúdo da comunidade diretamente.</item>
         <item>Carregue módulos SO para estender ou melhorar os recursos e o desempenho do Minecraft.</item>
+        <item>GIFs animados também podem ser usados como papel de parede do inicializador.</item>
+        <item>Altere o ícone de uma instância nas configurações dela.</item>
+        <item>Marque módulos com uma estrela no menu de mods para encontrá-los nos Favoritos.</item>
+        <item>Arraste o título do menu de mods para movê-lo ou o canto inferior direito para redimensioná-lo.</item>
+        <item>Use Somente compatíveis em Mods externos para filtrar pela sua versão do Minecraft.</item>
+        <item>Faça uma cópia de segurança do seu mundo antes de editar os dados NBT dele.</item>
     </string-array>
 </resources>

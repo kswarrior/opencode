@@ -1,9 +1,9 @@
 .class public final synthetic Lorg/levimc/launcher/util/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
@@ -35,7 +35,7 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
+.method public final run()V
     .locals 1
 
     .line 1
@@ -52,7 +52,7 @@
 
     .line 7
     .line 8
-    invoke-static {v0, p1}, Lorg/levimc/launcher/util/PermissionsHandler;->b(Lorg/levimc/launcher/util/PermissionsHandler;Landroid/view/View;)V
+    invoke-static {v0}, Lorg/levimc/launcher/util/PermissionsHandler;->h(Lorg/levimc/launcher/util/PermissionsHandler;)V
 
     .line 9
     .line 10
@@ -65,7 +65,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, p1}, Lorg/levimc/launcher/util/PermissionsHandler;->i(Lorg/levimc/launcher/util/PermissionsHandler;Landroid/view/View;)V
+    invoke-static {v0}, Lorg/levimc/launcher/util/PermissionsHandler;->g(Lorg/levimc/launcher/util/PermissionsHandler;)V
 
     .line 15
     .line 16
@@ -73,39 +73,11 @@
     return-void
 
     .line 18
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/util/q;->d:Lorg/levimc/launcher/util/PermissionsHandler;
-
-    .line 19
-    .line 20
-    invoke-static {v0, p1}, Lorg/levimc/launcher/util/PermissionsHandler;->a(Lorg/levimc/launcher/util/PermissionsHandler;Landroid/view/View;)V
-
-    .line 21
-    .line 22
-    .line 23
-    return-void
-
-    .line 24
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/util/q;->d:Lorg/levimc/launcher/util/PermissionsHandler;
-
-    .line 25
-    .line 26
-    invoke-static {v0, p1}, Lorg/levimc/launcher/util/PermissionsHandler;->f(Lorg/levimc/launcher/util/PermissionsHandler;Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
     nop
 
-    .line 31
+    .line 19
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

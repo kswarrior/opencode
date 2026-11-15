@@ -1,51 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/util/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Lorg/levimc/launcher/util/ApkImportManager$1$1;
-
-.field public final synthetic h:Ljava/lang/String;
+.field public final synthetic b:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;I)V
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/util/a;->c:I
+    iput p2, p0, Lorg/levimc/launcher/util/a;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/util/a;->d:Lorg/levimc/launcher/util/ApkImportManager$1$1;
+    iput-object p1, p0, Lorg/levimc/launcher/util/a;->b:Ljava/lang/Object;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/util/a;->h:Ljava/lang/String;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 2
+.method public final start(Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/util/a;->c:I
+    iget v0, p0, Lorg/levimc/launcher/util/a;->a:I
 
     .line 2
     .line 3
@@ -54,15 +48,15 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/util/a;->d:Lorg/levimc/launcher/util/ApkImportManager$1$1;
+    iget-object v0, p0, Lorg/levimc/launcher/util/a;->b:Ljava/lang/Object;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/util/a;->h:Ljava/lang/String;
+    check-cast v0, Ljava/util/List;
 
     .line 9
     .line 10
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/ApkImportManager$1$1;->b(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;)V
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/util/ApkImportManager;->b(Ljava/util/List;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
 
     .line 11
     .line 12
@@ -71,15 +65,15 @@
 
     .line 14
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/util/a;->d:Lorg/levimc/launcher/util/ApkImportManager$1$1;
+    iget-object v0, p0, Lorg/levimc/launcher/util/a;->b:Ljava/lang/Object;
 
     .line 15
     .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/util/a;->h:Ljava/lang/String;
+    check-cast v0, Landroid/net/Uri;
 
     .line 17
     .line 18
-    invoke-static {v0, v1}, Lorg/levimc/launcher/util/ApkImportManager$1$1;->c(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;)V
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/util/ApkImportManager;->a(Landroid/net/Uri;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
 
     .line 19
     .line 20

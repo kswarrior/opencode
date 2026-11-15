@@ -1,18 +1,18 @@
 .class public Lcom/google/android/material/divider/MaterialDivider;
 .super Landroid/view/View;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final c:Lt5/j;
+.field public final c:Lv5/j;
 
 .field public d:I
 
 .field public h:I
 
-.field public q:I
+.field public p:I
 
-.field public w:I
+.field public q:I
 
 
 # direct methods
@@ -20,7 +20,7 @@
     .locals 7
 
     .line 1
-    const v0, 0x7f1404d3
+    const v0, 0x7f1404fc
 
     .line 2
     .line 3
@@ -30,7 +30,7 @@
     .line 5
     .line 6
     .line 7
-    invoke-static {p1, p2, v4, v0}, La6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    invoke-static {p1, p2, v4, v0}, Lc6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
 
     .line 8
     .line 9
@@ -51,16 +51,16 @@
     move-result-object v1
 
     .line 18
-    new-instance p1, Lt5/j;
+    new-instance p1, Lv5/j;
 
     .line 19
     .line 20
-    invoke-direct {p1}, Lt5/j;-><init>()V
+    invoke-direct {p1}, Lv5/j;-><init>()V
 
     .line 21
     .line 22
     .line 23
-    iput-object p1, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lt5/j;
+    iput-object p1, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lv5/j;
 
     .line 24
     .line 25
@@ -71,11 +71,11 @@
 
     .line 27
     .line 28
-    sget-object v3, Lw4/a;->w:[I
+    sget-object v3, Lw4/a;->y:[I
 
     .line 29
     .line 30
-    const v5, 0x7f1404d3
+    const v5, 0x7f1404fc
 
     .line 31
     .line 32
@@ -83,7 +83,7 @@
     move-object v2, p2
 
     .line 34
-    invoke-static/range {v1 .. v6}, Ln5/n;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
+    invoke-static/range {v1 .. v6}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
 
     .line 35
     .line 36
@@ -99,7 +99,7 @@
     move-result-object v0
 
     .line 42
-    const v2, 0x7f07031e
+    const v2, 0x7f070322
 
     .line 43
     .line 44
@@ -138,7 +138,7 @@
     move-result v0
 
     .line 61
-    iput v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
+    iput v0, p0, Lcom/google/android/material/divider/MaterialDivider;->p:I
 
     .line 62
     .line 63
@@ -153,11 +153,11 @@
     move-result v0
 
     .line 68
-    iput v0, p0, Lcom/google/android/material/divider/MaterialDivider;->w:I
+    iput v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
 
     .line 69
     .line 70
-    invoke-static {v1, p2, p1}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v1, p2, p1}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 71
     .line 72
@@ -203,7 +203,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->w:I
+    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
 
     .line 2
     .line 3
@@ -214,7 +214,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
+    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->p:I
 
     .line 2
     .line 3
@@ -271,7 +271,7 @@
 
     .line 15
     .line 16
-    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->w:I
+    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
 
     .line 17
     .line 18
@@ -279,7 +279,7 @@
 
     .line 19
     :cond_1
-    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
+    iget v0, p0, Lcom/google/android/material/divider/MaterialDivider;->p:I
 
     .line 20
     .line 21
@@ -296,7 +296,7 @@
     move-result v2
 
     .line 27
-    iget v3, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
+    iget v3, p0, Lcom/google/android/material/divider/MaterialDivider;->p:I
 
     .line 28
     .line 29
@@ -316,7 +316,7 @@
     move-result v2
 
     .line 35
-    iget v3, p0, Lcom/google/android/material/divider/MaterialDivider;->w:I
+    iget v3, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
 
     .line 36
     .line 37
@@ -343,7 +343,7 @@
     sub-int/2addr v3, v4
 
     .line 47
-    iget-object v4, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lt5/j;
+    iget-object v4, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lv5/j;
 
     .line 48
     .line 49
@@ -352,7 +352,7 @@
     .line 50
     .line 51
     .line 52
-    invoke-virtual {v4, p1}, Lt5/j;->draw(Landroid/graphics/Canvas;)V
+    invoke-virtual {v4, p1}, Lv5/j;->draw(Landroid/graphics/Canvas;)V
 
     .line 53
     .line 54
@@ -454,7 +454,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lt5/j;
+    iget-object v0, p0, Lcom/google/android/material/divider/MaterialDivider;->c:Lv5/j;
 
     .line 8
     .line 9
@@ -466,7 +466,7 @@
     move-result-object p1
 
     .line 13
-    invoke-virtual {v0, p1}, Lt5/j;->q(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lv5/j;->r(Landroid/content/res/ColorStateList;)V
 
     .line 14
     .line 15
@@ -512,7 +512,7 @@
     .locals 0
 
     .line 1
-    iput p1, p0, Lcom/google/android/material/divider/MaterialDivider;->w:I
+    iput p1, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
 
     .line 2
     .line 3
@@ -559,7 +559,7 @@
     .locals 0
 
     .line 1
-    iput p1, p0, Lcom/google/android/material/divider/MaterialDivider;->q:I
+    iput p1, p0, Lcom/google/android/material/divider/MaterialDivider;->p:I
 
     .line 2
     .line 3

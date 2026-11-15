@@ -1,6 +1,6 @@
 .class public final Lz/c;
 .super Lz/n;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -305,71 +305,60 @@
 
     .line 133
     .line 134
-    invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
+    invoke-static {p1, v2}, Lcom/google/android/gms/internal/measurement/x;->i(Ljava/util/ArrayList;I)Ljava/lang/Object;
 
     .line 135
     .line 136
     .line 137
-    move-result p2
-
-    .line 138
-    sub-int/2addr p2, v2
-
-    .line 139
-    invoke-virtual {p1, p2}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
-
-    .line 140
-    .line 141
-    .line 142
     move-result-object p1
 
-    .line 143
+    .line 138
     check-cast p1, Lz/n;
 
-    .line 144
-    .line 145
+    .line 139
+    .line 140
     iget-object p1, p1, Lz/n;->b:Ly/d;
 
-    .line 146
-    .line 147
+    .line 141
+    .line 142
     iput-object p1, p0, Lz/n;->b:Ly/d;
 
-    .line 148
-    .line 149
+    .line 143
+    .line 144
     :cond_9
     iget p1, p0, Lz/n;->f:I
 
-    .line 150
-    .line 151
+    .line 145
+    .line 146
     if-nez p1, :cond_a
 
+    .line 147
+    .line 148
+    iget-object p1, p0, Lz/n;->b:Ly/d;
+
+    .line 149
+    .line 150
+    iget p1, p1, Ly/d;->i0:I
+
+    .line 151
     .line 152
+    goto :goto_5
+
     .line 153
+    :cond_a
     iget-object p1, p0, Lz/n;->b:Ly/d;
 
     .line 154
     .line 155
-    iget p1, p1, Ly/d;->i0:I
+    iget p1, p1, Ly/d;->j0:I
 
     .line 156
     .line 157
-    goto :goto_5
-
-    .line 158
-    :cond_a
-    iget-object p1, p0, Lz/n;->b:Ly/d;
-
-    .line 159
-    .line 160
-    iget p1, p1, Ly/d;->j0:I
-
-    .line 161
-    .line 162
     :goto_5
     iput p1, p0, Lz/c;->l:I
 
-    .line 163
-    .line 164
+    .line 158
+    .line 159
     return-void
 .end method
 

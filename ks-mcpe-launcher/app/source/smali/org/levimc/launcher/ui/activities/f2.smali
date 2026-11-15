@@ -1,121 +1,82 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/f2;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Ljava/util/function/BooleanSupplier;
+.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic a:[Z
 
-.field public final synthetic b:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
+.field public final synthetic b:[Landroid/widget/CheckBox;
 
-.field public final synthetic c:J
+.field public final synthetic c:[Z
+
+.field public final synthetic d:Ljava/lang/Runnable;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;JI)V
+.method public synthetic constructor <init>([Z[Landroid/widget/CheckBox;[ZLjava/lang/Runnable;)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/f2;->a:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/f2;->b:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/f2;->a:[Z
+
     .line 5
-    iput-wide p2, p0, Lorg/levimc/launcher/ui/activities/f2;->c:J
-
     .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/f2;->b:[Landroid/widget/CheckBox;
 
+    .line 7
     .line 8
+    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/f2;->c:[Z
+
     .line 9
     .line 10
+    iput-object p4, p0, Lorg/levimc/launcher/ui/activities/f2;->d:Ljava/lang/Runnable;
+
+    .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final getAsBoolean()Z
-    .locals 3
+.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+    .locals 6
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/f2;->a:I
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/f2;->c:[Z
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/f2;->d:Ljava/lang/Runnable;
 
     .line 4
     .line 5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f2;->a:[Z
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f2;->b:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
-
     .line 7
-    .line 8
-    iget-wide v1, p0, Lorg/levimc/launcher/ui/activities/f2;->c:J
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/f2;->b:[Landroid/widget/CheckBox;
 
+    .line 8
     .line 9
+    move-object v4, p1
+
     .line 10
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->M(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;J)Z
+    move v5, p2
 
     .line 11
+    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->F([Z[Landroid/widget/CheckBox;[ZLjava/lang/Runnable;Landroid/widget/CompoundButton;Z)V
+
     .line 12
     .line 13
-    move-result v0
-
     .line 14
-    return v0
-
-    .line 15
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f2;->b:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
-
-    .line 16
-    .line 17
-    iget-wide v1, p0, Lorg/levimc/launcher/ui/activities/f2;->c:J
-
-    .line 18
-    .line 19
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->F(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;J)Z
-
-    .line 20
-    .line 21
-    .line 22
-    move-result v0
-
-    .line 23
-    return v0
-
-    .line 24
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/f2;->b:Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
-
-    .line 25
-    .line 26
-    iget-wide v1, p0, Lorg/levimc/launcher/ui/activities/f2;->c:J
-
-    .line 27
-    .line 28
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->A(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;J)Z
-
-    .line 29
-    .line 30
-    .line 31
-    move-result v0
-
-    .line 32
-    return v0
-
-    .line 33
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    return-void
 .end method

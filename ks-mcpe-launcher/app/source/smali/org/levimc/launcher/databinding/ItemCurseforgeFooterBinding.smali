@@ -1,12 +1,12 @@
 .class public final Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final btnNextPage:Landroid/widget/Button;
+.field public final btnNextPage:Lcom/google/android/material/button/MaterialButton;
 
-.field public final btnPrevPage:Landroid/widget/Button;
+.field public final btnPrevPage:Lcom/google/android/material/button/MaterialButton;
 
 .field private final rootView:Landroid/widget/LinearLayout;
 
@@ -14,7 +14,7 @@
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/Button;Landroid/widget/Button;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -27,11 +27,11 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;->btnNextPage:Landroid/widget/Button;
+    iput-object p2, p0, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;->btnNextPage:Lcom/google/android/material/button/MaterialButton;
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;->btnPrevPage:Landroid/widget/Button;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;->btnPrevPage:Lcom/google/android/material/button/MaterialButton;
 
     .line 9
     .line 10
@@ -50,7 +50,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -58,7 +58,7 @@
     move-result-object v1
 
     .line 7
-    check-cast v1, Landroid/widget/Button;
+    check-cast v1, Lcom/google/android/material/button/MaterialButton;
 
     .line 8
     .line 9
@@ -70,7 +70,7 @@
 
     .line 12
     .line 13
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 14
     .line 15
@@ -78,7 +78,7 @@
     move-result-object v2
 
     .line 17
-    check-cast v2, Landroid/widget/Button;
+    check-cast v2, Lcom/google/android/material/button/MaterialButton;
 
     .line 18
     .line 19
@@ -90,7 +90,7 @@
 
     .line 22
     .line 23
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 24
     .line 25
@@ -114,7 +114,7 @@
 
     .line 34
     .line 35
-    invoke-direct {v0, p0, v1, v2, v3}, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/Button;Landroid/widget/Button;Landroid/widget/TextView;)V
+    invoke-direct {v0, p0, v1, v2, v3}, Lorg/levimc/launcher/databinding/ItemCurseforgeFooterBinding;-><init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;)V
 
     .line 36
     .line 37

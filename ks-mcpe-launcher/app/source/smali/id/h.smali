@@ -1,162 +1,95 @@
 .class public final Lid/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lrc/e;
 
 
 # instance fields
-.field public a:I
+.field public final a:Lorg/apache/commons/logging/Log;
 
-.field public b:[B
+.field public final b:[Ljava/lang/String;
 
 
 # direct methods
-.method public constructor <init>(I[B)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput p1, p0, Lid/h;->a:I
-
-    .line 5
-    .line 6
-    iput-object p2, p0, Lid/h;->b:[B
-
-    .line 7
-    .line 8
-    return-void
-.end method
-
-
-# virtual methods
-.method public a(B)V
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lid/h;->b:[B
-
-    .line 2
-    .line 3
-    iget v1, p0, Lid/h;->a:I
-
-    .line 4
-    .line 5
-    aput-byte p1, v0, v1
-
-    .line 6
-    .line 7
-    add-int/lit8 v1, v1, 0x1
-
-    .line 8
-    .line 9
-    iput v1, p0, Lid/h;->a:I
-
-    .line 10
-    .line 11
-    return-void
-.end method
-
-.method public b(I)V
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    and-int/lit16 v0, p1, 0xff
+    new-instance v0, Lid/h;
 
     .line 2
     .line 3
-    int-to-byte v0, v0
+    invoke-direct {v0}, Lid/h;-><init>()V
 
     .line 4
-    invoke-virtual {p0, v0}, Lid/h;->a(B)V
-
     .line 5
     .line 6
-    .line 7
-    shr-int/lit8 v0, p1, 0x8
+    return-void
+.end method
 
+.method public constructor <init>()V
+    .locals 2
+
+    .line 1
+    const-string v0, "GET"
+
+    .line 2
+    .line 3
+    const-string v1, "HEAD"
+
+    .line 4
+    .line 5
+    filled-new-array {v0, v1}, [Ljava/lang/String;
+
+    .line 6
+    .line 7
     .line 8
+    move-result-object v0
+
     .line 9
-    and-int/lit16 v0, v0, 0xff
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 10
     .line 11
-    int-to-byte v0, v0
-
     .line 12
-    invoke-virtual {p0, v0}, Lid/h;->a(B)V
+    const-class v1, Lid/h;
 
     .line 13
     .line 14
-    .line 15
-    shr-int/lit8 v0, p1, 0x10
+    invoke-static {v1}, Lorg/apache/commons/logging/LogFactory;->getLog(Ljava/lang/Class;)Lorg/apache/commons/logging/Log;
 
+    .line 15
     .line 16
     .line 17
-    and-int/lit16 v0, v0, 0xff
+    move-result-object v1
 
     .line 18
-    .line 19
-    int-to-byte v0, v0
+    iput-object v1, p0, Lid/h;->a:Lorg/apache/commons/logging/Log;
 
+    .line 19
     .line 20
-    invoke-virtual {p0, v0}, Lid/h;->a(B)V
+    invoke-virtual {v0}, [Ljava/lang/String;->clone()Ljava/lang/Object;
 
     .line 21
     .line 22
     .line 23
-    shr-int/lit8 p1, p1, 0x18
+    move-result-object v0
 
     .line 24
+    check-cast v0, [Ljava/lang/String;
+
     .line 25
-    and-int/lit16 p1, p1, 0xff
-
     .line 26
+    invoke-static {v0}, Ljava/util/Arrays;->sort([Ljava/lang/Object;)V
+
     .line 27
-    int-to-byte p1, p1
-
     .line 28
-    invoke-virtual {p0, p1}, Lid/h;->a(B)V
-
     .line 29
+    iput-object v0, p0, Lid/h;->b:[Ljava/lang/String;
+
     .line 30
     .line 31
-    return-void
-.end method
-
-.method public c(I)V
-    .locals 1
-
-    .line 1
-    and-int/lit16 v0, p1, 0xff
-
-    .line 2
-    .line 3
-    int-to-byte v0, v0
-
-    .line 4
-    invoke-virtual {p0, v0}, Lid/h;->a(B)V
-
-    .line 5
-    .line 6
-    .line 7
-    shr-int/lit8 p1, p1, 0x8
-
-    .line 8
-    .line 9
-    and-int/lit16 p1, p1, 0xff
-
-    .line 10
-    .line 11
-    int-to-byte p1, p1
-
-    .line 12
-    invoke-virtual {p0, p1}, Lid/h;->a(B)V
-
-    .line 13
-    .line 14
-    .line 15
     return-void
 .end method

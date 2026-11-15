@@ -1,89 +1,53 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lorg/levimc/launcher/ui/dialogs/gameversionselect/UltimateVersionAdapter$OnVersionSelectListener;
-.implements Lorg/levimc/launcher/ui/dialogs/gameversionselect/UltimateVersionAdapter$OnVersionLongClickListener;
-.implements Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic a:Landroid/app/Dialog;
+.field public final synthetic c:Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;
+
+.field public final synthetic d:Ljava/lang/Exception;
 
 
 # direct methods
-.method public synthetic constructor <init>(Landroid/app/Dialog;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;Ljava/lang/Exception;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/f;->a:Landroid/app/Dialog;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/f;->c:Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;
+
     .line 5
     .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/f;->d:Ljava/lang/Exception;
+
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public onClick(I)V
-    .locals 1
+.method public final run()V
+    .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/f;->a:Landroid/app/Dialog;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/f;->c:Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;
 
     .line 2
     .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/f;->d:Ljava/lang/Exception;
 
     .line 4
     .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->a(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;I)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public onVersionLongClicked(Lorg/levimc/launcher/core/versions/GameVersion;)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/f;->a:Landroid/app/Dialog;
-
-    .line 2
-    .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;
-
-    .line 4
-    .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->a(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;Lorg/levimc/launcher/core/versions/GameVersion;)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public onVersionSelected(Lorg/levimc/launcher/core/versions/GameVersion;)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/f;->a:Landroid/app/Dialog;
-
-    .line 2
-    .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;
-
-    .line 4
-    .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->c(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;->b(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;Ljava/lang/Exception;)V
 
     .line 6
     .line 7

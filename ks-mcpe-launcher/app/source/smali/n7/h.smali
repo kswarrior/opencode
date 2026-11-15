@@ -1,143 +1,159 @@
-.class public final synthetic Ln7/h;
+.class public final Ln7/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Le9/k;
+.implements Lk7/g;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public a:Z
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public b:Z
 
-.field public final synthetic h:Ljava/lang/Object;
+.field public c:Lk7/c;
+
+.field public final d:Ln7/f;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-    .locals 0
+.method public constructor <init>(Ln7/f;)V
+    .locals 1
 
     .line 1
-    iput p3, p0, Ln7/h;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Ln7/h;->d:Ljava/lang/Object;
-
     .line 4
+    const/4 v0, 0x0
+
     .line 5
-    iput-object p2, p0, Ln7/h;->h:Ljava/lang/Object;
+    iput-boolean v0, p0, Ln7/h;->a:Z
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-boolean v0, p0, Ln7/h;->b:Z
 
     .line 8
     .line 9
+    iput-object p1, p0, Ln7/h;->d:Ln7/f;
+
     .line 10
+    .line 11
     return-void
 .end method
 
 
 # virtual methods
-.method public final g(Ljava/lang/Object;)Ljava/lang/Object;
+.method public final e(Ljava/lang/String;)Lk7/g;
     .locals 3
 
     .line 1
-    iget v0, p0, Ln7/h;->c:I
+    iget-boolean v0, p0, Ln7/h;->a:Z
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    if-nez v0, :cond_0
 
     .line 4
     .line 5
+    const/4 v0, 0x1
+
     .line 6
-    iget-object v0, p0, Ln7/h;->d:Ljava/lang/Object;
+    iput-boolean v0, p0, Ln7/h;->a:Z
 
     .line 7
     .line 8
-    check-cast v0, Lp9/d;
+    iget-object v0, p0, Ln7/h;->c:Lk7/c;
 
     .line 9
     .line 10
-    iget-object v1, p0, Ln7/h;->h:Ljava/lang/Object;
+    iget-boolean v1, p0, Ln7/h;->b:Z
 
     .line 11
     .line 12
-    check-cast v1, Li6/m0;
+    iget-object v2, p0, Ln7/h;->d:Ln7/f;
 
     .line 13
     .line 14
-    check-cast p1, Ljava/lang/Throwable;
+    invoke-virtual {v2, v0, p1, v1}, Ln7/f;->h(Lk7/c;Ljava/lang/Object;Z)V
 
     .line 15
     .line 16
-    iget-object p1, v0, Lp9/d;->h:Landroid/os/Handler;
-
     .line 17
+    return-object p0
+
     .line 18
-    invoke-virtual {p1, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    :cond_0
+    new-instance p1, Lk7/b;
 
     .line 19
     .line 20
+    const-string v0, "Cannot encode a second value in the ValueEncoderContext"
+
     .line 21
-    sget-object p1, Lq8/k;->a:Lq8/k;
-
     .line 22
+    invoke-direct {p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
     .line 23
-    return-object p1
-
     .line 24
-    :pswitch_0
-    iget-object v0, p0, Ln7/h;->d:Ljava/lang/Object;
-
     .line 25
-    .line 26
-    check-cast v0, Ln7/j;
+    throw p1
+.end method
 
-    .line 27
-    .line 28
-    iget-object v1, p0, Ln7/h;->h:Ljava/lang/Object;
+.method public final f(Z)Lk7/g;
+    .locals 3
 
-    .line 29
-    .line 30
-    check-cast v1, Ljava/lang/String;
+    .line 1
+    iget-boolean v0, p0, Ln7/h;->a:Z
 
-    .line 31
-    .line 32
-    check-cast p1, La1/b;
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
 
-    .line 33
-    .line 34
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 4
+    .line 5
+    const/4 v0, 0x1
 
-    .line 35
-    .line 36
-    .line 37
-    sget-object v2, Ln7/j;->d:La1/f;
+    .line 6
+    iput-boolean v0, p0, Ln7/h;->a:Z
 
-    .line 38
-    .line 39
-    invoke-virtual {p1, v2, v1}, La1/b;->d(La1/f;Ljava/lang/Object;)V
+    .line 7
+    .line 8
+    iget-object v0, p0, Ln7/h;->c:Lk7/c;
 
-    .line 40
-    .line 41
-    .line 42
-    invoke-virtual {v0, p1, v1}, Ln7/j;->d(La1/b;Ljava/lang/String;)V
+    .line 9
+    .line 10
+    iget-boolean v1, p0, Ln7/h;->b:Z
 
-    .line 43
-    .line 44
-    .line 45
-    const/4 p1, 0x0
+    .line 11
+    .line 12
+    iget-object v2, p0, Ln7/h;->d:Ln7/f;
 
-    .line 46
-    return-object p1
+    .line 13
+    .line 14
+    invoke-virtual {v2, v0, p1, v1}, Ln7/f;->f(Lk7/c;IZ)V
 
-    .line 47
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 15
+    .line 16
+    .line 17
+    return-object p0
+
+    .line 18
+    :cond_0
+    new-instance p1, Lk7/b;
+
+    .line 19
+    .line 20
+    const-string v0, "Cannot encode a second value in the ValueEncoderContext"
+
+    .line 21
+    .line 22
+    invoke-direct {p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    .line 23
+    .line 24
+    .line 25
+    throw p1
 .end method

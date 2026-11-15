@@ -1,6 +1,6 @@
 .class final Lcom/microsoft/playfab/utilities/multiplayer/HttpResponseMultiplayer;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -38,11 +38,11 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
+    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
 
     .line 6
     .line 7
-    invoke-virtual {v0}, Lvb/k;->size()I
+    invoke-virtual {v0}, Lub/p;->size()I
 
     .line 8
     .line 9
@@ -62,11 +62,11 @@
 
     .line 15
     .line 16
-    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
+    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
 
     .line 17
     .line 18
-    invoke-virtual {v0, p1}, Lvb/k;->d(I)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lub/p;->d(I)Ljava/lang/String;
 
     .line 19
     .line 20
@@ -97,11 +97,11 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
+    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
 
     .line 6
     .line 7
-    invoke-virtual {v0}, Lvb/k;->size()I
+    invoke-virtual {v0}, Lub/p;->size()I
 
     .line 8
     .line 9
@@ -121,11 +121,11 @@
 
     .line 15
     .line 16
-    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
+    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
 
     .line 17
     .line 18
-    invoke-virtual {v0, p1}, Lvb/k;->h(I)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lub/p;->h(I)Ljava/lang/String;
 
     .line 19
     .line 20
@@ -152,11 +152,11 @@
 
     .line 2
     .line 3
-    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
+    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Lvb/k;->size()I
+    invoke-virtual {v0}, Lub/p;->size()I
 
     .line 6
     .line 7
@@ -176,11 +176,11 @@
 
     .line 2
     .line 3
-    iget-object v0, v0, Lokhttp3/Response;->y:Lvb/r;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lub/w;
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Lvb/r;->i()Ljava/lang/String;
+    invoke-virtual {v0}, Lub/w;->u()Ljava/lang/String;
 
     .line 6
     .line 7
@@ -216,7 +216,7 @@
 
     .line 2
     .line 3
-    iget v0, v0, Lokhttp3/Response;->q:I
+    iget v0, v0, Lokhttp3/Response;->p:I
 
     .line 4
     .line 5
@@ -246,7 +246,7 @@
 
     .line 2
     .line 3
-    iget-boolean v0, v0, Lokhttp3/Response;->F1:Z
+    iget-boolean v0, v0, Lokhttp3/Response;->G1:Z
 
     .line 4
     .line 5

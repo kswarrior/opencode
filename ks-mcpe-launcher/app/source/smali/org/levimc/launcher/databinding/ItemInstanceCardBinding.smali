@@ -1,12 +1,14 @@
 .class public final Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
 .field public final cardDisplayName:Landroid/widget/TextView;
 
-.field public final cardSettingsIcon:Landroid/widget/ImageView;
+.field public final cardIcon:Landroid/widget/ImageView;
+
+.field public final cardSettingsIcon:Lcom/google/android/material/button/MaterialButton;
 
 .field public final cardTypeTag:Landroid/widget/TextView;
 
@@ -18,7 +20,7 @@
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ImageView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;)V
     .locals 0
 
     .line 1
@@ -35,34 +37,38 @@
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardSettingsIcon:Landroid/widget/ImageView;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardIcon:Landroid/widget/ImageView;
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardTypeTag:Landroid/widget/TextView;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardSettingsIcon:Lcom/google/android/material/button/MaterialButton;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardVersionCode:Landroid/widget/TextView;
+    iput-object p5, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardTypeTag:Landroid/widget/TextView;
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->instanceCardRoot:Landroid/widget/LinearLayout;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->cardVersionCode:Landroid/widget/TextView;
 
     .line 15
     .line 16
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;->instanceCardRoot:Landroid/widget/LinearLayout;
+
+    .line 17
+    .line 18
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;
-    .locals 9
+    .locals 10
 
     .line 1
     sget v0, Lorg/levimc/launcher/R$id;->card_display_name:I
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -81,11 +87,11 @@
 
     .line 11
     .line 12
-    sget v0, Lorg/levimc/launcher/R$id;->card_settings_icon:I
+    sget v0, Lorg/levimc/launcher/R$id;->card_icon:I
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 15
     .line 16
@@ -104,11 +110,11 @@
 
     .line 22
     .line 23
-    sget v0, Lorg/levimc/launcher/R$id;->card_type_tag:I
+    sget v0, Lorg/levimc/launcher/R$id;->card_settings_icon:I
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 26
     .line 27
@@ -119,7 +125,7 @@
     move-object v6, v1
 
     .line 30
-    check-cast v6, Landroid/widget/TextView;
+    check-cast v6, Lcom/google/android/material/button/MaterialButton;
 
     .line 31
     .line 32
@@ -127,11 +133,11 @@
 
     .line 33
     .line 34
-    sget v0, Lorg/levimc/launcher/R$id;->card_version_code:I
+    sget v0, Lorg/levimc/launcher/R$id;->card_type_tag:I
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
     .line 37
     .line 38
@@ -150,66 +156,89 @@
 
     .line 44
     .line 45
-    move-object v3, p0
+    sget v0, Lorg/levimc/launcher/R$id;->card_version_code:I
 
     .line 46
-    check-cast v3, Landroid/widget/LinearLayout;
-
     .line 47
-    .line 48
-    new-instance v2, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;
+    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
+    .line 48
     .line 49
     .line 50
-    move-object v8, v3
+    move-result-object v1
 
     .line 51
-    invoke-direct/range {v2 .. v8}, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;)V
+    move-object v8, v1
 
     .line 52
+    check-cast v8, Landroid/widget/TextView;
+
     .line 53
     .line 54
-    return-object v2
+    if-eqz v8, :cond_0
 
     .line 55
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
-
     .line 56
-    .line 57
-    .line 58
-    move-result-object p0
+    move-object v3, p0
 
+    .line 57
+    check-cast v3, Landroid/widget/LinearLayout;
+
+    .line 58
     .line 59
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+    new-instance v2, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;
 
     .line 60
     .line 61
+    move-object v9, v3
+
     .line 62
-    move-result-object p0
+    invoke-direct/range {v2 .. v9}, Lorg/levimc/launcher/databinding/ItemInstanceCardBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/ImageView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;)V
 
     .line 63
-    new-instance v0, Ljava/lang/NullPointerException;
-
     .line 64
     .line 65
-    const-string v1, "Missing required view with ID: "
+    return-object v2
 
     .line 66
-    .line 67
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
 
+    .line 67
     .line 68
     .line 69
-    .line 70
     move-result-object p0
 
-    .line 71
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+    .line 70
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
 
+    .line 71
     .line 72
     .line 73
+    move-result-object p0
+
     .line 74
+    new-instance v0, Ljava/lang/NullPointerException;
+
+    .line 75
+    .line 76
+    const-string v1, "Missing required view with ID: "
+
+    .line 77
+    .line 78
+    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 79
+    .line 80
+    .line 81
+    move-result-object p0
+
+    .line 82
+    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 83
+    .line 84
+    .line 85
     throw v0
 .end method
 

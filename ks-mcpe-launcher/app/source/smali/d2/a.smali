@@ -1,14 +1,14 @@
 .class public final Ld2/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
 .field public final a:Lc2/e;
 
-.field public final b:La8/a;
+.field public final b:Landroidx/lifecycle/j0;
 
-.field public final c:Lce/b;
+.field public final c:Lp7/d;
 
 .field public final d:Ljava/util/LinkedHashMap;
 
@@ -22,7 +22,7 @@
 
 
 # direct methods
-.method public constructor <init>(Lc2/e;La8/a;)V
+.method public constructor <init>(Lc2/e;Landroidx/lifecycle/j0;)V
     .locals 0
 
     .line 1
@@ -35,43 +35,47 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Ld2/a;->b:La8/a;
+    iput-object p2, p0, Ld2/a;->b:Landroidx/lifecycle/j0;
 
     .line 7
     .line 8
-    new-instance p1, Lce/b;
+    new-instance p1, Lp7/d;
 
     .line 9
     .line 10
-    invoke-direct {p1}, Ljava/lang/Object;-><init>()V
+    const/16 p2, 0x9
 
     .line 11
     .line 12
-    .line 13
-    iput-object p1, p0, Ld2/a;->c:Lce/b;
+    invoke-direct {p1, p2}, Lp7/d;-><init>(I)V
 
+    .line 13
     .line 14
     .line 15
-    new-instance p1, Ljava/util/LinkedHashMap;
+    iput-object p1, p0, Ld2/a;->c:Lp7/d;
 
     .line 16
     .line 17
-    invoke-direct {p1}, Ljava/util/LinkedHashMap;-><init>()V
+    new-instance p1, Ljava/util/LinkedHashMap;
 
     .line 18
     .line 19
-    .line 20
-    iput-object p1, p0, Ld2/a;->d:Ljava/util/LinkedHashMap;
+    invoke-direct {p1}, Ljava/util/LinkedHashMap;-><init>()V
 
+    .line 20
     .line 21
     .line 22
-    const/4 p1, 0x1
+    iput-object p1, p0, Ld2/a;->d:Ljava/util/LinkedHashMap;
 
     .line 23
+    .line 24
+    const/4 p1, 0x1
+
+    .line 25
     iput-boolean p1, p0, Ld2/a;->h:Z
 
-    .line 24
-    .line 25
+    .line 26
+    .line 27
     return-void
 .end method
 
@@ -117,11 +121,11 @@
 
     .line 18
     .line 19
-    iget-object v1, p0, Ld2/a;->b:La8/a;
+    iget-object v1, p0, Ld2/a;->b:Landroidx/lifecycle/j0;
 
     .line 20
     .line 21
-    invoke-virtual {v1}, La8/a;->a()Ljava/lang/Object;
+    invoke-virtual {v1}, Landroidx/lifecycle/j0;->a()Ljava/lang/Object;
 
     .line 22
     .line 23
@@ -146,7 +150,7 @@
     .line 32
     .line 33
     .line 34
-    invoke-virtual {v0, v1}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/r;)V
+    invoke-virtual {v0, v1}, Landroidx/lifecycle/Lifecycle;->a(Landroidx/lifecycle/s;)V
 
     .line 35
     .line 36

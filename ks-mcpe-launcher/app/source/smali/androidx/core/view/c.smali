@@ -1,10 +1,51 @@
 .class public abstract synthetic Landroidx/core/view/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
-.method public static bridge synthetic A(Landroid/view/WindowInsets;)Landroid/view/RoundedCorner;
+.method public static bridge synthetic A(Landroid/media/AudioManager;Landroid/media/AudioDeviceInfo;)Z
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/media/AudioManager;->setCommunicationDevice(Landroid/media/AudioDeviceInfo;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic B(Landroid/view/View;)Z
+    .locals 0
+
+    .line 1
+    instance-of p0, p0, Landroid/window/SplashScreenView;
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic C(Landroid/view/ContentInfo;)I
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/view/ContentInfo;->getSource()I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static bridge synthetic D(Landroid/view/WindowInsets;)Landroid/view/RoundedCorner;
     .locals 1
 
     .line 1
@@ -93,7 +134,22 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic f(FF)Landroid/graphics/RenderEffect;
+.method public static bridge synthetic f(Landroid/view/DisplayCutout;)Landroid/graphics/Path;
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/view/DisplayCutout;->getCutoutPath()Landroid/graphics/Path;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic g(FF)Landroid/graphics/RenderEffect;
     .locals 1
 
     .line 1
@@ -112,7 +168,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic g(Landroid/os/StrictMode$VmPolicy$Builder;)Landroid/os/StrictMode$VmPolicy$Builder;
+.method public static bridge synthetic h(Landroid/os/StrictMode$VmPolicy$Builder;)Landroid/os/StrictMode$VmPolicy$Builder;
     .locals 0
 
     .line 1
@@ -127,7 +183,7 @@
     return-object p0
 .end method
 
-.method public static synthetic h(Landroid/content/ClipData;I)Landroid/view/ContentInfo$Builder;
+.method public static synthetic i(Landroid/content/ClipData;I)Landroid/view/ContentInfo$Builder;
     .locals 1
 
     .line 1
@@ -143,7 +199,7 @@
     return-object v0
 .end method
 
-.method public static bridge synthetic i(Landroid/view/ContentInfo$Builder;)Landroid/view/ContentInfo;
+.method public static bridge synthetic j(Landroid/view/ContentInfo$Builder;)Landroid/view/ContentInfo;
     .locals 0
 
     .line 1
@@ -158,7 +214,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic j(Ljava/lang/Object;)Landroid/view/ContentInfo;
+.method public static bridge synthetic k(Ljava/lang/Object;)Landroid/view/ContentInfo;
     .locals 0
 
     .line 1
@@ -169,7 +225,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic k(Landroid/view/WindowInsets;)Landroid/view/RoundedCorner;
+.method public static bridge synthetic l(Landroid/view/WindowInsets;)Landroid/view/RoundedCorner;
     .locals 1
 
     .line 1
@@ -187,7 +243,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic l(Landroid/window/SplashScreenView;)Landroid/view/View;
+.method public static bridge synthetic m(Landroid/window/SplashScreenView;)Landroid/view/View;
     .locals 0
 
     .line 1
@@ -202,7 +258,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic m(Landroid/view/View;)Landroid/window/SplashScreenView;
+.method public static bridge synthetic n(Landroid/view/View;)Landroid/window/SplashScreenView;
     .locals 0
 
     .line 1
@@ -213,7 +269,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic n()Ljava/lang/String;
+.method public static bridge synthetic o()Ljava/lang/String;
     .locals 1
 
     .line 1
@@ -224,7 +280,7 @@
     return-object v0
 .end method
 
-.method public static bridge synthetic o(Landroid/content/AttributionSource;)Ljava/lang/String;
+.method public static bridge synthetic p(Landroid/content/AttributionSource;)Ljava/lang/String;
     .locals 0
 
     .line 1
@@ -239,7 +295,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic p(Landroid/media/AudioManager;)Ljava/util/List;
+.method public static bridge synthetic q(Landroid/media/AudioManager;)Ljava/util/List;
     .locals 0
 
     .line 1
@@ -254,7 +310,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic q(Landroid/media/AudioManager;)V
+.method public static bridge synthetic r(Landroid/media/AudioManager;)V
     .locals 0
 
     .line 1
@@ -266,7 +322,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic r(Landroid/net/NetworkRequest$Builder;)V
+.method public static bridge synthetic s(Landroid/net/NetworkRequest$Builder;)V
     .locals 1
 
     .line 1
@@ -281,7 +337,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic s(Landroid/view/ContentInfo$Builder;I)V
+.method public static bridge synthetic t(Landroid/view/ContentInfo$Builder;I)V
     .locals 0
 
     .line 1
@@ -293,7 +349,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic t(Landroid/view/ContentInfo$Builder;Landroid/net/Uri;)V
+.method public static bridge synthetic u(Landroid/view/ContentInfo$Builder;Landroid/net/Uri;)V
     .locals 0
 
     .line 1
@@ -305,7 +361,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic u(Landroid/view/ContentInfo$Builder;Landroid/os/Bundle;)V
+.method public static bridge synthetic v(Landroid/view/ContentInfo$Builder;Landroid/os/Bundle;)V
     .locals 0
 
     .line 1
@@ -317,7 +373,34 @@
     return-void
 .end method
 
-.method public static bridge synthetic v(Landroid/widget/ImageView;)V
+.method public static bridge synthetic w(Landroid/view/View;)V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    invoke-virtual {p0, v0}, Landroid/view/View;->setRenderEffect(Landroid/graphics/RenderEffect;)V
+
+    .line 3
+    .line 4
+    .line 5
+    return-void
+.end method
+
+.method public static bridge synthetic x(Landroid/view/View;Landroid/graphics/RenderEffect;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0, p1}, Landroid/view/View;->setRenderEffect(Landroid/graphics/RenderEffect;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic y(Landroid/widget/ImageView;)V
     .locals 1
 
     .line 1
@@ -332,7 +415,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic w(Landroid/widget/ImageView;Landroid/graphics/RenderEffect;)V
+.method public static bridge synthetic z(Landroid/widget/ImageView;Landroid/graphics/RenderEffect;)V
     .locals 0
 
     .line 1
@@ -342,45 +425,4 @@
     .line 3
     .line 4
     return-void
-.end method
-
-.method public static bridge synthetic x(Landroid/media/AudioManager;Landroid/media/AudioDeviceInfo;)Z
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/media/AudioManager;->setCommunicationDevice(Landroid/media/AudioDeviceInfo;)Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic y(Landroid/view/View;)Z
-    .locals 0
-
-    .line 1
-    instance-of p0, p0, Landroid/window/SplashScreenView;
-
-    .line 2
-    .line 3
-    return p0
-.end method
-
-.method public static bridge synthetic z(Landroid/view/ContentInfo;)I
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/view/ContentInfo;->getSource()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
 .end method

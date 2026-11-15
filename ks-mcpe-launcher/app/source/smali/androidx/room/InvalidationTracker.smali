@@ -1,6 +1,6 @@
 .class public final Landroidx/room/InvalidationTracker;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,7 +8,7 @@
 
 .field public final b:[Ljava/lang/String;
 
-.field public final c:Landroidx/room/z0;
+.field public final c:Landroidx/room/b1;
 
 .field public final d:Ljava/util/LinkedHashMap;
 
@@ -47,7 +47,7 @@
 
     .line 9
     .line 10
-    new-instance v10, Landroidx/room/z0;
+    new-instance v10, Landroidx/room/b1;
 
     .line 11
     .line 12
@@ -116,12 +116,12 @@
     move v5, v11
 
     .line 39
-    invoke-direct/range {v0 .. v6}, Landroidx/room/z0;-><init>(Lcom/microsoft/applications/events/OfflineRoomDatabase_Impl;Ljava/util/HashMap;Ljava/util/HashMap;[Ljava/lang/String;ZLandroidx/room/g;)V
+    invoke-direct/range {v0 .. v6}, Landroidx/room/b1;-><init>(Lcom/microsoft/applications/events/OfflineRoomDatabase_Impl;Ljava/util/HashMap;Ljava/util/HashMap;[Ljava/lang/String;ZLandroidx/room/g;)V
 
     .line 40
     .line 41
     .line 42
-    iput-object v0, p0, Landroidx/room/InvalidationTracker;->c:Landroidx/room/z0;
+    iput-object v0, p0, Landroidx/room/InvalidationTracker;->c:Landroidx/room/b1;
 
     .line 43
     .line 44
@@ -201,7 +201,7 @@
 
     .line 83
     .line 84
-    invoke-static {v1, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 85
     .line 86
@@ -219,19 +219,19 @@
 
     .line 93
     .line 94
-    new-instance v1, La8/a;
+    new-instance v1, Landroidx/lifecycle/j0;
 
     .line 95
     .line 96
-    const/4 v2, 0x2
+    const/4 v2, 0x1
 
     .line 97
-    invoke-direct {v1, p0, v2}, La8/a;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/j0;-><init>(Ljava/lang/Object;I)V
 
     .line 98
     .line 99
     .line 100
-    iput-object v1, v0, Landroidx/room/z0;->k:Lkotlin/jvm/functions/Function0;
+    iput-object v1, v0, Landroidx/room/b1;->k:Lkotlin/jvm/functions/Function0;
 
     .line 101
     .line 102

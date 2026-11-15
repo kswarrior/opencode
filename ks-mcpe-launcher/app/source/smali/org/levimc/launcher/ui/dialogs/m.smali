@@ -1,95 +1,139 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/m;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/view/View$OnTouchListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+.field public final synthetic c:I
 
-.field public final synthetic d:[F
+.field public final synthetic d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
-.field public final synthetic h:[I
+.field public final synthetic h:[F
 
-.field public final synthetic q:[Z
-
-.field public final synthetic w:[I
+.field public final synthetic p:[I
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[I[Z[I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[II)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lorg/levimc/launcher/ui/dialogs/m;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/m;->c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
     .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[F
+
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:[F
-
     .line 7
+    iput-object p3, p0, Lorg/levimc/launcher/ui/dialogs/m;->p:[I
+
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[I
-
     .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/ui/dialogs/m;->q:[Z
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 10
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/ui/dialogs/m;->w:[I
-
-    .line 13
-    .line 14
     return-void
 .end method
 
 
 # virtual methods
 .method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
-    .locals 7
+    .locals 3
 
     .line 1
-    iget-object v3, p0, Lorg/levimc/launcher/ui/dialogs/m;->q:[Z
+    iget v0, p0, Lorg/levimc/launcher/ui/dialogs/m;->c:I
 
     .line 2
     .line 3
-    iget-object v4, p0, Lorg/levimc/launcher/ui/dialogs/m;->w:[I
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/m;->c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[F
+
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:[F
-
     .line 8
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/m;->p:[I
+
     .line 9
-    iget-object v2, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[I
-
     .line 10
-    .line 11
-    move-object v5, p1
+    iget-object v2, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
+    .line 11
     .line 12
-    move-object v6, p2
+    invoke-static {v2, v0, v1, p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->e(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[ILandroid/view/View;Landroid/view/MotionEvent;)Z
 
     .line 13
-    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->l(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[I[Z[ILandroid/view/View;Landroid/view/MotionEvent;)Z
-
     .line 14
     .line 15
-    .line 16
     move-result p1
 
-    .line 17
+    .line 16
     return p1
+
+    .line 17
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[F
+
+    .line 18
+    .line 19
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/m;->p:[I
+
+    .line 20
+    .line 21
+    iget-object v2, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
+    .line 22
+    .line 23
+    invoke-static {v2, v0, v1, p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->z(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[ILandroid/view/View;Landroid/view/MotionEvent;)Z
+
+    .line 24
+    .line 25
+    .line 26
+    move-result p1
+
+    .line 27
+    return p1
+
+    .line 28
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/m;->h:[F
+
+    .line 29
+    .line 30
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/m;->p:[I
+
+    .line 31
+    .line 32
+    iget-object v2, p0, Lorg/levimc/launcher/ui/dialogs/m;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
+    .line 33
+    .line 34
+    invoke-static {v2, v0, v1, p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->n(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F[ILandroid/view/View;Landroid/view/MotionEvent;)Z
+
+    .line 35
+    .line 36
+    .line 37
+    move-result p1
+
+    .line 38
+    return p1
+
+    .line 39
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

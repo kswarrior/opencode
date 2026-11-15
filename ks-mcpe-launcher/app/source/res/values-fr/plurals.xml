@@ -4,6 +4,10 @@
         <item quantity="one">%1$d couche • bas → haut</item>
         <item quantity="other">%1$d couches • bas → haut</item>
     </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="one">%1$d version</item>
+        <item quantity="other">%1$d versions</item>
+    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d choix</item>
         <item quantity="other">%d choix</item>
@@ -16,8 +20,57 @@
         <item quantity="one">%d élément</item>
         <item quantity="other">%d éléments</item>
     </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="one">%1$d mod</item>
+        <item quantity="other">%1$d mods</item>
+    </plurals>
     <plurals name="mtrl_badge_content_description">
         <item quantity="one">%d nouvelle notification</item>
         <item quantity="other">%d nouvelles notifications</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="one">Vous êtes sur le point de désinstaller %1$d paquet de %2$s. Continuer ?</item>
+        <item quantity="many">Vous êtes sur le point de désinstaller %1$d paquets de %2$s. Continuer ?</item>
+        <item quantity="other">Vous êtes sur le point de désinstaller %1$d paquets de %2$s. Continuer ?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="one">%1$d paquet désinstallé</item>
+        <item quantity="many">%1$d paquets désinstallés</item>
+        <item quantity="other">%1$d paquets désinstallés</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="one">%1$d paquet sélectionné, dont %2$d peut être mis à jour. Continuer ?</item>
+        <item quantity="many">%1$d paquets sélectionnés, dont %2$d peuvent être mis à jour. Continuer ?</item>
+        <item quantity="other">%1$d paquets sélectionnés, dont %2$d peuvent être mis à jour. Continuer ?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="one">%1$d paquet mis à jour</item>
+        <item quantity="many">%1$d paquets mis à jour</item>
+        <item quantity="other">%1$d paquets mis à jour</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="one">Afficher %d résultat</item>
+        <item quantity="many">Afficher %d résultats</item>
+        <item quantity="other">Afficher %d résultats</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="one">%1$d paquet, %2$d installé(s) par vous · %3$s</item>
+        <item quantity="many">%1$d paquets, %2$d installé(s) par vous · %3$s</item>
+        <item quantity="other">%1$d paquets, %2$d installé(s) par vous · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="one">%d dépendance</item>
+        <item quantity="many">%d dépendances</item>
+        <item quantity="other">%d dépendances</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="one">%d fichier enregistré</item>
+        <item quantity="many">%d fichiers enregistrés</item>
+        <item quantity="other">%d fichiers enregistrés</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="one">%d version</item>
+        <item quantity="many">%d versions</item>
+        <item quantity="other">%d versions</item>
     </plurals>
 </resources>

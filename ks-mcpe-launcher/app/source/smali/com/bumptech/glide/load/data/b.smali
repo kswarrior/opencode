@@ -1,6 +1,6 @@
 .class public final Lcom/bumptech/glide/load/data/b;
 .super Ljava/io/OutputStream;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -8,13 +8,13 @@
 
 .field public d:[B
 
-.field public final h:Lqf/a;
+.field public final h:Lig/a;
 
-.field public q:I
+.field public p:I
 
 
 # direct methods
-.method public constructor <init>(Ljava/io/FileOutputStream;Lqf/a;)V
+.method public constructor <init>(Ljava/io/FileOutputStream;Lig/a;)V
     .locals 1
 
     .line 1
@@ -27,7 +27,7 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lcom/bumptech/glide/load/data/b;->h:Lqf/a;
+    iput-object p2, p0, Lcom/bumptech/glide/load/data/b;->h:Lig/a;
 
     .line 7
     .line 8
@@ -39,7 +39,7 @@
 
     .line 11
     .line 12
-    invoke-virtual {p2, v0, p1}, Lqf/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {p2, v0, p1}, Lig/a;->c(ILjava/lang/Class;)Ljava/lang/Object;
 
     .line 13
     .line 14
@@ -89,11 +89,11 @@
 
     .line 12
     .line 13
-    iget-object v1, p0, Lcom/bumptech/glide/load/data/b;->h:Lqf/a;
+    iget-object v1, p0, Lcom/bumptech/glide/load/data/b;->h:Lig/a;
 
     .line 14
     .line 15
-    invoke-virtual {v1, v0}, Lqf/a;->g(Ljava/lang/Object;)V
+    invoke-virtual {v1, v0}, Lig/a;->g(Ljava/lang/Object;)V
 
     .line 16
     .line 17
@@ -125,7 +125,7 @@
     .locals 4
 
     .line 1
-    iget v0, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iget v0, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     .line 2
     .line 3
@@ -149,7 +149,7 @@
     .line 11
     .line 12
     .line 13
-    iput v3, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iput v3, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     .line 14
     .line 15
@@ -168,11 +168,11 @@
     .line 1
     iget-object v0, p0, Lcom/bumptech/glide/load/data/b;->d:[B
 
-    iget v1, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iget v1, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     add-int/lit8 v2, v1, 0x1
 
-    iput v2, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iput v2, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     int-to-byte p1, p1
 
@@ -193,7 +193,7 @@
     invoke-virtual {p1, v0, v1, v2}, Ljava/io/OutputStream;->write([BII)V
 
     .line 4
-    iput v1, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iput v1, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     :cond_0
     return-void
@@ -225,7 +225,7 @@
     add-int v3, p2, v1
 
     .line 6
-    iget v4, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iget v4, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     iget-object v5, p0, Lcom/bumptech/glide/load/data/b;->c:Ljava/io/FileOutputStream;
 
@@ -258,16 +258,16 @@
     .line 10
     iget-object v4, p0, Lcom/bumptech/glide/load/data/b;->d:[B
 
-    iget v6, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iget v6, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     invoke-static {p1, v3, v4, v6, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 11
-    iget v3, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iget v3, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     add-int/2addr v3, v2
 
-    iput v3, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iput v3, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     add-int/2addr v1, v2
 
@@ -284,7 +284,7 @@
     invoke-virtual {v5, v2, v0, v3}, Ljava/io/OutputStream;->write([BII)V
 
     .line 14
-    iput v0, p0, Lcom/bumptech/glide/load/data/b;->q:I
+    iput v0, p0, Lcom/bumptech/glide/load/data/b;->p:I
 
     :cond_2
     if-lt v1, p3, :cond_0

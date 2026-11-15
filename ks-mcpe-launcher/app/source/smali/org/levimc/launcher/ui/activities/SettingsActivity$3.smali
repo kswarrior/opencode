@@ -1,9 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/SettingsActivity$3;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
+.super Lorg/levimc/launcher/ui/activities/SettingsActivity$SimpleSeekListener;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -30,76 +27,89 @@
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const/4 p1, 0x0
 
     .line 4
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity$SimpleSeekListener;-><init>(I)V
+
     .line 5
     .line 6
+    .line 7
     return-void
 .end method
 
 
 # virtual methods
 .method public onProgressChanged(Landroid/widget/SeekBar;IZ)V
-    .locals 0
+    .locals 2
 
     .line 1
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 2
     .line 3
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->Y(Lorg/levimc/launcher/ui/activities/SettingsActivity;I)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->t0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Landroid/widget/TextView;
 
     .line 4
     .line 5
     .line 6
-    if-nez p3, :cond_0
+    move-result-object v0
 
     .line 7
-    .line 8
-    return-void
+    sget v1, Lorg/levimc/launcher/R$string;->settings_ui_value_percent:I
 
+    .line 8
     .line 9
-    :cond_0
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
+    invoke-static {p1, v0, v1, p2}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->z0(Lorg/levimc/launcher/ui/activities/SettingsActivity;Landroid/widget/TextView;II)V
 
     .line 10
     .line 11
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->U(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
-
     .line 12
+    if-nez p3, :cond_0
+
     .line 13
     .line 14
-    move-result-object p1
+    return-void
 
     .line 15
-    invoke-virtual {p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->setBackgroundImageBrightness(I)V
+    :cond_0
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 16
     .line 17
-    .line 18
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
+    .line 18
     .line 19
     .line 20
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->V(Lorg/levimc/launcher/ui/activities/SettingsActivity;)V
+    move-result-object p1
 
     .line 21
+    invoke-virtual {p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->setBackgroundImageBrightness(I)V
+
     .line 22
     .line 23
-    return-void
-.end method
+    .line 24
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
-.method public onStartTrackingTouch(Landroid/widget/SeekBar;)V
-    .locals 0
+    .line 25
+    .line 26
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
-    .line 1
-    return-void
-.end method
+    .line 27
+    .line 28
+    .line 29
+    move-result-object p1
 
-.method public onStopTrackingTouch(Landroid/widget/SeekBar;)V
-    .locals 0
+    .line 30
+    iget-object p2, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$3;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
-    .line 1
+    .line 31
+    .line 32
+    invoke-virtual {p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->refreshBackgroundColorEffects(Landroid/app/Activity;)V
+
+    .line 33
+    .line 34
+    .line 35
     return-void
 .end method

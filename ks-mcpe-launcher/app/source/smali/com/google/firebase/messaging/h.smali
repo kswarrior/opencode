@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/google/firebase/messaging/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/google/android/gms/tasks/Continuation;
@@ -201,26 +201,27 @@
     .line 40
     .line 41
     .line 42
-    new-instance v1, La4/e;
+    new-instance v1, La4/f;
 
     .line 43
     .line 44
-    const/4 v2, 0x6
+    const/16 v2, 0xf
 
     .line 45
-    invoke-direct {v1, v2}, La4/e;-><init>(I)V
-
     .line 46
+    invoke-direct {v1, v2}, La4/f;-><init>(I)V
+
     .line 47
     .line 48
+    .line 49
     invoke-virtual {p1, v0, v1}, Lcom/google/android/gms/tasks/Task;->continueWith(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
 
-    .line 49
     .line 50
     .line 51
+    .line 52
     move-result-object p1
 
-    .line 52
+    .line 53
     :cond_1
     :goto_0
     return-object p1

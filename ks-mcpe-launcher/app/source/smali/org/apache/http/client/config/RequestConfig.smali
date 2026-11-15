@@ -1,6 +1,6 @@
 .class public final Lorg/apache/http/client/config/RequestConfig;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Cloneable;
@@ -11,33 +11,33 @@
 
 
 # instance fields
-.field public final B1:I
-
 .field public final C1:I
 
 .field public final D1:I
 
-.field public final X:I
+.field public final X:Z
 
-.field public final Y:Z
+.field public final Y:Ljava/util/Collection;
 
 .field public final Z:Ljava/util/Collection;
 
-.field public final b1:Ljava/util/Collection;
+.field public final b1:I
 
 .field public final c:Z
 
-.field public final d:Lqc/f;
+.field public final d:Lpc/f;
 
 .field public final h:Ljava/net/InetAddress;
 
-.field public final q:Ljava/lang/String;
+.field public final p:Ljava/lang/String;
+
+.field public final q:Z
 
 .field public final w:Z
 
 .field public final x:Z
 
-.field public final y:Z
+.field public final y:I
 
 
 # direct methods
@@ -95,7 +95,7 @@
     move v15, v13
 
     .line 19
-    invoke-direct/range {v0 .. v15}, Lorg/apache/http/client/config/RequestConfig;-><init>(ZLqc/f;Ljava/net/InetAddress;ZLjava/lang/String;ZZZIZLjava/util/Collection;Ljava/util/Collection;III)V
+    invoke-direct/range {v0 .. v15}, Lorg/apache/http/client/config/RequestConfig;-><init>(ZLpc/f;Ljava/net/InetAddress;ZLjava/lang/String;ZZZIZLjava/util/Collection;Ljava/util/Collection;III)V
 
     .line 20
     .line 21
@@ -107,7 +107,7 @@
     return-void
 .end method
 
-.method public constructor <init>(ZLqc/f;Ljava/net/InetAddress;ZLjava/lang/String;ZZZIZLjava/util/Collection;Ljava/util/Collection;III)V
+.method public constructor <init>(ZLpc/f;Ljava/net/InetAddress;ZLjava/lang/String;ZZZIZLjava/util/Collection;Ljava/util/Collection;III)V
     .locals 0
 
     .line 1
@@ -120,7 +120,7 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/apache/http/client/config/RequestConfig;->d:Lqc/f;
+    iput-object p2, p0, Lorg/apache/http/client/config/RequestConfig;->d:Lpc/f;
 
     .line 7
     .line 8
@@ -128,39 +128,39 @@
 
     .line 9
     .line 10
-    iput-object p5, p0, Lorg/apache/http/client/config/RequestConfig;->q:Ljava/lang/String;
+    iput-object p5, p0, Lorg/apache/http/client/config/RequestConfig;->p:Ljava/lang/String;
 
     .line 11
     .line 12
-    iput-boolean p6, p0, Lorg/apache/http/client/config/RequestConfig;->w:Z
+    iput-boolean p6, p0, Lorg/apache/http/client/config/RequestConfig;->q:Z
 
     .line 13
     .line 14
-    iput-boolean p7, p0, Lorg/apache/http/client/config/RequestConfig;->x:Z
+    iput-boolean p7, p0, Lorg/apache/http/client/config/RequestConfig;->w:Z
 
     .line 15
     .line 16
-    iput-boolean p8, p0, Lorg/apache/http/client/config/RequestConfig;->y:Z
+    iput-boolean p8, p0, Lorg/apache/http/client/config/RequestConfig;->x:Z
 
     .line 17
     .line 18
-    iput p9, p0, Lorg/apache/http/client/config/RequestConfig;->X:I
+    iput p9, p0, Lorg/apache/http/client/config/RequestConfig;->y:I
 
     .line 19
     .line 20
-    iput-boolean p10, p0, Lorg/apache/http/client/config/RequestConfig;->Y:Z
+    iput-boolean p10, p0, Lorg/apache/http/client/config/RequestConfig;->X:Z
 
     .line 21
     .line 22
-    iput-object p11, p0, Lorg/apache/http/client/config/RequestConfig;->Z:Ljava/util/Collection;
+    iput-object p11, p0, Lorg/apache/http/client/config/RequestConfig;->Y:Ljava/util/Collection;
 
     .line 23
     .line 24
-    iput-object p12, p0, Lorg/apache/http/client/config/RequestConfig;->b1:Ljava/util/Collection;
+    iput-object p12, p0, Lorg/apache/http/client/config/RequestConfig;->Z:Ljava/util/Collection;
 
     .line 25
     .line 26
-    iput p13, p0, Lorg/apache/http/client/config/RequestConfig;->B1:I
+    iput p13, p0, Lorg/apache/http/client/config/RequestConfig;->b1:I
 
     .line 27
     .line 28
@@ -231,7 +231,7 @@
     .line 16
     .line 17
     .line 18
-    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->d:Lqc/f;
+    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->d:Lpc/f;
 
     .line 19
     .line 20
@@ -267,7 +267,7 @@
     .line 36
     .line 37
     .line 38
-    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->q:Ljava/lang/String;
+    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->p:Ljava/lang/String;
 
     .line 39
     .line 40
@@ -285,7 +285,7 @@
     .line 46
     .line 47
     .line 48
-    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->w:Z
+    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->q:Z
 
     .line 49
     .line 50
@@ -303,7 +303,7 @@
     .line 56
     .line 57
     .line 58
-    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->x:Z
+    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->w:Z
 
     .line 59
     .line 60
@@ -321,7 +321,7 @@
     .line 66
     .line 67
     .line 68
-    iget v1, p0, Lorg/apache/http/client/config/RequestConfig;->X:I
+    iget v1, p0, Lorg/apache/http/client/config/RequestConfig;->y:I
 
     .line 69
     .line 70
@@ -339,7 +339,7 @@
     .line 76
     .line 77
     .line 78
-    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->y:Z
+    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->x:Z
 
     .line 79
     .line 80
@@ -357,7 +357,7 @@
     .line 86
     .line 87
     .line 88
-    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->Y:Z
+    iget-boolean v1, p0, Lorg/apache/http/client/config/RequestConfig;->X:Z
 
     .line 89
     .line 90
@@ -375,7 +375,7 @@
     .line 96
     .line 97
     .line 98
-    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->Z:Ljava/util/Collection;
+    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->Y:Ljava/util/Collection;
 
     .line 99
     .line 100
@@ -393,7 +393,7 @@
     .line 106
     .line 107
     .line 108
-    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->b1:Ljava/util/Collection;
+    iget-object v1, p0, Lorg/apache/http/client/config/RequestConfig;->Z:Ljava/util/Collection;
 
     .line 109
     .line 110
@@ -411,7 +411,7 @@
     .line 116
     .line 117
     .line 118
-    iget v1, p0, Lorg/apache/http/client/config/RequestConfig;->B1:I
+    iget v1, p0, Lorg/apache/http/client/config/RequestConfig;->b1:I
 
     .line 119
     .line 120
@@ -455,7 +455,7 @@
 
     .line 141
     .line 142
-    invoke-static {v1, v2, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v2, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 143
     .line 144

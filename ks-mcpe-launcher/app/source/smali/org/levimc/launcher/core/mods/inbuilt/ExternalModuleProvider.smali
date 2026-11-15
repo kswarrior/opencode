@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/mods/inbuilt/ExternalModuleProvider;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -674,65 +674,66 @@
     .line 111
     .line 112
     .line 113
-    new-instance v0, Ll2/t;
+    new-instance v0, Li8/b;
 
     .line 114
     .line 115
-    const/4 v3, 0x4
+    const/16 v3, 0xf
 
     .line 116
-    invoke-direct {v0, v3}, Ll2/t;-><init>(I)V
-
     .line 117
+    invoke-direct {v0, v3}, Li8/b;-><init>(I)V
+
     .line 118
     .line 119
+    .line 120
     const/4 v13, 0x0
 
-    .line 120
+    .line 121
     move-object/from16 v17, v0
 
-    .line 121
     .line 122
+    .line 123
     move-object/from16 v16, v2
 
-    .line 123
     .line 124
+    .line 125
     invoke-direct/range {v5 .. v17}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$Source;ZLjava/util/List;ZLjava/lang/String;Ljava/lang/String;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$EnabledHandler;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigHandler;)V
 
-    .line 125
     .line 126
     .line 127
+    .line 128
     const-string v0, "config_schema_revision"
 
-    .line 128
     .line 129
+    .line 130
     const-wide/16 v2, 0x0
 
-    .line 130
     .line 131
+    .line 132
     invoke-virtual {v1, v0, v2, v3}, Lorg/json/JSONObject;->optLong(Ljava/lang/String;J)J
 
-    .line 132
     .line 133
     .line 134
+    .line 135
     move-result-wide v0
 
-    .line 135
+    .line 136
     invoke-virtual {v5, v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->setRuntimeConfigSchemaRevision(J)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 136
     .line 137
     .line 138
+    .line 139
     return-object v5
 
-    .line 139
+    .line 140
     :catch_0
     :goto_4
     const/4 v0, 0x0
 
-    .line 140
+    .line 141
     return-object v0
 .end method
 

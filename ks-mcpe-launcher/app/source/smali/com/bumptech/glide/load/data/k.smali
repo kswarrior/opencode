@@ -1,17 +1,17 @@
 .class public final Lcom/bumptech/glide/load/data/k;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/e;
 
 
 # instance fields
-.field public final a:Lqf/a;
+.field public final a:Lig/a;
 
 
 # direct methods
-.method public constructor <init>(Lqf/a;)V
+.method public constructor <init>(Lig/a;)V
     .locals 0
 
     .line 1
@@ -20,7 +20,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lcom/bumptech/glide/load/data/k;->a:Lqf/a;
+    iput-object p1, p0, Lcom/bumptech/glide/load/data/k;->a:Lig/a;
 
     .line 5
     .line 6
@@ -52,11 +52,11 @@
 
     .line 4
     .line 5
-    iget-object v1, p0, Lcom/bumptech/glide/load/data/k;->a:Lqf/a;
+    iget-object v1, p0, Lcom/bumptech/glide/load/data/k;->a:Lig/a;
 
     .line 6
     .line 7
-    invoke-direct {v0, p1, v1}, Lcom/bumptech/glide/load/data/g;-><init>(Ljava/io/InputStream;Lqf/a;)V
+    invoke-direct {v0, p1, v1}, Lcom/bumptech/glide/load/data/g;-><init>(Ljava/io/InputStream;Lig/a;)V
 
     .line 8
     .line 9

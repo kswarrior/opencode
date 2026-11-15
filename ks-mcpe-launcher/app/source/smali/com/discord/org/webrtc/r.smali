@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/discord/org/webrtc/r;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:I
 
-.field public final synthetic q:Ljava/lang/Object;
+.field public final synthetic p:Ljava/lang/Object;
 
 
 # direct methods
@@ -25,7 +25,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iput-object p1, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -60,7 +60,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 7
     .line 8
@@ -76,7 +76,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;II)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;II)V
 
     .line 15
     .line 16
@@ -85,7 +85,7 @@
 
     .line 18
     :pswitch_0
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 19
     .line 20
@@ -101,7 +101,7 @@
 
     .line 25
     .line 26
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;II)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;II)V
 
     .line 27
     .line 28
@@ -110,7 +110,7 @@
 
     .line 30
     :pswitch_1
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 31
     .line 32
@@ -135,7 +135,7 @@
 
     .line 42
     :pswitch_2
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 43
     .line 44
@@ -160,7 +160,7 @@
 
     .line 54
     :pswitch_3
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 55
     .line 56
@@ -185,7 +185,7 @@
 
     .line 66
     :pswitch_4
-    iget-object v0, p0, Lcom/discord/org/webrtc/r;->q:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/discord/org/webrtc/r;->p:Ljava/lang/Object;
 
     .line 67
     .line 68

@@ -1,45 +1,30 @@
-.class public abstract Lcom/google/android/gms/internal/measurement/jc;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final Lcom/google/android/gms/internal/measurement/jc;
+.super Lcom/google/android/gms/internal/measurement/i1;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
-# static fields
-.field public static final a:Lcom/google/android/gms/internal/measurement/x1;
-
-
-# direct methods
-.method static constructor <clinit>()V
-    .locals 4
+# virtual methods
+.method public final h(Ljava/lang/String;)V
+    .locals 1
 
     .line 1
-    sget-object v0, Lcom/google/android/gms/internal/measurement/z2;->h:Lcom/google/android/gms/internal/measurement/z2;
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/i1;->b()V
 
     .line 2
     .line 3
-    sget-object v1, Lcom/google/android/gms/internal/measurement/z2;->w:Lcom/google/android/gms/internal/measurement/z2;
-
     .line 4
-    .line 5
-    invoke-static {}, Lcom/google/android/gms/internal/measurement/fc;->A()Lcom/google/android/gms/internal/measurement/fc;
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/i1;->d:Lcom/google/android/gms/internal/measurement/k1;
 
+    .line 5
     .line 6
+    check-cast v0, Lcom/google/android/gms/internal/measurement/kc;
+
     .line 7
     .line 8
-    move-result-object v2
+    invoke-virtual {v0, p1}, Lcom/google/android/gms/internal/measurement/kc;->B(Ljava/lang/String;)V
 
     .line 9
-    new-instance v3, Lcom/google/android/gms/internal/measurement/x1;
-
     .line 10
     .line 11
-    invoke-direct {v3, v0, v1, v2}, Lcom/google/android/gms/internal/measurement/x1;-><init>(Lcom/google/android/gms/internal/measurement/z2;Lcom/google/android/gms/internal/measurement/z2;Ljava/lang/Object;)V
-
-    .line 12
-    .line 13
-    .line 14
-    sput-object v3, Lcom/google/android/gms/internal/measurement/jc;->a:Lcom/google/android/gms/internal/measurement/x1;
-
-    .line 15
-    .line 16
     return-void
 .end method

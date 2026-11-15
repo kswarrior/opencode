@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/mods/inbuilt/nativemod/HotbarSlotMod;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -465,34 +465,33 @@
 
     .line 19
     .line 20
-    const/16 v3, 0x9
+    const/4 v3, 0x7
 
     .line 21
-    .line 22
     invoke-direct {v1, v3}, Lcom/discord/org/webrtc/e;-><init>(I)V
 
+    .line 22
     .line 23
     .line 24
-    .line 25
     const-string v3, "HotbarSlot-init"
 
+    .line 25
     .line 26
-    .line 27
     invoke-direct {v0, v1, v3}, Ljava/lang/Thread;-><init>(Ljava/lang/Runnable;Ljava/lang/String;)V
 
+    .line 27
     .line 28
     .line 29
-    .line 30
     invoke-virtual {v0, v2}, Ljava/lang/Thread;->setDaemon(Z)V
 
+    .line 30
     .line 31
     .line 32
-    .line 33
     invoke-virtual {v0}, Ljava/lang/Thread;->start()V
 
+    .line 33
     .line 34
     .line 35
-    .line 36
     :cond_1
     :goto_0
     return-void

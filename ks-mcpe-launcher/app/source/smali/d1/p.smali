@@ -1,36 +1,42 @@
 .class public final Ld1/p;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ld1/o;
-.implements Lg8/n;
+.implements Li8/o;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final d:Ljava/lang/String;
+.field public d:Ljava/lang/String;
 
 
 # direct methods
+.method public synthetic constructor <init>()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x4
+
+    iput v0, p0, Ld1/p;->c:I
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
 .method public synthetic constructor <init>(Ljava/lang/String;I)V
     .locals 0
 
-    .line 1
+    .line 2
     iput p2, p0, Ld1/p;->c:I
 
-    .line 2
-    .line 3
     iput-object p1, p0, Ld1/p;->d:Ljava/lang/String;
 
-    .line 4
-    .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 6
-    .line 7
-    .line 8
     return-void
 .end method
 
@@ -43,64 +49,7 @@
     return-object p0
 .end method
 
-.method public b(Ljava/lang/CharSequence;IILd1/v;)Z
-    .locals 0
-
-    .line 1
-    invoke-interface {p1, p2, p3}, Ljava/lang/CharSequence;->subSequence(II)Ljava/lang/CharSequence;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p1
-
-    .line 5
-    iget-object p2, p0, Ld1/p;->d:Ljava/lang/String;
-
-    .line 6
-    .line 7
-    invoke-static {p1, p2}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
-
-    .line 8
-    .line 9
-    .line 10
-    move-result p1
-
-    .line 11
-    if-eqz p1, :cond_0
-
-    .line 12
-    .line 13
-    iget p1, p4, Ld1/v;->c:I
-
-    .line 14
-    .line 15
-    and-int/lit8 p1, p1, 0x3
-
-    .line 16
-    .line 17
-    or-int/lit8 p1, p1, 0x4
-
-    .line 18
-    .line 19
-    iput p1, p4, Ld1/v;->c:I
-
-    .line 20
-    .line 21
-    const/4 p1, 0x0
-
-    .line 22
-    return p1
-
-    .line 23
-    :cond_0
-    const/4 p1, 0x1
-
-    .line 24
-    return p1
-.end method
-
-.method public c(Ljava/lang/StringBuilder;Ljava/util/Iterator;)V
+.method public b(Ljava/lang/StringBuilder;Ljava/util/Iterator;)V
     .locals 2
 
     .line 1
@@ -250,11 +199,68 @@
     throw p2
 .end method
 
+.method public c(Ljava/lang/CharSequence;IILd1/v;)Z
+    .locals 0
+
+    .line 1
+    invoke-interface {p1, p2, p3}, Ljava/lang/CharSequence;->subSequence(II)Ljava/lang/CharSequence;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p1
+
+    .line 5
+    iget-object p2, p0, Ld1/p;->d:Ljava/lang/String;
+
+    .line 6
+    .line 7
+    invoke-static {p1, p2}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    .line 8
+    .line 9
+    .line 10
+    move-result p1
+
+    .line 11
+    if-eqz p1, :cond_0
+
+    .line 12
+    .line 13
+    iget p1, p4, Ld1/v;->c:I
+
+    .line 14
+    .line 15
+    and-int/lit8 p1, p1, 0x3
+
+    .line 16
+    .line 17
+    or-int/lit8 p1, p1, 0x4
+
+    .line 18
+    .line 19
+    iput p1, p4, Ld1/v;->c:I
+
+    .line 20
+    .line 21
+    const/4 p1, 0x0
+
+    .line 22
+    return p1
+
+    .line 23
+    :cond_0
+    const/4 p1, 0x1
+
+    .line 24
+    return p1
+.end method
+
 .method public e()Ljava/lang/Object;
     .locals 2
 
     .line 1
-    new-instance v0, Le8/k;
+    new-instance v0, Lg8/k;
 
     .line 2
     .line 3

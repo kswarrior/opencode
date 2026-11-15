@@ -1,6 +1,6 @@
 .class public abstract Lcom/microsoft/xbox/xle/app/activity/ActivityBase;
 .super Lcom/microsoft/xbox/toolkit/ui/ScreenLayout;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -647,15 +647,15 @@
     move-result-object v1
 
     .line 16
-    new-instance v2, Landroidx/lifecycle/z;
+    new-instance v2, La6/d;
 
     .line 17
     .line 18
-    const/16 v3, 0x9
+    const/16 v3, 0xd
 
     .line 19
     .line 20
-    invoke-direct {v2, v0, v3}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v2, v0, v3}, La6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 21
     .line 22

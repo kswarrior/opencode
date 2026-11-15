@@ -14,39 +14,39 @@
 
 
 # static fields
-.field public static change_friendship_dialog:I = 0x7f0d0036
+.field public static change_friendship_dialog:I = 0x7f0d003c
 
-.field public static change_friendship_dialog_header:I = 0x7f0d0037
+.field public static change_friendship_dialog_header:I = 0x7f0d003d
 
-.field public static change_friendship_remove_button:I = 0x7f0d0038
+.field public static change_friendship_remove_button:I = 0x7f0d003e
 
-.field public static icon_font_subtext_button:I = 0x7f0d005d
+.field public static icon_font_subtext_button:I = 0x7f0d006a
 
-.field public static iconfont_toggle_btn_view:I = 0x7f0d005e
+.field public static iconfont_toggle_btn_view:I = 0x7f0d006b
 
-.field public static image_title_subtitle_button:I = 0x7f0d0060
+.field public static image_title_subtitle_button:I = 0x7f0d006d
 
-.field public static profile_screen:I = 0x7f0d00dc
+.field public static profile_screen:I = 0x7f0d00f1
 
-.field public static report_spinner_item:I = 0x7f0d00dd
+.field public static report_spinner_item:I = 0x7f0d00f2
 
-.field public static report_user_screen:I = 0x7f0d00de
+.field public static report_user_screen:I = 0x7f0d00f3
 
-.field public static spinner_item_dropdown:I = 0x7f0d00e7
+.field public static spinner_item_dropdown:I = 0x7f0d00fe
 
-.field public static xbid_activity_error:I = 0x7f0d00ec
+.field public static xbid_activity_error:I = 0x7f0d0109
 
-.field public static xbid_fragment_error_ban:I = 0x7f0d00ed
+.field public static xbid_fragment_error_ban:I = 0x7f0d010a
 
-.field public static xbid_fragment_error_buttons:I = 0x7f0d00ee
+.field public static xbid_fragment_error_buttons:I = 0x7f0d010b
 
-.field public static xbid_fragment_error_catch_all:I = 0x7f0d00ef
+.field public static xbid_fragment_error_catch_all:I = 0x7f0d010c
 
-.field public static xbid_fragment_error_creation:I = 0x7f0d00f0
+.field public static xbid_fragment_error_creation:I = 0x7f0d010d
 
-.field public static xbid_fragment_error_offline:I = 0x7f0d00f1
+.field public static xbid_fragment_error_offline:I = 0x7f0d010e
 
-.field public static xbid_fragment_header:I = 0x7f0d00f2
+.field public static xbid_fragment_header:I = 0x7f0d010f
 
 
 # direct methods

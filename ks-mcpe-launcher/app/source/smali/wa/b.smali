@@ -1,17 +1,17 @@
 .class public final synthetic Lwa/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Lmb/a;
+.implements Llb/a;
 
 
 # instance fields
-.field public final synthetic a:Lae/c1;
+.field public final synthetic a:Lde/g;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lae/c1;)V
+.method public synthetic constructor <init>(Lde/g;)V
     .locals 0
 
     .line 1
@@ -20,7 +20,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lwa/b;->a:Lae/c1;
+    iput-object p1, p0, Lwa/b;->a:Lde/g;
 
     .line 5
     .line 6
@@ -33,11 +33,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lwa/b;->a:Lae/c1;
+    iget-object v0, p0, Lwa/b;->a:Lde/g;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1, p2}, Lae/c1;->c(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-virtual {v0, p1, p2}, Lde/g;->f(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 4
     .line 5

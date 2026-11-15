@@ -1,10 +1,10 @@
 .class public final Lt/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/util/Iterator;
-.implements Lg9/a;
+.implements Li9/a;
 
 
 # instance fields
@@ -14,9 +14,9 @@
 
 .field public h:Z
 
-.field public final synthetic q:I
+.field public final synthetic p:I
 
-.field public final synthetic w:Ljava/lang/Object;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
@@ -35,12 +35,12 @@
 .method public constructor <init>(Landroidx/collection/ArrayMap;I)V
     .locals 0
 
-    iput p2, p0, Lt/a;->q:I
+    iput p2, p0, Lt/a;->p:I
 
     packed-switch p2, :pswitch_data_0
 
     .line 6
-    iput-object p1, p0, Lt/a;->w:Ljava/lang/Object;
+    iput-object p1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 7
     iget p1, p1, Landroidx/collection/SimpleArrayMap;->h:I
@@ -52,7 +52,7 @@
 
     .line 9
     :pswitch_0
-    iput-object p1, p0, Lt/a;->w:Ljava/lang/Object;
+    iput-object p1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 10
     iget p1, p1, Landroidx/collection/SimpleArrayMap;->h:I
@@ -75,10 +75,10 @@
 
     const/4 v0, 0x2
 
-    iput v0, p0, Lt/a;->q:I
+    iput v0, p0, Lt/a;->p:I
 
     .line 3
-    iput-object p1, p0, Lt/a;->w:Ljava/lang/Object;
+    iput-object p1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 4
     iget p1, p1, Landroidx/collection/ArraySet;->h:I
@@ -140,7 +140,7 @@
 
     .line 8
     .line 9
-    iget v1, p0, Lt/a;->q:I
+    iget v1, p0, Lt/a;->p:I
 
     .line 10
     .line 11
@@ -149,7 +149,7 @@
     .line 12
     .line 13
     .line 14
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 15
     .line 16
@@ -169,7 +169,7 @@
 
     .line 23
     :pswitch_0
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 24
     .line 25
@@ -189,7 +189,7 @@
 
     .line 32
     :pswitch_1
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 33
     .line 34
@@ -271,7 +271,7 @@
 
     .line 10
     .line 11
-    iget v1, p0, Lt/a;->q:I
+    iget v1, p0, Lt/a;->p:I
 
     .line 12
     .line 13
@@ -280,7 +280,7 @@
     .line 14
     .line 15
     .line 16
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 17
     .line 18
@@ -297,7 +297,7 @@
 
     .line 24
     :pswitch_0
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 25
     .line 26
@@ -314,7 +314,7 @@
 
     .line 32
     :pswitch_1
-    iget-object v1, p0, Lt/a;->w:Ljava/lang/Object;
+    iget-object v1, p0, Lt/a;->q:Ljava/lang/Object;
 
     .line 33
     .line 34

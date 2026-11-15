@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/microsoft/xbox/telemetry/helpers/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lcom/microsoft/xbox/telemetry/helpers/UTCEventTracker$UTCStringEventDelegate;
@@ -14,7 +14,7 @@
 
 .field public final synthetic h:Ljava/lang/String;
 
-.field public final synthetic q:Ljava/lang/CharSequence;
+.field public final synthetic p:Ljava/lang/CharSequence;
 
 
 # direct methods
@@ -34,7 +34,7 @@
 
     .line 6
     .line 7
-    iput-object p3, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iput-object p3, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     .line 8
     .line 9
@@ -59,7 +59,7 @@
     :pswitch_0
     iget-object v0, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->h:Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     iget-object v2, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->d:Ljava/lang/String;
 
@@ -72,7 +72,7 @@
     :pswitch_1
     iget-object v0, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->h:Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     iget-object v2, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->d:Ljava/lang/String;
 
@@ -85,7 +85,7 @@
     :pswitch_2
     iget-object v0, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->h:Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     iget-object v2, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->d:Ljava/lang/String;
 
@@ -113,7 +113,7 @@
 
     iget-object v0, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->h:Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     iget-object v2, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->d:Ljava/lang/String;
 
@@ -124,7 +124,7 @@
     :pswitch_0
     iget-object v0, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->h:Ljava/lang/String;
 
-    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->q:Ljava/lang/CharSequence;
+    iget-object v1, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->p:Ljava/lang/CharSequence;
 
     iget-object v2, p0, Lcom/microsoft/xbox/telemetry/helpers/d;->d:Ljava/lang/String;
 

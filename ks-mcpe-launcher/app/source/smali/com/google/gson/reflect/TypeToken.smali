@@ -1,6 +1,6 @@
 .class public Lcom/google/gson/reflect/TypeToken;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -71,7 +71,7 @@
 
     aget-object v0, v0, v1
 
-    invoke-static {v0}, Lg8/g;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+    invoke-static {v0}, Li8/h;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
 
     move-result-object v0
 
@@ -98,7 +98,7 @@
     iput-object v0, p0, Lcom/google/gson/reflect/TypeToken;->type:Ljava/lang/reflect/Type;
 
     .line 10
-    invoke-static {v0}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {v0}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     move-result-object v1
 
@@ -167,14 +167,14 @@
 
     check-cast p1, Ljava/lang/reflect/Type;
 
-    invoke-static {p1}, Lg8/g;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
+    invoke-static {p1}, Li8/h;->a(Ljava/lang/reflect/Type;)Ljava/lang/reflect/Type;
 
     move-result-object p1
 
     iput-object p1, p0, Lcom/google/gson/reflect/TypeToken;->type:Ljava/lang/reflect/Type;
 
     .line 18
-    invoke-static {p1}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {p1}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     move-result-object v0
 
@@ -222,7 +222,7 @@
     .line 12
     .line 13
     :cond_1
-    invoke-static {p0}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {p0}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     .line 14
     .line 15
@@ -935,11 +935,11 @@
 
     .line 2
     .line 3
-    new-instance v1, Lg8/d;
+    new-instance v1, Li8/e;
 
     .line 4
     .line 5
-    invoke-direct {v1, p0}, Lg8/d;-><init>(Ljava/lang/reflect/Type;)V
+    invoke-direct {v1, p0}, Li8/e;-><init>(Ljava/lang/reflect/Type;)V
 
     .line 6
     .line 7
@@ -1157,7 +1157,7 @@
     .line 90
     .line 91
     .line 92
-    invoke-static {v5}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {v5}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     .line 93
     .line 94
@@ -1192,7 +1192,7 @@
 
     .line 107
     .line 108
-    invoke-static {v11}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {v11}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     .line 109
     .line 110
@@ -1299,14 +1299,14 @@
 
     .line 161
     .line 162
-    new-instance v0, Lg8/e;
+    new-instance v0, Li8/f;
 
     .line 163
     .line 164
     const/4 v2, 0x0
 
     .line 165
-    invoke-direct {v0, v2, v1, p1}, Lg8/e;-><init>(Ljava/lang/reflect/Type;Ljava/lang/Class;[Ljava/lang/reflect/Type;)V
+    invoke-direct {v0, v2, v1, p1}, Li8/f;-><init>(Ljava/lang/reflect/Type;Ljava/lang/Class;[Ljava/lang/reflect/Type;)V
 
     .line 166
     .line 167
@@ -1455,7 +1455,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, p1}, Lg8/g;->d(Ljava/lang/reflect/Type;Ljava/lang/reflect/Type;)Z
+    invoke-static {v0, p1}, Li8/h;->d(Ljava/lang/reflect/Type;Ljava/lang/reflect/Type;)Z
 
     .line 12
     .line 13
@@ -1602,7 +1602,7 @@
     .line 4
     iget-object v0, p0, Lcom/google/gson/reflect/TypeToken;->rawType:Ljava/lang/Class;
 
-    invoke-static {p1}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {p1}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     move-result-object p1
 
@@ -1640,7 +1640,7 @@
     .line 8
     iget-object v1, p0, Lcom/google/gson/reflect/TypeToken;->rawType:Ljava/lang/Class;
 
-    invoke-static {p1}, Lg8/g;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
+    invoke-static {p1}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
 
     move-result-object v3
 
@@ -1823,7 +1823,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lg8/g;->l(Ljava/lang/reflect/Type;)Ljava/lang/String;
+    invoke-static {v0}, Li8/h;->l(Ljava/lang/reflect/Type;)Ljava/lang/String;
 
     .line 4
     .line 5

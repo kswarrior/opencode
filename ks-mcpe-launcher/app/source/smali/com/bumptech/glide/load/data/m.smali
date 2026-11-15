@@ -1,10 +1,10 @@
 .class public final Lcom/bumptech/glide/load/data/m;
 .super Lcom/bumptech/glide/load/data/l;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final w:Landroid/content/UriMatcher;
+.field public static final q:Landroid/content/UriMatcher;
 
 
 # direct methods
@@ -24,7 +24,7 @@
     .line 5
     .line 6
     .line 7
-    sput-object v0, Lcom/bumptech/glide/load/data/m;->w:Landroid/content/UriMatcher;
+    sput-object v0, Lcom/bumptech/glide/load/data/m;->q:Landroid/content/UriMatcher;
 
     .line 8
     .line 9
@@ -117,7 +117,7 @@
     return-object v0
 .end method
 
-.method public final d(Ljava/lang/Object;)V
+.method public final c(Ljava/lang/Object;)V
     .locals 0
 
     .line 1
@@ -137,7 +137,7 @@
     .locals 3
 
     .line 1
-    sget-object v0, Lcom/bumptech/glide/load/data/m;->w:Landroid/content/UriMatcher;
+    sget-object v0, Lcom/bumptech/glide/load/data/m;->q:Landroid/content/UriMatcher;
 
     .line 2
     .line 3
@@ -178,7 +178,7 @@
 
     .line 19
     .line 20
-    invoke-static {p2}, Landroidx/room/g0;->n(Landroid/net/Uri;)Z
+    invoke-static {p2}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
 
     .line 21
     .line 22
@@ -202,7 +202,7 @@
 
     .line 31
     .line 32
-    invoke-static {}, Landroidx/core/view/j1;->t()I
+    invoke-static {}, Landroidx/core/view/g1;->u()I
 
     .line 33
     .line 34

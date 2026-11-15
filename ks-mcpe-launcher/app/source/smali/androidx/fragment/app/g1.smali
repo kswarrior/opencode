@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/g1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -19,8 +19,6 @@
 
 
 # instance fields
-.field public final B1:I
-
 .field public final C1:Ljava/lang/String;
 
 .field public final D1:I
@@ -33,7 +31,7 @@
 
 .field public final Z:Z
 
-.field public final b1:Z
+.field public final b1:I
 
 .field public final c:Ljava/lang/String;
 
@@ -41,13 +39,15 @@
 
 .field public final h:Z
 
-.field public final q:Z
+.field public final p:Z
+
+.field public final q:I
 
 .field public final w:I
 
-.field public final x:I
+.field public final x:Ljava/lang/String;
 
-.field public final y:Ljava/lang/String;
+.field public final y:Z
 
 
 # direct methods
@@ -130,28 +130,28 @@
     move v0, v1
 
     :goto_1
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->q:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->p:Z
 
     .line 22
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/g1;->w:I
+    iput v0, p0, Landroidx/fragment/app/g1;->q:I
 
     .line 23
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/g1;->x:I
+    iput v0, p0, Landroidx/fragment/app/g1;->w:I
 
     .line 24
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
-    iput-object v0, p0, Landroidx/fragment/app/g1;->y:Ljava/lang/String;
+    iput-object v0, p0, Landroidx/fragment/app/g1;->x:Ljava/lang/String;
 
     .line 25
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -168,7 +168,7 @@
     move v0, v1
 
     :goto_2
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->X:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->y:Z
 
     .line 26
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -185,7 +185,7 @@
     move v0, v1
 
     :goto_3
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Y:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->X:Z
 
     .line 27
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -202,7 +202,7 @@
     move v0, v1
 
     :goto_4
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Z:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Y:Z
 
     .line 28
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
@@ -219,14 +219,14 @@
     move v0, v1
 
     :goto_5
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->b1:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Z:Z
 
     .line 29
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/g1;->B1:I
+    iput v0, p0, Landroidx/fragment/app/g1;->b1:I
 
     .line 30
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
@@ -287,42 +287,42 @@
     .line 5
     iget-boolean v0, p1, Landroidx/fragment/app/Fragment;->mInDynamicContainer:Z
 
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->q:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->p:Z
 
     .line 6
     iget v0, p1, Landroidx/fragment/app/Fragment;->mFragmentId:I
 
-    iput v0, p0, Landroidx/fragment/app/g1;->w:I
+    iput v0, p0, Landroidx/fragment/app/g1;->q:I
 
     .line 7
     iget v0, p1, Landroidx/fragment/app/Fragment;->mContainerId:I
 
-    iput v0, p0, Landroidx/fragment/app/g1;->x:I
+    iput v0, p0, Landroidx/fragment/app/g1;->w:I
 
     .line 8
     iget-object v0, p1, Landroidx/fragment/app/Fragment;->mTag:Ljava/lang/String;
 
-    iput-object v0, p0, Landroidx/fragment/app/g1;->y:Ljava/lang/String;
+    iput-object v0, p0, Landroidx/fragment/app/g1;->x:Ljava/lang/String;
 
     .line 9
     iget-boolean v0, p1, Landroidx/fragment/app/Fragment;->mRetainInstance:Z
 
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->X:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->y:Z
 
     .line 10
     iget-boolean v0, p1, Landroidx/fragment/app/Fragment;->mRemoving:Z
 
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Y:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->X:Z
 
     .line 11
     iget-boolean v0, p1, Landroidx/fragment/app/Fragment;->mDetached:Z
 
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Z:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Y:Z
 
     .line 12
     iget-boolean v0, p1, Landroidx/fragment/app/Fragment;->mHidden:Z
 
-    iput-boolean v0, p0, Landroidx/fragment/app/g1;->b1:Z
+    iput-boolean v0, p0, Landroidx/fragment/app/g1;->Z:Z
 
     .line 13
     iget-object v0, p1, Landroidx/fragment/app/Fragment;->mMaxState:Landroidx/lifecycle/Lifecycle$State;
@@ -331,7 +331,7 @@
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/g1;->B1:I
+    iput v0, p0, Landroidx/fragment/app/g1;->b1:I
 
     .line 14
     iget-object v0, p1, Landroidx/fragment/app/Fragment;->mTargetWho:Ljava/lang/String;
@@ -443,7 +443,7 @@
     .line 41
     .line 42
     :cond_0
-    iget-boolean v1, p0, Landroidx/fragment/app/g1;->q:Z
+    iget-boolean v1, p0, Landroidx/fragment/app/g1;->p:Z
 
     .line 43
     .line 44
@@ -461,7 +461,7 @@
     .line 50
     .line 51
     :cond_1
-    iget v1, p0, Landroidx/fragment/app/g1;->x:I
+    iget v1, p0, Landroidx/fragment/app/g1;->w:I
 
     .line 52
     .line 53
@@ -492,7 +492,7 @@
     .line 66
     .line 67
     :cond_2
-    iget-object v1, p0, Landroidx/fragment/app/g1;->y:Ljava/lang/String;
+    iget-object v1, p0, Landroidx/fragment/app/g1;->x:Ljava/lang/String;
 
     .line 68
     .line 69
@@ -527,7 +527,7 @@
     .line 84
     .line 85
     :cond_3
-    iget-boolean v1, p0, Landroidx/fragment/app/g1;->X:Z
+    iget-boolean v1, p0, Landroidx/fragment/app/g1;->y:Z
 
     .line 86
     .line 87
@@ -545,7 +545,7 @@
     .line 93
     .line 94
     :cond_4
-    iget-boolean v1, p0, Landroidx/fragment/app/g1;->Y:Z
+    iget-boolean v1, p0, Landroidx/fragment/app/g1;->X:Z
 
     .line 95
     .line 96
@@ -563,7 +563,7 @@
     .line 102
     .line 103
     :cond_5
-    iget-boolean v1, p0, Landroidx/fragment/app/g1;->Z:Z
+    iget-boolean v1, p0, Landroidx/fragment/app/g1;->Y:Z
 
     .line 104
     .line 105
@@ -581,7 +581,7 @@
     .line 111
     .line 112
     :cond_6
-    iget-boolean v1, p0, Landroidx/fragment/app/g1;->b1:Z
+    iget-boolean v1, p0, Landroidx/fragment/app/g1;->Z:Z
 
     .line 113
     .line 114
@@ -700,7 +700,7 @@
     .line 14
     .line 15
     .line 16
-    iget-boolean p2, p0, Landroidx/fragment/app/g1;->q:Z
+    iget-boolean p2, p0, Landroidx/fragment/app/g1;->p:Z
 
     .line 17
     .line 18
@@ -709,7 +709,7 @@
     .line 19
     .line 20
     .line 21
-    iget p2, p0, Landroidx/fragment/app/g1;->w:I
+    iget p2, p0, Landroidx/fragment/app/g1;->q:I
 
     .line 22
     .line 23
@@ -718,7 +718,7 @@
     .line 24
     .line 25
     .line 26
-    iget p2, p0, Landroidx/fragment/app/g1;->x:I
+    iget p2, p0, Landroidx/fragment/app/g1;->w:I
 
     .line 27
     .line 28
@@ -727,7 +727,7 @@
     .line 29
     .line 30
     .line 31
-    iget-object p2, p0, Landroidx/fragment/app/g1;->y:Ljava/lang/String;
+    iget-object p2, p0, Landroidx/fragment/app/g1;->x:Ljava/lang/String;
 
     .line 32
     .line 33
@@ -736,7 +736,7 @@
     .line 34
     .line 35
     .line 36
-    iget-boolean p2, p0, Landroidx/fragment/app/g1;->X:Z
+    iget-boolean p2, p0, Landroidx/fragment/app/g1;->y:Z
 
     .line 37
     .line 38
@@ -745,7 +745,7 @@
     .line 39
     .line 40
     .line 41
-    iget-boolean p2, p0, Landroidx/fragment/app/g1;->Y:Z
+    iget-boolean p2, p0, Landroidx/fragment/app/g1;->X:Z
 
     .line 42
     .line 43
@@ -754,7 +754,7 @@
     .line 44
     .line 45
     .line 46
-    iget-boolean p2, p0, Landroidx/fragment/app/g1;->Z:Z
+    iget-boolean p2, p0, Landroidx/fragment/app/g1;->Y:Z
 
     .line 47
     .line 48
@@ -763,7 +763,7 @@
     .line 49
     .line 50
     .line 51
-    iget-boolean p2, p0, Landroidx/fragment/app/g1;->b1:Z
+    iget-boolean p2, p0, Landroidx/fragment/app/g1;->Z:Z
 
     .line 52
     .line 53
@@ -772,7 +772,7 @@
     .line 54
     .line 55
     .line 56
-    iget p2, p0, Landroidx/fragment/app/g1;->B1:I
+    iget p2, p0, Landroidx/fragment/app/g1;->b1:I
 
     .line 57
     .line 58

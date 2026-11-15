@@ -1,6 +1,6 @@
 .class public final Ld/d;
 .super Landroidx/activity/result/ActivityResultLauncher;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -44,7 +44,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/Object;Lx7/c;)V
+.method public final a(Ljava/lang/Object;La1/a;)V
     .locals 5
 
     .line 1
@@ -107,7 +107,7 @@
     .line 30
     .line 31
     :try_start_0
-    invoke-virtual {v0, v2, v4, p1, p2}, Landroidx/activity/result/ActivityResultRegistry;->b(ILandroidx/activity/result/contract/ActivityResultContract;Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v2, v4, p1, p2}, Landroidx/activity/result/ActivityResultRegistry;->b(ILandroidx/activity/result/contract/ActivityResultContract;Ljava/lang/Object;La1/a;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -250,7 +250,7 @@
     .line 101
     .line 102
     :try_start_1
-    invoke-virtual {v0, v2, v4, p1, p2}, Landroidx/activity/result/ActivityResultRegistry;->b(ILandroidx/activity/result/contract/ActivityResultContract;Ljava/lang/Object;Lx7/c;)V
+    invoke-virtual {v0, v2, v4, p1, p2}, Landroidx/activity/result/ActivityResultRegistry;->b(ILandroidx/activity/result/contract/ActivityResultContract;Ljava/lang/Object;La1/a;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
 

@@ -1,48 +1,54 @@
 .class public final synthetic Lorg/levimc/launcher/util/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public final synthetic d:Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
-.field public final synthetic h:Ljava/lang/Object;
+.field public final synthetic h:Ljava/lang/String;
+
+.field public final synthetic p:Ljava/lang/String;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Ljava/lang/String;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/util/g;->c:I
+    iput p4, p0, Lorg/levimc/launcher/util/g;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/util/g;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/util/g;->d:Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/Object;
+    iput-object p2, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/String;
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p3, p0, Lorg/levimc/launcher/util/g;->p:Ljava/lang/String;
 
     .line 8
     .line 9
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 10
+    .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 2
+.method public final run()V
+    .locals 3
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/util/g;->c:I
@@ -54,112 +60,52 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/util/g;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/String;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/util/ResourcepackHandler;
+    iget-object v1, p0, Lorg/levimc/launcher/util/g;->p:Ljava/lang/String;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/Object;
+    iget-object v2, p0, Lorg/levimc/launcher/util/g;->d:Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 11
     .line 12
-    check-cast v1, Landroid/content/Intent;
+    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->e(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 13
     .line 14
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/ResourcepackHandler;->a(Lorg/levimc/launcher/util/ResourcepackHandler;Landroid/content/Intent;Landroid/view/View;)V
-
     .line 15
-    .line 16
-    .line 17
     return-void
 
-    .line 18
+    .line 16
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/util/g;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/String;
+
+    .line 17
+    .line 18
+    iget-object v1, p0, Lorg/levimc/launcher/util/g;->p:Ljava/lang/String;
 
     .line 19
     .line 20
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
+    iget-object v2, p0, Lorg/levimc/launcher/util/g;->d:Lorg/levimc/launcher/util/GithubReleaseUpdater;
 
     .line 21
     .line 22
-    iget-object v1, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/Object;
+    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->c(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 23
     .line 24
-    check-cast v1, Ljava/lang/String;
-
     .line 25
+    return-void
+
     .line 26
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->b(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/util/g;->d:Ljava/lang/Object;
-
-    .line 31
-    .line 32
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
-
-    .line 33
-    .line 34
-    iget-object v1, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/Object;
-
-    .line 35
-    .line 36
-    check-cast v1, Ljava/lang/String;
-
-    .line 37
-    .line 38
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->a(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
-
-    .line 39
-    .line 40
-    .line 41
-    return-void
-
-    .line 42
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/util/g;->d:Ljava/lang/Object;
-
-    .line 43
-    .line 44
-    check-cast v0, Lorg/levimc/launcher/util/GithubReleaseUpdater;
-
-    .line 45
-    .line 46
-    iget-object v1, p0, Lorg/levimc/launcher/util/g;->h:Ljava/lang/Object;
-
-    .line 47
-    .line 48
-    check-cast v1, Ljava/lang/String;
-
-    .line 49
-    .line 50
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->f(Lorg/levimc/launcher/util/GithubReleaseUpdater;Ljava/lang/String;Landroid/view/View;)V
-
-    .line 51
-    .line 52
-    .line 53
-    return-void
-
-    .line 54
     nop
 
-    .line 55
+    .line 27
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

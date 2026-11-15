@@ -1,6 +1,6 @@
 .class public Lcom/mojang/minecraftpe/AppExitInfoHelper;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -69,7 +69,7 @@
 
     .line 17
     .line 18
-    invoke-static {v0}, Landroidx/core/view/j1;->k(Landroid/app/ActivityManager;)Ljava/util/List;
+    invoke-static {v0}, Landroidx/core/view/g1;->k(Landroid/app/ActivityManager;)Ljava/util/List;
 
     .line 19
     .line 20
@@ -105,7 +105,7 @@
     move-result-object v0
 
     .line 34
-    invoke-static {v0}, Lv6/y;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
+    invoke-static {v0}, Ls4/q2;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
 
     .line 35
     .line 36
@@ -113,7 +113,7 @@
     move-result-object v0
 
     .line 38
-    invoke-static {v0}, Landroidx/core/view/j1;->s(Landroid/app/ApplicationExitInfo;)[B
+    invoke-static {v0}, Landroidx/core/view/g1;->t(Landroid/app/ApplicationExitInfo;)[B
 
     .line 39
     .line 40
@@ -153,7 +153,7 @@
 
     .line 56
     :goto_1
-    invoke-static {v0}, Landroidx/core/view/j1;->i(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
+    invoke-static {v0}, Landroidx/core/view/g1;->i(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
 
     .line 57
     .line 58
@@ -161,7 +161,7 @@
     move-result-object v4
 
     .line 60
-    invoke-static {v0}, Lv6/y;->a(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {v0}, Ls4/q2;->a(Landroid/app/ApplicationExitInfo;)I
 
     .line 61
     .line 62
@@ -169,7 +169,7 @@
     move-result v5
 
     .line 64
-    invoke-static {v0}, Landroidx/core/view/j1;->b(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {v0}, Landroidx/core/view/g1;->b(Landroid/app/ApplicationExitInfo;)I
 
     .line 65
     .line 66
@@ -177,7 +177,7 @@
     move-result v6
 
     .line 68
-    invoke-static {v0}, Lv6/y;->f(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {v0}, Ls4/q2;->h(Landroid/app/ApplicationExitInfo;)I
 
     .line 69
     .line 70
@@ -185,7 +185,7 @@
     move-result v7
 
     .line 72
-    invoke-static {v0}, Lv6/y;->j(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {v0}, Ls4/q2;->l(Landroid/app/ApplicationExitInfo;)J
 
     .line 73
     .line 74
@@ -193,7 +193,7 @@
     move-result-wide v8
 
     .line 76
-    invoke-static {v0}, Lv6/y;->g(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {v0}, Ls4/q2;->i(Landroid/app/ApplicationExitInfo;)J
 
     .line 77
     .line 78
@@ -201,7 +201,7 @@
     move-result-wide v10
 
     .line 80
-    invoke-static {}, Landroidx/core/view/j1;->q()Z
+    invoke-static {}, Landroidx/core/view/g1;->s()Z
 
     .line 81
     .line 82
@@ -277,7 +277,7 @@
     move-result-object p1
 
     .line 28
-    invoke-static {v0, p1}, Landroidx/core/view/j1;->l(Landroid/app/ActivityManager;[B)V
+    invoke-static {v0, p1}, Landroidx/core/view/g1;->l(Landroid/app/ActivityManager;[B)V
 
     .line 29
     .line 30

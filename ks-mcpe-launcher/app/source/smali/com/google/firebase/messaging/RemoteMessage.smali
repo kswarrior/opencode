@@ -1,6 +1,6 @@
 .class public final Lcom/google/firebase/messaging/RemoteMessage;
 .super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -20,7 +20,7 @@
 
 .field public d:Landroidx/collection/ArrayMap;
 
-.field public h:Lkd/d;
+.field public h:Ljd/d;
 
 
 # direct methods
@@ -66,7 +66,7 @@
 
 
 # virtual methods
-.method public final B0()Ljava/util/HashMap;
+.method public final D0()Ljava/util/HashMap;
     .locals 6
 
     .line 1
@@ -266,11 +266,11 @@
     return-object v0
 .end method
 
-.method public final C0()Lkd/d;
+.method public final E0()Ljd/d;
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Lkd/d;
+    iget-object v0, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Ljd/d;
 
     .line 2
     .line 3
@@ -282,7 +282,7 @@
 
     .line 6
     .line 7
-    invoke-static {v0}, Ljd/k;->O(Landroid/os/Bundle;)Z
+    invoke-static {v0}, La1/a;->N(Landroid/os/Bundle;)Z
 
     .line 8
     .line 9
@@ -294,30 +294,30 @@
 
     .line 12
     .line 13
-    new-instance v1, Lkd/d;
+    new-instance v1, Ljd/d;
 
     .line 14
     .line 15
-    new-instance v2, Ljd/k;
+    new-instance v2, La1/a;
 
     .line 16
     .line 17
-    invoke-direct {v2, v0}, Ljd/k;-><init>(Landroid/os/Bundle;)V
+    invoke-direct {v2, v0}, La1/a;-><init>(Landroid/os/Bundle;)V
 
     .line 18
     .line 19
     .line 20
-    invoke-direct {v1, v2}, Lkd/d;-><init>(Ljd/k;)V
+    invoke-direct {v1, v2}, Ljd/d;-><init>(La1/a;)V
 
     .line 21
     .line 22
     .line 23
-    iput-object v1, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Lkd/d;
+    iput-object v1, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Ljd/d;
 
     .line 24
     .line 25
     :cond_0
-    iget-object v0, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Lkd/d;
+    iget-object v0, p0, Lcom/google/firebase/messaging/RemoteMessage;->h:Ljd/d;
 
     .line 26
     .line 27

@@ -414,6 +414,20 @@
     .line 156
     .line 157
     .line 158
+    .line 159
+    .line 160
+    .line 161
+    .line 162
+    .line 163
+    .line 164
+    .line 165
+    .line 166
+    .line 167
+    .line 168
+    .line 169
+    .line 170
+    .line 171
+    .line 172
     :array_1
     .array-data 4
         0x10100c4

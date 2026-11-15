@@ -1,6 +1,6 @@
 .class final Lorg/levimc/launcher/core/content/world/LegacyBlocks;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
@@ -938,21 +938,6 @@
     .line 464
     .line 465
     .line 466
-    .line 467
-    .line 468
-    .line 469
-    .line 470
-    .line 471
-    .line 472
-    .line 473
-    .line 474
-    .line 475
-    .line 476
-    .line 477
-    .line 478
-    .line 479
-    .line 480
-    .line 481
     :pswitch_data_0
     .packed-switch 0x14
         :pswitch_11
@@ -960,16 +945,6 @@
         :pswitch_f
     .end packed-switch
 
-    .line 482
-    .line 483
-    .line 484
-    .line 485
-    .line 486
-    .line 487
-    .line 488
-    .line 489
-    .line 490
-    .line 491
     :pswitch_data_1
     .packed-switch 0x30
         :pswitch_e
@@ -977,16 +952,6 @@
         :pswitch_c
     .end packed-switch
 
-    .line 492
-    .line 493
-    .line 494
-    .line 495
-    .line 496
-    .line 497
-    .line 498
-    .line 499
-    .line 500
-    .line 501
     :pswitch_data_2
     .packed-switch 0x38
         :pswitch_b
@@ -994,14 +959,6 @@
         :pswitch_9
     .end packed-switch
 
-    .line 502
-    .line 503
-    .line 504
-    .line 505
-    .line 506
-    .line 507
-    .line 508
-    .line 509
     :pswitch_data_3
     .packed-switch 0x3c
         :pswitch_8

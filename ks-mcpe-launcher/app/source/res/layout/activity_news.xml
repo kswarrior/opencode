@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="44.0dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="10.0dp">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="18.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/news_title" android:includeFontPadding="false" android:accessibilityHeading="true" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="@string/news_feed_subtitle" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/news_enable_notifications" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/news_enable_notifications" app:icon="@drawable/ic_nav_news" style="@style/Widget.Levi.Button.Secondary" />
+        <com.google.android.material.button.MaterialButton android:id="@id/news_refresh" android:layout_width="40.0dp" android:layout_height="40.0dp" android:contentDescription="@string/news_refresh" android:layout_marginStart="6.0dp" app:icon="@drawable/ic_ui_refresh" style="@style/Widget.Levi.Button.Icon" />
+    </LinearLayout>
+    <HorizontalScrollView android:scrollbars="none" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:overScrollMode="never">
+        <LinearLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="40.0dp">
+            <org.levimc.launcher.ui.widget.SegmentedControl android:id="@id/news_filters" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/news_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8.0dp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/news_status" android:paddingTop="4.0dp" android:paddingBottom="4.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="6.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/news_recycler" android:paddingBottom="4.0dp" android:scrollbars="vertical" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:overScrollMode="never" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/news_progress" android:layout_width="28.0dp" android:layout_height="28.0dp" android:indeterminateTint="@color/primary" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/news_empty" android:padding="16.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <ImageView android:layout_width="36.0dp" android:layout_height="36.0dp" android:src="@drawable/ic_nav_news" android:importantForAccessibility="no" app:tint="@color/text_secondary" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:gravity="center" android:id="@id/news_empty_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/news_empty" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

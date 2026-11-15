@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent"
+<LinearLayout android:orientation="vertical" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/disabled_state_container" android:padding="32.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
-        <ImageView android:layout_width="64.0dp" android:layout_height="64.0dp" android:layout_marginBottom="16.0dp" android:src="@drawable/ic_settings" app:tint="#888888" />
-        <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ms_feature_disabled_title" android:fontFamily="@font/misans" />
-        <TextView android:textSize="14.0sp" android:textColor="#888888" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/ms_feature_disabled_desc" android:fontFamily="@font/misans" android:textAlignment="center" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/main_content_container" android:paddingStart="16.0dp" android:paddingTop="60.0dp" android:paddingEnd="16.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="match_parent">
-        <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="16.0dp" android:layout_weight="1.0">
-            <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="match_parent" android:layout_weight="1.2">
-                <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
-                    <androidx.recyclerview.widget.RecyclerView android:id="@id/accounts_recycler_view" android:paddingBottom="8.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" />
-                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/empty_state_container" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
-                        <TextView android:textSize="16.0sp" android:textColor="#888888" android:id="@id/empty_state_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/not_signed_in" android:fontFamily="@font/misans" />
-                    </LinearLayout>
-                </FrameLayout>
-                <Button android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/on_primary" android:id="@id/bottom_add_button" android:layout_width="match_parent" android:layout_height="48.0dp" android:layout_marginTop="8.0dp" android:text="@string/ms_add_account" android:fontFamily="@font/misans" android:backgroundTint="@color/primary" />
-            </LinearLayout>
-            <ScrollView android:id="@id/right_card_container" android:background="@drawable/card_background" android:layout_width="0.0dp" android:layout_height="match_parent" android:fillViewport="true" android:layout_weight="1.0" android:layout_marginStart="16.0dp" android:elevation="2.0dp">
-                <LinearLayout android:orientation="vertical" android:padding="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-                    <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="64.0dp" android:layout_height="64.0dp" android:layout_marginBottom="16.0dp">
-                        <com.microsoft.xbox.idp.toolkit.CircleImageView android:id="@id/xbox_avatar" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/ic_minecraft_cube" android:scaleType="centerCrop" android:contentDescription="@string/xbox_avatar" />
-                        <ProgressBar android:layout_gravity="center" android:id="@id/avatar_progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminate="true" style="?android:progressBarStyleSmall" />
-                    </FrameLayout>
-                    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:id="@id/gamertag_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/not_signed_in" android:fontFamily="@font/misans" android:textAlignment="center" />
-                    <TextView android:textSize="14.0sp" android:textColor="#888888" android:id="@id/privileges_text" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="" android:fontFamily="@font/misans" android:textAlignment="center" />
-                    <View android:background="#33888888" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="16.0dp" android:layout_marginBottom="16.0dp" />
-                    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
-                        <TextView android:textSize="12.0sp" android:textColor="#888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xuid" android:fontFamily="@font/misans" />
-                        <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:id="@id/xuid_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="" android:fontFamily="@font/misans" />
-                    </LinearLayout>
-                </LinearLayout>
-            </ScrollView>
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="44.0dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="12.0dp">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="18.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/accounts_page_title" android:includeFontPadding="false" android:accessibilityHeading="true" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/accounts_count" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
         </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/bottom_add_button" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/ms_add_account" app:icon="@drawable/ic_ui_add" style="@style/Widget.Levi.Button.Primary" />
     </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_gravity="top|start" android:paddingStart="16.0dp" android:paddingTop="16.0dp" android:paddingEnd="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <include layout="@layout/view_back_button" android:layout_width="28.0dp" android:layout_height="28.0dp" android:layout_marginEnd="10.0dp" />
-        <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/primary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/accounts_title" android:fontFamily="@font/misans" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/accounts_operation" android:padding="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ProgressBar android:layout_width="18.0dp" android:layout_height="18.0dp" android:indeterminateTint="@color/primary" />
+        <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="12.0sp" android:id="@id/accounts_operation_text" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="10.0dp" />
     </LinearLayout>
-</FrameLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="8.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/accounts_recycler_view" android:paddingBottom="4.0dp" android:scrollbars="vertical" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:overScrollMode="never" />
+        <ScrollView android:id="@id/empty_state_container" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:padding="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <ImageView android:layout_width="40.0dp" android:layout_height="40.0dp" android:src="@drawable/ic_ui_person" android:importantForAccessibility="no" app:tint="@color/text_secondary" />
+                <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/accounts_empty_title" />
+                <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:maxWidth="400.0dp" android:text="@string/accounts_empty_description" />
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

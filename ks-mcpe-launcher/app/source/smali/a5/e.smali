@@ -1,14 +1,14 @@
 .class public final La5/e;
-.super Leh/k;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super Lwh/k;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public h:I
+.field public c:I
 
-.field public q:I
+.field public d:I
 
-.field public final synthetic w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+.field public final synthetic h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
 
 # direct methods
@@ -21,14 +21,14 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+    iput-object p1, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
     .line 5
     .line 6
     const/4 p1, -0x1
 
     .line 7
-    iput p1, p0, La5/e;->q:I
+    iput p1, p0, La5/e;->d:I
 
     .line 8
     .line 9
@@ -37,73 +37,7 @@
 
 
 # virtual methods
-.method public final E(ILandroid/view/View;)V
-    .locals 1
-
-    .line 1
-    iput p1, p0, La5/e;->q:I
-
-    .line 2
-    .line 3
-    invoke-virtual {p2}, Landroid/view/View;->getLeft()I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result p1
-
-    .line 7
-    iput p1, p0, La5/e;->h:I
-
-    .line 8
-    .line 9
-    invoke-virtual {p2}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object p1
-
-    .line 13
-    if-eqz p1, :cond_0
-
-    .line 14
-    .line 15
-    iget-object p2, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
-
-    .line 16
-    .line 17
-    const/4 v0, 0x1
-
-    .line 18
-    iput-boolean v0, p2, Lcom/google/android/material/behavior/SwipeDismissBehavior;->c:Z
-
-    .line 19
-    .line 20
-    invoke-interface {p1, v0}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
-
-    .line 21
-    .line 22
-    .line 23
-    const/4 p1, 0x0
-
-    .line 24
-    iput-boolean p1, p2, Lcom/google/android/material/behavior/SwipeDismissBehavior;->c:Z
-
-    .line 25
-    .line 26
-    :cond_0
-    return-void
-.end method
-
-.method public final F(I)V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method public final G(Landroid/view/View;II)V
+.method public final A(Landroid/view/View;II)V
     .locals 4
 
     .line 1
@@ -118,7 +52,7 @@
     int-to-float p3, p3
 
     .line 6
-    iget-object v0, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+    iget-object v0, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
     .line 7
     .line 8
@@ -147,7 +81,7 @@
     mul-float/2addr v1, v0
 
     .line 19
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 20
     .line 21
@@ -243,14 +177,14 @@
     return-void
 .end method
 
-.method public final H(Landroid/view/View;FF)V
+.method public final B(Landroid/view/View;FF)V
     .locals 8
 
     .line 1
     const/4 p3, -0x1
 
     .line 2
-    iput p3, p0, La5/e;->q:I
+    iput p3, p0, La5/e;->d:I
 
     .line 3
     .line 4
@@ -272,7 +206,7 @@
     const/4 v2, 0x0
 
     .line 12
-    iget-object v3, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+    iget-object v3, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
     .line 13
     .line 14
@@ -385,7 +319,7 @@
     move-result v1
 
     .line 60
-    iget v5, p0, La5/e;->h:I
+    iget v5, p0, La5/e;->c:I
 
     .line 61
     .line 62
@@ -447,7 +381,7 @@
     move-result p2
 
     .line 89
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 90
     .line 91
@@ -467,7 +401,7 @@
     .line 96
     :cond_7
     :goto_2
-    iget p2, p0, La5/e;->h:I
+    iget p2, p0, La5/e;->c:I
 
     .line 97
     .line 98
@@ -483,7 +417,7 @@
 
     .line 102
     :cond_8
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 103
     .line 104
@@ -512,11 +446,11 @@
 
     .line 115
     .line 116
-    new-instance p2, Li6/m0;
+    new-instance p2, Lk6/m0;
 
     .line 117
     .line 118
-    invoke-direct {p2, v3, p1, v2}, Li6/m0;-><init>(Lcom/google/android/material/behavior/SwipeDismissBehavior;Landroid/view/View;Z)V
+    invoke-direct {p2, v3, p1, v2}, Lk6/m0;-><init>(Lcom/google/android/material/behavior/SwipeDismissBehavior;Landroid/view/View;Z)V
 
     .line 119
     .line 120
@@ -530,11 +464,11 @@
     return-void
 .end method
 
-.method public final P(ILandroid/view/View;)Z
+.method public final F(ILandroid/view/View;)Z
     .locals 2
 
     .line 1
-    iget v0, p0, La5/e;->q:I
+    iget v0, p0, La5/e;->d:I
 
     .line 2
     .line 3
@@ -550,7 +484,7 @@
     .line 7
     .line 8
     :cond_0
-    iget-object p1, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+    iget-object p1, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
     .line 9
     .line 10
@@ -579,7 +513,7 @@
     return p1
 .end method
 
-.method public final h(ILandroid/view/View;)I
+.method public final d(ILandroid/view/View;)I
     .locals 3
 
     .line 1
@@ -609,7 +543,7 @@
 
     .line 11
     :goto_0
-    iget-object v2, p0, La5/e;->w:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+    iget-object v2, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
 
     .line 12
     .line 13
@@ -625,7 +559,7 @@
 
     .line 18
     .line 19
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 20
     .line 21
@@ -640,7 +574,7 @@
     sub-int/2addr v0, p2
 
     .line 26
-    iget p2, p0, La5/e;->h:I
+    iget p2, p0, La5/e;->c:I
 
     .line 27
     .line 28
@@ -648,7 +582,7 @@
 
     .line 29
     :cond_1
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 30
     .line 31
@@ -676,7 +610,7 @@
 
     .line 40
     .line 41
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 42
     .line 43
@@ -692,7 +626,7 @@
 
     .line 48
     :cond_3
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 49
     .line 50
@@ -707,7 +641,7 @@
     sub-int/2addr v0, p2
 
     .line 55
-    iget p2, p0, La5/e;->h:I
+    iget p2, p0, La5/e;->c:I
 
     .line 56
     .line 57
@@ -715,7 +649,7 @@
 
     .line 58
     :cond_4
-    iget v0, p0, La5/e;->h:I
+    iget v0, p0, La5/e;->c:I
 
     .line 59
     .line 60
@@ -730,7 +664,7 @@
     sub-int/2addr v0, v1
 
     .line 65
-    iget v1, p0, La5/e;->h:I
+    iget v1, p0, La5/e;->c:I
 
     .line 66
     .line 67
@@ -765,7 +699,7 @@
     return p1
 .end method
 
-.method public final i(ILandroid/view/View;)I
+.method public final e(ILandroid/view/View;)I
     .locals 0
 
     .line 1
@@ -780,7 +714,7 @@
     return p1
 .end method
 
-.method public final s(Landroid/view/View;)I
+.method public final u(Landroid/view/View;)I
     .locals 0
 
     .line 1
@@ -793,4 +727,70 @@
 
     .line 5
     return p1
+.end method
+
+.method public final y(ILandroid/view/View;)V
+    .locals 1
+
+    .line 1
+    iput p1, p0, La5/e;->d:I
+
+    .line 2
+    .line 3
+    invoke-virtual {p2}, Landroid/view/View;->getLeft()I
+
+    .line 4
+    .line 5
+    .line 6
+    move-result p1
+
+    .line 7
+    iput p1, p0, La5/e;->c:I
+
+    .line 8
+    .line 9
+    invoke-virtual {p2}, Landroid/view/View;->getParent()Landroid/view/ViewParent;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object p1
+
+    .line 13
+    if-eqz p1, :cond_0
+
+    .line 14
+    .line 15
+    iget-object p2, p0, La5/e;->h:Lcom/google/android/material/behavior/SwipeDismissBehavior;
+
+    .line 16
+    .line 17
+    const/4 v0, 0x1
+
+    .line 18
+    iput-boolean v0, p2, Lcom/google/android/material/behavior/SwipeDismissBehavior;->c:Z
+
+    .line 19
+    .line 20
+    invoke-interface {p1, v0}, Landroid/view/ViewParent;->requestDisallowInterceptTouchEvent(Z)V
+
+    .line 21
+    .line 22
+    .line 23
+    const/4 p1, 0x0
+
+    .line 24
+    iput-boolean p1, p2, Lcom/google/android/material/behavior/SwipeDismissBehavior;->c:Z
+
+    .line 25
+    .line 26
+    :cond_0
+    return-void
+.end method
+
+.method public final z(I)V
+    .locals 0
+
+    .line 1
+    return-void
 .end method

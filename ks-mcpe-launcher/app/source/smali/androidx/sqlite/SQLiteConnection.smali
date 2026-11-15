@@ -1,17 +1,20 @@
 .class public interface abstract Landroidx/sqlite/SQLiteConnection;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/lang/AutoCloseable;
 
 
 # virtual methods
+.method public abstract A0(Ljava/lang/String;)Le2/a;
+.end method
+
 .method public e()Z
     .locals 3
 
     .line 1
-    new-instance v0, Lq8/d;
+    new-instance v0, Ls8/d;
 
     .line 2
     .line 3
@@ -46,13 +49,10 @@
     move-result-object v1
 
     .line 20
-    invoke-direct {v0, v1}, Lq8/d;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, v1}, Ls8/d;-><init>(Ljava/lang/String;)V
 
     .line 21
     .line 22
     .line 23
     throw v0
-.end method
-
-.method public abstract y0(Ljava/lang/String;)Le2/a;
 .end method

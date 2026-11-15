@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/InstancesActivity$3;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;
@@ -71,7 +71,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Q(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Ljava/util/List;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->P(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Ljava/util/List;
 
     .line 4
     .line 5
@@ -130,7 +130,7 @@
     move-result-object p1
 
     .line 34
-    invoke-static {v2, p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Y(Lorg/levimc/launcher/ui/activities/InstancesActivity;[Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->X(Lorg/levimc/launcher/ui/activities/InstancesActivity;[Ljava/lang/String;)Ljava/lang/String;
 
     .line 35
     .line 36
@@ -160,7 +160,7 @@
 
     .line 49
     .line 50
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->R(Lorg/levimc/launcher/ui/activities/InstancesActivity;)I
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Q(Lorg/levimc/launcher/ui/activities/InstancesActivity;)I
 
     .line 51
     .line 52
@@ -172,7 +172,7 @@
 
     .line 55
     .line 56
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->V(Lorg/levimc/launcher/ui/activities/InstancesActivity;I)V
+    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->U(Lorg/levimc/launcher/ui/activities/InstancesActivity;I)V
 
     .line 57
     .line 58
@@ -181,7 +181,7 @@
 
     .line 60
     .line 61
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->a0(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Z(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 62
     .line 63
@@ -209,7 +209,7 @@
 
     .line 8
     .line 9
-    invoke-static {v0, p1, v1, v2, v3}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->b0(Lorg/levimc/launcher/ui/activities/InstancesActivity;ILjava/lang/String;II)V
+    invoke-static {v0, p1, v1, v2, v3}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->a0(Lorg/levimc/launcher/ui/activities/InstancesActivity;ILjava/lang/String;II)V
 
     .line 10
     .line 11
@@ -240,7 +240,7 @@
     const/4 v4, 0x0
 
     .line 10
-    invoke-static {v0, v4, v1, v2, v3}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->b0(Lorg/levimc/launcher/ui/activities/InstancesActivity;ILjava/lang/String;II)V
+    invoke-static {v0, v4, v1, v2, v3}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->a0(Lorg/levimc/launcher/ui/activities/InstancesActivity;ILjava/lang/String;II)V
 
     .line 11
     .line 12
@@ -256,7 +256,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->S(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Ljava/util/List;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->R(Lorg/levimc/launcher/ui/activities/InstancesActivity;)Ljava/util/List;
 
     .line 4
     .line 5
@@ -273,7 +273,7 @@
 
     .line 11
     .line 12
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->R(Lorg/levimc/launcher/ui/activities/InstancesActivity;)I
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Q(Lorg/levimc/launcher/ui/activities/InstancesActivity;)I
 
     .line 13
     .line 14
@@ -285,7 +285,7 @@
 
     .line 17
     .line 18
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->V(Lorg/levimc/launcher/ui/activities/InstancesActivity;I)V
+    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->U(Lorg/levimc/launcher/ui/activities/InstancesActivity;I)V
 
     .line 19
     .line 20
@@ -294,7 +294,7 @@
 
     .line 22
     .line 23
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->a0(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->Z(Lorg/levimc/launcher/ui/activities/InstancesActivity;)V
 
     .line 24
     .line 25

@@ -1,10 +1,10 @@
 .class public final Lc1/d;
-.super Lgc/h;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.super La/a;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic d:I
 
 
 # direct methods
@@ -12,25 +12,28 @@
     .locals 0
 
     .line 1
-    iput p1, p0, Lc1/d;->a:I
+    iput p1, p0, Lc1/d;->d:I
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const/4 p1, 0x3
 
     .line 4
+    invoke-direct {p0, p1}, La/a;-><init>(I)V
+
     .line 5
     .line 6
+    .line 7
     return-void
 .end method
 
 
 # virtual methods
-.method public final M(Ljava/lang/Object;)F
+.method public final o(Ljava/lang/Object;)F
     .locals 1
 
     .line 1
-    iget v0, p0, Lc1/d;->a:I
+    iget v0, p0, Lc1/d;->d:I
 
     .line 2
     .line 3
@@ -181,11 +184,11 @@
     .end packed-switch
 .end method
 
-.method public final d0(Ljava/lang/Object;F)V
+.method public final w(Ljava/lang/Object;F)V
     .locals 1
 
     .line 1
-    iget v0, p0, Lc1/d;->a:I
+    iget v0, p0, Lc1/d;->d:I
 
     .line 2
     .line 3

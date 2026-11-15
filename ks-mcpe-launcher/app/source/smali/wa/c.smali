@@ -1,6 +1,6 @@
 .class public final synthetic Lwa/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ljava/util/function/Function;
@@ -50,346 +50,892 @@
 
     .line 9
     .line 10
-    check-cast v1, Lga/f;
+    check-cast v1, Ljava/lang/Character;
 
     .line 11
     .line 12
-    const-string v2, "_saveVersion"
+    new-instance v1, Ljava/util/ArrayList;
 
     .line 13
     .line 14
-    invoke-virtual {v1, v2}, Lga/f;->m(Ljava/lang/String;)I
+    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
 
     .line 15
     .line 16
     .line 17
-    move-result v2
+    return-object v1
 
     .line 18
-    const/4 v3, 0x1
+    :pswitch_0
+    move-object/from16 v1, p1
 
     .line 19
-    const-string v4, "entityId"
-
     .line 20
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
     .line 21
-    const-string v5, "expireTimeMs"
-
     .line 22
+    new-instance v2, Lgb/a;
+
     .line 23
-    const-string v6, "sessionTicket"
-
     .line 24
+    const-string v3, "expireTimeMs"
+
     .line 25
-    const-string v7, "playFabId"
-
     .line 26
-    .line 27
-    const-string v8, "entityToken"
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
 
+    .line 27
     .line 28
     .line 29
-    if-ne v2, v3, :cond_0
+    move-result-wide v3
 
     .line 30
+    const-string v5, "token"
+
     .line 31
-    new-instance v9, Lhb/a;
-
     .line 32
-    .line 33
-    invoke-virtual {v1, v5}, Lga/f;->n(Ljava/lang/String;)J
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
+    .line 33
     .line 34
     .line 35
+    move-result-object v5
+
     .line 36
-    move-result-wide v10
+    const-string v6, "entityId"
 
     .line 37
-    invoke-virtual {v1, v8}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
-
     .line 38
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
     .line 39
     .line 40
-    move-result-object v12
-
     .line 41
-    invoke-virtual {v1, v4}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v6
 
     .line 42
+    const-string v7, "entityType"
+
     .line 43
     .line 44
-    move-result-object v13
+    invoke-virtual {v1, v7}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
     .line 45
-    const-string v14, "title_player_account"
-
     .line 46
     .line 47
-    invoke-direct/range {v9 .. v14}, Lhb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v7
 
     .line 48
+    invoke-direct/range {v2 .. v7}, Lgb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
     .line 49
     .line 50
-    new-instance v2, Lhb/b;
-
     .line 51
+    return-object v2
+
     .line 52
-    invoke-virtual {v1, v7}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    :pswitch_1
+    move-object/from16 v1, p1
 
     .line 53
     .line 54
-    .line 55
-    move-result-object v3
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
 
+    .line 55
     .line 56
-    invoke-virtual {v1, v6}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "_saveVersion"
 
     .line 57
     .line 58
+    invoke-virtual {v1, v2}, Lnet/lenni0451/commons/gson/elements/GsonObject;->m(Ljava/lang/String;)I
+
     .line 59
-    move-result-object v1
-
     .line 60
-    invoke-direct {v2, v9, v3, v1}, Lhb/b;-><init>(Lhb/a;Ljava/lang/String;Ljava/lang/String;)V
-
     .line 61
+    move-result v2
+
     .line 62
+    const/4 v3, 0x1
+
     .line 63
-    goto :goto_0
+    const-string v4, "entityId"
 
     .line 64
-    :cond_0
-    new-instance v2, Lhb/b;
-
     .line 65
+    const-string v5, "expireTimeMs"
+
     .line 66
-    iget-object v3, v1, Lga/f;->d:Lcom/google/gson/JsonObject;
-
     .line 67
+    const-string v6, "sessionTicket"
+
     .line 68
-    iget-object v9, v3, Lcom/google/gson/JsonObject;->c:Lg8/m;
-
     .line 69
-    .line 70
-    invoke-virtual {v9, v8}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    const-string v7, "playFabId"
 
+    .line 70
     .line 71
+    const-string v8, "entityToken"
+
     .line 72
     .line 73
-    move-result v10
+    if-ne v2, v3, :cond_0
 
     .line 74
-    const/4 v11, 0x0
-
     .line 75
-    if-eqz v10, :cond_2
+    new-instance v9, Lgb/a;
 
     .line 76
     .line 77
-    invoke-virtual {v3, v8}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
 
     .line 78
     .line 79
     .line 80
-    move-result-object v10
+    move-result-wide v10
 
     .line 81
-    invoke-virtual {v10}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {v1, v8}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
     .line 82
     .line 83
     .line 84
-    instance-of v10, v10, Lcom/google/gson/JsonObject;
+    move-result-object v12
 
     .line 85
-    .line 86
-    if-eqz v10, :cond_2
+    invoke-virtual {v1, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
+    .line 86
     .line 87
     .line 88
-    invoke-virtual {v9, v8}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+    move-result-object v13
 
     .line 89
+    const-string v14, "title_player_account"
+
     .line 90
     .line 91
-    move-result v9
+    invoke-direct/range {v9 .. v14}, Lgb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 92
-    if-eqz v9, :cond_1
-
     .line 93
     .line 94
-    invoke-virtual {v3, v8}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    new-instance v2, Lgb/b;
 
     .line 95
     .line 96
+    invoke-virtual {v1, v7}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
     .line 97
+    .line 98
+    .line 99
     move-result-object v3
 
-    .line 98
-    invoke-static {v3}, Lga/c;->d(Lcom/google/gson/JsonElement;)Lga/c;
-
-    .line 99
     .line 100
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
     .line 101
-    move-result-object v11
-
     .line 102
-    :cond_1
-    invoke-virtual {v11}, Lga/c;->c()Lga/f;
-
     .line 103
+    move-result-object v1
+
     .line 104
+    invoke-direct {v2, v9, v3, v1}, Lgb/b;-><init>(Lgb/a;Ljava/lang/String;Ljava/lang/String;)V
+
     .line 105
-    move-result-object v11
-
     .line 106
-    :cond_2
-    new-instance v12, Lhb/a;
-
     .line 107
+    goto :goto_0
+
     .line 108
-    invoke-virtual {v11, v5}, Lga/f;->n(Ljava/lang/String;)J
+    :cond_0
+    new-instance v2, Lgb/b;
 
     .line 109
     .line 110
-    .line 111
-    move-result-wide v13
+    iget-object v3, v1, Lnet/lenni0451/commons/gson/elements/GsonObject;->d:Lcom/google/gson/JsonObject;
 
+    .line 111
     .line 112
-    const-string v3, "token"
+    iget-object v9, v3, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 113
     .line 114
-    invoke-virtual {v11, v3}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v9, v8}, Li8/n;->containsKey(Ljava/lang/Object;)Z
 
     .line 115
     .line 116
     .line 117
-    move-result-object v15
+    move-result v10
 
     .line 118
-    invoke-virtual {v11, v4}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    const/4 v11, 0x0
 
     .line 119
+    if-eqz v10, :cond_2
+
     .line 120
     .line 121
-    move-result-object v16
+    invoke-virtual {v3, v8}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 122
-    const-string v3, "entityType"
-
     .line 123
     .line 124
-    invoke-virtual {v11, v3}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v10
 
     .line 125
+    invoke-virtual {v10}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
     .line 126
     .line 127
-    move-result-object v17
-
     .line 128
-    invoke-direct/range {v12 .. v17}, Lhb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    instance-of v10, v10, Lcom/google/gson/JsonObject;
 
     .line 129
     .line 130
-    .line 131
-    invoke-virtual {v1, v7}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    if-eqz v10, :cond_2
 
+    .line 131
     .line 132
+    invoke-virtual {v9, v8}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+
     .line 133
     .line 134
-    move-result-object v3
-
     .line 135
-    invoke-virtual {v1, v6}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    move-result v9
 
     .line 136
+    if-eqz v9, :cond_1
+
     .line 137
     .line 138
-    move-result-object v1
+    invoke-virtual {v3, v8}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 139
-    invoke-direct {v2, v12, v3, v1}, Lhb/b;-><init>(Lhb/a;Ljava/lang/String;Ljava/lang/String;)V
-
     .line 140
     .line 141
+    move-result-object v3
+
     .line 142
+    invoke-static {v3}, Lia/c;->d(Lcom/google/gson/JsonElement;)Lia/c;
+
+    .line 143
+    .line 144
+    .line 145
+    move-result-object v11
+
+    .line 146
+    :cond_1
+    invoke-virtual {v11}, Lia/c;->c()Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 147
+    .line 148
+    .line 149
+    move-result-object v11
+
+    .line 150
+    :cond_2
+    new-instance v12, Lgb/a;
+
+    .line 151
+    .line 152
+    invoke-virtual {v11, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 153
+    .line 154
+    .line 155
+    move-result-wide v13
+
+    .line 156
+    const-string v3, "token"
+
+    .line 157
+    .line 158
+    invoke-virtual {v11, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 159
+    .line 160
+    .line 161
+    move-result-object v15
+
+    .line 162
+    invoke-virtual {v11, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 163
+    .line 164
+    .line 165
+    move-result-object v16
+
+    .line 166
+    const-string v3, "entityType"
+
+    .line 167
+    .line 168
+    invoke-virtual {v11, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 169
+    .line 170
+    .line 171
+    move-result-object v17
+
+    .line 172
+    invoke-direct/range {v12 .. v17}, Lgb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 173
+    .line 174
+    .line 175
+    invoke-virtual {v1, v7}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 176
+    .line 177
+    .line 178
+    move-result-object v3
+
+    .line 179
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 180
+    .line 181
+    .line 182
+    move-result-object v1
+
+    .line 183
+    invoke-direct {v2, v12, v3, v1}, Lgb/b;-><init>(Lgb/a;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 184
+    .line 185
+    .line 186
     :goto_0
     return-object v2
 
-    .line 143
-    :pswitch_0
+    .line 187
+    :pswitch_2
     move-object/from16 v1, p1
 
-    .line 144
-    .line 145
-    check-cast v1, Lga/f;
+    .line 188
+    .line 189
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 146
-    .line 147
-    new-instance v2, Lhb/a;
+    .line 190
+    .line 191
+    new-instance v2, Lrb/d;
 
-    .line 148
-    .line 149
-    const-string v3, "expireTimeMs"
+    .line 192
+    .line 193
+    const-string v3, "id"
 
-    .line 150
-    .line 151
-    invoke-virtual {v1, v3}, Lga/f;->n(Ljava/lang/String;)J
+    .line 194
+    .line 195
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 152
-    .line 153
-    .line 154
-    move-result-wide v3
+    .line 196
+    .line 197
+    .line 198
+    move-result-object v3
 
-    .line 155
-    const-string v5, "token"
+    .line 199
+    const-string v4, "settings"
 
-    .line 156
-    .line 157
-    invoke-virtual {v1, v5}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 200
+    .line 201
+    invoke-virtual {v1, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 158
-    .line 159
-    .line 160
+    .line 202
+    .line 203
+    .line 204
+    move-result-object v1
+
+    .line 205
+    new-instance v4, Ljava/util/HashMap;
+
+    .line 206
+    .line 207
+    iget-object v1, v1, Lnet/lenni0451/commons/gson/elements/GsonObject;->d:Lcom/google/gson/JsonObject;
+
+    .line 208
+    .line 209
+    iget-object v5, v1, Lcom/google/gson/JsonObject;->c:Li8/n;
+
+    .line 210
+    .line 211
+    iget v5, v5, Li8/n;->d:I
+
+    .line 212
+    .line 213
+    invoke-direct {v4, v5}, Ljava/util/HashMap;-><init>(I)V
+
+    .line 214
+    .line 215
+    .line 216
+    iget-object v1, v1, Lcom/google/gson/JsonObject;->c:Li8/n;
+
+    .line 217
+    .line 218
+    invoke-virtual {v1}, Li8/n;->entrySet()Ljava/util/Set;
+
+    .line 219
+    .line 220
+    .line 221
+    move-result-object v1
+
+    .line 222
+    invoke-interface {v1}, Ljava/util/Collection;->stream()Ljava/util/stream/Stream;
+
+    .line 223
+    .line 224
+    .line 225
+    move-result-object v1
+
+    .line 226
+    new-instance v5, Lia/d;
+
+    .line 227
+    .line 228
+    const/4 v6, 0x0
+
+    .line 229
+    invoke-direct {v5, v6}, Lia/d;-><init>(I)V
+
+    .line 230
+    .line 231
+    .line 232
+    invoke-interface {v1, v5}, Ljava/util/stream/Stream;->map(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+
+    .line 233
+    .line 234
+    .line 235
+    move-result-object v1
+
+    .line 236
+    invoke-static {}, Ljava/util/stream/Collectors;->toSet()Ljava/util/stream/Collector;
+
+    .line 237
+    .line 238
+    .line 239
     move-result-object v5
 
-    .line 161
-    const-string v6, "entityId"
+    .line 240
+    invoke-interface {v1, v5}, Ljava/util/stream/Stream;->collect(Ljava/util/stream/Collector;)Ljava/lang/Object;
 
-    .line 162
-    .line 163
-    invoke-virtual {v1, v6}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 241
+    .line 242
+    .line 243
+    move-result-object v1
 
-    .line 164
-    .line 165
-    .line 166
+    .line 244
+    check-cast v1, Ljava/util/Set;
+
+    .line 245
+    .line 246
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 247
+    .line 248
+    .line 249
+    move-result-object v1
+
+    .line 250
+    :goto_1
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 251
+    .line 252
+    .line 253
+    move-result v5
+
+    .line 254
+    if-eqz v5, :cond_3
+
+    .line 255
+    .line 256
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 257
+    .line 258
+    .line 259
+    move-result-object v5
+
+    .line 260
+    check-cast v5, Ljava/util/Map$Entry;
+
+    .line 261
+    .line 262
+    invoke-interface {v5}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 263
+    .line 264
+    .line 265
     move-result-object v6
 
-    .line 167
-    const-string v7, "entityType"
+    .line 266
+    invoke-interface {v5}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
-    .line 168
-    .line 169
-    invoke-virtual {v1, v7}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 267
+    .line 268
+    .line 269
+    move-result-object v5
 
-    .line 170
-    .line 171
-    .line 172
-    move-result-object v7
+    .line 270
+    check-cast v5, Lia/c;
 
-    .line 173
-    invoke-direct/range {v2 .. v7}, Lhb/a;-><init>(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    .line 271
+    .line 272
+    iget-object v5, v5, Lia/c;->c:Lcom/google/gson/JsonElement;
 
-    .line 174
-    .line 175
-    .line 176
+    .line 273
+    .line 274
+    invoke-virtual {v5}, Lcom/google/gson/JsonElement;->o()Ljava/lang/String;
+
+    .line 275
+    .line 276
+    .line 277
+    move-result-object v5
+
+    .line 278
+    invoke-virtual {v4, v6, v5}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 279
+    .line 280
+    .line 281
+    goto :goto_1
+
+    .line 282
+    :cond_3
+    invoke-static {v4}, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+
+    .line 283
+    .line 284
+    .line 285
+    move-result-object v1
+
+    .line 286
+    invoke-direct {v2, v3, v1}, Lrb/d;-><init>(Ljava/lang/String;Ljava/util/Map;)V
+
+    .line 287
+    .line 288
+    .line 289
     return-object v2
 
-    .line 177
+    .line 290
+    :pswitch_3
+    move-object/from16 v1, p1
+
+    .line 291
+    .line 292
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 293
+    .line 294
+    new-instance v2, Lrb/f;
+
+    .line 295
+    .line 296
+    const-string v3, "expireTimeMs"
+
+    .line 297
+    .line 298
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 299
+    .line 300
+    .line 301
+    move-result-wide v3
+
+    .line 302
+    const-string v5, "token"
+
+    .line 303
+    .line 304
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 305
+    .line 306
+    .line 307
+    move-result-object v5
+
+    .line 308
+    const-string v6, "userHash"
+
+    .line 309
+    .line 310
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 311
+    .line 312
+    .line 313
+    move-result-object v1
+
+    .line 314
+    invoke-direct {v2, v3, v4, v5, v1}, Lrb/f;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+
+    .line 315
+    .line 316
+    .line 317
+    return-object v2
+
+    .line 318
+    :pswitch_4
+    move-object/from16 v1, p1
+
+    .line 319
+    .line 320
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 321
+    .line 322
+    new-instance v2, Lrb/c;
+
+    .line 323
+    .line 324
+    const-string v3, "expireTimeMs"
+
+    .line 325
+    .line 326
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 327
+    .line 328
+    .line 329
+    move-result-wide v3
+
+    .line 330
+    const-string v5, "token"
+
+    .line 331
+    .line 332
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 333
+    .line 334
+    .line 335
+    move-result-object v5
+
+    .line 336
+    const-string v6, "titleId"
+
+    .line 337
+    .line 338
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 339
+    .line 340
+    .line 341
+    move-result-object v1
+
+    .line 342
+    invoke-direct {v2, v3, v4, v5, v1}, Lrb/c;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+
+    .line 343
+    .line 344
+    .line 345
+    return-object v2
+
+    .line 346
+    :pswitch_5
+    move-object/from16 v1, p1
+
+    .line 347
+    .line 348
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 349
+    .line 350
+    new-instance v2, Lrb/e;
+
+    .line 351
+    .line 352
+    const-string v3, "expireTimeMs"
+
+    .line 353
+    .line 354
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 355
+    .line 356
+    .line 357
+    move-result-wide v3
+
+    .line 358
+    const-string v5, "token"
+
+    .line 359
+    .line 360
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 361
+    .line 362
+    .line 363
+    move-result-object v5
+
+    .line 364
+    const-string v6, "userHash"
+
+    .line 365
+    .line 366
+    invoke-virtual {v1, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 367
+    .line 368
+    .line 369
+    move-result-object v1
+
+    .line 370
+    invoke-direct {v2, v3, v4, v5, v1}, Lrb/e;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+
+    .line 371
+    .line 372
+    .line 373
+    return-object v2
+
+    .line 374
+    :pswitch_6
+    move-object/from16 v1, p1
+
+    .line 375
+    .line 376
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 377
+    .line 378
+    new-instance v2, Lya/a;
+
+    .line 379
+    .line 380
+    const-string v3, "mojangJwt"
+
+    .line 381
+    .line 382
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 383
+    .line 384
+    .line 385
+    move-result-object v3
+
+    .line 386
+    const-string v4, "identityJwt"
+
+    .line 387
+    .line 388
+    invoke-virtual {v1, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 389
+    .line 390
+    .line 391
+    move-result-object v1
+
+    .line 392
+    invoke-direct {v2, v3, v1}, Lya/a;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 393
+    .line 394
+    .line 395
+    return-object v2
+
+    .line 396
+    :pswitch_7
+    move-object/from16 v1, p1
+
+    .line 397
+    .line 398
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 399
+    .line 400
+    new-instance v2, Lya/b;
+
+    .line 401
+    .line 402
+    const-string v3, "expireTimeMs"
+
+    .line 403
+    .line 404
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 405
+    .line 406
+    .line 407
+    move-result-wide v3
+
+    .line 408
+    const-string v5, "token"
+
+    .line 409
+    .line 410
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 411
+    .line 412
+    .line 413
+    move-result-object v1
+
+    .line 414
+    invoke-direct {v2, v3, v4, v1}, Lya/b;-><init>(JLjava/lang/String;)V
+
+    .line 415
+    .line 416
+    .line 417
+    return-object v2
+
+    .line 418
+    :pswitch_8
+    move-object/from16 v1, p1
+
+    .line 419
+    .line 420
+    check-cast v1, Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 421
+    .line 422
+    new-instance v2, Lya/c;
+
+    .line 423
+    .line 424
+    const-string v3, "expireTimeMs"
+
+    .line 425
+    .line 426
+    invoke-virtual {v1, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
+
+    .line 427
+    .line 428
+    .line 429
+    move-result-wide v3
+
+    .line 430
+    const-string v5, "authorizationHeader"
+
+    .line 431
+    .line 432
+    invoke-virtual {v1, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 433
+    .line 434
+    .line 435
+    move-result-object v1
+
+    .line 436
+    invoke-direct {v2, v3, v4, v1}, Lya/c;-><init>(JLjava/lang/String;)V
+
+    .line 437
+    .line 438
+    .line 439
+    return-object v2
+
+    .line 440
+    nop
+
+    .line 441
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_8
+        :pswitch_7
+        :pswitch_6
+        :pswitch_5
+        :pswitch_4
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

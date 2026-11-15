@@ -1,12 +1,13 @@
 .class public Lorg/levimc/launcher/util/ApkImportManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
+        Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;,
+        Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;
     }
 .end annotation
 
@@ -55,7 +56,31 @@
     return-void
 .end method
 
-.method public static synthetic a(Landroid/view/View;)V
+.method public static synthetic a(Landroid/net/Uri;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/util/ApkImportManager;->lambda$handleApkImportResult$2(Landroid/net/Uri;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic b(Ljava/util/List;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/util/ApkImportManager;->lambda$installDownloadedFiles$3(Ljava/util/List;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic c(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -67,7 +92,7 @@
     return-void
 .end method
 
-.method public static synthetic b(Landroid/view/View;)V
+.method public static synthetic d(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -79,7 +104,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+.method public static bridge synthetic e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
     .locals 0
 
     .line 1
@@ -90,7 +115,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic d(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
+.method public static bridge synthetic f(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
     .locals 0
 
     .line 1
@@ -101,7 +126,7 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic e(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+.method public static bridge synthetic g(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
     .locals 0
 
     .line 1
@@ -311,6 +336,96 @@
     .locals 0
 
     .line 1
+    return-void
+.end method
+
+.method private static synthetic lambda$handleApkImportResult$2(Landroid/net/Uri;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p1, p0, p2}, Lorg/levimc/launcher/util/ApkInstaller;->install(Landroid/net/Uri;Ljava/lang/String;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private static synthetic lambda$installDownloadedFiles$3(Ljava/util/List;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p1, p0, p2}, Lorg/levimc/launcher/util/ApkInstaller;->installFiles(Ljava/util/List;Ljava/lang/String;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private showVersionDialog(Ljava/lang/String;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
+    .locals 1
+
+    .line 1
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;->setInitialVersionName(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p1
+
+    .line 10
+    new-instance v0, Lorg/levimc/launcher/util/ApkImportManager$1;
+
+    .line 11
+    .line 12
+    invoke-direct {v0, p0, p2}, Lorg/levimc/launcher/util/ApkImportManager$1;-><init>(Lorg/levimc/launcher/util/ApkImportManager;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
+
+    .line 13
+    .line 14
+    .line 15
+    invoke-virtual {p1, v0}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;->setCallback(Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog$Callback;)Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object p1
+
+    .line 19
+    iget-object p2, p0, Lorg/levimc/launcher/util/ApkImportManager;->activity:Landroid/app/Activity;
+
+    .line 20
+    .line 21
+    check-cast p2, Lg/i;
+
+    .line 22
+    .line 23
+    invoke-virtual {p2}, Landroidx/fragment/app/FragmentActivity;->getSupportFragmentManager()Landroidx/fragment/app/FragmentManager;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p2
+
+    .line 27
+    const-string v0, "ApkVersionConfirmDialog"
+
+    .line 28
+    .line 29
+    invoke-virtual {p1, p2, v0}, Landroidx/fragment/app/DialogFragment;->show(Landroidx/fragment/app/FragmentManager;Ljava/lang/String;)V
+
+    .line 30
+    .line 31
+    .line 32
     return-void
 .end method
 
@@ -562,7 +677,7 @@
 
     .line 90
     .line 91
-    const/4 v2, 0x6
+    const/4 v2, 0x4
 
     .line 92
     invoke-direct {v1, v2}, Lcom/microsoft/xboxtcui/a;-><init>(I)V
@@ -717,7 +832,7 @@
 
     .line 166
     .line 167
-    const/4 v2, 0x7
+    const/4 v2, 0x5
 
     .line 168
     invoke-direct {v1, v2}, Lcom/microsoft/xboxtcui/a;-><init>(I)V
@@ -742,65 +857,57 @@
 
     .line 179
     :cond_4
-    new-instance v1, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+    new-instance v1, Lorg/levimc/launcher/util/a;
 
     .line 180
     .line 181
-    invoke-direct {v1}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;-><init>()V
+    const/4 v2, 0x0
 
     .line 182
+    invoke-direct {v1, v0, v2}, Lorg/levimc/launcher/util/a;-><init>(Ljava/lang/Object;I)V
+
     .line 183
     .line 184
-    invoke-virtual {v1, p1}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;->setInitialVersionName(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
-
     .line 185
+    invoke-direct {p0, p1, v1}, Lorg/levimc/launcher/util/ApkImportManager;->showVersionDialog(Ljava/lang/String;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
+
     .line 186
     .line 187
-    move-result-object p1
-
     .line 188
-    new-instance v1, Lorg/levimc/launcher/util/ApkImportManager$1;
+    return-void
+.end method
 
-    .line 189
-    .line 190
-    invoke-direct {v1, p0, v0}, Lorg/levimc/launcher/util/ApkImportManager$1;-><init>(Lorg/levimc/launcher/util/ApkImportManager;Landroid/net/Uri;)V
+.method public installDownloadedFiles(Ljava/util/List;Ljava/lang/String;)V
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/util/List<",
+            "Ljava/io/File;",
+            ">;",
+            "Ljava/lang/String;",
+            ")V"
+        }
+    .end annotation
 
-    .line 191
-    .line 192
-    .line 193
-    invoke-virtual {p1, v1}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;->setCallback(Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog$Callback;)Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+    .line 1
+    new-instance v0, Lorg/levimc/launcher/util/a;
 
-    .line 194
-    .line 195
-    .line 196
-    move-result-object p1
+    .line 2
+    .line 3
+    const/4 v1, 0x1
 
-    .line 197
-    iget-object v0, p0, Lorg/levimc/launcher/util/ApkImportManager;->activity:Landroid/app/Activity;
+    .line 4
+    invoke-direct {v0, p1, v1}, Lorg/levimc/launcher/util/a;-><init>(Ljava/lang/Object;I)V
 
-    .line 198
-    .line 199
-    check-cast v0, Lg/g;
+    .line 5
+    .line 6
+    .line 7
+    invoke-direct {p0, p2, v0}, Lorg/levimc/launcher/util/ApkImportManager;->showVersionDialog(Ljava/lang/String;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
 
-    .line 200
-    .line 201
-    invoke-virtual {v0}, Landroidx/fragment/app/FragmentActivity;->getSupportFragmentManager()Landroidx/fragment/app/FragmentManager;
-
-    .line 202
-    .line 203
-    .line 204
-    move-result-object v0
-
-    .line 205
-    const-string v1, "ApkVersionConfirmDialog"
-
-    .line 206
-    .line 207
-    invoke-virtual {p1, v0, v1}, Landroidx/fragment/app/DialogFragment;->show(Landroidx/fragment/app/FragmentManager;Ljava/lang/String;)V
-
-    .line 208
-    .line 209
-    .line 210
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 

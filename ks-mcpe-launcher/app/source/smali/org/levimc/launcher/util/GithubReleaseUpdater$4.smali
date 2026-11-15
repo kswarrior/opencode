@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/util/GithubReleaseUpdater$4;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/util/PermissionsHandler$PermissionResultCallback;
@@ -355,14 +355,14 @@
     move-result-object p1
 
     .line 7
-    new-instance p2, Lorg/levimc/launcher/util/i;
+    new-instance p2, Lorg/levimc/launcher/util/j;
 
     .line 8
     .line 9
     const/4 v0, 0x0
 
     .line 10
-    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p2, p0, v0}, Lorg/levimc/launcher/util/j;-><init>(Ljava/lang/Object;I)V
 
     .line 11
     .line 12
@@ -395,14 +395,14 @@
 
     .line 8
     .line 9
-    new-instance v1, Lorg/levimc/launcher/util/h;
+    new-instance v1, Lorg/levimc/launcher/util/i;
 
     .line 10
     .line 11
     const/4 v2, 0x3
 
     .line 12
-    invoke-direct {v1, p0, v0, v2}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v0, v2}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 13
     .line 14

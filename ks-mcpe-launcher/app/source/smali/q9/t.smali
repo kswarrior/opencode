@@ -1,73 +1,47 @@
 .class public final Lq9/t;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Lw8/f;
 
 
-# instance fields
-.field public final a:Lo9/o1;
+# static fields
+.field public static final synthetic c:Lq9/t;
+
+.field public static final synthetic d:Lq9/t;
 
 
 # direct methods
-.method public constructor <init>(Lo9/o1;)V
-    .locals 0
+.method static synthetic constructor <clinit>()V
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    new-instance v0, Lq9/t;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Lq9/t;->a:Lo9/o1;
-
-    .line 5
-    .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final toString()Ljava/lang/String;
-    .locals 2
-
-    .line 1
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 2
-    .line 3
-    const-string v1, "WaiterEB("
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 6
+    sput-object v0, Lq9/t;->c:Lq9/t;
+
     .line 7
     .line 8
-    iget-object v1, p0, Lq9/t;->a:Lo9/o1;
+    new-instance v0, Lq9/t;
 
     .line 9
     .line 10
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 11
     .line 12
     .line 13
-    const/16 v1, 0x29
+    sput-object v0, Lq9/t;->d:Lq9/t;
 
     .line 14
     .line 15
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    .line 16
-    .line 17
-    .line 18
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v0
-
-    .line 22
-    return-object v0
+    return-void
 .end method

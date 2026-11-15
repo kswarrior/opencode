@@ -1,76 +1,78 @@
 .class public final Lw0/g0;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-
-# static fields
-.field public static final d:Ljava/util/LinkedHashSet;
-
-.field public static final e:Ljava/lang/Object;
+.super Ly8/c;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final a:Lw0/y0;
+.field public X:I
 
-.field public final b:Le9/k;
+.field public p:Lw0/i0;
 
-.field public final c:Lkotlin/jvm/functions/Function0;
+.field public q:Lw0/d0;
+
+.field public w:Z
+
+.field public synthetic x:Ljava/lang/Object;
+
+.field public final synthetic y:Lw0/i0;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .line 1
-    new-instance v0, Ljava/util/LinkedHashSet;
-
-    .line 2
-    .line 3
-    invoke-direct {v0}, Ljava/util/LinkedHashSet;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    sput-object v0, Lw0/g0;->d:Ljava/util/LinkedHashSet;
-
-    .line 7
-    .line 8
-    new-instance v0, Ljava/lang/Object;
-
-    .line 9
-    .line 10
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
-
-    .line 11
-    .line 12
-    .line 13
-    sput-object v0, Lw0/g0;->e:Ljava/lang/Object;
-
-    .line 14
-    .line 15
-    return-void
-.end method
-
-.method public constructor <init>(Lw0/y0;Le9/k;Lkotlin/jvm/functions/Function0;)V
+.method public constructor <init>(Lw0/i0;Ly8/c;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lw0/g0;->y:Lw0/i0;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Lw0/g0;->a:Lw0/y0;
+    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
 
+    .line 4
     .line 5
     .line 6
-    iput-object p2, p0, Lw0/g0;->b:Le9/k;
+    return-void
+.end method
 
+
+# virtual methods
+.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iput-object p1, p0, Lw0/g0;->x:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    iget p1, p0, Lw0/g0;->X:I
+
+    .line 4
+    .line 5
+    const/high16 v0, -0x80000000
+
+    .line 6
     .line 7
+    or-int/2addr p1, v0
+
     .line 8
-    iput-object p3, p0, Lw0/g0;->c:Lkotlin/jvm/functions/Function0;
+    iput p1, p0, Lw0/g0;->X:I
 
     .line 9
     .line 10
-    return-void
+    iget-object p1, p0, Lw0/g0;->y:Lw0/i0;
+
+    .line 11
+    .line 12
+    const/4 v0, 0x0
+
+    .line 13
+    invoke-virtual {p1, v0, p0}, Lw0/i0;->a(Lw0/n;Ly8/c;)Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p1
+
+    .line 17
+    return-object p1
 .end method

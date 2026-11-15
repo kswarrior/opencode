@@ -1,29 +1,28 @@
 .class public final Ls4/j3;
-.super Lcom/google/android/gms/internal/measurement/j6;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Ls4/m0;
+.super Ls4/p;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final synthetic d:Ljava/util/concurrent/atomic/AtomicReference;
+.field public final synthetic e:I
+
+.field public final synthetic f:Ls4/n3;
 
 
 # direct methods
-.method public constructor <init>(Ls4/q3;Ljava/util/concurrent/atomic/AtomicReference;)V
+.method public synthetic constructor <init>(Ls4/n3;Ls4/q1;I)V
     .locals 0
 
     .line 1
-    iput-object p2, p0, Ls4/j3;->d:Ljava/util/concurrent/atomic/AtomicReference;
+    iput p3, p0, Ls4/j3;->e:I
 
     .line 2
     .line 3
-    const-string p1, "com.google.android.gms.measurement.internal.ITriggerUrisCallback"
+    iput-object p1, p0, Ls4/j3;->f:Ls4/n3;
 
     .line 4
     .line 5
-    invoke-direct {p0, p1}, Lcom/google/android/gms/internal/measurement/j6;-><init>(Ljava/lang/String;)V
+    invoke-direct {p0, p2}, Ls4/p;-><init>(Ls4/z1;)V
 
     .line 6
     .line 7
@@ -33,88 +32,123 @@
 
 
 # virtual methods
-.method public final E(ILandroid/os/Parcel;Landroid/os/Parcel;)Z
-    .locals 0
+.method public final a()V
+    .locals 3
 
     .line 1
-    const/4 p3, 0x2
+    iget v0, p0, Ls4/j3;->e:I
 
     .line 2
-    if-ne p1, p3, :cond_0
-
     .line 3
-    .line 4
-    sget-object p1, Ls4/c4;->CREATOR:Landroid/os/Parcelable$Creator;
+    packed-switch v0, :pswitch_data_0
 
+    .line 4
     .line 5
     .line 6
-    invoke-virtual {p2, p1}, Landroid/os/Parcel;->createTypedArrayList(Landroid/os/Parcelable$Creator;)Ljava/util/ArrayList;
+    iget-object v0, p0, Ls4/j3;->f:Ls4/n3;
 
     .line 7
     .line 8
-    .line 9
-    move-result-object p1
+    iget-object v0, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
 
+    .line 9
     .line 10
-    invoke-static {p2}, Lcom/google/android/gms/internal/measurement/k6;->d(Landroid/os/Parcel;)V
+    check-cast v0, Ls4/q1;
 
     .line 11
     .line 12
-    .line 13
-    invoke-virtual {p0, p1}, Ls4/j3;->v(Ljava/util/List;)V
+    iget-object v0, v0, Ls4/q1;->w:Ls4/v0;
 
+    .line 13
     .line 14
+    invoke-static {v0}, Ls4/q1;->l(Ls4/y1;)V
+
     .line 15
     .line 16
-    const/4 p1, 0x1
-
     .line 17
-    return p1
+    iget-object v0, v0, Ls4/v0;->X:Ls4/t0;
 
     .line 18
-    :cond_0
-    const/4 p1, 0x0
-
     .line 19
-    return p1
-.end method
+    const-string v1, "Tasks have been queued for a long time"
 
-.method public final v(Ljava/util/List;)V
-    .locals 1
+    .line 20
+    .line 21
+    invoke-virtual {v0, v1}, Ls4/t0;->a(Ljava/lang/String;)V
 
-    .line 1
-    iget-object v0, p0, Ls4/j3;->d:Ljava/util/concurrent/atomic/AtomicReference;
-
-    .line 2
-    .line 3
-    monitor-enter v0
-
-    .line 4
-    :try_start_0
-    invoke-virtual {v0, p1}, Ljava/util/concurrent/atomic/AtomicReference;->set(Ljava/lang/Object;)V
-
-    .line 5
-    .line 6
-    .line 7
-    invoke-virtual {v0}, Ljava/lang/Object;->notifyAll()V
-
-    .line 8
-    .line 9
-    .line 10
-    monitor-exit v0
-
-    .line 11
+    .line 22
+    .line 23
+    .line 24
     return-void
 
-    .line 12
-    :catchall_0
-    move-exception p1
+    .line 25
+    :pswitch_0
+    iget-object v0, p0, Ls4/j3;->f:Ls4/n3;
 
-    .line 13
-    monitor-exit v0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    .line 26
+    .line 27
+    invoke-virtual {v0}, Ls4/c0;->k()V
 
-    .line 14
-    throw p1
+    .line 28
+    .line 29
+    .line 30
+    invoke-virtual {v0}, Ls4/n3;->C()Z
+
+    .line 31
+    .line 32
+    .line 33
+    move-result v1
+
+    .line 34
+    if-nez v1, :cond_0
+
+    .line 35
+    .line 36
+    goto :goto_0
+
+    .line 37
+    :cond_0
+    iget-object v1, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+
+    .line 38
+    .line 39
+    check-cast v1, Ls4/q1;
+
+    .line 40
+    .line 41
+    iget-object v1, v1, Ls4/q1;->w:Ls4/v0;
+
+    .line 42
+    .line 43
+    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
+
+    .line 44
+    .line 45
+    .line 46
+    iget-object v1, v1, Ls4/v0;->D1:Ls4/t0;
+
+    .line 47
+    .line 48
+    const-string v2, "Inactivity, disconnecting from the service"
+
+    .line 49
+    .line 50
+    invoke-virtual {v1, v2}, Ls4/t0;->a(Ljava/lang/String;)V
+
+    .line 51
+    .line 52
+    .line 53
+    invoke-virtual {v0}, Ls4/n3;->t()V
+
+    .line 54
+    .line 55
+    .line 56
+    :goto_0
+    return-void
+
+    .line 57
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

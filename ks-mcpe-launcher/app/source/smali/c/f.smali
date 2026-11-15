@@ -1,6 +1,6 @@
 .class public final synthetic Lc/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lc2/d;
@@ -52,11 +52,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lae/i;
+    check-cast v0, Lb8/s0;
 
     .line 9
     .line 10
-    iget-object v1, v0, Lae/i;->w:Ljava/lang/Object;
+    iget-object v1, v0, Lb8/s0;->q:Ljava/lang/Object;
 
     .line 11
     .line 12
@@ -64,7 +64,7 @@
 
     .line 13
     .line 14
-    invoke-static {v1}, Lr8/s;->R(Ljava/util/Map;)Ljava/util/Map;
+    invoke-static {v1}, Lt8/s;->S(Ljava/util/Map;)Ljava/util/Map;
 
     .line 15
     .line 16
@@ -133,15 +133,15 @@
     move-result-object v2
 
     .line 48
-    check-cast v2, Lr9/u;
+    check-cast v2, Lt9/v;
 
     .line 49
     .line 50
-    check-cast v2, Lr9/c0;
+    check-cast v2, Lt9/d0;
 
     .line 51
     .line 52
-    invoke-virtual {v2}, Lr9/c0;->P()Ljava/lang/Object;
+    invoke-virtual {v2}, Lt9/d0;->P()Ljava/lang/Object;
 
     .line 53
     .line 54
@@ -149,7 +149,7 @@
     move-result-object v2
 
     .line 56
-    invoke-virtual {v0, v3, v2}, Lae/i;->f(Ljava/lang/String;Ljava/lang/Object;)V
+    invoke-virtual {v0, v3, v2}, Lb8/s0;->f(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 57
     .line 58
@@ -158,7 +158,7 @@
 
     .line 60
     :cond_0
-    iget-object v1, v0, Lae/i;->h:Ljava/lang/Object;
+    iget-object v1, v0, Lb8/s0;->h:Ljava/lang/Object;
 
     .line 61
     .line 62
@@ -166,7 +166,7 @@
 
     .line 63
     .line 64
-    invoke-static {v1}, Lr8/s;->R(Ljava/util/Map;)Ljava/util/Map;
+    invoke-static {v1}, Lt8/s;->S(Ljava/util/Map;)Ljava/util/Map;
 
     .line 65
     .line 66
@@ -247,7 +247,7 @@
     move-result-object v2
 
     .line 104
-    invoke-virtual {v0, v3, v2}, Lae/i;->f(Ljava/lang/String;Ljava/lang/Object;)V
+    invoke-virtual {v0, v3, v2}, Lb8/s0;->f(Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 105
     .line 106
@@ -256,7 +256,7 @@
 
     .line 108
     :cond_1
-    iget-object v0, v0, Lae/i;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lb8/s0;->d:Ljava/lang/Object;
 
     .line 109
     .line 110
@@ -279,7 +279,7 @@
 
     .line 118
     .line 119
-    new-array v0, v2, [Lq8/e;
+    new-array v0, v2, [Ls8/e;
 
     .line 120
     .line 121
@@ -365,11 +365,11 @@
     move-result-object v3
 
     .line 161
-    new-instance v5, Lq8/e;
+    new-instance v5, Ls8/e;
 
     .line 162
     .line 163
-    invoke-direct {v5, v4, v3}, Lq8/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-direct {v5, v4, v3}, Ls8/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 164
     .line 165
@@ -383,7 +383,7 @@
 
     .line 170
     :cond_3
-    new-array v0, v2, [Lq8/e;
+    new-array v0, v2, [Ls8/e;
 
     .line 171
     .line 172
@@ -395,7 +395,7 @@
     move-result-object v0
 
     .line 176
-    check-cast v0, [Lq8/e;
+    check-cast v0, [Ls8/e;
 
     .line 177
     .line 178
@@ -411,11 +411,11 @@
     move-result-object v0
 
     .line 183
-    check-cast v0, [Lq8/e;
+    check-cast v0, [Ls8/e;
 
     .line 184
     .line 185
-    invoke-static {v0}, Lkb/c;->b([Lq8/e;)Landroid/os/Bundle;
+    invoke-static {v0}, La7/t1;->b([Ls8/e;)Landroid/os/Bundle;
 
     .line 186
     .line 187

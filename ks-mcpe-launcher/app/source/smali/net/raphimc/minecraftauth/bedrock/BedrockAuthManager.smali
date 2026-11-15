@@ -1,6 +1,6 @@
 .class public final Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
@@ -18,7 +18,7 @@
 
 .field public final g:Ljava/security/KeyPair;
 
-.field public final h:Lae/c1;
+.field public final h:Lde/g;
 
 .field public final i:Ljava/lang/Object;
 
@@ -52,7 +52,7 @@
 
 
 # direct methods
-.method public constructor <init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/lang/String;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Ldb/a;Lsb/a;Lsb/e;Lsb/c;Lsb/f;Lsb/f;Lsb/f;Lsb/f;Lsb/d;Lhb/b;Lhb/a;Lya/c;Lya/b;Lya/a;)V
+.method public constructor <init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/lang/String;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Lnet/raphimc/minecraftauth/msa/model/MsaToken;Lrb/a;Lrb/e;Lrb/c;Lrb/f;Lrb/f;Lrb/f;Lrb/f;Lrb/d;Lgb/b;Lgb/a;Lya/c;Lya/b;Lya/a;)V
     .locals 17
 
     move-object/from16 v0, p0
@@ -61,13 +61,13 @@
     invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 28
-    new-instance v1, Lae/c1;
+    new-instance v1, Lde/g;
 
-    const/4 v2, 0x2
+    const/4 v2, 0x3
 
-    invoke-direct {v1, v2}, Lae/c1;-><init>(I)V
+    invoke-direct {v1, v2}, Lde/g;-><init>(I)V
 
-    iput-object v1, v0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lae/c1;
+    iput-object v1, v0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lde/g;
 
     .line 29
     new-instance v1, Ljava/lang/Object;
@@ -373,20 +373,20 @@
     return-void
 .end method
 
-.method public constructor <init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Ldb/a;)V
+.method public constructor <init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Lnet/raphimc/minecraftauth/msa/model/MsaToken;)V
     .locals 5
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    new-instance v0, Lae/c1;
+    new-instance v0, Lde/g;
 
-    const/4 v1, 0x2
+    const/4 v1, 0x3
 
-    invoke-direct {v0, v1}, Lae/c1;-><init>(I)V
+    invoke-direct {v0, v1}, Lde/g;-><init>(I)V
 
-    iput-object v0, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lae/c1;
+    iput-object v0, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lde/g;
 
     .line 3
     new-instance v0, Ljava/lang/Object;
@@ -643,7 +643,7 @@
 
     .line 14
     .line 15
-    invoke-virtual {v1, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v1, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 16
     .line 17
@@ -717,7 +717,7 @@
     .line 51
     .line 52
     .line 53
-    invoke-virtual {v6, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v6, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 54
     .line 55
@@ -738,7 +738,7 @@
 
     .line 63
     .line 64
-    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 65
     .line 66
@@ -751,7 +751,7 @@
 
     .line 70
     .line 71
-    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 72
     .line 73
@@ -764,7 +764,7 @@
 
     .line 77
     .line 78
-    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 79
     .line 80
@@ -777,7 +777,7 @@
 
     .line 84
     .line 85
-    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v6, v7, v8}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 86
     .line 87
@@ -839,7 +839,7 @@
 
     .line 110
     .line 111
-    invoke-virtual {v6, v7, v4}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v6, v7, v4}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 112
     .line 113
@@ -848,7 +848,7 @@
 
     .line 115
     .line 116
-    invoke-virtual {v1, v4, v6}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v6, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 117
     .line 118
@@ -861,7 +861,7 @@
 
     .line 122
     .line 123
-    invoke-virtual {v1, v4, v6}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v1, v4, v6}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 124
     .line 125
@@ -870,7 +870,7 @@
 
     .line 127
     .line 128
-    invoke-static {v4}, Lk4/f;->n(Ljava/security/KeyPair;)Lcom/google/gson/JsonObject;
+    invoke-static {v4}, Landroidx/room/i0;->n(Ljava/security/KeyPair;)Lcom/google/gson/JsonObject;
 
     .line 129
     .line 130
@@ -882,7 +882,7 @@
 
     .line 133
     .line 134
-    invoke-virtual {v1, v6, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v6}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 135
     .line 136
@@ -903,7 +903,7 @@
 
     .line 144
     .line 145
-    invoke-virtual {v1, v6, v4}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v1, v6, v4}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 146
     .line 147
@@ -912,7 +912,7 @@
 
     .line 149
     .line 150
-    invoke-static {v4}, Lk4/f;->n(Ljava/security/KeyPair;)Lcom/google/gson/JsonObject;
+    invoke-static {v4}, Landroidx/room/i0;->n(Ljava/security/KeyPair;)Lcom/google/gson/JsonObject;
 
     .line 151
     .line 152
@@ -924,7 +924,7 @@
 
     .line 155
     .line 156
-    invoke-virtual {v1, v7, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v7}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 157
     .line 158
@@ -937,7 +937,7 @@
 
     .line 162
     .line 163
-    check-cast v4, Ldb/a;
+    check-cast v4, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
     .line 164
     .line 165
@@ -950,7 +950,7 @@
     .line 168
     .line 169
     .line 170
-    invoke-virtual {v7, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v7, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 171
     .line 172
@@ -959,7 +959,7 @@
 
     .line 174
     .line 175
-    iget-wide v8, v4, Ldb/a;->a:J
+    iget-wide v8, v4, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->a:J
 
     .line 176
     .line 177
@@ -975,7 +975,7 @@
 
     .line 182
     .line 183
-    invoke-virtual {v7, v9, v8}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v7, v9, v8}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 184
     .line 185
@@ -988,11 +988,11 @@
 
     .line 189
     .line 190
-    iget-object v10, v4, Ldb/a;->b:Ljava/lang/String;
+    iget-object v10, v4, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->b:Ljava/lang/String;
 
     .line 191
     .line 192
-    invoke-virtual {v7, v8, v10}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v7, v8, v10}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 193
     .line 194
@@ -1001,11 +1001,11 @@
 
     .line 196
     .line 197
-    iget-object v4, v4, Ldb/a;->c:Ljava/lang/String;
+    iget-object v4, v4, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->c:Ljava/lang/String;
 
     .line 198
     .line 199
-    invoke-virtual {v7, v8, v4}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v7, v8, v4}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 200
     .line 201
@@ -1014,7 +1014,7 @@
 
     .line 203
     .line 204
-    invoke-virtual {v1, v4, v7}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v7, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 205
     .line 206
@@ -1043,7 +1043,7 @@
 
     .line 218
     .line 219
-    check-cast v0, Lsb/a;
+    check-cast v0, Lrb/a;
 
     .line 220
     .line 221
@@ -1056,7 +1056,7 @@
     .line 224
     .line 225
     .line 226
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 227
     .line 228
@@ -1064,7 +1064,7 @@
     move-object v8, v11
 
     .line 230
-    iget-wide v10, v0, Lsb/a;->a:J
+    iget-wide v10, v0, Lrb/a;->a:J
 
     .line 231
     .line 232
@@ -1076,25 +1076,25 @@
     move-result-object v10
 
     .line 236
-    invoke-virtual {v4, v9, v10}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v9, v10}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 237
     .line 238
     .line 239
-    iget-object v10, v0, Lsb/a;->b:Ljava/lang/String;
+    iget-object v10, v0, Lrb/a;->b:Ljava/lang/String;
 
     .line 240
     .line 241
-    invoke-virtual {v4, v7, v10}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v7, v10}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 242
     .line 243
     .line 244
-    iget-object v0, v0, Lsb/a;->c:Ljava/lang/String;
+    iget-object v0, v0, Lrb/a;->c:Ljava/lang/String;
 
     .line 245
     .line 246
-    invoke-virtual {v4, v6, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v6, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 247
     .line 248
@@ -1103,7 +1103,7 @@
 
     .line 250
     .line 251
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 252
     .line 253
@@ -1132,7 +1132,7 @@
 
     .line 263
     .line 264
-    check-cast v0, Lsb/e;
+    check-cast v0, Lrb/e;
 
     .line 265
     .line 266
@@ -1145,12 +1145,12 @@
     .line 269
     .line 270
     .line 271
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 272
     .line 273
     .line 274
-    iget-wide v5, v0, Lsb/e;->a:J
+    iget-wide v5, v0, Lrb/e;->a:J
 
     .line 275
     .line 276
@@ -1162,16 +1162,16 @@
     move-result-object v5
 
     .line 280
-    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 281
     .line 282
     .line 283
-    iget-object v5, v0, Lsb/e;->b:Ljava/lang/String;
+    iget-object v5, v0, Lrb/e;->b:Ljava/lang/String;
 
     .line 284
     .line 285
-    invoke-virtual {v4, v7, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v7, v5}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 286
     .line 287
@@ -1180,11 +1180,11 @@
 
     .line 289
     .line 290
-    iget-object v0, v0, Lsb/e;->c:Ljava/lang/String;
+    iget-object v0, v0, Lrb/e;->c:Ljava/lang/String;
 
     .line 291
     .line 292
-    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 293
     .line 294
@@ -1193,7 +1193,7 @@
 
     .line 296
     .line 297
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 298
     .line 299
@@ -1215,7 +1215,7 @@
 
     .line 307
     .line 308
-    check-cast v0, Lsb/c;
+    check-cast v0, Lrb/c;
 
     .line 309
     .line 310
@@ -1228,12 +1228,12 @@
     .line 313
     .line 314
     .line 315
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 316
     .line 317
     .line 318
-    iget-wide v5, v0, Lsb/c;->a:J
+    iget-wide v5, v0, Lrb/c;->a:J
 
     .line 319
     .line 320
@@ -1245,16 +1245,16 @@
     move-result-object v5
 
     .line 324
-    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 325
     .line 326
     .line 327
-    iget-object v5, v0, Lsb/c;->b:Ljava/lang/String;
+    iget-object v5, v0, Lrb/c;->b:Ljava/lang/String;
 
     .line 328
     .line 329
-    invoke-virtual {v4, v7, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v7, v5}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 330
     .line 331
@@ -1263,11 +1263,11 @@
 
     .line 333
     .line 334
-    iget-object v0, v0, Lsb/c;->c:Ljava/lang/String;
+    iget-object v0, v0, Lrb/c;->c:Ljava/lang/String;
 
     .line 335
     .line 336
-    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 337
     .line 338
@@ -1276,7 +1276,7 @@
 
     .line 340
     .line 341
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 342
     .line 343
@@ -1298,11 +1298,11 @@
 
     .line 351
     .line 352
-    check-cast v0, Lsb/f;
+    check-cast v0, Lrb/f;
 
     .line 353
     .line 354
-    invoke-static {v0}, Lsb/f;->e(Lsb/f;)Lcom/google/gson/JsonObject;
+    invoke-static {v0}, Lrb/f;->e(Lrb/f;)Lcom/google/gson/JsonObject;
 
     .line 355
     .line 356
@@ -1314,7 +1314,7 @@
 
     .line 359
     .line 360
-    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 361
     .line 362
@@ -1336,11 +1336,11 @@
 
     .line 370
     .line 371
-    check-cast v0, Lsb/f;
+    check-cast v0, Lrb/f;
 
     .line 372
     .line 373
-    invoke-static {v0}, Lsb/f;->e(Lsb/f;)Lcom/google/gson/JsonObject;
+    invoke-static {v0}, Lrb/f;->e(Lrb/f;)Lcom/google/gson/JsonObject;
 
     .line 374
     .line 375
@@ -1352,7 +1352,7 @@
 
     .line 378
     .line 379
-    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 380
     .line 381
@@ -1374,11 +1374,11 @@
 
     .line 389
     .line 390
-    check-cast v0, Lsb/f;
+    check-cast v0, Lrb/f;
 
     .line 391
     .line 392
-    invoke-static {v0}, Lsb/f;->e(Lsb/f;)Lcom/google/gson/JsonObject;
+    invoke-static {v0}, Lrb/f;->e(Lrb/f;)Lcom/google/gson/JsonObject;
 
     .line 393
     .line 394
@@ -1390,7 +1390,7 @@
 
     .line 397
     .line 398
-    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 399
     .line 400
@@ -1412,11 +1412,11 @@
 
     .line 408
     .line 409
-    check-cast v0, Lsb/f;
+    check-cast v0, Lrb/f;
 
     .line 410
     .line 411
-    invoke-static {v0}, Lsb/f;->e(Lsb/f;)Lcom/google/gson/JsonObject;
+    invoke-static {v0}, Lrb/f;->e(Lrb/f;)Lcom/google/gson/JsonObject;
 
     .line 412
     .line 413
@@ -1428,7 +1428,7 @@
 
     .line 416
     .line 417
-    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 418
     .line 419
@@ -1454,7 +1454,7 @@
 
     .line 429
     .line 430
-    check-cast v0, Lsb/d;
+    check-cast v0, Lrb/d;
 
     .line 431
     .line 432
@@ -1467,7 +1467,7 @@
     .line 435
     .line 436
     .line 437
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 438
     .line 439
@@ -1476,16 +1476,16 @@
 
     .line 441
     .line 442
-    iget-object v6, v0, Lsb/d;->a:Ljava/lang/String;
+    iget-object v6, v0, Lrb/d;->a:Ljava/lang/String;
 
     .line 443
     .line 444
-    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 445
     .line 446
     .line 447
-    iget-object v0, v0, Lsb/d;->b:Ljava/util/Map;
+    iget-object v0, v0, Lrb/d;->b:Ljava/util/Map;
 
     .line 448
     .line 449
@@ -1563,7 +1563,7 @@
 
     .line 485
     .line 486
-    invoke-virtual {v5, v8, v6}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v5, v8, v6}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 487
     .line 488
@@ -1576,7 +1576,7 @@
 
     .line 491
     .line 492
-    invoke-virtual {v4, v0, v5}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 493
     .line 494
@@ -1585,7 +1585,7 @@
 
     .line 496
     .line 497
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 498
     .line 499
@@ -1611,7 +1611,7 @@
 
     .line 509
     .line 510
-    check-cast v0, Lhb/b;
+    check-cast v0, Lgb/b;
 
     .line 511
     .line 512
@@ -1635,16 +1635,16 @@
     move-result-object v5
 
     .line 522
-    invoke-virtual {v4, v3, v5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 523
     .line 524
     .line 525
-    iget-object v5, v0, Lhb/b;->a:Lhb/a;
+    iget-object v5, v0, Lgb/b;->a:Lgb/a;
 
     .line 526
     .line 527
-    invoke-static {v5}, Lhb/a;->d(Lhb/a;)Lcom/google/gson/JsonObject;
+    invoke-static {v5}, Lgb/a;->d(Lgb/a;)Lcom/google/gson/JsonObject;
 
     .line 528
     .line 529
@@ -1656,7 +1656,7 @@
 
     .line 532
     .line 533
-    invoke-virtual {v4, v6, v5}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 534
     .line 535
@@ -1665,11 +1665,11 @@
 
     .line 537
     .line 538
-    iget-object v6, v0, Lhb/b;->b:Ljava/lang/String;
+    iget-object v6, v0, Lgb/b;->b:Ljava/lang/String;
 
     .line 539
     .line 540
-    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 541
     .line 542
@@ -1678,11 +1678,11 @@
 
     .line 544
     .line 545
-    iget-object v0, v0, Lhb/b;->c:Ljava/lang/String;
+    iget-object v0, v0, Lgb/b;->c:Ljava/lang/String;
 
     .line 546
     .line 547
-    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 548
     .line 549
@@ -1691,7 +1691,7 @@
 
     .line 551
     .line 552
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 553
     .line 554
@@ -1717,11 +1717,11 @@
 
     .line 564
     .line 565
-    check-cast v0, Lhb/a;
+    check-cast v0, Lgb/a;
 
     .line 566
     .line 567
-    invoke-static {v0}, Lhb/a;->d(Lhb/a;)Lcom/google/gson/JsonObject;
+    invoke-static {v0}, Lgb/a;->d(Lgb/a;)Lcom/google/gson/JsonObject;
 
     .line 568
     .line 569
@@ -1733,7 +1733,7 @@
 
     .line 572
     .line 573
-    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 574
     .line 575
@@ -1772,7 +1772,7 @@
     .line 591
     .line 592
     .line 593
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 594
     .line 595
@@ -1789,7 +1789,7 @@
     move-result-object v5
 
     .line 602
-    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 603
     .line 604
@@ -1802,7 +1802,7 @@
 
     .line 608
     .line 609
-    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 610
     .line 611
@@ -1811,7 +1811,7 @@
 
     .line 613
     .line 614
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 615
     .line 616
@@ -1850,7 +1850,7 @@
     .line 632
     .line 633
     .line 634
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 635
     .line 636
@@ -1867,7 +1867,7 @@
     move-result-object v5
 
     .line 643
-    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v9, v5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 644
     .line 645
@@ -1876,7 +1876,7 @@
 
     .line 647
     .line 648
-    invoke-virtual {v4, v7, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v7, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 649
     .line 650
@@ -1885,7 +1885,7 @@
 
     .line 652
     .line 653
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 654
     .line 655
@@ -1924,7 +1924,7 @@
     .line 671
     .line 672
     .line 673
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 674
     .line 675
@@ -1937,7 +1937,7 @@
 
     .line 679
     .line 680
-    invoke-virtual {v4, v2, v3}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v2, v3}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 681
     .line 682
@@ -1950,7 +1950,7 @@
 
     .line 686
     .line 687
-    invoke-virtual {v4, v2, v0}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v2, v0}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 688
     .line 689
@@ -1959,7 +1959,7 @@
 
     .line 691
     .line 692
-    invoke-virtual {v1, v0, v4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v1, v4, v0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 693
     .line 694
@@ -1978,11 +1978,11 @@
 
     .line 2
     .line 3
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 4
     .line 5
-    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lae/c1;
+    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->h:Lde/g;
 
     .line 6
     .line 7
@@ -1995,12 +1995,12 @@
 
     .line 11
     .line 12
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 13
     .line 14
     .line 15
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 16
     .line 17
@@ -2009,7 +2009,7 @@
 
     .line 19
     .line 20
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 21
     .line 22
@@ -2017,12 +2017,12 @@
 
     .line 23
     .line 24
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 25
     .line 26
     .line 27
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 28
     .line 29
@@ -2031,7 +2031,7 @@
 
     .line 31
     .line 32
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 33
     .line 34
@@ -2039,12 +2039,12 @@
 
     .line 35
     .line 36
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 37
     .line 38
     .line 39
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 40
     .line 41
@@ -2053,7 +2053,7 @@
 
     .line 43
     .line 44
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 45
     .line 46
@@ -2061,12 +2061,12 @@
 
     .line 47
     .line 48
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 49
     .line 50
     .line 51
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 52
     .line 53
@@ -2075,7 +2075,7 @@
 
     .line 55
     .line 56
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 57
     .line 58
@@ -2083,12 +2083,12 @@
 
     .line 59
     .line 60
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 61
     .line 62
     .line 63
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 64
     .line 65
@@ -2097,7 +2097,7 @@
 
     .line 67
     .line 68
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 69
     .line 70
@@ -2105,12 +2105,12 @@
 
     .line 71
     .line 72
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 73
     .line 74
     .line 75
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 76
     .line 77
@@ -2119,7 +2119,7 @@
 
     .line 79
     .line 80
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 81
     .line 82
@@ -2127,12 +2127,12 @@
 
     .line 83
     .line 84
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 85
     .line 86
     .line 87
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 88
     .line 89
@@ -2141,7 +2141,7 @@
 
     .line 91
     .line 92
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 93
     .line 94
@@ -2149,12 +2149,12 @@
 
     .line 95
     .line 96
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 97
     .line 98
     .line 99
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 100
     .line 101
@@ -2163,7 +2163,7 @@
 
     .line 103
     .line 104
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 105
     .line 106
@@ -2171,12 +2171,12 @@
 
     .line 107
     .line 108
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 109
     .line 110
     .line 111
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 112
     .line 113
@@ -2185,7 +2185,7 @@
 
     .line 115
     .line 116
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 117
     .line 118
@@ -2193,12 +2193,12 @@
 
     .line 119
     .line 120
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 121
     .line 122
     .line 123
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 124
     .line 125
@@ -2207,7 +2207,7 @@
 
     .line 127
     .line 128
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 129
     .line 130
@@ -2215,12 +2215,12 @@
 
     .line 131
     .line 132
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 133
     .line 134
     .line 135
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 136
     .line 137
@@ -2229,7 +2229,7 @@
 
     .line 139
     .line 140
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 141
     .line 142
@@ -2237,12 +2237,12 @@
 
     .line 143
     .line 144
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 145
     .line 146
     .line 147
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 148
     .line 149
@@ -2251,7 +2251,7 @@
 
     .line 151
     .line 152
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 153
     .line 154
@@ -2259,12 +2259,12 @@
 
     .line 155
     .line 156
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 157
     .line 158
     .line 159
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 160
     .line 161
@@ -2273,7 +2273,7 @@
 
     .line 163
     .line 164
-    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
     .line 165
     .line 166
@@ -2281,12 +2281,12 @@
 
     .line 167
     .line 168
-    invoke-direct {v2, v1}, Lwa/b;-><init>(Lae/c1;)V
+    invoke-direct {v2, v1}, Lwa/b;-><init>(Lde/g;)V
 
     .line 169
     .line 170
     .line 171
-    invoke-virtual {v0, v2}, Lae/c1;->a(Lmb/a;)V
+    invoke-virtual {v0, v2}, Lde/g;->a(Llb/a;)V
 
     .line 172
     .line 173
@@ -2298,7 +2298,7 @@
     .locals 7
 
     .line 1
-    new-instance v0, Ltb/a;
+    new-instance v0, Lsb/a;
 
     .line 2
     .line 3
@@ -2314,7 +2314,7 @@
     move-result-object v1
 
     .line 9
-    check-cast v1, Ldb/a;
+    check-cast v1, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
     .line 10
     .line 11
@@ -2330,7 +2330,7 @@
     move-result-object v2
 
     .line 17
-    check-cast v2, Lsb/a;
+    check-cast v2, Lrb/a;
 
     .line 18
     .line 19
@@ -2341,7 +2341,7 @@
     const/4 v4, 0x1
 
     .line 22
-    invoke-direct {v0, v3, v4}, Ltb/a;-><init>(Ljava/lang/String;I)V
+    invoke-direct {v0, v3, v4}, Lsb/a;-><init>(Ljava/lang/String;I)V
 
     .line 23
     .line 24
@@ -2379,7 +2379,7 @@
 
     .line 41
     .line 42
-    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 43
     .line 44
@@ -2392,7 +2392,7 @@
 
     .line 48
     .line 49
-    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->p(Ljava/lang/String;Ljava/lang/Boolean;)V
+    invoke-virtual {v4, v5, v6}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Boolean;)V
 
     .line 50
     .line 51
@@ -2405,12 +2405,12 @@
 
     .line 55
     .line 56
-    invoke-virtual {v4, v5, v3}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v5, v3}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 57
     .line 58
     .line 59
-    iget-object v1, v1, Ldb/a;->b:Ljava/lang/String;
+    iget-object v1, v1, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->b:Ljava/lang/String;
 
     .line 60
     .line 61
@@ -2430,7 +2430,7 @@
 
     .line 68
     .line 69
-    invoke-virtual {v4, v3, v1}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v3, v1}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 70
     .line 71
@@ -2439,11 +2439,11 @@
 
     .line 73
     .line 74
-    iget-object v2, v2, Lsb/a;->b:Ljava/lang/String;
+    iget-object v2, v2, Lrb/a;->b:Ljava/lang/String;
 
     .line 75
     .line 76
-    invoke-virtual {v4, v1, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v1, v2}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 77
     .line 78
@@ -2464,7 +2464,7 @@
 
     .line 86
     .line 87
-    invoke-static {v2}, Ltb/a;->u(Ljava/security/interfaces/ECPublicKey;)Lcom/google/gson/JsonObject;
+    invoke-static {v2}, Ldb/b;->d(Ljava/security/interfaces/ECPublicKey;)Lcom/google/gson/JsonObject;
 
     .line 88
     .line 89
@@ -2476,7 +2476,7 @@
 
     .line 92
     .line 93
-    invoke-virtual {v4, v3, v2}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v4, v2, v3}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 94
     .line 95
@@ -2489,112 +2489,126 @@
 
     .line 99
     .line 100
-    invoke-virtual {v4, v2, v3}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v4, v2, v3}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 101
     .line 102
     .line 103
-    new-instance v2, Lnb/a;
+    new-instance v2, Lmb/a;
 
     .line 104
     .line 105
-    invoke-direct {v2, v4}, Lnb/a;-><init>(Lcom/google/gson/JsonObject;)V
+    invoke-direct {v2, v4}, Lmb/a;-><init>(Lcom/google/gson/JsonObject;)V
 
     .line 106
     .line 107
     .line 108
-    iput-object v2, v0, Lra/b;->X:Lja/a;
+    invoke-virtual {v0, v2}, Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;->setContent(Lnet/lenni0451/commons/httpclient/content/HttpContent;)Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;
 
     .line 109
     .line 110
+    .line 111
     invoke-virtual {v1}, Ljava/security/KeyPair;->getPrivate()Ljava/security/PrivateKey;
 
-    .line 111
     .line 112
     .line 113
+    .line 114
     move-result-object v1
 
-    .line 114
+    .line 115
     check-cast v1, Ljava/security/interfaces/ECPrivateKey;
 
-    .line 115
     .line 116
-    invoke-virtual {v0, v1}, Ltb/a;->s(Ljava/security/interfaces/ECPrivateKey;)V
-
     .line 117
+    invoke-virtual {v0, v1}, Ldb/b;->b(Ljava/security/interfaces/ECPrivateKey;)V
+
     .line 118
     .line 119
+    .line 120
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->a:Lnet/lenni0451/commons/httpclient/HttpClient;
 
-    .line 120
     .line 121
-    invoke-virtual {v1, v0}, Lnet/lenni0451/commons/httpclient/HttpClient;->t(Lqa/a;)Ljava/lang/Object;
-
     .line 122
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
     .line 123
     .line 124
-    move-result-object v0
-
     .line 125
-    check-cast v0, Lsb/b;
+    invoke-virtual {v1, v0}, Lnet/lenni0451/commons/httpclient/HttpClient;->c(Lnet/lenni0451/commons/httpclient/requests/HttpRequest;)Lnet/lenni0451/commons/httpclient/HttpResponse;
 
     .line 126
     .line 127
-    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->l:Lnet/raphimc/minecraftauth/util/holder/Holder;
-
     .line 128
+    move-result-object v1
+
     .line 129
-    iget-object v2, v0, Lsb/b;->a:Lsb/e;
+    invoke-interface {v0, v1}, Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;->handle(Lnet/lenni0451/commons/httpclient/HttpResponse;)Ljava/lang/Object;
 
     .line 130
     .line 131
-    invoke-virtual {v1, v2}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
-
     .line 132
+    move-result-object v0
+
     .line 133
+    check-cast v0, Lrb/b;
+
     .line 134
-    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->m:Lnet/raphimc/minecraftauth/util/holder/Holder;
-
     .line 135
-    .line 136
-    iget-object v2, v0, Lsb/b;->b:Lsb/c;
+    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->l:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
+    .line 136
     .line 137
+    iget-object v2, v0, Lrb/b;->a:Lrb/e;
+
     .line 138
+    .line 139
     invoke-virtual {v1, v2}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
 
-    .line 139
     .line 140
     .line 141
-    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->n:Lnet/raphimc/minecraftauth/util/holder/Holder;
-
     .line 142
+    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->m:Lnet/raphimc/minecraftauth/util/holder/Holder;
+
     .line 143
-    iget-object v0, v0, Lsb/b;->c:Lsb/f;
-
     .line 144
-    .line 145
-    invoke-virtual {v1, v0}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
+    iget-object v2, v0, Lrb/b;->b:Lrb/c;
 
+    .line 145
     .line 146
+    invoke-virtual {v1, v2}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
+
     .line 147
     .line 148
-    return-void
-
     .line 149
-    :cond_0
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->n:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
     .line 150
     .line 151
-    const-string v1, "Client id must be a title client id for XBL SISU authentication"
+    iget-object v0, v0, Lrb/b;->c:Lrb/f;
 
     .line 152
     .line 153
-    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-virtual {v1, v0}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
 
     .line 154
     .line 155
     .line 156
+    return-void
+
+    .line 157
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    .line 158
+    .line 159
+    const-string v1, "Client id must be a title client id for XBL SISU authentication"
+
+    .line 160
+    .line 161
+    invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 162
+    .line 163
+    .line 164
     throw v0
 .end method

@@ -1,6 +1,6 @@
 .class public abstract Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -653,14 +653,14 @@
 
     .line 186
     .line 187
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;
 
     .line 188
     .line 189
-    const/4 v3, 0x2
+    const/4 v3, 0x4
 
     .line 190
-    invoke-direct {v0, p0, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;-><init>(Ljava/lang/Object;I)V
 
     .line 191
     .line 192
@@ -1305,14 +1305,14 @@
 
     .line 194
     .line 195
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;
 
     .line 196
     .line 197
-    const/4 v1, 0x2
+    const/4 v1, 0x4
 
     .line 198
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;-><init>(Ljava/lang/Object;I)V
 
     .line 199
     .line 200
@@ -3320,6 +3320,18 @@
     return-void
 .end method
 
+.method public pauseInput()V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;->onButtonPressEnd()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
 .method public savePosition(II)V
     .locals 2
 
@@ -3367,7 +3379,7 @@
     const/4 v2, 0x1
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;II)V
+    invoke-direct {v1, p1, v2, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(IILjava/lang/Object;)V
 
     .line 7
     .line 8
@@ -3395,7 +3407,7 @@
     const/4 v2, 0x0
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;II)V
+    invoke-direct {v1, p1, v2, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(IILjava/lang/Object;)V
 
     .line 7
     .line 8
@@ -3423,7 +3435,7 @@
     const/4 v2, 0x2
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/BaseOverlayButton;II)V
+    invoke-direct {v1, p1, v2, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a;-><init>(IILjava/lang/Object;)V
 
     .line 7
     .line 8

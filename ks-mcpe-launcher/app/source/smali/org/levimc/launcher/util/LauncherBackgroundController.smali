@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/util/LauncherBackgroundController;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -537,7 +537,7 @@
 .end method
 
 .method private createAnimatedView()V
-    .locals 5
+    .locals 4
 
     .line 1
     new-instance v0, Landroid/widget/ImageView;
@@ -607,26 +607,23 @@
 
     .line 35
     .line 36
-    const/4 v4, 0x5
+    invoke-direct {v3, p0, v0, v1}, Lc/i;-><init>(Lorg/levimc/launcher/util/LauncherBackgroundController;Ljava/lang/String;I)V
 
     .line 37
-    invoke-direct {v3, p0, v0, v1, v4}, Lc/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;II)V
-
     .line 38
     .line 39
-    .line 40
     invoke-interface {v2, v3}, Ljava/util/concurrent/ExecutorService;->submit(Ljava/lang/Runnable;)Ljava/util/concurrent/Future;
 
+    .line 40
     .line 41
     .line 42
-    .line 43
     move-result-object v0
 
-    .line 44
+    .line 43
     iput-object v0, p0, Lorg/levimc/launcher/util/LauncherBackgroundController;->imageDecode:Ljava/util/concurrent/Future;
 
+    .line 44
     .line 45
-    .line 46
     return-void
 .end method
 
@@ -825,7 +822,7 @@
 
     .line 24
     .line 25
-    const/16 v2, 0x11
+    const/16 v2, 0x14
 
     .line 26
     .line 27
@@ -1155,7 +1152,7 @@
     move-result-object p1
 
     .line 10
-    new-instance v0, Lorg/levimc/launcher/util/o;
+    new-instance v0, Lorg/levimc/launcher/util/p;
 
     .line 11
     .line 12
@@ -1313,20 +1310,37 @@
     .line 35
     .line 36
     .line 37
-    :cond_1
-    invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    instance-of v0, p0, Lorg/levimc/launcher/ui/activities/BaseActivity;
 
     .line 38
     .line 39
-    .line 40
-    move-result-object p0
+    if-eqz v0, :cond_1
 
+    .line 40
     .line 41
-    invoke-interface {p2, p0}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+    check-cast p0, Lorg/levimc/launcher/ui/activities/BaseActivity;
 
     .line 42
     .line 43
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->markPersonalizationApplied()V
+
     .line 44
+    .line 45
+    .line 46
+    :cond_1
+    invoke-static {p1}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 47
+    .line 48
+    .line 49
+    move-result-object p0
+
+    .line 50
+    invoke-interface {p2, p0}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+
+    .line 51
+    .line 52
+    .line 53
     return-void
 .end method
 
@@ -1373,14 +1387,14 @@
 
     .line 18
     .line 19
-    new-instance v1, Lcom/google/firebase/messaging/s;
+    new-instance v1, Lcom/google/firebase/messaging/t;
 
     .line 20
     .line 21
-    const/4 v2, 0x2
+    const/4 v2, 0x4
 
     .line 22
-    invoke-direct {v1, v2, p0, p2, p1}, Lcom/google/firebase/messaging/s;-><init>(ILjava/lang/Object;Ljava/lang/Object;Z)V
+    invoke-direct {v1, p0, p1, p2, v2}, Lcom/google/firebase/messaging/t;-><init>(Ljava/lang/Object;ZLjava/lang/Object;I)V
 
     .line 23
     .line 24
@@ -2163,14 +2177,14 @@
     .line 12
     .line 13
     :cond_0
-    new-instance v0, Lorg/levimc/launcher/ui/activities/o3;
+    new-instance v0, Lorg/levimc/launcher/core/play/b;
 
     .line 14
     .line 15
-    const/4 v1, 0x2
+    const/4 v1, 0x3
 
     .line 16
-    invoke-direct {v0, v1}, Lorg/levimc/launcher/ui/activities/o3;-><init>(I)V
+    invoke-direct {v0, v1}, Lorg/levimc/launcher/core/play/b;-><init>(I)V
 
     .line 17
     .line 18

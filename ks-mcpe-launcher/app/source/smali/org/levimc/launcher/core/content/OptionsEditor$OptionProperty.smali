@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/content/OptionsEditor$OptionProperty;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -59,670 +59,674 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p1}, Ljava/lang/String;->toLowerCase()Ljava/lang/String;
+    sget-object v0, Ljava/util/Locale;->ROOT:Ljava/util/Locale;
 
     .line 2
     .line 3
+    invoke-virtual {p1, v0}, Ljava/lang/String;->toLowerCase(Ljava/util/Locale;)Ljava/lang/String;
+
     .line 4
+    .line 5
+    .line 6
     move-result-object p1
 
-    .line 5
-    const-string v0, "gfx"
-
-    .line 6
     .line 7
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "gfx"
 
     .line 8
     .line 9
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 10
+    .line 11
+    .line 12
     move-result v0
 
-    .line 11
-    if-nez v0, :cond_f
-
-    .line 12
     .line 13
-    const-string v0, "render"
+    if-nez v0, :cond_f
 
     .line 14
     .line 15
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "render"
 
     .line 16
     .line 17
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 18
+    .line 19
+    .line 20
     move-result v0
 
-    .line 19
-    if-nez v0, :cond_f
-
-    .line 20
     .line 21
-    const-string v0, "graphics"
+    if-nez v0, :cond_f
 
     .line 22
     .line 23
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "graphics"
 
     .line 24
     .line 25
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 26
+    .line 27
+    .line 28
     move-result v0
 
-    .line 27
-    if-nez v0, :cond_f
-
-    .line 28
     .line 29
-    const-string v0, "texture"
+    if-nez v0, :cond_f
 
     .line 30
     .line 31
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "texture"
 
     .line 32
     .line 33
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 34
+    .line 35
+    .line 36
     move-result v0
 
-    .line 35
-    if-nez v0, :cond_f
-
-    .line 36
     .line 37
-    const-string v0, "particle"
+    if-nez v0, :cond_f
 
     .line 38
     .line 39
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "particle"
 
     .line 40
     .line 41
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 42
+    .line 43
+    .line 44
     move-result v0
 
-    .line 43
-    if-nez v0, :cond_f
-
-    .line 44
     .line 45
-    const-string v0, "fancy"
+    if-nez v0, :cond_f
 
     .line 46
     .line 47
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "fancy"
 
     .line 48
     .line 49
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 50
+    .line 51
+    .line 52
     move-result v0
 
-    .line 51
-    if-eqz v0, :cond_0
-
-    .line 52
     .line 53
-    goto/16 :goto_7
+    if-eqz v0, :cond_0
 
     .line 54
     .line 55
-    :cond_0
-    const-string v0, "audio"
+    goto/16 :goto_7
 
     .line 56
     .line 57
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    :cond_0
+    const-string v0, "audio"
 
     .line 58
     .line 59
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 60
+    .line 61
+    .line 62
     move-result v0
 
-    .line 61
-    if-nez v0, :cond_e
-
-    .line 62
     .line 63
-    const-string v0, "sound"
+    if-nez v0, :cond_e
 
     .line 64
     .line 65
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "sound"
 
     .line 66
     .line 67
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 68
+    .line 69
+    .line 70
     move-result v0
 
-    .line 69
-    if-nez v0, :cond_e
-
-    .line 70
     .line 71
-    const-string v0, "music"
+    if-nez v0, :cond_e
 
     .line 72
     .line 73
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "music"
 
     .line 74
     .line 75
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 76
+    .line 77
+    .line 78
     move-result v0
 
-    .line 77
-    if-nez v0, :cond_e
-
-    .line 78
     .line 79
-    const-string v0, "volume"
+    if-nez v0, :cond_e
 
     .line 80
     .line 81
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "volume"
 
     .line 82
     .line 83
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 84
+    .line 85
+    .line 86
     move-result v0
 
-    .line 85
-    if-eqz v0, :cond_1
-
-    .line 86
     .line 87
-    goto/16 :goto_6
+    if-eqz v0, :cond_1
 
     .line 88
     .line 89
-    :cond_1
-    const-string v0, "control"
+    goto/16 :goto_6
 
     .line 90
     .line 91
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    :cond_1
+    const-string v0, "control"
 
     .line 92
     .line 93
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 94
+    .line 95
+    .line 96
     move-result v0
 
-    .line 95
-    if-nez v0, :cond_d
-
-    .line 96
     .line 97
-    const-string v0, "sensitivity"
+    if-nez v0, :cond_d
 
     .line 98
     .line 99
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "sensitivity"
 
     .line 100
     .line 101
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 102
+    .line 103
+    .line 104
     move-result v0
 
-    .line 103
-    if-nez v0, :cond_d
-
-    .line 104
     .line 105
-    const-string v0, "invert"
+    if-nez v0, :cond_d
 
     .line 106
     .line 107
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "invert"
 
     .line 108
     .line 109
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 110
+    .line 111
+    .line 112
     move-result v0
 
-    .line 111
-    if-nez v0, :cond_d
-
-    .line 112
     .line 113
-    const-string v0, "button"
+    if-nez v0, :cond_d
 
     .line 114
     .line 115
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "button"
 
     .line 116
     .line 117
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 118
+    .line 119
+    .line 120
     move-result v0
 
-    .line 119
-    if-nez v0, :cond_d
-
-    .line 120
     .line 121
-    const-string v0, "key"
+    if-nez v0, :cond_d
 
     .line 122
     .line 123
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "key"
 
     .line 124
     .line 125
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 126
+    .line 127
+    .line 128
     move-result v0
 
-    .line 127
-    if-eqz v0, :cond_2
-
-    .line 128
     .line 129
-    goto/16 :goto_5
+    if-eqz v0, :cond_2
 
     .line 130
     .line 131
-    :cond_2
-    const-string v0, "gui"
+    goto/16 :goto_5
 
     .line 132
     .line 133
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    :cond_2
+    const-string v0, "gui"
 
     .line 134
     .line 135
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 136
+    .line 137
+    .line 138
     move-result v0
 
-    .line 137
-    if-nez v0, :cond_c
-
-    .line 138
     .line 139
-    const-string v0, "ui"
+    if-nez v0, :cond_c
 
     .line 140
     .line 141
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "ui"
 
     .line 142
     .line 143
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 144
+    .line 145
+    .line 146
     move-result v0
 
-    .line 145
-    if-nez v0, :cond_c
-
-    .line 146
     .line 147
-    const-string v0, "hud"
+    if-nez v0, :cond_c
 
     .line 148
     .line 149
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "hud"
 
     .line 150
     .line 151
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 152
+    .line 153
+    .line 154
     move-result v0
 
-    .line 153
-    if-nez v0, :cond_c
-
-    .line 154
     .line 155
-    const-string v0, "screen"
+    if-nez v0, :cond_c
 
     .line 156
     .line 157
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "screen"
 
     .line 158
     .line 159
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 160
+    .line 161
+    .line 162
     move-result v0
 
-    .line 161
-    if-nez v0, :cond_c
-
-    .line 162
     .line 163
-    const-string v0, "safe"
+    if-nez v0, :cond_c
 
     .line 164
     .line 165
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "safe"
 
     .line 166
     .line 167
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 168
+    .line 169
+    .line 170
     move-result v0
 
-    .line 169
-    if-eqz v0, :cond_3
-
-    .line 170
     .line 171
-    goto/16 :goto_4
+    if-eqz v0, :cond_3
 
     .line 172
     .line 173
-    :cond_3
-    const-string v0, "game"
+    goto/16 :goto_4
 
     .line 174
     .line 175
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    :cond_3
+    const-string v0, "game"
 
     .line 176
     .line 177
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 178
+    .line 179
+    .line 180
     move-result v0
 
-    .line 179
-    if-nez v0, :cond_b
-
-    .line 180
     .line 181
-    const-string v0, "difficulty"
+    if-nez v0, :cond_b
 
     .line 182
     .line 183
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "difficulty"
 
     .line 184
     .line 185
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 186
+    .line 187
+    .line 188
     move-result v0
 
-    .line 187
-    if-nez v0, :cond_b
-
-    .line 188
     .line 189
-    const-string v0, "view"
+    if-nez v0, :cond_b
 
     .line 190
     .line 191
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "view"
 
     .line 192
     .line 193
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 194
+    .line 195
+    .line 196
     move-result v0
 
-    .line 195
-    if-nez v0, :cond_b
-
-    .line 196
     .line 197
-    const-string v0, "fov"
+    if-nez v0, :cond_b
 
     .line 198
     .line 199
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "fov"
 
     .line 200
     .line 201
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 202
+    .line 203
+    .line 204
     move-result v0
 
-    .line 203
-    if-nez v0, :cond_b
-
-    .line 204
     .line 205
-    const-string v0, "distance"
+    if-nez v0, :cond_b
 
     .line 206
     .line 207
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "distance"
 
     .line 208
     .line 209
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 210
+    .line 211
+    .line 212
     move-result v0
 
-    .line 211
+    .line 213
     if-eqz v0, :cond_4
 
-    .line 212
-    .line 213
+    .line 214
+    .line 215
     goto :goto_3
 
-    .line 214
+    .line 216
     :cond_4
     const-string v0, "dev"
 
-    .line 215
-    .line 216
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
     .line 217
     .line 218
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 219
+    .line 220
+    .line 221
     move-result v0
 
-    .line 220
-    if-nez v0, :cond_a
-
-    .line 221
     .line 222
-    const-string v0, "debug"
+    if-nez v0, :cond_a
 
     .line 223
     .line 224
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "debug"
 
     .line 225
     .line 226
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 227
+    .line 228
+    .line 229
     move-result v0
 
-    .line 228
-    if-nez v0, :cond_a
-
-    .line 229
     .line 230
-    const-string v0, "log"
+    if-nez v0, :cond_a
 
     .line 231
     .line 232
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "log"
 
     .line 233
     .line 234
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 235
+    .line 236
+    .line 237
     move-result v0
 
-    .line 236
+    .line 238
     if-eqz v0, :cond_5
 
-    .line 237
-    .line 238
+    .line 239
+    .line 240
     goto :goto_2
 
-    .line 239
+    .line 241
     :cond_5
     const-string v0, "server"
 
-    .line 240
-    .line 241
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
     .line 242
     .line 243
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 244
+    .line 245
+    .line 246
     move-result v0
 
-    .line 245
-    if-nez v0, :cond_9
-
-    .line 246
     .line 247
-    const-string v0, "multiplayer"
+    if-nez v0, :cond_9
 
     .line 248
     .line 249
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "multiplayer"
 
     .line 250
     .line 251
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 252
+    .line 253
+    .line 254
     move-result v0
 
-    .line 253
-    if-nez v0, :cond_9
-
-    .line 254
     .line 255
-    const-string v0, "realms"
+    if-nez v0, :cond_9
 
     .line 256
     .line 257
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "realms"
 
     .line 258
     .line 259
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 260
+    .line 261
+    .line 262
     move-result v0
 
-    .line 261
-    if-nez v0, :cond_9
-
-    .line 262
     .line 263
-    const-string v0, "online"
+    if-nez v0, :cond_9
 
     .line 264
     .line 265
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "online"
 
     .line 266
     .line 267
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 268
+    .line 269
+    .line 270
     move-result v0
 
-    .line 269
+    .line 271
     if-eqz v0, :cond_6
 
-    .line 270
-    .line 271
+    .line 272
+    .line 273
     goto :goto_1
 
-    .line 272
+    .line 274
     :cond_6
     const-string v0, "vr"
 
-    .line 273
-    .line 274
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
     .line 275
     .line 276
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 277
+    .line 278
+    .line 279
     move-result v0
 
-    .line 278
-    if-nez v0, :cond_8
-
-    .line 279
     .line 280
-    const-string v0, "3d"
+    if-nez v0, :cond_8
 
     .line 281
     .line 282
-    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+    const-string v0, "3d"
 
     .line 283
     .line 284
+    invoke-virtual {p1, v0}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 285
+    .line 286
+    .line 287
     move-result p1
 
-    .line 286
+    .line 288
     if-eqz p1, :cond_7
 
-    .line 287
-    .line 288
+    .line 289
+    .line 290
     goto :goto_0
 
-    .line 289
+    .line 291
     :cond_7
     const-string p1, "Other"
 
-    .line 290
-    .line 291
+    .line 292
+    .line 293
     return-object p1
 
-    .line 292
+    .line 294
     :cond_8
     :goto_0
     const-string p1, "VR"
 
-    .line 293
-    .line 294
+    .line 295
+    .line 296
     return-object p1
 
-    .line 295
+    .line 297
     :cond_9
     :goto_1
     const-string p1, "Multiplayer"
 
-    .line 296
-    .line 297
+    .line 298
+    .line 299
     return-object p1
 
-    .line 298
+    .line 300
     :cond_a
     :goto_2
     const-string p1, "Developer"
 
-    .line 299
-    .line 300
+    .line 301
+    .line 302
     return-object p1
 
-    .line 301
+    .line 303
     :cond_b
     :goto_3
     const-string p1, "Game"
 
-    .line 302
-    .line 303
+    .line 304
+    .line 305
     return-object p1
 
-    .line 304
+    .line 306
     :cond_c
     :goto_4
     const-string p1, "Interface"
 
-    .line 305
-    .line 306
+    .line 307
+    .line 308
     return-object p1
 
-    .line 307
+    .line 309
     :cond_d
     :goto_5
     const-string p1, "Controls"
 
-    .line 308
-    .line 309
+    .line 310
+    .line 311
     return-object p1
 
-    .line 310
+    .line 312
     :cond_e
     :goto_6
     const-string p1, "Audio"
 
-    .line 311
-    .line 312
+    .line 313
+    .line 314
     return-object p1
 
-    .line 313
+    .line 315
     :cond_f
     :goto_7
     const-string p1, "Graphics"
 
-    .line 314
-    .line 315
+    .line 316
+    .line 317
     return-object p1
 .end method
 

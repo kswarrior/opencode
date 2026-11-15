@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/util/ApkImportManager$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog$Callback;
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lorg/levimc/launcher/util/ApkImportManager;->handleApkImportResult(Landroid/content/Intent;)V
+    value = Lorg/levimc/launcher/util/ApkImportManager;->showVersionDialog(Ljava/lang/String;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -20,11 +20,11 @@
 # instance fields
 .field final synthetic this$0:Lorg/levimc/launcher/util/ApkImportManager;
 
-.field final synthetic val$apkUri:Landroid/net/Uri;
+.field final synthetic val$starter:Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;
 
 
 # direct methods
-.method public constructor <init>(Lorg/levimc/launcher/util/ApkImportManager;Landroid/net/Uri;)V
+.method public constructor <init>(Lorg/levimc/launcher/util/ApkImportManager;Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;)V
     .locals 0
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -37,7 +37,7 @@
 
     .line 2
     .line 3
-    iput-object p2, p0, Lorg/levimc/launcher/util/ApkImportManager$1;->val$apkUri:Landroid/net/Uri;
+    iput-object p2, p0, Lorg/levimc/launcher/util/ApkImportManager$1;->val$starter:Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;
 
     .line 4
     .line 5
@@ -79,7 +79,7 @@
 
     .line 9
     .line 10
-    invoke-static {v1}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v1}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 11
     .line 12
@@ -109,11 +109,11 @@
     .line 24
     .line 25
     .line 26
-    iget-object v1, p0, Lorg/levimc/launcher/util/ApkImportManager$1;->val$apkUri:Landroid/net/Uri;
+    iget-object v1, p0, Lorg/levimc/launcher/util/ApkImportManager$1;->val$starter:Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;
 
     .line 27
     .line 28
-    invoke-virtual {v0, v1, p1}, Lorg/levimc/launcher/util/ApkInstaller;->install(Landroid/net/Uri;Ljava/lang/String;)V
+    invoke-interface {v1, v0, p1}, Lorg/levimc/launcher/util/ApkImportManager$InstallStarter;->start(Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
 
     .line 29
     .line 30

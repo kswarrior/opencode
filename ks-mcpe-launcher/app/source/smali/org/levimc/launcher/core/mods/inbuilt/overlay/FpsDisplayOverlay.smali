@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -22,6 +22,8 @@
 
 .field private initialY:F
 
+.field private final initializeRunnable:Ljava/lang/Runnable;
+
 .field private initialized:Z
 
 .field private isDragging:Z
@@ -32,15 +34,21 @@
 
 .field private isShowing:Z
 
+.field private lastDisplayValue:I
+
 .field private overlayView:Landroid/view/View;
 
 .field private pendingShowRunnable:Ljava/lang/Runnable;
+
+.field private runtimeActive:Z
 
 .field private statsText:Landroid/widget/TextView;
 
 .field private touchDownTime:J
 
 .field private final updateRunnable:Ljava/lang/Runnable;
+
+.field private updatesRunning:Z
 
 .field private final windowManager:Landroid/view/WindowManager;
 
@@ -85,67 +93,98 @@
 
     .line 17
     .line 18
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
+    const/4 v1, 0x1
 
     .line 19
+    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->runtimeActive:Z
+
     .line 20
+    .line 21
+    const/high16 v1, -0x80000000
+
+    .line 22
+    .line 23
+    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lastDisplayValue:I
+
+    .line 24
+    .line 25
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
+
+    .line 26
+    .line 27
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isDragging:Z
 
-    .line 21
-    .line 22
+    .line 28
+    .line 29
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isLocked:Z
 
-    .line 23
-    .line 24
+    .line 30
+    .line 31
     const-wide/16 v1, 0x0
 
-    .line 25
-    .line 26
-    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->touchDownTime:J
-
-    .line 27
-    .line 28
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay$1;
-
-    .line 29
-    .line 30
-    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
-
-    .line 31
     .line 32
     .line 33
-    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->touchDownTime:J
 
     .line 34
     .line 35
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isHudEditorMode:Z
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay$1;
 
     .line 36
     .line 37
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
 
     .line 38
     .line 39
-    const-string v0, "window"
-
     .line 40
-    .line 41
-    invoke-virtual {p1, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
 
+    .line 41
     .line 42
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g;
+
     .line 43
     .line 44
-    move-result-object p1
+    const/4 v2, 0x1
 
     .line 45
-    check-cast p1, Landroid/view/WindowManager;
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
 
     .line 46
     .line 47
+    .line 48
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeRunnable:Ljava/lang/Runnable;
+
+    .line 49
+    .line 50
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isHudEditorMode:Z
+
+    .line 51
+    .line 52
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
+
+    .line 53
+    .line 54
+    const-string v0, "window"
+
+    .line 55
+    .line 56
+    invoke-virtual {p1, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 57
+    .line 58
+    .line 59
+    move-result-object p1
+
+    .line 60
+    check-cast p1, Landroid/view/WindowManager;
+
+    .line 61
+    .line 62
     iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
 
-    .line 48
-    .line 49
+    .line 63
+    .line 64
     return-void
 .end method
 
@@ -153,7 +192,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lambda$initializeNative$1()V
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lambda$updateDisplay$2()V
 
     .line 2
     .line 3
@@ -443,19 +482,69 @@
     return p0
 .end method
 
-.method public static synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
+.method public static synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handleTouchFallback(Landroid/view/View;Landroid/view/MotionEvent;)Z
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lambda$new$1()V
 
     .line 2
     .line 3
     .line 4
-    move-result p0
+    return-void
+.end method
 
+.method private canUpdate()Z
+    .locals 1
+
+    .line 1
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
     .line 5
-    return p0
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->runtimeActive:Z
+
+    .line 6
+    .line 7
+    if-eqz v0, :cond_0
+
+    .line 8
+    .line 9
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+
+    .line 10
+    .line 11
+    if-eqz v0, :cond_0
+
+    .line 12
+    .line 13
+    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    if-nez v0, :cond_0
+
+    .line 18
+    .line 19
+    const/4 v0, 0x1
+
+    .line 20
+    return v0
+
+    .line 21
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 22
+    return v0
 .end method
 
 .method private clampCurrentPosition(Z)V
@@ -705,7 +794,22 @@
     return-void
 .end method
 
-.method public static synthetic d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;II)V
+.method public static synthetic d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handleTouchFallback(Landroid/view/View;Landroid/view/MotionEvent;)Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
+.method public static synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;II)V
     .locals 0
 
     .line 1
@@ -717,7 +821,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)Landroid/os/Handler;
+.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)Landroid/os/Handler;
     .locals 0
 
     .line 1
@@ -728,24 +832,26 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)Z
+.method public static bridge synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)Z
     .locals 0
 
     .line 1
-    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
+    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
 
     .line 2
     .line 3
     return p0
 .end method
 
-.method public static bridge synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
-    .locals 0
+.method public static bridge synthetic h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateDisplay()V
+    const/4 v0, 0x0
 
     .line 2
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
+
     .line 3
     .line 4
     return-void
@@ -1583,6 +1689,21 @@
     return v3
 .end method
 
+.method public static bridge synthetic i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)Z
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->canUpdate()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p0
+
+    .line 5
+    return p0
+.end method
+
 .method private initializeNative()V
     .locals 4
 
@@ -1591,35 +1712,52 @@
 
     .line 2
     .line 3
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeRunnable:Ljava/lang/Runnable;
 
     .line 4
     .line 5
-    const/4 v2, 0x3
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 6
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/i0;-><init>(Ljava/lang/Object;I)V
-
     .line 7
     .line 8
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+
     .line 9
+    .line 10
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeRunnable:Ljava/lang/Runnable;
+
+    .line 11
+    .line 12
     const-wide/16 v2, 0x3e8
 
-    .line 10
-    .line 11
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 12
     .line 13
     .line 14
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 15
+    .line 16
+    .line 17
     return-void
 .end method
 
-.method private synthetic lambda$initializeNative$1()V
+.method public static bridge synthetic j(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateDisplay()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private synthetic lambda$new$1()V
     .locals 1
 
     .line 1
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/nativemod/FpsMod;->init()Z
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->canUpdate()Z
 
     .line 2
     .line 3
@@ -1631,13 +1769,26 @@
 
     .line 6
     .line 7
-    const/4 v0, 0x1
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
 
     .line 8
+    .line 9
+    if-nez v0, :cond_0
+
+    .line 10
+    .line 11
+    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/nativemod/FpsMod;->init()Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v0
+
+    .line 15
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
 
-    .line 9
-    .line 10
+    .line 16
+    .line 17
     :cond_0
     return-void
 .end method
@@ -1651,6 +1802,34 @@
     .line 2
     .line 3
     .line 4
+    return-void
+.end method
+
+.method private synthetic lambda$updateDisplay$2()V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->canUpdate()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    if-eqz v0, :cond_0
+
+    .line 6
+    .line 7
+    const/4 v0, 0x0
+
+    .line 8
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->clampCurrentPosition(Z)V
+
+    .line 9
+    .line 10
+    .line 11
+    :cond_0
     return-void
 .end method
 
@@ -1882,14 +2061,14 @@
 
     .line 84
     .line 85
-    new-instance p2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;
+    new-instance p2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;
 
     .line 86
     .line 87
     const/4 v2, 0x1
 
     .line 88
-    invoke-direct {p2, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
+    invoke-direct {p2, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
 
     .line 89
     .line 90
@@ -1932,39 +2111,31 @@
 
     .line 110
     .line 111
-    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->syncUpdates()V
 
     .line 112
     .line 113
-    iget-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
-
     .line 114
-    .line 115
-    invoke-virtual {p1, p2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 116
-    .line 117
-    .line 118
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->applyOpacity()V
 
-    .line 119
-    .line 120
-    .line 121
+    .line 115
+    .line 116
+    .line 117
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateLockState()V
 
-    .line 122
-    .line 123
-    .line 124
+    .line 118
+    .line 119
+    .line 120
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->applySize()V
 
-    .line 125
-    .line 126
-    .line 127
+    .line 121
+    .line 122
+    .line 123
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->refreshRuntimeVisibility()V
 
-    .line 128
-    .line 129
-    .line 130
+    .line 124
+    .line 125
+    .line 126
     return-void
 .end method
 
@@ -2191,14 +2362,14 @@
 
     .line 108
     .line 109
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;
 
     .line 110
     .line 111
     const/4 v2, 0x0
 
     .line 112
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/f;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
 
     .line 113
     .line 114
@@ -2245,69 +2416,160 @@
 
     .line 136
     .line 137
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->syncUpdates()V
 
     .line 138
     .line 139
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
-
     .line 140
-    .line 141
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 142
-    .line 143
-    .line 144
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->applyOpacity()V
 
-    .line 145
-    .line 146
-    .line 147
+    .line 141
+    .line 142
+    .line 143
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateLockState()V
 
-    .line 148
-    .line 149
-    .line 150
+    .line 144
+    .line 145
+    .line 146
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->applySize()V
 
+    .line 147
+    .line 148
+    .line 149
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
+
+    .line 150
     .line 151
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->x:I
+
     .line 152
     .line 153
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->y:I
 
     .line 154
     .line 155
-    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->x:I
+    invoke-virtual {p0, v1, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatePosition(II)V
 
     .line 156
     .line 157
-    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->y:I
-
     .line 158
-    .line 159
-    invoke-virtual {p0, v1, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatePosition(II)V
-
-    .line 160
-    .line 161
-    .line 162
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->refreshRuntimeVisibility()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 163
-    .line 164
-    .line 165
+    .line 159
+    .line 160
+    .line 161
     return-void
 
-    .line 166
+    .line 162
     :catch_0
     invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->showFallback(II)V
 
-    .line 167
-    .line 168
-    .line 169
+    .line 163
+    .line 164
+    .line 165
     :cond_2
     :goto_0
+    return-void
+.end method
+
+.method private syncUpdates()V
+    .locals 2
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->canUpdate()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
+    .line 5
+    if-nez v0, :cond_0
+
+    .line 6
+    .line 7
+    const/4 v0, 0x0
+
+    .line 8
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
+
+    .line 9
+    .line 10
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+
+    .line 11
+    .line 12
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+
+    .line 13
+    .line 14
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 15
+    .line 16
+    .line 17
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+
+    .line 18
+    .line 19
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeRunnable:Ljava/lang/Runnable;
+
+    .line 20
+    .line 21
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 22
+    .line 23
+    .line 24
+    return-void
+
+    .line 25
+    :cond_0
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
+
+    .line 26
+    .line 27
+    if-nez v0, :cond_2
+
+    .line 28
+    .line 29
+    const/4 v0, 0x1
+
+    .line 30
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
+
+    .line 31
+    .line 32
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
+
+    .line 33
+    .line 34
+    if-nez v0, :cond_1
+
+    .line 35
+    .line 36
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeNative()V
+
+    .line 37
+    .line 38
+    .line 39
+    :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+
+    .line 40
+    .line 41
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+
+    .line 42
+    .line 43
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 44
+    .line 45
+    .line 46
+    :cond_2
     return-void
 .end method
 
@@ -2319,118 +2581,154 @@
 
     .line 2
     .line 3
-    if-eqz v0, :cond_1
+    if-nez v0, :cond_0
 
     .line 4
     .line 5
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
+    goto :goto_1
 
     .line 6
-    .line 7
-    if-eqz v0, :cond_0
+    :cond_0
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initialized:Z
 
+    .line 7
     .line 8
+    if-eqz v0, :cond_1
+
     .line 9
+    .line 10
     invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/nativemod/FpsMod;->nativeIsInitialized()Z
 
-    .line 10
     .line 11
     .line 12
-    move-result v0
-
     .line 13
-    if-eqz v0, :cond_0
+    move-result v0
 
     .line 14
+    if-eqz v0, :cond_1
+
     .line 15
+    .line 16
     invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/nativemod/FpsMod;->nativeGetFps()I
 
-    .line 16
     .line 17
     .line 18
+    .line 19
     move-result v0
 
-    .line 19
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
-
     .line 20
+    goto :goto_0
+
     .line 21
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
+    :cond_1
+    const/4 v0, -0x1
 
     .line 22
+    :goto_0
+    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lastDisplayValue:I
+
     .line 23
-    sget v3, Lorg/levimc/launcher/R$string;->mod_overlay_fps_value:I
-
     .line 24
+    if-ne v1, v0, :cond_2
+
     .line 25
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
     .line 26
-    .line 27
-    .line 28
-    move-result-object v0
+    :goto_1
+    return-void
 
+    .line 27
+    :cond_2
+    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lastDisplayValue:I
+
+    .line 28
     .line 29
-    filled-new-array {v0}, [Ljava/lang/Object;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
 
     .line 30
     .line 31
-    .line 32
-    move-result-object v0
+    if-ltz v0, :cond_3
 
+    .line 32
     .line 33
-    invoke-virtual {v2, v3, v0}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
 
     .line 34
     .line 35
-    .line 36
-    move-result-object v0
+    sget v3, Lorg/levimc/launcher/R$string;->mod_overlay_fps_value:I
 
+    .line 36
     .line 37
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 38
     .line 39
     .line 40
-    goto :goto_0
+    move-result-object v0
 
     .line 41
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
+    filled-new-array {v0}, [Ljava/lang/Object;
 
     .line 42
     .line 43
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
-
     .line 44
+    move-result-object v0
+
     .line 45
-    sget v2, Lorg/levimc/launcher/R$string;->mod_overlay_fps_unknown:I
+    invoke-virtual {v2, v3, v0}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 46
     .line 47
-    invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
     .line 48
+    move-result-object v0
+
     .line 49
+    goto :goto_2
+
     .line 50
-    move-result-object v1
+    :cond_3
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
 
     .line 51
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
     .line 52
+    sget v2, Lorg/levimc/launcher/R$string;->mod_overlay_fps_unknown:I
+
     .line 53
     .line 54
-    :goto_0
-    const/4 v0, 0x0
+    invoke-virtual {v0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     .line 55
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->clampCurrentPosition(Z)V
-
     .line 56
     .line 57
+    move-result-object v0
+
     .line 58
-    :cond_1
+    :goto_2
+    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 59
+    .line 60
+    .line 61
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
+
+    .line 62
+    .line 63
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g;
+
+    .line 64
+    .line 65
+    const/4 v2, 0x0
+
+    .line 66
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;I)V
+
+    .line 67
+    .line 68
+    .line 69
+    invoke-virtual {v0, v1}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+    .line 70
+    .line 71
+    .line 72
     return-void
 .end method
 
@@ -2516,143 +2814,181 @@
 .end method
 
 .method public hide()V
-    .locals 3
+    .locals 4
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 2
     .line 3
-    const/4 v1, 0x0
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->initializeRunnable:Ljava/lang/Runnable;
 
     .line 4
-    if-eqz v0, :cond_0
-
     .line 5
-    .line 6
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
+    .line 6
     .line 7
     .line 8
-    invoke-virtual {v2, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    const/4 v0, 0x0
 
     .line 9
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updatesRunning:Z
+
     .line 10
     .line 11
-    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 12
     .line 13
-    :cond_0
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
 
     .line 14
     .line 15
-    if-nez v0, :cond_1
+    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 16
     .line 17
-    return-void
-
     .line 18
-    :cond_1
-    const/4 v0, 0x0
+    const/high16 v1, -0x80000000
 
     .line 19
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
-
     .line 20
+    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->lastDisplayValue:I
+
     .line 21
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
-
     .line 22
-    .line 23
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
 
+    .line 23
     .line 24
+    const/4 v2, 0x0
+
     .line 25
-    invoke-virtual {v0, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    if-eqz v1, :cond_0
 
     .line 26
     .line 27
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
+
     .line 28
-    :try_start_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
-
     .line 29
-    .line 30
-    if-eqz v0, :cond_2
+    invoke-virtual {v3, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
+    .line 30
     .line 31
     .line 32
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
+    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
 
     .line 33
     .line 34
-    if-eqz v0, :cond_2
+    :cond_0
+    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
 
     .line 35
     .line 36
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+    if-nez v1, :cond_1
 
     .line 37
     .line 38
-    invoke-interface {v0, v2}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
+    return-void
 
     .line 39
+    :cond_1
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->isShowing:Z
+
     .line 40
     .line 41
-    goto :goto_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 42
+    .line 43
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+
+    .line 44
+    .line 45
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 46
+    .line 47
+    .line 48
+    :try_start_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
+
+    .line 49
+    .line 50
+    if-eqz v0, :cond_2
+
+    .line 51
+    .line 52
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
+
+    .line 53
+    .line 54
+    if-eqz v0, :cond_2
+
+    .line 55
+    .line 56
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+
+    .line 57
+    .line 58
+    invoke-interface {v0, v1}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
+
+    .line 59
+    .line 60
+    .line 61
+    goto :goto_0
+
+    .line 62
     :cond_2
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->activity:Landroid/app/Activity;
 
-    .line 43
-    .line 44
-    const v2, 0x1020002
+    .line 63
+    .line 64
+    const v1, 0x1020002
 
-    .line 45
-    .line 46
-    .line 47
-    invoke-virtual {v0, v2}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+    .line 65
+    .line 66
+    .line 67
+    invoke-virtual {v0, v1}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
 
-    .line 48
-    .line 49
-    .line 50
+    .line 68
+    .line 69
+    .line 70
     move-result-object v0
 
-    .line 51
+    .line 71
     check-cast v0, Landroid/view/ViewGroup;
 
-    .line 52
-    .line 53
+    .line 72
+    .line 73
     if-eqz v0, :cond_3
 
-    .line 54
-    .line 55
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+    .line 74
+    .line 75
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
 
-    .line 56
-    .line 57
-    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    .line 76
+    .line 77
+    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 58
-    .line 59
-    .line 60
+    .line 78
+    .line 79
+    .line 80
     :catch_0
     :cond_3
     :goto_0
-    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
 
-    .line 61
-    .line 62
-    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
+    .line 81
+    .line 82
+    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->statsText:Landroid/widget/TextView;
 
-    .line 63
-    .line 64
+    .line 83
+    .line 84
     return-void
 .end method
 
@@ -2698,6 +3034,22 @@
     return-void
 .end method
 
+.method public setRuntimeActive(Z)V
+    .locals 0
+
+    .line 1
+    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->runtimeActive:Z
+
+    .line 2
+    .line 3
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->syncUpdates()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
 .method public setVisibility(I)V
     .locals 1
 
@@ -2710,12 +3062,33 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
 
     .line 6
     .line 7
     .line 8
+    move-result v0
+
+    .line 9
+    if-eq v0, p1, :cond_0
+
+    .line 10
+    .line 11
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->overlayView:Landroid/view/View;
+
+    .line 12
+    .line 13
+    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 14
+    .line 15
+    .line 16
     :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/FpsDisplayOverlay;->syncUpdates()V
+
+    .line 17
+    .line 18
+    .line 19
     return-void
 .end method
 

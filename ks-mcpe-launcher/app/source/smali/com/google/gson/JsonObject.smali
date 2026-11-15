@@ -1,10 +1,10 @@
 .class public final Lcom/google/gson/JsonObject;
 .super Lcom/google/gson/JsonElement;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final c:Lg8/m;
+.field public final c:Li8/n;
 
 
 # direct methods
@@ -17,16 +17,16 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Lg8/m;
+    new-instance v0, Li8/n;
 
     .line 5
     .line 6
-    invoke-direct {v0}, Lg8/m;-><init>()V
+    invoke-direct {v0}, Li8/n;-><init>()V
 
     .line 7
     .line 8
     .line 9
-    iput-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iput-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 10
     .line 11
@@ -39,7 +39,7 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lcom/google/gson/JsonObject;->s()Lcom/google/gson/JsonObject;
+    invoke-virtual {p0}, Lcom/google/gson/JsonObject;->t()Lcom/google/gson/JsonObject;
 
     .line 2
     .line 3
@@ -70,11 +70,11 @@
 
     .line 8
     .line 9
-    iget-object p1, p1, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object p1, p1, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 10
     .line 11
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 12
     .line 13
@@ -112,7 +112,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 2
     .line 3
@@ -127,24 +127,24 @@
     return v0
 .end method
 
-.method public final o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+.method public final p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
     .locals 1
 
     .line 1
-    if-nez p2, :cond_0
+    if-nez p1, :cond_0
 
     .line 2
     .line 3
-    sget-object p2, Le8/l;->c:Le8/l;
+    sget-object p1, Lg8/l;->c:Lg8/l;
 
     .line 4
     .line 5
     :cond_0
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 6
     .line 7
-    invoke-virtual {v0, p1, p2}, Lg8/m;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, p2, p1}, Li8/n;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 8
     .line 9
@@ -152,20 +152,20 @@
     return-void
 .end method
 
-.method public final p(Ljava/lang/String;Ljava/lang/Boolean;)V
+.method public final q(Ljava/lang/String;Ljava/lang/Boolean;)V
     .locals 1
 
     .line 1
-    new-instance v0, Le8/n;
+    new-instance v0, Lg8/n;
 
     .line 2
     .line 3
-    invoke-direct {v0, p2}, Le8/n;-><init>(Ljava/lang/Boolean;)V
+    invoke-direct {v0, p2}, Lg8/n;-><init>(Ljava/lang/Boolean;)V
 
     .line 4
     .line 5
     .line 6
-    invoke-virtual {p0, p1, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {p0, v0, p1}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 7
     .line 8
@@ -173,20 +173,20 @@
     return-void
 .end method
 
-.method public final q(Ljava/lang/String;Ljava/lang/Number;)V
+.method public final r(Ljava/lang/String;Ljava/lang/Number;)V
     .locals 1
 
     .line 1
-    new-instance v0, Le8/n;
+    new-instance v0, Lg8/n;
 
     .line 2
     .line 3
-    invoke-direct {v0, p2}, Le8/n;-><init>(Ljava/lang/Number;)V
+    invoke-direct {v0, p2}, Lg8/n;-><init>(Ljava/lang/Number;)V
 
     .line 4
     .line 5
     .line 6
-    invoke-virtual {p0, p1, v0}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {p0, v0, p1}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 7
     .line 8
@@ -194,7 +194,7 @@
     return-void
 .end method
 
-.method public final r(Ljava/lang/String;Ljava/lang/String;)V
+.method public final s(Ljava/lang/String;Ljava/lang/String;)V
     .locals 1
 
     .line 1
@@ -202,7 +202,7 @@
 
     .line 2
     .line 3
-    sget-object p2, Le8/l;->c:Le8/l;
+    sget-object p2, Lg8/l;->c:Lg8/l;
 
     .line 4
     .line 5
@@ -210,11 +210,11 @@
 
     .line 6
     :cond_0
-    new-instance v0, Le8/n;
+    new-instance v0, Lg8/n;
 
     .line 7
     .line 8
-    invoke-direct {v0, p2}, Le8/n;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, p2}, Lg8/n;-><init>(Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -223,7 +223,7 @@
 
     .line 12
     :goto_0
-    invoke-virtual {p0, p1, p2}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {p0, p2, p1}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 13
     .line 14
@@ -231,7 +231,7 @@
     return-void
 .end method
 
-.method public final s()Lcom/google/gson/JsonObject;
+.method public final t()Lcom/google/gson/JsonObject;
     .locals 4
 
     .line 1
@@ -244,11 +244,11 @@
     .line 4
     .line 5
     .line 6
-    iget-object v1, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v1, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 7
     .line 8
-    invoke-virtual {v1}, Lg8/m;->entrySet()Ljava/util/Set;
+    invoke-virtual {v1}, Li8/n;->entrySet()Ljava/util/Set;
 
     .line 9
     .line 10
@@ -256,11 +256,11 @@
     move-result-object v1
 
     .line 12
-    check-cast v1, Lg8/k;
+    check-cast v1, Li8/l;
 
     .line 13
     .line 14
-    invoke-virtual {v1}, Lg8/k;->iterator()Ljava/util/Iterator;
+    invoke-virtual {v1}, Li8/l;->iterator()Ljava/util/Iterator;
 
     .line 15
     .line 16
@@ -325,7 +325,7 @@
     move-result-object v2
 
     .line 46
-    invoke-virtual {v0, v3, v2}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
+    invoke-virtual {v0, v2, v3}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
 
     .line 47
     .line 48
@@ -337,15 +337,15 @@
     return-object v0
 .end method
 
-.method public final t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+.method public final v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lg8/m;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, p1}, Li8/n;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -360,15 +360,38 @@
     return-object p1
 .end method
 
-.method public final u(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+.method public final w(Ljava/lang/String;)Lcom/google/gson/JsonArray;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lg8/m;->get(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, p1}, Li8/n;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    check-cast p1, Lcom/google/gson/JsonArray;
+
+    .line 8
+    .line 9
+    return-object p1
+.end method
+
+.method public final x(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Li8/n;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 4
     .line 5

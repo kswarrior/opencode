@@ -1,6 +1,6 @@
 .class public final Lb3/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Ls2/k;
@@ -13,7 +13,7 @@
 
 
 # instance fields
-.field public final c:Lqf/a;
+.field public final c:Lig/a;
 
 
 # direct methods
@@ -56,7 +56,7 @@
     const/4 v1, 0x0
 
     .line 18
-    sget-object v2, Ls2/g;->e:Lt5/f;
+    sget-object v2, Ls2/g;->e:Lq1/b;
 
     .line 19
     .line 20
@@ -76,7 +76,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Lqf/a;)V
+.method public constructor <init>(Lig/a;)V
     .locals 0
 
     .line 1
@@ -85,7 +85,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lb3/b;->c:Lqf/a;
+    iput-object p1, p0, Lb3/b;->c:Lig/a;
 
     .line 5
     .line 6
@@ -94,7 +94,7 @@
 
 
 # virtual methods
-.method public final f(Ljava/lang/Object;Ljava/io/File;Ls2/h;)Z
+.method public final d(Ljava/lang/Object;Ljava/io/File;Ls2/h;)Z
     .locals 8
 
     .line 1
@@ -229,7 +229,7 @@
     .line 61
     .line 62
     .line 63
-    iget-object p2, p0, Lb3/b;->c:Lqf/a;
+    iget-object p2, p0, Lb3/b;->c:Lig/a;
 
     .line 64
     .line 65
@@ -242,7 +242,7 @@
 
     .line 68
     .line 69
-    invoke-direct {v6, v7, p2}, Lcom/bumptech/glide/load/data/b;-><init>(Ljava/io/FileOutputStream;Lqf/a;)V
+    invoke-direct {v6, v7, p2}, Lcom/bumptech/glide/load/data/b;-><init>(Ljava/io/FileOutputStream;Lig/a;)V
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
@@ -544,7 +544,7 @@
     throw p1
 .end method
 
-.method public final h(Ls2/h;)I
+.method public final g(Ls2/h;)I
     .locals 0
 
     .line 1

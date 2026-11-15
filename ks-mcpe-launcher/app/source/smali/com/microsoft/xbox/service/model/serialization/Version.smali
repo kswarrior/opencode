@@ -1,27 +1,27 @@
 .class public Lcom/microsoft/xbox/service/model/serialization/Version;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
-.annotation runtime Lyd/n;
+.annotation runtime Lqe/n;
     name = "version"
 .end annotation
 
 
 # instance fields
 .field public latest:I
-    .annotation runtime Lyd/d;
+    .annotation runtime Lqe/d;
     .end annotation
 .end field
 
 .field public min:I
-    .annotation runtime Lyd/d;
+    .annotation runtime Lqe/d;
     .end annotation
 .end field
 
 .field public url:Ljava/lang/String;
-    .annotation runtime Lyd/d;
+    .annotation runtime Lqe/d;
     .end annotation
 .end field
 

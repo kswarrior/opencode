@@ -1,9 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/SettingsActivity$2;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
+.super Lorg/levimc/launcher/ui/activities/SettingsActivity$SimpleSeekListener;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -30,11 +27,14 @@
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const/4 p1, 0x0
 
     .line 4
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity$SimpleSeekListener;-><init>(I)V
+
     .line 5
     .line 6
+    .line 7
     return-void
 .end method
 
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->X(Lorg/levimc/launcher/ui/activities/SettingsActivity;I)V
+    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->B0(Lorg/levimc/launcher/ui/activities/SettingsActivity;I)V
 
     .line 4
     .line 5
@@ -65,7 +65,7 @@
 
     .line 10
     .line 11
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->U(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 12
     .line 13
@@ -82,7 +82,7 @@
 
     .line 19
     .line 20
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->U(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 21
     .line 22
@@ -106,35 +106,52 @@
 
     .line 31
     .line 32
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->W(Lorg/levimc/launcher/ui/activities/SettingsActivity;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 33
     .line 34
     .line 35
+    move-result-object p1
+
+    .line 36
+    iget-object p2, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$2;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
+
+    .line 37
+    .line 38
+    invoke-virtual {p1, p2}, Lorg/levimc/launcher/util/PersonalizationManager;->refreshBackgroundEffects(Landroid/app/Activity;)V
+
+    .line 39
+    .line 40
+    .line 41
     :cond_1
     :goto_0
     return-void
 .end method
 
-.method public onStartTrackingTouch(Landroid/widget/SeekBar;)V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
 .method public onStopTrackingTouch(Landroid/widget/SeekBar;)V
-    .locals 0
+    .locals 1
 
     .line 1
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$2;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
 
     .line 2
     .line 3
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->W(Lorg/levimc/launcher/ui/activities/SettingsActivity;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->w0(Lorg/levimc/launcher/ui/activities/SettingsActivity;)Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 4
     .line 5
     .line 6
+    move-result-object p1
+
+    .line 7
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SettingsActivity$2;->this$0:Lorg/levimc/launcher/ui/activities/SettingsActivity;
+
+    .line 8
+    .line 9
+    invoke-virtual {p1, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->refreshBackgroundEffects(Landroid/app/Activity;)V
+
+    .line 10
+    .line 11
+    .line 12
     return-void
 .end method

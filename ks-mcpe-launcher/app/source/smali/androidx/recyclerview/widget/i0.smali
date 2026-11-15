@@ -1,21 +1,18 @@
-.class public abstract Landroidx/recyclerview/widget/i0;
+.class public final Landroidx/recyclerview/widget/i0;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Landroidx/recyclerview/widget/t1;
 
 
 # instance fields
-.field private mCacheSpanGroupIndices:Z
-
-.field private mCacheSpanIndices:Z
-
-.field final mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-.field final mSpanIndexCache:Landroid/util/SparseIntArray;
+.field public final synthetic a:Landroidx/recyclerview/widget/ItemTouchHelper;
 
 
 # direct methods
-.method public constructor <init>()V
-    .locals 1
+.method public constructor <init>(Landroidx/recyclerview/widget/ItemTouchHelper;)V
+    .locals 0
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -23,697 +20,700 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Landroid/util/SparseIntArray;
+    iput-object p1, p0, Landroidx/recyclerview/widget/i0;->a:Landroidx/recyclerview/widget/ItemTouchHelper;
 
     .line 5
     .line 6
-    invoke-direct {v0}, Landroid/util/SparseIntArray;-><init>()V
-
-    .line 7
-    .line 8
-    .line 9
-    iput-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
-
-    .line 10
-    .line 11
-    new-instance v0, Landroid/util/SparseIntArray;
-
-    .line 12
-    .line 13
-    invoke-direct {v0}, Landroid/util/SparseIntArray;-><init>()V
-
-    .line 14
-    .line 15
-    .line 16
-    iput-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 17
-    .line 18
-    const/4 v0, 0x0
-
-    .line 19
-    iput-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanIndices:Z
-
-    .line 20
-    .line 21
-    iput-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanGroupIndices:Z
-
-    .line 22
-    .line 23
     return-void
-.end method
-
-.method public static findFirstKeyLessThan(Landroid/util/SparseIntArray;I)I
-    .locals 4
-
-    .line 1
-    invoke-virtual {p0}, Landroid/util/SparseIntArray;->size()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    add-int/lit8 v0, v0, -0x1
-
-    .line 6
-    .line 7
-    const/4 v1, 0x0
-
-    .line 8
-    :goto_0
-    if-gt v1, v0, :cond_1
-
-    .line 9
-    .line 10
-    add-int v2, v1, v0
-
-    .line 11
-    .line 12
-    ushr-int/lit8 v2, v2, 0x1
-
-    .line 13
-    .line 14
-    invoke-virtual {p0, v2}, Landroid/util/SparseIntArray;->keyAt(I)I
-
-    .line 15
-    .line 16
-    .line 17
-    move-result v3
-
-    .line 18
-    if-ge v3, p1, :cond_0
-
-    .line 19
-    .line 20
-    add-int/lit8 v2, v2, 0x1
-
-    .line 21
-    .line 22
-    move v1, v2
-
-    .line 23
-    goto :goto_0
-
-    .line 24
-    :cond_0
-    add-int/lit8 v2, v2, -0x1
-
-    .line 25
-    .line 26
-    move v0, v2
-
-    .line 27
-    goto :goto_0
-
-    .line 28
-    :cond_1
-    add-int/lit8 v1, v1, -0x1
-
-    .line 29
-    .line 30
-    if-ltz v1, :cond_2
-
-    .line 31
-    .line 32
-    invoke-virtual {p0}, Landroid/util/SparseIntArray;->size()I
-
-    .line 33
-    .line 34
-    .line 35
-    move-result p1
-
-    .line 36
-    if-ge v1, p1, :cond_2
-
-    .line 37
-    .line 38
-    invoke-virtual {p0, v1}, Landroid/util/SparseIntArray;->keyAt(I)I
-
-    .line 39
-    .line 40
-    .line 41
-    move-result p0
-
-    .line 42
-    return p0
-
-    .line 43
-    :cond_2
-    const/4 p0, -0x1
-
-    .line 44
-    return p0
 .end method
 
 
 # virtual methods
-.method public getCachedSpanGroupIndex(II)I
-    .locals 2
+.method public final a(Landroid/view/MotionEvent;)V
+    .locals 9
 
     .line 1
-    iget-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanGroupIndices:Z
+    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->a:Landroidx/recyclerview/widget/ItemTouchHelper;
 
     .line 2
     .line 3
-    if-nez v0, :cond_0
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->s:Landroidx/recyclerview/widget/h0;
 
     .line 4
     .line 5
-    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/i0;->getSpanGroupIndex(II)I
+    iget-object v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:La4/e;
 
     .line 6
     .line 7
-    .line 8
-    move-result p1
+    iget-object v2, v2, La4/e;->d:Ljava/lang/Object;
 
+    .line 8
     .line 9
-    return p1
+    check-cast v2, Landroid/view/GestureDetector;
 
     .line 10
+    .line 11
+    invoke-virtual {v2, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    iget-object v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->t:Landroid/view/VelocityTracker;
+
+    .line 15
+    .line 16
+    if-eqz v2, :cond_0
+
+    .line 17
+    .line 18
+    invoke-virtual {v2, p1}, Landroid/view/VelocityTracker;->addMovement(Landroid/view/MotionEvent;)V
+
+    .line 19
+    .line 20
+    .line 21
     :cond_0
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
+    iget v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
 
-    .line 11
-    .line 12
-    const/4 v1, -0x1
+    .line 22
+    .line 23
+    const/4 v3, -0x1
 
-    .line 13
-    invoke-virtual {v0, p1, v1}, Landroid/util/SparseIntArray;->get(II)I
+    .line 24
+    if-ne v2, v3, :cond_1
 
-    .line 14
-    .line 15
-    .line 16
-    move-result v0
+    .line 25
+    .line 26
+    goto :goto_0
 
-    .line 17
-    if-eq v0, v1, :cond_1
-
-    .line 18
-    .line 19
-    return v0
-
-    .line 20
+    .line 27
     :cond_1
-    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/i0;->getSpanGroupIndex(II)I
-
-    .line 21
-    .line 22
-    .line 23
-    move-result p2
-
-    .line 24
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 25
-    .line 26
-    invoke-virtual {v0, p1, p2}, Landroid/util/SparseIntArray;->put(II)V
-
-    .line 27
-    .line 28
-    .line 29
-    return p2
-.end method
-
-.method public getCachedSpanIndex(II)I
-    .locals 2
-
-    .line 1
-    iget-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanIndices:Z
-
-    .line 2
-    .line 3
-    if-nez v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/i0;->getSpanIndex(II)I
-
-    .line 6
-    .line 7
-    .line 8
-    move-result p1
-
-    .line 9
-    return p1
-
-    .line 10
-    :cond_0
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
-
-    .line 11
-    .line 12
-    const/4 v1, -0x1
-
-    .line 13
-    invoke-virtual {v0, p1, v1}, Landroid/util/SparseIntArray;->get(II)I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v0
-
-    .line 17
-    if-eq v0, v1, :cond_1
-
-    .line 18
-    .line 19
-    return v0
-
-    .line 20
-    :cond_1
-    invoke-virtual {p0, p1, p2}, Landroidx/recyclerview/widget/i0;->getSpanIndex(II)I
-
-    .line 21
-    .line 22
-    .line 23
-    move-result p2
-
-    .line 24
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
-
-    .line 25
-    .line 26
-    invoke-virtual {v0, p1, p2}, Landroid/util/SparseIntArray;->put(II)V
-
-    .line 27
-    .line 28
-    .line 29
-    return p2
-.end method
-
-.method public getSpanGroupIndex(II)I
-    .locals 6
-
-    .line 1
-    iget-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanGroupIndices:Z
-
-    .line 2
-    .line 3
-    const/4 v1, 0x0
-
-    .line 4
-    if-eqz v0, :cond_0
-
-    .line 5
-    .line 6
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 7
-    .line 8
-    invoke-static {v0, p1}, Landroidx/recyclerview/widget/i0;->findFirstKeyLessThan(Landroid/util/SparseIntArray;I)I
-
-    .line 9
-    .line 10
-    .line 11
-    move-result v0
-
-    .line 12
-    const/4 v2, -0x1
-
-    .line 13
-    if-eq v0, v2, :cond_0
-
-    .line 14
-    .line 15
-    iget-object v2, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 16
-    .line 17
-    invoke-virtual {v2, v0}, Landroid/util/SparseIntArray;->get(I)I
-
-    .line 18
-    .line 19
-    .line 20
-    move-result v2
-
-    .line 21
-    add-int/lit8 v3, v0, 0x1
-
-    .line 22
-    .line 23
-    invoke-virtual {p0, v0, p2}, Landroidx/recyclerview/widget/i0;->getCachedSpanIndex(II)I
-
-    .line 24
-    .line 25
-    .line 26
-    move-result v4
-
-    .line 27
-    invoke-virtual {p0, v0}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
     .line 28
     .line 29
     .line 30
-    move-result v0
+    move-result v2
 
     .line 31
-    add-int/2addr v0, v4
+    iget v4, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
 
     .line 32
-    if-ne v0, p2, :cond_1
-
     .line 33
-    .line 34
-    add-int/lit8 v2, v2, 0x1
+    invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->findPointerIndex(I)I
 
+    .line 34
     .line 35
     .line 36
-    move v0, v1
-
-    .line 37
-    goto :goto_0
-
-    .line 38
-    :cond_0
-    move v0, v1
-
-    .line 39
-    move v2, v0
-
-    .line 40
-    move v3, v2
-
-    .line 41
-    :cond_1
-    :goto_0
-    invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
-
-    .line 42
-    .line 43
-    .line 44
     move-result v4
 
-    .line 45
-    :goto_1
-    if-ge v3, p1, :cond_4
+    .line 37
+    if-ltz v4, :cond_2
 
+    .line 38
+    .line 39
+    invoke-virtual {v0, v2, v4, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->f(IILandroid/view/MotionEvent;)V
+
+    .line 40
+    .line 41
+    .line 42
+    :cond_2
+    iget-object v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->c:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+    .line 43
+    .line 44
+    if-nez v5, :cond_3
+
+    .line 45
     .line 46
+    goto :goto_0
+
     .line 47
-    invoke-virtual {p0, v3}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
+    :cond_3
+    const/4 v6, 0x0
 
     .line 48
-    .line 49
-    .line 50
-    move-result v5
+    const/4 v7, 0x1
 
+    .line 49
+    if-eq v2, v7, :cond_9
+
+    .line 50
     .line 51
-    add-int/2addr v0, v5
+    const/4 v8, 0x2
 
     .line 52
-    if-ne v0, p2, :cond_2
+    if-eq v2, v8, :cond_7
 
     .line 53
     .line 54
-    add-int/lit8 v2, v2, 0x1
+    const/4 v1, 0x3
 
     .line 55
-    .line 56
-    move v0, v1
+    if-eq v2, v1, :cond_6
 
+    .line 56
     .line 57
-    goto :goto_2
+    const/4 v1, 0x6
 
     .line 58
-    :cond_2
-    if-le v0, p2, :cond_3
+    if-eq v2, v1, :cond_4
 
     .line 59
     .line 60
-    add-int/lit8 v2, v2, 0x1
+    goto :goto_0
 
     .line 61
+    :cond_4
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionIndex()I
+
     .line 62
-    move v0, v5
-
     .line 63
-    :cond_3
-    :goto_2
-    add-int/lit8 v3, v3, 0x1
-
     .line 64
+    move-result v1
+
     .line 65
-    goto :goto_1
+    invoke-virtual {p1, v1}, Landroid/view/MotionEvent;->getPointerId(I)I
 
     .line 66
-    :cond_4
-    add-int/2addr v0, v4
-
     .line 67
-    if-le v0, p2, :cond_5
-
     .line 68
+    move-result v2
+
     .line 69
-    add-int/lit8 v2, v2, 0x1
+    iget v3, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
 
     .line 70
     .line 71
+    if-ne v2, v3, :cond_8
+
+    .line 72
+    .line 73
+    if-nez v1, :cond_5
+
+    .line 74
+    .line 75
+    move v6, v7
+
+    .line 76
     :cond_5
-    return v2
+    invoke-virtual {p1, v6}, Landroid/view/MotionEvent;->getPointerId(I)I
+
+    .line 77
+    .line 78
+    .line 79
+    move-result v2
+
+    .line 80
+    iput v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+
+    .line 81
+    .line 82
+    iget v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->o:I
+
+    .line 83
+    .line 84
+    invoke-virtual {v0, v2, v1, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->p(IILandroid/view/MotionEvent;)V
+
+    .line 85
+    .line 86
+    .line 87
+    return-void
+
+    .line 88
+    :cond_6
+    iget-object p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->t:Landroid/view/VelocityTracker;
+
+    .line 89
+    .line 90
+    if-eqz p1, :cond_9
+
+    .line 91
+    .line 92
+    invoke-virtual {p1}, Landroid/view/VelocityTracker;->clear()V
+
+    .line 93
+    .line 94
+    .line 95
+    goto :goto_1
+
+    .line 96
+    :cond_7
+    if-ltz v4, :cond_8
+
+    .line 97
+    .line 98
+    iget v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->o:I
+
+    .line 99
+    .line 100
+    invoke-virtual {v0, v2, v4, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->p(IILandroid/view/MotionEvent;)V
+
+    .line 101
+    .line 102
+    .line 103
+    invoke-virtual {v0, v5}, Landroidx/recyclerview/widget/ItemTouchHelper;->l(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+
+    .line 104
+    .line 105
+    .line 106
+    iget-object p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->r:Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 107
+    .line 108
+    invoke-virtual {p1, v1}, Landroid/view/View;->removeCallbacks(Ljava/lang/Runnable;)Z
+
+    .line 109
+    .line 110
+    .line 111
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/h0;->run()V
+
+    .line 112
+    .line 113
+    .line 114
+    iget-object p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->r:Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 115
+    .line 116
+    invoke-virtual {p1}, Landroid/view/View;->invalidate()V
+
+    .line 117
+    .line 118
+    .line 119
+    :cond_8
+    :goto_0
+    return-void
+
+    .line 120
+    :cond_9
+    :goto_1
+    const/4 p1, 0x0
+
+    .line 121
+    invoke-virtual {v0, p1, v6}, Landroidx/recyclerview/widget/ItemTouchHelper;->n(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+
+    .line 122
+    .line 123
+    .line 124
+    iput v3, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+
+    .line 125
+    .line 126
+    return-void
 .end method
 
-.method public getSpanIndex(II)I
-    .locals 5
+.method public final b(Landroid/view/MotionEvent;)Z
+    .locals 9
 
     .line 1
-    invoke-virtual {p0, p1}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
+    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->a:Landroidx/recyclerview/widget/ItemTouchHelper;
 
     .line 2
     .line 3
-    .line 4
-    move-result v0
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->x:La4/e;
 
+    .line 4
     .line 5
-    const/4 v1, 0x0
+    iget-object v1, v1, La4/e;->d:Ljava/lang/Object;
 
     .line 6
-    if-ne v0, p2, :cond_0
-
     .line 7
-    .line 8
-    return v1
+    check-cast v1, Landroid/view/GestureDetector;
 
+    .line 8
     .line 9
-    :cond_0
-    iget-boolean v2, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanIndices:Z
+    invoke-virtual {v1, p1}, Landroid/view/GestureDetector;->onTouchEvent(Landroid/view/MotionEvent;)Z
 
     .line 10
     .line 11
-    if-eqz v2, :cond_1
-
     .line 12
-    .line 13
-    iget-object v2, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getActionMasked()I
 
+    .line 13
     .line 14
     .line 15
-    invoke-static {v2, p1}, Landroidx/recyclerview/widget/i0;->findFirstKeyLessThan(Landroid/util/SparseIntArray;I)I
+    move-result v1
 
     .line 16
+    const/4 v2, 0x0
+
     .line 17
+    const/4 v3, 0x1
+
     .line 18
-    move-result v2
+    const/4 v4, 0x0
 
     .line 19
-    if-ltz v2, :cond_1
+    if-nez v1, :cond_5
 
     .line 20
     .line 21
-    iget-object v3, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
+    invoke-virtual {p1, v4}, Landroid/view/MotionEvent;->getPointerId(I)I
 
     .line 22
     .line 23
-    invoke-virtual {v3, v2}, Landroid/util/SparseIntArray;->get(I)I
-
     .line 24
-    .line 25
-    .line 26
-    move-result v3
+    move-result v1
 
+    .line 25
+    iput v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+
+    .line 26
     .line 27
-    invoke-virtual {p0, v2}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getX()F
 
     .line 28
     .line 29
     .line 30
-    move-result v4
+    move-result v1
 
     .line 31
-    add-int/2addr v4, v3
+    iput v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->d:F
 
     .line 32
-    goto :goto_1
-
     .line 33
-    :cond_1
-    move v2, v1
+    invoke-virtual {p1}, Landroid/view/MotionEvent;->getY()F
 
     .line 34
-    move v4, v2
-
     .line 35
-    :goto_0
-    if-ge v2, p1, :cond_4
-
     .line 36
+    move-result v1
+
     .line 37
-    invoke-virtual {p0, v2}, Landroidx/recyclerview/widget/i0;->getSpanSize(I)I
+    iput v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->e:F
 
     .line 38
     .line 39
-    .line 40
-    move-result v3
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->t:Landroid/view/VelocityTracker;
 
+    .line 40
     .line 41
-    add-int/2addr v4, v3
+    if-eqz v1, :cond_0
 
     .line 42
-    if-ne v4, p2, :cond_2
-
     .line 43
+    invoke-virtual {v1}, Landroid/view/VelocityTracker;->recycle()V
+
     .line 44
-    move v4, v1
-
     .line 45
-    goto :goto_1
-
     .line 46
-    :cond_2
-    if-le v4, p2, :cond_3
+    :cond_0
+    invoke-static {}, Landroid/view/VelocityTracker;->obtain()Landroid/view/VelocityTracker;
 
     .line 47
     .line 48
-    move v4, v3
-
     .line 49
-    :cond_3
-    :goto_1
-    add-int/lit8 v2, v2, 0x1
+    move-result-object v1
 
     .line 50
-    .line 51
-    goto :goto_0
+    iput-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->t:Landroid/view/VelocityTracker;
 
+    .line 51
     .line 52
-    :cond_4
-    add-int/2addr v0, v4
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->c:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 53
-    if-gt v0, p2, :cond_5
-
     .line 54
+    if-nez v1, :cond_8
+
     .line 55
-    return v4
-
     .line 56
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->p:Ljava/util/ArrayList;
+
+    .line 57
+    .line 58
+    invoke-virtual {v1}, Ljava/util/ArrayList;->isEmpty()Z
+
+    .line 59
+    .line 60
+    .line 61
+    move-result v5
+
+    .line 62
+    if-eqz v5, :cond_1
+
+    .line 63
+    .line 64
+    goto :goto_1
+
+    .line 65
+    :cond_1
+    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->i(Landroid/view/MotionEvent;)Landroid/view/View;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object v5
+
+    .line 69
+    invoke-virtual {v1}, Ljava/util/ArrayList;->size()I
+
+    .line 70
+    .line 71
+    .line 72
+    move-result v6
+
+    .line 73
+    sub-int/2addr v6, v3
+
+    .line 74
+    :goto_0
+    if-ltz v6, :cond_3
+
+    .line 75
+    .line 76
+    invoke-virtual {v1, v6}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    .line 77
+    .line 78
+    .line 79
+    move-result-object v7
+
+    .line 80
+    check-cast v7, Landroidx/recyclerview/widget/p0;
+
+    .line 81
+    .line 82
+    iget-object v8, v7, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+    .line 83
+    .line 84
+    iget-object v8, v8, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
+
+    .line 85
+    .line 86
+    if-ne v8, v5, :cond_2
+
+    .line 87
+    .line 88
+    move-object v2, v7
+
+    .line 89
+    goto :goto_1
+
+    .line 90
+    :cond_2
+    add-int/lit8 v6, v6, -0x1
+
+    .line 91
+    .line 92
+    goto :goto_0
+
+    .line 93
+    :cond_3
+    :goto_1
+    if-eqz v2, :cond_8
+
+    .line 94
+    .line 95
+    iget-object v1, v2, Landroidx/recyclerview/widget/p0;->e:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+    .line 96
+    .line 97
+    iget v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->d:F
+
+    .line 98
+    .line 99
+    iget v6, v2, Landroidx/recyclerview/widget/p0;->i:F
+
+    .line 100
+    .line 101
+    sub-float/2addr v5, v6
+
+    .line 102
+    iput v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->d:F
+
+    .line 103
+    .line 104
+    iget v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->e:F
+
+    .line 105
+    .line 106
+    iget v6, v2, Landroidx/recyclerview/widget/p0;->j:F
+
+    .line 107
+    .line 108
+    sub-float/2addr v5, v6
+
+    .line 109
+    iput v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->e:F
+
+    .line 110
+    .line 111
+    invoke-virtual {v0, v1, v3}, Landroidx/recyclerview/widget/ItemTouchHelper;->h(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Z)V
+
+    .line 112
+    .line 113
+    .line 114
+    iget-object v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->a:Ljava/util/ArrayList;
+
+    .line 115
+    .line 116
+    iget-object v6, v1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
+
+    .line 117
+    .line 118
+    invoke-virtual {v5, v6}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    .line 119
+    .line 120
+    .line 121
+    move-result v5
+
+    .line 122
+    if-eqz v5, :cond_4
+
+    .line 123
+    .line 124
+    iget-object v5, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->m:Landroidx/recyclerview/widget/q0;
+
+    .line 125
+    .line 126
+    iget-object v6, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->r:Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 127
+    .line 128
+    invoke-virtual {v5, v6, v1}, Landroidx/recyclerview/widget/m0;->clearView(Landroidx/recyclerview/widget/RecyclerView;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+
+    .line 129
+    .line 130
+    .line 131
+    :cond_4
+    iget v2, v2, Landroidx/recyclerview/widget/p0;->f:I
+
+    .line 132
+    .line 133
+    invoke-virtual {v0, v1, v2}, Landroidx/recyclerview/widget/ItemTouchHelper;->n(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+
+    .line 134
+    .line 135
+    .line 136
+    iget v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->o:I
+
+    .line 137
+    .line 138
+    invoke-virtual {v0, v1, v4, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->p(IILandroid/view/MotionEvent;)V
+
+    .line 139
+    .line 140
+    .line 141
+    goto :goto_3
+
+    .line 142
     :cond_5
-    return v1
+    const/4 v5, 0x3
+
+    .line 143
+    const/4 v6, -0x1
+
+    .line 144
+    if-eq v1, v5, :cond_7
+
+    .line 145
+    .line 146
+    if-ne v1, v3, :cond_6
+
+    .line 147
+    .line 148
+    goto :goto_2
+
+    .line 149
+    :cond_6
+    iget v2, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+
+    .line 150
+    .line 151
+    if-eq v2, v6, :cond_8
+
+    .line 152
+    .line 153
+    invoke-virtual {p1, v2}, Landroid/view/MotionEvent;->findPointerIndex(I)I
+
+    .line 154
+    .line 155
+    .line 156
+    move-result v2
+
+    .line 157
+    if-ltz v2, :cond_8
+
+    .line 158
+    .line 159
+    invoke-virtual {v0, v1, v2, p1}, Landroidx/recyclerview/widget/ItemTouchHelper;->f(IILandroid/view/MotionEvent;)V
+
+    .line 160
+    .line 161
+    .line 162
+    goto :goto_3
+
+    .line 163
+    :cond_7
+    :goto_2
+    iput v6, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->l:I
+
+    .line 164
+    .line 165
+    invoke-virtual {v0, v2, v4}, Landroidx/recyclerview/widget/ItemTouchHelper;->n(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
+
+    .line 166
+    .line 167
+    .line 168
+    :cond_8
+    :goto_3
+    iget-object v1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->t:Landroid/view/VelocityTracker;
+
+    .line 169
+    .line 170
+    if-eqz v1, :cond_9
+
+    .line 171
+    .line 172
+    invoke-virtual {v1, p1}, Landroid/view/VelocityTracker;->addMovement(Landroid/view/MotionEvent;)V
+
+    .line 173
+    .line 174
+    .line 175
+    :cond_9
+    iget-object p1, v0, Landroidx/recyclerview/widget/ItemTouchHelper;->c:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
+    .line 176
+    .line 177
+    if-eqz p1, :cond_a
+
+    .line 178
+    .line 179
+    return v3
+
+    .line 180
+    :cond_a
+    return v4
 .end method
 
-.method public abstract getSpanSize(I)I
-.end method
-
-.method public invalidateSpanGroupIndexCache()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Landroid/util/SparseIntArray;->clear()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public invalidateSpanIndexCache()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanIndexCache:Landroid/util/SparseIntArray;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Landroid/util/SparseIntArray;->clear()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public isSpanGroupIndexCacheEnabled()Z
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanGroupIndices:Z
-
-    .line 2
-    .line 3
-    return v0
-.end method
-
-.method public isSpanIndexCacheEnabled()Z
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanIndices:Z
-
-    .line 2
-    .line 3
-    return v0
-.end method
-
-.method public setSpanGroupIndexCacheEnabled(Z)V
-    .locals 1
+.method public final c(Z)V
+    .locals 2
 
     .line 1
     if-nez p1, :cond_0
 
     .line 2
     .line 3
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
-
-    .line 4
-    .line 5
-    invoke-virtual {v0}, Landroid/util/SparseIntArray;->clear()V
-
-    .line 6
-    .line 7
-    .line 8
-    :cond_0
-    iput-boolean p1, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanGroupIndices:Z
-
-    .line 9
-    .line 10
     return-void
-.end method
-
-.method public setSpanIndexCacheEnabled(Z)V
-    .locals 1
-
-    .line 1
-    if-nez p1, :cond_0
-
-    .line 2
-    .line 3
-    iget-object v0, p0, Landroidx/recyclerview/widget/i0;->mSpanGroupIndexCache:Landroid/util/SparseIntArray;
 
     .line 4
+    :cond_0
+    const/4 p1, 0x0
+
     .line 5
-    invoke-virtual {v0}, Landroid/util/SparseIntArray;->clear()V
+    const/4 v0, 0x0
 
     .line 6
+    iget-object v1, p0, Landroidx/recyclerview/widget/i0;->a:Landroidx/recyclerview/widget/ItemTouchHelper;
+
     .line 7
     .line 8
-    :cond_0
-    iput-boolean p1, p0, Landroidx/recyclerview/widget/i0;->mCacheSpanIndices:Z
+    invoke-virtual {v1, p1, v0}, Landroidx/recyclerview/widget/ItemTouchHelper;->n(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;I)V
 
     .line 9
     .line 10
+    .line 11
     return-void
 .end method

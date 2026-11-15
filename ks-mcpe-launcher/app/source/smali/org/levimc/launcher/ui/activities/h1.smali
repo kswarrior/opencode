@@ -1,102 +1,97 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/h1;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
+.implements Ljava/util/function/Function;
 
 
 # instance fields
-.field public final synthetic a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
+.field public final synthetic a:I
 
-.field public final synthetic b:[Z
-
-.field public final synthetic c:I
-
-.field public final synthetic d:[Z
-
-.field public final synthetic e:Landroid/widget/CheckBox;
-
-.field public final synthetic f:Ljava/lang/Runnable;
+.field public final synthetic b:Lorg/levimc/launcher/ui/activities/ExternalModsActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstancesActivity;[ZI[ZLandroid/widget/CheckBox;Ljava/lang/Runnable;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ExternalModsActivity;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/h1;->a:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/h1;->b:Lorg/levimc/launcher/ui/activities/ExternalModsActivity;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/h1;->a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/h1;->b:[Z
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 6
     .line 7
     .line 8
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/h1;->c:I
-
-    .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/ui/activities/h1;->d:[Z
-
-    .line 11
-    .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/h1;->e:Landroid/widget/CheckBox;
-
-    .line 13
-    .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/ui/activities/h1;->f:Ljava/lang/Runnable;
-
-    .line 15
-    .line 16
     return-void
 .end method
 
 
 # virtual methods
-.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
-    .locals 8
+.method public final apply(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 1
 
     .line 1
-    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/h1;->e:Landroid/widget/CheckBox;
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/h1;->a:I
 
     .line 2
     .line 3
-    iget-object v5, p0, Lorg/levimc/launcher/ui/activities/h1;->f:Ljava/lang/Runnable;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h1;->a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h1;->b:Lorg/levimc/launcher/ui/activities/ExternalModsActivity;
+
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/h1;->b:[Z
-
     .line 8
+    check-cast p1, Lorg/levimc/launcher/core/modcatalog/ModCatalog$CatalogMod;
+
     .line 9
-    iget v2, p0, Lorg/levimc/launcher/ui/activities/h1;->c:I
-
     .line 10
-    .line 11
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/h1;->d:[Z
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ExternalModsActivity;->C(Lorg/levimc/launcher/ui/activities/ExternalModsActivity;Lorg/levimc/launcher/core/modcatalog/ModCatalog$CatalogMod;)Ljava/lang/String;
 
+    .line 11
     .line 12
     .line 13
-    move-object v6, p1
+    move-result-object p1
 
     .line 14
-    move v7, p2
+    return-object p1
 
     .line 15
-    invoke-static/range {v0 .. v7}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->B(Lorg/levimc/launcher/ui/activities/InstancesActivity;[ZI[ZLandroid/widget/CheckBox;Ljava/lang/Runnable;Landroid/widget/CompoundButton;Z)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h1;->b:Lorg/levimc/launcher/ui/activities/ExternalModsActivity;
 
     .line 16
     .line 17
+    check-cast p1, Lorg/levimc/launcher/core/modcatalog/ModCatalog$CatalogMod;
+
     .line 18
-    return-void
+    .line 19
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ExternalModsActivity;->w(Lorg/levimc/launcher/ui/activities/ExternalModsActivity;Lorg/levimc/launcher/core/modcatalog/ModCatalog$CatalogMod;)Ljava/lang/String;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p1
+
+    .line 23
+    return-object p1
+
+    .line 24
+    nop
+
+    .line 25
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

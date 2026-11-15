@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/telemetry/helpers/UTCPeopleHub;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -516,11 +516,11 @@
     .locals 0
 
     .line 1
-    new-instance p0, Lcom/google/firebase/messaging/t;
+    new-instance p0, Lcom/google/firebase/messaging/u;
 
     .line 2
     .line 3
-    invoke-direct {p0, p1, p2}, Lcom/google/firebase/messaging/t;-><init>(Ljava/lang/String;Z)V
+    invoke-direct {p0, p1, p2}, Lcom/google/firebase/messaging/u;-><init>(Ljava/lang/String;Z)V
 
     .line 4
     .line 5

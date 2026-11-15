@@ -1,6 +1,6 @@
 .class public abstract Landroidx/preference/DialogPreference;
 .super Landroidx/preference/Preference;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # direct methods
@@ -29,7 +29,7 @@
     invoke-direct {p0, p1, p2, p3}, Landroidx/preference/Preference;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 2
-    sget-object v0, Lq1/b;->b:[I
+    sget-object v0, Lq1/d;->b:[I
 
     const/4 v1, 0x0
 

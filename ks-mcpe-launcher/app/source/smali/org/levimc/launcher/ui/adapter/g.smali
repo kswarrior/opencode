@@ -1,9 +1,9 @@
 .class public final synthetic Lorg/levimc/launcher/ui/adapter/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
-.implements Landroid/view/View$OnFocusChangeListener;
+.implements Landroid/widget/TextView$OnEditorActionListener;
 
 
 # instance fields
@@ -47,8 +47,8 @@
 
 
 # virtual methods
-.method public final onFocusChange(Landroid/view/View;Z)V
-    .locals 6
+.method public final onEditorAction(Landroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+    .locals 7
 
     .line 1
     iget-object v2, p0, Lorg/levimc/launcher/ui/adapter/g;->c:Landroid/widget/EditText;
@@ -73,10 +73,16 @@
     move v5, p2
 
     .line 11
-    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->d(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;ZLandroid/view/View;Z)V
+    move-object v6, p3
 
     .line 12
+    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->f(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;ZLandroid/widget/TextView;ILandroid/view/KeyEvent;)Z
+
     .line 13
     .line 14
-    return-void
+    .line 15
+    move-result p1
+
+    .line 16
+    return p1
 .end method

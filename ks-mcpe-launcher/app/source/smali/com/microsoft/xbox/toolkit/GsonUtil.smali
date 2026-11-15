@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/GsonUtil;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -112,11 +112,11 @@
     move-result-object v1
 
     .line 12
-    iget-object v2, v0, Lcom/google/gson/GsonBuilder;->a:Lg8/c;
+    iget-object v2, v0, Lcom/google/gson/GsonBuilder;->a:Li8/d;
 
     .line 13
     .line 14
-    invoke-virtual {v2}, Lg8/c;->b()Lg8/c;
+    invoke-virtual {v2}, Li8/d;->b()Li8/d;
 
     .line 15
     .line 16
@@ -131,11 +131,11 @@
 
     .line 20
     .line 21
-    iput v1, v2, Lg8/c;->c:I
+    iput v1, v2, Li8/d;->c:I
 
     .line 22
     .line 23
-    iput-object v2, v0, Lcom/google/gson/GsonBuilder;->a:Lg8/c;
+    iput-object v2, v0, Lcom/google/gson/GsonBuilder;->a:Li8/d;
 
     .line 24
     .line 25
@@ -178,21 +178,14 @@
 
     .line 21
     :try_start_2
-    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 22
-    invoke-static {p2}, Lcom/google/gson/reflect/TypeToken;->get(Ljava/lang/Class;)Lcom/google/gson/reflect/TypeToken;
-
-    move-result-object p2
-
-    invoke-virtual {p0, p1, p2}, Lcom/google/gson/Gson;->b(Ljava/io/Reader;Lcom/google/gson/reflect/TypeToken;)Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Lcom/google/gson/Gson;->c(Ljava/io/Reader;Ljava/lang/Class;)Ljava/lang/Object;
 
     move-result-object v0
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 23
+    .line 22
     :try_start_3
     invoke-virtual {p1}, Ljava/io/BufferedReader;->close()V
     :try_end_3
@@ -209,14 +202,14 @@
     :catch_0
     move-exception p0
 
-    .line 24
+    .line 23
     :try_start_4
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
     :try_end_4
     .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_1
     .catchall {:try_start_4 .. :try_end_4} :catchall_0
 
-    .line 25
+    .line 24
     :goto_0
     :try_start_5
     invoke-virtual {v1}, Ljava/io/InputStreamReader;->close()V
@@ -231,12 +224,12 @@
 
     goto :goto_2
 
-    .line 26
+    .line 25
     :goto_1
     :try_start_6
     throw p0
 
-    .line 27
+    .line 26
     :goto_2
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
     :try_end_6
@@ -245,7 +238,7 @@
 
     goto :goto_5
 
-    .line 28
+    .line 27
     :catchall_1
     :try_start_7
     invoke-virtual {v1}, Ljava/io/InputStreamReader;->close()V
@@ -263,7 +256,7 @@
     :catch_2
     move-exception p0
 
-    .line 29
+    .line 28
     :try_start_8
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
     :try_end_8
@@ -277,7 +270,7 @@
 
     goto :goto_6
 
-    .line 30
+    .line 29
     :catch_4
     :try_start_9
     invoke-virtual {v1}, Ljava/io/InputStreamReader;->close()V
@@ -290,7 +283,7 @@
     :catch_5
     move-exception p0
 
-    .line 31
+    .line 30
     :try_start_a
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
     :try_end_a
@@ -300,7 +293,7 @@
     :goto_3
     return-object v0
 
-    .line 32
+    .line 31
     :goto_4
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
 
@@ -308,7 +301,7 @@
     :goto_5
     return-object v0
 
-    .line 33
+    .line 32
     :goto_6
     invoke-virtual {p0}, Ljava/lang/Throwable;->printStackTrace()V
 
@@ -329,9 +322,9 @@
         }
     .end annotation
 
-    .line 34
+    .line 33
     :try_start_0
-    invoke-virtual {p0, p2, p1}, Lcom/google/gson/Gson;->c(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {p0, p2, p1}, Lcom/google/gson/Gson;->d(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object p0
     :try_end_0
@@ -572,7 +565,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-virtual {v0, p0}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v0, p0}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 7
     .line 8

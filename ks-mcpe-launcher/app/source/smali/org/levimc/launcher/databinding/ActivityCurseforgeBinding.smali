@@ -1,16 +1,30 @@
 .class public final Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final btnSort:Lcom/google/android/material/button/MaterialButton;
+.field public final btnSearch:Lcom/google/android/material/button/MaterialButton;
 
-.field public final categoryGroup:Landroid/widget/RadioGroup;
+.field public final btnSort:Landroid/widget/TextView;
+
+.field public final cfResultsCard:Lcom/google/android/material/card/MaterialCardView;
+
+.field public final cfRetry:Lcom/google/android/material/button/MaterialButton;
+
+.field public final cfSelectClass:Landroid/widget/TextView;
+
+.field public final cfSelectVersion:Landroid/widget/TextView;
+
+.field public final cfTitle:Landroid/widget/TextView;
+
+.field public final cfVersionColumn:Landroid/widget/LinearLayout;
 
 .field public final emptyMessage:Landroid/widget/TextView;
 
-.field public final headerContainer:Landroid/widget/LinearLayout;
+.field public final emptyState:Landroid/widget/LinearLayout;
+
+.field public final headerContainer:Lcom/google/android/material/card/MaterialCardView;
 
 .field public final loadingProgress:Landroid/widget/ProgressBar;
 
@@ -22,7 +36,7 @@
 
 
 # direct methods
-.method private constructor <init>(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/RadioGroup;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/EditText;)V
+.method private constructor <init>(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Lcom/google/android/material/card/MaterialCardView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Lcom/google/android/material/card/MaterialCardView;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/EditText;)V
     .locals 0
 
     .line 1
@@ -35,260 +49,456 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->btnSort:Lcom/google/android/material/button/MaterialButton;
+    iput-object p2, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->btnSearch:Lcom/google/android/material/button/MaterialButton;
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->categoryGroup:Landroid/widget/RadioGroup;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->btnSort:Landroid/widget/TextView;
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->emptyMessage:Landroid/widget/TextView;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfResultsCard:Lcom/google/android/material/card/MaterialCardView;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->headerContainer:Landroid/widget/LinearLayout;
+    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfRetry:Lcom/google/android/material/button/MaterialButton;
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->loadingProgress:Landroid/widget/ProgressBar;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfSelectClass:Landroid/widget/TextView;
 
     .line 15
     .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->modsRecycler:Landroidx/recyclerview/widget/RecyclerView;
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfSelectVersion:Landroid/widget/TextView;
 
     .line 17
     .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->searchBox:Landroid/widget/EditText;
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfTitle:Landroid/widget/TextView;
 
     .line 19
     .line 20
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->cfVersionColumn:Landroid/widget/LinearLayout;
+
+    .line 21
+    .line 22
+    iput-object p10, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->emptyMessage:Landroid/widget/TextView;
+
+    .line 23
+    .line 24
+    iput-object p11, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->emptyState:Landroid/widget/LinearLayout;
+
+    .line 25
+    .line 26
+    iput-object p12, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->headerContainer:Lcom/google/android/material/card/MaterialCardView;
+
+    .line 27
+    .line 28
+    iput-object p13, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->loadingProgress:Landroid/widget/ProgressBar;
+
+    .line 29
+    .line 30
+    iput-object p14, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->modsRecycler:Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 31
+    .line 32
+    iput-object p15, p0, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;->searchBox:Landroid/widget/EditText;
+
+    .line 33
+    .line 34
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;
-    .locals 11
+    .locals 19
 
     .line 1
-    sget v0, Lorg/levimc/launcher/R$id;->btn_sort:I
+    move-object/from16 v0, p0
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->btn_search:I
 
     .line 4
     .line 5
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 6
-    move-result-object v1
-
     .line 7
-    move-object v4, v1
-
     .line 8
-    check-cast v4, Lcom/google/android/material/button/MaterialButton;
+    move-result-object v2
 
     .line 9
+    move-object v5, v2
+
     .line 10
-    if-eqz v4, :cond_0
+    check-cast v5, Lcom/google/android/material/button/MaterialButton;
 
     .line 11
     .line 12
-    sget v0, Lorg/levimc/launcher/R$id;->category_group:I
+    if-eqz v5, :cond_0
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->btn_sort:I
 
     .line 15
     .line 16
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 17
-    move-result-object v1
-
     .line 18
-    move-object v5, v1
-
     .line 19
-    check-cast v5, Landroid/widget/RadioGroup;
+    move-result-object v2
 
     .line 20
+    move-object v6, v2
+
     .line 21
-    if-eqz v5, :cond_0
+    check-cast v6, Landroid/widget/TextView;
 
     .line 22
     .line 23
-    sget v0, Lorg/levimc/launcher/R$id;->empty_message:I
+    if-eqz v6, :cond_0
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->cf_results_card:I
 
     .line 26
     .line 27
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 28
-    move-result-object v1
-
     .line 29
-    move-object v6, v1
-
     .line 30
-    check-cast v6, Landroid/widget/TextView;
+    move-result-object v2
 
     .line 31
+    move-object v7, v2
+
     .line 32
-    if-eqz v6, :cond_0
+    check-cast v7, Lcom/google/android/material/card/MaterialCardView;
 
     .line 33
     .line 34
-    sget v0, Lorg/levimc/launcher/R$id;->header_container:I
+    if-eqz v7, :cond_0
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->cf_retry:I
 
     .line 37
     .line 38
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 39
-    move-result-object v1
-
     .line 40
-    move-object v7, v1
-
     .line 41
-    check-cast v7, Landroid/widget/LinearLayout;
+    move-result-object v2
 
     .line 42
+    move-object v8, v2
+
     .line 43
-    if-eqz v7, :cond_0
+    check-cast v8, Lcom/google/android/material/button/MaterialButton;
 
     .line 44
     .line 45
-    sget v0, Lorg/levimc/launcher/R$id;->loading_progress:I
+    if-eqz v8, :cond_0
 
     .line 46
     .line 47
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->cf_select_class:I
 
     .line 48
     .line 49
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 50
-    move-result-object v1
-
     .line 51
-    move-object v8, v1
-
     .line 52
-    check-cast v8, Landroid/widget/ProgressBar;
+    move-result-object v2
 
     .line 53
+    move-object v9, v2
+
     .line 54
-    if-eqz v8, :cond_0
+    check-cast v9, Landroid/widget/TextView;
 
     .line 55
     .line 56
-    sget v0, Lorg/levimc/launcher/R$id;->mods_recycler:I
+    if-eqz v9, :cond_0
 
     .line 57
     .line 58
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->cf_select_version:I
 
     .line 59
     .line 60
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 61
-    move-result-object v1
-
     .line 62
-    move-object v9, v1
-
     .line 63
-    check-cast v9, Landroidx/recyclerview/widget/RecyclerView;
+    move-result-object v2
 
     .line 64
+    move-object v10, v2
+
     .line 65
-    if-eqz v9, :cond_0
+    check-cast v10, Landroid/widget/TextView;
 
     .line 66
     .line 67
-    sget v0, Lorg/levimc/launcher/R$id;->search_box:I
+    if-eqz v10, :cond_0
 
     .line 68
     .line 69
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->cf_title:I
 
     .line 70
     .line 71
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 72
-    move-result-object v1
-
     .line 73
-    move-object v10, v1
-
     .line 74
-    check-cast v10, Landroid/widget/EditText;
+    move-result-object v2
 
     .line 75
+    move-object v11, v2
+
     .line 76
-    if-eqz v10, :cond_0
+    check-cast v11, Landroid/widget/TextView;
 
     .line 77
     .line 78
-    new-instance v2, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;
+    if-eqz v11, :cond_0
 
     .line 79
     .line 80
-    move-object v3, p0
+    sget v1, Lorg/levimc/launcher/R$id;->cf_version_column:I
 
     .line 81
-    check-cast v3, Landroidx/coordinatorlayout/widget/CoordinatorLayout;
-
     .line 82
-    .line 83
-    invoke-direct/range {v2 .. v10}, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;-><init>(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/RadioGroup;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/EditText;)V
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
+    .line 83
     .line 84
     .line 85
+    move-result-object v2
+
     .line 86
-    return-object v2
+    move-object v12, v2
 
     .line 87
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+    check-cast v12, Landroid/widget/LinearLayout;
 
     .line 88
     .line 89
-    .line 90
-    move-result-object p0
+    if-eqz v12, :cond_0
 
+    .line 90
     .line 91
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+    sget v1, Lorg/levimc/launcher/R$id;->empty_message:I
 
     .line 92
     .line 93
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 94
-    move-result-object p0
-
     .line 95
-    new-instance v0, Ljava/lang/NullPointerException;
-
     .line 96
+    move-result-object v2
+
     .line 97
-    const-string v1, "Missing required view with ID: "
+    move-object v13, v2
 
     .line 98
-    .line 99
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v13, Landroid/widget/TextView;
 
+    .line 99
     .line 100
+    if-eqz v13, :cond_0
+
     .line 101
     .line 102
-    move-result-object p0
+    sget v1, Lorg/levimc/launcher/R$id;->empty_state:I
 
     .line 103
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
     .line 104
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 105
     .line 106
-    throw v0
+    .line 107
+    move-result-object v2
+
+    .line 108
+    move-object v14, v2
+
+    .line 109
+    check-cast v14, Landroid/widget/LinearLayout;
+
+    .line 110
+    .line 111
+    if-eqz v14, :cond_0
+
+    .line 112
+    .line 113
+    sget v1, Lorg/levimc/launcher/R$id;->header_container:I
+
+    .line 114
+    .line 115
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 116
+    .line 117
+    .line 118
+    move-result-object v2
+
+    .line 119
+    move-object v15, v2
+
+    .line 120
+    check-cast v15, Lcom/google/android/material/card/MaterialCardView;
+
+    .line 121
+    .line 122
+    if-eqz v15, :cond_0
+
+    .line 123
+    .line 124
+    sget v1, Lorg/levimc/launcher/R$id;->loading_progress:I
+
+    .line 125
+    .line 126
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 127
+    .line 128
+    .line 129
+    move-result-object v2
+
+    .line 130
+    move-object/from16 v16, v2
+
+    .line 131
+    .line 132
+    check-cast v16, Landroid/widget/ProgressBar;
+
+    .line 133
+    .line 134
+    if-eqz v16, :cond_0
+
+    .line 135
+    .line 136
+    sget v1, Lorg/levimc/launcher/R$id;->mods_recycler:I
+
+    .line 137
+    .line 138
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 139
+    .line 140
+    .line 141
+    move-result-object v2
+
+    .line 142
+    move-object/from16 v17, v2
+
+    .line 143
+    .line 144
+    check-cast v17, Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 145
+    .line 146
+    if-eqz v17, :cond_0
+
+    .line 147
+    .line 148
+    sget v1, Lorg/levimc/launcher/R$id;->search_box:I
+
+    .line 149
+    .line 150
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 151
+    .line 152
+    .line 153
+    move-result-object v2
+
+    .line 154
+    move-object/from16 v18, v2
+
+    .line 155
+    .line 156
+    check-cast v18, Landroid/widget/EditText;
+
+    .line 157
+    .line 158
+    if-eqz v18, :cond_0
+
+    .line 159
+    .line 160
+    new-instance v3, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;
+
+    .line 161
+    .line 162
+    move-object v4, v0
+
+    .line 163
+    check-cast v4, Landroidx/coordinatorlayout/widget/CoordinatorLayout;
+
+    .line 164
+    .line 165
+    invoke-direct/range {v3 .. v18}, Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;-><init>(Landroidx/coordinatorlayout/widget/CoordinatorLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Lcom/google/android/material/card/MaterialCardView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Lcom/google/android/material/card/MaterialCardView;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/EditText;)V
+
+    .line 166
+    .line 167
+    .line 168
+    return-object v3
+
+    .line 169
+    :cond_0
+    invoke-virtual {v0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 170
+    .line 171
+    .line 172
+    move-result-object v0
+
+    .line 173
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 174
+    .line 175
+    .line 176
+    move-result-object v0
+
+    .line 177
+    new-instance v1, Ljava/lang/NullPointerException;
+
+    .line 178
+    .line 179
+    const-string v2, "Missing required view with ID: "
+
+    .line 180
+    .line 181
+    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 182
+    .line 183
+    .line 184
+    move-result-object v0
+
+    .line 185
+    invoke-direct {v1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 186
+    .line 187
+    .line 188
+    throw v1
 .end method
 
 .method public static inflate(Landroid/view/LayoutInflater;)Lorg/levimc/launcher/databinding/ActivityCurseforgeBinding;

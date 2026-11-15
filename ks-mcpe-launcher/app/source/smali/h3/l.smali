@@ -1,43 +1,47 @@
 .class public final Lh3/l;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 # interfaces
 .implements Landroid/os/Handler$Callback;
 
 
 # static fields
-.field public static final e:Lce/b;
+.field public static final e:Lue/b;
 
 
 # instance fields
-.field public volatile a:Lcom/bumptech/glide/q;
+.field public volatile a:Lcom/bumptech/glide/RequestManager;
 
 .field public final b:Landroidx/collection/ArrayMap;
 
 .field public final c:Lh3/f;
 
-.field public final d:Lo7/e;
+.field public final d:Lq7/e;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
+    .locals 2
 
     .line 1
-    new-instance v0, Lce/b;
+    new-instance v0, Lue/b;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    const/16 v1, 0x11
 
     .line 4
     .line 5
-    .line 6
-    sput-object v0, Lh3/l;->e:Lce/b;
+    invoke-direct {v0, v1}, Lue/b;-><init>(I)V
 
+    .line 6
     .line 7
     .line 8
+    sput-object v0, Lh3/l;->e:Lue/b;
+
+    .line 9
+    .line 10
     return-void
 .end method
 
@@ -66,24 +70,24 @@
 
     .line 11
     .line 12
-    new-instance v0, Lo7/e;
+    new-instance v0, Lq7/e;
 
     .line 13
     .line 14
-    sget-object v1, Lh3/l;->e:Lce/b;
+    sget-object v1, Lh3/l;->e:Lue/b;
 
     .line 15
     .line 16
-    invoke-direct {v0, v1}, Lo7/e;-><init>(Lce/b;)V
+    invoke-direct {v0, v1}, Lq7/e;-><init>(Lue/b;)V
 
     .line 17
     .line 18
     .line 19
-    iput-object v0, p0, Lh3/l;->d:Lo7/e;
+    iput-object v0, p0, Lh3/l;->d:Lq7/e;
 
     .line 20
     .line 21
-    sget-boolean v0, Lb3/w;->f:Z
+    sget-boolean v0, Lb3/x;->f:Z
 
     .line 22
     .line 23
@@ -91,7 +95,7 @@
 
     .line 24
     .line 25
-    sget-boolean v0, Lb3/w;->e:Z
+    sget-boolean v0, Lb3/x;->e:Z
 
     .line 26
     .line 27
@@ -117,20 +121,24 @@
     .line 36
     :cond_1
     :goto_0
-    new-instance v0, Lce/b;
+    new-instance v0, Lue/b;
 
     .line 37
     .line 38
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    const/16 v1, 0x10
 
     .line 39
     .line 40
+    invoke-direct {v0, v1}, Lue/b;-><init>(I)V
+
     .line 41
+    .line 42
+    .line 43
     :goto_1
     iput-object v0, p0, Lh3/l;->c:Lh3/f;
 
-    .line 42
-    .line 43
+    .line 44
+    .line 45
     return-void
 .end method
 
@@ -306,7 +314,7 @@
 
 
 # virtual methods
-.method public final c(Landroid/content/Context;)Lcom/bumptech/glide/q;
+.method public final c(Landroid/content/Context;)Lcom/bumptech/glide/RequestManager;
     .locals 4
 
     .line 1
@@ -358,7 +366,7 @@
 
     .line 24
     .line 25
-    invoke-virtual {p0, p1}, Lh3/l;->d(Landroidx/fragment/app/FragmentActivity;)Lcom/bumptech/glide/q;
+    invoke-virtual {p0, p1}, Lh3/l;->d(Landroidx/fragment/app/FragmentActivity;)Lcom/bumptech/glide/RequestManager;
 
     .line 26
     .line 27
@@ -413,7 +421,7 @@
     move-result-object p1
 
     .line 51
-    invoke-virtual {p0, p1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/q;
+    invoke-virtual {p0, p1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/RequestManager;
 
     .line 52
     .line 53
@@ -425,7 +433,7 @@
 
     .line 56
     :cond_1
-    iget-object v0, p0, Lh3/l;->a:Lcom/bumptech/glide/q;
+    iget-object v0, p0, Lh3/l;->a:Lcom/bumptech/glide/RequestManager;
 
     .line 57
     .line 58
@@ -437,7 +445,7 @@
 
     .line 61
     :try_start_0
-    iget-object v0, p0, Lh3/l;->a:Lcom/bumptech/glide/q;
+    iget-object v0, p0, Lh3/l;->a:Lcom/bumptech/glide/RequestManager;
 
     .line 62
     .line 63
@@ -461,7 +469,7 @@
     move-result-object v0
 
     .line 73
-    new-instance v1, Ln7/d;
+    new-instance v1, Lv5/f;
 
     .line 74
     .line 75
@@ -470,7 +478,7 @@
     .line 76
     .line 77
     .line 78
-    new-instance v2, Ln7/d;
+    new-instance v2, Lv5/f;
 
     .line 79
     .line 80
@@ -487,16 +495,16 @@
     move-result-object p1
 
     .line 87
-    new-instance v3, Lcom/bumptech/glide/q;
+    new-instance v3, Lcom/bumptech/glide/RequestManager;
 
     .line 88
     .line 89
-    invoke-direct {v3, v0, v1, v2, p1}, Lcom/bumptech/glide/q;-><init>(Lcom/bumptech/glide/b;Lh3/g;Lh3/m;Landroid/content/Context;)V
+    invoke-direct {v3, v0, v1, v2, p1}, Lcom/bumptech/glide/RequestManager;-><init>(Lcom/bumptech/glide/b;Lh3/g;Lh3/m;Landroid/content/Context;)V
 
     .line 90
     .line 91
     .line 92
-    iput-object v3, p0, Lh3/l;->a:Lcom/bumptech/glide/q;
+    iput-object v3, p0, Lh3/l;->a:Lcom/bumptech/glide/RequestManager;
 
     .line 93
     .line 94
@@ -529,7 +537,7 @@
     .line 101
     :cond_3
     :goto_2
-    iget-object p1, p0, Lh3/l;->a:Lcom/bumptech/glide/q;
+    iget-object p1, p0, Lh3/l;->a:Lcom/bumptech/glide/RequestManager;
 
     .line 102
     .line 103
@@ -553,7 +561,7 @@
     throw p1
 .end method
 
-.method public final d(Landroidx/fragment/app/FragmentActivity;)Lcom/bumptech/glide/q;
+.method public final d(Landroidx/fragment/app/FragmentActivity;)Lcom/bumptech/glide/RequestManager;
     .locals 10
 
     .line 1
@@ -610,7 +618,7 @@
     move-result-object p1
 
     .line 24
-    invoke-virtual {p0, p1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/q;
+    invoke-virtual {p0, p1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/RequestManager;
 
     .line 25
     .line 26
@@ -638,7 +646,7 @@
 
     .line 36
     .line 37
-    invoke-interface {v0, p1}, Lh3/f;->a(Landroidx/fragment/app/FragmentActivity;)V
+    invoke-interface {v0, p1}, Lh3/f;->k(Landroidx/fragment/app/FragmentActivity;)V
 
     .line 38
     .line 39
@@ -715,14 +723,14 @@
     move-result-object v8
 
     .line 72
-    iget-object v4, p0, Lh3/l;->d:Lo7/e;
+    iget-object v4, p0, Lh3/l;->d:Lq7/e;
 
     .line 73
     .line 74
     move-object v5, p1
 
     .line 75
-    invoke-virtual/range {v4 .. v9}, Lo7/e;->u(Landroid/content/Context;Lcom/bumptech/glide/b;Landroidx/lifecycle/Lifecycle;Landroidx/fragment/app/FragmentManager;Z)Lcom/bumptech/glide/q;
+    invoke-virtual/range {v4 .. v9}, Lq7/e;->o(Landroid/content/Context;Lcom/bumptech/glide/b;Landroidx/lifecycle/Lifecycle;Landroidx/fragment/app/FragmentManager;Z)Lcom/bumptech/glide/RequestManager;
 
     .line 76
     .line 77

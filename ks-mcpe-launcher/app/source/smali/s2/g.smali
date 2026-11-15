@@ -1,10 +1,10 @@
 .class public final Ls2/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final e:Lt5/f;
+.field public static final e:Lq1/b;
 
 
 # instance fields
@@ -22,23 +22,22 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lt5/f;
+    new-instance v0, Lq1/b;
 
     .line 2
     .line 3
-    const/16 v1, 0x1d
+    const/4 v1, 0x1
 
     .line 4
-    .line 5
-    invoke-direct {v0, v1}, Lt5/f;-><init>(I)V
+    invoke-direct {v0, v1}, Lq1/b;-><init>(I)V
 
+    .line 5
     .line 6
     .line 7
-    .line 8
-    sput-object v0, Ls2/g;->e:Lt5/f;
+    sput-object v0, Ls2/g;->e:Lq1/b;
 
+    .line 8
     .line 9
-    .line 10
     return-void
 .end method
 
@@ -103,7 +102,7 @@
 
     .line 2
     .line 3
-    sget-object v1, Ls2/g;->e:Lt5/f;
+    sget-object v1, Ls2/g;->e:Lq1/b;
 
     .line 4
     .line 5
@@ -203,7 +202,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 13
     .line 14

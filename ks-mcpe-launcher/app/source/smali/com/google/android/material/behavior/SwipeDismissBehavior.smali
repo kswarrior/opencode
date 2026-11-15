@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/behavior/SwipeDismissBehavior;
 .super Ld0/b;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
@@ -192,7 +192,7 @@
 
     .line 49
     .line 50
-    invoke-direct {p2, v0, p1, v1}, Lu0/e;-><init>(Landroid/content/Context;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Leh/k;)V
+    invoke-direct {p2, v0, p1, v1}, Lu0/e;-><init>(Landroid/content/Context;Landroidx/coordinatorlayout/widget/CoordinatorLayout;Lwh/k;)V
 
     .line 51
     .line 52
@@ -264,12 +264,12 @@
 
     .line 13
     .line 14
-    invoke-static {p1, p2}, Landroidx/core/view/t0;->h(ILandroid/view/View;)V
+    invoke-static {p1, p2}, Landroidx/core/view/s0;->h(ILandroid/view/View;)V
 
     .line 15
     .line 16
     .line 17
-    invoke-static {p3, p2}, Landroidx/core/view/t0;->f(ILandroid/view/View;)V
+    invoke-static {p3, p2}, Landroidx/core/view/s0;->f(ILandroid/view/View;)V
 
     .line 18
     .line 19
@@ -290,19 +290,19 @@
 
     .line 27
     .line 28
-    new-instance v0, Lx7/c;
+    new-instance v0, La4/e;
 
     .line 29
     .line 30
-    const/4 v1, 0x2
+    const/4 v1, 0x1
 
     .line 31
-    invoke-direct {v0, p0, v1}, Lx7/c;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, La4/e;-><init>(Ljava/lang/Object;I)V
 
     .line 32
     .line 33
     .line 34
-    invoke-static {p2, p1, v0}, Landroidx/core/view/t0;->i(Landroid/view/View;Lq0/b;Lq0/l;)V
+    invoke-static {p2, p1, v0}, Landroidx/core/view/s0;->i(Landroid/view/View;Lq0/b;Lq0/l;)V
 
     .line 35
     .line 36

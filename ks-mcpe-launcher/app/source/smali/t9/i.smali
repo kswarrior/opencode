@@ -1,51 +1,77 @@
-.class public final synthetic Lt9/i;
-.super Lf9/m;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final Lt9/i;
+.super Ly8/c;
 
-# interfaces
-.implements Lkotlin/jvm/functions/Function0;
+
+# instance fields
+.field public X:Lu9/g;
+
+.field public synthetic p:Ljava/lang/Object;
+
+.field public q:I
+
+.field public final synthetic w:Lt9/j;
+
+.field public x:Lt9/j;
+
+.field public y:Lt9/d;
+
+
+# direct methods
+.method public constructor <init>(Lt9/j;Ly8/c;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lt9/i;->w:Lt9/j;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
 
 
 # virtual methods
-.method public final a()Ljava/lang/Object;
+.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lf9/d;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lt9/i;->p:Ljava/lang/Object;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    iget p1, p0, Lt9/i;->q:I
 
     .line 4
     .line 5
-    .line 6
-    move-result-object v0
+    const/high16 v0, -0x80000000
 
+    .line 6
     .line 7
-    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+    or-int/2addr p1, v0
 
     .line 8
+    iput p1, p0, Lt9/i;->q:I
+
     .line 9
     .line 10
-    move-result-object v0
+    iget-object p1, p0, Lt9/i;->w:Lt9/j;
 
     .line 11
-    return-object v0
-.end method
+    .line 12
+    const/4 v0, 0x0
 
-.method public final c()Lk9/a;
-    .locals 1
+    .line 13
+    invoke-virtual {p1, v0, p0}, Lt9/j;->m(Lt9/d;Ly8/c;)Ljava/lang/Object;
 
-    .line 1
-    sget-object v0, Lf9/r;->a:Lf9/s;
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p1
 
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 4
-    .line 5
-    .line 6
-    return-object p0
+    .line 17
+    return-object p1
 .end method

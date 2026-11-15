@@ -1,32 +1,24 @@
-.class public Lorg/levimc/launcher/ui/activities/AccountsActivity;
+.class public final Lorg/levimc/launcher/ui/activities/AccountsActivity;
 .super Lorg/levimc/launcher/ui/activities/BaseActivity;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;
+    }
+.end annotation
 
 
 # instance fields
-.field private accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
-
 .field private final adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
-.field private final avatarClient:Lokhttp3/OkHttpClient;
+.field private addButton:Lcom/google/android/material/button/MaterialButton;
 
-.field private avatarProgress:Landroid/widget/ProgressBar;
+.field private busy:Z
 
-.field private bottomAddButton:Landroid/widget/Button;
-
-.field private emptyStateContainer:Landroid/view/View;
-
-.field private emptyStateText:Landroid/widget/TextView;
-
-.field private executor:Ljava/util/concurrent/ExecutorService;
-
-.field private gamertagText:Landroid/widget/TextView;
-
-.field private lastAvatarXuid:Ljava/lang/String;
-
-.field private leftAddButton:Landroid/widget/ImageButton;
-
-.field private loadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
+.field private final executor:Ljava/util/concurrent/ExecutorService;
 
 .field private loginLauncher:Landroidx/activity/result/ActivityResultLauncher;
     .annotation system Ldalvik/annotation/Signature;
@@ -36,13 +28,7 @@
     .end annotation
 .end field
 
-.field private privilegesText:Landroid/widget/TextView;
-
-.field private rightCardContainer:Landroid/view/View;
-
-.field private xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-.field private xuidText:Landroid/widget/TextView;
+.field private recycler:Landroidx/recyclerview/widget/RecyclerView;
 
 
 # direct methods
@@ -55,48 +41,47 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Lokhttp3/OkHttpClient;
+    new-instance v0, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
     .line 5
     .line 6
-    invoke-direct {v0}, Lokhttp3/OkHttpClient;-><init>()V
+    invoke-direct {v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;-><init>()V
 
     .line 7
     .line 8
     .line 9
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarClient:Lokhttp3/OkHttpClient;
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
     .line 10
     .line 11
-    new-instance v0, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
+    invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor()Ljava/util/concurrent/ExecutorService;
 
     .line 12
     .line 13
-    invoke-direct {v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;-><init>()V
-
     .line 14
-    .line 15
-    .line 16
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
-
-    .line 17
-    .line 18
-    invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor()Ljava/util/concurrent/ExecutorService;
-
-    .line 19
-    .line 20
-    .line 21
     move-result-object v0
 
-    .line 22
+    .line 15
     iput-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->executor:Ljava/util/concurrent/ExecutorService;
 
-    .line 23
-    .line 24
+    .line 16
+    .line 17
     return-void
 .end method
 
-.method public static synthetic A(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroidx/activity/result/ActivityResult;)V
+.method public static synthetic A(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;I)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$runAccountAction$7(Lorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;I)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic B(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroidx/activity/result/ActivityResult;)V
     .locals 0
 
     .line 1
@@ -108,11 +93,11 @@
     return-void
 .end method
 
-.method public static synthetic B(Lorg/levimc/launcher/ui/activities/AccountsActivity;Ljava/lang/String;)V
+.method public static synthetic C(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$loadXboxAvatar$5(Ljava/lang/String;)V
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$confirmRemove$5(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -120,44 +105,11 @@
     return-void
 .end method
 
-.method public static bridge synthetic C(Lorg/levimc/launcher/ui/activities/AccountsActivity;)Ljava/util/concurrent/ExecutorService;
+.method public static synthetic D(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
     .locals 0
 
     .line 1
-    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->executor:Ljava/util/concurrent/ExecutorService;
-
-    .line 2
-    .line 3
-    return-object p0
-.end method
-
-.method public static bridge synthetic D(Lorg/levimc/launcher/ui/activities/AccountsActivity;)Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
-    .locals 0
-
-    .line 1
-    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
-
-    .line 2
-    .line 3
-    return-object p0
-.end method
-
-.method public static bridge synthetic E(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/ui/dialogs/LoadingDialog;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
-
-    .line 2
-    .line 3
-    return-void
-.end method
-
-.method public static bridge synthetic F(Lorg/levimc/launcher/ui/activities/AccountsActivity;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$showAccountActions$2(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
 
     .line 2
     .line 3
@@ -165,419 +117,228 @@
     return-void
 .end method
 
-.method private applyAccountAccent()V
-    .locals 3
+.method public static bridge synthetic E(Lorg/levimc/launcher/ui/activities/AccountsActivity;ILorg/levimc/launcher/ui/activities/d;)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/util/PersonalizationManager;
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->runAccountAction(ILorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;)V
 
     .line 2
     .line 3
-    invoke-direct {v0, p0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic F(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->showAccountActions(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private confirmRemove(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+    .locals 4
+
+    .line 1
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
 
     .line 4
     .line 5
     .line 6
-    invoke-virtual {v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor()I
+    sget v1, Lorg/levimc/launcher/R$string;->accounts_remove:I
 
     .line 7
     .line 8
-    .line 9
-    move-result v0
-
-    .line 10
-    if-nez v0, :cond_0
-
-    .line 11
-    .line 12
-    sget v0, Lorg/levimc/launcher/R$color;->primary:I
-
-    .line 13
-    .line 14
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getColor(I)I
-
-    .line 15
-    .line 16
-    .line 17
-    move-result v0
-
-    .line 18
-    :cond_0
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
-
-    .line 19
-    .line 20
-    if-eqz v1, :cond_1
-
-    .line 21
-    .line 22
-    invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 23
-    .line 24
-    .line 25
-    move-result-object v2
-
-    .line 26
-    invoke-virtual {v1, v2}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 27
-    .line 28
-    .line 29
-    :cond_1
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->bottomAddButton:Landroid/widget/Button;
-
-    .line 30
-    .line 31
-    if-eqz v1, :cond_2
-
-    .line 32
-    .line 33
-    invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 34
-    .line 35
-    .line 36
-    move-result-object v0
-
-    .line 37
-    invoke-virtual {v1, v0}, Landroid/view/View;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 38
-    .line 39
-    .line 40
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->bottomAddButton:Landroid/widget/Button;
-
-    .line 41
-    .line 42
-    const/4 v1, -0x1
-
-    .line 43
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 44
-    .line 45
-    .line 46
-    :cond_2
-    return-void
-.end method
-
-.method private getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-    .locals 3
-
-    .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
+    invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     .line 9
-    :cond_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
     .line 10
     .line 11
-    .line 12
-    move-result v1
-
-    .line 13
-    if-eqz v1, :cond_1
-
-    .line 14
-    .line 15
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 16
-    .line 17
-    .line 18
     move-result-object v1
 
-    .line 19
-    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-
-    .line 20
-    .line 21
-    iget-boolean v2, v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->active:Z
-
-    .line 22
-    .line 23
-    if-eqz v2, :cond_0
-
-    .line 24
-    .line 25
-    return-object v1
-
-    .line 26
-    :cond_1
-    const/4 v0, 0x0
-
-    .line 27
-    return-object v0
-.end method
-
-.method private synthetic lambda$loadXboxAvatar$3(Landroid/graphics/Bitmap;)V
-    .locals 1
-
-    .line 1
-    if-eqz p1, :cond_0
-
-    .line 2
-    .line 3
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 4
-    .line 5
-    invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
-
-    .line 6
-    .line 7
-    .line 8
-    :cond_0
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
-
-    .line 9
-    .line 10
-    if-eqz p1, :cond_1
-
-    .line 11
     .line 12
-    const/16 v0, 0x8
+    invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 13
     .line 14
-    invoke-virtual {p1, v0}, Landroid/view/View;->setVisibility(I)V
-
     .line 15
+    move-result-object v0
+
     .line 16
-    .line 17
-    :cond_1
-    return-void
-.end method
-
-.method private synthetic lambda$loadXboxAvatar$4()V
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    const/16 v1, 0x8
-
-    .line 6
-    .line 7
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 8
-    .line 9
-    .line 10
-    :cond_0
-    return-void
-.end method
-
-.method private lambda$loadXboxAvatar$5(Ljava/lang/String;)V
-    .locals 3
-
-    .line 1
-    :try_start_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarClient:Lokhttp3/OkHttpClient;
-
-    .line 2
-    .line 3
-    new-instance v1, Lokhttp3/Request$Builder;
-
-    .line 4
-    .line 5
-    invoke-direct {v1}, Lokhttp3/Request$Builder;-><init>()V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {v1, p1}, Lokhttp3/Request$Builder;->d(Ljava/lang/String;)V
-
-    .line 9
-    .line 10
-    .line 11
-    new-instance p1, Lae/o;
-
-    .line 12
-    .line 13
-    invoke-direct {p1, v1}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
-
-    .line 14
-    .line 15
-    .line 16
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_ui_delete:I
 
     .line 17
     .line 18
-    .line 19
-    new-instance v1, Lzb/o;
+    invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setIconResource(I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
+    .line 19
     .line 20
     .line 21
-    const/4 v2, 0x0
+    move-result-object v0
 
     .line 22
-    invoke-direct {v1, v0, p1, v2}, Lzb/o;-><init>(Lokhttp3/OkHttpClient;Lae/o;Z)V
+    sget v1, Lorg/levimc/launcher/R$string;->accounts_remove_message:I
 
     .line 23
     .line 24
-    .line 25
-    invoke-virtual {v1}, Lzb/o;->f()Lokhttp3/Response;
+    invoke-static {p0, p1}, Lorg/levimc/launcher/util/AccountTextUtils;->displayNameOrNotSigned(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Ljava/lang/String;
 
+    .line 25
     .line 26
     .line 27
+    move-result-object v2
+
     .line 28
-    move-result-object p1
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    filled-new-array {v2}, [Ljava/lang/Object;
 
     .line 29
-    :try_start_1
-    iget-boolean v0, p1, Lokhttp3/Response;->F1:Z
-
     .line 30
     .line 31
-    if-eqz v0, :cond_0
+    move-result-object v2
 
     .line 32
-    .line 33
-    iget-object v0, p1, Lokhttp3/Response;->y:Lvb/r;
+    invoke-virtual {p0, v1, v2}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
+    .line 33
     .line 34
     .line 35
-    if-eqz v0, :cond_0
+    move-result-object v1
 
     .line 36
-    .line 37
-    invoke-virtual {v0}, Lvb/r;->a()Ljava/io/InputStream;
+    invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
+    .line 37
     .line 38
     .line 39
-    .line 40
     move-result-object v0
+
+    .line 40
+    sget v1, Lorg/levimc/launcher/R$string;->accounts_remove:I
 
     .line 41
-    invoke-static {v0}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-
     .line 42
+    invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
     .line 43
     .line 44
-    move-result-object v0
-
     .line 45
-    goto :goto_0
+    move-result-object v1
 
     .line 46
-    :catchall_0
-    move-exception v0
+    new-instance v2, Lorg/levimc/launcher/ui/activities/m2;
 
     .line 47
-    goto :goto_1
-
     .line 48
-    :cond_0
-    const/4 v0, 0x0
+    const/4 v3, 0x5
 
     .line 49
-    :goto_0
-    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
+    invoke-direct {v2, p0, p1, v3}, Lorg/levimc/launcher/ui/activities/m2;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 50
     .line 51
-    const/16 v2, 0x12
-
     .line 52
-    .line 53
-    invoke-direct {v1, p0, v0, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-virtual {v0, v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
+    .line 53
     .line 54
     .line 55
+    move-result-object p1
+
     .line 56
-    invoke-virtual {p0, v1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    const/high16 v0, 0x1040000
 
     .line 57
     .line 58
-    .line 59
-    :try_start_2
-    invoke-virtual {p1}, Lokhttp3/Response;->close()V
-    :try_end_2
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 59
     .line 60
     .line 61
+    move-result-object v0
+
     .line 62
-    return-void
+    const/4 v1, 0x0
 
     .line 63
-    :goto_1
-    :try_start_3
-    invoke-virtual {p1}, Lokhttp3/Response;->close()V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+    invoke-virtual {p1, v0, v1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setNegativeButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 64
     .line 65
     .line 66
-    goto :goto_2
+    move-result-object p1
 
     .line 67
-    :catchall_1
-    move-exception p1
+    invoke-virtual {p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
 
     .line 68
-    :try_start_4
-    invoke-virtual {v0, p1}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
-
     .line 69
     .line 70
-    .line 71
-    :goto_2
-    throw v0
-    :try_end_4
-    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
+    return-void
+.end method
 
-    .line 72
-    :catch_0
-    new-instance p1, Lorg/levimc/launcher/ui/activities/c;
+.method private synthetic lambda$confirmRemove$4(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+    .locals 1
 
-    .line 73
-    .line 74
-    const/4 v0, 0x1
+    .line 1
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
-    .line 75
-    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/c;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;I)V
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
 
-    .line 76
-    .line 77
-    .line 78
-    invoke-virtual {p0, p1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+    .line 5
+    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
 
-    .line 79
-    .line 80
-    .line 81
+    .line 6
+    .line 7
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->remove(Landroid/content/Context;Ljava/lang/String;)V
+
+    .line 8
+    .line 9
+    .line 10
+    return-void
+.end method
+
+.method private synthetic lambda$confirmRemove$5(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
+    .locals 2
+
+    .line 1
+    sget p2, Lorg/levimc/launcher/R$string;->accounts_removing:I
+
+    .line 2
+    .line 3
+    new-instance v0, Lorg/levimc/launcher/ui/activities/a;
+
+    .line 4
+    .line 5
+    const/4 v1, 0x1
+
+    .line 6
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/a;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
+
+    .line 7
+    .line 8
+    .line 9
+    invoke-direct {p0, p2, v0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->runAccountAction(ILorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;)V
+
+    .line 10
+    .line 11
+    .line 12
     return-void
 .end method
 
 .method private lambda$onCreate$0(Landroidx/activity/result/ActivityResult;)V
-    .locals 2
+    .locals 3
 
     .line 1
     iget v0, p1, Landroidx/activity/result/ActivityResult;->c:I
@@ -630,67 +391,66 @@
     move-result-object p1
 
     .line 25
-    if-eqz p1, :cond_0
+    sget v0, Lorg/levimc/launcher/R$string;->ms_login_success:I
 
     .line 26
     .line 27
-    goto :goto_0
+    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     .line 28
-    :cond_0
-    sget p1, Lorg/levimc/launcher/R$string;->not_signed_in:I
-
     .line 29
     .line 30
-    invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    move-result v2
 
     .line 31
+    if-eqz v2, :cond_0
+
     .line 32
     .line 33
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$string;->accounts_page_title:I
 
     .line 34
-    :goto_0
-    sget v0, Lorg/levimc/launcher/R$string;->ms_login_success:I
-
     .line 35
-    .line 36
-    filled-new-array {p1}, [Ljava/lang/Object;
+    invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 36
     .line 37
     .line 38
-    .line 39
     move-result-object p1
+
+    .line 39
+    :cond_0
+    filled-new-array {p1}, [Ljava/lang/Object;
 
     .line 40
-    invoke-virtual {p0, v0, p1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
     .line 41
     .line 42
-    .line 43
     move-result-object p1
+
+    .line 43
+    invoke-virtual {p0, v0, p1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 44
-    invoke-static {p0, p1, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-
     .line 45
     .line 46
-    .line 47
     move-result-object p1
 
-    .line 48
-    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+    .line 47
+    invoke-static {p0, p1, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
 
+    .line 48
     .line 49
     .line 50
+    move-result-object p1
+
     .line 51
-    :cond_1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
 
     .line 52
     .line 53
     .line 54
-    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNavAccountUI()V
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
 
     .line 55
     .line 56
@@ -698,59 +458,299 @@
     return-void
 .end method
 
-.method private lambda$onCreate$1(Landroid/view/View;)V
-    .locals 2
+.method private synthetic lambda$onCreate$1(Landroid/view/View;)V
+    .locals 0
 
     .line 1
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loginLauncher:Landroidx/activity/result/ActivityResultLauncher;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->openSignIn()V
 
     .line 2
     .line 3
-    new-instance v0, Landroid/content/Intent;
-
     .line 4
+    return-void
+.end method
+
+.method private synthetic lambda$runAccountAction$6(ILjava/lang/Exception;)V
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Landroid/app/Activity;->isFinishing()Z
+
+    .line 2
+    .line 3
+    .line 4
+    move-result v0
+
     .line 5
-    const-class v1, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
+    if-nez v0, :cond_1
 
     .line 6
     .line 7
-    invoke-direct {v0, p0, v1}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+    invoke-virtual {p0}, Landroid/app/Activity;->isDestroyed()Z
 
     .line 8
     .line 9
     .line 10
-    const/4 v1, 0x0
+    move-result v0
 
     .line 11
-    invoke-virtual {p1, v0, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+    if-eqz v0, :cond_0
 
     .line 12
     .line 13
+    goto :goto_0
+
     .line 14
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 15
+    invoke-direct {p0, v0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->setBusy(ZI)V
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
+
+    .line 19
+    .line 20
+    .line 21
+    if-eqz p2, :cond_1
+
+    .line 22
+    .line 23
+    new-instance p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 24
+    .line 25
+    invoke-direct {p1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+
+    .line 26
+    .line 27
+    .line 28
+    sget v0, Lorg/levimc/launcher/R$string;->ms_login_failed:I
+
+    .line 29
+    .line 30
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v0
+
+    .line 34
+    invoke-virtual {p1, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 35
+    .line 36
+    .line 37
+    move-result-object p1
+
+    .line 38
+    invoke-static {p0, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->describeError(Landroid/content/Context;Ljava/lang/Throwable;)Ljava/lang/String;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object p2
+
+    .line 42
+    invoke-virtual {p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 43
+    .line 44
+    .line 45
+    move-result-object p1
+
+    .line 46
+    const p2, 0x104000a
+
+    .line 47
+    .line 48
+    .line 49
+    invoke-virtual {p0, p2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object p2
+
+    .line 53
+    const/4 v0, 0x0
+
+    .line 54
+    invoke-virtual {p1, p2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object p1
+
+    .line 58
+    invoke-virtual {p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+
+    .line 59
+    .line 60
+    .line 61
+    :cond_1
+    :goto_0
     return-void
 .end method
 
-.method private synthetic lambda$onCreate$2()V
-    .locals 1
+.method private synthetic lambda$runAccountAction$7(Lorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;I)V
+    .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
+    :try_start_0
+    invoke-interface {p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;->run()V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->staggerRecyclerChildren(Landroidx/recyclerview/widget/RecyclerView;)V
+    .line 4
+    const/4 p1, 0x0
+
+    .line 5
+    goto :goto_0
+
+    .line 6
+    :catch_0
+    move-exception p1
+
+    .line 7
+    :goto_0
+    new-instance v0, Lorg/levimc/launcher/ui/activities/c;
+
+    .line 8
+    .line 9
+    const/4 v1, 0x2
+
+    .line 10
+    invoke-direct {v0, p0, p2, p1, v1}, Lorg/levimc/launcher/ui/activities/c;-><init>(Ljava/lang/Object;ILjava/lang/Object;I)V
+
+    .line 11
+    .line 12
+    .line 13
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+
+    .line 14
+    .line 15
+    .line 16
+    return-void
+.end method
+
+.method private synthetic lambda$showAccountActions$2(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    .line 6
+    .line 7
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshAccountAndActivate(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 8
+    .line 9
+    .line 10
+    return-void
+.end method
+
+.method private synthetic lambda$showAccountActions$3(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
+    .locals 2
+
+    .line 1
+    if-nez p2, :cond_0
+
+    .line 2
+    .line 3
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->showAccountDetails(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
 
     .line 4
     .line 5
     .line 6
     return-void
+
+    .line 7
+    :cond_0
+    const/4 v0, 0x1
+
+    .line 8
+    if-ne p2, v0, :cond_1
+
+    .line 9
+    .line 10
+    sget p2, Lorg/levimc/launcher/R$string;->ms_login_fetch_minecraft_identity:I
+
+    .line 11
+    .line 12
+    new-instance v0, Lorg/levimc/launcher/ui/activities/a;
+
+    .line 13
+    .line 14
+    const/4 v1, 0x0
+
+    .line 15
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/a;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-direct {p0, p2, v0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->runAccountAction(ILorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;)V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    :cond_1
+    const/4 v0, 0x2
+
+    .line 23
+    if-ne p2, v0, :cond_2
+
+    .line 24
+    .line 25
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->openSignIn()V
+
+    .line 26
+    .line 27
+    .line 28
+    return-void
+
+    .line 29
+    :cond_2
+    const/4 v0, 0x3
+
+    .line 30
+    if-ne p2, v0, :cond_3
+
+    .line 31
+    .line 32
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->confirmRemove(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+
+    .line 33
+    .line 34
+    .line 35
+    :cond_3
+    return-void
 .end method
 
-.method private loadXboxAvatar(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+.method private openSignIn()V
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->busy:Z
 
     .line 2
     .line 3
@@ -758,140 +758,48 @@
 
     .line 4
     .line 5
-    return-void
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loginLauncher:Landroidx/activity/result/ActivityResultLauncher;
 
     .line 6
-    :cond_0
-    const/4 v0, 0x0
-
     .line 7
-    if-eqz p1, :cond_1
+    new-instance v1, Landroid/content/Intent;
 
     .line 8
     .line 9
-    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxAvatarUrl:Ljava/lang/String;
+    const-class v2, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
 
     .line 10
     .line 11
-    goto :goto_0
+    invoke-direct {v1, p0, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
     .line 12
-    :cond_1
-    move-object p1, v0
-
     .line 13
-    :goto_0
-    invoke-static {p1}, Lorg/levimc/launcher/util/AccountTextUtils;->sanitizeUrl(Ljava/lang/String;)Ljava/lang/String;
-
     .line 14
+    const/4 v2, 0x0
+
     .line 15
+    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
+
     .line 16
-    move-result-object p1
-
     .line 17
-    if-nez p1, :cond_3
-
     .line 18
-    .line 19
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
-
-    .line 20
-    .line 21
-    if-eqz p1, :cond_2
-
-    .line 22
-    .line 23
-    const/16 v1, 0x8
-
-    .line 24
-    .line 25
-    invoke-virtual {p1, v1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 26
-    .line 27
-    .line 28
-    :cond_2
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 29
-    .line 30
-    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    .line 31
-    .line 32
-    .line 33
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lastAvatarXuid:Ljava/lang/String;
-
-    .line 34
-    .line 35
-    return-void
-
-    .line 36
-    :cond_3
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
-    .line 37
-    .line 38
-    invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
-
-    .line 39
-    .line 40
-    .line 41
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
-
-    .line 42
-    .line 43
-    if-eqz v0, :cond_4
-
-    .line 44
-    .line 45
-    const/4 v1, 0x0
-
-    .line 46
-    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 47
-    .line 48
-    .line 49
-    :cond_4
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->executor:Ljava/util/concurrent/ExecutorService;
-
-    .line 50
-    .line 51
-    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
-
-    .line 52
-    .line 53
-    const/16 v2, 0x11
-
-    .line 54
-    .line 55
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
-    .line 56
-    .line 57
-    .line 58
-    invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
-
-    .line 59
-    .line 60
-    .line 61
+    :cond_0
     return-void
 .end method
 
 .method private refreshUI()V
-    .locals 6
+    .locals 5
 
     .line 1
-    invoke-static {}, Lorg/levimc/launcher/settings/FeatureSettings;->getInstance()Lorg/levimc/launcher/settings/FeatureSettings;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object v0
+    if-eqz v0, :cond_4
 
+    .line 4
     .line 5
-    invoke-virtual {v0}, Lorg/levimc/launcher/settings/FeatureSettings;->isLauncherManagedMcLoginEnabled()Z
+    invoke-virtual {p0}, Landroid/app/Activity;->isFinishing()Z
 
     .line 6
     .line 7
@@ -899,384 +807,741 @@
     move-result v0
 
     .line 9
-    sget v1, Lorg/levimc/launcher/R$id;->main_content_container:I
+    if-nez v0, :cond_4
 
     .line 10
     .line 11
-    invoke-virtual {p0, v1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0}, Landroid/app/Activity;->isDestroyed()Z
 
     .line 12
     .line 13
     .line 14
-    move-result-object v1
+    move-result v0
 
     .line 15
-    sget v2, Lorg/levimc/launcher/R$id;->disabled_state_container:I
+    if-eqz v0, :cond_0
 
     .line 16
     .line 17
-    invoke-virtual {p0, v2}, Lg/g;->findViewById(I)Landroid/view/View;
+    goto :goto_2
 
     .line 18
+    :cond_0
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
+
     .line 19
     .line 20
-    move-result-object v2
-
     .line 21
-    const/16 v3, 0x8
+    move-result-object v0
 
     .line 22
-    .line 23
-    const/4 v4, 0x0
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
+    .line 23
     .line 24
-    if-eqz v1, :cond_1
+    invoke-virtual {v1, v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->updateAccounts(Ljava/util/List;)V
 
     .line 25
     .line 26
-    if-eqz v0, :cond_0
-
     .line 27
-    .line 28
-    move v5, v4
+    sget v1, Lorg/levimc/launcher/R$id;->accounts_count:I
 
+    .line 28
     .line 29
-    goto :goto_0
+    invoke-virtual {p0, v1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 30
-    :cond_0
-    move v5, v3
-
     .line 31
-    :goto_0
-    invoke-virtual {v1, v5}, Landroid/view/View;->setVisibility(I)V
-
     .line 32
+    move-result-object v1
+
     .line 33
+    check-cast v1, Landroid/widget/TextView;
+
     .line 34
-    :cond_1
-    if-eqz v2, :cond_3
-
     .line 35
+    sget v2, Lorg/levimc/launcher/R$string;->accounts_count:I
+
     .line 36
-    if-eqz v0, :cond_2
-
     .line 37
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
     .line 38
-    move v1, v3
-
     .line 39
-    goto :goto_1
-
     .line 40
-    :cond_2
-    move v1, v4
+    move-result v3
 
     .line 41
-    :goto_1
-    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 42
     .line 43
     .line 44
-    :cond_3
-    if-nez v0, :cond_4
+    move-result-object v3
 
     .line 45
+    filled-new-array {v3}, [Ljava/lang/Object;
+
     .line 46
-    return-void
-
     .line 47
-    :cond_4
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-
     .line 48
+    move-result-object v3
+
     .line 49
+    invoke-virtual {p0, v2, v3}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
     .line 50
-    move-result-object v0
-
     .line 51
-    const-string v1, ""
-
     .line 52
+    move-result-object v2
+
     .line 53
-    if-nez v0, :cond_6
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 54
     .line 55
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->gamertagText:Landroid/widget/TextView;
-
     .line 56
+    sget v1, Lorg/levimc/launcher/R$id;->empty_state_container:I
+
     .line 57
-    sget v2, Lorg/levimc/launcher/R$string;->not_signed_in:I
-
     .line 58
-    .line 59
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, v1}, Lg/i;->findViewById(I)Landroid/view/View;
 
+    .line 59
     .line 60
     .line 61
+    move-result-object v1
+
     .line 62
-    move-result-object v2
+    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
 
     .line 63
-    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
     .line 64
     .line 65
+    move-result v2
+
     .line 66
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->privilegesText:Landroid/widget/TextView;
+    const/16 v3, 0x8
 
     .line 67
     .line 68
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    const/4 v4, 0x0
 
     .line 69
+    if-eqz v2, :cond_1
+
     .line 70
     .line 71
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xuidText:Landroid/widget/TextView;
+    move v2, v4
 
     .line 72
+    goto :goto_0
+
     .line 73
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    :cond_1
+    move v2, v3
 
     .line 74
+    :goto_0
+    invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
+
     .line 75
     .line 76
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
-
     .line 77
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
+
     .line 78
-    if-eqz v0, :cond_5
-
     .line 79
+    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
+
     .line 80
-    const/4 v1, 0x0
-
     .line 81
-    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
-
     .line 82
-    .line 83
-    .line 84
-    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lastAvatarXuid:Ljava/lang/String;
+    move-result v2
 
+    .line 83
+    if-eqz v2, :cond_2
+
+    .line 84
     .line 85
+    goto :goto_1
+
     .line 86
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
+    :cond_2
+    move v3, v4
 
     .line 87
-    .line 88
-    if-eqz v0, :cond_5
+    :goto_1
+    invoke-virtual {v1, v3}, Landroid/view/View;->setVisibility(I)V
 
+    .line 88
     .line 89
     .line 90
-    invoke-virtual {v0, v3}, Landroid/view/View;->setVisibility(I)V
+    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
 
     .line 91
     .line 92
     .line 93
-    :cond_5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->rightCardContainer:Landroid/view/View;
+    move-result v0
 
     .line 94
+    if-eqz v0, :cond_3
+
     .line 95
-    if-eqz v0, :cond_8
-
     .line 96
-    .line 97
-    invoke-virtual {v0, v3}, Landroid/view/View;->setVisibility(I)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
+    .line 97
     .line 98
+    invoke-virtual {v0}, Landroidx/recyclerview/widget/RecyclerView;->j0()V
+
     .line 99
     .line 100
-    goto :goto_2
-
     .line 101
-    :cond_6
-    invoke-static {p0, v0}, Lorg/levimc/launcher/util/AccountTextUtils;->displayNameOrNotSigned(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Ljava/lang/String;
+    :cond_3
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNavAccountUI()V
 
     .line 102
     .line 103
     .line 104
-    move-result-object v2
-
-    .line 105
-    iget-object v5, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->gamertagText:Landroid/widget/TextView;
-
-    .line 106
-    .line 107
-    invoke-virtual {v5, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 108
-    .line 109
-    .line 110
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->privilegesText:Landroid/widget/TextView;
-
-    .line 111
-    .line 112
-    sget v5, Lorg/levimc/launcher/R$string;->accounts_active_privilege:I
-
-    .line 113
-    .line 114
-    invoke-virtual {p0, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 115
-    .line 116
-    .line 117
-    move-result-object v5
-
-    .line 118
-    invoke-virtual {v2, v5}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 119
-    .line 120
-    .line 121
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xuidText:Landroid/widget/TextView;
-
-    .line 122
-    .line 123
-    iget-object v5, v0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xuid:Ljava/lang/String;
-
-    .line 124
-    .line 125
-    if-eqz v5, :cond_7
-
-    .line 126
-    .line 127
-    move-object v1, v5
-
-    .line 128
-    :cond_7
-    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 129
-    .line 130
-    .line 131
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loadXboxAvatar(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
-
-    .line 132
-    .line 133
-    .line 134
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->rightCardContainer:Landroid/view/View;
-
-    .line 135
-    .line 136
-    if-eqz v0, :cond_8
-
-    .line 137
-    .line 138
-    invoke-virtual {v0, v4}, Landroid/view/View;->setVisibility(I)V
-
-    .line 139
-    .line 140
-    .line 141
-    :cond_8
+    :cond_4
     :goto_2
-    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
+    return-void
+.end method
 
-    .line 142
-    .line 143
-    .line 144
-    move-result-object v0
+.method private runAccountAction(ILorg/levimc/launcher/ui/activities/AccountsActivity$AccountAction;)V
+    .locals 3
 
-    .line 145
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
+    .line 1
+    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->busy:Z
 
-    .line 146
-    .line 147
-    invoke-virtual {v1, v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->updateAccounts(Ljava/util/List;)V
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
 
-    .line 148
-    .line 149
-    .line 150
-    if-eqz v0, :cond_a
+    .line 4
+    .line 5
+    return-void
 
-    .line 151
-    .line 152
-    invoke-interface {v0}, Ljava/util/List;->isEmpty()Z
-
-    .line 153
-    .line 154
-    .line 155
-    move-result v0
-
-    .line 156
-    if-eqz v0, :cond_9
-
-    .line 157
-    .line 158
-    goto :goto_3
-
-    .line 159
-    :cond_9
-    move v0, v4
-
-    .line 160
-    goto :goto_4
-
-    .line 161
-    :cond_a
-    :goto_3
+    .line 6
+    :cond_0
     const/4 v0, 0x1
 
-    .line 162
-    :goto_4
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->emptyStateContainer:Landroid/view/View;
+    .line 7
+    invoke-direct {p0, v0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->setBusy(ZI)V
 
-    .line 163
-    .line 164
-    if-eqz v1, :cond_c
+    .line 8
+    .line 9
+    .line 10
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->executor:Ljava/util/concurrent/ExecutorService;
 
-    .line 165
-    .line 166
-    if-eqz v0, :cond_b
+    .line 11
+    .line 12
+    new-instance v1, Lorg/levimc/launcher/ui/activities/c;
 
-    .line 167
-    .line 168
-    move v3, v4
+    .line 13
+    .line 14
+    const/4 v2, 0x0
 
-    .line 169
-    :cond_b
-    invoke-virtual {v1, v3}, Landroid/view/View;->setVisibility(I)V
+    .line 15
+    invoke-direct {v1, p0, p2, p1, v2}, Lorg/levimc/launcher/ui/activities/c;-><init>(Ljava/lang/Object;Ljava/lang/Object;II)V
 
-    .line 170
-    .line 171
-    .line 172
-    :cond_c
-    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNavAccountUI()V
+    .line 16
+    .line 17
+    .line 18
+    invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
-    .line 173
-    .line 174
-    .line 175
+    .line 19
+    .line 20
+    .line 21
     return-void
 .end method
 
-.method public static synthetic w(Lorg/levimc/launcher/ui/activities/AccountsActivity;)V
-    .locals 0
+.method private setBusy(ZI)V
+    .locals 2
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$onCreate$2()V
+    iput-boolean p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->busy:Z
 
     .line 2
     .line 3
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->addButton:Lcom/google/android/material/button/MaterialButton;
+
     .line 4
+    .line 5
+    xor-int/lit8 v1, p1, 0x1
+
+    .line 6
+    .line 7
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
+    .line 8
+    .line 9
+    .line 10
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
+
+    .line 11
+    .line 12
+    invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->setBusy(Z)V
+
+    .line 13
+    .line 14
+    .line 15
+    sget v0, Lorg/levimc/launcher/R$id;->accounts_operation:I
+
+    .line 16
+    .line 17
+    invoke-virtual {p0, v0}, Lg/i;->findViewById(I)Landroid/view/View;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object v0
+
+    .line 21
+    if-eqz p1, :cond_0
+
+    .line 22
+    .line 23
+    const/4 p1, 0x0
+
+    .line 24
+    goto :goto_0
+
+    .line 25
+    :cond_0
+    const/16 p1, 0x8
+
+    .line 26
+    .line 27
+    :goto_0
+    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    sget p1, Lorg/levimc/launcher/R$id;->accounts_operation_text:I
+
+    .line 31
+    .line 32
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object p1
+
+    .line 36
+    check-cast p1, Landroid/widget/TextView;
+
+    .line 37
+    .line 38
+    invoke-virtual {p1, p2}, Landroid/widget/TextView;->setText(I)V
+
+    .line 39
+    .line 40
+    .line 41
     return-void
 .end method
 
-.method public static synthetic x(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroid/graphics/Bitmap;)V
-    .locals 0
+.method private showAccountActions(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Landroid/view/View;)V
+    .locals 3
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$loadXboxAvatar$3(Landroid/graphics/Bitmap;)V
+    new-instance v0, Lorg/levimc/launcher/ui/widget/LauncherPopup;
 
     .line 2
     .line 3
+    invoke-direct {v0, p2}, Lorg/levimc/launcher/ui/widget/LauncherPopup;-><init>(Landroid/view/View;)V
+
     .line 4
+    .line 5
+    .line 6
+    const/16 p2, 0xfc
+
+    .line 7
+    .line 8
+    invoke-virtual {v0, p2}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->width(I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p2
+
+    .line 12
+    invoke-static {p0, p1}, Lorg/levimc/launcher/util/AccountTextUtils;->displayNameOrNotSigned(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Ljava/lang/String;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v0
+
+    .line 16
+    invoke-virtual {p2, v0}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->section(Ljava/lang/CharSequence;)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object p2
+
+    .line 20
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_details:I
+
+    .line 21
+    .line 22
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v0
+
+    .line 26
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_ui_person:I
+
+    .line 27
+    .line 28
+    const/4 v2, 0x0
+
+    .line 29
+    invoke-virtual {p2, v2, v0, v1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->action(ILjava/lang/CharSequence;I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object p2
+
+    .line 33
+    iget-boolean v0, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->active:Z
+
+    .line 34
+    .line 35
+    if-eqz v0, :cond_0
+
+    .line 36
+    .line 37
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_refresh_sign_in:I
+
+    .line 38
+    .line 39
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v0
+
+    .line 43
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_ui_refresh:I
+
+    .line 44
+    .line 45
+    const/4 v2, 0x1
+
+    .line 46
+    invoke-virtual {p2, v2, v0, v1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->action(ILjava/lang/CharSequence;I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 47
+    .line 48
+    .line 49
+    :cond_0
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_sign_in_again:I
+
+    .line 50
+    .line 51
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 52
+    .line 53
+    .line 54
+    move-result-object v0
+
+    .line 55
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_internet:I
+
+    .line 56
+    .line 57
+    const/4 v2, 0x2
+
+    .line 58
+    invoke-virtual {p2, v2, v0, v1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->action(ILjava/lang/CharSequence;I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 59
+    .line 60
+    .line 61
+    move-result-object p2
+
+    .line 62
+    invoke-virtual {p2}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->divider()Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 63
+    .line 64
+    .line 65
+    move-result-object p2
+
+    .line 66
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_remove:I
+
+    .line 67
+    .line 68
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 69
+    .line 70
+    .line 71
+    move-result-object v0
+
+    .line 72
+    sget v1, Lorg/levimc/launcher/R$drawable;->ic_ui_delete:I
+
+    .line 73
+    .line 74
+    const/4 v2, 0x3
+
+    .line 75
+    invoke-virtual {p2, v2, v0, v1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->action(ILjava/lang/CharSequence;I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object p2
+
+    .line 79
+    new-instance v0, Lorg/levimc/launcher/ui/activities/a;
+
+    .line 80
+    .line 81
+    const/4 v1, 0x2
+
+    .line 82
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/a;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
+
+    .line 83
+    .line 84
+    .line 85
+    invoke-virtual {p2, v0}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->onSelect(Lorg/levimc/launcher/ui/widget/LauncherPopup$OnSelect;)Lorg/levimc/launcher/ui/widget/LauncherPopup;
+
+    .line 86
+    .line 87
+    .line 88
+    move-result-object p1
+
+    .line 89
+    invoke-virtual {p1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->show()V
+
+    .line 90
+    .line 91
+    .line 92
     return-void
 .end method
 
-.method public static synthetic y(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroid/view/View;)V
+.method private showAccountDetails(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+    .locals 4
+
+    .line 1
+    iget-wide v0, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->lastUpdated:J
+
+    .line 2
+    .line 3
+    const-wide/16 v2, 0x0
+
+    .line 4
+    .line 5
+    cmp-long v0, v0, v2
+
+    .line 6
+    .line 7
+    if-lez v0, :cond_0
+
+    .line 8
+    .line 9
+    const/4 v0, 0x2
+
+    .line 10
+    const/4 v1, 0x3
+
+    .line 11
+    invoke-static {v0, v1}, Ljava/text/DateFormat;->getDateTimeInstance(II)Ljava/text/DateFormat;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object v0
+
+    .line 15
+    new-instance v1, Ljava/util/Date;
+
+    .line 16
+    .line 17
+    iget-wide v2, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->lastUpdated:J
+
+    .line 18
+    .line 19
+    invoke-direct {v1, v2, v3}, Ljava/util/Date;-><init>(J)V
+
+    .line 20
+    .line 21
+    .line 22
+    invoke-virtual {v0, v1}, Ljava/text/DateFormat;->format(Ljava/util/Date;)Ljava/lang/String;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object v0
+
+    .line 26
+    goto :goto_0
+
+    .line 27
+    :cond_0
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_unavailable:I
+
+    .line 28
+    .line 29
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v0
+
+    .line 33
+    :goto_0
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 34
+    .line 35
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+
+    .line 36
+    .line 37
+    .line 38
+    invoke-static {p0, p1}, Lorg/levimc/launcher/util/AccountTextUtils;->displayNameOrNotSigned(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Ljava/lang/String;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v2
+
+    .line 42
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 43
+    .line 44
+    .line 45
+    move-result-object v1
+
+    .line 46
+    sget v2, Lorg/levimc/launcher/R$drawable;->ic_ui_person:I
+
+    .line 47
+    .line 48
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setIconResource(I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 49
+    .line 50
+    .line 51
+    move-result-object v1
+
+    .line 52
+    sget v2, Lorg/levimc/launcher/R$string;->accounts_details_message:I
+
+    .line 53
+    .line 54
+    iget-object v3, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xuid:Ljava/lang/String;
+
+    .line 55
+    .line 56
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 57
+    .line 58
+    .line 59
+    move-result v3
+
+    .line 60
+    if-eqz v3, :cond_1
+
+    .line 61
+    .line 62
+    sget p1, Lorg/levimc/launcher/R$string;->accounts_unavailable:I
+
+    .line 63
+    .line 64
+    invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object p1
+
+    .line 68
+    goto :goto_1
+
+    .line 69
+    :cond_1
+    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xuid:Ljava/lang/String;
+
+    .line 70
+    .line 71
+    :goto_1
+    filled-new-array {p1, v0}, [Ljava/lang/Object;
+
+    .line 72
+    .line 73
+    .line 74
+    move-result-object p1
+
+    .line 75
+    invoke-virtual {p0, v2, p1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 76
+    .line 77
+    .line 78
+    move-result-object p1
+
+    .line 79
+    invoke-virtual {v1, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 80
+    .line 81
+    .line 82
+    move-result-object p1
+
+    .line 83
+    const v0, 0x104000a
+
+    .line 84
+    .line 85
+    .line 86
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 87
+    .line 88
+    .line 89
+    move-result-object v0
+
+    .line 90
+    const/4 v1, 0x0
+
+    .line 91
+    invoke-virtual {p1, v0, v1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 92
+    .line 93
+    .line 94
+    move-result-object p1
+
+    .line 95
+    invoke-virtual {p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+
+    .line 96
+    .line 97
+    .line 98
+    return-void
+.end method
+
+.method public static synthetic w(Lorg/levimc/launcher/ui/activities/AccountsActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -1288,11 +1553,35 @@
     return-void
 .end method
 
-.method public static synthetic z(Lorg/levimc/launcher/ui/activities/AccountsActivity;)V
+.method public static synthetic x(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$loadXboxAvatar$4()V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$confirmRemove$4(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic y(Lorg/levimc/launcher/ui/activities/AccountsActivity;ILjava/lang/Exception;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$runAccountAction$6(ILjava/lang/Exception;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic z(Lorg/levimc/launcher/ui/activities/AccountsActivity;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->lambda$showAccountActions$3(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;I)V
 
     .line 2
     .line 3
@@ -1320,147 +1609,143 @@
     .line 7
     .line 8
     .line 9
-    sget p1, Lorg/levimc/launcher/R$id;->gamertag_text:I
+    const/4 p1, 0x0
 
     .line 10
-    .line 11
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setActiveNavTab(I)V
 
+    .line 11
     .line 12
     .line 13
-    .line 14
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$id;->accounts_recycler_view:I
 
+    .line 14
     .line 15
-    check-cast p1, Landroid/widget/TextView;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 16
     .line 17
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->gamertagText:Landroid/widget/TextView;
-
     .line 18
+    move-result-object p1
+
     .line 19
-    sget p1, Lorg/levimc/launcher/R$id;->privileges_text:I
+    check-cast p1, Landroidx/recyclerview/widget/RecyclerView;
 
     .line 20
     .line 21
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 22
     .line 23
-    .line 24
-    move-result-object p1
+    sget p1, Lorg/levimc/launcher/R$id;->bottom_add_button:I
 
+    .line 24
     .line 25
-    check-cast p1, Landroid/widget/TextView;
+    invoke-virtual {p0, p1}, Lg/i;->findViewById(I)Landroid/view/View;
 
     .line 26
     .line 27
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->privilegesText:Landroid/widget/TextView;
-
     .line 28
+    move-result-object p1
+
     .line 29
-    sget p1, Lorg/levimc/launcher/R$id;->xuid_text:I
+    check-cast p1, Lcom/google/android/material/button/MaterialButton;
 
     .line 30
     .line 31
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->addButton:Lcom/google/android/material/button/MaterialButton;
 
     .line 32
     .line 33
-    .line 34
-    move-result-object p1
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
+    .line 34
     .line 35
-    check-cast p1, Landroid/widget/TextView;
+    new-instance v0, Landroidx/recyclerview/widget/LinearLayoutManager;
 
     .line 36
     .line 37
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xuidText:Landroid/widget/TextView;
+    const/4 v1, 0x1
 
     .line 38
-    .line 39
-    sget p1, Lorg/levimc/launcher/R$id;->empty_state_text:I
+    invoke-direct {v0, v1}, Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(I)V
 
+    .line 39
     .line 40
     .line 41
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/p1;)V
 
     .line 42
     .line 43
     .line 44
-    move-result-object p1
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 45
-    check-cast p1, Landroid/widget/TextView;
-
     .line 46
+    const/4 v0, 0x0
+
     .line 47
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->emptyStateText:Landroid/widget/TextView;
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setItemAnimator(Landroidx/recyclerview/widget/l1;)V
 
     .line 48
     .line 49
-    sget p1, Lorg/levimc/launcher/R$id;->empty_state_container:I
-
     .line 50
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
+
     .line 51
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
-
     .line 52
+    const/4 v0, 0x2
+
     .line 53
+    invoke-virtual {p1, v0}, Landroid/view/View;->setOverScrollMode(I)V
+
     .line 54
-    move-result-object p1
-
     .line 55
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->emptyStateContainer:Landroid/view/View;
-
     .line 56
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
+
     .line 57
-    sget p1, Lorg/levimc/launcher/R$id;->accounts_recycler_view:I
-
     .line 58
-    .line 59
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
+    .line 59
     .line 60
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
     .line 61
     .line 62
-    move-result-object p1
-
     .line 63
-    check-cast p1, Landroidx/recyclerview/widget/RecyclerView;
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->addButton:Lcom/google/android/material/button/MaterialButton;
 
     .line 64
     .line 65
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
+    invoke-static {p1}, Lorg/levimc/launcher/ui/widget/UiKit;->applyPrimary(Lcom/google/android/material/button/MaterialButton;)V
 
     .line 66
     .line 67
-    sget p1, Lorg/levimc/launcher/R$id;->bottom_add_button:I
-
     .line 68
+    new-instance p1, Landroidx/fragment/app/w0;
+
     .line 69
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
-
     .line 70
+    const/4 v0, 0x7
+
     .line 71
+    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+
     .line 72
-    move-result-object p1
-
     .line 73
-    check-cast p1, Landroid/widget/Button;
-
     .line 74
+    new-instance v0, Lorg/levimc/launcher/ui/activities/b;
+
     .line 75
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->bottomAddButton:Landroid/widget/Button;
-
     .line 76
-    .line 77
-    sget p1, Lorg/levimc/launcher/R$id;->xbox_avatar:I
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/activities/b;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;)V
 
+    .line 77
     .line 78
     .line 79
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
 
     .line 80
     .line 81
@@ -1468,209 +1753,89 @@
     move-result-object p1
 
     .line 83
-    check-cast p1, Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loginLauncher:Landroidx/activity/result/ActivityResultLauncher;
 
     .line 84
     .line 85
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->xboxAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->addButton:Lcom/google/android/material/button/MaterialButton;
 
     .line 86
     .line 87
-    sget p1, Lorg/levimc/launcher/R$id;->avatar_progress:I
+    new-instance v0, Lorg/levimc/launcher/ui/activities/d1;
 
     .line 88
     .line 89
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/d1;-><init>(Ljava/lang/Object;I)V
 
     .line 90
     .line 91
     .line 92
-    move-result-object p1
+    invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 93
-    check-cast p1, Landroid/widget/ProgressBar;
-
     .line 94
     .line 95
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->avatarProgress:Landroid/widget/ProgressBar;
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
 
     .line 96
     .line 97
-    sget p1, Lorg/levimc/launcher/R$id;->right_card_container:I
+    new-instance v0, Lorg/levimc/launcher/ui/activities/AccountsActivity$1;
 
     .line 98
     .line 99
-    invoke-virtual {p0, p1}, Lg/g;->findViewById(I)Landroid/view/View;
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;)V
 
     .line 100
     .line 101
     .line 102
-    move-result-object p1
+    invoke-virtual {p1, v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->setOnAccountActionListener(Lorg/levimc/launcher/ui/adapter/AccountsAdapter$OnAccountActionListener;)V
 
     .line 103
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->rightCardContainer:Landroid/view/View;
-
     .line 104
     .line 105
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->applyAccountAccent()V
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
 
     .line 106
     .line 107
     .line 108
-    new-instance p1, Landroidx/fragment/app/w0;
+    return-void
+.end method
 
-    .line 109
-    .line 110
-    const/4 v0, 0x6
+.method public onDestroy()V
+    .locals 2
 
-    .line 111
-    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->executor:Ljava/util/concurrent/ExecutorService;
 
-    .line 112
-    .line 113
-    .line 114
-    new-instance v0, Lorg/levimc/launcher/ui/activities/b;
+    .line 2
+    .line 3
+    invoke-interface {v0}, Ljava/util/concurrent/ExecutorService;->shutdownNow()Ljava/util/List;
 
-    .line 115
-    .line 116
-    const/4 v1, 0x0
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->recycler:Landroidx/recyclerview/widget/RecyclerView;
 
-    .line 117
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/b;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
-
-    .line 118
-    .line 119
-    .line 120
-    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
-
-    .line 121
-    .line 122
-    .line 123
-    move-result-object p1
-
-    .line 124
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->loginLauncher:Landroidx/activity/result/ActivityResultLauncher;
-
-    .line 125
-    .line 126
-    new-instance p1, Lorg/levimc/launcher/ui/activities/y0;
-
-    .line 127
-    .line 128
-    const/4 v0, 0x1
-
-    .line 129
-    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/y0;-><init>(Ljava/lang/Object;I)V
-
-    .line 130
-    .line 131
-    .line 132
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->bottomAddButton:Landroid/widget/Button;
-
-    .line 133
-    .line 134
+    .line 7
+    .line 8
     if-eqz v0, :cond_0
 
-    .line 135
-    .line 136
-    invoke-virtual {v0, p1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 137
-    .line 138
-    .line 139
-    :cond_0
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->bottomAddButton:Landroid/widget/Button;
-
-    .line 140
-    .line 141
-    if-eqz p1, :cond_1
-
-    .line 142
-    .line 143
-    invoke-static {p1}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
-
-    .line 144
-    .line 145
-    .line 146
-    :cond_1
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
-
-    .line 147
-    .line 148
-    new-instance v0, Lorg/levimc/launcher/ui/activities/AccountsActivity$1;
-
-    .line 149
-    .line 150
-    invoke-direct {v0, p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;)V
-
-    .line 151
-    .line 152
-    .line 153
-    invoke-virtual {p1, v0}, Lorg/levimc/launcher/ui/adapter/AccountsAdapter;->setOnAccountActionListener(Lorg/levimc/launcher/ui/adapter/AccountsAdapter$OnAccountActionListener;)V
-
-    .line 154
-    .line 155
-    .line 156
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 157
-    .line 158
-    new-instance v0, Landroidx/recyclerview/widget/LinearLayoutManager;
-
-    .line 159
-    .line 160
-    const/4 v1, 0x1
-
-    .line 161
-    invoke-direct {v0, v1}, Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(I)V
-
-    .line 162
-    .line 163
-    .line 164
-    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
-
-    .line 165
-    .line 166
-    .line 167
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 168
-    .line 169
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->adapter:Lorg/levimc/launcher/ui/adapter/AccountsAdapter;
-
-    .line 170
-    .line 171
-    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
-
-    .line 172
-    .line 173
-    .line 174
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/AccountsActivity;->accountsRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 175
-    .line 176
-    new-instance v0, Lorg/levimc/launcher/ui/activities/c;
-
-    .line 177
-    .line 178
+    .line 9
+    .line 10
     const/4 v1, 0x0
 
-    .line 179
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/c;-><init>(Lorg/levimc/launcher/ui/activities/AccountsActivity;I)V
+    .line 11
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
 
-    .line 180
-    .line 181
-    .line 182
-    invoke-virtual {p1, v0}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+    .line 12
+    .line 13
+    .line 14
+    :cond_0
+    invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onDestroy()V
 
-    .line 183
-    .line 184
-    .line 185
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
-
-    .line 186
-    .line 187
-    .line 188
+    .line 15
+    .line 16
+    .line 17
     return-void
 .end method
 
@@ -1683,5 +1848,22 @@
     .line 2
     .line 3
     .line 4
+    return-void
+.end method
+
+.method public onResume()V
+    .locals 0
+
+    .line 1
+    invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onResume()V
+
+    .line 2
+    .line 3
+    .line 4
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/AccountsActivity;->refreshUI()V
+
+    .line 5
+    .line 6
+    .line 7
     return-void
 .end method

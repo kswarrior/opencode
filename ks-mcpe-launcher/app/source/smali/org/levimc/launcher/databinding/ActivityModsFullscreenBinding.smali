@@ -1,28 +1,44 @@
 .class public final Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # instance fields
-.field public final addModFullscreenButton:Landroid/widget/Button;
+.field public final addModFullscreenButton:Lcom/google/android/material/button/MaterialButton;
 
-.field public final enabledModsCount:Landroid/widget/TextView;
+.field public final modsCount:Landroid/widget/TextView;
 
-.field public final externalModsButton:Landroid/widget/Button;
+.field public final modsEmpty:Landroid/widget/ScrollView;
 
-.field public final modMenuButton:Landroid/widget/Button;
+.field public final modsEmptyAction:Lcom/google/android/material/button/MaterialButton;
+
+.field public final modsEmptyText:Landroid/widget/TextView;
+
+.field public final modsEmptyTitle:Landroid/widget/TextView;
+
+.field public final modsFilterTabs:Lorg/levimc/launcher/ui/widget/SegmentedControl;
+
+.field public final modsFiltersButton:Lcom/google/android/material/button/MaterialButton;
+
+.field public final modsGetButton:Lcom/google/android/material/button/MaterialButton;
+
+.field public final modsProgress:Landroid/widget/ProgressBar;
 
 .field public final modsRecyclerFullscreen:Landroidx/recyclerview/widget/RecyclerView;
 
-.field public final nestedScrollView:Landroidx/core/widget/NestedScrollView;
+.field public final modsRefreshButton:Lcom/google/android/material/button/MaterialButton;
 
-.field private final rootView:Landroid/widget/FrameLayout;
+.field public final modsSearch:Landroid/widget/EditText;
 
-.field public final totalModsCount:Landroid/widget/TextView;
+.field public final modsSortButton:Lcom/google/android/material/button/MaterialButton;
+
+.field public final modsSubtitle:Landroid/widget/TextView;
+
+.field private final rootView:Landroid/widget/LinearLayout;
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/FrameLayout;Landroid/widget/Button;Landroid/widget/TextView;Landroid/widget/Button;Landroid/widget/Button;Landroidx/recyclerview/widget/RecyclerView;Landroidx/core/widget/NestedScrollView;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/ScrollView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Lorg/levimc/launcher/ui/widget/SegmentedControl;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/button/MaterialButton;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/EditText;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -31,264 +47,492 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->rootView:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->rootView:Landroid/widget/LinearLayout;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->addModFullscreenButton:Landroid/widget/Button;
+    iput-object p2, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->addModFullscreenButton:Lcom/google/android/material/button/MaterialButton;
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->enabledModsCount:Landroid/widget/TextView;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsCount:Landroid/widget/TextView;
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->externalModsButton:Landroid/widget/Button;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsEmpty:Landroid/widget/ScrollView;
 
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modMenuButton:Landroid/widget/Button;
+    iput-object p5, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsEmptyAction:Lcom/google/android/material/button/MaterialButton;
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsRecyclerFullscreen:Landroidx/recyclerview/widget/RecyclerView;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsEmptyText:Landroid/widget/TextView;
 
     .line 15
     .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->nestedScrollView:Landroidx/core/widget/NestedScrollView;
+    iput-object p7, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsEmptyTitle:Landroid/widget/TextView;
 
     .line 17
     .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->totalModsCount:Landroid/widget/TextView;
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsFilterTabs:Lorg/levimc/launcher/ui/widget/SegmentedControl;
 
     .line 19
     .line 20
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsFiltersButton:Lcom/google/android/material/button/MaterialButton;
+
+    .line 21
+    .line 22
+    iput-object p10, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsGetButton:Lcom/google/android/material/button/MaterialButton;
+
+    .line 23
+    .line 24
+    iput-object p11, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsProgress:Landroid/widget/ProgressBar;
+
+    .line 25
+    .line 26
+    iput-object p12, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsRecyclerFullscreen:Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 27
+    .line 28
+    iput-object p13, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsRefreshButton:Lcom/google/android/material/button/MaterialButton;
+
+    .line 29
+    .line 30
+    iput-object p14, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsSearch:Landroid/widget/EditText;
+
+    .line 31
+    .line 32
+    iput-object p15, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsSortButton:Lcom/google/android/material/button/MaterialButton;
+
+    .line 33
+    .line 34
+    move-object/from16 p1, p16
+
+    .line 35
+    .line 36
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->modsSubtitle:Landroid/widget/TextView;
+
+    .line 37
+    .line 38
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;
-    .locals 11
+    .locals 20
 
     .line 1
-    sget v0, Lorg/levimc/launcher/R$id;->add_mod_fullscreen_button:I
+    move-object/from16 v0, p0
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->add_mod_fullscreen_button:I
 
     .line 4
     .line 5
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 6
-    move-result-object v1
-
     .line 7
-    move-object v4, v1
-
     .line 8
-    check-cast v4, Landroid/widget/Button;
+    move-result-object v2
 
     .line 9
+    move-object v5, v2
+
     .line 10
-    if-eqz v4, :cond_0
+    check-cast v5, Lcom/google/android/material/button/MaterialButton;
 
     .line 11
     .line 12
-    sget v0, Lorg/levimc/launcher/R$id;->enabled_mods_count:I
+    if-eqz v5, :cond_0
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_count:I
 
     .line 15
     .line 16
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 17
-    move-result-object v1
-
     .line 18
-    move-object v5, v1
-
     .line 19
-    check-cast v5, Landroid/widget/TextView;
+    move-result-object v2
 
     .line 20
+    move-object v6, v2
+
     .line 21
-    if-eqz v5, :cond_0
+    check-cast v6, Landroid/widget/TextView;
 
     .line 22
     .line 23
-    sget v0, Lorg/levimc/launcher/R$id;->external_mods_button:I
+    if-eqz v6, :cond_0
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_empty:I
 
     .line 26
     .line 27
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 28
-    move-result-object v1
-
     .line 29
-    move-object v6, v1
-
     .line 30
-    check-cast v6, Landroid/widget/Button;
+    move-result-object v2
 
     .line 31
+    move-object v7, v2
+
     .line 32
-    if-eqz v6, :cond_0
+    check-cast v7, Landroid/widget/ScrollView;
 
     .line 33
     .line 34
-    sget v0, Lorg/levimc/launcher/R$id;->mod_menu_button:I
+    if-eqz v7, :cond_0
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_empty_action:I
 
     .line 37
     .line 38
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 39
-    move-result-object v1
-
     .line 40
-    move-object v7, v1
-
     .line 41
-    check-cast v7, Landroid/widget/Button;
+    move-result-object v2
 
     .line 42
+    move-object v8, v2
+
     .line 43
-    if-eqz v7, :cond_0
+    check-cast v8, Lcom/google/android/material/button/MaterialButton;
 
     .line 44
     .line 45
-    sget v0, Lorg/levimc/launcher/R$id;->mods_recycler_fullscreen:I
+    if-eqz v8, :cond_0
 
     .line 46
     .line 47
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_empty_text:I
 
     .line 48
     .line 49
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 50
-    move-result-object v1
-
     .line 51
-    move-object v8, v1
-
     .line 52
-    check-cast v8, Landroidx/recyclerview/widget/RecyclerView;
+    move-result-object v2
 
     .line 53
+    move-object v9, v2
+
     .line 54
-    if-eqz v8, :cond_0
+    check-cast v9, Landroid/widget/TextView;
 
     .line 55
     .line 56
-    sget v0, Lorg/levimc/launcher/R$id;->nested_scroll_view:I
+    if-eqz v9, :cond_0
 
     .line 57
     .line 58
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_empty_title:I
 
     .line 59
     .line 60
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 61
-    move-result-object v1
-
     .line 62
-    move-object v9, v1
-
     .line 63
-    check-cast v9, Landroidx/core/widget/NestedScrollView;
+    move-result-object v2
 
     .line 64
+    move-object v10, v2
+
     .line 65
-    if-eqz v9, :cond_0
+    check-cast v10, Landroid/widget/TextView;
 
     .line 66
     .line 67
-    sget v0, Lorg/levimc/launcher/R$id;->total_mods_count:I
+    if-eqz v10, :cond_0
 
     .line 68
     .line 69
-    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_filter_tabs:I
 
     .line 70
     .line 71
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 72
-    move-result-object v1
-
     .line 73
-    move-object v10, v1
-
     .line 74
-    check-cast v10, Landroid/widget/TextView;
+    move-result-object v2
 
     .line 75
+    move-object v11, v2
+
     .line 76
-    if-eqz v10, :cond_0
+    check-cast v11, Lorg/levimc/launcher/ui/widget/SegmentedControl;
 
     .line 77
     .line 78
-    new-instance v2, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;
+    if-eqz v11, :cond_0
 
     .line 79
     .line 80
-    move-object v3, p0
+    sget v1, Lorg/levimc/launcher/R$id;->mods_filters_button:I
 
     .line 81
-    check-cast v3, Landroid/widget/FrameLayout;
-
     .line 82
-    .line 83
-    invoke-direct/range {v2 .. v10}, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;-><init>(Landroid/widget/FrameLayout;Landroid/widget/Button;Landroid/widget/TextView;Landroid/widget/Button;Landroid/widget/Button;Landroidx/recyclerview/widget/RecyclerView;Landroidx/core/widget/NestedScrollView;Landroid/widget/TextView;)V
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
 
+    .line 83
     .line 84
     .line 85
+    move-result-object v2
+
     .line 86
-    return-object v2
+    move-object v12, v2
 
     .line 87
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+    check-cast v12, Lcom/google/android/material/button/MaterialButton;
 
     .line 88
     .line 89
-    .line 90
-    move-result-object p0
+    if-eqz v12, :cond_0
 
+    .line 90
     .line 91
-    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+    sget v1, Lorg/levimc/launcher/R$id;->mods_get_button:I
 
     .line 92
     .line 93
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 94
-    move-result-object p0
-
     .line 95
-    new-instance v0, Ljava/lang/NullPointerException;
-
     .line 96
+    move-result-object v2
+
     .line 97
-    const-string v1, "Missing required view with ID: "
+    move-object v13, v2
 
     .line 98
-    .line 99
-    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v13, Lcom/google/android/material/button/MaterialButton;
 
+    .line 99
     .line 100
+    if-eqz v13, :cond_0
+
     .line 101
     .line 102
-    move-result-object p0
+    sget v1, Lorg/levimc/launcher/R$id;->mods_progress:I
 
     .line 103
-    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
     .line 104
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
     .line 105
     .line 106
-    throw v0
+    .line 107
+    move-result-object v2
+
+    .line 108
+    move-object v14, v2
+
+    .line 109
+    check-cast v14, Landroid/widget/ProgressBar;
+
+    .line 110
+    .line 111
+    if-eqz v14, :cond_0
+
+    .line 112
+    .line 113
+    sget v1, Lorg/levimc/launcher/R$id;->mods_recycler_fullscreen:I
+
+    .line 114
+    .line 115
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 116
+    .line 117
+    .line 118
+    move-result-object v2
+
+    .line 119
+    move-object v15, v2
+
+    .line 120
+    check-cast v15, Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 121
+    .line 122
+    if-eqz v15, :cond_0
+
+    .line 123
+    .line 124
+    sget v1, Lorg/levimc/launcher/R$id;->mods_refresh_button:I
+
+    .line 125
+    .line 126
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 127
+    .line 128
+    .line 129
+    move-result-object v2
+
+    .line 130
+    move-object/from16 v16, v2
+
+    .line 131
+    .line 132
+    check-cast v16, Lcom/google/android/material/button/MaterialButton;
+
+    .line 133
+    .line 134
+    if-eqz v16, :cond_0
+
+    .line 135
+    .line 136
+    sget v1, Lorg/levimc/launcher/R$id;->mods_search:I
+
+    .line 137
+    .line 138
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 139
+    .line 140
+    .line 141
+    move-result-object v2
+
+    .line 142
+    move-object/from16 v17, v2
+
+    .line 143
+    .line 144
+    check-cast v17, Landroid/widget/EditText;
+
+    .line 145
+    .line 146
+    if-eqz v17, :cond_0
+
+    .line 147
+    .line 148
+    sget v1, Lorg/levimc/launcher/R$id;->mods_sort_button:I
+
+    .line 149
+    .line 150
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 151
+    .line 152
+    .line 153
+    move-result-object v2
+
+    .line 154
+    move-object/from16 v18, v2
+
+    .line 155
+    .line 156
+    check-cast v18, Lcom/google/android/material/button/MaterialButton;
+
+    .line 157
+    .line 158
+    if-eqz v18, :cond_0
+
+    .line 159
+    .line 160
+    sget v1, Lorg/levimc/launcher/R$id;->mods_subtitle:I
+
+    .line 161
+    .line 162
+    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+
+    .line 163
+    .line 164
+    .line 165
+    move-result-object v2
+
+    .line 166
+    move-object/from16 v19, v2
+
+    .line 167
+    .line 168
+    check-cast v19, Landroid/widget/TextView;
+
+    .line 169
+    .line 170
+    if-eqz v19, :cond_0
+
+    .line 171
+    .line 172
+    new-instance v3, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;
+
+    .line 173
+    .line 174
+    move-object v4, v0
+
+    .line 175
+    check-cast v4, Landroid/widget/LinearLayout;
+
+    .line 176
+    .line 177
+    invoke-direct/range {v3 .. v19}, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;-><init>(Landroid/widget/LinearLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/ScrollView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Landroid/widget/TextView;Lorg/levimc/launcher/ui/widget/SegmentedControl;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/button/MaterialButton;Landroid/widget/ProgressBar;Landroidx/recyclerview/widget/RecyclerView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/EditText;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;)V
+
+    .line 178
+    .line 179
+    .line 180
+    return-object v3
+
+    .line 181
+    :cond_0
+    invoke-virtual {v0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 182
+    .line 183
+    .line 184
+    move-result-object v0
+
+    .line 185
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 186
+    .line 187
+    .line 188
+    move-result-object v0
+
+    .line 189
+    new-instance v1, Ljava/lang/NullPointerException;
+
+    .line 190
+    .line 191
+    const-string v2, "Missing required view with ID: "
+
+    .line 192
+    .line 193
+    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 194
+    .line 195
+    .line 196
+    move-result-object v0
+
+    .line 197
+    invoke-direct {v1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 198
+    .line 199
+    .line 200
+    throw v1
 .end method
 
 .method public static inflate(Landroid/view/LayoutInflater;)Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;
@@ -338,18 +582,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->getRoot()Landroid/widget/FrameLayout;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->getRoot()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Landroid/widget/FrameLayout;
+.method public getRoot()Landroid/widget/LinearLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->rootView:Landroid/widget/FrameLayout;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/ActivityModsFullscreenBinding;->rootView:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method

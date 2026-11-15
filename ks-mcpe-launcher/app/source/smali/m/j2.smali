@@ -1,89 +1,129 @@
-.class public abstract Lm/j2;
-.super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.class public final Lm/j2;
+.super Lt0/b;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+
+# static fields
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/Parcelable$Creator<",
+            "Lm/j2;",
+            ">;"
+        }
+    .end annotation
+.end field
+
+
+# instance fields
+.field public h:I
+
+.field public p:Z
 
 
 # direct methods
-.method public static a(Landroid/view/View;)Landroid/window/OnBackInvokedDispatcher;
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0}, Landroid/view/View;->findOnBackInvokedDispatcher()Landroid/window/OnBackInvokedDispatcher;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static b(Ljava/lang/Runnable;)Landroid/window/OnBackInvokedCallback;
+.method static constructor <clinit>()V
     .locals 2
 
     .line 1
-    invoke-static {p0}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+    new-instance v0, La6/j0;
 
     .line 2
     .line 3
+    const/4 v1, 0x4
+
     .line 4
-    new-instance v0, Lg/u;
+    invoke-direct {v0, v1}, La6/j0;-><init>(I)V
 
     .line 5
     .line 6
-    const/4 v1, 0x1
-
     .line 7
-    invoke-direct {v0, p0, v1}, Lg/u;-><init>(Ljava/lang/Object;I)V
+    sput-object v0, Lm/j2;->CREATOR:Landroid/os/Parcelable$Creator;
 
     .line 8
     .line 9
-    .line 10
-    return-object v0
-.end method
-
-.method public static c(Ljava/lang/Object;Ljava/lang/Object;)V
-    .locals 1
-
-    .line 1
-    check-cast p0, Landroid/window/OnBackInvokedDispatcher;
-
-    .line 2
-    .line 3
-    const v0, 0xf4240
-
-    .line 4
-    .line 5
-    .line 6
-    check-cast p1, Landroid/window/OnBackInvokedCallback;
-
-    .line 7
-    .line 8
-    invoke-interface {p0, v0, p1}, Landroid/window/OnBackInvokedDispatcher;->registerOnBackInvokedCallback(ILandroid/window/OnBackInvokedCallback;)V
-
-    .line 9
-    .line 10
-    .line 11
     return-void
 .end method
 
-.method public static d(Ljava/lang/Object;Ljava/lang/Object;)V
+.method public constructor <init>(Landroid/os/Parcel;Ljava/lang/ClassLoader;)V
     .locals 0
 
     .line 1
-    check-cast p0, Landroid/window/OnBackInvokedDispatcher;
+    invoke-direct {p0, p1, p2}, Lt0/b;-><init>(Landroid/os/Parcel;Ljava/lang/ClassLoader;)V
 
     .line 2
     .line 3
-    check-cast p1, Landroid/window/OnBackInvokedCallback;
-
     .line 4
-    .line 5
-    invoke-interface {p0, p1}, Landroid/window/OnBackInvokedDispatcher;->unregisterOnBackInvokedCallback(Landroid/window/OnBackInvokedCallback;)V
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
+    .line 5
     .line 6
     .line 7
+    move-result p2
+
     .line 8
+    iput p2, p0, Lm/j2;->h:I
+
+    .line 9
+    .line 10
+    invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p1
+
+    .line 14
+    if-eqz p1, :cond_0
+
+    .line 15
+    .line 16
+    const/4 p1, 0x1
+
+    .line 17
+    goto :goto_0
+
+    .line 18
+    :cond_0
+    const/4 p1, 0x0
+
+    .line 19
+    :goto_0
+    iput-boolean p1, p0, Lm/j2;->p:Z
+
+    .line 20
+    .line 21
+    return-void
+.end method
+
+
+# virtual methods
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+    .locals 0
+
+    .line 1
+    invoke-super {p0, p1, p2}, Lt0/b;->writeToParcel(Landroid/os/Parcel;I)V
+
+    .line 2
+    .line 3
+    .line 4
+    iget p2, p0, Lm/j2;->h:I
+
+    .line 5
+    .line 6
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 7
+    .line 8
+    .line 9
+    iget-boolean p2, p0, Lm/j2;->p:Z
+
+    .line 10
+    .line 11
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
+
+    .line 12
+    .line 13
+    .line 14
     return-void
 .end method

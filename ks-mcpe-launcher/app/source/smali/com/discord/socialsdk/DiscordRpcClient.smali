@@ -1,6 +1,6 @@
 .class public Lcom/discord/socialsdk/DiscordRpcClient;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
@@ -670,23 +670,24 @@
 
     .line 2
     .line 3
-    new-instance v1, Landroidx/lifecycle/z;
+    new-instance v1, La6/d;
 
     .line 4
     .line 5
-    const/4 v2, 0x4
+    const/16 v2, 0x8
 
     .line 6
-    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
-
     .line 7
+    invoke-direct {v1, p0, v2}, La6/d;-><init>(Ljava/lang/Object;I)V
+
     .line 8
     .line 9
+    .line 10
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 10
     .line 11
     .line 12
+    .line 13
     return-void
 .end method
 
@@ -717,14 +718,14 @@
 
     .line 2
     .line 3
-    new-instance v1, Landroidx/room/n0;
+    new-instance v1, Landroidx/room/p0;
 
     .line 4
     .line 5
-    const/4 v2, 0x3
+    const/4 v2, 0x2
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 7
     .line 8

@@ -1,13 +1,16 @@
 .class public final Lorg/levimc/launcher/core/auth/MsftAuthManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # annotations
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
         Lorg/levimc/launcher/core/auth/MsftAuthManager$ThrowingSupplier;,
-        Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+        Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;,
+        Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceTokenRequest;,
+        Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;,
+        Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceAuthorizationRequest;
     }
 .end annotation
 
@@ -23,7 +26,7 @@
 
 .field private static final MAX_TRANSIENT_RETRY_DELAY_MS:J = 0x2710L
 
-.field private static final MIN_DEVICE_POLL_INTERVAL_MS:J = 0x3e8L
+.field private static final MIN_DEVICE_POLL_INTERVAL_MS:J = 0x1388L
 
 .field private static final SLOW_DOWN_INCREMENT_MS:J = 0x1388L
 
@@ -45,11 +48,11 @@
     return-void
 .end method
 
-.method public static synthetic a(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+.method public static synthetic a(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
     .locals 0
 
     .line 1
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->lambda$saveAccountAndActivateWithRetry$4(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->lambda$prepareActiveAccount$1(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 2
     .line 3
@@ -60,11 +63,11 @@
     return-object p0
 .end method
 
-.method public static synthetic b(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+.method public static synthetic b(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
     .locals 0
 
     .line 1
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->lambda$prepareActiveAccount$1(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->lambda$saveAccountAndActivateWithRetry$4(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 2
     .line 3
@@ -91,7 +94,7 @@
 
     .line 6
     .line 7
-    invoke-static {v1}, Ls1/a;->d(I)Ljava/lang/String;
+    invoke-static {v1}, Ls1/a;->c(I)Ljava/lang/String;
 
     .line 8
     .line 9
@@ -327,7 +330,7 @@
     .locals 3
 
     .line 1
-    const-string v0, "1.6.1"
+    const-string v0, "1.7.0"
 
     .line 2
     .line 3
@@ -383,7 +386,7 @@
     move-result-object v0
 
     .line 30
-    invoke-static {v0}, La/a;->d(Ljava/lang/String;)Lnet/lenni0451/commons/httpclient/HttpClient;
+    invoke-static {v0}, Lcom/bumptech/glide/c;->i(Ljava/lang/String;)Lnet/lenni0451/commons/httpclient/HttpClient;
 
     .line 31
     .line 32
@@ -391,6 +394,14 @@
     move-result-object v0
 
     .line 34
+    const/16 v1, 0x3a98
+
+    .line 35
+    .line 36
+    iput v1, v0, Lnet/lenni0451/commons/httpclient/HttpClient;->e:I
+
+    .line 37
+    .line 38
     return-object v0
 .end method
 
@@ -406,549 +417,585 @@
     return-void
 .end method
 
+.method public static describeError(Landroid/content/Context;Ljava/lang/Throwable;)Ljava/lang/String;
+    .locals 2
+
+    .line 43
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->unwrap(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+
+    move-result-object p1
+
+    .line 44
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_failed:I
+
+    .line 45
+    instance-of v1, p1, Ljava/lang/InterruptedException;
+
+    if-nez v1, :cond_f
+
+    instance-of v1, p1, Ljava/util/concurrent/CancellationException;
+
+    if-eqz v1, :cond_0
+
+    goto/16 :goto_3
+
+    .line 46
+    :cond_0
+    instance-of v1, p1, Ljava/util/concurrent/TimeoutException;
+
+    if-nez v1, :cond_e
+
+    instance-of v1, p1, Ljava/net/SocketTimeoutException;
+
+    if-eqz v1, :cond_1
+
+    goto/16 :goto_2
+
+    .line 47
+    :cond_1
+    instance-of v1, p1, Ljavax/net/ssl/SSLException;
+
+    if-eqz v1, :cond_2
+
+    .line 48
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_secure_connection:I
+
+    goto/16 :goto_4
+
+    .line 49
+    :cond_2
+    instance-of v1, p1, Lqb/a;
+
+    if-eqz v1, :cond_3
+
+    .line 50
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_xbox:I
+
+    goto/16 :goto_4
+
+    .line 51
+    :cond_3
+    instance-of v1, p1, Lcb/a;
+
+    if-eqz v1, :cond_7
+
+    .line 52
+    check-cast p1, Lcb/a;
+
+    .line 53
+    iget-object p1, p1, Lnb/a;->d:Ljava/lang/String;
+
+    .line 54
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->normalizeError(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object p1
+
+    .line 55
+    const-string v1, "invalid_grant"
+
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_6
+
+    const-string v1, "expired_token"
+
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_6
+
+    const-string v1, "bad_verification_code"
+
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_4
+
+    goto :goto_0
+
+    .line 56
+    :cond_4
+    const-string v1, "access_denied"
+
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_5
+
+    const-string v1, "authorization_declined"
+
+    invoke-virtual {v1, p1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_10
+
+    .line 57
+    :cond_5
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_declined:I
+
+    goto :goto_4
+
+    .line 58
+    :cond_6
+    :goto_0
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_expired:I
+
+    goto :goto_4
+
+    .line 59
+    :cond_7
+    instance-of v1, p1, Lma/a;
+
+    if-eqz v1, :cond_d
+
+    .line 60
+    check-cast p1, Lma/a;
+
+    .line 61
+    iget-object p1, p1, Lma/a;->c:Lnet/lenni0451/commons/httpclient/HttpResponse;
+
+    if-nez p1, :cond_8
+
+    const/4 p1, 0x0
+
+    goto :goto_1
+
+    .line 62
+    :cond_8
+    iget p1, p1, Lnet/lenni0451/commons/httpclient/HttpResponse;->a:I
+
+    :goto_1
+    const/16 v1, 0x1ad
+
+    if-ne p1, v1, :cond_9
+
+    .line 63
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_throttled:I
+
+    goto :goto_4
+
+    :cond_9
+    const/16 v1, 0x1f4
+
+    if-lt p1, v1, :cond_a
+
+    .line 64
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_unavailable:I
+
+    goto :goto_4
+
+    :cond_a
+    const/16 v1, 0x191
+
+    if-ne p1, v1, :cond_b
+
+    .line 65
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_expired:I
+
+    goto :goto_4
+
+    :cond_b
+    const/16 v1, 0x193
+
+    if-ne p1, v1, :cond_c
+
+    .line 66
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_declined:I
+
+    goto :goto_4
+
+    :cond_c
+    if-nez p1, :cond_10
+
+    .line 67
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_connection:I
+
+    goto :goto_4
+
+    .line 68
+    :cond_d
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isTransientNetworkFailure(Ljava/lang/Throwable;)Z
+
+    move-result p1
+
+    if-eqz p1, :cond_10
+
+    .line 69
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_connection:I
+
+    goto :goto_4
+
+    .line 70
+    :cond_e
+    :goto_2
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_timeout:I
+
+    goto :goto_4
+
+    .line 71
+    :cond_f
+    :goto_3
+    sget v0, Lorg/levimc/launcher/R$string;->accounts_error_cancelled:I
+
+    .line 72
+    :cond_10
+    :goto_4
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
 .method public static describeError(Ljava/lang/Throwable;)Ljava/lang/String;
     .locals 3
 
     .line 1
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->unwrap(Ljava/lang/Throwable;)Ljava/lang/Throwable;
 
-    .line 2
-    .line 3
-    .line 4
     move-result-object p0
 
-    .line 5
+    .line 2
     instance-of v0, p0, Ljava/util/concurrent/CancellationException;
 
-    .line 6
-    .line 7
     if-nez v0, :cond_17
 
-    .line 8
-    .line 9
     instance-of v0, p0, Ljava/lang/InterruptedException;
 
-    .line 10
-    .line 11
     if-eqz v0, :cond_0
 
-    .line 12
-    .line 13
     goto/16 :goto_5
 
-    .line 14
-    .line 15
+    .line 3
     :cond_0
     instance-of v0, p0, Ljava/net/UnknownHostException;
 
-    .line 16
-    .line 17
     if-eqz v0, :cond_1
 
-    .line 18
-    .line 19
+    .line 4
     const-string p0, "No internet connection or Microsoft could not be reached."
 
-    .line 20
-    .line 21
     return-object p0
 
-    .line 22
+    .line 5
     :cond_1
     instance-of v0, p0, Ljava/net/SocketTimeoutException;
 
-    .line 23
-    .line 24
     if-nez v0, :cond_16
 
-    .line 25
-    .line 26
     instance-of v0, p0, Ljava/util/concurrent/TimeoutException;
 
-    .line 27
-    .line 28
     if-eqz v0, :cond_2
 
-    .line 29
-    .line 30
     goto/16 :goto_4
 
-    .line 31
-    .line 32
+    .line 6
     :cond_2
     instance-of v0, p0, Ljavax/net/ssl/SSLException;
 
-    .line 33
-    .line 34
     if-eqz v0, :cond_3
 
-    .line 35
-    .line 36
+    .line 7
     const-string p0, "A secure connection to Microsoft could not be established."
 
-    .line 37
-    .line 38
     return-object p0
 
-    .line 39
+    .line 8
     :cond_3
-    instance-of v0, p0, Lrb/a;
+    instance-of v0, p0, Lqb/a;
 
-    .line 40
-    .line 41
     if-eqz v0, :cond_5
 
-    .line 42
-    .line 43
-    check-cast p0, Lrb/a;
+    .line 9
+    check-cast p0, Lqb/a;
 
-    .line 44
-    .line 45
-    iget-object p0, p0, Lob/a;->h:Ljava/lang/String;
+    .line 10
+    iget-object p0, p0, Lnb/a;->h:Ljava/lang/String;
 
-    .line 46
-    .line 47
+    .line 11
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 48
-    .line 49
-    .line 50
     move-result v0
 
-    .line 51
     if-nez v0, :cond_4
 
-    .line 52
-    .line 53
     const-string v0, "An unknown error occurred"
 
-    .line 54
-    .line 55
     invoke-virtual {v0, p0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 56
-    .line 57
-    .line 58
     move-result v0
 
-    .line 59
     if-nez v0, :cond_4
 
-    .line 60
-    .line 61
     return-object p0
 
-    .line 62
+    .line 12
     :cond_4
     const-string p0, "Xbox rejected this account. Check the account\'s Xbox profile, age, family, region, and privacy settings."
 
-    .line 63
-    .line 64
     return-object p0
 
-    .line 65
+    .line 13
     :cond_5
     instance-of v0, p0, Lcb/a;
 
-    .line 66
-    .line 67
     if-eqz v0, :cond_b
 
-    .line 68
-    .line 69
+    .line 14
     move-object v0, p0
 
-    .line 70
     check-cast v0, Lcb/a;
 
-    .line 71
-    .line 72
-    iget-object v1, v0, Lob/a;->h:Ljava/lang/String;
+    iget-object v1, v0, Lnb/a;->h:Ljava/lang/String;
 
-    .line 73
-    .line 74
-    iget-object v0, v0, Lob/a;->d:Ljava/lang/String;
+    .line 15
+    iget-object v0, v0, Lnb/a;->d:Ljava/lang/String;
 
-    .line 75
-    .line 76
+    .line 16
     invoke-static {v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->normalizeError(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 77
-    .line 78
-    .line 79
     move-result-object v0
 
-    .line 80
+    .line 17
     const-string v2, "invalid_grant"
 
-    .line 81
-    .line 82
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 83
-    .line 84
-    .line 85
     move-result v2
 
-    .line 86
     if-eqz v2, :cond_6
 
-    .line 87
-    .line 88
+    .line 18
     const-string p0, "The Microsoft sign-in session expired or was already used. Start sign-in again."
 
-    .line 89
-    .line 90
     return-object p0
 
-    .line 91
+    .line 19
     :cond_6
     const-string v2, "access_denied"
 
-    .line 92
-    .line 93
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 94
-    .line 95
-    .line 96
     move-result v2
 
-    .line 97
     if-nez v2, :cond_a
 
-    .line 98
-    .line 99
     const-string v2, "authorization_declined"
 
-    .line 100
-    .line 101
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 102
-    .line 103
-    .line 104
     move-result v2
 
-    .line 105
     if-eqz v2, :cond_7
 
-    .line 106
-    .line 107
     goto :goto_0
 
-    .line 108
+    .line 20
     :cond_7
     const-string v2, "expired_token"
 
-    .line 109
-    .line 110
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 111
-    .line 112
-    .line 113
     move-result v2
 
-    .line 114
     if-eqz v2, :cond_8
 
-    .line 115
-    .line 116
+    .line 21
     const-string p0, "The Microsoft sign-in code expired. Start sign-in again."
 
-    .line 117
-    .line 118
     return-object p0
 
-    .line 119
+    .line 22
     :cond_8
     const-string v2, "bad_verification_code"
 
-    .line 120
-    .line 121
     invoke-virtual {v2, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 122
-    .line 123
-    .line 124
     move-result v0
 
-    .line 125
     if-eqz v0, :cond_9
 
-    .line 126
-    .line 127
+    .line 23
     const-string p0, "Microsoft rejected the device code. Start sign-in again."
 
-    .line 128
-    .line 129
     return-object p0
 
-    .line 130
+    .line 24
     :cond_9
     invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 131
-    .line 132
-    .line 133
     move-result v0
 
-    .line 134
     if-nez v0, :cond_b
 
-    .line 135
-    .line 136
     return-object v1
 
-    .line 137
+    .line 25
     :cond_a
     :goto_0
     const-string p0, "Microsoft sign-in was cancelled or declined."
 
-    .line 138
-    .line 139
     return-object p0
 
-    .line 140
+    .line 26
     :cond_b
-    instance-of v0, p0, Lob/a;
+    instance-of v0, p0, Lnb/a;
 
-    .line 141
-    .line 142
     if-eqz v0, :cond_c
 
-    .line 143
-    .line 144
+    .line 27
     move-object v0, p0
 
-    .line 145
-    check-cast v0, Lob/a;
+    check-cast v0, Lnb/a;
 
-    .line 146
-    .line 147
-    iget-object v0, v0, Lob/a;->h:Ljava/lang/String;
+    iget-object v0, v0, Lnb/a;->h:Ljava/lang/String;
 
-    .line 148
-    .line 149
+    .line 28
     invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 150
-    .line 151
-    .line 152
     move-result v1
 
-    .line 153
     if-nez v1, :cond_c
 
-    .line 154
-    .line 155
     return-object v0
 
-    .line 156
+    .line 29
     :cond_c
-    instance-of v0, p0, Lla/a;
+    instance-of v0, p0, Lma/a;
 
-    .line 157
-    .line 158
     if-eqz v0, :cond_12
 
-    .line 159
-    .line 160
+    .line 30
     move-object v0, p0
 
-    .line 161
-    check-cast v0, Lla/a;
+    check-cast v0, Lma/a;
 
-    .line 162
-    .line 163
-    iget-object v0, v0, Lla/a;->c:Lha/b;
+    .line 31
+    iget-object v0, v0, Lma/a;->c:Lnet/lenni0451/commons/httpclient/HttpResponse;
 
-    .line 164
-    .line 165
     if-eqz v0, :cond_d
 
-    .line 166
-    .line 167
-    iget v0, v0, Lha/b;->d:I
+    .line 32
+    iget v0, v0, Lnet/lenni0451/commons/httpclient/HttpResponse;->a:I
 
-    .line 168
-    .line 169
     goto :goto_1
 
-    .line 170
     :cond_d
     const/4 v0, 0x0
 
-    .line 171
     :goto_1
     const/16 v1, 0x190
 
-    .line 172
-    .line 173
     if-ne v0, v1, :cond_e
 
-    .line 174
-    .line 175
+    .line 33
     const-string p0, "Microsoft rejected the sign-in request. Start a new sign-in or use Device Code login."
 
-    .line 176
-    .line 177
     return-object p0
 
-    .line 178
     :cond_e
     const/16 v1, 0x191
 
-    .line 179
-    .line 180
     if-ne v0, v1, :cond_f
 
-    .line 181
-    .line 182
+    .line 34
     const-string p0, "The Microsoft session expired. Sign in again."
 
-    .line 183
-    .line 184
     return-object p0
 
-    .line 185
     :cond_f
     const/16 v1, 0x193
 
-    .line 186
-    .line 187
     if-ne v0, v1, :cond_10
 
-    .line 188
-    .line 189
+    .line 35
     const-string p0, "Microsoft or Xbox denied access for this account."
 
-    .line 190
-    .line 191
     return-object p0
 
-    .line 192
     :cond_10
     const/16 v1, 0x1ad
 
-    .line 193
-    .line 194
     if-ne v0, v1, :cond_11
 
-    .line 195
-    .line 196
+    .line 36
     const-string p0, "Too many sign-in attempts. Wait a moment and try again."
 
-    .line 197
-    .line 198
     return-object p0
 
-    .line 199
     :cond_11
     const/16 v1, 0x1f4
 
-    .line 200
-    .line 201
     if-lt v0, v1, :cond_12
 
-    .line 202
-    .line 203
+    .line 37
     const-string p0, "Microsoft or Xbox is temporarily unavailable. Try again later."
 
-    .line 204
-    .line 205
     return-object p0
 
-    .line 206
     :cond_12
     if-eqz p0, :cond_13
 
-    .line 207
-    .line 208
+    .line 38
     invoke-virtual {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
 
-    .line 209
-    .line 210
-    .line 211
     move-result-object p0
 
-    .line 212
     goto :goto_2
 
-    .line 213
     :cond_13
     const/4 p0, 0x0
 
-    .line 214
+    .line 39
     :goto_2
     invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 215
-    .line 216
-    .line 217
     move-result v0
 
-    .line 218
     if-nez v0, :cond_15
 
-    .line 219
-    .line 220
     const-string v0, "{}"
 
-    .line 221
-    .line 222
     invoke-virtual {p0}, Ljava/lang/String;->trim()Ljava/lang/String;
 
-    .line 223
-    .line 224
-    .line 225
     move-result-object v1
 
-    .line 226
     invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 227
-    .line 228
-    .line 229
     move-result v0
 
-    .line 230
     if-eqz v0, :cond_14
 
-    .line 231
-    .line 232
     goto :goto_3
 
-    .line 233
     :cond_14
     return-object p0
 
-    .line 234
+    .line 40
     :cond_15
     :goto_3
     const-string p0, "Microsoft sign-in failed. Start a new sign-in or use Device Code login."
 
-    .line 235
-    .line 236
     return-object p0
 
-    .line 237
+    .line 41
     :cond_16
     :goto_4
     const-string p0, "Microsoft sign-in timed out. Check your connection and try again."
 
-    .line 238
-    .line 239
     return-object p0
 
-    .line 240
+    .line 42
     :cond_17
     :goto_5
     const-string p0, "Microsoft sign-in was cancelled."
 
-    .line 241
-    .line 242
     return-object p0
 .end method
 
@@ -1174,6 +1221,18 @@
     throw v1
 .end method
 
+.method public static bridge synthetic f(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->throwDeviceError(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
 .method public static getAppConfig()Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
     .locals 6
 
@@ -1206,6 +1265,106 @@
     .line 13
     .line 14
     return-object v0
+.end method
+
+.method public static hasInternetConnection(Landroid/content/Context;)Z
+    .locals 2
+
+    .line 1
+    const-string v0, "connectivity"
+
+    .line 2
+    .line 3
+    invoke-virtual {p0, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    check-cast p0, Landroid/net/ConnectivityManager;
+
+    .line 8
+    .line 9
+    const/4 v0, 0x1
+
+    .line 10
+    if-nez p0, :cond_0
+
+    .line 11
+    .line 12
+    return v0
+
+    .line 13
+    :cond_0
+    :try_start_0
+    invoke-virtual {p0}, Landroid/net/ConnectivityManager;->getActiveNetwork()Landroid/net/Network;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    invoke-virtual {p0, v1}, Landroid/net/ConnectivityManager;->getNetworkCapabilities(Landroid/net/Network;)Landroid/net/NetworkCapabilities;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object p0
+
+    .line 21
+    if-eqz p0, :cond_1
+
+    .line 22
+    .line 23
+    const/16 v1, 0xc
+
+    .line 24
+    .line 25
+    invoke-virtual {p0, v1}, Landroid/net/NetworkCapabilities;->hasCapability(I)Z
+
+    .line 26
+    .line 27
+    .line 28
+    move-result v1
+
+    .line 29
+    if-eqz v1, :cond_1
+
+    .line 30
+    .line 31
+    const/16 v1, 0x10
+
+    .line 32
+    .line 33
+    invoke-virtual {p0, v1}, Landroid/net/NetworkCapabilities;->hasCapability(I)Z
+
+    .line 34
+    .line 35
+    .line 36
+    move-result p0
+    :try_end_0
+    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 37
+    if-eqz p0, :cond_1
+
+    .line 38
+    .line 39
+    return v0
+
+    .line 40
+    :cond_1
+    const/4 p0, 0x0
+
+    .line 41
+    return p0
+
+    .line 42
+    :catch_0
+    return v0
 .end method
 
 .method private static isRetryableHttpStatus(I)Z
@@ -1353,7 +1512,7 @@
 
     .line 39
     :cond_2
-    instance-of v0, p0, Lla/a;
+    instance-of v0, p0, Lma/a;
 
     .line 40
     .line 41
@@ -1364,11 +1523,11 @@
     move-object v0, p0
 
     .line 44
-    check-cast v0, Lla/a;
+    check-cast v0, Lma/a;
 
     .line 45
     .line 46
-    iget-object v0, v0, Lla/a;->c:Lha/b;
+    iget-object v0, v0, Lma/a;->c:Lnet/lenni0451/commons/httpclient/HttpResponse;
 
     .line 47
     .line 48
@@ -1376,7 +1535,7 @@
 
     .line 49
     .line 50
-    iget v0, v0, Lha/b;->d:I
+    iget v0, v0, Lnet/lenni0451/commons/httpclient/HttpResponse;->a:I
 
     .line 51
     .line 52
@@ -1430,168 +1589,35 @@
 .end method
 
 .method private static lambda$loginWithDeviceCode$0(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;)Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
-    .locals 5
+    .locals 1
 
     .line 1
-    new-instance v0, Leb/a;
+    new-instance v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceAuthorizationRequest;
 
     .line 2
     .line 3
-    iget v1, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->e:I
+    invoke-direct {v0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceAuthorizationRequest;-><init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;)V
 
     .line 4
     .line 5
-    invoke-static {v1}, Ls1/a;->d(I)Ljava/lang/String;
-
     .line 6
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
     .line 7
     .line 8
-    move-result-object v2
-
     .line 9
-    const/4 v3, 0x1
+    invoke-virtual {p0, v0, v0}, Lnet/lenni0451/commons/httpclient/HttpClient;->b(Lnet/lenni0451/commons/httpclient/requests/HttpRequest;Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;)Ljava/lang/Object;
 
     .line 10
-    if-eq v1, v3, :cond_1
-
     .line 11
     .line 12
-    const/4 v3, 0x2
+    move-result-object p0
 
     .line 13
-    const-string v4, "v2.0/devicecode"
+    check-cast p0, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
 
     .line 14
     .line 15
-    if-eq v1, v3, :cond_2
-
-    .line 16
-    .line 17
-    const/4 v3, 0x3
-
-    .line 18
-    if-ne v1, v3, :cond_0
-
-    .line 19
-    .line 20
-    goto :goto_0
-
-    .line 21
-    :cond_0
-    const/4 p0, 0x0
-
-    .line 22
-    throw p0
-
-    .line 23
-    :cond_1
-    const-string v4, "oauth20_connect.srf"
-
-    .line 24
-    .line 25
-    :cond_2
-    :goto_0
-    invoke-virtual {v2, v4}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 26
-    .line 27
-    .line 28
-    move-result-object v1
-
-    .line 29
-    const/4 v2, 0x1
-
-    .line 30
-    invoke-direct {v0, v1, v2}, Leb/a;-><init>(Ljava/lang/String;I)V
-
-    .line 31
-    .line 32
-    .line 33
-    new-instance v1, Ljava/util/HashMap;
-
-    .line 34
-    .line 35
-    invoke-direct {v1}, Ljava/util/HashMap;-><init>()V
-
-    .line 36
-    .line 37
-    .line 38
-    const-string v2, "client_id"
-
-    .line 39
-    .line 40
-    iget-object v3, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->a:Ljava/lang/String;
-
-    .line 41
-    .line 42
-    invoke-virtual {v1, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 43
-    .line 44
-    .line 45
-    const-string v2, "scope"
-
-    .line 46
-    .line 47
-    iget-object v3, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->b:Ljava/lang/String;
-
-    .line 48
-    .line 49
-    invoke-virtual {v1, v2, v3}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 50
-    .line 51
-    .line 52
-    iget p1, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->e:I
-
-    .line 53
-    .line 54
-    const/4 v2, 0x1
-
-    .line 55
-    if-ne p1, v2, :cond_3
-
-    .line 56
-    .line 57
-    const-string p1, "response_type"
-
-    .line 58
-    .line 59
-    const-string v2, "device_code"
-
-    .line 60
-    .line 61
-    invoke-virtual {v1, p1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 62
-    .line 63
-    .line 64
-    :cond_3
-    new-instance p1, Lka/c;
-
-    .line 65
-    .line 66
-    invoke-direct {p1, v1}, Lka/c;-><init>(Ljava/util/HashMap;)V
-
-    .line 67
-    .line 68
-    .line 69
-    iput-object p1, v0, Lra/b;->X:Lja/a;
-
-    .line 70
-    .line 71
-    invoke-virtual {p0, v0}, Lnet/lenni0451/commons/httpclient/HttpClient;->t(Lqa/a;)Ljava/lang/Object;
-
-    .line 72
-    .line 73
-    .line 74
-    move-result-object p0
-
-    .line 75
-    check-cast p0, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
-
-    .line 76
-    .line 77
     return-object p0
 .end method
 
@@ -1663,11 +1689,11 @@
     return-void
 .end method
 
-.method private static synthetic lambda$saveAccountAndActivateWithRetry$4(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+.method private static synthetic lambda$saveAccountAndActivateWithRetry$4(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
     .locals 0
 
     .line 1
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 2
     .line 3
@@ -1710,7 +1736,7 @@
     move-result-object v1
 
     .line 15
-    new-instance v2, Leb/a;
+    new-instance v2, Ldb/a;
 
     .line 16
     .line 17
@@ -1726,175 +1752,186 @@
     move-result-object v3
 
     .line 23
-    const/4 v4, 0x0
+    invoke-direct {v2, v3}, Ldb/a;-><init>(Ljava/lang/String;)V
 
     .line 24
-    invoke-direct {v2, v3, v4}, Leb/a;-><init>(Ljava/lang/String;I)V
-
     .line 25
     .line 26
-    .line 27
     new-instance v3, Ljava/util/HashMap;
 
+    .line 27
     .line 28
-    .line 29
     invoke-direct {v3}, Ljava/util/HashMap;-><init>()V
 
+    .line 29
     .line 30
     .line 31
-    .line 32
     const-string v4, "client_id"
 
+    .line 32
     .line 33
-    .line 34
     iget-object v5, v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->a:Ljava/lang/String;
 
+    .line 34
     .line 35
-    .line 36
     invoke-virtual {v3, v4, v5}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 36
     .line 37
     .line 38
-    .line 39
     const-string v4, "scope"
 
+    .line 39
     .line 40
-    .line 41
     iget-object v5, v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->b:Ljava/lang/String;
 
+    .line 41
     .line 42
-    .line 43
     invoke-virtual {v3, v4, v5}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 43
     .line 44
     .line 45
-    .line 46
     iget-object v4, v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->c:Ljava/lang/String;
 
+    .line 46
     .line 47
-    .line 48
     if-eqz v4, :cond_0
 
+    .line 48
     .line 49
-    .line 50
     const-string v5, "client_secret"
 
+    .line 50
     .line 51
-    .line 52
     invoke-virtual {v3, v5, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 52
     .line 53
     .line 54
-    .line 55
     :cond_0
     iget-object v4, v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->d:Ljava/lang/String;
 
+    .line 55
     .line 56
-    .line 57
     if-eqz v4, :cond_1
 
+    .line 57
     .line 58
-    .line 59
     const-string v5, "redirect_uri"
 
+    .line 59
     .line 60
-    .line 61
     invoke-virtual {v3, v5, v4}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 61
     .line 62
     .line 63
-    .line 64
     :cond_1
     const-string v4, "grant_type"
 
+    .line 64
     .line 65
-    .line 66
     const-string v5, "authorization_code"
 
+    .line 66
     .line 67
-    .line 68
     invoke-virtual {v3, v4, v5}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 68
     .line 69
     .line 70
-    .line 71
     const-string v4, "code"
 
+    .line 71
     .line 72
-    .line 73
     invoke-virtual {v3, v4, p0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 73
     .line 74
     .line 75
+    new-instance p0, Lla/c;
+
     .line 76
-    new-instance p0, Lka/c;
-
     .line 77
-    .line 78
-    invoke-direct {p0, v3}, Lka/c;-><init>(Ljava/util/HashMap;)V
+    invoke-direct {p0, v3}, Lla/c;-><init>(Ljava/util/HashMap;)V
 
+    .line 78
     .line 79
     .line 80
-    .line 81
-    iput-object p0, v2, Lra/b;->X:Lja/a;
+    invoke-virtual {v2, p0}, Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;->setContent(Lnet/lenni0451/commons/httpclient/content/HttpContent;)Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;
 
+    .line 81
     .line 82
     .line 83
-    invoke-virtual {v0, v2}, Lnet/lenni0451/commons/httpclient/HttpClient;->t(Lqa/a;)Ljava/lang/Object;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 84
     .line 85
     .line 86
-    move-result-object p0
+    invoke-virtual {v0, v2}, Lnet/lenni0451/commons/httpclient/HttpClient;->c(Lnet/lenni0451/commons/httpclient/requests/HttpRequest;)Lnet/lenni0451/commons/httpclient/HttpResponse;
 
     .line 87
-    check-cast p0, Ldb/a;
-
     .line 88
     .line 89
-    new-instance v2, Lu2/c0;
+    move-result-object p0
 
     .line 90
-    .line 91
-    invoke-direct {v2, v0}, Lu2/c0;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;)V
+    invoke-interface {v2, p0}, Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;->handle(Lnet/lenni0451/commons/httpclient/HttpResponse;)Ljava/lang/Object;
 
+    .line 91
     .line 92
     .line 93
+    move-result-object p0
+
     .line 94
-    iput-object v1, v2, Lu2/c0;->h:Ljava/lang/Object;
+    check-cast p0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
     .line 95
     .line 96
-    invoke-virtual {v2, p0}, Lu2/c0;->s(Ldb/a;)Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
+    new-instance v2, Lt9/j;
 
     .line 97
     .line 98
+    invoke-direct {v2, v0}, Lt9/j;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;)V
+
     .line 99
-    move-result-object p0
-
     .line 100
-    return-object p0
-
     .line 101
-    :cond_2
-    new-instance p0, Ljava/lang/IllegalArgumentException;
+    iput-object v1, v2, Lt9/j;->d:Ljava/lang/Object;
 
     .line 102
     .line 103
-    const-string v0, "Microsoft returned an empty authorization code."
+    invoke-virtual {v2, p0}, Lt9/j;->l(Lnet/raphimc/minecraftauth/msa/model/MsaToken;)Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
 
     .line 104
     .line 105
+    .line 106
+    move-result-object p0
+
+    .line 107
+    return-object p0
+
+    .line 108
+    :cond_2
+    new-instance p0, Ljava/lang/IllegalArgumentException;
+
+    .line 109
+    .line 110
+    const-string v0, "Microsoft returned an empty authorization code."
+
+    .line 111
+    .line 112
     invoke-direct {p0, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 106
-    .line 107
-    .line 108
+    .line 113
+    .line 114
+    .line 115
     throw p0
 .end method
 
 .method public static loginWithDeviceCode(Ljava/util/function/Consumer;Ljava/util/function/BooleanSupplier;Ljava/util/function/Consumer;)Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
-    .locals 18
+    .locals 12
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -1910,696 +1947,621 @@
     .end annotation
 
     .line 1
-    move-object/from16 v0, p0
+    invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->createHttpClient()Lnet/lenni0451/commons/httpclient/HttpClient;
 
     .line 2
     .line 3
-    move-object/from16 v1, p1
-
     .line 4
+    move-result-object v0
+
     .line 5
-    move-object/from16 v2, p2
+    invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->getAppConfig()Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
 
     .line 6
     .line 7
-    invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->createHttpClient()Lnet/lenni0451/commons/httpclient/HttpClient;
-
     .line 8
-    .line 9
-    .line 10
-    move-result-object v3
+    move-result-object v1
 
+    .line 9
+    new-instance v2, Lorg/levimc/launcher/core/auth/a;
+
+    .line 10
     .line 11
-    invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->getAppConfig()Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
+    const/4 v3, 0x0
 
     .line 12
+    invoke-direct {v2, v0, v1, v3}, Lorg/levimc/launcher/core/auth/a;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 13
     .line 14
-    move-result-object v4
-
     .line 15
-    new-instance v5, Lorg/levimc/launcher/core/auth/a;
+    const/4 v3, 0x0
 
     .line 16
+    const/4 v4, 0x4
+
     .line 17
-    const/4 v6, 0x0
+    invoke-static {v2, p1, v3, v4}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->executeWithNetworkRetry(Lorg/levimc/launcher/core/auth/MsftAuthManager$ThrowingSupplier;Ljava/util/function/BooleanSupplier;Ljava/lang/Runnable;I)Ljava/lang/Object;
 
     .line 18
-    invoke-direct {v5, v3, v4, v6}, Lorg/levimc/launcher/core/auth/a;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 19
     .line 20
+    move-result-object v2
+
     .line 21
-    const/4 v6, 0x0
+    check-cast v2, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
 
     .line 22
-    const/4 v7, 0x4
-
     .line 23
-    invoke-static {v5, v1, v6, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->executeWithNetworkRetry(Lorg/levimc/launcher/core/auth/MsftAuthManager$ThrowingSupplier;Ljava/util/function/BooleanSupplier;Ljava/lang/Runnable;I)Ljava/lang/Object;
+    if-eqz p0, :cond_0
 
     .line 24
     .line 25
+    invoke-interface {p0, v2}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+
     .line 26
-    move-result-object v5
-
     .line 27
-    check-cast v5, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
-
     .line 28
+    :cond_0
+    sget-object p0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+
     .line 29
-    if-eqz v0, :cond_0
-
     .line 30
-    .line 31
-    invoke-interface {v0, v5}, Ljava/util/function/Consumer;->accept(Ljava/lang/Object;)V
+    invoke-static {p2, p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
+    .line 31
     .line 32
     .line 33
+    iget-wide v3, v2, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;->b:J
+
     .line 34
-    :cond_0
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
-
     .line 35
-    .line 36
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    const-wide/16 v5, 0x1388
 
+    .line 36
     .line 37
+    invoke-static {v5, v6, v3, v4}, Ljava/lang/Math;->max(JJ)J
+
     .line 38
     .line 39
-    const-wide/16 v6, 0x3e8
-
     .line 40
+    move-result-wide v3
+
     .line 41
-    iget-wide v8, v5, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;->b:J
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     .line 42
     .line 43
-    invoke-static {v6, v7, v8, v9}, Ljava/lang/Math;->max(JJ)J
-
     .line 44
+    move-result-wide v7
+
     .line 45
+    add-long/2addr v7, v3
+
     .line 46
-    move-result-wide v6
+    const/4 p0, 0x0
 
     .line 47
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    :goto_0
+    move v9, p0
 
     .line 48
+    :goto_1
+    invoke-interface {v2}, Lnet/raphimc/minecraftauth/util/Expirable;->a()Z
+
     .line 49
     .line 50
-    move-result-wide v8
-
     .line 51
-    add-long/2addr v8, v6
+    move-result v10
 
     .line 52
-    const/4 v10, 0x0
+    const-string v11, "The Microsoft device code expired. Start sign-in again."
 
     .line 53
-    move v11, v10
-
     .line 54
-    move v12, v11
+    if-nez v10, :cond_a
 
     .line 55
-    :goto_0
-    invoke-interface {v5}, Lnet/raphimc/minecraftauth/util/Expirable;->a()Z
-
     .line 56
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
     .line 57
     .line 58
-    move-result v0
-
     .line 59
-    const-string v13, "The Microsoft device code expired. Start sign-in again."
+    invoke-static {v7, v8, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->sleepUntil(JLjava/util/function/BooleanSupplier;)V
 
     .line 60
     .line 61
-    if-nez v0, :cond_e
-
     .line 62
-    .line 63
-    invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
 
+    .line 63
     .line 64
     .line 65
-    .line 66
-    invoke-static {v8, v9, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->sleepUntil(JLjava/util/function/BooleanSupplier;)V
+    invoke-interface {v2}, Lnet/raphimc/minecraftauth/util/Expirable;->a()Z
 
+    .line 66
     .line 67
     .line 68
+    move-result v7
+
     .line 69
-    invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+    if-nez v7, :cond_a
 
     .line 70
     .line 71
+    :try_start_0
+    new-instance v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceTokenRequest;
+
     .line 72
-    const-wide/16 v8, 0x1388
-
     .line 73
-    .line 74
-    const/16 v14, 0x190
+    invoke-direct {v7, v1, v2}, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceTokenRequest;-><init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;)V
 
+    .line 74
     .line 75
     .line 76
-    :try_start_0
-    new-instance v0, Leb/a;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 77
     .line 78
-    invoke-direct {v0, v4, v5}, Leb/a;-><init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;)V
-
     .line 79
+    invoke-virtual {v0, v7}, Lnet/lenni0451/commons/httpclient/HttpClient;->c(Lnet/lenni0451/commons/httpclient/requests/HttpRequest;)Lnet/lenni0451/commons/httpclient/HttpResponse;
+
     .line 80
     .line 81
-    invoke-virtual {v3, v0}, Lnet/lenni0451/commons/httpclient/HttpClient;->t(Lqa/a;)Ljava/lang/Object;
-
     .line 82
+    move-result-object v8
+
     .line 83
+    invoke-interface {v7, v8}, Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;->handle(Lnet/lenni0451/commons/httpclient/HttpResponse;)Ljava/lang/Object;
+
     .line 84
-    move-result-object v0
-
     .line 85
-    check-cast v0, Ldb/a;
-
     .line 86
+    move-result-object v7
+
     .line 87
-    sget-object v15, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->AUTHORIZED:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+    check-cast v7, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
     .line 88
     .line 89
-    invoke-static {v2, v15}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    sget-object v8, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->AUTHORIZED:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
     .line 90
     .line 91
-    .line 92
-    new-instance v15, Lu2/c0;
+    invoke-static {p2, v8}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
+    .line 92
     .line 93
     .line 94
-    invoke-direct {v15, v3}, Lu2/c0;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;)V
+    new-instance v8, Lt9/j;
 
     .line 95
     .line 96
-    .line 97
-    iput-object v4, v15, Lu2/c0;->h:Ljava/lang/Object;
+    invoke-direct {v8, v0}, Lt9/j;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;)V
 
+    .line 97
     .line 98
     .line 99
-    invoke-virtual {v15, v0}, Lu2/c0;->s(Ldb/a;)Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
+    iput-object v1, v8, Lt9/j;->d:Ljava/lang/Object;
 
     .line 100
     .line 101
+    invoke-virtual {v8, v7}, Lt9/j;->l(Lnet/raphimc/minecraftauth/msa/model/MsaToken;)Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
+
     .line 102
-    move-result-object v0
+    .line 103
+    .line 104
+    move-result-object p0
     :try_end_0
     .catch Lcb/a; {:try_start_0 .. :try_end_0} :catch_2
-    .catch Lob/b; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Lnb/b; {:try_start_0 .. :try_end_0} :catch_1
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 103
-    return-object v0
-
-    .line 104
-    :catch_0
-    move-exception v0
-
     .line 105
-    goto :goto_1
+    return-object p0
 
     .line 106
-    :catch_1
-    move-exception v0
+    :catch_0
+    move-exception v7
 
     .line 107
-    goto :goto_3
+    goto :goto_2
 
     .line 108
-    :catch_2
-    move-exception v0
+    :catch_1
+    move-exception v7
 
     .line 109
-    goto :goto_6
+    goto :goto_4
 
     .line 110
-    :goto_1
-    invoke-static {v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isTransientNetworkFailure(Ljava/lang/Throwable;)Z
+    :catch_2
+    move-exception v7
 
     .line 111
+    goto :goto_6
+
     .line 112
+    :goto_2
+    invoke-static {v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isTransientNetworkFailure(Ljava/lang/Throwable;)Z
+
     .line 113
+    .line 114
+    .line 115
     move-result v8
 
-    .line 114
-    if-eqz v8, :cond_1
-
-    .line 115
     .line 116
-    add-int/lit8 v12, v12, 0x1
+    if-eqz v8, :cond_1
 
     .line 117
     .line 118
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+    add-int/lit8 v9, v9, 0x1
 
     .line 119
     .line 120
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    sget-object v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
     .line 121
     .line 122
-    .line 123
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    invoke-static {p2, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
+    .line 123
     .line 124
     .line 125
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
     .line 126
-    move-result-wide v8
-
     .line 127
-    invoke-static {v6, v7, v12}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->transientRetryDelay(JI)J
-
     .line 128
+    move-result-wide v7
+
     .line 129
+    invoke-static {v3, v4, v9}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->transientRetryDelay(JI)J
+
     .line 130
-    move-result-wide v13
-
     .line 131
-    :goto_2
-    add-long/2addr v8, v13
-
     .line 132
-    goto :goto_0
+    move-result-wide v10
 
     .line 133
-    :cond_1
-    throw v0
+    :goto_3
+    add-long/2addr v7, v10
 
     .line 134
-    :goto_3
-    iget-object v13, v0, Lla/a;->c:Lha/b;
+    goto :goto_1
 
     .line 135
+    :cond_1
+    throw v7
+
     .line 136
-    if-eqz v13, :cond_2
+    :goto_4
+    iget-object v8, v7, Lma/a;->c:Lnet/lenni0451/commons/httpclient/HttpResponse;
 
     .line 137
     .line 138
-    iget v13, v13, Lha/b;->d:I
+    if-eqz v8, :cond_2
 
     .line 139
     .line 140
-    goto :goto_4
+    iget v8, v8, Lnet/lenni0451/commons/httpclient/HttpResponse;->a:I
 
     .line 141
-    :cond_2
-    move v13, v10
-
     .line 142
-    :goto_4
-    if-ne v13, v14, :cond_4
+    goto :goto_5
 
     .line 143
+    :cond_2
+    move v8, p0
+
     .line 144
-    add-int/lit8 v11, v11, 0x1
+    :goto_5
+    invoke-static {v8}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isRetryableHttpStatus(I)Z
 
     .line 145
     .line 146
-    rem-int/lit8 v0, v11, 0x5
-
     .line 147
+    move-result v8
+
     .line 148
-    if-nez v0, :cond_3
+    if-eqz v8, :cond_3
 
     .line 149
     .line 150
-    add-long/2addr v6, v8
+    add-int/lit8 v9, v9, 0x1
 
     .line 151
-    :cond_3
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
-
     .line 152
-    .line 153
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    sget-object v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
+    .line 153
     .line 154
+    invoke-static {p2, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+
     .line 155
     .line 156
+    .line 157
     invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
-    .line 157
     .line 158
     .line 159
-    move-result-wide v8
-
     .line 160
-    :goto_5
-    add-long/2addr v8, v6
+    move-result-wide v7
 
     .line 161
-    move v12, v10
+    invoke-static {v3, v4, v9}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->transientRetryDelay(JI)J
 
     .line 162
-    goto :goto_0
-
     .line 163
-    :cond_4
-    invoke-static {v13}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isRetryableHttpStatus(I)Z
-
     .line 164
+    move-result-wide v10
+
     .line 165
+    goto :goto_3
+
     .line 166
-    move-result v8
+    :cond_3
+    throw v7
 
     .line 167
-    if-eqz v8, :cond_5
+    :goto_6
+    iget-object v8, v7, Lnb/a;->d:Ljava/lang/String;
 
     .line 168
     .line 169
-    add-int/lit8 v12, v12, 0x1
+    invoke-static {v8}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->normalizeError(Ljava/lang/String;)Ljava/lang/String;
 
     .line 170
     .line 171
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
-
     .line 172
+    move-result-object v8
+
     .line 173
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    const-string v9, "authorization_pending"
 
     .line 174
     .line 175
-    .line 176
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    invoke-virtual {v9, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
+    .line 176
     .line 177
     .line 178
+    move-result v9
+
     .line 179
-    move-result-wide v8
+    if-eqz v9, :cond_4
 
     .line 180
-    invoke-static {v6, v7, v12}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->transientRetryDelay(JI)J
-
     .line 181
+    sget-object v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+
     .line 182
     .line 183
-    move-result-wide v13
+    invoke-static {p2, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
     .line 184
-    goto :goto_2
-
     .line 185
-    :cond_5
-    throw v0
-
     .line 186
-    :goto_6
-    iget-object v12, v0, Lob/a;->d:Ljava/lang/String;
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     .line 187
     .line 188
-    invoke-static {v12}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->normalizeError(Ljava/lang/String;)Ljava/lang/String;
-
     .line 189
+    move-result-wide v7
+
     .line 190
+    :goto_7
+    add-long/2addr v7, v3
+
     .line 191
-    move-result-object v12
+    goto/16 :goto_0
 
     .line 192
-    iget-object v15, v0, Lla/a;->c:Lha/b;
-
     .line 193
+    :cond_4
+    const-string v9, "slow_down"
+
     .line 194
-    if-eqz v15, :cond_6
-
     .line 195
-    .line 196
-    iget v15, v15, Lha/b;->d:I
+    invoke-virtual {v9, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
+    .line 196
     .line 197
     .line 198
-    :goto_7
-    move-wide/from16 v16, v8
+    move-result v9
 
     .line 199
-    .line 200
-    goto :goto_8
+    if-eqz v9, :cond_5
 
+    .line 200
     .line 201
-    :cond_6
-    move v15, v10
+    add-long/2addr v3, v5
 
     .line 202
-    goto :goto_7
+    sget-object v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
     .line 203
-    :goto_8
-    const-string v8, "authorization_pending"
-
     .line 204
-    .line 205
-    invoke-virtual {v8, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {p2, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
+    .line 205
     .line 206
     .line 207
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
     .line 208
-    move-result v8
-
     .line 209
-    if-nez v8, :cond_d
-
     .line 210
+    move-result-wide v7
+
     .line 211
-    if-ne v15, v14, :cond_7
+    goto :goto_7
 
     .line 212
-    .line 213
-    invoke-static {v12}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    :cond_5
+    const-string v9, "temporarily_unavailable"
 
+    .line 213
     .line 214
+    invoke-virtual {v9, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
     .line 215
     .line 216
-    move-result v8
-
     .line 217
-    if-eqz v8, :cond_7
+    move-result v9
 
     .line 218
-    .line 219
-    goto :goto_9
+    if-eqz v9, :cond_6
 
+    .line 219
     .line 220
-    :cond_7
-    const-string v8, "slow_down"
+    sget-object v7, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
     .line 221
     .line 222
-    invoke-virtual {v8, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-static {p2, v7}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
     .line 223
     .line 224
     .line 225
-    move-result v8
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
 
     .line 226
-    if-eqz v8, :cond_8
-
     .line 227
     .line 228
-    add-long v6, v6, v16
+    move-result-wide v7
 
     .line 229
+    goto :goto_7
+
     .line 230
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+    :cond_6
+    const-string p0, "authorization_declined"
 
     .line 231
     .line 232
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    invoke-virtual {p0, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 233
     .line 234
     .line 235
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    move-result p0
 
     .line 236
+    if-nez p0, :cond_9
+
     .line 237
     .line 238
-    move-result-wide v8
+    const-string p0, "access_denied"
 
     .line 239
-    goto :goto_5
-
     .line 240
-    :cond_8
-    const-string v8, "temporarily_unavailable"
+    invoke-virtual {p0, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 241
     .line 242
-    invoke-virtual {v8, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
     .line 243
-    .line 244
-    .line 245
-    move-result v8
+    move-result p0
 
+    .line 244
+    if-nez p0, :cond_9
+
+    .line 245
     .line 246
-    if-eqz v8, :cond_9
+    const-string p0, "bad_verification_code"
 
     .line 247
     .line 248
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->RETRYING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+    invoke-virtual {p0, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 249
     .line 250
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
-
     .line 251
-    .line 252
-    .line 253
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+    move-result p0
 
+    .line 252
+    if-nez p0, :cond_8
+
+    .line 253
     .line 254
+    const-string p0, "expired_token"
+
     .line 255
     .line 256
-    move-result-wide v8
+    invoke-virtual {p0, v8}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 257
-    goto :goto_5
-
     .line 258
-    :cond_9
-    const-string v1, "authorization_declined"
-
     .line 259
+    move-result p0
+
     .line 260
-    invoke-virtual {v1, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    if-eqz p0, :cond_7
 
     .line 261
     .line 262
-    .line 263
-    move-result v1
+    new-instance p0, Ljava/util/concurrent/TimeoutException;
 
+    .line 263
     .line 264
-    if-nez v1, :cond_c
+    invoke-direct {p0, v11}, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
 
     .line 265
     .line 266
-    const-string v1, "bad_verification_code"
-
     .line 267
+    throw p0
+
     .line 268
-    invoke-virtual {v1, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    :cond_7
+    throw v7
 
     .line 269
+    :cond_8
+    new-instance p0, Ljava/lang/SecurityException;
+
     .line 270
     .line 271
-    move-result v1
+    const-string p1, "Microsoft rejected the device code. Start sign-in again."
 
     .line 272
-    if-nez v1, :cond_b
-
     .line 273
-    .line 274
-    const-string v1, "expired_token"
+    invoke-direct {p0, p1, v7}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
+    .line 274
     .line 275
     .line 276
-    invoke-virtual {v1, v12}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    throw p0
 
     .line 277
+    :cond_9
+    new-instance p0, Ljava/lang/SecurityException;
+
     .line 278
     .line 279
-    move-result v1
+    const-string p1, "Microsoft sign-in was declined."
 
     .line 280
-    if-eqz v1, :cond_a
-
     .line 281
-    .line 282
-    new-instance v0, Ljava/util/concurrent/TimeoutException;
+    invoke-direct {p0, p1, v7}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
+    .line 282
     .line 283
     .line 284
-    invoke-direct {v0, v13}, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
+    throw p0
 
     .line 285
+    :cond_a
+    new-instance p0, Ljava/util/concurrent/TimeoutException;
+
     .line 286
     .line 287
-    throw v0
+    invoke-direct {p0, v11}, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
 
     .line 288
-    :cond_a
-    throw v0
-
     .line 289
-    :cond_b
-    new-instance v1, Ljava/lang/SecurityException;
-
     .line 290
-    .line 291
-    const-string v2, "Microsoft rejected the device code. Start sign-in again."
-
-    .line 292
-    .line 293
-    invoke-direct {v1, v2, v0}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 294
-    .line 295
-    .line 296
-    throw v1
-
-    .line 297
-    :cond_c
-    new-instance v1, Ljava/lang/SecurityException;
-
-    .line 298
-    .line 299
-    const-string v2, "Microsoft sign-in was declined."
-
-    .line 300
-    .line 301
-    invoke-direct {v1, v2, v0}, Ljava/lang/SecurityException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 302
-    .line 303
-    .line 304
-    throw v1
-
-    .line 305
-    :cond_d
-    :goto_9
-    sget-object v0, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;->WAITING:Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
-
-    .line 306
-    .line 307
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->emitState(Ljava/util/function/Consumer;Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
-
-    .line 308
-    .line 309
-    .line 310
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
-
-    .line 311
-    .line 312
-    .line 313
-    move-result-wide v8
-
-    .line 314
-    goto/16 :goto_5
-
-    .line 315
-    .line 316
-    :cond_e
-    new-instance v0, Ljava/util/concurrent/TimeoutException;
-
-    .line 317
-    .line 318
-    invoke-direct {v0, v13}, Ljava/util/concurrent/TimeoutException;-><init>(Ljava/lang/String;)V
-
-    .line 319
-    .line 320
-    .line 321
-    throw v0
+    throw p0
 .end method
 
 .method private static normalizeError(Ljava/lang/String;)Ljava/lang/String;
@@ -2639,6 +2601,171 @@
 
     .line 16
     return-object p0
+.end method
+
+.method public static declared-synchronized prepareAccountForLaunch(Landroid/content/Context;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+    .locals 3
+
+    const-class v0, Lorg/levimc/launcher/core/auth/MsftAuthManager;
+
+    monitor-enter v0
+
+    .line 1
+    :try_start_0
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->hasInternetConnection(Landroid/content/Context;)Z
+
+    move-result v1
+
+    const/4 v2, 0x0
+
+    invoke-static {p0, v1, v2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->prepareAccountForLaunch(Landroid/content/Context;ZLnet/lenni0451/commons/httpclient/HttpClient;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+
+    move-result-object p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v0
+
+    return-object p0
+
+    :catchall_0
+    move-exception p0
+
+    :try_start_1
+    monitor-exit v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw p0
+.end method
+
+.method public static declared-synchronized prepareAccountForLaunch(Landroid/content/Context;ZLnet/lenni0451/commons/httpclient/HttpClient;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+    .locals 3
+
+    const-class v0, Lorg/levimc/launcher/core/auth/MsftAuthManager;
+
+    monitor-enter v0
+
+    .line 2
+    :try_start_0
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->getActive(Landroid/content/Context;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object v1
+
+    if-nez p1, :cond_0
+
+    .line 3
+    invoke-static {p0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+
+    move-result-object p0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit v0
+
+    return-object p0
+
+    :catchall_0
+    move-exception p0
+
+    goto :goto_2
+
+    :cond_0
+    if-nez v1, :cond_1
+
+    .line 4
+    :try_start_1
+    sget-object p0, Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;->NO_ACCOUNT:Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    monitor-exit v0
+
+    return-object p0
+
+    :cond_1
+    if-nez p2, :cond_2
+
+    .line 5
+    :try_start_2
+    invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->createHttpClient()Lnet/lenni0451/commons/httpclient/HttpClient;
+
+    move-result-object p2
+
+    const/16 p1, 0xbb8
+
+    .line 6
+    iput p1, p2, Lnet/lenni0451/commons/httpclient/HttpClient;->d:I
+
+    const/16 p1, 0x1b58
+
+    .line 7
+    iput p1, p2, Lnet/lenni0451/commons/httpclient/HttpClient;->e:I
+
+    goto :goto_0
+
+    :catch_0
+    move-exception p1
+
+    goto :goto_1
+
+    .line 8
+    :cond_2
+    :goto_0
+    iget-object p1, v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    const/4 v2, 0x0
+
+    invoke-static {p0, p1, v2, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshSavedAccount(Landroid/content/Context;Ljava/lang/String;ZLnet/lenni0451/commons/httpclient/HttpClient;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 9
+    sget-object p0, Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;->READY:Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    monitor-exit v0
+
+    return-object p0
+
+    .line 10
+    :goto_1
+    :try_start_3
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->isTransientNetworkFailure(Ljava/lang/Throwable;)Z
+
+    move-result p2
+
+    if-eqz p2, :cond_3
+
+    .line 11
+    iget-object p1, v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object p1
+
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+
+    move-result-object p0
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    monitor-exit v0
+
+    return-object p0
+
+    .line 12
+    :cond_3
+    :try_start_4
+    throw p1
+
+    .line 13
+    :goto_2
+    monitor-exit v0
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_0
+
+    throw p0
 .end method
 
 .method public static declared-synchronized prepareActiveAccount(Landroid/content/Context;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
@@ -2737,6 +2864,41 @@
     throw p0
 .end method
 
+.method private static prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+    .locals 0
+
+    .line 1
+    if-eqz p1, :cond_0
+
+    .line 2
+    .line 3
+    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->prepareCachedAccount(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result p0
+
+    .line 7
+    if-eqz p0, :cond_0
+
+    .line 8
+    .line 9
+    sget-object p0, Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;->CACHED_OFFLINE:Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+
+    .line 10
+    .line 11
+    return-object p0
+
+    .line 12
+    :cond_0
+    sget-object p0, Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;->SIGNED_OUT_OFFLINE:Lorg/levimc/launcher/core/auth/MsftAuthManager$LaunchAccountState;
+
+    .line 13
+    .line 14
+    return-object p0
+.end method
+
 .method public static declared-synchronized refreshAccountAndActivate(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
     .locals 3
 
@@ -2812,7 +2974,7 @@
 
     .line 4
     .line 5
-    check-cast v0, Ldb/a;
+    check-cast v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
     .line 6
     .line 7
@@ -2820,11 +2982,11 @@
 
     .line 8
     .line 9
-    iget-object v1, v0, Ldb/a;->c:Ljava/lang/String;
+    iget-object v1, v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->c:Ljava/lang/String;
 
     .line 10
     .line 11
-    iget-wide v2, v0, Ldb/a;->a:J
+    iget-wide v2, v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->a:J
 
     .line 12
     .line 13
@@ -2872,7 +3034,7 @@
 
     .line 33
     .line 34
-    new-instance v3, Leb/a;
+    new-instance v3, Ldb/a;
 
     .line 35
     .line 36
@@ -2880,1424 +3042,853 @@
 
     .line 37
     .line 38
-    invoke-direct {v3, v4, v0}, Leb/a;-><init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ldb/a;)V
+    invoke-direct {v3, v4, v0}, Ldb/a;-><init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Lnet/raphimc/minecraftauth/msa/model/MsaToken;)V
 
     .line 39
     .line 40
     .line 41
-    invoke-virtual {v2, v3}, Lnet/lenni0451/commons/httpclient/HttpClient;->t(Lqa/a;)Ljava/lang/Object;
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 42
     .line 43
     .line 44
-    move-result-object v0
+    invoke-virtual {v2, v3, v3}, Lnet/lenni0451/commons/httpclient/HttpClient;->b(Lnet/lenni0451/commons/httpclient/requests/HttpRequest;Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;)Ljava/lang/Object;
 
     .line 45
-    check-cast v0, Ldb/a;
-
     .line 46
     .line 47
-    iget-object v2, v0, Ldb/a;->c:Ljava/lang/String;
+    move-result-object v0
 
     .line 48
-    .line 49
-    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    check-cast v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
+    .line 49
     .line 50
+    iget-object v2, v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->c:Ljava/lang/String;
+
     .line 51
     .line 52
-    move-result v2
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     .line 53
-    if-eqz v2, :cond_1
-
     .line 54
     .line 55
-    new-instance v2, Ldb/a;
+    move-result v2
 
     .line 56
+    if-eqz v2, :cond_1
+
     .line 57
-    iget-wide v3, v0, Ldb/a;->a:J
-
     .line 58
+    new-instance v2, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
+
     .line 59
-    iget-object v0, v0, Ldb/a;->b:Ljava/lang/String;
-
     .line 60
-    .line 61
-    invoke-direct {v2, v3, v4, v0, v1}, Ldb/a;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+    iget-wide v3, v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->a:J
 
+    .line 61
     .line 62
+    iget-object v0, v0, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->b:Ljava/lang/String;
+
     .line 63
     .line 64
-    move-object v0, v2
+    invoke-direct {v2, v3, v4, v0, v1}, Lnet/raphimc/minecraftauth/msa/model/MsaToken;-><init>(JLjava/lang/String;Ljava/lang/String;)V
 
     .line 65
+    .line 66
+    .line 67
+    move-object v0, v2
+
+    .line 68
     :cond_1
     iget-object p0, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->j:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 66
-    .line 67
-    invoke-virtual {p0, v0}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
-
-    .line 68
     .line 69
     .line 70
-    return-void
+    invoke-virtual {p0, v0}, Lnet/raphimc/minecraftauth/util/holder/Holder;->d(Lnet/raphimc/minecraftauth/util/Expirable;)V
 
     .line 71
+    .line 72
+    .line 73
+    return-void
+
+    .line 74
     :cond_2
     new-instance p0, Ljava/lang/IllegalStateException;
 
-    .line 72
-    .line 73
+    .line 75
+    .line 76
     const-string v0, "The Microsoft session cannot be refreshed. Sign in again from Accounts."
 
-    .line 74
-    .line 75
-    invoke-direct {p0, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 76
     .line 77
     .line 78
-    throw p0
+    invoke-direct {p0, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     .line 79
+    .line 80
+    .line 81
+    throw p0
+
+    .line 82
     :cond_3
     new-instance p0, Ljava/lang/IllegalStateException;
 
-    .line 80
-    .line 81
+    .line 83
+    .line 84
     const-string v0, "Microsoft credentials are missing. Sign in again from Accounts."
 
-    .line 82
-    .line 83
-    invoke-direct {p0, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
-    .line 84
     .line 85
     .line 86
+    invoke-direct {p0, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 87
+    .line 88
+    .line 89
     throw p0
 .end method
 
 .method private static refreshSavedAccount(Landroid/content/Context;Ljava/lang/String;Z)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-    .locals 26
+    .locals 1
 
     .line 1
-    move-object/from16 v1, p0
-
-    .line 2
-    .line 3
-    move-object/from16 v2, p1
-
-    .line 4
-    .line 5
-    invoke-static/range {p0 .. p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
-
-    .line 9
-    if-eqz v0, :cond_6
-
-    .line 10
-    .line 11
-    iget-object v3, v0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->serializedAuthManager:Ljava/lang/String;
-
-    .line 12
-    .line 13
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v3
-
-    .line 17
-    if-nez v3, :cond_6
-
-    .line 18
-    .line 19
     invoke-static {}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->createHttpClient()Lnet/lenni0451/commons/httpclient/HttpClient;
 
-    .line 20
-    .line 21
-    .line 22
-    move-result-object v5
+    move-result-object v0
 
-    .line 23
+    invoke-static {p0, p1, p2, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshSavedAccount(Landroid/content/Context;Ljava/lang/String;ZLnet/lenni0451/commons/httpclient/HttpClient;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method private static refreshSavedAccount(Landroid/content/Context;Ljava/lang/String;ZLnet/lenni0451/commons/httpclient/HttpClient;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 25
+
+    move-object/from16 v1, p0
+
+    move-object/from16 v2, p1
+
+    .line 2
+    invoke-static/range {p0 .. p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_6
+
+    .line 3
     iget-object v3, v0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->serializedAuthManager:Ljava/lang/String;
 
-    .line 24
-    .line 25
-    new-instance v4, Ljava/io/StringReader;
+    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 26
-    .line 27
-    invoke-direct {v4, v3}, Ljava/io/StringReader;-><init>(Ljava/lang/String;)V
+    move-result v3
 
-    .line 28
-    .line 29
-    .line 30
-    invoke-static {v4}, Lcom/bumptech/glide/f;->w(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+    if-nez v3, :cond_6
 
-    .line 31
-    .line 32
-    .line 33
+    .line 4
+    iget-object v3, v0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->serializedAuthManager:Ljava/lang/String;
+
+    invoke-static {v3}, Lfc/h;->B(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+
     move-result-object v3
 
-    .line 34
-    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonObject;
+    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->l()Lcom/google/gson/JsonObject;
 
-    .line 35
-    .line 36
-    .line 37
     move-result-object v3
 
-    .line 38
+    .line 5
     invoke-static {v1, v0, v3}, Lorg/levimc/launcher/core/auth/storage/XalExporter;->importRefreshToken(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;Lcom/google/gson/JsonObject;)Z
 
-    .line 39
-    .line 40
-    .line 41
     move-result v0
 
-    .line 42
     if-eqz v0, :cond_0
 
-    .line 43
-    .line 44
+    .line 6
     invoke-virtual {v3}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
 
-    .line 45
-    .line 46
-    .line 47
     move-result-object v0
 
-    .line 48
     invoke-static {v1, v2, v0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->updateAuth(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
-    .line 49
-    .line 50
-    .line 51
+    .line 7
     :cond_0
-    new-instance v0, Lga/f;
+    new-instance v0, Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 52
-    .line 53
-    invoke-direct {v0, v3}, Lga/f;-><init>(Lcom/google/gson/JsonObject;)V
+    invoke-direct {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;-><init>(Lcom/google/gson/JsonObject;)V
 
-    .line 54
-    .line 55
-    .line 56
+    .line 8
     new-instance v4, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
 
-    .line 57
-    .line 58
     const-string v3, "msaApplicationConfig"
 
-    .line 59
-    .line 60
-    invoke-virtual {v0, v3}, Lga/f;->o(Ljava/lang/String;)Lga/f;
+    .line 9
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 61
-    .line 62
-    .line 63
     move-result-object v3
 
-    .line 64
-    new-instance v6, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
+    .line 10
+    new-instance v5, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
 
-    .line 65
-    .line 66
-    const-string v7, "clientId"
+    const-string v6, "clientId"
 
-    .line 67
-    .line 68
-    invoke-virtual {v3, v7}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 11
+    invoke-virtual {v3, v6}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 69
-    .line 70
-    .line 71
+    move-result-object v6
+
+    const-string v7, "scope"
+
+    .line 12
+    invoke-virtual {v3, v7}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
     move-result-object v7
 
-    .line 72
-    const-string v8, "scope"
+    const-string v8, "clientSecret"
 
-    .line 73
-    .line 74
-    invoke-virtual {v3, v8}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    const/4 v11, 0x0
 
-    .line 75
-    .line 76
-    .line 77
+    .line 13
+    invoke-virtual {v3, v8, v11}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
     move-result-object v8
 
-    .line 78
-    const-string v9, "clientSecret"
+    const-string v9, "redirectUri"
 
-    .line 79
-    .line 80
-    const/4 v12, 0x0
+    .line 14
+    invoke-virtual {v3, v9, v11}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 81
-    invoke-virtual {v3, v9, v12}, Lga/f;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 82
-    .line 83
-    .line 84
     move-result-object v9
 
-    .line 85
-    const-string v10, "redirectUri"
+    const-string v10, "environment"
 
-    .line 86
-    .line 87
-    invoke-virtual {v3, v10, v12}, Lga/f;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .line 15
+    const-string v12, "LIVE"
 
-    .line 88
-    .line 89
-    .line 90
-    move-result-object v10
+    invoke-virtual {v3, v10, v12}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 91
-    const-string v11, "environment"
-
-    .line 92
-    .line 93
-    const-string v13, "LIVE"
-
-    .line 94
-    .line 95
-    invoke-virtual {v3, v11, v13}, Lga/f;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 96
-    .line 97
-    .line 98
     move-result-object v3
 
-    .line 99
     if-eqz v3, :cond_5
 
-    .line 100
-    .line 101
-    const-string v11, "LIVE"
+    .line 16
+    const-string v10, "LIVE"
 
-    .line 102
-    .line 103
-    invoke-virtual {v3, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v3, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 104
-    .line 105
-    .line 106
-    move-result v11
+    move-result v10
 
-    .line 107
-    if-eqz v11, :cond_1
+    if-eqz v10, :cond_1
 
-    .line 108
-    .line 109
     const/4 v3, 0x1
 
-    .line 110
     :goto_0
-    move v11, v3
+    move v10, v3
 
-    .line 111
     goto :goto_1
 
-    .line 112
     :cond_1
-    const-string v11, "MICROSOFT_ONLINE_COMMON"
+    const-string v10, "MICROSOFT_ONLINE_COMMON"
 
-    .line 113
-    .line 114
-    invoke-virtual {v3, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v3, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 115
-    .line 116
-    .line 117
-    move-result v11
+    move-result v10
 
-    .line 118
-    if-eqz v11, :cond_2
+    if-eqz v10, :cond_2
 
-    .line 119
-    .line 120
     const/4 v3, 0x2
 
-    .line 121
     goto :goto_0
 
-    .line 122
     :cond_2
-    const-string v11, "MICROSOFT_ONLINE_CONSUMERS"
+    const-string v10, "MICROSOFT_ONLINE_CONSUMERS"
 
-    .line 123
-    .line 124
-    invoke-virtual {v3, v11}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {v3, v10}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
-    .line 125
-    .line 126
-    .line 127
-    move-result v11
+    move-result v10
 
-    .line 128
-    if-eqz v11, :cond_4
+    if-eqz v10, :cond_4
 
-    .line 129
-    .line 130
     const/4 v3, 0x3
 
-    .line 131
     goto :goto_0
 
-    .line 132
+    .line 17
     :goto_1
-    invoke-direct/range {v6 .. v11}, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
+    invoke-direct/range {v5 .. v10}, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V
 
-    .line 133
-    .line 134
-    .line 135
+    .line 18
     const-string v3, "deviceType"
 
-    .line 136
-    .line 137
-    invoke-virtual {v0, v3}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 19
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 138
-    .line 139
-    .line 140
     move-result-object v7
 
-    .line 141
     const-string v3, "deviceKeyPair"
 
-    .line 142
-    .line 143
-    invoke-virtual {v0, v3}, Lga/f;->o(Ljava/lang/String;)Lga/f;
+    .line 20
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 144
-    .line 145
-    .line 146
     move-result-object v3
 
-    .line 147
-    invoke-static {v3}, Lk4/f;->k(Lga/f;)Ljava/security/KeyPair;
+    invoke-static {v3}, Landroidx/room/i0;->l(Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/security/KeyPair;
 
-    .line 148
-    .line 149
-    .line 150
     move-result-object v8
 
-    .line 151
     const-string v3, "deviceId"
 
-    .line 152
-    .line 153
-    invoke-virtual {v0, v3}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 21
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 154
-    .line 155
-    .line 156
     move-result-object v3
 
-    .line 157
     invoke-static {v3}, Ljava/util/UUID;->fromString(Ljava/lang/String;)Ljava/util/UUID;
 
-    .line 158
-    .line 159
-    .line 160
     move-result-object v9
 
-    .line 161
     const-string v3, "sessionKeyPair"
 
-    .line 162
-    .line 163
-    invoke-virtual {v0, v3}, Lga/f;->o(Ljava/lang/String;)Lga/f;
+    .line 22
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 164
-    .line 165
-    .line 166
     move-result-object v3
 
-    .line 167
-    invoke-static {v3}, Lk4/f;->k(Lga/f;)Ljava/security/KeyPair;
+    invoke-static {v3}, Landroidx/room/i0;->l(Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/security/KeyPair;
 
-    .line 168
-    .line 169
-    .line 170
     move-result-object v10
 
-    .line 171
     const-string v3, "msaToken"
 
-    .line 172
-    .line 173
-    invoke-virtual {v0, v3}, Lga/f;->o(Ljava/lang/String;)Lga/f;
+    .line 23
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
 
-    .line 174
-    .line 175
-    .line 176
     move-result-object v3
 
-    .line 177
-    new-instance v11, Ldb/a;
+    .line 24
+    new-instance v6, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
 
-    .line 178
-    .line 179
-    const-string v13, "expireTimeMs"
+    const-string v12, "expireTimeMs"
 
-    .line 180
-    .line 181
-    invoke-virtual {v3, v13}, Lga/f;->n(Ljava/lang/String;)J
+    .line 25
+    invoke-virtual {v3, v12}, Lnet/lenni0451/commons/gson/elements/GsonObject;->n(Ljava/lang/String;)J
 
-    .line 182
-    .line 183
-    .line 184
-    move-result-wide v13
+    move-result-wide v12
 
-    .line 185
-    const-string v15, "accessToken"
+    const-string v14, "accessToken"
 
-    .line 186
-    .line 187
-    invoke-virtual {v3, v15}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
+    .line 26
+    invoke-virtual {v3, v14}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 188
-    .line 189
-    .line 190
-    move-result-object v15
+    move-result-object v14
 
-    .line 191
-    move-object/from16 v16, v4
+    const-string v15, "refreshToken"
 
-    .line 192
-    .line 193
-    const-string v4, "refreshToken"
+    .line 27
+    invoke-virtual {v3, v15, v11}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 194
-    .line 195
-    invoke-virtual {v3, v4, v12}, Lga/f;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 196
-    .line 197
-    .line 198
     move-result-object v3
 
-    .line 199
-    invoke-direct {v11, v13, v14, v15, v3}, Ldb/a;-><init>(JLjava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v6, v12, v13, v14, v3}, Lnet/raphimc/minecraftauth/msa/model/MsaToken;-><init>(JLjava/lang/String;Ljava/lang/String;)V
 
-    .line 200
-    .line 201
-    .line 202
+    .line 28
     const-string v3, "xblDeviceToken"
 
-    .line 203
-    .line 204
-    invoke-virtual {v0, v3}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    .line 29
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
 
-    .line 205
-    .line 206
-    .line 207
     move-result-object v3
 
-    .line 208
-    new-instance v4, Lga/d;
+    new-instance v12, Lia/d;
 
-    .line 209
-    .line 210
-    const/16 v13, 0x15
+    const/16 v13, 0x1d
 
-    .line 211
-    .line 212
-    invoke-direct {v4, v13}, Lga/d;-><init>(I)V
+    invoke-direct {v12, v13}, Lia/d;-><init>(I)V
 
-    .line 213
-    .line 214
-    .line 215
-    invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+    invoke-virtual {v3, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 216
-    .line 217
-    .line 218
     move-result-object v3
 
-    .line 219
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 220
-    .line 221
-    .line 222
     move-result-object v3
 
-    .line 223
-    check-cast v3, Lsb/a;
+    move-object v12, v3
 
-    .line 224
-    .line 225
-    const-string v4, "xblUserToken"
+    check-cast v12, Lrb/a;
 
-    .line 226
-    .line 227
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    const-string v3, "xblUserToken"
 
-    .line 228
-    .line 229
-    .line 230
-    move-result-object v4
+    .line 30
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
 
-    .line 231
-    new-instance v13, Lga/d;
-
-    .line 232
-    .line 233
-    const/16 v14, 0x19
-
-    .line 234
-    .line 235
-    invoke-direct {v13, v14}, Lga/d;-><init>(I)V
-
-    .line 236
-    .line 237
-    .line 238
-    invoke-virtual {v4, v13}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 239
-    .line 240
-    .line 241
-    move-result-object v4
-
-    .line 242
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 243
-    .line 244
-    .line 245
-    move-result-object v4
-
-    .line 246
-    move-object v13, v4
-
-    .line 247
-    check-cast v13, Lsb/e;
-
-    .line 248
-    .line 249
-    const-string v4, "xblTitleToken"
-
-    .line 250
-    .line 251
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 252
-    .line 253
-    .line 254
-    move-result-object v4
-
-    .line 255
-    new-instance v14, Lga/d;
-
-    .line 256
-    .line 257
-    const/16 v15, 0x1a
-
-    .line 258
-    .line 259
-    invoke-direct {v14, v15}, Lga/d;-><init>(I)V
-
-    .line 260
-    .line 261
-    .line 262
-    invoke-virtual {v4, v14}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 263
-    .line 264
-    .line 265
-    move-result-object v4
-
-    .line 266
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 267
-    .line 268
-    .line 269
-    move-result-object v4
-
-    .line 270
-    move-object v14, v4
-
-    .line 271
-    check-cast v14, Lsb/c;
-
-    .line 272
-    .line 273
-    const-string v4, "bedrockXstsToken"
-
-    .line 274
-    .line 275
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 276
-    .line 277
-    .line 278
-    move-result-object v4
-
-    .line 279
-    new-instance v15, Lga/d;
-
-    .line 280
-    .line 281
-    const/16 v12, 0x1b
-
-    .line 282
-    .line 283
-    invoke-direct {v15, v12}, Lga/d;-><init>(I)V
-
-    .line 284
-    .line 285
-    .line 286
-    invoke-virtual {v4, v15}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 287
-    .line 288
-    .line 289
-    move-result-object v4
-
-    .line 290
-    const/4 v12, 0x0
-
-    .line 291
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 292
-    .line 293
-    .line 294
-    move-result-object v4
-
-    .line 295
-    move-object v15, v4
-
-    .line 296
-    check-cast v15, Lsb/f;
-
-    .line 297
-    .line 298
-    const-string v4, "playFabXstsToken"
-
-    .line 299
-    .line 300
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 301
-    .line 302
-    .line 303
-    move-result-object v4
-
-    .line 304
-    new-instance v12, Lga/d;
-
-    .line 305
-    .line 306
-    move-object/from16 v18, v3
-
-    .line 307
-    .line 308
-    const/16 v3, 0x1b
-
-    .line 309
-    .line 310
-    invoke-direct {v12, v3}, Lga/d;-><init>(I)V
-
-    .line 311
-    .line 312
-    .line 313
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 314
-    .line 315
-    .line 316
     move-result-object v3
 
-    .line 317
-    const/4 v12, 0x0
+    new-instance v13, Lwa/c;
 
-    .line 318
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    const/4 v14, 0x3
 
-    .line 319
-    .line 320
-    .line 321
+    invoke-direct {v13, v14}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v3, v13}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
     move-result-object v3
 
-    .line 322
-    check-cast v3, Lsb/f;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 323
-    .line 324
-    const-string v4, "realmsXstsToken"
-
-    .line 325
-    .line 326
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 327
-    .line 328
-    .line 329
-    move-result-object v4
-
-    .line 330
-    new-instance v12, Lga/d;
-
-    .line 331
-    .line 332
-    move-object/from16 v19, v3
-
-    .line 333
-    .line 334
-    const/16 v3, 0x1b
-
-    .line 335
-    .line 336
-    invoke-direct {v12, v3}, Lga/d;-><init>(I)V
-
-    .line 337
-    .line 338
-    .line 339
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 340
-    .line 341
-    .line 342
     move-result-object v3
 
-    .line 343
-    const/4 v12, 0x0
+    move-object v13, v3
 
-    .line 344
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v13, Lrb/e;
 
-    .line 345
-    .line 346
-    .line 347
+    const-string v3, "xblTitleToken"
+
+    .line 31
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
     move-result-object v3
 
-    .line 348
-    move-object/from16 v17, v3
+    new-instance v14, Lwa/c;
 
-    .line 349
-    .line 350
-    check-cast v17, Lsb/f;
+    const/4 v15, 0x4
 
-    .line 351
-    .line 352
-    const-string v3, "xboxLiveXstsToken"
+    invoke-direct {v14, v15}, Lwa/c;-><init>(I)V
 
-    .line 353
-    .line 354
-    invoke-virtual {v0, v3}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    invoke-virtual {v3, v14}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 355
-    .line 356
-    .line 357
     move-result-object v3
 
-    .line 358
-    new-instance v4, Lga/d;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 359
-    .line 360
-    const/16 v12, 0x1b
-
-    .line 361
-    .line 362
-    invoke-direct {v4, v12}, Lga/d;-><init>(I)V
-
-    .line 363
-    .line 364
-    .line 365
-    invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 366
-    .line 367
-    .line 368
     move-result-object v3
 
-    .line 369
-    const/4 v12, 0x0
+    move-object v14, v3
 
-    .line 370
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    check-cast v14, Lrb/c;
 
-    .line 371
-    .line 372
-    .line 373
+    const-string v3, "bedrockXstsToken"
+
+    .line 32
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
     move-result-object v3
 
-    .line 374
-    check-cast v3, Lsb/f;
+    new-instance v15, Lwa/c;
 
-    .line 375
-    .line 376
-    const-string v4, "xboxUserProfile"
+    const/4 v11, 0x5
 
-    .line 377
-    .line 378
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    invoke-direct {v15, v11}, Lwa/c;-><init>(I)V
 
-    .line 379
-    .line 380
-    .line 381
-    move-result-object v4
+    invoke-virtual {v3, v15}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 382
-    new-instance v12, Lga/d;
-
-    .line 383
-    .line 384
-    move-object/from16 v21, v3
-
-    .line 385
-    .line 386
-    const/16 v3, 0x1c
-
-    .line 387
-    .line 388
-    invoke-direct {v12, v3}, Lga/d;-><init>(I)V
-
-    .line 389
-    .line 390
-    .line 391
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 392
-    .line 393
-    .line 394
     move-result-object v3
 
-    .line 395
-    const/4 v12, 0x0
+    const/4 v11, 0x0
 
-    .line 396
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 397
-    .line 398
-    .line 399
     move-result-object v3
 
-    .line 400
-    check-cast v3, Lsb/d;
+    move-object v15, v3
 
-    .line 401
-    .line 402
-    const-string v4, "playFabToken"
+    check-cast v15, Lrb/f;
 
-    .line 403
-    .line 404
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    const-string v3, "playFabXstsToken"
 
-    .line 405
-    .line 406
-    .line 407
-    move-result-object v4
+    .line 33
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
 
-    .line 408
-    new-instance v12, Lwa/c;
-
-    .line 409
-    .line 410
-    move-object/from16 v22, v3
-
-    .line 411
-    .line 412
-    const/4 v3, 0x1
-
-    .line 413
-    invoke-direct {v12, v3}, Lwa/c;-><init>(I)V
-
-    .line 414
-    .line 415
-    .line 416
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 417
-    .line 418
-    .line 419
     move-result-object v3
 
-    .line 420
-    const/4 v12, 0x0
+    new-instance v11, Lwa/c;
 
-    .line 421
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    move-object/from16 v17, v4
 
-    .line 422
-    .line 423
-    .line 424
+    const/4 v4, 0x5
+
+    invoke-direct {v11, v4}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
     move-result-object v3
 
-    .line 425
-    move-object/from16 v20, v3
+    const/4 v11, 0x0
 
-    .line 426
-    .line 427
-    check-cast v20, Lhb/b;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 428
-    .line 429
-    const-string v3, "playFabMasterToken"
-
-    .line 430
-    .line 431
-    invoke-virtual {v0, v3}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 432
-    .line 433
-    .line 434
     move-result-object v3
 
-    .line 435
+    move-object/from16 v16, v3
+
+    check-cast v16, Lrb/f;
+
+    const-string v3, "realmsXstsToken"
+
+    .line 34
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v3
+
     new-instance v4, Lwa/c;
 
-    .line 436
-    .line 437
-    const/4 v12, 0x0
+    const/4 v11, 0x5
 
-    .line 438
-    invoke-direct {v4, v12}, Lwa/c;-><init>(I)V
+    invoke-direct {v4, v11}, Lwa/c;-><init>(I)V
 
-    .line 439
-    .line 440
-    .line 441
     invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 442
-    .line 443
-    .line 444
     move-result-object v3
 
-    .line 445
-    const/4 v12, 0x0
+    const/4 v11, 0x0
 
-    .line 446
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 447
-    .line 448
-    .line 449
     move-result-object v3
 
-    .line 450
-    check-cast v3, Lhb/a;
+    check-cast v3, Lrb/f;
 
-    .line 451
-    .line 452
+    const-string v4, "xboxLiveXstsToken"
+
+    .line 35
+    invoke-virtual {v0, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v4
+
+    new-instance v11, Lwa/c;
+
+    move-object/from16 v19, v3
+
+    const/4 v3, 0x5
+
+    invoke-direct {v11, v3}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v4, v11}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    move-object/from16 v18, v3
+
+    check-cast v18, Lrb/f;
+
+    const-string v3, "xboxUserProfile"
+
+    .line 36
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    new-instance v4, Lwa/c;
+
+    const/4 v11, 0x6
+
+    invoke-direct {v4, v11}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lrb/d;
+
+    const-string v4, "playFabToken"
+
+    .line 37
+    invoke-virtual {v0, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v4
+
+    new-instance v11, Lwa/c;
+
+    move-object/from16 v21, v3
+
+    const/4 v3, 0x7
+
+    invoke-direct {v11, v3}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v4, v11}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    move-object/from16 v20, v3
+
+    check-cast v20, Lgb/b;
+
+    const-string v3, "playFabMasterToken"
+
+    .line 38
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    new-instance v4, Lwa/c;
+
+    const/16 v11, 0x8
+
+    invoke-direct {v4, v11}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lgb/a;
+
     const-string v4, "minecraftSession"
 
-    .line 453
-    .line 454
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    .line 39
+    invoke-virtual {v0, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
 
-    .line 455
-    .line 456
-    .line 457
     move-result-object v4
 
-    .line 458
-    new-instance v12, Lga/d;
+    new-instance v11, Lwa/c;
 
-    .line 459
-    .line 460
-    move-object/from16 v24, v3
-
-    .line 461
-    .line 462
-    const/16 v3, 0x16
-
-    .line 463
-    .line 464
-    invoke-direct {v12, v3}, Lga/d;-><init>(I)V
-
-    .line 465
-    .line 466
-    .line 467
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 468
-    .line 469
-    .line 470
-    move-result-object v3
-
-    .line 471
-    const/4 v12, 0x0
-
-    .line 472
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 473
-    .line 474
-    .line 475
-    move-result-object v3
-
-    .line 476
-    check-cast v3, Lya/c;
-
-    .line 477
-    .line 478
-    const-string v4, "minecraftMultiplayerToken"
-
-    .line 479
-    .line 480
-    invoke-virtual {v0, v4}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
-
-    .line 481
-    .line 482
-    .line 483
-    move-result-object v4
-
-    .line 484
-    new-instance v12, Lga/d;
-
-    .line 485
-    .line 486
-    move-object/from16 v25, v3
-
-    .line 487
-    .line 488
-    const/16 v3, 0x17
-
-    .line 489
-    .line 490
-    invoke-direct {v12, v3}, Lga/d;-><init>(I)V
-
-    .line 491
-    .line 492
-    .line 493
-    invoke-virtual {v4, v12}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
-
-    .line 494
-    .line 495
-    .line 496
-    move-result-object v3
-
-    .line 497
-    const/4 v12, 0x0
-
-    .line 498
-    invoke-virtual {v3, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 499
-    .line 500
-    .line 501
-    move-result-object v3
-
-    .line 502
     move-object/from16 v23, v3
 
-    .line 503
-    .line 504
-    check-cast v23, Lya/b;
+    const/4 v3, 0x0
 
-    .line 505
-    .line 506
-    const-string v3, "minecraftCertificateChain"
+    invoke-direct {v11, v3}, Lwa/c;-><init>(I)V
 
-    .line 507
-    .line 508
-    invoke-virtual {v0, v3}, Lga/f;->k(Ljava/lang/String;)Ljava/util/Optional;
+    invoke-virtual {v4, v11}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 509
-    .line 510
-    .line 511
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    move-object/from16 v22, v3
+
+    check-cast v22, Lya/c;
+
+    const-string v3, "minecraftMultiplayerToken"
+
+    .line 40
+    invoke-virtual {v0, v3}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    new-instance v4, Lwa/c;
+
+    const/4 v11, 0x1
+
+    invoke-direct {v4, v11}, Lwa/c;-><init>(I)V
+
+    invoke-virtual {v3, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+
+    move-result-object v3
+
+    const/4 v11, 0x0
+
+    invoke-virtual {v3, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v3
+
+    check-cast v3, Lya/b;
+
+    const-string v4, "minecraftCertificateChain"
+
+    .line 41
+    invoke-virtual {v0, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->k(Ljava/lang/String;)Ljava/util/Optional;
+
     move-result-object v0
 
-    .line 512
-    new-instance v3, Lga/d;
+    new-instance v4, Lwa/c;
 
-    .line 513
-    .line 514
-    const/16 v4, 0x18
+    const/4 v11, 0x2
 
-    .line 515
-    .line 516
-    invoke-direct {v3, v4}, Lga/d;-><init>(I)V
+    invoke-direct {v4, v11}, Lwa/c;-><init>(I)V
 
-    .line 517
-    .line 518
-    .line 519
-    invoke-virtual {v0, v3}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
+    invoke-virtual {v0, v4}, Ljava/util/Optional;->map(Ljava/util/function/Function;)Ljava/util/Optional;
 
-    .line 520
-    .line 521
-    .line 522
     move-result-object v0
 
-    .line 523
-    invoke-virtual {v0, v12}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+    const/4 v11, 0x0
 
-    .line 524
-    .line 525
-    .line 526
+    invoke-virtual {v0, v11}, Ljava/util/Optional;->orElse(Ljava/lang/Object;)Ljava/lang/Object;
+
     move-result-object v0
 
-    .line 527
-    check-cast v0, Lya/a;
-
-    .line 528
-    .line 529
-    move-object/from16 v4, v16
-
-    .line 530
-    .line 531
-    move-object/from16 v12, v18
-
-    .line 532
-    .line 533
-    move-object/from16 v16, v19
-
-    .line 534
-    .line 535
-    move-object/from16 v18, v21
-
-    .line 536
-    .line 537
-    move-object/from16 v19, v22
-
-    .line 538
-    .line 539
-    move-object/from16 v21, v24
-
-    .line 540
-    .line 541
-    move-object/from16 v22, v25
-
-    .line 542
-    .line 543
     move-object/from16 v24, v0
 
-    .line 544
-    .line 545
-    invoke-direct/range {v4 .. v24}, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/lang/String;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Ldb/a;Lsb/a;Lsb/e;Lsb/c;Lsb/f;Lsb/f;Lsb/f;Lsb/f;Lsb/d;Lhb/b;Lhb/a;Lya/c;Lya/b;Lya/a;)V
+    check-cast v24, Lya/a;
 
-    .line 546
-    .line 547
-    .line 548
+    move-object v11, v6
+
+    move-object/from16 v4, v17
+
+    move-object/from16 v17, v19
+
+    move-object/from16 v19, v21
+
+    move-object/from16 v21, v23
+
+    move-object/from16 v23, v3
+
+    move-object v6, v5
+
+    move-object/from16 v5, p3
+
+    invoke-direct/range {v4 .. v24}, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;-><init>(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Ljava/lang/String;Ljava/security/KeyPair;Ljava/util/UUID;Ljava/security/KeyPair;Lnet/raphimc/minecraftauth/msa/model/MsaToken;Lrb/a;Lrb/e;Lrb/c;Lrb/f;Lrb/f;Lrb/f;Lrb/f;Lrb/d;Lgb/b;Lgb/a;Lya/c;Lya/b;Lya/a;)V
+
+    .line 42
     iget-object v0, v4, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->j:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 549
-    .line 550
-    iget-object v5, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lae/c1;
+    .line 43
+    iget-object v5, v0, Lnet/raphimc/minecraftauth/util/holder/Holder;->a:Lde/g;
 
-    .line 551
-    .line 552
+    .line 44
     new-instance v0, Lorg/levimc/launcher/core/auth/b;
 
-    .line 553
-    .line 554
     invoke-direct {v0, v1, v2, v4}, Lorg/levimc/launcher/core/auth/b;-><init>(Landroid/content/Context;Ljava/lang/String;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)V
 
-    .line 555
-    .line 556
-    .line 557
     monitor-enter v5
 
-    .line 558
+    .line 45
     :try_start_0
-    iget-object v3, v5, Lae/c1;->a:Ljava/util/ArrayList;
+    iget-object v3, v5, Lde/g;->a:Ljava/util/ArrayList;
 
-    .line 559
-    .line 560
     invoke-virtual {v3, v0}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 561
-    .line 562
-    .line 563
+    .line 46
     monitor-exit v5
 
-    .line 564
+    .line 47
     :try_start_1
     invoke-static {v4}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)V
     :try_end_1
     .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 565
-    .line 566
-    .line 567
+    .line 48
     invoke-static {v4}, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->c(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lcom/google/gson/JsonObject;
 
-    .line 568
-    .line 569
-    .line 570
     move-result-object v0
 
-    .line 571
     invoke-virtual {v0}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
 
-    .line 572
-    .line 573
-    .line 574
     move-result-object v0
 
-    .line 575
+    .line 49
     invoke-static {v1, v2, v0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->updateAuth(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
-    .line 576
-    .line 577
-    .line 578
     move-result-object v0
 
-    .line 579
     if-eqz p2, :cond_3
 
-    .line 580
-    .line 581
+    .line 50
     invoke-static/range {p0 .. p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->setActive(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 582
-    .line 583
-    .line 584
+    .line 51
     invoke-static/range {p0 .. p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
-    .line 585
-    .line 586
-    .line 587
     move-result-object v0
 
-    .line 588
     return-object v0
 
-    .line 589
+    .line 52
     :cond_3
     invoke-static/range {p0 .. p1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->exportActiveAccount(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 590
-    .line 591
-    .line 592
     return-object v0
 
-    .line 593
     :catch_0
     move-exception v0
 
-    .line 594
     move-object v3, v0
 
-    .line 595
+    .line 53
     :try_start_2
     invoke-static {v4}, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->c(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lcom/google/gson/JsonObject;
 
-    .line 596
-    .line 597
-    .line 598
     move-result-object v0
 
-    .line 599
     invoke-virtual {v0}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
 
-    .line 600
-    .line 601
-    .line 602
     move-result-object v0
 
-    .line 603
     invoke-static {v1, v2, v0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->updateAuth(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
     :try_end_2
     .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_1
 
-    .line 604
-    .line 605
-    .line 606
     goto :goto_2
 
-    .line 607
     :catch_1
     move-exception v0
 
-    .line 608
+    .line 54
     invoke-virtual {v3, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
 
-    .line 609
-    .line 610
-    .line 611
+    .line 55
     :goto_2
     throw v3
 
-    .line 612
     :catchall_0
     move-exception v0
 
-    .line 613
+    .line 56
     :try_start_3
     monitor-exit v5
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 614
     throw v0
 
-    .line 615
+    .line 57
     :cond_4
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 616
-    .line 617
     const-string v1, "No enum constant net.raphimc.minecraftauth.msa.data.MsaEnvironment."
 
-    .line 618
-    .line 619
     invoke-virtual {v1, v3}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
-    .line 620
-    .line 621
-    .line 622
     move-result-object v1
 
-    .line 623
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 624
-    .line 625
-    .line 626
     throw v0
 
-    .line 627
     :cond_5
     new-instance v0, Ljava/lang/NullPointerException;
 
-    .line 628
-    .line 629
     const-string v1, "Name is null"
 
-    .line 630
-    .line 631
     invoke-direct {v0, v1}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
-    .line 632
-    .line 633
-    .line 634
     throw v0
 
-    .line 635
+    .line 58
     :cond_6
     new-instance v0, Ljava/lang/IllegalArgumentException;
 
-    .line 636
-    .line 637
     const-string v1, "Account data is missing or damaged."
 
-    .line 638
-    .line 639
     invoke-direct {v0, v1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 640
-    .line 641
-    .line 642
     throw v0
 .end method
 
@@ -4375,146 +3966,137 @@
 .end method
 
 .method private static refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)V
-    .locals 3
+    .locals 1
+
+    const/4 v0, 0x0
 
     .line 1
-    const-string v0, "MsftAuthManager"
+    invoke-static {p0, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)V
+
+    return-void
+.end method
+
+.method private static refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)V
+    .locals 3
 
     .line 2
+    const-string v0, "MsftAuthManager"
+
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
     .line 3
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshMsaToken(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)V
 
     .line 4
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
     .line 5
-    .line 6
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->k:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 7
-    .line 8
+    .line 6
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 9
-    .line 10
-    .line 11
+    .line 7
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 8
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->l:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 12
-    .line 13
+    .line 9
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 14
-    .line 15
-    .line 16
+    .line 10
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 11
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->c:Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
 
-    .line 17
-    .line 18
+    .line 12
     invoke-virtual {v1}, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->a()Z
 
-    .line 19
-    .line 20
-    .line 21
     move-result v1
 
-    .line 22
     if-eqz v1, :cond_0
 
-    .line 23
-    .line 24
+    .line 13
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->m:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 25
-    .line 26
+    .line 14
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 27
-    .line 28
-    .line 29
+    .line 15
     :cond_0
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 16
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->n:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 30
-    .line 31
+    .line 17
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 32
-    .line 33
-    .line 34
+    .line 18
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 19
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->q:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 35
-    .line 36
+    .line 20
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 37
-    .line 38
-    .line 39
+    .line 21
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 22
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->w:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 40
-    .line 41
+    .line 23
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
 
-    .line 42
-    .line 43
-    .line 44
+    .line 24
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 25
     :try_start_0
     iget-object v1, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->o:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 45
-    .line 46
+    .line 26
     invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 47
-    .line 48
-    .line 49
     goto :goto_0
 
-    .line 50
     :catch_0
     move-exception v1
 
-    .line 51
+    .line 27
     const-string v2, "PlayFab token unavailable"
 
-    .line 52
-    .line 53
     invoke-static {v0, v2, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 54
-    .line 55
-    .line 56
+    .line 28
     :goto_0
+    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
+
+    .line 29
     :try_start_1
     iget-object p0, p0, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->p:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 57
-    .line 58
+    .line 30
     invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshToken(Lnet/raphimc/minecraftauth/util/holder/Holder;)Lnet/raphimc/minecraftauth/util/Expirable;
     :try_end_1
     .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 59
-    .line 60
-    .line 61
     goto :goto_1
 
-    .line 62
     :catch_1
     move-exception p0
 
-    .line 63
-    const-string v1, "Realms token unavailable"
+    .line 31
+    const-string p1, "Realms token unavailable"
 
-    .line 64
-    .line 65
-    invoke-static {v0, v1, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {v0, p1, p0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 66
-    .line 67
-    .line 68
     :goto_1
     return-void
 .end method
@@ -4554,454 +4136,276 @@
     return-void
 .end method
 
-.method public static declared-synchronized saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-    .locals 2
+.method public static saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 1
+
+    const/4 v0, 0x0
 
     .line 1
-    const-class v0, Lorg/levimc/launcher/core/auth/MsftAuthManager;
+    invoke-static {p0, p1, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method private static saveAccountAndActivate(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 0
 
     .line 2
-    .line 3
-    monitor-enter v0
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
-    .line 4
-    :try_start_0
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-
-    .line 5
-    .line 6
-    .line 7
     move-result-object p1
 
-    .line 8
-    iget-object v1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+    .line 3
+    iget-object p2, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
 
-    .line 9
-    .line 10
-    invoke-static {p0, v1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->setActive(Landroid/content/Context;Ljava/lang/String;)V
+    invoke-static {p0, p2}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->setActive(Landroid/content/Context;Ljava/lang/String;)V
 
-    .line 11
-    .line 12
-    .line 13
-    iget-object v1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+    .line 4
+    iget-object p2, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
 
-    .line 14
-    .line 15
-    invoke-static {p0, v1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {p0, p2}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->find(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
-    .line 16
-    .line 17
-    .line 18
     move-result-object p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 19
     if-eqz p0, :cond_0
 
-    .line 20
-    .line 21
-    move-object p1, p0
+    return-object p0
 
-    .line 22
     :cond_0
-    monitor-exit v0
-
-    .line 23
     return-object p1
-
-    .line 24
-    :catchall_0
-    move-exception p0
-
-    .line 25
-    :try_start_1
-    monitor-exit v0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 26
-    throw p0
 .end method
 
 .method public static saveAccountAndActivateWithRetry(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;Ljava/lang/Runnable;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-    .locals 2
+    .locals 1
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/core/auth/a;
+    new-instance v0, Lorg/levimc/launcher/core/auth/c;
 
     .line 2
     .line 3
-    const/4 v1, 0x3
+    invoke-direct {v0, p0, p1, p2}, Lorg/levimc/launcher/core/auth/c;-><init>(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)V
 
     .line 4
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/core/auth/a;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 5
     .line 6
-    .line 7
     const/4 p0, 0x4
 
-    .line 8
+    .line 7
     invoke-static {v0, p2, p3, p0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->executeWithNetworkRetry(Lorg/levimc/launcher/core/auth/MsftAuthManager$ThrowingSupplier;Ljava/util/function/BooleanSupplier;Ljava/lang/Runnable;I)Ljava/lang/Object;
 
+    .line 8
     .line 9
     .line 10
-    .line 11
     move-result-object p0
 
-    .line 12
+    .line 11
     check-cast p0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
+    .line 12
     .line 13
-    .line 14
     return-object p0
 .end method
 
-.method public static declared-synchronized saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
-    .locals 9
+.method public static saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 1
+
+    const/4 v0, 0x0
 
     .line 1
-    const-class v1, Lorg/levimc/launcher/core/auth/MsftAuthManager;
+    invoke-static {p0, p1, v0}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    move-result-object p0
+
+    return-object p0
+.end method
+
+.method private static saveAccountOrThrow(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 13
 
     .line 2
-    .line 3
-    monitor-enter v1
+    invoke-static {p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
 
-    .line 4
     if-eqz p0, :cond_3
 
-    .line 5
-    .line 6
     if-eqz p1, :cond_3
 
-    .line 7
-    .line 8
-    :try_start_0
-    invoke-static {p1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)V
+    .line 3
+    invoke-static {p1, p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->refreshXalCredentials(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;Ljava/util/function/BooleanSupplier;)V
 
-    .line 9
-    .line 10
-    .line 11
+    .line 4
     iget-object v0, p1, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->r:Lnet/raphimc/minecraftauth/util/holder/Holder;
 
-    .line 12
-    .line 13
+    .line 5
     invoke-virtual {v0}, Lnet/raphimc/minecraftauth/util/holder/Holder;->a()Lnet/raphimc/minecraftauth/util/Expirable;
 
+    move-result-object v0
+
+    check-cast v0, Lrb/d;
+
+    .line 6
+    iget-object v1, p1, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->w:Lnet/raphimc/minecraftauth/util/holder/Holder;
+
+    .line 7
+    invoke-virtual {v1}, Lnet/raphimc/minecraftauth/util/holder/Holder;->a()Lnet/raphimc/minecraftauth/util/Expirable;
+
+    move-result-object v1
+
+    check-cast v1, Lya/a;
+
+    .line 8
+    iget-object v2, v0, Lrb/d;->a:Ljava/lang/String;
+
+    iget-object v0, v0, Lrb/d;->b:Ljava/util/Map;
+
+    .line 9
+    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v3
+
+    const-string v4, "XUID"
+
+    const-string v5, "extraData"
+
+    if-eqz v3, :cond_0
+
+    .line 10
+    invoke-virtual {v1}, Lya/a;->c()Lpb/a;
+
+    move-result-object v2
+
+    .line 11
+    iget-object v2, v2, Lpb/a;->b:Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    .line 12
+    invoke-virtual {v2, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    move-result-object v2
+
+    invoke-virtual {v2, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    :cond_0
+    move-object v7, v2
+
+    .line 13
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    move-result v2
+
+    if-nez v2, :cond_2
+
     .line 14
+    const-string v2, "Gamertag"
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v2
+
+    move-object v8, v2
+
+    check-cast v8, Ljava/lang/String;
+
     .line 15
+    const-string v2, "AppDisplayPicRaw"
+
+    invoke-interface {v0, v2}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    move-object v11, v0
+
+    check-cast v11, Ljava/lang/String;
+
     .line 16
+    invoke-virtual {v1}, Lya/a;->c()Lpb/a;
+
     move-result-object v0
 
     .line 17
-    check-cast v0, Lsb/d;
+    iget-object v0, v0, Lpb/a;->b:Lnet/lenni0451/commons/gson/elements/GsonObject;
 
     .line 18
+    invoke-virtual {v0, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    move-result-object v0
+
+    const-string v2, "displayName"
+
+    invoke-virtual {v0, v2}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v9
+
     .line 19
-    iget-object v2, p1, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->w:Lnet/raphimc/minecraftauth/util/holder/Holder;
+    invoke-virtual {v1}, Lya/a;->c()Lpb/a;
+
+    move-result-object v0
 
     .line 20
+    iget-object v0, v0, Lpb/a;->b:Lnet/lenni0451/commons/gson/elements/GsonObject;
+
     .line 21
-    invoke-virtual {v2}, Lnet/raphimc/minecraftauth/util/holder/Holder;->a()Lnet/raphimc/minecraftauth/util/Expirable;
+    invoke-virtual {v0, v5}, Lnet/lenni0451/commons/gson/elements/GsonObject;->o(Ljava/lang/String;)Lnet/lenni0451/commons/gson/elements/GsonObject;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v10
 
     .line 22
-    .line 23
-    .line 24
-    move-result-object v2
-
-    .line 25
-    check-cast v2, Lya/a;
-
-    .line 26
-    .line 27
-    iget-object v3, v0, Lsb/d;->a:Ljava/lang/String;
-
-    .line 28
-    .line 29
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    .line 30
-    .line 31
-    .line 32
-    move-result v4
-
-    .line 33
-    if-eqz v4, :cond_0
-
-    .line 34
-    .line 35
-    invoke-virtual {v2}, Lya/a;->c()Lqb/a;
-
-    .line 36
-    .line 37
-    .line 38
-    move-result-object v3
-
-    .line 39
-    iget-object v3, v3, Lqb/a;->b:Lga/f;
-
-    .line 40
-    .line 41
-    const-string v4, "extraData"
-
-    .line 42
-    .line 43
-    invoke-virtual {v3, v4}, Lga/f;->o(Ljava/lang/String;)Lga/f;
-
-    .line 44
-    .line 45
-    .line 46
-    move-result-object v3
-
-    .line 47
-    const-string v4, "XUID"
-
-    .line 48
-    .line 49
-    invoke-virtual {v3, v4}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 50
-    .line 51
-    .line 52
-    move-result-object v3
-
-    .line 53
-    :cond_0
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    .line 54
-    .line 55
-    .line 56
-    move-result v4
-
-    .line 57
-    if-nez v4, :cond_2
-
-    .line 58
-    .line 59
-    iget-object v4, v0, Lsb/d;->b:Ljava/util/Map;
-
-    .line 60
-    .line 61
-    const-string v5, "Gamertag"
-
-    .line 62
-    .line 63
-    invoke-interface {v4, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 64
-    .line 65
-    .line 66
-    move-result-object v4
-
-    .line 67
-    check-cast v4, Ljava/lang/String;
-
-    .line 68
-    .line 69
-    iget-object v0, v0, Lsb/d;->b:Ljava/util/Map;
-
-    .line 70
-    .line 71
-    const-string v5, "AppDisplayPicRaw"
-
-    .line 72
-    .line 73
-    invoke-interface {v0, v5}, Ljava/util/Map;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 74
-    .line 75
-    .line 76
-    move-result-object v0
-
-    .line 77
-    move-object v7, v0
-
-    .line 78
-    check-cast v7, Ljava/lang/String;
-
-    .line 79
-    .line 80
-    invoke-virtual {v2}, Lya/a;->c()Lqb/a;
-
-    .line 81
-    .line 82
-    .line 83
-    move-result-object v0
-
-    .line 84
-    iget-object v0, v0, Lqb/a;->b:Lga/f;
-
-    .line 85
-    .line 86
-    const-string v5, "extraData"
-
-    .line 87
-    .line 88
-    invoke-virtual {v0, v5}, Lga/f;->o(Ljava/lang/String;)Lga/f;
-
-    .line 89
-    .line 90
-    .line 91
-    move-result-object v0
-
-    .line 92
-    const-string v5, "displayName"
-
-    .line 93
-    .line 94
-    invoke-virtual {v0, v5}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 95
-    .line 96
-    .line 97
-    move-result-object v5
-
-    .line 98
-    invoke-virtual {v2}, Lya/a;->c()Lqb/a;
-
-    .line 99
-    .line 100
-    .line 101
-    move-result-object v0
-
-    .line 102
-    iget-object v0, v0, Lqb/a;->b:Lga/f;
-
-    .line 103
-    .line 104
-    const-string v2, "extraData"
-
-    .line 105
-    .line 106
-    invoke-virtual {v0, v2}, Lga/f;->o(Ljava/lang/String;)Lga/f;
-
-    .line 107
-    .line 108
-    .line 109
-    move-result-object v0
-
-    .line 110
-    const-string v2, "XUID"
-
-    .line 111
-    .line 112
-    invoke-virtual {v0, v2}, Lga/f;->p(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 113
-    .line 114
-    .line 115
-    move-result-object v6
-
-    .line 116
     invoke-static {p1}, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;->c(Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lcom/google/gson/JsonObject;
 
-    .line 117
-    .line 118
-    .line 119
     move-result-object p1
 
-    .line 120
     invoke-virtual {p1}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
 
-    .line 121
-    .line 122
-    .line 123
-    move-result-object v8
+    move-result-object v12
 
-    .line 124
-    move-object v2, p0
+    .line 23
+    invoke-static {p2}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->ensureNotCancelled(Ljava/util/function/BooleanSupplier;)V
 
-    .line 125
-    invoke-static/range {v2 .. v8}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->addOrUpdate(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    move-object v6, p0
 
-    .line 126
-    .line 127
-    .line 128
+    .line 24
+    invoke-static/range {v6 .. v12}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->addOrUpdate(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
     move-result-object p0
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 129
     if-eqz p0, :cond_1
 
-    .line 130
-    .line 131
-    monitor-exit v1
-
-    .line 132
     return-object p0
 
-    .line 133
+    .line 25
     :cond_1
-    :try_start_1
     new-instance p0, Ljava/lang/IllegalStateException;
 
-    .line 134
-    .line 135
     const-string p1, "The Microsoft account could not be saved."
 
-    .line 136
-    .line 137
     invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    .line 138
-    .line 139
-    .line 140
     throw p0
 
-    .line 141
-    :catchall_0
-    move-exception v0
-
-    .line 142
-    move-object p0, v0
-
-    .line 143
-    goto :goto_0
-
-    .line 144
+    .line 26
     :cond_2
     new-instance p0, Ljava/lang/IllegalStateException;
 
-    .line 145
-    .line 146
     const-string p1, "Microsoft did not return an account identifier."
 
-    .line 147
-    .line 148
     invoke-direct {p0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-    .line 149
-    .line 150
-    .line 151
     throw p0
 
-    .line 152
+    .line 27
     :cond_3
     new-instance p0, Ljava/lang/IllegalArgumentException;
 
-    .line 153
-    .line 154
     const-string p1, "Authentication result is missing."
 
-    .line 155
-    .line 156
     invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-    .line 157
-    .line 158
-    .line 159
-    throw p0
-
-    .line 160
-    :goto_0
-    monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 161
     throw p0
 .end method
 
@@ -5098,6 +4502,65 @@
     return-void
 .end method
 
+.method private static throwDeviceError(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)V
+    .locals 3
+
+    .line 1
+    const-string v0, "error"
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    invoke-virtual {p1, v0, v1}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v0
+
+    .line 8
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 9
+    .line 10
+    .line 11
+    move-result v1
+
+    .line 12
+    if-eqz v1, :cond_0
+
+    .line 13
+    .line 14
+    return-void
+
+    .line 15
+    :cond_0
+    new-instance v1, Lcb/a;
+
+    .line 16
+    .line 17
+    const-string v2, "error_description"
+
+    .line 18
+    .line 19
+    invoke-virtual {p1, v2, v0}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p1
+
+    .line 23
+    invoke-direct {v1, p0, v0, p1}, Lnb/a;-><init>(Lnet/lenni0451/commons/httpclient/HttpResponse;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 24
+    .line 25
+    .line 26
+    throw v1
+.end method
+
 .method private static transientRetryDelay(JI)J
     .locals 4
 
@@ -5139,15 +4602,15 @@
 
     .line 17
     .line 18
-    invoke-static {p0, p1, v0, v1}, Ljava/lang/Math;->max(JJ)J
+    invoke-static {v2, v3, v0, v1}, Ljava/lang/Math;->min(JJ)J
 
     .line 19
     .line 20
     .line 21
-    move-result-wide p0
+    move-result-wide v0
 
     .line 22
-    invoke-static {v2, v3, p0, p1}, Ljava/lang/Math;->min(JJ)J
+    invoke-static {p0, p1, v0, v1}, Ljava/lang/Math;->max(JJ)J
 
     .line 23
     .line 24
@@ -5229,7 +4692,7 @@
 
     .line 32
     .line 33
-    instance-of v2, v1, Lrb/a;
+    instance-of v2, v1, Lqb/a;
 
     .line 34
     .line 35
@@ -5241,7 +4704,7 @@
 
     .line 38
     :cond_0
-    instance-of v2, v1, Lla/a;
+    instance-of v2, v1, Lma/a;
 
     .line 39
     .line 40

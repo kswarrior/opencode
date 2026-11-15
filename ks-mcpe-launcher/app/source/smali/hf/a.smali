@@ -1,317 +1,227 @@
-.class public final Lhf/a;
+.class public interface abstract Lhf/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
-
-# interfaces
-.implements Lorg/spongycastle/crypto/c;
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
 
 
 # static fields
-.field public static final h:Ljava/math/BigInteger;
+.field public static final a:Lye/n;
 
+.field public static final b:Lye/n;
 
-# instance fields
-.field public c:Luf/g;
+.field public static final c:Lye/n;
 
-.field public d:Luf/f;
+.field public static final d:Lye/n;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 2
+    .locals 10
 
     .line 1
-    const-wide/16 v0, 0x1
+    new-instance v0, Lye/n;
 
     .line 2
     .line 3
-    invoke-static {v0, v1}, Ljava/math/BigInteger;->valueOf(J)Ljava/math/BigInteger;
+    const-string v1, "1.3.6.1"
 
     .line 4
     .line 5
-    .line 6
-    move-result-object v0
-
-    .line 7
-    sput-object v0, Lhf/a;->h:Ljava/math/BigInteger;
-
-    .line 8
-    .line 9
-    return-void
-.end method
-
-
-# virtual methods
-.method public final e(Lorg/spongycastle/crypto/h;)Ljava/math/BigInteger;
-    .locals 3
-
-    .line 1
-    check-cast p1, Luf/h;
-
-    .line 2
-    .line 3
-    iget-object v0, p1, Luf/e;->d:Luf/f;
-
-    .line 4
-    .line 5
-    iget-object v1, p0, Lhf/a;->d:Luf/f;
+    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
 
     .line 6
     .line 7
-    invoke-virtual {v0, v1}, Luf/f;->equals(Ljava/lang/Object;)Z
-
     .line 8
+    new-instance v1, Lye/n;
+
     .line 9
     .line 10
-    move-result v0
+    const-string v2, "1"
 
     .line 11
-    if-eqz v0, :cond_2
-
     .line 12
-    .line 13
-    iget-object v0, p0, Lhf/a;->d:Luf/f;
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
+    .line 13
     .line 14
     .line 15
-    iget-object v0, v0, Luf/f;->d:Ljava/math/BigInteger;
+    new-instance v1, Lye/n;
 
     .line 16
     .line 17
-    iget-object p1, p1, Luf/h;->h:Ljava/math/BigInteger;
+    const-string v3, "2"
 
     .line 18
     .line 19
-    if-eqz p1, :cond_1
+    invoke-direct {v1, v3, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 20
     .line 21
-    sget-object v1, Lhf/a;->h:Ljava/math/BigInteger;
-
     .line 22
-    .line 23
-    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+    new-instance v1, Lye/n;
 
+    .line 23
     .line 24
+    const-string v4, "3"
+
     .line 25
     .line 26
-    move-result v2
+    invoke-direct {v1, v4, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 27
-    if-lez v2, :cond_1
-
     .line 28
     .line 29
-    invoke-virtual {v0, v1}, Ljava/math/BigInteger;->subtract(Ljava/math/BigInteger;)Ljava/math/BigInteger;
+    new-instance v1, Lye/n;
 
     .line 30
     .line 31
-    .line 32
-    move-result-object v2
+    const-string v5, "4"
 
+    .line 32
     .line 33
-    invoke-virtual {p1, v2}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
+    invoke-direct {v1, v5, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 34
     .line 35
     .line 36
-    move-result v2
+    new-instance v1, Lye/n;
 
     .line 37
-    if-gez v2, :cond_1
-
     .line 38
+    const-string v6, "5"
+
     .line 39
-    iget-object v2, p0, Lhf/a;->c:Luf/g;
-
     .line 40
-    .line 41
-    iget-object v2, v2, Luf/g;->h:Ljava/math/BigInteger;
+    invoke-direct {v1, v6, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
+    .line 41
     .line 42
     .line 43
-    invoke-virtual {p1, v2, v0}, Ljava/math/BigInteger;->modPow(Ljava/math/BigInteger;Ljava/math/BigInteger;)Ljava/math/BigInteger;
+    new-instance v7, Lye/n;
 
     .line 44
     .line 45
-    .line 46
-    move-result-object p1
+    const-string v8, "6"
 
+    .line 46
     .line 47
-    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->equals(Ljava/lang/Object;)Z
+    invoke-direct {v7, v8, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 48
     .line 49
     .line 50
-    move-result v0
+    const-string v7, "7"
 
     .line 51
-    if-nez v0, :cond_0
-
     .line 52
-    .line 53
-    return-object p1
+    new-instance v9, Lye/n;
 
+    .line 53
     .line 54
-    :cond_0
-    new-instance p1, Ljava/lang/IllegalStateException;
+    invoke-direct {v9, v7, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 55
     .line 56
-    const-string v0, "Shared key can\'t be 1"
-
     .line 57
-    .line 58
-    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+    new-instance v0, Lye/n;
 
+    .line 58
     .line 59
+    invoke-direct {v0, v6, v1}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
+
     .line 60
     .line 61
-    throw p1
-
     .line 62
-    :cond_1
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    new-instance v6, Lye/n;
 
     .line 63
     .line 64
-    const-string v0, "Diffie-Hellman public key is weak"
+    invoke-direct {v6, v8, v1}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 65
     .line 66
-    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 67
+    new-instance v1, Lye/n;
+
     .line 68
     .line 69
-    throw p1
+    invoke-direct {v1, v8, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
     .line 70
-    :cond_2
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
     .line 71
     .line 72
-    const-string v0, "Diffie-Hellman public key has wrong parameters."
+    new-instance v1, Lye/n;
 
     .line 73
     .line 74
-    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v6, "8"
 
     .line 75
     .line 76
+    invoke-direct {v1, v6, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
+
     .line 77
-    throw p1
-.end method
+    .line 78
+    .line 79
+    new-instance v0, Lye/n;
 
-.method public final getFieldSize()I
-    .locals 1
+    .line 80
+    .line 81
+    invoke-direct {v0, v2, v1}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
-    .line 1
-    iget-object v0, p0, Lhf/a;->c:Luf/g;
+    .line 82
+    .line 83
+    .line 84
+    new-instance v1, Lye/n;
 
-    .line 2
-    .line 3
-    iget-object v0, v0, Luf/e;->d:Luf/f;
+    .line 85
+    .line 86
+    invoke-direct {v1, v2, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
-    .line 4
-    .line 5
-    iget-object v0, v0, Luf/f;->d:Ljava/math/BigInteger;
+    .line 87
+    .line 88
+    .line 89
+    sput-object v1, Lhf/a;->a:Lye/n;
 
-    .line 6
-    .line 7
-    invoke-virtual {v0}, Ljava/math/BigInteger;->bitLength()I
+    .line 90
+    .line 91
+    new-instance v1, Lye/n;
 
-    .line 8
-    .line 9
-    .line 10
-    move-result v0
+    .line 92
+    .line 93
+    invoke-direct {v1, v3, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
-    .line 11
-    add-int/lit8 v0, v0, 0x7
+    .line 94
+    .line 95
+    .line 96
+    sput-object v1, Lhf/a;->b:Lye/n;
 
-    .line 12
-    .line 13
-    div-int/lit8 v0, v0, 0x8
+    .line 97
+    .line 98
+    new-instance v1, Lye/n;
 
-    .line 14
-    .line 15
-    return v0
-.end method
+    .line 99
+    .line 100
+    invoke-direct {v1, v4, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
-.method public final init(Lorg/spongycastle/crypto/h;)V
-    .locals 1
+    .line 101
+    .line 102
+    .line 103
+    sput-object v1, Lhf/a;->c:Lye/n;
 
-    .line 1
-    instance-of v0, p1, Luf/i0;
+    .line 104
+    .line 105
+    new-instance v1, Lye/n;
 
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
+    .line 106
+    .line 107
+    invoke-direct {v1, v5, v0}, Lye/n;-><init>(Ljava/lang/String;Lye/n;)V
 
-    .line 4
-    .line 5
-    check-cast p1, Luf/i0;
+    .line 108
+    .line 109
+    .line 110
+    sput-object v1, Lhf/a;->d:Lye/n;
 
-    .line 6
-    .line 7
-    iget-object p1, p1, Luf/i0;->d:Lorg/spongycastle/crypto/h;
-
-    .line 8
-    .line 9
-    check-cast p1, Luf/b;
-
-    .line 10
-    .line 11
-    goto :goto_0
-
-    .line 12
-    :cond_0
-    check-cast p1, Luf/b;
-
-    .line 13
-    .line 14
-    :goto_0
-    instance-of v0, p1, Luf/g;
-
-    .line 15
-    .line 16
-    if-eqz v0, :cond_1
-
-    .line 17
-    .line 18
-    check-cast p1, Luf/g;
-
-    .line 19
-    .line 20
-    iput-object p1, p0, Lhf/a;->c:Luf/g;
-
-    .line 21
-    .line 22
-    iget-object p1, p1, Luf/e;->d:Luf/f;
-
-    .line 23
-    .line 24
-    iput-object p1, p0, Lhf/a;->d:Luf/f;
-
-    .line 25
-    .line 26
+    .line 111
+    .line 112
     return-void
-
-    .line 27
-    :cond_1
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
-    .line 28
-    .line 29
-    const-string v0, "DHEngine expects DHPrivateKeyParameters"
-
-    .line 30
-    .line 31
-    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 32
-    .line 33
-    .line 34
-    throw p1
 .end method

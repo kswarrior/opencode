@@ -1,202 +1,177 @@
-.class public final Ls6/c;
+.class public final synthetic Ls6/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+
+# interfaces
+.implements Ls6/g;
 
 
 # instance fields
-.field public final a:Ljava/lang/Object;
+.field public final synthetic c:I
 
-.field public b:Ljava/lang/Object;
+.field public final synthetic d:Ls6/f;
+
+.field public final synthetic h:Ljava/lang/Runnable;
+
+.field public final synthetic p:J
+
+.field public final synthetic q:J
+
+.field public final synthetic w:Ljava/util/concurrent/TimeUnit;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;)V
+.method public synthetic constructor <init>(Ls6/f;Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p8, p0, Ls6/c;->c:I
 
     .line 2
-    iput-object p1, p0, Ls6/c;->a:Ljava/lang/Object;
-
-    const/4 p1, 0x0
-
     .line 3
-    iput-object p1, p0, Ls6/c;->b:Ljava/lang/Object;
-
-    return-void
-.end method
-
-.method public constructor <init>(Ls6/c;)V
-    .locals 5
+    iput-object p1, p0, Ls6/c;->d:Ls6/f;
 
     .line 4
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 5
-    iget-object p1, p1, Ls6/c;->a:Ljava/lang/Object;
-
-    check-cast p1, Landroid/content/Context;
+    iput-object p2, p0, Ls6/c;->h:Ljava/lang/Runnable;
 
     .line 6
-    const-string v0, "com.google.firebase.crashlytics.unity_version"
-
-    const-string v1, "string"
-
-    invoke-static {p1, v0, v1}, Lv6/h;->e(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)I
-
-    move-result v0
-
-    const/4 v1, 0x2
-
     .line 7
-    const-string v2, "FirebaseCrashlytics"
-
-    const/4 v3, 0x0
-
-    if-eqz v0, :cond_0
+    iput-wide p3, p0, Ls6/c;->p:J
 
     .line 8
-    const-string v4, "Unity"
-
-    iput-object v4, p0, Ls6/c;->a:Ljava/lang/Object;
-
     .line 9
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    move-result-object p1
-
-    invoke-virtual {p1, v0}, Landroid/content/res/Resources;->getString(I)Ljava/lang/String;
-
-    move-result-object p1
-
-    iput-object p1, p0, Ls6/c;->b:Ljava/lang/Object;
+    iput-wide p5, p0, Ls6/c;->q:J
 
     .line 10
-    const-string v0, "Unity Editor version is: "
-
     .line 11
-    invoke-static {v0, p1}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    move-result-object p1
+    iput-object p7, p0, Ls6/c;->w:Ljava/util/concurrent/TimeUnit;
 
     .line 12
-    invoke-static {v2, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_3
-
     .line 13
-    invoke-static {v2, p1, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    return-void
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 14
-    :cond_0
-    const-string v0, "flutter_assets/NOTICES.Z"
-
     .line 15
-    invoke-virtual {p1}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
-
-    move-result-object v4
-
-    if-nez v4, :cond_1
-
-    goto :goto_0
-
     .line 16
-    :cond_1
-    :try_start_0
-    invoke-virtual {p1}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
-
-    move-result-object p1
-
-    invoke-virtual {p1, v0}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
-
-    move-result-object p1
-
-    if-eqz p1, :cond_2
-
-    .line 17
-    invoke-virtual {p1}, Ljava/io/InputStream;->close()V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 18
-    :cond_2
-    const-string p1, "Flutter"
-
-    iput-object p1, p0, Ls6/c;->a:Ljava/lang/Object;
-
-    .line 19
-    iput-object v3, p0, Ls6/c;->b:Ljava/lang/Object;
-
-    .line 20
-    invoke-static {v2, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_3
-
-    .line 21
-    const-string p1, "Development platform is: Flutter"
-
-    invoke-static {v2, p1, v3}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    :cond_3
-    return-void
-
-    .line 22
-    :catch_0
-    :goto_0
-    iput-object v3, p0, Ls6/c;->a:Ljava/lang/Object;
-
-    .line 23
-    iput-object v3, p0, Ls6/c;->b:Ljava/lang/Object;
-
     return-void
 .end method
 
 
 # virtual methods
-.method public a()Ls6/c;
-    .locals 1
+.method public final a(Llg/b;)Ljava/util/concurrent/ScheduledFuture;
+    .locals 8
 
     .line 1
-    iget-object v0, p0, Ls6/c;->b:Ljava/lang/Object;
+    iget v0, p0, Ls6/c;->c:I
 
     .line 2
     .line 3
-    check-cast v0, Ls6/c;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    if-nez v0, :cond_0
-
     .line 6
+    iget-object v0, p0, Ls6/c;->d:Ls6/f;
+
     .line 7
-    new-instance v0, Ls6/c;
-
     .line 8
-    .line 9
-    invoke-direct {v0, p0}, Ls6/c;-><init>(Ls6/c;)V
+    iget-object v1, v0, Ls6/f;->d:Ljava/util/concurrent/ScheduledExecutorService;
 
+    .line 9
     .line 10
+    new-instance v2, Ls6/d;
+
     .line 11
     .line 12
-    iput-object v0, p0, Ls6/c;->b:Ljava/lang/Object;
+    const/4 v3, 0x2
 
     .line 13
+    iget-object v4, p0, Ls6/c;->h:Ljava/lang/Runnable;
+
     .line 14
-    :cond_0
-    iget-object v0, p0, Ls6/c;->b:Ljava/lang/Object;
-
     .line 15
-    .line 16
-    check-cast v0, Ls6/c;
+    invoke-direct {v2, v0, v4, p1, v3}, Ls6/d;-><init>(Ls6/f;Ljava/lang/Runnable;Llg/b;I)V
 
+    .line 16
     .line 17
     .line 18
-    return-object v0
+    iget-wide v3, p0, Ls6/c;->p:J
+
+    .line 19
+    .line 20
+    iget-wide v5, p0, Ls6/c;->q:J
+
+    .line 21
+    .line 22
+    iget-object v7, p0, Ls6/c;->w:Ljava/util/concurrent/TimeUnit;
+
+    .line 23
+    .line 24
+    invoke-interface/range {v1 .. v7}, Ljava/util/concurrent/ScheduledExecutorService;->scheduleWithFixedDelay(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object p1
+
+    .line 28
+    return-object p1
+
+    .line 29
+    :pswitch_0
+    iget-object v0, p0, Ls6/c;->d:Ls6/f;
+
+    .line 30
+    .line 31
+    iget-object v1, v0, Ls6/f;->d:Ljava/util/concurrent/ScheduledExecutorService;
+
+    .line 32
+    .line 33
+    new-instance v2, Ls6/d;
+
+    .line 34
+    .line 35
+    const/4 v3, 0x0
+
+    .line 36
+    iget-object v4, p0, Ls6/c;->h:Ljava/lang/Runnable;
+
+    .line 37
+    .line 38
+    invoke-direct {v2, v0, v4, p1, v3}, Ls6/d;-><init>(Ls6/f;Ljava/lang/Runnable;Llg/b;I)V
+
+    .line 39
+    .line 40
+    .line 41
+    iget-wide v3, p0, Ls6/c;->p:J
+
+    .line 42
+    .line 43
+    iget-wide v5, p0, Ls6/c;->q:J
+
+    .line 44
+    .line 45
+    iget-object v7, p0, Ls6/c;->w:Ljava/util/concurrent/TimeUnit;
+
+    .line 46
+    .line 47
+    invoke-interface/range {v1 .. v7}, Ljava/util/concurrent/ScheduledExecutorService;->scheduleAtFixedRate(Ljava/lang/Runnable;JJLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object p1
+
+    .line 51
+    return-object p1
+
+    .line 52
+    nop
+
+    .line 53
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method
