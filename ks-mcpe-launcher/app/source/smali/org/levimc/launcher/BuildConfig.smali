@@ -4,7 +4,7 @@
 
 
 # static fields
-.field public static final APPLICATION_ID:Ljava/lang/String; = "org.levimc.launcher"
+.field public static final APPLICATION_ID:Ljava/lang/String; = "com.ks.mcpe.launcher"
 
 .field public static final BUILD_TYPE:Ljava/lang/String; = "release"
 
