@@ -45,7 +45,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SplashActivity;->G(Lorg/levimc/launcher/ui/activities/SplashActivity;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SplashActivity;->H(Lorg/levimc/launcher/ui/activities/SplashActivity;)V
 
     .line 4
     .line 5

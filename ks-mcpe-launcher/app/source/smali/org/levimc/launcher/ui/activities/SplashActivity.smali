@@ -133,266 +133,90 @@
     return-void
 .end method
 
-.method private applySplashTheme()V
-    .locals 4
+.method public static synthetic H(Lorg/levimc/launcher/ui/activities/SplashActivity;)V
+    .locals 0
 
-    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->playCompletionAnimation()V
+
+    return-void
+.end method
+
+
+.method private applySplashTheme()V
+    .locals 5
+
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->resolveAccentColor()I
 
-    .line 2
-    .line 3
-    .line 4
     move-result v0
 
-    .line 5
     iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 6
-    .line 7
     iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
 
-    .line 8
-    .line 9
     invoke-virtual {v1, v0}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 10
-    .line 11
-    .line 12
     iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 13
-    .line 14
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
-
-    .line 15
-    .line 16
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->createRadialGlow(I)Landroid/graphics/drawable/GradientDrawable;
-
-    .line 17
-    .line 18
-    .line 19
-    move-result-object v2
-
-    .line 20
-    invoke-virtual {v1, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 21
-    .line 22
-    .line 23
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 24
-    .line 25
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
-
-    .line 26
-    .line 27
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->createOrbitRing(I)Landroid/graphics/drawable/GradientDrawable;
-
-    .line 28
-    .line 29
-    .line 30
-    move-result-object v2
-
-    .line 31
-    invoke-virtual {v1, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 32
-    .line 33
-    .line 34
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 35
-    .line 36
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
-
-    .line 37
-    .line 38
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->createOrbitDot(I)Landroid/graphics/drawable/GradientDrawable;
-
-    .line 39
-    .line 40
-    .line 41
-    move-result-object v2
-
-    .line 42
-    invoke-virtual {v1, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 43
-    .line 44
-    .line 45
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 46
-    .line 47
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
-
-    .line 48
-    .line 49
-    invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 50
-    .line 51
-    .line 52
-    move-result-object v2
-
-    .line 53
-    invoke-virtual {v1, v2}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 54
-    .line 55
-    .line 56
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 57
-    .line 58
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
-
-    .line 59
-    .line 60
-    const/16 v2, 0x2a
-
-    .line 61
-    .line 62
-    invoke-direct {p0, v0, v2}, Lorg/levimc/launcher/ui/activities/SplashActivity;->withAlpha(II)I
-
-    .line 63
-    .line 64
-    .line 65
-    move-result v2
-
-    .line 66
-    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 67
-    .line 68
-    .line 69
-    move-result-object v2
-
-    .line 70
-    invoke-virtual {v1, v2}, Landroid/widget/ProgressBar;->setProgressBackgroundTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 71
-    .line 72
-    .line 73
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 74
-    .line 75
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
-
-    .line 76
-    .line 77
-    invoke-static {v0}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 78
-    .line 79
-    .line 80
-    move-result-object v2
-
-    .line 81
-    invoke-virtual {v1, v2}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 82
-    .line 83
-    .line 84
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 85
-    .line 86
     iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
 
-    .line 87
-    .line 88
     sget v2, Lorg/levimc/launcher/R$color;->text_secondary:I
 
-    .line 89
-    .line 90
     invoke-virtual {p0, v2}, Landroid/content/Context;->getColor(I)I
 
-    .line 91
-    .line 92
-    .line 93
     move-result v2
 
-    .line 94
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->isDarkMode()Z
+    const v3, 0x3ecccccd    # 0.4f
 
-    .line 95
-    .line 96
-    .line 97
-    move-result v3
-
-    .line 98
-    if-eqz v3, :cond_0
-
-    .line 99
-    .line 100
-    const v3, 0x3e75c28f    # 0.24f
-
-    .line 101
-    .line 102
-    .line 103
-    goto :goto_0
-
-    .line 104
-    :cond_0
-    const v3, 0x3e3851ec    # 0.18f
-
-    .line 105
-    .line 106
-    .line 107
-    :goto_0
     invoke-direct {p0, v2, v0, v3}, Lorg/levimc/launcher/ui/activities/SplashActivity;->blendColors(IIF)I
 
-    .line 108
-    .line 109
-    .line 110
-    move-result v0
+    move-result v2
 
-    .line 111
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setTextColor(I)V
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
 
-    .line 112
-    .line 113
-    .line 114
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 115
-    .line 116
-    const/16 v1, 0x1d
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 117
-    .line 118
-    if-lt v0, v1, :cond_1
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->createRadialGlow(I)Landroid/graphics/drawable/GradientDrawable;
 
-    .line 119
-    .line 120
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+    move-result-object v2
 
-    .line 121
-    .line 122
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
+    invoke-virtual {v1, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
 
-    .line 123
-    .line 124
-    invoke-virtual {v0}, Landroid/widget/ProgressBar;->getProgressDrawable()Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 125
-    .line 126
-    .line 127
-    move-result-object v0
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
 
-    .line 128
-    const/4 v1, 0x0
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->createOrbitRing(I)Landroid/graphics/drawable/GradientDrawable;
 
-    .line 129
-    invoke-virtual {v0, v1}, Landroid/graphics/drawable/Drawable;->setColorFilter(Landroid/graphics/ColorFilter;)V
+    move-result-object v2
 
-    .line 130
-    .line 131
-    .line 132
-    :cond_1
+    invoke-virtual {v1, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
+
+    const/4 v3, 0x0
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setProgressBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
+
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+
+    check-cast v1, Landroid/widget/ProgressBar;
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setProgressTintList(Landroid/content/res/ColorStateList;)V
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setProgressBackgroundTintList(Landroid/content/res/ColorStateList;)V
+
+    invoke-virtual {v1, v3}, Landroid/widget/ProgressBar;->setIndeterminateTintList(Landroid/content/res/ColorStateList;)V
+
     return-void
 .end method
 
@@ -542,49 +366,41 @@
 .method private cancelAnimators()V
     .locals 1
 
-    .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->orbitAnimator:Landroid/animation/ValueAnimator;
 
-    .line 2
-    .line 3
     if-eqz v0, :cond_0
 
-    .line 4
-    .line 5
     invoke-virtual {v0}, Landroid/animation/ValueAnimator;->cancel()V
 
-    .line 6
-    .line 7
-    .line 8
     :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->progressAnimator:Landroid/animation/ObjectAnimator;
 
-    .line 9
-    .line 10
     if-eqz v0, :cond_1
 
-    .line 11
-    .line 12
     invoke-virtual {v0}, Landroid/animation/Animator;->cancel()V
 
-    .line 13
-    .line 14
-    .line 15
     :cond_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->glowPulseAnimator:Landroid/animation/ValueAnimator;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->rightProgressAnimator:Landroid/animation/ObjectAnimator;
 
-    .line 16
-    .line 17
     if-eqz v0, :cond_2
 
-    .line 18
-    .line 19
+    invoke-virtual {v0}, Landroid/animation/Animator;->cancel()V
+
+    :cond_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->glowPulseAnimator:Landroid/animation/ValueAnimator;
+
+    if-eqz v0, :cond_3
+
     invoke-virtual {v0}, Landroid/animation/ValueAnimator;->cancel()V
 
-    .line 20
-    .line 21
-    .line 22
-    :cond_2
+    :cond_3
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->typewriterAnimator:Landroid/animation/ValueAnimator;
+
+    if-eqz v0, :cond_4
+
+    invoke-virtual {v0}, Landroid/animation/ValueAnimator;->cancel()V
+
+    :cond_4
     return-void
 .end method
 
@@ -1954,108 +1770,92 @@
     :array_0
     .array-data 4
         0x3f800000    # 1.0f
-        0x3f8ccccd    # 1.1f
+        0x3f87ae14    # 1.06f
         0x3f800000    # 1.0f
     .end array-data
 .end method
 
 .method private startLoadingAnimation()V
-    .locals 3
+    .locals 5
 
-    .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 2
-    .line 3
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
 
-    .line 4
-    .line 5
     const/4 v1, 0x0
 
-    .line 6
     const/16 v2, 0x64
 
-    .line 7
-    .line 8
     filled-new-array {v1, v2}, [I
 
-    .line 9
-    .line 10
-    .line 11
     move-result-object v1
 
-    .line 12
     const-string v2, "progress"
 
-    .line 13
-    .line 14
     invoke-static {v0, v2, v1}, Landroid/animation/ObjectAnimator;->ofInt(Ljava/lang/Object;Ljava/lang/String;[I)Landroid/animation/ObjectAnimator;
 
-    .line 15
-    .line 16
-    .line 17
     move-result-object v0
 
-    .line 18
     iput-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->progressAnimator:Landroid/animation/ObjectAnimator;
 
-    .line 19
-    .line 20
-    const-wide/16 v1, 0x898
+    const-wide/16 v1, 0x6d6
 
-    .line 21
-    .line 22
     invoke-virtual {v0, v1, v2}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
 
-    .line 23
-    .line 24
-    .line 25
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->progressAnimator:Landroid/animation/ObjectAnimator;
+    new-instance v3, Landroid/view/animation/AccelerateDecelerateInterpolator;
 
-    .line 26
-    .line 27
-    new-instance v1, Landroid/view/animation/AccelerateDecelerateInterpolator;
+    invoke-direct {v3}, Landroid/view/animation/AccelerateDecelerateInterpolator;-><init>()V
 
-    .line 28
-    .line 29
-    invoke-direct {v1}, Landroid/view/animation/AccelerateDecelerateInterpolator;-><init>()V
+    invoke-virtual {v0, v3}, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
 
-    .line 30
-    .line 31
-    .line 32
-    invoke-virtual {v0, v1}, Landroid/animation/Animator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+    const-wide/16 v1, 0x384
 
-    .line 33
-    .line 34
-    .line 35
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->progressAnimator:Landroid/animation/ObjectAnimator;
+    invoke-virtual {v0, v1, v2}, Landroid/animation/ObjectAnimator;->setStartDelay(J)V
 
-    .line 36
-    .line 37
     new-instance v1, Lorg/levimc/launcher/ui/activities/SplashActivity$1;
 
-    .line 38
-    .line 39
     invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/activities/SplashActivity$1;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;)V
 
-    .line 40
-    .line 41
-    .line 42
     invoke-virtual {v0, v1}, Landroid/animation/Animator;->addListener(Landroid/animation/Animator$AnimatorListener;)V
 
-    .line 43
-    .line 44
-    .line 45
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->progressAnimator:Landroid/animation/ObjectAnimator;
-
-    .line 46
-    .line 47
     invoke-virtual {v0}, Landroid/animation/ObjectAnimator;->start()V
 
-    .line 48
-    .line 49
-    .line 50
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+
+    const/4 v1, 0x0
+
+    const/16 v2, 0x64
+
+    filled-new-array {v1, v2}, [I
+
+    move-result-object v1
+
+    const-string v2, "progress"
+
+    invoke-static {v0, v2, v1}, Landroid/animation/ObjectAnimator;->ofInt(Ljava/lang/Object;Ljava/lang/String;[I)Landroid/animation/ObjectAnimator;
+
+    move-result-object v0
+
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->rightProgressAnimator:Landroid/animation/ObjectAnimator;
+
+    const-wide/16 v1, 0x6d6
+
+    invoke-virtual {v0, v1, v2}, Landroid/animation/ObjectAnimator;->setDuration(J)Landroid/animation/ObjectAnimator;
+
+    new-instance v3, Landroid/view/animation/AccelerateDecelerateInterpolator;
+
+    invoke-direct {v3}, Landroid/view/animation/AccelerateDecelerateInterpolator;-><init>()V
+
+    invoke-virtual {v0, v3}, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+
+    const-wide/16 v1, 0x384
+
+    invoke-virtual {v0, v1, v2}, Landroid/animation/ObjectAnimator;->setStartDelay(J)V
+
+    invoke-virtual {v0}, Landroid/animation/ObjectAnimator;->start()V
+
     return-void
 .end method
 
@@ -2261,394 +2061,254 @@
 .end method
 
 .method private startSplashSequence()V
-    .locals 8
+    .locals 6
 
-    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->startTitleReveal()V
+
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 2
-    .line 3
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 4
-    .line 5
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 6
-    .line 7
-    .line 8
     move-result-object v0
 
-    .line 9
     const/high16 v1, 0x3f800000    # 1.0f
 
-    .line 10
-    .line 11
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 12
-    .line 13
-    .line 14
     move-result-object v0
 
-    .line 15
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 16
-    .line 17
-    .line 18
     move-result-object v0
 
-    .line 19
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 20
-    .line 21
-    .line 22
     move-result-object v0
 
-    .line 23
-    const-wide/16 v2, 0x258
+    const-wide/16 v2, 0x1f4
 
-    .line 24
-    .line 25
     invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
 
-    .line 26
-    .line 27
-    .line 28
     move-result-object v0
 
-    .line 29
-    new-instance v4, Lj1/a;
+    new-instance v4, Landroid/view/animation/DecelerateInterpolator;
 
-    .line 30
-    .line 31
-    const/4 v5, 0x2
+    invoke-direct {v4}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
 
-    .line 32
-    invoke-direct {v4, v5}, Lj1/a;-><init>(I)V
-
-    .line 33
-    .line 34
-    .line 35
     invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
 
-    .line 36
-    .line 37
-    .line 38
     move-result-object v0
 
-    .line 39
     invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 40
-    .line 41
-    .line 42
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 43
-    .line 44
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
 
-    .line 45
-    .line 46
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 47
-    .line 48
-    .line 49
     move-result-object v0
 
-    .line 50
+    const v1, 0x3f666666    # 0.9f
+
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 51
-    .line 52
-    .line 53
     move-result-object v0
 
-    .line 54
+    const/high16 v1, 0x3f800000    # 1.0f
+
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 55
-    .line 56
-    .line 57
     move-result-object v0
 
-    .line 58
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 59
-    .line 60
-    .line 61
     move-result-object v0
 
-    .line 62
-    const-wide/16 v4, 0x1f4
+    const-wide/16 v2, 0x2bc
 
-    .line 63
-    .line 64
-    invoke-virtual {v0, v4, v5}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
 
-    .line 65
-    .line 66
-    .line 67
     move-result-object v0
 
-    .line 68
-    const-wide/16 v6, 0xc8
+    const-wide/16 v2, 0x50
 
-    .line 69
-    .line 70
-    invoke-virtual {v0, v6, v7}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
 
-    .line 71
-    .line 72
-    .line 73
     move-result-object v0
 
-    .line 74
-    new-instance v6, Lj1/a;
+    new-instance v4, Landroid/view/animation/DecelerateInterpolator;
 
-    .line 75
-    .line 76
-    const/4 v7, 0x2
+    invoke-direct {v4}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
 
-    .line 77
-    invoke-direct {v6, v7}, Lj1/a;-><init>(I)V
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
 
-    .line 78
-    .line 79
-    .line 80
-    invoke-virtual {v0, v6}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
-
-    .line 81
-    .line 82
-    .line 83
     move-result-object v0
 
-    .line 84
     invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 85
-    .line 86
-    .line 87
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 88
-    .line 89
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
 
-    .line 90
-    .line 91
-    new-instance v6, Lorg/levimc/launcher/ui/activities/u2;
-
-    .line 92
-    .line 93
-    invoke-direct {v6, p0, v7}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
-
-    .line 94
-    .line 95
-    .line 96
-    invoke-virtual {v0, v6}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
-
-    .line 97
-    .line 98
-    .line 99
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 100
-    .line 101
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
-
-    .line 102
-    .line 103
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 104
-    .line 105
-    .line 106
     move-result-object v0
 
-    .line 107
+    const/high16 v1, 0x3f800000    # 1.0f
+
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 108
-    .line 109
-    .line 110
     move-result-object v0
 
-    .line 111
-    const-wide/16 v6, 0x190
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 112
-    .line 113
-    invoke-virtual {v0, v6, v7}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
-
-    .line 114
-    .line 115
-    .line 116
     move-result-object v0
 
-    .line 117
-    invoke-virtual {v0, v6, v7}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 118
-    .line 119
-    .line 120
     move-result-object v0
 
-    .line 121
+    const-wide/16 v2, 0x258
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x78
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v4, Landroid/view/animation/OvershootInterpolator;
+
+    const v5, 0x3f99999a    # 1.2f
+
+    invoke-direct {v4, v5}, Landroid/view/animation/OvershootInterpolator;-><init>(F)V
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
     invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 122
-    .line 123
-    .line 124
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 125
-    .line 126
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
 
-    .line 127
-    .line 128
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 129
-    .line 130
-    .line 131
     move-result-object v0
 
-    .line 132
+    const v1, 0x3f4ccccd    # 0.8f
+
     invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 133
-    .line 134
-    .line 135
     move-result-object v0
 
-    .line 136
-    invoke-virtual {v0, v6, v7}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+    const/4 v1, 0x0
 
-    .line 137
-    .line 138
-    .line 139
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->translationY(F)Landroid/view/ViewPropertyAnimator;
+
     move-result-object v0
 
-    .line 140
-    invoke-virtual {v0, v6, v7}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+    const-wide/16 v2, 0x1c2
 
-    .line 141
-    .line 142
-    .line 143
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
     move-result-object v0
 
-    .line 144
-    new-instance v1, Lorg/levimc/launcher/ui/activities/u2;
+    const-wide/16 v2, 0x28a
 
-    .line 145
-    .line 146
-    const/4 v6, 0x3
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
 
-    .line 147
-    invoke-direct {v1, p0, v6}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
-
-    .line 148
-    .line 149
-    .line 150
-    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
-
-    .line 151
-    .line 152
-    .line 153
     move-result-object v0
 
-    .line 154
+    new-instance v4, Landroid/view/animation/DecelerateInterpolator;
+
+    invoke-direct {v4}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
     invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
 
-    .line 155
-    .line 156
-    .line 157
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 158
-    .line 159
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
-
-    .line 160
-    .line 161
-    new-instance v1, Lorg/levimc/launcher/ui/activities/u2;
-
-    .line 162
-    .line 163
-    const/4 v6, 0x4
-
-    .line 164
-    invoke-direct {v1, p0, v6}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
-
-    .line 165
-    .line 166
-    .line 167
-    invoke-virtual {v0, v1, v4, v5}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 168
-    .line 169
-    .line 170
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 171
-    .line 172
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
 
-    .line 173
-    .line 174
-    new-instance v1, Lorg/levimc/launcher/ui/activities/u2;
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
-    .line 175
-    .line 176
-    const/4 v4, 0x5
+    move-result-object v0
 
-    .line 177
-    invoke-direct {v1, p0, v4}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
+    const/high16 v1, 0x3f800000    # 1.0f
 
-    .line 178
-    .line 179
-    .line 180
-    const-wide/16 v4, 0x2bc
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
 
-    .line 181
-    .line 182
-    invoke-virtual {v0, v1, v4, v5}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
+    move-result-object v0
 
-    .line 183
-    .line 184
-    .line 185
+    const-wide/16 v2, 0x15e
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x320
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 186
-    .line 187
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const/high16 v1, 0x3f800000    # 1.0f
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x15e
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x320
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 188
-    .line 189
-    new-instance v1, Lorg/levimc/launcher/ui/activities/u2;
+    new-instance v5, Lorg/levimc/launcher/ui/activities/u2;
 
-    .line 190
-    .line 191
     const/4 v4, 0x6
 
-    .line 192
-    invoke-direct {v1, p0, v4}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
+    invoke-direct {v5, p0, v4}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
 
-    .line 193
-    .line 194
-    .line 195
-    invoke-virtual {v0, v1, v2, v3}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
+    const-wide/16 v2, 0x2bc
 
-    .line 196
-    .line 197
-    .line 198
+    invoke-virtual {v0, v5, v2, v3}, Landroid/view/View;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->startLoadingAnimation()V
+
     return-void
 .end method
 
@@ -2936,6 +2596,331 @@
 .end method
 
 
+.method private playCompletionAnimation()V
+    .locals 6
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->navigated:Z
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->glowPulseAnimator:Landroid/animation/ValueAnimator;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Landroid/animation/ValueAnimator;->cancel()V
+
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0xfa
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const v4, 0x3fb33333    # 1.4f
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x1f4
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v5, Landroid/view/animation/DecelerateInterpolator;
+
+    invoke-direct {v5}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
+
+    invoke-virtual {v0, v5}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const v4, 0x40066666    # 2.1f
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x208
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v5, Landroid/view/animation/DecelerateInterpolator;
+
+    invoke-direct {v5}, Landroid/view/animation/DecelerateInterpolator;-><init>()V
+
+    invoke-virtual {v0, v5}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const v4, 0x3f970a3d    # 1.18f
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleX(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v4}, Landroid/view/ViewPropertyAnimator;->scaleY(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x12c
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v5, Landroid/view/animation/OvershootInterpolator;
+
+    const v4, 0x3fb33333    # 1.4f
+
+    invoke-direct {v5, v4}, Landroid/view/animation/OvershootInterpolator;-><init>(F)V
+
+    invoke-virtual {v0, v5}, Landroid/view/ViewPropertyAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
+
+    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0xdc
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    invoke-virtual {v0}, Landroidx/constraintlayout/widget/ConstraintLayout;->animate()Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x104
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setStartDelay(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    const-wide/16 v2, 0x12c
+
+    invoke-virtual {v0, v2, v3}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    new-instance v5, Lorg/levimc/launcher/ui/activities/u2;
+
+    const/4 v4, 0x1
+
+    invoke-direct {v5, p0, v4}, Lorg/levimc/launcher/ui/activities/u2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;I)V
+
+    invoke-virtual {v0, v5}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    return-void
+.end method
+
+.method private startTitleReveal()V
+    .locals 4
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->titleText:Ljava/lang/String;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    const/4 v2, 0x0
+
+    filled-new-array {v2, v1}, [I
+
+    move-result-object v1
+
+    invoke-static {v1}, Landroid/animation/ValueAnimator;->ofInt([I)Landroid/animation/ValueAnimator;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->typewriterAnimator:Landroid/animation/ValueAnimator;
+
+    const-wide/16 v2, 0x3b6
+
+    invoke-virtual {v1, v2, v3}, Landroid/animation/ValueAnimator;->setDuration(J)Landroid/animation/ValueAnimator;
+
+    const-wide/16 v2, 0x78
+
+    invoke-virtual {v1, v2, v3}, Landroid/animation/ValueAnimator;->setStartDelay(J)V
+
+    new-instance v2, Landroid/view/animation/LinearInterpolator;
+
+    invoke-direct {v2}, Landroid/view/animation/LinearInterpolator;-><init>()V
+
+    invoke-virtual {v1, v2}, Landroid/animation/ValueAnimator;->setInterpolator(Landroid/animation/TimeInterpolator;)V
+
+    new-instance v2, Lorg/levimc/launcher/ui/activities/SplashActivity$2;
+
+    invoke-direct {v2, p0}, Lorg/levimc/launcher/ui/activities/SplashActivity$2;-><init>(Lorg/levimc/launcher/ui/activities/SplashActivity;)V
+
+    invoke-virtual {v1, v2}, Landroid/animation/ValueAnimator;->addUpdateListener(Landroid/animation/ValueAnimator$AnimatorUpdateListener;)V
+
+    invoke-virtual {v1}, Landroid/animation/ValueAnimator;->start()V
+
+    return-void
+.end method
+
+.method private updateTitleReveal(Landroid/animation/ValueAnimator;)V
+    .locals 3
+
+    invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, Ljava/lang/Integer;
+
+    invoke-virtual {p1}, Ljava/lang/Integer;->intValue()I
+
+    move-result p1
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->titleText:Ljava/lang/String;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Ljava/lang/String;->length()I
+
+    move-result v1
+
+    if-le p1, v1, :cond_1
+
+    :cond_0
+    return-void
+
+    :cond_1
+    const/4 v1, 0x0
+
+    invoke-virtual {v0, v1, p1}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    move-result-object p1
+
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
+
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    return-void
+.end method
+
+.method public static synthetic T(Lorg/levimc/launcher/ui/activities/SplashActivity;Landroid/animation/ValueAnimator;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/SplashActivity;->updateTitleReveal(Landroid/animation/ValueAnimator;)V
+
+    return-void
+.end method
+
+
 # virtual methods
 .method public onCreate(Landroid/os/Bundle;)V
     .locals 2
@@ -2986,197 +2971,132 @@
     .line 24
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->applySplashTheme()V
 
-    .line 25
-    .line 26
-    .line 27
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 28
-    .line 29
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
+
+    move-result-object p1
+
+    invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->titleText:Ljava/lang/String;
+
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
+
+    const-string v0, ""
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
 
-    .line 30
-    .line 31
     const/4 v0, 0x0
 
-    .line 32
     invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 33
-    .line 34
-    .line 35
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 36
-    .line 37
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
 
-    .line 38
-    .line 39
-    const v1, 0x3f4ccccd    # 0.8f
+    const v1, 0x3f51eb85    # 0.82f
 
-    .line 40
-    .line 41
-    .line 42
     invoke-virtual {p1, v1}, Landroid/view/View;->setScaleX(F)V
 
-    .line 43
-    .line 44
-    .line 45
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 46
-    .line 47
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->imgLeaf:Landroid/widget/ImageView;
 
-    .line 48
-    .line 49
     invoke-virtual {p1, v1}, Landroid/view/View;->setScaleY(F)V
 
-    .line 50
-    .line 51
-    .line 52
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 53
-    .line 54
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 55
-    .line 56
     invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 57
-    .line 58
-    .line 59
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 60
-    .line 61
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 62
-    .line 63
-    const/high16 v1, 0x3f000000    # 0.5f
+    const v1, 0x3f19999a    # 0.6f
 
-    .line 64
-    .line 65
     invoke-virtual {p1, v1}, Landroid/view/View;->setScaleX(F)V
 
-    .line 66
-    .line 67
-    .line 68
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 69
-    .line 70
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->logoGlow:Landroid/view/View;
 
-    .line 71
-    .line 72
     invoke-virtual {p1, v1}, Landroid/view/View;->setScaleY(F)V
 
-    .line 73
-    .line 74
-    .line 75
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 76
-    .line 77
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
 
-    .line 78
-    .line 79
     invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 80
-    .line 81
-    .line 82
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 83
-    .line 84
-    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
 
-    .line 85
-    .line 86
-    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
+    const v1, 0x3f333333    # 0.7f
 
-    .line 87
-    .line 88
-    .line 89
+    invoke-virtual {p1, v1}, Landroid/view/View;->setScaleX(F)V
+
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 90
-    .line 91
-    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitRing:Landroid/view/View;
 
-    .line 92
-    .line 93
-    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
+    invoke-virtual {p1, v1}, Landroid/view/View;->setScaleY(F)V
 
-    .line 94
-    .line 95
-    .line 96
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 97
-    .line 98
-    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvAppName:Landroid/widget/TextView;
-
-    .line 99
-    .line 100
-    const/high16 v1, 0x41a00000    # 20.0f
-
-    .line 101
-    .line 102
-    invoke-virtual {p1, v1}, Landroid/view/View;->setTranslationY(F)V
-
-    .line 103
-    .line 104
-    .line 105
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
-
-    .line 106
-    .line 107
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
 
-    .line 108
-    .line 109
     invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 110
-    .line 111
-    .line 112
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 113
-    .line 114
     iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->loadingBar:Landroid/widget/ProgressBar;
 
-    .line 115
-    .line 116
     const/4 v1, 0x0
 
-    .line 117
     invoke-virtual {p1, v1}, Landroid/widget/ProgressBar;->setProgress(I)V
 
-    .line 118
-    .line 119
-    .line 120
     iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
 
-    .line 121
-    .line 122
-    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
 
-    .line 123
-    .line 124
     invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 125
-    .line 126
-    .line 127
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->orbitDot:Landroid/view/View;
+
+    check-cast p1, Landroid/widget/ProgressBar;
+
+    invoke-virtual {p1, v1}, Landroid/widget/ProgressBar;->setProgress(I)V
+
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
+
+    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
+
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/SplashActivity;->binding:Lorg/levimc/launcher/databinding/ActivitySplashBinding;
+
+    iget-object p1, p1, Lorg/levimc/launcher/databinding/ActivitySplashBinding;->tvPreparing:Landroid/widget/TextView;
+
+    const v1, 0x41000000    # 8.0f
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->setTranslationY(F)V
+
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/SplashActivity;->warmUpStorageAndVersions()V
 
     .line 128
