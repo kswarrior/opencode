@@ -2056,6 +2056,8 @@
 
     if-eqz v1, :dots_ok
 
+    invoke-virtual {v1}, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->stop()V
+
     :dots_ok
     iget v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->lastProgress:I
 
@@ -3025,11 +3027,9 @@
 
     if-eqz v0, :done
 
-    const/16 p1, 0x26
-
     invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setProgress(I)V
 
-    const/4 v1, 0x0
+    iget-boolean v1, p0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->launchFailed:Z
 
     invoke-virtual {v0, v1}, Lorg/levimc/launcher/ui/views/LaunchStepsView;->setFailed(Z)V
 

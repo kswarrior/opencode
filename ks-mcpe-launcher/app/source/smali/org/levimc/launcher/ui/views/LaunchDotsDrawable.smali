@@ -257,10 +257,6 @@
 .method public final start()V
     .locals 1
 
-    const-string v0, "DOTSTART"
-
-    invoke-static {v0, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
     iget-object v0, p0, Lorg/levimc/launcher/ui/views/LaunchDotsDrawable;->animator:Landroid/animation/ValueAnimator;
 
     if-eqz v0, :cond_0
@@ -294,10 +290,6 @@
 
 .method public onAnimationUpdate(Landroid/animation/ValueAnimator;)V
     .locals 2
-
-    const-string v0, "DOTUPD"
-
-    invoke-static {v0, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
 
     invoke-virtual {p1}, Landroid/animation/ValueAnimator;->getAnimatedValue()Ljava/lang/Object;
 
