@@ -8881,7 +8881,7 @@
 
     move-result-object v2
 
-    goto :goto_set_text
+    goto :cond_set_text
 
     :cond_manager
     invoke-virtual {v1}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
