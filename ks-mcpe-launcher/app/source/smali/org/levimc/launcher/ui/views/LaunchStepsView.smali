@@ -384,7 +384,7 @@
 
     sub-int/2addr v0, v1
 
-    if-ltz v0, :width_ok
+    if-gez v0, :width_ok
 
     const/4 v0, 0x0
 
@@ -704,7 +704,7 @@
 
     if-ge v2, v3, :all_done
 
-    if-gtz v2, :return
+    if-lez v2, :return
 
     goto :loop_init
 
@@ -736,7 +736,7 @@
 
     if-gt v0, v3, :mark_done
 
-    if-ltz v5, :next
+    if-gez v5, :next
 
     move v5, v2
 
@@ -755,7 +755,7 @@
     goto :loop
 
     :after_loop
-    if-ltz v5, :set_state
+    if-gez v5, :set_state
 
     goto :return
 
