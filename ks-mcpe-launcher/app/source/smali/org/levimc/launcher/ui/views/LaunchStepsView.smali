@@ -211,6 +211,8 @@
     const/16 v3, 0xb
     new-array v3, v3, [I
     iput-object v3, p0, Lorg/levimc/launcher/ui/views/LaunchStepsView;->states:[I
+
+    return-void
 .end method
 
 # virtual methods
