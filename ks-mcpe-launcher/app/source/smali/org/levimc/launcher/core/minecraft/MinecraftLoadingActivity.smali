@@ -3766,25 +3766,6 @@
     .line 171
     .line 172
     .line 173
-    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
-
-    move-result-object p1
-
-    const-string v0, "DEBUG_PROGRESS"
-
-    const/4 v1, -0x1
-
-    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->getIntExtra(Ljava/lang/String;I)I
-
-    move-result p1
-
-    if-ltz p1, :do_start
-
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->renderSteps(I)V
-
-    return-void
-
-    :do_start
     invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->startPreparingAfterFirstDraw()V
 
     .line 174
