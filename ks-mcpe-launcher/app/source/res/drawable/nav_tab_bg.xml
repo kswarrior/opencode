@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple android:color="?android:colorControlHighlight"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <selector>
+            <item android:state_selected="true">
+                <layer-list>
+                    <item>
+                        <shape android:shape="rectangle">
+                            <solid android:color="@android:color/transparent" />
+                        </shape>
+                    </item>
+                    <item android:gravity="bottom">
+                        <shape android:shape="rectangle">
+                            <size android:height="2.0dp" />
+                            <solid android:color="@color/primary" />
+                        </shape>
+                    </item>
+                </layer-list>
+            </item>
+            <item android:drawable="@android:color/transparent" />
+        </selector>
+    </item>
+</ripple>
