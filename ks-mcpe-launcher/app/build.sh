@@ -251,6 +251,9 @@ if "KS MCPE Launcher | created by KS Warrior" not in settings_layout:
 if not (root / "assets/default_background.jpg").is_file():
     sys.exit("source is missing the bundled default background")
 
+if (root / "assets/launcher/news.json").exists():
+    sys.exit("source still contains the dead news feed asset")
+
 smali_files = list(root.glob("smali/**/*.smali"))
 for path in smali_files:
     text = path.read_text(encoding="utf-8", errors="ignore")
