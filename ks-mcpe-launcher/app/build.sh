@@ -248,6 +248,23 @@ settings_layout = (root / "res/layout/activity_settings.xml").read_text(encoding
 if "KS MCPE Launcher | created by KS Warrior" not in settings_layout:
     sys.exit("source About tab is missing the KS MCPE Launcher brand line")
 
+home_layout = (root / "res/layout/activity_main.xml").read_text(encoding="utf-8")
+if "@id/minecraft_title_text" not in home_layout:
+    sys.exit("source home layout is missing minecraft_title_text")
+
+main_binding = (root / "smali/org/levimc/launcher/databinding/ActivityMainBinding.smali").read_text(
+    encoding="utf-8"
+)
+for match in re.finditer(
+    r"move-object/from16 (v\d+), v2\s*\n\s*check-cast \1, [^\n;]+;\s*\n"
+    r"\s*\.line \d+\s*\n\s*if-eqz \1, :cond_0",
+    main_binding,
+):
+    sys.exit(
+        "source ActivityMainBinding still requires a removed optional view: "
+        + match.group(1)
+    )
+
 if not (root / "assets/default_background.jpg").is_file():
     sys.exit("source is missing the bundled default background")
 
