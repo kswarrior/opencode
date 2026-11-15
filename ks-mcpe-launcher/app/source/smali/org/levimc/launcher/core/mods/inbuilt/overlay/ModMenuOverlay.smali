@@ -1139,6 +1139,66 @@
     invoke-virtual {v4, v5}, Landroid/widget/TextView;->setTextColor(I)V
 
     :cond_a
+    if-eqz v3, :cond_b
+
+    invoke-direct {p0, v3, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applySettingsTabStyle(Landroid/widget/TextView;Z)V
+
+    :cond_b
+    if-eqz v4, :cond_c
+
+    invoke-direct {p0, v4, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->applySettingsTabStyle(Landroid/widget/TextView;Z)V
+
+    :cond_c
+    return-void
+.end method
+
+.method private applySettingsTabStyle(Landroid/widget/TextView;Z)V
+    .locals 5
+
+    if-nez p1, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->getAccentColor()I
+
+    move-result v0
+
+    if-eqz p2, :cond_1
+
+    new-instance v1, Landroid/graphics/drawable/GradientDrawable;
+
+    invoke-direct {v1}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
+
+    const/16 v2, 0x10
+
+    invoke-direct {p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->dp(I)I
+
+    move-result v2
+
+    int-to-float v2, v2
+
+    invoke-virtual {v1, v2}, Landroid/graphics/drawable/GradientDrawable;->setCornerRadius(F)V
+
+    invoke-virtual {v1, v0}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
+
+    invoke-virtual {p1, v1}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    const/4 v0, -0x1
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setTextColor(I)V
+
+    return-void
+
+    :cond_1
+    sget v0, Lorg/levimc/launcher/R$drawable;->bg_tab_unselected:I
+
+    invoke-virtual {p1, v0}, Landroid/view/View;->setBackgroundResource(I)V
+
+    const v0, -0x574f48
+
+    invoke-virtual {p1, v0}, Landroid/widget/TextView;->setTextColor(I)V
+
     return-void
 .end method
 
@@ -11167,11 +11227,12 @@
 
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->navHudEditor:Landroid/widget/TextView;
 
-    if-eq p1, v0, :cond_hud
+    if-ne p1, v0, :cond_hud
 
-    const/4 p3, 0x1
+    return-void
 
     :cond_hud
+    const/4 p3, 0x1
     .line 1
     if-eqz p3, :cond_0
 
