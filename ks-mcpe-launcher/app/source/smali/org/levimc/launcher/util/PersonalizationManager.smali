@@ -447,29 +447,6 @@
 
     iget-object v1, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
 
-    const-string v0, "default_bg_initialized"
-
-    const/4 v2, 0x0
-
-    invoke-interface {v1, v0, v2}, Landroid/content/SharedPreferences;->getBoolean(Ljava/lang/String;Z)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_0
-
-    return-void
-
-    :cond_0
-    invoke-interface {v1}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
-
-    move-result-object v3
-
-    const/4 v4, 0x1
-
-    invoke-interface {v3, v0, v4}, Landroid/content/SharedPreferences$Editor;->putBoolean(Ljava/lang/String;Z)Landroid/content/SharedPreferences$Editor;
-
-    invoke-interface {v3}, Landroid/content/SharedPreferences$Editor;->apply()V
-
     const-string v0, "bg_image_path"
 
     const/4 v2, 0x0
@@ -480,9 +457,21 @@
 
     if-eqz v0, :cond_1
 
+    new-instance v2, Ljava/io/File;
+
+    invoke-direct {v2, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    invoke-virtual {v2}, Ljava/io/File;->exists()Z
+
+    move-result v2
+
+    if-eqz v2, :cond_1
+
     return-void
 
     :cond_1
+    const/4 v4, 0x1
+
     const-string v0, "bg_image_blur"
 
     invoke-interface {v1, v0}, Landroid/content/SharedPreferences;->contains(Ljava/lang/String;)Z
@@ -5203,6 +5192,8 @@
     .line 45
     invoke-direct {p0, v1}, Lorg/levimc/launcher/util/PersonalizationManager;->deleteBackgroundFile(Ljava/lang/String;)V
 
+    invoke-direct {p0}, Lorg/levimc/launcher/util/PersonalizationManager;->ensureDefaultBackground()V
+
     .line 46
     .line 47
     .line 48
@@ -5335,7 +5326,7 @@
 .end method
 
 .method public getBackgroundImagePath()Ljava/lang/String;
-    .locals 3
+    .locals 4
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/util/PersonalizationManager;->prefs:Landroid/content/SharedPreferences;
@@ -5357,6 +5348,25 @@
     move-result-object v0
 
     .line 10
+    if-nez v0, :cond_0
+
+    new-instance v0, Ljava/io/File;
+
+    iget-object v3, p0, Lorg/levimc/launcher/util/PersonalizationManager;->context:Landroid/content/Context;
+
+    invoke-virtual {v3}, Landroid/content/Context;->getFilesDir()Ljava/io/File;
+
+    move-result-object v3
+
+    const-string v2, "default_background.jpg"
+
+    invoke-direct {v0, v3, v2}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
+
+    invoke-virtual {v0}, Ljava/io/File;->getAbsolutePath()Ljava/lang/String;
+
+    move-result-object v0
+
+    :cond_0
     return-object v0
 .end method
 
