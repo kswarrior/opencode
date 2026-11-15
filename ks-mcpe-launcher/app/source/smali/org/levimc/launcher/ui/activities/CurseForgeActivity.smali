@@ -19,7 +19,13 @@
 # instance fields
 .field private adapter:Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter;
 
+.field private btnCategory:Lcom/google/android/material/button/MaterialButton;
+
 .field private btnSort:Lcom/google/android/material/button/MaterialButton;
+
+.field private btnSource:Lcom/google/android/material/button/MaterialButton;
+
+.field private contentContainer:Landroid/widget/FrameLayout;
 
 .field private final categories:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
@@ -39,6 +45,8 @@
 
 .field private currentSort:Lorg/levimc/launcher/ui/activities/CurseForgeActivity$SortOption;
 
+.field private currentSource:I
+
 .field private emptyMessage:Landroid/widget/TextView;
 
 .field private final handler:Landroid/os/Handler;
@@ -51,6 +59,8 @@
 
 .field private searchBox:Landroid/widget/EditText;
 
+.field private selectedCategoryIndex:I
+
 .field private final sortOptions:Ljava/util/List;
     .annotation system Ldalvik/annotation/Signature;
         value = {
@@ -62,6 +72,8 @@
 .end field
 
 .field private totalPages:I
+
+.field private webView:Landroid/webkit/WebView;
 
 
 # direct methods
@@ -335,7 +347,7 @@
 
     .line 10
     .line 11
-    sget v0, Lorg/levimc/launcher/R$id;->category_group:I
+    sget v0, Lorg/levimc/launcher/R$id;->discover_source_button:I
 
     .line 12
     .line 13
@@ -347,11 +359,21 @@
     move-result-object v0
 
     .line 17
-    check-cast v0, Landroid/widget/RadioGroup;
+    check-cast v0, Lcom/google/android/material/button/MaterialButton;
 
     .line 18
     .line 19
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->categoryGroup:Landroid/widget/RadioGroup;
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->btnSource:Lcom/google/android/material/button/MaterialButton;
+
+    sget v0, Lorg/levimc/launcher/R$id;->discover_category_button:I
+
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/google/android/material/button/MaterialButton;
+
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->btnCategory:Lcom/google/android/material/button/MaterialButton;
 
     .line 20
     .line 21
