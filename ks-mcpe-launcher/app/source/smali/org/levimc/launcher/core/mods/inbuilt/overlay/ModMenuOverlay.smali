@@ -874,8 +874,6 @@
 
     int-to-float v2, v2
 
-    invoke-virtual {v0, v2}, Landroid/view/View;->setTranslationX(F)V
-
     invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
     move-result-object v3
@@ -916,8 +914,6 @@
     int-to-float v2, v2
 
     neg-float v2, v2
-
-    invoke-virtual {v1, v2}, Landroid/view/View;->setTranslationX(F)V
 
     invoke-virtual {v1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
 
