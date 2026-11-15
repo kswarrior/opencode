@@ -891,6 +891,15 @@
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 51
+    iget-object v0, p1, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter$VH;->managementIcon:Landroid/widget/ImageView;
+
+    new-instance v1, Lorg/levimc/launcher/ui/activities/InstanceManagementClickListener;
+
+    invoke-direct {v1, p0, p2}, Lorg/levimc/launcher/ui/activities/InstanceManagementClickListener;-><init>(Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;Lorg/levimc/launcher/core/versions/GameVersion;)V
+
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 52
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     new-instance v1, Lorg/levimc/launcher/ui/activities/k1;
@@ -901,7 +910,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 52
+    .line 53
     iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     invoke-static {p1}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
