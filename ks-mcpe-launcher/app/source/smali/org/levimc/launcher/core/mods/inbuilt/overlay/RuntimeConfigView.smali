@@ -11824,7 +11824,9 @@
 
     .line 16
     .line 17
-    const v2, -0xb51f60
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->getAccentColor()I
+
+    move-result v2
 
     .line 18
     .line 19
@@ -12115,7 +12117,9 @@
     .line 9
     .line 10
     .line 11
-    const p1, -0xb51f60
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->getAccentColor()I
+
+    move-result p1
 
     .line 12
     .line 13
