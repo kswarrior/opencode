@@ -1,0 +1,921 @@
+*** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+Tombstone maker: 'xCrash 3.1.0'
+Crash type: 'java'
+Start time: '2026-11-15T09:13:54.388+0530'
+Crash time: '2026-11-15T09:13:58.869+0530'
+App ID: 'com.ks.mcpe.launcher'
+App version: '1.6.1'
+Rooted: 'No'
+API level: '30'
+OS version: '11'
+ABI list: 'arm64-v8a,armeabi-v7a,armeabi'
+Manufacturer: 'vivo'
+Brand: 'vivo'
+Model: 'V2111'
+Build fingerprint: 'vivo/2111i/2111:11/RP1A.200720.012/compiler1022175534:user/release-keys'
+pid: 24659, tid: 24659, name: main  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+java.lang.RuntimeException: Unable to start activity ComponentInfo{com.ks.mcpe.launcher/org.levimc.launcher.ui.activities.MainActivity}: java.lang.NullPointerException: Missing required view with ID: com.ks.mcpe.launcher:id/minecraft_title_text
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3839)
+	at android.app.ActivityThread.handleLaunchActivity(ActivityThread.java:3997)
+	at android.app.servertransaction.LaunchActivityItem.execute(LaunchActivityItem.java:85)
+	at android.app.servertransaction.TransactionExecutor.executeCallbacks(TransactionExecutor.java:135)
+	at android.app.servertransaction.TransactionExecutor.execute(TransactionExecutor.java:95)
+	at android.app.ActivityThread$H.handleMessage(ActivityThread.java:2380)
+	at android.os.Handler.dispatchMessage(Handler.java:106)
+	at android.os.Looper.loop(Looper.java:257)
+	at android.app.ActivityThread.main(ActivityThread.java:8335)
+	at java.lang.reflect.Method.invoke(Native Method)
+	at com.android.internal.os.RuntimeInit$MethodAndArgsCaller.run(RuntimeInit.java:626)
+	at com.android.internal.os.ZygoteInit.main(ZygoteInit.java:1032)
+Caused by: java.lang.NullPointerException: Missing required view with ID: com.ks.mcpe.launcher:id/minecraft_title_text
+	at org.levimc.launcher.databinding.ActivityMainBinding.bind(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:305)
+	at org.levimc.launcher.databinding.ActivityMainBinding.inflate(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:4)
+	at org.levimc.launcher.databinding.ActivityMainBinding.inflate(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:1)
+	at org.levimc.launcher.ui.activities.MainActivity.onCreate(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:8)
+	at android.app.Activity.performCreate(Activity.java:8309)
+	at android.app.Activity.performCreate(Activity.java:8291)
+	at android.app.Instrumentation.callActivityOnCreate(Instrumentation.java:1359)
+	at android.app.ActivityThread.performLaunchActivity(ActivityThread.java:3812)
+	... 11 more
+
+logcat:
+--------- tail end of log main (/system/bin/logcat -b main -d -v threadtime -t 200 --pid 24659 *:D)
+--------- beginning of main
+11-15 09:13:53.573 24659 24659 E s.mcpe.launche: Not starting debugger since process cannot load the jdwp agent.
+11-15 09:13:54.236 24659 24714 E s.mcpe.launche: No package ID 6b found for ID 0x6b0b0013.
+11-15 09:13:54.908 24659 24726 E ion     : ioctl c0044901 failed with code -1: Invalid argument
+--------- tail end of log system (/system/bin/logcat -b system -d -v threadtime -t 50 --pid 24659 *:W)
+--------- tail end of log events (/system/bin/logcat -b events -d -v threadtime -t 50 --pid 24659 *:I)
+
+open files:
+    fd 0: /dev/null
+    fd 1: /dev/null
+    fd 2: /dev/null
+    fd 3: socket:[65446686]
+    fd 4: /sys/kernel/tracing/trace_marker
+    fd 5: /dev/binderfs/binder
+    fd 6: /apex/com.android.art/javalib/core-oj.jar
+    fd 7: /apex/com.android.art/javalib/core-libart.jar
+    fd 8: /apex/com.android.art/javalib/core-icu4j.jar
+    fd 9: /apex/com.android.art/javalib/okhttp.jar
+    fd 10: /apex/com.android.art/javalib/bouncycastle.jar
+    fd 11: /apex/com.android.art/javalib/apache-xml.jar
+    fd 12: /system/framework/framework.jar
+    fd 13: /system/framework/ext.jar
+    fd 14: /system/framework/telephony-common.jar
+    fd 15: /system/framework/voip-common.jar
+    fd 16: /system/framework/ims-common.jar
+    fd 17: /system/framework/framework-atb-backward-compatibility.jar
+    fd 18: /system/framework/vivo-framework.jar
+    fd 19: /system/framework/vivo-media.jar
+    fd 20: /system/framework/framework-adapter.jar
+    fd 21: /dev/null
+    fd 22: /system/framework/soc-framework.jar
+    fd 23: /system/framework/vivo-vgcclient.jar
+    fd 24: /dev/null
+    fd 25: /system/framework/mediatek-telephony-base.jar
+    fd 26: /system/framework/mediatek-telephony-common.jar
+    fd 27: /system/framework/mediatek-common.jar
+    fd 28: /system/framework/mediatek-framework.jar
+    fd 29: /system/framework/mediatek-ims-common.jar
+    fd 30: /system/framework/mediatek-ims-base.jar
+    fd 31: /system/framework/mediatek-telecom-common.jar
+    fd 32: /apex/com.android.conscrypt/javalib/conscrypt.jar
+    fd 33: /apex/com.android.media/javalib/updatable-media.jar
+    fd 34: /apex/com.android.mediaprovider/javalib/framework-mediaprovider.jar
+    fd 35: /apex/com.android.os.statsd/javalib/framework-statsd.jar
+    fd 36: /apex/com.android.permission/javalib/framework-permission.jar
+    fd 37: /apex/com.android.sdkext/javalib/framework-sdkextensions.jar
+    fd 38: /apex/com.android.wifi/javalib/framework-wifi.jar
+    fd 39: /apex/com.android.tethering/javalib/framework-tethering.jar
+    fd 40: /dev/null
+    fd 41: /system/framework/framework-res.apk
+    fd 42: /system/framework/vivo-res.apk
+    fd 43: /product/overlay/GmsConfigOverlayGSA.apk
+    fd 44: /product/overlay/GmsConfigOverlayPhotos.apk
+    fd 45: /product/overlay/GoogleExtServicesConfigOverlay.apk
+    fd 46: /product/overlay/GooglePermissionControllerFrameworkOverlay.apk
+    fd 47: /product/overlay/ModuleMetadataGoogleOverlay.apk
+    fd 48: /vendor/overlay/FrameworkResOverlay/FrameworkResOverlay.apk
+    fd 49: /product/overlay/GmsConfigOverlayCommon.apk
+    fd 50: /vendor/overlay/VivoFrameworksResRRO.apk
+    fd 51: /system/framework/mediatek-res.apk
+    fd 52: /dev/null
+    fd 53: /dev/null
+    fd 54: /dev/null
+    fd 55: /dev/null
+    fd 56: anon_inode:[eventfd]
+    fd 57: anon_inode:[eventpoll]
+    fd 58: /data/app/~~S-W6PmF2_j9wjwhe0MpzGw==/com.ks.mcpe.launcher-jY9I8cmbmIQcjorJNK77WA==/base.apk
+    fd 59: /product/overlay/NavigationBarMode3Button/NavigationBarMode3ButtonOverlay.apk
+    fd 60: anon_inode:[eventfd]
+    fd 61: /dev/ashmema6e1cffc-c23a-45d0-8a10-e07ad4c94513
+    fd 62: anon_inode:[eventpoll]
+    fd 63: anon_inode:[eventfd]
+    fd 64: /data/data/com.ks.mcpe.launcher/databases/com.google.android.datatransport.events
+    fd 65: anon_inode:[eventpoll]
+    fd 66: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/base.apk
+    fd 67: socket:[65446709]
+    fd 68: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_config.en.apk
+    fd 69: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_config.xhdpi.apk
+    fd 70: anon_inode:inotify
+    fd 71: /data/app/~~S-W6PmF2_j9wjwhe0MpzGw==/com.ks.mcpe.launcher-jY9I8cmbmIQcjorJNK77WA==/base.apk
+    fd 72: socket:[65452546]
+    fd 73: /system/framework/framework-res.apk
+    fd 74: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_MeasurementDynamite_installtime.apk
+    fd 75: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_MeasurementDynamite_installtime.apk
+    fd 76: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_MeasurementDynamite_installtime.apk
+    fd 77: /data/app/~~JWDD_jPwmRXkDdS-l4JfWQ==/com.google.android.gms-dEKQ2Z3Sf-lz5iqCBznL3g==/split_MeasurementDynamite_installtime.apk
+    fd 78: socket:[65452541]
+    fd 79: pipe:[65452543]
+    fd 80: pipe:[65452543]
+    fd 81: pipe:[65451312]
+    fd 82: pipe:[65451312]
+    fd 83: /dev/null
+    fd 84: /dev/null
+    fd 85: /dev/null
+    fd 86: /dev/null
+    fd 87: anon_inode:[eventfd]
+    fd 88: anon_inode:[eventfd]
+    fd 89: /data/data/com.ks.mcpe.launcher/files/.crashlytics.v3/com.ks.mcpe.launcher/open-sessions/6AF92A7903420001605318946B3915DE/userlog
+    fd 90: anon_inode:[eventfd]
+    fd 91: anon_inode:[eventpoll]
+    fd 92: socket:[65446832]
+    fd 93: /dev/ashmema6e1cffc-c23a-45d0-8a10-e07ad4c94513
+    fd 94: pipe:[65442758]
+    fd 95: socket:[65450070]
+    fd 96: socket:[65448860]
+    fd 97: pipe:[65442758]
+    fd 98: /proc/ged
+    fd 99: /proc/perfmgr/perf_ioctl
+    fd 100: /dev/dri/renderD128
+    fd 101: /dev/ion
+    fd 102: /proc/ged
+    fd 103: /proc/ged
+    fd 104: /dev/pvr_sync
+    fd 105: /dev/binderfs/hwbinder
+    fd 106: /dev/pvr_sync
+    fd 107: /dev/pvr_sync
+    fd 108: /proc/ged
+    fd 109: anon_inode:sync_file
+    fd 110: /dev/pvr_sync
+    fd 111: anon_inode:sync_file
+    fd 112: anon_inode:sync_file
+    fd 113: anon_inode:sync_file
+    fd 114: anon_inode:sync_file
+    fd 115: anon_inode:sync_file
+    fd 116: /storage/emulated/0/Android/media/com.ks.mcpe.launcher/crash_logs/tombstone_00001794714234388000_1.6.1__com.ks.mcpe.launcher.java.xcrash
+    fd 117: anon_inode:sync_file
+    fd 118: anon_inode:gralloc_extra
+    fd 119: /dmabuf:
+    fd 120: socket:[65451436]
+    fd 121: /dmabuf:
+    fd 122: /proc/ged
+    fd 123: anon_inode:[eventfd]
+    fd 124: anon_inode:[eventpoll]
+    fd 125: socket:[65446850]
+    fd 126: socket:[65452575]
+    fd 127: anon_inode:sync_file
+    fd 128: anon_inode:sync_file
+    fd 129: anon_inode:sync_file
+    fd 130: anon_inode:sync_file
+    fd 131: ???
+    fd 134: anon_inode:gralloc_extra
+    fd 135: /dmabuf:
+    fd 136: /dmabuf:
+    fd 137: anon_inode:sync_file
+    fd 140: anon_inode:gralloc_extra
+    fd 141: /dmabuf:
+    fd 142: /dmabuf:
+    fd 147: anon_inode:sync_file
+    fd 148: anon_inode:sync_file
+    fd 149: anon_inode:sync_file
+    fd 150: anon_inode:sync_file
+    (number of FDs: 143)
+
+network info:
+Not supported on Android Q (API level 29) and later.
+
+memory info:
+ System Summary (From: /proc/meminfo)
+  MemTotal:        3894308 kB
+  MemFree:           59852 kB
+  MemAvailable:     995060 kB
+  Buffers:           32780 kB
+  Cached:           961236 kB
+  SwapCached:       143200 kB
+  Active:          1742960 kB
+  Inactive:         911688 kB
+  Active(anon):    1259072 kB
+  Inactive(anon):   426820 kB
+  Active(file):     483888 kB
+  Inactive(file):   484868 kB
+  Unevictable:        3800 kB
+  Mlocked:            3800 kB
+  SwapTotal:       3145724 kB
+  SwapFree:        1893956 kB
+  Dirty:              5324 kB
+  Writeback:             0 kB
+  AnonPages:       1652632 kB
+  Mapped:           690896 kB
+  Shmem:             22428 kB
+  KReclaimable:      66460 kB
+  Slab:             398456 kB
+  SReclaimable:      66460 kB
+  SUnreclaim:       331996 kB
+  KernelStack:       64864 kB
+  PageTables:        96560 kB
+  NFS_Unstable:          0 kB
+  Bounce:                0 kB
+  WritebackTmp:          0 kB
+  CommitLimit:     5092876 kB
+  Committed_AS:   102361380 kB
+  VmallocTotal:   263061440 kB
+  VmallocUsed:      146808 kB
+  VmallocChunk:          0 kB
+  Percpu:             6752 kB
+  CmaTotal:         278528 kB
+  CmaFree:            2156 kB
+-
+ Process Status (From: /proc/PID/status)
+  Name:	s.mcpe.launcher
+  Umask:	0077
+  State:	R (running)
+  Tgid:	24659
+  Ngid:	0
+  Pid:	24659
+  PPid:	577
+  TracerPid:	0
+  Uid:	10294	10294	10294	10294
+  Gid:	10294	10294	10294	10294
+  FDSize:	256
+  Groups:	3003 9997 20294 50294 99909997
+  NStgid:	24659
+  NSpid:	24659
+  NSpgid:	577
+  NSsid:	0
+  VmPeak:	 6307300 kB
+  VmSize:	 6170012 kB
+  VmLck:	       0 kB
+  VmPin:	       0 kB
+  VmHWM:	  210380 kB
+  VmRSS:	  208512 kB
+  RssAnon:	   62572 kB
+  RssFile:	  145168 kB
+  RssShmem:	     772 kB
+  VmData:	 1293492 kB
+  VmStk:	    8192 kB
+  VmExe:	      28 kB
+  VmLib:	  142484 kB
+  VmPTE:	    1404 kB
+  VmSwap:	   18672 kB
+  CoreDumping:	0
+  Threads:	56
+  SigQ:	0/13370
+  SigPnd:	0000000000000000
+  ShdPnd:	0000000000000000
+  SigBlk:	0000000080001200
+  SigIgn:	0000002000000001
+  SigCgt:	0000004e400084fc
+  CapInh:	0000000000000000
+  CapPrm:	0000000000000000
+  CapEff:	0000000000000000
+  CapBnd:	0000000000000000
+  CapAmb:	0000000000000000
+  NoNewPrivs:	0
+  Seccomp:	2
+  Speculation_Store_Bypass:	unknown
+  Cpus_allowed:	ff
+  Cpus_allowed_list:	0-7
+  Mems_allowed:	1
+  Mems_allowed_list:	0
+  voluntary_ctxt_switches:	927
+  nonvoluntary_ctxt_switches:	459
+-
+ Process Limits (From: /proc/PID/limits)
+  Limit                     Soft Limit           Hard Limit           Units
+  Max cpu time              unlimited            unlimited            seconds
+  Max file size             unlimited            unlimited            bytes
+  Max data size             unlimited            unlimited            bytes
+  Max stack size            8388608              unlimited            bytes
+  Max core file size        0                    unlimited            bytes
+  Max resident set          unlimited            unlimited            bytes
+  Max processes             13370                13370                processes
+  Max open files            32768                32768                files
+  Max locked memory         unlimited            unlimited            bytes
+  Max address space         unlimited            unlimited            bytes
+  Max file locks            unlimited            unlimited            locks
+  Max pending signals       13370                13370                signals
+  Max msgqueue size         819200               819200               bytes
+  Max nice priority         40                   40
+  Max realtime priority     0                    0
+  Max realtime timeout      unlimited            unlimited            us
+-
+ Process Summary (From: android.os.Debug.MemoryInfo)
+                       Pss(KB)
+                        ------
+           Java Heap:    30996
+         Native Heap:    14088
+                Code:    14424
+               Stack:     1628
+            Graphics:        0
+       Private Other:     3412
+              System:    11241
+               TOTAL:    75789           TOTAL SWAP:    18336
+
+foreground:
+yes
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40665, name: Firebase Blocking Thread #1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40704, name: AsyncTask #2  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:459)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.take(SynchronousQueue.java:920)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40649, name: Jit thread pool worker thread 0  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40715, name: Firebase-Messaging-Intent-Handle  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40653, name: Binder:24659_4  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40680, name: MessengerIpcClient  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1132)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40713, name: firebase-iid-executor  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40651, name: Binder:24659_2  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40664, name: Firebase Background Thread #2  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40666, name: queued-work-looper  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at android.os.MessageQueue.nativePollOnce(Native Method)
+    at android.os.MessageQueue.next(MessageQueue.java:339)
+    at android.os.Looper.loop(Looper.java:208)
+    at android.os.HandlerThread.run(HandlerThread.java:67)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40650, name: Binder:24659_1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40679, name: firebase-iid-executor  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40708, name: OkHttp TaskRunner  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40662, name: GmsDynamite  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:442)
+    at java.lang.Object.wait(Object.java:568)
+    at k4.e.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:58)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40687, name: ProcessStablePhenotypeFlag  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40688, name: Okio Watchdog  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:442)
+    at java.lang.Object.wait(Object.java:568)
+    at com.android.okhttp.okio.AsyncTimeout.awaitTimeout(AsyncTimeout.java:313)
+    at com.android.okhttp.okio.AsyncTimeout.access$000(AsyncTimeout.java:42)
+    at com.android.okhttp.okio.AsyncTimeout$Watchdog.run(AsyncTimeout.java:288)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40667, name: Firebase Background Thread #3  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40673, name: DefaultDispatcher-worker-2  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:353)
+    at v9.a.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:247)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40693, name: RenderThread  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40663, name: pool-4-thread-1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40657, name: ScionFrontendApi  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.LinkedBlockingQueue.poll(LinkedBlockingQueue.java:467)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40671, name: Firebase-Messaging-Topics-Io  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40677, name: DefaultDispatcher-worker-3  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:353)
+    at v9.a.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:247)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40654, name: Profile Saver  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40659, name: Firebase Blocking Thread #0  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40670, name: Firebase-Messaging-Init  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40645, name: HeapTaskDaemon  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40646, name: ReferenceQueueDaemon  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:442)
+    at java.lang.Object.wait(Object.java:568)
+    at java.lang.Daemons$ReferenceQueueDaemon.runInternal(Daemons.java:217)
+    at java.lang.Daemons$Daemon.run(Daemons.java:139)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40710, name: InsetsAnimations  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at android.os.MessageQueue.nativePollOnce(Native Method)
+    at android.os.MessageQueue.next(MessageQueue.java:339)
+    at android.os.Looper.loop(Looper.java:208)
+    at android.os.HandlerThread.run(HandlerThread.java:67)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40675, name: FirebaseInstanceId  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1120)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40681, name: FileObserver  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at android.os.FileObserver$ObserverThread.observe(Native Method)
+    at android.os.FileObserver$ObserverThread.run(FileObserver.java:118)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40658, name: Firebase Background Thread #0  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40660, name: Firebase Background Thread #1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40652, name: Binder:24659_3  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40669, name: Firebase Blocking Thread #3  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40685, name: Measurement Worker  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:442)
+    at m7.uq.run(:com.google.android.gms.dynamite_measurementdynamite@264531022@26.45.31 (150400-0):67)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40647, name: FinalizerDaemon  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at java.lang.Object.wait(Object.java:442)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:190)
+    at java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:211)
+    at java.lang.Daemons$FinalizerDaemon.runInternal(Daemons.java:273)
+    at java.lang.Daemons$Daemon.run(Daemons.java:139)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40707, name: OkHttp ConnectionPool connection closer  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at yb.d.b(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:161)
+    at androidx.lifecycle.u.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:126)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40712, name: Firebase-FirebaseInstanceIdServiceConnection  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:2109)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.poll(ScheduledThreadPoolExecutor.java:1173)
+    at java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.poll(ScheduledThreadPoolExecutor.java:849)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at com.google.android.gms.common.util.concurrent.zza.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:6)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40705, name: OkHttp TaskRunner  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40690, name: process reaper  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40684, name: GoogleApiHandler  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at android.os.MessageQueue.nativePollOnce(Native Method)
+    at android.os.MessageQueue.next(MessageQueue.java:339)
+    at android.os.Looper.loop(Looper.java:208)
+    at android.os.HandlerThread.run(HandlerThread.java:67)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40691, name: xcrash_crash_cb  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40692, name: xcrash_trace_dp  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40648, name: FinalizerWatchdogDaemon  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Thread.sleep(Native Method)
+    at java.lang.Thread.sleep(Thread.java:442)
+    at java.lang.Thread.sleep(Thread.java:358)
+    at java.lang.Daemons$FinalizerWatchdogDaemon.sleepForNanos(Daemons.java:390)
+    at java.lang.Daemons$FinalizerWatchdogDaemon.waitForFinalization(Daemons.java:419)
+    at java.lang.Daemons$FinalizerWatchdogDaemon.runInternal(Daemons.java:325)
+    at java.lang.Daemons$Daemon.run(Daemons.java:139)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40672, name: DefaultDispatcher-worker-1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:353)
+    at v9.a.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:247)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40644, name: Signal Catcher  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40676, name: Firebase Blocking Thread #4  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40706, name: Okio Watchdog  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2197)
+    at t5.f.v(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:22)
+    at k4.e.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:20)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40682, name: OkHttp ConnectionPool  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.lang.Object.wait(Native Method)
+    at com.android.okhttp.ConnectionPool$1.run(ConnectionPool.java:106)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40668, name: Firebase Blocking Thread #2  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:230)
+    at java.util.concurrent.SynchronousQueue$TransferStack.awaitFulfill(SynchronousQueue.java:461)
+    at java.util.concurrent.SynchronousQueue$TransferStack.transfer(SynchronousQueue.java:362)
+    at java.util.concurrent.SynchronousQueue.poll(SynchronousQueue.java:937)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1091)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at androidx.room.n0.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:246)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40702, name: OkHttp raw.githubusercontent.com  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at java.net.SocketInputStream.socketRead0(Native Method)
+    at java.net.SocketInputStream.socketRead(SocketInputStream.java:119)
+    at java.net.SocketInputStream.read(SocketInputStream.java:176)
+    at java.net.SocketInputStream.read(SocketInputStream.java:144)
+    at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.readFromSocket(ConscryptEngineSocket.java:936)
+    at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.processDataFromSocket(ConscryptEngineSocket.java:900)
+    at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.readUntilDataAvailable(ConscryptEngineSocket.java:815)
+    at com.android.org.conscrypt.ConscryptEngineSocket$SSLInputStream.read(ConscryptEngineSocket.java:788)
+    at nc.e.f0(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:43)
+    at mc.w.E(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:22)
+    at mc.w.t0(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:1)
+    at cc.x.a(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:9)
+    at cc.s.a(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:16)
+    at yb.b.a(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:20)
+    at androidx.lifecycle.u.run(r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2:83)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1167)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+--- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
+pid: 24659, tid: 40716, name: pool-23-thread-1  >>> com.ks.mcpe.launcher <<<
+
+java stacktrace:
+    at sun.misc.Unsafe.park(Native Method)
+    at java.util.concurrent.locks.LockSupport.park(LockSupport.java:190)
+    at java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await(AbstractQueuedSynchronizer.java:2067)
+    at java.util.concurrent.LinkedBlockingQueue.take(LinkedBlockingQueue.java:442)
+    at java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1092)
+    at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1152)
+    at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:641)
+    at java.lang.Thread.run(Thread.java:923)
+
+total JVM threads (exclude the crashed thread): 53
+dumped JVM threads:53
++++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++ +++
