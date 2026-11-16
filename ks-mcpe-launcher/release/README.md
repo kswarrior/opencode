@@ -32,7 +32,7 @@ Put the signing material in repository secrets instead of committing it:
 
 | Secret | Value |
 | --- | --- |
-| `KEYSTORE_BASE64` | `base64 -w0 release/signing/ks-mcpe.keystore` |
+| `KEYSTORE_BASE64` | from repo root: `base64 -w0 ks-mcpe-launcher/release/signing/ks-mcpe.keystore` |
 | `KEYSTORE_PASSWORD` | value from `release/signing/credentials.env` |
 | `KEY_PASSWORD` | value from `release/signing/credentials.env` |
 | `KEY_ALIAS` | value from `release/signing/credentials.env` |

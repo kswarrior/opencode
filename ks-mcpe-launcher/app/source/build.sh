@@ -37,6 +37,7 @@ need javac
 need keytool
 need zip
 need python3
+need base64
 
 SDK="${ANDROID_HOME:-${ANDROID_SDK_ROOT:-/usr/local/lib/android/sdk}}"
 [ -d "$SDK" ] || die "Android SDK not found; set ANDROID_HOME"
@@ -177,4 +178,4 @@ log "signing"
 
 log "built $OUTPUT"
 log "sha256 $(cut -d ' ' -f 1 "$OUTPUT.sha256")"
-log "signing key $(realpath --relative-to="$PROJECT_ROOT" "$KEYSTORE")"
+log "signing key $KEYSTORE"
