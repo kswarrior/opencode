@@ -104,8 +104,9 @@ expose their features. Do not describe this build as permission-free.
 ## Limitations
 
 - `arm64-v8a` only; x86_64 emulators generally cannot install it.
-- Minecraft Bedrock must already be installed. There is no download, account,
-  version, mod, world, or backup management in this UI.
+- Minecraft Bedrock must already be installed; the engine supports 1.21.80+
+  (or a newer major version). There is no download, account, version, mod,
+  world, or backup management in this UI.
 - The installed version is selected automatically; there is no version picker.
 - Use it only with a legitimately licensed copy of Minecraft Bedrock Edition.
 
