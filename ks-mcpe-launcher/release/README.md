@@ -19,14 +19,15 @@ is the local build drop used by the project; it is not a binary store in git.
 
 ## Signing key
 
-The first build generates or imports a signing key into:
+The first build generates a signing key into:
 
 ```
 release/signing/ks-mcpe.keystore
 release/signing/credentials.env
 ```
 
-Then every later build reuses that key. Keep both files backed up and private:
+A CI build can restore one from `KEYSTORE_BASE64` instead. Every later build
+reuses the key. Keep both files backed up and private:
 if the key changes, Android refuses to update an installed build
 (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). The password is stored only in
 `credentials.env`, which is also gitignored.
