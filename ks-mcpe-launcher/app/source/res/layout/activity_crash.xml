@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/background" android:paddingTop="15.0dp" android:paddingBottom="24.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="20.0dp" android:paddingEnd="20.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="22.0sp" android:textStyle="bold" android:textColor="@color/primary" android:id="@id/crash_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/crash_title" android:fontFamily="@font/misans" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/card_background" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="14.0dp" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <ImageView android:layout_width="24.0dp" android:layout_height="24.0dp" android:src="@drawable/ic_logs" app:tint="@color/primary" />
+            <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/crash_details_title" android:layout_weight="1.0" android:fontFamily="@font/misans" android:layout_marginStart="8.0dp" />
+        </LinearLayout>
+        <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:layout_marginTop="12.0dp" android:layout_marginBottom="12.0dp" android:alpha="0.3" />
+        <ScrollView android:scrollbarStyle="insideInset" android:background="@drawable/bg_spinner_outline" android:padding="12.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="0.0dp" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="ifContentScrolls">
+            <TextView android:textSize="11.0sp" android:textColor="@color/on_surface" android:id="@id/crash_details" android:layout_width="match_parent" android:layout_height="wrap_content" android:lineSpacingExtra="3.0dp" android:textIsSelectable="true" android:fontFamily="monospace" />
+        </ScrollView>
+        <LinearLayout android:gravity="end" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="14.0dp">
+            <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/primary" android:id="@id/btn_back_to_main" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="0.0dp" android:minHeight="0.0dp" android:text="@string/crash_back_to_main" android:textAllCaps="false" android:fontFamily="@font/misans" android:backgroundTint="@color/surface_variant" android:paddingHorizontal="20.0dp" />
+            <Button android:textSize="13.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/btn_share_log" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="0.0dp" android:minHeight="0.0dp" android:text="@string/crash_share_log" android:textAllCaps="false" android:fontFamily="@font/misans" android:layout_marginStart="10.0dp" android:backgroundTint="@color/primary" android:paddingHorizontal="20.0dp" app:icon="@drawable/ic_upload" app:iconGravity="textStart" app:iconPadding="6.0dp" app:iconSize="18.0dp" app:iconTint="@color/white" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

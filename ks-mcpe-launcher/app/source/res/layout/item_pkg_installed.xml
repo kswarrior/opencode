@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/pkg_inst_item" android:background="@drawable/bg_ui_row" android:paddingTop="10.0dp" android:paddingBottom="10.0dp" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="72.0dp" android:paddingStart="6.0dp" android:paddingEnd="2.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <CheckBox android:id="@id/pkg_inst_check" android:focusable="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="4.0dp" />
+    <ImageView android:id="@id/pkg_inst_icon" android:background="@drawable/bg_cf_icon" android:layout_width="52.0dp" android:layout_height="52.0dp" android:src="@drawable/ic_minecraft_cube" android:scaleType="centerCrop" android:importantForAccessibility="no" android:clipToOutline="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="14.0dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:ellipsize="end" android:id="@id/pkg_inst_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+            <TextView android:id="@id/pkg_inst_kind" android:layout_marginStart="8.0dp" style="@style/PkgChip" />
+            <TextView android:id="@id/pkg_inst_local" android:visibility="gone" android:text="@string/pkg_installed_local" android:layout_marginStart="4.0dp" style="@style/PkgChip" />
+        </LinearLayout>
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:ellipsize="middle" android:id="@id/pkg_inst_identity" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:maxLines="1" android:fontFamily="@font/misans" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:ellipsize="end" android:id="@id/pkg_inst_includes" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:maxLines="1" android:fontFamily="@font/misans" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/ui_warning" android:id="@id/pkg_inst_not_loadable" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="@string/pkg_installed_not_loadable" android:fontFamily="@font/misans" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:ellipsize="end" android:id="@id/pkg_inst_required_by" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:maxLines="2" android:fontFamily="@font/misans" />
+    </LinearLayout>
+    <LinearLayout android:gravity="end|center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8.0dp">
+        <TextView android:id="@id/pkg_inst_update" android:paddingTop="4.0dp" android:paddingBottom="4.0dp" style="@style/PkgChip" />
+        <androidx.appcompat.widget.SwitchCompat android:id="@id/pkg_inst_switch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
+    </LinearLayout>
+    <ImageView android:id="@id/pkg_inst_more" android:background="?selectableItemBackgroundBorderless" android:padding="9.0dp" android:layout_width="40.0dp" android:layout_height="40.0dp" android:src="@drawable/ic_ui_more" android:layout_marginStart="4.0dp" app:tint="@color/text_secondary" />
+</LinearLayout>

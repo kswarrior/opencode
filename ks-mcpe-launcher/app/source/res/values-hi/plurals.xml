@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d परत • नीचे → ऊपर</item>
+        <item quantity="other">%1$d परतें • नीचे → ऊपर</item>
+    </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="one">%1$d संस्करण</item>
+        <item quantity="other">%1$d संस्करण</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d विकल्प</item>
+        <item quantity="other">%d विकल्प</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d संपादन योग्य कॉन्फ़िग</item>
+        <item quantity="other">%d संपादन योग्य कॉन्फ़िग</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d आइटम</item>
+        <item quantity="other">%d आइटम</item>
+    </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="one">%1$d मॉड</item>
+        <item quantity="other">%1$d मॉड</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d नई सूचनाएं</item>
+        <item quantity="other">%d नई सूचनाएं</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="one">आप %2$s से %1$d पैकेज अनइंस्टॉल करने वाले हैं। जारी रखें?</item>
+        <item quantity="other">आप %2$s से %1$d पैकेज अनइंस्टॉल करने वाले हैं। जारी रखें?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="one">%1$d पैकेज अनइंस्टॉल किया गया</item>
+        <item quantity="other">%1$d पैकेज अनइंस्टॉल किए गए</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="one">%1$d पैकेज चयनित है, जिनमें से %2$d अपडेट किया जा सकता है। जारी रखें?</item>
+        <item quantity="other">%1$d पैकेज चयनित हैं, जिनमें से %2$d अपडेट किए जा सकते हैं। जारी रखें?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="one">%1$d पैकेज अपडेट किया गया</item>
+        <item quantity="other">%1$d पैकेज अपडेट किए गए</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="one">%d परिणाम दिखाएँ</item>
+        <item quantity="other">%d परिणाम दिखाएँ</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="one">%1$d पैकेज, %2$d आपके द्वारा इंस्टॉल · %3$s</item>
+        <item quantity="other">%1$d पैकेज, %2$d आपके द्वारा इंस्टॉल · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="one">%d निर्भरता</item>
+        <item quantity="other">%d निर्भरताएँ</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="one">%d फ़ाइल दर्ज</item>
+        <item quantity="other">%d फ़ाइलें दर्ज</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="one">%d संस्करण</item>
+        <item quantity="other">%d संस्करण</item>
+    </plurals>
+</resources>

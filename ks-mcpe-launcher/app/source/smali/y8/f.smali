@@ -1,0 +1,34 @@
+.class public abstract Ly8/f;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# static fields
+.field public static final a:Lve/e;
+
+.field public static b:Lve/e;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    new-instance v0, Lve/e;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    invoke-direct {v0, v1, v1, v1}, Lve/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 5
+    .line 6
+    .line 7
+    sput-object v0, Ly8/f;->a:Lve/e;
+
+    .line 8
+    .line 9
+    return-void
+.end method

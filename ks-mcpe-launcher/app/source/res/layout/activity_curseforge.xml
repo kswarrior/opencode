@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.appbar.AppBarLayout android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="wrap_content" app:elevation="0.0dp" app:liftOnScroll="false">
+        <com.google.android.material.card.MaterialCardView android:id="@id/header_container" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:layout_marginBottom="8.0dp" android:layout_marginStart="14.0dp" android:layout_marginEnd="14.0dp" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="0.0dp" app:cardElevation="0.0dp" app:layout_scrollFlags="scroll|enterAlways" app:strokeWidth="0.0dp" style="@style/Widget.Levi.Card">
+            <LinearLayout android:orientation="vertical" android:padding="0.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="40.0dp">
+                    <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="20.0sp" android:textStyle="bold" android:id="@id/cf_title" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/curseforge_title" android:singleLine="true" android:layout_weight="1.0" android:layout_marginEnd="12.0dp" />
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <TextView android:layout_marginBottom="0.0dp" android:text="@string/catalog_cf_sort" android:layout_marginStart="0.0dp" android:layout_marginEnd="6.0dp" style="@style/CatalogFieldLabel" />
+                        <TextView android:textSize="11.0sp" android:id="@id/btn_sort" android:layout_width="wrap_content" android:layout_height="32.0dp" android:minWidth="96.0dp" style="@style/CatalogSelect" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dp">
+                    <EditText android:id="@id/search_box" android:layout_width="0.0dp" android:layout_height="40.0dp" android:hint="@string/catalog_cf_search_hint" android:drawablePadding="9.0dp" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch" android:drawableStart="@drawable/ic_ui_search" android:paddingStart="12.0dp" android:paddingEnd="12.0dp" android:importantForAutofill="no" style="@style/Widget.Levi.Input" />
+                    <com.google.android.material.button.MaterialButton android:id="@id/btn_search" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/catalog_cf_search" android:layout_marginStart="8.0dp" app:icon="@drawable/ic_ui_search" style="@style/Widget.Levi.Button.Primary" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="9.0dp" android:baselineAligned="false">
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:layout_marginBottom="0.0dp" android:text="@string/catalog_cf_class" android:layout_marginStart="0.0dp" android:layout_marginEnd="6.0dp" style="@style/CatalogFieldLabel" />
+                        <TextView android:textSize="11.0sp" android:id="@id/cf_select_class" android:layout_width="0.0dp" android:layout_height="32.0dp" android:layout_weight="1.0" style="@style/CatalogSelect" />
+                    </LinearLayout>
+                    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cf_version_column" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="12.0dp">
+                        <TextView android:layout_marginBottom="0.0dp" android:text="@string/catalog_cf_game_version" android:layout_marginStart="0.0dp" android:layout_marginEnd="6.0dp" style="@style/CatalogFieldLabel" />
+                        <TextView android:textSize="11.0sp" android:id="@id/cf_select_version" android:layout_width="0.0dp" android:layout_height="32.0dp" android:layout_weight="1.0" style="@style/CatalogSelect" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.card.MaterialCardView android:id="@id/cf_results_card" android:layout_width="match_parent" android:layout_height="match_parent" app:cardBackgroundColor="@android:color/transparent" app:cardCornerRadius="0.0dp" app:cardElevation="0.0dp" app:layout_behavior="@string/appbar_scrolling_view_behavior" app:strokeWidth="0.0dp" style="@style/Widget.Levi.Card">
+        <FrameLayout android:layout_width="match_parent" android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/mods_recycler" android:paddingTop="4.0dp" android:paddingBottom="12.0dp" android:scrollbars="none" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="6.0dp" android:paddingEnd="6.0dp" />
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/empty_state" android:padding="24.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textColor="@color/text_secondary" android:gravity="center" android:id="@id/empty_message" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="520.0dp" android:text="@string/catalog_cf_no_results" />
+                <com.google.android.material.button.MaterialButton android:id="@id/cf_retry" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:text="@string/catalog_retry" app:icon="@drawable/ic_ui_refresh" style="@style/Widget.Levi.Button.Secondary" />
+            </LinearLayout>
+            <ProgressBar android:layout_gravity="center" android:id="@id/loading_progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,41 +1,367 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ks.android.mcpe.launcher">
-
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="36" android:compileSdkVersionCodename="16" package="com.ks.android.mcpe.launcher" platformBuildVersionCode="36" platformBuildVersionName="16">
+    <uses-feature android:glEsVersion="0x20000" android:required="true"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.microphone" android:required="false"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_MULTICAST_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
     <queries>
-        <package android:name="com.mojang.minecraftpe" />
+        <package android:name="com.discord"/>
+        <intent>
+            <action android:name="com.discord.socialsdk.rpc.IDiscordRpcService"/>
+        </intent>
+        <package android:name="com.mojang.minecraftpe"/>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+        <intent>
+            <action android:name="android.support.customtabs.action.CustomTabsService"/>
+        </intent>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <data android:scheme="https"/>
+        </intent>
+        <package android:name="com.google.android.gms"/>
+        <package android:name="com.android.vending"/>
+        <intent>
+            <action android:name="com.android.vending.billing.InAppBillingService.BIND"/>
+        </intent>
+        <intent>
+            <action android:name="com.google.android.apps.play.billingtestcompanion.BillingOverrideService.BIND"/>
+        </intent>
     </queries>
-
-    <application
-        android:allowBackup="false"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.KSLauncher">
-
-        <activity
-            android:name=".LoadingActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode"
-            android:exported="true"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@style/Theme.KSLauncher">
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <uses-permission android:name="com.android.vending.BILLING"/>
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_ATTRIBUTION"/>
+    <uses-permission android:name="android.permission.ACCESS_ADSERVICES_AD_ID"/>
+    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+    <permission android:name="com.ks.android.mcpe.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.ks.android.mcpe.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <application android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:extractNativeLibs="true" android:icon="@mipmap/ks_ic_launcher" android:label="@string/app_name" android:name="org.levimc.launcher.core.minecraft.LauncherApplication" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@mipmap/ks_ic_launcher_round" android:supportsRtl="true" android:theme="@style/Base.Theme.FullScreen">
+        <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\486187589451"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.SplashActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="true" android:name="com.ks.android.mcpe.launcher.LoadingActivity" android:screenOrientation="sensorLandscape" android:theme="@style/KsTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".HomeActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode"
-            android:exported="false"
-            android:screenOrientation="sensorLandscape" />
-
-        <activity
-            android:name=".LaunchingActivity"
-            android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|uiMode"
-            android:exported="false"
-            android:screenOrientation="sensorLandscape" />
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="com.ks.android.mcpe.launcher.HomeActivity" android:screenOrientation="sensorLandscape" android:theme="@style/KsTheme"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="com.ks.android.mcpe.launcher.LaunchingActivity" android:screenOrientation="sensorLandscape" android:theme="@style/KsTheme"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="true" android:name="org.levimc.launcher.ui.activities.MainActivity" android:screenOrientation="sensorLandscape" android:theme="@style/MainActivityTheme"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentManagementActivity" android:screenOrientation="sensorLandscape"/>
+        <service android:exported="false" android:name="org.levimc.launcher.core.news.LauncherNewsMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.NewsActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentListActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/edit_world" android:name="org.levimc.launcher.ui.activities.WorldEditorActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/edit_options" android:name="org.levimc.launcher.ui.activities.OptionsEditorActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/custom_flat_world" android:name="org.levimc.launcher.ui.activities.CustomFlatWorldActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.AboutActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.InstancesActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/settings_title" android:name="org.levimc.launcher.ui.activities.SettingsActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.InstanceSettingsActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/accounts_title" android:name="org.levimc.launcher.ui.activities.AccountsActivity" android:screenOrientation="sensorLandscape"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.GameDownloadActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.GoogleLoginActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.MsftLoginActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustResize"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModsFullscreenActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ExternalModsActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModDetailActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModConfigActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.CurseForgeActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.packages.PackagesActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.packages.PackageActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentDetailsActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/quick_launch_title" android:name="org.levimc.launcher.ui.activities.QuickLaunchActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="false" android:exported="true" android:launchMode="singleTask" android:name="org.levimc.launcher.ui.activities.IntentHandler" android:screenOrientation="sensorLandscape">
+            <meta-data android:name="android.app.lib_name" android:value="preloader"/>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="minecraft"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="application/zip"/>
+                <data android:mimeType="application/x-zip"/>
+                <data android:mimeType="application/x-zip-compressed"/>
+                <data android:mimeType="application/octet-stream"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:host="*"/>
+                <data android:pathPattern="/.*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mctemplate"/>
+                <data android:pathSuffix=".zip"/>
+                <data android:pathSuffix=".levibackup"/>
+                <data android:pathSuffix=".levipack"/>
+                <data android:pathSuffix=".mcmod"/>
+                <data android:pathSuffix=".so"/>
+                <data android:pathSuffix=".mcworld"/>
+                <data android:pathSuffix=".mcpack"/>
+                <data android:pathSuffix=".mcaddon"/>
+                <data android:pathSuffix=".mctemplate"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="content"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="*/*"/>
+                <data android:host="*"/>
+                <data android:pathPattern="/.*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.zip"/>
+                <data android:pathPattern="/.*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levibackup"/>
+                <data android:pathPattern="/.*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levipack"/>
+                <data android:pathPattern="/.*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcmod"/>
+                <data android:pathPattern="/.*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.so"/>
+                <data android:pathPattern="/.*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcworld"/>
+                <data android:pathPattern="/.*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcpack"/>
+                <data android:pathPattern="/.*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcaddon"/>
+                <data android:pathPattern="/.*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mctemplate"/>
+                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mctemplate"/>
+                <data android:pathSuffix=".zip"/>
+                <data android:pathSuffix=".levibackup"/>
+                <data android:pathSuffix=".levipack"/>
+                <data android:pathSuffix=".mcmod"/>
+                <data android:pathSuffix=".so"/>
+                <data android:pathSuffix=".mcworld"/>
+                <data android:pathSuffix=".mcpack"/>
+                <data android:pathSuffix=".mcaddon"/>
+                <data android:pathSuffix=".mctemplate"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="file"/>
+                <data android:mimeType="application/zip"/>
+                <data android:mimeType="application/x-zip"/>
+                <data android:mimeType="application/x-zip-compressed"/>
+                <data android:mimeType="application/octet-stream"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="xbox_live_game_invite"/>
+                <action android:name="xbox_live_achievement_unlock"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="false" android:exported="false" android:launchMode="standard" android:name="org.levimc.launcher.core.minecraft.MinecraftLoadingActivity" android:screenOrientation="sensorLandscape" android:theme="@style/MinecraftLoadingTheme"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="false" android:exported="false" android:launchMode="standard" android:name="org.levimc.launcher.core.minecraft.MinecraftActivity" android:screenOrientation="sensorLandscape" android:theme="@style/AppFullScreenTheme">
+            <meta-data android:name="android.app.lib_name" android:value="preloader"/>
+        </activity>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="true" android:exported="false" android:finishOnTaskLaunch="true" android:launchMode="singleTask" android:name="org.levimc.launcher.core.minecraft.LauncherRestartActivity" android:process=":crash" android:screenOrientation="sensorLandscape" android:theme="@style/LauncherRestartTheme"/>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="true" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.IntentHandler">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.BrowserLaunchActivity" android:theme="@style/WebViewTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+            </intent-filter>
+        </activity>
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="false" android:hardwareAccelerated="false" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.WebKitWebViewController" android:theme="@style/WebViewTheme"/>
+        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:launchMode="singleTask" android:name="org.levimc.launcher.ui.activities.CrashActivity" android:process=":crash" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
+        <provider android:authorities="com.ks.android.mcpe.launcher.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths"/>
+        </provider>
+        <meta-data android:name="appcenter_android_trial_id" android:value="@string/appcenter_android_id"/>
+        <service android:exported="false" android:name="com.mojang.minecraftpe.ImportService"/>
+        <meta-data android:name="game_display_name" android:resource="@string/app_name"/>
+        <meta-data android:name="appcenter_android_id" android:value="@string/appcenter_android_id"/>
+        <service android:exported="false" android:name="com.mojang.minecraftpe.NotificationListenerService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:directBootAware="true" android:exported="false" android:name="androidx.room.MultiInstanceInvalidationService"/>
+        <provider android:authorities="com.ks.android.mcpe.launcher.playgamesinitprovider" android:exported="false" android:initOrder="99" android:name="com.google.android.gms.games.provider.PlayGamesInitProvider"/>
+        <activity android:exported="false" android:name="com.google.android.gms.games.internal.v2.resolution.GamesResolutionActivity" android:theme="@style/Theme.Games.Transparent"/>
+        <activity android:exported="true" android:name="com.google.android.gms.games.internal.v2.appshortcuts.PlayGamesAppShortcutsActivity" android:theme="@style/Theme.Games.Transparent"/>
+        <meta-data android:name="com.google.android.gms.games.version" android:value="@string/play_games_sdk_version"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.components.ComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.iid.Registrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.ndk.CrashlyticsNdkRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.FirebaseCrashlyticsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.crashlytics.CrashlyticsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.sessions.FirebaseSessionsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <meta-data android:name="com.google.android.play.billingclient.version" android:value="8.3.0"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:name="com.android.billingclient.api.ProxyBillingActivityV2" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:exported="true" android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+            </intent-filter>
+            <meta-data android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED" android:value="true"/>
+        </receiver>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.firebase.messaging.FirebaseMessagingService">
+            <intent-filter android:priority="-500">
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:enabled="false" android:exported="false" android:name="com.google.firebase.sessions.SessionLifecycleService"/>
+        <provider android:authorities="com.ks.android.mcpe.launcher.firebaseinitprovider" android:directBootAware="true" android:exported="false" android:initOrder="100" android:name="com.google.firebase.provider.FirebaseInitProvider"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementReceiver"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementService"/>
+        <service android:enabled="true" android:exported="false" android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <provider android:authorities="com.ks.android.mcpe.launcher.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="okhttp3.internal.platform.PlatformInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+        </provider>
+        <uses-library android:name="android.ext.adservices" android:required="false"/>
+        <uses-library android:name="androidx.window.extensions" android:required="false"/>
+        <uses-library android:name="androidx.window.sidecar" android:required="false"/>
+        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery">
+            <meta-data android:name="backend:com.google.android.datatransport.cct.CctBackendFactory" android:value="cct"/>
+        </service>
+        <service android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <receiver android:exported="false" android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"/>
     </application>
 </manifest>

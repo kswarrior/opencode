@@ -1,0 +1,145 @@
+.class public Lcom/microsoft/applications/events/EventPropertyGuidArrayValue;
+.super Lcom/microsoft/applications/events/EventPropertyValue;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# instance fields
+.field private m_value:[Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>([Ljava/util/UUID;)V
+    .locals 3
+
+    .line 1
+    sget-object v0, Lcom/microsoft/applications/events/EventPropertyType;->TYPE_GUID_ARRAY:Lcom/microsoft/applications/events/EventPropertyType;
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0}, Lcom/microsoft/applications/events/EventPropertyValue;-><init>(Lcom/microsoft/applications/events/EventPropertyType;)V
+
+    .line 4
+    .line 5
+    .line 6
+    if-eqz p1, :cond_2
+
+    .line 7
+    .line 8
+    array-length v0, p1
+
+    .line 9
+    if-eqz v0, :cond_2
+
+    .line 10
+    .line 11
+    array-length v0, p1
+
+    .line 12
+    new-array v0, v0, [Ljava/lang/String;
+
+    .line 13
+    .line 14
+    iput-object v0, p0, Lcom/microsoft/applications/events/EventPropertyGuidArrayValue;->m_value:[Ljava/lang/String;
+
+    .line 15
+    .line 16
+    const/4 v0, 0x0
+
+    .line 17
+    :goto_0
+    array-length v1, p1
+
+    .line 18
+    if-ge v0, v1, :cond_1
+
+    .line 19
+    .line 20
+    aget-object v1, p1, v0
+
+    .line 21
+    .line 22
+    if-eqz v1, :cond_0
+
+    .line 23
+    .line 24
+    iget-object v2, p0, Lcom/microsoft/applications/events/EventPropertyGuidArrayValue;->m_value:[Ljava/lang/String;
+
+    .line 25
+    .line 26
+    invoke-virtual {v1}, Ljava/util/UUID;->toString()Ljava/lang/String;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object v1
+
+    .line 30
+    aput-object v1, v2, v0
+
+    .line 31
+    .line 32
+    add-int/lit8 v0, v0, 0x1
+
+    .line 33
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 36
+    .line 37
+    const-string v1, "UUID value is null for array index:"
+
+    .line 38
+    .line 39
+    invoke-static {v0, v1}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
+
+    .line 40
+    .line 41
+    .line 42
+    move-result-object v0
+
+    .line 43
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 44
+    .line 45
+    .line 46
+    throw p1
+
+    .line 47
+    :cond_1
+    return-void
+
+    .line 48
+    :cond_2
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 49
+    .line 50
+    const-string v0, "value is null or empty"
+
+    .line 51
+    .line 52
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 53
+    .line 54
+    .line 55
+    throw p1
+.end method
+
+
+# virtual methods
+.method public getGuidArray()[Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/microsoft/applications/events/EventPropertyGuidArrayValue;->m_value:[Ljava/lang/String;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method

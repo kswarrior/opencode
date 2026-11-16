@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ks_brand_title">KS MCPE LAUNCHER</string>
+    <string name="ks_brand_subtitle">MINECRAFT BEDROCK LAUNCHER</string>
+    <string name="ks_loading_status_preparing">PREPARING LAUNCHER</string>
+    <string name="ks_loading_status_interface">LOADING INTERFACE</string>
+    <string name="ks_loading_status_ready">READY</string>
+    <string name="ks_launch">LAUNCH</string>
+    <string name="ks_requirements_hint">MINECRAFT BEDROCK EDITION REQUIRED</string>
+    <string name="ks_launching_title">LAUNCHING MINECRAFT</string>
+    <string name="ks_launching_detail">Preparing the installed Minecraft Bedrock Edition.</string>
+    <string name="ks_launching_checking">CHECKING INSTALLATION</string>
+    <string name="ks_launching_starting">STARTING MINECRAFT</string>
+    <string name="ks_missing_title">MINECRAFT NOT INSTALLED</string>
+    <string name="ks_missing_detail">Install Minecraft Bedrock Edition from Google Play, then try again.</string>
+    <string name="ks_launch_failed_title">LAUNCH FAILED</string>
+    <string name="ks_launch_failed_detail">Minecraft could not be started. Make sure the game is installed and up to date, then try again.</string>
+    <string name="ks_launched_title">MINECRAFT LAUNCHED</string>
+    <string name="ks_launched_detail">Minecraft is starting. Return to this launcher when you are done.</string>
+    <string name="ks_back_to_home">BACK TO HOME</string>
+    <string name="ks_version_format">v%1$s</string>
+    <string name="ks_engine_missing_detail">The Minecraft launch engine is missing from this build. Reinstall the launcher from the release page.</string>
+</resources>

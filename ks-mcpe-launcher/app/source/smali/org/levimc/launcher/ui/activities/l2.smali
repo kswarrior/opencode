@@ -1,0 +1,88 @@
+.class public final synthetic Lorg/levimc/launcher/ui/activities/l2;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+# interfaces
+.implements Landroid/view/View$OnLayoutChangeListener;
+
+
+# instance fields
+.field public final synthetic a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
+
+.field public final synthetic b:Landroidx/recyclerview/widget/GridLayoutManager;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstancesActivity;Landroidx/recyclerview/widget/GridLayoutManager;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/l2;->a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
+
+    .line 5
+    .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/l2;->b:Landroidx/recyclerview/widget/GridLayoutManager;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onLayoutChange(Landroid/view/View;IIIIIIII)V
+    .locals 11
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/l2;->a:Lorg/levimc/launcher/ui/activities/InstancesActivity;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/l2;->b:Landroidx/recyclerview/widget/GridLayoutManager;
+
+    .line 4
+    .line 5
+    move-object v2, p1
+
+    .line 6
+    move v3, p2
+
+    .line 7
+    move v4, p3
+
+    .line 8
+    move v5, p4
+
+    .line 9
+    move/from16 v6, p5
+
+    .line 10
+    .line 11
+    move/from16 v7, p6
+
+    .line 12
+    .line 13
+    move/from16 v8, p7
+
+    .line 14
+    .line 15
+    move/from16 v9, p8
+
+    .line 16
+    .line 17
+    move/from16 v10, p9
+
+    .line 18
+    .line 19
+    invoke-static/range {v0 .. v10}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->E(Lorg/levimc/launcher/ui/activities/InstancesActivity;Landroidx/recyclerview/widget/GridLayoutManager;Landroid/view/View;IIIIIIII)V
+
+    .line 20
+    .line 21
+    .line 22
+    return-void
+.end method

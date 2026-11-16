@@ -1,0 +1,32 @@
+.class public final synthetic Landroidx/room/a0;
+.super Lh9/h;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+# interfaces
+.implements Lkotlin/jvm/functions/Function0;
+
+
+# virtual methods
+.method public final a()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lh9/d;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Landroidx/room/RoomDatabase;
+
+    .line 4
+    .line 5
+    invoke-static {v0}, Landroidx/room/RoomDatabase;->access$onClosed(Landroidx/room/RoomDatabase;)V
+
+    .line 6
+    .line 7
+    .line 8
+    sget-object v0, Ls8/k;->a:Ls8/k;
+
+    .line 9
+    .line 10
+    return-object v0
+.end method

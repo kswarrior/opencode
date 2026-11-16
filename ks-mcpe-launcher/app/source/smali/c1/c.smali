@@ -1,0 +1,137 @@
+.class public final Lc1/c;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# static fields
+.field public static final i:Ljava/lang/ThreadLocal;
+
+
+# instance fields
+.field public final a:Landroidx/collection/SimpleArrayMap;
+
+.field public final b:Ljava/util/ArrayList;
+
+.field public final c:La4/e;
+
+.field public final d:La6/d;
+
+.field public final e:Lq7/e;
+
+.field public f:Z
+
+.field public g:F
+
+.field public h:Lq7/e;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/lang/ThreadLocal;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/ThreadLocal;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lc1/c;->i:Ljava/lang/ThreadLocal;
+
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public constructor <init>(Lq7/e;)V
+    .locals 3
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Landroidx/collection/SimpleArrayMap;
+
+    .line 5
+    .line 6
+    const/4 v1, 0x0
+
+    .line 7
+    invoke-direct {v0, v1}, Landroidx/collection/SimpleArrayMap;-><init>(I)V
+
+    .line 8
+    .line 9
+    .line 10
+    iput-object v0, p0, Lc1/c;->a:Landroidx/collection/SimpleArrayMap;
+
+    .line 11
+    .line 12
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 13
+    .line 14
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    .line 15
+    .line 16
+    .line 17
+    iput-object v0, p0, Lc1/c;->b:Ljava/util/ArrayList;
+
+    .line 18
+    .line 19
+    new-instance v0, La4/e;
+
+    .line 20
+    .line 21
+    const/16 v2, 0xc
+
+    .line 22
+    .line 23
+    invoke-direct {v0, p0, v2}, La4/e;-><init>(Ljava/lang/Object;I)V
+
+    .line 24
+    .line 25
+    .line 26
+    iput-object v0, p0, Lc1/c;->c:La4/e;
+
+    .line 27
+    .line 28
+    new-instance v0, La6/d;
+
+    .line 29
+    .line 30
+    const/4 v2, 0x6
+
+    .line 31
+    invoke-direct {v0, p0, v2}, La6/d;-><init>(Ljava/lang/Object;I)V
+
+    .line 32
+    .line 33
+    .line 34
+    iput-object v0, p0, Lc1/c;->d:La6/d;
+
+    .line 35
+    .line 36
+    iput-boolean v1, p0, Lc1/c;->f:Z
+
+    .line 37
+    .line 38
+    const/high16 v0, 0x3f800000    # 1.0f
+
+    .line 39
+    .line 40
+    iput v0, p0, Lc1/c;->g:F
+
+    .line 41
+    .line 42
+    iput-object p1, p0, Lc1/c;->e:Lq7/e;
+
+    .line 43
+    .line 44
+    return-void
+.end method

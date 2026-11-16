@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="13.0sp" android:textColor="@color/on_surface" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pkg_guide_description" android:lineSpacingExtra="3.0dp" android:fontFamily="@font/misans" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/on_surface" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/pkg_guide_manifest_hint" android:lineSpacingExtra="3.0dp" android:fontFamily="@font/misans" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/pkg_guide_variant_hint" android:lineSpacingExtra="3.0dp" android:fontFamily="@font/misans" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/pkg_guide_android_hint" android:lineSpacingExtra="3.0dp" android:fontFamily="@font/misans" />
+    </LinearLayout>
+</ScrollView>

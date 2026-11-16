@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="10.0dp" android:paddingBottom="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="14.0dp" android:paddingEnd="14.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.button.MaterialButton android:enabled="false" android:id="@id/btn_prev_page" android:layout_width="36.0dp" android:layout_height="36.0dp" android:minWidth="36.0dp" android:minHeight="36.0dp" android:contentDescription="@string/previous" app:icon="@drawable/ic_ui_arrow_back" style="@style/Widget.Levi.Button.Icon" />
+    <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="12.0sp" android:textStyle="normal" android:id="@id/tv_page_info" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pagination_page_one" android:layout_marginStart="12.0dp" android:layout_marginEnd="12.0dp" />
+    <com.google.android.material.button.MaterialButton android:enabled="false" android:id="@id/btn_next_page" android:layout_width="36.0dp" android:layout_height="36.0dp" android:minWidth="36.0dp" android:minHeight="36.0dp" android:contentDescription="@string/next" app:icon="@drawable/ic_ui_arrow_forward" style="@style/Widget.Levi.Button.Icon" />
+</LinearLayout>

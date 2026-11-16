@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d 层 • 底部 → 顶部</item>
+        <item quantity="other">%1$d 层 • 底部 → 顶部</item>
+    </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="other">%1$d 个版本</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d 个选项</item>
+        <item quantity="other">%d 个选项</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d 个可编辑配置</item>
+        <item quantity="other">%d 个可编辑配置</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d 项</item>
+        <item quantity="other">%d 项</item>
+    </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="other">%1$d 个模组</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d 条新通知</item>
+        <item quantity="other">%d 条新通知</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="other">你将要从 %2$s 卸载 %1$d 个包，是否继续？</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="other">已卸载 %1$d 个包</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="other">已选择 %1$d 个包，其中 %2$d 个可以更新，是否继续？</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="other">已更新 %1$d 个包</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="other">显示 %d 个结果</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="other">共 %1$d 个包，其中 %2$d 个为手动安装 · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="other">%d 个依赖</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="other">记录了 %d 个文件</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="other">%d 个版本</item>
+    </plurals>
+</resources>

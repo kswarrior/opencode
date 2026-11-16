@@ -1,0 +1,463 @@
+.class public final Lcom/google/android/gms/internal/games_v2/zzem;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+# interfaces
+.implements Lcom/google/android/gms/games/PlayersClient;
+
+
+# instance fields
+.field private final zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+
+# direct methods
+.method public constructor <init>(Lcom/google/android/gms/internal/games_v2/zzaq;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method private final zza(Ljava/lang/String;IZ)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzeh;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p1, p2, p3}, Lcom/google/android/gms/internal/games_v2/zzeh;-><init>(Ljava/lang/String;IZ)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 7
+    .line 8
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    return-object p1
+.end method
+
+.method private final zzb(Ljava/lang/String;I)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzei;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p1, p2}, Lcom/google/android/gms/internal/games_v2/zzei;-><init>(Ljava/lang/String;I)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 7
+    .line 8
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    return-object p1
+.end method
+
+
+# virtual methods
+.method public final getCompareProfileIntent(Lcom/google/android/gms/games/Player;)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lcom/google/android/gms/games/Player;",
+            ")",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Landroid/content/Intent;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzef;
+
+    invoke-direct {v0, p1}, Lcom/google/android/gms/internal/games_v2/zzef;-><init>(Lcom/google/android/gms/games/Player;)V
+
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final getCompareProfileIntent(Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Landroid/content/Intent;",
+            ">;"
+        }
+    .end annotation
+
+    .line 2
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzee;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, p1, v1, v1}, Lcom/google/android/gms/internal/games_v2/zzee;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final getCompareProfileIntentWithAlternativeNameHints(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            "Ljava/lang/String;",
+            ")",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Landroid/content/Intent;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzee;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p1, p2, p3}, Lcom/google/android/gms/internal/games_v2/zzee;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 7
+    .line 8
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    return-object p1
+.end method
+
+.method public final getCurrentPlayer()Lcom/google/android/gms/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/Player;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    sget-object v1, Lcom/google/android/gms/internal/games_v2/zzdu;->zza:Lcom/google/android/gms/internal/games_v2/zzdu;
+
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final getCurrentPlayer(Z)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(Z)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/Player;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 2
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzec;
+
+    invoke-direct {v0, p1}, Lcom/google/android/gms/internal/games_v2/zzec;-><init>(Z)V
+
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final getCurrentPlayerId()Lcom/google/android/gms/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Ljava/lang/String;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 2
+    .line 3
+    sget-object v1, Lcom/google/android/gms/internal/games_v2/zzel;->zza:Lcom/google/android/gms/internal/games_v2/zzel;
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    return-object v0
+.end method
+
+.method public final getPlayerSearchIntent()Lcom/google/android/gms/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Landroid/content/Intent;",
+            ">;"
+        }
+    .end annotation
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    .line 2
+    .line 3
+    sget-object v1, Lcom/google/android/gms/internal/games_v2/zzeg;->zza:Lcom/google/android/gms/internal/games_v2/zzeg;
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    return-object v0
+.end method
+
+.method public final loadFriends(IZ)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(IZ)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/PlayerBuffer;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 1
+    const-string v0, "friends_all"
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0, p1, p2}, Lcom/google/android/gms/internal/games_v2/zzem;->zza(Ljava/lang/String;IZ)Lcom/google/android/gms/tasks/Task;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    return-object p1
+.end method
+
+.method public final loadMoreFriends(I)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/PlayerBuffer;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 1
+    const-string v0, "friends_all"
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0, p1}, Lcom/google/android/gms/internal/games_v2/zzem;->zzb(Ljava/lang/String;I)Lcom/google/android/gms/tasks/Task;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    return-object p1
+.end method
+
+.method public final loadMoreRecentlyPlayedWithPlayers(I)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(I)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/PlayerBuffer;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 1
+    const-string v0, "played_with"
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0, p1}, Lcom/google/android/gms/internal/games_v2/zzem;->zzb(Ljava/lang/String;I)Lcom/google/android/gms/tasks/Task;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    return-object p1
+.end method
+
+.method public final loadPlayer(Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+    .locals 2
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            ")",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/Player;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 1
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzed;
+
+    const/4 v1, 0x0
+
+    invoke-direct {v0, p1, v1}, Lcom/google/android/gms/internal/games_v2/zzed;-><init>(Ljava/lang/String;Z)V
+
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final loadPlayer(Ljava/lang/String;Z)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Ljava/lang/String;",
+            "Z)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/Player;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 2
+    new-instance v0, Lcom/google/android/gms/internal/games_v2/zzed;
+
+    invoke-direct {v0, p1, p2}, Lcom/google/android/gms/internal/games_v2/zzed;-><init>(Ljava/lang/String;Z)V
+
+    iget-object p1, p0, Lcom/google/android/gms/internal/games_v2/zzem;->zza:Lcom/google/android/gms/internal/games_v2/zzaq;
+
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/games_v2/zzaq;->zzb(Lcom/google/android/gms/internal/games_v2/zzap;)Lcom/google/android/gms/tasks/Task;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public final loadRecentlyPlayedWithPlayers(IZ)Lcom/google/android/gms/tasks/Task;
+    .locals 1
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(IZ)",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/AnnotatedData<",
+            "Lcom/google/android/gms/games/PlayerBuffer;",
+            ">;>;"
+        }
+    .end annotation
+
+    .line 1
+    const-string v0, "played_with"
+
+    .line 2
+    .line 3
+    invoke-direct {p0, v0, p1, p2}, Lcom/google/android/gms/internal/games_v2/zzem;->zza(Ljava/lang/String;IZ)Lcom/google/android/gms/tasks/Task;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    return-object p1
+.end method

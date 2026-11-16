@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d lớp • dưới → trên</item>
+        <item quantity="other">%1$d lớp • dưới → trên</item>
+    </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="other">%1$d phiên bản</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d lựa chọn</item>
+        <item quantity="other">%d các lựa chọn</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d cấu hình có thể chỉnh sửa</item>
+        <item quantity="other">%d các cấu hình có thể chỉnh sửa</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="other">%1$d mục</item>
+    </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="other">%1$d mod</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d thông báo mới</item>
+        <item quantity="other">%d thông báo mới</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="other">Bạn sắp gỡ cài đặt %1$d gói khỏi %2$s. Tiếp tục?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="other">Đã gỡ cài đặt %1$d gói</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="other">Đã chọn %1$d gói, trong đó %2$d gói có thể cập nhật. Tiếp tục?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="other">Đã cập nhật %1$d gói</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="other">Hiện %d kết quả</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="other">%1$d gói, %2$d gói do bạn cài đặt · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="other">%d phụ thuộc</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="other">Đã ghi nhận %d tệp</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="other">%d phiên bản</item>
+    </plurals>
+</resources>

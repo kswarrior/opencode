@@ -1,0 +1,68 @@
+.class public final Ld1/e;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# instance fields
+.field public volatile a:Ljava/lang/Object;
+
+.field public volatile b:Ljava/lang/Object;
+
+.field public final c:Ljava/lang/Object;
+
+
+# direct methods
+.method public constructor <init>(Ld1/i;)V
+    .locals 0
+
+    .line 10
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 11
+    iput-object p1, p0, Ld1/e;->c:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lr6/o;)V
+    .locals 3
+
+    .line 1
+    new-instance v0, Lw6/b;
+
+    .line 2
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 3
+    new-instance v1, Ls4/b0;
+
+    const/16 v2, 0x10
+
+    .line 4
+    invoke-direct {v1, v2}, Ls4/b0;-><init>(I)V
+
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    iput-object v0, p0, Ld1/e;->b:Ljava/lang/Object;
+
+    .line 7
+    new-instance v0, Ljava/util/ArrayList;
+
+    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v0, p0, Ld1/e;->c:Ljava/lang/Object;
+
+    .line 8
+    iput-object v1, p0, Ld1/e;->a:Ljava/lang/Object;
+
+    .line 9
+    new-instance v0, Lt6/a;
+
+    invoke-direct {v0, p0}, Lt6/a;-><init>(Ld1/e;)V
+
+    invoke-virtual {p1, v0}, Lr6/o;->a(Ls7/a;)V
+
+    return-void
+.end method

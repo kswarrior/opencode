@@ -1,0 +1,93 @@
+.class public final Lsg/f;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+# interfaces
+.implements Lsh/g;
+
+
+# instance fields
+.field public final c:Ljava/security/cert/CRLSelector;
+
+.field public final d:Z
+
+.field public final h:Ljava/math/BigInteger;
+
+.field public final p:[B
+
+.field public final q:Z
+
+
+# direct methods
+.method public constructor <init>(Lfa/d;)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iget-object v0, p1, Lfa/d;->d:Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    check-cast v0, Ljava/security/cert/CRLSelector;
+
+    .line 7
+    .line 8
+    iput-object v0, p0, Lsg/f;->c:Ljava/security/cert/CRLSelector;
+
+    .line 9
+    .line 10
+    iget-boolean v0, p1, Lfa/d;->b:Z
+
+    .line 11
+    .line 12
+    iput-boolean v0, p0, Lsg/f;->d:Z
+
+    .line 13
+    .line 14
+    iget-object v0, p1, Lfa/d;->e:Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    check-cast v0, Ljava/math/BigInteger;
+
+    .line 17
+    .line 18
+    iput-object v0, p0, Lsg/f;->h:Ljava/math/BigInteger;
+
+    .line 19
+    .line 20
+    iget-object v0, p1, Lfa/d;->f:Ljava/lang/Object;
+
+    .line 21
+    .line 22
+    check-cast v0, [B
+
+    .line 23
+    .line 24
+    iput-object v0, p0, Lsg/f;->p:[B
+
+    .line 25
+    .line 26
+    iget-boolean p1, p1, Lfa/d;->c:Z
+
+    .line 27
+    .line 28
+    iput-boolean p1, p0, Lsg/f;->q:Z
+
+    .line 29
+    .line 30
+    return-void
+.end method
+
+
+# virtual methods
+.method public final clone()Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    return-object p0
+.end method

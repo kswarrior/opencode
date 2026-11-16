@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="6.0dp" android:paddingBottom="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="12.0dp" android:paddingEnd="12.0dp">
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12.0dp" app:strokeWidth="1.0dp" style="@style/Widget.Levi.Card">
+            <LinearLayout android:orientation="vertical" android:padding="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/detail_icon" android:background="@drawable/bg_cf_icon" android:layout_width="58.0dp" android:layout_height="58.0dp" android:src="@drawable/ic_minecraft_cube" android:scaleType="centerCrop" android:importantForAccessibility="no" android:layout_marginEnd="11.0dp" android:clipToOutline="true" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="17.0sp" android:ellipsize="end" android:id="@id/detail_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxLines="2" />
+                        <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:ellipsize="end" android:id="@id/detail_author" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:maxLines="1" />
+                        <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:ellipsize="end" android:id="@id/detail_metadata" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:maxLines="1" />
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/btn_browser" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/website" android:layout_marginStart="12.0dp" app:cornerRadius="11.0dp" app:icon="@drawable/ic_ui_open_in_new" app:iconPadding="5.0dp" app:iconSize="17.0dp" style="@style/Widget.Levi.Button.Secondary" />
+                    <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/btn_install_header" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/install" android:layout_marginStart="8.0dp" app:cornerRadius="11.0dp" app:icon="@drawable/ic_ui_download" app:iconPadding="5.0dp" app:iconSize="17.0dp" style="@style/Widget.Levi.Button.Primary" />
+                </LinearLayout>
+                <ProgressBar android:id="@id/download_progress" android:visibility="gone" android:layout_width="match_parent" android:layout_height="2.0dp" android:layout_marginTop="7.0dp" android:indeterminate="true" style="?android:progressBarStyleHorizontal" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" app:cardCornerRadius="12.0dp" app:strokeWidth="1.0dp" style="@style/Widget.Levi.Card">
+            <LinearLayout android:orientation="vertical" android:paddingTop="12.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingStart="12.0dp" android:paddingEnd="12.0dp">
+                <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dp" android:text="@string/description" />
+                <WebView android:id="@id/detail_summary" android:background="@android:color/transparent" android:layout_width="match_parent" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

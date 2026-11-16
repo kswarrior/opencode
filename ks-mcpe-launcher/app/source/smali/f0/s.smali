@@ -1,0 +1,99 @@
+.class public final Lf0/s;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# static fields
+.field public static final b:Ljava/lang/Object;
+
+.field public static c:Ljava/lang/String;
+
+.field public static d:Ljava/util/HashSet;
+
+.field public static final e:Ljava/lang/Object;
+
+.field public static f:Lf0/r;
+
+
+# instance fields
+.field public final a:Landroid/app/NotificationManager;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    sput-object v0, Lf0/s;->b:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    new-instance v0, Ljava/util/HashSet;
+
+    .line 9
+    .line 10
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    .line 11
+    .line 12
+    .line 13
+    sput-object v0, Lf0/s;->d:Ljava/util/HashSet;
+
+    .line 14
+    .line 15
+    new-instance v0, Ljava/lang/Object;
+
+    .line 16
+    .line 17
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 18
+    .line 19
+    .line 20
+    sput-object v0, Lf0/s;->e:Ljava/lang/Object;
+
+    .line 21
+    .line 22
+    return-void
+.end method
+
+.method public constructor <init>(Landroid/content/Context;)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    const-string v0, "notification"
+
+    .line 5
+    .line 6
+    invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p1
+
+    .line 10
+    check-cast p1, Landroid/app/NotificationManager;
+
+    .line 11
+    .line 12
+    iput-object p1, p0, Lf0/s;->a:Landroid/app/NotificationManager;
+
+    .line 13
+    .line 14
+    return-void
+.end method

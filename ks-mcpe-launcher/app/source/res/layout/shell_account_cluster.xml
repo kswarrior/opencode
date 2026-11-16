@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/nav_news_container" android:background="?selectableItemBackgroundBorderless" android:focusable="true" android:clickable="true" android:layout_width="36.0dp" android:layout_height="36.0dp" android:contentDescription="@string/news_title" android:layout_marginEnd="7.0dp" android:tooltipText="@string/news_title">
+        <ImageView android:layout_gravity="center" android:id="@id/nav_news_button" android:layout_width="25.0dp" android:layout_height="25.0dp" android:src="@drawable/ic_nav_news" android:importantForAccessibility="no" app:tint="@color/ui_muted" />
+        <View android:layout_gravity="end|top" android:id="@id/nav_news_badge" android:background="@drawable/bg_news_unread_dot" android:visibility="gone" android:layout_width="8.0dp" android:layout_height="8.0dp" android:layout_marginTop="5.0dp" android:layout_marginEnd="4.0dp" />
+    </FrameLayout>
+    <ImageView android:id="@id/nav_sign_in_button" android:background="@drawable/bg_shell_avatar" android:padding="7.0dp" android:visibility="gone" android:layout_width="32.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_ui_person" android:contentDescription="@string/nav_sign_in_account" android:tooltipText="@string/nav_sign_in_account" app:tint="@color/text_primary" />
+    <FrameLayout android:id="@id/nav_account_avatar_container" android:visibility="gone" android:layout_width="32.0dp" android:layout_height="32.0dp" android:contentDescription="@string/nav_account" android:tooltipText="@string/nav_account">
+        <com.microsoft.xbox.idp.toolkit.CircleImageView android:layout_gravity="center" android:id="@id/nav_account_avatar" android:layout_width="match_parent" android:layout_height="match_parent" android:src="@drawable/ic_minecraft_cube" android:scaleType="centerCrop" android:contentDescription="@string/xbox_avatar" />
+        <ProgressBar android:id="@id/nav_avatar_progress" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent" android:indeterminate="true" style="?android:progressBarStyleSmall" />
+    </FrameLayout>
+</merge>

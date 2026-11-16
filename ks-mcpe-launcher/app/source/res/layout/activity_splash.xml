@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@color/background" android:padding="24.0dp" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_width="260.0dp" android:layout_height="260.0dp" android:src="@drawable/ic_leaf_logo" android:alpha="0.035" android:rotation="-18.0" android:importantForAccessibility="no" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/splash_brand" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toTopOf="@id/splash_footer" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <ImageView android:id="@id/imgLeaf" android:padding="10.0dp" android:layout_width="80.0dp" android:layout_height="80.0dp" android:src="@drawable/ic_leaf_logo" android:contentDescription="@string/splash_logo_desc" />
+        <TextView android:textSize="30.0sp" android:textColor="@color/text_primary" android:id="@id/tvAppName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:text="@string/app_name" android:includeFontPadding="false" android:fontFamily="sans-serif-medium" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dp" android:text="@string/splash_tagline" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/splash_footer" android:layout_width="0.0dp" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/tvPreparing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/splash_opening" />
+            <ProgressBar android:id="@id/loadingBar" android:layout_width="112.0dp" android:layout_height="3.0dp" android:layout_marginTop="8.0dp" android:indeterminate="true" android:indeterminateTint="@color/primary" style="?android:progressBarStyleHorizontal" />
+        </LinearLayout>
+        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/tvVersion" android:layout_width="wrap_content" android:layout_height="wrap_content" android:fontFamily="monospace" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
