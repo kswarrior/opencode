@@ -1,5 +1,12 @@
 # Release output
 
+Current release:
+<https://github.com/kswarrior/opencode/releases/tag/ks-mcpe-launcher-java-v1.0.0>
+
+Current build: `1.0.1` (`versionCode 10001`, package
+`com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI with the
+LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
+
 `app/source/build.sh` writes the signed APK here:
 
 ```
@@ -23,6 +30,11 @@ Then every later build reuses that key. Keep both files backed up and private:
 if the key changes, Android refuses to update an installed build
 (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). The password is stored only in
 `credentials.env`, which is also gitignored.
+
+The `1.0.1` certificate SHA-256 is
+`b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
+The `1.0.0` key is not available, so `1.0.0` users must uninstall before
+installing `1.0.1`; warn them that app data may be removed.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
