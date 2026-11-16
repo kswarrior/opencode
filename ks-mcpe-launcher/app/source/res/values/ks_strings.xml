@@ -11,6 +11,16 @@
     <string name="ks_launching_detail">Preparing the installed Minecraft Bedrock Edition.</string>
     <string name="ks_launching_checking">CHECKING INSTALLATION</string>
     <string name="ks_launching_starting">STARTING MINECRAFT</string>
+    <string name="ks_launch_log_title">LAUNCH LOG</string>
+    <string name="ks_launch_log_waiting">Waiting for launch engine…</string>
+    <string name="ks_launch_log_checking">Checking Minecraft installation…</string>
+    <string name="ks_launch_log_installed">Minecraft installation found.</string>
+    <string name="ks_launch_log_engine_ready">Launch engine ready.</string>
+    <string name="ks_launch_log_starting">Starting launch engine…</string>
+    <string name="ks_launch_log_started">Launch engine started.</string>
+    <string name="ks_launch_log_missing">Minecraft is not installed.</string>
+    <string name="ks_launch_log_engine_missing">Launch engine is missing.</string>
+    <string name="ks_launch_log_failed">Launch failed: %1$s</string>
     <string name="ks_missing_title">MINECRAFT NOT INSTALLED</string>
     <string name="ks_missing_detail">Install Minecraft Bedrock Edition from Google Play, then try again.</string>
     <string name="ks_launch_failed_title">LAUNCH FAILED</string>
