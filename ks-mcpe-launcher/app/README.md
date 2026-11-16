@@ -1,137 +1,100 @@
-# KS MCPE Launcher (com.ks.mcpe.launcher)
+# KS MCPE Launcher (com.ks.android.mcpe.launcher)
 
-This folder builds an installable clone of the upstream LeviLauncher Android
-release. The clone keeps the upstream v1.7.0 code and features, but installs
-under the application id `com.ks.mcpe.launcher` with its own launcher label,
-branding and signing key.
+A small landscape launcher for Minecraft Bedrock Edition on Android. The app
+checks that Minecraft is installed and then starts the installed game. It does
+not contain, modify or redistribute Minecraft.
+
+- Package: `com.ks.android.mcpe.launcher`
+- Label: `KS MCPE Launcher`
+- Version: `1.0.0` (versionCode `1`)
+- Min Android: 9.0 / API 28, target API 35, ARM and x86 (Java-only APK)
+- Theme: fullscreen landscape, monochrome black, white and gray only
+- Dependencies: framework-only Java, no Gradle, AndroidX, network or analytics
+
+## Screens
+
+1. **Loading** - black screen with the KS cube-and-play logo, brand name, a
+   thin progress line and "Preparing launcher / Loading interface / Ready"
+   status. Moves to Home automatically.
+2. **Home** - "KS MCPE LAUNCHER" at the top left and a white **LAUNCH** button
+   at the bottom right, with a faint logo watermark.
+3. **Launching** - opens after **LAUNCH**, shows a spinner and status, checks
+   that `com.mojang.minecraftpe` is installed and starts its launcher activity.
+   If Minecraft is missing or cannot start, the page shows the reason and a
+   **BACK TO HOME** button.
 
 ## Repository layout
 
-Everything needed to build lives in `ks-mcpe-launcher/app`:
+- `source/` - the new app and the only build input:
+  - `AndroidManifest.xml`
+  - `src/com/ks/android/mcpe/launcher/` - `LoadingActivity`, `HomeActivity`,
+    `LaunchingActivity`, `BaseActivity`
+  - `res/` - layouts, monochrome palette, vector logo and adaptive icon
+  - `build.sh` - command-line build (aapt2, javac, d8, zipalign, apksigner)
+- `build.sh` - convenience wrapper that runs `source/build.sh`.
+- `old/` - archived decoded LeviLauncher 1.7.0 tree from the previous repack.
+  It is not referenced by the current app or build and must not be edited.
+- `logo.png` and `tombstone_...` - legacy assets from the previous repack.
 
-- `source/` - the full apktool project decoded from the pinned upstream v1.7.0
-  APK (manifest, `res/`, `smali/`, `lib/`, `assets/`, `apktool.yml`). It
-  contains every file from the launcher, not only the changed ones, and is the
-  single source of truth.
-- `build.sh` - copies the source tree, applies the clone version, rebuilds,
-  aligns, signs and verifies the APK.
+## Build
 
-`/tmp/ks-mcpe-build` is a disposable build workspace only. It holds the apktool
-jar, the copied tree, and `dist/` output. Do not edit files there: the next
-build deletes and recopies the tree. Make changes in `app/source` and commit
-them.
-
-The decoded project has roughly 12,000 files and about 180 MB, so the
-repository is large. Edit files in `app/source` directly; there is no per-file
-overlay patch step.
-
-## Upstream base
-
-The decoded tree is LeviLauncher for Android v1.7.0. The clone keeps the v1.7
-launch core that was added upstream, including:
-
-- `org.levimc.launcher.core.packages.PackageService`
-- `MinecraftRuntimePreparer.checkPackageWorkspace` and `orderPackageMods`
-- `MsftAuthManager.prepareAccountForLaunch`
-- `org.levimc.launcher.core.play.PlayClient`
-- `org.levimc.launcher.ui.packages.PackagesActivity`
-
-The stock v1.7.0 UI is retained: Launch, Download, Instances, About and
-Settings tabs, Launcher News, Mods and Content Management pages.
-
-## Clone changes baked into the source tree
-
-- `AndroidManifest.xml` uses `com.ks.mcpe.launcher`, including provider
-  authorities, signature permission, task affinity and target package, so the
-  clone can be installed next to the original LeviLauncher instead of failing
-  with `INSTALL_FAILED_DUPLICATE_PERMISSION`.
-- `BuildConfig.APPLICATION_ID` and the `app_name` resource (all locales) match
-  the clone; the EULA title and message are branded "KS MCPE Launcher".
-- XAL Microsoft sign-in is forced to the in-process WebView:
-  `BrowserLaunchActivity.startAuthSession` always selects the in-proc browser,
-  managed login storage and managed crypto prefs default to enabled, and
-  `com.microsoft.xal.browser.IntentHandler` is `exported="false"`.
-- The in-app update check is removed:
-  `GithubReleaseUpdater.checkUpdate()` / `checkUpdateOnLaunch()` are inert
-  no-ops, so the app cannot query upstream releases or download updates.
-- The Play Store gate is bypassed: `BuildConfig.SKIP_PLAY_STORE_CHECK` is
-  `true` and `PlayStoreValidator.isMinecraftFromPlayStore` returns `true`, so
-  sideloaded or offline Minecraft installs can launch as they could in the
-  pre-rebase clone.
-- Google Play Games and Play billing manifest components, permissions and
-  metadata are removed. Launcher News and Firebase messaging are retained.
-- `lib/arm64-v8a/libgxcore.so` has its native package-name verifier
-  neutralised (`mov w0,#1; ret`). Upstream gates `JNI_OnLoad` on a 19-character
-  package id plus a hard-coded hash, which otherwise makes
-  `System.loadLibrary("gxcore")` fail during Minecraft preparation.
-
-## Local build
-
-Requirements: Java 21+, Python 3, curl, Android SDK build-tools
-(`zipalign`, `apksigner`, `aapt2`).
+Requirements: JDK 17+ (JDK 21+ recommended), Python 3, `zip`, and Android SDK
+build-tools plus a platform (`aapt2`, `d8`, `zipalign`, `apksigner`).
 
 ```bash
 ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
-The APK is written to `/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk`.
-The clone version defaults to `1.2.0` (versionCode `10200`), independent of
-the upstream LeviLauncher version. `build.sh` writes the version into both
-`apktool.yml` and `BuildConfig.smali` so the manifest and in-app version stay
-in sync.
+The APK is written to `app/source/dist/KS-MCPE-Launcher-<version>.apk` with a
+matching `.sha256` file. Set `ANDROID_HOME` or `ANDROID_SDK_ROOT` if the SDK is
+not in a standard location. `app/source/build` is a disposable workspace.
 
-Useful environment variables:
+Environment variables:
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace and output |
-| `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
-| `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.2.0` | Clone versionName written to `apktool.yml` and `BuildConfig` |
-| `APP_VERSION_CODE` | `10200` | Clone versionCode written to `apktool.yml` and `BuildConfig` |
-| `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output file name prefix |
-| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
-| `KEYSTORE_PASSWORD` | generated once | Keystore password |
+| `APP_VERSION` | `1.0.0` | versionName written into the manifest |
+| `APP_VERSION_CODE` | `1` | versionCode written into the manifest |
+| `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
+| `WORKDIR` | `app/source/build` | Disposable build workspace |
+| `DIST` | `app/source/dist` | APK output directory |
+| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing key |
 | `KEY_ALIAS` | `ksmcpe` | Key alias |
-| `KEY_PASSWORD` | same as keystore | Key password |
-| `CREDENTIALS_FILE` | next to keystore | Stores generated password/alias |
+| `KEYSTORE_PASSWORD` / `KEY_PASSWORD` | generated once | Signing passwords |
+| `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
 
-Before building, `build.sh` verifies that the source tree still has the clone
-application id, branded EULA, bypassed Play Store gate, in-proc XAL auth and
-managed storage defaults, disabled update entry points, v1.7 launch core and
-the patched native verifier. It refuses to build if any marker is missing.
+When no keystore exists, the build generates one and stores its generated
+credentials next to it. Keep that directory: a different key means future APKs
+cannot update an installed copy (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`).
 
-When no keystore exists, `build.sh` generates one and saves its generated
-credentials next to it so later builds keep the same signature. Back up that
-directory if you want to keep update compatibility.
+The build fails if the SDK tools are missing, and it verifies the signature and
+4-byte alignment of the result before reporting success.
 
-## Release retention
+## How launching works
 
-- Older `KS-MCPE-Launcher-*` assets are kept for rollback. Do not delete them
-  unless the user explicitly asks.
-- Publishing a version only replaces that version's APK and `.sha256` assets.
-- 1.2.0 rebases the clone on LeviLauncher v1.7.0 and keeps the clone package
-  id, branding, XAL in-proc auth and update/Play Store bypasses.
+On **LAUNCH**, the app waits briefly to show the launching page, checks for the
+Minecraft package, and starts it with
+`PackageManager.getLaunchIntentForPackage("com.mojang.minecraftpe")` (with an
+explicit `com.mojang.minecraftpe.MainActivity` fallback). The game runs as its
+own app; this launcher does not embed or run Minecraft inside its own process.
+The manifest declares a `<queries>` entry for the Minecraft package so the
+check works on Android 11+ without requesting broad package visibility.
 
-## Known limitations
+No permissions are requested, including no internet access.
 
-- In-app self-update is intentionally disabled. Install new builds manually
-  from this repository's `ks-mcpe-launcher` release.
-- Builds are signed with the keystore in
-  `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore`. If that key is not
-  preserved across build environments, the certificate changes and Android
-  requires uninstalling the previous clone before installing the new APK.
-  Back up the keystore directory to keep in-place updates working.
-- The Play Store gate bypass is intentional for sideloaded and offline
-  Minecraft installs. Use it only with a legitimately licensed copy of
-  Minecraft Bedrock Edition.
-- Core launcher features (Minecraft versions, mods, worlds, backups, accounts)
-  are not affected by the removed Play Games and Play billing components.
+## Limitations
 
-## Attribution and licensing
+- Minecraft Bedrock Edition must already be installed on the device. There is
+  no download, account, version, mod, world or backup management in this
+  iteration.
+- The launcher only starts the installed Minecraft version. It does not manage
+  or isolate multiple Minecraft versions.
+- Use it only with a legitimately licensed copy of Minecraft Bedrock Edition.
 
-The clone is based on
+## Attribution
+
+KS MCPE Launcher is an independent project. It is not affiliated with Mojang,
+Microsoft, or the LeviLauncher project. Minecraft is a trademark of Mojang
+Synergies AB. The archived `old/` tree is derived from
 [LeviLauncher for Android](https://github.com/LiteLDev/LeviLauncher-Android)
-(Apache-2.0). It is an unofficial repack; upstream assets, notices, and the
-license file are kept inside the APK. Use it only with a legitimately licensed
-copy of Minecraft Bedrock Edition.
+(Apache-2.0) and is not part of the current build.

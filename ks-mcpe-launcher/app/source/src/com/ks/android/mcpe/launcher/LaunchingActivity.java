@@ -27,7 +27,6 @@ public class LaunchingActivity extends BaseActivity {
     private TextView detailView;
     private ProgressBar progressView;
     private TextView actionView;
-    private boolean started;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,7 +94,6 @@ public class LaunchingActivity extends BaseActivity {
 
         try {
             startActivity(intent);
-            started = true;
             showLaunched();
         } catch (Exception launchError) {
             showFailure(R.string.launch_failed_title, R.string.launch_failed_detail);
@@ -125,11 +123,7 @@ public class LaunchingActivity extends BaseActivity {
 
     @Override
     public void onBackPressed() {
-        if (!started) {
-            finishWithFade();
-        } else {
-            finishWithFade();
-        }
+        finishWithFade();
     }
 
     @Override
