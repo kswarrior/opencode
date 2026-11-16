@@ -9,7 +9,7 @@
         android:fillColor="@color/transparent"
         android:strokeColor="@color/gray_600"
         android:strokeWidth="2"
-        android:pathData="M96,10 A86,86 0 1 1 95.9,10 Z" />
+        android:pathData="M96,10 A86,86 0 0 1 96,182 A86,86 0 0 1 96,10 Z" />
 
     <path
         android:fillColor="@color/white"
@@ -33,7 +33,7 @@
         android:fillColor="@color/black"
         android:strokeColor="@color/white"
         android:strokeWidth="2.5"
-        android:pathData="M96,86 A24,24 0 1 1 95.9,86 Z" />
+        android:pathData="M72,110 A24,24 0 0 1 120,110 A24,24 0 0 1 72,110 Z" />
 
     <path
         android:fillColor="@color/white"
