@@ -36,8 +36,8 @@
 
         <ImageView
             android:id="@+id/launching_logo"
-            android:layout_width="88dp"
-            android:layout_height="88dp"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
             android:contentDescription="@string/app_name"
             android:src="@drawable/logo_mark" />
 
@@ -45,7 +45,7 @@
             android:id="@+id/launching_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="sans-serif-medium"
             android:includeFontPadding="false"
             android:letterSpacing="0.12"
@@ -72,7 +72,7 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="220dp"
             android:layout_height="3dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="22dp"
             android:indeterminate="true"
             android:indeterminateTint="@color/white"
             android:progressBackgroundTint="@color/gray_700" />
@@ -81,7 +81,7 @@
             android:id="@+id/launching_action"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/btn_secondary"
             android:clickable="true"
             android:focusable="true"
