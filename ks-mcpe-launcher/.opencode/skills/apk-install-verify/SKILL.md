@@ -1,133 +1,129 @@
 ---
 name: apk-install-verify
-description: Use when installing or testing the KS MCPE Launcher APK on an Android emulator or device, reproducing "app not installed" reports, or interpreting INSTALL_FAILED_* errors for this project. Covers API 30 (Android 11) side-by-side install with the original LeviLauncher, launching the app, and logcat checks.
+description: Use when installing or testing the KS MCPE Launcher APK on an Android emulator or device, reproducing "app not installed" reports, or interpreting INSTALL_FAILED_* errors for this project. Covers side-by-side install with LeviLauncher, the arm64-only constraint, launching the Java UI, and logcat checks.
 ---
 
 # APK install and device verification
 
-Use this to prove a rebuilt APK installs before publishing it, and to reproduce
-user reports such as "app not installed".
+Current package: `com.ks.android.mcpe.launcher` (hybrid build, version `1.0.1`).
+The original LeviLauncher package is `org.levimc.launcher`; the archived 1.6.1
+KS clone used `com.ks.mcpe.launcher`. Do not mix them up.
 
-## Emulator setup (Linux runner)
+The hybrid APK contains only `arm64-v8a` native libraries. An x86_64 emulator
+normally cannot install it (`INSTALL_FAILED_NO_MATCHING_ABIS`). Use an arm64
+physical device, an arm64 host/emulator, or an emulator with working ARM
+translation. Static checks are still mandatory before publishing.
 
-```bash
-SDK=/usr/local/lib/android/sdk
-export ANDROID_HOME=$SDK ANDROID_SDK_ROOT=$SDK
-sudo chmod 666 /dev/kvm            # needed when the runner user is not in kvm
-yes | $SDK/cmdline-tools/latest/bin/sdkmanager --licenses >/dev/null
-$SDK/cmdline-tools/latest/bin/sdkmanager "emulator" "system-images;android-30;google_apis;x86_64"
-```
+No device was attached to the build runner used for `1.0.1`; that build has
+only been statically verified.
 
-`avdmanager create avd` can exit 0 without writing the AVD. If `~/.android/avd`
-stays empty, create it by hand:
+## Pre-install checks
 
 ```bash
-AVD=$HOME/.android/avd/api30.avd
-mkdir -p "$AVD"
-cat > "$AVD/config.ini" <<'EOF'
-avd.ini.encoding=UTF-8
-abi.type=x86_64
-hw.cpu.arch=x86_64
-hw.cpu.ncore=4
-image.sysdir.1=system-images/android-30/google_apis/x86_64/
-tag.display=Google APIs
-tag.id=google_apis
-hw.device.name=pixel_5
-hw.device.manufacturer=Google
-hw.lcd.density=440
-hw.lcd.height=2340
-hw.lcd.width=1080
-hw.ramSize=3072
-vm.heapSize=512
-disk.dataPartition.size=6G
-hw.keyboard=yes
-hw.gpu.enabled=yes
-hw.gpu.mode=swiftshader_indirect
-skin.dynamic=yes
-showDeviceFrame=no
-EOF
-printf 'avd.ini.encoding=UTF-8\npath=%s\npath.rel=avd/api30.avd\ntarget=android-30\n' "$AVD" \
-  > "$HOME/.android/avd/api30.ini"
+BT=/usr/local/lib/android/sdk/build-tools/37.0.0
+APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+
+$BT/aapt2 dump badging "$APK" | head -8
+$BT/zipalign -c -p 4 "$APK"
+$BT/apksigner verify --print-certs "$APK" | head -5
+unzip -l "$APK" | grep -E 'classes[23]?\.dex|lib/arm64-v8a/libgxcore.so'
+sha256sum -c "$APK.sha256"
 ```
 
-Boot headless and wait for the device:
+Expected: package `com.ks.android.mcpe.launcher`, versionCode `10001`,
+versionName `1.0.1`, minSdk 28, targetSdk 35, signer SHA-256
+`b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
+
+## Install test
+
+Install the original LeviLauncher first when testing side-by-side behavior,
+then the KS APK. This catches signature-permission and provider-authority
+collisions.
 
 ```bash
-$SDK/emulator/emulator -avd api30 -no-window -no-audio -no-boot-anim \
-  -gpu swiftshader_indirect -no-snapshot -no-metrics &
-$SDK/platform-tools/adb wait-for-device
-until [ "$($SDK/platform-tools/adb shell getprop sys.boot_completed 2>/dev/null | tr -d '\r')" = 1 ]; do sleep 5; done
+ADB=/usr/local/lib/android/sdk/platform-tools/adb
+$ADB devices
+$ADB install -r /path/to/LeviLauncher-v1.7.1-release.apk
+$ADB install -r ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+$ADB shell pm list packages | grep -E 'levimc|ks\.android\.mcpe'
 ```
 
-## The install test that matters
+Both installs must print `Success`.
 
-Install the **original first**, then the clone. This catches signature
-permission and provider authority collisions that do not appear on a clean
-device.
+If `1.0.0` is installed, `1.0.1` has a different signing key. Uninstall first:
 
 ```bash
-ADB=$SDK/platform-tools/adb
-$ADB install -r /tmp/opencode/apk/LeviLauncher-v1.6.1-release.apk   # original
-$ADB install -r /tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-1.0.4.apk # clone
-$ADB shell pm list packages | grep -E 'levimc|ks.mcpe'              # expect both
+$ADB uninstall com.ks.android.mcpe.launcher
+$ADB install ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
 ```
 
-Both installs must print `Success`. Then launch the clone:
+Uninstalling may delete launcher data and settings. Warn the user.
+
+## Launch test
 
 ```bash
 $ADB logcat -c
-$ADB shell monkey -p com.ks.mcpe.launcher -c android.intent.category.LAUNCHER 1
+$ADB shell monkey -p com.ks.android.mcpe.launcher \
+  -c android.intent.category.LAUNCHER 1
 sleep 20
-$ADB shell pidof com.ks.mcpe.launcher
+$ADB shell pidof com.ks.android.mcpe.launcher
 $ADB shell dumpsys activity activities | grep -E 'mResumedActivity' | head -1
-$ADB logcat -d | grep -E 'FATAL EXCEPTION|AndroidRuntime.*com.ks.mcpe' | head
+$ADB logcat -d | grep -E 'FATAL EXCEPTION|AndroidRuntime|KsEngineLauncher|KsLaunchingActivity' | head -80
 ```
 
-A live PID and a resumed `org.levimc.launcher.ui.activities.MainActivity` under
-`com.ks.mcpe.launcher`, with no fatal exception, means the repack boots.
+Expected flow:
+
+1. `com.ks.android.mcpe.launcher/.LoadingActivity`
+2. `com.ks.android.mcpe.launcher/.HomeActivity` after loading
+3. `com.ks.android.mcpe.launcher/.LaunchingActivity` when LAUNCH is tapped
+
+A live PID and a resumed KS activity, with no `FATAL EXCEPTION`, means the
+hybrid app boots.
+
+## Testing LAUNCH
+
+`LaunchingActivity` checks for `com.mojang.minecraftpe` before calling the
+engine. To exercise the engine path:
+
+1. Install a legitimate Minecraft Bedrock build for `arm64-v8a`.
+2. Ensure its package is visible to the launcher (`pm list packages`).
+3. Tap LAUNCH and watch for `MinecraftLoadingActivity`, then the game.
+
+If Minecraft is not installed, the expected result is the missing-installation
+screen, not a crash. That still verifies the UI path but not the engine.
+
+Without Minecraft, check the engine bridge statically instead:
+
+```bash
+unzip -p "$APK" classes3.dex >/tmp/classes3.dex
+# baksmali/decode the APK and confirm EngineLauncher references:
+# VersionManager.get, loadAllVersions, getSelectedVersion,
+# MinecraftLauncher.<init>(Context), launch(Intent, GameVersion, Callback)
+```
 
 ## Diagnosing install failures
 
-| Error | Likely cause in this project | Fix |
+| Error | Likely cause | Fix |
 | --- | --- | --- |
-| `INSTALL_FAILED_DUPLICATE_PERMISSION` | Manifest still declares a signature-level permission under `org.levimc.launcher` while the original is installed | Rename `<permission>` and `<uses-permission>` entries with the app id (already done in `build.sh`; check the built manifest) |
-| `INSTALL_FAILED_CONFLICTING_PROVIDER` | Provider authority not renamed | Rename all `android:authorities` starting with the old id |
-| `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | APK signed with a different key than the installed clone | Use the same keystore; otherwise uninstall the old clone first |
-| `INSTALL_FAILED_VERSION_DOWNGRADE` | `versionCode` lower than installed | Bump/patch version code or uninstall |
-| `INSTALL_FAILED_INVALID_APK` | Corrupt/aligned incorrectly | Rebuild, `zipalign -f -p 4`, re-sign |
-| `INSTALL_FAILED_NO_MATCHING_ABIS` | Device ABI not in APK | Test on arm64 device/emulator matching upstream |
-| `INSTALL_PARSE_FAILED_NO_CERTIFICATES` | Unsigned or broken v1 signature | Re-sign with `apksigner` (v1+v2+v3) |
-| `INSTALL_FAILED_INSUFFICIENT_STORAGE` | Device storage | Free space |
-
-Quick pre-install checks: `aapt2 dump badging` (package, version, sdk, ABIs),
-`apksigner verify`, `zipalign -c -p 4`, and `unzip -lv` for a `Stored`
-`resources.arsc`.
-
-Reproduce a permission failure on purpose (already confirmed on API 30):
-
-```bash
-cd /tmp/opencode
-cp -r /tmp/ks-mcpe-build/decoded oldbuild
-sed -i 's/com\.ks\.mcpe\.launcher\.DYNAMIC_RECEIVER/org.levimc.launcher.DYNAMIC_RECEIVER/g' \
-  oldbuild/AndroidManifest.xml
-java -jar apktool.jar b oldbuild -o old.apk
-$SDK/build-tools/37.0.0/zipalign -f -p 4 old.apk old-aligned.apk
-$SDK/build-tools/37.0.0/apksigner sign --ks /tmp/ks-mcpe-build/signing/ks-mcpe.keystore \
-  --ks-key-alias "$KEY_ALIAS" --ks-pass "pass:$KEYSTORE_PASSWORD" \
-  --key-pass "pass:$KEY_PASSWORD" --min-sdk-version 23 old-aligned.apk
-$ADB install -r old-aligned.apk
-# Failure [INSTALL_FAILED_DUPLICATE_PERMISSION: Package com.ks.mcpe.launcher
-#   attempting to redeclare permission
-#   org.levimc.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
-#   already owned by org.levimc.launcher]
-```
+| `INSTALL_FAILED_NO_MATCHING_ABIS` | APK is `arm64-v8a` only; device/emulator is x86_64 | Use an arm64 device or ARM-translation emulator |
+| `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | Different signing key, e.g. `1.0.0` -> `1.0.1` | Uninstall the old package first; warn about data loss |
+| `INSTALL_FAILED_VERSION_DOWNGRADE` | Lower versionCode than installed | Install a higher versionCode or uninstall |
+| `INSTALL_FAILED_DUPLICATE_PERMISSION` | Signature permission still uses `org.levimc.launcher` while the original is installed | Rebuild from the patched tree; check `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` in the manifest |
+| `INSTALL_FAILED_CONFLICTING_PROVIDER` | Provider authority not renamed | Check all `android:authorities` use `com.ks.android.mcpe.launcher` |
+| `INSTALL_FAILED_INVALID_APK` | Corrupt or misaligned APK | Rebuild; `zipalign -f -p 4`; re-sign |
+| `INSTALL_PARSE_FAILED_NO_CERTIFICATES` | Unsigned or broken signature | Re-sign with `apksigner` (v1+v2+v3) |
+| `INSTALL_FAILED_INSUFFICIENT_STORAGE` | No space | Free space; the APK is ~36 MB |
 
 ## With the mobile-mcp server
 
-When `mobile-mcp` is connected (config in `ks-mcpe-launcher/opencode.jsonc`),
-the same flow is available through `mobile_list_available_devices`,
+When `mobile-mcp` is connected, use `mobile_list_available_devices`,
 `mobile_install_app`, `mobile_launch_app`, `mobile_list_elements_on_screen`,
-`mobile_get_device_logs`, and `mobile_list_crashes`. It still needs a running
-emulator or USB device and `adb` on PATH.
+`mobile_get_device_logs`, and `mobile_list_crashes`.
 
-Clean up with `adb emu kill` when done; emulators consume several GB of RAM.
+If `mobile_list_available_devices` is empty, do not silently allocate a paid
+remote device. Ask the user first. Releasing a remote device wipes its state.
+
+## Cleanup
+
+`adb emu kill` for local emulators. Remote devices should be released only
+after the whole test task is finished.

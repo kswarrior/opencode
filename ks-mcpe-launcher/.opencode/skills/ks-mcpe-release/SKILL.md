@@ -1,43 +1,88 @@
 ---
 name: ks-mcpe-release
-description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets in the ks-mcpe-launcher GitHub release, when configuring the ks-mcpe-launcher build workflow or signing secrets, or when a download hash must be checked. Trigger on release upload, softprops/action-gh-release, KS-MCPE-Launcher-*.apk, ks-mcpe-launcher tag, or GitHub Actions workflow for this project.
+description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, ks-mcpe-launcher-java-v1.0.0, GitHub release upload, release asset, or signing secrets for this project.
 ---
 
 # KS MCPE Launcher release
 
-Builds are published to the `ks-mcpe-launcher` release of
-`kswarrior/opencode` (release id changes; always look it up, never hardcode).
+Builds are published to:
 
-Asset contract:
+- Repository: `kswarrior/opencode`
+- Tag: `ks-mcpe-launcher-java-v1.0.0`
+- Release id at the time of writing: `447045166`
+- URL: <https://github.com/kswarrior/opencode/releases/tag/ks-mcpe-launcher-java-v1.0.0>
 
-- `KS-MCPE-Launcher-<version>.apk` (`<version>` is the clone version, default
-  `1.0.7`, not the upstream LeviLauncher version)
-- `KS-MCPE-Launcher-<version>.apk.sha256` (output of `sha256sum`, two spaces
-  between hash and file name)
+Look the release up by tag before uploading; do not hardcode the id if the
+release can move.
 
-Older versioned assets stay in the release for rollback unless the user
-explicitly asks to remove them.
+## Asset contract
 
-## Upload a build via the API
+- `KS-MCPE-Launcher-<version>.apk`
+- `KS-MCPE-Launcher-<version>.apk.sha256`
 
-Authenticate with `GH_TOKEN`, or derive the Actions bot token locally from
-`git config --get http.https://github.com/.extraheader` (base64
-`x-access-token:<token>`). Never print the token, never write it to a file in
-the repository.
+`<version>` is the app's `versionName`, currently `1.0.1`, not the upstream
+LeviLauncher version. The checksum file is the exact output of `sha256sum`
+(two spaces between digest and file name).
 
-Only replace the two assets for the version being published. Keep older
-versions; do not bulk-delete `KS-MCPE-Launcher-*` assets.
+Current assets:
+
+| Asset | Size | Notes |
+| --- | --- | --- |
+| `KS-MCPE-Launcher-1.0.0.apk` | 30,102 | archived Java-only build |
+| `KS-MCPE-Launcher-1.0.0.apk.sha256` | 93 | archived |
+| `KS-MCPE-Launcher-1.0.1.apk` | 37,595,100 | hybrid engine build |
+| `KS-MCPE-Launcher-1.0.1.apk.sha256` | 93 | SHA-256 `51d30d7c...` |
+
+Keep older assets for rollback. Only replace the two assets for the version
+being published; never bulk-delete other versions.
+
+## Current signing key
+
+`1.0.1` is signed with:
+
+- Keystore: `ks-mcpe-launcher/release/signing/ks-mcpe.keystore`
+- Credentials: `ks-mcpe-launcher/release/signing/credentials.env`
+- Certificate SHA-256:
+  `b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`
+- Certificate SHA-1:
+  `b0e200f8fd5cf1f71496372a8cd580f98faa4fd2`
+
+The `1.0.0` signing key is not available. A `1.0.0` install cannot update to
+`1.0.1`; users must uninstall `1.0.0` first, which may delete app data. State
+this in release notes.
+
+Back up the keystore and credentials outside the repository. They are
+gitignored and must never be committed or printed.
+
+## Upload via the API
+
+Authenticate with `GH_TOKEN`, or derive the bot token from the git
+`extraheader`. Never print the token or write it to a repository file.
 
 ```bash
-TAG=ks-mcpe-launcher
 REPO=kswarrior/opencode
-VERSION=1.0.7
-REL_ID=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
-  "https://api.github.com/repos/$REPO/releases/tags/$TAG" | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
+TAG=ks-mcpe-launcher-java-v1.0.0
+VERSION=1.0.1
+DIST=ks-mcpe-launcher/release
+TOKEN="${GH_TOKEN:-}"
 
-# Delete only this version's assets before re-upload (if they exist).
-for name in "KS-MCPE-Launcher-$VERSION.apk" "KS-MCPE-Launcher-$VERSION.apk.sha256"; do
-  asset_id=$(curl -fsS -H "Authorization: token $GH_TOKEN" \
+if [ -z "$TOKEN" ]; then
+  TOKEN=$(git config --get http.https://github.com/.extraheader \
+    | sed -n 's/^AUTHORIZATION: basic //Ip' \
+    | base64 -d | cut -d: -f2-)
+fi
+[ -n "$TOKEN" ] || { echo "no GitHub token" >&2; exit 1; }
+
+REL_ID=$(curl -fsS -H "Authorization: Bearer $TOKEN" \
+  -H 'Accept: application/vnd.github+json' \
+  "https://api.github.com/repos/$REPO/releases/tags/$TAG" \
+  | python3 -c 'import json,sys; print(json.load(sys.stdin)["id"])')
+
+# Delete only this version's two assets if re-publishing it.
+for name in "KS-MCPE-Launcher-$VERSION.apk" \
+            "KS-MCPE-Launcher-$VERSION.apk.sha256"; do
+  asset_id=$(curl -fsS -H "Authorization: Bearer $TOKEN" \
+    -H 'Accept: application/vnd.github+json' \
     "https://api.github.com/repos/$REPO/releases/$REL_ID/assets?per_page=100" \
     | python3 -c 'import json,sys
 name = sys.argv[1]
@@ -46,89 +91,70 @@ for a in json.load(sys.stdin):
         print(a["id"])
         break' "$name")
   if [ -n "$asset_id" ]; then
-    curl -fsS -X DELETE -H "Authorization: token $GH_TOKEN" \
+    curl -fsS -X DELETE -H "Authorization: Bearer $TOKEN" \
       "https://api.github.com/repos/$REPO/releases/assets/$asset_id"
   fi
 done
 
-# Upload only the current version (Content-Type: application/octet-stream).
-for f in "/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-$VERSION.apk" \
-         "/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-$VERSION.apk.sha256"; do
-  curl -fsS -X POST -H "Authorization: token $GH_TOKEN" \
-    -H "Content-Type: application/octet-stream" --data-binary @"$f" \
-    "https://uploads.github.com/repos/$REPO/releases/$REL_ID/assets?name=$(basename "$f")"
+for name in "KS-MCPE-Launcher-$VERSION.apk" \
+            "KS-MCPE-Launcher-$VERSION.apk.sha256"; do
+  curl --fail-with-body -sS -X POST \
+    -H "Authorization: Bearer $TOKEN" \
+    -H 'Accept: application/vnd.github+json' \
+    -H 'Content-Type: application/octet-stream' \
+    --data-binary "@$DIST/$name" \
+    "https://uploads.github.com/repos/$REPO/releases/$REL_ID/assets?name=$name"
 done
 ```
 
-## Retention
-
-- Keep older `KS-MCPE-Launcher-*` assets for rollback.
-- Never delete a version unless the user explicitly asks. Do not bulk-delete
-  matching assets when publishing a new build.
-- Replacing the current version's two assets is fine; deleting other versions
-  is not.
+GitHub's upload API accepts `application/octet-stream` for both files. If a
+more specific type is used, ensure the APK is
+`application/vnd.android.package-archive` and the checksum is `text/plain`.
 
 ## Verify after upload
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.7.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/KS-MCPE-Launcher-1.0.7.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.7.apk.sha256
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher-java-v1.0.0/KS-MCPE-Launcher-1.0.1.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher-java-v1.0.0/KS-MCPE-Launcher-1.0.1.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.1.apk.sha256
+
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump xmltree --file AndroidManifest.xml KS-MCPE-Launcher-1.0.7.apk | grep -E 'package=|DYNAMIC_RECEIVER|authorities' | head
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.7.apk
+$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.1.apk | head -5
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.1.apk | head -5
+$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.1.apk
 ```
 
-Confirm the uploaded manifest has `com.ks.mcpe.launcher`, renamed provider
-authorities, and the renamed signature permission. File size can match the
-previous asset after small manifest edits because of zip alignment; compare
-SHA-256, not size.
+Confirm the uploaded manifest has package
+`com.ks.android.mcpe.launcher`, versionName `1.0.1`, versionCode `10001`, and
+that the signer certificate is `b96de...`. Compare SHA-256, not only size.
 
-## CI workflow
+## Release notes
 
-The staged `ks-mcpe-launcher.workflow.yml` was removed on request. Do not
-recreate it or add a GitHub Actions workflow for this project; builds are run
-locally with `ks-mcpe-launcher/app/build.sh` from the checked-in
-`app/source` tree. If CI is ever requested again, the signing key must be
-provided as secrets first, because rebuilds with a new key break updates.
+When publishing a new version in an existing release, update the release name
+and body to describe both the new asset and the retained older assets. For
+`1.0.1` the important points are:
 
-The app's in-built update check is removed: the settings button and launch-time
-call are gone and the updater entry points are inert no-ops, so the app cannot
-query upstream releases. Users update only by installing new release assets
-manually.
+- Compact 3-screen Java UI retained.
+- LAUNCH runs Minecraft in-process through the LeviLauncher 1.7.1 engine.
+- Requires Minecraft Bedrock installed.
+- `arm64-v8a` only.
+- New signing key; uninstall `1.0.0` first.
 
-Version 1.0.2 was published with a signing key (cert SHA-256
-`880b6928242e641ac60333127dbab2200ed5a2625743ef63981e6414ad8d27bd`) that was
-not preserved outside the ephemeral build workspace. Versions 1.0.3 and 1.0.4
-used cert SHA-256
-`062cfc33f62e3e838555acfb2d80d1fe546cdae61ac44332b2212260b781ff48`, but that
-private key was also lost, so 1.0.5 used cert SHA-256
-`e5a6a0bd1b1b27ea5f5cc857fe8bcaca790653873f3dcf2699ab89736d820bd7`. That
-keystore was not preserved when the ephemeral CI home was reset either, so
-1.0.6 and 1.0.7 use a new key (cert SHA-256
-`8944ee96bbc98a044f870af21aad4de70a9b0e5de17c71826aa9384d09d1f63e`). Users of
-1.0.6 can update in place to 1.0.7; users of 1.0.2 through 1.0.5 must uninstall first. Older assets
-remain published for rollback. The build defaults the keystore to
-`~/.local/share/ks-mcpe-signing/ks-mcpe.keystore`, but that directory does not
-survive a CI runner reset; export or back it up externally if in-place updates
-matter.
+Do not claim the old release body still applies. The `1.0.0` body said "No
+permissions and no internet access"; the hybrid engine has its own
+permissions and services.
 
 ## Rules
 
-- Upload only the current build outputs from `dist/`; never hand-edit the APK.
+- Upload only outputs produced by `ks-mcpe-launcher/app/build.sh`; never
+  hand-edit or hand-sign an APK.
 - Do not delete older version assets unless the user explicitly requests it.
 - Never re-upload a replacement for an already-published version unless the
-  keystore that signed the existing asset is still available. The default
-  keystore now lives under `~/.local/share/ks-mcpe-signing`; a rebuild with a
-  new key changes the signature and forces every user of that version to
-  uninstall before updating. If the key is gone, leave the published asset
-  untouched.
-- Verify an existing release asset before rebuilding it: download it, check its
-  SHA-256, signature, version, EULA branding, disabled updater and native
-  patch. If it already matches the current sources, no rebuild is needed.
-- The release tag stays `ks-mcpe-launcher`; do not create per-version releases.
-- The release **name** tracks the clone version (`v1.0.7`); the tag stays
-  `ks-mcpe-launcher` so the pinned upstream asset URL remains valid.
-- If the bot token lacks `contents: write`, release uploads fail; do not fall
+  signing key that produced the existing asset is still available. The
+  current key is available; the `1.0.0` key is not.
+- If the bot token lacks `contents: write`, the upload will fail. Do not fall
   back to committing binaries into the repository.
+- The built-in updater is inert; users update only by installing release
+  assets manually.
+- Device install testing is a separate step; see `apk-install-verify`.
