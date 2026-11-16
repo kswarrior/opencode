@@ -48,7 +48,8 @@
     </style>
     <style name="MinecraftLoadingTheme" parent="@style/Base.Theme.FullScreen">
         <item name="android:windowDisablePreview">true</item>
-        <item name="android:windowSplashScreenBackground">@color/background</item>
+        <item name="android:windowBackground">@color/ks_black</item>
+        <item name="android:windowSplashScreenBackground">@color/ks_black</item>
         <item name="android:windowSplashScreenAnimatedIcon">@android:color/transparent</item>
         <item name="android:windowSplashScreenIconBackgroundColor">@android:color/transparent</item>
     </style>

@@ -125,6 +125,10 @@ public class LaunchingActivity extends BaseActivity {
         });
     }
 
+    private void appendLog(int messageRes) {
+        appendLog(getString(messageRes));
+    }
+
     private void appendLog(String message) {
         String line = "[" + timeFormat.format(new Date()) + "] " + message;
         logLines.add(line);

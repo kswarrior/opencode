@@ -9,6 +9,7 @@
     <style name="Base.Theme.SplashScreen.Light" parent="@style/Base.Theme.SplashScreen" />
     <style name="MinecraftLoadingTheme" parent="@style/Base.Theme.FullScreen">
         <item name="android:windowDisablePreview">true</item>
+        <item name="android:windowBackground">@color/ks_black</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
