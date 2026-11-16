@@ -32,6 +32,9 @@ not contain, modify or redistribute Minecraft.
   - `res/` - layouts, monochrome palette, vector logo and adaptive icon
   - `build.sh` - command-line build (aapt2, javac, d8, zipalign, apksigner)
 - `build.sh` - convenience wrapper that runs `source/build.sh`.
+- `../release/` - build output drop: signed APK, `.sha256`, and the local
+  `signing/` key material. Generated artifacts are gitignored; see
+  `../release/README.md` for the GitHub Actions secrets setup.
 - `old/` - archived decoded LeviLauncher 1.7.0 tree from the previous repack.
   It is not referenced by the current app or build and must not be edited.
 - `logo.png` and `tombstone_...` - legacy assets from the previous repack.
@@ -45,9 +48,9 @@ build-tools plus a platform (`aapt2`, `d8`, `zipalign`, `apksigner`).
 ANDROID_HOME=/path/to/android-sdk ./ks-mcpe-launcher/app/build.sh
 ```
 
-The APK is written to `app/source/dist/KS-MCPE-Launcher-<version>.apk` with a
-matching `.sha256` file. Set `ANDROID_HOME` or `ANDROID_SDK_ROOT` if the SDK is
-not in a standard location. `app/source/build` is a disposable workspace.
+The APK is written to `release/KS-MCPE-Launcher-<version>.apk` with a matching
+`.sha256` file. Set `ANDROID_HOME` or `ANDROID_SDK_ROOT` if the SDK is not in a
+standard location. `app/source/build` is a disposable workspace.
 
 Environment variables:
 
@@ -57,15 +60,23 @@ Environment variables:
 | `APP_VERSION_CODE` | `1` | versionCode written into the manifest |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `app/source/build` | Disposable build workspace |
-| `DIST` | `app/source/dist` | APK output directory |
-| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing key |
+| `DIST` | `release/` | APK output directory |
+| `KEYSTORE` | `release/signing/ks-mcpe.keystore` | Signing key |
 | `KEY_ALIAS` | `ksmcpe` | Key alias |
 | `KEYSTORE_PASSWORD` / `KEY_PASSWORD` | generated once | Signing passwords |
 | `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
+| `KEYSTORE_BASE64` | unset | Decodes a CI signing key into the keystore path |
 
-When no keystore exists, the build generates one and stores its generated
-credentials next to it. Keep that directory: a different key means future APKs
-cannot update an installed copy (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`).
+When no keystore exists, the build generates one at
+`release/signing/ks-mcpe.keystore` and stores its generated credentials next to
+it. The first build also imports an existing key from
+`~/.local/share/ks-mcpe-signing/` if one is present. Keep the `release/signing`
+directory private and backed up: a different key means future APKs cannot
+update an installed copy (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`).
+
+The `release/signing` directory is gitignored. For GitHub Actions, add
+`KEYSTORE_BASE64`, `KEYSTORE_PASSWORD`, `KEY_PASSWORD` and `KEY_ALIAS` as
+repository secrets; see `release/README.md`.
 
 The build fails if the SDK tools are missing, and it verifies the signature and
 4-byte alignment of the result before reporting success.
