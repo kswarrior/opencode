@@ -5,8 +5,8 @@
     android:background="@drawable/ks_bg_home">
 
     <ImageView
-        android:layout_width="500dp"
-        android:layout_height="500dp"
+        android:layout_width="520dp"
+        android:layout_height="520dp"
         android:layout_gravity="center"
         android:alpha="0.035"
         android:contentDescription="@null"
@@ -25,88 +25,168 @@
         android:textColor="@color/ks_gray_400"
         android:textSize="11sp" />
 
-    <LinearLayout
-        android:id="@+id/ks_launching_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:padding="24dp">
-
-        <ImageView
-            android:id="@+id/ks_launching_logo"
-            android:layout_width="76dp"
-            android:layout_height="76dp"
-            android:contentDescription="@string/app_name"
-            android:src="@drawable/ks_logo_mark" />
-
-        <TextView
-            android:id="@+id/ks_launching_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="sans-serif-medium"
-            android:includeFontPadding="false"
-            android:letterSpacing="0.12"
-            android:text="@string/ks_launching_title"
-            android:textColor="@color/ks_white"
-            android:textSize="21sp" />
-
-        <TextView
-            android:id="@+id/ks_launching_detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:lineSpacingExtra="3dp"
-            android:maxWidth="460dp"
-            android:text="@string/ks_launching_detail"
-            android:textColor="@color/ks_gray_400"
-            android:textSize="13sp" />
-
-        <ProgressBar
-            android:id="@+id/ks_launching_progress"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="220dp"
-            android:layout_height="3dp"
-            android:layout_marginTop="22dp"
-            android:indeterminate="true"
-            android:indeterminateTint="@color/ks_white"
-            android:progressBackgroundTint="@color/ks_gray_700" />
-
-        <TextView
-            android:id="@+id/ks_launching_action"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="22dp"
-            android:background="@drawable/ks_btn_secondary"
-            android:clickable="true"
-            android:focusable="true"
-            android:fontFamily="sans-serif-medium"
-            android:gravity="center"
-            android:includeFontPadding="false"
-            android:letterSpacing="0.14"
-            android:minWidth="190dp"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:text="@string/ks_back_to_home"
-            android:textColor="@color/ks_white"
-            android:textSize="11sp"
-            android:visibility="gone" />
-    </LinearLayout>
-
     <TextView
         android:id="@+id/ks_launching_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|start"
+        android:layout_gravity="top|end"
         android:layout_margin="28dp"
         android:fontFamily="sans-serif"
         android:includeFontPadding="false"
         android:letterSpacing="0.12"
         android:textColor="@color/ks_gray_500"
         android:textSize="9sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="48dp"
+        android:paddingTop="44dp"
+        android:paddingEnd="48dp"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingEnd="28dp">
+
+            <ImageView
+                android:id="@+id/ks_launching_logo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ks_logo_mark" />
+
+            <TextView
+                android:id="@+id/ks_launching_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.12"
+                android:text="@string/ks_launching_title"
+                android:textColor="@color/ks_white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/ks_launching_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.14"
+                android:text="@string/ks_brand_subtitle"
+                android:textColor="@color/ks_gray_500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/ks_launching_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.04"
+                android:text="@string/ks_launching_checking"
+                android:textColor="@color/ks_white"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@+id/ks_launching_progress"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="220dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="12dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/ks_white"
+                android:progressBackgroundTint="@color/ks_gray_700" />
+
+            <TextView
+                android:id="@+id/ks_launching_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="3dp"
+                android:maxWidth="420dp"
+                android:minHeight="18dp"
+                android:text="@string/ks_launching_detail"
+                android:textColor="@color/ks_gray_400"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/ks_launching_action"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ks_btn_secondary"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.14"
+                android:minWidth="190dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:text="@string/ks_back_to_home"
+                android:textColor="@color/ks_white"
+                android:textSize="11sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/ks_launching_log_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.16"
+                android:text="@string/ks_launch_log_title"
+                android:textColor="@color/ks_gray_400"
+                android:textSize="10sp" />
+
+            <ScrollView
+                android:id="@+id/ks_launching_log_scroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ks_log_panel"
+                android:fadeScrollbars="false"
+                android:fillViewport="true"
+                android:padding="14dp"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@+id/ks_launching_log"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/ks_launch_log_waiting"
+                    android:textColor="@color/ks_gray_300"
+                    android:textSize="10sp" />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
 </FrameLayout>
