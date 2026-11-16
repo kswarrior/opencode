@@ -9,6 +9,7 @@ set -euo pipefail
 # then zipalign and apksigner produce the installable release.
 
 SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_ROOT="$(cd -- "$SCRIPT_DIR/../.." && pwd)"
 
 APP_ID="com.ks.android.mcpe.launcher"
 APP_VERSION="${APP_VERSION:-1.0.0}"
@@ -16,9 +17,12 @@ APP_VERSION_CODE="${APP_VERSION_CODE:-1}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 
 WORKDIR="${WORKDIR:-$SCRIPT_DIR/build}"
-DIST="${DIST:-$SCRIPT_DIR/dist}"
+RELEASE_DIR="${RELEASE_DIR:-$PROJECT_ROOT/release}"
+DIST="${DIST:-$RELEASE_DIR}"
+SIGNING_DIR="${SIGNING_DIR:-$RELEASE_DIR/signing}"
+LEGACY_SIGNING_DIR="${XDG_DATA_HOME:-$HOME/.local/share}/ks-mcpe-signing"
 
-KEYSTORE="${KEYSTORE:-${XDG_DATA_HOME:-$HOME/.local/share}/ks-mcpe-signing/ks-mcpe.keystore}"
+KEYSTORE="${KEYSTORE:-$SIGNING_DIR/ks-mcpe.keystore}"
 CREDENTIALS_FILE="${CREDENTIALS_FILE:-$(dirname "$KEYSTORE")/credentials.env}"
 KEY_ALIAS="${KEY_ALIAS:-ksmcpe}"
 KEYSTORE_PASSWORD="${KEYSTORE_PASSWORD:-}"
@@ -67,6 +71,24 @@ log "using build-tools $(basename "$BUILD_TOOLS"), platform $(basename "$PLATFOR
 rm -rf "$WORKDIR"
 mkdir -p "$WORKDIR/gen" "$WORKDIR/classes" "$WORKDIR/dex" "$DIST" \
     "$(dirname "$KEYSTORE")"
+
+if [ ! -f "$KEYSTORE" ]; then
+    if [ -n "${KEYSTORE_BASE64:-}" ]; then
+        log "restoring signing key from KEYSTORE_BASE64"
+        printf '%s' "$KEYSTORE_BASE64" | base64 -d > "$KEYSTORE"
+        chmod 600 "$KEYSTORE"
+    elif [ "$KEYSTORE" = "$SIGNING_DIR/ks-mcpe.keystore" ] \
+        && [ -f "$LEGACY_SIGNING_DIR/ks-mcpe.keystore" ]; then
+        log "importing existing signing key into $SIGNING_DIR"
+        cp -p "$LEGACY_SIGNING_DIR/ks-mcpe.keystore" "$KEYSTORE"
+        if [ ! -f "$CREDENTIALS_FILE" ] \
+            && [ -f "$LEGACY_SIGNING_DIR/credentials.env" ]; then
+            cp -p "$LEGACY_SIGNING_DIR/credentials.env" "$CREDENTIALS_FILE"
+        fi
+        chmod 600 "$KEYSTORE" 2>/dev/null || true
+        [ ! -f "$CREDENTIALS_FILE" ] || chmod 600 "$CREDENTIALS_FILE"
+    fi
+fi
 
 log "compiling resources"
 "$AAPT2" compile --dir "$SCRIPT_DIR/res" -o "$WORKDIR/resources.zip"
@@ -143,6 +165,7 @@ log "signing"
     --ks-key-alias "$KEY_ALIAS" \
     --ks-pass "pass:$KEYSTORE_PASSWORD" \
     --key-pass "pass:$KEY_PASSWORD" \
+    --v4-signing-enabled false \
     --out "$OUTPUT" \
     "$WORKDIR/aligned.apk"
 "$APKSIGNER" verify "$OUTPUT" >/dev/null
@@ -154,3 +177,4 @@ log "signing"
 
 log "built $OUTPUT"
 log "sha256 $(cut -d ' ' -f 1 "$OUTPUT.sha256")"
+log "signing key $(realpath --relative-to="$PROJECT_ROOT" "$KEYSTORE")"
