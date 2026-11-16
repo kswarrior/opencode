@@ -1,10 +1,10 @@
 .class public final Lg3/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lg3/b;
-.implements Ly2/s;
+.implements Ly2/t;
 
 
 # instance fields
@@ -30,7 +30,7 @@
 
 
 # virtual methods
-.method public l(Lu2/y;Ls2/h;)Lu2/y;
+.method public g(Lu2/y;Ls2/h;)Lu2/y;
     .locals 1
 
     .line 1
@@ -61,11 +61,11 @@
     return-object p2
 .end method
 
-.method public n(Ly2/x;)Ly2/r;
+.method public i(Ly2/y;)Ly2/s;
     .locals 3
 
     .line 1
-    new-instance v0, Ly2/b;
+    new-instance v0, Ly2/c;
 
     .line 2
     .line 3
@@ -77,7 +77,7 @@
 
     .line 6
     .line 7
-    invoke-virtual {p1, v1, v2}, Ly2/x;->b(Ljava/lang/Class;Ljava/lang/Class;)Ly2/r;
+    invoke-virtual {p1, v1, v2}, Ly2/y;->b(Ljava/lang/Class;Ljava/lang/Class;)Ly2/s;
 
     .line 8
     .line 9
@@ -89,7 +89,7 @@
 
     .line 12
     .line 13
-    invoke-direct {v0, v1, p1}, Ly2/b;-><init>(Landroid/content/res/Resources;Ly2/r;)V
+    invoke-direct {v0, v1, p1}, Ly2/c;-><init>(Landroid/content/res/Resources;Ly2/s;)V
 
     .line 14
     .line 15

@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/behavior/HideViewOnScrollBehavior;
 .super Ld0/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -15,7 +15,7 @@
 
 
 # instance fields
-.field public a:La7/t1;
+.field public a:Landroidx/room/g0;
 
 .field public b:Landroid/view/accessibility/AccessibilityManager;
 
@@ -298,11 +298,11 @@
     .line 93
     .line 94
     :goto_3
-    iget-object p3, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iget-object p3, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 95
     .line 96
-    invoke-virtual {p3, p2, p1}, La7/t1;->l(Landroid/view/View;Landroid/view/ViewGroup$MarginLayoutParams;)I
+    invoke-virtual {p3, p2, p1}, Landroidx/room/g0;->j(Landroid/view/View;Landroid/view/ViewGroup$MarginLayoutParams;)I
 
     .line 97
     .line 98
@@ -331,7 +331,7 @@
 
     .line 110
     .line 111
-    invoke-static {p1, p3, v0}, La7/t1;->A(Landroid/content/Context;II)I
+    invoke-static {p1, p3, v0}, Lcom/bumptech/glide/c;->O(Landroid/content/Context;II)I
 
     .line 112
     .line 113
@@ -360,7 +360,7 @@
 
     .line 125
     .line 126
-    invoke-static {p1, p3, v0}, La7/t1;->A(Landroid/content/Context;II)I
+    invoke-static {p1, p3, v0}, Lcom/bumptech/glide/c;->O(Landroid/content/Context;II)I
 
     .line 127
     .line 128
@@ -389,7 +389,7 @@
     .line 139
     .line 140
     .line 141
-    invoke-static {p1, v0, p3}, La7/t1;->B(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
+    invoke-static {p1, v0, p3}, Lcom/bumptech/glide/c;->P(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
 
     .line 142
     .line 143
@@ -413,7 +413,7 @@
 
     .line 152
     .line 153
-    invoke-static {p1, v0, p2}, La7/t1;->B(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
+    invoke-static {p1, v0, p2}, Lcom/bumptech/glide/c;->P(Landroid/content/Context;ILandroid/animation/TimeInterpolator;)Landroid/animation/TimeInterpolator;
 
     .line 154
     .line 155
@@ -537,11 +537,11 @@
 
     .line 50
     .line 51
-    iget-object p6, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iget-object p6, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 52
     .line 53
-    invoke-virtual {p6, p1, p2}, La7/t1;->n(ILandroid/view/View;)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {p6, p1, p2}, Landroidx/room/g0;->l(ILandroid/view/View;)Landroid/view/ViewPropertyAnimator;
 
     .line 54
     .line 55
@@ -593,7 +593,7 @@
 
     .line 78
     :cond_3
-    invoke-static {p1}, Lcom/google/android/gms/internal/measurement/x;->h(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
+    invoke-static {p1}, Lcom/google/android/gms/internal/measurement/gi;->h(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
 
     .line 79
     .line 80
@@ -647,7 +647,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iget-object v0, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 2
     .line 3
@@ -655,7 +655,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0}, La7/t1;->m()I
+    invoke-virtual {v0}, Landroidx/room/g0;->k()I
 
     .line 6
     .line 7
@@ -706,7 +706,7 @@
     .line 25
     .line 26
     .line 27
-    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 28
     .line 29
@@ -726,7 +726,7 @@
 
     .line 35
     .line 36
-    invoke-static {p1, v1, v2}, Ls1/a;->i(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v1, v2}, Ls1/a;->k(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 37
     .line 38
@@ -755,7 +755,7 @@
     .line 48
     .line 49
     .line 50
-    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 51
     .line 52
@@ -775,7 +775,7 @@
     .line 57
     .line 58
     .line 59
-    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iput-object p1, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 60
     .line 61
@@ -848,7 +848,7 @@
 
     .line 30
     .line 31
-    iget-object v0, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iget-object v0, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 32
     .line 33
@@ -868,14 +868,14 @@
 
     .line 40
     .line 41
-    iget-object v3, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:La7/t1;
+    iget-object v3, p0, Lcom/google/android/material/behavior/HideViewOnScrollBehavior;->a:Landroidx/room/g0;
 
     .line 42
     .line 43
     const/4 v4, 0x0
 
     .line 44
-    invoke-virtual {v3, v4, p1}, La7/t1;->n(ILandroid/view/View;)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v3, v4, p1}, Landroidx/room/g0;->l(ILandroid/view/View;)Landroid/view/ViewPropertyAnimator;
 
     .line 45
     .line 46
@@ -927,7 +927,7 @@
 
     .line 69
     :cond_2
-    invoke-static {v0}, Lcom/google/android/gms/internal/measurement/x;->h(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
+    invoke-static {v0}, Lcom/google/android/gms/internal/measurement/gi;->h(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
 
     .line 70
     .line 71

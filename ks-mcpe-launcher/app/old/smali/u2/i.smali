@@ -1,6 +1,6 @@
 .class public final Lu2/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -133,7 +133,7 @@
 
 
 # virtual methods
-.method public final a(IILcom/bumptech/glide/load/data/f;Lcom/google/android/gms/internal/measurement/ig;Ls2/h;)Lu2/y;
+.method public final a(IILc5/d;Lcom/bumptech/glide/load/data/f;Ls2/h;)Lu2/y;
     .locals 16
 
     .line 1
@@ -141,7 +141,7 @@
 
     .line 2
     .line 3
-    move-object/from16 v0, p4
+    move-object/from16 v0, p3
 
     .line 4
     .line 5
@@ -149,7 +149,7 @@
 
     .line 6
     .line 7
-    invoke-interface {v7}, Lp0/a;->m()Ljava/lang/Object;
+    invoke-interface {v7}, Lp0/a;->h()Ljava/lang/Object;
 
     .line 8
     .line 9
@@ -181,7 +181,7 @@
 
     .line 22
     .line 23
-    move-object/from16 v2, p3
+    move-object/from16 v2, p4
 
     .line 24
     .line 25
@@ -200,12 +200,12 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 31
-    invoke-interface {v7, v6}, Lp0/a;->h(Ljava/lang/Object;)Z
+    invoke-interface {v7, v6}, Lp0/a;->c(Ljava/lang/Object;)Z
 
     .line 32
     .line 33
     .line 34
-    iget-object v3, v0, Lcom/google/android/gms/internal/measurement/ig;->d:Ljava/lang/Object;
+    iget-object v3, v0, Lc5/d;->d:Ljava/lang/Object;
 
     .line 35
     .line 36
@@ -213,7 +213,7 @@
 
     .line 37
     .line 38
-    iget v0, v0, Lcom/google/android/gms/internal/measurement/ig;->c:I
+    iget v0, v0, Lc5/d;->c:I
 
     .line 39
     .line 40
@@ -255,11 +255,11 @@
     move-result-object v5
 
     .line 58
-    iget-object v7, v3, Lu2/h;->y:Lcom/bumptech/glide/g;
+    iget-object v7, v3, Lu2/h;->X:Lcom/bumptech/glide/g;
 
     .line 59
     .line 60
-    iget v8, v3, Lu2/h;->b1:I
+    iget v8, v3, Lu2/h;->B1:I
 
     .line 61
     .line 62
@@ -322,7 +322,7 @@
     move-result-object v2
 
     .line 88
-    iget-object v2, v2, Lcom/bumptech/glide/l;->d:Lde/g;
+    iget-object v2, v2, Lcom/bumptech/glide/l;->d:Lg3/d;
 
     .line 89
     .line 90
@@ -334,7 +334,7 @@
     move-result-object v7
 
     .line 94
-    invoke-virtual {v2, v7}, Lde/g;->e(Ljava/lang/Class;)Ls2/k;
+    invoke-virtual {v2, v7}, Lg3/d;->a(Ljava/lang/Class;)Ls2/k;
 
     .line 95
     .line 96
@@ -358,7 +358,7 @@
     move-result-object v2
 
     .line 106
-    iget-object v2, v2, Lcom/bumptech/glide/l;->d:Lde/g;
+    iget-object v2, v2, Lcom/bumptech/glide/l;->d:Lg3/d;
 
     .line 107
     .line 108
@@ -370,7 +370,7 @@
     move-result-object v6
 
     .line 112
-    invoke-virtual {v2, v6}, Lde/g;->e(Ljava/lang/Class;)Ls2/k;
+    invoke-virtual {v2, v6}, Lg3/d;->a(Ljava/lang/Class;)Ls2/k;
 
     .line 113
     .line 114
@@ -386,7 +386,7 @@
 
     .line 119
     .line 120
-    invoke-interface {v6, v2}, Ls2/k;->g(Ls2/h;)I
+    invoke-interface {v6, v2}, Ls2/k;->h(Ls2/h;)I
 
     .line 121
     .line 122
@@ -472,11 +472,11 @@
     move-result-object v14
 
     .line 157
-    check-cast v14, Ly2/q;
+    check-cast v14, Ly2/r;
 
     .line 158
     .line 159
-    iget-object v14, v14, Ly2/q;->a:Ls2/e;
+    iget-object v14, v14, Ly2/r;->a:Ls2/e;
 
     .line 160
     .line 161
@@ -592,7 +592,7 @@
 
     .line 208
     .line 209
-    iget-object v7, v0, Lcom/bumptech/glide/g;->a:Lig/a;
+    iget-object v7, v0, Lcom/bumptech/glide/g;->a:Lqf/a;
 
     .line 210
     .line 211
@@ -603,11 +603,11 @@
     move v0, v9
 
     .line 214
-    iget-object v9, v3, Lu2/h;->X:Ls2/e;
+    iget-object v9, v3, Lu2/h;->Y:Ls2/e;
 
     .line 215
     .line 216
-    iget v10, v3, Lu2/h;->b1:I
+    iget v10, v3, Lu2/h;->B1:I
 
     .line 217
     .line 218
@@ -625,7 +625,7 @@
     move v4, v2
 
     .line 224
-    invoke-direct/range {v6 .. v14}, Lu2/a0;-><init>(Lig/a;Ls2/e;Ls2/e;IILs2/l;Ljava/lang/Class;Ls2/h;)V
+    invoke-direct/range {v6 .. v14}, Lu2/a0;-><init>(Lqf/a;Ls2/e;Ls2/e;IILs2/l;Ljava/lang/Class;Ls2/h;)V
 
     .line 225
     .line 226
@@ -723,7 +723,7 @@
 
     .line 265
     .line 266
-    iget-object v7, v3, Lu2/h;->X:Ls2/e;
+    iget-object v7, v3, Lu2/h;->Y:Ls2/e;
 
     .line 267
     .line 268
@@ -733,11 +733,11 @@
     .line 270
     .line 271
     :goto_7
-    sget-object v2, Lu2/x;->q:Lkd/e;
+    sget-object v2, Lu2/x;->w:Lkd/d;
 
     .line 272
     .line 273
-    invoke-virtual {v2}, Lkd/e;->m()Ljava/lang/Object;
+    invoke-virtual {v2}, Lkd/d;->h()Ljava/lang/Object;
 
     .line 274
     .line 275
@@ -749,7 +749,7 @@
 
     .line 278
     .line 279
-    iput-boolean v0, v2, Lu2/x;->p:Z
+    iput-boolean v0, v2, Lu2/x;->q:Z
 
     .line 280
     .line 281
@@ -761,19 +761,19 @@
 
     .line 284
     .line 285
-    iget-object v0, v3, Lu2/h;->w:Lkd/e;
+    iget-object v0, v3, Lu2/h;->x:Lld/e;
 
     .line 286
     .line 287
-    iput-object v6, v0, Lkd/e;->d:Ljava/lang/Object;
+    iput-object v6, v0, Lld/e;->d:Ljava/lang/Object;
 
     .line 288
     .line 289
-    iput-object v15, v0, Lkd/e;->h:Ljava/lang/Object;
+    iput-object v15, v0, Lld/e;->h:Ljava/lang/Object;
 
     .line 290
     .line 291
-    iput-object v2, v0, Lkd/e;->p:Ljava/lang/Object;
+    iput-object v2, v0, Lld/e;->q:Ljava/lang/Object;
 
     .line 292
     .line 293
@@ -822,7 +822,7 @@
 
     .line 312
     .line 313
-    invoke-interface {v0, v5, v2}, Lg3/b;->l(Lu2/y;Ls2/h;)Lu2/y;
+    invoke-interface {v0, v5, v2}, Lg3/b;->g(Lu2/y;Ls2/h;)Lu2/y;
 
     .line 314
     .line 315
@@ -837,7 +837,7 @@
     move-exception v0
 
     .line 319
-    invoke-interface {v7, v6}, Lp0/a;->h(Ljava/lang/Object;)Z
+    invoke-interface {v7, v6}, Lp0/a;->c(Ljava/lang/Object;)Z
 
     .line 320
     .line 321

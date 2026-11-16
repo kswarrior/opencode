@@ -1,96 +1,97 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/s1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
+.field public final synthetic c:I
 
-.field public final synthetic d:J
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/ModConfigActivity;
 
-.field public final synthetic h:I
-
-.field public final synthetic p:Ljava/util/List;
-
-.field public final synthetic q:Ljava/util/HashMap;
-
-.field public final synthetic w:Ljava/util/List;
+.field public final synthetic h:Ljava/lang/Exception;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;JILjava/util/List;Ljava/util/HashMap;Ljava/util/List;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/s1;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/s1;->d:Lorg/levimc/launcher/ui/activities/ModConfigActivity;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/s1;->c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
-
     .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/s1;->h:Ljava/lang/Exception;
+
     .line 6
-    iput-wide p2, p0, Lorg/levimc/launcher/ui/activities/s1;->d:J
-
     .line 7
-    .line 8
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/s1;->h:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 8
     .line 9
     .line 10
-    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/s1;->p:Ljava/util/List;
-
-    .line 11
-    .line 12
-    iput-object p6, p0, Lorg/levimc/launcher/ui/activities/s1;->q:Ljava/util/HashMap;
-
-    .line 13
-    .line 14
-    iput-object p7, p0, Lorg/levimc/launcher/ui/activities/s1;->w:Ljava/util/List;
-
-    .line 15
-    .line 16
     return-void
 .end method
 
 
 # virtual methods
 .method public final run()V
-    .locals 7
+    .locals 2
 
     .line 1
-    iget-object v5, p0, Lorg/levimc/launcher/ui/activities/s1;->q:Ljava/util/HashMap;
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/s1;->c:I
 
     .line 2
     .line 3
-    iget-object v6, p0, Lorg/levimc/launcher/ui/activities/s1;->w:Ljava/util/List;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/s1;->c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/s1;->d:Lorg/levimc/launcher/ui/activities/ModConfigActivity;
+
     .line 7
-    iget-wide v1, p0, Lorg/levimc/launcher/ui/activities/s1;->d:J
-
     .line 8
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/s1;->h:Ljava/lang/Exception;
+
     .line 9
-    iget v3, p0, Lorg/levimc/launcher/ui/activities/s1;->h:I
-
     .line 10
-    .line 11
-    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/s1;->p:Ljava/util/List;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/ModConfigActivity;->A(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;)V
 
+    .line 11
     .line 12
     .line 13
-    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->O(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;JILjava/util/List;Ljava/util/HashMap;Ljava/util/List;)V
+    return-void
 
     .line 14
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/s1;->d:Lorg/levimc/launcher/ui/activities/ModConfigActivity;
+
     .line 15
     .line 16
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/s1;->h:Ljava/lang/Exception;
+
+    .line 17
+    .line 18
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/ModConfigActivity;->w(Lorg/levimc/launcher/ui/activities/ModConfigActivity;Ljava/lang/Exception;)V
+
+    .line 19
+    .line 20
+    .line 21
     return-void
+
+    .line 22
+    nop
+
+    .line 23
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

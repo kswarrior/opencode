@@ -1,406 +1,104 @@
 .class public final Lm/c0;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lm/h0;
-.implements Landroid/content/DialogInterface$OnClickListener;
+.super Lm/l1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public c:Landroidx/appcompat/app/AlertDialog;
+.field public final synthetic Z:Lm/i0;
 
-.field public d:Lm/d0;
-
-.field public h:Ljava/lang/CharSequence;
-
-.field public final synthetic p:Lm/i0;
+.field public final synthetic b1:Lm/l0;
 
 
 # direct methods
-.method public constructor <init>(Lm/i0;)V
+.method public constructor <init>(Lm/l0;Lm/l0;Lm/i0;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lm/c0;->b1:Lm/l0;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Lm/c0;->p:Lm/i0;
+    iput-object p3, p0, Lm/c0;->Z:Lm/i0;
 
+    .line 4
     .line 5
+    invoke-direct {p0, p2}, Lm/l1;-><init>(Landroid/view/View;)V
+
     .line 6
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()Z
+.method public final b()Ll/b0;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lm/c0;->c:Landroidx/appcompat/app/AlertDialog;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {v0}, Landroid/app/Dialog;->isShowing()Z
-
-    .line 6
-    .line 7
-    .line 8
-    move-result v0
-
-    .line 9
-    return v0
-
-    .line 10
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 11
-    return v0
-.end method
-
-.method public final b()I
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return v0
-.end method
-
-.method public final c(I)V
-    .locals 1
-
-    .line 1
-    const-string p1, "AppCompatSpinner"
-
-    .line 2
-    .line 3
-    const-string v0, "Cannot set horizontal offset for MODE_DIALOG, ignoring"
-
-    .line 4
-    .line 5
-    invoke-static {p1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public final d()Ljava/lang/CharSequence;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lm/c0;->h:Ljava/lang/CharSequence;
+    iget-object v0, p0, Lm/c0;->Z:Lm/i0;
 
     .line 2
     .line 3
     return-object v0
 .end method
 
-.method public final dismiss()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lm/c0;->c:Landroidx/appcompat/app/AlertDialog;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {v0}, Lg/e0;->dismiss()V
-
-    .line 6
-    .line 7
-    .line 8
-    const/4 v0, 0x0
-
-    .line 9
-    iput-object v0, p0, Lm/c0;->c:Landroidx/appcompat/app/AlertDialog;
-
-    .line 10
-    .line 11
-    :cond_0
-    return-void
-.end method
-
-.method public final f()Landroid/graphics/drawable/Drawable;
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return-object v0
-.end method
-
-.method public final h(Ljava/lang/CharSequence;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lm/c0;->h:Ljava/lang/CharSequence;
-
-    .line 2
-    .line 3
-    return-void
-.end method
-
-.method public final j(Landroid/graphics/drawable/Drawable;)V
-    .locals 1
-
-    .line 1
-    const-string p1, "AppCompatSpinner"
-
-    .line 2
-    .line 3
-    const-string v0, "Cannot set popup background for MODE_DIALOG, ignoring"
-
-    .line 4
-    .line 5
-    invoke-static {p1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public final k(I)V
-    .locals 1
-
-    .line 1
-    const-string p1, "AppCompatSpinner"
-
-    .line 2
-    .line 3
-    const-string v0, "Cannot set vertical offset for MODE_DIALOG, ignoring"
-
-    .line 4
-    .line 5
-    invoke-static {p1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public final l(I)V
-    .locals 1
-
-    .line 1
-    const-string p1, "AppCompatSpinner"
-
-    .line 2
-    .line 3
-    const-string v0, "Cannot set horizontal (original) offset for MODE_DIALOG, ignoring"
-
-    .line 4
-    .line 5
-    invoke-static {p1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public final m(II)V
+.method public final c()Z
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lm/c0;->d:Lm/d0;
+    iget-object v0, p0, Lm/c0;->b1:Lm/l0;
 
     .line 2
     .line 3
-    if-nez v0, :cond_0
+    invoke-virtual {v0}, Lm/l0;->getInternalPopup()Lm/k0;
 
     .line 4
     .line 5
-    return-void
-
     .line 6
-    :cond_0
-    new-instance v0, Landroidx/appcompat/app/AlertDialog$Builder;
+    move-result-object v1
 
     .line 7
-    .line 8
-    iget-object v1, p0, Lm/c0;->p:Lm/i0;
+    invoke-interface {v1}, Lm/k0;->a()Z
 
+    .line 8
     .line 9
     .line 10
-    invoke-virtual {v1}, Lm/i0;->getPopupContext()Landroid/content/Context;
-
-    .line 11
-    .line 12
-    .line 13
-    move-result-object v2
-
-    .line 14
-    invoke-direct {v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
-
-    .line 15
-    .line 16
-    .line 17
-    iget-object v2, p0, Lm/c0;->h:Ljava/lang/CharSequence;
-
-    .line 18
-    .line 19
-    if-eqz v2, :cond_1
-
-    .line 20
-    .line 21
-    invoke-virtual {v0, v2}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroidx/appcompat/app/AlertDialog$Builder;
-
-    .line 22
-    .line 23
-    .line 24
-    :cond_1
-    iget-object v2, p0, Lm/c0;->d:Lm/d0;
-
-    .line 25
-    .line 26
-    invoke-virtual {v1}, Landroid/widget/AdapterView;->getSelectedItemPosition()I
-
-    .line 27
-    .line 28
-    .line 29
     move-result v1
 
-    .line 30
-    invoke-virtual {v0, v2, v1, p0}, Landroidx/appcompat/app/AlertDialog$Builder;->setSingleChoiceItems(Landroid/widget/ListAdapter;ILandroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
-
-    .line 31
-    .line 32
-    .line 33
-    invoke-virtual {v0}, Landroidx/appcompat/app/AlertDialog$Builder;->create()Landroidx/appcompat/app/AlertDialog;
-
-    .line 34
-    .line 35
-    .line 36
-    move-result-object v0
-
-    .line 37
-    iput-object v0, p0, Lm/c0;->c:Landroidx/appcompat/app/AlertDialog;
-
-    .line 38
-    .line 39
-    iget-object v0, v0, Landroidx/appcompat/app/AlertDialog;->d:Lg/g;
-
-    .line 40
-    .line 41
-    iget-object v0, v0, Lg/g;->g:Landroidx/appcompat/app/AlertController$RecycleListView;
-
-    .line 42
-    .line 43
-    invoke-virtual {v0, p1}, Landroid/view/View;->setTextDirection(I)V
-
-    .line 44
-    .line 45
-    .line 46
-    invoke-virtual {v0, p2}, Landroid/view/View;->setTextAlignment(I)V
-
-    .line 47
-    .line 48
-    .line 49
-    iget-object p1, p0, Lm/c0;->c:Landroidx/appcompat/app/AlertDialog;
-
-    .line 50
-    .line 51
-    invoke-virtual {p1}, Landroid/app/Dialog;->show()V
-
-    .line 52
-    .line 53
-    .line 54
-    return-void
-.end method
-
-.method public final n()I
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return v0
-.end method
-
-.method public final o(Landroid/widget/ListAdapter;)V
-    .locals 0
-
-    .line 1
-    check-cast p1, Lm/d0;
-
-    .line 2
-    .line 3
-    iput-object p1, p0, Lm/c0;->d:Lm/d0;
-
-    .line 4
-    .line 5
-    return-void
-.end method
-
-.method public final onClick(Landroid/content/DialogInterface;I)V
-    .locals 3
-
-    .line 1
-    iget-object p1, p0, Lm/c0;->p:Lm/i0;
-
-    .line 2
-    .line 3
-    invoke-virtual {p1, p2}, Landroid/widget/AdapterView;->setSelection(I)V
-
-    .line 4
-    .line 5
-    .line 6
-    invoke-virtual {p1}, Landroid/widget/AdapterView;->getOnItemClickListener()Landroid/widget/AdapterView$OnItemClickListener;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object v0
-
-    .line 10
-    if-eqz v0, :cond_0
-
     .line 11
+    if-nez v1, :cond_0
+
     .line 12
-    iget-object v0, p0, Lm/c0;->d:Lm/d0;
-
     .line 13
-    .line 14
-    invoke-virtual {v0, p2}, Lm/d0;->getItemId(I)J
+    iget-object v1, v0, Lm/l0;->x:Lm/k0;
 
+    .line 14
     .line 15
+    invoke-virtual {v0}, Landroid/view/View;->getTextDirection()I
+
     .line 16
     .line 17
-    move-result-wide v0
-
     .line 18
-    const/4 v2, 0x0
+    move-result v2
 
     .line 19
-    invoke-virtual {p1, v2, p2, v0, v1}, Landroid/widget/AdapterView;->performItemClick(Landroid/view/View;IJ)Z
+    invoke-virtual {v0}, Landroid/view/View;->getTextAlignment()I
 
     .line 20
     .line 21
     .line 22
-    :cond_0
-    invoke-virtual {p0}, Lm/c0;->dismiss()V
+    move-result v0
 
     .line 23
+    invoke-interface {v1, v2, v0}, Lm/k0;->m(II)V
+
     .line 24
     .line 25
-    return-void
+    .line 26
+    :cond_0
+    const/4 v0, 0x1
+
+    .line 27
+    return v0
 .end method

@@ -1,24 +1,28 @@
 .class public final Landroidx/core/graphics/e;
-.super Lcom/bumptech/glide/e;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lk6/b;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static j:Ljava/lang/Class; = null
+.field public static h:Ljava/lang/Class;
 
-.field public static k:Ljava/lang/reflect/Constructor; = null
+.field public static i:Ljava/lang/reflect/Constructor;
 
-.field public static l:Ljava/lang/reflect/Method; = null
+.field public static j:Ljava/lang/reflect/Method;
 
-.field public static m:Ljava/lang/reflect/Method; = null
+.field public static k:Ljava/lang/reflect/Method;
 
-.field public static n:Z = false
+.field public static l:Z
 
 
 # instance fields
-.field public final c:Ljava/lang/Class;
+.field public final a:Ljava/lang/Class;
 
-.field public final d:Ljava/lang/reflect/Constructor;
+.field public final b:Ljava/lang/reflect/Constructor;
+
+.field public final c:Ljava/lang/reflect/Method;
+
+.field public final d:Ljava/lang/reflect/Method;
 
 .field public final e:Ljava/lang/reflect/Method;
 
@@ -26,17 +30,13 @@
 
 .field public final g:Ljava/lang/reflect/Method;
 
-.field public final h:Ljava/lang/reflect/Method;
-
-.field public final i:Ljava/lang/reflect/Method;
-
 
 # direct methods
 .method public constructor <init>()V
     .locals 9
 
     .line 1
-    invoke-direct {p0}, Lcom/bumptech/glide/e;-><init>()V
+    invoke-direct {p0}, Lk6/b;-><init>()V
 
     .line 2
     .line 3
@@ -65,7 +65,7 @@
     move-result-object v2
 
     .line 15
-    invoke-static {v1}, Landroidx/core/graphics/e;->p0(Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    invoke-static {v1}, Landroidx/core/graphics/e;->D(Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
     .line 16
     .line 17
@@ -129,7 +129,7 @@
     move-result-object v6
 
     .line 47
-    invoke-virtual {p0, v1}, Landroidx/core/graphics/e;->q0(Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    invoke-virtual {p0, v1}, Landroidx/core/graphics/e;->E(Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
     .line 48
     .line 49
@@ -220,122 +220,42 @@
 
     .line 83
     :goto_1
-    iput-object v0, p0, Landroidx/core/graphics/e;->c:Ljava/lang/Class;
+    iput-object v0, p0, Landroidx/core/graphics/e;->a:Ljava/lang/Class;
 
     .line 84
     .line 85
-    iput-object v2, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Constructor;
+    iput-object v2, p0, Landroidx/core/graphics/e;->b:Ljava/lang/reflect/Constructor;
 
     .line 86
     .line 87
-    iput-object v3, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
+    iput-object v3, p0, Landroidx/core/graphics/e;->c:Ljava/lang/reflect/Method;
 
     .line 88
     .line 89
-    iput-object v4, p0, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
+    iput-object v4, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Method;
 
     .line 90
     .line 91
-    iput-object v5, p0, Landroidx/core/graphics/e;->g:Ljava/lang/reflect/Method;
+    iput-object v5, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
 
     .line 92
     .line 93
-    iput-object v6, p0, Landroidx/core/graphics/e;->h:Ljava/lang/reflect/Method;
+    iput-object v6, p0, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
 
     .line 94
     .line 95
-    iput-object v1, p0, Landroidx/core/graphics/e;->i:Ljava/lang/reflect/Method;
+    iput-object v1, p0, Landroidx/core/graphics/e;->g:Ljava/lang/reflect/Method;
 
     .line 96
     .line 97
     return-void
 .end method
 
-.method public static l0(Ljava/lang/Object;Ljava/lang/String;IZ)Z
-    .locals 1
-
-    .line 1
-    invoke-static {}, Landroidx/core/graphics/e;->o0()V
-
-    .line 2
-    .line 3
-    .line 4
-    :try_start_0
-    sget-object v0, Landroidx/core/graphics/e;->l:Ljava/lang/reflect/Method;
-
-    .line 5
-    .line 6
-    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object p2
-
-    .line 10
-    invoke-static {p3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
-
-    .line 11
-    .line 12
-    .line 13
-    move-result-object p3
-
-    .line 14
-    filled-new-array {p1, p2, p3}, [Ljava/lang/Object;
-
-    .line 15
-    .line 16
-    .line 17
-    move-result-object p1
-
-    .line 18
-    invoke-virtual {v0, p0, p1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object p0
-
-    .line 22
-    check-cast p0, Ljava/lang/Boolean;
-
-    .line 23
-    .line 24
-    invoke-virtual {p0}, Ljava/lang/Boolean;->booleanValue()Z
-
-    .line 25
-    .line 26
-    .line 27
-    move-result p0
-    :try_end_0
-    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 28
-    return p0
-
-    .line 29
-    :catch_0
-    move-exception p0
-
-    .line 30
-    new-instance p1, Ljava/lang/RuntimeException;
-
-    .line 31
-    .line 32
-    invoke-direct {p1, p0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
-
-    .line 33
-    .line 34
-    .line 35
-    throw p1
-.end method
-
-.method public static o0()V
+.method public static C()V
     .locals 8
 
     .line 1
-    sget-boolean v0, Landroidx/core/graphics/e;->n:Z
+    sget-boolean v0, Landroidx/core/graphics/e;->l:Z
 
     .line 2
     .line 3
@@ -350,7 +270,7 @@
     const/4 v0, 0x1
 
     .line 7
-    sput-boolean v0, Landroidx/core/graphics/e;->n:Z
+    sput-boolean v0, Landroidx/core/graphics/e;->l:Z
 
     .line 8
     .line 9
@@ -509,26 +429,26 @@
 
     .line 78
     :goto_1
-    sput-object v1, Landroidx/core/graphics/e;->k:Ljava/lang/reflect/Constructor;
+    sput-object v1, Landroidx/core/graphics/e;->i:Ljava/lang/reflect/Constructor;
 
     .line 79
     .line 80
-    sput-object v2, Landroidx/core/graphics/e;->j:Ljava/lang/Class;
+    sput-object v2, Landroidx/core/graphics/e;->h:Ljava/lang/Class;
 
     .line 81
     .line 82
-    sput-object v4, Landroidx/core/graphics/e;->l:Ljava/lang/reflect/Method;
+    sput-object v4, Landroidx/core/graphics/e;->j:Ljava/lang/reflect/Method;
 
     .line 83
     .line 84
-    sput-object v0, Landroidx/core/graphics/e;->m:Ljava/lang/reflect/Method;
+    sput-object v0, Landroidx/core/graphics/e;->k:Ljava/lang/reflect/Method;
 
     .line 85
     .line 86
     return-void
 .end method
 
-.method public static p0(Ljava/lang/Class;)Ljava/lang/reflect/Method;
+.method public static D(Ljava/lang/Class;)Ljava/lang/reflect/Method;
     .locals 8
 
     .line 1
@@ -584,13 +504,301 @@
     return-object p0
 .end method
 
+.method public static z(Ljava/lang/Object;Ljava/lang/String;IZ)Z
+    .locals 1
+
+    .line 1
+    invoke-static {}, Landroidx/core/graphics/e;->C()V
+
+    .line 2
+    .line 3
+    .line 4
+    :try_start_0
+    sget-object v0, Landroidx/core/graphics/e;->j:Ljava/lang/reflect/Method;
+
+    .line 5
+    .line 6
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p2
+
+    .line 10
+    invoke-static {p3}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object p3
+
+    .line 14
+    filled-new-array {p1, p2, p3}, [Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object p1
+
+    .line 18
+    invoke-virtual {v0, p0, p1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object p0
+
+    .line 22
+    check-cast p0, Ljava/lang/Boolean;
+
+    .line 23
+    .line 24
+    invoke-virtual {p0}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 25
+    .line 26
+    .line 27
+    move-result p0
+    :try_end_0
+    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 28
+    return p0
+
+    .line 29
+    :catch_0
+    move-exception p0
+
+    .line 30
+    new-instance p1, Ljava/lang/RuntimeException;
+
+    .line 31
+    .line 32
+    invoke-direct {p1, p0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+
+    .line 33
+    .line 34
+    .line 35
+    throw p1
+.end method
+
 
 # virtual methods
-.method public final i(Landroid/content/Context;Lh0/e;Landroid/content/res/Resources;I)Landroid/graphics/Typeface;
+.method public final A(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    .locals 3
+
+    .line 1
+    const/4 v0, -0x1
+
+    .line 2
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 3
+    .line 4
+    .line 5
+    move-result-object v0
+
+    .line 6
+    :try_start_0
+    iget-object v1, p0, Landroidx/core/graphics/e;->a:Ljava/lang/Class;
+
+    .line 7
+    .line 8
+    const/4 v2, 0x1
+
+    .line 9
+    invoke-static {v1, v2}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v1
+
+    .line 13
+    const/4 v2, 0x0
+
+    .line 14
+    invoke-static {v1, v2, p1}, Ljava/lang/reflect/Array;->set(Ljava/lang/Object;ILjava/lang/Object;)V
+
+    .line 15
+    .line 16
+    .line 17
+    iget-object p1, p0, Landroidx/core/graphics/e;->g:Ljava/lang/reflect/Method;
+
+    .line 18
+    .line 19
+    const-string v2, "sans-serif"
+
+    .line 20
+    .line 21
+    filled-new-array {v1, v2, v0, v0}, [Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v0
+
+    .line 25
+    const/4 v1, 0x0
+
+    .line 26
+    invoke-virtual {p1, v1, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object p1
+
+    .line 30
+    check-cast p1, Landroid/graphics/Typeface;
+    :try_end_0
+    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 31
+    .line 32
+    return-object p1
+
+    .line 33
+    :catch_0
+    move-exception p1
+
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :catch_1
+    move-exception p1
+
+    .line 36
+    :goto_0
+    new-instance v0, Ljava/lang/RuntimeException;
+
+    .line 37
+    .line 38
+    invoke-direct {v0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
+
+    .line 39
+    .line 40
+    .line 41
+    throw v0
+.end method
+
+.method public final B(Ljava/lang/Object;)Z
+    .locals 2
+
+    .line 1
+    :try_start_0
+    iget-object v0, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    invoke-virtual {v0, p1, v1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object p1
+
+    .line 8
+    check-cast p1, Ljava/lang/Boolean;
+
+    .line 9
+    .line 10
+    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p1
+    :try_end_0
+    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 14
+    return p1
+
+    .line 15
+    :catch_0
+    const/4 p1, 0x0
+
+    .line 16
+    return p1
+.end method
+
+.method public final E(Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    .locals 3
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    invoke-static {p1, v0}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
+
+    .line 3
+    .line 4
+    .line 5
+    move-result-object p1
+
+    .line 6
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p1
+
+    .line 10
+    const-class v1, Ljava/lang/String;
+
+    .line 11
+    .line 12
+    sget-object v2, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+
+    .line 13
+    .line 14
+    filled-new-array {p1, v1, v2, v2}, [Ljava/lang/Class;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object p1
+
+    .line 18
+    const-class v1, Landroid/graphics/Typeface;
+
+    .line 19
+    .line 20
+    const-string v2, "createFromFamiliesWithDefault"
+
+    .line 21
+    .line 22
+    invoke-virtual {v1, v2, p1}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    .line 23
+    .line 24
+    .line 25
+    move-result-object p1
+
+    .line 26
+    invoke-virtual {p1, v0}, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-object p1
+.end method
+
+.method public final e(Landroid/content/Context;Lh0/e;Landroid/content/res/Resources;I)Landroid/graphics/Typeface;
     .locals 9
 
     .line 1
-    iget-object p4, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
+    iget-object p4, p0, Landroidx/core/graphics/e;->c:Ljava/lang/reflect/Method;
 
     .line 2
     .line 3
@@ -620,7 +828,7 @@
 
     .line 15
     :try_start_0
-    iget-object p4, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Constructor;
+    iget-object p4, p0, Landroidx/core/graphics/e;->b:Ljava/lang/reflect/Constructor;
 
     .line 16
     .line 17
@@ -711,7 +919,7 @@
     move-object v2, p1
 
     .line 52
-    invoke-virtual/range {v1 .. v8}, Landroidx/core/graphics/e;->k0(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
+    invoke-virtual/range {v1 .. v8}, Landroidx/core/graphics/e;->y(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
 
     .line 53
     .line 54
@@ -724,7 +932,7 @@
     .line 57
     .line 58
     :try_start_1
-    iget-object p1, v1, Landroidx/core/graphics/e;->h:Ljava/lang/reflect/Method;
+    iget-object p1, v1, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
 
     .line 59
     .line 60
@@ -754,7 +962,7 @@
     move-object v1, p0
 
     .line 69
-    invoke-virtual {p0, v3}, Landroidx/core/graphics/e;->n0(Ljava/lang/Object;)Z
+    invoke-virtual {p0, v3}, Landroidx/core/graphics/e;->B(Ljava/lang/Object;)Z
 
     .line 70
     .line 71
@@ -772,7 +980,7 @@
 
     .line 76
     :cond_4
-    invoke-virtual {p0, v3}, Landroidx/core/graphics/e;->m0(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    invoke-virtual {p0, v3}, Landroidx/core/graphics/e;->A(Ljava/lang/Object;)Landroid/graphics/Typeface;
 
     .line 77
     .line 78
@@ -790,13 +998,13 @@
     move-object v2, p1
 
     .line 83
-    invoke-static {}, Landroidx/core/graphics/e;->o0()V
+    invoke-static {}, Landroidx/core/graphics/e;->C()V
 
     .line 84
     .line 85
     .line 86
     :try_start_2
-    sget-object p1, Landroidx/core/graphics/e;->k:Ljava/lang/reflect/Constructor;
+    sget-object p1, Landroidx/core/graphics/e;->i:Ljava/lang/reflect/Constructor;
 
     .line 87
     .line 88
@@ -837,7 +1045,7 @@
 
     .line 101
     .line 102
-    invoke-static {v2}, Lcom/bumptech/glide/f;->o(Landroid/content/Context;)Ljava/io/File;
+    invoke-static {v2}, Lkb/c;->r(Landroid/content/Context;)Ljava/io/File;
 
     .line 103
     .line 104
@@ -858,7 +1066,7 @@
 
     .line 110
     .line 111
-    invoke-static {v6, p3, v7}, Lcom/bumptech/glide/f;->i(Ljava/io/File;Landroid/content/res/Resources;I)Z
+    invoke-static {v6, p3, v7}, Lkb/c;->m(Ljava/io/File;Landroid/content/res/Resources;I)Z
 
     .line 112
     .line 113
@@ -901,7 +1109,7 @@
 
     .line 128
     .line 129
-    invoke-static {p1, v7, v8, v5}, Landroidx/core/graphics/e;->l0(Ljava/lang/Object;Ljava/lang/String;IZ)Z
+    invoke-static {p1, v7, v8, v5}, Landroidx/core/graphics/e;->z(Ljava/lang/Object;Ljava/lang/String;IZ)Z
 
     .line 130
     .line 131
@@ -948,13 +1156,13 @@
 
     .line 148
     :cond_9
-    invoke-static {}, Landroidx/core/graphics/e;->o0()V
+    invoke-static {}, Landroidx/core/graphics/e;->C()V
 
     .line 149
     .line 150
     .line 151
     :try_start_5
-    sget-object p2, Landroidx/core/graphics/e;->j:Ljava/lang/Class;
+    sget-object p2, Landroidx/core/graphics/e;->h:Ljava/lang/Class;
 
     .line 152
     .line 153
@@ -974,7 +1182,7 @@
     .line 159
     .line 160
     .line 161
-    sget-object p1, Landroidx/core/graphics/e;->m:Ljava/lang/reflect/Method;
+    sget-object p1, Landroidx/core/graphics/e;->k:Ljava/lang/reflect/Method;
 
     .line 162
     .line 163
@@ -1077,7 +1285,7 @@
     throw p2
 .end method
 
-.method public final j(Landroid/content/Context;[Lm0/h;I)Landroid/graphics/Typeface;
+.method public final f(Landroid/content/Context;[Lm0/h;I)Landroid/graphics/Typeface;
     .locals 12
 
     .line 1
@@ -1099,7 +1307,7 @@
     .line 7
     .line 8
     :cond_0
-    iget-object v0, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
+    iget-object v0, p0, Landroidx/core/graphics/e;->c:Ljava/lang/reflect/Method;
 
     .line 9
     .line 10
@@ -1184,7 +1392,7 @@
 
     .line 47
     :cond_3
-    invoke-static {p1, v6}, Lcom/bumptech/glide/f;->t(Landroid/content/Context;Landroid/net/Uri;)Ljava/nio/MappedByteBuffer;
+    invoke-static {p1, v6}, Lkb/c;->w(Landroid/content/Context;Landroid/net/Uri;)Ljava/nio/MappedByteBuffer;
 
     .line 48
     .line 49
@@ -1215,7 +1423,7 @@
 
     .line 61
     :try_start_0
-    iget-object v0, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Constructor;
+    iget-object v0, p0, Landroidx/core/graphics/e;->b:Ljava/lang/reflect/Constructor;
 
     .line 62
     .line 63
@@ -1258,7 +1466,7 @@
 
     .line 76
     :goto_3
-    iget-object v7, p0, Landroidx/core/graphics/e;->h:Ljava/lang/reflect/Method;
+    iget-object v7, p0, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
 
     .line 77
     .line 78
@@ -1307,7 +1515,7 @@
     .line 98
     .line 99
     :try_start_1
-    iget-object v11, p0, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
+    iget-object v11, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Method;
 
     .line 100
     .line 101
@@ -1416,7 +1624,7 @@
 
     .line 145
     :cond_9
-    invoke-virtual {p0, v0}, Landroidx/core/graphics/e;->n0(Ljava/lang/Object;)Z
+    invoke-virtual {p0, v0}, Landroidx/core/graphics/e;->B(Ljava/lang/Object;)Z
 
     .line 146
     .line 147
@@ -1432,7 +1640,7 @@
 
     .line 152
     :cond_a
-    invoke-virtual {p0, v0}, Landroidx/core/graphics/e;->m0(Ljava/lang/Object;)Landroid/graphics/Typeface;
+    invoke-virtual {p0, v0}, Landroidx/core/graphics/e;->A(Ljava/lang/Object;)Landroid/graphics/Typeface;
 
     .line 153
     .line 154
@@ -1460,7 +1668,7 @@
 
     .line 164
     :cond_c
-    invoke-virtual {p0, p2, p3}, Lcom/bumptech/glide/e;->r([Lm0/h;I)Lm0/h;
+    invoke-virtual {p0, p2, p3}, Lk6/b;->l([Lm0/h;I)Lm0/h;
 
     .line 165
     .line 166
@@ -1612,7 +1820,188 @@
     return-object v1
 .end method
 
-.method public final k0(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
+.method public final h(Landroid/content/Context;Landroid/content/res/Resources;ILjava/lang/String;I)Landroid/graphics/Typeface;
+    .locals 9
+
+    .line 1
+    iget-object v0, p0, Landroidx/core/graphics/e;->c:Ljava/lang/reflect/Method;
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    const-string v1, "TypefaceCompatApi26Impl"
+
+    .line 6
+    .line 7
+    const-string v2, "Unable to collect necessary private methods. Fallback to legacy implementation."
+
+    .line 8
+    .line 9
+    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 10
+    .line 11
+    .line 12
+    :cond_0
+    if-eqz v0, :cond_4
+
+    .line 13
+    .line 14
+    const/4 p2, 0x0
+
+    .line 15
+    :try_start_0
+    iget-object p3, p0, Landroidx/core/graphics/e;->b:Ljava/lang/reflect/Constructor;
+
+    .line 16
+    .line 17
+    invoke-virtual {p3, p2}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object p3
+    :try_end_0
+    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/InstantiationException; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 21
+    move-object v2, p3
+
+    .line 22
+    goto :goto_0
+
+    .line 23
+    :catch_0
+    move-object v2, p2
+
+    .line 24
+    :goto_0
+    if-nez v2, :cond_1
+
+    .line 25
+    .line 26
+    move-object v0, p0
+
+    .line 27
+    goto :goto_1
+
+    .line 28
+    :cond_1
+    const/4 v6, -0x1
+
+    .line 29
+    const/4 v7, 0x0
+
+    .line 30
+    const/4 v4, 0x0
+
+    .line 31
+    const/4 v5, -0x1
+
+    .line 32
+    move-object v0, p0
+
+    .line 33
+    move-object v1, p1
+
+    .line 34
+    move-object v3, p4
+
+    .line 35
+    invoke-virtual/range {v0 .. v7}, Landroidx/core/graphics/e;->y(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
+
+    .line 36
+    .line 37
+    .line 38
+    move-result p1
+
+    .line 39
+    if-nez p1, :cond_2
+
+    .line 40
+    .line 41
+    :try_start_1
+    iget-object p1, v0, Landroidx/core/graphics/e;->f:Ljava/lang/reflect/Method;
+
+    .line 42
+    .line 43
+    invoke-virtual {p1, v2, p2}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    :try_end_1
+    .catch Ljava/lang/IllegalAccessException; {:try_start_1 .. :try_end_1} :catch_1
+    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_1 .. :try_end_1} :catch_1
+
+    .line 44
+    .line 45
+    .line 46
+    goto :goto_1
+
+    .line 47
+    :cond_2
+    invoke-virtual {p0, v2}, Landroidx/core/graphics/e;->B(Ljava/lang/Object;)Z
+
+    .line 48
+    .line 49
+    .line 50
+    move-result p1
+
+    .line 51
+    if-nez p1, :cond_3
+
+    .line 52
+    .line 53
+    :catch_1
+    :goto_1
+    return-object p2
+
+    .line 54
+    :cond_3
+    invoke-virtual {p0, v2}, Landroidx/core/graphics/e;->A(Ljava/lang/Object;)Landroid/graphics/Typeface;
+
+    .line 55
+    .line 56
+    .line 57
+    move-result-object p1
+
+    .line 58
+    return-object p1
+
+    .line 59
+    :cond_4
+    move-object v3, p0
+
+    .line 60
+    move-object v4, p1
+
+    .line 61
+    move-object v5, p2
+
+    .line 62
+    move v6, p3
+
+    .line 63
+    move-object v7, p4
+
+    .line 64
+    move v8, p5
+
+    .line 65
+    invoke-super/range {v3 .. v8}, Lk6/b;->h(Landroid/content/Context;Landroid/content/res/Resources;ILjava/lang/String;I)Landroid/graphics/Typeface;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object p1
+
+    .line 69
+    return-object p1
+.end method
+
+.method public final y(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
     .locals 10
 
     .line 1
@@ -1620,7 +2009,7 @@
 
     .line 2
     :try_start_0
-    iget-object v1, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
+    iget-object v1, p0, Landroidx/core/graphics/e;->c:Ljava/lang/reflect/Method;
 
     .line 3
     .line 4
@@ -1711,393 +2100,4 @@
     .line 44
     :catch_0
     return v0
-.end method
-
-.method public final l(Landroid/content/Context;Landroid/content/res/Resources;ILjava/lang/String;I)Landroid/graphics/Typeface;
-    .locals 9
-
-    .line 1
-    iget-object v0, p0, Landroidx/core/graphics/e;->e:Ljava/lang/reflect/Method;
-
-    .line 2
-    .line 3
-    if-nez v0, :cond_0
-
-    .line 4
-    .line 5
-    const-string v1, "TypefaceCompatApi26Impl"
-
-    .line 6
-    .line 7
-    const-string v2, "Unable to collect necessary private methods. Fallback to legacy implementation."
-
-    .line 8
-    .line 9
-    invoke-static {v1, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 10
-    .line 11
-    .line 12
-    :cond_0
-    if-eqz v0, :cond_4
-
-    .line 13
-    .line 14
-    const/4 p2, 0x0
-
-    .line 15
-    :try_start_0
-    iget-object p3, p0, Landroidx/core/graphics/e;->d:Ljava/lang/reflect/Constructor;
-
-    .line 16
-    .line 17
-    invoke-virtual {p3, p2}, Ljava/lang/reflect/Constructor;->newInstance([Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object p3
-    :try_end_0
-    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/InstantiationException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 21
-    move-object v2, p3
-
-    .line 22
-    goto :goto_0
-
-    .line 23
-    :catch_0
-    move-object v2, p2
-
-    .line 24
-    :goto_0
-    if-nez v2, :cond_1
-
-    .line 25
-    .line 26
-    move-object v0, p0
-
-    .line 27
-    goto :goto_1
-
-    .line 28
-    :cond_1
-    const/4 v6, -0x1
-
-    .line 29
-    const/4 v7, 0x0
-
-    .line 30
-    const/4 v4, 0x0
-
-    .line 31
-    const/4 v5, -0x1
-
-    .line 32
-    move-object v0, p0
-
-    .line 33
-    move-object v1, p1
-
-    .line 34
-    move-object v3, p4
-
-    .line 35
-    invoke-virtual/range {v0 .. v7}, Landroidx/core/graphics/e;->k0(Landroid/content/Context;Ljava/lang/Object;Ljava/lang/String;III[Landroid/graphics/fonts/FontVariationAxis;)Z
-
-    .line 36
-    .line 37
-    .line 38
-    move-result p1
-
-    .line 39
-    if-nez p1, :cond_2
-
-    .line 40
-    .line 41
-    :try_start_1
-    iget-object p1, v0, Landroidx/core/graphics/e;->h:Ljava/lang/reflect/Method;
-
-    .line 42
-    .line 43
-    invoke-virtual {p1, v2, p2}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    :try_end_1
-    .catch Ljava/lang/IllegalAccessException; {:try_start_1 .. :try_end_1} :catch_1
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_1 .. :try_end_1} :catch_1
-
-    .line 44
-    .line 45
-    .line 46
-    goto :goto_1
-
-    .line 47
-    :cond_2
-    invoke-virtual {p0, v2}, Landroidx/core/graphics/e;->n0(Ljava/lang/Object;)Z
-
-    .line 48
-    .line 49
-    .line 50
-    move-result p1
-
-    .line 51
-    if-nez p1, :cond_3
-
-    .line 52
-    .line 53
-    :catch_1
-    :goto_1
-    return-object p2
-
-    .line 54
-    :cond_3
-    invoke-virtual {p0, v2}, Landroidx/core/graphics/e;->m0(Ljava/lang/Object;)Landroid/graphics/Typeface;
-
-    .line 55
-    .line 56
-    .line 57
-    move-result-object p1
-
-    .line 58
-    return-object p1
-
-    .line 59
-    :cond_4
-    move-object v3, p0
-
-    .line 60
-    move-object v4, p1
-
-    .line 61
-    move-object v5, p2
-
-    .line 62
-    move v6, p3
-
-    .line 63
-    move-object v7, p4
-
-    .line 64
-    move v8, p5
-
-    .line 65
-    invoke-super/range {v3 .. v8}, Lcom/bumptech/glide/e;->l(Landroid/content/Context;Landroid/content/res/Resources;ILjava/lang/String;I)Landroid/graphics/Typeface;
-
-    .line 66
-    .line 67
-    .line 68
-    move-result-object p1
-
-    .line 69
-    return-object p1
-.end method
-
-.method public final m0(Ljava/lang/Object;)Landroid/graphics/Typeface;
-    .locals 3
-
-    .line 1
-    const/4 v0, -0x1
-
-    .line 2
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
-    .line 3
-    .line 4
-    .line 5
-    move-result-object v0
-
-    .line 6
-    :try_start_0
-    iget-object v1, p0, Landroidx/core/graphics/e;->c:Ljava/lang/Class;
-
-    .line 7
-    .line 8
-    const/4 v2, 0x1
-
-    .line 9
-    invoke-static {v1, v2}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v1
-
-    .line 13
-    const/4 v2, 0x0
-
-    .line 14
-    invoke-static {v1, v2, p1}, Ljava/lang/reflect/Array;->set(Ljava/lang/Object;ILjava/lang/Object;)V
-
-    .line 15
-    .line 16
-    .line 17
-    iget-object p1, p0, Landroidx/core/graphics/e;->i:Ljava/lang/reflect/Method;
-
-    .line 18
-    .line 19
-    const-string v2, "sans-serif"
-
-    .line 20
-    .line 21
-    filled-new-array {v1, v2, v0, v0}, [Ljava/lang/Object;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object v0
-
-    .line 25
-    const/4 v1, 0x0
-
-    .line 26
-    invoke-virtual {p1, v1, v0}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 27
-    .line 28
-    .line 29
-    move-result-object p1
-
-    .line 30
-    check-cast p1, Landroid/graphics/Typeface;
-    :try_end_0
-    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_1
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 31
-    .line 32
-    return-object p1
-
-    .line 33
-    :catch_0
-    move-exception p1
-
-    .line 34
-    goto :goto_0
-
-    .line 35
-    :catch_1
-    move-exception p1
-
-    .line 36
-    :goto_0
-    new-instance v0, Ljava/lang/RuntimeException;
-
-    .line 37
-    .line 38
-    invoke-direct {v0, p1}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/Throwable;)V
-
-    .line 39
-    .line 40
-    .line 41
-    throw v0
-.end method
-
-.method public final n0(Ljava/lang/Object;)Z
-    .locals 2
-
-    .line 1
-    :try_start_0
-    iget-object v0, p0, Landroidx/core/graphics/e;->g:Ljava/lang/reflect/Method;
-
-    .line 2
-    .line 3
-    const/4 v1, 0x0
-
-    .line 4
-    invoke-virtual {v0, p1, v1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 5
-    .line 6
-    .line 7
-    move-result-object p1
-
-    .line 8
-    check-cast p1, Ljava/lang/Boolean;
-
-    .line 9
-    .line 10
-    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
-
-    .line 11
-    .line 12
-    .line 13
-    move-result p1
-    :try_end_0
-    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 14
-    return p1
-
-    .line 15
-    :catch_0
-    const/4 p1, 0x0
-
-    .line 16
-    return p1
-.end method
-
-.method public final q0(Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    .locals 3
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    invoke-static {p1, v0}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
-
-    .line 3
-    .line 4
-    .line 5
-    move-result-object p1
-
-    .line 6
-    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object p1
-
-    .line 10
-    const-class v1, Ljava/lang/String;
-
-    .line 11
-    .line 12
-    sget-object v2, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
-
-    .line 13
-    .line 14
-    filled-new-array {p1, v1, v2, v2}, [Ljava/lang/Class;
-
-    .line 15
-    .line 16
-    .line 17
-    move-result-object p1
-
-    .line 18
-    const-class v1, Landroid/graphics/Typeface;
-
-    .line 19
-    .line 20
-    const-string v2, "createFromFamiliesWithDefault"
-
-    .line 21
-    .line 22
-    invoke-virtual {v1, v2, p1}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-
-    .line 23
-    .line 24
-    .line 25
-    move-result-object p1
-
-    .line 26
-    invoke-virtual {p1, v0}, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-object p1
 .end method

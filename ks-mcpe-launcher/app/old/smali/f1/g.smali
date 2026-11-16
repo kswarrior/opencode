@@ -1,10 +1,10 @@
 .class public final Lf1/g;
-.super La7/t1;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lkd/h;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final a:Lf1/f;
+.field public final d:Lf1/f;
 
 
 # direct methods
@@ -12,30 +12,33 @@
     .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const/4 v0, 0x6
 
     .line 2
+    invoke-direct {p0, v0}, Lkd/h;-><init>(I)V
+
     .line 3
     .line 4
+    .line 5
     new-instance v0, Lf1/f;
 
-    .line 5
     .line 6
+    .line 7
     invoke-direct {v0, p1}, Lf1/f;-><init>(Landroid/widget/TextView;)V
 
-    .line 7
     .line 8
     .line 9
-    iput-object v0, p0, Lf1/g;->a:Lf1/f;
-
     .line 10
+    iput-object v0, p0, Lf1/g;->d:Lf1/f;
+
     .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final C(Z)V
+.method public final G(Z)V
     .locals 1
 
     .line 1
@@ -66,11 +69,11 @@
 
     .line 11
     :cond_1
-    iget-object v0, p0, Lf1/g;->a:Lf1/f;
+    iget-object v0, p0, Lf1/g;->d:Lf1/f;
 
     .line 12
     .line 13
-    invoke-virtual {v0, p1}, Lf1/f;->C(Z)V
+    invoke-virtual {v0, p1}, Lf1/f;->G(Z)V
 
     .line 14
     .line 15
@@ -78,11 +81,11 @@
     return-void
 .end method
 
-.method public final D(Z)V
+.method public final H(Z)V
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lf1/g;->a:Lf1/f;
+    iget-object v0, p0, Lf1/g;->d:Lf1/f;
 
     .line 2
     .line 3
@@ -109,7 +112,7 @@
 
     .line 11
     .line 12
-    iput-boolean p1, v0, Lf1/f;->c:Z
+    iput-boolean p1, v0, Lf1/f;->q:Z
 
     .line 13
     .line 14
@@ -117,7 +120,7 @@
 
     .line 15
     :cond_1
-    invoke-virtual {v0, p1}, Lf1/f;->D(Z)V
+    invoke-virtual {v0, p1}, Lf1/f;->H(Z)V
 
     .line 16
     .line 17
@@ -125,7 +128,7 @@
     return-void
 .end method
 
-.method public final M(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
+.method public final K(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
     .locals 1
 
     .line 1
@@ -156,11 +159,11 @@
 
     .line 11
     :cond_1
-    iget-object v0, p0, Lf1/g;->a:Lf1/f;
+    iget-object v0, p0, Lf1/g;->d:Lf1/f;
 
     .line 12
     .line 13
-    invoke-virtual {v0, p1}, Lf1/f;->M(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
+    invoke-virtual {v0, p1}, Lf1/f;->K(Landroid/text/method/TransformationMethod;)Landroid/text/method/TransformationMethod;
 
     .line 14
     .line 15
@@ -171,7 +174,7 @@
     return-object p1
 .end method
 
-.method public final h([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
+.method public final u([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
     .locals 1
 
     .line 1
@@ -202,11 +205,11 @@
 
     .line 11
     :cond_1
-    iget-object v0, p0, Lf1/g;->a:Lf1/f;
+    iget-object v0, p0, Lf1/g;->d:Lf1/f;
 
     .line 12
     .line 13
-    invoke-virtual {v0, p1}, Lf1/f;->h([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
+    invoke-virtual {v0, p1}, Lf1/f;->u([Landroid/text/InputFilter;)[Landroid/text/InputFilter;
 
     .line 14
     .line 15
@@ -217,15 +220,15 @@
     return-object p1
 .end method
 
-.method public final r()Z
+.method public final y()Z
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lf1/g;->a:Lf1/f;
+    iget-object v0, p0, Lf1/g;->d:Lf1/f;
 
     .line 2
     .line 3
-    iget-boolean v0, v0, Lf1/f;->c:Z
+    iget-boolean v0, v0, Lf1/f;->q:Z
 
     .line 4
     .line 5

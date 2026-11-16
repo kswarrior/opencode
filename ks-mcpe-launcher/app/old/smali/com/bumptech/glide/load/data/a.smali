@@ -1,10 +1,10 @@
 .class public final Lcom/bumptech/glide/load/data/a;
 .super Lcom/bumptech/glide/load/data/l;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic q:I
+.field public final synthetic w:I
 
 
 # direct methods
@@ -12,7 +12,7 @@
     .locals 0
 
     .line 1
-    iput p4, p0, Lcom/bumptech/glide/load/data/a;->q:I
+    iput p4, p0, Lcom/bumptech/glide/load/data/a;->w:I
 
     .line 2
     .line 3
@@ -30,7 +30,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/bumptech/glide/load/data/a;->q:I
+    iget v0, p0, Lcom/bumptech/glide/load/data/a;->w:I
 
     .line 2
     .line 3
@@ -63,11 +63,11 @@
     .end packed-switch
 .end method
 
-.method public final c(Ljava/lang/Object;)V
+.method public final d(Ljava/lang/Object;)V
     .locals 1
 
     .line 1
-    iget v0, p0, Lcom/bumptech/glide/load/data/a;->q:I
+    iget v0, p0, Lcom/bumptech/glide/load/data/a;->w:I
 
     .line 2
     .line 3
@@ -114,7 +114,7 @@
     .locals 2
 
     .line 1
-    iget p1, p0, Lcom/bumptech/glide/load/data/a;->q:I
+    iget p1, p0, Lcom/bumptech/glide/load/data/a;->w:I
 
     .line 2
     .line 3
@@ -135,7 +135,7 @@
 
     .line 11
     .line 12
-    invoke-static {p2}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
+    invoke-static {p2}, Landroidx/room/g0;->n(Landroid/net/Uri;)Z
 
     .line 13
     .line 14
@@ -159,7 +159,7 @@
 
     .line 23
     .line 24
-    invoke-static {}, Landroidx/core/view/g1;->u()I
+    invoke-static {}, Landroidx/core/view/j1;->t()I
 
     .line 25
     .line 26
@@ -267,7 +267,7 @@
 
     .line 75
     .line 76
-    invoke-static {p2}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
+    invoke-static {p2}, Landroidx/room/g0;->n(Landroid/net/Uri;)Z
 
     .line 77
     .line 78
@@ -291,7 +291,7 @@
 
     .line 87
     .line 88
-    invoke-static {}, Landroidx/core/view/g1;->u()I
+    invoke-static {}, Landroidx/core/view/j1;->t()I
 
     .line 89
     .line 90

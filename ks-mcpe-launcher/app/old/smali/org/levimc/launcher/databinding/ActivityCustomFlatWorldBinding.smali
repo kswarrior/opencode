@@ -1,24 +1,24 @@
 .class public final Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public final addLayerButton:Lcom/google/android/material/button/MaterialButton;
 
-.field public final biomeSpinner:Landroid/widget/TextView;
+.field public final biomeSpinner:Landroid/widget/Spinner;
 
 .field public final createWorldButton:Lcom/google/android/material/button/MaterialButton;
 
 .field public final emptyLayersState:Landroid/widget/LinearLayout;
 
-.field public final gameModeSpinner:Landroid/widget/TextView;
+.field public final gameModeSpinner:Landroid/widget/Spinner;
 
 .field public final layersRecyclerView:Landroidx/recyclerview/widget/RecyclerView;
 
 .field public final layersSummary:Landroid/widget/TextView;
 
-.field public final loadingProgress:Landroid/widget/FrameLayout;
+.field public final loadingProgress:Landroid/widget/ProgressBar;
 
 .field private final rootView:Landroid/widget/FrameLayout;
 
@@ -26,7 +26,7 @@
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/FrameLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/EditText;)V
+.method private constructor <init>(Landroid/widget/FrameLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/Spinner;Lcom/google/android/material/button/MaterialButton;Landroid/widget/LinearLayout;Landroid/widget/Spinner;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/ProgressBar;Landroid/widget/EditText;)V
     .locals 0
 
     .line 1
@@ -43,7 +43,7 @@
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->biomeSpinner:Landroid/widget/TextView;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->biomeSpinner:Landroid/widget/Spinner;
 
     .line 9
     .line 10
@@ -55,7 +55,7 @@
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->gameModeSpinner:Landroid/widget/TextView;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->gameModeSpinner:Landroid/widget/Spinner;
 
     .line 15
     .line 16
@@ -67,7 +67,7 @@
 
     .line 19
     .line 20
-    iput-object p9, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->loadingProgress:Landroid/widget/FrameLayout;
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;->loadingProgress:Landroid/widget/ProgressBar;
 
     .line 21
     .line 22
@@ -86,7 +86,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -109,7 +109,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 15
     .line 16
@@ -120,7 +120,7 @@
     move-object v5, v1
 
     .line 19
-    check-cast v5, Landroid/widget/TextView;
+    check-cast v5, Landroid/widget/Spinner;
 
     .line 20
     .line 21
@@ -132,7 +132,7 @@
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 26
     .line 27
@@ -155,7 +155,7 @@
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 37
     .line 38
@@ -178,7 +178,7 @@
 
     .line 46
     .line 47
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 48
     .line 49
@@ -189,7 +189,7 @@
     move-object v8, v1
 
     .line 52
-    check-cast v8, Landroid/widget/TextView;
+    check-cast v8, Landroid/widget/Spinner;
 
     .line 53
     .line 54
@@ -201,7 +201,7 @@
 
     .line 57
     .line 58
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 59
     .line 60
@@ -224,7 +224,7 @@
 
     .line 68
     .line 69
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 70
     .line 71
@@ -247,7 +247,7 @@
 
     .line 79
     .line 80
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 81
     .line 82
@@ -258,7 +258,7 @@
     move-object v11, v1
 
     .line 85
-    check-cast v11, Landroid/widget/FrameLayout;
+    check-cast v11, Landroid/widget/ProgressBar;
 
     .line 86
     .line 87
@@ -270,7 +270,7 @@
 
     .line 90
     .line 91
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 92
     .line 93
@@ -300,7 +300,7 @@
 
     .line 104
     .line 105
-    invoke-direct/range {v2 .. v12}, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;-><init>(Landroid/widget/FrameLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/EditText;)V
+    invoke-direct/range {v2 .. v12}, Lorg/levimc/launcher/databinding/ActivityCustomFlatWorldBinding;-><init>(Landroid/widget/FrameLayout;Lcom/google/android/material/button/MaterialButton;Landroid/widget/Spinner;Lcom/google/android/material/button/MaterialButton;Landroid/widget/LinearLayout;Landroid/widget/Spinner;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/ProgressBar;Landroid/widget/EditText;)V
 
     .line 106
     .line 107

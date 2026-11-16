@@ -1,22 +1,22 @@
 .class public final enum Landroidx/datastore/preferences/protobuf/b0;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
+.field public static final synthetic B1:[Landroidx/datastore/preferences/protobuf/b0;
+
 .field public static final enum X:Landroidx/datastore/preferences/protobuf/b0;
 
 .field public static final enum Y:Landroidx/datastore/preferences/protobuf/b0;
 
 .field public static final enum Z:Landroidx/datastore/preferences/protobuf/b0;
 
-.field public static final synthetic b1:[Landroidx/datastore/preferences/protobuf/b0;
+.field public static final enum b1:Landroidx/datastore/preferences/protobuf/b0;
 
 .field public static final enum d:Landroidx/datastore/preferences/protobuf/b0;
 
 .field public static final enum h:Landroidx/datastore/preferences/protobuf/b0;
-
-.field public static final enum p:Landroidx/datastore/preferences/protobuf/b0;
 
 .field public static final enum q:Landroidx/datastore/preferences/protobuf/b0;
 
@@ -127,7 +127,7 @@
     .line 44
     .line 45
     .line 46
-    sput-object v2, Landroidx/datastore/preferences/protobuf/b0;->p:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v2, Landroidx/datastore/preferences/protobuf/b0;->q:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 47
     .line 48
@@ -162,7 +162,7 @@
     .line 61
     .line 62
     .line 63
-    sput-object v3, Landroidx/datastore/preferences/protobuf/b0;->q:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v3, Landroidx/datastore/preferences/protobuf/b0;->w:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 64
     .line 65
@@ -201,7 +201,7 @@
     .line 80
     .line 81
     .line 82
-    sput-object v4, Landroidx/datastore/preferences/protobuf/b0;->w:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v4, Landroidx/datastore/preferences/protobuf/b0;->x:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 83
     .line 84
@@ -232,7 +232,7 @@
     .line 95
     .line 96
     .line 97
-    sput-object v5, Landroidx/datastore/preferences/protobuf/b0;->x:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v5, Landroidx/datastore/preferences/protobuf/b0;->y:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 98
     .line 99
@@ -263,7 +263,7 @@
     .line 110
     .line 111
     .line 112
-    sput-object v6, Landroidx/datastore/preferences/protobuf/b0;->y:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v6, Landroidx/datastore/preferences/protobuf/b0;->X:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 113
     .line 114
@@ -294,7 +294,7 @@
     .line 125
     .line 126
     .line 127
-    sput-object v7, Landroidx/datastore/preferences/protobuf/b0;->X:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v7, Landroidx/datastore/preferences/protobuf/b0;->Y:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 128
     .line 129
@@ -318,7 +318,7 @@
     .line 137
     .line 138
     .line 139
-    sput-object v8, Landroidx/datastore/preferences/protobuf/b0;->Y:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v8, Landroidx/datastore/preferences/protobuf/b0;->Z:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 140
     .line 141
@@ -346,7 +346,7 @@
     .line 151
     .line 152
     .line 153
-    sput-object v9, Landroidx/datastore/preferences/protobuf/b0;->Z:Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v9, Landroidx/datastore/preferences/protobuf/b0;->b1:Landroidx/datastore/preferences/protobuf/b0;
 
     .line 154
     .line 155
@@ -358,7 +358,7 @@
     move-result-object v0
 
     .line 159
-    sput-object v0, Landroidx/datastore/preferences/protobuf/b0;->b1:[Landroidx/datastore/preferences/protobuf/b0;
+    sput-object v0, Landroidx/datastore/preferences/protobuf/b0;->B1:[Landroidx/datastore/preferences/protobuf/b0;
 
     .line 160
     .line 161
@@ -408,7 +408,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Landroidx/datastore/preferences/protobuf/b0;->b1:[Landroidx/datastore/preferences/protobuf/b0;
+    sget-object v0, Landroidx/datastore/preferences/protobuf/b0;->B1:[Landroidx/datastore/preferences/protobuf/b0;
 
     .line 2
     .line 3

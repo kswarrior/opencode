@@ -1,29 +1,29 @@
 .class public final Lv2/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lv2/a;
 
 
 # static fields
-.field public static final Y:Landroid/graphics/Bitmap$Config;
+.field public static final Z:Landroid/graphics/Bitmap$Config;
 
 
 # instance fields
 .field public X:I
 
+.field public Y:I
+
 .field public final c:Lv2/j;
 
 .field public final d:Ljava/util/Set;
 
-.field public final h:Ls4/a0;
+.field public final h:Ls4/d0;
 
-.field public final p:J
+.field public final q:J
 
-.field public q:J
-
-.field public w:I
+.field public w:J
 
 .field public x:I
 
@@ -39,7 +39,7 @@
 
     .line 2
     .line 3
-    sput-object v0, Lv2/f;->Y:Landroid/graphics/Bitmap$Config;
+    sput-object v0, Lv2/f;->Z:Landroid/graphics/Bitmap$Config;
 
     .line 4
     .line 5
@@ -114,7 +114,7 @@
     .line 33
     .line 34
     .line 35
-    iput-wide p1, p0, Lv2/f;->p:J
+    iput-wide p1, p0, Lv2/f;->q:J
 
     .line 36
     .line 37
@@ -126,7 +126,7 @@
 
     .line 40
     .line 41
-    new-instance p1, Ls4/a0;
+    new-instance p1, Ls4/d0;
 
     .line 42
     .line 43
@@ -134,12 +134,12 @@
 
     .line 44
     .line 45
-    invoke-direct {p1, p2}, Ls4/a0;-><init>(I)V
+    invoke-direct {p1, p2}, Ls4/d0;-><init>(I)V
 
     .line 46
     .line 47
     .line 48
-    iput-object p1, p0, Lv2/f;->h:Ls4/a0;
+    iput-object p1, p0, Lv2/f;->h:Ls4/d0;
 
     .line 49
     .line 50
@@ -148,165 +148,11 @@
 
 
 # virtual methods
-.method public final a()V
-    .locals 3
-
-    .line 1
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 2
-    .line 3
-    const-string v1, "Hits="
-
-    .line 4
-    .line 5
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 6
-    .line 7
-    .line 8
-    iget v1, p0, Lv2/f;->w:I
-
-    .line 9
-    .line 10
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 11
-    .line 12
-    .line 13
-    const-string v1, ", misses="
-
-    .line 14
-    .line 15
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 16
-    .line 17
-    .line 18
-    iget v1, p0, Lv2/f;->x:I
-
-    .line 19
-    .line 20
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 21
-    .line 22
-    .line 23
-    const-string v1, ", puts="
-
-    .line 24
-    .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    .line 28
-    iget v1, p0, Lv2/f;->y:I
-
-    .line 29
-    .line 30
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 31
-    .line 32
-    .line 33
-    const-string v1, ", evictions="
-
-    .line 34
-    .line 35
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 36
-    .line 37
-    .line 38
-    iget v1, p0, Lv2/f;->X:I
-
-    .line 39
-    .line 40
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 41
-    .line 42
-    .line 43
-    const-string v1, ", currentSize="
-
-    .line 44
-    .line 45
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 46
-    .line 47
-    .line 48
-    iget-wide v1, p0, Lv2/f;->q:J
-
-    .line 49
-    .line 50
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    .line 51
-    .line 52
-    .line 53
-    const-string v1, ", maxSize="
-
-    .line 54
-    .line 55
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 56
-    .line 57
-    .line 58
-    iget-wide v1, p0, Lv2/f;->p:J
-
-    .line 59
-    .line 60
-    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
-
-    .line 61
-    .line 62
-    .line 63
-    const-string v1, "\nStrategy="
-
-    .line 64
-    .line 65
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 66
-    .line 67
-    .line 68
-    iget-object v1, p0, Lv2/f;->c:Lv2/j;
-
-    .line 69
-    .line 70
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 71
-    .line 72
-    .line 73
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 74
-    .line 75
-    .line 76
-    move-result-object v0
-
-    .line 77
-    const-string v1, "LruBitmapPool"
-
-    .line 78
-    .line 79
-    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 80
-    .line 81
-    .line 82
-    return-void
-.end method
-
-.method public final b(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+.method public final a(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
     .locals 1
 
     .line 1
-    invoke-virtual {p0, p1, p2, p3}, Lv2/f;->c(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    invoke-virtual {p0, p1, p2, p3}, Lv2/f;->g(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
 
     .line 2
     .line 3
@@ -326,7 +172,7 @@
 
     .line 10
     :cond_0
-    sget-object p3, Lv2/f;->Y:Landroid/graphics/Bitmap$Config;
+    sget-object p3, Lv2/f;->Z:Landroid/graphics/Bitmap$Config;
 
     .line 11
     .line 12
@@ -346,407 +192,7 @@
     return-object v0
 .end method
 
-.method public final declared-synchronized c(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    .locals 8
-
-    .line 1
-    const-string v0, "Get bitmap="
-
-    .line 2
-    .line 3
-    const-string v1, "Missing bitmap="
-
-    .line 4
-    .line 5
-    monitor-enter p0
-
-    .line 6
-    :try_start_0
-    sget-object v2, Landroid/graphics/Bitmap$Config;->HARDWARE:Landroid/graphics/Bitmap$Config;
-
-    .line 7
-    .line 8
-    if-eq p3, v2, :cond_5
-
-    .line 9
-    .line 10
-    iget-object v2, p0, Lv2/f;->c:Lv2/j;
-
-    .line 11
-    .line 12
-    if-eqz p3, :cond_0
-
-    .line 13
-    .line 14
-    move-object v3, p3
-
-    .line 15
-    goto :goto_0
-
-    .line 16
-    :cond_0
-    sget-object v3, Lv2/f;->Y:Landroid/graphics/Bitmap$Config;
-
-    .line 17
-    .line 18
-    :goto_0
-    invoke-virtual {v2, p1, p2, v3}, Lv2/j;->b(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v2
-
-    .line 22
-    const/4 v3, 0x1
-
-    .line 23
-    if-nez v2, :cond_2
-
-    .line 24
-    .line 25
-    const-string v4, "LruBitmapPool"
-
-    .line 26
-    .line 27
-    const/4 v5, 0x3
-
-    .line 28
-    invoke-static {v4, v5}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 29
-    .line 30
-    .line 31
-    move-result v4
-
-    .line 32
-    if-eqz v4, :cond_1
-
-    .line 33
-    .line 34
-    const-string v4, "LruBitmapPool"
-
-    .line 35
-    .line 36
-    new-instance v5, Ljava/lang/StringBuilder;
-
-    .line 37
-    .line 38
-    invoke-direct {v5, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 39
-    .line 40
-    .line 41
-    iget-object v1, p0, Lv2/f;->c:Lv2/j;
-
-    .line 42
-    .line 43
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 44
-    .line 45
-    .line 46
-    mul-int v1, p1, p2
-
-    .line 47
-    .line 48
-    invoke-static {p3}, Lo3/n;->d(Landroid/graphics/Bitmap$Config;)I
-
-    .line 49
-    .line 50
-    .line 51
-    move-result v6
-
-    .line 52
-    mul-int/2addr v6, v1
-
-    .line 53
-    invoke-static {v6, p3}, Lv2/j;->c(ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
-
-    .line 54
-    .line 55
-    .line 56
-    move-result-object v1
-
-    .line 57
-    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 58
-    .line 59
-    .line 60
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 61
-    .line 62
-    .line 63
-    move-result-object v1
-
-    .line 64
-    invoke-static {v4, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 65
-    .line 66
-    .line 67
-    goto :goto_1
-
-    .line 68
-    :catchall_0
-    move-exception p1
-
-    .line 69
-    goto :goto_3
-
-    .line 70
-    :cond_1
-    :goto_1
-    iget v1, p0, Lv2/f;->x:I
-
-    .line 71
-    .line 72
-    add-int/2addr v1, v3
-
-    .line 73
-    iput v1, p0, Lv2/f;->x:I
-
-    .line 74
-    .line 75
-    goto :goto_2
-
-    .line 76
-    :cond_2
-    iget v1, p0, Lv2/f;->w:I
-
-    .line 77
-    .line 78
-    add-int/2addr v1, v3
-
-    .line 79
-    iput v1, p0, Lv2/f;->w:I
-
-    .line 80
-    .line 81
-    iget-wide v4, p0, Lv2/f;->q:J
-
-    .line 82
-    .line 83
-    iget-object v1, p0, Lv2/f;->c:Lv2/j;
-
-    .line 84
-    .line 85
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 86
-    .line 87
-    .line 88
-    invoke-static {v2}, Lo3/n;->c(Landroid/graphics/Bitmap;)I
-
-    .line 89
-    .line 90
-    .line 91
-    move-result v1
-
-    .line 92
-    int-to-long v6, v1
-
-    .line 93
-    sub-long/2addr v4, v6
-
-    .line 94
-    iput-wide v4, p0, Lv2/f;->q:J
-
-    .line 95
-    .line 96
-    iget-object v1, p0, Lv2/f;->h:Ls4/a0;
-
-    .line 97
-    .line 98
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 99
-    .line 100
-    .line 101
-    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->setHasAlpha(Z)V
-
-    .line 102
-    .line 103
-    .line 104
-    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->setPremultiplied(Z)V
-
-    .line 105
-    .line 106
-    .line 107
-    :goto_2
-    const-string v1, "LruBitmapPool"
-
-    .line 108
-    .line 109
-    const/4 v3, 0x2
-
-    .line 110
-    invoke-static {v1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 111
-    .line 112
-    .line 113
-    move-result v1
-
-    .line 114
-    if-eqz v1, :cond_3
-
-    .line 115
-    .line 116
-    const-string v1, "LruBitmapPool"
-
-    .line 117
-    .line 118
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 119
-    .line 120
-    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 121
-    .line 122
-    .line 123
-    iget-object v0, p0, Lv2/f;->c:Lv2/j;
-
-    .line 124
-    .line 125
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 126
-    .line 127
-    .line 128
-    mul-int/2addr p1, p2
-
-    .line 129
-    invoke-static {p3}, Lo3/n;->d(Landroid/graphics/Bitmap$Config;)I
-
-    .line 130
-    .line 131
-    .line 132
-    move-result p2
-
-    .line 133
-    mul-int/2addr p2, p1
-
-    .line 134
-    invoke-static {p2, p3}, Lv2/j;->c(ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
-
-    .line 135
-    .line 136
-    .line 137
-    move-result-object p1
-
-    .line 138
-    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 139
-    .line 140
-    .line 141
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 142
-    .line 143
-    .line 144
-    move-result-object p1
-
-    .line 145
-    invoke-static {v1, p1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 146
-    .line 147
-    .line 148
-    :cond_3
-    const-string p1, "LruBitmapPool"
-
-    .line 149
-    .line 150
-    invoke-static {p1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 151
-    .line 152
-    .line 153
-    move-result p1
-
-    .line 154
-    if-eqz p1, :cond_4
-
-    .line 155
-    .line 156
-    invoke-virtual {p0}, Lv2/f;->a()V
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 157
-    .line 158
-    .line 159
-    :cond_4
-    monitor-exit p0
-
-    .line 160
-    return-object v2
-
-    .line 161
-    :cond_5
-    :try_start_1
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
-    .line 162
-    .line 163
-    new-instance p2, Ljava/lang/StringBuilder;
-
-    .line 164
-    .line 165
-    const-string v0, "Cannot create a mutable Bitmap with config: "
-
-    .line 166
-    .line 167
-    invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 168
-    .line 169
-    .line 170
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 171
-    .line 172
-    .line 173
-    const-string p3, ". Consider setting Downsampler#ALLOW_HARDWARE_CONFIG to false in your RequestOptions and/or in GlideBuilder.setDefaultRequestOptions"
-
-    .line 174
-    .line 175
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 176
-    .line 177
-    .line 178
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 179
-    .line 180
-    .line 181
-    move-result-object p2
-
-    .line 182
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 183
-    .line 184
-    .line 185
-    throw p1
-
-    .line 186
-    :goto_3
-    monitor-exit p0
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 187
-    throw p1
-.end method
-
-.method public final declared-synchronized d(Landroid/graphics/Bitmap;)V
+.method public final declared-synchronized b(Landroid/graphics/Bitmap;)V
     .locals 8
 
     .line 1
@@ -813,7 +259,7 @@
     int-to-long v4, v2
 
     .line 31
-    iget-wide v6, p0, Lv2/f;->p:J
+    iget-wide v6, p0, Lv2/f;->q:J
 
     .line 32
     .line 33
@@ -879,7 +325,7 @@
     .line 62
     .line 63
     .line 64
-    iget-object v2, p0, Lv2/f;->h:Ls4/a0;
+    iget-object v2, p0, Lv2/f;->h:Ls4/d0;
 
     .line 65
     .line 66
@@ -888,7 +334,7 @@
     .line 67
     .line 68
     .line 69
-    iget v2, p0, Lv2/f;->y:I
+    iget v2, p0, Lv2/f;->X:I
 
     .line 70
     .line 71
@@ -896,11 +342,11 @@
 
     .line 72
     .line 73
-    iput v2, p0, Lv2/f;->y:I
+    iput v2, p0, Lv2/f;->X:I
 
     .line 74
     .line 75
-    iget-wide v4, p0, Lv2/f;->q:J
+    iget-wide v4, p0, Lv2/f;->w:J
 
     .line 76
     .line 77
@@ -910,7 +356,7 @@
     add-long/2addr v4, v6
 
     .line 79
-    iput-wide v4, p0, Lv2/f;->q:J
+    iput-wide v4, p0, Lv2/f;->w:J
 
     .line 80
     .line 81
@@ -1022,17 +468,17 @@
 
     .line 133
     .line 134
-    invoke-virtual {p0}, Lv2/f;->a()V
+    invoke-virtual {p0}, Lv2/f;->f()V
 
     .line 135
     .line 136
     .line 137
     :cond_2
-    iget-wide v0, p0, Lv2/f;->p:J
+    iget-wide v0, p0, Lv2/f;->q:J
 
     .line 138
     .line 139
-    invoke-virtual {p0, v0, v1}, Lv2/f;->e(J)V
+    invoke-virtual {p0, v0, v1}, Lv2/f;->h(J)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -1242,7 +688,761 @@
     throw p1
 .end method
 
-.method public final declared-synchronized e(J)V
+.method public final c(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0, p1, p2, p3}, Lv2/f;->g(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    if-eqz v0, :cond_0
+
+    .line 6
+    .line 7
+    const/4 p1, 0x0
+
+    .line 8
+    invoke-virtual {v0, p1}, Landroid/graphics/Bitmap;->eraseColor(I)V
+
+    .line 9
+    .line 10
+    .line 11
+    return-object v0
+
+    .line 12
+    :cond_0
+    if-eqz p3, :cond_1
+
+    .line 13
+    .line 14
+    goto :goto_0
+
+    .line 15
+    :cond_1
+    sget-object p3, Lv2/f;->Z:Landroid/graphics/Bitmap$Config;
+
+    .line 16
+    .line 17
+    :goto_0
+    invoke-static {p1, p2, p3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object p1
+
+    .line 21
+    return-object p1
+.end method
+
+.method public final d(I)V
+    .locals 4
+
+    .line 1
+    const/4 v0, 0x3
+
+    .line 2
+    const-string v1, "LruBitmapPool"
+
+    .line 3
+    .line 4
+    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 5
+    .line 6
+    .line 7
+    move-result v0
+
+    .line 8
+    if-eqz v0, :cond_0
+
+    .line 9
+    .line 10
+    const-string v0, "trimMemory, level="
+
+    .line 11
+    .line 12
+    invoke-static {p1, v0, v1}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
+
+    .line 13
+    .line 14
+    .line 15
+    :cond_0
+    const/16 v0, 0x28
+
+    .line 16
+    .line 17
+    if-ge p1, v0, :cond_4
+
+    .line 18
+    .line 19
+    const/16 v0, 0x14
+
+    .line 20
+    .line 21
+    if-lt p1, v0, :cond_1
+
+    .line 22
+    .line 23
+    goto :goto_1
+
+    .line 24
+    :cond_1
+    if-ge p1, v0, :cond_3
+
+    .line 25
+    .line 26
+    const/16 v0, 0xf
+
+    .line 27
+    .line 28
+    if-ne p1, v0, :cond_2
+
+    .line 29
+    .line 30
+    goto :goto_0
+
+    .line 31
+    :cond_2
+    return-void
+
+    .line 32
+    :cond_3
+    :goto_0
+    iget-wide v0, p0, Lv2/f;->q:J
+
+    .line 33
+    .line 34
+    const-wide/16 v2, 0x2
+
+    .line 35
+    .line 36
+    div-long/2addr v0, v2
+
+    .line 37
+    invoke-virtual {p0, v0, v1}, Lv2/f;->h(J)V
+
+    .line 38
+    .line 39
+    .line 40
+    return-void
+
+    .line 41
+    :cond_4
+    :goto_1
+    invoke-virtual {p0}, Lv2/f;->e()V
+
+    .line 42
+    .line 43
+    .line 44
+    return-void
+.end method
+
+.method public final e()V
+    .locals 2
+
+    .line 1
+    const/4 v0, 0x3
+
+    .line 2
+    const-string v1, "LruBitmapPool"
+
+    .line 3
+    .line 4
+    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 5
+    .line 6
+    .line 7
+    move-result v0
+
+    .line 8
+    if-eqz v0, :cond_0
+
+    .line 9
+    .line 10
+    const-string v0, "clearMemory"
+
+    .line 11
+    .line 12
+    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 13
+    .line 14
+    .line 15
+    :cond_0
+    const-wide/16 v0, 0x0
+
+    .line 16
+    .line 17
+    invoke-virtual {p0, v0, v1}, Lv2/f;->h(J)V
+
+    .line 18
+    .line 19
+    .line 20
+    return-void
+.end method
+
+.method public final f()V
+    .locals 3
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    const-string v1, "Hits="
+
+    .line 4
+    .line 5
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 6
+    .line 7
+    .line 8
+    iget v1, p0, Lv2/f;->x:I
+
+    .line 9
+    .line 10
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 11
+    .line 12
+    .line 13
+    const-string v1, ", misses="
+
+    .line 14
+    .line 15
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 16
+    .line 17
+    .line 18
+    iget v1, p0, Lv2/f;->y:I
+
+    .line 19
+    .line 20
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 21
+    .line 22
+    .line 23
+    const-string v1, ", puts="
+
+    .line 24
+    .line 25
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 26
+    .line 27
+    .line 28
+    iget v1, p0, Lv2/f;->X:I
+
+    .line 29
+    .line 30
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 31
+    .line 32
+    .line 33
+    const-string v1, ", evictions="
+
+    .line 34
+    .line 35
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 36
+    .line 37
+    .line 38
+    iget v1, p0, Lv2/f;->Y:I
+
+    .line 39
+    .line 40
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 41
+    .line 42
+    .line 43
+    const-string v1, ", currentSize="
+
+    .line 44
+    .line 45
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 46
+    .line 47
+    .line 48
+    iget-wide v1, p0, Lv2/f;->w:J
+
+    .line 49
+    .line 50
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 51
+    .line 52
+    .line 53
+    const-string v1, ", maxSize="
+
+    .line 54
+    .line 55
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 56
+    .line 57
+    .line 58
+    iget-wide v1, p0, Lv2/f;->q:J
+
+    .line 59
+    .line 60
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 61
+    .line 62
+    .line 63
+    const-string v1, "\nStrategy="
+
+    .line 64
+    .line 65
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 66
+    .line 67
+    .line 68
+    iget-object v1, p0, Lv2/f;->c:Lv2/j;
+
+    .line 69
+    .line 70
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 71
+    .line 72
+    .line 73
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 74
+    .line 75
+    .line 76
+    move-result-object v0
+
+    .line 77
+    const-string v1, "LruBitmapPool"
+
+    .line 78
+    .line 79
+    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 80
+    .line 81
+    .line 82
+    return-void
+.end method
+
+.method public final declared-synchronized g(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+    .locals 8
+
+    .line 1
+    const-string v0, "Get bitmap="
+
+    .line 2
+    .line 3
+    const-string v1, "Missing bitmap="
+
+    .line 4
+    .line 5
+    monitor-enter p0
+
+    .line 6
+    :try_start_0
+    sget-object v2, Landroid/graphics/Bitmap$Config;->HARDWARE:Landroid/graphics/Bitmap$Config;
+
+    .line 7
+    .line 8
+    if-eq p3, v2, :cond_5
+
+    .line 9
+    .line 10
+    iget-object v2, p0, Lv2/f;->c:Lv2/j;
+
+    .line 11
+    .line 12
+    if-eqz p3, :cond_0
+
+    .line 13
+    .line 14
+    move-object v3, p3
+
+    .line 15
+    goto :goto_0
+
+    .line 16
+    :cond_0
+    sget-object v3, Lv2/f;->Z:Landroid/graphics/Bitmap$Config;
+
+    .line 17
+    .line 18
+    :goto_0
+    invoke-virtual {v2, p1, p2, v3}, Lv2/j;->b(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v2
+
+    .line 22
+    const/4 v3, 0x1
+
+    .line 23
+    if-nez v2, :cond_2
+
+    .line 24
+    .line 25
+    const-string v4, "LruBitmapPool"
+
+    .line 26
+    .line 27
+    const/4 v5, 0x3
+
+    .line 28
+    invoke-static {v4, v5}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v4
+
+    .line 32
+    if-eqz v4, :cond_1
+
+    .line 33
+    .line 34
+    const-string v4, "LruBitmapPool"
+
+    .line 35
+    .line 36
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    .line 37
+    .line 38
+    invoke-direct {v5, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 39
+    .line 40
+    .line 41
+    iget-object v1, p0, Lv2/f;->c:Lv2/j;
+
+    .line 42
+    .line 43
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 44
+    .line 45
+    .line 46
+    mul-int v1, p1, p2
+
+    .line 47
+    .line 48
+    invoke-static {p3}, Lo3/n;->d(Landroid/graphics/Bitmap$Config;)I
+
+    .line 49
+    .line 50
+    .line 51
+    move-result v6
+
+    .line 52
+    mul-int/2addr v6, v1
+
+    .line 53
+    invoke-static {v6, p3}, Lv2/j;->c(ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
+
+    .line 54
+    .line 55
+    .line 56
+    move-result-object v1
+
+    .line 57
+    invoke-virtual {v5, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 58
+    .line 59
+    .line 60
+    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object v1
+
+    .line 64
+    invoke-static {v4, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 65
+    .line 66
+    .line 67
+    goto :goto_1
+
+    .line 68
+    :catchall_0
+    move-exception p1
+
+    .line 69
+    goto :goto_3
+
+    .line 70
+    :cond_1
+    :goto_1
+    iget v1, p0, Lv2/f;->y:I
+
+    .line 71
+    .line 72
+    add-int/2addr v1, v3
+
+    .line 73
+    iput v1, p0, Lv2/f;->y:I
+
+    .line 74
+    .line 75
+    goto :goto_2
+
+    .line 76
+    :cond_2
+    iget v1, p0, Lv2/f;->x:I
+
+    .line 77
+    .line 78
+    add-int/2addr v1, v3
+
+    .line 79
+    iput v1, p0, Lv2/f;->x:I
+
+    .line 80
+    .line 81
+    iget-wide v4, p0, Lv2/f;->w:J
+
+    .line 82
+    .line 83
+    iget-object v1, p0, Lv2/f;->c:Lv2/j;
+
+    .line 84
+    .line 85
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 86
+    .line 87
+    .line 88
+    invoke-static {v2}, Lo3/n;->c(Landroid/graphics/Bitmap;)I
+
+    .line 89
+    .line 90
+    .line 91
+    move-result v1
+
+    .line 92
+    int-to-long v6, v1
+
+    .line 93
+    sub-long/2addr v4, v6
+
+    .line 94
+    iput-wide v4, p0, Lv2/f;->w:J
+
+    .line 95
+    .line 96
+    iget-object v1, p0, Lv2/f;->h:Ls4/d0;
+
+    .line 97
+    .line 98
+    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 99
+    .line 100
+    .line 101
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->setHasAlpha(Z)V
+
+    .line 102
+    .line 103
+    .line 104
+    invoke-virtual {v2, v3}, Landroid/graphics/Bitmap;->setPremultiplied(Z)V
+
+    .line 105
+    .line 106
+    .line 107
+    :goto_2
+    const-string v1, "LruBitmapPool"
+
+    .line 108
+    .line 109
+    const/4 v3, 0x2
+
+    .line 110
+    invoke-static {v1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 111
+    .line 112
+    .line 113
+    move-result v1
+
+    .line 114
+    if-eqz v1, :cond_3
+
+    .line 115
+    .line 116
+    const-string v1, "LruBitmapPool"
+
+    .line 117
+    .line 118
+    new-instance v4, Ljava/lang/StringBuilder;
+
+    .line 119
+    .line 120
+    invoke-direct {v4, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 121
+    .line 122
+    .line 123
+    iget-object v0, p0, Lv2/f;->c:Lv2/j;
+
+    .line 124
+    .line 125
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 126
+    .line 127
+    .line 128
+    mul-int/2addr p1, p2
+
+    .line 129
+    invoke-static {p3}, Lo3/n;->d(Landroid/graphics/Bitmap$Config;)I
+
+    .line 130
+    .line 131
+    .line 132
+    move-result p2
+
+    .line 133
+    mul-int/2addr p2, p1
+
+    .line 134
+    invoke-static {p2, p3}, Lv2/j;->c(ILandroid/graphics/Bitmap$Config;)Ljava/lang/String;
+
+    .line 135
+    .line 136
+    .line 137
+    move-result-object p1
+
+    .line 138
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 139
+    .line 140
+    .line 141
+    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 142
+    .line 143
+    .line 144
+    move-result-object p1
+
+    .line 145
+    invoke-static {v1, p1}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 146
+    .line 147
+    .line 148
+    :cond_3
+    const-string p1, "LruBitmapPool"
+
+    .line 149
+    .line 150
+    invoke-static {p1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 151
+    .line 152
+    .line 153
+    move-result p1
+
+    .line 154
+    if-eqz p1, :cond_4
+
+    .line 155
+    .line 156
+    invoke-virtual {p0}, Lv2/f;->f()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 157
+    .line 158
+    .line 159
+    :cond_4
+    monitor-exit p0
+
+    .line 160
+    return-object v2
+
+    .line 161
+    :cond_5
+    :try_start_1
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
+    .line 162
+    .line 163
+    new-instance p2, Ljava/lang/StringBuilder;
+
+    .line 164
+    .line 165
+    const-string v0, "Cannot create a mutable Bitmap with config: "
+
+    .line 166
+    .line 167
+    invoke-direct {p2, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 168
+    .line 169
+    .line 170
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 171
+    .line 172
+    .line 173
+    const-string p3, ". Consider setting Downsampler#ALLOW_HARDWARE_CONFIG to false in your RequestOptions and/or in GlideBuilder.setDefaultRequestOptions"
+
+    .line 174
+    .line 175
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 176
+    .line 177
+    .line 178
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 179
+    .line 180
+    .line 181
+    move-result-object p2
+
+    .line 182
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 183
+    .line 184
+    .line 185
+    throw p1
+
+    .line 186
+    :goto_3
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 187
+    throw p1
+.end method
+
+.method public final declared-synchronized h(J)V
     .locals 6
 
     .line 1
@@ -1251,7 +1451,7 @@
     .line 2
     :goto_0
     :try_start_0
-    iget-wide v0, p0, Lv2/f;->q:J
+    iget-wide v0, p0, Lv2/f;->w:J
 
     .line 3
     .line 4
@@ -1267,11 +1467,11 @@
 
     .line 9
     .line 10
-    iget-object v1, v0, Lv2/j;->b:Lt9/j;
+    iget-object v1, v0, Lv2/j;->b:Lu2/c0;
 
     .line 11
     .line 12
-    invoke-virtual {v1}, Lt9/j;->q()Ljava/lang/Object;
+    invoke-virtual {v1}, Lu2/c0;->y()Ljava/lang/Object;
 
     .line 13
     .line 14
@@ -1345,7 +1545,7 @@
     .line 47
     .line 48
     .line 49
-    invoke-virtual {p0}, Lv2/f;->a()V
+    invoke-virtual {p0}, Lv2/f;->f()V
 
     .line 50
     .line 51
@@ -1366,7 +1566,7 @@
 
     .line 56
     .line 57
-    iput-wide p1, p0, Lv2/f;->q:J
+    iput-wide p1, p0, Lv2/f;->w:J
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -1380,7 +1580,7 @@
     .line 61
     :cond_2
     :try_start_1
-    iget-object v0, p0, Lv2/f;->h:Ls4/a0;
+    iget-object v0, p0, Lv2/f;->h:Ls4/d0;
 
     .line 62
     .line 63
@@ -1389,7 +1589,7 @@
     .line 64
     .line 65
     .line 66
-    iget-wide v2, p0, Lv2/f;->q:J
+    iget-wide v2, p0, Lv2/f;->w:J
 
     .line 67
     .line 68
@@ -1416,11 +1616,11 @@
     sub-long/2addr v2, v4
 
     .line 79
-    iput-wide v2, p0, Lv2/f;->q:J
+    iput-wide v2, p0, Lv2/f;->w:J
 
     .line 80
     .line 81
-    iget v0, p0, Lv2/f;->X:I
+    iget v0, p0, Lv2/f;->Y:I
 
     .line 82
     .line 83
@@ -1428,7 +1628,7 @@
 
     .line 84
     .line 85
-    iput v0, p0, Lv2/f;->X:I
+    iput v0, p0, Lv2/f;->Y:I
 
     .line 86
     .line 87
@@ -1544,7 +1744,7 @@
 
     .line 143
     .line 144
-    invoke-virtual {p0}, Lv2/f;->a()V
+    invoke-virtual {p0}, Lv2/f;->f()V
 
     .line 145
     .line 146
@@ -1576,204 +1776,4 @@
 
     .line 155
     throw p1
-.end method
-
-.method public final i(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    .locals 1
-
-    .line 1
-    invoke-virtual {p0, p1, p2, p3}, Lv2/f;->c(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    if-eqz v0, :cond_0
-
-    .line 6
-    .line 7
-    const/4 p1, 0x0
-
-    .line 8
-    invoke-virtual {v0, p1}, Landroid/graphics/Bitmap;->eraseColor(I)V
-
-    .line 9
-    .line 10
-    .line 11
-    return-object v0
-
-    .line 12
-    :cond_0
-    if-eqz p3, :cond_1
-
-    .line 13
-    .line 14
-    goto :goto_0
-
-    .line 15
-    :cond_1
-    sget-object p3, Lv2/f;->Y:Landroid/graphics/Bitmap$Config;
-
-    .line 16
-    .line 17
-    :goto_0
-    invoke-static {p1, p2, p3}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object p1
-
-    .line 21
-    return-object p1
-.end method
-
-.method public final j(I)V
-    .locals 4
-
-    .line 1
-    const/4 v0, 0x3
-
-    .line 2
-    const-string v1, "LruBitmapPool"
-
-    .line 3
-    .line 4
-    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 5
-    .line 6
-    .line 7
-    move-result v0
-
-    .line 8
-    if-eqz v0, :cond_0
-
-    .line 9
-    .line 10
-    const-string v0, "trimMemory, level="
-
-    .line 11
-    .line 12
-    invoke-static {p1, v0, v1}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
-
-    .line 13
-    .line 14
-    .line 15
-    :cond_0
-    const/16 v0, 0x28
-
-    .line 16
-    .line 17
-    if-ge p1, v0, :cond_4
-
-    .line 18
-    .line 19
-    const/16 v0, 0x14
-
-    .line 20
-    .line 21
-    if-lt p1, v0, :cond_1
-
-    .line 22
-    .line 23
-    goto :goto_1
-
-    .line 24
-    :cond_1
-    if-ge p1, v0, :cond_3
-
-    .line 25
-    .line 26
-    const/16 v0, 0xf
-
-    .line 27
-    .line 28
-    if-ne p1, v0, :cond_2
-
-    .line 29
-    .line 30
-    goto :goto_0
-
-    .line 31
-    :cond_2
-    return-void
-
-    .line 32
-    :cond_3
-    :goto_0
-    iget-wide v0, p0, Lv2/f;->p:J
-
-    .line 33
-    .line 34
-    const-wide/16 v2, 0x2
-
-    .line 35
-    .line 36
-    div-long/2addr v0, v2
-
-    .line 37
-    invoke-virtual {p0, v0, v1}, Lv2/f;->e(J)V
-
-    .line 38
-    .line 39
-    .line 40
-    return-void
-
-    .line 41
-    :cond_4
-    :goto_1
-    invoke-virtual {p0}, Lv2/f;->l()V
-
-    .line 42
-    .line 43
-    .line 44
-    return-void
-.end method
-
-.method public final l()V
-    .locals 2
-
-    .line 1
-    const/4 v0, 0x3
-
-    .line 2
-    const-string v1, "LruBitmapPool"
-
-    .line 3
-    .line 4
-    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 5
-    .line 6
-    .line 7
-    move-result v0
-
-    .line 8
-    if-eqz v0, :cond_0
-
-    .line 9
-    .line 10
-    const-string v0, "clearMemory"
-
-    .line 11
-    .line 12
-    invoke-static {v1, v0}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 13
-    .line 14
-    .line 15
-    :cond_0
-    const-wide/16 v0, 0x0
-
-    .line 16
-    .line 17
-    invoke-virtual {p0, v0, v1}, Lv2/f;->e(J)V
-
-    .line 18
-    .line 19
-    .line 20
-    return-void
 .end method

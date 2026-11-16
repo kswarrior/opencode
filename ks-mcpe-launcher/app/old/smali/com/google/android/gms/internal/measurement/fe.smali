@@ -1,61 +1,91 @@
-.class public abstract Lcom/google/android/gms/internal/measurement/fe;
+.class public final Lcom/google/android/gms/internal/measurement/fe;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# static fields
-.field public static final a:Lcom/google/android/gms/internal/measurement/fg;
+# instance fields
+.field public final a:Landroid/content/Context;
 
-.field public static final b:Ljava/lang/Object;
+.field public final b:Ld6/j;
 
-.field public static volatile c:Lb8/s0;
+.field public final c:Ld6/j;
+
+.field public final d:Ld6/j;
+
+.field public volatile e:I
+
+.field public final f:Ljava/util/concurrent/CopyOnWriteArrayList;
+
+.field public final g:Ljava/lang/Object;
+
+.field public volatile h:Li6/j0;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(Landroid/content/Context;Ld6/j;Ld6/j;Ld6/j;)V
+    .locals 1
 
     .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/fg;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-static {}, Lcom/google/android/gms/internal/measurement/id;->u()Lcom/google/android/gms/internal/measurement/id;
-
     .line 4
-    .line 5
-    .line 6
-    move-result-object v1
+    const/4 v0, 0x0
 
+    .line 5
+    iput v0, p0, Lcom/google/android/gms/internal/measurement/fe;->e:I
+
+    .line 6
     .line 7
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/measurement/fg;-><init>(Lcom/google/android/gms/internal/measurement/id;)V
+    new-instance v0, Ljava/util/concurrent/CopyOnWriteArrayList;
 
     .line 8
     .line 9
-    .line 10
-    sput-object v0, Lcom/google/android/gms/internal/measurement/fe;->a:Lcom/google/android/gms/internal/measurement/fg;
+    invoke-direct {v0}, Ljava/util/concurrent/CopyOnWriteArrayList;-><init>()V
 
+    .line 10
     .line 11
     .line 12
-    new-instance v0, Ljava/lang/Object;
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/fe;->f:Ljava/util/concurrent/CopyOnWriteArrayList;
 
     .line 13
     .line 14
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    new-instance v0, Ljava/lang/Object;
 
     .line 15
     .line 16
-    .line 17
-    sput-object v0, Lcom/google/android/gms/internal/measurement/fe;->b:Ljava/lang/Object;
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
+    .line 17
     .line 18
     .line 19
-    const/4 v0, 0x0
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/fe;->g:Ljava/lang/Object;
 
     .line 20
-    sput-object v0, Lcom/google/android/gms/internal/measurement/fe;->c:Lb8/s0;
-
     .line 21
+    const/4 v0, 0x0
+
     .line 22
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/fe;->h:Li6/j0;
+
+    .line 23
+    .line 24
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/fe;->a:Landroid/content/Context;
+
+    .line 25
+    .line 26
+    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/fe;->b:Ld6/j;
+
+    .line 27
+    .line 28
+    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/fe;->c:Ld6/j;
+
+    .line 29
+    .line 30
+    iput-object p4, p0, Lcom/google/android/gms/internal/measurement/fe;->d:Ld6/j;
+
+    .line 31
+    .line 32
     return-void
 .end method

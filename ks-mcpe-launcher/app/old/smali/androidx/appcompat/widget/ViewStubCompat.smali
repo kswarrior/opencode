@@ -1,6 +1,6 @@
 .class public final Landroidx/appcompat/widget/ViewStubCompat;
 .super Landroid/view/View;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -10,7 +10,7 @@
 
 .field public h:Ljava/lang/ref/WeakReference;
 
-.field public p:Landroid/view/LayoutInflater;
+.field public q:Landroid/view/LayoutInflater;
 
 
 # direct methods
@@ -144,7 +144,7 @@
 
     .line 14
     .line 15
-    iget-object v1, p0, Landroidx/appcompat/widget/ViewStubCompat;->p:Landroid/view/LayoutInflater;
+    iget-object v1, p0, Landroidx/appcompat/widget/ViewStubCompat;->q:Landroid/view/LayoutInflater;
 
     .line 16
     .line 17
@@ -324,7 +324,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/appcompat/widget/ViewStubCompat;->p:Landroid/view/LayoutInflater;
+    iget-object v0, p0, Landroidx/appcompat/widget/ViewStubCompat;->q:Landroid/view/LayoutInflater;
 
     .line 2
     .line 3
@@ -372,7 +372,7 @@
     .locals 0
 
     .line 1
-    iput-object p1, p0, Landroidx/appcompat/widget/ViewStubCompat;->p:Landroid/view/LayoutInflater;
+    iput-object p1, p0, Landroidx/appcompat/widget/ViewStubCompat;->q:Landroid/view/LayoutInflater;
 
     .line 2
     .line 3
@@ -390,7 +390,7 @@
     return-void
 .end method
 
-.method public setOnInflateListener(Lm/o2;)V
+.method public setOnInflateListener(Lm/s2;)V
     .locals 0
 
     .line 1

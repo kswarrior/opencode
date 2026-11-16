@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/modcatalog/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:Landroid/content/Context;
 
-.field public final synthetic p:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+.field public final synthetic q:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
 
 # direct methods
@@ -31,7 +31,7 @@
 
     iput-object p2, p0, Lorg/levimc/launcher/core/modcatalog/c;->h:Landroid/content/Context;
 
-    iput-object p3, p0, Lorg/levimc/launcher/core/modcatalog/c;->p:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+    iput-object p3, p0, Lorg/levimc/launcher/core/modcatalog/c;->q:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
     return-void
 .end method
@@ -48,7 +48,7 @@
 
     iput-object p1, p0, Lorg/levimc/launcher/core/modcatalog/c;->d:Landroid/content/Context;
 
-    iput-object p2, p0, Lorg/levimc/launcher/core/modcatalog/c;->p:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+    iput-object p2, p0, Lorg/levimc/launcher/core/modcatalog/c;->q:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
     iput-object p3, p0, Lorg/levimc/launcher/core/modcatalog/c;->h:Landroid/content/Context;
 
@@ -74,7 +74,7 @@
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/core/modcatalog/c;->p:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+    iget-object v1, p0, Lorg/levimc/launcher/core/modcatalog/c;->q:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
     .line 9
     .line 10
@@ -91,7 +91,7 @@
 
     .line 16
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/modcatalog/c;->p:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+    iget-object v0, p0, Lorg/levimc/launcher/core/modcatalog/c;->q:Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
     .line 17
     .line 18

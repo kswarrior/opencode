@@ -1,98 +1,327 @@
-.class public final Ls4/j;
-.super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final enum Ls4/j;
+.super Ljava/lang/Enum;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final CREATOR:Landroid/os/Parcelable$Creator;
-    .annotation system Ldalvik/annotation/Signature;
-        value = {
-            "Landroid/os/Parcelable$Creator<",
-            "Ls4/j;",
-            ">;"
-        }
-    .end annotation
-.end field
+.field public static final enum X:Ls4/j;
+
+.field public static final enum Y:Ls4/j;
+
+.field public static final enum Z:Ls4/j;
+
+.field public static final synthetic b1:[Ls4/j;
+
+.field public static final enum d:Ls4/j;
+
+.field public static final enum h:Ls4/j;
+
+.field public static final enum q:Ls4/j;
+
+.field public static final enum w:Ls4/j;
+
+.field public static final enum x:Ls4/j;
+
+.field public static final enum y:Ls4/j;
 
 
 # instance fields
-.field public final c:Landroid/os/Bundle;
+.field public final c:C
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 2
+    .locals 13
 
     .line 1
-    new-instance v0, Landroidx/fragment/app/b;
+    new-instance v0, Ls4/j;
 
     .line 2
     .line 3
-    const/16 v1, 0x12
+    const/4 v1, 0x0
 
     .line 4
-    .line 5
-    invoke-direct {v0, v1}, Landroidx/fragment/app/b;-><init>(I)V
+    const/16 v2, 0x30
 
+    .line 5
     .line 6
+    const-string v3, "UNSET"
+
     .line 7
     .line 8
-    sput-object v0, Ls4/j;->CREATOR:Landroid/os/Parcelable$Creator;
+    invoke-direct {v0, v3, v1, v2}, Ls4/j;-><init>(Ljava/lang/String;IC)V
 
     .line 9
     .line 10
+    .line 11
+    sput-object v0, Ls4/j;->d:Ls4/j;
+
+    .line 12
+    .line 13
+    new-instance v1, Ls4/j;
+
+    .line 14
+    .line 15
+    const/4 v2, 0x1
+
+    .line 16
+    const/16 v3, 0x31
+
+    .line 17
+    .line 18
+    const-string v4, "REMOTE_DEFAULT"
+
+    .line 19
+    .line 20
+    invoke-direct {v1, v4, v2, v3}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 21
+    .line 22
+    .line 23
+    sput-object v1, Ls4/j;->h:Ls4/j;
+
+    .line 24
+    .line 25
+    new-instance v2, Ls4/j;
+
+    .line 26
+    .line 27
+    const/4 v3, 0x2
+
+    .line 28
+    const/16 v4, 0x32
+
+    .line 29
+    .line 30
+    const-string v5, "REMOTE_DELEGATION"
+
+    .line 31
+    .line 32
+    invoke-direct {v2, v5, v3, v4}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 33
+    .line 34
+    .line 35
+    sput-object v2, Ls4/j;->q:Ls4/j;
+
+    .line 36
+    .line 37
+    new-instance v3, Ls4/j;
+
+    .line 38
+    .line 39
+    const/4 v4, 0x3
+
+    .line 40
+    const/16 v5, 0x33
+
+    .line 41
+    .line 42
+    const-string v6, "MANIFEST"
+
+    .line 43
+    .line 44
+    invoke-direct {v3, v6, v4, v5}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 45
+    .line 46
+    .line 47
+    sput-object v3, Ls4/j;->w:Ls4/j;
+
+    .line 48
+    .line 49
+    new-instance v4, Ls4/j;
+
+    .line 50
+    .line 51
+    const/4 v5, 0x4
+
+    .line 52
+    const/16 v6, 0x34
+
+    .line 53
+    .line 54
+    const-string v7, "INITIALIZATION"
+
+    .line 55
+    .line 56
+    invoke-direct {v4, v7, v5, v6}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 57
+    .line 58
+    .line 59
+    sput-object v4, Ls4/j;->x:Ls4/j;
+
+    .line 60
+    .line 61
+    new-instance v5, Ls4/j;
+
+    .line 62
+    .line 63
+    const/4 v6, 0x5
+
+    .line 64
+    const/16 v7, 0x35
+
+    .line 65
+    .line 66
+    const-string v8, "API"
+
+    .line 67
+    .line 68
+    invoke-direct {v5, v8, v6, v7}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 69
+    .line 70
+    .line 71
+    sput-object v5, Ls4/j;->y:Ls4/j;
+
+    .line 72
+    .line 73
+    new-instance v6, Ls4/j;
+
+    .line 74
+    .line 75
+    const/4 v7, 0x6
+
+    .line 76
+    const/16 v8, 0x36
+
+    .line 77
+    .line 78
+    const-string v9, "CHILD_ACCOUNT"
+
+    .line 79
+    .line 80
+    invoke-direct {v6, v9, v7, v8}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 81
+    .line 82
+    .line 83
+    new-instance v7, Ls4/j;
+
+    .line 84
+    .line 85
+    const/4 v8, 0x7
+
+    .line 86
+    const/16 v9, 0x37
+
+    .line 87
+    .line 88
+    const-string v10, "TCF"
+
+    .line 89
+    .line 90
+    invoke-direct {v7, v10, v8, v9}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 91
+    .line 92
+    .line 93
+    sput-object v7, Ls4/j;->X:Ls4/j;
+
+    .line 94
+    .line 95
+    new-instance v8, Ls4/j;
+
+    .line 96
+    .line 97
+    const/16 v9, 0x8
+
+    .line 98
+    .line 99
+    const/16 v10, 0x38
+
+    .line 100
+    .line 101
+    const-string v11, "REMOTE_ENFORCED_DEFAULT"
+
+    .line 102
+    .line 103
+    invoke-direct {v8, v11, v9, v10}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 104
+    .line 105
+    .line 106
+    sput-object v8, Ls4/j;->Y:Ls4/j;
+
+    .line 107
+    .line 108
+    new-instance v9, Ls4/j;
+
+    .line 109
+    .line 110
+    const/16 v10, 0x9
+
+    .line 111
+    .line 112
+    const/16 v11, 0x39
+
+    .line 113
+    .line 114
+    const-string v12, "FAILSAFE"
+
+    .line 115
+    .line 116
+    invoke-direct {v9, v12, v10, v11}, Ls4/j;-><init>(Ljava/lang/String;IC)V
+
+    .line 117
+    .line 118
+    .line 119
+    sput-object v9, Ls4/j;->Z:Ls4/j;
+
+    .line 120
+    .line 121
+    filled-new-array/range {v0 .. v9}, [Ls4/j;
+
+    .line 122
+    .line 123
+    .line 124
+    move-result-object v0
+
+    .line 125
+    sput-object v0, Ls4/j;->b1:[Ls4/j;
+
+    .line 126
+    .line 127
     return-void
 .end method
 
-.method public constructor <init>(Landroid/os/Bundle;)V
+.method public constructor <init>(Ljava/lang/String;IC)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
+    invoke-direct {p0, p1, p2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Ls4/j;->c:Landroid/os/Bundle;
+    iput-char p3, p0, Ls4/j;->c:C
 
     .line 5
     .line 6
     return-void
 .end method
 
-
-# virtual methods
-.method public final writeToParcel(Landroid/os/Parcel;I)V
-    .locals 3
+.method public static values()[Ls4/j;
+    .locals 1
 
     .line 1
-    invoke-static {p1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->beginObjectHeader(Landroid/os/Parcel;)I
+    sget-object v0, Ls4/j;->b1:[Ls4/j;
 
     .line 2
     .line 3
+    invoke-virtual {v0}, [Ls4/j;->clone()Ljava/lang/Object;
+
     .line 4
-    move-result p2
-
     .line 5
-    const/4 v0, 0x1
-
     .line 6
-    const/4 v1, 0x0
+    move-result-object v0
 
     .line 7
-    iget-object v2, p0, Ls4/j;->c:Landroid/os/Bundle;
+    check-cast v0, [Ls4/j;
 
     .line 8
     .line 9
-    invoke-static {p1, v0, v2, v1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeBundle(Landroid/os/Parcel;ILandroid/os/Bundle;Z)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-static {p1, p2}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->finishObjectHeader(Landroid/os/Parcel;I)V
-
-    .line 13
-    .line 14
-    .line 15
-    return-void
+    return-object v0
 .end method

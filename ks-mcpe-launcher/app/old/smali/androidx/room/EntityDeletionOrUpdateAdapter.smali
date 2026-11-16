@@ -1,6 +1,6 @@
 .class public abstract Landroidx/room/EntityDeletionOrUpdateAdapter;
 .super Landroidx/room/SharedSQLiteStatement;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # virtual methods
@@ -32,7 +32,7 @@
     .line 6
     .line 7
     .line 8
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->s()I
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->r()I
 
     .line 9
     .line 10
@@ -75,7 +75,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -105,7 +105,7 @@
     invoke-virtual {p0, v0, v2}, Landroidx/room/EntityDeletionOrUpdateAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 4
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->s()I
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->r()I
 
     move-result v2
     :try_end_0
@@ -144,7 +144,7 @@
 
     const-string v0, "entities"
 
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 6
     invoke-virtual {p0}, Landroidx/room/SharedSQLiteStatement;->acquire()Landroidx/sqlite/db/SupportSQLiteStatement;
@@ -168,7 +168,7 @@
     invoke-virtual {p0, v0, v4}, Landroidx/room/EntityDeletionOrUpdateAdapter;->bind(Landroidx/sqlite/db/SupportSQLiteStatement;Ljava/lang/Object;)V
 
     .line 9
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->s()I
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteStatement;->r()I
 
     move-result v4
     :try_end_0

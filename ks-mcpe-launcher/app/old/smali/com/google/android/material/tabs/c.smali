@@ -1,6 +1,6 @@
 .class public final Lcom/google/android/material/tabs/c;
 .super Landroid/widget/LinearLayout;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -8,11 +8,13 @@
 
 
 # instance fields
+.field public B1:Landroid/graphics/drawable/Drawable;
+
 .field public C1:I
 
 .field public final synthetic D1:Lcom/google/android/material/tabs/TabLayout;
 
-.field public b1:Landroid/graphics/drawable/Drawable;
+.field public b1:Landroid/widget/ImageView;
 
 .field public c:Lcom/google/android/material/tabs/TabLayout$Tab;
 
@@ -20,15 +22,13 @@
 
 .field public h:Landroid/widget/ImageView;
 
-.field public p:Landroid/view/View;
+.field public q:Landroid/view/View;
 
-.field public q:Lz4/a;
+.field public w:Lz4/a;
 
-.field public w:Landroid/view/View;
+.field public x:Landroid/view/View;
 
-.field public x:Landroid/widget/TextView;
-
-.field public y:Landroid/widget/ImageView;
+.field public y:Landroid/widget/TextView;
 
 
 # direct methods
@@ -57,19 +57,19 @@
     .line 10
     .line 11
     .line 12
-    iget p2, p1, Lcom/google/android/material/tabs/TabLayout;->q:I
+    iget p2, p1, Lcom/google/android/material/tabs/TabLayout;->w:I
 
     .line 13
     .line 14
-    iget v0, p1, Lcom/google/android/material/tabs/TabLayout;->w:I
+    iget v0, p1, Lcom/google/android/material/tabs/TabLayout;->x:I
 
     .line 15
     .line 16
-    iget v1, p1, Lcom/google/android/material/tabs/TabLayout;->x:I
+    iget v1, p1, Lcom/google/android/material/tabs/TabLayout;->y:I
 
     .line 17
     .line 18
-    iget v2, p1, Lcom/google/android/material/tabs/TabLayout;->y:I
+    iget v2, p1, Lcom/google/android/material/tabs/TabLayout;->b1:I
 
     .line 19
     .line 20
@@ -127,11 +127,11 @@
     move-result-object p1
 
     .line 48
-    sget-object p2, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
+    sget-object p2, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
 
     .line 49
     .line 50
-    invoke-static {p0, p1}, Landroidx/core/view/m0;->a(Landroid/view/View;Landroid/view/PointerIcon;)V
+    invoke-static {p0, p1}, Landroidx/core/view/n0;->a(Landroid/view/View;Landroid/view/PointerIcon;)V
 
     .line 51
     .line 52
@@ -143,7 +143,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 2
     .line 3
@@ -154,7 +154,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 2
     .line 3
@@ -179,7 +179,7 @@
     .line 12
     .line 13
     .line 14
-    iput-object v1, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iput-object v1, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 15
     .line 16
@@ -189,7 +189,7 @@
     .line 17
     .line 18
     .line 19
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 20
     .line 21
@@ -223,7 +223,7 @@
     .locals 4
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 2
     .line 3
@@ -271,7 +271,7 @@
     .line 25
     .line 26
     :cond_0
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->p:Landroid/view/View;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Landroid/view/View;
 
     .line 27
     .line 28
@@ -279,7 +279,7 @@
 
     .line 29
     .line 30
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 31
     .line 32
@@ -337,7 +337,7 @@
     .line 56
     .line 57
     :goto_0
-    iput-object v2, p0, Lcom/google/android/material/tabs/c;->p:Landroid/view/View;
+    iput-object v2, p0, Lcom/google/android/material/tabs/c;->q:Landroid/view/View;
 
     .line 58
     .line 59
@@ -349,7 +349,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 2
     .line 3
@@ -357,7 +357,7 @@
 
     .line 4
     .line 5
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 6
     .line 7
@@ -390,7 +390,7 @@
 
     .line 20
     .line 21
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->p:Landroid/view/View;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->q:Landroid/view/View;
 
     .line 22
     .line 23
@@ -407,7 +407,7 @@
 
     .line 29
     .line 30
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 31
     .line 32
@@ -459,7 +459,7 @@
     .line 56
     .line 57
     :cond_1
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 58
     .line 59
@@ -533,7 +533,7 @@
     .line 94
     .line 95
     :goto_0
-    iput-object v0, p0, Lcom/google/android/material/tabs/c;->p:Landroid/view/View;
+    iput-object v0, p0, Lcom/google/android/material/tabs/c;->q:Landroid/view/View;
 
     .line 96
     .line 97
@@ -564,7 +564,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 2
     .line 3
@@ -572,7 +572,7 @@
 
     .line 4
     .line 5
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->p:Landroid/view/View;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->q:Landroid/view/View;
 
     .line 6
     .line 7
@@ -712,7 +712,7 @@
     move-result-object v0
 
     .line 8
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->B1:Landroid/graphics/drawable/Drawable;
 
     .line 9
     .line 10
@@ -732,7 +732,7 @@
 
     .line 17
     .line 18
-    iget-object v1, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lcom/google/android/material/tabs/c;->B1:Landroid/graphics/drawable/Drawable;
 
     .line 19
     .line 20
@@ -793,7 +793,7 @@
 
     .line 7
     .line 8
-    invoke-static {p1, v1}, Ljb/c;->G(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {p1, v1}, Leh/k;->q(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
     .line 9
     .line 10
@@ -801,7 +801,7 @@
     move-result-object p1
 
     .line 12
-    iput-object p1, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/graphics/drawable/Drawable;
+    iput-object p1, p0, Lcom/google/android/material/tabs/c;->B1:Landroid/graphics/drawable/Drawable;
 
     .line 13
     .line 14
@@ -821,7 +821,7 @@
 
     .line 21
     .line 22
-    iget-object p1, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/graphics/drawable/Drawable;
+    iget-object p1, p0, Lcom/google/android/material/tabs/c;->B1:Landroid/graphics/drawable/Drawable;
 
     .line 23
     .line 24
@@ -842,7 +842,7 @@
 
     .line 32
     :cond_0
-    iput-object v2, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/graphics/drawable/Drawable;
+    iput-object v2, p0, Lcom/google/android/material/tabs/c;->B1:Landroid/graphics/drawable/Drawable;
 
     .line 33
     .line 34
@@ -904,11 +904,11 @@
 
     .line 63
     .line 64
-    sget-object v4, Lt5/a;->c:[I
+    sget-object v4, Lr5/a;->c:[I
 
     .line 65
     .line 66
-    invoke-static {v3, v4}, Lt5/a;->a(Landroid/content/res/ColorStateList;[I)I
+    invoke-static {v3, v4}, Lr5/a;->a(Landroid/content/res/ColorStateList;[I)I
 
     .line 67
     .line 68
@@ -916,11 +916,11 @@
     move-result v4
 
     .line 70
-    sget-object v5, Lt5/a;->b:[I
+    sget-object v5, Lr5/a;->b:[I
 
     .line 71
     .line 72
-    invoke-static {v3, v5}, Lt5/a;->a(Landroid/content/res/ColorStateList;[I)I
+    invoke-static {v3, v5}, Lr5/a;->a(Landroid/content/res/ColorStateList;[I)I
 
     .line 73
     .line 74
@@ -932,7 +932,7 @@
 
     .line 77
     .line 78
-    sget-object v8, Lt5/a;->d:[I
+    sget-object v8, Lr5/a;->d:[I
 
     .line 79
     .line 80
@@ -944,11 +944,11 @@
     move-result-object v5
 
     .line 84
-    sget-object v7, Lt5/a;->a:[I
+    sget-object v7, Lr5/a;->a:[I
 
     .line 85
     .line 86
-    invoke-static {v3, v7}, Lt5/a;->a(Landroid/content/res/ColorStateList;[I)I
+    invoke-static {v3, v7}, Lr5/a;->a(Landroid/content/res/ColorStateList;[I)I
 
     .line 87
     .line 88
@@ -1080,7 +1080,7 @@
     .line 24
     .line 25
     :cond_1
-    iget-object v3, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v3, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 26
     .line 27
@@ -1104,7 +1104,7 @@
 
     .line 36
     .line 37
-    iget-object v4, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v4, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 38
     .line 39
@@ -1120,7 +1120,7 @@
     .line 44
     .line 45
     :cond_3
-    iput-object v2, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iput-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 46
     .line 47
@@ -1182,7 +1182,7 @@
 
     .line 76
     .line 77
-    iput-object v3, p0, Lcom/google/android/material/tabs/c;->x:Landroid/widget/TextView;
+    iput-object v3, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/TextView;
 
     .line 78
     .line 79
@@ -1220,7 +1220,7 @@
 
     .line 95
     .line 96
-    iput-object v2, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/ImageView;
+    iput-object v2, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/widget/ImageView;
 
     .line 97
     .line 98
@@ -1228,7 +1228,7 @@
 
     .line 99
     :cond_7
-    iget-object v2, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 100
     .line 101
@@ -1241,21 +1241,21 @@
     .line 104
     .line 105
     .line 106
-    iput-object v1, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iput-object v1, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 107
     .line 108
     :cond_8
-    iput-object v1, p0, Lcom/google/android/material/tabs/c;->x:Landroid/widget/TextView;
+    iput-object v1, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/TextView;
 
     .line 109
     .line 110
-    iput-object v1, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/ImageView;
+    iput-object v1, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/widget/ImageView;
 
     .line 111
     .line 112
     :goto_1
-    iget-object v2, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 113
     .line 114
@@ -1290,7 +1290,7 @@
     move-result-object v2
 
     .line 129
-    const v4, 0x7f0d0044
+    const v4, 0x7f0d003e
 
     .line 130
     .line 131
@@ -1341,7 +1341,7 @@
     move-result-object v2
 
     .line 155
-    const v4, 0x7f0d0045
+    const v4, 0x7f0d003f
 
     .line 156
     .line 157
@@ -1392,7 +1392,7 @@
 
     .line 180
     .line 181
-    iget v4, v3, Lcom/google/android/material/tabs/TabLayout;->b1:I
+    iget v4, v3, Lcom/google/android/material/tabs/TabLayout;->B1:I
 
     .line 182
     .line 183
@@ -1502,11 +1502,11 @@
 
     .line 235
     :cond_d
-    new-instance v3, Lz5/d;
+    new-instance v3, Lx5/d;
 
     .line 236
     .line 237
-    invoke-direct {v3, p0, v2}, Lz5/d;-><init>(Lcom/google/android/material/tabs/c;Landroid/view/View;)V
+    invoke-direct {v3, p0, v2}, Lx5/d;-><init>(Lcom/google/android/material/tabs/c;Landroid/view/View;)V
 
     .line 238
     .line 239
@@ -1529,11 +1529,11 @@
 
     .line 248
     :cond_e
-    new-instance v3, Lz5/d;
+    new-instance v3, Lx5/d;
 
     .line 249
     .line 250
-    invoke-direct {v3, p0, v2}, Lz5/d;-><init>(Lcom/google/android/material/tabs/c;Landroid/view/View;)V
+    invoke-direct {v3, p0, v2}, Lx5/d;-><init>(Lcom/google/android/material/tabs/c;Landroid/view/View;)V
 
     .line 251
     .line 252
@@ -1547,7 +1547,7 @@
 
     .line 257
     :cond_f
-    iget-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/widget/TextView;
+    iget-object v2, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/TextView;
 
     .line 258
     .line 259
@@ -1555,7 +1555,7 @@
 
     .line 260
     .line 261
-    iget-object v4, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/ImageView;
+    iget-object v4, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/widget/ImageView;
 
     .line 262
     .line 263
@@ -1564,7 +1564,7 @@
     .line 264
     .line 265
     :cond_10
-    iget-object v4, p0, Lcom/google/android/material/tabs/c;->y:Landroid/widget/ImageView;
+    iget-object v4, p0, Lcom/google/android/material/tabs/c;->b1:Landroid/widget/ImageView;
 
     .line 266
     .line 267
@@ -1752,7 +1752,7 @@
     move-result-object p3
 
     .line 69
-    invoke-static {p3, v1}, Ln5/o;->a(Landroid/content/Context;I)F
+    invoke-static {p3, v1}, Ln5/p;->a(Landroid/content/Context;I)F
 
     .line 70
     .line 71
@@ -1847,7 +1847,7 @@
     .line 115
     :cond_7
     :goto_4
-    invoke-static {p0, v0}, Lm/m2;->a(Landroid/view/View;Ljava/lang/CharSequence;)V
+    invoke-static {p0, v0}, Lm/q2;->a(Landroid/view/View;Ljava/lang/CharSequence;)V
 
     .line 116
     .line 117
@@ -1867,7 +1867,7 @@
 
     .line 4
     .line 5
-    iget-object v2, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 6
     .line 7
@@ -2029,7 +2029,7 @@
 
     .line 4
     .line 5
-    iget-object v2, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v2, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 6
     .line 7
@@ -2199,7 +2199,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 5
     .line 6
@@ -2225,11 +2225,11 @@
 
     .line 15
     .line 16
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->q:Lz4/a;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Lz4/a;
 
     .line 17
     .line 18
-    iget-object v3, v0, Lz4/a;->q:Lz4/c;
+    iget-object v3, v0, Lz4/a;->w:Lz4/c;
 
     .line 19
     .line 20
@@ -2257,7 +2257,7 @@
 
     .line 30
     .line 31
-    iget-object v4, v3, Lz4/b;->Y:Ljava/lang/String;
+    iget-object v4, v3, Lz4/b;->Z:Ljava/lang/String;
 
     .line 32
     .line 33
@@ -2292,7 +2292,7 @@
 
     .line 45
     :cond_2
-    iget-object v0, v0, Lz4/a;->q:Lz4/c;
+    iget-object v0, v0, Lz4/a;->w:Lz4/c;
 
     .line 46
     .line 47
@@ -2300,7 +2300,7 @@
 
     .line 48
     .line 49
-    iget-object v5, v0, Lz4/b;->Y:Ljava/lang/String;
+    iget-object v5, v0, Lz4/b;->Z:Ljava/lang/String;
 
     .line 50
     .line 51
@@ -2352,7 +2352,7 @@
 
     .line 73
     :cond_4
-    iget v5, v0, Lz4/a;->y:I
+    iget v5, v0, Lz4/a;->X:I
 
     .line 74
     .line 75
@@ -2371,7 +2371,7 @@
     move-result v5
 
     .line 82
-    iget v6, v0, Lz4/a;->y:I
+    iget v6, v0, Lz4/a;->X:I
 
     .line 83
     .line 84
@@ -2500,7 +2500,7 @@
     move-result v3
 
     .line 142
-    invoke-static {v1, v2, v0, v2, v3}, Ld8/c;->b(IIIIZ)Ld8/c;
+    invoke-static {v1, v2, v0, v2, v3}, Lb8/c;->b(IIIIZ)Lb8/c;
 
     .line 143
     .line 144
@@ -2508,7 +2508,7 @@
     move-result-object v0
 
     .line 146
-    iget-object v0, v0, Ld8/c;->c:Ljava/lang/Object;
+    iget-object v0, v0, Lb8/c;->d:Ljava/lang/Object;
 
     .line 147
     .line 148
@@ -2564,7 +2564,7 @@
     move-result-object v0
 
     .line 175
-    const v1, 0x7f1302f3
+    const v1, 0x7f130219
 
     .line 176
     .line 177
@@ -3047,7 +3047,7 @@
     .line 20
     .line 21
     :cond_1
-    iget-object v0, p0, Lcom/google/android/material/tabs/c;->w:Landroid/view/View;
+    iget-object v0, p0, Lcom/google/android/material/tabs/c;->x:Landroid/view/View;
 
     .line 22
     .line 23

@@ -1,9 +1,9 @@
 .class Lorg/levimc/launcher/util/GithubReleaseUpdater$3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lub/i;
+.implements Lvb/d;
 
 
 # annotations
@@ -317,14 +317,14 @@
     move-result-object p1
 
     .line 7
-    new-instance v0, Lorg/levimc/launcher/util/i;
+    new-instance v0, Lorg/levimc/launcher/util/h;
 
     .line 8
     .line 9
     const/4 v1, 0x2
 
     .line 10
-    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 11
     .line 12
@@ -361,11 +361,11 @@
 
     .line 9
     .line 10
-    iget-object v4, v0, Lokhttp3/Response;->x:Lub/w;
+    iget-object v4, v0, Lokhttp3/Response;->y:Lvb/r;
 
     .line 11
     .line 12
-    invoke-virtual {v4}, Lub/w;->f()J
+    invoke-virtual {v4}, Lvb/r;->b()J
 
     .line 13
     .line 14
@@ -373,11 +373,11 @@
     move-result-wide v4
 
     .line 16
-    iget-object v0, v0, Lokhttp3/Response;->x:Lub/w;
+    iget-object v0, v0, Lokhttp3/Response;->y:Lvb/r;
 
     .line 17
     .line 18
-    invoke-virtual {v0}, Lub/w;->a()Ljava/io/InputStream;
+    invoke-virtual {v0}, Lvb/r;->a()Ljava/io/InputStream;
 
     .line 19
     .line 20
@@ -529,14 +529,14 @@
     move-result-object v12
 
     .line 87
-    new-instance v13, Lorg/levimc/launcher/util/c;
+    new-instance v13, Lorg/levimc/launcher/util/b;
 
     .line 88
     .line 89
     const/4 v8, 0x1
 
     .line 90
-    invoke-direct {v13, v3, v8, v1}, Lorg/levimc/launcher/util/c;-><init>(IILjava/lang/Object;)V
+    invoke-direct {v13, v3, v8, v1}, Lorg/levimc/launcher/util/b;-><init>(IILjava/lang/Object;)V
 
     .line 91
     .line 92
@@ -673,14 +673,14 @@
     move-result-object v2
 
     .line 139
-    new-instance v4, Lorg/levimc/launcher/util/i;
+    new-instance v4, Lorg/levimc/launcher/util/h;
 
     .line 140
     .line 141
     const/4 v5, 0x1
 
     .line 142
-    invoke-direct {v4, v1, v0, v5}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v4, v1, v0, v5}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 143
     .line 144

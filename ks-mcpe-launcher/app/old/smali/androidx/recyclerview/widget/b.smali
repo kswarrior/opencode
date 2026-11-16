@@ -1,6 +1,6 @@
 .class public final Landroidx/recyclerview/widget/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -10,15 +10,15 @@
 
 .field public final c:Ljava/util/ArrayList;
 
-.field public final d:Landroidx/recyclerview/widget/h1;
+.field public final d:Landroidx/recyclerview/widget/j1;
 
-.field public final e:La4/e;
+.field public final e:Ljd/k;
 
 .field public f:I
 
 
 # direct methods
-.method public constructor <init>(Landroidx/recyclerview/widget/h1;)V
+.method public constructor <init>(Landroidx/recyclerview/widget/j1;)V
     .locals 2
 
     .line 1
@@ -77,26 +77,27 @@
 
     .line 29
     .line 30
-    iput-object p1, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iput-object p1, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 31
     .line 32
-    new-instance p1, La4/e;
+    new-instance p1, Ljd/k;
 
     .line 33
     .line 34
-    const/4 v0, 0x6
+    const/16 v0, 0x8
 
     .line 35
-    invoke-direct {p1, p0, v0}, La4/e;-><init>(Ljava/lang/Object;I)V
-
     .line 36
+    invoke-direct {p1, p0, v0}, Ljd/k;-><init>(Ljava/lang/Object;I)V
+
     .line 37
     .line 38
-    iput-object p1, p0, Landroidx/recyclerview/widget/b;->e:La4/e;
-
     .line 39
+    iput-object p1, p0, Landroidx/recyclerview/widget/b;->e:Ljd/k;
+
     .line 40
+    .line 41
     return-void
 .end method
 
@@ -279,11 +280,11 @@
 
     .line 16
     .line 17
-    iget-object v5, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iget-object v5, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 18
     .line 19
-    invoke-virtual {v5, v4}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v5, v4}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 20
     .line 21
@@ -359,7 +360,7 @@
     const/4 v6, 0x1
 
     .line 23
-    iget-object v7, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iget-object v7, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 24
     .line 25
@@ -393,7 +394,7 @@
 
     .line 38
     :cond_0
-    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 39
     .line 40
@@ -406,7 +407,7 @@
 
     .line 44
     .line 45
-    invoke-virtual {v7, v5, v4}, Landroidx/recyclerview/widget/h1;->e(II)V
+    invoke-virtual {v7, v5, v4}, Landroidx/recyclerview/widget/j1;->e(II)V
 
     .line 46
     .line 47
@@ -415,7 +416,7 @@
 
     .line 49
     :cond_1
-    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 50
     .line 51
@@ -432,7 +433,7 @@
 
     .line 57
     .line 58
-    invoke-virtual {v7, v5, v6, v4}, Landroidx/recyclerview/widget/h1;->c(IILjava/lang/Object;)V
+    invoke-virtual {v7, v5, v6, v4}, Landroidx/recyclerview/widget/j1;->c(IILjava/lang/Object;)V
 
     .line 59
     .line 60
@@ -441,7 +442,7 @@
 
     .line 62
     :cond_2
-    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 63
     .line 64
@@ -454,7 +455,7 @@
 
     .line 68
     .line 69
-    iget-object v7, v7, Landroidx/recyclerview/widget/h1;->a:Landroidx/recyclerview/widget/RecyclerView;
+    iget-object v7, v7, Landroidx/recyclerview/widget/j1;->a:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 70
     .line 71
@@ -486,7 +487,7 @@
 
     .line 84
     :cond_3
-    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v7, v4}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 85
     .line 86
@@ -499,7 +500,7 @@
 
     .line 90
     .line 91
-    invoke-virtual {v7, v5, v4}, Landroidx/recyclerview/widget/h1;->d(II)V
+    invoke-virtual {v7, v5, v4}, Landroidx/recyclerview/widget/j1;->d(II)V
 
     .line 92
     .line 93
@@ -740,7 +741,7 @@
 
     .line 96
     .line 97
-    invoke-virtual {v9, v0}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v9, v0}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 98
     .line 99
@@ -780,7 +781,7 @@
 
     .line 113
     .line 114
-    invoke-virtual {v9, p1}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v9, p1}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 115
     .line 116
@@ -810,7 +811,7 @@
 
     .line 129
     .line 130
-    invoke-virtual {v9, p1}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v9, p1}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 131
     .line 132
@@ -840,11 +841,11 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iget-object v0, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/h1;->a(Landroidx/recyclerview/widget/a;)V
+    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/j1;->a(Landroidx/recyclerview/widget/a;)V
 
     .line 4
     .line 5
@@ -875,7 +876,7 @@
 
     .line 17
     .line 18
-    invoke-virtual {v0, p2, v1, p1}, Landroidx/recyclerview/widget/h1;->c(IILjava/lang/Object;)V
+    invoke-virtual {v0, p2, v1, p1}, Landroidx/recyclerview/widget/j1;->c(IILjava/lang/Object;)V
 
     .line 19
     .line 20
@@ -905,7 +906,7 @@
 
     .line 31
     .line 32
-    iget-object v0, v0, Landroidx/recyclerview/widget/h1;->a:Landroidx/recyclerview/widget/RecyclerView;
+    iget-object v0, v0, Landroidx/recyclerview/widget/j1;->a:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 33
     .line 34
@@ -1133,7 +1134,7 @@
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Lp0/b;->m()Ljava/lang/Object;
+    invoke-virtual {v0}, Lp0/b;->h()Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -1214,7 +1215,7 @@
 
     .line 7
     .line 8
-    iget-object v1, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iget-object v1, p0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 9
     .line 10
@@ -1255,7 +1256,7 @@
 
     .line 26
     .line 27
-    invoke-virtual {v1, v0, p1}, Landroidx/recyclerview/widget/h1;->e(II)V
+    invoke-virtual {v1, v0, p1}, Landroidx/recyclerview/widget/j1;->e(II)V
 
     .line 28
     .line 29
@@ -1315,7 +1316,7 @@
 
     .line 56
     .line 57
-    invoke-virtual {v1, v0, v2, p1}, Landroidx/recyclerview/widget/h1;->c(IILjava/lang/Object;)V
+    invoke-virtual {v1, v0, v2, p1}, Landroidx/recyclerview/widget/j1;->c(IILjava/lang/Object;)V
 
     .line 58
     .line 59
@@ -1332,7 +1333,7 @@
 
     .line 64
     .line 65
-    iget-object v1, v1, Landroidx/recyclerview/widget/h1;->a:Landroidx/recyclerview/widget/RecyclerView;
+    iget-object v1, v1, Landroidx/recyclerview/widget/j1;->a:Landroidx/recyclerview/widget/RecyclerView;
 
     .line 66
     .line 67
@@ -1360,7 +1361,7 @@
 
     .line 77
     .line 78
-    invoke-virtual {v1, v0, p1}, Landroidx/recyclerview/widget/h1;->d(II)V
+    invoke-virtual {v1, v0, p1}, Landroidx/recyclerview/widget/j1;->d(II)V
 
     .line 79
     .line 80
@@ -1376,7 +1377,7 @@
 
     .line 2
     .line 3
-    iget-object v1, v0, Landroidx/recyclerview/widget/b;->e:La4/e;
+    iget-object v1, v0, Landroidx/recyclerview/widget/b;->e:Ljd/k;
 
     .line 4
     .line 5
@@ -1481,7 +1482,7 @@
 
     .line 46
     .line 47
-    iget-object v11, v1, La4/e;->d:Ljava/lang/Object;
+    iget-object v11, v1, Ljd/k;->d:Ljava/lang/Object;
 
     .line 48
     .line 49
@@ -1710,7 +1711,7 @@
 
     .line 151
     .line 152
-    invoke-virtual {v12, v14}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v12, v14}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 153
     .line 154
@@ -1897,7 +1898,7 @@
 
     .line 235
     .line 236
-    invoke-virtual {v12, v14}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v12, v14}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 237
     .line 238
@@ -2010,7 +2011,7 @@
 
     .line 286
     .line 287
-    invoke-virtual {v12, v13}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v12, v13}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 288
     .line 289
@@ -2411,7 +2412,7 @@
 
     .line 473
     .line 474
-    iget-object v12, v0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/h1;
+    iget-object v12, v0, Landroidx/recyclerview/widget/b;->d:Landroidx/recyclerview/widget/j1;
 
     .line 475
     .line 476
@@ -2474,7 +2475,7 @@
 
     .line 500
     .line 501
-    invoke-virtual {v12, v6}, Landroidx/recyclerview/widget/h1;->b(I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    invoke-virtual {v12, v6}, Landroidx/recyclerview/widget/j1;->b(I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 502
     .line 503
@@ -2600,7 +2601,7 @@
 
     .line 555
     .line 556
-    invoke-virtual {v11, v5}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v11, v5}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 557
     .line 558
@@ -2661,7 +2662,7 @@
 
     .line 582
     .line 583
-    invoke-virtual {v12, v13}, Landroidx/recyclerview/widget/h1;->b(I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    invoke-virtual {v12, v13}, Landroidx/recyclerview/widget/j1;->b(I)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 584
     .line 585
@@ -2831,7 +2832,7 @@
 
     .line 655
     .line 656
-    invoke-virtual {v11, v5}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v11, v5}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 657
     .line 658
@@ -2955,7 +2956,7 @@
 
     .line 18
     .line 19
-    invoke-virtual {v3, v2}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v3, v2}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 20
     .line 21
@@ -3344,7 +3345,7 @@
 
     .line 161
     .line 162
-    invoke-virtual {v4, v1}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v1}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 163
     .line 164
@@ -3370,7 +3371,7 @@
 
     .line 174
     .line 175
-    invoke-virtual {v4, v1}, Lp0/b;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v4, v1}, Lp0/b;->c(Ljava/lang/Object;)Z
 
     .line 176
     .line 177

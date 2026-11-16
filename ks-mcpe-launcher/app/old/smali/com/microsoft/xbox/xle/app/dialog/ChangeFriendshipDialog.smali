@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;
 .super Lcom/microsoft/xbox/toolkit/XLEManagedDialog;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -1200,14 +1200,14 @@
     .line 242
     .line 243
     .line 244
-    new-instance v0, Lq8/a;
+    new-instance v0, Lo8/a;
 
     .line 245
     .line 246
     const/4 v3, 0x0
 
     .line 247
-    invoke-direct {v0, p0, v3}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v0, p0, v3}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 248
     .line 249
@@ -1217,11 +1217,11 @@
     .line 251
     .line 252
     .line 253
-    new-instance v0, Lq8/b;
+    new-instance v0, Lo8/b;
 
     .line 254
     .line 255
-    invoke-direct {v0, p0}, Lq8/b;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;)V
+    invoke-direct {v0, p0}, Lo8/b;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;)V
 
     .line 256
     .line 257
@@ -2234,14 +2234,14 @@
 
     .line 161
     .line 162
-    new-instance v3, Lq8/a;
+    new-instance v3, Lo8/a;
 
     .line 163
     .line 164
     const/4 v4, 0x1
 
     .line 165
-    invoke-direct {v3, p0, v4}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v3, p0, v4}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 166
     .line 167
@@ -2290,14 +2290,14 @@
 
     .line 189
     .line 190
-    new-instance v1, Lq8/a;
+    new-instance v1, Lo8/a;
 
     .line 191
     .line 192
     const/4 v3, 0x2
 
     .line 193
-    invoke-direct {v1, p0, v3}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v1, p0, v3}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 194
     .line 195
@@ -2316,14 +2316,14 @@
 
     .line 202
     .line 203
-    new-instance v1, Lq8/a;
+    new-instance v1, Lo8/a;
 
     .line 204
     .line 205
     const/4 v3, 0x3
 
     .line 206
-    invoke-direct {v1, p0, v3}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v1, p0, v3}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 207
     .line 208
@@ -2342,14 +2342,14 @@
 
     .line 215
     .line 216
-    new-instance v1, Lq8/a;
+    new-instance v1, Lo8/a;
 
     .line 217
     .line 218
     const/4 v3, 0x4
 
     .line 219
-    invoke-direct {v1, p0, v3}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v1, p0, v3}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 220
     .line 221
@@ -2389,14 +2389,14 @@
 
     .line 239
     .line 240
-    new-instance v1, Lg5/a;
+    new-instance v1, Lh5/a;
 
     .line 241
     .line 242
     const/4 v3, 0x1
 
     .line 243
-    invoke-direct {v1, p0, v3}, Lg5/a;-><init>(Landroid/view/KeyEvent$Callback;I)V
+    invoke-direct {v1, p0, v3}, Lh5/a;-><init>(Landroid/view/KeyEvent$Callback;I)V
 
     .line 244
     .line 245
@@ -2449,14 +2449,14 @@
 
     .line 270
     .line 271
-    new-instance v1, Lq8/a;
+    new-instance v1, Lo8/a;
 
     .line 272
     .line 273
     const/4 v2, 0x5
 
     .line 274
-    invoke-direct {v1, p0, v2}, Lq8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
+    invoke-direct {v1, p0, v2}, Lo8/a;-><init>(Lcom/microsoft/xbox/xle/app/dialog/ChangeFriendshipDialog;I)V
 
     .line 275
     .line 276

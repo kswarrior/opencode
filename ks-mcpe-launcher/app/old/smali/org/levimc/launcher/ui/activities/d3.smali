@@ -1,63 +1,66 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/d3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/ui/widget/LauncherPopup$OnSelect;
-.implements Lorg/levimc/launcher/ui/adapter/OptionsPropertiesAdapter$OnOptionChangedListener;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
+.field public final synthetic d:[B
+
+.field public final synthetic h:Z
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZ)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/d3;->c:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/d3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 5
     .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/d3;->d:[B
+
+    .line 7
+    .line 8
+    iput-boolean p3, p0, Lorg/levimc/launcher/ui/activities/d3;->h:Z
+
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public onOptionChanged(Lorg/levimc/launcher/core/content/OptionsEditor$OptionProperty;Ljava/lang/String;)V
-    .locals 1
+.method public final onClick(Landroid/content/DialogInterface;I)V
+    .locals 3
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d3;->c:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d3;->d:[B
 
     .line 2
     .line 3
-    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->G(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;Lorg/levimc/launcher/core/content/OptionsEditor$OptionProperty;Ljava/lang/String;)V
+    iget-boolean v1, p0, Lorg/levimc/launcher/ui/activities/d3;->h:Z
 
     .line 4
     .line 5
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/d3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 6
-    return-void
-.end method
+    .line 7
+    invoke-static {v2, v0, v1, p1, p2}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->U(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;[BZLandroid/content/DialogInterface;I)V
 
-.method public onSelect(I)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/d3;->c:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
-    .line 2
-    .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->F(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;I)V
-
-    .line 4
-    .line 5
-    .line 6
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method

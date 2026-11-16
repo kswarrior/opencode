@@ -1,17 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnLayoutChangeListener;
+.implements Landroid/view/View$OnKeyListener;
 
 
 # instance fields
-.field public final synthetic a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+.field public final synthetic c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
+
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
     .locals 0
 
     .line 1
@@ -20,58 +22,38 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 5
     .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final onLayoutChange(Landroid/view/View;IIIIIIII)V
-    .locals 10
+.method public final onKey(Landroid/view/View;ILandroid/view/KeyEvent;)Z
+    .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->a:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->c:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 2
     .line 3
-    move-object v1, p1
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 4
-    move v2, p2
-
     .line 5
-    move v3, p3
+    invoke-static {v0, v1, p1, p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->o(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/view/View;ILandroid/view/KeyEvent;)Z
 
     .line 6
-    move v4, p4
-
     .line 7
-    move v5, p5
-
     .line 8
-    move/from16 v6, p6
+    move-result p1
 
     .line 9
-    .line 10
-    move/from16 v7, p7
-
-    .line 11
-    .line 12
-    move/from16 v8, p8
-
-    .line 13
-    .line 14
-    move/from16 v9, p9
-
-    .line 15
-    .line 16
-    invoke-static/range {v0 .. v9}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->M(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Landroid/view/View;IIIIIIII)V
-
-    .line 17
-    .line 18
-    .line 19
-    return-void
+    return p1
 .end method

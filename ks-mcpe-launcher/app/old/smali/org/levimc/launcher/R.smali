@@ -8,7 +8,6 @@
         Lorg/levimc/launcher/R$anim;,
         Lorg/levimc/launcher/R$array;,
         Lorg/levimc/launcher/R$color;,
-        Lorg/levimc/launcher/R$dimen;,
         Lorg/levimc/launcher/R$drawable;,
         Lorg/levimc/launcher/R$font;,
         Lorg/levimc/launcher/R$id;,

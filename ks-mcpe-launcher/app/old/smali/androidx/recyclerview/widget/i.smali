@@ -1,24 +1,24 @@
 .class public final Landroidx/recyclerview/widget/i;
 .super Landroid/animation/AnimatorListenerAdapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public final synthetic a:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
-.field public final synthetic b:Landroid/view/View;
+.field public final synthetic b:Landroid/view/ViewPropertyAnimator;
 
-.field public final synthetic c:Landroid/view/ViewPropertyAnimator;
+.field public final synthetic c:Landroid/view/View;
 
-.field public final synthetic d:Landroidx/recyclerview/widget/o;
+.field public final synthetic d:Landroidx/recyclerview/widget/p;
 
 
 # direct methods
-.method public constructor <init>(Landroid/view/View;Landroid/view/ViewPropertyAnimator;Landroidx/recyclerview/widget/o;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+.method public constructor <init>(Landroid/view/View;Landroid/view/ViewPropertyAnimator;Landroidx/recyclerview/widget/p;Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
     .locals 0
 
     .line 1
-    iput-object p3, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/o;
+    iput-object p3, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/p;
 
     .line 2
     .line 3
@@ -26,11 +26,11 @@
 
     .line 4
     .line 5
-    iput-object p1, p0, Landroidx/recyclerview/widget/i;->b:Landroid/view/View;
+    iput-object p2, p0, Landroidx/recyclerview/widget/i;->b:Landroid/view/ViewPropertyAnimator;
 
     .line 6
     .line 7
-    iput-object p2, p0, Landroidx/recyclerview/widget/i;->c:Landroid/view/ViewPropertyAnimator;
+    iput-object p1, p0, Landroidx/recyclerview/widget/i;->c:Landroid/view/View;
 
     .line 8
     .line 9
@@ -44,31 +44,11 @@
 
 
 # virtual methods
-.method public final onAnimationCancel(Landroid/animation/Animator;)V
-    .locals 1
-
-    .line 1
-    iget-object p1, p0, Landroidx/recyclerview/widget/i;->b:Landroid/view/View;
-
-    .line 2
-    .line 3
-    const/high16 v0, 0x3f800000    # 1.0f
-
-    .line 4
-    .line 5
-    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
 .method public final onAnimationEnd(Landroid/animation/Animator;)V
     .locals 2
 
     .line 1
-    iget-object p1, p0, Landroidx/recyclerview/widget/i;->c:Landroid/view/ViewPropertyAnimator;
+    iget-object p1, p0, Landroidx/recyclerview/widget/i;->b:Landroid/view/ViewPropertyAnimator;
 
     .line 2
     .line 3
@@ -80,33 +60,46 @@
     .line 5
     .line 6
     .line 7
-    iget-object p1, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/o;
+    iget-object p1, p0, Landroidx/recyclerview/widget/i;->c:Landroid/view/View;
 
     .line 8
     .line 9
-    iget-object v0, p0, Landroidx/recyclerview/widget/i;->a:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    const/high16 v0, 0x3f800000    # 1.0f
 
     .line 10
     .line 11
-    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/l1;->c(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    invoke-virtual {p1, v0}, Landroid/view/View;->setAlpha(F)V
 
     .line 12
     .line 13
     .line 14
-    iget-object v1, p1, Landroidx/recyclerview/widget/o;->o:Ljava/util/ArrayList;
+    iget-object p1, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/p;
 
     .line 15
     .line 16
-    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+    iget-object v0, p0, Landroidx/recyclerview/widget/i;->a:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 17
     .line 18
-    .line 19
-    invoke-virtual {p1}, Landroidx/recyclerview/widget/o;->i()V
+    invoke-virtual {p1, v0}, Landroidx/recyclerview/widget/n1;->c(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
+    .line 19
     .line 20
     .line 21
+    iget-object v1, p1, Landroidx/recyclerview/widget/p;->q:Ljava/util/ArrayList;
+
     .line 22
+    .line 23
+    invoke-virtual {v1, v0}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
+
+    .line 24
+    .line 25
+    .line 26
+    invoke-virtual {p1}, Landroidx/recyclerview/widget/p;->i()V
+
+    .line 27
+    .line 28
+    .line 29
     return-void
 .end method
 
@@ -114,7 +107,7 @@
     .locals 0
 
     .line 1
-    iget-object p1, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/o;
+    iget-object p1, p0, Landroidx/recyclerview/widget/i;->d:Landroidx/recyclerview/widget/p;
 
     .line 2
     .line 3

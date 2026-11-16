@@ -1,21 +1,14 @@
-.class public final Lqd/a;
+.class public abstract Lqd/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lqd/e;
-.implements Ljava/lang/Cloneable;
-
-
-# instance fields
-.field public final c:Ljava/util/ArrayList;
-
-.field public final d:Ljava/util/ArrayList;
+.implements Lorg/apache/http/params/HttpParams;
 
 
 # direct methods
 .method public constructor <init>()V
-    .locals 1
+    .locals 0
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -23,214 +16,97 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Ljava/util/ArrayList;
-
-    .line 5
-    .line 6
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 7
-    .line 8
-    .line 9
-    iput-object v0, p0, Lqd/a;->c:Ljava/util/ArrayList;
-
-    .line 10
-    .line 11
-    new-instance v0, Ljava/util/ArrayList;
-
-    .line 12
-    .line 13
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 14
-    .line 15
-    .line 16
-    iput-object v0, p0, Lqd/a;->d:Ljava/util/ArrayList;
-
-    .line 17
-    .line 18
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lorg/apache/http/HttpResponse;Lqd/c;)V
-    .locals 2
+.method public final c(ILjava/lang/String;)I
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Lqd/a;->d:Ljava/util/ArrayList;
+    invoke-interface {p0, p2}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
     .line 4
-    .line 5
-    .line 6
-    move-result-object v0
+    move-result-object p2
 
+    .line 5
+    if-nez p2, :cond_0
+
+    .line 6
     .line 7
-    :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    return p1
 
     .line 8
-    .line 9
-    .line 10
-    move-result v1
-
-    .line 11
-    if-eqz v1, :cond_0
-
-    .line 12
-    .line 13
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 14
-    .line 15
-    .line 16
-    move-result-object v1
-
-    .line 17
-    check-cast v1, Lpc/l;
-
-    .line 18
-    .line 19
-    invoke-interface {v1, p1, p2}, Lpc/l;->a(Lorg/apache/http/HttpResponse;Lqd/c;)V
-
-    .line 20
-    .line 21
-    .line 22
-    goto :goto_0
-
-    .line 23
     :cond_0
-    return-void
+    check-cast p2, Ljava/lang/Integer;
+
+    .line 9
+    .line 10
+    invoke-virtual {p2}, Ljava/lang/Integer;->intValue()I
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p1
+
+    .line 14
+    return p1
 .end method
 
-.method public final b(Lpc/i;Lqd/c;)V
-    .locals 2
+.method public final d(Ljava/lang/String;Z)Z
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Lqd/a;->c:Ljava/util/ArrayList;
+    invoke-interface {p0, p1}, Lorg/apache/http/params/HttpParams;->getParameter(Ljava/lang/String;)Ljava/lang/Object;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
-
     .line 4
-    .line 5
-    .line 6
-    move-result-object v0
+    move-result-object p1
 
+    .line 5
+    if-nez p1, :cond_0
+
+    .line 6
     .line 7
-    :goto_0
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    return p2
 
     .line 8
-    .line 9
-    .line 10
-    move-result v1
-
-    .line 11
-    if-eqz v1, :cond_0
-
-    .line 12
-    .line 13
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 14
-    .line 15
-    .line 16
-    move-result-object v1
-
-    .line 17
-    check-cast v1, Lpc/j;
-
-    .line 18
-    .line 19
-    invoke-interface {v1, p1, p2}, Lpc/j;->b(Lpc/i;Lqd/c;)V
-
-    .line 20
-    .line 21
-    .line 22
-    goto :goto_0
-
-    .line 23
     :cond_0
-    return-void
+    check-cast p1, Ljava/lang/Boolean;
+
+    .line 9
+    .line 10
+    invoke-virtual {p1}, Ljava/lang/Boolean;->booleanValue()Z
+
+    .line 11
+    .line 12
+    .line 13
+    move-result p1
+
+    .line 14
+    return p1
 .end method
 
-.method public final c(Lpc/j;)V
-    .locals 1
+.method public final e(ILjava/lang/String;)Lqd/a;
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Lqd/a;->c:Ljava/util/ArrayList;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final clone()Ljava/lang/Object;
-    .locals 3
-
-    .line 1
-    invoke-super {p0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 2
     .line 3
     .line 4
-    move-result-object v0
+    move-result-object p1
 
     .line 5
-    check-cast v0, Lqd/a;
+    invoke-interface {p0, p1, p2}, Lorg/apache/http/params/HttpParams;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     .line 6
     .line 7
-    iget-object v1, v0, Lqd/a;->c:Ljava/util/ArrayList;
-
     .line 8
-    .line 9
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 10
-    .line 11
-    .line 12
-    iget-object v1, v0, Lqd/a;->c:Ljava/util/ArrayList;
-
-    .line 13
-    .line 14
-    iget-object v2, p0, Lqd/a;->c:Ljava/util/ArrayList;
-
-    .line 15
-    .line 16
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
-
-    .line 17
-    .line 18
-    .line 19
-    iget-object v1, v0, Lqd/a;->d:Ljava/util/ArrayList;
-
-    .line 20
-    .line 21
-    invoke-virtual {v1}, Ljava/util/ArrayList;->clear()V
-
-    .line 22
-    .line 23
-    .line 24
-    iget-object v2, p0, Lqd/a;->d:Ljava/util/ArrayList;
-
-    .line 25
-    .line 26
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
-
-    .line 27
-    .line 28
-    .line 29
-    return-object v0
+    return-object p0
 .end method

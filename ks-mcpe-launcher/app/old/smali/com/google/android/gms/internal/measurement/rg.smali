@@ -1,94 +1,27 @@
 .class public final Lcom/google/android/gms/internal/measurement/rg;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
-
-# static fields
-.field public static final c:Lcom/google/android/gms/internal/measurement/rg;
+# interfaces
+.implements Ljava/lang/Runnable;
+.implements Ljava/io/Closeable;
 
 
 # instance fields
-.field public final a:Ljava/util/UUID;
+.field public c:Lcom/google/android/gms/internal/measurement/ah;
 
-.field public final b:Ljava/util/concurrent/atomic/AtomicLong;
+.field public final d:Z
+
+.field public h:Z
+
+.field public q:Z
+
+.field public final w:Z
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 5
-
-    .line 1
-    invoke-static {}, Landroid/os/StrictMode;->allowThreadDiskReads()Landroid/os/StrictMode$ThreadPolicy;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    :try_start_0
-    new-instance v1, Lcom/google/android/gms/internal/measurement/rg;
-
-    .line 6
-    .line 7
-    invoke-static {}, Ljava/util/UUID;->randomUUID()Ljava/util/UUID;
-
-    .line 8
-    .line 9
-    .line 10
-    move-result-object v2
-
-    .line 11
-    new-instance v3, Ljava/security/SecureRandom;
-
-    .line 12
-    .line 13
-    invoke-direct {v3}, Ljava/security/SecureRandom;-><init>()V
-
-    .line 14
-    .line 15
-    .line 16
-    invoke-virtual {v3}, Ljava/util/Random;->nextLong()J
-
-    .line 17
-    .line 18
-    .line 19
-    move-result-wide v3
-
-    .line 20
-    invoke-direct {v1, v2, v3, v4}, Lcom/google/android/gms/internal/measurement/rg;-><init>(Ljava/util/UUID;J)V
-
-    .line 21
-    .line 22
-    .line 23
-    sput-object v1, Lcom/google/android/gms/internal/measurement/rg;->c:Lcom/google/android/gms/internal/measurement/rg;
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
-    .line 24
-    .line 25
-    invoke-static {v0}, Landroid/os/StrictMode;->setThreadPolicy(Landroid/os/StrictMode$ThreadPolicy;)V
-
-    .line 26
-    .line 27
-    .line 28
-    return-void
-
-    .line 29
-    :catchall_0
-    move-exception v1
-
-    .line 30
-    invoke-static {v0}, Landroid/os/StrictMode;->setThreadPolicy(Landroid/os/StrictMode$ThreadPolicy;)V
-
-    .line 31
-    .line 32
-    .line 33
-    throw v1
-.end method
-
-.method public constructor <init>(Ljava/util/UUID;J)V
-    .locals 2
+.method public constructor <init>(Lcom/google/android/gms/internal/measurement/ah;Z)V
+    .locals 1
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -96,219 +29,369 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/rg;->a:Ljava/util/UUID;
+    const/4 v0, 0x0
 
     .line 5
-    .line 6
-    const-wide v0, 0x5deece66dL
+    iput-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->w:Z
 
+    .line 6
     .line 7
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/rg;->c:Lcom/google/android/gms/internal/measurement/ah;
+
     .line 8
     .line 9
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
     .line 10
     .line 11
-    xor-long p1, p2, v0
-
     .line 12
+    move-result-object p1
+
     .line 13
-    new-instance p3, Ljava/util/concurrent/atomic/AtomicLong;
+    invoke-static {p1}, Lcom/google/android/gms/internal/measurement/d1;->d(Ljava/lang/Thread;)Z
 
     .line 14
     .line 15
-    const-wide v0, 0xffffffffffffL
-
     .line 16
+    move-result p1
+
     .line 17
+    iput-boolean p1, p0, Lcom/google/android/gms/internal/measurement/rg;->d:Z
+
     .line 18
     .line 19
+    iput-boolean p2, p0, Lcom/google/android/gms/internal/measurement/rg;->w:Z
+
     .line 20
-    and-long/2addr p1, v0
-
     .line 21
-    invoke-direct {p3, p1, p2}, Ljava/util/concurrent/atomic/AtomicLong;-><init>(J)V
-
-    .line 22
-    .line 23
-    .line 24
-    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/rg;->b:Ljava/util/concurrent/atomic/AtomicLong;
-
-    .line 25
-    .line 26
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()J
-    .locals 11
+.method public final a(Li6/s;)V
+    .locals 1
 
     .line 1
-    :cond_0
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/rg;->b:Ljava/util/concurrent/atomic/AtomicLong;
+    iget-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->h:Z
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/util/concurrent/atomic/AtomicLong;->get()J
+    if-nez v0, :cond_1
 
     .line 4
     .line 5
-    .line 6
-    move-result-wide v1
+    iget-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->q:Z
 
+    .line 6
     .line 7
-    const-wide v3, 0x5deece66dL
+    if-nez v0, :cond_0
 
     .line 8
     .line 9
+    const/4 v0, 0x1
+
     .line 10
+    iput-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->q:Z
+
     .line 11
     .line 12
-    mul-long v5, v1, v3
+    sget-object v0, Li6/e0;->c:Li6/e0;
 
     .line 13
     .line 14
-    const-wide/16 v7, 0xb
+    invoke-interface {p1, p0, v0}, Lcom/google/common/util/concurrent/ListenableFuture;->b(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
 
     .line 15
     .line 16
-    add-long/2addr v5, v7
-
     .line 17
-    const-wide v9, 0xffffffffffffL
+    return-void
 
     .line 18
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
     .line 19
     .line 20
+    const-string v0, "Signal is already attached to future"
+
     .line 21
     .line 22
-    and-long/2addr v5, v9
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     .line 23
-    mul-long/2addr v3, v5
-
     .line 24
-    add-long/2addr v3, v7
-
     .line 25
-    and-long/2addr v3, v9
+    throw p1
 
     .line 26
-    invoke-virtual {v0, v1, v2, v3, v4}, Ljava/util/concurrent/atomic/AtomicLong;->compareAndSet(JJ)Z
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalStateException;
 
     .line 27
     .line 28
-    .line 29
-    move-result v0
+    const-string v0, "Span was already closed. Did you attach it to a future after calling Tracer.endSpan()?"
 
+    .line 29
     .line 30
-    if-eqz v0, :cond_0
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     .line 31
     .line 32
-    const/16 v0, 0x10
-
     .line 33
+    throw p1
+.end method
+
+.method public final close()V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/rg;->c:Lcom/google/android/gms/internal/measurement/ah;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x0
+
+    .line 4
+    :try_start_0
+    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/rg;->c:Lcom/google/android/gms/internal/measurement/ah;
+
+    .line 5
+    .line 6
+    iget-boolean v1, p0, Lcom/google/android/gms/internal/measurement/rg;->q:Z
+
+    .line 7
+    .line 8
+    if-eqz v1, :cond_0
+
+    .line 9
+    .line 10
+    goto :goto_0
+
+    .line 11
+    :cond_0
+    iget-boolean v2, p0, Lcom/google/android/gms/internal/measurement/rg;->h:Z
+
+    .line 12
+    .line 13
+    if-nez v2, :cond_4
+
+    .line 14
+    .line 15
+    const/4 v2, 0x1
+
+    .line 16
+    iput-boolean v2, p0, Lcom/google/android/gms/internal/measurement/rg;->h:Z
+
+    .line 17
+    .line 18
+    iget-boolean v2, p0, Lcom/google/android/gms/internal/measurement/rg;->d:Z
+
+    .line 19
+    .line 20
+    if-eqz v2, :cond_1
+
+    .line 21
+    .line 22
+    if-nez v1, :cond_1
+
+    .line 23
+    .line 24
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
+
+    .line 25
+    .line 26
+    .line 27
+    move-result-object v1
+
+    .line 28
+    invoke-static {v1}, Lcom/google/android/gms/internal/measurement/d1;->d(Ljava/lang/Thread;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 29
+    .line 30
+    .line 31
+    :cond_1
+    :goto_0
+    if-eqz v0, :cond_2
+
+    .line 32
+    .line 33
+    check-cast v0, Lcom/google/android/gms/internal/measurement/eg;
+
     .line 34
-    ushr-long v1, v5, v0
-
     .line 35
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/eg;->close()V
+
     .line 36
-    ushr-long/2addr v3, v0
-
     .line 37
-    long-to-int v0, v3
-
     .line 38
-    long-to-int v1, v1
+    :cond_2
+    iget-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->w:Z
 
     .line 39
-    int-to-long v1, v1
-
     .line 40
-    const/16 v3, 0x20
+    if-eqz v0, :cond_3
 
     .line 41
     .line 42
-    shl-long/2addr v1, v3
+    sget-object v0, Lcom/google/android/gms/internal/measurement/qg;->y:Lcom/google/android/gms/internal/measurement/qg;
 
     .line 43
-    int-to-long v3, v0
-
     .line 44
-    add-long/2addr v1, v3
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kg;->c()Lcom/google/android/gms/internal/measurement/zg;
 
     .line 45
-    return-wide v1
+    .line 46
+    .line 47
+    move-result-object v1
+
+    .line 48
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/kg;->b(Lcom/google/android/gms/internal/measurement/zg;Lcom/google/android/gms/internal/measurement/ah;)Lcom/google/android/gms/internal/measurement/ah;
+
+    .line 49
+    .line 50
+    .line 51
+    :cond_3
+    return-void
+
+    .line 52
+    :cond_4
+    :try_start_1
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 53
+    .line 54
+    const-string v2, "Span was already closed!"
+
+    .line 55
+    .line 56
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 57
+    .line 58
+    .line 59
+    throw v1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 60
+    :catchall_0
+    move-exception v1
+
+    .line 61
+    if-eqz v0, :cond_5
+
+    .line 62
+    .line 63
+    :try_start_2
+    check-cast v0, Lcom/google/android/gms/internal/measurement/eg;
+
+    .line 64
+    .line 65
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/eg;->close()V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
+    .line 66
+    .line 67
+    .line 68
+    goto :goto_1
+
+    .line 69
+    :catchall_1
+    move-exception v0
+
+    .line 70
+    invoke-virtual {v1, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 71
+    .line 72
+    .line 73
+    :cond_5
+    :goto_1
+    throw v1
 .end method
 
-.method public final b()Ljava/util/UUID;
-    .locals 8
+.method public final run()V
+    .locals 2
 
     .line 1
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/rg;->a()J
+    iget-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->h:Z
 
     .line 2
     .line 3
-    .line 4
-    move-result-wide v0
+    if-nez v0, :cond_2
 
+    .line 4
     .line 5
-    const-wide/32 v2, -0xf001
+    iget-boolean v0, p0, Lcom/google/android/gms/internal/measurement/rg;->q:Z
 
     .line 6
     .line 7
-    .line 8
-    and-long/2addr v0, v2
+    if-nez v0, :cond_0
 
+    .line 8
     .line 9
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/rg;->a()J
+    goto :goto_0
 
     .line 10
-    .line 11
-    .line 12
-    move-result-wide v2
+    :cond_0
+    const/4 v1, 0x1
 
+    .line 11
+    iput-boolean v1, p0, Lcom/google/android/gms/internal/measurement/rg;->h:Z
+
+    .line 12
     .line 13
-    const/4 v4, 0x2
+    iget-boolean v1, p0, Lcom/google/android/gms/internal/measurement/rg;->d:Z
 
     .line 14
-    ushr-long/2addr v2, v4
-
     .line 15
-    new-instance v4, Ljava/util/UUID;
+    if-eqz v1, :cond_1
 
     .line 16
     .line 17
-    iget-object v5, p0, Lcom/google/android/gms/internal/measurement/rg;->a:Ljava/util/UUID;
+    if-nez v0, :cond_1
 
     .line 18
     .line 19
-    invoke-virtual {v5}, Ljava/util/UUID;->getMostSignificantBits()J
+    invoke-static {}, Ljava/lang/Thread;->currentThread()Ljava/lang/Thread;
 
     .line 20
     .line 21
     .line 22
-    move-result-wide v6
+    move-result-object v0
 
     .line 23
-    xor-long/2addr v0, v6
+    invoke-static {v0}, Lcom/google/android/gms/internal/measurement/d1;->d(Ljava/lang/Thread;)Z
 
     .line 24
-    invoke-virtual {v5}, Ljava/util/UUID;->getLeastSignificantBits()J
-
     .line 25
     .line 26
+    :cond_1
+    return-void
+
     .line 27
-    move-result-wide v5
+    :cond_2
+    :goto_0
+    sget-object v0, Lcom/google/android/gms/internal/measurement/be;->h:Lcom/google/android/gms/internal/measurement/be;
 
     .line 28
-    xor-long/2addr v2, v5
-
     .line 29
-    invoke-direct {v4, v0, v1, v2, v3}, Ljava/util/UUID;-><init>(JJ)V
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/d1;->f()Landroid/os/Handler;
 
     .line 30
     .line 31
     .line 32
-    return-object v4
+    move-result-object v1
+
+    .line 33
+    invoke-virtual {v1, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 34
+    .line 35
+    .line 36
+    return-void
 .end method

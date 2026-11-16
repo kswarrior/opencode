@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/databinding/ItemScreenshotBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -8,17 +8,17 @@
 
 .field public final screenshotDate:Landroid/widget/TextView;
 
-.field public final screenshotDeleteButton:Lcom/google/android/material/button/MaterialButton;
+.field public final screenshotDeleteButton:Landroid/widget/Button;
 
-.field public final screenshotImage:Lcom/google/android/material/imageview/ShapeableImageView;
+.field public final screenshotImage:Landroid/widget/ImageView;
 
 .field public final screenshotName:Landroid/widget/TextView;
 
-.field public final screenshotSaveButton:Lcom/google/android/material/button/MaterialButton;
+.field public final screenshotSaveButton:Landroid/widget/Button;
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/imageview/ShapeableImageView;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/Button;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/Button;)V
     .locals 0
 
     .line 1
@@ -35,11 +35,11 @@
 
     .line 7
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotDeleteButton:Lcom/google/android/material/button/MaterialButton;
+    iput-object p3, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotDeleteButton:Landroid/widget/Button;
 
     .line 9
     .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotImage:Lcom/google/android/material/imageview/ShapeableImageView;
+    iput-object p4, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotImage:Landroid/widget/ImageView;
 
     .line 11
     .line 12
@@ -47,7 +47,7 @@
 
     .line 13
     .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotSaveButton:Lcom/google/android/material/button/MaterialButton;
+    iput-object p6, p0, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;->screenshotSaveButton:Landroid/widget/Button;
 
     .line 15
     .line 16
@@ -62,7 +62,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -85,7 +85,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 15
     .line 16
@@ -96,7 +96,7 @@
     move-object v5, v1
 
     .line 19
-    check-cast v5, Lcom/google/android/material/button/MaterialButton;
+    check-cast v5, Landroid/widget/Button;
 
     .line 20
     .line 21
@@ -108,7 +108,7 @@
 
     .line 24
     .line 25
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 26
     .line 27
@@ -119,7 +119,7 @@
     move-object v6, v1
 
     .line 30
-    check-cast v6, Lcom/google/android/material/imageview/ShapeableImageView;
+    check-cast v6, Landroid/widget/ImageView;
 
     .line 31
     .line 32
@@ -131,7 +131,7 @@
 
     .line 35
     .line 36
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 37
     .line 38
@@ -154,7 +154,7 @@
 
     .line 46
     .line 47
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 48
     .line 49
@@ -165,7 +165,7 @@
     move-object v8, v1
 
     .line 52
-    check-cast v8, Lcom/google/android/material/button/MaterialButton;
+    check-cast v8, Landroid/widget/Button;
 
     .line 53
     .line 54
@@ -184,7 +184,7 @@
 
     .line 60
     .line 61
-    invoke-direct/range {v2 .. v8}, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;Lcom/google/android/material/imageview/ShapeableImageView;Landroid/widget/TextView;Lcom/google/android/material/button/MaterialButton;)V
+    invoke-direct/range {v2 .. v8}, Lorg/levimc/launcher/databinding/ItemScreenshotBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/Button;Landroid/widget/ImageView;Landroid/widget/TextView;Landroid/widget/Button;)V
 
     .line 62
     .line 63

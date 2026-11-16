@@ -1,73 +1,129 @@
-.class public final Lt9/q;
-.super Ly8/c;
+.class public Lt9/q;
+.super Lo9/a;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lw8/d;
 
 
 # instance fields
-.field public synthetic p:Ljava/lang/Object;
-
-.field public q:I
-
-.field public final synthetic w:Lt9/j;
-
-.field public x:Lt9/n;
+.field public final q:Lkotlin/coroutines/Continuation;
 
 
 # direct methods
-.method public constructor <init>(Lt9/j;Ly8/c;)V
-    .locals 0
+.method public constructor <init>(Lkotlin/coroutines/Continuation;Lkotlin/coroutines/CoroutineContext;)V
+    .locals 1
 
     .line 1
-    iput-object p1, p0, Lt9/q;->w:Lt9/j;
+    const/4 v0, 0x1
 
     .line 2
-    .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+    invoke-direct {p0, p2, v0}, Lo9/a;-><init>(Lkotlin/coroutines/CoroutineContext;Z)V
 
+    .line 3
     .line 4
     .line 5
+    iput-object p1, p0, Lt9/q;->q:Lkotlin/coroutines/Continuation;
+
     .line 6
+    .line 7
     return-void
 .end method
 
 
 # virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+.method public final H()Z
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lt9/q;->p:Ljava/lang/Object;
+    const/4 v0, 0x1
+
+    .line 2
+    return v0
+.end method
+
+.method public final c()Lw8/d;
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lt9/q;->q:Lkotlin/coroutines/Continuation;
 
     .line 2
     .line 3
-    iget p1, p0, Lt9/q;->q:I
+    instance-of v1, v0, Lw8/d;
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
+    if-eqz v1, :cond_0
 
     .line 6
     .line 7
-    or-int/2addr p1, v0
+    check-cast v0, Lw8/d;
 
     .line 8
-    iput p1, p0, Lt9/q;->q:I
-
     .line 9
-    .line 10
-    iget-object p1, p0, Lt9/q;->w:Lt9/j;
+    return-object v0
 
-    .line 11
-    .line 12
+    .line 10
+    :cond_0
     const/4 v0, 0x0
 
-    .line 13
-    invoke-virtual {p1, v0, p0}, Lt9/j;->m(Lt9/d;Ly8/c;)Ljava/lang/Object;
+    .line 11
+    return-object v0
+.end method
 
-    .line 14
-    .line 15
-    .line 16
+.method public l(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lt9/q;->q:Lkotlin/coroutines/Continuation;
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Ly6/t1;->m(Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-static {p1}, Lo9/w;->n(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    .line 10
     move-result-object p1
 
-    .line 17
-    return-object p1
+    .line 11
+    invoke-static {p1, v0}, Lt9/a;->h(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+.end method
+
+.method public m(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lt9/q;->q:Lkotlin/coroutines/Continuation;
+
+    .line 2
+    .line 3
+    invoke-static {p1}, Lo9/w;->n(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    invoke-interface {v0, p1}, Lkotlin/coroutines/Continuation;->d(Ljava/lang/Object;)V
+
+    .line 8
+    .line 9
+    .line 10
+    return-void
 .end method

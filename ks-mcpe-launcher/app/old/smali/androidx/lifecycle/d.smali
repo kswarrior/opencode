@@ -1,6 +1,6 @@
 .class public final Landroidx/lifecycle/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -72,7 +72,7 @@
     return-void
 .end method
 
-.method public static b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/o;Ljava/lang/Class;)V
+.method public static b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/n;Ljava/lang/Class;)V
     .locals 3
 
     .line 1
@@ -84,7 +84,7 @@
     move-result-object v0
 
     .line 5
-    check-cast v0, Landroidx/lifecycle/o;
+    check-cast v0, Landroidx/lifecycle/n;
 
     .line 6
     .line 7
@@ -408,11 +408,11 @@
     move-result-object v8
 
     .line 89
-    check-cast v8, Landroidx/lifecycle/o;
+    check-cast v8, Landroidx/lifecycle/n;
 
     .line 90
     .line 91
-    invoke-static {v1, v9, v8, p1}, Landroidx/lifecycle/d;->b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/o;Ljava/lang/Class;)V
+    invoke-static {v1, v9, v8, p1}, Landroidx/lifecycle/d;->b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/n;Ljava/lang/Class;)V
 
     .line 92
     .line 93
@@ -557,7 +557,7 @@
 
     .line 152
     :goto_6
-    invoke-interface {v7}, Landroidx/lifecycle/y;->value()Landroidx/lifecycle/o;
+    invoke-interface {v7}, Landroidx/lifecycle/y;->value()Landroidx/lifecycle/n;
 
     .line 153
     .line 154
@@ -575,7 +575,7 @@
 
     .line 159
     .line 160
-    const-class v8, Landroidx/lifecycle/o;
+    const-class v8, Landroidx/lifecycle/n;
 
     .line 161
     .line 162
@@ -595,7 +595,7 @@
 
     .line 169
     .line 170
-    sget-object v8, Landroidx/lifecycle/o;->ON_ANY:Landroidx/lifecycle/o;
+    sget-object v8, Landroidx/lifecycle/n;->ON_ANY:Landroidx/lifecycle/n;
 
     .line 171
     .line 172
@@ -661,7 +661,7 @@
     .line 198
     .line 199
     .line 200
-    invoke-static {v1, v4, v7, p1}, Landroidx/lifecycle/d;->b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/o;Ljava/lang/Class;)V
+    invoke-static {v1, v4, v7, p1}, Landroidx/lifecycle/d;->b(Ljava/util/HashMap;Landroidx/lifecycle/c;Landroidx/lifecycle/n;Ljava/lang/Class;)V
 
     .line 201
     .line 202

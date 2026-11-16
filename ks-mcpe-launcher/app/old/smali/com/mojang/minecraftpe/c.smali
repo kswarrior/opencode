@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/mojang/minecraftpe/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,11 +13,11 @@
 
 .field public final synthetic h:J
 
-.field public final synthetic p:Ljava/lang/Object;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lg/i;Ljava/lang/Object;JI)V
+.method public synthetic constructor <init>(Lg/g;Ljava/lang/Object;JI)V
     .locals 0
 
     .line 1
@@ -25,7 +25,7 @@
 
     iput-object p1, p0, Lcom/mojang/minecraftpe/c;->d:Ljava/lang/Object;
 
-    iput-object p2, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iput-object p2, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     iput-wide p3, p0, Lcom/mojang/minecraftpe/c;->h:J
 
@@ -44,7 +44,7 @@
 
     iput-wide p2, p0, Lcom/mojang/minecraftpe/c;->h:J
 
-    iput-object p4, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iput-object p4, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
@@ -70,11 +70,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lx6/r;
+    check-cast v0, Lv6/q;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 11
     .line 12
@@ -82,11 +82,11 @@
 
     .line 13
     .line 14
-    iget-object v0, v0, Lx6/r;->h:Lx6/m;
+    iget-object v0, v0, Lv6/q;->h:Lv6/m;
 
     .line 15
     .line 16
-    iget-object v2, v0, Lx6/m;->n:Lx6/t;
+    iget-object v2, v0, Lv6/m;->n:Lv6/s;
 
     .line 17
     .line 18
@@ -94,7 +94,7 @@
 
     .line 19
     .line 20
-    iget-object v2, v2, Lx6/t;->e:Ljava/util/concurrent/atomic/AtomicBoolean;
+    iget-object v2, v2, Lv6/s;->e:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 21
     .line 22
@@ -114,15 +114,15 @@
 
     .line 29
     :cond_0
-    iget-object v0, v0, Lx6/m;->i:Lz6/f;
+    iget-object v0, v0, Lv6/m;->i:Lx6/f;
 
     .line 30
     .line 31
-    iget-object v0, v0, Lz6/f;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lx6/f;->d:Ljava/lang/Object;
 
     .line 32
     .line 33
-    check-cast v0, Lz6/d;
+    check-cast v0, Lx6/d;
 
     .line 34
     .line 35
@@ -130,7 +130,7 @@
 
     .line 36
     .line 37
-    invoke-interface {v0, v2, v3, v1}, Lz6/d;->k(JLjava/lang/String;)V
+    invoke-interface {v0, v2, v3, v1}, Lx6/d;->e(JLjava/lang/String;)V
 
     .line 38
     .line 39
@@ -148,11 +148,11 @@
 
     .line 44
     .line 45
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 46
     .line 47
-    check-cast v1, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
+    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
 
     .line 48
     .line 49
@@ -160,7 +160,7 @@
 
     .line 50
     .line 51
-    invoke-static {v2, v3, v1, v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->K(JLnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)V
+    invoke-static {v0, v2, v3, v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->w(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;JLorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
 
     .line 52
     .line 53
@@ -177,11 +177,11 @@
 
     .line 58
     .line 59
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 60
     .line 61
-    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;
+    check-cast v1, Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
 
     .line 62
     .line 63
@@ -189,7 +189,7 @@
 
     .line 64
     .line 65
-    invoke-static {v0, v2, v3, v1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->S(Lorg/levimc/launcher/ui/activities/MsftLoginActivity;JLorg/levimc/launcher/core/auth/MsftAuthManager$DeviceCodeState;)V
+    invoke-static {v2, v3, v1, v0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->I(JLnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;Lorg/levimc/launcher/ui/activities/MsftLoginActivity;)V
 
     .line 66
     .line 67
@@ -206,7 +206,7 @@
 
     .line 72
     .line 73
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 74
     .line 75
@@ -235,7 +235,7 @@
 
     .line 86
     .line 87
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 88
     .line 89
@@ -264,7 +264,7 @@
 
     .line 100
     .line 101
-    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lcom/mojang/minecraftpe/c;->q:Ljava/lang/Object;
 
     .line 102
     .line 103

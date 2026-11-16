@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/microsoft/xboxtcui/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
@@ -42,7 +42,7 @@
     .line 4
     .line 5
     .line 6
-    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->d(Landroid/view/View;)V
+    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->b(Landroid/view/View;)V
 
     .line 7
     .line 8
@@ -51,7 +51,7 @@
 
     .line 10
     :pswitch_0
-    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->c(Landroid/view/View;)V
+    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->a(Landroid/view/View;)V
 
     .line 11
     .line 12
@@ -60,7 +60,7 @@
 
     .line 14
     :pswitch_1
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->K(Landroid/view/View;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/SettingsActivity;->K(Landroid/view/View;)V
 
     .line 15
     .line 16
@@ -69,7 +69,7 @@
 
     .line 18
     :pswitch_2
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->N(Landroid/view/View;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->I(Landroid/view/View;)V
 
     .line 19
     .line 20
@@ -78,7 +78,7 @@
 
     .line 22
     :pswitch_3
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/FileHandler;->l(Landroid/view/View;)V
+    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->w(Landroid/view/View;)V
 
     .line 23
     .line 24
@@ -87,19 +87,32 @@
 
     .line 26
     :pswitch_4
-    invoke-static {p1}, Lcom/microsoft/xboxtcui/XboxTcuiWindowDialog;->a(Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
     return-void
 
     .line 30
-    nop
+    :pswitch_5
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/FileHandler;->j(Landroid/view/View;)V
 
     .line 31
+    .line 32
+    .line 33
+    return-void
+
+    .line 34
+    :pswitch_6
+    invoke-static {p1}, Lcom/microsoft/xboxtcui/XboxTcuiWindowDialog;->a(Landroid/view/View;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    .line 39
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_6
+        :pswitch_5
         :pswitch_4
         :pswitch_3
         :pswitch_2

@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -15,8 +15,6 @@
 
 
 # instance fields
-.field public final behaviorPacks:I
-
 .field public final resourcePacks:I
 
 .field public final skinPacks:I
@@ -25,7 +23,7 @@
 
 
 # direct methods
-.method public constructor <init>(IIII)V
+.method public constructor <init>(III)V
     .locals 0
 
     .line 1
@@ -46,9 +44,5 @@
 
     .line 9
     .line 10
-    iput p4, p0, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->behaviorPacks:I
-
-    .line 11
-    .line 12
     return-void
 .end method

@@ -1,83 +1,96 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/h3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+.field public final synthetic d:Ljava/util/List;
+
+.field public final synthetic h:I
+
+.field public final synthetic q:I
+
+.field public final synthetic w:I
+
+.field public final synthetic x:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/h3;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/h3;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
     .line 4
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/h3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
+    .line 5
     .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/h3;->d:Ljava/util/List;
+
     .line 7
     .line 8
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/h3;->h:I
+
+    .line 9
+    .line 10
+    iput p4, p0, Lorg/levimc/launcher/ui/activities/h3;->q:I
+
+    .line 11
+    .line 12
+    iput p5, p0, Lorg/levimc/launcher/ui/activities/h3;->w:I
+
+    .line 13
+    .line 14
+    iput p6, p0, Lorg/levimc/launcher/ui/activities/h3;->x:I
+
+    .line 15
+    .line 16
     return-void
 .end method
 
 
 # virtual methods
 .method public final run()V
-    .locals 1
+    .locals 6
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/h3;->c:I
+    iget v4, p0, Lorg/levimc/launcher/ui/activities/h3;->w:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget v5, p0, Lorg/levimc/launcher/ui/activities/h3;->x:I
 
     .line 4
     .line 5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h3;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
     .line 7
-    .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->w(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;)V
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/h3;->d:Ljava/util/List;
 
+    .line 8
     .line 9
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/h3;->h:I
+
     .line 10
     .line 11
-    return-void
+    iget v3, p0, Lorg/levimc/launcher/ui/activities/h3;->q:I
 
     .line 12
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/h3;->d:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
     .line 13
-    .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->D(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;)V
+    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->V(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;Ljava/util/List;IIII)V
 
+    .line 14
     .line 15
     .line 16
-    .line 17
     return-void
-
-    .line 18
-    nop
-
-    .line 19
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

@@ -1,41 +1,169 @@
-.class public abstract Lde/b;
-.super Lorg/commonmark/node/Node;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final Lde/b;
+.super Lde/e;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# virtual methods
-.method public final f(Lorg/commonmark/node/Node;)V
-    .locals 1
+# instance fields
+.field public final a:Lorg/w3c/dom/Node;
+
+
+# direct methods
+.method public constructor <init>(Lorg/w3c/dom/Node;)V
+    .locals 0
 
     .line 1
-    instance-of v0, p1, Lde/b;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    if-eqz v0, :cond_0
+    .line 4
+    iput-object p1, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getLocalName()Ljava/lang/String;
 
     .line 4
     .line 5
-    iput-object p1, p0, Lorg/commonmark/node/Node;->a:Lorg/commonmark/node/Node;
-
     .line 6
+    move-result-object v0
+
     .line 7
-    return-void
+    return-object v0
+.end method
+
+.method public final b()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getPrefix()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    return-object v0
+.end method
+
+.method public final c()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getNamespaceURI()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    return-object v0
+.end method
+
+.method public final d()Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final e()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getNodeValue()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    return-object v0
+.end method
+
+.method public final f()Z
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lde/b;->a:Lorg/w3c/dom/Node;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getPrefix()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    invoke-interface {v0}, Lorg/w3c/dom/Node;->getLocalName()Ljava/lang/String;
 
     .line 8
-    :cond_0
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
     .line 9
     .line 10
-    const-string v0, "Parent of block must also be block (can not be inline)"
+    move-result-object v0
 
     .line 11
-    .line 12
-    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    const-string v2, "xml"
 
+    .line 12
     .line 13
+    if-eqz v1, :cond_0
+
     .line 14
     .line 15
-    throw p1
+    invoke-virtual {v1, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v0
+
+    .line 19
+    return v0
+
+    .line 20
+    :cond_0
+    invoke-virtual {v0, v2}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
+
+    .line 21
+    .line 22
+    .line 23
+    move-result v0
+
+    .line 24
+    return v0
 .end method

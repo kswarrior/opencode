@@ -1,16 +1,16 @@
 .class public final Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public final headerText:Landroid/widget/TextView;
 
-.field private final rootView:Landroid/widget/TextView;
+.field private final rootView:Landroid/widget/LinearLayout;
 
 
 # direct methods
-.method private constructor <init>(Landroid/widget/TextView;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -19,7 +19,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->rootView:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->rootView:Landroid/widget/LinearLayout;
 
     .line 5
     .line 6
@@ -31,44 +31,84 @@
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;
-    .locals 1
+    .locals 2
 
     .line 1
-    if-eqz p0, :cond_0
+    sget v0, Lorg/levimc/launcher/R$id;->header_text:I
 
     .line 2
     .line 3
-    check-cast p0, Landroid/widget/TextView;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
-    new-instance v0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;
-
     .line 6
+    move-result-object v1
+
     .line 7
-    invoke-direct {v0, p0, p0}, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;-><init>(Landroid/widget/TextView;Landroid/widget/TextView;)V
+    check-cast v1, Landroid/widget/TextView;
 
     .line 8
     .line 9
-    .line 10
-    return-object v0
+    if-eqz v1, :cond_0
 
+    .line 10
     .line 11
-    :cond_0
-    new-instance p0, Ljava/lang/NullPointerException;
+    new-instance v0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;
 
     .line 12
     .line 13
-    const-string v0, "rootView"
+    check-cast p0, Landroid/widget/LinearLayout;
 
     .line 14
     .line 15
-    invoke-direct {p0, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;)V
 
     .line 16
     .line 17
     .line 18
-    throw p0
+    return-object v0
+
+    .line 19
+    :cond_0
+    invoke-virtual {p0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p0
+
+    .line 23
+    invoke-virtual {p0, v0}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p0
+
+    .line 27
+    new-instance v0, Ljava/lang/NullPointerException;
+
+    .line 28
+    .line 29
+    const-string v1, "Missing required view with ID: "
+
+    .line 30
+    .line 31
+    invoke-virtual {v1, p0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 32
+    .line 33
+    .line 34
+    move-result-object p0
+
+    .line 35
+    invoke-direct {v0, p0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 36
+    .line 37
+    .line 38
+    throw v0
 .end method
 
 .method public static inflate(Landroid/view/LayoutInflater;)Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;
@@ -118,18 +158,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->getRoot()Landroid/widget/TextView;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->getRoot()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Landroid/widget/TextView;
+.method public getRoot()Landroid/widget/LinearLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->rootView:Landroid/widget/TextView;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/ItemPropertyHeaderBinding;->rootView:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method

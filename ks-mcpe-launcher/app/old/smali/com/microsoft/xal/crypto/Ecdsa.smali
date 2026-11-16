@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xal/crypto/Ecdsa;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -151,10 +151,8 @@
     const-string v1, "launcherManagedMcLoginEnabled"
 
     .line 23
-    const/4 v3, 0x1
-
     .line 24
-    invoke-virtual {v2, v1, v3}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+    invoke-virtual {v2, v1, v0}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
 
     .line 25
     .line 26
@@ -169,7 +167,7 @@
     .line 29
     :catchall_0
     :cond_0
-    const/4 v1, 0x1
+    move v1, v0
 
     .line 30
     :goto_0
@@ -209,7 +207,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p0}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 4
     .line 5

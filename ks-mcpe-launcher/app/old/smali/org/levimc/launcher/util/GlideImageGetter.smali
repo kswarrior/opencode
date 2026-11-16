@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/GlideImageGetter;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/text/Html$ImageGetter;
@@ -93,7 +93,7 @@
     move-result-object v2
 
     .line 13
-    invoke-virtual {v2, v1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/RequestManager;
+    invoke-virtual {v2, v1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/q;
 
     .line 14
     .line 15
@@ -110,11 +110,11 @@
 
     .line 21
     .line 22
-    iget-object v3, v1, Lcom/bumptech/glide/RequestManager;->c:Lcom/bumptech/glide/b;
+    iget-object v3, v1, Lcom/bumptech/glide/q;->c:Lcom/bumptech/glide/b;
 
     .line 23
     .line 24
-    iget-object v4, v1, Lcom/bumptech/glide/RequestManager;->d:Landroid/content/Context;
+    iget-object v4, v1, Lcom/bumptech/glide/q;->d:Landroid/content/Context;
 
     .line 25
     .line 26
@@ -122,16 +122,16 @@
 
     .line 27
     .line 28
-    invoke-direct {v2, v3, v1, v5, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/RequestManager;Ljava/lang/Class;Landroid/content/Context;)V
+    invoke-direct {v2, v3, v1, v5, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/q;Ljava/lang/Class;Landroid/content/Context;)V
 
     .line 29
     .line 30
     .line 31
-    sget-object v1, Lcom/bumptech/glide/RequestManager;->Z:Lk3/d;
+    sget-object v1, Lcom/bumptech/glide/q;->b1:Lk3/d;
 
     .line 32
     .line 33
-    invoke-virtual {v2, v1}, Lcom/bumptech/glide/n;->x(Lk3/a;)Lcom/bumptech/glide/n;
+    invoke-virtual {v2, v1}, Lcom/bumptech/glide/n;->u(Lk3/a;)Lcom/bumptech/glide/n;
 
     .line 34
     .line 35
@@ -139,7 +139,7 @@
     move-result-object v1
 
     .line 37
-    invoke-virtual {v1, p1}, Lcom/bumptech/glide/n;->D(Ljava/lang/Object;)Lcom/bumptech/glide/n;
+    invoke-virtual {v1, p1}, Lcom/bumptech/glide/n;->z(Ljava/lang/Object;)Lcom/bumptech/glide/n;
 
     .line 38
     .line 39
@@ -156,7 +156,7 @@
     .line 44
     .line 45
     .line 46
-    invoke-virtual {p1, v1, p1}, Lcom/bumptech/glide/n;->C(Ll3/e;Lk3/a;)V
+    invoke-virtual {p1, v1, p1}, Lcom/bumptech/glide/n;->y(Ll3/e;Lk3/a;)V
 
     .line 47
     .line 48

@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/p0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/view/LayoutInflater$Factory2;
@@ -246,7 +246,7 @@
     iget-object p3, p3, Landroidx/fragment/app/FragmentManager;->w:Landroidx/fragment/app/FragmentHostCallback;
 
     .line 24
-    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/i;
+    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/g;
 
     .line 25
     invoke-static {p3, p2, v0}, Landroidx/fragment/app/Fragment;->instantiate(Landroid/content/Context;Ljava/lang/String;Landroid/os/Bundle;)Landroidx/fragment/app/Fragment;
@@ -288,7 +288,7 @@
     iput-object p3, v2, Landroidx/fragment/app/Fragment;->mHost:Landroidx/fragment/app/FragmentHostCallback;
 
     .line 34
-    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/i;
+    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/g;
 
     .line 35
     iget-object v0, v2, Landroidx/fragment/app/Fragment;->mSavedFragmentState:Landroid/os/Bundle;
@@ -353,7 +353,7 @@
     iput-object p3, v2, Landroidx/fragment/app/Fragment;->mHost:Landroidx/fragment/app/FragmentHostCallback;
 
     .line 46
-    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/i;
+    iget-object p3, p3, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/g;
 
     .line 47
     iget-object v0, v2, Landroidx/fragment/app/Fragment;->mSavedFragmentState:Landroid/os/Bundle;
@@ -498,7 +498,7 @@
     const-string p3, " did not create a view."
 
     .line 70
-    invoke-static {v5, p2, p3}, Lcom/google/android/gms/internal/measurement/x;->o(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v5, p2, p3}, Lcom/google/android/gms/internal/measurement/gi;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p2
 

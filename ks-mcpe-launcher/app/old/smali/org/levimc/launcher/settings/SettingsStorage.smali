@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/settings/SettingsStorage;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -151,7 +151,7 @@
 
     .line 26
     .line 27
-    invoke-virtual {v0, v1, p0}, Lcom/google/gson/Gson;->d(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v0, v1, p0}, Lcom/google/gson/Gson;->c(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
 
     .line 28
     .line 29
@@ -161,7 +161,7 @@
     .line 31
     check-cast p0, Lorg/levimc/launcher/settings/FeatureSettings;
     :try_end_0
-    .catch Lg8/p; {:try_start_0 .. :try_end_0} :catch_0
+    .catch Le8/p; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 32
     .line 33
@@ -204,7 +204,7 @@
 
     .line 9
     .line 10
-    invoke-virtual {v0, p1}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 11
     .line 12

@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/microsoft/xbox/toolkit/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/view/View$OnClickListener;
@@ -58,7 +58,7 @@
 
     .line 7
     .line 8
-    check-cast v0, Landroid/app/Dialog;
+    check-cast v0, Landroid/widget/PopupWindow;
 
     .line 9
     .line 10
@@ -70,7 +70,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/views/ContentActionPopup;->a(Landroid/app/Dialog;Lorg/levimc/launcher/ui/views/ContentActionPopup$Action;Landroid/view/View;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/views/ContentActionPopup;->a(Landroid/widget/PopupWindow;Lorg/levimc/launcher/ui/views/ContentActionPopup$Action;Landroid/view/View;)V
 
     .line 15
     .line 16
@@ -95,7 +95,7 @@
 
     .line 25
     .line 26
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/core/mods/FileHandler;->n(Lorg/levimc/launcher/core/mods/FileHandler;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Landroid/view/View;)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/core/mods/FileHandler;->l(Lorg/levimc/launcher/core/mods/FileHandler;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Landroid/view/View;)V
 
     .line 27
     .line 28

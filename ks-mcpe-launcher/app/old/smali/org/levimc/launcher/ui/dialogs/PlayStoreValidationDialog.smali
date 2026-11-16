@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/dialogs/PlayStoreValidationDialog;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -253,14 +253,14 @@
     move-result-object v1
 
     .line 32
-    new-instance v2, Lorg/levimc/launcher/ui/dialogs/v;
+    new-instance v2, Lorg/levimc/launcher/ui/dialogs/s;
 
     .line 33
     .line 34
     const/4 v3, 0x1
 
     .line 35
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/dialogs/v;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/dialogs/s;-><init>(Ljava/lang/Object;I)V
 
     .line 36
     .line 37
@@ -369,14 +369,14 @@
     move-result-object v1
 
     .line 32
-    new-instance v2, Lorg/levimc/launcher/ui/dialogs/v;
+    new-instance v2, Lorg/levimc/launcher/ui/dialogs/s;
 
     .line 33
     .line 34
     const/4 v3, 0x0
 
     .line 35
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/dialogs/v;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/dialogs/s;-><init>(Ljava/lang/Object;I)V
 
     .line 36
     .line 37

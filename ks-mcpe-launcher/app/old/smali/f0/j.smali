@@ -1,6 +1,6 @@
 .class public final Lf0/j;
-.super Landroidx/core/view/w0;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Landroidx/core/view/y0;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -8,11 +8,11 @@
 
 .field public h:Landroidx/core/graphics/drawable/IconCompat;
 
-.field public p:Z
+.field public q:Z
 
 
 # virtual methods
-.method public final g(Lcom/google/firebase/messaging/v;)V
+.method public final k(Lcom/google/firebase/messaging/u;)V
     .locals 16
 
     .line 1
@@ -24,7 +24,7 @@
 
     .line 4
     .line 5
-    iget-object v2, v1, Lcom/google/firebase/messaging/v;->h:Ljava/lang/Object;
+    iget-object v2, v1, Lcom/google/firebase/messaging/u;->h:Ljava/lang/Object;
 
     .line 6
     .line 7
@@ -32,7 +32,7 @@
 
     .line 8
     .line 9
-    iget-object v1, v1, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
+    iget-object v1, v1, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
 
     .line 10
     .line 11
@@ -511,7 +511,7 @@
     .line 243
     :cond_6
     :goto_1
-    iget-boolean v4, v0, Lf0/j;->p:Z
+    iget-boolean v4, v0, Lf0/j;->q:Z
 
     .line 244
     .line 245
@@ -576,7 +576,7 @@
     return-void
 .end method
 
-.method public final h()Ljava/lang/String;
+.method public final l()Ljava/lang/String;
     .locals 1
 
     .line 1

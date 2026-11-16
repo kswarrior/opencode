@@ -1,6 +1,6 @@
 .class public final Lya/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lnet/raphimc/minecraftauth/util/Expirable;
@@ -113,7 +113,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0}, Lpb/a;->c(Ljava/lang/String;)Lpb/a;
+    invoke-static {v0}, Lqb/a;->c(Ljava/lang/String;)Lqb/a;
 
     .line 23
     .line 24
@@ -171,11 +171,11 @@
 
     .line 43
     :cond_2
-    check-cast v0, Lpb/a;
+    check-cast v0, Lqb/a;
 
     .line 44
     .line 45
-    invoke-virtual {v0}, Lpb/a;->b()J
+    invoke-virtual {v0}, Lqb/a;->b()J
 
     .line 46
     .line 47
@@ -183,7 +183,7 @@
     move-result-wide v0
 
     .line 49
-    invoke-virtual {p0}, Lya/a;->c()Lpb/a;
+    invoke-virtual {p0}, Lya/a;->c()Lqb/a;
 
     .line 50
     .line 51
@@ -191,7 +191,7 @@
     move-result-object v2
 
     .line 53
-    invoke-virtual {v2}, Lpb/a;->b()J
+    invoke-virtual {v2}, Lqb/a;->b()J
 
     .line 54
     .line 55
@@ -210,7 +210,7 @@
     return-wide v0
 .end method
 
-.method public final c()Lpb/a;
+.method public final c()Lqb/a;
     .locals 3
 
     .line 1
@@ -258,7 +258,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0}, Lpb/a;->c(Ljava/lang/String;)Lpb/a;
+    invoke-static {v0}, Lqb/a;->c(Ljava/lang/String;)Lqb/a;
 
     .line 23
     .line 24
@@ -316,7 +316,7 @@
 
     .line 43
     :cond_2
-    check-cast v0, Lpb/a;
+    check-cast v0, Lqb/a;
 
     .line 44
     .line 45
@@ -546,7 +546,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0, v1, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 23
     .line 24

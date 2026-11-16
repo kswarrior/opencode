@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/EglBase10Impl$EglConnection;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/discord/org/webrtc/EglBase10$EglConnection;
@@ -137,7 +137,7 @@
     const-string v4, "Using OpenGL ES version "
 
     .line 9
-    invoke-static {p2, v4, v3}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {p2, v4, v3}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 10
     invoke-static {v0, p1, v1, v2, p2}, Lcom/discord/org/webrtc/EglBase10Impl;->a(Ljavax/microedition/khronos/egl/EGL10;Ljavax/microedition/khronos/egl/EGLContext;Ljavax/microedition/khronos/egl/EGLDisplay;Ljavax/microedition/khronos/egl/EGLConfig;I)Ljavax/microedition/khronos/egl/EGLContext;

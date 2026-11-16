@@ -4,10 +4,6 @@
         <item quantity="one">%1$d katman • alt → üst</item>
         <item quantity="other">%1$d katman • alt → üst</item>
     </plurals>
-    <plurals name="game_download_version_count">
-        <item quantity="one">%1$d sürüm</item>
-        <item quantity="other">%1$d sürüm</item>
-    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d seçenek</item>
         <item quantity="other">%d seçenek</item>
@@ -20,48 +16,8 @@
         <item quantity="one">%d öğe</item>
         <item quantity="other">%d öğe</item>
     </plurals>
-    <plurals name="mods_visible_count">
-        <item quantity="one">%1$d mod</item>
-        <item quantity="other">%1$d mod</item>
-    </plurals>
     <plurals name="mtrl_badge_content_description">
         <item quantity="one">%d yeni bildirim</item>
         <item quantity="other">%d yeni bildirim</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_body">
-        <item quantity="one">%2$s örneğinden %1$d paketi kaldırmak üzeresiniz. Devam edilsin mi?</item>
-        <item quantity="other">%2$s örneğinden %1$d paketi kaldırmak üzeresiniz. Devam edilsin mi?</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_done">
-        <item quantity="one">%1$d paket kaldırıldı</item>
-        <item quantity="other">%1$d paket kaldırıldı</item>
-    </plurals>
-    <plurals name="pkg_batch_update_body">
-        <item quantity="one">%1$d paket seçildi, bunlardan %2$d tanesi güncellenebilir. Devam edilsin mi?</item>
-        <item quantity="other">%1$d paket seçildi, bunlardan %2$d tanesi güncellenebilir. Devam edilsin mi?</item>
-    </plurals>
-    <plurals name="pkg_batch_update_done">
-        <item quantity="one">%1$d paket güncellendi</item>
-        <item quantity="other">%1$d paket güncellendi</item>
-    </plurals>
-    <plurals name="pkg_filters_show_results">
-        <item quantity="one">%d sonucu göster</item>
-        <item quantity="other">%d sonucu göster</item>
-    </plurals>
-    <plurals name="pkg_installed_summary">
-        <item quantity="one">%1$d paket, %2$d tanesini siz yüklediniz · %3$s</item>
-        <item quantity="other">%1$d paket, %2$d tanesini siz yüklediniz · %3$s</item>
-    </plurals>
-    <plurals name="pkg_n_dependencies">
-        <item quantity="one">%d bağımlılık</item>
-        <item quantity="other">%d bağımlılık</item>
-    </plurals>
-    <plurals name="pkg_n_files">
-        <item quantity="one">%d dosya kaydedildi</item>
-        <item quantity="other">%d dosya kaydedildi</item>
-    </plurals>
-    <plurals name="pkg_n_versions">
-        <item quantity="one">%d sürüm</item>
-        <item quantity="other">%d sürüm</item>
     </plurals>
 </resources>

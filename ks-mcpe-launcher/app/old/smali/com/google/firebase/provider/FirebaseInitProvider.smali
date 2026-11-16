@@ -1,10 +1,10 @@
 .class public Lcom/google/firebase/provider/FirebaseInitProvider;
 .super Landroid/content/ContentProvider;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final c:Lm6/a;
+.field public static final c:Lk6/a;
 
 .field public static final d:Ljava/util/concurrent/atomic/AtomicBoolean;
 
@@ -38,16 +38,16 @@
     move-result-wide v5
 
     .line 13
-    new-instance v0, Lm6/a;
+    new-instance v0, Lk6/a;
 
     .line 14
     .line 15
-    invoke-direct/range {v0 .. v6}, Lm6/a;-><init>(JJJ)V
+    invoke-direct/range {v0 .. v6}, Lk6/a;-><init>(JJJ)V
 
     .line 16
     .line 17
     .line 18
-    sput-object v0, Lcom/google/firebase/provider/FirebaseInitProvider;->c:Lm6/a;
+    sput-object v0, Lcom/google/firebase/provider/FirebaseInitProvider;->c:Lk6/a;
 
     .line 19
     .line 20

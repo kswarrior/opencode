@@ -1,220 +1,160 @@
 .class public final Le8/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lw0/x0;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final a:Le8/i;
+.field public static final d:Le8/i;
 
-.field public static final b:Le8/h;
+.field public static final e:Le8/i;
+
+
+# instance fields
+.field public final a:Ljava/lang/String;
+
+.field public final b:Ljava/lang/String;
+
+.field public final c:Z
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 7
+    .locals 4
 
     .line 1
     new-instance v0, Le8/i;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    const-string v1, ""
 
     .line 4
     .line 5
+    const/4 v2, 0x0
+
     .line 6
-    sput-object v0, Le8/i;->a:Le8/i;
+    invoke-direct {v0, v1, v1, v2}, Le8/i;-><init>(Ljava/lang/String;Ljava/lang/String;Z)V
 
     .line 7
     .line 8
-    new-instance v1, Le8/h;
-
     .line 9
-    .line 10
-    const/4 v5, 0x0
+    sput-object v0, Le8/i;->d:Le8/i;
 
+    .line 10
     .line 11
-    const/4 v6, 0x0
+    new-instance v0, Le8/i;
 
     .line 12
-    const/4 v2, 0x0
-
     .line 13
-    const/4 v3, 0x0
+    const-string v1, "  "
 
     .line 14
-    const/4 v4, 0x0
-
     .line 15
-    invoke-direct/range {v1 .. v6}, Le8/h;-><init>(Ljava/lang/Boolean;Ljava/lang/Double;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Long;)V
+    const/4 v2, 0x1
 
     .line 16
+    const-string v3, "\n"
+
     .line 17
     .line 18
-    sput-object v1, Le8/i;->b:Le8/h;
+    invoke-direct {v0, v3, v1, v2}, Le8/i;-><init>(Ljava/lang/String;Ljava/lang/String;Z)V
 
     .line 19
     .line 20
+    .line 21
+    sput-object v0, Le8/i;->e:Le8/i;
+
+    .line 22
+    .line 23
     return-void
 .end method
 
-
-# virtual methods
-.method public final bridge synthetic a()Ljava/lang/Object;
+.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Z)V
     .locals 1
 
     .line 1
-    sget-object v0, Le8/i;->b:Le8/h;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    return-object v0
-.end method
-
-.method public final b(Ljava/io/FileInputStream;)Ljava/lang/Object;
-    .locals 3
-
-    .line 1
-    :try_start_0
-    sget-object v0, Lfa/b;->d:Lfa/b;
-
-    .line 2
-    .line 3
-    invoke-static {p1}, Ljb/c;->f0(Ljava/io/FileInputStream;)[B
-
     .line 4
+    const-string v0, "[\r\n]*"
+
     .line 5
     .line 6
-    move-result-object p1
+    invoke-virtual {p1, v0}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
     .line 7
-    new-instance v1, Ljava/lang/String;
-
     .line 8
     .line 9
-    sget-object v2, Lo9/a;->a:Ljava/nio/charset/Charset;
+    move-result v0
 
     .line 10
-    .line 11
-    invoke-direct {v1, p1, v2}, Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V
+    if-eqz v0, :cond_1
 
+    .line 11
     .line 12
+    const-string v0, "[ \t]*"
+
     .line 13
     .line 14
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    invoke-virtual {p2, v0}, Ljava/lang/String;->matches(Ljava/lang/String;)Z
 
     .line 15
     .line 16
     .line 17
-    sget-object p1, Le8/h;->Companion:Le8/g;
+    move-result v0
 
     .line 18
-    .line 19
-    invoke-virtual {p1}, Le8/g;->serializer()Laa/a;
+    if-eqz v0, :cond_0
 
+    .line 19
     .line 20
+    iput-object p1, p0, Le8/i;->a:Ljava/lang/String;
+
     .line 21
     .line 22
-    move-result-object p1
+    iput-object p2, p0, Le8/i;->b:Ljava/lang/String;
 
     .line 23
-    invoke-virtual {v0, p1, v1}, Lfa/b;->a(Laa/a;Ljava/lang/String;)Ljava/lang/Object;
-
     .line 24
+    iput-boolean p3, p0, Le8/i;->c:Z
+
     .line 25
     .line 26
-    move-result-object p1
+    return-void
 
     .line 27
-    check-cast p1, Le8/h;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
     .line 28
     .line 29
-    return-object p1
+    const-string p2, "Only combinations of spaces and tabs are allowed in indent."
 
     .line 30
-    :catch_0
-    move-exception p1
-
     .line 31
-    new-instance v0, Lw0/b;
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 32
     .line 33
-    const-string v1, "Cannot parse session configs"
-
     .line 34
+    throw p1
+
     .line 35
-    invoke-direct {v0, v1, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
     .line 36
     .line 37
+    const-string p2, "Only combinations of \\n and \\r are allowed in newline."
+
     .line 38
-    throw v0
-.end method
+    .line 39
+    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
-.method public final c(Ljava/lang/Object;Lhg/b;)V
-    .locals 2
-
-    .line 1
-    check-cast p1, Le8/h;
-
-    .line 2
-    .line 3
-    sget-object v0, Lfa/b;->d:Lfa/b;
-
-    .line 4
-    .line 5
-    sget-object v1, Le8/h;->Companion:Le8/g;
-
-    .line 6
-    .line 7
-    invoke-virtual {v1}, Le8/g;->serializer()Laa/a;
-
-    .line 8
-    .line 9
-    .line 10
-    move-result-object v1
-
-    .line 11
-    invoke-virtual {v0, v1, p1}, Lfa/b;->b(Laa/a;Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 12
-    .line 13
-    .line 14
-    move-result-object p1
-
-    .line 15
-    sget-object v0, Lo9/a;->a:Ljava/nio/charset/Charset;
-
-    .line 16
-    .line 17
-    invoke-virtual {p1, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object p1
-
-    .line 21
-    const-string v0, "getBytes(...)"
-
-    .line 22
-    .line 23
-    invoke-static {p1, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 24
-    .line 25
-    .line 26
-    invoke-virtual {p2, p1}, Lhg/b;->write([B)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
+    .line 40
+    .line 41
+    .line 42
+    throw p1
 .end method

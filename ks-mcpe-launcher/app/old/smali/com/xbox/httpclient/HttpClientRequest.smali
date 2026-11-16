@@ -1,6 +1,6 @@
 .class public Lcom/xbox/httpclient/HttpClientRequest;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -31,16 +31,16 @@
 
     .line 5
     .line 6
-    new-instance v1, Lub/r;
+    new-instance v1, Lvb/n;
 
     .line 7
     .line 8
-    invoke-direct {v1}, Lub/r;-><init>()V
+    invoke-direct {v1}, Lvb/n;-><init>()V
 
     .line 9
     .line 10
     .line 11
-    iput-boolean v0, v1, Lub/r;->f:Z
+    iput-boolean v0, v1, Lvb/n;->f:Z
 
     .line 12
     .line 13
@@ -48,7 +48,7 @@
 
     .line 14
     .line 15
-    invoke-direct {v0, v1}, Lokhttp3/OkHttpClient;-><init>(Lub/r;)V
+    invoke-direct {v0, v1}, Lokhttp3/OkHttpClient;-><init>(Lvb/n;)V
 
     .line 16
     .line 17
@@ -317,7 +317,7 @@
 
 # virtual methods
 .method public doRequestAsync(J)V
-    .locals 3
+    .locals 4
 
     .line 1
     sget-object v0, Lcom/xbox/httpclient/HttpClientRequest;->OK_CLIENT:Lokhttp3/OkHttpClient;
@@ -333,37 +333,46 @@
     .line 6
     .line 7
     .line 8
-    new-instance v2, Lokhttp3/Request;
+    new-instance v2, Lae/o;
 
     .line 9
     .line 10
-    invoke-direct {v2, v1}, Lokhttp3/Request;-><init>(Lokhttp3/Request$Builder;)V
+    invoke-direct {v2, v1}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
 
     .line 11
     .line 12
     .line 13
-    invoke-virtual {v0, v2}, Lokhttp3/OkHttpClient;->b(Lokhttp3/Request;)Lyb/o;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 14
     .line 15
     .line 16
-    move-result-object v0
+    new-instance v1, Lzb/o;
 
     .line 17
-    new-instance v1, Lcom/xbox/httpclient/HttpClientRequest$1;
-
     .line 18
+    const/4 v3, 0x0
+
     .line 19
-    invoke-direct {v1, p0, p1, p2}, Lcom/xbox/httpclient/HttpClientRequest$1;-><init>(Lcom/xbox/httpclient/HttpClientRequest;J)V
+    invoke-direct {v1, v0, v2, v3}, Lzb/o;-><init>(Lokhttp3/OkHttpClient;Lae/o;Z)V
 
     .line 20
     .line 21
     .line 22
-    invoke-virtual {v0, v1}, Lyb/o;->d(Lub/i;)V
+    new-instance v0, Lcom/xbox/httpclient/HttpClientRequest$1;
 
     .line 23
     .line 24
+    invoke-direct {v0, p0, p1, p2}, Lcom/xbox/httpclient/HttpClientRequest$1;-><init>(Lcom/xbox/httpclient/HttpClientRequest;J)V
+
     .line 25
+    .line 26
+    .line 27
+    invoke-virtual {v1, v0}, Lzb/o;->e(Lvb/d;)V
+
+    .line 28
+    .line 29
+    .line 30
     return-void
 .end method
 
@@ -443,11 +452,11 @@
 
     .line 25
     .line 26
-    sget-object p2, Lokhttp3/MediaType;->c:Lo9/g;
+    sget-object p2, Lokhttp3/MediaType;->c:Lm9/g;
 
     .line 27
     .line 28
-    invoke-static {p4}, Lcom/bumptech/glide/e;->Y(Ljava/lang/String;)Lokhttp3/MediaType;
+    invoke-static {p4}, Lcom/bumptech/glide/e;->J(Ljava/lang/String;)Lokhttp3/MediaType;
 
     .line 29
     .line 30
@@ -515,7 +524,7 @@
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lokhttp3/Request$Builder;->e(Ljava/lang/String;)V
+    invoke-virtual {v0, p1}, Lokhttp3/Request$Builder;->d(Ljava/lang/String;)V
 
     .line 4
     .line 5

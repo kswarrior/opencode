@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/ApkUtils;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -1553,581 +1553,609 @@
 
     .line 62
     .line 63
-    const-string p2, "Failed to create "
+    new-instance p2, Ljava/lang/StringBuilder;
 
     .line 64
     .line 65
-    invoke-static {p0, p2}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
+    const-string p3, "Failed to create "
 
     .line 66
     .line 67
+    invoke-direct {p2, p3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 68
-    move-result-object p0
-
     .line 69
-    invoke-direct {p1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
     .line 70
+    invoke-virtual {p2, p0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 71
     .line 72
-    throw p1
-
     .line 73
-    :cond_1
-    :goto_0
-    new-instance v1, Ljava/io/File;
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 74
     .line 75
-    new-instance v3, Ljava/lang/StringBuilder;
-
     .line 76
+    move-result-object p0
+
     .line 77
-    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+    invoke-direct {p1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 78
     .line 79
     .line 80
-    invoke-virtual {v2}, Ljava/io/File;->getName()Ljava/lang/String;
+    throw p1
 
     .line 81
+    :cond_1
+    :goto_0
+    new-instance v1, Ljava/io/File;
+
     .line 82
     .line 83
-    move-result-object v5
+    new-instance v3, Ljava/lang/StringBuilder;
 
     .line 84
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 85
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     .line 86
     .line 87
-    const-string v5, ".tmp"
-
     .line 88
-    .line 89
-    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v2}, Ljava/io/File;->getName()Ljava/lang/String;
 
+    .line 89
     .line 90
     .line 91
+    move-result-object v5
+
     .line 92
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 93
     .line 94
     .line 95
-    move-result-object v3
+    const-string v5, ".tmp"
 
     .line 96
-    invoke-direct {v1, p0, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
-
     .line 97
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 98
     .line 99
-    invoke-virtual {v1}, Ljava/io/File;->exists()Z
-
     .line 100
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
     .line 101
     .line 102
-    move-result p0
-
     .line 103
-    if-eqz p0, :cond_3
+    move-result-object v3
 
     .line 104
-    .line 105
-    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+    invoke-direct {v1, p0, v3}, Ljava/io/File;-><init>(Ljava/io/File;Ljava/lang/String;)V
 
+    .line 105
     .line 106
     .line 107
+    invoke-virtual {v1}, Ljava/io/File;->exists()Z
+
     .line 108
+    .line 109
+    .line 110
     move-result p0
 
-    .line 109
-    if-eqz p0, :cond_2
-
-    .line 110
     .line 111
-    goto :goto_1
+    if-eqz p0, :cond_3
 
     .line 112
+    .line 113
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
+
+    .line 114
+    .line 115
+    .line 116
+    move-result p0
+
+    .line 117
+    if-eqz p0, :cond_2
+
+    .line 118
+    .line 119
+    goto :goto_1
+
+    .line 120
     :cond_2
     new-instance p0, Ljava/io/IOException;
 
-    .line 113
-    .line 114
-    const-string p1, "Failed to replace "
-
-    .line 115
-    .line 116
-    invoke-static {v1, p1}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 117
-    .line 118
-    .line 119
-    move-result-object p1
-
-    .line 120
-    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
     .line 121
     .line 122
+    new-instance p1, Ljava/lang/StringBuilder;
+
     .line 123
+    .line 124
+    const-string p2, "Failed to replace "
+
+    .line 125
+    .line 126
+    invoke-direct {p1, p2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 127
+    .line 128
+    .line 129
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 130
+    .line 131
+    .line 132
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 133
+    .line 134
+    .line 135
+    move-result-object p1
+
+    .line 136
+    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 137
+    .line 138
+    .line 139
     throw p0
 
-    .line 124
+    .line 140
     :cond_3
     :goto_1
     :try_start_0
     new-instance p0, Ljava/io/FileOutputStream;
 
-    .line 125
-    .line 126
+    .line 141
+    .line 142
     invoke-direct {p0, v1}, Ljava/io/FileOutputStream;-><init>(Ljava/io/File;)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
-    .line 127
-    .line 128
-    .line 129
+    .line 143
+    .line 144
+    .line 145
     const/high16 v3, 0x40000
 
-    .line 130
-    .line 131
+    .line 146
+    .line 147
     :try_start_1
     new-array v3, v3, [B
 
-    .line 132
-    .line 133
+    .line 148
+    .line 149
     const-wide/16 v5, 0x0
 
-    .line 134
-    .line 135
+    .line 150
+    .line 151
     move-wide v7, v5
 
-    .line 136
+    .line 152
     :cond_4
     :goto_2
     invoke-virtual {p2, v3}, Ljava/io/InputStream;->read([B)I
 
-    .line 137
-    .line 138
-    .line 139
+    .line 153
+    .line 154
+    .line 155
     move-result v9
 
-    .line 140
+    .line 156
     const/4 v10, -0x1
 
-    .line 141
+    .line 157
     const/4 v11, 0x0
 
-    .line 142
+    .line 158
     if-eq v9, v10, :cond_5
 
-    .line 143
-    .line 144
+    .line 159
+    .line 160
     invoke-virtual {p0, v3, v11, v9}, Ljava/io/FileOutputStream;->write([BII)V
 
-    .line 145
-    .line 146
-    .line 147
+    .line 161
+    .line 162
+    .line 163
     int-to-long v10, v9
 
-    .line 148
+    .line 164
     add-long/2addr v7, v10
 
-    .line 149
+    .line 165
     if-eqz p3, :cond_4
 
-    .line 150
-    .line 151
+    .line 166
+    .line 167
     invoke-interface {p3, v9}, Lorg/levimc/launcher/util/ApkUtils$LibExtractProgressCallback;->onBytesExtracted(I)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 152
-    .line 153
-    .line 154
+    .line 168
+    .line 169
+    .line 170
     goto :goto_2
 
-    .line 155
+    .line 171
     :catchall_0
     move-exception p2
 
-    .line 156
+    .line 172
     goto/16 :goto_5
 
-    .line 157
-    .line 158
+    .line 173
+    .line 174
     :cond_5
     :try_start_2
     invoke-virtual {p0}, Ljava/io/FileOutputStream;->close()V
 
-    .line 159
-    .line 160
-    .line 161
-    cmp-long p0, v7, v5
-
-    .line 162
-    .line 163
-    if-eqz p0, :cond_9
-
-    .line 164
-    .line 165
-    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getSize()J
-
-    .line 166
-    .line 167
-    .line 168
-    move-result-wide p2
-
-    .line 169
-    cmp-long p0, p2, v5
-
-    .line 170
-    .line 171
-    if-ltz p0, :cond_6
-
-    .line 172
-    .line 173
-    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getSize()J
-
-    .line 174
     .line 175
     .line 176
-    move-result-wide p2
-
     .line 177
-    cmp-long p0, v7, p2
+    cmp-long p0, v7, v5
 
     .line 178
     .line 179
-    if-nez p0, :cond_9
+    if-eqz p0, :cond_9
 
     .line 180
     .line 181
-    goto :goto_3
+    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getSize()J
 
     .line 182
+    .line 183
+    .line 184
+    move-result-wide p2
+
+    .line 185
+    cmp-long p0, p2, v5
+
+    .line 186
+    .line 187
+    if-ltz p0, :cond_6
+
+    .line 188
+    .line 189
+    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getSize()J
+
+    .line 190
+    .line 191
+    .line 192
+    move-result-wide p2
+
+    .line 193
+    cmp-long p0, v7, p2
+
+    .line 194
+    .line 195
+    if-nez p0, :cond_9
+
+    .line 196
+    .line 197
+    goto :goto_3
+
+    .line 198
     :catchall_1
     move-exception p0
 
-    .line 183
+    .line 199
     goto/16 :goto_8
 
-    .line 184
-    .line 185
+    .line 200
+    .line 201
     :catch_0
     move-exception p0
 
-    .line 186
+    .line 202
     goto :goto_7
 
-    .line 187
+    .line 203
     :cond_6
     :goto_3
     invoke-static {}, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->getRuntimeAbi()Ljava/lang/String;
 
-    .line 188
-    .line 189
-    .line 190
-    move-result-object p0
-
-    .line 191
-    aget-object p2, v0, v4
-
-    .line 192
-    .line 193
-    invoke-virtual {p0, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 194
-    .line 195
-    .line 196
-    move-result p0
-
-    .line 197
-    if-eqz p0, :cond_7
-
-    .line 198
-    .line 199
-    invoke-static {v1, v2}, Lorg/levimc/launcher/util/NativeImageGuard;->publishStagedImage(Ljava/io/File;Ljava/io/File;)V
-
-    .line 200
-    .line 201
-    .line 202
-    goto :goto_4
-
-    .line 203
-    :cond_7
-    invoke-virtual {v1}, Ljava/io/File;->setReadOnly()Z
-
     .line 204
     .line 205
     .line 206
-    move-result p0
+    move-result-object p0
 
     .line 207
-    if-eqz p0, :cond_8
+    aget-object p2, v0, v4
 
     .line 208
     .line 209
-    invoke-virtual {v1}, Ljava/io/File;->toPath()Ljava/nio/file/Path;
+    invoke-virtual {p0, p2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 210
     .line 211
     .line 212
-    move-result-object p0
+    move-result p0
 
     .line 213
-    invoke-virtual {v2}, Ljava/io/File;->toPath()Ljava/nio/file/Path;
+    if-eqz p0, :cond_7
 
     .line 214
     .line 215
+    invoke-static {v1, v2}, Lorg/levimc/launcher/util/NativeImageGuard;->publishStagedImage(Ljava/io/File;Ljava/io/File;)V
+
     .line 216
-    move-result-object p2
-
     .line 217
-    new-array p3, v4, [Ljava/nio/file/CopyOption;
-
     .line 218
+    goto :goto_4
+
     .line 219
-    sget-object v0, Ljava/nio/file/StandardCopyOption;->REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+    :cond_7
+    invoke-virtual {v1}, Ljava/io/File;->setReadOnly()Z
 
     .line 220
     .line 221
+    .line 222
+    move-result p0
+
+    .line 223
+    if-eqz p0, :cond_8
+
+    .line 224
+    .line 225
+    invoke-virtual {v1}, Ljava/io/File;->toPath()Ljava/nio/file/Path;
+
+    .line 226
+    .line 227
+    .line 228
+    move-result-object p0
+
+    .line 229
+    invoke-virtual {v2}, Ljava/io/File;->toPath()Ljava/nio/file/Path;
+
+    .line 230
+    .line 231
+    .line 232
+    move-result-object p2
+
+    .line 233
+    new-array p3, v4, [Ljava/nio/file/CopyOption;
+
+    .line 234
+    .line 235
+    sget-object v0, Ljava/nio/file/StandardCopyOption;->REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+
+    .line 236
+    .line 237
     aput-object v0, p3, v11
 
-    .line 222
-    .line 223
+    .line 238
+    .line 239
     invoke-static {p0, p2, p3}, Ljava/nio/file/Files;->move(Ljava/nio/file/Path;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)Ljava/nio/file/Path;
     :try_end_2
     .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 224
-    .line 225
-    .line 226
-    :goto_4
-    invoke-virtual {v1}, Ljava/io/File;->delete()Z
-
-    .line 227
-    .line 228
-    .line 229
-    return-void
-
-    .line 230
-    :cond_8
-    :try_start_3
-    new-instance p0, Ljava/io/IOException;
-
-    .line 231
-    .line 232
-    new-instance p2, Ljava/lang/StringBuilder;
-
-    .line 233
-    .line 234
-    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 235
-    .line 236
-    .line 237
-    const-string p3, "Failed to protect "
-
-    .line 238
-    .line 239
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 240
     .line 241
     .line 242
-    invoke-virtual {p2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    :goto_4
+    invoke-virtual {v1}, Ljava/io/File;->delete()Z
 
     .line 243
     .line 244
     .line 245
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    return-void
 
     .line 246
+    :cond_8
+    :try_start_3
+    new-instance p0, Ljava/io/IOException;
+
     .line 247
     .line 248
-    move-result-object p2
+    new-instance p2, Ljava/lang/StringBuilder;
 
     .line 249
-    invoke-direct {p0, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
     .line 250
+    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+
     .line 251
     .line 252
-    throw p0
-
     .line 253
-    :cond_9
-    new-instance p0, Ljava/io/IOException;
+    const-string p3, "Failed to protect "
 
     .line 254
     .line 255
-    new-instance p2, Ljava/lang/StringBuilder;
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 256
     .line 257
-    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
-
     .line 258
+    invoke-virtual {p2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 259
     .line 260
-    const-string p3, "Incomplete native library: "
-
     .line 261
-    .line 262
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 262
     .line 263
     .line 264
+    move-result-object p2
+
     .line 265
-    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
+    invoke-direct {p0, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
     .line 266
     .line 267
     .line 268
-    move-result-object p3
+    throw p0
 
     .line 269
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :cond_9
+    new-instance p0, Ljava/io/IOException;
 
     .line 270
     .line 271
-    .line 272
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    new-instance p2, Ljava/lang/StringBuilder;
 
+    .line 272
     .line 273
+    invoke-direct {p2}, Ljava/lang/StringBuilder;-><init>()V
+
     .line 274
     .line 275
-    move-result-object p2
-
     .line 276
-    invoke-direct {p0, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+    const-string p3, "Incomplete native library: "
 
     .line 277
     .line 278
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 279
+    .line 280
+    .line 281
+    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
+
+    .line 282
+    .line 283
+    .line 284
+    move-result-object p3
+
+    .line 285
+    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 286
+    .line 287
+    .line 288
+    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 289
+    .line 290
+    .line 291
+    move-result-object p2
+
+    .line 292
+    invoke-direct {p0, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 293
+    .line 294
+    .line 295
     throw p0
     :try_end_3
     .catch Ljava/io/IOException; {:try_start_3 .. :try_end_3} :catch_0
     .catchall {:try_start_3 .. :try_end_3} :catchall_1
 
-    .line 280
+    .line 296
     :goto_5
     :try_start_4
     invoke-virtual {p0}, Ljava/io/FileOutputStream;->close()V
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
-    .line 281
-    .line 282
-    .line 283
+    .line 297
+    .line 298
+    .line 299
     goto :goto_6
 
-    .line 284
+    .line 300
     :catchall_2
     move-exception p0
 
-    .line 285
+    .line 301
     :try_start_5
     invoke-virtual {p2, p0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
 
-    .line 286
-    .line 287
-    .line 288
+    .line 302
+    .line 303
+    .line 304
     :goto_6
     throw p2
     :try_end_5
     .catch Ljava/io/IOException; {:try_start_5 .. :try_end_5} :catch_0
     .catchall {:try_start_5 .. :try_end_5} :catchall_1
 
-    .line 289
+    .line 305
     :goto_7
     :try_start_6
     new-instance p2, Ljava/io/IOException;
 
-    .line 290
-    .line 291
-    new-instance p3, Ljava/lang/StringBuilder;
-
-    .line 292
-    .line 293
-    invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 294
-    .line 295
-    .line 296
-    const-string v0, "Failed to prepare "
-
-    .line 297
-    .line 298
-    invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 299
-    .line 300
-    .line 301
-    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
-
-    .line 302
-    .line 303
-    .line 304
-    move-result-object p1
-
-    .line 305
-    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 306
     .line 307
+    new-instance p3, Ljava/lang/StringBuilder;
+
     .line 308
-    const-string p1, ": "
-
     .line 309
-    .line 310
-    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-direct {p3}, Ljava/lang/StringBuilder;-><init>()V
 
+    .line 310
     .line 311
     .line 312
-    .line 313
-    invoke-virtual {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    const-string v0, "Failed to prepare "
 
+    .line 313
     .line 314
+    invoke-virtual {p3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 315
     .line 316
-    move-result-object p1
-
     .line 317
-    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {p1}, Ljava/util/zip/ZipEntry;->getName()Ljava/lang/String;
 
     .line 318
     .line 319
     .line 320
-    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 321
-    .line 322
-    .line 323
     move-result-object p1
 
+    .line 321
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 322
+    .line 323
     .line 324
-    invoke-direct {p2, p1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    const-string p1, ": "
 
     .line 325
     .line 326
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 327
+    .line 328
+    .line 329
+    invoke-virtual {p0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 330
+    .line 331
+    .line 332
+    move-result-object p1
+
+    .line 333
+    invoke-virtual {p3, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 334
+    .line 335
+    .line 336
+    invoke-virtual {p3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 337
+    .line 338
+    .line 339
+    move-result-object p1
+
+    .line 340
+    invoke-direct {p2, p1, p0}, Ljava/io/IOException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+
+    .line 341
+    .line 342
+    .line 343
     throw p2
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 328
+    .line 344
     :goto_8
     invoke-virtual {v1}, Ljava/io/File;->delete()Z
 
-    .line 329
-    .line 330
-    .line 331
+    .line 345
+    .line 346
+    .line 347
     throw p0
 .end method
 

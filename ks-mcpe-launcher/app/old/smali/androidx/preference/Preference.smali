@@ -1,6 +1,6 @@
 .class public Landroidx/preference/Preference;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Comparable;
@@ -24,13 +24,13 @@
 
 .field public final h:Ljava/lang/CharSequence;
 
-.field public final p:Ljava/lang/CharSequence;
+.field public final q:Ljava/lang/CharSequence;
 
-.field public final q:Ljava/lang/String;
+.field public final w:Ljava/lang/String;
 
-.field public final w:Ljava/lang/Object;
+.field public final x:Ljava/lang/Object;
 
-.field public x:Lq1/c;
+.field public y:Lq1/a;
 
 
 # direct methods
@@ -67,7 +67,7 @@
     iput-object p1, p0, Landroidx/preference/Preference;->c:Landroid/content/Context;
 
     .line 4
-    sget-object v1, Lq1/d;->f:[I
+    sget-object v1, Lq1/b;->f:[I
 
     const/4 v2, 0x0
 
@@ -103,7 +103,7 @@
 
     .line 9
     :cond_0
-    iput-object p2, p0, Landroidx/preference/Preference;->q:Ljava/lang/String;
+    iput-object p2, p0, Landroidx/preference/Preference;->w:Ljava/lang/String;
 
     const/16 p2, 0x22
 
@@ -143,7 +143,7 @@
 
     .line 15
     :cond_2
-    iput-object p2, p0, Landroidx/preference/Preference;->p:Ljava/lang/CharSequence;
+    iput-object p2, p0, Landroidx/preference/Preference;->q:Ljava/lang/CharSequence;
 
     const/16 p2, 0x8
 
@@ -179,7 +179,7 @@
     :cond_3
     const/4 p2, 0x3
 
-    const p3, 0x7f0d00e1
+    const p3, 0x7f0d00cc
 
     .line 21
     invoke-virtual {p1, p2, p3}, Landroid/content/res/TypedArray;->getResourceId(II)I
@@ -290,7 +290,7 @@
 
     move-result-object p2
 
-    iput-object p2, p0, Landroidx/preference/Preference;->w:Ljava/lang/Object;
+    iput-object p2, p0, Landroidx/preference/Preference;->x:Ljava/lang/Object;
 
     goto :goto_0
 
@@ -309,7 +309,7 @@
 
     move-result-object p2
 
-    iput-object p2, p0, Landroidx/preference/Preference;->w:Ljava/lang/Object;
+    iput-object p2, p0, Landroidx/preference/Preference;->x:Ljava/lang/Object;
 
     :cond_6
     :goto_0
@@ -389,7 +389,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/preference/Preference;->x:Lq1/c;
+    iget-object v0, p0, Landroidx/preference/Preference;->y:Lq1/a;
 
     .line 2
     .line 3
@@ -397,7 +397,7 @@
 
     .line 4
     .line 5
-    invoke-interface {v0, p0}, Lq1/c;->a(Landroidx/preference/Preference;)Ljava/lang/CharSequence;
+    invoke-interface {v0, p0}, Lq1/a;->k(Landroidx/preference/Preference;)Ljava/lang/CharSequence;
 
     .line 6
     .line 7
@@ -409,7 +409,7 @@
 
     .line 10
     :cond_0
-    iget-object v0, p0, Landroidx/preference/Preference;->p:Ljava/lang/CharSequence;
+    iget-object v0, p0, Landroidx/preference/Preference;->q:Ljava/lang/CharSequence;
 
     .line 11
     .line 12

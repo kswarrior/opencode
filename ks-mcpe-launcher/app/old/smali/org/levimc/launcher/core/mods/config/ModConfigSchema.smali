@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -182,7 +182,7 @@
     .line 9
     .line 10
     :cond_0
-    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->l()Lcom/google/gson/JsonObject;
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonObject;
 
     .line 11
     .line 12
@@ -190,7 +190,7 @@
     move-result-object p0
 
     .line 14
-    iget-object v1, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
+    iget-object v1, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
 
     .line 15
     .line 16
@@ -234,7 +234,7 @@
 
     .line 35
     .line 36
-    invoke-virtual {v1, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 37
     .line 38
@@ -246,7 +246,7 @@
 
     .line 41
     .line 42
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 43
     .line 44
@@ -293,7 +293,7 @@
 
     .line 62
     .line 63
-    invoke-virtual {v1, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 64
     .line 65
@@ -305,7 +305,7 @@
 
     .line 68
     .line 69
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 70
     .line 71
@@ -318,7 +318,7 @@
     .line 74
     .line 75
     .line 76
-    instance-of v3, v3, Lg8/n;
+    instance-of v3, v3, Le8/n;
 
     .line 77
     .line 78
@@ -326,7 +326,7 @@
 
     .line 79
     .line 80
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 81
     .line 82
@@ -334,7 +334,7 @@
     move-result-object v2
 
     .line 84
-    invoke-virtual {v2}, Lcom/google/gson/JsonElement;->e()Z
+    invoke-virtual {v2}, Lcom/google/gson/JsonElement;->d()Z
 
     .line 85
     .line 86
@@ -377,7 +377,7 @@
 
     .line 101
     .line 102
-    invoke-virtual {v1, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v1, v2}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 103
     .line 104
@@ -389,7 +389,7 @@
 
     .line 107
     .line 108
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 109
     .line 110
@@ -410,7 +410,7 @@
 
     .line 118
     .line 119
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->w(Ljava/lang/String;)Lcom/google/gson/JsonArray;
+    invoke-virtual {v1, v2}, Lg8/m;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 120
     .line 121
@@ -418,177 +418,179 @@
     move-result-object v2
 
     .line 123
-    iget-object v2, v2, Lcom/google/gson/JsonArray;->c:Ljava/util/ArrayList;
+    check-cast v2, Lcom/google/gson/JsonArray;
 
     .line 124
     .line 125
-    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+    iget-object v2, v2, Lcom/google/gson/JsonArray;->c:Ljava/util/ArrayList;
 
     .line 126
     .line 127
+    invoke-virtual {v2}, Ljava/util/ArrayList;->iterator()Ljava/util/Iterator;
+
     .line 128
+    .line 129
+    .line 130
     move-result-object v2
 
-    .line 129
+    .line 131
     :goto_3
     invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
 
-    .line 130
-    .line 131
     .line 132
+    .line 133
+    .line 134
     move-result v3
 
-    .line 133
-    if-eqz v3, :cond_3
-
-    .line 134
     .line 135
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    if-eqz v3, :cond_3
 
     .line 136
     .line 137
+    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
     .line 138
+    .line 139
+    .line 140
     move-result-object v3
 
-    .line 139
-    check-cast v3, Lcom/google/gson/JsonElement;
-
-    .line 140
     .line 141
-    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->c()Lcom/google/gson/JsonElement;
+    check-cast v3, Lcom/google/gson/JsonElement;
 
     .line 142
     .line 143
+    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->c()Lcom/google/gson/JsonElement;
+
     .line 144
+    .line 145
+    .line 146
     move-result-object v3
 
-    .line 145
+    .line 147
     invoke-virtual {v8, v3}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
-    .line 146
-    .line 147
     .line 148
+    .line 149
+    .line 150
     goto :goto_3
 
-    .line 149
+    .line 151
     :cond_3
     new-instance v12, Ljava/util/LinkedHashMap;
 
-    .line 150
-    .line 151
-    invoke-direct {v12}, Ljava/util/LinkedHashMap;-><init>()V
-
     .line 152
     .line 153
-    .line 154
-    const-string v2, "properties"
+    invoke-direct {v12}, Ljava/util/LinkedHashMap;-><init>()V
 
+    .line 154
     .line 155
     .line 156
-    invoke-virtual {v1, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    const-string v2, "properties"
 
     .line 157
     .line 158
+    invoke-virtual {v1, v2}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
+
     .line 159
+    .line 160
+    .line 161
     move-result v3
 
-    .line 160
-    if-eqz v3, :cond_5
-
-    .line 161
     .line 162
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    if-eqz v3, :cond_5
 
     .line 163
     .line 164
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+
     .line 165
+    .line 166
+    .line 167
     move-result-object v3
 
-    .line 166
+    .line 168
     invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 167
-    .line 168
     .line 169
-    instance-of v3, v3, Lcom/google/gson/JsonObject;
-
     .line 170
     .line 171
-    if-eqz v3, :cond_5
+    instance-of v3, v3, Lcom/google/gson/JsonObject;
 
     .line 172
     .line 173
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->x(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+    if-eqz v3, :cond_5
 
     .line 174
     .line 175
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->u(Ljava/lang/String;)Lcom/google/gson/JsonObject;
+
     .line 176
+    .line 177
+    .line 178
     move-result-object v2
 
-    .line 177
-    iget-object v2, v2, Lcom/google/gson/JsonObject;->c:Li8/n;
-
-    .line 178
     .line 179
-    invoke-virtual {v2}, Li8/n;->entrySet()Ljava/util/Set;
+    iget-object v2, v2, Lcom/google/gson/JsonObject;->c:Lg8/m;
 
     .line 180
     .line 181
+    invoke-virtual {v2}, Lg8/m;->entrySet()Ljava/util/Set;
+
     .line 182
+    .line 183
+    .line 184
     move-result-object v2
 
-    .line 183
-    check-cast v2, Li8/l;
-
-    .line 184
     .line 185
-    invoke-virtual {v2}, Li8/l;->iterator()Ljava/util/Iterator;
+    check-cast v2, Lg8/k;
 
     .line 186
     .line 187
+    invoke-virtual {v2}, Lg8/k;->iterator()Ljava/util/Iterator;
+
     .line 188
+    .line 189
+    .line 190
     move-result-object v2
 
-    .line 189
+    .line 191
     :cond_4
     :goto_4
-    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+    move-object v3, v2
 
-    .line 190
-    .line 191
     .line 192
-    move-result v3
+    check-cast v3, Lg8/j;
 
     .line 193
-    if-eqz v3, :cond_5
-
     .line 194
-    .line 195
-    invoke-interface {v2}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    invoke-virtual {v3}, Lg8/j;->hasNext()Z
 
+    .line 195
     .line 196
     .line 197
+    move-result v3
+
     .line 198
-    move-result-object v3
+    if-eqz v3, :cond_5
 
     .line 199
-    check-cast v3, Ljava/util/Map$Entry;
-
     .line 200
+    move-object v3, v2
+
     .line 201
-    invoke-interface {v3}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    check-cast v3, Lg8/j;
 
     .line 202
     .line 203
+    invoke-virtual {v3}, Lg8/j;->c()Lg8/l;
+
     .line 204
-    move-result-object v13
-
     .line 205
-    check-cast v13, Lcom/google/gson/JsonElement;
-
     .line 206
+    move-result-object v3
+
     .line 207
-    invoke-static {v13}, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;->fromJson(Lcom/google/gson/JsonElement;)Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
     .line 208
     .line 209
@@ -596,79 +598,91 @@
     move-result-object v13
 
     .line 211
-    if-eqz v13, :cond_4
+    check-cast v13, Lcom/google/gson/JsonElement;
 
     .line 212
     .line 213
-    invoke-interface {v3}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+    invoke-static {v13}, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;->fromJson(Lcom/google/gson/JsonElement;)Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
 
     .line 214
     .line 215
     .line 216
-    move-result-object v3
+    move-result-object v13
 
     .line 217
-    check-cast v3, Ljava/lang/String;
+    if-eqz v13, :cond_4
 
     .line 218
     .line 219
-    invoke-interface {v12, v3, v13}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-interface {v3}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
 
     .line 220
     .line 221
     .line 222
-    goto :goto_4
+    move-result-object v3
 
     .line 223
-    :cond_5
-    const-string v2, "items"
+    check-cast v3, Ljava/lang/String;
 
     .line 224
     .line 225
-    invoke-virtual {v1, v2}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-interface {v12, v3, v13}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 226
     .line 227
     .line 228
-    move-result v1
+    goto :goto_4
 
     .line 229
-    if-eqz v1, :cond_6
+    :cond_5
+    const-string v2, "items"
 
     .line 230
     .line 231
-    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {v1, v2}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 232
     .line 233
     .line 234
-    move-result-object p0
+    move-result v1
 
     .line 235
-    invoke-static {p0}, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;->fromJson(Lcom/google/gson/JsonElement;)Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
+    if-eqz v1, :cond_6
 
     .line 236
     .line 237
+    invoke-virtual {p0, v2}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+
     .line 238
+    .line 239
+    .line 240
+    move-result-object p0
+
+    .line 241
+    invoke-static {p0}, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;->fromJson(Lcom/google/gson/JsonElement;)Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
+
+    .line 242
+    .line 243
+    .line 244
     move-result-object v0
 
-    .line 239
+    .line 245
     :cond_6
     move-object v13, v0
 
-    .line 240
+    .line 246
     new-instance v3, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
 
-    .line 241
-    .line 242
+    .line 247
+    .line 248
     invoke-direct/range {v3 .. v13}, Lorg/levimc/launcher/core/mods/config/ModConfigSchema;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/google/gson/JsonElement;Ljava/util/List;Ljava/lang/Double;Ljava/lang/Double;ZLjava/util/Map;Lorg/levimc/launcher/core/mods/config/ModConfigSchema;)V
 
-    .line 243
-    .line 244
-    .line 245
+    .line 249
+    .line 250
+    .line 251
     return-object v3
 
-    .line 246
+    .line 252
     :cond_7
     :goto_5
     return-object v0
@@ -678,11 +692,11 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p1}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 4
     .line 5
@@ -697,7 +711,7 @@
 
     .line 9
     .line 10
-    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 11
     .line 12
@@ -710,7 +724,7 @@
     .line 15
     .line 16
     .line 17
-    instance-of v0, v0, Lg8/n;
+    instance-of v0, v0, Le8/n;
 
     .line 18
     .line 19
@@ -723,7 +737,7 @@
     .line 22
     :cond_0
     :try_start_0
-    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 23
     .line 24
@@ -731,7 +745,7 @@
     move-result-object p0
 
     .line 26
-    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->h()D
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->e()D
 
     .line 27
     .line 28
@@ -762,11 +776,11 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Li8/n;
+    iget-object v0, p0, Lcom/google/gson/JsonObject;->c:Lg8/m;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Li8/n;->containsKey(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p1}, Lg8/m;->containsKey(Ljava/lang/Object;)Z
 
     .line 4
     .line 5
@@ -781,7 +795,7 @@
 
     .line 9
     .line 10
-    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 11
     .line 12
@@ -794,7 +808,7 @@
     .line 15
     .line 16
     .line 17
-    instance-of v0, v0, Lg8/n;
+    instance-of v0, v0, Le8/n;
 
     .line 18
     .line 19
@@ -807,7 +821,7 @@
     .line 22
     :cond_0
     :try_start_0
-    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->v(Ljava/lang/String;)Lcom/google/gson/JsonElement;
+    invoke-virtual {p0, p1}, Lcom/google/gson/JsonObject;->t(Ljava/lang/String;)Lcom/google/gson/JsonElement;
 
     .line 23
     .line 24
@@ -815,7 +829,7 @@
     move-result-object p0
 
     .line 26
-    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->o()Ljava/lang/String;
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->n()Ljava/lang/String;
 
     .line 27
     .line 28
@@ -846,7 +860,7 @@
 
     .line 4
     .line 5
-    instance-of v1, p0, Lg8/l;
+    instance-of v1, p0, Le8/l;
 
     .line 6
     .line 7
@@ -890,7 +904,7 @@
 
     .line 24
     :cond_2
-    instance-of v1, p0, Lg8/n;
+    instance-of v1, p0, Le8/n;
 
     .line 25
     .line 26
@@ -898,7 +912,7 @@
 
     .line 27
     .line 28
-    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->m()Lg8/n;
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->l()Le8/n;
 
     .line 29
     .line 30
@@ -906,7 +920,7 @@
     move-result-object v1
 
     .line 32
-    iget-object v1, v1, Lg8/n;->c:Ljava/io/Serializable;
+    iget-object v1, v1, Le8/n;->c:Ljava/io/Serializable;
 
     .line 33
     .line 34
@@ -926,7 +940,7 @@
 
     .line 41
     :cond_3
-    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->m()Lg8/n;
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->l()Le8/n;
 
     .line 42
     .line 43
@@ -934,7 +948,7 @@
     move-result-object p0
 
     .line 45
-    iget-object p0, p0, Lg8/n;->c:Ljava/io/Serializable;
+    iget-object p0, p0, Le8/n;->c:Ljava/io/Serializable;
 
     .line 46
     .line 47

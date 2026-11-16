@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/google/firebase/messaging/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/util/concurrent/Callable;
@@ -47,7 +47,7 @@
 
     .line 4
     .line 5
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
+    invoke-static {}, Lcom/google/firebase/messaging/u;->t()Lcom/google/firebase/messaging/u;
 
     .line 6
     .line 7
@@ -93,7 +93,7 @@
     .line 27
     .line 28
     :cond_0
-    iget-object v3, v2, Lcom/google/firebase/messaging/v;->q:Ljava/lang/Object;
+    iget-object v3, v2, Lcom/google/firebase/messaging/u;->w:Ljava/lang/Object;
 
     .line 29
     .line 30
@@ -140,7 +140,7 @@
 
     .line 52
     :try_start_0
-    iget-object v5, v2, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
+    iget-object v5, v2, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
 
     .line 53
     .line 54
@@ -292,7 +292,7 @@
     move-result-object v3
 
     .line 124
-    iput-object v3, v2, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
+    iput-object v3, v2, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
 
     .line 125
     .line 126
@@ -312,12 +312,12 @@
 
     .line 131
     .line 132
-    iput-object v3, v2, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
+    iput-object v3, v2, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
 
     .line 133
     .line 134
     :goto_0
-    iget-object v3, v2, Lcom/google/firebase/messaging/v;->d:Ljava/lang/Object;
+    iget-object v3, v2, Lcom/google/firebase/messaging/u;->d:Ljava/lang/Object;
 
     .line 135
     .line 136
@@ -486,7 +486,7 @@
     .line 210
     :cond_8
     :try_start_4
-    invoke-virtual {v2, v0}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
+    invoke-virtual {v2, v0}, Lcom/google/firebase/messaging/u;->z(Landroid/content/Context;)Z
 
     .line 211
     .line 212
@@ -498,7 +498,7 @@
 
     .line 215
     .line 216
-    invoke-static {v0, v1}, Lcom/google/firebase/messaging/e0;->c(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
+    invoke-static {v0, v1}, Lcom/google/firebase/messaging/d0;->c(Landroid/content/Context;Landroid/content/Intent;)Landroid/content/ComponentName;
 
     .line 217
     .line 218

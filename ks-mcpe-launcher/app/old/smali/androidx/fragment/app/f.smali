@@ -1,6 +1,6 @@
 .class public final synthetic Landroidx/fragment/app/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:Ljava/lang/Object;
 
-.field public final synthetic p:Ljava/lang/Object;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
@@ -33,7 +33,7 @@
 
     .line 6
     .line 7
-    iput-object p3, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iput-object p3, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 8
     .line 9
@@ -67,7 +67,7 @@
 
     .line 8
     .line 9
-    check-cast v0, Lx6/r;
+    check-cast v0, Lv6/q;
 
     .line 10
     .line 11
@@ -79,7 +79,7 @@
 
     .line 14
     .line 15
-    iget-object v3, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v3, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 16
     .line 17
@@ -87,7 +87,7 @@
 
     .line 18
     .line 19
-    iget-object v0, v0, Lx6/r;->h:Lx6/m;
+    iget-object v0, v0, Lv6/q;->h:Lv6/m;
 
     .line 20
     .line 21
@@ -97,19 +97,19 @@
     .line 23
     .line 24
     :try_start_0
-    iget-object v4, v0, Lx6/m;->d:Ld7/e;
+    iget-object v4, v0, Lv6/m;->d:Lb7/e;
 
     .line 25
     .line 26
-    iget-object v4, v4, Ld7/e;->q:Ljava/lang/Object;
+    iget-object v4, v4, Lb7/e;->w:Ljava/lang/Object;
 
     .line 27
     .line 28
-    check-cast v4, Lcom/google/firebase/messaging/o;
+    check-cast v4, Lae/w1;
 
     .line 29
     .line 30
-    invoke-virtual {v4, v2, v3}, Lcom/google/firebase/messaging/o;->k(Ljava/lang/String;Ljava/lang/String;)Z
+    invoke-virtual {v4, v2, v3}, Lae/w1;->h(Ljava/lang/String;Ljava/lang/String;)Z
     :try_end_0
     .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -123,7 +123,7 @@
     move-exception v2
 
     .line 35
-    iget-object v0, v0, Lx6/m;->a:Landroid/content/Context;
+    iget-object v0, v0, Lv6/m;->a:Landroid/content/Context;
 
     .line 36
     .line 37
@@ -182,7 +182,7 @@
 
     .line 60
     .line 61
-    check-cast v0, Lorg/levimc/launcher/util/LauncherBackgroundController;
+    check-cast v0, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;
 
     .line 62
     .line 63
@@ -190,19 +190,19 @@
 
     .line 64
     .line 65
-    check-cast v1, Landroid/net/Uri;
+    check-cast v1, Ljava/io/File;
 
     .line 66
     .line 67
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 68
     .line 69
-    check-cast v2, Ljava/util/function/Consumer;
+    check-cast v2, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager$StructureExportCallback;
 
     .line 70
     .line 71
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/LauncherBackgroundController;->c(Lorg/levimc/launcher/util/LauncherBackgroundController;Landroid/net/Uri;Ljava/util/function/Consumer;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;->a(Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;Ljava/io/File;Lorg/levimc/launcher/core/content/leveldb/LevelDBManager$StructureExportCallback;)V
 
     .line 72
     .line 73
@@ -215,7 +215,7 @@
 
     .line 76
     .line 77
-    check-cast v0, Lorg/levimc/launcher/util/InstanceBackupManager;
+    check-cast v0, Lorg/levimc/launcher/util/LauncherBackgroundController;
 
     .line 78
     .line 79
@@ -223,19 +223,19 @@
 
     .line 80
     .line 81
-    check-cast v1, Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;
+    check-cast v1, Landroid/net/Uri;
 
     .line 82
     .line 83
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 84
     .line 85
-    check-cast v2, Landroid/net/Uri;
+    check-cast v2, Ljava/util/function/Consumer;
 
     .line 86
     .line 87
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->g(Lorg/levimc/launcher/util/InstanceBackupManager;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Landroid/net/Uri;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/LauncherBackgroundController;->c(Lorg/levimc/launcher/util/LauncherBackgroundController;Landroid/net/Uri;Ljava/util/function/Consumer;)V
 
     .line 88
     .line 89
@@ -256,19 +256,19 @@
 
     .line 96
     .line 97
-    check-cast v1, Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;
+    check-cast v1, Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;
 
     .line 98
     .line 99
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 100
     .line 101
-    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
+    check-cast v2, Landroid/net/Uri;
 
     .line 102
     .line 103
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->k(Lorg/levimc/launcher/util/InstanceBackupManager;Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->g(Lorg/levimc/launcher/util/InstanceBackupManager;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Landroid/net/Uri;)V
 
     .line 104
     .line 105
@@ -281,7 +281,7 @@
 
     .line 108
     .line 109
-    check-cast v0, Lorg/levimc/launcher/util/ApkInstaller;
+    check-cast v0, Lorg/levimc/launcher/util/InstanceBackupManager;
 
     .line 110
     .line 111
@@ -289,19 +289,19 @@
 
     .line 112
     .line 113
-    check-cast v1, Ljava/lang/String;
+    check-cast v1, Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;
 
     .line 114
     .line 115
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 116
     .line 117
-    check-cast v2, Landroid/net/Uri;
+    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
 
     .line 118
     .line 119
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/util/ApkInstaller;->b(Landroid/net/Uri;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->k(Lorg/levimc/launcher/util/InstanceBackupManager;Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Lorg/levimc/launcher/core/versions/GameVersion;)V
 
     .line 120
     .line 121
@@ -322,19 +322,19 @@
 
     .line 128
     .line 129
-    check-cast v1, Ljava/util/List;
+    check-cast v1, Ljava/lang/String;
 
     .line 130
     .line 131
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 132
     .line 133
-    check-cast v2, Ljava/lang/String;
+    check-cast v2, Landroid/net/Uri;
 
     .line 134
     .line 135
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/util/ApkInstaller;->g(Ljava/util/List;Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/util/ApkInstaller;->c(Lorg/levimc/launcher/util/ApkInstaller;Ljava/lang/String;Landroid/net/Uri;)V
 
     .line 136
     .line 137
@@ -343,38 +343,8 @@
 
     .line 139
     :pswitch_5
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 140
-    .line 141
-    check-cast v0, Lorg/levimc/launcher/core/news/NewsRepository$Callback;
-
-    .line 142
-    .line 143
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 144
-    .line 145
-    check-cast v1, Lorg/levimc/launcher/core/news/NewsFeed;
-
-    .line 146
-    .line 147
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 148
-    .line 149
-    check-cast v2, Ljava/lang/Throwable;
-
-    .line 150
-    .line 151
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/news/NewsRepository;->e(Lorg/levimc/launcher/core/news/NewsRepository$Callback;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
-
-    .line 152
-    .line 153
-    .line 154
     return-void
 
-    .line 155
     :pswitch_6
     iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
 
@@ -388,19 +358,19 @@
 
     .line 160
     .line 161
-    check-cast v1, Ljava/util/List;
+    check-cast v1, Ljava/util/ArrayList;
 
     .line 162
     .line 163
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 164
     .line 165
-    check-cast v2, Lcom/microsoft/xbox/toolkit/a;
+    check-cast v2, Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
 
     .line 166
     .line 167
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/FileHandler;->e(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/List;Lcom/microsoft/xbox/toolkit/a;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/FileHandler;->h(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;)V
 
     .line 168
     .line 169
@@ -413,7 +383,7 @@
 
     .line 172
     .line 173
-    check-cast v0, Lorg/levimc/launcher/core/mods/FileHandler;
+    check-cast v0, Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
 
     .line 174
     .line 175
@@ -421,19 +391,19 @@
 
     .line 176
     .line 177
-    check-cast v1, Ljava/util/ArrayList;
+    check-cast v1, Lorg/levimc/launcher/core/modcatalog/ModCatalog;
 
     .line 178
     .line 179
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 180
     .line 181
-    check-cast v2, Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
+    check-cast v2, Ljava/lang/Throwable;
 
     .line 182
     .line 183
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/FileHandler;->f(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/ArrayList;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository;->e(Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;Lorg/levimc/launcher/core/modcatalog/ModCatalog;Ljava/lang/Throwable;)V
 
     .line 184
     .line 185
@@ -446,7 +416,7 @@
 
     .line 188
     .line 189
-    check-cast v0, Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;
+    check-cast v0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;
 
     .line 190
     .line 191
@@ -454,19 +424,19 @@
 
     .line 192
     .line 193
-    check-cast v1, Lorg/levimc/launcher/core/modcatalog/ModCatalog;
+    check-cast v1, Lorg/levimc/launcher/core/minecraft/MinecraftRuntimePreparer$PreparedRuntime;
 
     .line 194
     .line 195
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 196
     .line 197
-    check-cast v2, Ljava/lang/Throwable;
+    check-cast v2, Landroid/content/Intent;
 
     .line 198
     .line 199
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository;->e(Lorg/levimc/launcher/core/modcatalog/ModCatalogRepository$Callback;Lorg/levimc/launcher/core/modcatalog/ModCatalog;Ljava/lang/Throwable;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->E(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;Lorg/levimc/launcher/core/minecraft/MinecraftRuntimePreparer$PreparedRuntime;Landroid/content/Intent;)V
 
     .line 200
     .line 201
@@ -479,7 +449,7 @@
 
     .line 204
     .line 205
-    check-cast v0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;
+    check-cast v0, Ld1/l;
 
     .line 206
     .line 207
@@ -487,212 +457,212 @@
 
     .line 208
     .line 209
-    check-cast v1, Lorg/levimc/launcher/core/minecraft/MinecraftRuntimePreparer$PreparedRuntime;
+    check-cast v1, Lkb/c;
 
     .line 210
     .line 211
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 212
     .line 213
-    check-cast v2, Landroid/content/Intent;
+    check-cast v2, Ljava/util/concurrent/ThreadPoolExecutor;
 
     .line 214
     .line 215
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->E(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;Lorg/levimc/launcher/core/minecraft/MinecraftRuntimePreparer$PreparedRuntime;Landroid/content/Intent;)V
-
-    .line 216
-    .line 217
-    .line 218
-    return-void
-
-    .line 219
-    :pswitch_a
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 220
-    .line 221
-    check-cast v0, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;
-
-    .line 222
-    .line 223
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 224
-    .line 225
-    check-cast v1, Ljava/io/File;
-
-    .line 226
-    .line 227
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 228
-    .line 229
-    check-cast v2, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager$StructureExportCallback;
-
-    .line 230
-    .line 231
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;->a(Lorg/levimc/launcher/core/content/leveldb/LevelDBManager;Ljava/io/File;Lorg/levimc/launcher/core/content/leveldb/LevelDBManager$StructureExportCallback;)V
-
-    .line 232
-    .line 233
-    .line 234
-    return-void
-
-    .line 235
-    :pswitch_b
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 236
-    .line 237
-    check-cast v0, Ld1/l;
-
-    .line 238
-    .line 239
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 240
-    .line 241
-    check-cast v1, Lcom/bumptech/glide/d;
-
-    .line 242
-    .line 243
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 244
-    .line 245
-    check-cast v2, Ljava/util/concurrent/ThreadPoolExecutor;
-
-    .line 246
-    .line 247
     :try_start_1
     iget-object v0, v0, Ld1/l;->d:Landroid/content/Context;
 
-    .line 248
-    .line 249
-    invoke-static {v0}, Lcom/bumptech/glide/c;->h(Landroid/content/Context;)Ld1/r;
+    .line 216
+    .line 217
+    invoke-static {v0}, Lk6/b;->d(Landroid/content/Context;)Ld1/r;
 
-    .line 250
-    .line 251
-    .line 252
+    .line 218
+    .line 219
+    .line 220
     move-result-object v0
 
-    .line 253
+    .line 221
     if-eqz v0, :cond_2
 
-    .line 254
-    .line 255
-    iget-object v3, v0, Landroidx/recyclerview/widget/b1;->b:Ljava/lang/Object;
+    .line 222
+    .line 223
+    iget-object v3, v0, Landroidx/recyclerview/widget/d1;->b:Ljava/lang/Object;
 
-    .line 256
-    .line 257
+    .line 224
+    .line 225
     check-cast v3, Ld1/h;
 
-    .line 258
-    .line 259
+    .line 226
+    .line 227
     check-cast v3, Ld1/q;
 
-    .line 260
-    .line 261
-    iget-object v4, v3, Ld1/q;->p:Ljava/lang/Object;
+    .line 228
+    .line 229
+    iget-object v4, v3, Ld1/q;->q:Ljava/lang/Object;
 
-    .line 262
-    .line 263
+    .line 230
+    .line 231
     monitor-enter v4
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 264
+    .line 232
     :try_start_2
-    iput-object v2, v3, Ld1/q;->w:Ljava/util/concurrent/ThreadPoolExecutor;
+    iput-object v2, v3, Ld1/q;->x:Ljava/util/concurrent/ThreadPoolExecutor;
 
-    .line 265
-    .line 266
+    .line 233
+    .line 234
     monitor-exit v4
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
-    .line 267
+    .line 235
     :try_start_3
-    iget-object v0, v0, Landroidx/recyclerview/widget/b1;->b:Ljava/lang/Object;
+    iget-object v0, v0, Landroidx/recyclerview/widget/d1;->b:Ljava/lang/Object;
 
-    .line 268
-    .line 269
+    .line 236
+    .line 237
     check-cast v0, Ld1/h;
 
-    .line 270
-    .line 271
+    .line 238
+    .line 239
     new-instance v3, Ld1/k;
 
-    .line 272
-    .line 273
-    invoke-direct {v3, v1, v2}, Ld1/k;-><init>(Lcom/bumptech/glide/d;Ljava/util/concurrent/ThreadPoolExecutor;)V
+    .line 240
+    .line 241
+    invoke-direct {v3, v1, v2}, Ld1/k;-><init>(Lkb/c;Ljava/util/concurrent/ThreadPoolExecutor;)V
 
-    .line 274
-    .line 275
-    .line 276
-    invoke-interface {v0, v3}, Ld1/h;->b(Lcom/bumptech/glide/d;)V
+    .line 242
+    .line 243
+    .line 244
+    invoke-interface {v0, v3}, Ld1/h;->b(Lkb/c;)V
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_0
 
-    .line 277
-    .line 278
-    .line 279
+    .line 245
+    .line 246
+    .line 247
     goto :goto_3
 
-    .line 280
+    .line 248
     :catchall_0
     move-exception v0
 
-    .line 281
+    .line 249
     goto :goto_2
 
-    .line 282
+    .line 250
     :catchall_1
     move-exception v0
 
-    .line 283
+    .line 251
     :try_start_4
     monitor-exit v4
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
-    .line 284
+    .line 252
     :try_start_5
     throw v0
 
-    .line 285
+    .line 253
     :cond_2
     new-instance v0, Ljava/lang/RuntimeException;
 
-    .line 286
-    .line 287
+    .line 254
+    .line 255
     const-string v3, "EmojiCompat font provider not available on this device."
 
-    .line 288
-    .line 289
+    .line 256
+    .line 257
     invoke-direct {v0, v3}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
 
-    .line 290
-    .line 291
-    .line 292
+    .line 258
+    .line 259
+    .line 260
     throw v0
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_0
 
-    .line 293
+    .line 261
     :goto_2
-    invoke-virtual {v1, v0}, Lcom/bumptech/glide/d;->N(Ljava/lang/Throwable;)V
+    invoke-virtual {v1, v0}, Lkb/c;->x(Ljava/lang/Throwable;)V
 
+    .line 262
+    .line 263
+    .line 264
+    invoke-virtual {v2}, Ljava/util/concurrent/ThreadPoolExecutor;->shutdown()V
+
+    .line 265
+    .line 266
+    .line 267
+    :goto_3
+    return-void
+
+    .line 268
+    :pswitch_a
+    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+
+    .line 269
+    .line 270
+    check-cast v0, Lcom/mojang/minecraftpe/WorldRecovery;
+
+    .line 271
+    .line 272
+    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+
+    .line 273
+    .line 274
+    check-cast v1, Lb1/a;
+
+    .line 275
+    .line 276
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
+
+    .line 277
+    .line 278
+    check-cast v2, Ljava/io/File;
+
+    .line 279
+    .line 280
+    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/WorldRecovery;->a(Lcom/mojang/minecraftpe/WorldRecovery;Lb1/a;Ljava/io/File;)V
+
+    .line 281
+    .line 282
+    .line 283
+    return-void
+
+    .line 284
+    :pswitch_b
+    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+
+    .line 285
+    .line 286
+    check-cast v0, Lcom/mojang/minecraftpe/MainActivity;
+
+    .line 287
+    .line 288
+    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+
+    .line 289
+    .line 290
+    check-cast v1, Ljava/lang/String;
+
+    .line 291
+    .line 292
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
+
+    .line 293
     .line 294
+    check-cast v2, Ljava/lang/String;
+
     .line 295
     .line 296
-    invoke-virtual {v2}, Ljava/util/concurrent/ThreadPoolExecutor;->shutdown()V
+    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/MainActivity;->n(Lcom/mojang/minecraftpe/MainActivity;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 297
     .line 298
     .line 299
-    :goto_3
     return-void
 
     .line 300
@@ -701,7 +671,7 @@
 
     .line 301
     .line 302
-    check-cast v0, Lcom/mojang/minecraftpe/WorldRecovery;
+    check-cast v0, Lcom/microsoft/xbox/toolkit/DialogManagerBase;
 
     .line 303
     .line 304
@@ -709,19 +679,19 @@
 
     .line 305
     .line 306
-    check-cast v1, Lb1/a;
+    check-cast v1, Lcom/microsoft/xbox/toolkit/XLEManagedAlertDialog;
 
     .line 307
     .line 308
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 309
     .line 310
-    check-cast v2, Ljava/io/File;
+    check-cast v2, Ljava/lang/Runnable;
 
     .line 311
     .line 312
-    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/WorldRecovery;->a(Lcom/mojang/minecraftpe/WorldRecovery;Lb1/a;Ljava/io/File;)V
+    invoke-static {v0, v1, v2}, Lcom/microsoft/xbox/toolkit/DialogManagerBase;->e(Lcom/microsoft/xbox/toolkit/DialogManagerBase;Lcom/microsoft/xbox/toolkit/XLEManagedAlertDialog;Ljava/lang/Runnable;)V
 
     .line 313
     .line 314
@@ -734,127 +704,127 @@
 
     .line 317
     .line 318
-    check-cast v0, Lcom/mojang/minecraftpe/MainActivity;
+    check-cast v0, Lcom/google/firebase/messaging/EnhancedIntentService;
 
     .line 319
     .line 320
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
 
     .line 321
     .line 322
-    check-cast v1, Ljava/lang/String;
+    check-cast v2, Landroid/content/Intent;
 
     .line 323
     .line 324
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v3, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 325
     .line 326
-    check-cast v2, Ljava/lang/String;
+    check-cast v3, Lcom/google/android/gms/tasks/TaskCompletionSource;
 
     .line 327
     .line 328
-    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/MainActivity;->n(Lcom/mojang/minecraftpe/MainActivity;Ljava/lang/String;Ljava/lang/String;)V
+    sget v4, Lcom/google/firebase/messaging/EnhancedIntentService;->c:I
 
     .line 329
     .line 330
-    .line 331
-    return-void
-
-    .line 332
-    :pswitch_e
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 333
-    .line 334
-    check-cast v0, Lcom/microsoft/xbox/toolkit/DialogManagerBase;
-
-    .line 335
-    .line 336
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 337
-    .line 338
-    check-cast v1, Lcom/microsoft/xbox/toolkit/XLEManagedAlertDialog;
-
-    .line 339
-    .line 340
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 341
-    .line 342
-    check-cast v2, Ljava/lang/Runnable;
-
-    .line 343
-    .line 344
-    invoke-static {v0, v1, v2}, Lcom/microsoft/xbox/toolkit/DialogManagerBase;->e(Lcom/microsoft/xbox/toolkit/DialogManagerBase;Lcom/microsoft/xbox/toolkit/XLEManagedAlertDialog;Ljava/lang/Runnable;)V
-
-    .line 345
-    .line 346
-    .line 347
-    return-void
-
-    .line 348
-    :pswitch_f
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
-
-    .line 349
-    .line 350
-    check-cast v0, Lcom/google/firebase/messaging/EnhancedIntentService;
-
-    .line 351
-    .line 352
-    iget-object v2, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 353
-    .line 354
-    check-cast v2, Landroid/content/Intent;
-
-    .line 355
-    .line 356
-    iget-object v3, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 357
-    .line 358
-    check-cast v3, Lcom/google/android/gms/tasks/TaskCompletionSource;
-
-    .line 359
-    .line 360
-    sget v4, Lcom/google/firebase/messaging/EnhancedIntentService;->c:I
-
-    .line 361
-    .line 362
     invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 363
-    .line 364
-    .line 365
+    .line 331
+    .line 332
+    .line 333
     :try_start_6
     invoke-virtual {v0, v2}, Lcom/google/firebase/messaging/EnhancedIntentService;->handleIntent(Landroid/content/Intent;)V
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_2
 
-    .line 366
-    .line 367
-    .line 368
+    .line 334
+    .line 335
+    .line 336
     invoke-virtual {v3, v1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->setResult(Ljava/lang/Object;)V
 
-    .line 369
-    .line 370
-    .line 371
+    .line 337
+    .line 338
+    .line 339
     return-void
 
-    .line 372
+    .line 340
     :catchall_2
     move-exception v0
 
-    .line 373
+    .line 341
     invoke-virtual {v3, v1}, Lcom/google/android/gms/tasks/TaskCompletionSource;->setResult(Ljava/lang/Object;)V
+
+    .line 342
+    .line 343
+    .line 344
+    throw v0
+
+    .line 345
+    :pswitch_e
+    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+
+    .line 346
+    .line 347
+    check-cast v0, Lcom/discord/org/webrtc/VideoFileRenderer;
+
+    .line 348
+    .line 349
+    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+
+    .line 350
+    .line 351
+    check-cast v1, Lcom/discord/org/webrtc/VideoFrame$I420Buffer;
+
+    .line 352
+    .line 353
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
+
+    .line 354
+    .line 355
+    check-cast v2, Lcom/discord/org/webrtc/VideoFrame;
+
+    .line 356
+    .line 357
+    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/VideoFileRenderer;->a(Lcom/discord/org/webrtc/VideoFileRenderer;Lcom/discord/org/webrtc/VideoFrame$I420Buffer;Lcom/discord/org/webrtc/VideoFrame;)V
+
+    .line 358
+    .line 359
+    .line 360
+    return-void
+
+    .line 361
+    :pswitch_f
+    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+
+    .line 362
+    .line 363
+    check-cast v0, Lcom/discord/org/webrtc/EglRenderer;
+
+    .line 364
+    .line 365
+    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+
+    .line 366
+    .line 367
+    check-cast v1, Ljava/util/concurrent/CountDownLatch;
+
+    .line 368
+    .line 369
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
+
+    .line 370
+    .line 371
+    check-cast v2, Lcom/discord/org/webrtc/EglRenderer$RenderListener;
+
+    .line 372
+    .line 373
+    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/EglRenderer;->d(Lcom/discord/org/webrtc/EglRenderer;Ljava/util/concurrent/CountDownLatch;Lcom/discord/org/webrtc/EglRenderer$RenderListener;)V
 
     .line 374
     .line 375
     .line 376
-    throw v0
+    return-void
 
     .line 377
     :pswitch_10
@@ -862,7 +832,7 @@
 
     .line 378
     .line 379
-    check-cast v0, Lcom/discord/org/webrtc/VideoFileRenderer;
+    check-cast v0, Lcom/discord/org/webrtc/EglRenderer;
 
     .line 380
     .line 381
@@ -870,19 +840,19 @@
 
     .line 382
     .line 383
-    check-cast v1, Lcom/discord/org/webrtc/VideoFrame$I420Buffer;
+    check-cast v1, Ljava/util/concurrent/CountDownLatch;
 
     .line 384
     .line 385
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 386
     .line 387
-    check-cast v2, Lcom/discord/org/webrtc/VideoFrame;
+    check-cast v2, Lcom/discord/org/webrtc/EglRenderer$FrameListener;
 
     .line 388
     .line 389
-    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/VideoFileRenderer;->a(Lcom/discord/org/webrtc/VideoFileRenderer;Lcom/discord/org/webrtc/VideoFrame$I420Buffer;Lcom/discord/org/webrtc/VideoFrame;)V
+    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/EglRenderer;->h(Lcom/discord/org/webrtc/EglRenderer;Ljava/util/concurrent/CountDownLatch;Lcom/discord/org/webrtc/EglRenderer$FrameListener;)V
 
     .line 390
     .line 391
@@ -895,7 +865,7 @@
 
     .line 394
     .line 395
-    check-cast v0, Lcom/discord/org/webrtc/EglRenderer;
+    check-cast v0, Landroidx/fragment/app/w1;
 
     .line 396
     .line 397
@@ -903,179 +873,109 @@
 
     .line 398
     .line 399
-    check-cast v1, Ljava/util/concurrent/CountDownLatch;
+    check-cast v1, Landroidx/fragment/app/w1;
 
     .line 400
     .line 401
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 402
     .line 403
-    check-cast v2, Lcom/discord/org/webrtc/EglRenderer$RenderListener;
+    check-cast v2, Landroidx/fragment/app/r;
 
     .line 404
     .line 405
-    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/EglRenderer;->d(Lcom/discord/org/webrtc/EglRenderer;Ljava/util/concurrent/CountDownLatch;Lcom/discord/org/webrtc/EglRenderer$RenderListener;)V
+    iget-object v0, v0, Landroidx/fragment/app/w1;->c:Landroidx/fragment/app/Fragment;
 
     .line 406
     .line 407
-    .line 408
-    return-void
+    iget-object v1, v1, Landroidx/fragment/app/w1;->c:Landroidx/fragment/app/Fragment;
 
+    .line 408
     .line 409
-    :pswitch_12
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+    iget-boolean v3, v2, Landroidx/fragment/app/r;->o:Z
 
     .line 410
     .line 411
-    check-cast v0, Lcom/discord/org/webrtc/EglRenderer;
+    iget-object v2, v2, Landroidx/fragment/app/r;->n:Landroidx/collection/ArrayMap;
 
     .line 412
     .line 413
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+    invoke-static {v0, v1, v3, v2}, Landroidx/fragment/app/l1;->a(Landroidx/fragment/app/Fragment;Landroidx/fragment/app/Fragment;ZLandroidx/collection/ArrayMap;)V
 
     .line 414
     .line 415
-    check-cast v1, Ljava/util/concurrent/CountDownLatch;
-
     .line 416
+    return-void
+
     .line 417
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
+    :pswitch_12
+    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
 
     .line 418
     .line 419
-    check-cast v2, Lcom/discord/org/webrtc/EglRenderer$FrameListener;
+    check-cast v0, Landroid/view/ViewGroup;
 
     .line 420
     .line 421
-    invoke-static {v0, v1, v2}, Lcom/discord/org/webrtc/EglRenderer;->h(Lcom/discord/org/webrtc/EglRenderer;Ljava/util/concurrent/CountDownLatch;Lcom/discord/org/webrtc/EglRenderer$FrameListener;)V
+    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
 
     .line 422
     .line 423
-    .line 424
-    return-void
+    check-cast v1, Landroid/view/View;
 
+    .line 424
     .line 425
-    :pswitch_13
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+    iget-object v2, p0, Landroidx/fragment/app/f;->q:Ljava/lang/Object;
 
     .line 426
     .line 427
-    check-cast v0, Landroidx/fragment/app/w1;
+    check-cast v2, Landroidx/fragment/app/h;
 
     .line 428
     .line 429
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
+    const-string v3, "$container"
 
     .line 430
     .line 431
-    check-cast v1, Landroidx/fragment/app/w1;
+    invoke-static {v0, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 432
     .line 433
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
     .line 434
+    const-string v3, "this$0"
+
     .line 435
-    check-cast v2, Landroidx/fragment/app/r;
-
     .line 436
-    .line 437
-    iget-object v0, v0, Landroidx/fragment/app/w1;->c:Landroidx/fragment/app/Fragment;
+    invoke-static {v2, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 437
     .line 438
     .line 439
-    iget-object v1, v1, Landroidx/fragment/app/w1;->c:Landroidx/fragment/app/Fragment;
+    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->endViewTransition(Landroid/view/View;)V
 
     .line 440
     .line 441
-    iget-boolean v3, v2, Landroidx/fragment/app/r;->o:Z
-
     .line 442
+    iget-object v0, v2, Landroidx/fragment/app/h;->c:Landroidx/fragment/app/i;
+
     .line 443
-    iget-object v2, v2, Landroidx/fragment/app/r;->n:Landroidx/collection/ArrayMap;
-
     .line 444
-    .line 445
-    invoke-static {v0, v1, v3, v2}, Landroidx/fragment/app/l1;->a(Landroidx/fragment/app/Fragment;Landroidx/fragment/app/Fragment;ZLandroidx/collection/ArrayMap;)V
+    iget-object v0, v0, Landroidx/fragment/app/n;->a:Landroidx/fragment/app/w1;
 
+    .line 445
     .line 446
+    invoke-virtual {v0, v2}, Landroidx/fragment/app/w1;->c(Landroidx/fragment/app/v1;)V
+
     .line 447
     .line 448
-    return-void
-
     .line 449
-    :pswitch_14
-    iget-object v0, p0, Landroidx/fragment/app/f;->d:Ljava/lang/Object;
+    return-void
 
     .line 450
     .line 451
-    check-cast v0, Landroid/view/ViewGroup;
-
-    .line 452
-    .line 453
-    iget-object v1, p0, Landroidx/fragment/app/f;->h:Ljava/lang/Object;
-
-    .line 454
-    .line 455
-    check-cast v1, Landroid/view/View;
-
-    .line 456
-    .line 457
-    iget-object v2, p0, Landroidx/fragment/app/f;->p:Ljava/lang/Object;
-
-    .line 458
-    .line 459
-    check-cast v2, Landroidx/fragment/app/h;
-
-    .line 460
-    .line 461
-    const-string v3, "$container"
-
-    .line 462
-    .line 463
-    invoke-static {v0, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 464
-    .line 465
-    .line 466
-    const-string v3, "this$0"
-
-    .line 467
-    .line 468
-    invoke-static {v2, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 469
-    .line 470
-    .line 471
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->endViewTransition(Landroid/view/View;)V
-
-    .line 472
-    .line 473
-    .line 474
-    iget-object v0, v2, Landroidx/fragment/app/h;->c:Landroidx/fragment/app/i;
-
-    .line 475
-    .line 476
-    iget-object v0, v0, Landroidx/fragment/app/n;->a:Landroidx/fragment/app/w1;
-
-    .line 477
-    .line 478
-    invoke-virtual {v0, v2}, Landroidx/fragment/app/w1;->c(Landroidx/fragment/app/v1;)V
-
-    .line 479
-    .line 480
-    .line 481
-    return-void
-
-    .line 482
-    nop
-
-    .line 483
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_14
-        :pswitch_13
         :pswitch_12
         :pswitch_11
         :pswitch_10

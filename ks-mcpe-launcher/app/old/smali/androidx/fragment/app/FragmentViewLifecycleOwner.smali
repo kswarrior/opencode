@@ -1,9 +1,9 @@
 .class public final Landroidx/fragment/app/FragmentViewLifecycleOwner;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroidx/lifecycle/j;
+.implements Landroidx/lifecycle/i;
 .implements Lc2/e;
 .implements Landroidx/lifecycle/r0;
 
@@ -15,9 +15,9 @@
 
 .field public final h:Landroidx/fragment/app/y;
 
-.field public p:Landroidx/lifecycle/LifecycleRegistry;
+.field public q:Landroidx/lifecycle/LifecycleRegistry;
 
-.field public q:Landroidx/savedstate/SavedStateRegistryController;
+.field public w:Landroidx/savedstate/SavedStateRegistryController;
 
 
 # direct methods
@@ -33,11 +33,11 @@
     const/4 v0, 0x0
 
     .line 5
-    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->p:Landroidx/lifecycle/LifecycleRegistry;
+    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 6
     .line 7
-    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/savedstate/SavedStateRegistryController;
+    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->w:Landroidx/savedstate/SavedStateRegistryController;
 
     .line 8
     .line 9
@@ -58,15 +58,15 @@
 
 
 # virtual methods
-.method public final a(Landroidx/lifecycle/o;)V
+.method public final a(Landroidx/lifecycle/n;)V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->p:Landroidx/lifecycle/LifecycleRegistry;
+    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Landroidx/lifecycle/LifecycleRegistry;->f(Landroidx/lifecycle/o;)V
+    invoke-virtual {v0, p1}, Landroidx/lifecycle/LifecycleRegistry;->f(Landroidx/lifecycle/n;)V
 
     .line 4
     .line 5
@@ -78,7 +78,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->p:Landroidx/lifecycle/LifecycleRegistry;
+    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 2
     .line 3
@@ -95,7 +95,7 @@
     .line 8
     .line 9
     .line 10
-    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->p:Landroidx/lifecycle/LifecycleRegistry;
+    iput-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 11
     .line 12
@@ -103,19 +103,19 @@
 
     .line 13
     .line 14
-    new-instance v1, Landroidx/lifecycle/j0;
+    new-instance v1, La8/a;
 
     .line 15
     .line 16
-    const/4 v2, 0x7
+    const/4 v2, 0x6
 
     .line 17
-    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/j0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, v2}, La8/a;-><init>(Ljava/lang/Object;I)V
 
     .line 18
     .line 19
     .line 20
-    invoke-direct {v0, p0, v1}, Ld2/a;-><init>(Lc2/e;Landroidx/lifecycle/j0;)V
+    invoke-direct {v0, p0, v1}, Ld2/a;-><init>(Lc2/e;La8/a;)V
 
     .line 21
     .line 22
@@ -129,7 +129,7 @@
     .line 26
     .line 27
     .line 28
-    iput-object v1, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/savedstate/SavedStateRegistryController;
+    iput-object v1, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->w:Landroidx/savedstate/SavedStateRegistryController;
 
     .line 29
     .line 30
@@ -240,7 +240,7 @@
 
     .line 39
     .line 40
-    sget-object v4, Landroidx/lifecycle/o0;->d:Lp7/d;
+    sget-object v4, Landroidx/lifecycle/o0;->d:Lt5/f;
 
     .line 41
     .line 42
@@ -250,7 +250,7 @@
     .line 44
     .line 45
     :cond_2
-    sget-object v1, Landroidx/lifecycle/i0;->a:Lp7/d;
+    sget-object v1, Landroidx/lifecycle/j0;->a:Lt5/f;
 
     .line 46
     .line 47
@@ -259,7 +259,7 @@
     .line 48
     .line 49
     .line 50
-    sget-object v1, Landroidx/lifecycle/i0;->b:Lue/b;
+    sget-object v1, Landroidx/lifecycle/j0;->b:Lce/b;
 
     .line 51
     .line 52
@@ -280,7 +280,7 @@
 
     .line 60
     .line 61
-    sget-object v1, Landroidx/lifecycle/i0;->c:Lv5/f;
+    sget-object v1, Landroidx/lifecycle/j0;->c:Ln7/d;
 
     .line 62
     .line 63
@@ -310,7 +310,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->p:Landroidx/lifecycle/LifecycleRegistry;
+    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 5
     .line 6
@@ -326,7 +326,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/savedstate/SavedStateRegistryController;
+    iget-object v0, p0, Landroidx/fragment/app/FragmentViewLifecycleOwner;->w:Landroidx/savedstate/SavedStateRegistryController;
 
     .line 5
     .line 6

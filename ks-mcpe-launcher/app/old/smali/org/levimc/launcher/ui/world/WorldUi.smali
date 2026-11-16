@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/ui/world/WorldUi;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # direct methods
@@ -478,14 +478,14 @@
     .line 142
     .line 143
     .line 144
-    new-instance p0, Lorg/levimc/launcher/core/mods/a;
+    new-instance p0, Lorg/levimc/launcher/core/mods/f;
 
     .line 145
     .line 146
     const/4 p1, 0x2
 
     .line 147
-    invoke-direct {p0, p2, p1}, Lorg/levimc/launcher/core/mods/a;-><init>(Ljava/lang/Runnable;I)V
+    invoke-direct {p0, p2, p1}, Lorg/levimc/launcher/core/mods/f;-><init>(Ljava/lang/Runnable;I)V
 
     .line 148
     .line 149
@@ -496,6 +496,18 @@
     .line 152
     .line 153
     return-object v0
+.end method
+
+.method public static synthetic c(Landroidx/appcompat/app/AlertDialog;Landroid/content/Context;Landroid/content/DialogInterface;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/ui/world/WorldUi;->lambda$show$2(Landroidx/appcompat/app/AlertDialog;Landroid/content/Context;Landroid/content/DialogInterface;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
 .end method
 
 .method public static color(Landroid/content/Context;I)I
@@ -1334,14 +1346,14 @@
     .line 76
     .line 77
     .line 78
-    new-instance p0, Lorg/levimc/launcher/core/mods/a;
+    new-instance p0, Lorg/levimc/launcher/core/mods/f;
 
     .line 79
     .line 80
     const/4 p1, 0x1
 
     .line 81
-    invoke-direct {p0, p3, p1}, Lorg/levimc/launcher/core/mods/a;-><init>(Ljava/lang/Runnable;I)V
+    invoke-direct {p0, p3, p1}, Lorg/levimc/launcher/core/mods/f;-><init>(Ljava/lang/Runnable;I)V
 
     .line 82
     .line 83
@@ -1605,6 +1617,87 @@
     return-void
 .end method
 
+.method private static synthetic lambda$show$2(Landroidx/appcompat/app/AlertDialog;Landroid/content/Context;Landroid/content/DialogInterface;)V
+    .locals 3
+
+    .line 1
+    const/4 p2, -0x2
+
+    .line 2
+    const/4 v0, -0x3
+
+    .line 3
+    const/4 v1, -0x1
+
+    .line 4
+    filled-new-array {v1, p2, v0}, [I
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object p2
+
+    .line 8
+    const/4 v0, 0x0
+
+    .line 9
+    :goto_0
+    const/4 v1, 0x3
+
+    .line 10
+    if-ge v0, v1, :cond_1
+
+    .line 11
+    .line 12
+    aget v1, p2, v0
+
+    .line 13
+    .line 14
+    invoke-virtual {p0, v1}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v2
+
+    .line 18
+    if-eqz v2, :cond_0
+
+    .line 19
+    .line 20
+    invoke-virtual {p0, v1}, Landroidx/appcompat/app/AlertDialog;->e(I)Landroid/widget/Button;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v1
+
+    .line 24
+    invoke-static {p1}, Lorg/levimc/launcher/ui/world/WorldUi;->accent(Landroid/content/Context;)I
+
+    .line 25
+    .line 26
+    .line 27
+    move-result v2
+
+    .line 28
+    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextColor(I)V
+
+    .line 29
+    .line 30
+    .line 31
+    :cond_0
+    add-int/lit8 v0, v0, 0x1
+
+    .line 32
+    .line 33
+    goto :goto_0
+
+    .line 34
+    :cond_1
+    return-void
+.end method
+
 .method public static ripple(Landroid/content/Context;II)Landroid/graphics/drawable/RippleDrawable;
     .locals 3
 
@@ -1669,37 +1762,65 @@
 .end method
 
 .method public static show(Landroid/content/Context;Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;)Landroidx/appcompat/app/AlertDialog;
-    .locals 0
+    .locals 2
 
     .line 1
-    invoke-virtual {p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->create()Landroidx/appcompat/app/AlertDialog;
+    sget v0, Lorg/levimc/launcher/R$color;->surface:I
 
     .line 2
     .line 3
+    invoke-static {p0, v0}, Lorg/levimc/launcher/ui/world/WorldUi;->color(Landroid/content/Context;I)I
+
     .line 4
-    move-result-object p0
-
     .line 5
-    const/16 p1, 0x230
-
     .line 6
+    move-result v0
+
     .line 7
-    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->bind(Landroid/app/Dialog;I)V
+    const/16 v1, 0x10
 
     .line 8
     .line 9
-    .line 10
-    invoke-virtual {p0}, Landroid/app/Dialog;->show()V
+    invoke-static {p0, v0, v1}, Lorg/levimc/launcher/ui/world/WorldUi;->background(Landroid/content/Context;II)Landroid/graphics/drawable/GradientDrawable;
 
+    .line 10
     .line 11
     .line 12
+    move-result-object v0
+
     .line 13
-    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->style(Landroid/app/Dialog;I)V
+    iput-object v0, p1, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->h:Landroid/graphics/drawable/Drawable;
 
     .line 14
     .line 15
+    invoke-virtual {p1}, Lcom/google/android/material/dialog/MaterialAlertDialogBuilder;->e()Landroidx/appcompat/app/AlertDialog;
+
     .line 16
-    return-object p0
+    .line 17
+    .line 18
+    move-result-object p1
+
+    .line 19
+    new-instance v0, Lorg/levimc/launcher/ui/world/m;
+
+    .line 20
+    .line 21
+    invoke-direct {v0, p1, p0}, Lorg/levimc/launcher/ui/world/m;-><init>(Landroidx/appcompat/app/AlertDialog;Landroid/content/Context;)V
+
+    .line 22
+    .line 23
+    .line 24
+    invoke-virtual {p1, v0}, Landroid/app/Dialog;->setOnShowListener(Landroid/content/DialogInterface$OnShowListener;)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-virtual {p1}, Landroid/app/Dialog;->show()V
+
+    .line 28
+    .line 29
+    .line 30
+    return-object p1
 .end method
 
 .method public static text(Landroid/content/Context;Ljava/lang/String;FZ)Landroid/widget/TextView;

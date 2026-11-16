@@ -1,346 +1,413 @@
-.class public abstract Lcom/google/android/gms/internal/measurement/bc;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final Lcom/google/android/gms/internal/measurement/bc;
+.super Lcom/google/android/gms/internal/measurement/h1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final a:Lcom/google/android/gms/internal/measurement/r6;
+.field private static final zzh:Lcom/google/android/gms/internal/measurement/bc;
+
+.field private static volatile zzi:Lcom/google/android/gms/internal/measurement/g2;
+
+
+# instance fields
+.field private zzb:I
+
+.field private zze:Ljava/lang/String;
+
+.field private zzf:Lcom/google/android/gms/internal/measurement/ac;
+
+.field private zzg:Ljava/lang/String;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 10
+    .locals 2
 
     .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/r6;
+    new-instance v0, Lcom/google/android/gms/internal/measurement/bc;
 
     .line 2
     .line 3
-    sget-object v1, Lcom/google/android/gms/internal/measurement/d;->a:Lcom/google/android/gms/internal/measurement/e;
+    invoke-direct {v0}, Lcom/google/android/gms/internal/measurement/bc;-><init>()V
 
     .line 4
     .line 5
-    check-cast v1, Lcom/google/android/gms/internal/measurement/i;
-
     .line 6
-    .line 7
-    invoke-virtual {v1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    sput-object v0, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
 
+    .line 7
     .line 8
+    const-class v1, Lcom/google/android/gms/internal/measurement/bc;
+
     .line 9
     .line 10
-    sget-object v1, Lcom/google/android/gms/internal/measurement/m;->f:Ljava/util/concurrent/atomic/AtomicReference;
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/h1;->o(Ljava/lang/Class;Lcom/google/android/gms/internal/measurement/h1;)V
 
     .line 11
     .line 12
-    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+    .line 13
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0}, Lcom/google/android/gms/internal/measurement/h1;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    const-string v0, ""
+
+    .line 5
+    .line 6
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zze:Ljava/lang/String;
+
+    .line 7
+    .line 8
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zzg:Ljava/lang/String;
+
+    .line 9
+    .line 10
+    return-void
+.end method
+
+.method public static u()Lcom/google/android/gms/internal/measurement/yb;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/h1;->j()Lcom/google/android/gms/internal/measurement/f1;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, Lcom/google/android/gms/internal/measurement/yb;
+
+    .line 8
+    .line 9
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final s(I)Ljava/lang/Object;
+    .locals 3
+
+    .line 1
+    add-int/lit8 p1, p1, -0x1
+
+    .line 2
+    .line 3
+    if-eqz p1, :cond_7
+
+    .line 4
+    .line 5
+    const/4 v0, 0x2
+
+    .line 6
+    if-eq p1, v0, :cond_6
+
+    .line 7
+    .line 8
+    const/4 v0, 0x3
+
+    .line 9
+    if-eq p1, v0, :cond_5
+
+    .line 10
+    .line 11
+    const/4 v0, 0x4
+
+    .line 12
+    if-eq p1, v0, :cond_4
 
     .line 13
     .line 14
+    const/4 v0, 0x5
+
     .line 15
-    move-result-object v2
+    if-eq p1, v0, :cond_3
 
     .line 16
-    const-string v3, "Phlogger"
-
     .line 17
+    const/4 v0, 0x6
+
     .line 18
-    if-eqz v2, :cond_0
+    if-ne p1, v0, :cond_2
 
     .line 19
     .line 20
-    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+    sget-object p1, Lcom/google/android/gms/internal/measurement/bc;->zzi:Lcom/google/android/gms/internal/measurement/g2;
 
     .line 21
     .line 22
-    .line 23
-    move-result-object v1
+    if-nez p1, :cond_1
 
+    .line 23
     .line 24
-    check-cast v1, Lcom/google/android/gms/internal/measurement/o;
+    const-class v0, Lcom/google/android/gms/internal/measurement/bc;
 
     .line 25
     .line 26
-    iget-object v2, v1, Lcom/google/android/gms/internal/measurement/o;->a:Ljava/util/logging/Level;
+    monitor-enter v0
 
     .line 27
+    :try_start_0
+    sget-object p1, Lcom/google/android/gms/internal/measurement/bc;->zzi:Lcom/google/android/gms/internal/measurement/g2;
+
     .line 28
-    iget-object v4, v1, Lcom/google/android/gms/internal/measurement/o;->b:Ljava/util/Set;
-
     .line 29
+    if-nez p1, :cond_0
+
     .line 30
-    iget-object v1, v1, Lcom/google/android/gms/internal/measurement/o;->c:Lcom/google/android/gms/internal/measurement/ri;
-
     .line 31
+    new-instance p1, Lcom/google/android/gms/internal/measurement/g1;
+
     .line 32
-    new-instance v5, Lcom/google/android/gms/internal/measurement/q;
-
     .line 33
-    .line 34
-    invoke-direct {v5, v3, v2, v4, v1}, Lcom/google/android/gms/internal/measurement/q;-><init>(Ljava/lang/String;Ljava/util/logging/Level;Ljava/util/Set;Lcom/google/android/gms/internal/measurement/ri;)V
+    sget-object v1, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
 
+    .line 34
     .line 35
+    invoke-direct {p1, v1}, Lcom/google/android/gms/internal/measurement/g1;-><init>(Lcom/google/android/gms/internal/measurement/h1;)V
+
     .line 36
     .line 37
-    goto/16 :goto_5
-
     .line 38
-    .line 39
-    :cond_0
-    new-instance v5, Lcom/google/android/gms/internal/measurement/m;
+    sput-object p1, Lcom/google/android/gms/internal/measurement/bc;->zzi:Lcom/google/android/gms/internal/measurement/g2;
 
+    .line 39
     .line 40
+    goto :goto_0
+
     .line 41
-    const/4 v2, 0x7
+    :catchall_0
+    move-exception p1
 
     .line 42
-    :goto_0
-    if-ltz v2, :cond_2
+    goto :goto_1
 
     .line 43
+    :cond_0
+    :goto_0
+    monitor-exit v0
+
     .line 44
-    invoke-virtual {v3, v2}, Ljava/lang/String;->charAt(I)C
+    return-object p1
 
     .line 45
+    :goto_1
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     .line 46
+    throw p1
+
     .line 47
-    move-result v4
+    :cond_1
+    return-object p1
 
     .line 48
-    const/16 v6, 0x2e
+    :cond_2
+    const/4 p1, 0x0
 
     .line 49
+    throw p1
+
     .line 50
-    const/16 v7, 0x24
+    :cond_3
+    sget-object p1, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
 
     .line 51
     .line 52
-    if-ne v4, v7, :cond_1
+    return-object p1
 
     .line 53
-    .line 54
-    invoke-virtual {v3, v7, v6}, Ljava/lang/String;->replace(CC)Ljava/lang/String;
+    :cond_4
+    new-instance p1, Lcom/google/android/gms/internal/measurement/yb;
 
+    .line 54
     .line 55
+    sget-object v0, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
+
     .line 56
     .line 57
-    move-result-object v3
+    invoke-direct {p1, v0}, Lcom/google/android/gms/internal/measurement/f1;-><init>(Lcom/google/android/gms/internal/measurement/h1;)V
 
     .line 58
-    goto :goto_1
-
     .line 59
-    :cond_1
-    if-eq v4, v6, :cond_2
-
     .line 60
+    return-object p1
+
     .line 61
-    add-int/lit8 v2, v2, -0x1
+    :cond_5
+    new-instance p1, Lcom/google/android/gms/internal/measurement/bc;
 
     .line 62
     .line 63
-    goto :goto_0
+    invoke-direct {p1}, Lcom/google/android/gms/internal/measurement/bc;-><init>()V
 
     .line 64
-    :cond_2
-    :goto_1
-    invoke-direct {v5, v3}, Lcom/google/android/gms/internal/measurement/y2;-><init>(Ljava/lang/Object;)V
-
     .line 65
     .line 66
+    return-object p1
+
     .line 67
-    sget-boolean v2, Lcom/google/android/gms/internal/measurement/m;->c:Z
+    :cond_6
+    const-string p1, "zzb"
 
     .line 68
     .line 69
-    if-nez v2, :cond_5
+    const-string v0, "zze"
 
     .line 70
     .line 71
-    sget-boolean v2, Lcom/google/android/gms/internal/measurement/m;->d:Z
+    const-string v1, "zzf"
 
     .line 72
     .line 73
-    if-eqz v2, :cond_3
+    const-string v2, "zzg"
 
     .line 74
     .line 75
-    goto :goto_2
+    filled-new-array {p1, v0, v1, v2}, [Ljava/lang/Object;
 
     .line 76
-    :cond_3
-    sget-boolean v2, Lcom/google/android/gms/internal/measurement/m;->e:Z
-
     .line 77
     .line 78
-    if-eqz v2, :cond_4
+    move-result-object p1
 
     .line 79
+    sget-object v0, Lcom/google/android/gms/internal/measurement/bc;->zzh:Lcom/google/android/gms/internal/measurement/bc;
+
     .line 80
-    sget-object v2, Lcom/google/android/gms/internal/measurement/q;->h:Lcom/google/android/gms/internal/measurement/o;
-
     .line 81
+    const-string v1, "\u0004\u0003\u0000\u0001\u0001\u0003\u0003\u0000\u0000\u0000\u0001\u1008\u0000\u0002\u1009\u0001\u0003\u1008\u0002"
+
     .line 82
-    iget-object v4, v2, Lcom/google/android/gms/internal/measurement/o;->b:Ljava/util/Set;
-
     .line 83
+    new-instance v2, Lcom/google/android/gms/internal/measurement/k2;
+
     .line 84
-    iget-object v2, v2, Lcom/google/android/gms/internal/measurement/o;->c:Lcom/google/android/gms/internal/measurement/ri;
-
     .line 85
-    .line 86
-    sget-object v6, Ljava/util/logging/Level;->OFF:Ljava/util/logging/Level;
+    invoke-direct {v2, v0, v1, p1}, Lcom/google/android/gms/internal/measurement/k2;-><init>(Lcom/google/android/gms/internal/measurement/l0;Ljava/lang/String;[Ljava/lang/Object;)V
 
+    .line 86
     .line 87
     .line 88
-    new-instance v7, Lcom/google/android/gms/internal/measurement/q;
+    return-object v2
 
     .line 89
+    :cond_7
+    const/4 p1, 0x1
+
     .line 90
-    invoke-direct {v7, v3, v6, v4, v2}, Lcom/google/android/gms/internal/measurement/q;-><init>(Ljava/lang/String;Ljava/util/logging/Level;Ljava/util/Set;Lcom/google/android/gms/internal/measurement/ri;)V
+    invoke-static {p1}, Ljava/lang/Byte;->valueOf(B)Ljava/lang/Byte;
 
     .line 91
     .line 92
     .line 93
-    iput-object v7, v5, Lcom/google/android/gms/internal/measurement/m;->b:Lcom/google/android/gms/internal/measurement/y2;
+    move-result-object p1
 
     .line 94
-    .line 95
-    goto :goto_3
+    return-object p1
+.end method
 
-    .line 96
-    :cond_4
-    const/4 v2, 0x0
+.method public final t()Ljava/lang/String;
+    .locals 1
 
-    .line 97
-    iput-object v2, v5, Lcom/google/android/gms/internal/measurement/m;->b:Lcom/google/android/gms/internal/measurement/y2;
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zze:Ljava/lang/String;
 
-    .line 98
-    .line 99
-    goto :goto_3
+    .line 2
+    .line 3
+    return-object v0
+.end method
 
-    .line 100
-    :cond_5
-    :goto_2
-    new-instance v2, Lcom/google/android/gms/internal/measurement/p;
+.method public final synthetic v(Ljava/lang/String;)V
+    .locals 1
 
-    .line 101
-    .line 102
-    invoke-direct {v2, v3}, Lcom/google/android/gms/internal/measurement/p;-><init>(Ljava/lang/String;)V
+    .line 1
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 103
-    .line 104
-    .line 105
-    iput-object v2, v5, Lcom/google/android/gms/internal/measurement/m;->b:Lcom/google/android/gms/internal/measurement/y2;
+    .line 2
+    .line 3
+    .line 4
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 106
-    .line 107
-    :goto_3
-    sget-object v2, Lcom/google/android/gms/internal/measurement/k;->a:Ljava/util/concurrent/ConcurrentLinkedQueue;
+    .line 5
+    .line 6
+    or-int/lit8 v0, v0, 0x1
 
-    .line 108
-    .line 109
-    invoke-virtual {v2, v5}, Ljava/util/concurrent/ConcurrentLinkedQueue;->offer(Ljava/lang/Object;)Z
+    .line 7
+    .line 8
+    iput v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 110
-    .line 111
-    .line 112
-    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+    .line 9
+    .line 10
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/bc;->zze:Ljava/lang/String;
 
-    .line 113
-    .line 114
-    .line 115
-    move-result-object v3
+    .line 11
+    .line 12
+    return-void
+.end method
 
-    .line 116
-    if-eqz v3, :cond_7
+.method public final synthetic w(Lcom/google/android/gms/internal/measurement/ac;)V
+    .locals 0
 
-    .line 117
-    .line 118
-    :goto_4
-    invoke-virtual {v2}, Ljava/util/concurrent/ConcurrentLinkedQueue;->poll()Ljava/lang/Object;
+    .line 1
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/bc;->zzf:Lcom/google/android/gms/internal/measurement/ac;
 
-    .line 119
-    .line 120
-    .line 121
-    move-result-object v3
+    .line 2
+    .line 3
+    iget p1, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 122
-    check-cast v3, Lcom/google/android/gms/internal/measurement/m;
+    .line 4
+    .line 5
+    or-int/lit8 p1, p1, 0x2
 
-    .line 123
-    .line 124
-    if-eqz v3, :cond_6
+    .line 6
+    .line 7
+    iput p1, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 125
-    .line 126
-    invoke-virtual {v1}, Ljava/util/concurrent/atomic/AtomicReference;->get()Ljava/lang/Object;
+    .line 8
+    .line 9
+    return-void
+.end method
 
-    .line 127
-    .line 128
-    .line 129
-    move-result-object v4
+.method public final synthetic x(Ljava/lang/String;)V
+    .locals 1
 
-    .line 130
-    check-cast v4, Lcom/google/android/gms/internal/measurement/o;
+    .line 1
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 131
-    .line 132
-    iget-object v6, v3, Lcom/google/android/gms/internal/measurement/y2;->a:Ljava/lang/Object;
+    .line 2
+    .line 3
+    .line 4
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 133
-    .line 134
-    check-cast v6, Ljava/lang/String;
+    .line 5
+    .line 6
+    or-int/lit8 v0, v0, 0x4
 
-    .line 135
-    .line 136
-    iget-object v7, v4, Lcom/google/android/gms/internal/measurement/o;->a:Ljava/util/logging/Level;
+    .line 7
+    .line 8
+    iput v0, p0, Lcom/google/android/gms/internal/measurement/bc;->zzb:I
 
-    .line 137
-    .line 138
-    iget-object v8, v4, Lcom/google/android/gms/internal/measurement/o;->b:Ljava/util/Set;
+    .line 9
+    .line 10
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/bc;->zzg:Ljava/lang/String;
 
-    .line 139
-    .line 140
-    iget-object v4, v4, Lcom/google/android/gms/internal/measurement/o;->c:Lcom/google/android/gms/internal/measurement/ri;
-
-    .line 141
-    .line 142
-    new-instance v9, Lcom/google/android/gms/internal/measurement/q;
-
-    .line 143
-    .line 144
-    invoke-direct {v9, v6, v7, v8, v4}, Lcom/google/android/gms/internal/measurement/q;-><init>(Ljava/lang/String;Ljava/util/logging/Level;Ljava/util/Set;Lcom/google/android/gms/internal/measurement/ri;)V
-
-    .line 145
-    .line 146
-    .line 147
-    iput-object v9, v3, Lcom/google/android/gms/internal/measurement/m;->b:Lcom/google/android/gms/internal/measurement/y2;
-
-    .line 148
-    .line 149
-    goto :goto_4
-
-    .line 150
-    :cond_6
-    invoke-static {}, Lcom/google/android/gms/internal/measurement/m;->m()V
-
-    .line 151
-    .line 152
-    .line 153
-    :cond_7
-    :goto_5
-    const/4 v1, 0x2
-
-    .line 154
-    invoke-direct {v0, v5, v1}, Lcom/google/android/gms/internal/measurement/r6;-><init>(Ljava/lang/Object;I)V
-
-    .line 155
-    .line 156
-    .line 157
-    sput-object v0, Lcom/google/android/gms/internal/measurement/bc;->a:Lcom/google/android/gms/internal/measurement/r6;
-
-    .line 158
-    .line 159
+    .line 11
+    .line 12
     return-void
 .end method

@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -19,17 +19,19 @@
 
 
 # instance fields
+.field public final B1:Ljava/util/ArrayList;
+
 .field public final C1:Ljava/util/ArrayList;
 
 .field public final D1:Z
 
-.field public final X:Ljava/lang/CharSequence;
+.field public final X:I
 
-.field public final Y:I
+.field public final Y:Ljava/lang/CharSequence;
 
-.field public final Z:Ljava/lang/CharSequence;
+.field public final Z:I
 
-.field public final b1:Ljava/util/ArrayList;
+.field public final b1:Ljava/lang/CharSequence;
 
 .field public final c:[I
 
@@ -37,13 +39,11 @@
 
 .field public final h:[I
 
-.field public final p:[I
+.field public final q:[I
 
-.field public final q:I
+.field public final w:I
 
-.field public final w:Ljava/lang/String;
-
-.field public final x:I
+.field public final x:Ljava/lang/String;
 
 .field public final y:I
 
@@ -104,35 +104,35 @@
 
     move-result-object v0
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->p:[I
+    iput-object v0, p0, Landroidx/fragment/app/c;->q:[I
 
     .line 34
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/c;->q:I
+    iput v0, p0, Landroidx/fragment/app/c;->w:I
 
     .line 35
     invoke-virtual {p1}, Landroid/os/Parcel;->readString()Ljava/lang/String;
 
     move-result-object v0
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->w:Ljava/lang/String;
+    iput-object v0, p0, Landroidx/fragment/app/c;->x:Ljava/lang/String;
 
     .line 36
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/c;->x:I
+    iput v0, p0, Landroidx/fragment/app/c;->y:I
 
     .line 37
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v0
 
-    iput v0, p0, Landroidx/fragment/app/c;->y:I
+    iput v0, p0, Landroidx/fragment/app/c;->X:I
 
     .line 38
     sget-object v0, Landroid/text/TextUtils;->CHAR_SEQUENCE_CREATOR:Landroid/os/Parcelable$Creator;
@@ -143,14 +143,14 @@
 
     check-cast v1, Ljava/lang/CharSequence;
 
-    iput-object v1, p0, Landroidx/fragment/app/c;->X:Ljava/lang/CharSequence;
+    iput-object v1, p0, Landroidx/fragment/app/c;->Y:Ljava/lang/CharSequence;
 
     .line 39
     invoke-virtual {p1}, Landroid/os/Parcel;->readInt()I
 
     move-result v1
 
-    iput v1, p0, Landroidx/fragment/app/c;->Y:I
+    iput v1, p0, Landroidx/fragment/app/c;->Z:I
 
     .line 40
     invoke-interface {v0, p1}, Landroid/os/Parcelable$Creator;->createFromParcel(Landroid/os/Parcel;)Ljava/lang/Object;
@@ -159,14 +159,14 @@
 
     check-cast v0, Ljava/lang/CharSequence;
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->Z:Ljava/lang/CharSequence;
+    iput-object v0, p0, Landroidx/fragment/app/c;->b1:Ljava/lang/CharSequence;
 
     .line 41
     invoke-virtual {p1}, Landroid/os/Parcel;->createStringArrayList()Ljava/util/ArrayList;
 
     move-result-object v0
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->b1:Ljava/util/ArrayList;
+    iput-object v0, p0, Landroidx/fragment/app/c;->B1:Ljava/util/ArrayList;
 
     .line 42
     invoke-virtual {p1}, Landroid/os/Parcel;->createStringArrayList()Ljava/util/ArrayList;
@@ -235,7 +235,7 @@
     .line 7
     new-array v1, v0, [I
 
-    iput-object v1, p0, Landroidx/fragment/app/c;->p:[I
+    iput-object v1, p0, Landroidx/fragment/app/c;->q:[I
 
     const/4 v1, 0x0
 
@@ -328,7 +328,7 @@
     aput v5, v4, v1
 
     .line 17
-    iget-object v4, p0, Landroidx/fragment/app/c;->p:[I
+    iget-object v4, p0, Landroidx/fragment/app/c;->q:[I
 
     iget-object v3, v3, Landroidx/fragment/app/k1;->i:Landroidx/lifecycle/Lifecycle$State;
 
@@ -346,42 +346,42 @@
     :cond_1
     iget v0, p1, Landroidx/fragment/app/FragmentTransaction;->f:I
 
-    iput v0, p0, Landroidx/fragment/app/c;->q:I
+    iput v0, p0, Landroidx/fragment/app/c;->w:I
 
     .line 19
     iget-object v0, p1, Landroidx/fragment/app/FragmentTransaction;->h:Ljava/lang/String;
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->w:Ljava/lang/String;
+    iput-object v0, p0, Landroidx/fragment/app/c;->x:Ljava/lang/String;
 
     .line 20
     iget v0, p1, Landroidx/fragment/app/a;->s:I
 
-    iput v0, p0, Landroidx/fragment/app/c;->x:I
+    iput v0, p0, Landroidx/fragment/app/c;->y:I
 
     .line 21
     iget v0, p1, Landroidx/fragment/app/FragmentTransaction;->i:I
 
-    iput v0, p0, Landroidx/fragment/app/c;->y:I
+    iput v0, p0, Landroidx/fragment/app/c;->X:I
 
     .line 22
     iget-object v0, p1, Landroidx/fragment/app/FragmentTransaction;->j:Ljava/lang/CharSequence;
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->X:Ljava/lang/CharSequence;
+    iput-object v0, p0, Landroidx/fragment/app/c;->Y:Ljava/lang/CharSequence;
 
     .line 23
     iget v0, p1, Landroidx/fragment/app/FragmentTransaction;->k:I
 
-    iput v0, p0, Landroidx/fragment/app/c;->Y:I
+    iput v0, p0, Landroidx/fragment/app/c;->Z:I
 
     .line 24
     iget-object v0, p1, Landroidx/fragment/app/FragmentTransaction;->l:Ljava/lang/CharSequence;
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->Z:Ljava/lang/CharSequence;
+    iput-object v0, p0, Landroidx/fragment/app/c;->b1:Ljava/lang/CharSequence;
 
     .line 25
     iget-object v0, p1, Landroidx/fragment/app/FragmentTransaction;->m:Ljava/util/ArrayList;
 
-    iput-object v0, p0, Landroidx/fragment/app/c;->b1:Ljava/util/ArrayList;
+    iput-object v0, p0, Landroidx/fragment/app/c;->B1:Ljava/util/ArrayList;
 
     .line 26
     iget-object v0, p1, Landroidx/fragment/app/FragmentTransaction;->n:Ljava/util/ArrayList;
@@ -449,7 +449,7 @@
     .line 14
     .line 15
     .line 16
-    iget-object p2, p0, Landroidx/fragment/app/c;->p:[I
+    iget-object p2, p0, Landroidx/fragment/app/c;->q:[I
 
     .line 17
     .line 18
@@ -458,7 +458,7 @@
     .line 19
     .line 20
     .line 21
-    iget p2, p0, Landroidx/fragment/app/c;->q:I
+    iget p2, p0, Landroidx/fragment/app/c;->w:I
 
     .line 22
     .line 23
@@ -467,7 +467,7 @@
     .line 24
     .line 25
     .line 26
-    iget-object p2, p0, Landroidx/fragment/app/c;->w:Ljava/lang/String;
+    iget-object p2, p0, Landroidx/fragment/app/c;->x:Ljava/lang/String;
 
     .line 27
     .line 28
@@ -476,7 +476,7 @@
     .line 29
     .line 30
     .line 31
-    iget p2, p0, Landroidx/fragment/app/c;->x:I
+    iget p2, p0, Landroidx/fragment/app/c;->y:I
 
     .line 32
     .line 33
@@ -485,7 +485,7 @@
     .line 34
     .line 35
     .line 36
-    iget p2, p0, Landroidx/fragment/app/c;->y:I
+    iget p2, p0, Landroidx/fragment/app/c;->X:I
 
     .line 37
     .line 38
@@ -494,7 +494,7 @@
     .line 39
     .line 40
     .line 41
-    iget-object p2, p0, Landroidx/fragment/app/c;->X:Ljava/lang/CharSequence;
+    iget-object p2, p0, Landroidx/fragment/app/c;->Y:Ljava/lang/CharSequence;
 
     .line 42
     .line 43
@@ -506,7 +506,7 @@
     .line 45
     .line 46
     .line 47
-    iget p2, p0, Landroidx/fragment/app/c;->Y:I
+    iget p2, p0, Landroidx/fragment/app/c;->Z:I
 
     .line 48
     .line 49
@@ -515,7 +515,7 @@
     .line 50
     .line 51
     .line 52
-    iget-object p2, p0, Landroidx/fragment/app/c;->Z:Ljava/lang/CharSequence;
+    iget-object p2, p0, Landroidx/fragment/app/c;->b1:Ljava/lang/CharSequence;
 
     .line 53
     .line 54
@@ -524,7 +524,7 @@
     .line 55
     .line 56
     .line 57
-    iget-object p2, p0, Landroidx/fragment/app/c;->b1:Ljava/util/ArrayList;
+    iget-object p2, p0, Landroidx/fragment/app/c;->B1:Ljava/util/ArrayList;
 
     .line 58
     .line 59

@@ -1,9 +1,9 @@
 .class public final Lcom/google/android/gms/internal/measurement/z3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lf6/k;
+.implements Ld6/j;
 
 
 # static fields
@@ -11,7 +11,7 @@
 
 
 # instance fields
-.field public final c:Lf6/n;
+.field public final c:Ld6/m;
 
 
 # direct methods
@@ -53,19 +53,42 @@
     .line 7
     .line 8
     .line 9
-    new-instance v1, Lf6/n;
+    new-instance v1, Ld6/m;
 
     .line 10
     .line 11
-    invoke-direct {v1, v0}, Lf6/n;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v1, v0}, Ld6/m;-><init>(Ljava/lang/Object;)V
 
     .line 12
     .line 13
     .line 14
-    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/z3;->c:Lf6/n;
+    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/z3;->c:Ld6/m;
 
     .line 15
     .line 16
+    return-void
+.end method
+
+.method public static a()V
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/google/android/gms/internal/measurement/z3;->d:Lcom/google/android/gms/internal/measurement/z3;
+
+    .line 2
+    .line 3
+    iget-object v0, v0, Lcom/google/android/gms/internal/measurement/z3;->c:Ld6/m;
+
+    .line 4
+    .line 5
+    iget-object v0, v0, Ld6/m;->c:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v0, Lcom/google/android/gms/internal/measurement/a4;
+
+    .line 8
+    .line 9
     return-void
 .end method
 
@@ -75,11 +98,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/z3;->c:Lf6/n;
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/z3;->c:Ld6/m;
 
     .line 2
     .line 3
-    iget-object v0, v0, Lf6/n;->c:Ljava/lang/Object;
+    iget-object v0, v0, Ld6/m;->c:Ljava/lang/Object;
 
     .line 4
     .line 5

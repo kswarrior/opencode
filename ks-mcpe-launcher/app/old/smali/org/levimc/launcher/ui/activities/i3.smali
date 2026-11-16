@@ -1,133 +1,92 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/i3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
+.field public final synthetic d:I
 
-.field public final synthetic h:Landroid/widget/EditText;
+.field public final synthetic h:I
+
+.field public final synthetic q:I
+
+.field public final synthetic w:Ljava/util/List;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/i3;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/i3;->d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/i3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/i3;->h:Landroid/widget/EditText;
-
     .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/i3;->d:I
 
+    .line 7
     .line 8
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/i3;->h:I
+
     .line 9
     .line 10
+    iput p4, p0, Lorg/levimc/launcher/ui/activities/i3;->q:I
+
+    .line 11
+    .line 12
+    iput-object p5, p0, Lorg/levimc/launcher/ui/activities/i3;->w:Ljava/util/List;
+
+    .line 13
+    .line 14
     return-void
 .end method
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 2
+.method public final onClick(Landroid/content/DialogInterface;I)V
+    .locals 7
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/i3;->c:I
+    iget v3, p0, Lorg/levimc/launcher/ui/activities/i3;->q:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v4, p0, Lorg/levimc/launcher/ui/activities/i3;->w:Ljava/util/List;
 
     .line 4
     .line 5
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/i3;->c:Lorg/levimc/launcher/ui/activities/WorldEditorActivity;
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/i3;->d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
     .line 7
+    iget v1, p0, Lorg/levimc/launcher/ui/activities/i3;->d:I
+
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/i3;->h:Landroid/widget/EditText;
-
     .line 9
-    .line 10
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->y(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/view/View;)V
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/i3;->h:I
 
+    .line 10
     .line 11
+    move-object v5, p1
+
     .line 12
+    move v6, p2
+
     .line 13
-    return-void
+    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->J0(Lorg/levimc/launcher/ui/activities/WorldEditorActivity;IIILjava/util/List;Landroid/content/DialogInterface;I)V
 
     .line 14
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/i3;->d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
     .line 15
     .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/i3;->h:Landroid/widget/EditText;
-
-    .line 17
-    .line 18
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->C(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 19
-    .line 20
-    .line 21
     return-void
-
-    .line 22
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/i3;->d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 23
-    .line 24
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/i3;->h:Landroid/widget/EditText;
-
-    .line 25
-    .line 26
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->w(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/i3;->d:Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 31
-    .line 32
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/i3;->h:Landroid/widget/EditText;
-
-    .line 33
-    .line 34
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->z(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 35
-    .line 36
-    .line 37
-    return-void
-
-    .line 38
-    nop
-
-    .line 39
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
 .end method

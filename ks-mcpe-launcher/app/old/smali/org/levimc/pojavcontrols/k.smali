@@ -1,12 +1,14 @@
 .class public final synthetic Lorg/levimc/pojavcontrols/k;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/content/DialogInterface$OnClickListener;
 
 
 # instance fields
+.field public final synthetic B1:Landroid/widget/EditText;
+
 .field public final synthetic C1:Landroid/widget/EditText;
 
 .field public final synthetic D1:Landroid/widget/CheckBox;
@@ -41,9 +43,7 @@
 
 .field public final synthetic h:Landroid/widget/EditText;
 
-.field public final synthetic p:[I
-
-.field public final synthetic q:Landroid/widget/EditText;
+.field public final synthetic q:[I
 
 .field public final synthetic w:Landroid/widget/EditText;
 
@@ -59,129 +59,66 @@
     .line 1
     move/from16 v0, p22
 
-    .line 2
-    .line 3
     iput v0, p0, Lorg/levimc/pojavcontrols/k;->c:I
 
-    .line 4
-    .line 5
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->L1:Landroid/view/KeyEvent$Callback;
 
-    .line 6
-    .line 7
     iput-object p2, p0, Lorg/levimc/pojavcontrols/k;->d:Lorg/levimc/pojavcontrols/ControlEditorCanvas$EditorTarget;
 
-    .line 8
-    .line 9
     iput-object p3, p0, Lorg/levimc/pojavcontrols/k;->h:Landroid/widget/EditText;
 
-    .line 10
-    .line 11
-    iput-object p4, p0, Lorg/levimc/pojavcontrols/k;->p:[I
+    iput-object p4, p0, Lorg/levimc/pojavcontrols/k;->q:[I
 
-    .line 12
-    .line 13
-    iput-object p5, p0, Lorg/levimc/pojavcontrols/k;->q:Landroid/widget/EditText;
+    iput-object p5, p0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
 
-    .line 14
-    .line 15
-    iput-object p6, p0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
+    iput-object p6, p0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
 
-    .line 16
-    .line 17
-    iput-object p7, p0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
+    iput-object p7, p0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
 
-    .line 18
-    .line 19
-    iput-object p8, p0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
+    iput-object p8, p0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
 
-    .line 20
-    .line 21
-    iput-object p9, p0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
+    iput-object p9, p0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
 
-    .line 22
-    .line 23
-    iput-object p10, p0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
+    iput-object p10, p0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
 
-    .line 24
-    .line 25
-    iput-object p11, p0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
+    iput-object p11, p0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
 
-    .line 26
-    .line 27
-    iput-object p12, p0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
+    iput-object p12, p0, Lorg/levimc/pojavcontrols/k;->B1:Landroid/widget/EditText;
 
-    .line 28
-    .line 29
     iput-object p13, p0, Lorg/levimc/pojavcontrols/k;->C1:Landroid/widget/EditText;
 
-    .line 30
-    .line 31
     iput-object p14, p0, Lorg/levimc/pojavcontrols/k;->D1:Landroid/widget/CheckBox;
 
-    .line 32
-    .line 33
     move-object/from16 p1, p15
 
-    .line 34
-    .line 35
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->E1:Landroid/widget/CheckBox;
 
-    .line 36
-    .line 37
     move-object/from16 p1, p16
 
-    .line 38
-    .line 39
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->F1:Landroid/widget/CheckBox;
 
-    .line 40
-    .line 41
     move-object/from16 p1, p17
 
-    .line 42
-    .line 43
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->G1:Landroid/widget/CheckBox;
 
-    .line 44
-    .line 45
     move-object/from16 p1, p18
 
-    .line 46
-    .line 47
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->H1:Landroid/widget/CheckBox;
 
-    .line 48
-    .line 49
     move-object/from16 p1, p19
 
-    .line 50
-    .line 51
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->I1:Landroid/widget/CheckBox;
 
-    .line 52
-    .line 53
     move-object/from16 p1, p20
 
-    .line 54
-    .line 55
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->J1:Landroid/widget/CheckBox;
 
-    .line 56
-    .line 57
     move-object/from16 p1, p21
 
-    .line 58
-    .line 59
     iput-object p1, p0, Lorg/levimc/pojavcontrols/k;->K1:Landroid/widget/Spinner;
 
-    .line 60
-    .line 61
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 62
-    .line 63
-    .line 64
     return-void
 .end method
 
@@ -235,39 +172,39 @@
 
     .line 22
     .line 23
-    iget-object v5, v0, Lorg/levimc/pojavcontrols/k;->p:[I
+    iget-object v5, v0, Lorg/levimc/pojavcontrols/k;->q:[I
 
     .line 24
     .line 25
-    iget-object v6, v0, Lorg/levimc/pojavcontrols/k;->q:Landroid/widget/EditText;
+    iget-object v6, v0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
 
     .line 26
     .line 27
-    iget-object v7, v0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
+    iget-object v7, v0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
 
     .line 28
     .line 29
-    iget-object v8, v0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
+    iget-object v8, v0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
 
     .line 30
     .line 31
-    iget-object v9, v0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
+    iget-object v9, v0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
 
     .line 32
     .line 33
-    iget-object v10, v0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
+    iget-object v10, v0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
 
     .line 34
     .line 35
-    iget-object v11, v0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
+    iget-object v11, v0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
 
     .line 36
     .line 37
-    iget-object v12, v0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
+    iget-object v12, v0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
 
     .line 38
     .line 39
-    iget-object v13, v0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
+    iget-object v13, v0, Lorg/levimc/pojavcontrols/k;->B1:Landroid/widget/EditText;
 
     .line 40
     .line 41
@@ -368,39 +305,39 @@
 
     .line 88
     .line 89
-    iget-object v5, v0, Lorg/levimc/pojavcontrols/k;->p:[I
+    iget-object v5, v0, Lorg/levimc/pojavcontrols/k;->q:[I
 
     .line 90
     .line 91
-    iget-object v6, v0, Lorg/levimc/pojavcontrols/k;->q:Landroid/widget/EditText;
+    iget-object v6, v0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
 
     .line 92
     .line 93
-    iget-object v7, v0, Lorg/levimc/pojavcontrols/k;->w:Landroid/widget/EditText;
+    iget-object v7, v0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
 
     .line 94
     .line 95
-    iget-object v8, v0, Lorg/levimc/pojavcontrols/k;->x:Landroid/widget/EditText;
+    iget-object v8, v0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
 
     .line 96
     .line 97
-    iget-object v9, v0, Lorg/levimc/pojavcontrols/k;->y:Landroid/widget/EditText;
+    iget-object v9, v0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
 
     .line 98
     .line 99
-    iget-object v10, v0, Lorg/levimc/pojavcontrols/k;->X:Landroid/widget/EditText;
+    iget-object v10, v0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
 
     .line 100
     .line 101
-    iget-object v11, v0, Lorg/levimc/pojavcontrols/k;->Y:Landroid/widget/EditText;
+    iget-object v11, v0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
 
     .line 102
     .line 103
-    iget-object v12, v0, Lorg/levimc/pojavcontrols/k;->Z:Landroid/widget/EditText;
+    iget-object v12, v0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
 
     .line 104
     .line 105
-    iget-object v13, v0, Lorg/levimc/pojavcontrols/k;->b1:Landroid/widget/EditText;
+    iget-object v13, v0, Lorg/levimc/pojavcontrols/k;->B1:Landroid/widget/EditText;
 
     .line 106
     .line 107

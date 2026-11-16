@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/adapter/WorldsAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -1246,7 +1246,23 @@
     .line 9
     iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/WorldsAdapter$WorldViewHolder;->worldLastPlayed:Landroid/widget/TextView;
 
+    iget-object v2, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
+
+    invoke-virtual {v2}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v2
+
+    sget v3, Lorg/levimc/launcher/R$string;->world_last_played:I
+
     invoke-virtual {p2}, Lorg/levimc/launcher/core/content/ContentItem;->getFormattedLastModified()Ljava/lang/String;
+
+    move-result-object v4
+
+    filled-new-array {v4}, [Ljava/lang/Object;
+
+    move-result-object v4
+
+    invoke-virtual {v2, v3, v4}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1333,7 +1349,7 @@
     .line 16
     iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/WorldsAdapter$WorldViewHolder;->worldIcon:Landroid/widget/ImageView;
 
-    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/RequestManager;
+    invoke-static {v1}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/q;
 
     move-result-object v1
 
@@ -1355,16 +1371,16 @@
     .line 18
     new-instance v2, Lcom/bumptech/glide/n;
 
-    iget-object v3, v1, Lcom/bumptech/glide/RequestManager;->c:Lcom/bumptech/glide/b;
+    iget-object v3, v1, Lcom/bumptech/glide/q;->c:Lcom/bumptech/glide/b;
 
-    iget-object v4, v1, Lcom/bumptech/glide/RequestManager;->d:Landroid/content/Context;
+    iget-object v4, v1, Lcom/bumptech/glide/q;->d:Landroid/content/Context;
 
     const-class v5, Landroid/graphics/drawable/Drawable;
 
-    invoke-direct {v2, v3, v1, v5, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/RequestManager;Ljava/lang/Class;Landroid/content/Context;)V
+    invoke-direct {v2, v3, v1, v5, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/q;Ljava/lang/Class;Landroid/content/Context;)V
 
     .line 19
-    invoke-virtual {v2, v0}, Lcom/bumptech/glide/n;->D(Ljava/lang/Object;)Lcom/bumptech/glide/n;
+    invoke-virtual {v2, v0}, Lcom/bumptech/glide/n;->z(Ljava/lang/Object;)Lcom/bumptech/glide/n;
 
     move-result-object v0
 
@@ -1372,7 +1388,7 @@
     sget v1, Lorg/levimc/launcher/R$drawable;->ic_world:I
 
     .line 21
-    invoke-virtual {v0, v1}, Lk3/a;->f(I)Lk3/a;
+    invoke-virtual {v0, v1}, Lk3/a;->e(I)Lk3/a;
 
     move-result-object v0
 
@@ -1381,7 +1397,7 @@
     iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/WorldsAdapter$WorldViewHolder;->worldIcon:Landroid/widget/ImageView;
 
     .line 22
-    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->B(Landroid/widget/ImageView;)V
+    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->x(Landroid/widget/ImageView;)V
 
     .line 23
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
@@ -1417,11 +1433,11 @@
     .line 26
     iget-object v0, p1, Lorg/levimc/launcher/ui/adapter/WorldsAdapter$WorldViewHolder;->overflowButton:Landroid/widget/ImageButton;
 
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/a;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/e;
 
-    const/4 v2, 0x3
+    const/4 v2, 0x2
 
-    invoke-direct {v1, p0, p1, p2, v2}, Lorg/levimc/launcher/ui/adapter/a;-><init>(Landroidx/recyclerview/widget/RecyclerView$Adapter;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, p2, v2}, Lorg/levimc/launcher/ui/adapter/e;-><init>(Landroidx/recyclerview/widget/RecyclerView$Adapter;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 

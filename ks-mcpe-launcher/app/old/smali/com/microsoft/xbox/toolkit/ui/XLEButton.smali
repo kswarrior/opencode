@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/ui/XLEButton;
 .super Landroidx/appcompat/widget/AppCompatButton;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -425,14 +425,14 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, La6/k;
+    new-instance v0, Lcom/microsoft/xbox/toolkit/ui/a;
 
     .line 5
     .line 6
-    const/4 v1, 0x1
+    const/4 v1, 0x0
 
     .line 7
-    invoke-direct {v0, p0, v1}, La6/k;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, Lcom/microsoft/xbox/toolkit/ui/a;-><init>(Ljava/lang/Object;I)V
 
     .line 8
     .line 9

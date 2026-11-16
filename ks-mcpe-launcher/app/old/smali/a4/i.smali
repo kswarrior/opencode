@@ -1,183 +1,421 @@
 .class public final synthetic La4/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements La4/k;
+.implements La4/j;
+.implements Lq7/a;
+.implements Lb4/b;
 
 
 # instance fields
-.field public final synthetic c:J
+.field public final synthetic c:Ljava/lang/Object;
 
-.field public final synthetic d:Lt3/i;
+.field public final synthetic d:J
+
+.field public final synthetic h:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(JLt3/i;)V
+.method public synthetic constructor <init>(JLjava/lang/Object;Ljava/lang/Object;)V
     .locals 0
 
     .line 1
+    iput-object p3, p0, La4/i;->c:Ljava/lang/Object;
+
+    iput-object p4, p0, La4/i;->h:Ljava/lang/Object;
+
+    iput-wide p1, p0, La4/i;->d:J
+
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Ljava/lang/String;JLy6/k1;)V
+    .locals 0
+
     .line 2
-    .line 3
-    .line 4
-    iput-wide p1, p0, La4/i;->c:J
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 5
-    .line 6
-    iput-object p3, p0, La4/i;->d:Lt3/i;
+    iput-object p1, p0, La4/i;->c:Ljava/lang/Object;
 
-    .line 7
-    .line 8
+    iput-wide p2, p0, La4/i;->d:J
+
+    iput-object p4, p0, La4/i;->h:Ljava/lang/Object;
+
     return-void
 .end method
 
 
 # virtual methods
-.method public final apply(Ljava/lang/Object;)Ljava/lang/Object;
+.method public apply(Ljava/lang/Object;)Ljava/lang/Object;
     .locals 7
 
     .line 1
-    check-cast p1, Landroid/database/sqlite/SQLiteDatabase;
+    iget-object v0, p0, La4/i;->c:Ljava/lang/Object;
 
     .line 2
     .line 3
-    new-instance v0, Landroid/content/ContentValues;
+    check-cast v0, Ljava/lang/String;
 
     .line 4
     .line 5
-    invoke-direct {v0}, Landroid/content/ContentValues;-><init>()V
+    iget-object v1, p0, La4/i;->h:Ljava/lang/Object;
 
     .line 6
     .line 7
+    check-cast v1, Lw3/c;
+
     .line 8
-    const-string v1, "next_request_ms"
-
     .line 9
+    check-cast p1, Landroid/database/sqlite/SQLiteDatabase;
+
     .line 10
-    iget-wide v2, p0, La4/i;->c:J
-
     .line 11
-    .line 12
-    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    iget v1, v1, Lw3/c;->c:I
 
+    .line 12
     .line 13
+    invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+
     .line 14
     .line 15
+    .line 16
     move-result-object v2
 
-    .line 16
-    invoke-virtual {v0, v1, v2}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
-
     .line 17
+    filled-new-array {v0, v2}, [Ljava/lang/String;
+
     .line 18
     .line 19
-    iget-object v1, p0, La4/i;->d:Lt3/i;
-
     .line 20
+    move-result-object v2
+
     .line 21
-    iget-object v2, v1, Lt3/i;->a:Ljava/lang/String;
+    const-string v3, "SELECT 1 FROM log_event_dropped WHERE log_source = ? AND reason = ?"
 
     .line 22
     .line 23
-    iget-object v3, v1, Lt3/i;->c:Lq3/d;
+    invoke-virtual {p1, v3, v2}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
 
     .line 24
     .line 25
-    invoke-static {v3}, Ld4/a;->a(Lq3/d;)I
-
     .line 26
-    .line 27
-    .line 28
-    move-result v4
-
-    .line 29
-    invoke-static {v4}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
-
-    .line 30
-    .line 31
-    .line 32
-    move-result-object v4
-
-    .line 33
-    filled-new-array {v2, v4}, [Ljava/lang/String;
-
-    .line 34
-    .line 35
-    .line 36
     move-result-object v2
 
-    .line 37
-    const-string v4, "transport_contexts"
+    .line 27
+    :try_start_0
+    invoke-interface {v2}, Landroid/database/Cursor;->getCount()I
 
+    .line 28
+    .line 29
+    .line 30
+    move-result v3
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 31
+    if-lez v3, :cond_0
+
+    .line 32
+    .line 33
+    const/4 v3, 0x1
+
+    .line 34
+    goto :goto_0
+
+    .line 35
+    :cond_0
+    const/4 v3, 0x0
+
+    .line 36
+    :goto_0
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+
+    .line 37
     .line 38
     .line 39
-    const-string v5, "backend_name = ? and priority = ?"
+    iget-wide v4, p0, La4/i;->d:J
 
     .line 40
     .line 41
-    invoke-virtual {p1, v4, v0, v5, v2}, Landroid/database/sqlite/SQLiteDatabase;->update(Ljava/lang/String;Landroid/content/ContentValues;Ljava/lang/String;[Ljava/lang/String;)I
+    const/4 v2, 0x0
 
     .line 42
+    if-nez v3, :cond_1
+
     .line 43
     .line 44
-    move-result v2
+    new-instance v3, Landroid/content/ContentValues;
 
     .line 45
-    const/4 v5, 0x1
-
     .line 46
-    const/4 v6, 0x0
+    invoke-direct {v3}, Landroid/content/ContentValues;-><init>()V
 
     .line 47
-    if-ge v2, v5, :cond_0
-
     .line 48
     .line 49
-    const-string v2, "backend_name"
+    const-string v6, "log_source"
 
     .line 50
     .line 51
-    iget-object v1, v1, Lt3/i;->a:Ljava/lang/String;
+    invoke-virtual {v3, v6, v0}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 52
     .line 53
-    invoke-virtual {v0, v2, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 54
+    const-string v0, "reason"
+
     .line 55
     .line 56
-    invoke-static {v3}, Ld4/a;->a(Lq3/d;)I
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 57
     .line 58
     .line 59
-    move-result v1
+    move-result-object v1
 
     .line 60
-    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    invoke-virtual {v3, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
 
     .line 61
     .line 62
     .line 63
-    move-result-object v1
+    const-string v0, "events_dropped_count"
 
     .line 64
-    const-string v2, "priority"
-
     .line 65
-    .line 66
-    invoke-virtual {v0, v2, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Integer;)V
+    invoke-static {v4, v5}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
+    .line 66
     .line 67
     .line 68
+    move-result-object v1
+
     .line 69
-    invoke-virtual {p1, v4, v6, v0}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+    invoke-virtual {v3, v0, v1}, Landroid/content/ContentValues;->put(Ljava/lang/String;Ljava/lang/Long;)V
 
     .line 70
     .line 71
     .line 72
-    :cond_0
-    return-object v6
+    const-string v0, "log_event_dropped"
+
+    .line 73
+    .line 74
+    invoke-virtual {p1, v0, v2, v3}, Landroid/database/sqlite/SQLiteDatabase;->insert(Ljava/lang/String;Ljava/lang/String;Landroid/content/ContentValues;)J
+
+    .line 75
+    .line 76
+    .line 77
+    return-object v2
+
+    .line 78
+    :cond_1
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 79
+    .line 80
+    const-string v6, "UPDATE log_event_dropped SET events_dropped_count = events_dropped_count + "
+
+    .line 81
+    .line 82
+    invoke-direct {v3, v6}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 83
+    .line 84
+    .line 85
+    invoke-virtual {v3, v4, v5}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 86
+    .line 87
+    .line 88
+    const-string v4, " WHERE log_source = ? AND reason = ?"
+
+    .line 89
+    .line 90
+    invoke-virtual {v3, v4}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 91
+    .line 92
+    .line 93
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 94
+    .line 95
+    .line 96
+    move-result-object v3
+
+    .line 97
+    invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+
+    .line 98
+    .line 99
+    .line 100
+    move-result-object v1
+
+    .line 101
+    filled-new-array {v0, v1}, [Ljava/lang/String;
+
+    .line 102
+    .line 103
+    .line 104
+    move-result-object v0
+
+    .line 105
+    invoke-virtual {p1, v3, v0}, Landroid/database/sqlite/SQLiteDatabase;->execSQL(Ljava/lang/String;[Ljava/lang/Object;)V
+
+    .line 106
+    .line 107
+    .line 108
+    return-object v2
+
+    .line 109
+    :catchall_0
+    move-exception p1
+
+    .line 110
+    invoke-interface {v2}, Landroid/database/Cursor;->close()V
+
+    .line 111
+    .line 112
+    .line 113
+    throw p1
+.end method
+
+.method public b(Lq7/b;)V
+    .locals 7
+
+    .line 1
+    iget-object v0, p0, La4/i;->c:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    move-object v2, v0
+
+    .line 4
+    check-cast v2, Ljava/lang/String;
+
+    .line 5
+    .line 6
+    iget-object v0, p0, La4/i;->h:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    move-object v6, v0
+
+    .line 9
+    check-cast v6, Ly6/k1;
+
+    .line 10
+    .line 11
+    invoke-interface {p1}, Lq7/b;->get()Ljava/lang/Object;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p1
+
+    .line 15
+    move-object v1, p1
+
+    .line 16
+    check-cast v1, Ls6/a;
+
+    .line 17
+    .line 18
+    const-string v3, "Crashlytics Android SDK/20.0.6"
+
+    .line 19
+    .line 20
+    iget-wide v4, p0, La4/i;->d:J
+
+    .line 21
+    .line 22
+    invoke-interface/range {v1 .. v6}, Ls6/a;->prepareNativeSession(Ljava/lang/String;Ljava/lang/String;JLy6/o2;)V
+
+    .line 23
+    .line 24
+    .line 25
+    return-void
+.end method
+
+.method public d()Ljava/lang/Object;
+    .locals 7
+
+    .line 1
+    iget-object v0, p0, La4/i;->c:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lae/h;
+
+    .line 4
+    .line 5
+    iget-object v1, p0, La4/i;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v1, Lt3/i;
+
+    .line 8
+    .line 9
+    iget-object v2, v0, Lae/h;->c:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    check-cast v2, La4/d;
+
+    .line 12
+    .line 13
+    iget-object v0, v0, Lae/h;->g:Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    check-cast v0, Lc4/a;
+
+    .line 16
+    .line 17
+    invoke-interface {v0}, Lc4/a;->c()J
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-wide v3
+
+    .line 21
+    iget-wide v5, p0, La4/i;->d:J
+
+    .line 22
+    .line 23
+    add-long/2addr v3, v5
+
+    .line 24
+    check-cast v2, La4/l;
+
+    .line 25
+    .line 26
+    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 27
+    .line 28
+    .line 29
+    new-instance v0, La4/h;
+
+    .line 30
+    .line 31
+    invoke-direct {v0, v3, v4, v1}, La4/h;-><init>(JLt3/i;)V
+
+    .line 32
+    .line 33
+    .line 34
+    invoke-virtual {v2, v0}, La4/l;->f(La4/j;)Ljava/lang/Object;
+
+    .line 35
+    .line 36
+    .line 37
+    const/4 v0, 0x0
+
+    .line 38
+    return-object v0
 .end method

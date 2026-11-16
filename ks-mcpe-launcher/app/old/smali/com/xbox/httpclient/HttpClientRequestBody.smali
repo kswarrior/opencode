@@ -1,6 +1,6 @@
 .class public final Lcom/xbox/httpclient/HttpClientRequestBody;
 .super Lokhttp3/RequestBody;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -37,11 +37,11 @@
 
     .line 7
     .line 8
-    sget-object p1, Lokhttp3/MediaType;->c:Lo9/g;
+    sget-object p1, Lokhttp3/MediaType;->c:Lm9/g;
 
     .line 9
     .line 10
-    invoke-static {p3}, Lcom/bumptech/glide/e;->Y(Ljava/lang/String;)Lokhttp3/MediaType;
+    invoke-static {p3}, Lcom/bumptech/glide/e;->J(Ljava/lang/String;)Lokhttp3/MediaType;
 
     .line 11
     .line 12
@@ -109,7 +109,7 @@
     .line 6
     .line 7
     .line 8
-    invoke-static {v0}, Llc/b;->f(Ljava/io/InputStream;)Llc/p;
+    invoke-static {v0}, Lmc/b;->f(Ljava/io/InputStream;)Lmc/p;
 
     .line 9
     .line 10
@@ -117,7 +117,7 @@
     move-result-object v0
 
     .line 12
-    invoke-interface {p1, v0}, Lokio/BufferedSink;->D(Llc/c0;)J
+    invoke-interface {p1, v0}, Lokio/BufferedSink;->D(Lmc/c0;)J
 
     .line 13
     .line 14

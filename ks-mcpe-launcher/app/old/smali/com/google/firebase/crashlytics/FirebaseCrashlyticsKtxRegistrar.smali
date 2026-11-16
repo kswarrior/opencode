@@ -1,6 +1,6 @@
 .class public final Lcom/google/firebase/crashlytics/FirebaseCrashlyticsKtxRegistrar;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/google/firebase/components/ComponentRegistrar;
@@ -12,7 +12,7 @@
 
 
 # static fields
-.field public static final Companion:Lt6/c;
+.field public static final Companion:Lr6/c;
 
 
 # direct methods
@@ -20,7 +20,7 @@
     .locals 1
 
     .line 1
-    new-instance v0, Lt6/c;
+    new-instance v0, Lr6/c;
 
     .line 2
     .line 3
@@ -29,7 +29,7 @@
     .line 4
     .line 5
     .line 6
-    sput-object v0, Lcom/google/firebase/crashlytics/FirebaseCrashlyticsKtxRegistrar;->Companion:Lt6/c;
+    sput-object v0, Lcom/google/firebase/crashlytics/FirebaseCrashlyticsKtxRegistrar;->Companion:Lr6/c;
 
     .line 7
     .line 8
@@ -56,13 +56,13 @@
         value = {
             "()",
             "Ljava/util/List<",
-            "Lr6/b;",
+            "Lp6/b;",
             ">;"
         }
     .end annotation
 
     .line 1
-    sget-object v0, Lt8/p;->c:Lt8/p;
+    sget-object v0, Lr8/p;->c:Lr8/p;
 
     .line 2
     .line 3

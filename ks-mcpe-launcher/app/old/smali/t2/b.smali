@@ -1,6 +1,6 @@
 .class public final Lt2/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/d;
@@ -13,7 +13,7 @@
 
 .field public final h:Ljava/lang/Object;
 
-.field public p:Ljava/lang/Object;
+.field public q:Ljava/lang/Object;
 
 
 # direct methods
@@ -41,7 +41,7 @@
     return-void
 .end method
 
-.method public static c(Landroid/content/Context;Landroid/net/Uri;Lt2/c;)Lt2/b;
+.method public static d(Landroid/content/Context;Landroid/net/Uri;Lt2/c;)Lt2/b;
     .locals 3
 
     .line 1
@@ -53,7 +53,7 @@
     move-result-object v0
 
     .line 5
-    iget-object v0, v0, Lcom/bumptech/glide/b;->p:Lig/a;
+    iget-object v0, v0, Lcom/bumptech/glide/b;->q:Lqf/a;
 
     .line 6
     .line 7
@@ -97,7 +97,7 @@
     move-result-object p0
 
     .line 27
-    invoke-direct {v1, v2, p2, v0, p0}, Lt2/d;-><init>(Ljava/util/ArrayList;Lt2/c;Lig/a;Landroid/content/ContentResolver;)V
+    invoke-direct {v1, v2, p2, v0, p0}, Lt2/d;-><init>(Ljava/util/ArrayList;Lt2/c;Lqf/a;Landroid/content/ContentResolver;)V
 
     .line 28
     .line 29
@@ -157,11 +157,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Ly2/a0;
+    check-cast v0, Ly2/b0;
 
     .line 9
     .line 10
-    invoke-virtual {v0}, Ly2/a0;->b()Ljava/lang/Class;
+    invoke-virtual {v0}, Ly2/b0;->b()Ljava/lang/Class;
 
     .line 11
     .line 12
@@ -177,7 +177,7 @@
 
     .line 16
     .line 17
-    check-cast v0, Ly2/a0;
+    check-cast v0, Ly2/b0;
 
     .line 18
     .line 19
@@ -224,7 +224,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lt2/b;->p:Ljava/lang/Object;
+    iget-object v0, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 7
     .line 8
@@ -237,11 +237,11 @@
 
     .line 11
     .line 12
-    check-cast v1, Ly2/a0;
+    check-cast v1, Ly2/b0;
 
     .line 13
     .line 14
-    iget v1, v1, Ly2/a0;->c:I
+    iget v1, v1, Ly2/b0;->c:I
 
     .line 15
     .line 16
@@ -282,7 +282,7 @@
     .line 31
     :pswitch_1
     :try_start_1
-    iget-object v0, p0, Lt2/b;->p:Ljava/lang/Object;
+    iget-object v0, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 32
     .line 33
@@ -302,7 +302,7 @@
 
     .line 39
     :pswitch_2
-    iget-object v0, p0, Lt2/b;->p:Ljava/lang/Object;
+    iget-object v0, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 40
     .line 41
@@ -347,18 +347,7 @@
     .end packed-switch
 .end method
 
-.method public final cancel()V
-    .locals 1
-
-    .line 1
-    iget v0, p0, Lt2/b;->c:I
-
-    .line 2
-    .line 3
-    return-void
-.end method
-
-.method public final d()I
+.method public final c()I
     .locals 1
 
     .line 1
@@ -401,6 +390,17 @@
     .end packed-switch
 .end method
 
+.method public final cancel()V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lt2/b;->c:I
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
 .method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
     .locals 2
 
@@ -419,7 +419,7 @@
 
     .line 7
     .line 8
-    check-cast p1, Ly2/a0;
+    check-cast p1, Ly2/b0;
 
     .line 9
     .line 10
@@ -431,7 +431,7 @@
 
     .line 13
     .line 14
-    iget p1, p1, Ly2/a0;->c:I
+    iget p1, p1, Ly2/b0;->c:I
 
     .line 15
     .line 16
@@ -466,7 +466,7 @@
 
     .line 31
     :goto_0
-    iput-object p1, p0, Lt2/b;->p:Ljava/lang/Object;
+    iput-object p1, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 32
     .line 33
@@ -513,7 +513,7 @@
     .line 51
     .line 52
     :cond_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
 
     .line 53
     .line 54
@@ -532,7 +532,7 @@
 
     .line 59
     .line 60
-    invoke-static {p1}, Ly2/a0;->a(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
+    invoke-static {p1}, Ly2/b0;->a(Ljava/lang/String;)Ljava/io/ByteArrayInputStream;
 
     .line 61
     .line 62
@@ -540,7 +540,7 @@
     move-result-object p1
 
     .line 64
-    iput-object p1, p0, Lt2/b;->p:Ljava/lang/Object;
+    iput-object p1, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 65
     .line 66
@@ -558,7 +558,7 @@
     move-exception p1
 
     .line 71
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
 
     .line 72
     .line 73
@@ -577,7 +577,7 @@
     move-result-object p1
 
     .line 79
-    iput-object p1, p0, Lt2/b;->p:Ljava/lang/Object;
+    iput-object p1, p0, Lt2/b;->q:Ljava/lang/Object;
 
     .line 80
     .line 81
@@ -624,7 +624,7 @@
     .line 99
     .line 100
     :cond_1
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
 
     .line 101
     .line 102
@@ -1028,11 +1028,11 @@
 
     .line 165
     .line 166
-    iget-object v0, v0, Lt2/d;->b:Lig/a;
+    iget-object v0, v0, Lt2/d;->b:Lqf/a;
 
     .line 167
     .line 168
-    invoke-static {v1, v6, v0}, Lfc/h;->p(Ljava/util/List;Ljava/io/InputStream;Lig/a;)I
+    invoke-static {v1, v6, v0}, Lcom/bumptech/glide/e;->x(Ljava/util/List;Ljava/io/InputStream;Lqf/a;)I
 
     .line 169
     .line 170

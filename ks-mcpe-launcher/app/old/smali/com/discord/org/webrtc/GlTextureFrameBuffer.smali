@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/GlTextureFrameBuffer;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -38,7 +38,7 @@
 
     .line 10
     .line 11
-    invoke-static {p1, v1}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v1}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
 
     .line 12
     .line 13
@@ -72,7 +72,6 @@
     .line 26
     return-void
 
-    .line 27
     :pswitch_data_0
     .packed-switch 0x1907
         :pswitch_0
@@ -417,7 +416,7 @@
 
     .line 111
     .line 112
-    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
 
     .line 113
     .line 114
@@ -452,7 +451,7 @@
 
     .line 127
     .line 128
-    invoke-static {p2, v6, v7, v0}, Ls1/a;->m(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p2, v6, v7, v0}, Ls1/a;->o(Ljava/lang/String;IILjava/lang/String;)Ljava/lang/String;
 
     .line 129
     .line 130

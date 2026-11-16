@@ -1,37 +1,33 @@
 .class public final Ls4/n0;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lcom/google/android/gms/internal/measurement/i6;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Ls4/o0;
 
 
-# instance fields
-.field public final a:Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
-
-.field public final b:Ljava/lang/String;
-
-.field public final c:J
-
-
-# direct methods
-.method public constructor <init>(Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;Ljava/lang/String;J)V
-    .locals 0
+# virtual methods
+.method public final p(Ls4/h4;)V
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/i6;->F()Landroid/os/Parcel;
 
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Ls4/n0;->a:Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
+    move-result-object v0
 
     .line 5
-    .line 6
-    iput-object p2, p0, Ls4/n0;->b:Ljava/lang/String;
+    invoke-static {v0, p1}, Lcom/google/android/gms/internal/measurement/k6;->b(Landroid/os/Parcel;Landroid/os/Parcelable;)V
 
+    .line 6
     .line 7
     .line 8
-    iput-wide p3, p0, Ls4/n0;->c:J
+    invoke-virtual {p0, v0}, Lcom/google/android/gms/internal/measurement/i6;->H(Landroid/os/Parcel;)V
 
     .line 9
     .line 10
+    .line 11
     return-void
 .end method

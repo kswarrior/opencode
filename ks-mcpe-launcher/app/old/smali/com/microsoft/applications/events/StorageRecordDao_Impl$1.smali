@@ -1,6 +1,6 @@
 .class Lcom/microsoft/applications/events/StorageRecordDao_Impl$1;
 .super Landroidx/room/EntityInsertionAdapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -29,7 +29,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, p1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, p1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -52,7 +52,7 @@
     .line 2
     iget-wide v1, p2, Lcom/microsoft/applications/events/StorageRecord;->id:J
 
-    invoke-interface {p1, v0, v1, v2}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v0, v1, v2}, Lf2/b;->G(IJ)V
 
     .line 3
     iget-object v0, p2, Lcom/microsoft/applications/events/StorageRecord;->tenantToken:Ljava/lang/String;
@@ -62,13 +62,13 @@
     if-nez v0, :cond_0
 
     .line 4
-    invoke-interface {p1, v1}, Lf2/a;->e0(I)V
+    invoke-interface {p1, v1}, Lf2/b;->c0(I)V
 
     goto :goto_0
 
     .line 5
     :cond_0
-    invoke-interface {p1, v1, v0}, Lf2/a;->q(ILjava/lang/String;)V
+    invoke-interface {p1, v1, v0}, Lf2/b;->q(ILjava/lang/String;)V
 
     .line 6
     :goto_0
@@ -78,7 +78,7 @@
 
     const/4 v2, 0x3
 
-    invoke-interface {p1, v2, v0, v1}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v2, v0, v1}, Lf2/b;->G(IJ)V
 
     .line 7
     iget v0, p2, Lcom/microsoft/applications/events/StorageRecord;->persistence:I
@@ -87,14 +87,14 @@
 
     const/4 v2, 0x4
 
-    invoke-interface {p1, v2, v0, v1}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v2, v0, v1}, Lf2/b;->G(IJ)V
 
     const/4 v0, 0x5
 
     .line 8
     iget-wide v1, p2, Lcom/microsoft/applications/events/StorageRecord;->timestamp:J
 
-    invoke-interface {p1, v0, v1, v2}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v0, v1, v2}, Lf2/b;->G(IJ)V
 
     .line 9
     iget v0, p2, Lcom/microsoft/applications/events/StorageRecord;->retryCount:I
@@ -103,14 +103,14 @@
 
     const/4 v2, 0x6
 
-    invoke-interface {p1, v2, v0, v1}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v2, v0, v1}, Lf2/b;->G(IJ)V
 
     const/4 v0, 0x7
 
     .line 10
     iget-wide v1, p2, Lcom/microsoft/applications/events/StorageRecord;->reservedUntil:J
 
-    invoke-interface {p1, v0, v1, v2}, Lf2/a;->F(IJ)V
+    invoke-interface {p1, v0, v1, v2}, Lf2/b;->G(IJ)V
 
     .line 11
     iget-object p2, p2, Lcom/microsoft/applications/events/StorageRecord;->blob:[B
@@ -120,13 +120,13 @@
     if-nez p2, :cond_1
 
     .line 12
-    invoke-interface {p1, v0}, Lf2/a;->e0(I)V
+    invoke-interface {p1, v0}, Lf2/b;->c0(I)V
 
     return-void
 
     .line 13
     :cond_1
-    invoke-interface {p1, v0, p2}, Lf2/a;->O(I[B)V
+    invoke-interface {p1, v0, p2}, Lf2/b;->O(I[B)V
 
     return-void
 .end method

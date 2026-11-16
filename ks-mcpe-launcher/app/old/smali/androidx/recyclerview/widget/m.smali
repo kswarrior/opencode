@@ -1,155 +1,149 @@
 .class public final Landroidx/recyclerview/widget/m;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Landroid/animation/AnimatorListenerAdapter;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public a:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+.field public final synthetic a:Landroidx/recyclerview/widget/n;
 
-.field public b:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+.field public final synthetic b:Landroid/view/ViewPropertyAnimator;
 
-.field public c:I
+.field public final synthetic c:Landroid/view/View;
 
-.field public d:I
-
-.field public e:I
-
-.field public f:I
+.field public final synthetic d:Landroidx/recyclerview/widget/p;
 
 
-# virtual methods
-.method public final toString()Ljava/lang/String;
-    .locals 2
+# direct methods
+.method public constructor <init>(Landroidx/recyclerview/widget/p;Landroidx/recyclerview/widget/n;Landroid/view/ViewPropertyAnimator;Landroid/view/View;)V
+    .locals 0
 
     .line 1
-    new-instance v0, Ljava/lang/StringBuilder;
+    iput-object p1, p0, Landroidx/recyclerview/widget/m;->d:Landroidx/recyclerview/widget/p;
 
     .line 2
     .line 3
-    const-string v1, "ChangeInfo{oldHolder="
+    iput-object p2, p0, Landroidx/recyclerview/widget/m;->a:Landroidx/recyclerview/widget/n;
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    iput-object p3, p0, Landroidx/recyclerview/widget/m;->b:Landroid/view/ViewPropertyAnimator;
 
     .line 6
     .line 7
+    iput-object p4, p0, Landroidx/recyclerview/widget/m;->c:Landroid/view/View;
+
     .line 8
-    iget-object v1, p0, Landroidx/recyclerview/widget/m;->a:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-
     .line 9
-    .line 10
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    invoke-direct {p0}, Landroid/animation/AnimatorListenerAdapter;-><init>()V
 
+    .line 10
     .line 11
     .line 12
-    .line 13
-    const-string v1, ", newHolder="
+    return-void
+.end method
 
+
+# virtual methods
+.method public final onAnimationEnd(Landroid/animation/Animator;)V
+    .locals 2
+
+    .line 1
+    iget-object p1, p0, Landroidx/recyclerview/widget/m;->b:Landroid/view/ViewPropertyAnimator;
+
+    .line 2
+    .line 3
+    const/4 v0, 0x0
+
+    .line 4
+    invoke-virtual {p1, v0}, Landroid/view/ViewPropertyAnimator;->setListener(Landroid/animation/Animator$AnimatorListener;)Landroid/view/ViewPropertyAnimator;
+
+    .line 5
+    .line 6
+    .line 7
+    const/high16 p1, 0x3f800000    # 1.0f
+
+    .line 8
+    .line 9
+    iget-object v0, p0, Landroidx/recyclerview/widget/m;->c:Landroid/view/View;
+
+    .line 10
+    .line 11
+    invoke-virtual {v0, p1}, Landroid/view/View;->setAlpha(F)V
+
+    .line 12
+    .line 13
     .line 14
+    const/4 p1, 0x0
+
     .line 15
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Landroid/view/View;->setTranslationX(F)V
 
     .line 16
     .line 17
     .line 18
-    iget-object v1, p0, Landroidx/recyclerview/widget/m;->b:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+    invoke-virtual {v0, p1}, Landroid/view/View;->setTranslationY(F)V
 
     .line 19
     .line 20
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
     .line 21
+    iget-object p1, p0, Landroidx/recyclerview/widget/m;->a:Landroidx/recyclerview/widget/n;
+
     .line 22
     .line 23
-    const-string v1, ", fromX="
+    iget-object v0, p1, Landroidx/recyclerview/widget/n;->b:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
     .line 24
     .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Landroidx/recyclerview/widget/m;->d:Landroidx/recyclerview/widget/p;
 
     .line 26
     .line 27
-    .line 28
-    iget v1, p0, Landroidx/recyclerview/widget/m;->c:I
+    invoke-virtual {v1, v0}, Landroidx/recyclerview/widget/n1;->c(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
 
+    .line 28
     .line 29
     .line 30
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    iget-object v0, v1, Landroidx/recyclerview/widget/p;->r:Ljava/util/ArrayList;
 
     .line 31
     .line 32
+    iget-object p1, p1, Landroidx/recyclerview/widget/n;->b:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
+
     .line 33
-    const-string v1, ", fromY="
-
     .line 34
-    .line 35
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->remove(Ljava/lang/Object;)Z
 
+    .line 35
     .line 36
     .line 37
-    .line 38
-    iget v1, p0, Landroidx/recyclerview/widget/m;->d:I
+    invoke-virtual {v1}, Landroidx/recyclerview/widget/p;->i()V
 
+    .line 38
     .line 39
     .line 40
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    return-void
+.end method
 
-    .line 41
-    .line 42
-    .line 43
-    const-string v1, ", toX="
+.method public final onAnimationStart(Landroid/animation/Animator;)V
+    .locals 0
 
-    .line 44
-    .line 45
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    .line 1
+    iget-object p1, p0, Landroidx/recyclerview/widget/m;->a:Landroidx/recyclerview/widget/n;
 
-    .line 46
-    .line 47
-    .line 48
-    iget v1, p0, Landroidx/recyclerview/widget/m;->e:I
+    .line 2
+    .line 3
+    iget-object p1, p1, Landroidx/recyclerview/widget/n;->b:Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
 
-    .line 49
-    .line 50
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    .line 4
+    .line 5
+    iget-object p1, p0, Landroidx/recyclerview/widget/m;->d:Landroidx/recyclerview/widget/p;
 
-    .line 51
-    .line 52
-    .line 53
-    const-string v1, ", toY="
+    .line 6
+    .line 7
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 54
-    .line 55
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 56
-    .line 57
-    .line 58
-    iget v1, p0, Landroidx/recyclerview/widget/m;->f:I
-
-    .line 59
-    .line 60
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
-
-    .line 61
-    .line 62
-    .line 63
-    const/16 v1, 0x7d
-
-    .line 64
-    .line 65
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    .line 66
-    .line 67
-    .line 68
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 69
-    .line 70
-    .line 71
-    move-result-object v0
-
-    .line 72
-    return-object v0
+    .line 8
+    .line 9
+    .line 10
+    return-void
 .end method

@@ -1,6 +1,6 @@
 .class public final Ls4/o2;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,1299 +9,1365 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Landroid/os/Bundle;
+.field public final synthetic d:Ljava/lang/Object;
 
-.field public final synthetic h:Ls4/t2;
+.field public final synthetic h:Ljava/lang/Object;
+
+.field public final synthetic q:Z
+
+.field public final synthetic w:Ljava/lang/Object;
+
+.field public final synthetic x:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ls4/t2;Landroid/os/Bundle;I)V
-    .locals 0
+.method public constructor <init>(Lcom/google/android/gms/measurement/internal/AppMeasurementDynamiteService;Lcom/google/android/gms/internal/measurement/y6;Ljava/lang/String;Ljava/lang/String;Z)V
+    .locals 1
+
+    const/4 v0, 0x0
+
+    iput v0, p0, Ls4/o2;->c:I
 
     .line 1
-    iput p3, p0, Ls4/o2;->c:I
-
-    .line 2
-    .line 3
-    iput-object p2, p0, Ls4/o2;->d:Landroid/os/Bundle;
-
-    .line 4
-    .line 5
-    iput-object p1, p0, Ls4/o2;->h:Ls4/t2;
-
-    .line 6
-    .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 8
-    .line 9
-    .line 10
+    iput-object p2, p0, Ls4/o2;->w:Ljava/lang/Object;
+
+    iput-object p3, p0, Ls4/o2;->d:Ljava/lang/Object;
+
+    iput-object p4, p0, Ls4/o2;->h:Ljava/lang/Object;
+
+    iput-boolean p5, p0, Ls4/o2;->q:Z
+
+    iput-object p1, p0, Ls4/o2;->x:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/google/firebase/messaging/j;ZLandroid/net/Uri;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 1
+
+    const/4 v0, 0x2
+
+    iput v0, p0, Ls4/o2;->c:I
+
+    .line 2
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-boolean p2, p0, Ls4/o2;->q:Z
+
+    iput-object p3, p0, Ls4/o2;->w:Ljava/lang/Object;
+
+    iput-object p4, p0, Ls4/o2;->d:Ljava/lang/Object;
+
+    iput-object p5, p0, Ls4/o2;->h:Ljava/lang/Object;
+
+    iput-object p1, p0, Ls4/o2;->x:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ls4/q3;Ls4/w4;ZLs4/v;Landroid/os/Bundle;)V
+    .locals 1
+
+    const/4 v0, 0x3
+
+    iput v0, p0, Ls4/o2;->c:I
+
+    .line 4
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p2, p0, Ls4/o2;->w:Ljava/lang/Object;
+
+    iput-boolean p3, p0, Ls4/o2;->q:Z
+
+    iput-object p4, p0, Ls4/o2;->d:Ljava/lang/Object;
+
+    iput-object p5, p0, Ls4/o2;->h:Ljava/lang/Object;
+
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    iput-object p1, p0, Ls4/o2;->x:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Ls4/w2;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/String;Ljava/lang/String;Z)V
+    .locals 1
+
+    const/4 v0, 0x1
+
+    iput v0, p0, Ls4/o2;->c:I
+
+    .line 3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p2, p0, Ls4/o2;->w:Ljava/lang/Object;
+
+    iput-object p3, p0, Ls4/o2;->d:Ljava/lang/Object;
+
+    iput-object p4, p0, Ls4/o2;->h:Ljava/lang/Object;
+
+    iput-boolean p5, p0, Ls4/o2;->q:Z
+
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
+    iput-object p1, p0, Ls4/o2;->x:Ljava/lang/Object;
+
     return-void
 .end method
 
 
 # virtual methods
 .method public final run()V
-    .locals 25
+    .locals 19
 
     .line 1
-    move-object/from16 v0, p0
+    move-object/from16 v1, p0
 
     .line 2
     .line 3
-    iget v1, v0, Ls4/o2;->c:I
+    iget v0, v1, Ls4/o2;->c:I
 
     .line 4
     .line 5
-    packed-switch v1, :pswitch_data_0
+    packed-switch v0, :pswitch_data_0
 
     .line 6
     .line 7
     .line 8
-    iget-object v1, v0, Ls4/o2;->h:Ls4/t2;
+    iget-object v0, v1, Ls4/o2;->w:Ljava/lang/Object;
 
     .line 9
     .line 10
-    iget-object v2, v1, Ls4/t2;->L1:Llg/b;
+    check-cast v0, Ls4/w4;
 
     .line 11
     .line 12
-    iget-object v1, v1, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+    iget-object v2, v1, Ls4/o2;->x:Ljava/lang/Object;
 
     .line 13
     .line 14
-    check-cast v1, Ls4/q1;
+    check-cast v2, Ls4/q3;
 
     .line 15
     .line 16
-    iget-object v8, v0, Ls4/o2;->d:Landroid/os/Bundle;
+    iget-object v3, v2, Ls4/q3;->q:Ls4/k0;
 
     .line 17
     .line 18
-    invoke-virtual {v8}, Landroid/os/BaseBundle;->isEmpty()Z
+    iget-object v4, v2, Landroidx/core/view/y0;->c:Ljava/lang/Object;
 
     .line 19
     .line 20
-    .line 21
-    move-result v3
+    check-cast v4, Ls4/u1;
 
+    .line 21
     .line 22
-    if-nez v3, :cond_a
+    const-string v5, "Failed to send default event parameters to service"
 
     .line 23
     .line 24
-    new-instance v9, Landroid/os/Bundle;
+    if-nez v3, :cond_0
 
     .line 25
     .line 26
-    iget-object v3, v1, Ls4/q1;->q:Ls4/e1;
+    iget-object v0, v4, Ls4/u1;->x:Ls4/y0;
 
     .line 27
     .line 28
-    iget-object v10, v1, Ls4/q1;->X:Ls4/r4;
+    invoke-static {v0}, Ls4/u1;->l(Ls4/c2;)V
 
     .line 29
     .line 30
-    iget-object v11, v1, Ls4/q1;->p:Ls4/h;
-
     .line 31
+    iget-object v0, v0, Ls4/y0;->x:Ls4/w0;
+
     .line 32
-    iget-object v12, v1, Ls4/q1;->w:Ls4/v0;
-
     .line 33
-    .line 34
-    invoke-static {v3}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    invoke-virtual {v0, v5}, Ls4/w0;->a(Ljava/lang/String;)V
 
+    .line 34
     .line 35
     .line 36
+    goto :goto_1
+
     .line 37
-    iget-object v3, v3, Ls4/e1;->O1:Lcom/google/firebase/messaging/v;
+    :cond_0
+    iget-object v4, v4, Ls4/u1;->q:Ls4/i;
 
     .line 38
     .line 39
-    invoke-virtual {v3}, Lcom/google/firebase/messaging/v;->L()Landroid/os/Bundle;
+    sget-object v6, Ls4/h0;->W0:Ls4/g0;
 
     .line 40
     .line 41
+    const/4 v7, 0x0
+
     .line 42
-    move-result-object v3
+    invoke-virtual {v4, v7, v6}, Ls4/i;->C(Ljava/lang/String;Ls4/g0;)Z
 
     .line 43
-    invoke-direct {v9, v3}, Landroid/os/Bundle;-><init>(Landroid/os/Bundle;)V
-
     .line 44
     .line 45
+    move-result v4
+
     .line 46
-    invoke-virtual {v8}, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+    if-eqz v4, :cond_2
 
     .line 47
     .line 48
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 49
-    move-result-object v3
-
     .line 50
-    invoke-interface {v3}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
-
     .line 51
+    iget-boolean v4, v1, Ls4/o2;->q:Z
+
     .line 52
     .line 53
-    move-result-object v13
+    if-eqz v4, :cond_1
 
     .line 54
-    :cond_0
-    :goto_0
-    invoke-interface {v13}, Ljava/util/Iterator;->hasNext()Z
-
     .line 55
-    .line 56
-    .line 57
-    move-result v3
+    goto :goto_0
 
+    .line 56
+    :cond_1
+    iget-object v4, v1, Ls4/o2;->d:Ljava/lang/Object;
+
+    .line 57
     .line 58
-    if-eqz v3, :cond_5
+    move-object v7, v4
 
     .line 59
-    .line 60
-    invoke-interface {v13}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    check-cast v7, Ls4/v;
 
+    .line 60
     .line 61
+    :goto_0
+    invoke-virtual {v2, v3, v7, v0}, Ls4/q3;->J(Ls4/k0;Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;Ls4/w4;)V
+
     .line 62
     .line 63
-    move-result-object v3
-
     .line 64
-    move-object v14, v3
+    goto :goto_1
 
     .line 65
-    check-cast v14, Ljava/lang/String;
+    :cond_2
+    :try_start_0
+    invoke-static {v0}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 66
     .line 67
-    invoke-virtual {v8, v14}, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
-
     .line 68
+    iget-object v4, v1, Ls4/o2;->h:Ljava/lang/Object;
+
     .line 69
     .line 70
-    move-result-object v15
+    check-cast v4, Landroid/os/Bundle;
 
     .line 71
-    if-eqz v15, :cond_2
-
     .line 72
-    .line 73
-    instance-of v3, v15, Ljava/lang/String;
+    invoke-interface {v3, v4, v0}, Ls4/k0;->k(Landroid/os/Bundle;Ls4/w4;)V
 
+    .line 73
     .line 74
     .line 75
-    if-nez v3, :cond_2
+    invoke-virtual {v2}, Ls4/q3;->E()V
+    :try_end_0
+    .catch Landroid/os/RemoteException; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 76
     .line 77
-    instance-of v3, v15, Ljava/lang/Long;
-
     .line 78
+    goto :goto_1
+
     .line 79
-    if-nez v3, :cond_2
+    :catch_0
+    move-exception v0
 
     .line 80
+    iget-object v2, v2, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 81
-    instance-of v3, v15, Ljava/lang/Double;
-
     .line 82
+    check-cast v2, Ls4/u1;
+
     .line 83
-    if-nez v3, :cond_2
-
     .line 84
-    .line 85
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    iget-object v2, v2, Ls4/u1;->x:Ls4/y0;
 
+    .line 85
     .line 86
+    invoke-static {v2}, Ls4/u1;->l(Ls4/c2;)V
+
     .line 87
     .line 88
-    invoke-static {v15}, Ls4/r4;->w0(Ljava/lang/Object;)Z
-
     .line 89
+    iget-object v2, v2, Ls4/y0;->x:Ls4/w0;
+
     .line 90
     .line 91
-    move-result v3
+    invoke-virtual {v2, v0, v5}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 92
-    if-eqz v3, :cond_1
-
     .line 93
     .line 94
-    const/4 v6, 0x0
+    :goto_1
+    return-void
 
     .line 95
-    const/4 v7, 0x0
+    :pswitch_0
+    const-string v0, "gclid="
 
     .line 96
-    const/4 v3, 0x0
-
     .line 97
-    const/16 v4, 0x1b
+    iget-object v2, v1, Ls4/o2;->x:Ljava/lang/Object;
 
     .line 98
     .line 99
-    const/4 v5, 0x0
+    check-cast v2, Lcom/google/firebase/messaging/j;
 
     .line 100
-    invoke-static/range {v2 .. v7}, Ls4/r4;->D(Ls4/q4;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;I)V
-
     .line 101
+    iget-object v3, v2, Lcom/google/firebase/messaging/j;->d:Ljava/lang/Object;
+
     .line 102
     .line 103
-    :cond_1
-    invoke-static {v12}, Ls4/q1;->l(Ls4/y1;)V
+    move-object v4, v3
 
     .line 104
+    check-cast v4, Ls4/w2;
+
     .line 105
     .line 106
-    iget-object v3, v12, Ls4/v0;->Z:Ls4/t0;
+    invoke-virtual {v4}, Ls4/f0;->r()V
 
     .line 107
     .line 108
-    const-string v4, "Invalid default event parameter type. Name, value"
-
     .line 109
-    .line 110
-    invoke-virtual {v3, v14, v4, v15}, Ls4/t0;->c(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/Object;)V
+    iget-object v3, v4, Landroidx/core/view/y0;->c:Ljava/lang/Object;
 
+    .line 110
     .line 111
+    check-cast v3, Ls4/u1;
+
     .line 112
     .line 113
-    goto :goto_0
+    iget-object v5, v4, Ls4/w2;->G1:Ls4/k2;
 
     .line 114
-    :cond_2
-    invoke-static {v14}, Ls4/r4;->O(Ljava/lang/String;)Z
-
     .line 115
+    iget-object v6, v1, Ls4/o2;->h:Ljava/lang/Object;
+
     .line 116
     .line 117
-    move-result v3
+    move-object v7, v6
 
     .line 118
-    if-eqz v3, :cond_3
+    check-cast v7, Ljava/lang/String;
 
     .line 119
     .line 120
-    invoke-static {v12}, Ls4/q1;->l(Ls4/y1;)V
+    iget-object v6, v1, Ls4/o2;->w:Ljava/lang/Object;
 
     .line 121
     .line 122
+    check-cast v6, Landroid/net/Uri;
+
     .line 123
-    iget-object v3, v12, Ls4/v0;->Z:Ls4/t0;
-
     .line 124
+    :try_start_1
+    iget-object v8, v3, Ls4/u1;->Y:Ls4/u4;
+
     .line 125
-    const-string v4, "Invalid default event parameter name. Name"
-
     .line 126
-    .line 127
-    invoke-virtual {v3, v14, v4}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
+    iget-object v9, v3, Ls4/u1;->x:Ls4/y0;
 
+    .line 127
     .line 128
+    invoke-static {v8}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+    :try_end_1
+    .catch Ljava/lang/RuntimeException; {:try_start_1 .. :try_end_1} :catch_3
+
     .line 129
     .line 130
-    goto :goto_0
-
     .line 131
-    :cond_3
-    if-nez v15, :cond_4
+    :try_start_2
+    const-string v10, "https://google.com/search?"
 
     .line 132
     .line 133
-    invoke-virtual {v9, v14}, Landroid/os/Bundle;->remove(Ljava/lang/String;)V
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     .line 134
     .line 135
     .line 136
-    goto :goto_0
+    move-result v11
+    :try_end_2
+    .catch Ljava/lang/RuntimeException; {:try_start_2 .. :try_end_2} :catch_2
 
     .line 137
-    :cond_4
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    const-string v12, "_cis"
 
     .line 138
     .line 139
-    .line 140
-    invoke-virtual {v11}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    const-string v13, "Activity created with data \'referrer\' without required params"
 
+    .line 140
     .line 141
+    const-string v14, "utm_medium"
+
     .line 142
     .line 143
-    const/16 v3, 0x1f4
+    const-string v15, "utm_source"
 
     .line 144
     .line 145
-    const-string v4, "param"
+    move/from16 v16, v11
 
     .line 146
     .line 147
-    invoke-virtual {v10, v4, v14, v3, v15}, Ls4/r4;->p(Ljava/lang/String;Ljava/lang/String;ILjava/lang/Object;)Z
+    const-string v11, "utm_campaign"
 
     .line 148
     .line 149
-    .line 150
-    move-result v3
+    move-object/from16 v17, v2
 
+    .line 150
     .line 151
-    if-eqz v3, :cond_0
+    const-string v2, "gclid"
 
     .line 152
     .line 153
-    invoke-virtual {v10, v9, v14, v15}, Ls4/r4;->C(Landroid/os/Bundle;Ljava/lang/String;Ljava/lang/Object;)V
+    if-eqz v16, :cond_3
 
     .line 154
     .line 155
-    .line 156
-    goto :goto_0
+    move-object/from16 v16, v9
 
+    .line 156
     .line 157
-    :cond_5
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    :goto_2
+    const/4 v8, 0x0
 
     .line 158
-    .line 159
-    .line 160
-    iget-object v3, v11, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+    goto :goto_4
 
+    .line 159
+    :cond_3
+    :try_start_3
+    invoke-virtual {v7, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
+    .line 160
     .line 161
     .line 162
-    check-cast v3, Ls4/q1;
+    move-result v16
 
     .line 163
+    if-nez v16, :cond_4
+
     .line 164
-    iget-object v3, v3, Ls4/q1;->X:Ls4/r4;
-
     .line 165
-    .line 166
-    invoke-static {v3}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    move-object/from16 v16, v9
 
+    .line 166
     .line 167
+    const-string v9, "gbraid"
+
     .line 168
     .line 169
-    const v4, 0xc02a560
+    invoke-virtual {v7, v9}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 170
     .line 171
     .line 172
-    invoke-virtual {v3, v4}, Ls4/r4;->U(I)Z
+    move-result v9
 
     .line 173
+    if-nez v9, :cond_5
+
     .line 174
     .line 175
-    move-result v3
+    invoke-virtual {v7, v11}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 176
-    if-eqz v3, :cond_6
-
     .line 177
     .line 178
-    const/16 v3, 0x64
+    move-result v9
 
     .line 179
-    .line 180
-    goto :goto_1
+    if-nez v9, :cond_5
 
+    .line 180
     .line 181
-    :cond_6
-    const/16 v3, 0x19
+    invoke-virtual {v7, v15}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 182
     .line 183
-    :goto_1
-    invoke-virtual {v9}, Landroid/os/BaseBundle;->size()I
-
     .line 184
-    .line 185
-    .line 186
-    move-result v4
+    move-result v9
 
+    .line 185
+    if-nez v9, :cond_5
+
+    .line 186
     .line 187
-    if-gt v4, v3, :cond_7
+    invoke-virtual {v7, v14}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 188
     .line 189
-    goto :goto_3
-
     .line 190
-    :cond_7
-    new-instance v4, Ljava/util/TreeSet;
+    move-result v9
 
     .line 191
-    .line 192
-    invoke-virtual {v9}, Landroid/os/BaseBundle;->keySet()Ljava/util/Set;
+    if-nez v9, :cond_5
 
+    .line 192
     .line 193
+    const-string v9, "utm_id"
+
     .line 194
     .line 195
-    move-result-object v5
+    invoke-virtual {v7, v9}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 196
-    invoke-direct {v4, v5}, Ljava/util/TreeSet;-><init>(Ljava/util/Collection;)V
-
     .line 197
     .line 198
+    move-result v9
+
     .line 199
-    invoke-virtual {v4}, Ljava/util/TreeSet;->iterator()Ljava/util/Iterator;
+    if-nez v9, :cond_5
 
     .line 200
     .line 201
-    .line 202
-    move-result-object v4
+    const-string v9, "dclid"
 
+    .line 202
     .line 203
-    const/4 v5, 0x0
+    invoke-virtual {v7, v9}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 204
-    :cond_8
-    :goto_2
-    invoke-interface {v4}, Ljava/util/Iterator;->hasNext()Z
-
     .line 205
     .line 206
+    move-result v9
+
     .line 207
-    move-result v6
+    if-nez v9, :cond_5
 
     .line 208
-    if-eqz v6, :cond_9
-
     .line 209
-    .line 210
-    invoke-interface {v4}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    const-string v9, "srsltid"
 
+    .line 210
     .line 211
+    invoke-virtual {v7, v9}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 212
     .line 213
-    move-result-object v6
-
     .line 214
-    check-cast v6, Ljava/lang/String;
+    move-result v9
 
     .line 215
+    if-nez v9, :cond_5
+
     .line 216
-    add-int/lit8 v5, v5, 0x1
-
     .line 217
+    const-string v9, "sfmc_id"
+
     .line 218
-    if-le v5, v3, :cond_8
-
     .line 219
-    .line 220
-    invoke-virtual {v9, v6}, Landroid/os/Bundle;->remove(Ljava/lang/String;)V
+    invoke-virtual {v7, v9}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
+    .line 220
     .line 221
     .line 222
+    move-result v9
+
     .line 223
-    goto :goto_2
+    if-nez v9, :cond_5
 
     .line 224
-    :cond_9
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
-
     .line 225
+    iget-object v8, v8, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 226
     .line 227
-    const/4 v6, 0x0
+    check-cast v8, Ls4/u1;
 
     .line 228
-    const/4 v7, 0x0
-
     .line 229
-    const/4 v3, 0x0
+    iget-object v8, v8, Ls4/u1;->x:Ls4/y0;
 
     .line 230
-    const/16 v4, 0x1a
-
     .line 231
+    invoke-static {v8}, Ls4/u1;->l(Ls4/c2;)V
+
     .line 232
-    const/4 v5, 0x0
-
     .line 233
-    invoke-static/range {v2 .. v7}, Ls4/r4;->D(Ls4/q4;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;I)V
-
     .line 234
+    iget-object v8, v8, Ls4/y0;->C1:Ls4/w0;
+
     .line 235
     .line 236
-    invoke-static {v12}, Ls4/q1;->l(Ls4/y1;)V
+    invoke-virtual {v8, v13}, Ls4/w0;->a(Ljava/lang/String;)V
 
     .line 237
     .line 238
     .line 239
-    iget-object v2, v12, Ls4/v0;->Z:Ls4/t0;
+    goto :goto_2
 
     .line 240
+    :catch_1
+    move-exception v0
+
     .line 241
-    const-string v3, "Too many default event parameters set. Discarding beyond event parameter limit"
+    :goto_3
+    move-object/from16 v2, v17
 
     .line 242
     .line 243
-    invoke-virtual {v2, v3}, Ls4/t0;->a(Ljava/lang/String;)V
+    goto/16 :goto_8
 
     .line 244
     .line 245
-    .line 246
-    :goto_3
-    move-object v8, v9
+    :cond_4
+    move-object/from16 v16, v9
 
+    .line 246
     .line 247
-    :cond_a
-    iget-object v2, v1, Ls4/q1;->q:Ls4/e1;
+    :cond_5
+    invoke-virtual {v10, v7}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
     .line 248
     .line 249
-    invoke-static {v2}, Ls4/q1;->j(Landroidx/core/view/w0;)V
-
     .line 250
-    .line 251
-    .line 252
-    iget-object v2, v2, Ls4/e1;->O1:Lcom/google/firebase/messaging/v;
+    move-result-object v9
 
+    .line 251
+    invoke-static {v9}, Landroid/net/Uri;->parse(Ljava/lang/String;)Landroid/net/Uri;
+
+    .line 252
     .line 253
     .line 254
-    invoke-virtual {v2, v8}, Lcom/google/firebase/messaging/v;->M(Landroid/os/Bundle;)V
+    move-result-object v9
 
     .line 255
+    invoke-virtual {v8, v9}, Ls4/u4;->r0(Landroid/net/Uri;)Landroid/os/Bundle;
+
     .line 256
     .line 257
-    invoke-virtual {v1}, Ls4/q1;->o()Ls4/n3;
-
     .line 258
-    .line 259
-    .line 260
-    move-result-object v1
+    move-result-object v8
 
+    .line 259
+    if-eqz v8, :cond_6
+
+    .line 260
     .line 261
-    invoke-virtual {v1, v8}, Ls4/n3;->q(Landroid/os/Bundle;)V
+    const-string v9, "referrer"
 
     .line 262
     .line 263
+    invoke-virtual {v8, v12, v9}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+    :try_end_3
+    .catch Ljava/lang/RuntimeException; {:try_start_3 .. :try_end_3} :catch_1
+
     .line 264
-    return-void
-
     .line 265
-    :pswitch_0
-    const-string v1, "creation_timestamp"
-
     .line 266
+    :cond_6
+    :goto_4
+    iget-object v9, v1, Ls4/o2;->d:Ljava/lang/Object;
+
     .line 267
-    const-string v2, "app_id"
-
     .line 268
+    check-cast v9, Ljava/lang/String;
+
     .line 269
-    iget-object v3, v0, Ls4/o2;->h:Ls4/t2;
-
     .line 270
-    .line 271
-    invoke-virtual {v3}, Ls4/c0;->k()V
+    iget-boolean v10, v1, Ls4/o2;->q:Z
 
+    .line 271
     .line 272
+    move/from16 v18, v10
+
     .line 273
     .line 274
-    invoke-virtual {v3}, Ls4/g0;->l()V
+    const-string v10, "_cmp"
 
     .line 275
     .line 276
+    if-eqz v18, :cond_8
+
     .line 277
-    iget-object v4, v0, Ls4/o2;->d:Landroid/os/Bundle;
-
     .line 278
-    .line 279
-    invoke-static {v4}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    :try_start_4
+    iget-object v1, v3, Ls4/u1;->Y:Ls4/u4;
 
+    .line 279
     .line 280
+    invoke-static {v1}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+
     .line 281
     .line 282
-    const-string v5, "name"
-
     .line 283
-    .line 284
-    invoke-virtual {v4, v5}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v1, v6}, Ls4/u4;->r0(Landroid/net/Uri;)Landroid/os/Bundle;
 
+    .line 284
     .line 285
     .line 286
+    move-result-object v1
+
     .line 287
-    move-result-object v5
+    if-eqz v1, :cond_8
 
     .line 288
-    invoke-static {v5}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
-
     .line 289
+    const-string v6, "intent"
+
     .line 290
     .line 291
-    move-result-object v10
+    invoke-virtual {v1, v12, v6}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 292
-    iget-object v3, v3, Landroidx/core/view/w0;->c:Ljava/lang/Object;
-
     .line 293
     .line 294
-    check-cast v3, Ls4/q1;
+    invoke-virtual {v1, v2}, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
 
     .line 295
     .line 296
-    invoke-virtual {v3}, Ls4/q1;->d()Z
-
     .line 297
-    .line 298
-    .line 299
-    move-result v5
+    move-result v6
 
+    .line 298
+    if-nez v6, :cond_7
+
+    .line 299
     .line 300
-    if-nez v5, :cond_b
+    if-eqz v8, :cond_7
 
     .line 301
     .line 302
-    iget-object v1, v3, Ls4/q1;->w:Ls4/v0;
+    invoke-virtual {v8, v2}, Landroid/os/BaseBundle;->containsKey(Ljava/lang/String;)Z
 
     .line 303
     .line 304
-    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
-
     .line 305
+    move-result v6
+
     .line 306
+    if-eqz v6, :cond_7
+
     .line 307
-    iget-object v1, v1, Ls4/v0;->D1:Ls4/t0;
-
     .line 308
+    const-string v6, "_cer"
+
     .line 309
-    const-string v2, "Conditional property not cleared since app measurement is disabled"
-
     .line 310
-    .line 311
-    invoke-virtual {v1, v2}, Ls4/t0;->a(Ljava/lang/String;)V
+    invoke-virtual {v8, v2}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
 
+    .line 311
     .line 312
     .line 313
+    move-result-object v12
+
     .line 314
-    goto :goto_4
+    move-object/from16 v18, v13
 
     .line 315
-    :cond_b
-    new-instance v6, Ls4/o4;
-
     .line 316
+    new-instance v13, Ljava/lang/StringBuilder;
+
     .line 317
-    const-wide/16 v7, 0x0
-
     .line 318
+    invoke-direct {v13, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 319
-    const/4 v9, 0x0
-
     .line 320
-    const-string v11, ""
-
     .line 321
-    .line 322
-    invoke-direct/range {v6 .. v11}, Ls4/o4;-><init>(JLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {v13, v12}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 322
     .line 323
     .line 324
-    .line 325
-    :try_start_0
-    iget-object v7, v3, Ls4/q1;->X:Ls4/r4;
+    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 325
     .line 326
     .line 327
-    invoke-static {v7}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    move-result-object v0
 
     .line 328
+    invoke-virtual {v1, v6, v0}, Landroid/os/BaseBundle;->putString(Ljava/lang/String;Ljava/lang/String;)V
+
     .line 329
     .line 330
-    invoke-virtual {v4, v2}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
     .line 331
+    goto :goto_5
+
     .line 332
+    :cond_7
+    move-object/from16 v18, v13
+
     .line 333
-    const-string v5, "expired_event_name"
-
     .line 334
-    .line 335
-    invoke-virtual {v4, v5}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    :goto_5
+    invoke-virtual {v4, v9, v10, v1}, Ls4/w2;->y(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
 
+    .line 335
     .line 336
     .line 337
+    invoke-virtual {v5, v9, v1}, Ls4/k2;->b(Ljava/lang/String;Landroid/os/Bundle;)V
+
     .line 338
-    move-result-object v8
-
     .line 339
-    const-string v5, "expired_event_params"
-
     .line 340
+    goto :goto_6
+
     .line 341
-    invoke-virtual {v4, v5}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+    :cond_8
+    move-object/from16 v18, v13
 
     .line 342
     .line 343
+    :goto_6
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
     .line 344
-    move-result-object v9
-
     .line 345
-    const-string v10, ""
-
     .line 346
+    move-result v0
+
     .line 347
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+    if-nez v0, :cond_d
 
     .line 348
     .line 349
+    invoke-static/range {v16 .. v16}, Ls4/u1;->l(Ls4/c2;)V
+
     .line 350
-    move-result-wide v11
-
     .line 351
-    const-wide/16 v13, 0x0
-
     .line 352
-    .line 353
-    const/4 v15, 0x1
+    move-object/from16 v0, v16
 
+    .line 353
     .line 354
-    invoke-virtual/range {v7 .. v15}, Ls4/r4;->R(Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/String;JJZ)Ls4/v;
+    iget-object v1, v0, Ls4/y0;->C1:Ls4/w0;
 
     .line 355
     .line 356
-    .line 357
-    move-result-object v18
-    :try_end_0
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_0 .. :try_end_0} :catch_0
+    const-string v6, "Activity created with referrer"
 
+    .line 357
     .line 358
-    new-instance v5, Ls4/e;
+    invoke-virtual {v1, v7, v6}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 359
     .line 360
-    invoke-virtual {v4, v2}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
     .line 361
+    iget-object v6, v3, Ls4/u1;->q:Ls4/i;
+
     .line 362
     .line 363
-    move-result-object v2
+    sget-object v12, Ls4/h0;->G0:Ls4/g0;
 
     .line 364
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
-
     .line 365
+    const/4 v13, 0x0
+
     .line 366
+    invoke-virtual {v6, v13, v12}, Ls4/i;->C(Ljava/lang/String;Ls4/g0;)Z
+
     .line 367
-    move-result-wide v8
-
     .line 368
-    const-string v1, "active"
-
     .line 369
+    move-result v6
+
     .line 370
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;)Z
+    if-eqz v6, :cond_a
 
     .line 371
     .line 372
-    .line 373
-    move-result v10
+    if-eqz v8, :cond_9
 
+    .line 373
     .line 374
-    const-string v1, "trigger_event_name"
+    invoke-virtual {v4, v9, v10, v8}, Ls4/w2;->y(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
 
     .line 375
     .line 376
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
     .line 377
+    invoke-virtual {v5, v9, v8}, Ls4/k2;->b(Ljava/lang/String;Landroid/os/Bundle;)V
+
     .line 378
     .line 379
-    move-result-object v11
-
     .line 380
-    const-string v1, "trigger_timeout"
+    goto :goto_7
 
     .line 381
-    .line 382
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+    :cond_9
+    invoke-static {v0}, Ls4/u1;->l(Ls4/c2;)V
 
+    .line 382
     .line 383
     .line 384
-    .line 385
-    move-result-wide v13
+    const-string v0, "Referrer does not contain valid parameters"
 
+    .line 385
     .line 386
-    const-string v1, "time_to_live"
+    invoke-virtual {v1, v7, v0}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 387
     .line 388
-    invoke-virtual {v4, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
-
     .line 389
+    :goto_7
+    iget-object v0, v3, Ls4/u1;->b1:Lcom/google/android/gms/common/util/Clock;
+
     .line 390
     .line 391
-    move-result-wide v16
+    invoke-interface {v0}, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
 
     .line 392
-    const/4 v12, 0x0
-
     .line 393
-    const/4 v15, 0x0
-
     .line 394
-    move-object v7, v6
+    move-result-wide v9
 
     .line 395
-    const-string v6, ""
+    const-string v5, "auto"
 
     .line 396
     .line 397
-    move-object v4, v5
+    const-string v6, "_ldl"
 
     .line 398
-    move-object v5, v2
-
     .line 399
-    invoke-direct/range {v4 .. v18}, Ls4/e;-><init>(Ljava/lang/String;Ljava/lang/String;Ls4/o4;JZLjava/lang/String;Ls4/v;JLs4/v;JLs4/v;)V
+    const/4 v8, 0x1
 
     .line 400
-    .line 401
-    .line 402
-    invoke-virtual {v3}, Ls4/q1;->o()Ls4/n3;
+    move-object v7, v13
 
+    .line 401
+    invoke-virtual/range {v4 .. v10}, Ls4/w2;->B(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;ZJ)V
+
+    .line 402
     .line 403
     .line 404
+    goto :goto_9
+
     .line 405
-    move-result-object v1
+    :cond_a
+    invoke-virtual {v7, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 406
-    invoke-virtual {v1, v4}, Ls4/n3;->E(Ls4/e;)V
-
     .line 407
     .line 408
+    move-result v2
+
     .line 409
-    :catch_0
-    :goto_4
-    return-void
+    if-eqz v2, :cond_c
 
     .line 410
-    :pswitch_1
-    const-string v1, "app_id"
-
     .line 411
-    .line 412
-    iget-object v2, v0, Ls4/o2;->h:Ls4/t2;
+    invoke-virtual {v7, v11}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
+    .line 412
     .line 413
     .line 414
-    invoke-virtual {v2}, Ls4/c0;->k()V
+    move-result v2
 
     .line 415
+    if-nez v2, :cond_b
+
     .line 416
     .line 417
-    invoke-virtual {v2}, Ls4/g0;->l()V
+    invoke-virtual {v7, v15}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 418
     .line 419
     .line 420
-    iget-object v3, v0, Ls4/o2;->d:Landroid/os/Bundle;
+    move-result v2
 
     .line 421
-    .line 422
-    invoke-static {v3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    if-nez v2, :cond_b
 
+    .line 422
     .line 423
+    invoke-virtual {v7, v14}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
+
     .line 424
     .line 425
-    const-string v4, "name"
-
     .line 426
+    move-result v2
+
     .line 427
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    if-nez v2, :cond_b
 
     .line 428
     .line 429
-    .line 430
-    move-result-object v9
+    const-string v2, "utm_term"
 
+    .line 430
     .line 431
-    const-string v4, "origin"
+    invoke-virtual {v7, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
     .line 432
     .line 433
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
     .line 434
-    .line 435
-    .line 436
-    move-result-object v13
+    move-result v2
 
+    .line 435
+    if-nez v2, :cond_b
+
+    .line 436
     .line 437
-    invoke-static {v9}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "utm_content"
 
     .line 438
     .line 439
-    .line 440
-    invoke-static {v13}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v7, v2}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
 
+    .line 440
     .line 441
     .line 442
+    move-result v2
+
     .line 443
-    const-string v4, "value"
+    if-eqz v2, :cond_c
 
     .line 444
     .line 445
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+    :cond_b
+    invoke-static {v7}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
     .line 446
     .line 447
     .line 448
-    move-result-object v5
+    move-result v0
 
     .line 449
-    invoke-static {v5}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    if-nez v0, :cond_d
 
     .line 450
     .line 451
+    iget-object v0, v3, Ls4/u1;->b1:Lcom/google/android/gms/common/util/Clock;
+
     .line 452
-    iget-object v2, v2, Landroidx/core/view/w0;->c:Ljava/lang/Object;
-
     .line 453
-    .line 454
-    check-cast v2, Ls4/q1;
+    invoke-interface {v0}, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
 
+    .line 454
     .line 455
     .line 456
-    invoke-virtual {v2}, Ls4/q1;->d()Z
+    move-result-wide v9
 
     .line 457
+    const-string v5, "auto"
+
     .line 458
     .line 459
-    move-result v5
+    const-string v6, "_ldl"
 
     .line 460
-    if-nez v5, :cond_c
-
     .line 461
+    const/4 v8, 0x1
+
     .line 462
-    iget-object v1, v2, Ls4/q1;->w:Ls4/v0;
+    invoke-virtual/range {v4 .. v10}, Ls4/w2;->B(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;ZJ)V
 
     .line 463
     .line 464
-    invoke-static {v1}, Ls4/q1;->l(Ls4/y1;)V
-
     .line 465
-    .line 466
-    .line 467
-    iget-object v1, v1, Ls4/v0;->D1:Ls4/t0;
+    goto :goto_9
 
+    .line 466
+    :cond_c
+    invoke-static {v0}, Ls4/u1;->l(Ls4/c2;)V
+
+    .line 467
     .line 468
     .line 469
-    const-string v2, "Conditional property not set since app measurement is disabled"
+    move-object/from16 v0, v18
 
     .line 470
     .line 471
-    invoke-virtual {v1, v2}, Ls4/t0;->a(Ljava/lang/String;)V
+    invoke-virtual {v1, v0}, Ls4/w0;->a(Ljava/lang/String;)V
+    :try_end_4
+    .catch Ljava/lang/RuntimeException; {:try_start_4 .. :try_end_4} :catch_1
 
     .line 472
     .line 473
     .line 474
-    goto/16 :goto_5
+    goto :goto_9
 
     .line 475
+    :catch_2
+    move-exception v0
+
     .line 476
-    :cond_c
-    new-instance v5, Ls4/o4;
+    move-object/from16 v17, v2
 
     .line 477
     .line 478
-    const-string v6, "triggered_timestamp"
+    goto :goto_8
 
     .line 479
+    :catch_3
+    move-exception v0
+
     .line 480
-    invoke-virtual {v3, v6}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+    move-object/from16 v17, v2
 
     .line 481
     .line 482
-    .line 483
-    move-result-wide v6
+    goto/16 :goto_3
 
+    .line 483
     .line 484
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+    :goto_8
+    iget-object v1, v2, Lcom/google/firebase/messaging/j;->d:Ljava/lang/Object;
 
     .line 485
     .line 486
-    .line 487
-    move-result-object v8
+    check-cast v1, Ls4/w2;
 
+    .line 487
     .line 488
-    move-object v10, v13
+    iget-object v1, v1, Landroidx/core/view/y0;->c:Ljava/lang/Object;
 
     .line 489
-    invoke-direct/range {v5 .. v10}, Ls4/o4;-><init>(JLjava/lang/Object;Ljava/lang/String;Ljava/lang/String;)V
-
     .line 490
+    check-cast v1, Ls4/u1;
+
     .line 491
     .line 492
-    :try_start_1
-    iget-object v10, v2, Ls4/q1;->X:Ls4/r4;
+    iget-object v1, v1, Ls4/u1;->x:Ls4/y0;
 
     .line 493
     .line 494
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    invoke-static {v1}, Ls4/u1;->l(Ls4/c2;)V
 
     .line 495
     .line 496
     .line 497
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    iget-object v1, v1, Ls4/y0;->x:Ls4/w0;
 
     .line 498
     .line 499
+    const-string v2, "Throwable caught in handleReferrerForOnActivityCreated"
+
     .line 500
-    const-string v4, "triggered_event_name"
-
     .line 501
-    .line 502
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v1, v0, v2}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 502
     .line 503
     .line 504
+    :cond_d
+    :goto_9
+    return-void
+
     .line 505
-    move-result-object v11
+    :pswitch_1
+    iget-object v0, v1, Ls4/o2;->d:Ljava/lang/Object;
 
     .line 506
-    const-string v4, "triggered_event_params"
-
     .line 507
+    move-object v5, v0
+
     .line 508
-    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+    check-cast v5, Ljava/lang/String;
 
     .line 509
     .line 510
-    .line 511
-    move-result-object v12
+    iget-object v0, v1, Ls4/o2;->h:Ljava/lang/Object;
 
+    .line 511
     .line 512
-    const-wide/16 v16, 0x0
+    move-object v6, v0
 
     .line 513
+    check-cast v6, Ljava/lang/String;
+
     .line 514
-    const/16 v18, 0x1
-
     .line 515
+    iget-object v0, v1, Ls4/o2;->x:Ljava/lang/Object;
+
     .line 516
-    const-wide/16 v14, 0x0
-
     .line 517
-    .line 518
-    invoke-virtual/range {v10 .. v18}, Ls4/r4;->R(Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/String;JJZ)Ls4/v;
+    check-cast v0, Ls4/w2;
 
+    .line 518
     .line 519
+    iget-object v0, v0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 520
     .line 521
-    move-result-object v21
+    check-cast v0, Ls4/u1;
 
     .line 522
-    invoke-static {v10}, Ls4/q1;->j(Landroidx/core/view/w0;)V
-
     .line 523
+    invoke-virtual {v0}, Ls4/u1;->o()Ls4/q3;
+
     .line 524
     .line 525
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
-
     .line 526
-    .line 527
-    .line 528
-    const-string v4, "timed_out_event_name"
+    move-result-object v3
 
+    .line 527
+    iget-object v0, v1, Ls4/o2;->w:Ljava/lang/Object;
+
+    .line 528
     .line 529
+    move-object v4, v0
+
     .line 530
-    invoke-virtual {v3, v4}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v4, Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 531
     .line 532
+    invoke-virtual {v3}, Ls4/f0;->r()V
+
     .line 533
-    move-result-object v11
-
     .line 534
-    const-string v4, "timed_out_event_params"
-
     .line 535
-    .line 536
-    invoke-virtual {v3, v4}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+    invoke-virtual {v3}, Ls4/j0;->s()V
 
+    .line 536
     .line 537
     .line 538
+    const/4 v0, 0x0
+
     .line 539
-    move-result-object v12
+    invoke-virtual {v3, v0}, Ls4/q3;->H(Z)Ls4/w4;
 
     .line 540
-    const-wide/16 v16, 0x0
-
     .line 541
     .line 542
-    const/16 v18, 0x1
+    move-result-object v7
 
     .line 543
+    new-instance v2, Ls4/i3;
+
     .line 544
-    const-wide/16 v14, 0x0
-
     .line 545
-    .line 546
-    invoke-virtual/range {v10 .. v18}, Ls4/r4;->R(Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/String;JJZ)Ls4/v;
+    iget-boolean v8, v1, Ls4/o2;->q:Z
 
+    .line 546
     .line 547
+    invoke-direct/range {v2 .. v8}, Ls4/i3;-><init>(Ls4/q3;Ljava/util/concurrent/atomic/AtomicReference;Ljava/lang/String;Ljava/lang/String;Ls4/w4;Z)V
+
     .line 548
     .line 549
-    move-result-object v4
-
     .line 550
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v3, v2}, Ls4/q3;->F(Ljava/lang/Runnable;)V
 
     .line 551
     .line 552
     .line 553
-    const-string v6, "expired_event_name"
+    return-void
 
     .line 554
-    .line 555
-    invoke-virtual {v3, v6}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    :pswitch_2
+    iget-object v0, v1, Ls4/o2;->x:Ljava/lang/Object;
 
+    .line 555
     .line 556
+    check-cast v0, Lcom/google/android/gms/measurement/internal/AppMeasurementDynamiteService;
+
     .line 557
     .line 558
-    move-result-object v11
+    iget-object v0, v0, Lcom/google/android/gms/measurement/internal/AppMeasurementDynamiteService;->d:Ls4/u1;
 
     .line 559
-    const-string v6, "expired_event_params"
-
     .line 560
-    .line 561
-    invoke-virtual {v3, v6}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+    invoke-virtual {v0}, Ls4/u1;->o()Ls4/q3;
 
+    .line 561
     .line 562
     .line 563
+    move-result-object v3
+
     .line 564
-    move-result-object v12
+    iget-object v0, v1, Ls4/o2;->w:Ljava/lang/Object;
 
     .line 565
-    const-wide/16 v16, 0x0
-
     .line 566
+    move-object v8, v0
+
     .line 567
-    const/16 v18, 0x1
+    check-cast v8, Lcom/google/android/gms/internal/measurement/y6;
 
     .line 568
     .line 569
-    const-wide/16 v14, 0x0
+    iget-object v0, v1, Ls4/o2;->d:Ljava/lang/Object;
 
     .line 570
     .line 571
-    invoke-virtual/range {v10 .. v18}, Ls4/r4;->R(Ljava/lang/String;Landroid/os/Bundle;Ljava/lang/String;JJZ)Ls4/v;
+    move-object v4, v0
 
     .line 572
+    check-cast v4, Ljava/lang/String;
+
     .line 573
     .line 574
-    move-result-object v24
-    :try_end_1
-    .catch Ljava/lang/IllegalArgumentException; {:try_start_1 .. :try_end_1} :catch_1
+    iget-object v0, v1, Ls4/o2;->h:Ljava/lang/Object;
 
     .line 575
-    new-instance v10, Ls4/e;
-
     .line 576
+    move-object v5, v0
+
     .line 577
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    check-cast v5, Ljava/lang/String;
 
     .line 578
     .line 579
+    invoke-virtual {v3}, Ls4/f0;->r()V
+
     .line 580
-    move-result-object v11
-
     .line 581
-    const-string v1, "creation_timestamp"
-
     .line 582
-    .line 583
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+    invoke-virtual {v3}, Ls4/j0;->s()V
 
+    .line 583
     .line 584
     .line 585
+    const/4 v0, 0x0
+
     .line 586
-    move-result-wide v14
+    invoke-virtual {v3, v0}, Ls4/q3;->H(Z)Ls4/w4;
 
     .line 587
-    const-string v1, "trigger_event_name"
-
     .line 588
     .line 589
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+    move-result-object v6
 
     .line 590
+    new-instance v2, Ls4/i3;
+
     .line 591
     .line 592
-    move-result-object v17
+    iget-boolean v7, v1, Ls4/o2;->q:Z
 
     .line 593
-    const-string v1, "trigger_timeout"
-
     .line 594
-    .line 595
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
+    invoke-direct/range {v2 .. v8}, Ls4/i3;-><init>(Ls4/q3;Ljava/lang/String;Ljava/lang/String;Ls4/w4;ZLcom/google/android/gms/internal/measurement/y6;)V
 
+    .line 595
     .line 596
     .line 597
+    invoke-virtual {v3, v2}, Ls4/q3;->F(Ljava/lang/Runnable;)V
+
     .line 598
-    move-result-wide v19
-
     .line 599
-    const-string v1, "time_to_live"
-
     .line 600
-    .line 601
-    invoke-virtual {v3, v1}, Landroid/os/BaseBundle;->getLong(Ljava/lang/String;)J
-
-    .line 602
-    .line 603
-    .line 604
-    move-result-wide v22
-
-    .line 605
-    const/16 v16, 0x0
-
-    .line 606
-    .line 607
-    move-object/from16 v18, v4
-
-    .line 608
-    .line 609
-    move-object v12, v13
-
-    .line 610
-    move-object v13, v5
-
-    .line 611
-    invoke-direct/range {v10 .. v24}, Ls4/e;-><init>(Ljava/lang/String;Ljava/lang/String;Ls4/o4;JZLjava/lang/String;Ls4/v;JLs4/v;JLs4/v;)V
-
-    .line 612
-    .line 613
-    .line 614
-    invoke-virtual {v2}, Ls4/q1;->o()Ls4/n3;
-
-    .line 615
-    .line 616
-    .line 617
-    move-result-object v1
-
-    .line 618
-    invoke-virtual {v1, v10}, Ls4/n3;->E(Ls4/e;)V
-
-    .line 619
-    .line 620
-    .line 621
-    :catch_1
-    :goto_5
     return-void
 
-    .line 622
-    nop
-
-    .line 623
+    .line 601
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_2
         :pswitch_1
         :pswitch_0
     .end packed-switch

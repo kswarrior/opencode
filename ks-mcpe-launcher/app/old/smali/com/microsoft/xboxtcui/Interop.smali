@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xboxtcui/Interop;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -14,15 +14,15 @@
     .locals 2
 
     .line 1
-    new-instance v0, La4/f;
+    new-instance v0, La4/e;
 
     .line 2
     .line 3
-    const/16 v1, 0x14
+    const/16 v1, 0xb
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, La4/f;-><init>(I)V
+    invoke-direct {v0, v1}, La4/e;-><init>(I)V
 
     .line 6
     .line 7
@@ -239,23 +239,24 @@
     .line 73
     .line 74
     .line 75
-    new-instance p1, Landroidx/room/p0;
+    new-instance p1, Landroidx/room/n0;
 
     .line 76
     .line 77
-    const/4 p2, 0x7
+    const/16 p2, 0x8
 
     .line 78
-    invoke-direct {p1, v0, v1, p2}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 79
+    invoke-direct {p1, v0, v1, p2}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 80
     .line 81
+    .line 82
     invoke-virtual {p0, p1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 82
     .line 83
     .line 84
+    .line 85
     return-void
 .end method
 

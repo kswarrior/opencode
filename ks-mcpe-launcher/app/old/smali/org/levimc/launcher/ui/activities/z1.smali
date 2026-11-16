@@ -1,43 +1,54 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/z1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroidx/activity/result/ActivityResultCallback;
-.implements Lorg/levimc/launcher/ui/widget/SegmentedControl$OnSegmentSelectedListener;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+.field public final synthetic d:I
+
+.field public final synthetic h:Ljava/lang/Object;
+
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;I)V
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;II)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/z1;->c:I
+    iput p4, p0, Lorg/levimc/launcher/ui/activities/z1;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/z1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/z1;->h:Ljava/lang/Object;
 
     .line 4
     .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/z1;->q:Ljava/lang/Object;
 
     .line 6
     .line 7
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/z1;->d:I
+
     .line 8
+    .line 9
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 10
+    .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public b(Ljava/lang/Object;)V
-    .locals 1
+.method public final onClick(Landroid/view/View;)V
+    .locals 3
 
     .line 1
     iget v0, p0, Lorg/levimc/launcher/ui/activities/z1;->c:I
@@ -49,60 +60,68 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/z1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/z1;->h:Ljava/lang/Object;
 
     .line 7
     .line 8
-    check-cast p1, Landroidx/activity/result/ActivityResult;
+    check-cast v0, Landroidx/appcompat/app/AlertDialog;
 
     .line 9
     .line 10
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->z(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroidx/activity/result/ActivityResult;)V
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/z1;->q:Ljava/lang/Object;
 
     .line 11
     .line 12
-    .line 13
-    return-void
+    check-cast v1, [Ljava/lang/Runnable;
 
+    .line 13
     .line 14
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/z1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/z1;->d:I
 
     .line 15
     .line 16
-    check-cast p1, Landroid/net/Uri;
+    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->c2(Landroidx/appcompat/app/AlertDialog;[Ljava/lang/Runnable;ILandroid/view/View;)V
 
     .line 17
     .line 18
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->E(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;Landroid/net/Uri;)V
-
     .line 19
-    .line 20
-    .line 21
     return-void
 
+    .line 20
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/z1;->h:Ljava/lang/Object;
+
+    .line 21
     .line 22
-    nop
+    check-cast v0, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;
 
     .line 23
+    .line 24
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/z1;->q:Ljava/lang/Object;
+
+    .line 25
+    .line 26
+    check-cast v1, Lorg/levimc/launcher/core/mods/Mod;
+
+    .line 27
+    .line 28
+    iget v2, p0, Lorg/levimc/launcher/ui/activities/z1;->d:I
+
+    .line 29
+    .line 30
+    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;->a(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity$2;Lorg/levimc/launcher/core/mods/Mod;ILandroid/view/View;)V
+
+    .line 31
+    .line 32
+    .line 33
+    return-void
+
+    .line 34
+    nop
+
+    .line 35
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0
     .end packed-switch
-.end method
-
-.method public onSegmentSelected(I)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/z1;->d:Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
-
-    .line 2
-    .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;->D(Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;I)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
 .end method

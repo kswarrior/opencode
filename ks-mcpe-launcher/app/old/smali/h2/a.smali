@@ -1,6 +1,6 @@
 .class public final Lh2/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroidx/sqlite/SQLiteConnection;
@@ -19,7 +19,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -38,7 +38,42 @@
 
 
 # virtual methods
-.method public final A0(Ljava/lang/String;)Le2/a;
+.method public final close()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lh2/a;->c:Landroidx/sqlite/db/SupportSQLiteDatabase;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Ljava/io/Closeable;->close()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public final e()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lh2/a;->c:Landroidx/sqlite/db/SupportSQLiteDatabase;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->e()Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    return v0
+.end method
+
+.method public final y0(Ljava/lang/String;)Le2/a;
     .locals 11
 
     .line 1
@@ -46,7 +81,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -70,7 +105,7 @@
 
     .line 14
     .line 15
-    invoke-static {p1}, Lo9/h;->J0(Ljava/lang/String;)Ljava/lang/CharSequence;
+    invoke-static {p1}, Lm9/h;->p0(Ljava/lang/String;)Ljava/lang/CharSequence;
 
     .line 16
     .line 17
@@ -102,7 +137,7 @@
 
     .line 30
     .line 31
-    invoke-static {v1, v3}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v3}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 32
     .line 33
@@ -150,7 +185,7 @@
 
     .line 52
     .line 53
-    invoke-static {v6, v7}, Lh9/i;->f(II)I
+    invoke-static {v6, v7}, Lf9/i;->f(II)I
 
     .line 54
     .line 55
@@ -210,7 +245,7 @@
 
     .line 79
     .line 80
-    invoke-static {v1, v6, v5, v7}, Lo9/h;->w0(Ljava/lang/CharSequence;CII)I
+    invoke-static {v1, v6, v5, v7}, Lm9/h;->c0(Ljava/lang/CharSequence;CII)I
 
     .line 81
     .line 82
@@ -262,7 +297,7 @@
 
     .line 103
     .line 104
-    invoke-static {v1, v10, v6, v7}, Lo9/h;->w0(Ljava/lang/CharSequence;CII)I
+    invoke-static {v1, v10, v6, v7}, Lm9/h;->c0(Ljava/lang/CharSequence;CII)I
 
     .line 105
     .line 106
@@ -365,7 +400,7 @@
 
     .line 149
     .line 150
-    invoke-static {v3, v4}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 151
     .line 152
@@ -437,7 +472,7 @@
 
     .line 181
     .line 182
-    invoke-static {v1, v4}, Lo9/h;->t0(Ljava/lang/CharSequence;Ljava/lang/String;)Z
+    invoke-static {v1, v4}, Lm9/h;->Z(Ljava/lang/CharSequence;Ljava/lang/String;)Z
 
     .line 183
     .line 184
@@ -538,7 +573,7 @@
 
     .line 224
     .line 225
-    invoke-static {v1, v4}, Lo9/h;->t0(Ljava/lang/CharSequence;Ljava/lang/String;)Z
+    invoke-static {v1, v4}, Lm9/h;->Z(Ljava/lang/CharSequence;Ljava/lang/String;)Z
 
     .line 226
     .line 227
@@ -562,7 +597,7 @@
 
     .line 235
     .line 236
-    invoke-static {v1, v4}, Lo9/h;->t0(Ljava/lang/CharSequence;Ljava/lang/String;)Z
+    invoke-static {v1, v4}, Lm9/h;->Z(Ljava/lang/CharSequence;Ljava/lang/String;)Z
 
     .line 237
     .line 238
@@ -574,7 +609,7 @@
 
     .line 241
     .line 242
-    sget-object v4, Lh2/c;->p:Lh2/c;
+    sget-object v4, Lh2/c;->q:Lh2/c;
 
     .line 243
     .line 244
@@ -582,7 +617,7 @@
 
     .line 245
     :cond_12
-    sget-object v4, Lh2/c;->q:Lh2/c;
+    sget-object v4, Lh2/c;->w:Lh2/c;
 
     .line 246
     .line 247
@@ -636,7 +671,7 @@
 
     .line 270
     .line 271
-    invoke-static {v1, v5}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v5}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 272
     .line 273
@@ -649,7 +684,7 @@
 
     .line 277
     .line 278
-    invoke-static {v1, v5, v6}, Lo9/h;->G0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v5, v6}, Lm9/h;->m0(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 279
     .line 280
@@ -661,7 +696,7 @@
 
     .line 283
     .line 284
-    invoke-static {v1, v5}, Lo9/h;->t0(Ljava/lang/CharSequence;Ljava/lang/String;)Z
+    invoke-static {v1, v5}, Lm9/h;->Z(Ljava/lang/CharSequence;Ljava/lang/String;)Z
 
     .line 285
     .line 286
@@ -831,7 +866,7 @@
 
     .line 364
     .line 365
-    invoke-static {p1, v0}, Lwh/k;->D(ILjava/lang/String;)V
+    invoke-static {p1, v0}, Lk6/b;->u(ILjava/lang/String;)V
 
     .line 366
     .line 367
@@ -846,39 +881,4 @@
         0x10cbb -> :sswitch_1
         0x13daf -> :sswitch_0
     .end sparse-switch
-.end method
-
-.method public final close()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lh2/a;->c:Landroidx/sqlite/db/SupportSQLiteDatabase;
-
-    .line 2
-    .line 3
-    invoke-interface {v0}, Ljava/io/Closeable;->close()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final e()Z
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lh2/a;->c:Landroidx/sqlite/db/SupportSQLiteDatabase;
-
-    .line 2
-    .line 3
-    invoke-interface {v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->e()Z
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    return v0
 .end method

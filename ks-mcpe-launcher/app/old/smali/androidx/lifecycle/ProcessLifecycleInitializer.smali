@@ -1,6 +1,6 @@
 .class public final Landroidx/lifecycle/ProcessLifecycleInitializer;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lj2/b;
@@ -34,7 +34,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lt8/p;->c:Lt8/p;
+    sget-object v0, Lr8/p;->c:Lr8/p;
 
     .line 2
     .line 3
@@ -49,7 +49,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -66,7 +66,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 13
     .line 14
@@ -91,7 +91,7 @@
 
     .line 24
     .line 25
-    sget-object v0, Landroidx/lifecycle/q;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
+    sget-object v0, Landroidx/lifecycle/p;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 26
     .line 27
@@ -126,7 +126,7 @@
     move-result-object v0
 
     .line 41
-    invoke-static {v0, v1}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 42
     .line 43
@@ -135,11 +135,11 @@
 
     .line 45
     .line 46
-    new-instance v2, Landroidx/lifecycle/p;
+    new-instance v2, Landroidx/lifecycle/o;
 
     .line 47
     .line 48
-    invoke-direct {v2}, Landroidx/lifecycle/p;-><init>()V
+    invoke-direct {v2}, Landroidx/lifecycle/o;-><init>()V
 
     .line 49
     .line 50
@@ -150,7 +150,7 @@
     .line 53
     .line 54
     :goto_0
-    sget-object v0, Landroidx/lifecycle/b0;->X:Landroidx/lifecycle/b0;
+    sget-object v0, Landroidx/lifecycle/c0;->Y:Landroidx/lifecycle/c0;
 
     .line 55
     .line 56
@@ -168,19 +168,19 @@
     .line 62
     .line 63
     .line 64
-    iput-object v2, v0, Landroidx/lifecycle/b0;->q:Landroid/os/Handler;
+    iput-object v2, v0, Landroidx/lifecycle/c0;->w:Landroid/os/Handler;
 
     .line 65
     .line 66
-    iget-object v2, v0, Landroidx/lifecycle/b0;->w:Landroidx/lifecycle/LifecycleRegistry;
+    iget-object v2, v0, Landroidx/lifecycle/c0;->x:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 67
     .line 68
-    sget-object v3, Landroidx/lifecycle/o;->ON_CREATE:Landroidx/lifecycle/o;
+    sget-object v3, Landroidx/lifecycle/n;->ON_CREATE:Landroidx/lifecycle/n;
 
     .line 69
     .line 70
-    invoke-virtual {v2, v3}, Landroidx/lifecycle/LifecycleRegistry;->f(Landroidx/lifecycle/o;)V
+    invoke-virtual {v2, v3}, Landroidx/lifecycle/LifecycleRegistry;->f(Landroidx/lifecycle/n;)V
 
     .line 71
     .line 72
@@ -193,7 +193,7 @@
     move-result-object p1
 
     .line 77
-    invoke-static {p1, v1}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v1}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 78
     .line 79
@@ -202,11 +202,11 @@
 
     .line 81
     .line 82
-    new-instance v1, Landroidx/lifecycle/a0;
+    new-instance v1, Landroidx/lifecycle/b0;
 
     .line 83
     .line 84
-    invoke-direct {v1, v0}, Landroidx/lifecycle/a0;-><init>(Landroidx/lifecycle/b0;)V
+    invoke-direct {v1, v0}, Landroidx/lifecycle/b0;-><init>(Landroidx/lifecycle/c0;)V
 
     .line 85
     .line 86

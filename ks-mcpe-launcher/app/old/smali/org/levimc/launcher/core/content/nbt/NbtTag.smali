@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/content/nbt/NbtTag;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -290,7 +290,7 @@
     array-length v1, v1
 
     .line 91
-    invoke-static {v1, v3, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v3, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 92
     .line 93
@@ -334,7 +334,7 @@
     array-length v1, v1
 
     .line 112
-    invoke-static {v1, v3, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v3, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 113
     .line 114
@@ -378,7 +378,7 @@
     array-length v1, v1
 
     .line 133
-    invoke-static {v1, v3, v0}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v3, v0}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 134
     .line 135
@@ -1282,7 +1282,7 @@
 
     .line 37
     .line 38
-    invoke-static {v3, v2, v0}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v3, v2, v0}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 39
     .line 40

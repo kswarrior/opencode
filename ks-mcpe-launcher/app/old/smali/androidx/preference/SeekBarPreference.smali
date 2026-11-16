@@ -1,12 +1,12 @@
 .class public Landroidx/preference/SeekBarPreference;
 .super Landroidx/preference/Preference;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public final X:I
 
-.field public final y:I
+.field public final Y:I
 
 
 # direct methods
@@ -24,7 +24,7 @@
     .line 5
     .line 6
     .line 7
-    sget-object v1, Lq1/d;->i:[I
+    sget-object v1, Lq1/b;->i:[I
 
     .line 8
     .line 9
@@ -73,7 +73,7 @@
 
     .line 29
     :cond_0
-    iget v3, p0, Landroidx/preference/SeekBarPreference;->y:I
+    iget v3, p0, Landroidx/preference/SeekBarPreference;->X:I
 
     .line 30
     .line 31
@@ -81,7 +81,7 @@
 
     .line 32
     .line 33
-    iput v0, p0, Landroidx/preference/SeekBarPreference;->y:I
+    iput v0, p0, Landroidx/preference/SeekBarPreference;->X:I
 
     .line 34
     .line 35
@@ -97,7 +97,7 @@
     move-result v0
 
     .line 40
-    iget v3, p0, Landroidx/preference/SeekBarPreference;->X:I
+    iget v3, p0, Landroidx/preference/SeekBarPreference;->Y:I
 
     .line 41
     .line 42
@@ -105,7 +105,7 @@
 
     .line 43
     .line 44
-    iget v3, p0, Landroidx/preference/SeekBarPreference;->y:I
+    iget v3, p0, Landroidx/preference/SeekBarPreference;->X:I
 
     .line 45
     .line 46
@@ -128,7 +128,7 @@
     move-result p2
 
     .line 55
-    iput p2, p0, Landroidx/preference/SeekBarPreference;->X:I
+    iput p2, p0, Landroidx/preference/SeekBarPreference;->Y:I
 
     .line 56
     .line 57

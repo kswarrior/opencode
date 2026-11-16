@@ -1,10 +1,10 @@
 .class public final Lorg/levimc/launcher/databinding/DialogStructureListBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field private final rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+.field private final rootView:Landroid/widget/LinearLayout;
 
 .field public final structureCount:Landroid/widget/TextView;
 
@@ -12,7 +12,7 @@
 
 
 # direct methods
-.method private constructor <init>(Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;)V
+.method private constructor <init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->rootView:Landroid/widget/LinearLayout;
 
     .line 5
     .line 6
@@ -44,7 +44,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -64,7 +64,7 @@
 
     .line 12
     .line 13
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 14
     .line 15
@@ -84,11 +84,11 @@
 
     .line 22
     .line 23
-    check-cast p0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    check-cast p0, Landroid/widget/LinearLayout;
 
     .line 24
     .line 25
-    invoke-direct {v0, p0, v1, v2}, Lorg/levimc/launcher/databinding/DialogStructureListBinding;-><init>(Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;)V
+    invoke-direct {v0, p0, v1, v2}, Lorg/levimc/launcher/databinding/DialogStructureListBinding;-><init>(Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroidx/recyclerview/widget/RecyclerView;)V
 
     .line 26
     .line 27
@@ -184,18 +184,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->getRoot()Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->getRoot()Landroid/widget/LinearLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+.method public getRoot()Landroid/widget/LinearLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/DialogStructureListBinding;->rootView:Landroid/widget/LinearLayout;
 
     return-object v0
 .end method

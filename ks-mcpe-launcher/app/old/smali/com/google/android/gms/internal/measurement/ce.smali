@@ -1,57 +1,51 @@
 .class public final synthetic Lcom/google/android/gms/internal/measurement/ce;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Li6/a0;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public d:Ljava/lang/Object;
+.field public final b:Ljava/lang/Object;
 
-.field public h:Ljava/lang/Object;
+.field public final c:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>()V
-    .locals 1
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x1
-
-    iput v0, p0, Lcom/google/android/gms/internal/measurement/ce;->c:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>(Lcom/google/android/gms/internal/measurement/vb;Ljava/lang/String;)V
-    .locals 1
-
-    const/4 v0, 0x0
-
-    iput v0, p0, Lcom/google/android/gms/internal/measurement/ce;->c:I
+    iput p3, p0, Lcom/google/android/gms/internal/measurement/ce;->a:I
 
     .line 2
+    .line 3
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
+
+    .line 6
+    .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/ce;->d:Ljava/lang/Object;
-
-    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/ce;->h:Ljava/lang/Object;
-
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 13
+.method public final apply(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
+    .locals 8
 
     .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/measurement/ce;->c:I
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/ce;->a:I
 
     .line 2
     .line 3
@@ -60,528 +54,621 @@
     .line 4
     .line 5
     .line 6
-    const/4 v0, 0x0
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
 
     .line 7
-    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->d:Ljava/lang/Object;
-
     .line 8
+    check-cast v0, Lcom/google/android/gms/internal/measurement/ah;
+
     .line 9
-    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->h:Ljava/lang/Object;
-
     .line 10
+    invoke-static {v0}, Lf9/i;->b(Ljava/lang/Object;)V
+
     .line 11
-    return-void
-
     .line 12
-    :pswitch_0
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->d:Ljava/lang/Object;
-
     .line 13
-    .line 14
-    check-cast v0, Lcom/google/android/gms/internal/measurement/vb;
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kg;->c()Lcom/google/android/gms/internal/measurement/zg;
 
+    .line 14
     .line 15
     .line 16
-    iget-object v0, v0, Lcom/google/android/gms/internal/measurement/vb;->b:Landroid/content/Context;
+    move-result-object v1
 
     .line 17
-    .line 18
-    const-string v1, "Unable to read Phenotype PackageMetadata for "
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/kg;->b(Lcom/google/android/gms/internal/measurement/zg;Lcom/google/android/gms/internal/measurement/ah;)Lcom/google/android/gms/internal/measurement/ah;
 
+    .line 18
     .line 19
     .line 20
-    const-string v2, "phenotype/"
+    move-result-object v0
 
     .line 21
+    iget-object v2, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
+
     .line 22
-    sget-object v3, Lcom/google/android/gms/internal/measurement/de;->p:Lg6/w;
-
     .line 23
+    check-cast v2, Li6/a0;
+
     .line 24
-    if-nez v3, :cond_5
-
     .line 25
-    .line 26
-    sget-object v4, Lcom/google/android/gms/internal/measurement/de;->h:Ljava/lang/Object;
+    :try_start_0
+    invoke-interface {v2, p1}, Li6/a0;->apply(Ljava/lang/Object;)Lcom/google/common/util/concurrent/ListenableFuture;
 
+    .line 26
     .line 27
     .line 28
-    monitor-enter v4
-
-    .line 29
-    :try_start_0
-    sget-object v3, Lcom/google/android/gms/internal/measurement/de;->p:Lg6/w;
-
-    .line 30
-    .line 31
-    if-nez v3, :cond_4
-
-    .line 32
-    .line 33
-    new-instance v3, Lcom/google/android/gms/internal/play_billing/g;
-
-    .line 34
-    .line 35
-    const/4 v5, 0x4
-
-    .line 36
-    invoke-direct {v3, v5}, Lcom/google/android/gms/internal/play_billing/g;-><init>(I)V
+    move-result-object p1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
+    .line 29
+    if-eqz p1, :cond_0
+
+    .line 30
+    .line 31
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/kg;->b(Lcom/google/android/gms/internal/measurement/zg;Lcom/google/android/gms/internal/measurement/ah;)Lcom/google/android/gms/internal/measurement/ah;
+
+    .line 32
+    .line 33
+    .line 34
+    return-object p1
+
+    .line 35
+    :cond_0
+    :try_start_1
+    const-string p1, "AsyncFunction should return a ListenableFuture instead of null."
+
+    .line 36
     .line 37
+    new-instance v2, Ljava/lang/IllegalStateException;
+
     .line 38
     .line 39
-    :try_start_1
-    invoke-virtual {v0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
+    invoke-direct {v2, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
     .line 40
     .line 41
     .line 42
-    move-result-object v5
+    throw v2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
     .line 43
-    const-string v6, "phenotype"
+    :catchall_0
+    move-exception p1
 
     .line 44
-    .line 45
-    invoke-virtual {v5, v6}, Landroid/content/res/AssetManager;->list(Ljava/lang/String;)[Ljava/lang/String;
+    :try_start_2
+    invoke-static {p1}, Lcom/google/android/gms/internal/measurement/ig;->a(Ljava/lang/Throwable;)V
 
+    .line 45
     .line 46
     .line 47
+    throw p1
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
     .line 48
-    move-result-object v5
+    :catchall_1
+    move-exception p1
 
     .line 49
-    if-eqz v5, :cond_3
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/kg;->b(Lcom/google/android/gms/internal/measurement/zg;Lcom/google/android/gms/internal/measurement/ah;)Lcom/google/android/gms/internal/measurement/ah;
 
     .line 50
     .line 51
-    array-length v6, v5
-
     .line 52
-    const/4 v7, 0x0
+    throw p1
 
     .line 53
-    :goto_0
-    if-ge v7, v6, :cond_3
+    :pswitch_0
+    check-cast p1, Ljava/lang/Void;
 
     .line 54
     .line 55
-    aget-object v8, v5, v7
+    iget-object p1, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
 
     .line 56
     .line 57
-    const-string v9, "_package_metadata.binarypb"
+    check-cast p1, Lcom/google/android/gms/internal/measurement/yf;
 
     .line 58
     .line 59
-    invoke-virtual {v8, v9}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+    iget-object p1, p1, Lcom/google/android/gms/internal/measurement/yf;->a:Lcom/google/android/gms/internal/measurement/sf;
 
     .line 60
     .line 61
-    .line 62
-    move-result v9
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_0
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    iget-object p1, p1, Lcom/google/android/gms/internal/measurement/sf;->c:Lcom/google/android/gms/internal/measurement/xf;
 
+    .line 62
     .line 63
-    if-nez v9, :cond_0
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
 
     .line 64
     .line 65
-    goto :goto_3
+    check-cast v0, Lcom/google/android/gms/internal/measurement/ce;
 
     .line 66
-    :cond_0
-    :try_start_2
-    invoke-virtual {v0}, Landroid/content/Context;->getAssets()Landroid/content/res/AssetManager;
-
     .line 67
+    sget-object v1, Li6/e0;->c:Li6/e0;
+
     .line 68
     .line 69
-    move-result-object v9
+    invoke-virtual {p1, v0, v1}, Lcom/google/android/gms/internal/measurement/xf;->c(Lcom/google/android/gms/internal/measurement/ce;Ljava/util/concurrent/Executor;)Lcom/google/common/util/concurrent/ListenableFuture;
 
     .line 70
-    invoke-virtual {v8}, Ljava/lang/String;->length()I
-
     .line 71
     .line 72
+    move-result-object p1
+
     .line 73
-    move-result v10
+    return-object p1
 
     .line 74
-    add-int/lit8 v10, v10, 0xa
+    :pswitch_1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
 
     .line 75
     .line 76
-    new-instance v11, Ljava/lang/StringBuilder;
+    check-cast v0, Lcom/google/android/gms/internal/measurement/xf;
 
     .line 77
     .line 78
-    invoke-direct {v11, v10}, Ljava/lang/StringBuilder;-><init>(I)V
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
 
     .line 79
     .line 80
-    .line 81
-    invoke-virtual {v11, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    check-cast v1, Li6/t;
 
+    .line 81
     .line 82
+    iget-object v2, v0, Lcom/google/android/gms/internal/measurement/xf;->b:Ljava/lang/Object;
+
     .line 83
     .line 84
-    invoke-virtual {v11, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    check-cast v2, Lcom/google/common/util/concurrent/ListenableFuture;
 
     .line 85
     .line 86
-    .line 87
-    invoke-virtual {v11}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-static {v2}, Li6/o0;->b(Ljava/util/concurrent/Future;)Ljava/lang/Object;
 
+    .line 87
     .line 88
     .line 89
+    move-result-object v2
+
     .line 90
-    move-result-object v10
+    check-cast v2, Landroid/net/Uri;
 
     .line 91
-    invoke-virtual {v9, v10}, Landroid/content/res/AssetManager;->open(Ljava/lang/String;)Ljava/io/InputStream;
-
     .line 92
+    invoke-virtual {v0, v2, p1}, Lcom/google/android/gms/internal/measurement/xf;->e(Landroid/net/Uri;Ljava/lang/Object;)V
+
     .line 93
     .line 94
-    move-result-object v9
-    :try_end_2
-    .catch Lcom/google/android/gms/internal/measurement/w1; {:try_start_2 .. :try_end_2} :catch_1
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
     .line 95
-    :try_start_3
-    new-instance v10, Lcom/google/android/gms/internal/measurement/de;
+    iget-object v2, v0, Lcom/google/android/gms/internal/measurement/xf;->i:Ljava/lang/Object;
 
     .line 96
     .line 97
-    sget-object v11, Lcom/google/android/gms/internal/measurement/c1;->a:Lcom/google/android/gms/internal/measurement/c1;
+    monitor-enter v2
 
     .line 98
-    .line 99
-    sget v11, Lcom/google/android/gms/internal/measurement/q0;->a:I
+    :try_start_3
+    iput-object v1, v0, Lcom/google/android/gms/internal/measurement/xf;->c:Ljava/lang/Object;
 
+    .line 99
     .line 100
+    monitor-exit v2
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_2
+
     .line 101
-    sget-object v11, Lcom/google/android/gms/internal/measurement/c1;->b:Lcom/google/android/gms/internal/measurement/c1;
+    invoke-static {p1}, Li6/o0;->d(Ljava/lang/Object;)Li6/r0;
 
     .line 102
     .line 103
-    invoke-static {v9, v11}, Lcom/google/android/gms/internal/measurement/ee;->v(Ljava/io/InputStream;Lcom/google/android/gms/internal/measurement/c1;)Lcom/google/android/gms/internal/measurement/ee;
-
     .line 104
+    move-result-object p1
+
     .line 105
+    return-object p1
+
     .line 106
-    move-result-object v11
+    :catchall_2
+    move-exception p1
 
     .line 107
-    invoke-direct {v10, v0, v11}, Lcom/google/android/gms/internal/measurement/de;-><init>(Landroid/content/Context;Lcom/google/android/gms/internal/measurement/ee;)V
+    :try_start_4
+    monitor-exit v2
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
 
     .line 108
+    throw p1
+
     .line 109
+    :pswitch_2
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
+
     .line 110
-    iget-object v11, v10, Lcom/google/android/gms/internal/measurement/de;->d:Ljava/lang/String;
-
     .line 111
-    .line 112
-    invoke-virtual {v3, v11, v10}, Lcom/google/android/gms/internal/play_billing/g;->e(Ljava/lang/Object;Ljava/lang/Object;)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+    check-cast v0, Ljava/util/List;
 
+    .line 112
     .line 113
+    check-cast p1, Lcom/google/android/gms/internal/measurement/yf;
+
     .line 114
     .line 115
-    if-eqz v9, :cond_2
+    invoke-interface {v0}, Ljava/util/List;->size()I
 
     .line 116
     .line 117
-    :try_start_4
-    invoke-virtual {v9}, Ljava/io/InputStream;->close()V
-    :try_end_4
-    .catch Lcom/google/android/gms/internal/measurement/w1; {:try_start_4 .. :try_end_4} :catch_1
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_0
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
-
     .line 118
-    .line 119
-    .line 120
-    goto :goto_3
+    move-result v1
 
+    .line 119
+    new-instance v2, Ljava/util/ArrayList;
+
+    .line 120
     .line 121
-    :catchall_0
-    move-exception v0
+    invoke-direct {v2, v1}, Ljava/util/ArrayList;-><init>(I)V
 
     .line 122
-    goto :goto_5
-
     .line 123
-    :catch_0
-    move-exception v0
-
     .line 124
-    goto :goto_4
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     .line 125
-    :catch_1
-    move-exception v9
-
     .line 126
-    goto :goto_2
-
     .line 127
-    :catchall_1
-    move-exception v10
+    move-result-object v0
 
     .line 128
-    if-eqz v9, :cond_1
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
 
     .line 129
     .line 130
-    :try_start_5
-    invoke-virtual {v9}, Ljava/io/InputStream;->close()V
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_2
-
     .line 131
-    .line 132
-    .line 133
-    goto :goto_1
+    move-result v3
 
+    .line 132
+    if-nez v3, :cond_1
+
+    .line 133
     .line 134
-    :catchall_2
-    move-exception v9
+    new-instance v0, Lcom/google/android/gms/internal/measurement/rf;
 
     .line 135
-    :try_start_6
-    invoke-virtual {v10, v9}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
-
     .line 136
+    invoke-direct {v0, p0, v2, v1}, Lcom/google/android/gms/internal/measurement/rf;-><init>(Lcom/google/android/gms/internal/measurement/ce;Ljava/util/ArrayList;I)V
+
     .line 137
     .line 138
-    :cond_1
-    :goto_1
-    throw v10
-    :try_end_6
-    .catch Lcom/google/android/gms/internal/measurement/w1; {:try_start_6 .. :try_end_6} :catch_1
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_0
-    .catchall {:try_start_6 .. :try_end_6} :catchall_0
-
     .line 139
-    :goto_2
-    :try_start_7
-    const-string v10, "PackageInfo"
+    sget v3, Lcom/google/android/gms/internal/measurement/bh;->a:I
 
     .line 140
     .line 141
-    invoke-virtual {v8}, Ljava/lang/String;->length()I
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kg;->a()Lcom/google/android/gms/internal/measurement/ah;
 
     .line 142
     .line 143
     .line 144
-    move-result v11
+    move-result-object v3
 
     .line 145
-    add-int/lit8 v11, v11, 0x2d
+    new-instance v4, Lcom/google/android/gms/internal/measurement/ce;
 
     .line 146
     .line 147
-    new-instance v12, Ljava/lang/StringBuilder;
+    const/4 v5, 0x4
 
     .line 148
-    .line 149
-    invoke-direct {v12, v11}, Ljava/lang/StringBuilder;-><init>(I)V
+    invoke-direct {v4, v3, v0, v5}, Lcom/google/android/gms/internal/measurement/ce;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
+    .line 149
     .line 150
     .line 151
-    .line 152
-    invoke-virtual {v12, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    sget-object v0, Li6/e0;->c:Li6/e0;
 
+    .line 152
     .line 153
+    iget-object v3, p1, Lcom/google/android/gms/internal/measurement/yf;->a:Lcom/google/android/gms/internal/measurement/sf;
+
     .line 154
     .line 155
-    invoke-virtual {v12, v8}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v3, v3, Lcom/google/android/gms/internal/measurement/sf;->e:Lae/o;
 
     .line 156
     .line 157
-    .line 158
-    invoke-virtual {v12}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v3}, Lae/o;->F()Li6/s;
 
+    .line 158
     .line 159
     .line 160
+    move-result-object v3
+
     .line 161
-    move-result-object v8
+    invoke-static {v3}, Li6/o0;->e(Lcom/google/common/util/concurrent/ListenableFuture;)Lcom/google/common/util/concurrent/ListenableFuture;
 
     .line 162
-    invoke-static {v10, v8, v9}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    :try_end_7
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_0
-    .catchall {:try_start_7 .. :try_end_7} :catchall_0
-
     .line 163
     .line 164
+    move-result-object v3
+
     .line 165
-    :cond_2
-    :goto_3
-    add-int/lit8 v7, v7, 0x1
+    new-instance v6, Lcom/google/android/gms/internal/measurement/ce;
 
     .line 166
     .line 167
-    goto :goto_0
+    const/4 v7, 0x3
 
     .line 168
-    :goto_4
-    :try_start_8
-    const-string v1, "PackageInfo"
+    invoke-direct {v6, p1, v4, v7}, Lcom/google/android/gms/internal/measurement/ce;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 169
     .line 170
-    const-string v2, "Unable to read Phenotype PackageMetadata from assets."
-
     .line 171
-    .line 172
-    invoke-static {v1, v2, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kg;->a()Lcom/google/android/gms/internal/measurement/ah;
 
+    .line 172
     .line 173
     .line 174
+    move-result-object p1
+
     .line 175
-    :cond_3
-    const/4 v0, 0x1
+    new-instance v4, Lcom/google/android/gms/internal/measurement/ce;
 
     .line 176
-    invoke-virtual {v3, v0}, Lcom/google/android/gms/internal/play_billing/g;->a(Z)Lg6/w;
-
     .line 177
+    invoke-direct {v4, p1, v6, v5}, Lcom/google/android/gms/internal/measurement/ce;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 178
     .line 179
-    move-result-object v0
-
     .line 180
-    sput-object v0, Lcom/google/android/gms/internal/measurement/de;->p:Lg6/w;
+    invoke-static {v3, v4, v0}, Li6/o0;->g(Lcom/google/common/util/concurrent/ListenableFuture;Li6/a0;Ljava/util/concurrent/Executor;)Li6/t;
 
     .line 181
     .line 182
-    move-object v3, v0
-
     .line 183
-    :cond_4
-    monitor-exit v4
+    move-result-object p1
 
     .line 184
-    goto :goto_6
+    new-instance v3, Ld6/e;
 
     .line 185
-    :goto_5
-    monitor-exit v4
-    :try_end_8
-    .catchall {:try_start_8 .. :try_end_8} :catchall_0
-
     .line 186
-    throw v0
+    invoke-direct {v3}, Ljava/lang/Object;-><init>()V
 
     .line 187
-    :cond_5
-    :goto_6
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->h:Ljava/lang/Object;
-
     .line 188
     .line 189
-    check-cast v0, Ljava/lang/String;
+    invoke-static {p1, v3, v0}, Li6/o0;->f(Lcom/google/common/util/concurrent/ListenableFuture;Ld6/d;Ljava/util/concurrent/Executor;)Li6/u;
 
     .line 190
     .line 191
-    invoke-virtual {v3, v0}, Lg6/w;->containsKey(Ljava/lang/Object;)Z
-
     .line 192
-    .line 193
-    .line 194
-    move-result v1
+    move-result-object p1
 
+    .line 193
+    new-instance v3, Lcom/google/android/gms/internal/measurement/rf;
+
+    .line 194
     .line 195
-    if-nez v1, :cond_6
+    invoke-direct {v3, p0, v1, v2}, Lcom/google/android/gms/internal/measurement/rf;-><init>(Lcom/google/android/gms/internal/measurement/ce;ILjava/util/ArrayList;)V
 
     .line 196
     .line 197
-    invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
     .line 198
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kg;->a()Lcom/google/android/gms/internal/measurement/ah;
+
     .line 199
     .line 200
+    .line 201
     move-result-object v1
 
-    .line 201
-    invoke-virtual {v1}, Ljava/lang/String;->length()I
-
     .line 202
+    new-instance v2, Lcom/google/android/gms/internal/measurement/ce;
+
     .line 203
     .line 204
-    move-result v1
+    invoke-direct {v2, v1, v3, v5}, Lcom/google/android/gms/internal/measurement/ce;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 205
-    new-instance v2, Ljava/lang/StringBuilder;
-
     .line 206
     .line 207
-    add-int/lit16 v1, v1, 0xad
+    invoke-static {p1, v2, v0}, Li6/o0;->g(Lcom/google/common/util/concurrent/ListenableFuture;Li6/a0;Ljava/util/concurrent/Executor;)Li6/t;
 
     .line 208
     .line 209
-    invoke-direct {v2, v1}, Ljava/lang/StringBuilder;-><init>(I)V
-
     .line 210
+    move-result-object p1
+
     .line 211
+    return-object p1
+
     .line 212
-    const-string v1, "Config package "
+    :cond_1
+    invoke-static {v0}, Lcom/google/android/gms/internal/measurement/gi;->h(Ljava/util/Iterator;)Ljava/lang/ClassCastException;
 
     .line 213
     .line 214
-    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
     .line 215
+    move-result-object p1
+
     .line 216
+    throw p1
+
     .line 217
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :pswitch_3
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->b:Ljava/lang/Object;
 
     .line 218
     .line 219
+    check-cast v0, Lcom/google/android/gms/internal/measurement/fe;
+
     .line 220
-    const-string v0, " cannot use FILE backing without declarative registration. See go/phenotype-android-integration#phenotype for more information. This will lead to stale flags."
-
     .line 221
-    .line 222
-    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
 
+    .line 222
     .line 223
+    check-cast v1, Lcom/google/android/gms/internal/measurement/je;
+
     .line 224
     .line 225
-    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    check-cast p1, Ljava/lang/Void;
 
     .line 226
     .line 227
-    .line 228
-    move-result-object v0
+    iget-object p1, v0, Lcom/google/android/gms/internal/measurement/fe;->d:Ld6/j;
 
+    .line 228
     .line 229
-    const-string v1, "FilePhenotypeFlags"
+    invoke-interface {p1}, Ld6/j;->get()Ljava/lang/Object;
 
     .line 230
     .line 231
-    invoke-static {v1, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 232
-    .line 233
-    .line 234
-    :cond_6
-    return-void
+    move-result-object p1
 
+    .line 233
+    check-cast p1, Lcom/google/android/gms/internal/measurement/ic;
+
+    .line 234
     .line 235
+    new-instance v2, Lcom/google/android/gms/internal/measurement/ee;
+
+    .line 236
+    .line 237
+    invoke-direct {v2, v0, v1}, Lcom/google/android/gms/internal/measurement/ee;-><init>(Lcom/google/android/gms/internal/measurement/fe;Lcom/google/android/gms/internal/measurement/je;)V
+
+    .line 238
+    .line 239
+    .line 240
+    invoke-virtual {p1, v2}, Lcom/google/android/gms/internal/measurement/ic;->a(Lcom/google/android/gms/internal/measurement/ee;)Li6/a;
+
+    .line 241
+    .line 242
+    .line 243
+    move-result-object p1
+
+    .line 244
+    return-object p1
+
+    .line 245
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public toString()Ljava/lang/String;
+    .locals 3
+
+    .line 1
+    iget v0, p0, Lcom/google/android/gms/internal/measurement/ce;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-super {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object v0
+
+    .line 10
+    return-object v0
+
+    .line 11
+    :pswitch_0
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/ce;->c:Ljava/lang/Object;
+
+    .line 12
+    .line 13
+    check-cast v0, Li6/a0;
+
+    .line 14
+    .line 15
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object v1
+
+    .line 19
+    invoke-virtual {v1}, Ljava/lang/String;->length()I
+
+    .line 20
+    .line 21
+    .line 22
+    move-result v1
+
+    .line 23
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 24
+    .line 25
+    add-int/lit8 v1, v1, 0xe
+
+    .line 26
+    .line 27
+    invoke-direct {v2, v1}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    const-string v1, "propagating=["
+
+    .line 31
+    .line 32
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 33
+    .line 34
+    .line 35
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 36
+    .line 37
+    .line 38
+    const-string v0, "]"
+
+    .line 39
+    .line 40
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 41
+    .line 42
+    .line 43
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 44
+    .line 45
+    .line 46
+    move-result-object v0
+
+    .line 47
+    return-object v0
+
+    .line 48
+    nop
+
+    .line 49
+    :pswitch_data_0
+    .packed-switch 0x4
         :pswitch_0
     .end packed-switch
 .end method

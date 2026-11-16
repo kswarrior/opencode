@@ -1,137 +1,294 @@
-.class public final Le6/b;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public abstract Le6/b;
+.super Ljava/util/AbstractCollection;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/text/InputFilter;
+.implements Ljava/io/Serializable;
+
+
+# static fields
+.field public static final c:[Ljava/lang/Object;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    new-array v0, v0, [Ljava/lang/Object;
+
+    .line 3
+    .line 4
+    sput-object v0, Le6/b;->c:[Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    return-void
+.end method
 
 
 # virtual methods
-.method public final filter(Ljava/lang/CharSequence;IILandroid/text/Spanned;II)Ljava/lang/CharSequence;
-    .locals 6
+.method public final add(Ljava/lang/Object;)Z
+    .locals 0
 
     .line 1
-    new-instance p4, Ljava/lang/StringBuilder;
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
     .line 2
     .line 3
-    sub-int p5, p3, p2
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
 
     .line 4
     .line 5
-    invoke-direct {p4, p5}, Ljava/lang/StringBuilder;-><init>(I)V
-
     .line 6
-    .line 7
-    .line 8
-    const/4 p5, 0x1
+    throw p1
+.end method
 
-    .line 9
-    move p6, p2
+.method public final addAll(Ljava/util/Collection;)Z
+    .locals 0
 
-    .line 10
-    :goto_0
-    if-ge p6, p3, :cond_1
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
-    .line 11
-    .line 12
-    invoke-interface {p1, p6}, Ljava/lang/CharSequence;->charAt(I)C
+    .line 2
+    .line 3
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
 
-    .line 13
-    .line 14
-    .line 15
+    .line 4
+    .line 5
+    .line 6
+    throw p1
+.end method
+
+.method public abstract c()Le6/g;
+.end method
+
+.method public final clear()V
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw v0
+.end method
+
+.method public abstract contains(Ljava/lang/Object;)Z
+.end method
+
+.method public abstract d([Ljava/lang/Object;)I
+.end method
+
+.method public e()[Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    return-object v0
+.end method
+
+.method public h()I
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw v0
+.end method
+
+.method public bridge synthetic iterator()Ljava/util/Iterator;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Le6/b;->l()Lcom/google/android/gms/internal/play_billing/o;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    return-object v0
+.end method
+
+.method public j()I
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw v0
+.end method
+
+.method public abstract k()Z
+.end method
+
+.method public abstract l()Lcom/google/android/gms/internal/play_billing/o;
+.end method
+
+.method public final remove(Ljava/lang/Object;)Z
+    .locals 0
+
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw p1
+.end method
+
+.method public final removeAll(Ljava/util/Collection;)Z
+    .locals 0
+
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw p1
+.end method
+
+.method public final retainAll(Ljava/util/Collection;)Z
+    .locals 0
+
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    .line 2
+    .line 3
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    throw p1
+.end method
+
+.method public final toArray()[Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    sget-object v0, Le6/b;->c:[Ljava/lang/Object;
+
+    invoke-virtual {p0, v0}, Le6/b;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+    .locals 3
+
+    .line 2
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 3
+    invoke-virtual {p0}, Ljava/util/AbstractCollection;->size()I
+
     move-result v0
 
-    .line 16
-    const/16 v1, 0xa
+    .line 4
+    array-length v1, p1
 
-    .line 17
-    .line 18
-    if-ne v0, v1, :cond_0
+    if-ge v1, v0, :cond_1
 
-    .line 19
-    .line 20
-    const/4 p5, 0x0
+    .line 5
+    invoke-virtual {p0}, Le6/b;->e()[Ljava/lang/Object;
 
-    .line 21
-    goto :goto_1
+    move-result-object v1
 
-    .line 22
-    :cond_0
-    invoke-virtual {p4, v0}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    if-eqz v1, :cond_0
 
-    .line 23
-    .line 24
-    .line 25
-    :goto_1
-    add-int/lit8 p6, p6, 0x1
+    .line 6
+    invoke-virtual {p0}, Le6/b;->j()I
 
-    .line 26
-    .line 27
-    goto :goto_0
+    move-result v0
 
-    .line 28
-    :cond_1
-    if-eqz p5, :cond_2
+    invoke-virtual {p0}, Le6/b;->h()I
 
-    .line 29
-    .line 30
-    const/4 p1, 0x0
-
-    .line 31
-    return-object p1
-
-    .line 32
-    :cond_2
-    instance-of p3, p1, Landroid/text/Spanned;
-
-    .line 33
-    .line 34
-    if-eqz p3, :cond_3
-
-    .line 35
-    .line 36
-    new-instance v4, Landroid/text/SpannableString;
-
-    .line 37
-    .line 38
-    invoke-direct {v4, p4}, Landroid/text/SpannableString;-><init>(Ljava/lang/CharSequence;)V
-
-    .line 39
-    .line 40
-    .line 41
-    move-object v0, p1
-
-    .line 42
-    check-cast v0, Landroid/text/Spanned;
-
-    .line 43
-    .line 44
-    invoke-virtual {p4}, Ljava/lang/StringBuilder;->length()I
-
-    .line 45
-    .line 46
-    .line 47
     move-result v2
 
-    .line 48
-    const/4 v3, 0x0
+    .line 7
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 49
-    const/4 v5, 0x0
+    move-result-object p1
 
-    .line 50
-    move v1, p2
+    invoke-static {v1, v0, v2, p1}, Ljava/util/Arrays;->copyOfRange([Ljava/lang/Object;IILjava/lang/Class;)[Ljava/lang/Object;
 
-    .line 51
-    invoke-static/range {v0 .. v5}, Landroid/text/TextUtils;->copySpansFrom(Landroid/text/Spanned;IILjava/lang/Class;Landroid/text/Spannable;I)V
+    move-result-object p1
 
-    .line 52
-    .line 53
-    .line 54
-    return-object v4
+    return-object p1
 
-    .line 55
-    :cond_3
-    return-object p4
+    .line 8
+    :cond_0
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
+
+    move-result-object p1
+
+    .line 9
+    invoke-static {p1, v0}, Ljava/lang/reflect/Array;->newInstance(Ljava/lang/Class;I)Ljava/lang/Object;
+
+    move-result-object p1
+
+    check-cast p1, [Ljava/lang/Object;
+
+    goto :goto_0
+
+    .line 10
+    :cond_1
+    array-length v1, p1
+
+    if-le v1, v0, :cond_2
+
+    const/4 v1, 0x0
+
+    .line 11
+    aput-object v1, p1, v0
+
+    .line 12
+    :cond_2
+    :goto_0
+    invoke-virtual {p0, p1}, Le6/b;->d([Ljava/lang/Object;)I
+
+    return-object p1
 .end method

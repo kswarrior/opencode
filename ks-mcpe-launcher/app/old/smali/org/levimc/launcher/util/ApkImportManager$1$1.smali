@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/util/ApkImportManager$1$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/util/ApkInstaller$InstallCallback;
@@ -99,7 +99,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 13
     .line 14
@@ -138,7 +138,7 @@
 
     .line 4
     .line 5
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->g(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 6
     .line 7
@@ -179,7 +179,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 13
     .line 14
@@ -195,7 +195,7 @@
 
     .line 19
     .line 20
-    invoke-static {v1}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v1}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 21
     .line 22
@@ -247,7 +247,7 @@
 
     .line 45
     .line 46
-    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 47
     .line 48
@@ -276,7 +276,7 @@
 
     .line 60
     .line 61
-    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->f(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
+    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->d(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
 
     .line 62
     .line 63
@@ -296,7 +296,7 @@
 
     .line 70
     .line 71
-    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->f(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
+    invoke-static {p1}, Lorg/levimc/launcher/util/ApkImportManager;->d(Lorg/levimc/launcher/util/ApkImportManager;)Lorg/levimc/launcher/util/ApkImportManager$OnImportCompleteListener;
 
     .line 72
     .line 73
@@ -327,7 +327,7 @@
 
     .line 4
     .line 5
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 6
     .line 7
@@ -335,14 +335,14 @@
     move-result-object v0
 
     .line 9
-    new-instance v1, Lorg/levimc/launcher/util/b;
+    new-instance v1, Lorg/levimc/launcher/util/a;
 
     .line 10
     .line 11
     const/4 v2, 0x1
 
     .line 12
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/b;-><init>(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/a;-><init>(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;I)V
 
     .line 13
     .line 14
@@ -367,7 +367,7 @@
 
     .line 4
     .line 5
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 6
     .line 7
@@ -375,14 +375,14 @@
     move-result-object v0
 
     .line 9
-    new-instance v1, Lorg/levimc/launcher/util/c;
+    new-instance v1, Lorg/levimc/launcher/util/b;
 
     .line 10
     .line 11
     const/4 v2, 0x0
 
     .line 12
-    invoke-direct {v1, p1, v2, p0}, Lorg/levimc/launcher/util/c;-><init>(IILjava/lang/Object;)V
+    invoke-direct {v1, p1, v2, p0}, Lorg/levimc/launcher/util/b;-><init>(IILjava/lang/Object;)V
 
     .line 13
     .line 14
@@ -407,7 +407,7 @@
 
     .line 4
     .line 5
-    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->e(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/util/ApkImportManager;->c(Lorg/levimc/launcher/util/ApkImportManager;)Landroid/app/Activity;
 
     .line 6
     .line 7
@@ -415,14 +415,14 @@
     move-result-object v0
 
     .line 9
-    new-instance v1, Lorg/levimc/launcher/util/b;
+    new-instance v1, Lorg/levimc/launcher/util/a;
 
     .line 10
     .line 11
     const/4 v2, 0x0
 
     .line 12
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/b;-><init>(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/a;-><init>(Lorg/levimc/launcher/util/ApkImportManager$1$1;Ljava/lang/String;I)V
 
     .line 13
     .line 14

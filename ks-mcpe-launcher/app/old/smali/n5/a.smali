@@ -1,6 +1,6 @@
 .class public final Ln5/a;
 .super Lt0/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -24,14 +24,14 @@
     .locals 2
 
     .line 1
-    new-instance v0, La6/j0;
+    new-instance v0, Lc5/f;
 
     .line 2
     .line 3
-    const/4 v1, 0x5
+    const/4 v1, 0x4
 
     .line 4
-    invoke-direct {v0, v1}, La6/j0;-><init>(I)V
+    invoke-direct {v0, v1}, Lc5/f;-><init>(I)V
 
     .line 5
     .line 6

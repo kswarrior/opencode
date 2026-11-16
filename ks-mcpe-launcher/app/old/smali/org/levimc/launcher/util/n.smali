@@ -1,23 +1,17 @@
 .class public final synthetic Lorg/levimc/launcher/util/n;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTargetResolver;
+.implements Landroid/widget/PopupMenu$OnMenuItemClickListener;
 
 
 # instance fields
-.field public final synthetic a:Lorg/levimc/launcher/util/InstanceBackupManager;
-
-.field public final synthetic b:Ljava/io/File;
-
-.field public final synthetic c:Ljava/io/File;
-
-.field public final synthetic d:Ljava/io/File;
+.field public final synthetic a:Lorg/levimc/launcher/util/LanguageManager;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/util/InstanceBackupManager;Ljava/io/File;Ljava/io/File;Ljava/io/File;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/util/LanguageManager;)V
     .locals 0
 
     .line 1
@@ -26,60 +20,30 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/util/n;->a:Lorg/levimc/launcher/util/InstanceBackupManager;
+    iput-object p1, p0, Lorg/levimc/launcher/util/n;->a:Lorg/levimc/launcher/util/LanguageManager;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/util/n;->b:Ljava/io/File;
-
-    .line 7
-    .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/util/n;->c:Ljava/io/File;
-
-    .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/util/n;->d:Ljava/io/File;
-
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final resolve(Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTarget;
-    .locals 6
+.method public final onMenuItemClick(Landroid/view/MenuItem;)Z
+    .locals 1
 
     .line 1
-    iget-object v2, p0, Lorg/levimc/launcher/util/n;->c:Ljava/io/File;
+    iget-object v0, p0, Lorg/levimc/launcher/util/n;->a:Lorg/levimc/launcher/util/LanguageManager;
 
     .line 2
     .line 3
-    iget-object v3, p0, Lorg/levimc/launcher/util/n;->d:Ljava/io/File;
+    invoke-static {v0, p1}, Lorg/levimc/launcher/util/LanguageManager;->a(Lorg/levimc/launcher/util/LanguageManager;Landroid/view/MenuItem;)Z
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/util/n;->a:Lorg/levimc/launcher/util/InstanceBackupManager;
-
     .line 6
+    move-result p1
+
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/util/n;->b:Ljava/io/File;
-
-    .line 8
-    .line 9
-    move-object v4, p1
-
-    .line 10
-    move-object v5, p2
-
-    .line 11
-    invoke-static/range {v0 .. v5}, Lorg/levimc/launcher/util/InstanceBackupManager;->d(Lorg/levimc/launcher/util/InstanceBackupManager;Ljava/io/File;Ljava/io/File;Ljava/io/File;Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTarget;
-
-    .line 12
-    .line 13
-    .line 14
-    move-result-object p1
-
-    .line 15
-    return-object p1
+    return p1
 .end method

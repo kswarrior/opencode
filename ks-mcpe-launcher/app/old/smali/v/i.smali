@@ -1,10 +1,10 @@
 .class public final Lv/i;
 .super Lv/g;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic y:Lv/j;
+.field public final synthetic X:Lv/j;
 
 
 # direct methods
@@ -17,7 +17,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lv/i;->y:Lv/j;
+    iput-object p1, p0, Lv/i;->X:Lv/j;
 
     .line 5
     .line 6
@@ -30,7 +30,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lv/i;->y:Lv/j;
+    iget-object v0, p0, Lv/i;->X:Lv/j;
 
     .line 2
     .line 3

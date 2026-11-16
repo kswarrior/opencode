@@ -1,209 +1,128 @@
-.class public final Lv8/a;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ljava/util/Comparator;
+.class public final enum Lv8/a;
+.super Ljava/lang/Enum;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final d:Lv8/a;
+.field public static final enum c:Lv8/a;
 
-.field public static final h:Lv8/a;
-
-
-# instance fields
-.field public final synthetic c:I
+.field public static final synthetic d:[Lv8/a;
 
 
 # direct methods
-.method static synthetic constructor <clinit>()V
-    .locals 2
+.method static constructor <clinit>()V
+    .locals 5
 
     .line 1
     new-instance v0, Lv8/a;
 
     .line 2
     .line 3
-    const/4 v1, 0x0
-
-    .line 4
-    invoke-direct {v0, v1}, Lv8/a;-><init>(I)V
-
-    .line 5
-    .line 6
-    .line 7
-    sput-object v0, Lv8/a;->d:Lv8/a;
-
-    .line 8
-    .line 9
-    new-instance v0, Lv8/a;
-
-    .line 10
-    .line 11
-    const/4 v1, 0x1
-
-    .line 12
-    invoke-direct {v0, v1}, Lv8/a;-><init>(I)V
-
-    .line 13
-    .line 14
-    .line 15
-    sput-object v0, Lv8/a;->h:Lv8/a;
-
-    .line 16
-    .line 17
-    return-void
-.end method
-
-.method public synthetic constructor <init>(I)V
-    .locals 0
-
-    .line 1
-    iput p1, p0, Lv8/a;->c:I
-
-    .line 2
-    .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    const-string v1, "COROUTINE_SUSPENDED"
 
     .line 4
     .line 5
+    const/4 v2, 0x0
+
     .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 1
-
-    .line 1
-    iget v0, p0, Lv8/a;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    check-cast p1, Ljava/lang/Comparable;
+    invoke-direct {v0, v1, v2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 7
     .line 8
-    check-cast p2, Ljava/lang/Comparable;
-
     .line 9
+    sput-object v0, Lv8/a;->c:Lv8/a;
+
     .line 10
-    const-string v0, "a"
-
     .line 11
-    .line 12
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    new-instance v1, Lv8/a;
 
+    .line 12
     .line 13
+    const-string v2, "UNDECIDED"
+
     .line 14
     .line 15
-    const-string v0, "b"
+    const/4 v3, 0x1
 
     .line 16
-    .line 17
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-direct {v1, v2, v3}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
+    .line 17
     .line 18
     .line 19
-    .line 20
-    invoke-interface {p2, p1}, Ljava/lang/Comparable;->compareTo(Ljava/lang/Object;)I
+    new-instance v2, Lv8/a;
 
+    .line 20
     .line 21
+    const-string v3, "RESUMED"
+
     .line 22
     .line 23
-    move-result p1
+    const/4 v4, 0x2
 
     .line 24
-    return p1
+    invoke-direct {v2, v3, v4}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 25
-    :pswitch_0
-    check-cast p1, Ljava/lang/Comparable;
-
     .line 26
     .line 27
-    check-cast p2, Ljava/lang/Comparable;
+    filled-new-array {v0, v1, v2}, [Lv8/a;
 
     .line 28
     .line 29
-    const-string v0, "a"
-
     .line 30
+    move-result-object v0
+
     .line 31
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    sput-object v0, Lv8/a;->d:[Lv8/a;
 
     .line 32
     .line 33
-    .line 34
-    const-string v0, "b"
-
-    .line 35
-    .line 36
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 37
-    .line 38
-    .line 39
-    invoke-interface {p1, p2}, Ljava/lang/Comparable;->compareTo(Ljava/lang/Object;)I
-
-    .line 40
-    .line 41
-    .line 42
-    move-result p1
-
-    .line 43
-    return p1
-
-    .line 44
-    nop
-
-    .line 45
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    return-void
 .end method
 
-.method public final reversed()Ljava/util/Comparator;
+.method public static valueOf(Ljava/lang/String;)Lv8/a;
     .locals 1
 
     .line 1
-    iget v0, p0, Lv8/a;->c:I
+    const-class v0, Lv8/a;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
 
     .line 4
     .line 5
     .line 6
-    sget-object v0, Lv8/a;->d:Lv8/a;
+    move-result-object p0
 
     .line 7
+    check-cast p0, Lv8/a;
+
     .line 8
-    return-object v0
-
     .line 9
-    :pswitch_0
-    sget-object v0, Lv8/a;->h:Lv8/a;
+    return-object p0
+.end method
 
-    .line 10
-    .line 11
+.method public static values()[Lv8/a;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lv8/a;->d:[Lv8/a;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, [Lv8/a;
+
+    .line 8
+    .line 9
     return-object v0
-
-    .line 12
-    nop
-
-    .line 13
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

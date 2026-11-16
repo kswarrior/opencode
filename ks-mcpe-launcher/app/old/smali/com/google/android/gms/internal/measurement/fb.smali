@@ -1,98 +1,105 @@
 .class public final Lcom/google/android/gms/internal/measurement/fb;
-.super Lcom/google/android/gms/common/api/GoogleApi;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-
-# static fields
-.field public static final synthetic a:I
-
-
-# direct methods
-.method static constructor <clinit>()V
-    .locals 2
-
-    .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/h1;
-
-    .line 2
-    .line 3
-    const/16 v1, 0xb
-
-    .line 4
-    .line 5
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/measurement/h1;-><init>(I)V
-
-    .line 6
-    .line 7
-    .line 8
-    const/4 v1, 0x0
-
-    .line 9
-    invoke-static {v1}, Lcom/google/android/gms/tasks/Tasks;->forResult(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v1
-
-    .line 13
-    invoke-static {v0, v1}, Landroid/util/Pair;->create(Ljava/lang/Object;Ljava/lang/Object;)Landroid/util/Pair;
-
-    .line 14
-    .line 15
-    .line 16
-    return-void
-.end method
+.super Lcom/google/android/gms/common/internal/GmsClient;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;)Lcom/google/android/gms/tasks/Task;
+.method public final createServiceInterface(Landroid/os/IBinder;)Landroid/os/IInterface;
     .locals 3
 
     .line 1
-    invoke-static {}, Lcom/google/android/gms/common/api/internal/TaskApiCall;->builder()Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+    if-nez p1, :cond_0
+
+    .line 2
+    .line 3
+    const/4 p1, 0x0
+
+    .line 4
+    return-object p1
+
+    .line 5
+    :cond_0
+    const-string v0, "com.google.android.gms.phenotype.internal.IPhenotypeService"
+
+    .line 6
+    .line 7
+    invoke-interface {p1, v0}, Landroid/os/IBinder;->queryLocalInterface(Ljava/lang/String;)Landroid/os/IInterface;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v1
+
+    .line 11
+    instance-of v2, v1, Lcom/google/android/gms/internal/measurement/eb;
+
+    .line 12
+    .line 13
+    if-eqz v2, :cond_1
+
+    .line 14
+    .line 15
+    check-cast v1, Lcom/google/android/gms/internal/measurement/eb;
+
+    .line 16
+    .line 17
+    return-object v1
+
+    .line 18
+    :cond_1
+    new-instance v1, Lcom/google/android/gms/internal/measurement/eb;
+
+    .line 19
+    .line 20
+    invoke-direct {v1, p1, v0}, Lcom/google/android/gms/internal/measurement/i6;-><init>(Landroid/os/IBinder;Ljava/lang/String;)V
+
+    .line 21
+    .line 22
+    .line 23
+    return-object v1
+.end method
+
+.method public final getApiFeatures()[Lcom/google/android/gms/common/Feature;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/google/android/gms/internal/measurement/ra;->d:[Lcom/google/android/gms/common/Feature;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final getMinApkVersion()I
+    .locals 1
+
+    .line 1
+    const v0, 0x8f95d0
 
     .line 2
     .line 3
     .line 4
-    move-result-object v0
+    return v0
+.end method
 
-    .line 5
-    new-instance v1, Lcom/google/android/gms/internal/measurement/de;
+.method public final getServiceDescriptor()Ljava/lang/String;
+    .locals 1
 
-    .line 6
-    .line 7
-    const/4 v2, 0x2
+    .line 1
+    const-string v0, "com.google.android.gms.phenotype.internal.IPhenotypeService"
 
-    .line 8
-    invoke-direct {v1, p1, v2}, Lcom/google/android/gms/internal/measurement/de;-><init>(Ljava/lang/String;I)V
+    .line 2
+    .line 3
+    return-object v0
+.end method
 
-    .line 9
-    .line 10
-    .line 11
-    invoke-virtual {v0, v1}, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->run(Lcom/google/android/gms/common/api/internal/RemoteCall;)Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;
+.method public final getStartServiceAction()Ljava/lang/String;
+    .locals 1
 
-    .line 12
-    .line 13
-    .line 14
-    move-result-object p1
+    .line 1
+    const-string v0, "com.google.android.gms.phenotype.service.START"
 
-    .line 15
-    invoke-virtual {p1}, Lcom/google/android/gms/common/api/internal/TaskApiCall$Builder;->build()Lcom/google/android/gms/common/api/internal/TaskApiCall;
-
-    .line 16
-    .line 17
-    .line 18
-    move-result-object p1
-
-    .line 19
-    invoke-virtual {p0, p1}, Lcom/google/android/gms/common/api/GoogleApi;->doRead(Lcom/google/android/gms/common/api/internal/TaskApiCall;)Lcom/google/android/gms/tasks/Task;
-
-    .line 20
-    .line 21
-    .line 22
-    move-result-object p1
-
-    .line 23
-    return-object p1
+    .line 2
+    .line 3
+    return-object v0
 .end method

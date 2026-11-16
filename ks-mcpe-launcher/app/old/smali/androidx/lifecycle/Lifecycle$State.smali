@@ -1,6 +1,6 @@
 .class public final enum Landroidx/lifecycle/Lifecycle$State;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -21,11 +21,11 @@
 
 .field public static final enum h:Landroidx/lifecycle/Lifecycle$State;
 
-.field public static final enum p:Landroidx/lifecycle/Lifecycle$State;
-
 .field public static final enum q:Landroidx/lifecycle/Lifecycle$State;
 
-.field public static final synthetic w:[Landroidx/lifecycle/Lifecycle$State;
+.field public static final enum w:Landroidx/lifecycle/Lifecycle$State;
+
+.field public static final synthetic x:[Landroidx/lifecycle/Lifecycle$State;
 
 
 # direct methods
@@ -109,7 +109,7 @@
     .line 37
     .line 38
     .line 39
-    sput-object v3, Landroidx/lifecycle/Lifecycle$State;->p:Landroidx/lifecycle/Lifecycle$State;
+    sput-object v3, Landroidx/lifecycle/Lifecycle$State;->q:Landroidx/lifecycle/Lifecycle$State;
 
     .line 40
     .line 41
@@ -129,7 +129,7 @@
     .line 47
     .line 48
     .line 49
-    sput-object v4, Landroidx/lifecycle/Lifecycle$State;->q:Landroidx/lifecycle/Lifecycle$State;
+    sput-object v4, Landroidx/lifecycle/Lifecycle$State;->w:Landroidx/lifecycle/Lifecycle$State;
 
     .line 50
     .line 51
@@ -141,7 +141,7 @@
     move-result-object v0
 
     .line 55
-    sput-object v0, Landroidx/lifecycle/Lifecycle$State;->w:[Landroidx/lifecycle/Lifecycle$State;
+    sput-object v0, Landroidx/lifecycle/Lifecycle$State;->x:[Landroidx/lifecycle/Lifecycle$State;
 
     .line 56
     .line 57
@@ -175,7 +175,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Landroidx/lifecycle/Lifecycle$State;->w:[Landroidx/lifecycle/Lifecycle$State;
+    sget-object v0, Landroidx/lifecycle/Lifecycle$State;->x:[Landroidx/lifecycle/Lifecycle$State;
 
     .line 2
     .line 3

@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xal/browser/BrowserLaunchActivity;
 .super Landroid/app/Activity;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -616,7 +616,7 @@
     move-result-object v0
 
     .line 5
-    const/4 v1, 0x1
+    iget-boolean v1, p1, Lcom/microsoft/xal/browser/BrowserLaunchActivity$BrowserLaunchParameters;->UseInProcBrowser:Z
 
     .line 6
     .line 7
@@ -773,7 +773,7 @@
     .line 26
     .line 27
     .line 28
-    invoke-virtual {p4}, Lq/b;->a()Lk6/g0;
+    invoke-virtual {p4}, Lq/b;->a()Li6/i0;
 
     .line 29
     .line 30
@@ -781,7 +781,7 @@
     move-result-object p3
 
     .line 32
-    iget-object p3, p3, Lk6/g0;->d:Ljava/lang/Object;
+    iget-object p3, p3, Li6/i0;->d:Ljava/lang/Object;
 
     .line 33
     .line 34

@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/discord/socialsdk/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -58,7 +58,7 @@
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/packages/SettingsCard;
+    check-cast v0, Lcom/mojang/minecraftpe/MainActivity;
 
     .line 9
     .line 10
@@ -66,7 +66,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/packages/SettingsCard;->c(Lorg/levimc/launcher/ui/packages/SettingsCard;J)V
+    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/MainActivity;->m(Lcom/mojang/minecraftpe/MainActivity;J)V
 
     .line 13
     .line 14
@@ -79,7 +79,7 @@
 
     .line 17
     .line 18
-    check-cast v0, Lcom/mojang/minecraftpe/MainActivity;
+    check-cast v0, Lcom/discord/socialsdk/DiscordRpcClient;
 
     .line 19
     .line 20
@@ -87,7 +87,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0, v1, v2}, Lcom/mojang/minecraftpe/MainActivity;->m(Lcom/mojang/minecraftpe/MainActivity;J)V
+    invoke-static {v0, v1, v2}, Lcom/discord/socialsdk/DiscordRpcClient;->b(Lcom/discord/socialsdk/DiscordRpcClient;J)V
 
     .line 23
     .line 24
@@ -95,33 +95,11 @@
     return-void
 
     .line 26
-    :pswitch_1
-    iget-object v0, p0, Lcom/discord/socialsdk/a;->h:Ljava/lang/Object;
-
-    .line 27
-    .line 28
-    check-cast v0, Lcom/discord/socialsdk/DiscordRpcClient;
-
-    .line 29
-    .line 30
-    iget-wide v1, p0, Lcom/discord/socialsdk/a;->d:J
-
-    .line 31
-    .line 32
-    invoke-static {v0, v1, v2}, Lcom/discord/socialsdk/DiscordRpcClient;->b(Lcom/discord/socialsdk/DiscordRpcClient;J)V
-
-    .line 33
-    .line 34
-    .line 35
-    return-void
-
-    .line 36
     nop
 
-    .line 37
+    .line 27
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

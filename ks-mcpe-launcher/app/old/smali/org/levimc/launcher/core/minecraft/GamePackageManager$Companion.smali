@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/minecraft/GamePackageManager$Companion;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -205,7 +205,7 @@
     move-result-object p1
 
     .line 47
-    invoke-static {p1}, Lt8/i;->L([Ljava/lang/Object;)Ljava/util/List;
+    invoke-static {p1}, Lr8/i;->L([Ljava/lang/Object;)Ljava/util/List;
 
     .line 48
     .line 49
@@ -230,7 +230,7 @@
     const/4 v3, 0x0
 
     .line 58
-    invoke-static/range {v0 .. v5}, Lt8/j;->K0(Ljava/lang/Iterable;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lg9/k;I)Ljava/lang/String;
+    invoke-static/range {v0 .. v5}, Lr8/j;->K(Ljava/lang/Iterable;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Le9/k;I)Ljava/lang/String;
 
     .line 59
     .line 60
@@ -385,7 +385,7 @@
 
     .line 4
     .line 5
-    invoke-static {v0, p2, v1}, Lcom/google/android/gms/internal/measurement/x;->q(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v0, p2, v1}, Lcom/google/android/gms/internal/measurement/gi;->m(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 6
     .line 7
@@ -485,7 +485,7 @@
     .line 55
     .line 56
     .line 57
-    invoke-static {p4, p1}, Lt8/j;->O0(Ljava/util/Comparator;Ljava/lang/Iterable;)Ljava/util/List;
+    invoke-static {p4, p1}, Lr8/j;->O(Ljava/util/Comparator;Ljava/lang/Iterable;)Ljava/util/List;
 
     .line 58
     .line 59
@@ -664,7 +664,7 @@
     .locals 2
 
     .line 1
-    invoke-static {}, Ljb/c;->v()Lu8/c;
+    invoke-static {}, Ly6/t1;->h()Ls8/c;
 
     .line 2
     .line 3
@@ -676,7 +676,7 @@
 
     .line 6
     .line 7
-    invoke-virtual {v0, v1}, Lu8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ls8/c;->add(Ljava/lang/Object;)Z
 
     .line 8
     .line 9
@@ -685,7 +685,7 @@
 
     .line 11
     .line 12
-    invoke-virtual {v0, v1}, Lu8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ls8/c;->add(Ljava/lang/Object;)Z
 
     .line 13
     .line 14
@@ -694,7 +694,7 @@
 
     .line 16
     .line 17
-    invoke-virtual {v0, v1}, Lu8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, v1}, Ls8/c;->add(Ljava/lang/Object;)Z
 
     .line 18
     .line 19
@@ -719,7 +719,7 @@
 
     .line 29
     .line 30
-    invoke-virtual {v0, p1}, Lu8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p1}, Ls8/c;->add(Ljava/lang/Object;)Z
 
     .line 31
     .line 32
@@ -729,12 +729,12 @@
 
     .line 34
     .line 35
-    invoke-virtual {v0, p1}, Lu8/c;->add(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p1}, Ls8/c;->add(Ljava/lang/Object;)Z
 
     .line 36
     .line 37
     .line 38
-    invoke-static {v0}, Ljb/c;->i(Lu8/c;)Lu8/c;
+    invoke-static {v0}, Ly6/t1;->a(Ls8/c;)Ls8/c;
 
     .line 39
     .line 40
@@ -749,7 +749,7 @@
 
     .line 44
     .line 45
-    invoke-virtual {p1, v0}, Lu8/c;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+    invoke-virtual {p1, v0}, Ls8/c;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     .line 46
     .line 47
@@ -776,7 +776,7 @@
 
     .line 4
     .line 5
-    invoke-static {p1, v0}, Lo9/h;->t0(Ljava/lang/CharSequence;Ljava/lang/String;)Z
+    invoke-static {p1, v0}, Lm9/h;->Z(Ljava/lang/CharSequence;Ljava/lang/String;)Z
 
     .line 6
     .line 7
@@ -822,7 +822,7 @@
 
     const-string v0, "context"
 
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     const/4 v0, 0x0
 
@@ -839,7 +839,7 @@
 
     const-string v0, "context"
 
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 2
     monitor-enter p0
@@ -863,7 +863,7 @@
 
     move-result-object v1
 
-    invoke-static {v0, v1}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v0, v1}, Lf9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     move-result v1
 
@@ -889,7 +889,7 @@
 
     const-string p1, "getApplicationContext(...)"
 
-    invoke-static {v2, p1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v2, p1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     const/4 v6, 0x0
 
@@ -912,7 +912,7 @@
 
     move-result-object p1
 
-    invoke-static {p1}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p1}, Lf9/i;->b(Ljava/lang/Object;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -976,7 +976,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -985,7 +985,7 @@
 
     .line 7
     .line 8
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -994,7 +994,7 @@
 
     .line 12
     .line 13
-    invoke-static {p3, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p3, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 14
     .line 15
@@ -1003,7 +1003,7 @@
 
     .line 17
     .line 18
-    invoke-static {p4, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p4, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 19
     .line 20
@@ -1044,7 +1044,7 @@
     move-result-object v1
 
     .line 39
-    invoke-static {p2, v1}, Lt8/i;->W([Ljava/lang/Object;[Ljava/lang/Object;)[Ljava/lang/Object;
+    invoke-static {p2, v1}, Lr8/i;->W([Ljava/lang/Object;[Ljava/lang/Object;)[Ljava/lang/Object;
 
     .line 40
     .line 41
@@ -1162,7 +1162,7 @@
     .line 92
     .line 93
     :try_start_0
-    invoke-static {v0}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {v0}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 94
     .line 95
@@ -1178,7 +1178,7 @@
     move-result-object p3
 
     .line 101
-    invoke-static {p1}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p1}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 102
     .line 103
@@ -1218,7 +1218,7 @@
     move-result-object p1
 
     .line 123
-    invoke-static {v2, p1}, Lk4/f;->s(Ljava/io/File;Ljava/lang/String;)V
+    invoke-static {v2, p1}, Lcom/bumptech/glide/f;->E(Ljava/io/File;Ljava/lang/String;)V
 
     .line 124
     .line 125

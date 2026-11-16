@@ -1,14 +1,20 @@
-.class public interface abstract Lg/j;
+.class public abstract Lg/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# virtual methods
-.method public abstract onSupportActionModeFinished(Landroidx/appcompat/view/ActionMode;)V
-.end method
+# direct methods
+.method public static a(Ljava/lang/String;)Landroid/os/LocaleList;
+    .locals 0
 
-.method public abstract onSupportActionModeStarted(Landroidx/appcompat/view/ActionMode;)V
-.end method
+    .line 1
+    invoke-static {p0}, Landroid/os/LocaleList;->forLanguageTags(Ljava/lang/String;)Landroid/os/LocaleList;
 
-.method public abstract onWindowStartingSupportActionMode(Landroidx/appcompat/view/ActionMode$Callback;)Landroidx/appcompat/view/ActionMode;
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
 .end method

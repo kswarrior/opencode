@@ -1,152 +1,175 @@
-.class public abstract Lt5/a;
+.class public final Lt5/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lt5/d;
 
 
-# static fields
-.field public static final a:[I
-
-.field public static final b:[I
-
-.field public static final c:[I
-
-.field public static final d:[I
+# instance fields
+.field public final a:F
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(F)V
+    .locals 0
 
     .line 1
-    const v0, 0x10100a7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
     .line 4
-    filled-new-array {v0}, [I
+    iput p1, p0, Lt5/a;->a:F
 
     .line 5
     .line 6
-    .line 7
-    move-result-object v1
-
-    .line 8
-    sput-object v1, Lt5/a;->a:[I
-
-    .line 9
-    .line 10
-    const v1, 0x101009c
-
-    .line 11
-    .line 12
-    .line 13
-    filled-new-array {v1}, [I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result-object v1
-
-    .line 17
-    sput-object v1, Lt5/a;->b:[I
-
-    .line 18
-    .line 19
-    const v1, 0x10100a1
-
-    .line 20
-    .line 21
-    .line 22
-    filled-new-array {v1, v0}, [I
-
-    .line 23
-    .line 24
-    .line 25
-    move-result-object v0
-
-    .line 26
-    sput-object v0, Lt5/a;->c:[I
-
-    .line 27
-    .line 28
-    filled-new-array {v1}, [I
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v0
-
-    .line 32
-    sput-object v0, Lt5/a;->d:[I
-
-    .line 33
-    .line 34
     return-void
 .end method
 
-.method public static a(Landroid/content/res/ColorStateList;[I)I
-    .locals 1
+
+# virtual methods
+.method public final a(Landroid/graphics/RectF;)F
+    .locals 0
 
     .line 1
-    if-eqz p0, :cond_0
+    iget p1, p0, Lt5/a;->a:F
 
     .line 2
     .line 3
-    invoke-virtual {p0}, Landroid/content/res/ColorStateList;->getDefaultColor()I
+    return p1
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 3
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p0, p1, :cond_0
+
+    .line 3
+    .line 4
+    return v0
+
+    .line 5
+    :cond_0
+    instance-of v1, p1, Lt5/a;
+
+    .line 6
+    .line 7
+    const/4 v2, 0x0
+
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
+    .line 10
+    return v2
+
+    .line 11
+    :cond_1
+    check-cast p1, Lt5/a;
+
+    .line 12
+    .line 13
+    iget v1, p0, Lt5/a;->a:F
+
+    .line 14
+    .line 15
+    iget p1, p1, Lt5/a;->a:F
+
+    .line 16
+    .line 17
+    cmpl-float p1, v1, p1
+
+    .line 18
+    .line 19
+    if-nez p1, :cond_2
+
+    .line 20
+    .line 21
+    return v0
+
+    .line 22
+    :cond_2
+    return v2
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lt5/a;->a:F
+
+    .line 2
+    .line 3
+    invoke-static {v0}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     .line 4
     .line 5
     .line 6
-    move-result v0
+    move-result-object v0
 
     .line 7
-    invoke-virtual {p0, p1, v0}, Landroid/content/res/ColorStateList;->getColorForState([II)I
+    filled-new-array {v0}, [Ljava/lang/Object;
 
     .line 8
     .line 9
     .line 10
-    move-result p0
+    move-result-object v0
 
     .line 11
-    goto :goto_0
+    invoke-static {v0}, Ljava/util/Arrays;->hashCode([Ljava/lang/Object;)I
 
     .line 12
-    :cond_0
-    const/4 p0, 0x0
-
     .line 13
-    :goto_0
-    invoke-static {p0}, Landroid/graphics/Color;->alpha(I)I
+    .line 14
+    move-result v0
+
+    .line 15
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget v1, p0, Lt5/a;->a:F
+
+    .line 7
+    .line 8
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(F)Ljava/lang/StringBuilder;
+
+    .line 9
+    .line 10
+    .line 11
+    const-string v1, "px"
+
+    .line 12
+    .line 13
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 14
     .line 15
     .line 16
-    move-result p1
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 17
-    mul-int/lit8 p1, p1, 0x2
-
     .line 18
     .line 19
-    const/16 v0, 0xff
+    move-result-object v0
 
     .line 20
-    .line 21
-    invoke-static {p1, v0}, Ljava/lang/Math;->min(II)I
-
-    .line 22
-    .line 23
-    .line 24
-    move-result p1
-
-    .line 25
-    invoke-static {p0, p1}, Landroidx/core/graphics/a;->f(II)I
-
-    .line 26
-    .line 27
-    .line 28
-    move-result p0
-
-    .line 29
-    return p0
+    return-object v0
 .end method

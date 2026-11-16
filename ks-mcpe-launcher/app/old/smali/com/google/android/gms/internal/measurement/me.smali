@@ -1,2222 +1,2450 @@
 .class public final Lcom/google/android/gms/internal/measurement/me;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lorg/spongycastle/crypto/a;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public a:Z
 
-.field public final d:J
+.field public final b:Ljava/io/Serializable;
 
-.field public final h:Ljava/lang/Object;
+.field public final c:Ljava/lang/Object;
 
-.field public final p:Ljava/lang/Object;
+.field public final d:Ljava/lang/Object;
+
+.field public e:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(Lcom/google/android/gms/internal/measurement/ne;Lcom/google/android/gms/internal/measurement/ge;Lk6/u0;J)V
-    .locals 0
+.method public constructor <init>(Lcom/google/android/gms/internal/measurement/oe;Landroidx/core/view/s;)V
+    .locals 8
 
+    .line 129
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lcom/google/android/gms/internal/measurement/me;->a:Z
+
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/oe;->A()Lcom/google/android/gms/internal/measurement/oe;
+
+    move-result-object v1
+
+    invoke-virtual {v1, p1}, Lcom/google/android/gms/internal/measurement/h1;->equals(Ljava/lang/Object;)Z
+
+    .line 130
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->t()Ljava/lang/String;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
+
+    .line 131
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->u()Lcom/google/android/gms/internal/measurement/s0;
+
+    move-result-object v1
+
+    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->c:Ljava/lang/Object;
+
+    .line 132
+    sget v1, Le6/i;->h:I
+
+    .line 133
+    sget-object v1, Le6/x;->Y:[Ljava/lang/Object;
+
+    .line 134
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->y()I
+
+    move-result v1
+
+    const/4 v2, 0x3
+
+    add-int/2addr v1, v2
+
+    .line 135
+    const-string v3, "expectedSize"
+
+    invoke-static {v1, v3}, Lkb/c;->g(ILjava/lang/String;)V
+
+    .line 136
+    new-instance v3, Lac/k;
+
+    invoke-direct {v3, v1}, Lac/k;-><init>(I)V
+
+    .line 137
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->x()Lcom/google/android/gms/internal/measurement/r1;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v4
+
+    if-eqz v4, :cond_6
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/google/android/gms/internal/measurement/qe;
+
+    .line 138
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->G()I
+
+    move-result v5
+
+    add-int/lit8 v6, v5, -0x1
+
+    if-eqz v5, :cond_5
+
+    if-eqz v6, :cond_4
+
+    const/4 v5, 0x1
+
+    if-eq v6, v5, :cond_3
+
+    const/4 v5, 0x2
+
+    if-eq v6, v5, :cond_2
+
+    if-eq v6, v2, :cond_1
+
+    const/4 v5, 0x4
+
+    if-eq v6, v5, :cond_0
+
+    goto :goto_0
+
+    .line 139
+    :cond_0
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->t()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->y()Lcom/google/android/gms/internal/measurement/s0;
+
+    move-result-object v4
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/s0;->o()[B
+
+    move-result-object v4
+
+    invoke-virtual {v3, v5, v4}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 140
+    :cond_1
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->t()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->x()Ljava/lang/String;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v5, v4}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 141
+    :cond_2
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->t()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->w()D
+
+    move-result-wide v6
+
+    invoke-static {v6, v7}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v5, v4}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 142
+    :cond_3
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->t()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->v()Z
+
+    move-result v4
+
+    invoke-static {v4}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v5, v4}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    .line 143
+    :cond_4
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->t()Ljava/lang/String;
+
+    move-result-object v5
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/qe;->u()J
+
+    move-result-wide v6
+
+    invoke-static {v6, v7}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v4
+
+    invoke-virtual {v3, v5, v4}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_0
+
+    :cond_5
     const/4 p1, 0x0
 
-    iput p1, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
+    .line 144
+    throw p1
 
-    sget-object p1, Ljava/util/concurrent/TimeUnit;->MINUTES:Ljava/util/concurrent/TimeUnit;
+    .line 145
+    :cond_6
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->v()Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "__phenotype_server_token"
+
+    invoke-virtual {v3, v2, v1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 146
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->t()Ljava/lang/String;
+
+    move-result-object v1
+
+    const-string v2, "__phenotype_snapshot_token"
+
+    invoke-virtual {v3, v2, v1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 147
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/oe;->w()J
+
+    move-result-wide v1
+
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object p1
+
+    const-string v1, "__phenotype_configuration_version"
+
+    .line 148
+    invoke-virtual {v3, v1, p1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 149
+    invoke-virtual {v3, v0}, Lac/k;->a(Z)Le6/w;
+
+    move-result-object p1
+
+    .line 150
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
+
+    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/me;->e:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/google/android/gms/internal/measurement/qc;Landroidx/core/view/s;)V
+    .locals 30
+
+    move-object/from16 v0, p0
+
+    move-object/from16 v1, p1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
+    const/4 v2, 0x1
 
-    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    iput-wide p4, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
-
-    return-void
-.end method
-
-.method public constructor <init>(Lcom/google/firebase/iid/FirebaseInstanceId;J)V
-    .locals 1
-
-    const/4 v0, 0x2
-
-    iput v0, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-boolean v2, v0, Lcom/google/android/gms/internal/measurement/me;->a:Z
 
     .line 2
-    invoke-static {}, La/a;->u()Ljava/util/concurrent/ThreadPoolExecutor;
+    iget-object v3, v1, Lcom/google/android/gms/internal/measurement/qc;->a:Lcom/google/android/gms/internal/measurement/oc;
 
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    iput-wide p2, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
+    iget-object v4, v1, Lcom/google/android/gms/internal/measurement/qc;->b:Lcom/google/android/gms/internal/measurement/kc;
 
     .line 3
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
-
-    move-result-object p1
-
-    const-string p2, "power"
-
-    invoke-virtual {p1, p2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object p1
-
-    check-cast p1, Landroid/os/PowerManager;
-
-    const/4 p2, 0x1
-
-    const-string p3, "fiid-sync"
+    iget-object v3, v3, Lcom/google/android/gms/internal/measurement/oc;->a:Le6/k;
 
     .line 4
-    invoke-virtual {p1, p2, p3}, Landroid/os/PowerManager;->newWakeLock(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
+    invoke-virtual {v3}, Ljava/util/AbstractCollection;->isEmpty()Z
 
-    move-result-object p1
+    move-result v3
 
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
-
-    const/4 p2, 0x0
+    if-eqz v3, :cond_0
 
     .line 5
-    invoke-virtual {p1, p2}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
+    invoke-static {}, Lcom/google/android/gms/internal/measurement/kc;->A()Lcom/google/android/gms/internal/measurement/kc;
 
-    return-void
-.end method
+    move-result-object v3
 
-.method public constructor <init>(Lcom/google/firebase/messaging/FirebaseMessaging;J)V
-    .locals 9
+    invoke-virtual {v3, v4}, Lcom/google/android/gms/internal/measurement/h1;->equals(Ljava/lang/Object;)Z
 
-    const/4 v0, 0x1
-
-    iput v0, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
-
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 8
-    new-instance v1, Ljava/util/concurrent/ThreadPoolExecutor;
-
-    sget-object v6, Ljava/util/concurrent/TimeUnit;->SECONDS:Ljava/util/concurrent/TimeUnit;
-
-    new-instance v7, Ljava/util/concurrent/LinkedBlockingQueue;
-
-    invoke-direct {v7}, Ljava/util/concurrent/LinkedBlockingQueue;-><init>()V
-
-    new-instance v8, Lcom/google/android/gms/common/util/concurrent/NamedThreadFactory;
-
-    const-string v0, "firebase-iid-executor"
-
-    invoke-direct {v8, v0}, Lcom/google/android/gms/common/util/concurrent/NamedThreadFactory;-><init>(Ljava/lang/String;)V
-
-    const/4 v2, 0x0
-
-    const/4 v3, 0x1
-
-    const-wide/16 v4, 0x1e
-
-    invoke-direct/range {v1 .. v8}, Ljava/util/concurrent/ThreadPoolExecutor;-><init>(IIJLjava/util/concurrent/TimeUnit;Ljava/util/concurrent/BlockingQueue;Ljava/util/concurrent/ThreadFactory;)V
-
-    .line 9
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    .line 10
-    iput-wide p2, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
-
-    .line 11
-    iget-object p1, p1, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 12
-    const-string p2, "power"
-
-    invoke-virtual {p1, p2}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object p1
-
-    check-cast p1, Landroid/os/PowerManager;
-
-    const/4 p2, 0x1
-
-    .line 13
-    const-string p3, "fiid-sync"
-
-    invoke-virtual {p1, p2, p3}, Landroid/os/PowerManager;->newWakeLock(ILjava/lang/String;)Landroid/os/PowerManager$WakeLock;
-
-    move-result-object p1
-
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
-
-    const/4 p2, 0x0
-
-    .line 14
-    invoke-virtual {p1, p2}, Landroid/os/PowerManager$WakeLock;->setReferenceCounted(Z)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Ls4/e3;Ls4/b3;J)V
-    .locals 1
-
-    const/4 v0, 0x3
-
-    iput v0, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
+    move-result v3
 
     .line 6
+    :cond_0
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->t()Ljava/lang/String;
+
+    move-result-object v3
+
+    .line 7
+    iput-object v3, v0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
+
+    .line 8
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->u()Lcom/google/android/gms/internal/measurement/s0;
+
+    move-result-object v3
+
+    .line 9
+    iput-object v3, v0, Lcom/google/android/gms/internal/measurement/me;->c:Ljava/lang/Object;
+
+    .line 10
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 11
+    invoke-virtual {v4}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 12
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->x()I
+
+    move-result v3
+
+    const/4 v5, 0x0
+
+    if-nez v3, :cond_1
+
+    move-object v3, v5
+
+    goto :goto_0
+
+    .line 13
+    :cond_1
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->y()Ljava/util/Map;
+
+    move-result-object v3
+
+    :goto_0
+    if-eqz v3, :cond_3
+
+    .line 14
+    invoke-interface {v3}, Ljava/util/Map;->keySet()Ljava/util/Set;
+
+    move-result-object v3
+
+    .line 15
+    instance-of v6, v3, Le6/i;
+
+    if-eqz v6, :cond_2
+
+    instance-of v6, v3, Ljava/util/SortedSet;
+
+    if-nez v6, :cond_2
+
+    .line 16
+    move-object v6, v3
+
+    check-cast v6, Le6/i;
+
+    .line 17
+    invoke-virtual {v6}, Le6/b;->k()Z
+
+    move-result v6
+
+    if-nez v6, :cond_2
+
+    goto :goto_1
+
+    .line 18
+    :cond_2
+    invoke-interface {v3}, Ljava/util/Collection;->toArray()[Ljava/lang/Object;
+
+    move-result-object v3
+
+    .line 19
+    array-length v6, v3
+
+    invoke-static {v6, v3}, Le6/i;->n(I[Ljava/lang/Object;)Le6/i;
+
+    goto :goto_1
+
+    .line 20
+    :cond_3
+    sget-object v3, Le6/x;->Y:[Ljava/lang/Object;
+
+    .line 21
+    :goto_1
+    iget-object v1, v1, Lcom/google/android/gms/internal/measurement/qc;->a:Lcom/google/android/gms/internal/measurement/oc;
+
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->x()I
+
+    move-result v3
+
+    const/4 v6, 0x3
+
+    const/4 v7, 0x0
+
+    if-lez v3, :cond_c
+
+    .line 22
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->y()Ljava/util/Map;
+
+    move-result-object v3
+
+    invoke-interface {v3}, Ljava/util/Map;->values()Ljava/util/Collection;
+
+    move-result-object v3
+
+    if-nez v3, :cond_4
+
+    .line 23
+    sget-object v3, Le6/w;->y:Le6/w;
+
+    goto/16 :goto_3
+
+    .line 24
+    :cond_4
+    new-instance v8, Lac/k;
+
+    const/4 v9, 0x4
+
+    .line 25
+    invoke-direct {v8, v9}, Lac/k;-><init>(I)V
+
+    .line 26
+    invoke-interface {v3}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    move-result-object v3
+
+    :goto_2
+    invoke-interface {v3}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v10
+
+    if-eqz v10, :cond_b
+
+    invoke-interface {v3}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v10
+
+    check-cast v10, Lcom/google/android/gms/internal/measurement/fc;
+
+    .line 27
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->H()I
+
+    move-result v11
+
+    add-int/lit8 v12, v11, -0x1
+
+    if-eqz v11, :cond_a
+
+    if-eqz v12, :cond_9
+
+    if-eq v12, v2, :cond_8
+
+    const/4 v11, 0x2
+
+    if-eq v12, v11, :cond_7
+
+    if-eq v12, v6, :cond_6
+
+    if-ne v12, v9, :cond_5
+
+    .line 28
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v11
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->y()Lcom/google/android/gms/internal/measurement/s0;
+
+    move-result-object v10
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/s0;->o()[B
+
+    move-result-object v10
+
+    invoke-virtual {v8, v11, v10}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_2
+
+    .line 29
+    :cond_5
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 30
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-static {v2}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v2
+
+    const-string v3, "Could not serialize Flag for override: "
+
+    invoke-virtual {v3, v2}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 31
+    :cond_6
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v11
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->x()Ljava/lang/String;
+
+    move-result-object v10
+
+    invoke-virtual {v8, v11, v10}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_2
+
+    .line 32
+    :cond_7
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v11
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->w()D
+
+    move-result-wide v12
+
+    invoke-static {v12, v13}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    move-result-object v10
+
+    invoke-virtual {v8, v11, v10}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_2
+
+    .line 33
+    :cond_8
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v11
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->v()Z
+
+    move-result v10
+
+    invoke-static {v10}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+
+    move-result-object v10
+
+    invoke-virtual {v8, v11, v10}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_2
+
+    .line 34
+    :cond_9
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->t()Ljava/lang/String;
+
+    move-result-object v11
+
+    invoke-virtual {v10}, Lcom/google/android/gms/internal/measurement/fc;->u()J
+
+    move-result-wide v12
+
+    invoke-static {v12, v13}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v10
+
+    invoke-virtual {v8, v11, v10}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_2
+
+    .line 35
+    :cond_a
+    throw v5
+
+    .line 36
+    :cond_b
+    invoke-virtual {v8, v7}, Lac/k;->a(Z)Le6/w;
+
+    move-result-object v3
+
+    .line 37
+    :goto_3
+    invoke-virtual {v3}, Le6/w;->isEmpty()Z
+
+    move-result v8
+
+    if-eqz v8, :cond_d
+
+    :cond_c
+    move/from16 p1, v6
+
+    goto/16 :goto_12
+
+    .line 38
+    :cond_d
+    new-instance v8, Ljava/util/HashMap;
+
+    invoke-direct {v8, v3}, Ljava/util/HashMap;-><init>(Ljava/util/Map;)V
+
+    .line 39
+    iget-object v1, v1, Lcom/google/android/gms/internal/measurement/oc;->a:Le6/k;
+
+    .line 40
+    new-instance v3, Le6/j;
+
+    invoke-direct {v3}, Le6/j;-><init>()V
+
+    .line 41
+    invoke-virtual {v1}, Le6/b;->l()Lcom/google/android/gms/internal/play_billing/o;
+
+    move-result-object v1
+
+    :goto_4
+    move-object v9, v1
+
+    check-cast v9, Le6/d;
+
+    invoke-virtual {v9}, Le6/d;->hasNext()Z
+
+    move-result v10
+
+    const-string v11, ": "
+
+    if-eqz v10, :cond_16
+
+    invoke-virtual {v9}, Le6/d;->next()Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 42
+    iget-object v10, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    iget-wide v12, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    if-eqz v10, :cond_e
+
+    goto :goto_5
+
+    .line 43
+    :cond_e
+    invoke-static {v12, v13}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v10
+
+    .line 44
+    :goto_5
+    invoke-virtual {v8, v10}, Ljava/util/HashMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v10
+
+    if-nez v10, :cond_f
+
+    .line 45
+    invoke-virtual {v3, v9}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_4
+
+    .line 46
+    :cond_f
+    instance-of v14, v10, Ljava/lang/String;
+
+    if-eqz v14, :cond_10
+
+    new-instance v14, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 47
+    iget-wide v11, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    iget-object v9, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    const/16 v18, 0x4
+
+    const-wide/16 v19, 0x0
+
+    move-object/from16 v17, v9
+
+    move-object/from16 v21, v10
+
+    move-wide v15, v11
+
+    invoke-direct/range {v14 .. v21}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 48
+    invoke-virtual {v3, v14}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_4
+
+    .line 49
+    :cond_10
+    instance-of v14, v10, [B
+
+    if-eqz v14, :cond_11
+
+    new-instance v14, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 50
+    iget-wide v11, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    iget-object v9, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    const/16 v18, 0x5
+
+    const-wide/16 v19, 0x0
+
+    move-object/from16 v17, v9
+
+    move-object/from16 v21, v10
+
+    move-wide v15, v11
+
+    invoke-direct/range {v14 .. v21}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 51
+    invoke-virtual {v3, v14}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_4
+
+    .line 52
+    :cond_11
+    instance-of v14, v10, Ljava/lang/Boolean;
+
+    if-eqz v14, :cond_12
+
+    check-cast v10, Ljava/lang/Boolean;
+
+    new-instance v11, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 53
+    iget-wide v12, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    iget-object v14, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    .line 54
+    invoke-virtual {v10}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v15
+
+    const-wide/16 v16, 0x0
+
+    const/16 v18, 0x0
+
+    invoke-direct/range {v11 .. v18}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 55
+    invoke-virtual {v3, v11}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_4
+
+    .line 56
+    :cond_12
+    instance-of v14, v10, Ljava/lang/Long;
+
+    if-eqz v14, :cond_13
+
+    new-instance v15, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 57
+    iget-wide v11, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    iget-object v9, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    check-cast v10, Ljava/lang/Long;
+
+    .line 58
+    invoke-virtual {v10}, Ljava/lang/Long;->longValue()J
+
+    move-result-wide v20
+
+    const/16 v22, 0x0
+
+    const/16 v19, 0x2
+
+    move-object/from16 v18, v9
+
+    move-wide/from16 v16, v11
+
+    invoke-direct/range {v15 .. v22}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 59
+    invoke-virtual {v3, v15}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto/16 :goto_4
+
+    .line 60
+    :cond_13
+    instance-of v14, v10, Ljava/lang/Double;
+
+    if-eqz v14, :cond_14
+
+    check-cast v10, Ljava/lang/Double;
+
+    new-instance v11, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 61
+    iget-wide v12, v9, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    iget-object v14, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    .line 62
+    invoke-virtual {v10}, Ljava/lang/Double;->doubleValue()D
+
+    move-result-wide v9
+
+    invoke-static {v9, v10}, Ljava/lang/Double;->doubleToRawLongBits(D)J
+
+    move-result-wide v16
+
+    const/16 v18, 0x0
+
+    const/4 v15, 0x3
+
+    invoke-direct/range {v11 .. v18}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 63
+    invoke-virtual {v3, v11}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto/16 :goto_4
+
+    .line 64
+    :cond_14
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 65
+    iget-object v2, v9, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    if-eqz v2, :cond_15
+
+    goto :goto_6
+
+    :cond_15
+    invoke-static {v12, v13}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 66
+    :goto_6
+    invoke-virtual {v10}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v3
+
+    const/16 v4, 0x2e
+
+    .line 67
+    invoke-static {v4, v2}, Lcom/google/android/gms/internal/measurement/gi;->e(ILjava/lang/String;)I
+
+    move-result v4
+
+    .line 68
+    invoke-virtual {v3}, Ljava/lang/String;->length()I
+
+    move-result v5
+
+    new-instance v6, Ljava/lang/StringBuilder;
+
+    add-int/2addr v4, v5
+
+    invoke-direct {v6, v4}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    const-string v4, "Cannot serialize override for existing flag "
+
+    .line 69
+    invoke-static {v6, v4, v2, v11, v3}, Ls1/a;->t(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 70
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    .line 71
+    :cond_16
+    invoke-virtual {v8}, Ljava/util/HashMap;->keySet()Ljava/util/Set;
+
+    move-result-object v1
+
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    move-result-object v1
+
+    :goto_7
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    move-result v9
+
+    if-eqz v9, :cond_27
+
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    move-result-object v9
+
+    check-cast v9, Ljava/lang/String;
+
+    .line 72
+    invoke-virtual {v8, v9}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    move-result-object v10
+
+    .line 73
+    invoke-virtual {v9}, Ljava/lang/String;->length()I
+
+    move-result v12
+
+    const/16 v13, 0x13
+
+    if-gt v12, v13, :cond_20
+
+    if-nez v12, :cond_17
+
+    move/from16 p1, v6
+
+    :goto_8
+    const-wide/16 v17, 0x0
+
+    const-wide/16 v23, 0x0
+
+    goto/16 :goto_f
+
+    .line 74
+    :cond_17
+    invoke-virtual {v9, v7}, Ljava/lang/String;->charAt(I)C
+
+    move-result v13
+
+    add-int/lit8 v13, v13, -0x30
+
+    move/from16 p1, v6
+
+    int-to-long v5, v13
+
+    const-wide/16 v16, 0x1
+
+    cmp-long v13, v5, v16
+
+    if-ltz v13, :cond_1f
+
+    const-wide/16 v16, 0x9
+
+    cmp-long v13, v5, v16
+
+    if-lez v13, :cond_18
+
+    goto :goto_8
+
+    :cond_18
+    move v13, v2
+
+    :goto_9
+    if-ge v13, v12, :cond_1d
+
+    .line 75
+    invoke-virtual {v9, v13}, Ljava/lang/String;->charAt(I)C
+
+    move-result v16
+
+    add-int/lit8 v2, v16, -0x30
+
+    if-gez v2, :cond_19
+
+    const/16 v16, 0x1
+
+    :goto_a
+    const-wide/16 v17, 0x0
+
+    goto :goto_b
+
+    :cond_19
+    move/from16 v16, v7
+
+    goto :goto_a
+
+    :goto_b
+    const/16 v14, 0x9
+
+    if-le v2, v14, :cond_1a
+
+    const/4 v14, 0x1
+
+    goto :goto_c
+
+    :cond_1a
+    move v14, v7
+
+    :goto_c
+    or-int v14, v16, v14
+
+    if-eqz v14, :cond_1c
+
+    :cond_1b
+    :goto_d
+    move-wide/from16 v23, v17
+
+    goto :goto_f
+
+    :cond_1c
+    const-wide/16 v14, 0xa
+
+    mul-long/2addr v5, v14
+
+    int-to-long v14, v2
+
+    add-long/2addr v5, v14
+
+    add-int/lit8 v13, v13, 0x1
+
+    const/4 v2, 0x1
+
+    goto :goto_9
+
+    :cond_1d
+    const-wide/16 v17, 0x0
+
+    cmp-long v2, v5, v17
+
+    if-ltz v2, :cond_1b
+
+    const-wide v12, 0x1fffffffffffffffL
+
+    cmp-long v2, v5, v12
+
+    if-lez v2, :cond_1e
+
+    goto :goto_d
+
+    :cond_1e
+    move-wide/from16 v23, v5
+
+    goto :goto_f
+
+    :cond_1f
+    :goto_e
+    const-wide/16 v17, 0x0
+
+    goto :goto_d
+
+    :cond_20
+    move/from16 p1, v6
+
+    goto :goto_e
+
+    :goto_f
+    cmp-long v2, v23, v17
+
+    if-nez v2, :cond_21
+
+    move-object/from16 v25, v9
+
+    goto :goto_10
+
+    :cond_21
+    const/16 v25, 0x0
+
+    .line 76
+    :goto_10
+    instance-of v2, v10, Ljava/lang/String;
+
+    if-eqz v2, :cond_22
+
+    new-instance v12, Lcom/google/android/gms/internal/measurement/nc;
+
+    const/16 v16, 0x4
+
+    const-wide/16 v17, 0x0
+
+    move-object/from16 v19, v10
+
+    move-wide/from16 v13, v23
+
+    move-object/from16 v15, v25
+
+    .line 77
+    invoke-direct/range {v12 .. v19}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 78
+    invoke-virtual {v3, v12}, Le6/a;->a(Ljava/lang/Object;)V
+
+    :goto_11
+    move/from16 v6, p1
+
+    const/4 v2, 0x1
+
+    const/4 v5, 0x0
+
+    goto/16 :goto_7
+
+    :cond_22
+    move-object v2, v10
+
+    .line 79
+    instance-of v5, v2, [B
+
+    if-eqz v5, :cond_23
+
+    new-instance v12, Lcom/google/android/gms/internal/measurement/nc;
+
+    const/16 v16, 0x5
+
+    const-wide/16 v17, 0x0
+
+    move-object/from16 v19, v2
+
+    move-wide/from16 v13, v23
+
+    move-object/from16 v15, v25
+
+    .line 80
+    invoke-direct/range {v12 .. v19}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    .line 81
+    invoke-virtual {v3, v12}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_11
+
+    .line 82
+    :cond_23
+    instance-of v5, v2, Ljava/lang/Boolean;
+
+    if-eqz v5, :cond_24
+
+    move-object v10, v2
+
+    check-cast v10, Ljava/lang/Boolean;
+
+    new-instance v22, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 83
+    invoke-virtual {v10}, Ljava/lang/Boolean;->booleanValue()Z
+
+    move-result v26
+
+    const-wide/16 v27, 0x0
+
+    const/16 v29, 0x0
+
+    invoke-direct/range {v22 .. v29}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    move-object/from16 v2, v22
+
+    .line 84
+    invoke-virtual {v3, v2}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_11
+
+    .line 85
+    :cond_24
+    instance-of v5, v2, Ljava/lang/Long;
+
+    if-eqz v5, :cond_25
+
+    new-instance v22, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 86
+    move-object v10, v2
+
+    check-cast v10, Ljava/lang/Long;
+
+    .line 87
+    invoke-virtual {v10}, Ljava/lang/Long;->longValue()J
+
+    move-result-wide v27
+
+    const/16 v29, 0x0
+
+    const/16 v26, 0x2
+
+    invoke-direct/range {v22 .. v29}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    move-object/from16 v2, v22
+
+    .line 88
+    invoke-virtual {v3, v2}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_11
+
+    .line 89
+    :cond_25
+    instance-of v5, v2, Ljava/lang/Double;
+
+    if-eqz v5, :cond_26
+
+    move-object v10, v2
+
+    check-cast v10, Ljava/lang/Double;
+
+    new-instance v22, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 90
+    invoke-virtual {v10}, Ljava/lang/Double;->doubleValue()D
+
+    move-result-wide v5
+
+    invoke-static {v5, v6}, Ljava/lang/Double;->doubleToRawLongBits(D)J
+
+    move-result-wide v27
+
+    const/16 v29, 0x0
+
+    const/16 v26, 0x3
+
+    invoke-direct/range {v22 .. v29}, Lcom/google/android/gms/internal/measurement/nc;-><init>(JLjava/lang/String;IJLjava/lang/Object;)V
+
+    move-object/from16 v2, v22
+
+    .line 91
+    invoke-virtual {v3, v2}, Le6/a;->a(Ljava/lang/Object;)V
+
+    goto :goto_11
+
+    .line 92
+    :cond_26
+    new-instance v1, Ljava/lang/IllegalStateException;
+
+    .line 93
+    invoke-static {v2}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v9}, Ljava/lang/String;->length()I
+
+    move-result v3
+
+    add-int/lit8 v3, v3, 0x1c
+
+    invoke-virtual {v2}, Ljava/lang/String;->length()I
+
+    move-result v4
+
+    new-instance v5, Ljava/lang/StringBuilder;
+
+    add-int/2addr v3, v4
+
+    invoke-direct {v5, v3}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    const-string v3, "Cannot serialize override "
+
+    .line 94
+    invoke-static {v5, v3, v9, v11, v2}, Ls1/a;->t(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v2
+
+    .line 95
+    invoke-direct {v1, v2}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    throw v1
+
+    :cond_27
+    move/from16 p1, v6
+
+    .line 96
+    new-instance v1, Lcom/google/android/gms/internal/measurement/oc;
+
+    .line 97
+    invoke-virtual {v3}, Le6/j;->c()Le6/y;
+
+    move-result-object v2
+
+    invoke-direct {v1, v2}, Lcom/google/android/gms/internal/measurement/oc;-><init>(Le6/k;)V
+
+    .line 98
+    :goto_12
+    iget-object v2, v1, Lcom/google/android/gms/internal/measurement/oc;->a:Le6/k;
+
+    .line 99
+    check-cast v2, Le6/y;
+
+    .line 100
+    iget-object v2, v2, Le6/y;->y:Le6/g;
+
+    .line 101
+    invoke-virtual {v2}, Ljava/util/AbstractCollection;->size()I
+
+    move-result v2
+
+    add-int/lit8 v2, v2, 0x3
+
+    .line 102
+    const-string v3, "expectedSize"
+
+    invoke-static {v2, v3}, Lkb/c;->g(ILjava/lang/String;)V
+
+    .line 103
+    new-instance v3, Lac/k;
+
+    invoke-direct {v3, v2}, Lac/k;-><init>(I)V
+
+    .line 104
+    iget-object v1, v1, Lcom/google/android/gms/internal/measurement/oc;->a:Le6/k;
+
+    invoke-virtual {v1}, Le6/b;->l()Lcom/google/android/gms/internal/play_billing/o;
+
+    move-result-object v1
+
+    :goto_13
+    move-object v2, v1
+
+    check-cast v2, Le6/d;
+
+    invoke-virtual {v2}, Le6/d;->hasNext()Z
+
+    move-result v5
+
+    if-eqz v5, :cond_29
+
+    invoke-virtual {v2}, Le6/d;->next()Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/google/android/gms/internal/measurement/nc;
+
+    .line 105
+    iget-object v5, v2, Lcom/google/android/gms/internal/measurement/nc;->d:Ljava/lang/String;
+
+    if-eqz v5, :cond_28
+
+    goto :goto_14
+
+    .line 106
+    :cond_28
+    iget-wide v5, v2, Lcom/google/android/gms/internal/measurement/nc;->c:J
+
+    invoke-static {v5, v6}, Ljava/lang/Long;->toString(J)Ljava/lang/String;
+
+    move-result-object v5
+
+    .line 107
+    :goto_14
+    invoke-virtual {v2}, Lcom/google/android/gms/internal/measurement/nc;->a()Ljava/lang/Object;
+
+    move-result-object v2
+
+    invoke-virtual {v3, v5, v2}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    goto :goto_13
+
+    .line 108
+    :cond_29
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->v()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 109
+    const-string v2, "__phenotype_server_token"
+
+    invoke-virtual {v3, v2, v1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 110
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->t()Ljava/lang/String;
+
+    move-result-object v1
+
+    .line 111
+    const-string v2, "__phenotype_snapshot_token"
+
+    invoke-virtual {v3, v2, v1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 112
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/kc;->w()J
+
+    move-result-wide v1
+
+    .line 113
+    invoke-static {v1, v2}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    move-result-object v1
+
+    const-string v2, "__phenotype_configuration_version"
+
+    .line 114
+    invoke-virtual {v3, v2, v1}, Lac/k;->e(Ljava/lang/Object;Ljava/lang/Object;)V
+
+    .line 115
+    invoke-virtual {v3, v7}, Lac/k;->a(Z)Le6/w;
+
+    move-result-object v1
+
+    .line 116
+    iput-object v1, v0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
+
+    move-object/from16 v1, p2
+
+    iput-object v1, v0, Lcom/google/android/gms/internal/measurement/me;->e:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lorg/spongycastle/crypto/a;Lorg/spongycastle/crypto/m;Lorg/spongycastle/crypto/m;[B)V
+    .locals 1
+
+    .line 151
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p2, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
+    .line 152
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
 
-    iput-wide p3, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
+    .line 153
+    iput-object p3, p0, Lcom/google/android/gms/internal/measurement/me;->c:Ljava/lang/Object;
 
-    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+    .line 154
+    invoke-interface {p2}, Lorg/spongycastle/crypto/m;->getDigestSize()I
 
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
+    move-result p1
 
+    new-array p1, p1, [B
+
+    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
+
+    .line 155
+    invoke-interface {p2}, Lorg/spongycastle/crypto/m;->reset()V
+
+    const/4 p3, 0x0
+
+    if-eqz p4, :cond_0
+
+    .line 156
+    array-length v0, p4
+
+    invoke-interface {p2, p4, p3, v0}, Lorg/spongycastle/crypto/m;->update([BII)V
+
+    .line 157
+    :cond_0
+    invoke-interface {p2, p1, p3}, Lorg/spongycastle/crypto/m;->doFinal([BI)I
+
+    return-void
+.end method
+
+.method public static d(I[B)V
+    .locals 2
+
+    .line 1
+    ushr-int/lit8 v0, p0, 0x18
+
+    .line 2
+    .line 3
+    int-to-byte v0, v0
+
+    .line 4
+    const/4 v1, 0x0
+
+    .line 5
+    aput-byte v0, p1, v1
+
+    .line 6
+    .line 7
+    ushr-int/lit8 v0, p0, 0x10
+
+    .line 8
+    .line 9
+    int-to-byte v0, v0
+
+    .line 10
+    const/4 v1, 0x1
+
+    .line 11
+    aput-byte v0, p1, v1
+
+    .line 12
+    .line 13
+    ushr-int/lit8 v0, p0, 0x8
+
+    .line 14
+    .line 15
+    int-to-byte v0, v0
+
+    .line 16
+    const/4 v1, 0x2
+
+    .line 17
+    aput-byte v0, p1, v1
+
+    .line 18
+    .line 19
+    const/4 v0, 0x3
+
+    .line 20
+    int-to-byte p0, p0
+
+    .line 21
+    aput-byte p0, p1, v0
+
+    .line 22
+    .line 23
     return-void
 .end method
 
 
 # virtual methods
-.method public a()Landroid/content/Context;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    .line 2
-    .line 3
-    check-cast v0, Lcom/google/firebase/iid/FirebaseInstanceId;
-
-    .line 4
-    .line 5
-    iget-object v0, v0, Lcom/google/firebase/iid/FirebaseInstanceId;->b:Lcom/google/firebase/FirebaseApp;
-
-    .line 6
-    .line 7
-    invoke-virtual {v0}, Lcom/google/firebase/FirebaseApp;->a()V
-
-    .line 8
-    .line 9
-    .line 10
-    iget-object v0, v0, Lcom/google/firebase/FirebaseApp;->a:Landroid/content/Context;
-
-    .line 11
-    .line 12
-    return-object v0
-.end method
-
-.method public b()Z
+.method public a()I
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
 
     .line 2
     .line 3
-    check-cast v0, Lcom/google/firebase/messaging/FirebaseMessaging;
+    check-cast v0, Lorg/spongycastle/crypto/a;
 
     .line 4
     .line 5
-    iget-object v0, v0, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
+    invoke-interface {v0}, Lorg/spongycastle/crypto/a;->a()I
 
     .line 6
     .line 7
-    const-string v1, "connectivity"
-
     .line 8
-    .line 9
-    invoke-virtual {v0, v1}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v0
-
-    .line 13
-    check-cast v0, Landroid/net/ConnectivityManager;
-
-    .line 14
-    .line 15
-    if-eqz v0, :cond_0
-
-    .line 16
-    .line 17
-    invoke-virtual {v0}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
-
-    .line 18
-    .line 19
-    .line 20
-    move-result-object v0
-
-    .line 21
-    goto :goto_0
-
-    .line 22
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 23
-    :goto_0
-    if-eqz v0, :cond_1
-
-    .line 24
-    .line 25
-    invoke-virtual {v0}, Landroid/net/NetworkInfo;->isConnected()Z
-
-    .line 26
-    .line 27
-    .line 28
     move-result v0
 
-    .line 29
-    if-eqz v0, :cond_1
-
-    .line 30
-    .line 31
-    const/4 v0, 0x1
-
-    .line 32
-    return v0
-
-    .line 33
-    :cond_1
-    const/4 v0, 0x0
-
-    .line 34
-    return v0
-.end method
-
-.method public c()Z
-    .locals 6
-
-    .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    const-string v0, "FirebaseInstanceId"
-
-    .line 7
-    .line 8
-    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
     .line 9
+    iget-boolean v1, p0, Lcom/google/android/gms/internal/measurement/me;->a:Z
+
     .line 10
-    check-cast v1, Lcom/google/firebase/iid/FirebaseInstanceId;
-
     .line 11
+    if-eqz v1, :cond_0
+
     .line 12
-    iget-object v2, v1, Lcom/google/firebase/iid/FirebaseInstanceId;->b:Lcom/google/firebase/FirebaseApp;
-
     .line 13
-    .line 14
-    invoke-static {v2}, Lcom/google/firebase/messaging/r;->c(Lcom/google/firebase/FirebaseApp;)Ljava/lang/String;
+    add-int/lit8 v0, v0, -0x1
 
+    .line 14
     .line 15
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
+
     .line 16
     .line 17
-    move-result-object v2
+    check-cast v1, [B
 
     .line 18
-    const-string v3, "*"
-
     .line 19
+    array-length v1, v1
+
     .line 20
-    invoke-virtual {v1, v2, v3}, Lcom/google/firebase/iid/FirebaseInstanceId;->g(Ljava/lang/String;Ljava/lang/String;)Lq7/f;
+    mul-int/lit8 v1, v1, 0x2
 
     .line 21
     .line 22
+    sub-int/2addr v0, v1
+
     .line 23
-    move-result-object v2
-
-    .line 24
-    invoke-virtual {v1, v2}, Lcom/google/firebase/iid/FirebaseInstanceId;->j(Lq7/f;)Z
-
-    .line 25
-    .line 26
-    .line 27
-    move-result v2
-
-    .line 28
-    const/4 v4, 0x1
-
-    .line 29
-    if-nez v2, :cond_0
-
-    .line 30
-    .line 31
-    goto/16 :goto_3
-
-    .line 32
-    .line 33
     :cond_0
-    const/4 v2, 0x0
-
-    .line 34
-    :try_start_0
-    iget-object v5, v1, Lcom/google/firebase/iid/FirebaseInstanceId;->b:Lcom/google/firebase/FirebaseApp;
-
-    .line 35
-    .line 36
-    invoke-static {v5}, Lcom/google/firebase/messaging/r;->c(Lcom/google/firebase/FirebaseApp;)Ljava/lang/String;
-
-    .line 37
-    .line 38
-    .line 39
-    move-result-object v5
-
-    .line 40
-    invoke-virtual {v1, v5, v3}, Lcom/google/firebase/iid/FirebaseInstanceId;->f(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 41
-    .line 42
-    .line 43
-    move-result-object v1
-
-    .line 44
-    if-nez v1, :cond_1
-
-    .line 45
-    .line 46
-    const-string v1, "Token retrieval failed: null"
-
-    .line 47
-    .line 48
-    invoke-static {v0, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 49
-    .line 50
-    .line 51
-    :goto_0
-    move v4, v2
-
-    .line 52
-    goto :goto_3
-
-    .line 53
-    :catch_0
-    move-exception v1
-
-    .line 54
-    goto :goto_1
-
-    .line 55
-    :cond_1
-    const/4 v1, 0x3
-
-    .line 56
-    invoke-static {v0, v1}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 57
-    .line 58
-    .line 59
-    move-result v1
-
-    .line 60
-    if-eqz v1, :cond_5
-
-    .line 61
-    .line 62
-    const-string v1, "Token successfully retrieved"
-
-    .line 63
-    .line 64
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/SecurityException; {:try_start_0 .. :try_end_0} :catch_1
-
-    .line 65
-    .line 66
-    .line 67
-    goto :goto_3
-
-    .line 68
-    :catch_1
-    const-string v1, "Token retrieval failed with SecurityException. Will retry token retrieval"
-
-    .line 69
-    .line 70
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 71
-    .line 72
-    .line 73
-    goto :goto_0
-
-    .line 74
-    :goto_1
-    invoke-virtual {v1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 75
-    .line 76
-    .line 77
-    move-result-object v3
-
-    .line 78
-    const-string v4, "SERVICE_NOT_AVAILABLE"
-
-    .line 79
-    .line 80
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 81
-    .line 82
-    .line 83
-    move-result v4
-
-    .line 84
-    if-nez v4, :cond_4
-
-    .line 85
-    .line 86
-    const-string v4, "INTERNAL_SERVER_ERROR"
-
-    .line 87
-    .line 88
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 89
-    .line 90
-    .line 91
-    move-result v4
-
-    .line 92
-    if-nez v4, :cond_4
-
-    .line 93
-    .line 94
-    const-string v4, "InternalServerError"
-
-    .line 95
-    .line 96
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 97
-    .line 98
-    .line 99
-    move-result v3
-
-    .line 100
-    if-eqz v3, :cond_2
-
-    .line 101
-    .line 102
-    goto :goto_2
-
-    .line 103
-    :cond_2
-    invoke-virtual {v1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 104
-    .line 105
-    .line 106
-    move-result-object v3
-
-    .line 107
-    if-nez v3, :cond_3
-
-    .line 108
-    .line 109
-    const-string v1, "Token retrieval failed without exception message. Will retry token retrieval"
-
-    .line 110
-    .line 111
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 112
-    .line 113
-    .line 114
-    goto :goto_0
-
-    .line 115
-    :cond_3
-    throw v1
-
-    .line 116
-    :cond_4
-    :goto_2
-    invoke-virtual {v1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 117
-    .line 118
-    .line 119
-    move-result-object v1
-
-    .line 120
-    invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 121
-    .line 122
-    .line 123
-    move-result-object v3
-
-    .line 124
-    invoke-virtual {v3}, Ljava/lang/String;->length()I
-
-    .line 125
-    .line 126
-    .line 127
-    move-result v3
-
-    .line 128
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 129
-    .line 130
-    add-int/lit8 v3, v3, 0x34
-
-    .line 131
-    .line 132
-    invoke-direct {v4, v3}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    .line 133
-    .line 134
-    .line 135
-    const-string v3, "Token retrieval failed: "
-
-    .line 136
-    .line 137
-    invoke-virtual {v4, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 138
-    .line 139
-    .line 140
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 141
-    .line 142
-    .line 143
-    const-string v1, ". Will retry token retrieval"
-
-    .line 144
-    .line 145
-    invoke-virtual {v4, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 146
-    .line 147
-    .line 148
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 149
-    .line 150
-    .line 151
-    move-result-object v1
-
-    .line 152
-    invoke-static {v0, v1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 153
-    .line 154
-    .line 155
-    goto :goto_0
-
-    .line 156
-    :cond_5
-    :goto_3
-    return v4
-
-    .line 157
-    :pswitch_0
-    const-string v0, "FirebaseMessaging"
-
-    .line 158
-    .line 159
-    const/4 v1, 0x0
-
-    .line 160
-    :try_start_1
-    iget-object v2, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    .line 161
-    .line 162
-    check-cast v2, Lcom/google/firebase/messaging/FirebaseMessaging;
-
-    .line 163
-    .line 164
-    invoke-virtual {v2}, Lcom/google/firebase/messaging/FirebaseMessaging;->a()Ljava/lang/String;
-
-    .line 165
-    .line 166
-    .line 167
-    move-result-object v2
-
-    .line 168
-    if-nez v2, :cond_6
-
-    .line 169
-    .line 170
-    const-string v2, "Token retrieval failed: null"
-
-    .line 171
-    .line 172
-    invoke-static {v0, v2}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 173
-    .line 174
-    .line 175
-    goto :goto_6
-
-    .line 176
-    :catch_2
-    move-exception v2
-
-    .line 177
-    goto :goto_4
-
-    .line 178
-    :cond_6
-    const/4 v2, 0x3
-
-    .line 179
-    invoke-static {v0, v2}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 180
-    .line 181
-    .line 182
-    move-result v2
-
-    .line 183
-    if-eqz v2, :cond_7
-
-    .line 184
-    .line 185
-    const-string v2, "Token successfully retrieved"
-
-    .line 186
-    .line 187
-    invoke-static {v0, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
-    :try_end_1
-    .catch Ljava/io/IOException; {:try_start_1 .. :try_end_1} :catch_2
-    .catch Ljava/lang/SecurityException; {:try_start_1 .. :try_end_1} :catch_3
-
-    .line 188
-    .line 189
-    .line 190
-    :cond_7
-    const/4 v1, 0x1
-
-    .line 191
-    goto :goto_6
-
-    .line 192
-    :catch_3
-    const-string v2, "Token retrieval failed with SecurityException. Will retry token retrieval"
-
-    .line 193
-    .line 194
-    invoke-static {v0, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 195
-    .line 196
-    .line 197
-    goto :goto_6
-
-    .line 198
-    :goto_4
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 199
-    .line 200
-    .line 201
-    move-result-object v3
-
-    .line 202
-    const-string v4, "SERVICE_NOT_AVAILABLE"
-
-    .line 203
-    .line 204
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 205
-    .line 206
-    .line 207
-    move-result v4
-
-    .line 208
-    if-nez v4, :cond_a
-
-    .line 209
-    .line 210
-    const-string v4, "INTERNAL_SERVER_ERROR"
-
-    .line 211
-    .line 212
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 213
-    .line 214
-    .line 215
-    move-result v4
-
-    .line 216
-    if-nez v4, :cond_a
-
-    .line 217
-    .line 218
-    const-string v4, "InternalServerError"
-
-    .line 219
-    .line 220
-    invoke-virtual {v4, v3}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    .line 221
-    .line 222
-    .line 223
-    move-result v3
-
-    .line 224
-    if-eqz v3, :cond_8
-
-    .line 225
-    .line 226
-    goto :goto_5
-
-    .line 227
-    :cond_8
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 228
-    .line 229
-    .line 230
-    move-result-object v3
-
-    .line 231
-    if-nez v3, :cond_9
-
-    .line 232
-    .line 233
-    const-string v2, "Token retrieval failed without exception message. Will retry token retrieval"
-
-    .line 234
-    .line 235
-    invoke-static {v0, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 236
-    .line 237
-    .line 238
-    goto :goto_6
-
-    .line 239
-    :cond_9
-    throw v2
-
-    .line 240
-    :cond_a
-    :goto_5
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 241
-    .line 242
-    const-string v4, "Token retrieval failed: "
-
-    .line 243
-    .line 244
-    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 245
-    .line 246
-    .line 247
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 248
-    .line 249
-    .line 250
-    move-result-object v2
-
-    .line 251
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 252
-    .line 253
-    .line 254
-    const-string v2, ". Will retry token retrieval"
-
-    .line 255
-    .line 256
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 257
-    .line 258
-    .line 259
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 260
-    .line 261
-    .line 262
-    move-result-object v2
-
-    .line 263
-    invoke-static {v0, v2}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 264
-    .line 265
-    .line 266
-    :goto_6
-    return v1
-
-    .line 267
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_0
-    .end packed-switch
+    return v0
 .end method
 
-.method public final run()V
+.method public b(II[B)[B
     .locals 7
 
     .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/measurement/me;->c:I
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    check-cast v0, Lorg/spongycastle/crypto/a;
 
     .line 4
     .line 5
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
+
     .line 6
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
     .line 7
+    check-cast v1, [B
+
     .line 8
-    check-cast v0, Ls4/e3;
-
     .line 9
-    .line 10
-    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
+    iget-boolean v2, p0, Lcom/google/android/gms/internal/measurement/me;->a:Z
 
+    .line 10
     .line 11
+    const/4 v3, 0x0
+
     .line 12
-    check-cast v1, Ls4/b3;
+    const/4 v4, 0x1
 
     .line 13
+    if-eqz v2, :cond_3
+
     .line 14
-    iget-wide v2, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
-
     .line 15
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()I
+
     .line 16
-    const/4 v4, 0x0
-
     .line 17
-    invoke-virtual {v0, v1, v4, v2, v3}, Ls4/e3;->u(Ls4/b3;ZJ)V
-
     .line 18
-    .line 19
-    .line 20
-    const/4 v1, 0x0
+    move-result v2
 
+    .line 19
+    if-gt p2, v2, :cond_2
+
+    .line 20
     .line 21
-    iput-object v1, v0, Ls4/e3;->q:Ls4/b3;
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()I
 
     .line 22
     .line 23
-    iget-object v0, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
-
     .line 24
+    move-result v2
+
     .line 25
-    check-cast v0, Ls4/q1;
+    add-int/2addr v2, v4
 
     .line 26
+    array-length v5, v1
+
     .line 27
-    invoke-virtual {v0}, Ls4/q1;->o()Ls4/n3;
+    mul-int/lit8 v5, v5, 0x2
 
     .line 28
     .line 29
+    add-int/2addr v5, v2
+
     .line 30
-    move-result-object v0
+    new-array v2, v5, [B
 
     .line 31
-    invoke-virtual {v0}, Ls4/c0;->k()V
-
     .line 32
+    sub-int v6, v5, p2
+
     .line 33
     .line 34
-    invoke-virtual {v0}, Ls4/g0;->l()V
+    invoke-static {p3, p1, v2, v6, p2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 35
     .line 36
     .line 37
-    new-instance v2, Lk6/m0;
+    sub-int/2addr v6, v4
 
     .line 38
-    .line 39
-    invoke-direct {v2, v0, v1}, Lk6/m0;-><init>(Ls4/n3;Ls4/b3;)V
+    aput-byte v4, v2, v6
 
+    .line 39
     .line 40
+    array-length p1, v1
+
     .line 41
+    array-length p2, v1
+
     .line 42
-    invoke-virtual {v0, v2}, Ls4/n3;->z(Ljava/lang/Runnable;)V
+    invoke-static {v1, v3, v2, p1, p2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 43
     .line 44
     .line 45
-    return-void
+    array-length p1, v1
 
     .line 46
-    :pswitch_0
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
+    new-array p2, p1, [B
 
     .line 47
     .line 48
-    check-cast v0, Lcom/google/firebase/iid/FirebaseInstanceId;
+    iget-object p3, p0, Lcom/google/android/gms/internal/measurement/me;->e:Ljava/lang/Object;
 
     .line 49
     .line 50
-    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
+    check-cast p3, Ljava/security/SecureRandom;
 
     .line 51
     .line 52
-    check-cast v1, Landroid/os/PowerManager$WakeLock;
+    invoke-virtual {p3, p2}, Ljava/security/SecureRandom;->nextBytes([B)V
 
     .line 53
     .line 54
-    invoke-static {}, Lq7/e;->l()Lq7/e;
-
     .line 55
-    .line 56
-    .line 57
-    move-result-object v2
+    array-length p3, v1
 
+    .line 56
+    sub-int p3, v5, p3
+
+    .line 57
     .line 58
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
+    invoke-virtual {p0, v3, p1, p3, p2}, Lcom/google/android/gms/internal/measurement/me;->e(III[B)[B
 
     .line 59
     .line 60
     .line 61
-    move-result-object v3
+    move-result-object p1
 
     .line 62
-    invoke-virtual {v2, v3}, Lq7/e;->r(Landroid/content/Context;)Z
+    array-length p3, v1
 
     .line 63
+    :goto_0
+    if-eq p3, v5, :cond_0
+
     .line 64
     .line 65
-    move-result v2
+    aget-byte v4, v2, p3
 
     .line 66
-    if-eqz v2, :cond_0
-
     .line 67
+    array-length v6, v1
+
     .line 68
-    invoke-virtual {v1}, Landroid/os/PowerManager$WakeLock;->acquire()V
+    sub-int v6, p3, v6
 
     .line 69
     .line 70
-    .line 71
-    :cond_0
-    const/4 v2, 0x0
+    aget-byte v6, p1, v6
 
+    .line 71
     .line 72
-    :try_start_0
-    monitor-enter v0
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_1
+    xor-int/2addr v4, v6
 
     .line 73
-    const/4 v3, 0x1
+    int-to-byte v4, v4
 
     .line 74
-    :try_start_1
-    iput-boolean v3, v0, Lcom/google/firebase/iid/FirebaseInstanceId;->g:Z
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_3
+    aput-byte v4, v2, p3
 
     .line 75
     .line 76
-    :try_start_2
-    monitor-exit v0
+    add-int/lit8 p3, p3, 0x1
 
     .line 77
-    invoke-virtual {v0}, Lcom/google/firebase/iid/FirebaseInstanceId;->h()Z
-
     .line 78
+    goto :goto_0
+
     .line 79
+    :cond_0
+    array-length p1, v1
+
     .line 80
-    move-result v4
+    invoke-static {p2, v3, v2, v3, p1}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
 
     .line 81
-    if-nez v4, :cond_1
-
     .line 82
     .line 83
-    monitor-enter v0
-    :try_end_2
-    .catch Ljava/io/IOException; {:try_start_2 .. :try_end_2} :catch_0
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+    array-length p1, v1
 
     .line 84
-    :try_start_3
-    iput-boolean v2, v0, Lcom/google/firebase/iid/FirebaseInstanceId;->g:Z
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+    array-length p2, v1
 
     .line 85
-    .line 86
-    :try_start_4
-    monitor-exit v0
-    :try_end_4
-    .catch Ljava/io/IOException; {:try_start_4 .. :try_end_4} :catch_0
-    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+    sub-int p2, v5, p2
 
+    .line 86
     .line 87
-    invoke-static {}, Lq7/e;->l()Lq7/e;
+    array-length p3, v1
 
     .line 88
+    invoke-virtual {p0, p1, p2, p3, v2}, Lcom/google/android/gms/internal/measurement/me;->e(III[B)[B
+
     .line 89
     .line 90
-    move-result-object v0
-
     .line 91
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
+    move-result-object p1
 
     .line 92
+    move p2, v3
+
     .line 93
+    :goto_1
+    array-length p3, v1
+
     .line 94
-    move-result-object v2
+    if-eq p2, p3, :cond_1
 
     .line 95
-    invoke-virtual {v0, v2}, Lq7/e;->r(Landroid/content/Context;)Z
-
     .line 96
+    aget-byte p3, v2, p2
+
     .line 97
     .line 98
-    move-result v0
+    aget-byte v4, p1, p2
 
     .line 99
-    if-eqz v0, :cond_6
-
     .line 100
+    xor-int/2addr p3, v4
+
     .line 101
-    :goto_0
-    invoke-virtual {v1}, Landroid/os/PowerManager$WakeLock;->release()V
+    int-to-byte p3, p3
 
     .line 102
+    aput-byte p3, v2, p2
+
     .line 103
     .line 104
-    goto/16 :goto_5
+    add-int/lit8 p2, p2, 0x1
 
     .line 105
     .line 106
-    :catchall_0
-    move-exception v3
-
-    .line 107
-    :try_start_5
-    monitor-exit v0
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_0
-
-    .line 108
-    :try_start_6
-    throw v3
-
-    .line 109
-    :cond_1
-    invoke-static {}, Lq7/e;->l()Lq7/e;
-
-    .line 110
-    .line 111
-    .line 112
-    move-result-object v4
-
-    .line 113
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
-
-    .line 114
-    .line 115
-    .line 116
-    move-result-object v5
-
-    .line 117
-    invoke-virtual {v4, v5}, Lq7/e;->q(Landroid/content/Context;)Z
-
-    .line 118
-    .line 119
-    .line 120
-    move-result v4
-
-    .line 121
-    if-eqz v4, :cond_4
-
-    .line 122
-    .line 123
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
-
-    .line 124
-    .line 125
-    .line 126
-    move-result-object v4
-
-    .line 127
-    const-string v5, "connectivity"
-
-    .line 128
-    .line 129
-    invoke-virtual {v4, v5}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
-    .line 130
-    .line 131
-    .line 132
-    move-result-object v4
-
-    .line 133
-    check-cast v4, Landroid/net/ConnectivityManager;
-
-    .line 134
-    .line 135
-    if-eqz v4, :cond_2
-
-    .line 136
-    .line 137
-    invoke-virtual {v4}, Landroid/net/ConnectivityManager;->getActiveNetworkInfo()Landroid/net/NetworkInfo;
-
-    .line 138
-    .line 139
-    .line 140
-    move-result-object v4
-
-    .line 141
     goto :goto_1
 
-    .line 142
-    :cond_2
-    const/4 v4, 0x0
+    .line 107
+    :cond_1
+    invoke-interface {v0, v3, v5, v2}, Lorg/spongycastle/crypto/a;->b(II[B)[B
 
+    .line 108
+    .line 109
+    .line 110
+    move-result-object p1
+
+    .line 111
+    return-object p1
+
+    .line 112
+    :cond_2
+    new-instance p1, Lorg/spongycastle/crypto/j;
+
+    .line 113
+    .line 114
+    const-string p2, "input data too long"
+
+    .line 115
+    .line 116
+    invoke-direct {p1, p2}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;)V
+
+    .line 117
+    .line 118
+    .line 119
+    throw p1
+
+    .line 120
+    :cond_3
+    invoke-interface {v0, p1, p2, p3}, Lorg/spongycastle/crypto/a;->b(II[B)[B
+
+    .line 121
+    .line 122
+    .line 123
+    move-result-object p1
+
+    .line 124
+    invoke-interface {v0}, Lorg/spongycastle/crypto/a;->c()I
+
+    .line 125
+    .line 126
+    .line 127
+    move-result p2
+
+    .line 128
+    new-array p3, p2, [B
+
+    .line 129
+    .line 130
+    array-length v0, p1
+
+    .line 131
+    sub-int v0, p2, v0
+
+    .line 132
+    .line 133
+    array-length v2, p1
+
+    .line 134
+    invoke-static {p1, v3, p3, v0, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 135
+    .line 136
+    .line 137
+    array-length p1, v1
+
+    .line 138
+    mul-int/lit8 p1, p1, 0x2
+
+    .line 139
+    .line 140
+    add-int/2addr p1, v4
+
+    .line 141
+    if-ge p2, p1, :cond_4
+
+    .line 142
     .line 143
-    :goto_1
-    if-eqz v4, :cond_3
+    move p1, v4
 
     .line 144
-    .line 145
-    invoke-virtual {v4}, Landroid/net/NetworkInfo;->isConnected()Z
-
-    .line 146
-    .line 147
-    .line 148
-    move-result v4
-
-    .line 149
-    if-eqz v4, :cond_3
-
-    .line 150
-    .line 151
     goto :goto_2
 
-    .line 152
-    :cond_3
-    move v3, v2
+    .line 145
+    :cond_4
+    move p1, v3
 
-    .line 153
+    .line 146
     :goto_2
-    if-nez v3, :cond_4
+    array-length v0, v1
 
+    .line 147
+    array-length v2, v1
+
+    .line 148
+    sub-int v2, p2, v2
+
+    .line 149
+    .line 150
+    array-length v5, v1
+
+    .line 151
+    invoke-virtual {p0, v0, v2, v5, p3}, Lcom/google/android/gms/internal/measurement/me;->e(III[B)[B
+
+    .line 152
+    .line 153
     .line 154
+    move-result-object v0
+
     .line 155
-    new-instance v3, Lg/a0;
+    move v2, v3
 
     .line 156
+    :goto_3
+    array-length v5, v1
+
     .line 157
-    invoke-direct {v3}, Lg/a0;-><init>()V
+    if-eq v2, v5, :cond_5
 
     .line 158
     .line 159
+    aget-byte v5, p3, v2
+
     .line 160
-    iput-object p0, v3, Lg/a0;->b:Ljava/lang/Object;
-
     .line 161
-    .line 162
-    invoke-virtual {v3}, Lg/a0;->a()V
-    :try_end_6
-    .catch Ljava/io/IOException; {:try_start_6 .. :try_end_6} :catch_0
-    .catchall {:try_start_6 .. :try_end_6} :catchall_1
+    aget-byte v6, v0, v2
 
+    .line 162
     .line 163
+    xor-int/2addr v5, v6
+
     .line 164
+    int-to-byte v5, v5
+
     .line 165
-    invoke-static {}, Lq7/e;->l()Lq7/e;
+    aput-byte v5, p3, v2
 
     .line 166
     .line 167
-    .line 168
-    move-result-object v0
+    add-int/lit8 v2, v2, 0x1
 
+    .line 168
     .line 169
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
+    goto :goto_3
 
     .line 170
+    :cond_5
+    array-length v0, v1
+
     .line 171
+    array-length v2, v1
+
     .line 172
-    move-result-object v2
+    sub-int v2, p2, v2
 
     .line 173
-    invoke-virtual {v0, v2}, Lq7/e;->r(Landroid/content/Context;)Z
-
     .line 174
+    invoke-virtual {p0, v3, v0, v2, p3}, Lcom/google/android/gms/internal/measurement/me;->e(III[B)[B
+
     .line 175
     .line 176
-    move-result v0
-
     .line 177
-    if-eqz v0, :cond_6
+    move-result-object v0
 
     .line 178
+    array-length v2, v1
+
     .line 179
-    goto :goto_0
+    :goto_4
+    if-eq v2, p2, :cond_6
 
     .line 180
-    :catchall_1
-    move-exception v0
-
     .line 181
-    goto :goto_6
+    aget-byte v5, p3, v2
 
     .line 182
-    :catch_0
-    move-exception v3
-
     .line 183
-    goto :goto_4
+    array-length v6, v1
 
     .line 184
-    :cond_4
-    :try_start_7
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->c()Z
+    sub-int v6, v2, v6
 
     .line 185
     .line 186
-    .line 187
-    move-result v3
+    aget-byte v6, v0, v6
 
+    .line 187
     .line 188
-    if-eqz v3, :cond_5
+    xor-int/2addr v5, v6
 
     .line 189
+    int-to-byte v5, v5
+
     .line 190
-    monitor-enter v0
-    :try_end_7
-    .catch Ljava/io/IOException; {:try_start_7 .. :try_end_7} :catch_0
-    .catchall {:try_start_7 .. :try_end_7} :catchall_1
+    aput-byte v5, p3, v2
 
     .line 191
-    :try_start_8
-    iput-boolean v2, v0, Lcom/google/firebase/iid/FirebaseInstanceId;->g:Z
-    :try_end_8
-    .catchall {:try_start_8 .. :try_end_8} :catchall_2
-
     .line 192
-    .line 193
-    :try_start_9
-    monitor-exit v0
-    :try_end_9
-    .catch Ljava/io/IOException; {:try_start_9 .. :try_end_9} :catch_0
-    .catchall {:try_start_9 .. :try_end_9} :catchall_1
+    add-int/lit8 v2, v2, 0x1
 
+    .line 193
     .line 194
-    goto :goto_3
+    goto :goto_4
 
     .line 195
-    :catchall_2
-    move-exception v3
+    :cond_6
+    move v0, v3
 
     .line 196
-    :try_start_a
-    monitor-exit v0
-    :try_end_a
-    .catchall {:try_start_a .. :try_end_a} :catchall_2
+    move v2, v0
 
     .line 197
-    :try_start_b
-    throw v3
+    :goto_5
+    array-length v5, v1
 
     .line 198
-    :cond_5
-    iget-wide v3, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
+    if-eq v0, v5, :cond_8
 
     .line 199
     .line 200
-    invoke-virtual {v0, v3, v4}, Lcom/google/firebase/iid/FirebaseInstanceId;->i(J)V
-    :try_end_b
-    .catch Ljava/io/IOException; {:try_start_b .. :try_end_b} :catch_0
-    .catchall {:try_start_b .. :try_end_b} :catchall_1
+    aget-byte v5, v1, v0
 
     .line 201
     .line 202
+    array-length v6, v1
+
     .line 203
-    :goto_3
-    invoke-static {}, Lq7/e;->l()Lq7/e;
+    add-int/2addr v6, v0
 
     .line 204
+    aget-byte v6, p3, v6
+
     .line 205
     .line 206
-    move-result-object v0
+    if-eq v5, v6, :cond_7
 
     .line 207
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
-
     .line 208
-    .line 209
-    .line 210
-    move-result-object v2
+    move v2, v4
 
+    .line 209
+    :cond_7
+    add-int/lit8 v0, v0, 0x1
+
+    .line 210
     .line 211
-    invoke-virtual {v0, v2}, Lq7/e;->r(Landroid/content/Context;)Z
+    goto :goto_5
 
     .line 212
-    .line 213
-    .line 214
-    move-result v0
+    :cond_8
+    array-length v0, v1
 
+    .line 213
+    mul-int/lit8 v0, v0, 0x2
+
+    .line 214
     .line 215
-    if-eqz v0, :cond_6
+    move v1, p2
 
     .line 216
-    .line 217
-    goto :goto_0
+    :goto_6
+    if-eq v0, p2, :cond_c
 
+    .line 217
     .line 218
-    :catchall_3
-    move-exception v3
+    aget-byte v5, p3, v0
 
     .line 219
-    :try_start_c
-    monitor-exit v0
-    :try_end_c
-    .catchall {:try_start_c .. :try_end_c} :catchall_3
-
     .line 220
-    :try_start_d
-    throw v3
-    :try_end_d
-    .catch Ljava/io/IOException; {:try_start_d .. :try_end_d} :catch_0
-    .catchall {:try_start_d .. :try_end_d} :catchall_1
+    if-eqz v5, :cond_9
 
     .line 221
-    :goto_4
-    :try_start_e
-    const-string v4, "FirebaseInstanceId"
-
     .line 222
+    move v5, v4
+
     .line 223
-    invoke-virtual {v3}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    goto :goto_7
 
     .line 224
-    .line 225
-    .line 226
-    move-result-object v3
+    :cond_9
+    move v5, v3
 
+    .line 225
+    :goto_7
+    if-ne v1, p2, :cond_a
+
+    .line 226
     .line 227
-    invoke-static {v3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+    move v6, v4
 
     .line 228
+    goto :goto_8
+
     .line 229
+    :cond_a
+    move v6, v3
+
     .line 230
-    move-result-object v5
+    :goto_8
+    and-int/2addr v5, v6
 
     .line 231
-    invoke-virtual {v5}, Ljava/lang/String;->length()I
+    if-eqz v5, :cond_b
 
     .line 232
     .line 233
+    move v1, v0
+
     .line 234
-    move-result v5
+    :cond_b
+    add-int/lit8 v0, v0, 0x1
 
     .line 235
-    add-int/lit8 v5, v5, 0x5d
-
     .line 236
+    goto :goto_6
+
     .line 237
-    new-instance v6, Ljava/lang/StringBuilder;
+    :cond_c
+    add-int/lit8 v0, p2, -0x1
 
     .line 238
     .line 239
-    invoke-direct {v6, v5}, Ljava/lang/StringBuilder;-><init>(I)V
+    if-le v1, v0, :cond_d
 
     .line 240
     .line 241
+    move v0, v4
+
     .line 242
-    const-string v5, "Topic sync or token retrieval failed on hard failure exceptions: "
+    goto :goto_9
 
     .line 243
+    :cond_d
+    move v0, v3
+
     .line 244
-    invoke-virtual {v6, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    :goto_9
+    aget-byte v5, p3, v1
 
     .line 245
     .line 246
-    .line 247
-    invoke-virtual {v6, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-eq v5, v4, :cond_e
 
+    .line 247
     .line 248
+    move v5, v4
+
     .line 249
+    goto :goto_a
+
     .line 250
-    const-string v3, ". Won\'t retry the operation."
+    :cond_e
+    move v5, v3
 
     .line 251
+    :goto_a
+    or-int/2addr v0, v5
+
     .line 252
-    invoke-virtual {v6, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    add-int/2addr v1, v4
 
     .line 253
+    or-int/2addr p1, v2
+
     .line 254
+    or-int/2addr p1, v0
+
     .line 255
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    if-nez p1, :cond_f
 
     .line 256
     .line 257
+    sub-int/2addr p2, v1
+
     .line 258
-    move-result-object v3
+    new-array p1, p2, [B
 
     .line 259
-    invoke-static {v4, v3}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 260
+    invoke-static {p3, v1, p1, v3, p2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
     .line 261
     .line 262
-    monitor-enter v0
-    :try_end_e
-    .catchall {:try_start_e .. :try_end_e} :catchall_1
-
     .line 263
-    :try_start_f
-    iput-boolean v2, v0, Lcom/google/firebase/iid/FirebaseInstanceId;->g:Z
-    :try_end_f
-    .catchall {:try_start_f .. :try_end_f} :catchall_4
+    return-object p1
 
     .line 264
+    :cond_f
+    invoke-static {p3, v3}, Lah/d;->o([BB)V
+
     .line 265
-    :try_start_10
-    monitor-exit v0
-    :try_end_10
-    .catchall {:try_start_10 .. :try_end_10} :catchall_1
-
     .line 266
-    invoke-static {}, Lq7/e;->l()Lq7/e;
-
     .line 267
+    new-instance p1, Lorg/spongycastle/crypto/o;
+
     .line 268
     .line 269
-    move-result-object v0
+    const-string p2, "data wrong"
 
     .line 270
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
-
     .line 271
+    invoke-direct {p1, p2}, Ljava/lang/Exception;-><init>(Ljava/lang/String;)V
+
     .line 272
     .line 273
-    move-result-object v2
-
     .line 274
-    invoke-virtual {v0, v2}, Lq7/e;->r(Landroid/content/Context;)Z
+    throw p1
+.end method
 
-    .line 275
-    .line 276
-    .line 277
+.method public c()I
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lorg/spongycastle/crypto/a;
+
+    .line 4
+    .line 5
+    invoke-interface {v0}, Lorg/spongycastle/crypto/a;->c()I
+
+    .line 6
+    .line 7
+    .line 8
     move-result v0
 
-    .line 278
-    if-eqz v0, :cond_6
+    .line 9
+    iget-boolean v1, p0, Lcom/google/android/gms/internal/measurement/me;->a:Z
 
-    .line 279
-    .line 280
-    goto/16 :goto_0
+    .line 10
+    .line 11
+    if-eqz v1, :cond_0
 
-    .line 281
-    .line 282
-    :cond_6
-    :goto_5
-    return-void
+    .line 12
+    .line 13
+    return v0
 
-    .line 283
-    :catchall_4
-    move-exception v2
+    .line 14
+    :cond_0
+    add-int/lit8 v0, v0, -0x1
 
-    .line 284
-    :try_start_11
-    monitor-exit v0
-    :try_end_11
-    .catchall {:try_start_11 .. :try_end_11} :catchall_4
+    .line 15
+    .line 16
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->b:Ljava/io/Serializable;
 
-    .line 285
-    :try_start_12
-    throw v2
-    :try_end_12
-    .catchall {:try_start_12 .. :try_end_12} :catchall_1
+    .line 17
+    .line 18
+    check-cast v1, [B
 
-    .line 286
-    :goto_6
-    invoke-static {}, Lq7/e;->l()Lq7/e;
+    .line 19
+    .line 20
+    array-length v1, v1
 
-    .line 287
-    .line 288
-    .line 289
-    move-result-object v2
+    .line 21
+    mul-int/lit8 v1, v1, 0x2
 
-    .line 290
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->a()Landroid/content/Context;
+    .line 22
+    .line 23
+    sub-int/2addr v0, v1
 
-    .line 291
-    .line 292
-    .line 293
-    move-result-object v3
+    .line 24
+    return v0
+.end method
 
-    .line 294
-    invoke-virtual {v2, v3}, Lq7/e;->r(Landroid/content/Context;)Z
+.method public e(III[B)[B
+    .locals 9
 
-    .line 295
-    .line 296
-    .line 297
+    .line 1
+    new-array v0, p3, [B
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/me;->c:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    check-cast v1, Lorg/spongycastle/crypto/m;
+
+    .line 6
+    .line 7
+    invoke-interface {v1}, Lorg/spongycastle/crypto/m;->getDigestSize()I
+
+    .line 8
+    .line 9
+    .line 10
     move-result v2
 
-    .line 298
-    if-nez v2, :cond_7
-
-    .line 299
-    .line 300
-    goto :goto_7
-
-    .line 301
-    :cond_7
-    invoke-virtual {v1}, Landroid/os/PowerManager$WakeLock;->release()V
-
-    .line 302
-    .line 303
-    .line 304
-    :goto_7
-    throw v0
-
-    .line 305
-    :pswitch_1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
-
-    .line 306
-    .line 307
-    check-cast v0, Landroid/os/PowerManager$WakeLock;
-
-    .line 308
-    .line 309
-    const-string v1, "Topic sync or token retrieval failed on hard failure exceptions: "
-
-    .line 310
-    .line 311
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 312
-    .line 313
-    .line 314
-    move-result-object v2
-
-    .line 315
-    iget-object v3, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    .line 316
-    .line 317
-    check-cast v3, Lcom/google/firebase/messaging/FirebaseMessaging;
-
-    .line 318
-    .line 319
-    iget-object v4, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 320
-    .line 321
-    invoke-virtual {v2, v4}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 322
-    .line 323
-    .line 324
-    move-result v2
-
-    .line 325
-    if-eqz v2, :cond_8
-
-    .line 326
-    .line 327
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->acquire()V
-
-    .line 328
-    .line 329
-    .line 330
-    :cond_8
-    const/4 v2, 0x0
-
-    .line 331
-    :try_start_13
-    monitor-enter v3
-    :try_end_13
-    .catch Ljava/io/IOException; {:try_start_13 .. :try_end_13} :catch_1
-    .catchall {:try_start_13 .. :try_end_13} :catchall_6
-
-    .line 332
-    const/4 v4, 0x1
-
-    .line 333
-    :try_start_14
-    iput-boolean v4, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->k:Z
-    :try_end_14
-    .catchall {:try_start_14 .. :try_end_14} :catchall_8
-
-    .line 334
-    .line 335
-    :try_start_15
-    monitor-exit v3
-
-    .line 336
-    iget-object v4, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->j:Lcom/google/firebase/messaging/r;
-
-    .line 337
-    .line 338
-    invoke-virtual {v4}, Lcom/google/firebase/messaging/r;->e()Z
-
-    .line 339
-    .line 340
-    .line 341
-    move-result v4
-
-    .line 342
-    if-nez v4, :cond_9
-
-    .line 343
-    .line 344
-    monitor-enter v3
-    :try_end_15
-    .catch Ljava/io/IOException; {:try_start_15 .. :try_end_15} :catch_1
-    .catchall {:try_start_15 .. :try_end_15} :catchall_6
-
-    .line 345
-    :try_start_16
-    iput-boolean v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->k:Z
-    :try_end_16
-    .catchall {:try_start_16 .. :try_end_16} :catchall_5
-
-    .line 346
-    .line 347
-    :try_start_17
-    monitor-exit v3
-    :try_end_17
-    .catch Ljava/io/IOException; {:try_start_17 .. :try_end_17} :catch_1
-    .catchall {:try_start_17 .. :try_end_17} :catchall_6
-
-    .line 348
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 349
-    .line 350
-    .line 351
-    move-result-object v1
-
-    .line 352
-    iget-object v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 353
-    .line 354
-    invoke-virtual {v1, v2}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 355
-    .line 356
-    .line 357
-    move-result v1
-
-    .line 358
-    if-eqz v1, :cond_c
-
-    .line 359
-    .line 360
-    :goto_8
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
-
-    .line 361
-    .line 362
-    .line 363
-    goto/16 :goto_b
-
-    .line 364
-    .line 365
-    :catchall_5
-    move-exception v4
-
-    .line 366
-    :try_start_18
-    monitor-exit v3
-    :try_end_18
-    .catchall {:try_start_18 .. :try_end_18} :catchall_5
-
-    .line 367
-    :try_start_19
-    throw v4
-
-    .line 368
-    :cond_9
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 369
-    .line 370
-    .line 371
-    move-result-object v4
-
-    .line 372
-    iget-object v5, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 373
-    .line 374
-    invoke-virtual {v4, v5}, Lcom/google/firebase/messaging/v;->A(Landroid/content/Context;)Z
-
-    .line 375
-    .line 376
-    .line 377
-    move-result v4
-
-    .line 378
-    if-eqz v4, :cond_a
-
-    .line 379
-    .line 380
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->b()Z
-
-    .line 381
-    .line 382
-    .line 383
-    move-result v4
-
-    .line 384
-    if-nez v4, :cond_a
-
-    .line 385
-    .line 386
-    new-instance v4, Lcom/google/firebase/messaging/x;
-
-    .line 387
-    .line 388
-    invoke-direct {v4}, Landroid/content/BroadcastReceiver;-><init>()V
-
-    .line 389
-    .line 390
-    .line 391
-    iput-object p0, v4, Lcom/google/firebase/messaging/x;->a:Lcom/google/android/gms/internal/measurement/me;
-
-    .line 392
-    .line 393
-    invoke-virtual {v4}, Lcom/google/firebase/messaging/x;->a()V
-    :try_end_19
-    .catch Ljava/io/IOException; {:try_start_19 .. :try_end_19} :catch_1
-    .catchall {:try_start_19 .. :try_end_19} :catchall_6
-
-    .line 394
-    .line 395
-    .line 396
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 397
-    .line 398
-    .line 399
-    move-result-object v1
-
-    .line 400
-    iget-object v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 401
-    .line 402
-    invoke-virtual {v1, v2}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 403
-    .line 404
-    .line 405
-    move-result v1
-
-    .line 406
-    if-eqz v1, :cond_c
-
-    .line 407
-    .line 408
-    goto :goto_8
-
-    .line 409
-    :catchall_6
-    move-exception v1
-
-    .line 410
-    goto :goto_c
-
-    .line 411
-    :catch_1
-    move-exception v4
-
-    .line 412
-    goto :goto_a
-
-    .line 413
-    :cond_a
-    :try_start_1a
-    invoke-virtual {p0}, Lcom/google/android/gms/internal/measurement/me;->c()Z
-
-    .line 414
-    .line 415
-    .line 416
-    move-result v4
-
-    .line 417
-    if-eqz v4, :cond_b
-
-    .line 418
-    .line 419
-    monitor-enter v3
-    :try_end_1a
-    .catch Ljava/io/IOException; {:try_start_1a .. :try_end_1a} :catch_1
-    .catchall {:try_start_1a .. :try_end_1a} :catchall_6
-
-    .line 420
-    :try_start_1b
-    iput-boolean v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->k:Z
-    :try_end_1b
-    .catchall {:try_start_1b .. :try_end_1b} :catchall_7
-
-    .line 421
-    .line 422
-    :try_start_1c
-    monitor-exit v3
-    :try_end_1c
-    .catch Ljava/io/IOException; {:try_start_1c .. :try_end_1c} :catch_1
-    .catchall {:try_start_1c .. :try_end_1c} :catchall_6
-
-    .line 423
-    goto :goto_9
-
-    .line 424
-    :catchall_7
-    move-exception v4
-
-    .line 425
-    :try_start_1d
-    monitor-exit v3
-    :try_end_1d
-    .catchall {:try_start_1d .. :try_end_1d} :catchall_7
-
-    .line 426
-    :try_start_1e
-    throw v4
-
-    .line 427
-    :cond_b
-    iget-wide v4, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
-
-    .line 428
-    .line 429
-    invoke-virtual {v3, v4, v5}, Lcom/google/firebase/messaging/FirebaseMessaging;->h(J)V
-    :try_end_1e
-    .catch Ljava/io/IOException; {:try_start_1e .. :try_end_1e} :catch_1
-    .catchall {:try_start_1e .. :try_end_1e} :catchall_6
-
-    .line 430
-    .line 431
-    .line 432
-    :goto_9
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 433
-    .line 434
-    .line 435
-    move-result-object v1
-
-    .line 436
-    iget-object v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 437
-    .line 438
-    invoke-virtual {v1, v2}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 439
-    .line 440
-    .line 441
-    move-result v1
-
-    .line 442
-    if-eqz v1, :cond_c
-
-    .line 443
-    .line 444
-    goto :goto_8
-
-    .line 445
-    :catchall_8
-    move-exception v4
-
-    .line 446
-    :try_start_1f
-    monitor-exit v3
-    :try_end_1f
-    .catchall {:try_start_1f .. :try_end_1f} :catchall_8
-
-    .line 447
-    :try_start_20
-    throw v4
-    :try_end_20
-    .catch Ljava/io/IOException; {:try_start_20 .. :try_end_20} :catch_1
-    .catchall {:try_start_20 .. :try_end_20} :catchall_6
-
-    .line 448
-    :goto_a
-    :try_start_21
-    const-string v5, "FirebaseMessaging"
-
-    .line 449
-    .line 450
-    new-instance v6, Ljava/lang/StringBuilder;
-
-    .line 451
-    .line 452
-    invoke-direct {v6, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 453
-    .line 454
-    .line 455
-    invoke-virtual {v4}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 456
-    .line 457
-    .line 458
-    move-result-object v1
-
-    .line 459
-    invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 460
-    .line 461
-    .line 462
-    const-string v1, ". Won\'t retry the operation."
-
-    .line 463
-    .line 464
-    invoke-virtual {v6, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 465
-    .line 466
-    .line 467
-    invoke-virtual {v6}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 468
-    .line 469
-    .line 470
-    move-result-object v1
-
-    .line 471
-    invoke-static {v5, v1}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;)I
-
-    .line 472
-    .line 473
-    .line 474
-    monitor-enter v3
-    :try_end_21
-    .catchall {:try_start_21 .. :try_end_21} :catchall_6
-
-    .line 475
-    :try_start_22
-    iput-boolean v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->k:Z
-    :try_end_22
-    .catchall {:try_start_22 .. :try_end_22} :catchall_9
-
-    .line 476
-    .line 477
-    :try_start_23
-    monitor-exit v3
-    :try_end_23
-    .catchall {:try_start_23 .. :try_end_23} :catchall_6
-
-    .line 478
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 479
-    .line 480
-    .line 481
-    move-result-object v1
-
-    .line 482
-    iget-object v2, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 483
-    .line 484
-    invoke-virtual {v1, v2}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 485
-    .line 486
-    .line 487
-    move-result v1
-
-    .line 488
-    if-eqz v1, :cond_c
-
-    .line 489
-    .line 490
-    goto/16 :goto_8
-
-    .line 491
-    .line 492
-    :cond_c
-    :goto_b
+    .line 11
+    new-array v3, v2, [B
+
+    .line 12
+    .line 13
+    const/4 v4, 0x4
+
+    .line 14
+    new-array v5, v4, [B
+
+    .line 15
+    .line 16
+    invoke-interface {v1}, Lorg/spongycastle/crypto/m;->reset()V
+
+    .line 17
+    .line 18
+    .line 19
+    const/4 v6, 0x0
+
+    .line 20
+    move v7, v6
+
+    .line 21
+    :goto_0
+    div-int v8, p3, v2
+
+    .line 22
+    .line 23
+    if-ge v7, v8, :cond_0
+
+    .line 24
+    .line 25
+    invoke-static {v7, v5}, Lcom/google/android/gms/internal/measurement/me;->d(I[B)V
+
+    .line 26
+    .line 27
+    .line 28
+    invoke-interface {v1, p4, p1, p2}, Lorg/spongycastle/crypto/m;->update([BII)V
+
+    .line 29
+    .line 30
+    .line 31
+    invoke-interface {v1, v5, v6, v4}, Lorg/spongycastle/crypto/m;->update([BII)V
+
+    .line 32
+    .line 33
+    .line 34
+    invoke-interface {v1, v3, v6}, Lorg/spongycastle/crypto/m;->doFinal([BI)I
+
+    .line 35
+    .line 36
+    .line 37
+    mul-int v8, v7, v2
+
+    .line 38
+    .line 39
+    invoke-static {v3, v6, v0, v8, v2}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 40
+    .line 41
+    .line 42
+    add-int/lit8 v7, v7, 0x1
+
+    .line 43
+    .line 44
+    goto :goto_0
+
+    .line 45
+    :cond_0
+    mul-int/2addr v2, v7
+
+    .line 46
+    if-ge v2, p3, :cond_1
+
+    .line 47
+    .line 48
+    invoke-static {v7, v5}, Lcom/google/android/gms/internal/measurement/me;->d(I[B)V
+
+    .line 49
+    .line 50
+    .line 51
+    invoke-interface {v1, p4, p1, p2}, Lorg/spongycastle/crypto/m;->update([BII)V
+
+    .line 52
+    .line 53
+    .line 54
+    invoke-interface {v1, v5, v6, v4}, Lorg/spongycastle/crypto/m;->update([BII)V
+
+    .line 55
+    .line 56
+    .line 57
+    invoke-interface {v1, v3, v6}, Lorg/spongycastle/crypto/m;->doFinal([BI)I
+
+    .line 58
+    .line 59
+    .line 60
+    sub-int/2addr p3, v2
+
+    .line 61
+    invoke-static {v3, v6, v0, v2, p3}, Ljava/lang/System;->arraycopy(Ljava/lang/Object;ILjava/lang/Object;II)V
+
+    .line 62
+    .line 63
+    .line 64
+    :cond_1
+    return-object v0
+.end method
+
+.method public init(ZLorg/spongycastle/crypto/h;)V
+    .locals 1
+
+    .line 1
+    instance-of v0, p2, Luf/i0;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    move-object v0, p2
+
+    .line 6
+    check-cast v0, Luf/i0;
+
+    .line 7
+    .line 8
+    iget-object v0, v0, Luf/i0;->c:Ljava/security/SecureRandom;
+
+    .line 9
+    .line 10
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->e:Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    goto :goto_0
+
+    .line 13
+    :cond_0
+    new-instance v0, Ljava/security/SecureRandom;
+
+    .line 14
+    .line 15
+    invoke-direct {v0}, Ljava/security/SecureRandom;-><init>()V
+
+    .line 16
+    .line 17
+    .line 18
+    iput-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->e:Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    :goto_0
+    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->d:Ljava/lang/Object;
+
+    .line 21
+    .line 22
+    check-cast v0, Lorg/spongycastle/crypto/a;
+
+    .line 23
+    .line 24
+    invoke-interface {v0, p1, p2}, Lorg/spongycastle/crypto/a;->init(ZLorg/spongycastle/crypto/h;)V
+
+    .line 25
+    .line 26
+    .line 27
+    iput-boolean p1, p0, Lcom/google/android/gms/internal/measurement/me;->a:Z
+
+    .line 28
+    .line 29
     return-void
-
-    .line 493
-    :catchall_9
-    move-exception v1
-
-    .line 494
-    :try_start_24
-    monitor-exit v3
-    :try_end_24
-    .catchall {:try_start_24 .. :try_end_24} :catchall_9
-
-    .line 495
-    :try_start_25
-    throw v1
-    :try_end_25
-    .catchall {:try_start_25 .. :try_end_25} :catchall_6
-
-    .line 496
-    :goto_c
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
-
-    .line 497
-    .line 498
-    .line 499
-    move-result-object v2
-
-    .line 500
-    iget-object v3, v3, Lcom/google/firebase/messaging/FirebaseMessaging;->c:Landroid/content/Context;
-
-    .line 501
-    .line 502
-    invoke-virtual {v2, v3}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
-
-    .line 503
-    .line 504
-    .line 505
-    move-result v2
-
-    .line 506
-    if-eqz v2, :cond_d
-
-    .line 507
-    .line 508
-    invoke-virtual {v0}, Landroid/os/PowerManager$WakeLock;->release()V
-
-    .line 509
-    .line 510
-    .line 511
-    :cond_d
-    throw v1
-
-    .line 512
-    :pswitch_2
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/me;->h:Ljava/lang/Object;
-
-    .line 513
-    .line 514
-    check-cast v0, Lcom/google/android/gms/internal/measurement/ge;
-
-    .line 515
-    .line 516
-    invoke-virtual {v0}, Lcom/google/android/gms/internal/measurement/ge;->run()V
-
-    .line 517
-    .line 518
-    .line 519
-    iget-wide v0, p0, Lcom/google/android/gms/internal/measurement/me;->d:J
-
-    .line 520
-    .line 521
-    sget-object v2, Ljava/util/concurrent/TimeUnit;->MINUTES:Ljava/util/concurrent/TimeUnit;
-
-    .line 522
-    .line 523
-    iget-object v3, p0, Lcom/google/android/gms/internal/measurement/me;->p:Ljava/lang/Object;
-
-    .line 524
-    .line 525
-    check-cast v3, Lk6/u0;
-
-    .line 526
-    .line 527
-    check-cast v3, Lk6/y0;
-
-    .line 528
-    .line 529
-    invoke-virtual {v3}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 530
-    .line 531
-    .line 532
-    new-instance v4, Lk6/d1;
-
-    .line 533
-    .line 534
-    const/4 v5, 0x0
-
-    .line 535
-    invoke-static {p0, v5}, Ljava/util/concurrent/Executors;->callable(Ljava/lang/Runnable;Ljava/lang/Object;)Ljava/util/concurrent/Callable;
-
-    .line 536
-    .line 537
-    .line 538
-    move-result-object v5
-
-    .line 539
-    invoke-direct {v4, v5}, Lk6/d1;-><init>(Ljava/util/concurrent/Callable;)V
-
-    .line 540
-    .line 541
-    .line 542
-    iget-object v3, v3, Lk6/y0;->d:Ljava/util/concurrent/ScheduledExecutorService;
-
-    .line 543
-    .line 544
-    invoke-interface {v3, v4, v0, v1, v2}, Ljava/util/concurrent/ScheduledExecutorService;->schedule(Ljava/lang/Runnable;JLjava/util/concurrent/TimeUnit;)Ljava/util/concurrent/ScheduledFuture;
-
-    .line 545
-    .line 546
-    .line 547
-    move-result-object v0
-
-    .line 548
-    new-instance v1, Lk6/w0;
-
-    .line 549
-    .line 550
-    invoke-direct {v1, v4, v0}, Lk6/w0;-><init>(Lk6/s;Ljava/util/concurrent/ScheduledFuture;)V
-
-    .line 551
-    .line 552
-    .line 553
-    new-instance v0, Lcom/google/android/gms/internal/measurement/ge;
-
-    .line 554
-    .line 555
-    const/4 v2, 0x1
-
-    .line 556
-    invoke-direct {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/ge;-><init>(Ljava/lang/Object;I)V
-
-    .line 557
-    .line 558
-    .line 559
-    sget-object v2, Lk6/e0;->c:Lk6/e0;
-
-    .line 560
-    .line 561
-    invoke-virtual {v1, v0, v2}, Lk6/w0;->a(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
-
-    .line 562
-    .line 563
-    .line 564
-    return-void
-
-    .line 565
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
 .end method

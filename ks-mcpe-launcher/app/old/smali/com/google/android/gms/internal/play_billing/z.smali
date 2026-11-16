@@ -1,346 +1,268 @@
-.class public final Lcom/google/android/gms/internal/play_billing/z;
+.class public abstract Lcom/google/android/gms/internal/play_billing/z;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lcom/google/android/gms/internal/play_billing/i0;
-
-
-# static fields
-.field public static final b:Lcom/google/android/gms/internal/play_billing/z;
-
-.field public static final c:Lcom/google/android/gms/internal/play_billing/z;
-
-.field public static final d:Lcom/google/android/gms/internal/play_billing/z;
-
-.field public static final e:Lcom/google/android/gms/internal/play_billing/z;
-
-.field public static final f:Lcom/google/android/gms/internal/play_billing/z;
-
-.field public static final g:Lcom/google/android/gms/internal/play_billing/z;
+.implements Ljava/lang/Cloneable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final c:Lcom/google/android/gms/internal/play_billing/a0;
+
+.field public d:Lcom/google/android/gms/internal/play_billing/a0;
 
 
 # direct methods
-.method static synthetic constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(Lcom/google/android/gms/internal/play_billing/a0;)V
+    .locals 1
 
     .line 1
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    const/4 v1, 0x0
-
     .line 4
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
+    iput-object p1, p0, Lcom/google/android/gms/internal/play_billing/z;->c:Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 5
     .line 6
-    .line 7
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->b:Lcom/google/android/gms/internal/play_billing/z;
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/play_billing/a0;->e()Z
 
+    .line 7
     .line 8
     .line 9
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
+    move-result v0
 
     .line 10
-    .line 11
-    const/4 v1, 0x1
+    if-nez v0, :cond_0
 
+    .line 11
     .line 12
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
+    const/4 v0, 0x4
 
     .line 13
+    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/play_billing/a0;->g(I)Ljava/lang/Object;
+
     .line 14
     .line 15
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->c:Lcom/google/android/gms/internal/play_billing/z;
-
     .line 16
+    move-result-object p1
+
     .line 17
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
+    check-cast p1, Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 18
     .line 19
-    const/4 v1, 0x2
+    iput-object p1, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 20
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
-
     .line 21
+    return-void
+
     .line 22
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalArgumentException;
+
     .line 23
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/z;
-
     .line 24
+    const-string v0, "Default instance must be immutable."
+
     .line 25
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
-
     .line 26
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
     .line 27
-    const/4 v1, 0x3
-
     .line 28
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
-
     .line 29
-    .line 30
-    .line 31
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->e:Lcom/google/android/gms/internal/play_billing/z;
-
-    .line 32
-    .line 33
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
-
-    .line 34
-    .line 35
-    const/4 v1, 0x4
-
-    .line 36
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
-
-    .line 37
-    .line 38
-    .line 39
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->f:Lcom/google/android/gms/internal/play_billing/z;
-
-    .line 40
-    .line 41
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/z;
-
-    .line 42
-    .line 43
-    const/4 v1, 0x5
-
-    .line 44
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/play_billing/z;-><init>(I)V
-
-    .line 45
-    .line 46
-    .line 47
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/z;->g:Lcom/google/android/gms/internal/play_billing/z;
-
-    .line 48
-    .line 49
-    return-void
-.end method
-
-.method public synthetic constructor <init>(I)V
-    .locals 0
-
-    .line 1
-    iput p1, p0, Lcom/google/android/gms/internal/play_billing/z;->a:I
-
-    .line 2
-    .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
+    throw p1
 .end method
 
 
 # virtual methods
-.method public a(Ljava/lang/Class;)Lcom/google/android/gms/internal/play_billing/p0;
+.method public final a()Lcom/google/android/gms/internal/play_billing/a0;
     .locals 3
 
     .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/play_billing/z;->a:I
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/play_billing/a0;->e()Z
 
     .line 4
     .line 5
     .line 6
-    new-instance p1, Ljava/lang/IllegalStateException;
+    move-result v0
 
     .line 7
+    if-nez v0, :cond_0
+
     .line 8
-    const-string v0, "This should never be called."
-
     .line 9
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
+
     .line 10
-    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
-
     .line 11
-    .line 12
-    .line 13
-    throw p1
+    return-object v0
 
+    .line 12
+    :cond_0
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
+
+    .line 13
     .line 14
-    :pswitch_0
-    const-class v0, Lcom/google/android/gms/internal/play_billing/b0;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 15
     .line 16
-    invoke-virtual {v0, p1}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+    .line 17
+    sget-object v1, Lcom/google/android/gms/internal/play_billing/m0;->c:Lcom/google/android/gms/internal/play_billing/m0;
+
+    .line 18
+    .line 19
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v2
+
+    .line 23
+    invoke-virtual {v1, v2}, Lcom/google/android/gms/internal/play_billing/m0;->a(Ljava/lang/Class;)Lcom/google/android/gms/internal/play_billing/p0;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v1
+
+    .line 27
+    invoke-interface {v1, v0}, Lcom/google/android/gms/internal/play_billing/p0;->b(Ljava/lang/Object;)V
+
+    .line 28
+    .line 29
+    .line 30
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/play_billing/a0;->b()V
+
+    .line 31
+    .line 32
+    .line 33
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
+
+    .line 34
+    .line 35
+    return-object v0
+.end method
+
+.method public final b()V
+    .locals 4
+
+    .line 1
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Lcom/google/android/gms/internal/play_billing/a0;->e()Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    if-nez v0, :cond_0
+
+    .line 8
+    .line 9
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->c:Lcom/google/android/gms/internal/play_billing/a0;
+
+    .line 10
+    .line 11
+    const/4 v1, 0x4
+
+    .line 12
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/play_billing/a0;->g(I)Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object v0
+
+    .line 16
+    check-cast v0, Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 17
     .line 18
-    .line 19
-    move-result v1
+    iget-object v1, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
 
+    .line 19
     .line 20
-    if-eqz v1, :cond_0
+    sget-object v2, Lcom/google/android/gms/internal/play_billing/m0;->c:Lcom/google/android/gms/internal/play_billing/m0;
 
     .line 21
     .line 22
-    :try_start_0
-    invoke-virtual {p1, v0}, Ljava/lang/Class;->asSubclass(Ljava/lang/Class;)Ljava/lang/Class;
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
     .line 23
     .line 24
     .line 25
-    move-result-object v0
+    move-result-object v3
 
     .line 26
-    invoke-static {v0}, Lcom/google/android/gms/internal/play_billing/b0;->i(Ljava/lang/Class;)Lcom/google/android/gms/internal/play_billing/b0;
+    invoke-virtual {v2, v3}, Lcom/google/android/gms/internal/play_billing/m0;->a(Ljava/lang/Class;)Lcom/google/android/gms/internal/play_billing/p0;
 
     .line 27
     .line 28
     .line 29
-    move-result-object v0
+    move-result-object v2
 
     .line 30
-    const/4 v1, 0x3
+    invoke-interface {v2, v0, v1}, Lcom/google/android/gms/internal/play_billing/p0;->f(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 31
-    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/play_billing/b0;->g(I)Ljava/lang/Object;
-
     .line 32
     .line 33
+    iput-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
+
     .line 34
-    move-result-object v0
-
     .line 35
-    check-cast v0, Lcom/google/android/gms/internal/play_billing/p0;
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 36
-    .line 37
-    return-object v0
-
-    .line 38
-    :catch_0
-    move-exception v0
-
-    .line 39
-    new-instance v1, Ljava/lang/RuntimeException;
-
-    .line 40
-    .line 41
-    invoke-virtual {p1}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    .line 42
-    .line 43
-    .line 44
-    move-result-object p1
-
-    .line 45
-    const-string v2, "Unable to get message info for "
-
-    .line 46
-    .line 47
-    invoke-virtual {v2, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object p1
-
-    .line 51
-    invoke-direct {v1, p1, v0}, Ljava/lang/RuntimeException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 52
-    .line 53
-    .line 54
-    throw v1
-
-    .line 55
     :cond_0
-    new-instance v0, Ljava/lang/IllegalArgumentException;
-
-    .line 56
-    .line 57
-    invoke-virtual {p1}, Ljava/lang/Class;->getName()Ljava/lang/String;
-
-    .line 58
-    .line 59
-    .line 60
-    move-result-object p1
-
-    .line 61
-    const-string v1, "Unsupported message type: "
-
-    .line 62
-    .line 63
-    invoke-virtual {v1, p1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 64
-    .line 65
-    .line 66
-    move-result-object p1
-
-    .line 67
-    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 68
-    .line 69
-    .line 70
-    throw v0
-
-    .line 71
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    return-void
 .end method
 
-.method public b(Ljava/lang/Class;)Z
-    .locals 1
+.method public final clone()Ljava/lang/Object;
+    .locals 2
 
     .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/play_billing/z;->a:I
+    iget-object v0, p0, Lcom/google/android/gms/internal/play_billing/z;->c:Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    const/4 v1, 0x5
 
     .line 4
+    invoke-virtual {v0, v1}, Lcom/google/android/gms/internal/play_billing/a0;->g(I)Ljava/lang/Object;
+
     .line 5
     .line 6
-    const/4 p1, 0x0
-
     .line 7
-    return p1
+    move-result-object v0
 
     .line 8
-    :pswitch_0
-    const-class v0, Lcom/google/android/gms/internal/play_billing/b0;
+    check-cast v0, Lcom/google/android/gms/internal/play_billing/z;
 
     .line 9
     .line 10
-    invoke-virtual {v0, p1}, Ljava/lang/Class;->isAssignableFrom(Ljava/lang/Class;)Z
+    invoke-virtual {p0}, Lcom/google/android/gms/internal/play_billing/z;->a()Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 11
     .line 12
     .line 13
-    move-result p1
+    move-result-object v1
 
     .line 14
-    return p1
+    iput-object v1, v0, Lcom/google/android/gms/internal/play_billing/z;->d:Lcom/google/android/gms/internal/play_billing/a0;
 
     .line 15
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 16
+    return-object v0
 .end method

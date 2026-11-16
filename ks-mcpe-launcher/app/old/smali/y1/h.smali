@@ -1,22 +1,22 @@
 .class public final Ly1/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroidx/sqlite/SQLiteConnection;
-.implements Ly9/a;
+.implements Lw9/a;
 
 
 # instance fields
 .field public final c:Landroidx/sqlite/SQLiteConnection;
 
-.field public final d:Ly9/a;
+.field public final d:Lw9/a;
 
 .field public h:Lkotlin/coroutines/CoroutineContext;
 
-.field public p:Ljava/lang/Throwable;
+.field public q:Ljava/lang/Throwable;
 
-.field public final q:Ls4/h1;
+.field public final w:Ls4/l1;
 
 
 # direct methods
@@ -24,11 +24,11 @@
     .locals 2
 
     .line 1
-    new-instance v0, Ly9/c;
+    new-instance v0, Lw9/c;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ly9/c;-><init>()V
+    invoke-direct {v0}, Lw9/c;-><init>()V
 
     .line 4
     .line 5
@@ -37,7 +37,7 @@
 
     .line 7
     .line 8
-    invoke-static {p1, v1}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -51,20 +51,20 @@
 
     .line 15
     .line 16
-    iput-object v0, p0, Ly1/h;->d:Ly9/a;
+    iput-object v0, p0, Ly1/h;->d:Lw9/a;
 
     .line 17
     .line 18
-    new-instance p1, Ls4/h1;
+    new-instance p1, Ls4/l1;
 
     .line 19
     .line 20
-    invoke-direct {p1, p0}, Ls4/h1;-><init>(Ly1/h;)V
+    invoke-direct {p1, p0}, Ls4/l1;-><init>(Ly1/h;)V
 
     .line 21
     .line 22
     .line 23
-    iput-object p1, p0, Ly1/h;->q:Ls4/h1;
+    iput-object p1, p0, Ly1/h;->w:Ls4/l1;
 
     .line 24
     .line 25
@@ -73,84 +73,37 @@
 
 
 # virtual methods
-.method public final A0(Ljava/lang/String;)Le2/a;
-    .locals 2
+.method public final a(Lw8/c;)Ljava/lang/Object;
+    .locals 1
 
     .line 1
-    const-string v0, "sql"
+    iget-object v0, p0, Ly1/h;->d:Lw9/a;
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-interface {v0, p1}, Lw9/a;->a(Lw8/c;)Ljava/lang/Object;
 
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Ly1/h;->q:Ls4/h1;
+    move-result-object p1
 
     .line 7
-    .line 8
-    if-eqz v0, :cond_0
-
-    .line 9
-    .line 10
-    new-instance v1, Ly1/g;
-
-    .line 11
-    .line 12
-    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/p2;->h(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object p1
-
-    .line 16
-    invoke-static {p1}, Lh9/i;->b(Ljava/lang/Object;)V
-
-    .line 17
-    .line 18
-    .line 19
-    check-cast p1, Le2/a;
-
-    .line 20
-    .line 21
-    invoke-direct {v1, p1}, Ly1/g;-><init>(Le2/a;)V
-
-    .line 22
-    .line 23
-    .line 24
-    return-object v1
-
-    .line 25
-    :cond_0
-    iget-object v0, p0, Ly1/h;->c:Landroidx/sqlite/SQLiteConnection;
-
-    .line 26
-    .line 27
-    invoke-interface {v0, p1}, Landroidx/sqlite/SQLiteConnection;->A0(Ljava/lang/String;)Le2/a;
-
-    .line 28
-    .line 29
-    .line 30
-    move-result-object p1
-
-    .line 31
     return-object p1
 .end method
 
-.method public final a(Ljava/lang/Object;)V
+.method public final b(Ljava/lang/Object;)V
     .locals 1
 
     .line 1
     const/4 p1, 0x0
 
     .line 2
-    iget-object v0, p0, Ly1/h;->d:Ly9/a;
+    iget-object v0, p0, Ly1/h;->d:Lw9/a;
 
     .line 3
     .line 4
-    invoke-interface {v0, p1}, Ly9/a;->a(Ljava/lang/Object;)V
+    invoke-interface {v0, p1}, Lw9/a;->b(Ljava/lang/Object;)V
 
     .line 5
     .line 6
@@ -158,30 +111,11 @@
     return-void
 .end method
 
-.method public final b(Ly8/c;)Ljava/lang/Object;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Ly1/h;->d:Ly9/a;
-
-    .line 2
-    .line 3
-    invoke-interface {v0, p1}, Ly9/a;->b(Ly8/c;)Ljava/lang/Object;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object p1
-
-    .line 7
-    return-object p1
-.end method
-
 .method public final close()V
     .locals 2
 
     .line 1
-    iget-object v0, p0, Ly1/h;->q:Ls4/h1;
+    iget-object v0, p0, Ly1/h;->w:Ls4/l1;
 
     .line 2
     .line 3
@@ -192,7 +126,7 @@
     const/4 v1, -0x1
 
     .line 6
-    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/p2;->n(I)V
+    invoke-virtual {v0, v1}, Landroidx/recyclerview/widget/r2;->n(I)V
 
     .line 7
     .line 8
@@ -245,7 +179,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Ly1/h;->p:Ljava/lang/Throwable;
+    iget-object v0, p0, Ly1/h;->q:Ljava/lang/Throwable;
 
     .line 8
     .line 9
@@ -336,7 +270,7 @@
     .line 53
     .line 54
     :cond_2
-    iget-object v0, p0, Ly1/h;->p:Ljava/lang/Throwable;
+    iget-object v0, p0, Ly1/h;->q:Ljava/lang/Throwable;
 
     .line 55
     .line 56
@@ -398,21 +332,21 @@
 
     .line 87
     .line 88
-    invoke-static {v0, v2}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v2}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 89
     .line 90
     .line 91
-    new-instance v2, Lo9/c;
+    new-instance v2, Lm9/c;
 
     .line 92
     .line 93
-    invoke-direct {v2, v0}, Lo9/c;-><init>(Ljava/lang/CharSequence;)V
+    invoke-direct {v2, v0}, Lm9/c;-><init>(Ljava/lang/CharSequence;)V
 
     .line 94
     .line 95
     .line 96
-    invoke-virtual {v2}, Lo9/c;->hasNext()Z
+    invoke-virtual {v2}, Lm9/c;->hasNext()Z
 
     .line 97
     .line 98
@@ -424,7 +358,7 @@
 
     .line 101
     .line 102
-    sget-object v0, Lt8/p;->c:Lt8/p;
+    sget-object v0, Lr8/p;->c:Lr8/p;
 
     .line 103
     .line 104
@@ -432,7 +366,7 @@
 
     .line 105
     :cond_3
-    invoke-virtual {v2}, Lo9/c;->next()Ljava/lang/Object;
+    invoke-virtual {v2}, Lm9/c;->next()Ljava/lang/Object;
 
     .line 106
     .line 107
@@ -440,7 +374,7 @@
     move-result-object v0
 
     .line 109
-    invoke-virtual {v2}, Lo9/c;->hasNext()Z
+    invoke-virtual {v2}, Lm9/c;->hasNext()Z
 
     .line 110
     .line 111
@@ -452,7 +386,7 @@
 
     .line 114
     .line 115
-    invoke-static {v0}, Ljb/c;->c0(Ljava/lang/Object;)Ljava/util/List;
+    invoke-static {v0}, Ly6/t1;->q(Ljava/lang/Object;)Ljava/util/List;
 
     .line 116
     .line 117
@@ -479,7 +413,7 @@
     .line 127
     .line 128
     :goto_1
-    invoke-virtual {v2}, Lo9/c;->hasNext()Z
+    invoke-virtual {v2}, Lm9/c;->hasNext()Z
 
     .line 129
     .line 130
@@ -491,7 +425,7 @@
 
     .line 133
     .line 134
-    invoke-virtual {v2}, Lo9/c;->next()Ljava/lang/Object;
+    invoke-virtual {v2}, Lm9/c;->next()Ljava/lang/Object;
 
     .line 135
     .line 136
@@ -530,7 +464,7 @@
 
     .line 150
     .line 151
-    sget-object v0, Lt8/p;->c:Lt8/p;
+    sget-object v0, Lr8/p;->c:Lr8/p;
 
     .line 152
     .line 153
@@ -542,7 +476,7 @@
 
     .line 155
     .line 156
-    invoke-static {v0}, Lt8/j;->L0(Ljava/util/List;)Ljava/lang/Object;
+    invoke-static {v0}, Lr8/j;->L(Ljava/util/List;)Ljava/lang/Object;
 
     .line 157
     .line 158
@@ -550,7 +484,7 @@
     move-result-object v0
 
     .line 160
-    invoke-static {v0}, Ljb/c;->c0(Ljava/lang/Object;)Ljava/util/List;
+    invoke-static {v0}, Ly6/t1;->q(Ljava/lang/Object;)Ljava/util/List;
 
     .line 161
     .line 162
@@ -729,7 +663,7 @@
     .line 246
     :cond_a
     :goto_7
-    iget-object v0, p0, Ly1/h;->q:Ls4/h1;
+    iget-object v0, p0, Ly1/h;->w:Ls4/l1;
 
     .line 247
     .line 248
@@ -750,15 +684,15 @@
     .line 255
     .line 256
     .line 257
-    iget-object v2, p0, Ly1/h;->q:Ls4/h1;
+    iget-object v2, p0, Ly1/h;->w:Ls4/l1;
 
     .line 258
     .line 259
-    iget-object v3, v2, Landroidx/recyclerview/widget/p2;->g:Ljava/lang/Object;
+    iget-object v3, v2, Landroidx/recyclerview/widget/r2;->g:Ljava/lang/Object;
 
     .line 260
     .line 261
-    check-cast v3, Ls4/z;
+    check-cast v3, Ls4/c0;
 
     .line 262
     .line 263
@@ -766,7 +700,7 @@
 
     .line 264
     :try_start_0
-    iget v2, v2, Landroidx/recyclerview/widget/p2;->c:I
+    iget v2, v2, Landroidx/recyclerview/widget/r2;->c:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -832,4 +766,70 @@
 
     .line 7
     return-object v0
+.end method
+
+.method public final y0(Ljava/lang/String;)Le2/a;
+    .locals 2
+
+    .line 1
+    const-string v0, "sql"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Ly1/h;->w:Ls4/l1;
+
+    .line 7
+    .line 8
+    if-eqz v0, :cond_0
+
+    .line 9
+    .line 10
+    new-instance v1, Ly1/g;
+
+    .line 11
+    .line 12
+    invoke-virtual {v0, p1}, Landroidx/recyclerview/widget/r2;->h(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    .line 15
+    move-result-object p1
+
+    .line 16
+    invoke-static {p1}, Lf9/i;->b(Ljava/lang/Object;)V
+
+    .line 17
+    .line 18
+    .line 19
+    check-cast p1, Le2/a;
+
+    .line 20
+    .line 21
+    invoke-direct {v1, p1}, Ly1/g;-><init>(Le2/a;)V
+
+    .line 22
+    .line 23
+    .line 24
+    return-object v1
+
+    .line 25
+    :cond_0
+    iget-object v0, p0, Ly1/h;->c:Landroidx/sqlite/SQLiteConnection;
+
+    .line 26
+    .line 27
+    invoke-interface {v0, p1}, Landroidx/sqlite/SQLiteConnection;->y0(Ljava/lang/String;)Le2/a;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object p1
+
+    .line 31
+    return-object p1
 .end method

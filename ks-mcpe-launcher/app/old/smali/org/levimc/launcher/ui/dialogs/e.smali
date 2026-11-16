@@ -1,89 +1,53 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/ui/dialogs/gameversionselect/UltimateVersionAdapter$OnVersionSelectListener;
-.implements Lorg/levimc/launcher/ui/dialogs/gameversionselect/UltimateVersionAdapter$OnVersionLongClickListener;
-.implements Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic a:Landroid/app/Dialog;
+.field public final synthetic c:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;
+
+.field public final synthetic d:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Landroid/app/Dialog;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;I)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/e;->a:Landroid/app/Dialog;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/e;->c:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;
+
     .line 5
     .line 6
+    iput p2, p0, Lorg/levimc/launcher/ui/dialogs/e;->d:I
+
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public onVersionLongClicked(Lorg/levimc/launcher/core/versions/GameVersion;)V
-    .locals 1
+.method public final onClick(Landroid/view/View;)V
+    .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/e;->a:Landroid/app/Dialog;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/e;->c:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;
 
     .line 2
     .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;
+    iget v1, p0, Lorg/levimc/launcher/ui/dialogs/e;->d:I
 
     .line 4
     .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->a(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;Lorg/levimc/launcher/core/versions/GameVersion;)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public onVersionSelected(Lorg/levimc/launcher/core/versions/GameVersion;)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/e;->a:Landroid/app/Dialog;
-
-    .line 2
-    .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;
-
-    .line 4
-    .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->c(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;Lorg/levimc/launcher/core/versions/GameVersion;)V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public selected(I)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/e;->a:Landroid/app/Dialog;
-
-    .line 2
-    .line 3
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
-    .line 4
-    .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->c(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;I)V
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->a(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;ILandroid/view/View;)V
 
     .line 6
     .line 7

@@ -1,259 +1,104 @@
-.class synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;
+.class Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
 
 
 # annotations
-.annotation system Ldalvik/annotation/EnclosingClass;
-    value = Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->addSlider(Landroid/content/Context;Landroid/view/ViewGroup;Ljava/lang/String;IIIIFLorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;)V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x1009
+    accessFlags = 0x1
     name = null
 .end annotation
 
 
-# static fields
-.field static final synthetic $SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
+# instance fields
+.field final synthetic val$listener:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
+
+.field final synthetic val$valText:Landroid/widget/TextView;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 3
+.method public constructor <init>(Landroid/widget/TextView;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
 
     .line 1
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->values()[Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->val$valText:Landroid/widget/TextView;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object v0
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->val$listener:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
 
+    .line 4
     .line 5
-    array-length v0, v0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
-    new-array v0, v0, [I
-
     .line 7
     .line 8
-    sput-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
+    return-void
+.end method
+
+
+# virtual methods
+.method public onProgressChanged(Landroid/widget/SeekBar;IZ)V
+    .locals 0
+
+    .line 1
+    if-eqz p3, :cond_0
+
+    .line 2
+    .line 3
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->val$valText:Landroid/widget/TextView;
+
+    .line 4
+    .line 5
+    invoke-static {p2}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object p3
 
     .line 9
-    .line 10
-    :try_start_0
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->TOGGLE:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
+    invoke-virtual {p1, p3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
+    .line 10
     .line 11
     .line 12
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->val$listener:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;
 
     .line 13
     .line 14
+    invoke-interface {p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$ValueChangeListener;->onValueChanged(I)V
+
     .line 15
-    move-result v1
-
     .line 16
-    const/4 v2, 0x1
-
     .line 17
-    aput v2, v0, v1
-    :try_end_0
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
+    :cond_0
+    return-void
+.end method
 
-    .line 18
-    .line 19
-    :catch_0
-    :try_start_1
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
+.method public onStartTrackingTouch(Landroid/widget/SeekBar;)V
+    .locals 0
 
-    .line 20
-    .line 21
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->SLIDER_INT:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
+    .line 1
+    return-void
+.end method
 
-    .line 22
-    .line 23
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+.method public onStopTrackingTouch(Landroid/widget/SeekBar;)V
+    .locals 0
 
-    .line 24
-    .line 25
-    .line 26
-    move-result v1
-
-    .line 27
-    const/4 v2, 0x2
-
-    .line 28
-    aput v2, v0, v1
-    :try_end_1
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
-
-    .line 29
-    .line 30
-    :catch_1
-    :try_start_2
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 31
-    .line 32
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->SLIDER_FLOAT:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 33
-    .line 34
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 35
-    .line 36
-    .line 37
-    move-result v1
-
-    .line 38
-    const/4 v2, 0x3
-
-    .line 39
-    aput v2, v0, v1
-    :try_end_2
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
-
-    .line 40
-    .line 41
-    :catch_2
-    :try_start_3
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 42
-    .line 43
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->RADIO:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 44
-    .line 45
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 46
-    .line 47
-    .line 48
-    move-result v1
-
-    .line 49
-    const/4 v2, 0x4
-
-    .line 50
-    aput v2, v0, v1
-    :try_end_3
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_3
-
-    .line 51
-    .line 52
-    :catch_3
-    :try_start_4
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 53
-    .line 54
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->COLOR:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 55
-    .line 56
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 57
-    .line 58
-    .line 59
-    move-result v1
-
-    .line 60
-    const/4 v2, 0x5
-
-    .line 61
-    aput v2, v0, v1
-    :try_end_4
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_4
-
-    .line 62
-    .line 63
-    :catch_4
-    :try_start_5
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 64
-    .line 65
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->KEYBIND:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 66
-    .line 67
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 68
-    .line 69
-    .line 70
-    move-result v1
-
-    .line 71
-    const/4 v2, 0x6
-
-    .line 72
-    aput v2, v0, v1
-    :try_end_5
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_5
-
-    .line 73
-    .line 74
-    :catch_5
-    :try_start_6
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 75
-    .line 76
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->TEXT:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 77
-    .line 78
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 79
-    .line 80
-    .line 81
-    move-result v1
-
-    .line 82
-    const/4 v2, 0x7
-
-    .line 83
-    aput v2, v0, v1
-    :try_end_6
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_6
-
-    .line 84
-    .line 85
-    :catch_6
-    :try_start_7
-    sget-object v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView$3;->$SwitchMap$org$levimc$launcher$core$mods$inbuilt$UnifiedMod$ConfigType:[I
-
-    .line 86
-    .line 87
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;->BUTTON:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod$ConfigType;
-
-    .line 88
-    .line 89
-    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
-
-    .line 90
-    .line 91
-    .line 92
-    move-result v1
-
-    .line 93
-    const/16 v2, 0x8
-
-    .line 94
-    .line 95
-    aput v2, v0, v1
-    :try_end_7
-    .catch Ljava/lang/NoSuchFieldError; {:try_start_7 .. :try_end_7} :catch_7
-
-    .line 96
-    .line 97
-    :catch_7
+    .line 1
     return-void
 .end method

@@ -1,6 +1,6 @@
 .class public abstract Landroidx/recyclerview/widget/RecyclerView$Adapter;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -198,7 +198,7 @@
     move-result-object p1
 
     .line 57
-    instance-of p2, p1, Landroidx/recyclerview/widget/q1;
+    instance-of p2, p1, Landroidx/recyclerview/widget/s1;
 
     .line 58
     .line 59
@@ -206,11 +206,11 @@
 
     .line 60
     .line 61
-    check-cast p1, Landroidx/recyclerview/widget/q1;
+    check-cast p1, Landroidx/recyclerview/widget/s1;
 
     .line 62
     .line 63
-    iput-boolean v1, p1, Landroidx/recyclerview/widget/q1;->c:Z
+    iput-boolean v1, p1, Landroidx/recyclerview/widget/s1;->c:Z
 
     .line 64
     .line 65

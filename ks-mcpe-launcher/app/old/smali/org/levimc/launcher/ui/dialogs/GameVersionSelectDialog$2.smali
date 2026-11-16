@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/versions/VersionManager$OnRenameVersionCallback;
@@ -213,7 +213,48 @@
 
 # virtual methods
 .method public onRenameCompleted(Z)V
-    .locals 2
+    .locals 3
+
+    .line 1
+    new-instance v0, Landroid/os/Handler;
+
+    .line 2
+    .line 3
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v1
+
+    .line 7
+    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+
+    .line 8
+    .line 9
+    .line 10
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/h;
+
+    .line 11
+    .line 12
+    const/4 v2, 0x0
+
+    .line 13
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/dialogs/h;-><init>(Ljava/lang/Object;ZI)V
+
+    .line 14
+    .line 15
+    .line 16
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
+    .line 17
+    .line 18
+    .line 19
+    return-void
+.end method
+
+.method public onRenameFailed(Ljava/lang/Exception;)V
+    .locals 3
 
     .line 1
     new-instance v0, Landroid/os/Handler;
@@ -237,53 +278,18 @@
 
     .line 11
     .line 12
-    invoke-direct {v1, p0, p1}, Lorg/levimc/launcher/ui/dialogs/g;-><init>(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;Z)V
+    const/4 v2, 0x0
 
     .line 13
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/dialogs/g;-><init>(Ljava/lang/Object;Ljava/io/Serializable;I)V
+
     .line 14
     .line 15
+    .line 16
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
-    .line 16
     .line 17
     .line 18
-    return-void
-.end method
-
-.method public onRenameFailed(Ljava/lang/Exception;)V
-    .locals 2
-
-    .line 1
-    new-instance v0, Landroid/os/Handler;
-
-    .line 2
-    .line 3
-    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v1
-
-    .line 7
-    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
-
-    .line 8
-    .line 9
-    .line 10
-    new-instance v1, Lorg/levimc/launcher/ui/dialogs/f;
-
-    .line 11
-    .line 12
-    invoke-direct {v1, p0, p1}, Lorg/levimc/launcher/ui/dialogs/f;-><init>(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog$2;Ljava/lang/Exception;)V
-
-    .line 13
-    .line 14
-    .line 15
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 16
-    .line 17
-    .line 18
+    .line 19
     return-void
 .end method

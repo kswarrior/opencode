@@ -1,6 +1,6 @@
 .class public final Landroidx/datastore/preferences/protobuf/h0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -48,7 +48,7 @@
     const/4 v1, 0x1
 
     .line 6
-    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
+    invoke-static {v1}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
 
     .line 7
     .line 8
@@ -56,7 +56,7 @@
     move-result v2
 
     .line 10
-    sget-object v3, Landroidx/datastore/preferences/protobuf/q1;->p:Landroidx/datastore/preferences/protobuf/n1;
+    sget-object v3, Landroidx/datastore/preferences/protobuf/q1;->q:Landroidx/datastore/preferences/protobuf/n1;
 
     .line 11
     .line 12
@@ -135,7 +135,7 @@
     xor-long/2addr v9, v11
 
     .line 47
-    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 48
     .line 49
@@ -171,7 +171,7 @@
     xor-int/2addr p1, v0
 
     .line 64
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 65
     .line 66
@@ -235,7 +235,7 @@
     int-to-long v9, p1
 
     .line 93
-    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 94
     .line 95
@@ -260,7 +260,7 @@
     move-result p1
 
     .line 105
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 106
     .line 107
@@ -293,7 +293,7 @@
     move-result p1
 
     .line 121
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 122
     .line 123
@@ -317,7 +317,7 @@
     array-length p1, p1
 
     .line 131
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 132
     .line 133
@@ -345,7 +345,7 @@
     move-result p1
 
     .line 144
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 145
     .line 146
@@ -397,7 +397,7 @@
     move-result p1
 
     .line 168
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 169
     .line 170
@@ -413,7 +413,7 @@
 
     .line 174
     .line 175
-    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->B(Ljava/lang/String;)I
+    invoke-static {p1}, Landroidx/datastore/preferences/protobuf/m;->K(Ljava/lang/String;)I
 
     .line 176
     .line 177
@@ -482,7 +482,7 @@
     int-to-long v9, p1
 
     .line 206
-    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 207
     .line 208
@@ -506,7 +506,7 @@
     move-result-wide v9
 
     .line 217
-    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 218
     .line 219
@@ -530,7 +530,7 @@
     move-result-wide v9
 
     .line 228
-    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v9, v10}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 229
     .line 230
@@ -580,7 +580,7 @@
     const/4 v0, 0x2
 
     .line 251
-    invoke-static {v0}, Landroidx/datastore/preferences/protobuf/m;->C(I)I
+    invoke-static {v0}, Landroidx/datastore/preferences/protobuf/m;->L(I)I
 
     .line 252
     .line 253
@@ -646,7 +646,7 @@
     xor-long/2addr v1, v5
 
     .line 283
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 284
     .line 285
@@ -682,7 +682,7 @@
     xor-int/2addr p0, p2
 
     .line 300
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 301
     .line 302
@@ -746,7 +746,7 @@
     int-to-long v1, p0
 
     .line 329
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 330
     .line 331
@@ -771,7 +771,7 @@
     move-result p0
 
     .line 341
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 342
     .line 343
@@ -804,7 +804,7 @@
     move-result p0
 
     .line 357
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 358
     .line 359
@@ -829,7 +829,7 @@
     array-length p0, p2
 
     .line 368
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 369
     .line 370
@@ -857,7 +857,7 @@
     move-result p0
 
     .line 381
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 382
     .line 383
@@ -909,7 +909,7 @@
     move-result p0
 
     .line 405
-    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->D(I)I
+    invoke-static {p0}, Landroidx/datastore/preferences/protobuf/m;->M(I)I
 
     .line 406
     .line 407
@@ -925,7 +925,7 @@
 
     .line 411
     .line 412
-    invoke-static {p2}, Landroidx/datastore/preferences/protobuf/m;->B(Ljava/lang/String;)I
+    invoke-static {p2}, Landroidx/datastore/preferences/protobuf/m;->K(Ljava/lang/String;)I
 
     .line 413
     .line 414
@@ -991,7 +991,7 @@
     int-to-long v1, p0
 
     .line 442
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 443
     .line 444
@@ -1015,7 +1015,7 @@
     move-result-wide v1
 
     .line 453
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 454
     .line 455
@@ -1039,7 +1039,7 @@
     move-result-wide v1
 
     .line 464
-    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->E(J)I
+    invoke-static {v1, v2}, Landroidx/datastore/preferences/protobuf/m;->N(J)I
 
     .line 465
     .line 466
@@ -1120,6 +1120,13 @@
     .line 492
     .line 493
     .line 494
+    .line 495
+    .line 496
+    .line 497
+    .line 498
+    .line 499
+    .line 500
+    .line 501
     :pswitch_data_1
     .packed-switch 0x0
         :pswitch_23

@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/auth/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/auth/MsftAuthManager$ThrowingSupplier;
@@ -66,11 +66,11 @@
 
     .line 11
     .line 12
-    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    check-cast v1, Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;
 
     .line 13
     .line 14
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->a(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->a(Landroid/content/Context;Lnet/raphimc/minecraftauth/bedrock/BedrockAuthManager;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 15
     .line 16
@@ -94,11 +94,11 @@
 
     .line 24
     .line 25
-    check-cast v1, Ljava/lang/String;
+    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 26
     .line 27
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->c(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->b(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 28
     .line 29
@@ -114,7 +114,7 @@
 
     .line 33
     .line 34
-    check-cast v0, Lnet/lenni0451/commons/httpclient/HttpClient;
+    check-cast v0, Landroid/content/Context;
 
     .line 35
     .line 36
@@ -122,11 +122,11 @@
 
     .line 37
     .line 38
-    check-cast v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
+    check-cast v1, Ljava/lang/String;
 
     .line 39
     .line 40
-    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->e(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;)Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->c(Landroid/content/Context;Ljava/lang/String;)Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 41
     .line 42
@@ -137,8 +137,40 @@
     return-object v0
 
     .line 45
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/auth/a;->b:Ljava/lang/Object;
+
+    .line 46
+    .line 47
+    check-cast v0, Lnet/lenni0451/commons/httpclient/HttpClient;
+
+    .line 48
+    .line 49
+    iget-object v1, p0, Lorg/levimc/launcher/core/auth/a;->c:Ljava/lang/Object;
+
+    .line 50
+    .line 51
+    check-cast v1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;
+
+    .line 52
+    .line 53
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/auth/MsftAuthManager;->e(Lnet/lenni0451/commons/httpclient/HttpClient;Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;)Lnet/raphimc/minecraftauth/msa/model/MsaDeviceCode;
+
+    .line 54
+    .line 55
+    .line 56
+    move-result-object v0
+
+    .line 57
+    return-object v0
+
+    .line 58
+    nop
+
+    .line 59
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_2
         :pswitch_1
         :pswitch_0
     .end packed-switch

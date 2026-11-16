@@ -1,76 +1,49 @@
 .class public final Lw0/z0;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# static fields
+.field public static final b:Landroidx/datastore/core/NativeSharedCounter;
 
 
 # instance fields
-.field public p:Ljava/lang/Object;
-
-.field public q:Ly9/c;
-
-.field public synthetic w:Ljava/lang/Object;
-
-.field public final synthetic x:Lw0/c1;
-
-.field public y:I
+.field public final a:J
 
 
 # direct methods
-.method public constructor <init>(Lw0/c1;Ly8/c;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lw0/z0;->x:Lw0/c1;
-
-    .line 2
-    .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lw0/z0;->w:Ljava/lang/Object;
+    new-instance v0, Landroidx/datastore/core/NativeSharedCounter;
 
     .line 2
     .line 3
-    iget p1, p0, Lw0/z0;->y:I
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
-
     .line 6
+    sput-object v0, Lw0/z0;->b:Landroidx/datastore/core/NativeSharedCounter;
+
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lw0/z0;->y:I
+    return-void
+.end method
 
-    .line 9
-    .line 10
-    iget-object p1, p0, Lw0/z0;->x:Lw0/c1;
+.method public constructor <init>(J)V
+    .locals 0
 
-    .line 11
-    .line 12
-    const/4 v0, 0x0
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 13
-    invoke-virtual {p1, v0, p0}, Lw0/c1;->c(Lg9/k;Ly8/c;)Ljava/lang/Object;
+    .line 2
+    .line 3
+    .line 4
+    iput-wide p1, p0, Lw0/z0;->a:J
 
-    .line 14
-    .line 15
-    .line 16
-    move-result-object p1
-
-    .line 17
-    return-object p1
+    .line 5
+    .line 6
+    return-void
 .end method

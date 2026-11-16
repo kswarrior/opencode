@@ -1,68 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs$Selection;
-.implements Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs$ColorSelection;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final synthetic b:[I
-
-.field public final synthetic c:Landroid/widget/TextView;
-
-.field public final synthetic d:Ljava/util/function/Consumer;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
 
 
 # direct methods
-.method public synthetic constructor <init>([ILandroid/widget/TextView;Ljava/util/function/Consumer;)V
-    .locals 1
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;I)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x1
-
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->a:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->b:[I
-
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:Landroid/widget/TextView;
-
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Ljava/util/function/Consumer;
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>([ILjava/util/function/Consumer;Landroid/widget/TextView;)V
-    .locals 1
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:I
 
     .line 2
-    const/4 v0, 0x0
+    .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
 
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->a:I
-
+    .line 4
+    .line 5
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->b:[I
-
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Ljava/util/function/Consumer;
-
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:Landroid/widget/TextView;
-
+    .line 6
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final select(I)V
-    .locals 3
+.method public final run()V
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->a:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:I
 
     .line 2
     .line 3
@@ -71,50 +48,34 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:Landroid/widget/TextView;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Ljava/util/function/Consumer;
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;)V
 
     .line 9
     .line 10
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->b:[I
-
     .line 11
+    return-void
+
     .line 12
-    invoke-static {v2, v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->l([ILandroid/widget/TextView;Ljava/util/function/Consumer;I)V
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
 
     .line 13
     .line 14
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;)V
+
     .line 15
-    return-void
-
     .line 16
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->d:Ljava/util/function/Consumer;
-
     .line 17
-    .line 18
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->c:Landroid/widget/TextView;
-
-    .line 19
-    .line 20
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p;->b:[I
-
-    .line 21
-    .line 22
-    invoke-static {v2, v1, v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->m([ILandroid/widget/TextView;Ljava/util/function/Consumer;I)V
-
-    .line 23
-    .line 24
-    .line 25
     return-void
 
-    .line 26
+    .line 18
     nop
 
-    .line 27
+    .line 19
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

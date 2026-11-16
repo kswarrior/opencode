@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,11 +9,11 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public final synthetic d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 4
     .line 5
@@ -48,49 +48,50 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->z(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
 
     .line 9
     .line 10
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;->b(Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;)V
-
     .line 11
-    .line 12
-    .line 13
     return-void
 
-    .line 14
+    .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
+    .line 13
+    .line 14
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->a(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
 
     .line 15
     .line 16
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
     .line 17
+    return-void
+
     .line 18
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->x(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 19
     .line 20
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->w(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
+
     .line 21
+    .line 22
+    .line 23
     return-void
 
-    .line 22
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 23
     .line 24
-    check-cast v0, Ljava/lang/Runnable;
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 25
     .line 26
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->B(Ljava/lang/Runnable;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->j(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
 
     .line 27
     .line 28
@@ -98,117 +99,24 @@
     return-void
 
     .line 30
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
+    :pswitch_3
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 31
     .line 32
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->g(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)V
 
     .line 33
     .line 34
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;->b(Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;)V
-
     .line 35
+    return-void
+
     .line 36
-    .line 37
-    return-void
-
-    .line 38
-    :pswitch_3
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 39
-    .line 40
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
-
-    .line 41
-    .line 42
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->b(Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;)V
-
-    .line 43
-    .line 44
-    .line 45
-    return-void
-
-    .line 46
-    :pswitch_4
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 47
-    .line 48
-    check-cast v0, Landroidx/recyclerview/widget/RecyclerView;
-
-    .line 49
-    .line 50
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->d(Landroidx/recyclerview/widget/RecyclerView;)V
-
-    .line 51
-    .line 52
-    .line 53
-    return-void
-
-    .line 54
-    :pswitch_5
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 55
-    .line 56
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
-    .line 57
-    .line 58
-    invoke-static {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->a(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;)V
-
-    .line 59
-    .line 60
-    .line 61
-    return-void
-
-    .line 62
-    :pswitch_6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 63
-    .line 64
-    check-cast v0, Landroid/app/Dialog;
-
-    .line 65
-    .line 66
-    invoke-virtual {v0}, Landroid/app/Dialog;->dismiss()V
-
-    .line 67
-    .line 68
-    .line 69
-    return-void
-
-    .line 70
-    :pswitch_7
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/i;->d:Ljava/lang/Object;
-
-    .line 71
-    .line 72
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs$Binding;
-
-    .line 73
-    .line 74
-    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs$Binding;->apply()V
-
-    .line 75
-    .line 76
-    .line 77
-    return-void
-
-    .line 78
     nop
 
-    .line 79
+    .line 37
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_7
-        :pswitch_6
-        :pswitch_5
-        :pswitch_4
         :pswitch_3
         :pswitch_2
         :pswitch_1

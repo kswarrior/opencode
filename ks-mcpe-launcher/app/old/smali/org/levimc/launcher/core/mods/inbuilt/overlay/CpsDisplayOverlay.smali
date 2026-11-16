@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -44,21 +44,15 @@
 
 .field private lastButtonState:I
 
-.field private lastDisplayValue:I
-
 .field private overlayView:Landroid/view/View;
 
 .field private pendingShowRunnable:Ljava/lang/Runnable;
-
-.field private runtimeActive:Z
 
 .field private statsText:Landroid/widget/TextView;
 
 .field private touchDownTime:J
 
 .field private final updateRunnable:Ljava/lang/Runnable;
-
-.field private updatesRunning:Z
 
 .field private final windowManager:Landroid/view/WindowManager;
 
@@ -116,82 +110,67 @@
 
     .line 24
     .line 25
-    const/4 v1, 0x1
-
-    .line 26
-    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->runtimeActive:Z
-
-    .line 27
-    .line 28
-    const/high16 v1, -0x80000000
-
-    .line 29
-    .line 30
-    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastDisplayValue:I
-
-    .line 31
-    .line 32
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isDragging:Z
 
-    .line 33
-    .line 34
+    .line 26
+    .line 27
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isLocked:Z
 
-    .line 35
-    .line 36
+    .line 28
+    .line 29
     const-wide/16 v1, 0x0
 
-    .line 37
-    .line 38
+    .line 30
+    .line 31
     iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->touchDownTime:J
 
+    .line 32
+    .line 33
+    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastButtonState:I
+
+    .line 34
+    .line 35
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay$1;
+
+    .line 36
+    .line 37
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
+
+    .line 38
     .line 39
     .line 40
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastButtonState:I
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
 
     .line 41
     .line 42
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay$1;
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isHudEditorMode:Z
 
     .line 43
     .line 44
-    invoke-direct {v1, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->activity:Landroid/app/Activity;
 
     .line 45
     .line 46
-    .line 47
-    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
-
-    .line 48
-    .line 49
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isHudEditorMode:Z
-
-    .line 50
-    .line 51
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->activity:Landroid/app/Activity;
-
-    .line 52
-    .line 53
     const-string v0, "window"
 
-    .line 54
-    .line 55
+    .line 47
+    .line 48
     invoke-virtual {p1, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 56
-    .line 57
-    .line 58
+    .line 49
+    .line 50
+    .line 51
     move-result-object p1
 
-    .line 59
+    .line 52
     check-cast p1, Landroid/view/WindowManager;
 
-    .line 60
-    .line 61
+    .line 53
+    .line 54
     iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
 
-    .line 62
-    .line 63
+    .line 55
+    .line 56
     return-void
 .end method
 
@@ -481,7 +460,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lambda$show$1(II)V
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lambda$show$0(II)V
 
     .line 2
     .line 3
@@ -502,59 +481,6 @@
 
     .line 5
     return p0
-.end method
-
-.method private canUpdate()Z
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->runtimeActive:Z
-
-    .line 6
-    .line 7
-    if-eqz v0, :cond_0
-
-    .line 8
-    .line 9
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
-
-    .line 10
-    .line 11
-    if-eqz v0, :cond_0
-
-    .line 12
-    .line 13
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v0
-
-    .line 17
-    if-nez v0, :cond_0
-
-    .line 18
-    .line 19
-    const/4 v0, 0x1
-
-    .line 20
-    return v0
-
-    .line 21
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 22
-    return v0
 .end method
 
 .method private clampCurrentPosition(Z)V
@@ -804,34 +730,7 @@
     return-void
 .end method
 
-.method public static synthetic d(DLjava/lang/Double;)Z
-    .locals 0
-
-    .line 1
-    invoke-static {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lambda$registerClick$0(DLjava/lang/Double;)Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lambda$updateDisplay$2()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)Landroid/os/Handler;
+.method public static bridge synthetic d(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)Landroid/os/Handler;
     .locals 0
 
     .line 1
@@ -842,15 +741,27 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)Z
+.method public static bridge synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)Z
     .locals 0
 
     .line 1
-    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
+    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
 
     .line 2
     .line 3
     return p0
+.end method
+
+.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateDisplay()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
 .end method
 
 .method private getCps()I
@@ -1004,20 +915,6 @@
 
     .line 12
     return-wide v0
-.end method
-
-.method public static bridge synthetic h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
-
-    .line 3
-    .line 4
-    return-void
 .end method
 
 .method private handleTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
@@ -1852,74 +1749,7 @@
     return v3
 .end method
 
-.method public static bridge synthetic i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)Z
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->canUpdate()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result p0
-
-    .line 5
-    return p0
-.end method
-
-.method public static bridge synthetic j(Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateDisplay()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private static synthetic lambda$registerClick$0(DLjava/lang/Double;)Z
-    .locals 2
-
-    .line 1
-    invoke-virtual {p2}, Ljava/lang/Double;->doubleValue()D
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-wide v0
-
-    .line 5
-    sub-double/2addr p0, v0
-
-    .line 6
-    const-wide/high16 v0, 0x3ff0000000000000L    # 1.0
-
-    .line 7
-    .line 8
-    cmpl-double p0, p0, v0
-
-    .line 9
-    .line 10
-    if-lez p0, :cond_0
-
-    .line 11
-    .line 12
-    const/4 p0, 0x1
-
-    .line 13
-    return p0
-
-    .line 14
-    :cond_0
-    const/4 p0, 0x0
-
-    .line 15
-    return p0
-.end method
-
-.method private synthetic lambda$show$1(II)V
+.method private synthetic lambda$show$0(II)V
     .locals 0
 
     .line 1
@@ -1928,34 +1758,6 @@
     .line 2
     .line 3
     .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$updateDisplay$2()V
-    .locals 1
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->canUpdate()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-eqz v0, :cond_0
-
-    .line 6
-    .line 7
-    const/4 v0, 0x0
-
-    .line 8
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clampCurrentPosition(Z)V
-
-    .line 9
-    .line 10
-    .line 11
-    :cond_0
     return-void
 .end method
 
@@ -2256,31 +2058,39 @@
 
     .line 119
     .line 120
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->syncUpdates()V
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 121
     .line 122
-    .line 123
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applyOpacity()V
+    iget-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
 
+    .line 123
     .line 124
+    invoke-virtual {p1, p2}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
     .line 125
     .line 126
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateLockState()V
-
     .line 127
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applyOpacity()V
+
     .line 128
     .line 129
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applySize()V
-
     .line 130
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateLockState()V
+
     .line 131
     .line 132
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->refreshRuntimeVisibility()V
-
     .line 133
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applySize()V
+
     .line 134
     .line 135
+    .line 136
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->refreshRuntimeVisibility()V
+
+    .line 137
+    .line 138
+    .line 139
     return-void
 .end method
 
@@ -2566,133 +2376,69 @@
 
     .line 138
     .line 139
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->syncUpdates()V
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 140
     .line 141
-    .line 142
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applyOpacity()V
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
 
+    .line 142
     .line 143
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
+
     .line 144
     .line 145
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateLockState()V
-
     .line 146
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applyOpacity()V
+
     .line 147
     .line 148
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applySize()V
-
     .line 149
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateLockState()V
+
     .line 150
     .line 151
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
-
     .line 152
-    .line 153
-    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->x:I
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->applySize()V
 
+    .line 153
     .line 154
     .line 155
-    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->y:I
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
 
     .line 156
     .line 157
-    invoke-virtual {p0, v1, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatePosition(II)V
+    iget v1, v0, Landroid/view/WindowManager$LayoutParams;->x:I
 
     .line 158
     .line 159
+    iget v0, v0, Landroid/view/WindowManager$LayoutParams;->y:I
+
     .line 160
+    .line 161
+    invoke-virtual {p0, v1, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatePosition(II)V
+
+    .line 162
+    .line 163
+    .line 164
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->refreshRuntimeVisibility()V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 161
-    .line 162
-    .line 163
-    return-void
-
-    .line 164
-    :catch_0
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->showFallback(II)V
-
     .line 165
     .line 166
     .line 167
+    return-void
+
+    .line 168
+    :catch_0
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->showFallback(II)V
+
+    .line 169
+    .line 170
+    .line 171
     :cond_1
     :goto_0
-    return-void
-.end method
-
-.method private syncUpdates()V
-    .locals 2
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->canUpdate()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-nez v0, :cond_0
-
-    .line 6
-    .line 7
-    const/4 v0, 0x0
-
-    .line 8
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
-
-    .line 9
-    .line 10
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
-
-    .line 11
-    .line 12
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
-
-    .line 13
-    .line 14
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 15
-    .line 16
-    .line 17
-    return-void
-
-    .line 18
-    :cond_0
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
-
-    .line 19
-    .line 20
-    if-nez v0, :cond_1
-
-    .line 21
-    .line 22
-    const/4 v0, 0x1
-
-    .line 23
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
-
-    .line 24
-    .line 25
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
-
-    .line 26
-    .line 27
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
-
-    .line 28
-    .line 29
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 30
-    .line 31
-    .line 32
-    :cond_1
     return-void
 .end method
 
@@ -2704,101 +2450,64 @@
 
     .line 2
     .line 3
-    if-nez v0, :cond_0
+    if-eqz v0, :cond_0
 
     .line 4
     .line 5
-    goto :goto_0
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->activity:Landroid/app/Activity;
 
     .line 6
-    :cond_0
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->getCps()I
-
     .line 7
+    sget v2, Lorg/levimc/launcher/R$string;->mod_overlay_cps_value:I
+
     .line 8
     .line 9
-    move-result v0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->getCps()I
 
     .line 10
-    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastDisplayValue:I
-
     .line 11
     .line 12
-    if-ne v1, v0, :cond_1
+    move-result v3
 
     .line 13
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
     .line 14
-    :goto_0
-    return-void
-
     .line 15
-    :cond_1
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastDisplayValue:I
-
     .line 16
+    move-result-object v3
+
     .line 17
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->statsText:Landroid/widget/TextView;
+    filled-new-array {v3}, [Ljava/lang/Object;
 
     .line 18
     .line 19
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->activity:Landroid/app/Activity;
-
     .line 20
+    move-result-object v3
+
     .line 21
-    sget v3, Lorg/levimc/launcher/R$string;->mod_overlay_cps_value:I
+    invoke-virtual {v1, v2, v3}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 22
     .line 23
-    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
-
     .line 24
+    move-result-object v1
+
     .line 25
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
     .line 26
-    move-result-object v0
-
     .line 27
-    filled-new-array {v0}, [Ljava/lang/Object;
-
     .line 28
+    const/4 v0, 0x0
+
     .line 29
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clampCurrentPosition(Z)V
+
     .line 30
-    move-result-object v0
-
     .line 31
-    invoke-virtual {v2, v3, v0}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
     .line 32
-    .line 33
-    .line 34
-    move-result-object v0
-
-    .line 35
-    invoke-virtual {v1, v0}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 36
-    .line 37
-    .line 38
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->statsText:Landroid/widget/TextView;
-
-    .line 39
-    .line 40
-    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;
-
-    .line 41
-    .line 42
-    const/4 v2, 0x5
-
-    .line 43
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;-><init>(Ljava/lang/Object;I)V
-
-    .line 44
-    .line 45
-    .line 46
-    invoke-virtual {v0, v1}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
-
-    .line 47
-    .line 48
-    .line 49
+    :cond_0
     return-void
 .end method
 
@@ -3138,206 +2847,181 @@
 .end method
 
 .method public hide()V
-    .locals 4
+    .locals 3
 
     .line 1
-    const/4 v0, 0x0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
 
     .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updatesRunning:Z
-
     .line 3
+    const/4 v1, 0x0
+
     .line 4
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
+    if-eqz v0, :cond_0
 
     .line 5
     .line 6
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
 
     .line 7
     .line 8
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    invoke-virtual {v2, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 9
     .line 10
     .line 11
-    const/high16 v1, -0x80000000
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
 
     .line 12
     .line 13
-    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->lastDisplayValue:I
+    :cond_0
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
 
     .line 14
     .line 15
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+    if-nez v0, :cond_1
 
     .line 16
     .line 17
-    const/4 v2, 0x0
+    goto :goto_1
 
     .line 18
-    if-eqz v1, :cond_0
+    :cond_1
+    const/4 v0, 0x0
 
     .line 19
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
+
     .line 20
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
-
     .line 21
-    .line 22
-    invoke-virtual {v3, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
 
+    .line 22
     .line 23
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+
     .line 24
     .line 25
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+    invoke-virtual {v0, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 26
     .line 27
-    :cond_0
-    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
-
     .line 28
+    :try_start_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
+
     .line 29
-    if-nez v1, :cond_1
-
     .line 30
-    .line 31
-    goto :goto_1
+    if-eqz v0, :cond_2
 
+    .line 31
     .line 32
-    :cond_1
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->isShowing:Z
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
 
     .line 33
     .line 34
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->handler:Landroid/os/Handler;
+    if-eqz v0, :cond_2
 
     .line 35
     .line 36
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->updateRunnable:Ljava/lang/Runnable;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
 
     .line 37
     .line 38
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    invoke-interface {v0, v2}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
 
     .line 39
     .line 40
     .line 41
-    :try_start_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->wmParams:Landroid/view/WindowManager$LayoutParams;
-
-    .line 42
-    .line 43
-    if-eqz v0, :cond_2
-
-    .line 44
-    .line 45
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->windowManager:Landroid/view/WindowManager;
-
-    .line 46
-    .line 47
-    if-eqz v0, :cond_2
-
-    .line 48
-    .line 49
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
-
-    .line 50
-    .line 51
-    invoke-interface {v0, v1}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
-
-    .line 52
-    .line 53
-    .line 54
     goto :goto_0
 
-    .line 55
+    .line 42
     :cond_2
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->activity:Landroid/app/Activity;
 
+    .line 43
+    .line 44
+    const v2, 0x1020002
+
+    .line 45
+    .line 46
+    .line 47
+    invoke-virtual {v0, v2}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object v0
+
+    .line 51
+    check-cast v0, Landroid/view/ViewGroup;
+
+    .line 52
+    .line 53
+    if-eqz v0, :cond_3
+
+    .line 54
+    .line 55
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
+
     .line 56
     .line 57
-    const v1, 0x1020002
+    invoke-virtual {v0, v2}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
     .line 58
     .line 59
     .line 60
-    invoke-virtual {v0, v1}, Landroid/app/Activity;->findViewById(I)Landroid/view/View;
-
-    .line 61
-    .line 62
-    .line 63
-    move-result-object v0
-
-    .line 64
-    check-cast v0, Landroid/view/ViewGroup;
-
-    .line 65
-    .line 66
-    if-eqz v0, :cond_3
-
-    .line 67
-    .line 68
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
-
-    .line 69
-    .line 70
-    invoke-virtual {v0, v1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 71
-    .line 72
-    .line 73
     :catch_0
     :cond_3
     :goto_0
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
 
-    .line 74
-    .line 75
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->statsText:Landroid/widget/TextView;
+    .line 61
+    .line 62
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->statsText:Landroid/widget/TextView;
 
-    .line 76
-    .line 77
+    .line 63
+    .line 64
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
 
-    .line 78
-    .line 79
+    .line 65
+    .line 66
     monitor-enter v0
 
-    .line 80
+    .line 67
     :try_start_1
     iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
 
-    .line 81
-    .line 82
+    .line 68
+    .line 69
     invoke-interface {v1}, Ljava/util/List;->clear()V
 
-    .line 83
-    .line 84
-    .line 85
+    .line 70
+    .line 71
+    .line 72
     monitor-exit v0
 
-    .line 86
+    .line 73
     :goto_1
     return-void
 
-    .line 87
+    .line 74
     :catchall_0
     move-exception v1
 
-    .line 88
+    .line 75
     monitor-exit v0
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
-    .line 89
+    .line 76
     throw v1
 .end method
 
 .method public registerClick()V
-    .locals 5
+    .locals 4
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
@@ -3348,64 +3032,46 @@
 
     .line 4
     :try_start_0
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->getTime()D
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
 
     .line 5
     .line 6
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->getTime()D
+
     .line 7
-    move-result-wide v1
-
     .line 8
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
-
     .line 9
+    move-result-wide v2
+
     .line 10
-    new-instance v4, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;
+    invoke-static {v2, v3}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
 
     .line 11
     .line 12
-    invoke-direct {v4, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/e;-><init>(D)V
-
     .line 13
-    .line 14
-    .line 15
-    invoke-interface {v3, v4}, Ljava/util/Collection;->removeIf(Ljava/util/function/Predicate;)Z
+    move-result-object v2
 
+    .line 14
+    invoke-interface {v1, v2}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    .line 15
     .line 16
     .line 17
-    .line 18
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->clickTimes:Ljava/util/List;
-
-    .line 19
-    .line 20
-    invoke-static {v1, v2}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object v1
-
-    .line 24
-    invoke-interface {v3, v1}, Ljava/util/List;->add(Ljava/lang/Object;)Z
-
-    .line 25
-    .line 26
-    .line 27
     monitor-exit v0
 
-    .line 28
+    .line 18
     return-void
 
-    .line 29
+    .line 19
     :catchall_0
     move-exception v1
 
-    .line 30
+    .line 20
     monitor-exit v0
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 31
+    .line 21
     throw v1
 .end method
 
@@ -3451,22 +3117,6 @@
     return-void
 .end method
 
-.method public setRuntimeActive(Z)V
-    .locals 0
-
-    .line 1
-    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->runtimeActive:Z
-
-    .line 2
-    .line 3
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->syncUpdates()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
 .method public setVisibility(I)V
     .locals 1
 
@@ -3479,33 +3129,12 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
 
     .line 6
     .line 7
     .line 8
-    move-result v0
-
-    .line 9
-    if-eq v0, p1, :cond_0
-
-    .line 10
-    .line 11
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->overlayView:Landroid/view/View;
-
-    .line 12
-    .line 13
-    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 14
-    .line 15
-    .line 16
     :cond_0
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/CpsDisplayOverlay;->syncUpdates()V
-
-    .line 17
-    .line 18
-    .line 19
     return-void
 .end method
 

@@ -1,6 +1,6 @@
-.class final Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;
+.class Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -9,14 +9,14 @@
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
-    accessFlags = 0x19
+    accessFlags = 0x9
     name = "ItemsAdapter"
 .end annotation
 
 .annotation system Ldalvik/annotation/MemberClasses;
     value = {
-        Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;,
-        Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;
+        Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;,
+        Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;
     }
 .end annotation
 
@@ -28,13 +28,13 @@
 
 
 # instance fields
-.field final items:[Ljava/lang/String;
+.field private final items:[Ljava/lang/String;
 
-.field final listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;
+.field private final listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;
 
 
 # direct methods
-.method public constructor <init>([Ljava/lang/String;Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;)V
+.method public constructor <init>([Ljava/lang/String;Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;)V
     .locals 0
 
     .line 1
@@ -47,7 +47,7 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;
+    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;
 
     .line 7
     .line 8
@@ -70,15 +70,20 @@
     .locals 0
 
     .line 1
-    iget-object p2, p0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;
+    iget-object p2, p0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->listener:Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;
 
     .line 2
     .line 3
-    invoke-interface {p2, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Listener;->selected(I)V
+    if-eqz p2, :cond_0
 
     .line 4
     .line 5
+    invoke-interface {p2, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$OnItemClickListener;->onClick(I)V
+
     .line 6
+    .line 7
+    .line 8
+    :cond_0
     return-void
 .end method
 
@@ -92,9 +97,20 @@
 
     .line 2
     .line 3
-    array-length v0, v0
+    if-eqz v0, :cond_0
 
     .line 4
+    .line 5
+    array-length v0, v0
+
+    .line 6
+    return v0
+
+    .line 7
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 8
     return v0
 .end method
 
@@ -102,18 +118,18 @@
     .locals 0
 
     .line 1
-    check-cast p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;
+    check-cast p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;
 
-    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->onBindViewHolder(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;I)V
+    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->onBindViewHolder(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;I)V
 
     return-void
 .end method
 
-.method public onBindViewHolder(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;I)V
+.method public onBindViewHolder(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;I)V
     .locals 2
 
     .line 2
-    iget-object v0, p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;->text:Landroid/widget/TextView;
+    iget-object v0, p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;->textView:Landroid/widget/TextView;
 
     iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->items:[Ljava/lang/String;
 
@@ -121,11 +137,12 @@
 
     invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    iget-object p1, p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;->text:Landroid/widget/TextView;
+    .line 3
+    iget-object p1, p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;->textView:Landroid/widget/TextView;
 
-    new-instance v0, Lorg/levimc/launcher/ui/dialogs/b;
+    new-instance v0, Lorg/levimc/launcher/ui/dialogs/e;
 
-    invoke-direct {v0, p0, p2}, Lorg/levimc/launcher/ui/dialogs/b;-><init>(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;I)V
+    invoke-direct {v0, p0, p2}, Lorg/levimc/launcher/ui/dialogs/e;-><init>(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;I)V
 
     invoke-virtual {p1, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
@@ -136,122 +153,93 @@
     .locals 0
 
     .line 1
-    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->onCreateViewHolder(Landroid/view/ViewGroup;I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;
+    invoke-virtual {p0, p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter;->onCreateViewHolder(Landroid/view/ViewGroup;I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;
 
     move-result-object p1
 
     return-object p1
 .end method
 
-.method public onCreateViewHolder(Landroid/view/ViewGroup;I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;
-    .locals 6
+.method public onCreateViewHolder(Landroid/view/ViewGroup;I)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;
+    .locals 3
 
     .line 2
+    new-instance p2, Landroid/widget/TextView;
+
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-direct {p2, v0}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+
+    .line 3
+    new-instance v0, Landroidx/recyclerview/widget/s1;
+
+    const/4 v1, -0x1
+
+    const/4 v2, -0x2
+
+    invoke-direct {v0, v1, v2}, Landroidx/recyclerview/widget/s1;-><init>(II)V
+
+    invoke-virtual {p2, v0}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 4
+    invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v0
+
+    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
+
+    const/high16 v1, 0x41800000    # 16.0f
+
+    mul-float/2addr v0, v1
+
+    float-to-int v0, v0
+
+    .line 5
+    invoke-virtual {p2, v0, v0, v0, v0}, Landroid/widget/TextView;->setPadding(IIII)V
+
+    const/high16 v0, 0x41600000    # 14.0f
+
+    .line 6
+    invoke-virtual {p2, v0}, Landroid/widget/TextView;->setTextSize(F)V
+
+    .line 7
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;
 
     move-result-object p1
 
-    .line 3
-    new-instance p2, Landroid/widget/TextView;
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
 
-    invoke-direct {p2, p1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
+    move-result-object p1
 
-    .line 4
-    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->text(Landroid/content/Context;)I
+    sget v0, Lorg/levimc/launcher/R$color;->text_primary:I
 
-    move-result v0
+    const/4 v1, 0x0
 
-    invoke-virtual {p2, v0}, Landroid/widget/TextView;->setTextColor(I)V
-
-    const/high16 v0, 0x41580000    # 13.5f
-
-    invoke-virtual {p2, v0}, Landroid/widget/TextView;->setTextSize(F)V
-
-    const/high16 v0, 0x42400000    # 48.0f
-
-    .line 5
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
-
-    move-result v0
-
-    invoke-virtual {p2, v0}, Landroid/widget/TextView;->setMinHeight(I)V
-
-    const/high16 v0, 0x41400000    # 12.0f
-
-    .line 6
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
-
-    move-result v1
-
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
-
-    move-result v2
-
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
-
-    move-result v3
-
-    invoke-static {p1, v0}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
-
-    move-result v0
-
-    invoke-virtual {p2, v1, v2, v3, v0}, Landroid/widget/TextView;->setPadding(IIII)V
-
-    .line 7
-    new-instance v0, Landroid/graphics/drawable/RippleDrawable;
-
-    const v1, 0x22808080
-
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    move-result-object v1
-
-    .line 8
-    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->raised(Landroid/content/Context;)I
-
-    move-result v2
-
-    const/16 v3, 0xa
-
-    const/4 v4, 0x0
-
-    invoke-static {p1, v2, v3, v4}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->shape(Landroid/content/Context;IIZ)Landroid/graphics/drawable/GradientDrawable;
-
-    move-result-object v2
-
-    const/4 v5, -0x1
-
-    invoke-static {p1, v5, v3, v4}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->shape(Landroid/content/Context;IIZ)Landroid/graphics/drawable/GradientDrawable;
-
-    move-result-object v3
-
-    invoke-direct {v0, v1, v2, v3}, Landroid/graphics/drawable/RippleDrawable;-><init>(Landroid/content/res/ColorStateList;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
-
-    .line 9
-    invoke-virtual {p2, v0}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 10
-    new-instance v0, Landroidx/recyclerview/widget/q1;
-
-    const/4 v1, -0x2
-
-    invoke-direct {v0, v5, v1}, Landroidx/recyclerview/widget/q1;-><init>(II)V
-
-    const/high16 v1, 0x40c00000    # 6.0f
-
-    .line 11
-    invoke-static {p1, v1}, Lorg/levimc/launcher/ui/dialogs/LauncherDialogs;->dp(Landroid/content/Context;F)I
+    invoke-virtual {p1, v0, v1}, Landroid/content/res/Resources;->getColor(ILandroid/content/res/Resources$Theme;)I
 
     move-result p1
 
-    iput p1, v0, Landroid/view/ViewGroup$MarginLayoutParams;->bottomMargin:I
+    invoke-virtual {p2, p1}, Landroid/widget/TextView;->setTextColor(I)V
 
-    invoke-virtual {p2, v0}, Landroid/view/View;->setLayoutParams(Landroid/view/ViewGroup$LayoutParams;)V
+    const p1, 0x1080062
 
-    .line 12
-    new-instance p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;
+    .line 8
+    invoke-virtual {p2, p1}, Landroid/view/View;->setBackgroundResource(I)V
 
-    invoke-direct {p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$Holder;-><init>(Landroid/widget/TextView;)V
+    .line 9
+    new-instance p1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;
+
+    invoke-direct {p1, p2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog$ItemsAdapter$ViewHolder;-><init>(Landroid/widget/TextView;)V
 
     return-object p1
 .end method

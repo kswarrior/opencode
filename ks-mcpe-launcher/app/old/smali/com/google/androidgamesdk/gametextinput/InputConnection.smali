@@ -1,6 +1,6 @@
 .class public Lcom/google/androidgamesdk/gametextinput/InputConnection;
 .super Landroid/view/inputmethod/BaseInputConnection;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/view/View$OnKeyListener;
@@ -22,23 +22,23 @@
 # instance fields
 .field private final imm:Landroid/view/inputmethod/InputMethodManager;
 
-.field private listener:Le6/c;
+.field private listener:Lc6/c;
 
 .field private final mEditable:Landroid/text/Editable;
 
 .field private mSoftKeyboardActive:Z
 
-.field private final settings:Le6/d;
+.field private final settings:Lc6/d;
 
 .field private final targetView:Landroid/view/View;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Landroid/view/View;Le6/d;)V
+.method public constructor <init>(Landroid/content/Context;Landroid/view/View;Lc6/d;)V
     .locals 3
 
     .line 1
-    iget-object v0, p3, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object v0, p3, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 2
     .line 3
@@ -86,7 +86,7 @@
 
     .line 22
     .line 23
-    iput-object p3, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iput-object p3, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 24
     .line 25
@@ -147,7 +147,7 @@
     move-result-object p1
 
     .line 54
-    invoke-static {p1, v1}, Ljb/c;->k0(Landroid/view/Window;Z)V
+    invoke-static {p1, v1}, Ly6/t1;->w(Landroid/view/Window;Z)V
 
     .line 55
     .line 56
@@ -157,7 +157,7 @@
     .line 58
     .line 59
     .line 60
-    iget-object p1, p3, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object p1, p3, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 61
     .line 62
@@ -536,11 +536,11 @@
     return p0
 .end method
 
-.method private getComposingRegion()Le6/a;
+.method private getComposingRegion()Lc6/a;
     .locals 3
 
     .line 1
-    new-instance v0, Le6/a;
+    new-instance v0, Lc6/a;
 
     .line 2
     .line 3
@@ -568,7 +568,7 @@
     move-result v2
 
     .line 15
-    invoke-direct {v0, v1, v2}, Le6/a;-><init>(II)V
+    invoke-direct {v0, v1, v2}, Lc6/a;-><init>(II)V
 
     .line 16
     .line 17
@@ -576,11 +576,11 @@
     return-object v0
 .end method
 
-.method private getSelection()Le6/a;
+.method private getSelection()Lc6/a;
     .locals 3
 
     .line 1
-    new-instance v0, Le6/a;
+    new-instance v0, Lc6/a;
 
     .line 2
     .line 3
@@ -608,7 +608,7 @@
     move-result v2
 
     .line 15
-    invoke-direct {v0, v1, v2}, Le6/a;-><init>(II)V
+    invoke-direct {v0, v1, v2}, Lc6/a;-><init>(II)V
 
     .line 16
     .line 17
@@ -620,7 +620,7 @@
     .locals 9
 
     .line 1
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Lc6/a;
 
     .line 2
     .line 3
@@ -628,7 +628,7 @@
     move-result-object v0
 
     .line 5
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Lc6/a;
 
     .line 6
     .line 7
@@ -649,7 +649,7 @@
     .line 14
     .line 15
     .line 16
-    iget v3, v0, Le6/a;->a:I
+    iget v3, v0, Lc6/a;->a:I
 
     .line 17
     .line 18
@@ -667,7 +667,7 @@
     .line 24
     .line 25
     .line 26
-    iget v4, v0, Le6/a;->b:I
+    iget v4, v0, Lc6/a;->b:I
 
     .line 27
     .line 28
@@ -685,7 +685,7 @@
     .line 34
     .line 35
     .line 36
-    iget v4, v1, Le6/a;->a:I
+    iget v4, v1, Lc6/a;->a:I
 
     .line 37
     .line 38
@@ -699,7 +699,7 @@
     .line 42
     .line 43
     .line 44
-    iget v3, v1, Le6/a;->b:I
+    iget v3, v1, Lc6/a;->b:I
 
     .line 45
     .line 46
@@ -725,15 +725,15 @@
     .line 56
     .line 57
     .line 58
-    iget-object v2, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object v2, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 59
     .line 60
-    iget-object v2, v2, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object v2, v2, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 61
     .line 62
-    iget v5, v0, Le6/a;->a:I
+    iget v5, v0, Lc6/a;->a:I
 
     .line 63
     .line 64
@@ -741,7 +741,7 @@
 
     .line 65
     .line 66
-    iget v6, v0, Le6/a;->b:I
+    iget v6, v0, Lc6/a;->b:I
 
     .line 67
     .line 68
@@ -757,11 +757,11 @@
 
     .line 73
     .line 74
-    iget v7, v1, Le6/a;->a:I
+    iget v7, v1, Lc6/a;->a:I
 
     .line 75
     .line 76
-    iget v8, v1, Le6/a;->b:I
+    iget v8, v1, Lc6/a;->b:I
 
     .line 77
     .line 78
@@ -845,11 +845,11 @@
     .line 32
     .line 33
     .line 34
-    iget-object v2, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object v2, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 35
     .line 36
-    iget-object v2, v2, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object v2, v2, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 37
     .line 38
@@ -900,11 +900,11 @@
 
     .line 59
     .line 60
-    iget-object p1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object p1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 61
     .line 62
-    iget-object p1, p1, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object p1, p1, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 63
     .line 64
@@ -937,7 +937,7 @@
 
     .line 77
     :cond_3
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Lc6/a;
 
     .line 78
     .line 79
@@ -945,7 +945,7 @@
     move-result-object v2
 
     .line 81
-    iget v5, v2, Le6/a;->a:I
+    iget v5, v2, Lc6/a;->a:I
 
     .line 82
     .line 83
@@ -968,7 +968,7 @@
     move-result v5
 
     .line 92
-    iput v5, v2, Le6/a;->a:I
+    iput v5, v2, Lc6/a;->a:I
 
     .line 93
     .line 94
@@ -984,7 +984,7 @@
     move-result v5
 
     .line 100
-    iput v5, v2, Le6/a;->b:I
+    iput v5, v2, Lc6/a;->b:I
 
     .line 101
     .line 102
@@ -997,11 +997,11 @@
 
     .line 105
     .line 106
-    iget p1, v2, Le6/a;->a:I
+    iget p1, v2, Lc6/a;->a:I
 
     .line 107
     .line 108
-    iget v0, v2, Le6/a;->b:I
+    iget v0, v2, Lc6/a;->b:I
 
     .line 109
     .line 110
@@ -1048,11 +1048,11 @@
 
     .line 129
     .line 130
-    iget p1, v2, Le6/a;->a:I
+    iget p1, v2, Lc6/a;->a:I
 
     .line 131
     .line 132
-    iget v0, v2, Le6/a;->b:I
+    iget v0, v2, Lc6/a;->b:I
 
     .line 133
     .line 134
@@ -1185,11 +1185,11 @@
 
     .line 194
     :cond_c
-    iget v1, v2, Le6/a;->a:I
+    iget v1, v2, Lc6/a;->a:I
 
     .line 195
     .line 196
-    iget v5, v2, Le6/a;->b:I
+    iget v5, v2, Lc6/a;->b:I
 
     .line 197
     .line 198
@@ -1210,11 +1210,11 @@
 
     .line 206
     .line 207
-    iget v5, v2, Le6/a;->a:I
+    iget v5, v2, Lc6/a;->a:I
 
     .line 208
     .line 209
-    iget v7, v2, Le6/a;->b:I
+    iget v7, v2, Lc6/a;->b:I
 
     .line 210
     .line 211
@@ -1247,7 +1247,7 @@
 
     .line 224
     .line 225
-    iget v5, v2, Le6/a;->a:I
+    iget v5, v2, Lc6/a;->a:I
 
     .line 226
     .line 227
@@ -1268,7 +1268,7 @@
     move-result v1
 
     .line 236
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Lc6/a;
 
     .line 237
     .line 238
@@ -1276,7 +1276,7 @@
     move-result-object v5
 
     .line 240
-    iget v7, v5, Le6/a;->a:I
+    iget v7, v5, Lc6/a;->a:I
 
     .line 241
     .line 242
@@ -1284,7 +1284,7 @@
 
     .line 243
     .line 244
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Lc6/a;
 
     .line 245
     .line 246
@@ -1292,7 +1292,7 @@
     move-result-object v5
 
     .line 248
-    iget v7, v5, Le6/a;->a:I
+    iget v7, v5, Lc6/a;->a:I
 
     .line 249
     .line 250
@@ -1300,24 +1300,24 @@
 
     .line 251
     .line 252
-    new-instance v5, Le6/a;
+    new-instance v5, Lc6/a;
 
     .line 253
     .line 254
-    invoke-direct {v5, v0, v0}, Le6/a;-><init>(II)V
+    invoke-direct {v5, v0, v0}, Lc6/a;-><init>(II)V
 
     .line 255
     .line 256
     .line 257
     :cond_e
-    iget v0, v5, Le6/a;->a:I
+    iget v0, v5, Lc6/a;->a:I
 
     .line 258
     .line 259
     add-int/2addr v1, v0
 
     .line 260
-    iput v1, v5, Le6/a;->b:I
+    iput v1, v5, Lc6/a;->b:I
 
     .line 261
     .line 262
@@ -1326,7 +1326,7 @@
     .line 263
     .line 264
     .line 265
-    iget v0, v2, Le6/a;->a:I
+    iget v0, v2, Lc6/a;->a:I
 
     .line 266
     .line 267
@@ -1394,11 +1394,11 @@
     .line 299
     :cond_f
     :goto_2
-    iget p1, v2, Le6/a;->a:I
+    iget p1, v2, Lc6/a;->a:I
 
     .line 300
     .line 301
-    iget v2, v2, Le6/a;->b:I
+    iget v2, v2, Lc6/a;->b:I
 
     .line 302
     .line 303
@@ -1482,7 +1482,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Le6/c;
+    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Lc6/c;
 
     .line 2
     .line 3
@@ -1490,7 +1490,7 @@
 
     .line 4
     .line 5
-    invoke-interface {v0, p1}, Le6/c;->onEditorAction(I)V
+    invoke-interface {v0, p1}, Lc6/c;->onEditorAction(I)V
 
     .line 6
     .line 7
@@ -1512,7 +1512,7 @@
     .locals 8
 
     .line 1
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getSelection()Lc6/a;
 
     .line 2
     .line 3
@@ -1520,7 +1520,7 @@
     move-result-object v0
 
     .line 5
-    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Le6/a;
+    invoke-direct {p0}, Lcom/google/androidgamesdk/gametextinput/InputConnection;->getComposingRegion()Lc6/a;
 
     .line 6
     .line 7
@@ -1544,19 +1544,19 @@
     move-result-object v3
 
     .line 17
-    iget v4, v0, Le6/a;->a:I
+    iget v4, v0, Lc6/a;->a:I
 
     .line 18
     .line 19
-    iget v5, v0, Le6/a;->b:I
+    iget v5, v0, Lc6/a;->b:I
 
     .line 20
     .line 21
-    iget v6, v1, Le6/a;->a:I
+    iget v6, v1, Lc6/a;->a:I
 
     .line 22
     .line 23
-    iget v7, v1, Le6/a;->b:I
+    iget v7, v1, Lc6/a;->b:I
 
     .line 24
     .line 25
@@ -1565,15 +1565,15 @@
     .line 26
     .line 27
     .line 28
-    iget-object v1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object v1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 29
     .line 30
-    iget-object v1, v1, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object v1, v1, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 31
     .line 32
-    iget v3, v0, Le6/a;->a:I
+    iget v3, v0, Lc6/a;->a:I
 
     .line 33
     .line 34
@@ -1581,7 +1581,7 @@
 
     .line 35
     .line 36
-    iget v0, v0, Le6/a;->b:I
+    iget v0, v0, Lc6/a;->b:I
 
     .line 37
     .line 38
@@ -1589,7 +1589,7 @@
 
     .line 39
     .line 40
-    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Le6/c;
+    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Lc6/c;
 
     .line 41
     .line 42
@@ -1600,7 +1600,7 @@
     const/4 v1, 0x0
 
     .line 45
-    invoke-interface {v0, v2, v1}, Le6/c;->stateChanged(Lcom/google/androidgamesdk/gametextinput/State;Z)V
+    invoke-interface {v0, v2, v1}, Lc6/c;->stateChanged(Lcom/google/androidgamesdk/gametextinput/State;Z)V
 
     .line 46
     .line 47
@@ -1973,11 +1973,11 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 2
     .line 3
-    iget-object v0, v0, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iget-object v0, v0, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 4
     .line 5
@@ -2032,11 +2032,11 @@
 
     .line 8
     :cond_0
-    sget-object v1, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
+    sget-object v1, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
 
     .line 9
     .line 10
-    invoke-static {v0}, Landroidx/core/view/l0;->a(Landroid/view/View;)Landroidx/core/view/WindowInsetsCompat;
+    invoke-static {v0}, Landroidx/core/view/m0;->a(Landroid/view/View;)Landroidx/core/view/WindowInsetsCompat;
 
     .line 11
     .line 12
@@ -2075,11 +2075,11 @@
     return-object v0
 .end method
 
-.method public final getListener()Le6/c;
+.method public final getListener()Lc6/c;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Le6/c;
+    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Lc6/c;
 
     .line 2
     .line 3
@@ -2401,11 +2401,11 @@
 
     .line 7
     :cond_0
-    sget-object v2, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
+    sget-object v2, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
 
     .line 8
     .line 9
-    invoke-static {v0}, Landroidx/core/view/l0;->a(Landroid/view/View;)Landroidx/core/view/WindowInsetsCompat;
+    invoke-static {v0}, Landroidx/core/view/m0;->a(Landroid/view/View;)Landroidx/core/view/WindowInsetsCompat;
 
     .line 10
     .line 11
@@ -2547,7 +2547,7 @@
 
     .line 4
     .line 5
-    invoke-static {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 6
     .line 7
@@ -2619,7 +2619,7 @@
 
     .line 4
     .line 5
-    invoke-static {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/gi;->p(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 6
     .line 7
@@ -2849,11 +2849,11 @@
     .line 6
     .line 7
     .line 8
-    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Le6/d;
+    iget-object v0, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->settings:Lc6/d;
 
     .line 9
     .line 10
-    iput-object p1, v0, Le6/d;->a:Landroid/view/inputmethod/EditorInfo;
+    iput-object p1, v0, Lc6/d;->a:Landroid/view/inputmethod/EditorInfo;
 
     .line 11
     .line 12
@@ -2892,7 +2892,7 @@
     .line 27
     .line 28
     .line 29
-    new-instance v2, Le6/b;
+    new-instance v2, Lc6/b;
 
     .line 30
     .line 31
@@ -3013,11 +3013,11 @@
     return p1
 .end method
 
-.method public final setListener(Le6/c;)Lcom/google/androidgamesdk/gametextinput/InputConnection;
+.method public final setListener(Lc6/c;)Lcom/google/androidgamesdk/gametextinput/InputConnection;
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Le6/c;
+    iput-object p1, p0, Lcom/google/androidgamesdk/gametextinput/InputConnection;->listener:Lc6/c;
 
     .line 2
     .line 3

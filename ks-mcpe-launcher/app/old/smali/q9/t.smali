@@ -1,47 +1,73 @@
 .class public final Lq9/t;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lw8/f;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# static fields
-.field public static final synthetic c:Lq9/t;
-
-.field public static final synthetic d:Lq9/t;
+# instance fields
+.field public final a:Lo9/o1;
 
 
 # direct methods
-.method static synthetic constructor <clinit>()V
-    .locals 1
+.method public constructor <init>(Lo9/o1;)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lq9/t;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    .line 4
+    iput-object p1, p0, Lq9/t;->a:Lo9/o1;
+
+    .line 5
+    .line 6
+    return-void
+.end method
+
+
+# virtual methods
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    const-string v1, "WaiterEB("
 
     .line 4
     .line 5
-    .line 6
-    sput-object v0, Lq9/t;->c:Lq9/t;
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 6
     .line 7
     .line 8
-    new-instance v0, Lq9/t;
+    iget-object v1, p0, Lq9/t;->a:Lo9/o1;
 
     .line 9
     .line 10
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     .line 11
     .line 12
     .line 13
-    sput-object v0, Lq9/t;->d:Lq9/t;
+    const/16 v1, 0x29
 
     .line 14
     .line 15
-    return-void
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v0
+
+    .line 22
+    return-object v0
 .end method

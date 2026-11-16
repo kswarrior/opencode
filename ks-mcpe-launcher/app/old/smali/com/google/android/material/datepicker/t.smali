@@ -1,120 +1,146 @@
 .class public final Lcom/google/android/material/datepicker/t;
-.super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Landroid/widget/AdapterView$OnItemClickListener;
 
 
 # instance fields
-.field public final a:Landroid/widget/TextView;
+.field public final synthetic c:Lcom/google/android/material/datepicker/MaterialCalendarGridView;
 
-.field public final b:Lcom/google/android/material/datepicker/MaterialCalendarGridView;
+.field public final synthetic d:Lcom/google/android/material/datepicker/v;
 
 
 # direct methods
-.method public constructor <init>(Landroid/widget/LinearLayout;Z)V
-    .locals 8
+.method public constructor <init>(Lcom/google/android/material/datepicker/v;Lcom/google/android/material/datepicker/MaterialCalendarGridView;)V
+    .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;-><init>(Landroid/view/View;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
     .line 4
-    const v0, 0x7f0a0320
+    iput-object p1, p0, Lcom/google/android/material/datepicker/t;->d:Lcom/google/android/material/datepicker/v;
 
     .line 5
     .line 6
+    iput-object p2, p0, Lcom/google/android/material/datepicker/t;->c:Lcom/google/android/material/datepicker/MaterialCalendarGridView;
+
     .line 7
-    invoke-virtual {p1, v0}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public final onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+    .locals 0
+
+    .line 1
+    iget-object p1, p0, Lcom/google/android/material/datepicker/t;->c:Lcom/google/android/material/datepicker/MaterialCalendarGridView;
+
+    .line 2
+    .line 3
+    invoke-virtual {p1}, Lcom/google/android/material/datepicker/MaterialCalendarGridView;->a()Lcom/google/android/material/datepicker/s;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p2
+
+    .line 7
+    invoke-virtual {p2}, Lcom/google/android/material/datepicker/s;->a()I
 
     .line 8
     .line 9
     .line 10
-    move-result-object v0
+    move-result p4
 
     .line 11
-    check-cast v0, Landroid/widget/TextView;
+    if-lt p3, p4, :cond_1
 
     .line 12
     .line 13
-    iput-object v0, p0, Lcom/google/android/material/datepicker/t;->a:Landroid/widget/TextView;
+    invoke-virtual {p2}, Lcom/google/android/material/datepicker/s;->c()I
 
     .line 14
     .line 15
-    sget-object v1, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
-
     .line 16
+    move-result p2
+
     .line 17
-    new-instance v2, Landroidx/core/view/f0;
+    if-gt p3, p2, :cond_1
 
     .line 18
     .line 19
-    const/4 v5, 0x0
+    iget-object p2, p0, Lcom/google/android/material/datepicker/t;->d:Lcom/google/android/material/datepicker/v;
 
     .line 20
-    const/4 v7, 0x3
-
     .line 21
-    const v3, 0x7f0a0588
+    iget-object p2, p2, Lcom/google/android/material/datepicker/v;->b:Lcom/google/android/material/datepicker/j;
 
     .line 22
     .line 23
-    .line 24
-    const-class v4, Ljava/lang/Boolean;
+    invoke-virtual {p1}, Lcom/google/android/material/datepicker/MaterialCalendarGridView;->a()Lcom/google/android/material/datepicker/s;
 
+    .line 24
     .line 25
     .line 26
-    const/16 v6, 0x1c
+    move-result-object p1
 
     .line 27
-    .line 28
-    invoke-direct/range {v2 .. v7}, Landroidx/core/view/f0;-><init>(ILjava/lang/Class;III)V
+    invoke-virtual {p1, p3}, Lcom/google/android/material/datepicker/s;->b(I)Ljava/lang/Long;
 
+    .line 28
     .line 29
     .line 30
+    move-result-object p1
+
     .line 31
-    sget-object v1, Ljava/lang/Boolean;->TRUE:Ljava/lang/Boolean;
+    invoke-virtual {p1}, Ljava/lang/Long;->longValue()J
 
     .line 32
     .line 33
-    invoke-virtual {v2, v0, v1}, Landroidx/core/view/h0;->g(Landroid/view/View;Ljava/lang/Object;)V
-
     .line 34
-    .line 35
-    .line 36
-    const v1, 0x7f0a031b
+    move-result-wide p3
 
+    .line 35
+    iget-object p1, p2, Lcom/google/android/material/datepicker/j;->a:Lcom/google/android/material/datepicker/m;
+
+    .line 36
     .line 37
+    iget-object p1, p1, Lcom/google/android/material/datepicker/m;->h:Lcom/google/android/material/datepicker/b;
+
     .line 38
     .line 39
-    invoke-virtual {p1, v1}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+    iget-object p1, p1, Lcom/google/android/material/datepicker/b;->h:Lcom/google/android/material/datepicker/d;
 
     .line 40
     .line 41
-    .line 42
-    move-result-object p1
+    iget-wide p1, p1, Lcom/google/android/material/datepicker/d;->c:J
 
+    .line 42
     .line 43
-    check-cast p1, Lcom/google/android/material/datepicker/MaterialCalendarGridView;
+    cmp-long p1, p3, p1
 
     .line 44
     .line 45
-    iput-object p1, p0, Lcom/google/android/material/datepicker/t;->b:Lcom/google/android/material/datepicker/MaterialCalendarGridView;
+    if-gez p1, :cond_0
 
     .line 46
     .line 47
-    if-nez p2, :cond_0
+    return-void
 
     .line 48
+    :cond_0
+    const/4 p1, 0x0
+
     .line 49
-    const/16 p1, 0x8
+    throw p1
 
     .line 50
-    .line 51
-    invoke-virtual {v0, p1}, Landroid/view/View;->setVisibility(I)V
-
-    .line 52
-    .line 53
-    .line 54
-    :cond_0
+    :cond_1
     return-void
 .end method

@@ -1,224 +1,251 @@
-.class public interface abstract Lpf/b;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final Lpf/b;
+.super Ljava/io/OutputStream;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# static fields
-.field public static final a:Lye/n;
+# instance fields
+.field public final synthetic c:I
 
-.field public static final b:Lye/n;
-
-.field public static final c:Lye/n;
-
-.field public static final d:Lye/n;
-
-.field public static final e:Lye/n;
-
-.field public static final f:Lye/n;
-
-.field public static final g:Lye/n;
-
-.field public static final h:Lye/n;
-
-.field public static final i:Lye/n;
+.field public d:Ljava/lang/Object;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public synthetic constructor <init>(I)V
+    .locals 0
 
     .line 1
-    new-instance v0, Lye/n;
+    iput p1, p0, Lpf/b;->c:I
+
+    invoke-direct {p0}, Ljava/io/OutputStream;-><init>()V
+
+    return-void
+.end method
+
+.method public constructor <init>(Ljava/io/FileOutputStream;)V
+    .locals 1
+
+    const/4 v0, 0x2
+
+    iput v0, p0, Lpf/b;->c:I
+
+    .line 2
+    invoke-direct {p0}, Ljava/io/OutputStream;-><init>()V
+
+    iput-object p1, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    return-void
+.end method
+
+.method private final a()V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+
+# virtual methods
+.method public close()V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lpf/b;->c:I
 
     .line 2
     .line 3
-    const-string v1, "1.3.14.3.2.2"
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
     .line 6
+    invoke-super {p0}, Ljava/io/OutputStream;->close()V
+
     .line 7
     .line 8
-    new-instance v0, Lye/n;
-
     .line 9
+    :pswitch_0
+    return-void
+
     .line 10
-    const-string v1, "1.3.14.3.2.3"
+    nop
+
+    .line 11
+    :pswitch_data_0
+    .packed-switch 0x2
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public flush()V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Lpf/b;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-super {p0}, Ljava/io/OutputStream;->flush()V
+
+    .line 7
+    .line 8
+    .line 9
+    return-void
+
+    .line 10
+    :pswitch_0
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
 
     .line 11
     .line 12
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
+    check-cast v0, Ljava/io/FileOutputStream;
 
     .line 13
     .line 14
-    .line 15
-    new-instance v0, Lye/n;
+    invoke-virtual {v0}, Ljava/io/OutputStream;->flush()V
 
+    .line 15
     .line 16
     .line 17
-    const-string v1, "1.3.14.3.2.4"
+    return-void
 
     .line 18
+    nop
+
     .line 19
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
+    :pswitch_data_0
+    .packed-switch 0x2
+        :pswitch_0
+    .end packed-switch
+.end method
 
-    .line 20
-    .line 21
-    .line 22
-    new-instance v0, Lye/n;
+.method public final write(I)V
+    .locals 1
 
-    .line 23
-    .line 24
-    const-string v1, "1.3.14.3.2.6"
+    iget v0, p0, Lpf/b;->c:I
 
-    .line 25
-    .line 26
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
+    packed-switch v0, :pswitch_data_0
 
-    .line 27
-    .line 28
-    .line 29
-    sput-object v0, Lpf/b;->a:Lye/n;
+    .line 1
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
 
-    .line 30
-    .line 31
-    new-instance v0, Lye/n;
+    check-cast v0, Ljava/io/FileOutputStream;
 
-    .line 32
-    .line 33
-    const-string v1, "1.3.14.3.2.7"
+    invoke-virtual {v0, p1}, Ljava/io/FileOutputStream;->write(I)V
 
-    .line 34
-    .line 35
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 36
-    .line 37
-    .line 38
-    sput-object v0, Lpf/b;->b:Lye/n;
-
-    .line 39
-    .line 40
-    new-instance v0, Lye/n;
-
-    .line 41
-    .line 42
-    const-string v1, "1.3.14.3.2.8"
-
-    .line 43
-    .line 44
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 45
-    .line 46
-    .line 47
-    sput-object v0, Lpf/b;->c:Lye/n;
-
-    .line 48
-    .line 49
-    new-instance v0, Lye/n;
-
-    .line 50
-    .line 51
-    const-string v1, "1.3.14.3.2.9"
-
-    .line 52
-    .line 53
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 54
-    .line 55
-    .line 56
-    sput-object v0, Lpf/b;->d:Lye/n;
-
-    .line 57
-    .line 58
-    new-instance v0, Lye/n;
-
-    .line 59
-    .line 60
-    const-string v1, "1.3.14.3.2.17"
-
-    .line 61
-    .line 62
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 63
-    .line 64
-    .line 65
-    sput-object v0, Lpf/b;->e:Lye/n;
-
-    .line 66
-    .line 67
-    new-instance v0, Lye/n;
-
-    .line 68
-    .line 69
-    const-string v1, "1.3.14.3.2.26"
-
-    .line 70
-    .line 71
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 72
-    .line 73
-    .line 74
-    sput-object v0, Lpf/b;->f:Lye/n;
-
-    .line 75
-    .line 76
-    new-instance v0, Lye/n;
-
-    .line 77
-    .line 78
-    const-string v1, "1.3.14.3.2.27"
-
-    .line 79
-    .line 80
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 81
-    .line 82
-    .line 83
-    sput-object v0, Lpf/b;->g:Lye/n;
-
-    .line 84
-    .line 85
-    new-instance v0, Lye/n;
-
-    .line 86
-    .line 87
-    const-string v1, "1.3.14.3.2.29"
-
-    .line 88
-    .line 89
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 90
-    .line 91
-    .line 92
-    sput-object v0, Lpf/b;->h:Lye/n;
-
-    .line 93
-    .line 94
-    new-instance v0, Lye/n;
-
-    .line 95
-    .line 96
-    const-string v1, "1.3.14.7.2.1.1"
-
-    .line 97
-    .line 98
-    invoke-direct {v0, v1}, Lye/n;-><init>(Ljava/lang/String;)V
-
-    .line 99
-    .line 100
-    .line 101
-    sput-object v0, Lpf/b;->i:Lye/n;
-
-    .line 102
-    .line 103
     return-void
+
+    .line 2
+    :pswitch_0
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Lqf/e;
+
+    int-to-byte p1, p1
+
+    invoke-virtual {v0, p1}, Lqf/e;->update(B)V
+
+    return-void
+
+    .line 3
+    :pswitch_1
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Lkf/r;
+
+    int-to-byte p1, p1
+
+    invoke-virtual {v0, p1}, Lkf/g;->update(B)V
+
+    return-void
+
+    nop
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public write([B)V
+    .locals 1
+
+    iget v0, p0, Lpf/b;->c:I
+
+    packed-switch v0, :pswitch_data_0
+
+    invoke-super {p0, p1}, Ljava/io/OutputStream;->write([B)V
+
+    return-void
+
+    :pswitch_0
+    const-string v0, "b"
+
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Ljava/io/FileOutputStream;
+
+    invoke-virtual {v0, p1}, Ljava/io/FileOutputStream;->write([B)V
+
+    return-void
+
+    :pswitch_data_0
+    .packed-switch 0x2
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final write([BII)V
+    .locals 1
+
+    iget v0, p0, Lpf/b;->c:I
+
+    packed-switch v0, :pswitch_data_0
+
+    const-string v0, "bytes"
+
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 5
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Ljava/io/FileOutputStream;
+
+    invoke-virtual {v0, p1, p2, p3}, Ljava/io/FileOutputStream;->write([BII)V
+
+    return-void
+
+    .line 6
+    :pswitch_0
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Lqf/e;
+
+    invoke-virtual {v0, p1, p2, p3}, Lqf/e;->update([BII)V
+
+    return-void
+
+    .line 7
+    :pswitch_1
+    iget-object v0, p0, Lpf/b;->d:Ljava/lang/Object;
+
+    check-cast v0, Lkf/r;
+
+    invoke-virtual {v0, p1, p2, p3}, Lkf/g;->update([BII)V
+
+    return-void
+
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

@@ -1,146 +1,75 @@
-.class public Lj8/a;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lg8/w;
-
-
-# direct methods
-.method public constructor <init>()V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
+.class public final Lj8/a;
+.super Lcom/bumptech/glide/c;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # virtual methods
-.method public final a(Lcom/google/gson/Gson;Lcom/google/gson/reflect/TypeToken;)Lcom/google/gson/TypeAdapter;
-    .locals 2
+.method public final D(Ljava/lang/Class;)Z
+    .locals 0
 
     .line 1
-    invoke-virtual {p2}, Lcom/google/gson/reflect/TypeToken;->getType()Ljava/lang/reflect/Type;
+    const/4 p1, 0x0
+
+    .line 2
+    return p1
+.end method
+
+.method public final s(Ljava/lang/Class;Ljava/lang/reflect/Field;)Ljava/lang/reflect/Method;
+    .locals 0
+
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object p2
+    const-string p2, "Records are not supported on this JVM, this method should not be called"
 
+    .line 4
     .line 5
-    instance-of v0, p2, Ljava/lang/reflect/GenericArrayType;
+    invoke-direct {p1, p2}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
     .line 6
     .line 7
-    if-nez v0, :cond_1
-
     .line 8
-    .line 9
-    instance-of v1, p2, Ljava/lang/Class;
+    throw p1
+.end method
 
-    .line 10
-    .line 11
-    if-eqz v1, :cond_0
+.method public final u(Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+    .locals 1
 
-    .line 12
-    .line 13
-    move-object v1, p2
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
-    .line 14
-    check-cast v1, Ljava/lang/Class;
+    .line 2
+    .line 3
+    const-string v0, "Records are not supported on this JVM, this method should not be called"
 
-    .line 15
-    .line 16
-    invoke-virtual {v1}, Ljava/lang/Class;->isArray()Z
+    .line 4
+    .line 5
+    invoke-direct {p1, v0}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
-    .line 17
-    .line 18
-    .line 19
-    move-result v1
+    .line 6
+    .line 7
+    .line 8
+    throw p1
+.end method
 
-    .line 20
-    if-nez v1, :cond_1
+.method public final z(Ljava/lang/Class;)[Ljava/lang/String;
+    .locals 1
 
-    .line 21
-    .line 22
-    :cond_0
-    const/4 p1, 0x0
+    .line 1
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
-    .line 23
-    return-object p1
+    .line 2
+    .line 3
+    const-string v0, "Records are not supported on this JVM, this method should not be called"
 
-    .line 24
-    :cond_1
-    if-eqz v0, :cond_2
+    .line 4
+    .line 5
+    invoke-direct {p1, v0}, Ljava/lang/UnsupportedOperationException;-><init>(Ljava/lang/String;)V
 
-    .line 25
-    .line 26
-    check-cast p2, Ljava/lang/reflect/GenericArrayType;
-
-    .line 27
-    .line 28
-    invoke-interface {p2}, Ljava/lang/reflect/GenericArrayType;->getGenericComponentType()Ljava/lang/reflect/Type;
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object p2
-
-    .line 32
-    goto :goto_0
-
-    .line 33
-    :cond_2
-    check-cast p2, Ljava/lang/Class;
-
-    .line 34
-    .line 35
-    invoke-virtual {p2}, Ljava/lang/Class;->getComponentType()Ljava/lang/Class;
-
-    .line 36
-    .line 37
-    .line 38
-    move-result-object p2
-
-    .line 39
-    :goto_0
-    invoke-static {p2}, Lcom/google/gson/reflect/TypeToken;->get(Ljava/lang/reflect/Type;)Lcom/google/gson/reflect/TypeToken;
-
-    .line 40
-    .line 41
-    .line 42
-    move-result-object v0
-
-    .line 43
-    invoke-virtual {p1, v0}, Lcom/google/gson/Gson;->e(Lcom/google/gson/reflect/TypeToken;)Lcom/google/gson/TypeAdapter;
-
-    .line 44
-    .line 45
-    .line 46
-    move-result-object v0
-
-    .line 47
-    new-instance v1, Lj8/b;
-
-    .line 48
-    .line 49
-    invoke-static {p2}, Li8/h;->g(Ljava/lang/reflect/Type;)Ljava/lang/Class;
-
-    .line 50
-    .line 51
-    .line 52
-    move-result-object p2
-
-    .line 53
-    invoke-direct {v1, p1, v0, p2}, Lj8/b;-><init>(Lcom/google/gson/Gson;Lcom/google/gson/TypeAdapter;Ljava/lang/Class;)V
-
-    .line 54
-    .line 55
-    .line 56
-    return-object v1
+    .line 6
+    .line 7
+    .line 8
+    throw p1
 .end method

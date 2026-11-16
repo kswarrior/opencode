@@ -1,116 +1,169 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/core/mods/FileHandler;
+.field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
+.field public final synthetic d:Ljava/lang/Object;
 
-.field public final synthetic h:Ljava/util/List;
+.field public final synthetic h:Ljava/lang/Object;
 
-.field public final synthetic p:Ljava/lang/String;
-
-.field public final synthetic q:Ljava/lang/String;
-
-.field public final synthetic w:Ljava/lang/String;
-
-.field public final synthetic x:Ljava/lang/String;
-
-.field public final synthetic y:Ljava/util/List;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/FileHandler;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lorg/levimc/launcher/core/mods/e;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/e;->d:Ljava/lang/Object;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/e;->c:Lorg/levimc/launcher/core/mods/FileHandler;
-
     .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/lang/Object;
+
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/e;->d:Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
-
     .line 7
+    iput-object p3, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/Object;
+
     .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/util/List;
-
     .line 9
-    .line 10
-    iput-object p4, p0, Lorg/levimc/launcher/core/mods/e;->p:Ljava/lang/String;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 10
     .line 11
     .line 12
-    iput-object p5, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/String;
-
-    .line 13
-    .line 14
-    iput-object p6, p0, Lorg/levimc/launcher/core/mods/e;->w:Ljava/lang/String;
-
-    .line 15
-    .line 16
-    iput-object p7, p0, Lorg/levimc/launcher/core/mods/e;->x:Ljava/lang/String;
-
-    .line 17
-    .line 18
-    iput-object p8, p0, Lorg/levimc/launcher/core/mods/e;->y:Ljava/util/List;
-
-    .line 19
-    .line 20
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 8
+.method public final onClick(Landroid/view/View;)V
+    .locals 3
 
     .line 1
-    iget-object v6, p0, Lorg/levimc/launcher/core/mods/e;->x:Ljava/lang/String;
+    iget v0, p0, Lorg/levimc/launcher/core/mods/e;->c:I
 
     .line 2
     .line 3
-    iget-object v7, p0, Lorg/levimc/launcher/core/mods/e;->y:Ljava/util/List;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/e;->c:Lorg/levimc/launcher/core/mods/FileHandler;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/e;->d:Ljava/lang/Object;
+
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/e;->d:Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
-
     .line 8
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
     .line 9
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/util/List;
-
     .line 10
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/lang/Object;
+
     .line 11
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/e;->p:Ljava/lang/String;
-
     .line 12
+    check-cast v1, Landroid/widget/ArrayAdapter;
+
     .line 13
-    iget-object v4, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/String;
-
     .line 14
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/Object;
+
     .line 15
-    iget-object v5, p0, Lorg/levimc/launcher/core/mods/e;->w:Ljava/lang/String;
-
     .line 16
-    .line 17
-    invoke-static/range {v0 .. v7}, Lorg/levimc/launcher/core/mods/FileHandler;->g(Lorg/levimc/launcher/core/mods/FileHandler;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/util/List;)V
+    check-cast v2, [Ljava/lang/String;
 
+    .line 17
     .line 18
+    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->r(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;Landroid/widget/ArrayAdapter;[Ljava/lang/String;Landroid/view/View;)V
+
     .line 19
     .line 20
+    .line 21
     return-void
+
+    .line 22
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/e;->d:Ljava/lang/Object;
+
+    .line 23
+    .line 24
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;
+
+    .line 25
+    .line 26
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/lang/Object;
+
+    .line 27
+    .line 28
+    check-cast v1, Landroid/widget/EditText;
+
+    .line 29
+    .line 30
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/Object;
+
+    .line 31
+    .line 32
+    check-cast v2, Lorg/levimc/launcher/core/versions/GameVersion;
+
+    .line 33
+    .line 34
+    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;->b(Lorg/levimc/launcher/ui/dialogs/GameVersionSelectDialog;Landroid/widget/EditText;Lorg/levimc/launcher/core/versions/GameVersion;Landroid/view/View;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/e;->d:Ljava/lang/Object;
+
+    .line 39
+    .line 40
+    check-cast v0, Lorg/levimc/launcher/core/mods/FileHandler;
+
+    .line 41
+    .line 42
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/e;->h:Ljava/lang/Object;
+
+    .line 43
+    .line 44
+    check-cast v1, Ljava/util/List;
+
+    .line 45
+    .line 46
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/e;->q:Ljava/lang/Object;
+
+    .line 47
+    .line 48
+    check-cast v2, Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;
+
+    .line 49
+    .line 50
+    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/core/mods/FileHandler;->c(Lorg/levimc/launcher/core/mods/FileHandler;Ljava/util/List;Lorg/levimc/launcher/core/mods/FileHandler$FileOperationCallback;Landroid/view/View;)V
+
+    .line 51
+    .line 52
+    .line 53
+    return-void
+
+    .line 54
+    nop
+
+    .line 55
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

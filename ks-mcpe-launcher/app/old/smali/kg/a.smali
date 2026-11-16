@@ -1,518 +1,416 @@
-.class public abstract Lkg/a;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final Lkg/a;
+.super Ljg/c;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final a:[I
+.field public static final j:Ljava/math/BigInteger;
+
+
+# instance fields
+.field public final i:Ljg/j;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 8
+    .locals 1
 
     .line 1
-    const/16 v0, 0x100
+    sget-object v0, Lkg/b;->a:[I
 
     .line 2
     .line 3
-    new-array v1, v0, [I
+    invoke-static {v0}, Lcom/bumptech/glide/e;->P([I)Ljava/math/BigInteger;
 
     .line 4
     .line 5
-    const/4 v2, 0x0
-
     .line 6
-    move v3, v2
+    move-result-object v0
 
     .line 7
-    :goto_0
-    if-ge v3, v0, :cond_2
+    sput-object v0, Lkg/a;->j:Ljava/math/BigInteger;
 
     .line 8
     .line 9
-    const/4 v4, 0x7
-
-    .line 10
-    move v5, v2
-
-    .line 11
-    :goto_1
-    if-ltz v4, :cond_1
-
-    .line 12
-    .line 13
-    const/4 v6, 0x1
-
-    .line 14
-    shl-int/2addr v6, v4
-
-    .line 15
-    and-int/2addr v6, v3
-
-    .line 16
-    if-eqz v6, :cond_0
-
-    .line 17
-    .line 18
-    rsub-int/lit8 v6, v4, 0x7
-
-    .line 19
-    .line 20
-    const/high16 v7, -0x1f000000
-
-    .line 21
-    .line 22
-    ushr-int v6, v7, v6
-
-    .line 23
-    .line 24
-    xor-int/2addr v5, v6
-
-    .line 25
-    :cond_0
-    add-int/lit8 v4, v4, -0x1
-
-    .line 26
-    .line 27
-    goto :goto_1
-
-    .line 28
-    :cond_1
-    aput v5, v1, v3
-
-    .line 29
-    .line 30
-    add-int/lit8 v3, v3, 0x1
-
-    .line 31
-    .line 32
-    goto :goto_0
-
-    .line 33
-    :cond_2
-    sput-object v1, Lkg/a;->a:[I
-
-    .line 34
-    .line 35
     return-void
 .end method
 
-.method public static a([I[I)V
-    .locals 17
+.method public constructor <init>()V
+    .locals 3
 
     .line 1
-    const/4 v0, 0x0
+    sget-object v0, Lkg/a;->j:Ljava/math/BigInteger;
 
     .line 2
-    aget v1, p0, v0
-
     .line 3
+    invoke-direct {p0, v0}, Ljg/c;-><init>(Ljava/math/BigInteger;)V
+
     .line 4
-    const/4 v2, 0x1
-
     .line 5
-    aget v3, p0, v2
-
     .line 6
-    .line 7
-    const/4 v4, 0x2
+    new-instance v0, Ljg/j;
 
+    .line 7
     .line 8
-    aget v5, p0, v4
+    const/4 v1, 0x0
 
     .line 9
+    const/4 v2, 0x0
+
     .line 10
-    const/4 v6, 0x3
+    invoke-direct {v0, p0, v1, v1, v2}, Ljg/j;-><init>(Lkg/a;Ljg/t;Ljg/t;Z)V
 
     .line 11
-    aget v7, p0, v6
-
     .line 12
     .line 13
-    move v8, v0
+    iput-object v0, p0, Lkg/a;->i:Ljg/j;
 
     .line 14
-    move v9, v8
-
     .line 15
-    move v10, v9
+    new-instance v0, Ljava/math/BigInteger;
 
     .line 16
-    move v11, v10
-
     .line 17
-    move v12, v11
+    const-string v1, "2AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA984914A144"
 
     .line 18
-    :goto_0
-    const/4 v13, 0x4
-
     .line 19
-    if-ge v8, v13, :cond_1
+    invoke-static {v1}, Lbh/d;->a(Ljava/lang/String;)[B
 
     .line 20
     .line 21
-    aget v13, p1, v8
-
     .line 22
+    move-result-object v1
+
     .line 23
-    move v14, v0
+    const/4 v2, 0x1
 
     .line 24
-    :goto_1
-    const/16 v15, 0x20
+    invoke-direct {v0, v2, v1}, Ljava/math/BigInteger;-><init>(I[B)V
 
     .line 25
     .line 26
-    if-ge v14, v15, :cond_0
-
     .line 27
-    .line 28
-    shr-int/lit8 v15, v13, 0x1f
+    invoke-virtual {p0, v0}, Lkg/a;->i(Ljava/math/BigInteger;)Ljg/t;
 
+    .line 28
     .line 29
     .line 30
-    shl-int/2addr v13, v2
+    move-result-object v0
 
     .line 31
-    and-int v16, v1, v15
+    iput-object v0, p0, Ljg/f;->b:Ljg/t;
 
     .line 32
     .line 33
-    xor-int v9, v9, v16
+    new-instance v0, Ljava/math/BigInteger;
 
     .line 34
     .line 35
-    and-int v16, v3, v15
+    const-string v1, "7B425ED097B425ED097B425ED097B425ED097B425ED097B4260B5E9C7710C864"
 
     .line 36
     .line 37
-    xor-int v10, v10, v16
+    invoke-static {v1}, Lbh/d;->a(Ljava/lang/String;)[B
 
     .line 38
     .line 39
-    and-int v16, v5, v15
-
     .line 40
+    move-result-object v1
+
     .line 41
-    xor-int v11, v11, v16
+    invoke-direct {v0, v2, v1}, Ljava/math/BigInteger;-><init>(I[B)V
 
     .line 42
     .line 43
-    and-int/2addr v15, v7
-
     .line 44
-    xor-int/2addr v12, v15
+    invoke-virtual {p0, v0}, Lkg/a;->i(Ljava/math/BigInteger;)Ljg/t;
 
     .line 45
-    shl-int/lit8 v15, v7, 0x1f
-
     .line 46
     .line 47
-    shr-int/lit8 v15, v15, 0x8
+    move-result-object v0
 
     .line 48
+    iput-object v0, p0, Ljg/f;->c:Ljg/t;
+
     .line 49
-    ushr-int/lit8 v7, v7, 0x1
-
     .line 50
+    new-instance v0, Ljava/math/BigInteger;
+
     .line 51
-    shl-int/lit8 v16, v5, 0x1f
-
     .line 52
+    const-string v1, "1000000000000000000000000000000014DEF9DEA2F79CD65812631A5CF5D3ED"
+
     .line 53
-    or-int v7, v7, v16
-
     .line 54
-    .line 55
-    ushr-int/lit8 v5, v5, 0x1
+    invoke-static {v1}, Lbh/d;->a(Ljava/lang/String;)[B
 
+    .line 55
     .line 56
     .line 57
-    shl-int/lit8 v16, v3, 0x1f
+    move-result-object v1
 
     .line 58
-    .line 59
-    or-int v5, v5, v16
+    invoke-direct {v0, v2, v1}, Ljava/math/BigInteger;-><init>(I[B)V
 
+    .line 59
     .line 60
     .line 61
-    ushr-int/lit8 v3, v3, 0x1
+    iput-object v0, p0, Ljg/f;->d:Ljava/math/BigInteger;
 
     .line 62
     .line 63
-    shl-int/lit8 v16, v1, 0x1f
+    const-wide/16 v0, 0x8
 
     .line 64
     .line 65
-    or-int v3, v3, v16
+    invoke-static {v0, v1}, Ljava/math/BigInteger;->valueOf(J)Ljava/math/BigInteger;
 
     .line 66
     .line 67
-    ushr-int/lit8 v1, v1, 0x1
-
     .line 68
+    move-result-object v0
+
     .line 69
-    const/high16 v16, -0x1f000000
+    iput-object v0, p0, Ljg/f;->e:Ljava/math/BigInteger;
 
     .line 70
     .line 71
-    and-int v15, v15, v16
+    const/4 v0, 0x4
 
     .line 72
+    iput v0, p0, Ljg/f;->f:I
+
     .line 73
-    xor-int/2addr v1, v15
-
     .line 74
-    add-int/lit8 v14, v14, 0x1
-
-    .line 75
-    .line 76
-    goto :goto_1
-
-    .line 77
-    :cond_0
-    add-int/lit8 v8, v8, 0x1
-
-    .line 78
-    .line 79
-    goto :goto_0
-
-    .line 80
-    :cond_1
-    aput v9, p0, v0
-
-    .line 81
-    .line 82
-    aput v10, p0, v2
-
-    .line 83
-    .line 84
-    aput v11, p0, v4
-
-    .line 85
-    .line 86
-    aput v12, p0, v6
-
-    .line 87
-    .line 88
     return-void
 .end method
 
-.method public static b([I[I)V
-    .locals 6
+
+# virtual methods
+.method public final a()Ljg/f;
+    .locals 1
 
     .line 1
-    const/4 v0, 0x0
+    new-instance v0, Lkg/a;
 
     .line 2
-    aget v1, p0, v0
-
     .line 3
+    invoke-direct {v0}, Lkg/a;-><init>()V
+
     .line 4
-    ushr-int/lit8 v2, v1, 0x1
+    .line 5
+    .line 6
+    return-object v0
+.end method
+
+.method public final d(Ljg/t;Ljg/t;Z)Ljg/k;
+    .locals 1
+
+    .line 1
+    new-instance v0, Ljg/j;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p0, p1, p2, p3}, Ljg/j;-><init>(Lkg/a;Ljg/t;Ljg/t;Z)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-object v0
+.end method
+
+.method public final e(Ljg/t;Ljg/t;[Ljg/t;Z)Ljg/k;
+    .locals 7
+
+    .line 1
+    new-instance v0, Ljg/j;
+
+    .line 2
+    .line 3
+    const/4 v6, 0x1
+
+    .line 4
+    move-object v1, p0
+
+    .line 5
+    move-object v2, p1
+
+    .line 6
+    move-object v3, p2
+
+    .line 7
+    move-object v4, p3
+
+    .line 8
+    move v5, p4
+
+    .line 9
+    invoke-direct/range {v0 .. v6}, Ljg/j;-><init>(Ljg/f;Ljg/t;Ljg/t;[Ljg/t;ZI)V
+
+    .line 10
+    .line 11
+    .line 12
+    return-object v0
+.end method
+
+.method public final i(Ljava/math/BigInteger;)Ljg/t;
+    .locals 3
+
+    .line 1
+    new-instance v0, Lkg/c;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x3
+
+    .line 4
+    invoke-direct {v0, v1}, Ljg/t;-><init>(I)V
 
     .line 5
     .line 6
-    aput v2, p1, v0
-
     .line 7
+    if-eqz p1, :cond_1
+
     .line 8
-    shl-int/lit8 v1, v1, 0x1f
-
     .line 9
+    invoke-virtual {p1}, Ljava/math/BigInteger;->signum()I
+
     .line 10
-    const/4 v3, 0x1
-
     .line 11
-    aget v4, p0, v3
-
     .line 12
+    move-result v1
+
     .line 13
-    ushr-int/lit8 v5, v4, 0x1
+    if-ltz v1, :cond_1
 
     .line 14
     .line 15
-    or-int/2addr v1, v5
+    sget-object v1, Lkg/c;->y:Ljava/math/BigInteger;
 
     .line 16
-    aput v1, p1, v3
-
     .line 17
-    .line 18
-    shl-int/lit8 v1, v4, 0x1f
+    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
 
+    .line 18
     .line 19
     .line 20
-    const/4 v3, 0x2
+    move-result v1
 
     .line 21
-    aget v4, p0, v3
+    if-gez v1, :cond_1
 
     .line 22
     .line 23
-    ushr-int/lit8 v5, v4, 0x1
+    invoke-static {p1}, Lcom/bumptech/glide/e;->t(Ljava/math/BigInteger;)[I
 
     .line 24
     .line 25
-    or-int/2addr v1, v5
-
     .line 26
-    aput v1, p1, v3
+    move-result-object p1
 
     .line 27
+    :goto_0
+    sget-object v1, Lkg/b;->a:[I
+
     .line 28
-    shl-int/lit8 v1, v4, 0x1f
-
     .line 29
+    invoke-static {p1, v1}, Lcom/bumptech/glide/e;->A([I[I)Z
+
     .line 30
-    const/4 v3, 0x3
-
     .line 31
-    aget p0, p0, v3
-
     .line 32
+    move-result v2
+
     .line 33
-    ushr-int/lit8 v4, p0, 0x1
+    if-eqz v2, :cond_0
 
     .line 34
     .line 35
-    or-int/2addr v1, v4
+    invoke-static {v1, p1}, Lcom/bumptech/glide/e;->O([I[I)V
 
     .line 36
-    aput v1, p1, v3
-
     .line 37
     .line 38
-    shl-int/lit8 p0, p0, 0x1f
+    goto :goto_0
 
     .line 39
-    .line 40
-    shr-int/lit8 p0, p0, 0x8
+    :cond_0
+    iput-object p1, v0, Lkg/c;->x:[I
 
+    .line 40
     .line 41
+    return-object v0
+
     .line 42
-    const/high16 v1, -0x1f000000
+    :cond_1
+    new-instance p1, Ljava/lang/IllegalArgumentException;
 
     .line 43
     .line 44
-    and-int/2addr p0, v1
+    const-string v0, "x value invalid for Curve25519FieldElement"
 
     .line 45
-    xor-int/2addr p0, v2
-
     .line 46
-    aput p0, p1, v0
+    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 47
     .line 48
-    return-void
+    .line 49
+    throw p1
 .end method
 
-.method public static c([B[B)V
-    .locals 4
+.method public final j()I
+    .locals 1
 
     .line 1
-    const/4 v0, 0x0
+    sget-object v0, Lkg/a;->j:Ljava/math/BigInteger;
 
     .line 2
-    :cond_0
-    aget-byte v1, p0, v0
+    .line 3
+    invoke-virtual {v0}, Ljava/math/BigInteger;->bitLength()I
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    return v0
+.end method
+
+.method public final k()Ljg/k;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lkg/a;->i:Ljg/j;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final q(I)Z
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x4
+
+    .line 2
+    if-eq p1, v0, :cond_0
 
     .line 3
     .line 4
-    aget-byte v2, p1, v0
+    const/4 p1, 0x0
 
     .line 5
+    return p1
+
     .line 6
-    xor-int/2addr v1, v2
+    :cond_0
+    const/4 p1, 0x1
 
     .line 7
-    int-to-byte v1, v1
-
-    .line 8
-    aput-byte v1, p0, v0
-
-    .line 9
-    .line 10
-    add-int/lit8 v1, v0, 0x1
-
-    .line 11
-    .line 12
-    aget-byte v2, p0, v1
-
-    .line 13
-    .line 14
-    aget-byte v3, p1, v1
-
-    .line 15
-    .line 16
-    xor-int/2addr v2, v3
-
-    .line 17
-    int-to-byte v2, v2
-
-    .line 18
-    aput-byte v2, p0, v1
-
-    .line 19
-    .line 20
-    add-int/lit8 v1, v0, 0x2
-
-    .line 21
-    .line 22
-    aget-byte v2, p0, v1
-
-    .line 23
-    .line 24
-    aget-byte v3, p1, v1
-
-    .line 25
-    .line 26
-    xor-int/2addr v2, v3
-
-    .line 27
-    int-to-byte v2, v2
-
-    .line 28
-    aput-byte v2, p0, v1
-
-    .line 29
-    .line 30
-    add-int/lit8 v1, v0, 0x3
-
-    .line 31
-    .line 32
-    aget-byte v2, p0, v1
-
-    .line 33
-    .line 34
-    aget-byte v3, p1, v1
-
-    .line 35
-    .line 36
-    xor-int/2addr v2, v3
-
-    .line 37
-    int-to-byte v2, v2
-
-    .line 38
-    aput-byte v2, p0, v1
-
-    .line 39
-    .line 40
-    add-int/lit8 v0, v0, 0x4
-
-    .line 41
-    .line 42
-    const/16 v1, 0x10
-
-    .line 43
-    .line 44
-    if-lt v0, v1, :cond_0
-
-    .line 45
-    .line 46
-    return-void
+    return p1
 .end method

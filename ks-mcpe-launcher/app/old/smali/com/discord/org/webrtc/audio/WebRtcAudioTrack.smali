@@ -1,6 +1,6 @@
 .class Lcom/discord/org/webrtc/audio/WebRtcAudioTrack;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -214,7 +214,7 @@
     .end annotation
 
     .line 1
-    invoke-static {p1}, La6/b0;->a(Landroid/media/AudioAttributes;)I
+    invoke-static {p1}, Landroidx/core/view/i1;->a(Landroid/media/AudioAttributes;)I
 
     .line 2
     .line 3
@@ -222,7 +222,7 @@
     move-result p1
 
     .line 5
-    invoke-static {p0, p1}, La6/b0;->e(Landroid/media/AudioAttributes$Builder;I)Landroid/media/AudioAttributes$Builder;
+    invoke-static {p0, p1}, Landroidx/core/view/i1;->d(Landroid/media/AudioAttributes$Builder;I)Landroid/media/AudioAttributes$Builder;
 
     .line 6
     .line 7
@@ -628,7 +628,7 @@
 
     .line 4
     .line 5
-    invoke-static {p1, v0, v1}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, v0, v1}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 6
     .line 7
@@ -865,7 +865,7 @@
     if-eqz v0, :cond_0
 
     .line 3
-    invoke-static {v0}, La6/b0;->f(Landroid/media/AudioTrack;)Landroid/media/AudioAttributes;
+    invoke-static {v0}, Landroidx/core/view/i1;->e(Landroid/media/AudioTrack;)Landroid/media/AudioAttributes;
 
     move-result-object v0
 
@@ -1187,7 +1187,7 @@
 
     .line 62
     .line 63
-    invoke-static {v0, v2, v1}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2, v1}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 64
     .line 65
@@ -1257,7 +1257,7 @@
 
     .line 96
     .line 97
-    invoke-static {v0, v2, v1}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v2, v1}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 98
     .line 99
@@ -1523,7 +1523,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v1, v2}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 12
     .line 13
@@ -1555,7 +1555,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v1, v2}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 12
     .line 13
@@ -1623,7 +1623,7 @@
 
     .line 28
     .line 29
-    invoke-static {v6, v0, v4, v1, v5}, Ls1/a;->u(Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {v6, v0, v4, v1, v5}, Ls1/a;->v(Ljava/lang/String;ILjava/lang/String;ILjava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 30
     .line 31
@@ -1715,7 +1715,7 @@
 
     .line 12
     .line 13
-    invoke-static {p1, v0, v1}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, v0, v1}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 14
     .line 15
@@ -1761,7 +1761,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v1, v2}, Ls1/a;->w(ILjava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, v1, v2}, Ls1/a;->y(ILjava/lang/String;Ljava/lang/String;)V
 
     .line 12
     .line 13

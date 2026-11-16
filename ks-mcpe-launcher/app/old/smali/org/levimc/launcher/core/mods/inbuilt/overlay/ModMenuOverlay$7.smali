@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$OnModActionListener;
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->A0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->h0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;)V
 
     .line 4
     .line 5
@@ -64,7 +64,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->a0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->P(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/app/Activity;
 
     .line 4
     .line 5
@@ -101,7 +101,7 @@
 
     .line 21
     .line 22
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->h0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/util/Set;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->T(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/util/Set;
 
     .line 23
     .line 24
@@ -130,7 +130,7 @@
 
     .line 35
     .line 36
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->h0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/util/Set;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->T(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/util/Set;
 
     .line 37
     .line 38
@@ -156,7 +156,7 @@
 
     .line 48
     .line 49
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->Y(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->O(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
 
     .line 50
     .line 51
@@ -176,7 +176,7 @@
 
     .line 58
     .line 59
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->v0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->e0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 60
     .line 61
@@ -198,7 +198,7 @@
 
     .line 5
     .line 6
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->a0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/app/Activity;
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->P(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/app/Activity;
 
     .line 7
     .line 8
@@ -214,19 +214,19 @@
     move-result-object v0
 
     .line 14
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->isNotificationsEnabled()Z
+    if-eqz p2, :cond_0
 
     .line 15
     .line 16
+    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;->isNotificationsEnabled()Z
+
     .line 17
+    .line 18
+    .line 19
     move-result v0
 
-    .line 18
-    if-eqz v0, :cond_1
-
-    .line 19
     .line 20
-    if-nez p2, :cond_0
+    if-eqz v0, :cond_0
 
     .line 21
     .line 22
@@ -234,7 +234,7 @@
 
     .line 23
     .line 24
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->o0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuPreferences;
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->X(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;
 
     .line 25
     .line 26
@@ -242,124 +242,99 @@
     move-result-object v0
 
     .line 28
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuPreferences;->notifyDisabled()Z
+    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getName()Ljava/lang/String;
 
     .line 29
     .line 30
     .line 31
-    move-result v0
+    move-result-object v1
 
     .line 32
-    if-eqz v0, :cond_1
+    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getStableKey()Ljava/lang/String;
 
     .line 33
     .line 34
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
-
     .line 35
+    move-result-object v2
+
     .line 36
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->m0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;
+    invoke-virtual {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;->show(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 37
     .line 38
     .line 39
-    move-result-object v0
-
-    .line 40
-    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getName()Ljava/lang/String;
-
-    .line 41
-    .line 42
-    .line 43
-    move-result-object v1
-
-    .line 44
-    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getId()Ljava/lang/String;
-
-    .line 45
-    .line 46
-    .line 47
-    move-result-object v2
-
-    .line 48
-    invoke-virtual {v0, v1, v2, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModNotificationManager;->show(Ljava/lang/String;Ljava/lang/String;Z)V
-
-    .line 49
-    .line 50
-    .line 51
-    :cond_1
+    :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
+    .line 40
+    .line 41
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->R(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object v0
+
+    .line 45
+    if-eqz v0, :cond_1
+
+    .line 46
+    .line 47
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
+    .line 48
+    .line 49
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->R(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;
+
+    .line 50
+    .line 51
     .line 52
+    move-result-object v0
+
     .line 53
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->e0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;
+    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getStableKey()Ljava/lang/String;
 
     .line 54
     .line 55
     .line 56
-    move-result-object v0
+    move-result-object p1
 
     .line 57
-    if-eqz v0, :cond_2
+    invoke-interface {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;->onModToggled(Ljava/lang/String;Z)V
 
     .line 58
     .line 59
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
-
     .line 60
-    .line 61
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->e0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;
+    :cond_1
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
+    .line 61
     .line 62
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->O(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
+
     .line 63
     .line 64
-    move-result-object v0
-
     .line 65
-    invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->getStableKey()Ljava/lang/String;
-
-    .line 66
-    .line 67
-    .line 68
     move-result-object p1
 
-    .line 69
-    invoke-interface {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModMenuCallback;->onModToggled(Ljava/lang/String;Z)V
+    .line 66
+    sget-object p2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;->ENABLED:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
 
+    .line 67
+    .line 68
+    if-ne p1, p2, :cond_2
+
+    .line 69
     .line 70
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+
     .line 71
     .line 72
-    :cond_2
-    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->e0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 73
     .line 74
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->Y(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
-
     .line 75
-    .line 76
-    .line 77
-    move-result-object p1
-
-    .line 78
-    sget-object p2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;->ENABLED:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
-
-    .line 79
-    .line 80
-    if-ne p1, p2, :cond_3
-
-    .line 81
-    .line 82
-    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$7;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
-
-    .line 83
-    .line 84
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->v0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
-
-    .line 85
-    .line 86
-    .line 87
-    :cond_3
+    :cond_2
     return-void
 .end method

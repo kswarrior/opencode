@@ -1,6 +1,6 @@
 .class Landroidx/core/view/WindowInsetsCompat$BuilderImpl20;
 .super Landroidx/core/view/WindowInsetsCompat$BuilderImpl;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -15,7 +15,7 @@
 
 
 # static fields
-.field private static sConstructor:Ljava/lang/reflect/Constructor; = null
+.field private static sConstructor:Ljava/lang/reflect/Constructor;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/lang/reflect/Constructor<",
@@ -25,11 +25,11 @@
     .end annotation
 .end field
 
-.field private static sConstructorFetched:Z = false
+.field private static sConstructorFetched:Z
 
-.field private static sConsumedField:Ljava/lang/reflect/Field; = null
+.field private static sConsumedField:Ljava/lang/reflect/Field;
 
-.field private static sConsumedFieldFetched:Z = false
+.field private static sConsumedFieldFetched:Z
 
 
 # instance fields

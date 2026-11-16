@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/ContentListActivity$19;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/content/WorldManager$WorldOperationCallback;
@@ -107,7 +107,7 @@
 
     .line 6
     .line 7
-    invoke-static {v0, p1, p2, p3, p4}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->B0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Ljava/util/List;III)V
+    invoke-static {v0, p1, p2, p3, p4}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->s0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Ljava/util/List;III)V
 
     .line 8
     .line 9
@@ -131,7 +131,7 @@
 
     .line 6
     .line 7
-    invoke-static {v0, p1, p2, p3, p4}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->B0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Ljava/util/List;III)V
+    invoke-static {v0, p1, p2, p3, p4}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->s0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Ljava/util/List;III)V
 
     .line 8
     .line 9
@@ -165,7 +165,7 @@
 
     .line 10
     .line 11
-    new-instance v0, Lorg/levimc/launcher/ui/activities/f0;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/c0;
 
     .line 12
     .line 13
@@ -175,7 +175,7 @@
     move-object v1, p0
 
     .line 15
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/f0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/c0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
 
     .line 16
     .line 17
@@ -219,7 +219,7 @@
 
     .line 10
     .line 11
-    new-instance v0, Lorg/levimc/launcher/ui/activities/f0;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/c0;
 
     .line 12
     .line 13
@@ -229,7 +229,7 @@
     move-object v1, p0
 
     .line 15
-    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/f0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
+    invoke-direct/range {v0 .. v6}, Lorg/levimc/launcher/ui/activities/c0;-><init>(Ljava/lang/Object;Ljava/lang/Object;IIII)V
 
     .line 16
     .line 17

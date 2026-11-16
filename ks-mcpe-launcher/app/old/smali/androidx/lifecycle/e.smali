@@ -1,82 +1,196 @@
-.class public interface abstract Landroidx/lifecycle/e;
+.class public abstract synthetic Landroidx/lifecycle/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Landroidx/lifecycle/s;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# virtual methods
-.method public onCreate(Landroidx/lifecycle/LifecycleOwner;)V
-    .locals 1
+# static fields
+.field public static final synthetic a:[I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 3
 
     .line 1
-    const-string v0, "owner"
+    invoke-static {}, Landroidx/lifecycle/n;->values()[Landroidx/lifecycle/n;
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 4
+    move-result-object v0
+
     .line 5
+    array-length v0, v0
+
     .line 6
-    return-void
-.end method
+    new-array v0, v0, [I
 
-.method public onDestroy(Landroidx/lifecycle/LifecycleOwner;)V
-    .locals 0
+    .line 7
+    .line 8
+    :try_start_0
+    sget-object v1, Landroidx/lifecycle/n;->ON_CREATE:Landroidx/lifecycle/n;
 
-    .line 1
-    return-void
-.end method
+    .line 9
+    .line 10
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
 
-.method public onPause(Landroidx/lifecycle/LifecycleOwner;)V
-    .locals 1
+    .line 11
+    .line 12
+    .line 13
+    move-result v1
 
-    .line 1
-    const-string v0, "owner"
+    .line 14
+    const/4 v2, 0x1
 
-    .line 2
-    .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    .line 15
+    aput v2, v0, v1
+    :try_end_0
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
+    .line 16
+    .line 17
+    :catch_0
+    :try_start_1
+    sget-object v1, Landroidx/lifecycle/n;->ON_START:Landroidx/lifecycle/n;
 
-.method public abstract onResume(Landroidx/lifecycle/LifecycleOwner;)V
-.end method
+    .line 18
+    .line 19
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
 
-.method public onStart(Landroidx/lifecycle/LifecycleOwner;)V
-    .locals 1
+    .line 20
+    .line 21
+    .line 22
+    move-result v1
 
-    .line 1
-    const-string v0, "owner"
+    .line 23
+    const/4 v2, 0x2
 
-    .line 2
-    .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    .line 24
+    aput v2, v0, v1
+    :try_end_1
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_1 .. :try_end_1} :catch_1
 
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
+    .line 25
+    .line 26
+    :catch_1
+    :try_start_2
+    sget-object v1, Landroidx/lifecycle/n;->ON_RESUME:Landroidx/lifecycle/n;
 
-.method public onStop(Landroidx/lifecycle/LifecycleOwner;)V
-    .locals 1
+    .line 27
+    .line 28
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
 
-    .line 1
-    const-string v0, "owner"
+    .line 29
+    .line 30
+    .line 31
+    move-result v1
 
-    .line 2
-    .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    .line 32
+    const/4 v2, 0x3
 
-    .line 4
-    .line 5
-    .line 6
+    .line 33
+    aput v2, v0, v1
+    :try_end_2
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_2 .. :try_end_2} :catch_2
+
+    .line 34
+    .line 35
+    :catch_2
+    :try_start_3
+    sget-object v1, Landroidx/lifecycle/n;->ON_PAUSE:Landroidx/lifecycle/n;
+
+    .line 36
+    .line 37
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    .line 38
+    .line 39
+    .line 40
+    move-result v1
+
+    .line 41
+    const/4 v2, 0x4
+
+    .line 42
+    aput v2, v0, v1
+    :try_end_3
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_3 .. :try_end_3} :catch_3
+
+    .line 43
+    .line 44
+    :catch_3
+    :try_start_4
+    sget-object v1, Landroidx/lifecycle/n;->ON_STOP:Landroidx/lifecycle/n;
+
+    .line 45
+    .line 46
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    .line 47
+    .line 48
+    .line 49
+    move-result v1
+
+    .line 50
+    const/4 v2, 0x5
+
+    .line 51
+    aput v2, v0, v1
+    :try_end_4
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_4 .. :try_end_4} :catch_4
+
+    .line 52
+    .line 53
+    :catch_4
+    :try_start_5
+    sget-object v1, Landroidx/lifecycle/n;->ON_DESTROY:Landroidx/lifecycle/n;
+
+    .line 54
+    .line 55
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    .line 56
+    .line 57
+    .line 58
+    move-result v1
+
+    .line 59
+    const/4 v2, 0x6
+
+    .line 60
+    aput v2, v0, v1
+    :try_end_5
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_5 .. :try_end_5} :catch_5
+
+    .line 61
+    .line 62
+    :catch_5
+    :try_start_6
+    sget-object v1, Landroidx/lifecycle/n;->ON_ANY:Landroidx/lifecycle/n;
+
+    .line 63
+    .line 64
+    invoke-virtual {v1}, Ljava/lang/Enum;->ordinal()I
+
+    .line 65
+    .line 66
+    .line 67
+    move-result v1
+
+    .line 68
+    const/4 v2, 0x7
+
+    .line 69
+    aput v2, v0, v1
+    :try_end_6
+    .catch Ljava/lang/NoSuchFieldError; {:try_start_6 .. :try_end_6} :catch_6
+
+    .line 70
+    .line 71
+    :catch_6
+    sput-object v0, Landroidx/lifecycle/e;->a:[I
+
+    .line 72
+    .line 73
     return-void
 .end method

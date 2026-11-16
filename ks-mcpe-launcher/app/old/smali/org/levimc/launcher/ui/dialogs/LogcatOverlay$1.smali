@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/dialogs/LogcatOverlay$1;
-.super Landroidx/recyclerview/widget/u1;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Landroidx/recyclerview/widget/w1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -45,7 +45,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->D(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->A(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)Z
 
     .line 4
     .line 5
@@ -61,7 +61,7 @@
 
     .line 10
     .line 11
-    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->G(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->D(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;)Z
 
     .line 12
     .line 13
@@ -69,7 +69,7 @@
     move-result p2
 
     .line 15
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->E(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;Z)V
+    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->B(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;Z)V
 
     .line 16
     .line 17

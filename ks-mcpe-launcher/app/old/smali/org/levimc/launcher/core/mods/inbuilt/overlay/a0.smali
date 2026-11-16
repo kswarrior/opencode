@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -9,11 +9,11 @@
 # instance fields
 .field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;I)V
     .locals 0
 
     .line 1
@@ -21,7 +21,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
     .line 4
     .line 5
@@ -48,11 +48,11 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->M(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 9
     .line 10
@@ -61,11 +61,11 @@
 
     .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
     .line 13
     .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 15
     .line 16
@@ -74,11 +74,11 @@
 
     .line 18
     :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/a0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
     .line 19
     .line 20
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;->f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuButton;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->p(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)V
 
     .line 21
     .line 22

@@ -1,137 +1,101 @@
 .class public final Ls4/v3;
-.super Ls4/g0;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public h:Lcom/google/android/gms/internal/measurement/v6;
+.field public final c:J
 
-.field public p:Z
+.field public final d:J
 
-.field public final q:Llg/b;
-
-.field public final w:Ls4/u3;
-
-.field public final x:Lk6/g0;
+.field public final synthetic h:Li6/i0;
 
 
 # direct methods
-.method public constructor <init>(Ls4/q1;)V
-    .locals 1
+.method public constructor <init>(Li6/i0;JJ)V
+    .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Ls4/g0;-><init>(Ls4/q1;)V
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
     .line 4
-    const/4 p1, 0x1
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 5
-    iput-boolean p1, p0, Ls4/v3;->p:Z
-
     .line 6
     .line 7
-    new-instance p1, Llg/b;
+    iput-object p1, p0, Ls4/v3;->h:Li6/i0;
 
     .line 8
     .line 9
-    const/16 v0, 0x11
+    iput-wide p2, p0, Ls4/v3;->c:J
 
     .line 10
     .line 11
-    invoke-direct {p1, p0, v0}, Llg/b;-><init>(Ljava/lang/Object;I)V
+    iput-wide p4, p0, Ls4/v3;->d:J
 
     .line 12
     .line 13
-    .line 14
-    iput-object p1, p0, Ls4/v3;->q:Llg/b;
-
-    .line 15
-    .line 16
-    new-instance p1, Ls4/u3;
-
-    .line 17
-    .line 18
-    invoke-direct {p1, p0}, Ls4/u3;-><init>(Ls4/v3;)V
-
-    .line 19
-    .line 20
-    .line 21
-    iput-object p1, p0, Ls4/v3;->w:Ls4/u3;
-
-    .line 22
-    .line 23
-    new-instance p1, Lk6/g0;
-
-    .line 24
-    .line 25
-    const/16 v0, 0x16
-
-    .line 26
-    .line 27
-    invoke-direct {p1, p0, v0}, Lk6/g0;-><init>(Ljava/lang/Object;I)V
-
-    .line 28
-    .line 29
-    .line 30
-    iput-object p1, p0, Ls4/v3;->x:Lk6/g0;
-
-    .line 31
-    .line 32
     return-void
 .end method
 
 
 # virtual methods
-.method public final o()Z
-    .locals 1
+.method public final run()V
+    .locals 3
 
     .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return v0
-.end method
-
-.method public final p()V
-    .locals 2
-
-    .line 1
-    invoke-virtual {p0}, Ls4/c0;->k()V
+    iget-object v0, p0, Ls4/v3;->h:Li6/i0;
 
     .line 2
     .line 3
+    iget-object v0, v0, Li6/i0;->h:Ljava/lang/Object;
+
     .line 4
-    iget-object v0, p0, Ls4/v3;->h:Lcom/google/android/gms/internal/measurement/v6;
-
     .line 5
+    check-cast v0, Ls4/y3;
+
     .line 6
-    if-nez v0, :cond_0
-
     .line 7
+    iget-object v0, v0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 8
-    new-instance v0, Lcom/google/android/gms/internal/measurement/v6;
-
     .line 9
-    .line 10
-    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+    check-cast v0, Ls4/u1;
 
+    .line 10
     .line 11
+    iget-object v0, v0, Ls4/u1;->y:Ls4/s1;
+
     .line 12
     .line 13
-    move-result-object v1
+    invoke-static {v0}, Ls4/u1;->l(Ls4/c2;)V
 
     .line 14
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/measurement/v6;-><init>(Landroid/os/Looper;)V
-
     .line 15
     .line 16
-    .line 17
-    iput-object v0, p0, Ls4/v3;->h:Lcom/google/android/gms/internal/measurement/v6;
+    new-instance v1, Landroidx/lifecycle/u;
 
+    .line 17
     .line 18
+    const/16 v2, 0x10
+
     .line 19
-    :cond_0
+    .line 20
+    invoke-direct {v1, p0, v2}, Landroidx/lifecycle/u;-><init>(Ljava/lang/Object;I)V
+
+    .line 21
+    .line 22
+    .line 23
+    invoke-virtual {v0, v1}, Ls4/s1;->A(Ljava/lang/Runnable;)V
+
+    .line 24
+    .line 25
+    .line 26
     return-void
 .end method

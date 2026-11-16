@@ -1,133 +1,59 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/o;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnTouchListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
-.field public final synthetic h:I
+.field public final synthetic d:[F
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;II)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/dialogs/o;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/o;->c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+
     .line 5
-    iput p2, p0, Lorg/levimc/launcher/ui/dialogs/o;->h:I
-
     .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:[F
 
+    .line 7
     .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
+.method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
     .locals 2
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->c:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:[F
 
     .line 4
     .line 5
-    .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->d(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[FLandroid/view/View;Landroid/view/MotionEvent;)Z
 
+    .line 6
     .line 7
     .line 8
-    iget v1, p0, Lorg/levimc/launcher/ui/dialogs/o;->h:I
+    move-result p1
 
     .line 9
-    .line 10
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->f(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;I)V
-
-    .line 11
-    .line 12
-    .line 13
-    return-void
-
-    .line 14
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
-    .line 15
-    .line 16
-    iget v1, p0, Lorg/levimc/launcher/ui/dialogs/o;->h:I
-
-    .line 17
-    .line 18
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->v(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;I)V
-
-    .line 19
-    .line 20
-    .line 21
-    return-void
-
-    .line 22
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
-    .line 23
-    .line 24
-    iget v1, p0, Lorg/levimc/launcher/ui/dialogs/o;->h:I
-
-    .line 25
-    .line 26
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->q(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;I)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/o;->d:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
-
-    .line 31
-    .line 32
-    iget v1, p0, Lorg/levimc/launcher/ui/dialogs/o;->h:I
-
-    .line 33
-    .line 34
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->m(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;I)V
-
-    .line 35
-    .line 36
-    .line 37
-    return-void
-
-    .line 38
-    nop
-
-    .line 39
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    return p1
 .end method

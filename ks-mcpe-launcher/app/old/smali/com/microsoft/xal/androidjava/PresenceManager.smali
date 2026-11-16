@@ -1,9 +1,9 @@
 .class public Lcom/microsoft/xal/androidjava/PresenceManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroidx/lifecycle/s;
+.implements Landroidx/lifecycle/r;
 
 
 # static fields
@@ -57,11 +57,11 @@
 
     .line 8
     .line 9
-    sget-object v0, Landroidx/lifecycle/b0;->X:Landroidx/lifecycle/b0;
+    sget-object v0, Landroidx/lifecycle/c0;->Y:Landroidx/lifecycle/c0;
 
     .line 10
     .line 11
-    iget-object v0, v0, Landroidx/lifecycle/b0;->w:Landroidx/lifecycle/LifecycleRegistry;
+    iget-object v0, v0, Landroidx/lifecycle/c0;->x:Landroidx/lifecycle/LifecycleRegistry;
 
     .line 12
     .line 13
@@ -74,7 +74,7 @@
     .line 16
     .line 17
     .line 18
-    invoke-virtual {v0, v1}, Landroidx/lifecycle/LifecycleRegistry;->a(Landroidx/lifecycle/s;)V
+    invoke-virtual {v0, v1}, Landroidx/lifecycle/LifecycleRegistry;->a(Landroidx/lifecycle/r;)V
 
     .line 19
     .line 20
@@ -93,7 +93,7 @@
 .method public declared-synchronized onBackground()V
     .locals 4
     .annotation runtime Landroidx/lifecycle/y;
-        value = .enum Landroidx/lifecycle/o;->ON_PAUSE:Landroidx/lifecycle/o;
+        value = .enum Landroidx/lifecycle/n;->ON_PAUSE:Landroidx/lifecycle/n;
     .end annotation
 
     .line 1
@@ -237,7 +237,7 @@
 .method public declared-synchronized onForeground()V
     .locals 4
     .annotation runtime Landroidx/lifecycle/y;
-        value = .enum Landroidx/lifecycle/o;->ON_RESUME:Landroidx/lifecycle/o;
+        value = .enum Landroidx/lifecycle/n;->ON_RESUME:Landroidx/lifecycle/n;
     .end annotation
 
     .line 1

@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/pojavcontrols/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/content/DialogInterface$OnClickListener;
@@ -13,11 +13,11 @@
 
 .field public final synthetic h:Ljava/util/List;
 
-.field public final synthetic p:[I
+.field public final synthetic q:[I
 
-.field public final synthetic q:Landroid/widget/Button;
+.field public final synthetic w:Landroid/widget/Button;
 
-.field public final synthetic w:Landroid/view/KeyEvent$Callback;
+.field public final synthetic x:Landroid/view/KeyEvent$Callback;
 
 
 # direct methods
@@ -29,7 +29,7 @@
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/view/KeyEvent$Callback;
+    iput-object p1, p0, Lorg/levimc/pojavcontrols/q;->x:Landroid/view/KeyEvent$Callback;
 
     .line 4
     .line 5
@@ -41,11 +41,11 @@
 
     .line 8
     .line 9
-    iput-object p4, p0, Lorg/levimc/pojavcontrols/q;->p:[I
+    iput-object p4, p0, Lorg/levimc/pojavcontrols/q;->q:[I
 
     .line 10
     .line 11
-    iput-object p5, p0, Lorg/levimc/pojavcontrols/q;->q:Landroid/widget/Button;
+    iput-object p5, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/widget/Button;
 
     .line 12
     .line 13
@@ -72,7 +72,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/view/KeyEvent$Callback;
+    iget-object v0, p0, Lorg/levimc/pojavcontrols/q;->x:Landroid/view/KeyEvent$Callback;
 
     .line 7
     .line 8
@@ -83,11 +83,11 @@
 
     .line 10
     .line 11
-    iget-object v4, p0, Lorg/levimc/pojavcontrols/q;->p:[I
+    iget-object v4, p0, Lorg/levimc/pojavcontrols/q;->q:[I
 
     .line 12
     .line 13
-    iget-object v5, p0, Lorg/levimc/pojavcontrols/q;->q:Landroid/widget/Button;
+    iget-object v5, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/widget/Button;
 
     .line 14
     .line 15
@@ -120,7 +120,7 @@
     move v7, p2
 
     .line 27
-    iget-object p1, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/view/KeyEvent$Callback;
+    iget-object p1, p0, Lorg/levimc/pojavcontrols/q;->x:Landroid/view/KeyEvent$Callback;
 
     .line 28
     .line 29
@@ -128,11 +128,11 @@
 
     .line 30
     .line 31
-    iget-object v9, p0, Lorg/levimc/pojavcontrols/q;->p:[I
+    iget-object v9, p0, Lorg/levimc/pojavcontrols/q;->q:[I
 
     .line 32
     .line 33
-    iget-object v10, p0, Lorg/levimc/pojavcontrols/q;->q:Landroid/widget/Button;
+    iget-object v10, p0, Lorg/levimc/pojavcontrols/q;->w:Landroid/widget/Button;
 
     .line 34
     .line 35

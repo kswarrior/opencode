@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/config/ModConfigManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -538,7 +538,7 @@
     .line 12
     .line 13
     :try_start_1
-    invoke-static {v0}, Lfc/h;->A(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
+    invoke-static {v0}, Lcom/bumptech/glide/f;->w(Ljava/io/Reader;)Lcom/google/gson/JsonElement;
 
     .line 14
     .line 15
@@ -615,7 +615,7 @@
     .line 40
     .line 41
     .line 42
-    invoke-static {p1, v2}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p1, v2}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 43
     .line 44
@@ -725,7 +725,7 @@
 
     .line 41
     .line 42
-    invoke-static {p2, v1}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p2, v1}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 43
     .line 44
@@ -988,7 +988,7 @@
     .line 31
     .line 32
     .line 33
-    invoke-static {v0, p2}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v0, p2}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 34
     .line 35
@@ -1147,7 +1147,7 @@
 
     .line 115
     .line 116
-    invoke-virtual {v2, p2, v1}, Lcom/google/gson/Gson;->l(Lcom/google/gson/JsonElement;Ljava/lang/Appendable;)V
+    invoke-virtual {v2, p2, v1}, Lcom/google/gson/Gson;->k(Lcom/google/gson/JsonElement;Ljava/lang/Appendable;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -1209,7 +1209,7 @@
     .line 145
     .line 146
     .line 147
-    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 148
     .line 149
@@ -1265,7 +1265,7 @@
     .line 172
     .line 173
     .line 174
-    invoke-static {v0, p2}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v0, p2}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 175
     .line 176
@@ -1393,14 +1393,14 @@
 
     .line 35
     :cond_1
-    new-instance p1, Lle/a;
+    new-instance p1, Lorg/levimc/launcher/core/mods/g;
 
     .line 36
     .line 37
-    const/4 v2, 0x0
+    const/4 v2, 0x2
 
     .line 38
-    invoke-direct {p1, v2}, Lle/a;-><init>(I)V
+    invoke-direct {p1, v2}, Lorg/levimc/launcher/core/mods/g;-><init>(I)V
 
     .line 39
     .line 40
@@ -1428,15 +1428,15 @@
 
     .line 51
     :cond_2
-    new-instance v2, Lia/d;
+    new-instance v2, Lga/d;
 
     .line 52
     .line 53
-    const/16 v3, 0xa
+    const/16 v3, 0x9
 
     .line 54
     .line 55
-    invoke-direct {v2, v3}, Lia/d;-><init>(I)V
+    invoke-direct {v2, v3}, Lga/d;-><init>(I)V
 
     .line 56
     .line 57

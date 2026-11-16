@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/InstanceBackupManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -75,7 +75,7 @@
 
     .line 9
     .line 10
-    invoke-static {v0, v1, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 11
     .line 12
@@ -431,7 +431,7 @@
 
     .line 49
     .line 50
-    invoke-static {v1, p1, v2, v0, v3}, Ls1/a;->s(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, p1, v2, v0, v3}, Ls1/a;->t(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 51
     .line 52
@@ -1228,7 +1228,7 @@
     .line 45
     .line 46
     .line 47
-    invoke-static {v1, v3}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v3}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 48
     .line 49
@@ -2115,50 +2115,26 @@
 
     .line 77
     .line 78
-    iget-boolean v1, p1, Lorg/levimc/launcher/core/versions/GameVersion;->launchVertically:Z
+    iget-boolean p1, p1, Lorg/levimc/launcher/core/versions/GameVersion;->launchVertically:Z
 
     .line 79
     .line 80
-    iput-boolean v1, v0, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->launchVertically:Z
+    iput-boolean p1, v0, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->launchVertically:Z
 
     .line 81
     .line 82
-    iget-object v1, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->context:Landroid/content/Context;
+    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
 
     .line 83
     .line 84
-    invoke-static {v1}, Lorg/levimc/launcher/core/versions/VersionManager;->get(Landroid/content/Context;)Lorg/levimc/launcher/core/versions/VersionManager;
-
     .line 85
-    .line 86
-    .line 87
-    move-result-object v1
-
-    .line 88
-    invoke-virtual {v1, p1}, Lorg/levimc/launcher/core/versions/VersionManager;->isInstanceModMenuEnabled(Lorg/levimc/launcher/core/versions/GameVersion;)Z
-
-    .line 89
-    .line 90
-    .line 91
-    move-result p1
-
-    .line 92
-    iput-boolean p1, v0, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->modMenuEnabled:Z
-
-    .line 93
-    .line 94
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    .line 95
-    .line 96
-    .line 97
     move-result-wide v1
 
-    .line 98
+    .line 86
     iput-wide v1, v0, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->createdAt:J
 
-    .line 99
-    .line 100
+    .line 87
+    .line 88
     return-object v0
 .end method
 
@@ -2270,7 +2246,7 @@
     move-result-object v4
 
     .line 55
-    invoke-static {}, Lfc/a;->h()Landroid/net/Uri;
+    invoke-static {}, Lgc/a;->i()Landroid/net/Uri;
 
     .line 56
     .line 57
@@ -2310,7 +2286,7 @@
 
     .line 74
     .line 75
-    invoke-static {v2, v3, p1}, Lu7/d;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v3, p1}, Ln5/h;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 76
     .line 77
@@ -2489,7 +2465,7 @@
 
     .line 160
     .line 161
-    invoke-static {v1, v2, v3, p1}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v2, v3, p1}, Ls1/a;->s(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 162
     .line 163
@@ -3392,7 +3368,7 @@
 
     .line 18
     .line 19
-    invoke-static {p1, v0}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v0}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 20
     .line 21
@@ -4947,7 +4923,7 @@
 .end method
 
 .method private synthetic lambda$backup$0(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Lorg/levimc/launcher/core/versions/GameVersion;)V
-    .locals 17
+    .locals 16
 
     .line 1
     move-object/from16 v1, p0
@@ -4994,534 +4970,432 @@
     move-result-object v3
 
     .line 22
-    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->getProfileRoot(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/io/File;
+    invoke-direct {v1, v3}, Lorg/levimc/launcher/util/InstanceBackupManager;->createOutputTarget(Ljava/lang/String;)Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;
 
     .line 23
     .line 24
     .line 25
-    move-result-object v4
+    move-result-object v13
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_1
 
     .line 26
-    invoke-direct {v1, v4}, Lorg/levimc/launcher/util/InstanceBackupManager;->lockPackages(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
+    :try_start_1
+    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->collectInstalledPackageSources(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/util/List;
 
     .line 27
     .line 28
     .line 29
-    move-result-object v13
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_2
-    .catchall {:try_start_0 .. :try_end_0} :catchall_5
+    move-result-object v14
 
     .line 30
-    :try_start_1
-    invoke-direct {v1, v3}, Lorg/levimc/launcher/util/InstanceBackupManager;->createOutputTarget(Ljava/lang/String;)Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;
+    invoke-direct {v1, v0, v14}, Lorg/levimc/launcher/util/InstanceBackupManager;->countBackupBytes(Lorg/levimc/launcher/core/versions/GameVersion;Ljava/util/List;)J
 
     .line 31
     .line 32
     .line 33
-    move-result-object v14
-    :try_end_1
-    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_3
-
-    .line 34
-    :try_start_2
-    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->collectInstalledPackageSources(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/util/List;
-
-    .line 35
-    .line 36
-    .line 37
-    move-result-object v15
-
-    .line 38
-    invoke-direct {v1, v0, v15}, Lorg/levimc/launcher/util/InstanceBackupManager;->countBackupBytes(Lorg/levimc/launcher/core/versions/GameVersion;Ljava/util/List;)J
-
-    .line 39
-    .line 40
-    .line 41
     move-result-wide v7
 
+    .line 34
+    const/4 v15, 0x1
+
+    .line 35
+    new-array v6, v15, [J
+
+    .line 36
+    .line 37
+    const-wide/16 v2, 0x0
+
+    .line 38
+    .line 39
+    aput-wide v2, v6, v11
+
+    .line 40
+    .line 41
+    const/4 v2, -0x1
+
     .line 42
-    const/4 v2, 0x1
+    filled-new-array {v2}, [I
 
     .line 43
-    new-array v6, v2, [J
-
     .line 44
     .line 45
-    const-wide/16 v3, 0x0
-
-    .line 46
-    .line 47
-    aput-wide v3, v6, v11
-
-    .line 48
-    .line 49
-    const/4 v3, -0x1
-
-    .line 50
-    filled-new-array {v3}, [I
-
-    .line 51
-    .line 52
-    .line 53
     move-result-object v9
 
-    .line 54
+    .line 46
     new-instance v5, Ljava/util/HashSet;
 
-    .line 55
-    .line 56
+    .line 47
+    .line 48
     invoke-direct {v5}, Ljava/util/HashSet;-><init>()V
 
-    .line 57
-    .line 58
-    .line 59
+    .line 49
+    .line 50
+    .line 51
     new-instance v4, Ljava/util/zip/ZipOutputStream;
 
-    .line 60
-    .line 61
-    iget-object v3, v14, Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;->outputStream:Ljava/io/OutputStream;
+    .line 52
+    .line 53
+    iget-object v2, v13, Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;->outputStream:Ljava/io/OutputStream;
 
-    .line 62
-    .line 63
-    invoke-direct {v4, v3}, Ljava/util/zip/ZipOutputStream;-><init>(Ljava/io/OutputStream;)V
-    :try_end_2
-    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
-    .catchall {:try_start_2 .. :try_end_2} :catchall_3
+    .line 54
+    .line 55
+    invoke-direct {v4, v2}, Ljava/util/zip/ZipOutputStream;-><init>(Ljava/io/OutputStream;)V
+    :try_end_1
+    .catch Ljava/lang/Exception; {:try_start_1 .. :try_end_1} :catch_0
 
-    .line 64
-    .line 65
-    .line 66
-    :try_start_3
+    .line 56
+    .line 57
+    .line 58
+    :try_start_2
     invoke-direct {v1, v4, v12, v5}, Lorg/levimc/launcher/util/InstanceBackupManager;->writeManifest(Ljava/util/zip/ZipOutputStream;Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;Ljava/util/Set;)V
 
+    .line 59
+    .line 60
+    .line 61
+    const/4 v2, 0x2
+
+    .line 62
+    invoke-direct {v1, v10, v2, v9}, Lorg/levimc/launcher/util/InstanceBackupManager;->postProgress(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;I[I)V
+
+    .line 63
+    .line 64
+    .line 65
+    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->getProfileRoot(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/io/File;
+
+    .line 66
     .line 67
     .line 68
+    move-result-object v2
+
     .line 69
-    const/4 v3, 0x2
+    const-string v3, "profile/"
 
     .line 70
-    invoke-direct {v1, v10, v3, v9}, Lorg/levimc/launcher/util/InstanceBackupManager;->postProgress(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;I[I)V
-
     .line 71
+    invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipDirectory(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_1
+
     .line 72
     .line 73
-    move v3, v2
-
     .line 74
-    invoke-direct {v1, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->getProfileRoot(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/io/File;
+    :try_start_3
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/versions/GameVersion;->versionIsolation:Z
 
     .line 75
     .line 76
-    .line 77
-    move-result-object v2
+    if-nez v0, :cond_0
 
+    .line 77
     .line 78
-    move/from16 v16, v3
+    iget-object v0, v1, Lorg/levimc/launcher/util/InstanceBackupManager;->context:Landroid/content/Context;
 
     .line 79
     .line 80
-    const-string v3, "profile/"
+    invoke-static {v0}, Lorg/levimc/launcher/util/LauncherStorage;->getSharedRoot(Landroid/content/Context;)Ljava/io/File;
 
     .line 81
     .line 82
-    move/from16 v11, v16
-
     .line 83
+    move-result-object v2
+
     .line 84
-    invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipDirectory(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+    const-string v3, "shared/"
 
     .line 85
     .line 86
-    .line 87
-    :try_start_4
-    iget-boolean v0, v0, Lorg/levimc/launcher/core/versions/GameVersion;->versionIsolation:Z
-
-    .line 88
-    .line 89
-    if-nez v0, :cond_0
-
-    .line 90
-    .line 91
-    iget-object v0, v1, Lorg/levimc/launcher/util/InstanceBackupManager;->context:Landroid/content/Context;
-
-    .line 92
-    .line 93
-    invoke-static {v0}, Lorg/levimc/launcher/util/LauncherStorage;->getSharedRoot(Landroid/content/Context;)Ljava/io/File;
-
-    .line 94
-    .line 95
-    .line 96
-    move-result-object v2
-
-    .line 97
-    const-string v3, "shared/"
-
-    .line 98
-    .line 99
     move-object/from16 v10, p1
 
-    .line 100
-    .line 101
+    .line 87
+    .line 88
     invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipDirectory(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
 
-    .line 102
-    .line 103
-    .line 104
+    .line 89
+    .line 90
+    .line 91
     goto :goto_2
 
-    .line 105
+    .line 92
     :catchall_0
     move-exception v0
 
-    .line 106
+    .line 93
     :goto_0
     move-object/from16 v10, p1
 
-    .line 107
-    .line 108
+    .line 94
+    .line 95
     :goto_1
     move-object v2, v0
 
-    .line 109
+    .line 96
     goto :goto_4
 
-    .line 110
+    .line 97
     :cond_0
     :goto_2
     iget-object v0, v1, Lorg/levimc/launcher/util/InstanceBackupManager;->context:Landroid/content/Context;
 
+    .line 98
+    .line 99
+    iget-object v2, v12, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->profileId:Ljava/lang/String;
+
+    .line 100
+    .line 101
+    invoke-static {v0, v2}, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->getRuntimeLibDir(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
+
+    .line 102
+    .line 103
+    .line 104
+    move-result-object v2
+
+    .line 105
+    const-string v3, "runtime_libs/"
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
+    .line 106
+    .line 107
+    move-object/from16 v10, p1
+
+    .line 108
+    .line 109
+    :try_start_4
+    invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipDirectory(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_1
+
+    .line 110
     .line 111
     .line 112
-    iget-object v2, v12, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->profileId:Ljava/lang/String;
+    :try_start_5
+    invoke-interface {v14}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
     .line 113
     .line 114
-    invoke-static {v0, v2}, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->getRuntimeLibDir(Landroid/content/Context;Ljava/lang/String;)Ljava/io/File;
-
     .line 115
+    move-result-object v0
+
     .line 116
+    :goto_3
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
     .line 117
-    move-result-object v2
-
     .line 118
-    const-string v3, "runtime_libs/"
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
-
     .line 119
+    move-result v1
+
     .line 120
-    move-object/from16 v10, p1
+    if-eqz v1, :cond_1
 
     .line 121
     .line 122
-    :try_start_5
-    invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipDirectory(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_1
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     .line 123
     .line 124
     .line 125
-    :try_start_6
-    invoke-interface {v15}, Ljava/util/List;->iterator()Ljava/util/Iterator;
-
-    .line 126
-    .line 127
-    .line 128
-    move-result-object v0
-
-    .line 129
-    :goto_3
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
-
-    .line 130
-    .line 131
-    .line 132
-    move-result v1
-
-    .line 133
-    if-eqz v1, :cond_1
-
-    .line 134
-    .line 135
-    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
-    .line 136
-    .line 137
-    .line 138
     move-result-object v1
 
-    .line 139
+    .line 126
     check-cast v1, Lorg/levimc/launcher/util/InstanceBackupManager$NamedSource;
 
-    .line 140
-    .line 141
+    .line 127
+    .line 128
     iget-object v2, v1, Lorg/levimc/launcher/util/InstanceBackupManager$NamedSource;->file:Ljava/io/File;
 
-    .line 142
-    .line 143
+    .line 129
+    .line 130
     iget-object v3, v1, Lorg/levimc/launcher/util/InstanceBackupManager$NamedSource;->entryPath:Ljava/lang/String;
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_2
+    :try_end_5
+    .catchall {:try_start_5 .. :try_end_5} :catchall_2
 
-    .line 144
-    .line 145
+    .line 131
+    .line 132
     move-object/from16 v1, p0
 
-    .line 146
-    .line 147
+    .line 133
+    .line 134
     move-object/from16 v10, p1
 
-    .line 148
-    .line 149
-    :try_start_7
+    .line 135
+    .line 136
+    :try_start_6
     invoke-direct/range {v1 .. v10}, Lorg/levimc/launcher/util/InstanceBackupManager;->zipSingleFile(Ljava/io/File;Ljava/lang/String;Ljava/util/zip/ZipOutputStream;Ljava/util/Set;[JJ[ILorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;)V
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_1
+    :try_end_6
+    .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 150
-    .line 151
-    .line 152
+    .line 137
+    .line 138
+    .line 139
     goto :goto_3
 
-    .line 153
+    .line 140
     :catchall_1
     move-exception v0
 
-    .line 154
+    .line 141
     goto :goto_1
 
-    .line 155
+    .line 142
     :catchall_2
     move-exception v0
 
-    .line 156
+    .line 143
     move-object/from16 v1, p0
 
-    .line 157
-    .line 158
+    .line 144
+    .line 145
     goto :goto_0
 
-    .line 159
+    .line 146
     :cond_1
     move-object/from16 v1, p0
 
+    .line 147
+    .line 148
+    move-object/from16 v10, p1
+
+    .line 149
+    .line 150
+    :try_start_7
+    invoke-virtual {v4}, Ljava/util/zip/ZipOutputStream;->close()V
+
+    .line 151
+    .line 152
+    .line 153
+    invoke-direct {v1, v13, v15}, Lorg/levimc/launcher/util/InstanceBackupManager;->finishOutputTarget(Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;Z)V
+
+    .line 154
+    .line 155
+    .line 156
+    const/16 v0, 0x64
+
+    .line 157
+    .line 158
+    invoke-direct {v1, v10, v0, v9}, Lorg/levimc/launcher/util/InstanceBackupManager;->postProgress(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;I[I)V
+
+    .line 159
     .line 160
     .line 161
-    move-object/from16 v10, p1
+    iget-object v0, v13, Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;->displayPath:Ljava/lang/String;
 
     .line 162
     .line 163
-    :try_start_8
-    invoke-virtual {v4}, Ljava/util/zip/ZipOutputStream;->close()V
+    invoke-direct {v1, v10, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->postBackupSuccess(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;)V
+    :try_end_7
+    .catch Ljava/lang/Exception; {:try_start_7 .. :try_end_7} :catch_0
 
     .line 164
     .line 165
     .line 166
-    invoke-direct {v1, v14, v11}, Lorg/levimc/launcher/util/InstanceBackupManager;->finishOutputTarget(Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;Z)V
-
-    .line 167
-    .line 168
-    .line 169
-    const/16 v0, 0x64
-
-    .line 170
-    .line 171
-    invoke-direct {v1, v10, v0, v9}, Lorg/levimc/launcher/util/InstanceBackupManager;->postProgress(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;I[I)V
-
-    .line 172
-    .line 173
-    .line 174
-    iget-object v0, v14, Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;->displayPath:Ljava/lang/String;
-
-    .line 175
-    .line 176
-    invoke-direct {v1, v10, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->postBackupSuccess(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;)V
-    :try_end_8
-    .catch Ljava/lang/Exception; {:try_start_8 .. :try_end_8} :catch_0
-    .catchall {:try_start_8 .. :try_end_8} :catchall_3
-
-    .line 177
-    .line 178
-    .line 179
-    if-eqz v13, :cond_4
-
-    .line 180
-    .line 181
-    invoke-interface {v13}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-
-    .line 182
-    .line 183
-    .line 184
     return-void
 
-    .line 185
-    :catchall_3
-    move-exception v0
-
-    .line 186
-    move-object v2, v13
-
-    .line 187
-    goto :goto_7
-
-    .line 188
+    .line 167
     :catch_0
     move-exception v0
 
-    .line 189
-    move-object v2, v14
+    .line 168
+    move-object v2, v13
 
-    .line 190
+    .line 169
     goto :goto_6
 
-    .line 191
+    .line 170
     :goto_4
-    :try_start_9
+    :try_start_8
     invoke-virtual {v4}, Ljava/util/zip/ZipOutputStream;->close()V
-    :try_end_9
-    .catchall {:try_start_9 .. :try_end_9} :catchall_4
+    :try_end_8
+    .catchall {:try_start_8 .. :try_end_8} :catchall_3
 
-    .line 192
-    .line 193
-    .line 194
+    .line 171
+    .line 172
+    .line 173
     goto :goto_5
 
-    .line 195
-    :catchall_4
+    .line 174
+    :catchall_3
     move-exception v0
 
-    .line 196
-    :try_start_a
+    .line 175
+    :try_start_9
     invoke-virtual {v2, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
 
-    .line 197
-    .line 198
-    .line 199
+    .line 176
+    .line 177
+    .line 178
     :goto_5
     throw v2
-    :try_end_a
-    .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_0
-    .catchall {:try_start_a .. :try_end_a} :catchall_3
+    :try_end_9
+    .catch Ljava/lang/Exception; {:try_start_9 .. :try_end_9} :catch_0
 
-    .line 200
+    .line 179
     :catch_1
     move-exception v0
 
-    .line 201
+    .line 180
     goto :goto_6
 
-    .line 202
-    :catchall_5
-    move-exception v0
-
-    .line 203
-    goto :goto_7
-
-    .line 204
-    :catch_2
-    move-exception v0
-
-    .line 205
-    move-object v13, v2
-
-    .line 206
-    goto :goto_6
-
-    .line 207
+    .line 181
     :cond_2
-    :try_start_b
+    :try_start_a
     new-instance v0, Ljava/io/IOException;
 
-    .line 208
-    .line 209
+    .line 182
+    .line 183
     const-string v3, "No instance selected"
 
-    .line 210
-    .line 211
+    .line 184
+    .line 185
     invoke-direct {v0, v3}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    .line 212
-    .line 213
-    .line 214
+    .line 186
+    .line 187
+    .line 188
     throw v0
-    :try_end_b
-    .catch Ljava/lang/Exception; {:try_start_b .. :try_end_b} :catch_2
-    .catchall {:try_start_b .. :try_end_b} :catchall_5
+    :try_end_a
+    .catch Ljava/lang/Exception; {:try_start_a .. :try_end_a} :catch_1
 
-    .line 215
+    .line 189
     :goto_6
-    :try_start_c
     const-string v3, "InstanceBackupManager"
 
-    .line 216
-    .line 217
+    .line 190
+    .line 191
     const-string v4, "Failed to backup instance"
 
-    .line 218
-    .line 219
+    .line 192
+    .line 193
     invoke-static {v3, v4, v0}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
 
-    .line 220
-    .line 221
-    .line 222
+    .line 194
+    .line 195
+    .line 196
     if-eqz v2, :cond_3
 
-    .line 223
-    .line 224
-    const/4 v3, 0x0
+    .line 197
+    .line 198
+    invoke-direct {v1, v2, v11}, Lorg/levimc/launcher/util/InstanceBackupManager;->finishOutputTarget(Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;Z)V
 
-    .line 225
-    invoke-direct {v1, v2, v3}, Lorg/levimc/launcher/util/InstanceBackupManager;->finishOutputTarget(Lorg/levimc/launcher/util/InstanceBackupManager$OutputTarget;Z)V
-
-    .line 226
-    .line 227
-    .line 228
+    .line 199
+    .line 200
+    .line 201
     :cond_3
     invoke-virtual {v0}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
 
-    .line 229
-    .line 230
-    .line 231
+    .line 202
+    .line 203
+    .line 204
     move-result-object v0
 
-    .line 232
+    .line 205
     invoke-direct {v1, v10, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->postBackupError(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;)V
-    :try_end_c
-    .catchall {:try_start_c .. :try_end_c} :catchall_3
 
-    .line 233
-    .line 234
-    .line 235
-    if-eqz v13, :cond_4
-
-    .line 236
-    .line 237
-    invoke-interface {v13}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-
-    .line 238
-    .line 239
-    .line 240
-    :cond_4
+    .line 206
+    .line 207
+    .line 208
     return-void
-
-    .line 241
-    :goto_7
-    if-eqz v2, :cond_5
-
-    .line 242
-    .line 243
-    invoke-interface {v2}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-
-    .line 244
-    .line 245
-    .line 246
-    :cond_5
-    throw v0
 .end method
 
 .method private static synthetic lambda$postBackupError$8(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;)V
@@ -6287,54 +6161,23 @@
 
     .line 46
     .line 47
-    iget-boolean p2, p1, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->launchVertically:Z
+    iget-boolean p1, p1, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->launchVertically:Z
 
     .line 48
     .line 49
-    iput-boolean p2, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->launchVertically:Z
+    iput-boolean p1, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->launchVertically:Z
 
     .line 50
     .line 51
-    iget-boolean p1, p1, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->modMenuEnabled:Z
+    iput-boolean p0, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->installed:Z
 
     .line 52
     .line 53
-    iput-boolean p1, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->modMenuEnabled:Z
+    iput-object v0, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->packageName:Ljava/lang/String;
 
     .line 54
     .line 55
-    iput-boolean p0, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->installed:Z
-
-    .line 56
-    .line 57
-    iput-object v0, p3, Lorg/levimc/launcher/core/versions/VersionProfileMetadata;->packageName:Ljava/lang/String;
-
-    .line 58
-    .line 59
     return-void
-.end method
-
-.method private lockPackages(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
-    .locals 1
-
-    .line 1
-    invoke-static {}, Lorg/levimc/launcher/core/packages/PackageService;->get()Lorg/levimc/launcher/core/packages/PackageService;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    invoke-virtual {v0, p1}, Lorg/levimc/launcher/core/packages/PackageService;->lockWorkspace(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    return-object p1
 .end method
 
 .method public static normalizeZipEntryName(Ljava/lang/String;)Ljava/lang/String;
@@ -6457,7 +6300,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, v1, p0}, Lcom/google/gson/Gson;->d(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v0, v1, p0}, Lcom/google/gson/Gson;->c(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
 
     .line 6
     .line 7
@@ -6484,14 +6327,14 @@
 
     .line 4
     .line 5
-    new-instance v1, Lorg/levimc/launcher/util/k;
+    new-instance v1, Lorg/levimc/launcher/util/j;
 
     .line 6
     .line 7
     const/4 v2, 0x1
 
     .line 8
-    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/k;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;I)V
+    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/j;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;I)V
 
     .line 9
     .line 10
@@ -6517,14 +6360,14 @@
 
     .line 4
     .line 5
-    new-instance v1, Lorg/levimc/launcher/util/k;
+    new-instance v1, Lorg/levimc/launcher/util/j;
 
     .line 6
     .line 7
     const/4 v2, 0x0
 
     .line 8
-    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/k;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;I)V
+    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/j;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$BackupCallback;Ljava/lang/String;I)V
 
     .line 9
     .line 10
@@ -6581,11 +6424,11 @@
     :cond_2
     iget-object p3, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->mainHandler:Landroid/os/Handler;
 
-    new-instance v0, Lorg/levimc/launcher/util/c;
+    new-instance v0, Lorg/levimc/launcher/util/b;
 
     const/4 v1, 0x3
 
-    invoke-direct {v0, p2, v1, p1}, Lorg/levimc/launcher/util/c;-><init>(IILjava/lang/Object;)V
+    invoke-direct {v0, p2, v1, p1}, Lorg/levimc/launcher/util/b;-><init>(IILjava/lang/Object;)V
 
     invoke-virtual {p3, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
@@ -6635,11 +6478,11 @@
     :cond_2
     iget-object p3, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->mainHandler:Landroid/os/Handler;
 
-    new-instance v0, Lorg/levimc/launcher/util/c;
+    new-instance v0, Lorg/levimc/launcher/util/b;
 
     const/4 v1, 0x4
 
-    invoke-direct {v0, p2, v1, p1}, Lorg/levimc/launcher/util/c;-><init>(IILjava/lang/Object;)V
+    invoke-direct {v0, p2, v1, p1}, Lorg/levimc/launcher/util/b;-><init>(IILjava/lang/Object;)V
 
     invoke-virtual {p3, v0}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
@@ -6728,14 +6571,14 @@
 
     .line 4
     .line 5
-    new-instance v1, Lorg/levimc/launcher/util/l;
+    new-instance v1, Lorg/levimc/launcher/util/k;
 
     .line 6
     .line 7
     const/4 v2, 0x1
 
     .line 8
-    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/l;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Ljava/lang/String;I)V
+    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/k;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Ljava/lang/String;I)V
 
     .line 9
     .line 10
@@ -6761,14 +6604,14 @@
 
     .line 4
     .line 5
-    new-instance v1, Lorg/levimc/launcher/util/l;
+    new-instance v1, Lorg/levimc/launcher/util/k;
 
     .line 6
     .line 7
     const/4 v2, 0x0
 
     .line 8
-    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/l;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Ljava/lang/String;I)V
+    invoke-direct {v1, p1, p2, v2}, Lorg/levimc/launcher/util/k;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Ljava/lang/String;I)V
 
     .line 9
     .line 10
@@ -6790,11 +6633,11 @@
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->mainHandler:Landroid/os/Handler;
 
-    new-instance v1, Lorg/levimc/launcher/util/j;
+    new-instance v1, Lorg/levimc/launcher/util/i;
 
     const/4 v2, 0x2
 
-    invoke-direct {v1, p1, v2}, Lorg/levimc/launcher/util/j;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p1, v2}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
@@ -6810,11 +6653,11 @@
     .line 2
     iget-object v0, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->mainHandler:Landroid/os/Handler;
 
-    new-instance v1, Lorg/levimc/launcher/util/j;
+    new-instance v1, Lorg/levimc/launcher/util/i;
 
     const/4 v2, 0x1
 
-    invoke-direct {v1, p1, v2}, Lorg/levimc/launcher/util/j;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, p1, v2}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
@@ -7171,87 +7014,6 @@
     .line 77
     .line 78
     throw p1
-.end method
-
-.method private recoverRestoredPackages(Ljava/io/File;)V
-    .locals 2
-
-    .line 1
-    :try_start_0
-    invoke-static {}, Lorg/levimc/launcher/core/packages/PackageService;->get()Lorg/levimc/launcher/core/packages/PackageService;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    invoke-virtual {v0, p1}, Lorg/levimc/launcher/core/packages/PackageService;->lockWorkspace(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    invoke-interface {p1}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 10
-    .line 11
-    .line 12
-    return-void
-
-    .line 13
-    :catch_0
-    move-exception p1
-
-    .line 14
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 15
-    .line 16
-    const-string v1, "Recovering the restored packages failed: "
-
-    .line 17
-    .line 18
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 19
-    .line 20
-    .line 21
-    invoke-virtual {p1}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object v1
-
-    .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    .line 28
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v0
-
-    .line 32
-    const-string v1, "InstanceBackupManager"
-
-    .line 33
-    .line 34
-    invoke-static {v1, v0, p1}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 35
-    .line 36
-    .line 37
-    return-void
 .end method
 
 .method private relativePathForKnownPrefix(Ljava/lang/String;)Ljava/lang/String;
@@ -7613,7 +7375,7 @@
     .line 21
     .line 22
     .line 23
-    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p1, v0}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 24
     .line 25
@@ -7680,7 +7442,7 @@
 
     .line 54
     .line 55
-    invoke-static {v0, p2}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p2}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 56
     .line 57
@@ -7697,7 +7459,7 @@
 .end method
 
 .method private restoreCustomInstance(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;)Ljava/lang/String;
-    .locals 6
+    .locals 5
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/util/InstanceBackupManager;->context:Landroid/content/Context;
@@ -7830,121 +7592,56 @@
     move-exception p1
 
     .line 64
-    goto :goto_2
+    goto :goto_1
 
     .line 65
     :cond_1
     :goto_0
-    invoke-direct {p0, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->lockPackages(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
+    new-instance v4, Lorg/levimc/launcher/util/l;
 
     .line 66
     .line 67
+    invoke-direct {v4, v2, v0}, Lorg/levimc/launcher/util/l;-><init>(Ljava/io/File;Ljava/io/File;)V
+
     .line 68
-    move-result-object v4
+    .line 69
+    .line 70
+    invoke-direct {p0, p1, p3, v4}, Lorg/levimc/launcher/util/InstanceBackupManager;->extractBackupEntries(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTargetResolver;)V
+
+    .line 71
+    .line 72
+    .line 73
+    invoke-direct {p0, v1, p2, v3}, Lorg/levimc/launcher/util/InstanceBackupManager;->updateCustomMetadata(Ljava/lang/String;Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;Z)V
+
+    .line 74
+    .line 75
+    .line 76
+    invoke-direct {p0, v1}, Lorg/levimc/launcher/util/InstanceBackupManager;->selectRestoredCustomVersion(Ljava/lang/String;)V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 69
-    :try_start_1
-    new-instance v5, Lorg/levimc/launcher/util/m;
-
-    .line 70
-    .line 71
-    invoke-direct {v5, v2, v0}, Lorg/levimc/launcher/util/m;-><init>(Ljava/io/File;Ljava/io/File;)V
-
-    .line 72
-    .line 73
-    .line 74
-    invoke-direct {p0, p1, p3, v5}, Lorg/levimc/launcher/util/InstanceBackupManager;->extractBackupEntries(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTargetResolver;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
-    .line 75
-    .line 76
     .line 77
-    if-eqz v4, :cond_2
-
     .line 78
     .line 79
-    :try_start_2
-    invoke-interface {v4}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-
-    .line 80
-    .line 81
-    .line 82
-    :cond_2
-    invoke-direct {p0, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->recoverRestoredPackages(Ljava/io/File;)V
-
-    .line 83
-    .line 84
-    .line 85
-    invoke-direct {p0, v1, p2, v3}, Lorg/levimc/launcher/util/InstanceBackupManager;->updateCustomMetadata(Ljava/lang/String;Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;Z)V
-
-    .line 86
-    .line 87
-    .line 88
-    invoke-direct {p0, v1}, Lorg/levimc/launcher/util/InstanceBackupManager;->selectRestoredCustomVersion(Ljava/lang/String;)V
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 89
-    .line 90
-    .line 91
     return-object v1
 
-    .line 92
-    :catchall_1
-    move-exception p1
-
-    .line 93
-    if-eqz v4, :cond_3
-
-    .line 94
-    .line 95
-    :try_start_3
-    invoke-interface {v4}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_2
-
-    .line 96
-    .line 97
-    .line 98
-    goto :goto_1
-
-    .line 99
-    :catchall_2
-    move-exception p2
-
-    .line 100
-    :try_start_4
-    invoke-virtual {p1, p2}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
-
-    .line 101
-    .line 102
-    .line 103
-    :cond_3
+    .line 80
     :goto_1
-    throw p1
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_0
-
-    .line 104
-    :goto_2
     invoke-direct {p0, v2}, Lorg/levimc/launcher/util/InstanceBackupManager;->deleteDir(Ljava/io/File;)Z
 
-    .line 105
-    .line 106
-    .line 107
+    .line 81
+    .line 82
+    .line 83
     invoke-direct {p0, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->deleteDir(Ljava/io/File;)Z
 
-    .line 108
-    .line 109
-    .line 110
+    .line 84
+    .line 85
+    .line 86
     throw p1
 .end method
 
 .method private restoreInstalledData(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;)Ljava/lang/String;
-    .locals 6
+    .locals 5
 
     .line 1
     iget-object v0, p2, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->packageName:Ljava/lang/String;
@@ -8030,121 +7727,62 @@
     move-result-object v3
 
     .line 41
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->lockPackages(Ljava/io/File;)Lorg/levimc/launcher/core/packages/PackageService$Held;
+    new-instance v4, Lorg/levimc/launcher/util/m;
 
     .line 42
     .line 43
+    invoke-direct {v4, p0, v0, v2, v3}, Lorg/levimc/launcher/util/m;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager;Ljava/io/File;Ljava/io/File;Ljava/io/File;)V
+
     .line 44
-    move-result-object v4
-
     .line 45
-    :try_start_1
-    new-instance v5, Lorg/levimc/launcher/util/n;
-
     .line 46
-    .line 47
-    invoke-direct {v5, p0, v0, v2, v3}, Lorg/levimc/launcher/util/n;-><init>(Lorg/levimc/launcher/util/InstanceBackupManager;Ljava/io/File;Ljava/io/File;Ljava/io/File;)V
+    invoke-direct {p0, p1, p3, v4}, Lorg/levimc/launcher/util/InstanceBackupManager;->extractBackupEntries(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTargetResolver;)V
 
+    .line 47
     .line 48
     .line 49
-    .line 50
-    invoke-direct {p0, p1, p3, v5}, Lorg/levimc/launcher/util/InstanceBackupManager;->extractBackupEntries(Ljava/util/zip/ZipFile;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreCallback;Lorg/levimc/launcher/util/InstanceBackupManager$RestoreTargetResolver;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    iget-object p1, p2, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->instanceName:Ljava/lang/String;
 
+    .line 50
     .line 51
+    filled-new-array {p1, v1}, [Ljava/lang/String;
+
     .line 52
     .line 53
-    if-eqz v4, :cond_0
-
     .line 54
+    move-result-object p1
+
     .line 55
-    invoke-interface {v4}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
+    invoke-static {p1}, Lorg/levimc/launcher/util/InstanceBackupManager;->firstNonEmpty([Ljava/lang/String;)Ljava/lang/String;
 
     .line 56
     .line 57
     .line 58
-    :cond_0
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/util/InstanceBackupManager;->recoverRestoredPackages(Ljava/io/File;)V
+    move-result-object p1
 
     .line 59
-    .line 60
-    .line 61
-    iget-object p1, p2, Lorg/levimc/launcher/util/InstanceBackupManager$BackupManifest;->instanceName:Ljava/lang/String;
-
-    .line 62
-    .line 63
-    filled-new-array {p1, v1}, [Ljava/lang/String;
-
-    .line 64
-    .line 65
-    .line 66
-    move-result-object p1
-
-    .line 67
-    invoke-static {p1}, Lorg/levimc/launcher/util/InstanceBackupManager;->firstNonEmpty([Ljava/lang/String;)Ljava/lang/String;
-
-    .line 68
-    .line 69
-    .line 70
-    move-result-object p1
-
-    .line 71
     return-object p1
 
-    .line 72
-    :catchall_0
-    move-exception p1
-
-    .line 73
-    if-eqz v4, :cond_1
-
-    .line 74
-    .line 75
-    :try_start_2
-    invoke-interface {v4}, Lorg/levimc/launcher/core/packages/PackageService$Held;->close()V
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
-
-    .line 76
-    .line 77
-    .line 78
-    goto :goto_0
-
-    .line 79
-    :catchall_1
-    move-exception p2
-
-    .line 80
-    invoke-virtual {p1, p2}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
-
-    .line 81
-    .line 82
-    .line 83
-    :cond_1
-    :goto_0
-    throw p1
-
-    .line 84
+    .line 60
     :catch_0
     new-instance p1, Ljava/io/IOException;
 
-    .line 85
-    .line 86
+    .line 61
+    .line 62
     const-string p2, "Minecraft is not installed"
 
-    .line 87
-    .line 88
+    .line 63
+    .line 64
     invoke-direct {p1, p2}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
 
-    .line 89
-    .line 90
-    .line 91
+    .line 65
+    .line 66
+    .line 67
     throw p1
 .end method
 
 .method private static sanitizeFileName(Ljava/lang/String;)Ljava/lang/String;
-    .locals 4
+    .locals 5
 
     .line 1
     const-string v0, "instance"
@@ -8228,36 +7866,47 @@
 
     .line 38
     .line 39
-    const/4 v2, 0x0
+    invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     .line 40
-    invoke-static {v3, v2, p0}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
-
     .line 41
     .line 42
+    move-result v2
+
     .line 43
-    move-result-object p0
+    sub-int/2addr v2, v3
 
     .line 44
-    goto :goto_1
+    const/4 v4, 0x0
 
     .line 45
-    :cond_1
-    invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z
+    invoke-virtual {p0, v4, v2}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     .line 46
     .line 47
     .line 48
-    move-result v1
+    move-result-object p0
 
     .line 49
-    if-eqz v1, :cond_2
+    goto :goto_1
 
     .line 50
+    :cond_1
+    invoke-virtual {p0}, Ljava/lang/String;->isEmpty()Z
+
     .line 51
+    .line 52
+    .line 53
+    move-result v1
+
+    .line 54
+    if-eqz v1, :cond_2
+
+    .line 55
+    .line 56
     return-object v0
 
-    .line 52
+    .line 57
     :cond_2
     return-object p0
 .end method
@@ -8467,7 +8116,7 @@
 
     .line 24
     .line 25
-    invoke-static {v0, p1, v1}, Lcom/google/android/gms/internal/measurement/x;->o(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p1, v1}, Lcom/google/android/gms/internal/measurement/gi;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 26
     .line 27
@@ -8537,7 +8186,7 @@
 
     .line 2
     .line 3
-    invoke-virtual {v0, p0}, Lcom/google/gson/Gson;->j(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v0, p0}, Lcom/google/gson/Gson;->i(Ljava/lang/Object;)Ljava/lang/String;
 
     .line 4
     .line 5
@@ -9749,7 +9398,7 @@
 
     .line 4
     .line 5
-    const/16 v2, 0x12
+    const/16 v2, 0xf
 
     .line 6
     .line 7
@@ -9978,7 +9627,7 @@
 
     .line 4
     .line 5
-    const/16 v2, 0x13
+    const/16 v2, 0x10
 
     .line 6
     .line 7

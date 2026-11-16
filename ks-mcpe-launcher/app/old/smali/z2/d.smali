@@ -1,62 +1,23 @@
 .class public final Lz2/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lcom/bumptech/glide/load/data/d;
-
-
-# static fields
-.field public static final Z:[Ljava/lang/String;
+.implements Ly2/s;
 
 
 # instance fields
-.field public volatile X:Z
+.field public final a:Landroid/content/Context;
 
-.field public volatile Y:Lcom/bumptech/glide/load/data/d;
+.field public final b:Ly2/s;
 
-.field public final c:Landroid/content/Context;
+.field public final c:Ly2/s;
 
-.field public final d:Ly2/r;
-
-.field public final h:Ly2/r;
-
-.field public final p:Landroid/net/Uri;
-
-.field public final q:I
-
-.field public final w:I
-
-.field public final x:Ls2/h;
-
-.field public final y:Ljava/lang/Class;
+.field public final d:Ljava/lang/Class;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .line 1
-    const-string v0, "_data"
-
-    .line 2
-    .line 3
-    filled-new-array {v0}, [Ljava/lang/String;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object v0
-
-    .line 7
-    sput-object v0, Lz2/d;->Z:[Ljava/lang/String;
-
-    .line 8
-    .line 9
-    return-void
-.end method
-
-.method public constructor <init>(Landroid/content/Context;Ly2/r;Ly2/r;Landroid/net/Uri;IILs2/h;Ljava/lang/Class;)V
+.method public constructor <init>(Landroid/content/Context;Ly2/s;Ly2/s;Ljava/lang/Class;)V
     .locals 0
 
     .line 1
@@ -73,587 +34,134 @@
     move-result-object p1
 
     .line 8
-    iput-object p1, p0, Lz2/d;->c:Landroid/content/Context;
+    iput-object p1, p0, Lz2/d;->a:Landroid/content/Context;
 
     .line 9
     .line 10
-    iput-object p2, p0, Lz2/d;->d:Ly2/r;
+    iput-object p2, p0, Lz2/d;->b:Ly2/s;
 
     .line 11
     .line 12
-    iput-object p3, p0, Lz2/d;->h:Ly2/r;
+    iput-object p3, p0, Lz2/d;->c:Ly2/s;
 
     .line 13
     .line 14
-    iput-object p4, p0, Lz2/d;->p:Landroid/net/Uri;
+    iput-object p4, p0, Lz2/d;->d:Ljava/lang/Class;
 
     .line 15
     .line 16
-    iput p5, p0, Lz2/d;->q:I
-
-    .line 17
-    .line 18
-    iput p6, p0, Lz2/d;->w:I
-
-    .line 19
-    .line 20
-    iput-object p7, p0, Lz2/d;->x:Ls2/h;
-
-    .line 21
-    .line 22
-    iput-object p8, p0, Lz2/d;->y:Ljava/lang/Class;
-
-    .line 23
-    .line 24
     return-void
 .end method
 
 
 # virtual methods
-.method public final a()Ljava/lang/Class;
-    .locals 1
+.method public final a(Ljava/lang/Object;IILs2/h;)Ly2/r;
+    .locals 10
 
     .line 1
-    iget-object v0, p0, Lz2/d;->y:Ljava/lang/Class;
+    move-object v4, p1
 
     .line 2
-    .line 3
-    return-object v0
-.end method
+    check-cast v4, Landroid/net/Uri;
 
-.method public final b()V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lz2/d;->Y:Lcom/bumptech/glide/load/data/d;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-interface {v0}, Lcom/bumptech/glide/load/data/d;->b()V
-
-    .line 6
-    .line 7
-    .line 8
-    :cond_0
-    return-void
-.end method
-
-.method public final c()Lcom/bumptech/glide/load/data/d;
-    .locals 13
-
-    .line 1
-    invoke-static {}, Lz2/c;->b()Z
-
-    .line 2
     .line 3
     .line 4
-    move-result v0
+    new-instance p1, Ly2/r;
 
     .line 5
-    const/4 v1, 0x0
-
     .line 6
-    iget-object v2, p0, Lz2/d;->c:Landroid/content/Context;
+    new-instance v9, Ln3/b;
 
     .line 7
     .line 8
-    iget-object v3, p0, Lz2/d;->x:Ls2/h;
+    invoke-direct {v9, v4}, Ln3/b;-><init>(Ljava/lang/Object;)V
 
     .line 9
     .line 10
-    iget v4, p0, Lz2/d;->w:I
-
     .line 11
+    new-instance v0, Lz2/c;
+
     .line 12
-    iget v5, p0, Lz2/d;->q:I
-
     .line 13
+    iget-object v3, p0, Lz2/d;->c:Ly2/s;
+
     .line 14
-    if-eqz v0, :cond_3
-
     .line 15
+    iget-object v8, p0, Lz2/d;->d:Ljava/lang/Class;
+
     .line 16
-    iget-object v7, p0, Lz2/d;->p:Landroid/net/Uri;
-
     .line 17
+    iget-object v1, p0, Lz2/d;->a:Landroid/content/Context;
+
     .line 18
-    const-string v0, "Failed to media store entry for: "
-
     .line 19
-    .line 20
-    const-string v12, "File path was empty in media store for: "
+    iget-object v2, p0, Lz2/d;->b:Ly2/s;
 
+    .line 20
     .line 21
+    move v5, p2
+
     .line 22
-    :try_start_0
-    invoke-virtual {v2}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
+    move v6, p3
 
     .line 23
+    move-object v7, p4
+
     .line 24
+    invoke-direct/range {v0 .. v8}, Lz2/c;-><init>(Landroid/content/Context;Ly2/s;Ly2/s;Landroid/net/Uri;IILs2/h;Ljava/lang/Class;)V
+
     .line 25
-    move-result-object v6
-
     .line 26
-    sget-object v8, Lz2/d;->Z:[Ljava/lang/String;
-
     .line 27
+    invoke-direct {p1, v9, v0}, Ly2/r;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
+
     .line 28
-    const/4 v10, 0x0
-
     .line 29
-    const/4 v11, 0x0
-
     .line 30
-    const/4 v9, 0x0
-
-    .line 31
-    invoke-virtual/range {v6 .. v11}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-
-    .line 32
-    .line 33
-    .line 34
-    move-result-object v2
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_1
-
-    .line 35
-    if-eqz v2, :cond_1
-
-    .line 36
-    .line 37
-    :try_start_1
-    invoke-interface {v2}, Landroid/database/Cursor;->moveToFirst()Z
-
-    .line 38
-    .line 39
-    .line 40
-    move-result v6
-
-    .line 41
-    if-eqz v6, :cond_1
-
-    .line 42
-    .line 43
-    const-string v0, "_data"
-
-    .line 44
-    .line 45
-    invoke-interface {v2, v0}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
-
-    .line 46
-    .line 47
-    .line 48
-    move-result v0
-
-    .line 49
-    invoke-interface {v2, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
-
-    .line 50
-    .line 51
-    .line 52
-    move-result-object v0
-
-    .line 53
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    .line 54
-    .line 55
-    .line 56
-    move-result v6
-
-    .line 57
-    if-nez v6, :cond_0
-
-    .line 58
-    .line 59
-    new-instance v6, Ljava/io/File;
-
-    .line 60
-    .line 61
-    invoke-direct {v6, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
-    .line 62
-    .line 63
-    .line 64
-    invoke-interface {v2}, Landroid/database/Cursor;->close()V
-
-    .line 65
-    .line 66
-    .line 67
-    iget-object v0, p0, Lz2/d;->d:Ly2/r;
-
-    .line 68
-    .line 69
-    invoke-interface {v0, v6, v5, v4, v3}, Ly2/r;->a(Ljava/lang/Object;IILs2/h;)Ly2/q;
-
-    .line 70
-    .line 71
-    .line 72
-    move-result-object v0
-
-    .line 73
-    goto :goto_1
-
-    .line 74
-    :catchall_0
-    move-exception v0
-
-    .line 75
-    move-object v1, v2
-
-    .line 76
-    goto :goto_0
-
-    .line 77
-    :cond_0
-    :try_start_2
-    new-instance v0, Ljava/io/FileNotFoundException;
-
-    .line 78
-    .line 79
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    .line 80
-    .line 81
-    invoke-direct {v1, v12}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 82
-    .line 83
-    .line 84
-    invoke-virtual {v1, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 85
-    .line 86
-    .line 87
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 88
-    .line 89
-    .line 90
-    move-result-object v1
-
-    .line 91
-    invoke-direct {v0, v1}, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
-
-    .line 92
-    .line 93
-    .line 94
-    throw v0
-
-    .line 95
-    :cond_1
-    new-instance v1, Ljava/io/FileNotFoundException;
-
-    .line 96
-    .line 97
-    new-instance v3, Ljava/lang/StringBuilder;
-
-    .line 98
-    .line 99
-    invoke-direct {v3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 100
-    .line 101
-    .line 102
-    invoke-virtual {v3, v7}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 103
-    .line 104
-    .line 105
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 106
-    .line 107
-    .line 108
-    move-result-object v0
-
-    .line 109
-    invoke-direct {v1, v0}, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
-
-    .line 110
-    .line 111
-    .line 112
-    throw v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_0
-
-    .line 113
-    :catchall_1
-    move-exception v0
-
-    .line 114
-    :goto_0
-    if-eqz v1, :cond_2
-
-    .line 115
-    .line 116
-    invoke-interface {v1}, Landroid/database/Cursor;->close()V
-
-    .line 117
-    .line 118
-    .line 119
-    :cond_2
-    throw v0
-
-    .line 120
-    :cond_3
-    iget-object v0, p0, Lz2/d;->p:Landroid/net/Uri;
-
-    .line 121
-    .line 122
-    invoke-static {v0}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
-
-    .line 123
-    .line 124
-    .line 125
-    move-result v6
-
-    .line 126
-    iget-object v7, p0, Lz2/d;->h:Ly2/r;
-
-    .line 127
-    .line 128
-    if-eqz v6, :cond_4
-
-    .line 129
-    .line 130
-    invoke-virtual {v0}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
-
-    .line 131
-    .line 132
-    .line 133
-    move-result-object v6
-
-    .line 134
-    const-string v8, "picker"
-
-    .line 135
-    .line 136
-    invoke-interface {v6, v8}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
-
-    .line 137
-    .line 138
-    .line 139
-    move-result v6
-
-    .line 140
-    if-eqz v6, :cond_4
-
-    .line 141
-    .line 142
-    invoke-interface {v7, v0, v5, v4, v3}, Ly2/r;->a(Ljava/lang/Object;IILs2/h;)Ly2/q;
-
-    .line 143
-    .line 144
-    .line 145
-    move-result-object v0
-
-    .line 146
-    goto :goto_1
-
-    .line 147
-    :cond_4
-    const-string v6, "android.permission.ACCESS_MEDIA_LOCATION"
-
-    .line 148
-    .line 149
-    invoke-virtual {v2, v6}, Landroid/content/Context;->checkSelfPermission(Ljava/lang/String;)I
-
-    .line 150
-    .line 151
-    .line 152
-    move-result v2
-
-    .line 153
-    if-nez v2, :cond_5
-
-    .line 154
-    .line 155
-    invoke-static {v0}, Lz2/c;->a(Landroid/net/Uri;)Landroid/net/Uri;
-
-    .line 156
-    .line 157
-    .line 158
-    move-result-object v0
-
-    .line 159
-    :cond_5
-    invoke-interface {v7, v0, v5, v4, v3}, Ly2/r;->a(Ljava/lang/Object;IILs2/h;)Ly2/q;
-
-    .line 160
-    .line 161
-    .line 162
-    move-result-object v0
-
-    .line 163
-    :goto_1
-    if-eqz v0, :cond_6
-
-    .line 164
-    .line 165
-    iget-object v0, v0, Ly2/q;->c:Lcom/bumptech/glide/load/data/d;
-
-    .line 166
-    .line 167
-    return-object v0
-
-    .line 168
-    :cond_6
-    return-object v1
+    return-object p1
 .end method
 
-.method public final cancel()V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    iput-boolean v0, p0, Lz2/d;->X:Z
-
-    .line 3
-    .line 4
-    iget-object v0, p0, Lz2/d;->Y:Lcom/bumptech/glide/load/data/d;
-
-    .line 5
-    .line 6
-    if-eqz v0, :cond_0
-
-    .line 7
-    .line 8
-    invoke-interface {v0}, Lcom/bumptech/glide/load/data/d;->cancel()V
-
-    .line 9
-    .line 10
-    .line 11
-    :cond_0
-    return-void
-.end method
-
-.method public final d()I
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
-.end method
-
-.method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
+.method public final b(Ljava/lang/Object;)Z
     .locals 2
 
     .line 1
-    const-string v0, "Failed to build fetcher for: "
+    check-cast p1, Landroid/net/Uri;
 
     .line 2
     .line 3
-    :try_start_0
-    invoke-virtual {p0}, Lz2/d;->c()Lcom/bumptech/glide/load/data/d;
+    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
 
     .line 4
     .line 5
-    .line 6
-    move-result-object v1
+    const/16 v1, 0x1d
 
+    .line 6
     .line 7
-    if-nez v1, :cond_0
+    if-lt v0, v1, :cond_0
 
     .line 8
     .line 9
-    new-instance p1, Ljava/lang/IllegalArgumentException;
+    invoke-static {p1}, Landroidx/room/g0;->n(Landroid/net/Uri;)Z
 
     .line 10
     .line 11
-    new-instance v1, Ljava/lang/StringBuilder;
-
     .line 12
+    move-result p1
+
     .line 13
-    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    if-eqz p1, :cond_0
 
     .line 14
     .line 15
+    const/4 p1, 0x1
+
     .line 16
-    iget-object v0, p0, Lz2/d;->p:Landroid/net/Uri;
+    return p1
 
     .line 17
-    .line 18
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 19
-    .line 20
-    .line 21
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object v0
-
-    .line 25
-    invoke-direct {p1, v0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 26
-    .line 27
-    .line 28
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
-
-    .line 29
-    .line 30
-    .line 31
-    return-void
-
-    .line 32
-    :catch_0
-    move-exception p1
-
-    .line 33
-    goto :goto_0
-
-    .line 34
     :cond_0
-    iput-object v1, p0, Lz2/d;->Y:Lcom/bumptech/glide/load/data/d;
+    const/4 p1, 0x0
 
-    .line 35
-    .line 36
-    iget-boolean v0, p0, Lz2/d;->X:Z
-
-    .line 37
-    .line 38
-    if-eqz v0, :cond_1
-
-    .line 39
-    .line 40
-    invoke-virtual {p0}, Lz2/d;->cancel()V
-
-    .line 41
-    .line 42
-    .line 43
-    return-void
-
-    .line 44
-    :cond_1
-    invoke-interface {v1, p1, p2}, Lcom/bumptech/glide/load/data/d;->e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
-    :try_end_0
-    .catch Ljava/io/FileNotFoundException; {:try_start_0 .. :try_end_0} :catch_0
-
-    .line 45
-    .line 46
-    .line 47
-    return-void
-
-    .line 48
-    :goto_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
-
-    .line 49
-    .line 50
-    .line 51
-    return-void
+    .line 18
+    return p1
 .end method

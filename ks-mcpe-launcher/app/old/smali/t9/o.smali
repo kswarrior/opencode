@@ -1,32 +1,24 @@
 .class public final Lt9/o;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public p:Lt9/p;
-
-.field public q:Ljava/lang/Object;
-
-.field public synthetic w:Ljava/lang/Object;
-
-.field public final synthetic x:Lt9/p;
-
-.field public y:I
+.field public final a:Lt9/j;
 
 
 # direct methods
-.method public constructor <init>(Lt9/p;Lkotlin/coroutines/Continuation;)V
+.method public constructor <init>(Lt9/j;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lt9/o;->x:Lt9/p;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
-
     .line 4
+    iput-object p1, p0, Lt9/o;->a:Lt9/j;
+
     .line 5
     .line 6
     return-void
@@ -34,43 +26,48 @@
 
 
 # virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+.method public final toString()Ljava/lang/String;
+    .locals 2
 
     .line 1
-    iput-object p1, p0, Lt9/o;->w:Ljava/lang/Object;
+    new-instance v0, Ljava/lang/StringBuilder;
 
     .line 2
     .line 3
-    iget p1, p0, Lt9/o;->y:I
+    const-string v1, "Removed["
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 6
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lt9/o;->y:I
+    iget-object v1, p0, Lt9/o;->a:Lt9/j;
 
     .line 9
     .line 10
-    iget-object p1, p0, Lt9/o;->x:Lt9/p;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     .line 11
     .line 12
-    const/4 v0, 0x0
-
     .line 13
-    invoke-virtual {p1, v0, p0}, Lt9/p;->i(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;
+    const/16 v1, 0x5d
 
     .line 14
     .line 15
-    .line 16
-    move-result-object p1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
+    .line 16
     .line 17
-    return-object p1
+    .line 18
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 19
+    .line 20
+    .line 21
+    move-result-object v0
+
+    .line 22
+    return-object v0
 .end method

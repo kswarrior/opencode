@@ -1,6 +1,6 @@
 .class public final Lq2/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/io/Closeable;
@@ -13,9 +13,9 @@
 
 .field public h:[B
 
-.field public p:I
-
 .field public q:I
+
+.field public w:I
 
 
 # direct methods
@@ -117,11 +117,11 @@
 
     .line 7
     .line 8
-    iget v2, p0, Lq2/f;->p:I
+    iget v2, p0, Lq2/f;->q:I
 
     .line 9
     .line 10
-    iget v3, p0, Lq2/f;->q:I
+    iget v3, p0, Lq2/f;->w:I
 
     .line 11
     .line 12
@@ -154,11 +154,11 @@
 
     .line 24
     .line 25
-    iput v4, p0, Lq2/f;->p:I
+    iput v4, p0, Lq2/f;->q:I
 
     .line 26
     .line 27
-    iput v1, p0, Lq2/f;->q:I
+    iput v1, p0, Lq2/f;->w:I
 
     .line 28
     .line 29
@@ -180,12 +180,12 @@
     .line 36
     :cond_1
     :goto_0
-    iget v1, p0, Lq2/f;->p:I
+    iget v1, p0, Lq2/f;->q:I
 
     .line 37
     .line 38
     :goto_1
-    iget v2, p0, Lq2/f;->q:I
+    iget v2, p0, Lq2/f;->w:I
 
     .line 39
     .line 40
@@ -209,7 +209,7 @@
 
     .line 49
     .line 50
-    iget v3, p0, Lq2/f;->p:I
+    iget v3, p0, Lq2/f;->q:I
 
     .line 51
     .line 52
@@ -276,7 +276,7 @@
 
     .line 79
     .line 80
-    iput v1, p0, Lq2/f;->p:I
+    iput v1, p0, Lq2/f;->q:I
 
     .line 81
     .line 82
@@ -299,11 +299,11 @@
 
     .line 88
     .line 89
-    iget v2, p0, Lq2/f;->q:I
+    iget v2, p0, Lq2/f;->w:I
 
     .line 90
     .line 91
-    iget v6, p0, Lq2/f;->p:I
+    iget v6, p0, Lq2/f;->q:I
 
     .line 92
     .line 93
@@ -324,11 +324,11 @@
 
     .line 100
     .line 101
-    iget v6, p0, Lq2/f;->p:I
+    iget v6, p0, Lq2/f;->q:I
 
     .line 102
     .line 103
-    iget v7, p0, Lq2/f;->q:I
+    iget v7, p0, Lq2/f;->w:I
 
     .line 104
     .line 105
@@ -340,7 +340,7 @@
     .line 107
     .line 108
     .line 109
-    iput v5, p0, Lq2/f;->q:I
+    iput v5, p0, Lq2/f;->w:I
 
     .line 110
     .line 111
@@ -367,11 +367,11 @@
 
     .line 121
     .line 122
-    iput v4, p0, Lq2/f;->p:I
+    iput v4, p0, Lq2/f;->q:I
 
     .line 123
     .line 124
-    iput v2, p0, Lq2/f;->q:I
+    iput v2, p0, Lq2/f;->w:I
 
     .line 125
     .line 126
@@ -379,7 +379,7 @@
 
     .line 127
     :goto_3
-    iget v6, p0, Lq2/f;->q:I
+    iget v6, p0, Lq2/f;->w:I
 
     .line 128
     .line 129
@@ -399,7 +399,7 @@
 
     .line 136
     .line 137
-    iget v3, p0, Lq2/f;->p:I
+    iget v3, p0, Lq2/f;->q:I
 
     .line 138
     .line 139
@@ -421,7 +421,7 @@
 
     .line 147
     .line 148
-    iput v2, p0, Lq2/f;->p:I
+    iput v2, p0, Lq2/f;->q:I
 
     .line 149
     .line 150

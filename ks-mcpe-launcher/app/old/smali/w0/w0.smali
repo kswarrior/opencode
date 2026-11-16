@@ -1,73 +1,34 @@
 .class public final Lw0/w0;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lw0/e1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public p:Lcom/google/firebase/messaging/v;
-
-.field public q:Ly9/a;
-
-.field public synthetic w:Ljava/lang/Object;
-
-.field public final synthetic x:Lcom/google/firebase/messaging/v;
-
-.field public y:I
+.field public final b:Ljava/lang/Throwable;
 
 
 # direct methods
-.method public constructor <init>(Lcom/google/firebase/messaging/v;Ly8/c;)V
-    .locals 0
-
-    .line 1
-    iput-object p1, p0, Lw0/w0;->x:Lcom/google/firebase/messaging/v;
-
-    .line 2
-    .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+.method public constructor <init>(ILjava/lang/Throwable;)V
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lw0/w0;->w:Ljava/lang/Object;
+    const-string v0, "readException"
 
     .line 2
     .line 3
-    iget p1, p0, Lw0/w0;->y:I
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
-
     .line 6
+    invoke-direct {p0, p1}, Lw0/e1;-><init>(I)V
+
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lw0/w0;->y:I
-
     .line 9
+    iput-object p2, p0, Lw0/w0;->b:Ljava/lang/Throwable;
+
     .line 10
-    iget-object p1, p0, Lw0/w0;->x:Lcom/google/firebase/messaging/v;
-
     .line 11
-    .line 12
-    invoke-virtual {p1, p0}, Lcom/google/firebase/messaging/v;->I(Ly8/c;)Ljava/lang/Object;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object p1
-
-    .line 16
-    return-object p1
+    return-void
 .end method

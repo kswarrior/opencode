@@ -1,6 +1,6 @@
 .class public final Lm0/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroidx/core/util/Consumer;
@@ -201,11 +201,11 @@
 
     .line 70
     .line 71
-    check-cast v0, Lk6/g0;
+    check-cast v0, Li6/i0;
 
     .line 72
     .line 73
-    invoke-virtual {v0, p1}, Lk6/g0;->D(Lm0/f;)V
+    invoke-virtual {v0, p1}, Li6/i0;->o(Lm0/f;)V
 
     .line 74
     .line 75

@@ -1,86 +1,86 @@
 .class public Lcom/microsoft/xbox/xle/anim/XLEAnimationDefinition;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public delayMs:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public dimen:Ljava/lang/String;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public durationMs:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public easing:Lcom/microsoft/xbox/toolkit/anim/EasingMode;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public from:F
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public fromXType:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public fromYType:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public parameter:F
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public pivotX:F
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public pivotY:F
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public property:Lcom/microsoft/xbox/toolkit/anim/AnimationProperty;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public scaleRelativeToSelf:Z
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public to:F
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public toXType:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public toYType:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public type:Lcom/microsoft/xbox/toolkit/anim/AnimationFunctionType;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 

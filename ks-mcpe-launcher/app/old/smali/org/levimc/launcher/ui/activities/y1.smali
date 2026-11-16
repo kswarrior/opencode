@@ -1,121 +1,122 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/y1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/webkit/ValueCallback;
+.implements Lorg/levimc/launcher/ui/adapter/ModsAdapter$OnModClickListener;
+.implements Lorg/levimc/launcher/ui/adapter/ModsAdapter$OnModEnableChangeListener;
+.implements Lorg/levimc/launcher/ui/adapter/ModsAdapter$OnModReorderListener;
+.implements Landroidx/activity/result/ActivityResultCallback;
+.implements Landroidx/lifecycle/Observer;
 
 
 # instance fields
-.field public final synthetic a:I
-
-.field public final synthetic b:Ljava/lang/Object;
-
-.field public final synthetic c:Ljava/lang/Object;
+.field public final synthetic c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/ui/activities/y1;->a:I
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/y1;->b:Ljava/lang/Object;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Ljava/lang/Object;
-
     .line 6
-    .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 8
-    .line 9
-    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final onReceiveValue(Ljava/lang/Object;)V
-    .locals 2
+.method public a(Ljava/lang/Object;)V
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/y1;->a:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    check-cast p1, Ljava/util/List;
+
+    .line 4
+    .line 5
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->A(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Ljava/util/List;)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public c(Ljava/lang/Object;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+
+    .line 2
+    .line 3
+    check-cast p1, Landroidx/activity/result/ActivityResult;
+
+    .line 4
+    .line 5
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->F(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Landroidx/activity/result/ActivityResult;)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public onEnableChanged(Lorg/levimc/launcher/core/mods/Mod;Z)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+
+    .line 2
+    .line 3
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->D(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Lorg/levimc/launcher/core/mods/Mod;Z)V
 
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->b:Ljava/lang/Object;
-
-    .line 7
-    .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;
-
-    .line 9
-    .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Ljava/lang/Object;
-
-    .line 11
-    .line 12
-    check-cast v1, Landroid/webkit/CookieManager;
-
-    .line 13
-    .line 14
-    check-cast p1, Ljava/lang/Boolean;
-
-    .line 15
-    .line 16
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;->x(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity;Landroid/webkit/CookieManager;Ljava/lang/Boolean;)V
-
-    .line 17
-    .line 18
-    .line 19
     return-void
+.end method
 
-    .line 20
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->b:Ljava/lang/Object;
+.method public onModClick(Lorg/levimc/launcher/core/mods/Mod;ILandroid/view/View;)V
+    .locals 1
 
-    .line 21
-    .line 22
-    check-cast v0, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity$2;
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
 
-    .line 23
-    .line 24
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Ljava/lang/Object;
+    .line 2
+    .line 3
+    invoke-static {v0, p1, p2, p3}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->E(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Lorg/levimc/launcher/core/mods/Mod;ILandroid/view/View;)V
 
-    .line 25
-    .line 26
-    check-cast v1, Ljava/lang/String;
-
-    .line 27
-    .line 28
-    check-cast p1, Ljava/lang/String;
-
-    .line 29
-    .line 30
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/GoogleLoginActivity$2;->a(Lorg/levimc/launcher/ui/activities/GoogleLoginActivity$2;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 31
-    .line 32
-    .line 33
+    .line 4
+    .line 5
+    .line 6
     return-void
+.end method
 
-    .line 34
-    nop
+.method public onModsReordered(Ljava/util/List;)V
+    .locals 1
 
-    .line 35
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/y1;->c:Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;
+
+    .line 2
+    .line 3
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;->z(Lorg/levimc/launcher/ui/activities/ModsFullscreenActivity;Ljava/util/List;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
 .end method

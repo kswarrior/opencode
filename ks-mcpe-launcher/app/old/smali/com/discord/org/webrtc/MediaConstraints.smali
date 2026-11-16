@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/MediaConstraints;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -267,21 +267,45 @@
     move-result-object v1
 
     .line 13
-    const-string v2, "mandatory: "
+    new-instance v2, Ljava/lang/StringBuilder;
 
     .line 14
     .line 15
-    const-string v3, ", optional: "
+    const-string v3, "mandatory: "
 
     .line 16
     .line 17
-    invoke-static {v2, v0, v3, v1}, Ls1/a;->p(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 18
     .line 19
     .line 20
-    move-result-object v0
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 21
+    .line 22
+    .line 23
+    const-string v0, ", optional: "
+
+    .line 24
+    .line 25
+    invoke-virtual {v2, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 26
+    .line 27
+    .line 28
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 29
+    .line 30
+    .line 31
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 32
+    .line 33
+    .line 34
+    move-result-object v0
+
+    .line 35
     return-object v0
 .end method

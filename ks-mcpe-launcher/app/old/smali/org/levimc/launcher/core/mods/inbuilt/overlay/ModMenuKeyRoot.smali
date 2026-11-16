@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;
 .super Landroid/widget/FrameLayout;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -34,74 +34,57 @@
     .locals 1
 
     .line 1
-    invoke-static {p0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs;->dispatchKeyEvent(Landroid/view/View;Landroid/view/KeyEvent;)Z
+    invoke-virtual {p0}, Landroid/view/View;->findFocus()Landroid/view/View;
 
     .line 2
     .line 3
     .line 4
-    move-result v0
+    move-result-object v0
 
     .line 5
-    if-eqz v0, :cond_0
+    instance-of v0, v0, Landroid/widget/EditText;
 
     .line 6
     .line 7
-    goto :goto_0
+    if-nez v0, :cond_0
 
     .line 8
-    :cond_0
-    invoke-virtual {p0}, Landroid/view/View;->findFocus()Landroid/view/View;
-
     .line 9
-    .line 10
-    .line 11
-    move-result-object v0
-
-    .line 12
-    instance-of v0, v0, Landroid/widget/EditText;
-
-    .line 13
-    .line 14
-    if-nez v0, :cond_1
-
-    .line 15
-    .line 16
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;->shortcutHandler:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot$ShortcutHandler;
 
-    .line 17
-    .line 18
-    if-eqz v0, :cond_1
+    .line 10
+    .line 11
+    if-eqz v0, :cond_0
 
-    .line 19
-    .line 20
+    .line 12
+    .line 13
     invoke-interface {v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot$ShortcutHandler;->handle(Landroid/view/KeyEvent;)Z
 
-    .line 21
-    .line 22
-    .line 23
+    .line 14
+    .line 15
+    .line 16
     move-result v0
 
-    .line 24
-    if-eqz v0, :cond_1
+    .line 17
+    if-eqz v0, :cond_0
 
-    .line 25
-    .line 26
-    :goto_0
+    .line 18
+    .line 19
     const/4 p1, 0x1
 
-    .line 27
+    .line 20
     return p1
 
-    .line 28
-    :cond_1
+    .line 21
+    :cond_0
     invoke-super {p0, p1}, Landroid/view/View;->dispatchKeyEvent(Landroid/view/KeyEvent;)Z
 
-    .line 29
-    .line 30
-    .line 31
+    .line 22
+    .line 23
+    .line 24
     move-result p1
 
-    .line 32
+    .line 25
     return p1
 .end method
 

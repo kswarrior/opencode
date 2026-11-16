@@ -1,6 +1,9 @@
 .class public final Ls4/v;
 .super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Ljava/lang/Iterable;
 
 
 # static fields
@@ -16,15 +19,7 @@
 
 
 # instance fields
-.field public final c:Ljava/lang/String;
-
-.field public final d:Ls4/u;
-
-.field public final h:Ljava/lang/String;
-
-.field public final p:J
-
-.field public final q:J
+.field public final c:Landroid/os/Bundle;
 
 
 # direct methods
@@ -36,7 +31,7 @@
 
     .line 2
     .line 3
-    const/16 v1, 0x14
+    const/16 v1, 0x13
 
     .line 4
     .line 5
@@ -52,67 +47,142 @@
     return-void
 .end method
 
-.method public constructor <init>(Ljava/lang/String;Ls4/u;Ljava/lang/String;JJ)V
+.method public constructor <init>(Landroid/os/Bundle;)V
     .locals 0
-
-    .line 6
-    invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
-
-    iput-object p1, p0, Ls4/v;->c:Ljava/lang/String;
-
-    iput-object p2, p0, Ls4/v;->d:Ls4/u;
-
-    iput-object p3, p0, Ls4/v;->h:Ljava/lang/String;
-
-    iput-wide p4, p0, Ls4/v;->p:J
-
-    iput-wide p6, p0, Ls4/v;->q:J
-
-    return-void
-.end method
-
-.method public constructor <init>(Ls4/v;JJ)V
-    .locals 1
 
     .line 1
     invoke-direct {p0}, Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;-><init>()V
 
     .line 2
-    invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 3
-    iget-object v0, p1, Ls4/v;->c:Ljava/lang/String;
-
-    iput-object v0, p0, Ls4/v;->c:Ljava/lang/String;
-
     .line 4
-    iget-object v0, p1, Ls4/v;->d:Ls4/u;
-
-    iput-object v0, p0, Ls4/v;->d:Ls4/u;
+    iput-object p1, p0, Ls4/v;->c:Landroid/os/Bundle;
 
     .line 5
-    iget-object p1, p1, Ls4/v;->h:Ljava/lang/String;
-
-    iput-object p1, p0, Ls4/v;->h:Ljava/lang/String;
-
-    iput-wide p2, p0, Ls4/v;->p:J
-
-    iput-wide p4, p0, Ls4/v;->q:J
-
+    .line 6
     return-void
 .end method
 
 
 # virtual methods
-.method public final toString()Ljava/lang/String;
-    .locals 6
+.method public final B0(Ljava/lang/String;)Ljava/lang/Object;
+    .locals 1
 
     .line 1
-    iget-object v0, p0, Ls4/v;->d:Ls4/u;
+    iget-object v0, p0, Ls4/v;->c:Landroid/os/Bundle;
 
     .line 2
     .line 3
-    invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Landroid/os/BaseBundle;->get(Ljava/lang/String;)Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p1
+
+    .line 7
+    return-object p1
+.end method
+
+.method public final C0()Ljava/lang/Double;
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Ls4/v;->c:Landroid/os/Bundle;
+
+    .line 2
+    .line 3
+    const-string v1, "value"
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, v1}, Landroid/os/BaseBundle;->getDouble(Ljava/lang/String;)D
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-wide v0
+
+    .line 9
+    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v0
+
+    .line 13
+    return-object v0
+.end method
+
+.method public final D0()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    const-string v0, "currency"
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Ls4/v;->c:Landroid/os/Bundle;
+
+    .line 4
+    .line 5
+    invoke-virtual {v1, v0}, Landroid/os/BaseBundle;->getString(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    return-object v0
+.end method
+
+.method public final E0()Landroid/os/Bundle;
+    .locals 2
+
+    .line 1
+    new-instance v0, Landroid/os/Bundle;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Ls4/v;->c:Landroid/os/Bundle;
+
+    .line 4
+    .line 5
+    invoke-direct {v0, v1}, Landroid/os/Bundle;-><init>(Landroid/os/Bundle;)V
+
+    .line 6
+    .line 7
+    .line 8
+    return-object v0
+.end method
+
+.method public final iterator()Ljava/util/Iterator;
+    .locals 1
+
+    .line 1
+    new-instance v0, Lga/a;
+
+    .line 2
+    .line 3
+    invoke-direct {v0, p0}, Lga/a;-><init>(Ls4/v;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-object v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls4/v;->c:Landroid/os/Bundle;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Landroid/os/Bundle;->toString()Ljava/lang/String;
 
     .line 4
     .line 5
@@ -120,113 +190,44 @@
     move-result-object v0
 
     .line 7
-    iget-object v1, p0, Ls4/v;->h:Ljava/lang/String;
-
-    .line 8
-    .line 9
-    invoke-static {v1}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v2
-
-    .line 13
-    invoke-virtual {v2}, Ljava/lang/String;->length()I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v2
-
-    .line 17
-    iget-object v3, p0, Ls4/v;->c:Ljava/lang/String;
-
-    .line 18
-    .line 19
-    invoke-static {v3}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
-
-    .line 20
-    .line 21
-    .line 22
-    move-result-object v4
-
-    .line 23
-    invoke-virtual {v4}, Ljava/lang/String;->length()I
-
-    .line 24
-    .line 25
-    .line 26
-    move-result v4
-
-    .line 27
-    invoke-virtual {v0}, Ljava/lang/String;->length()I
-
-    .line 28
-    .line 29
-    .line 30
-    move-result v5
-
-    .line 31
-    add-int/lit8 v2, v2, 0xd
-
-    .line 32
-    .line 33
-    add-int/2addr v2, v4
-
-    .line 34
-    new-instance v4, Ljava/lang/StringBuilder;
-
-    .line 35
-    .line 36
-    add-int/lit8 v2, v2, 0x8
-
-    .line 37
-    .line 38
-    add-int/2addr v2, v5
-
-    .line 39
-    invoke-direct {v4, v2}, Ljava/lang/StringBuilder;-><init>(I)V
-
-    .line 40
-    .line 41
-    .line 42
-    const-string v2, "origin="
-
-    .line 43
-    .line 44
-    const-string v5, ",name="
-
-    .line 45
-    .line 46
-    invoke-static {v4, v2, v1, v5, v3}, Lu7/d;->g(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 47
-    .line 48
-    .line 49
-    const-string v1, ",params="
-
-    .line 50
-    .line 51
-    invoke-static {v4, v1, v0}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 52
-    .line 53
-    .line 54
-    move-result-object v0
-
-    .line 55
     return-object v0
 .end method
 
 .method public final writeToParcel(Landroid/os/Parcel;I)V
-    .locals 0
+    .locals 3
 
     .line 1
-    invoke-static {p0, p1, p2}, Landroidx/fragment/app/b;->a(Ls4/v;Landroid/os/Parcel;I)V
+    invoke-static {p1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->beginObjectHeader(Landroid/os/Parcel;)I
 
     .line 2
     .line 3
     .line 4
+    move-result p2
+
+    .line 5
+    invoke-virtual {p0}, Ls4/v;->E0()Landroid/os/Bundle;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    const/4 v1, 0x0
+
+    .line 10
+    const/4 v2, 0x2
+
+    .line 11
+    invoke-static {p1, v2, v0, v1}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->writeBundle(Landroid/os/Parcel;ILandroid/os/Bundle;Z)V
+
+    .line 12
+    .line 13
+    .line 14
+    invoke-static {p1, p2}, Lcom/google/android/gms/common/internal/safeparcel/SafeParcelWriter;->finishObjectHeader(Landroid/os/Parcel;I)V
+
+    .line 15
+    .line 16
+    .line 17
     return-void
 .end method

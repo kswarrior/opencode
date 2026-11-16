@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -63,7 +63,7 @@
 
     .line 12
     .line 13
-    sget-object p3, Lg8/l;->c:Lg8/l;
+    sget-object p3, Le8/l;->c:Le8/l;
 
     .line 14
     .line 15
@@ -403,7 +403,7 @@
 
 # virtual methods
 .method public label()Ljava/lang/String;
-    .locals 4
+    .locals 5
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;->schema:Lorg/levimc/launcher/core/mods/config/ModConfigSchema;
@@ -594,46 +594,57 @@
 
     .line 92
     .line 93
-    invoke-static {v1, v1, v3}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v3}, Ljava/lang/String;->length()I
 
     .line 94
     .line 95
     .line 96
-    move-result-object v1
+    move-result v4
 
     .line 97
-    filled-new-array {v1}, [Ljava/lang/Object;
+    sub-int/2addr v4, v1
 
     .line 98
+    invoke-virtual {v3, v1, v4}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
     .line 99
     .line 100
+    .line 101
     move-result-object v1
 
-    .line 101
-    invoke-virtual {v0, v2, v1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
     .line 102
+    filled-new-array {v1}, [Ljava/lang/Object;
+
     .line 103
     .line 104
-    move-result-object v0
-
     .line 105
-    return-object v0
+    move-result-object v1
 
     .line 106
-    :cond_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;->key:Ljava/lang/String;
+    invoke-virtual {v0, v2, v1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
 
     .line 107
     .line 108
-    invoke-static {v0}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;->formatKey(Ljava/lang/String;)Ljava/lang/String;
-
     .line 109
-    .line 110
-    .line 111
     move-result-object v0
 
+    .line 110
+    return-object v0
+
+    .line 111
+    :cond_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;->key:Ljava/lang/String;
+
     .line 112
+    .line 113
+    invoke-static {v0}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;->formatKey(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 114
+    .line 115
+    .line 116
+    move-result-object v0
+
+    .line 117
     return-object v0
 .end method
 
@@ -897,7 +908,7 @@
 
     .line 129
     .line 130
-    invoke-virtual {v0}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonArray;
+    invoke-virtual {v0}, Lcom/google/gson/JsonElement;->j()Lcom/google/gson/JsonArray;
 
     .line 131
     .line 132

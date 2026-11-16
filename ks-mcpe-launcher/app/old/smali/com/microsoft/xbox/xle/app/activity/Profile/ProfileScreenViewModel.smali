@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/xle/app/activity/Profile/ProfileScreenViewModel;
 .super Lcom/microsoft/xbox/xle/viewmodel/ViewModelBase;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -564,15 +564,15 @@
     move-result-object v5
 
     .line 45
-    new-instance v6, La6/d;
+    new-instance v6, Landroidx/lifecycle/z;
 
     .line 46
     .line 47
-    const/16 v0, 0xe
+    const/16 v0, 0xa
 
     .line 48
     .line 49
-    invoke-direct {v6, p0, v0}, La6/d;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v6, p0, v0}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
 
     .line 50
     .line 51
@@ -2419,36 +2419,39 @@
 
     .line 75
     .line 76
-    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
+    const/4 v2, 0x0
 
     .line 77
+    invoke-direct {v1, v2}, Lcom/microsoft/xbox/xle/app/activity/Profile/a;-><init>(I)V
+
     .line 78
     .line 79
+    .line 80
     invoke-virtual {p1, v0, v1}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
 
-    .line 80
     .line 81
     .line 82
+    .line 83
     invoke-virtual {p1}, Landroid/app/AlertDialog$Builder;->create()Landroid/app/AlertDialog;
 
-    .line 83
     .line 84
     .line 85
+    .line 86
     move-result-object p1
 
-    .line 86
+    .line 87
     invoke-virtual {p1}, Landroid/app/Dialog;->show()V
 
-    .line 87
     .line 88
     .line 89
+    .line 90
     :cond_2
     :goto_0
     invoke-virtual {p0}, Lcom/microsoft/xbox/xle/viewmodel/ViewModelBase;->updateAdapter()V
 
-    .line 90
     .line 91
     .line 92
+    .line 93
     return-void
 .end method
 

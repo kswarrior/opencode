@@ -1,44 +1,32 @@
-.class public final Landroidx/lifecycle/p;
-.super Landroidx/lifecycle/h;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public abstract Landroidx/lifecycle/p;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# static fields
+.field public static final a:Ljava/util/concurrent/atomic/AtomicBoolean;
 
 
 # direct methods
-.method public constructor <init>()V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 2
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    new-instance v0, Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 2
     .line 3
-    .line 4
-    return-void
-.end method
-
-
-# virtual methods
-.method public onActivityCreated(Landroid/app/Activity;Landroid/os/Bundle;)V
-    .locals 0
-
-    .line 1
-    const-string p2, "activity"
-
-    .line 2
-    .line 3
-    invoke-static {p1, p2}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    const/4 v1, 0x0
 
     .line 4
+    invoke-direct {v0, v1}, Ljava/util/concurrent/atomic/AtomicBoolean;-><init>(Z)V
+
     .line 5
     .line 6
-    sget p2, Landroidx/lifecycle/e0;->d:I
-
     .line 7
-    .line 8
-    invoke-static {p1}, Landroidx/lifecycle/c0;->b(Landroid/app/Activity;)V
+    sput-object v0, Landroidx/lifecycle/p;->a:Ljava/util/concurrent/atomic/AtomicBoolean;
 
+    .line 8
     .line 9
-    .line 10
-    .line 11
     return-void
 .end method

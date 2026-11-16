@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -1131,15 +1131,14 @@
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
     .line 11
-    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->packDescription:Landroid/widget/TextView;
+    iget-object v1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
-    invoke-virtual {p2}, Lorg/levimc/launcher/core/content/ResourcePackItem;->getDescription()Ljava/lang/String;
+    invoke-virtual {v1, v0}, Landroid/view/View;->setActivated(Z)V
 
-    move-result-object v2
+    .line 12
+    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->exportButton:Landroid/widget/ImageButton;
 
-    invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v2
+    iget-boolean v2, p0, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->selectionMode:Z
 
     const/4 v3, 0x0
 
@@ -1157,13 +1156,8 @@
     :goto_2
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
-    .line 12
-    iget-object v1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
-
-    invoke-virtual {v1, v0}, Landroid/view/View;->setActivated(Z)V
-
     .line 13
-    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->exportButton:Landroid/widget/ImageButton;
+    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->overflowButton:Landroid/widget/ImageButton;
 
     iget-boolean v2, p0, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->selectionMode:Z
 
@@ -1180,122 +1174,105 @@
     invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
 
     .line 14
-    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->overflowButton:Landroid/widget/ImageButton;
+    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->selectionIndicator:Landroid/widget/ImageView;
 
     iget-boolean v2, p0, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->selectionMode:Z
 
     if-eqz v2, :cond_4
 
-    move v2, v4
-
     goto :goto_4
 
     :cond_4
-    move v2, v3
+    move v3, v4
 
     :goto_4
-    invoke-virtual {v1, v2}, Landroid/view/View;->setVisibility(I)V
+    invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setVisibility(I)V
 
     .line 15
     iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->selectionIndicator:Landroid/widget/ImageView;
 
-    iget-boolean v2, p0, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->selectionMode:Z
+    if-eqz v0, :cond_5
 
-    if-eqz v2, :cond_5
+    const/high16 v0, 0x3f800000    # 1.0f
 
     goto :goto_5
 
     :cond_5
-    move v3, v4
-
-    :goto_5
-    invoke-virtual {v1, v3}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 16
-    iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->selectionIndicator:Landroid/widget/ImageView;
-
-    if-eqz v0, :cond_6
-
-    const/high16 v0, 0x3f800000    # 1.0f
-
-    goto :goto_6
-
-    :cond_6
     const v0, 0x3e8f5c29    # 0.28f
 
-    :goto_6
+    :goto_5
     invoke-virtual {v1, v0}, Landroid/view/View;->setAlpha(F)V
 
-    .line 17
+    .line 16
     invoke-direct {p0, p2}, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->fallbackIcon(Lorg/levimc/launcher/core/content/ResourcePackItem;)I
 
     move-result v0
 
-    .line 18
+    .line 17
     invoke-virtual {p2}, Lorg/levimc/launcher/core/content/ResourcePackItem;->getIconFile()Ljava/io/File;
 
     move-result-object v1
 
-    .line 19
+    .line 18
     iget-object v2, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->packIcon:Landroid/widget/ImageView;
 
-    invoke-static {v2}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/RequestManager;
+    invoke-static {v2}, Lcom/bumptech/glide/b;->d(Landroid/view/View;)Lcom/bumptech/glide/q;
 
     move-result-object v2
 
-    if-eqz v1, :cond_7
+    if-eqz v1, :cond_6
 
-    goto :goto_7
+    goto :goto_6
 
-    .line 20
-    :cond_7
+    .line 19
+    :cond_6
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     move-result-object v1
 
-    :goto_7
+    :goto_6
     invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
 
-    .line 21
+    .line 20
     new-instance v3, Lcom/bumptech/glide/n;
 
-    iget-object v5, v2, Lcom/bumptech/glide/RequestManager;->c:Lcom/bumptech/glide/b;
+    iget-object v5, v2, Lcom/bumptech/glide/q;->c:Lcom/bumptech/glide/b;
 
-    iget-object v6, v2, Lcom/bumptech/glide/RequestManager;->d:Landroid/content/Context;
+    iget-object v6, v2, Lcom/bumptech/glide/q;->d:Landroid/content/Context;
 
     const-class v7, Landroid/graphics/drawable/Drawable;
 
-    invoke-direct {v3, v5, v2, v7, v6}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/RequestManager;Ljava/lang/Class;Landroid/content/Context;)V
+    invoke-direct {v3, v5, v2, v7, v6}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/q;Ljava/lang/Class;Landroid/content/Context;)V
 
-    .line 22
-    invoke-virtual {v3, v1}, Lcom/bumptech/glide/n;->D(Ljava/lang/Object;)Lcom/bumptech/glide/n;
+    .line 21
+    invoke-virtual {v3, v1}, Lcom/bumptech/glide/n;->z(Ljava/lang/Object;)Lcom/bumptech/glide/n;
 
     move-result-object v1
 
-    .line 23
-    new-instance v2, Lb3/a0;
+    .line 22
+    new-instance v2, Lb3/z;
 
     iget-object v3, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
-    .line 24
+    .line 23
     invoke-direct {p0, v3, v4}, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter;->dp(Landroid/view/View;I)I
 
     move-result v3
 
-    invoke-direct {v2, v3}, Lb3/a0;-><init>(I)V
+    invoke-direct {v2, v3}, Lb3/z;-><init>(I)V
 
     const/4 v3, 0x1
 
-    .line 25
-    invoke-virtual {v1, v2, v3}, Lk3/a;->u(Ls2/l;Z)Lk3/a;
+    .line 24
+    invoke-virtual {v1, v2, v3}, Lk3/a;->r(Ls2/l;Z)Lk3/a;
 
     move-result-object v1
 
-    .line 26
+    .line 25
     check-cast v1, Lcom/bumptech/glide/n;
 
-    .line 27
-    invoke-virtual {v1, v0}, Lk3/a;->f(I)Lk3/a;
+    .line 26
+    invoke-virtual {v1, v0}, Lk3/a;->e(I)Lk3/a;
 
     move-result-object v0
 
@@ -1303,10 +1280,10 @@
 
     iget-object v1, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->packIcon:Landroid/widget/ImageView;
 
-    .line 28
-    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->B(Landroid/widget/ImageView;)V
+    .line 27
+    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->x(Landroid/widget/ImageView;)V
 
-    .line 29
+    .line 28
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     new-instance v1, Lorg/levimc/launcher/ui/adapter/p;
@@ -1317,7 +1294,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 30
+    .line 29
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     new-instance v1, Lorg/levimc/launcher/ui/adapter/q;
@@ -1326,7 +1303,7 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnLongClickListener(Landroid/view/View$OnLongClickListener;)V
 
-    .line 31
+    .line 30
     iget-object v0, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->exportButton:Landroid/widget/ImageButton;
 
     new-instance v1, Lorg/levimc/launcher/ui/adapter/p;
@@ -1337,18 +1314,16 @@
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 32
+    .line 31
     iget-object v0, p1, Lorg/levimc/launcher/ui/adapter/ResourcePacksAdapter$ResourcePackViewHolder;->overflowButton:Landroid/widget/ImageButton;
 
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/a;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/e;
 
-    const/4 v2, 0x2
-
-    invoke-direct {v1, p0, p1, p2, v2}, Lorg/levimc/launcher/ui/adapter/a;-><init>(Landroidx/recyclerview/widget/RecyclerView$Adapter;Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, p2, v2}, Lorg/levimc/launcher/ui/adapter/e;-><init>(Landroidx/recyclerview/widget/RecyclerView$Adapter;Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 33
+    .line 32
     new-instance p2, Lorg/levimc/launcher/util/PersonalizationManager;
 
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
@@ -1359,12 +1334,12 @@
 
     invoke-direct {p2, v0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
 
-    .line 34
+    .line 33
     iget-object v0, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     invoke-virtual {p2, v0}, Lorg/levimc/launcher/util/PersonalizationManager;->applyGlassToView(Landroid/view/View;)V
 
-    .line 35
+    .line 34
     iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     invoke-virtual {p1}, Landroid/view/View;->getContext()Landroid/content/Context;

@@ -1,75 +1,25 @@
-.class public Lsg/d;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ljava/security/KeyStore$LoadStoreParameter;
+.class public abstract Lsg/d;
+.super Luf/b;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field private final forDEREncoding:Z
-
-.field private final out:Ljava/io/OutputStream;
-
-.field private final protectionParameter:Ljava/security/KeyStore$ProtectionParameter;
+.field public final d:Ljava/lang/String;
 
 
 # direct methods
-.method public constructor <init>(Ljava/io/OutputStream;Ljava/security/KeyStore$ProtectionParameter;Z)V
+.method public constructor <init>(Ljava/lang/String;Z)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, p2}, Luf/b;-><init>(Z)V
 
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lsg/d;->out:Ljava/io/OutputStream;
+    iput-object p1, p0, Lsg/d;->d:Ljava/lang/String;
 
     .line 5
     .line 6
-    iput-object p2, p0, Lsg/d;->protectionParameter:Ljava/security/KeyStore$ProtectionParameter;
-
-    .line 7
-    .line 8
-    iput-boolean p3, p0, Lsg/d;->forDEREncoding:Z
-
-    .line 9
-    .line 10
     return-void
-.end method
-
-
-# virtual methods
-.method public getOutputStream()Ljava/io/OutputStream;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lsg/d;->out:Ljava/io/OutputStream;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public getProtectionParameter()Ljava/security/KeyStore$ProtectionParameter;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lsg/d;->protectionParameter:Ljava/security/KeyStore$ProtectionParameter;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
-.method public isForDEREncoding()Z
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lsg/d;->forDEREncoding:Z
-
-    .line 2
-    .line 3
-    return v0
 .end method

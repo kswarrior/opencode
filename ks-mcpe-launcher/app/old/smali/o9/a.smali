@@ -1,142 +1,505 @@
 .class public abstract Lo9/a;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lo9/b1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lkotlin/coroutines/Continuation;
+.implements Lkotlinx/coroutines/CoroutineScope;
 
 
-# static fields
-.field public static final a:Ljava/nio/charset/Charset;
-
-.field public static final b:Ljava/nio/charset/Charset;
-
-.field public static final c:Ljava/nio/charset/Charset;
-
-.field public static volatile d:Ljava/nio/charset/Charset;
-
-.field public static volatile e:Ljava/nio/charset/Charset;
+# instance fields
+.field public final h:Lkotlin/coroutines/CoroutineContext;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(Lkotlin/coroutines/CoroutineContext;Z)V
+    .locals 0
 
     .line 1
-    const-string v0, "UTF-8"
+    invoke-direct {p0, p2}, Lo9/b1;-><init>(Z)V
 
     .line 2
     .line 3
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    .line 4
+    sget-object p2, Lo9/t;->d:Lo9/t;
+
+    .line 5
+    .line 6
+    invoke-interface {p1, p2}, Lkotlin/coroutines/CoroutineContext;->E(Lu8/f;)Lu8/e;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object p2
+
+    .line 10
+    check-cast p2, Lo9/u0;
+
+    .line 11
+    .line 12
+    invoke-virtual {p0, p2}, Lo9/b1;->D(Lo9/u0;)V
+
+    .line 13
+    .line 14
+    .line 15
+    invoke-interface {p1, p0}, Lkotlin/coroutines/CoroutineContext;->g(Lkotlin/coroutines/CoroutineContext;)Lkotlin/coroutines/CoroutineContext;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object p1
+
+    .line 19
+    iput-object p1, p0, Lo9/a;->h:Lkotlin/coroutines/CoroutineContext;
+
+    .line 20
+    .line 21
+    return-void
+.end method
+
+
+# virtual methods
+.method public final C(Landroidx/fragment/app/g0;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lo9/a;->h:Lkotlin/coroutines/CoroutineContext;
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lo9/w;->j(Ljava/lang/Throwable;Lkotlin/coroutines/CoroutineContext;)V
 
     .line 4
     .line 5
     .line 6
-    move-result-object v0
+    return-void
+.end method
 
+.method public final O(Ljava/lang/Object;)V
+    .locals 2
+
+    .line 1
+    instance-of v0, p1, Lo9/p;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_1
+
+    .line 4
+    .line 5
+    check-cast p1, Lo9/p;
+
+    .line 6
     .line 7
-    const-string v1, "forName(...)"
+    iget-object v0, p1, Lo9/p;->a:Ljava/lang/Throwable;
 
     .line 8
     .line 9
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    sget-object v1, Lo9/p;->b:Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;
 
     .line 10
     .line 11
-    .line 12
-    sput-object v0, Lo9/a;->a:Ljava/nio/charset/Charset;
+    invoke-virtual {v1, p1}, Ljava/util/concurrent/atomic/AtomicIntegerFieldUpdater;->get(Ljava/lang/Object;)I
 
+    .line 12
     .line 13
     .line 14
-    const-string v0, "UTF-16"
+    move-result p1
 
     .line 15
-    .line 16
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    if-eqz p1, :cond_0
 
+    .line 16
     .line 17
+    const/4 p1, 0x1
+
     .line 18
+    goto :goto_0
+
     .line 19
-    move-result-object v0
+    :cond_0
+    const/4 p1, 0x0
 
     .line 20
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    :goto_0
+    invoke-virtual {p0, v0, p1}, Lo9/a;->X(Ljava/lang/Throwable;Z)V
 
     .line 21
     .line 22
     .line 23
-    const-string v0, "UTF-16BE"
+    return-void
 
     .line 24
+    :cond_1
+    invoke-virtual {p0, p1}, Lo9/a;->Y(Ljava/lang/Object;)V
+
     .line 25
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    .line 26
+    .line 27
+    return-void
+.end method
+
+.method public X(Ljava/lang/Throwable;Z)V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public Y(Ljava/lang/Object;)V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public final Z(Lo9/v;Lo9/a;Lkotlin/jvm/functions/Function2;)V
+    .locals 2
+
+    .line 1
+    invoke-virtual {p1}, Ljava/lang/Enum;->ordinal()I
+
+    .line 2
+    .line 3
+    .line 4
+    move-result p1
+
+    .line 5
+    sget-object v0, Lq8/k;->a:Lq8/k;
+
+    .line 6
+    .line 7
+    if-eqz p1, :cond_3
+
+    .line 8
+    .line 9
+    const/4 v1, 0x1
+
+    .line 10
+    if-eq p1, v1, :cond_2
+
+    .line 11
+    .line 12
+    const/4 v1, 0x2
+
+    .line 13
+    if-eq p1, v1, :cond_1
+
+    .line 14
+    .line 15
+    const/4 v0, 0x3
+
+    .line 16
+    if-ne p1, v0, :cond_0
+
+    .line 17
+    .line 18
+    :try_start_0
+    iget-object p1, p0, Lo9/a;->h:Lkotlin/coroutines/CoroutineContext;
+
+    .line 19
+    .line 20
+    const/4 v0, 0x0
+
+    .line 21
+    invoke-static {p1, v0}, Lt9/a;->l(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 25
+    :try_start_1
+    invoke-static {v1, p3}, Lf9/t;->a(ILjava/lang/Object;)V
 
     .line 26
     .line 27
     .line 28
-    move-result-object v0
+    invoke-interface {p3, p2, p0}, Lkotlin/jvm/functions/Function2;->h(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 29
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 30
     .line 31
+    move-result-object p2
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+
     .line 32
-    sput-object v0, Lo9/a;->b:Ljava/nio/charset/Charset;
+    :try_start_2
+    invoke-static {p1, v0}, Lt9/a;->g(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
     .line 33
     .line 34
-    const-string v0, "UTF-16LE"
-
     .line 35
-    .line 36
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    sget-object p1, Lv8/a;->c:Lv8/a;
 
+    .line 36
     .line 37
+    if-eq p2, p1, :cond_2
+
     .line 38
     .line 39
-    move-result-object v0
+    invoke-virtual {p0, p2}, Lo9/a;->d(Ljava/lang/Object;)V
 
     .line 40
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 41
     .line 42
+    return-void
+
     .line 43
-    sput-object v0, Lo9/a;->c:Ljava/nio/charset/Charset;
+    :catchall_0
+    move-exception p1
 
     .line 44
+    goto :goto_0
+
     .line 45
-    const-string v0, "US-ASCII"
+    :catchall_1
+    move-exception p2
 
     .line 46
-    .line 47
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    :try_start_3
+    invoke-static {p1, v0}, Lt9/a;->g(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;)V
 
+    .line 47
     .line 48
     .line 49
+    throw p2
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_0
+
     .line 50
-    move-result-object v0
+    :goto_0
+    invoke-static {p1}, Lcom/bumptech/glide/d;->t(Ljava/lang/Throwable;)Lq8/f;
 
     .line 51
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 52
     .line 53
+    move-result-object p1
+
     .line 54
-    const-string v0, "ISO-8859-1"
+    invoke-virtual {p0, p1}, Lo9/a;->d(Ljava/lang/Object;)V
 
     .line 55
     .line 56
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
-
     .line 57
-    .line 58
-    .line 59
-    move-result-object v0
+    return-void
 
+    .line 58
+    :cond_0
+    new-instance p1, Landroidx/fragment/app/g0;
+
+    .line 59
     .line 60
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-direct {p1}, Landroidx/fragment/app/g0;-><init>()V
 
     .line 61
     .line 62
     .line 63
+    throw p1
+
+    .line 64
+    :cond_1
+    check-cast p3, Lw8/a;
+
+    .line 65
+    .line 66
+    invoke-virtual {p3, p2, p0}, Lw8/a;->l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    .line 67
+    .line 68
+    .line 69
+    move-result-object p1
+
+    .line 70
+    invoke-static {p1}, Ly6/t1;->m(Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    .line 71
+    .line 72
+    .line 73
+    move-result-object p1
+
+    .line 74
+    invoke-interface {p1, v0}, Lkotlin/coroutines/Continuation;->d(Ljava/lang/Object;)V
+
+    .line 75
+    .line 76
+    .line 77
+    :cond_2
     return-void
+
+    .line 78
+    :cond_3
+    :try_start_4
+    check-cast p3, Lw8/a;
+
+    .line 79
+    .line 80
+    invoke-virtual {p3, p2, p0}, Lw8/a;->l(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    .line 81
+    .line 82
+    .line 83
+    move-result-object p1
+
+    .line 84
+    invoke-static {p1}, Ly6/t1;->m(Lkotlin/coroutines/Continuation;)Lkotlin/coroutines/Continuation;
+
+    .line 85
+    .line 86
+    .line 87
+    move-result-object p1
+
+    .line 88
+    invoke-static {v0, p1}, Lt9/a;->h(Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V
+    :try_end_4
+    .catchall {:try_start_4 .. :try_end_4} :catchall_2
+
+    .line 89
+    .line 90
+    .line 91
+    return-void
+
+    .line 92
+    :catchall_2
+    move-exception p1
+
+    .line 93
+    invoke-static {p1}, Lcom/bumptech/glide/d;->t(Ljava/lang/Throwable;)Lq8/f;
+
+    .line 94
+    .line 95
+    .line 96
+    move-result-object p2
+
+    .line 97
+    invoke-virtual {p0, p2}, Lo9/a;->d(Ljava/lang/Object;)V
+
+    .line 98
+    .line 99
+    .line 100
+    throw p1
+.end method
+
+.method public final d(Ljava/lang/Object;)V
+    .locals 2
+
+    .line 1
+    invoke-static {p1}, Lq8/g;->a(Ljava/lang/Object;)Ljava/lang/Throwable;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    if-nez v0, :cond_0
+
+    .line 6
+    .line 7
+    goto :goto_0
+
+    .line 8
+    :cond_0
+    new-instance p1, Lo9/p;
+
+    .line 9
+    .line 10
+    const/4 v1, 0x0
+
+    .line 11
+    invoke-direct {p1, v0, v1}, Lo9/p;-><init>(Ljava/lang/Throwable;Z)V
+
+    .line 12
+    .line 13
+    .line 14
+    :goto_0
+    invoke-virtual {p0, p1}, Lo9/b1;->J(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object p1
+
+    .line 18
+    sget-object v0, Lo9/w;->e:Ld1/p;
+
+    .line 19
+    .line 20
+    if-ne p1, v0, :cond_1
+
+    .line 21
+    .line 22
+    return-void
+
+    .line 23
+    :cond_1
+    invoke-virtual {p0, p1}, Lo9/a;->m(Ljava/lang/Object;)V
+
+    .line 24
+    .line 25
+    .line 26
+    return-void
+.end method
+
+.method public final f()Lkotlin/coroutines/CoroutineContext;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lo9/a;->h:Lkotlin/coroutines/CoroutineContext;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final getContext()Lkotlin/coroutines/CoroutineContext;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lo9/a;->h:Lkotlin/coroutines/CoroutineContext;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public final q()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    invoke-virtual {v0}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    const-string v1, " was cancelled"
+
+    .line 10
+    .line 11
+    invoke-virtual {v0, v1}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object v0
+
+    .line 15
+    return-object v0
 .end method

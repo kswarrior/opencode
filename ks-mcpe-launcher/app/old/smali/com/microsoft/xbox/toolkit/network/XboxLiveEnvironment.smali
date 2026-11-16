@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/network/XboxLiveEnvironment;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -1127,6 +1127,9 @@
     .line 148
     .line 149
     .line 150
+    .line 151
+    .line 152
+    .line 153
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_7

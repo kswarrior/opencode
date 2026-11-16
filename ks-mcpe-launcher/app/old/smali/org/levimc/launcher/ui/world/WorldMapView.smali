@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/ui/world/WorldMapView;
 .super Landroid/view/View;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -1734,11 +1734,11 @@
 
     .line 63
     :cond_3
-    new-instance p1, Lorg/levimc/launcher/ui/world/d;
+    new-instance p1, Lorg/levimc/launcher/ui/world/e;
 
     .line 64
     .line 65
-    invoke-direct {p1, p0, p4, p5, v0}, Lorg/levimc/launcher/ui/world/d;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;Ljava/lang/String;ILorg/levimc/launcher/ui/world/WorldMapView$Tile;)V
+    invoke-direct {p1, p0, p4, p5, v0}, Lorg/levimc/launcher/ui/world/e;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;Ljava/lang/String;ILorg/levimc/launcher/ui/world/WorldMapView$Tile;)V
 
     .line 66
     .line 67
@@ -1935,7 +1935,7 @@
 
     .line 51
     .line 52
-    new-instance v2, Lorg/levimc/launcher/ui/world/j;
+    new-instance v2, Lorg/levimc/launcher/ui/world/k;
     :try_end_0
     .catch Ljava/util/concurrent/RejectedExecutionException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1951,7 +1951,7 @@
 
     .line 57
     :try_start_1
-    invoke-direct/range {v2 .. v8}, Lorg/levimc/launcher/ui/world/j;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;IILorg/levimc/launcher/core/content/world/MapSettings;Ljava/lang/String;I)V
+    invoke-direct/range {v2 .. v8}, Lorg/levimc/launcher/ui/world/k;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;IILorg/levimc/launcher/core/content/world/MapSettings;Ljava/lang/String;I)V
 
     .line 58
     .line 59
@@ -3395,11 +3395,11 @@
     move-object v10, v3
 
     .line 435
-    new-instance v2, Lorg/levimc/launcher/ui/world/k;
+    new-instance v2, Lorg/levimc/launcher/ui/world/l;
 
     .line 436
     .line 437
-    invoke-direct {v2, v0}, Lorg/levimc/launcher/ui/world/k;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;)V
+    invoke-direct {v2, v0}, Lorg/levimc/launcher/ui/world/l;-><init>(Lorg/levimc/launcher/ui/world/WorldMapView;)V
 
     .line 438
     .line 439
@@ -4762,14 +4762,14 @@
     .line 18
     .line 19
     .line 20
-    new-instance v8, Lorg/levimc/launcher/core/play/b;
+    new-instance v8, Lorg/levimc/launcher/ui/activities/o3;
 
     .line 21
     .line 22
-    const/4 v0, 0x2
+    const/4 v0, 0x1
 
     .line 23
-    invoke-direct {v8, v0}, Lorg/levimc/launcher/core/play/b;-><init>(I)V
+    invoke-direct {v8, v0}, Lorg/levimc/launcher/ui/activities/o3;-><init>(I)V
 
     .line 24
     .line 25

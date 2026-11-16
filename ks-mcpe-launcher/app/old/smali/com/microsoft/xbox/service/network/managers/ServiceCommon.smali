@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/service/network/managers/ServiceCommon;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -70,7 +70,7 @@
 
     .line 18
     .line 19
-    invoke-interface {p0, v0}, Lpc/h;->addHeader(Lorg/apache/http/Header;)V
+    invoke-interface {p0, v0}, Lqc/h;->addHeader(Lorg/apache/http/Header;)V
 
     .line 20
     .line 21
@@ -344,11 +344,11 @@
 
     .line 8
     :try_start_0
-    new-instance p0, Lfd/d;
+    new-instance p0, Lgd/d;
 
-    invoke-direct {p0, p2}, Lfd/d;-><init>([B)V
+    invoke-direct {p0, p2}, Lgd/d;-><init>([B)V
 
-    invoke-virtual {v1, p0}, Ltc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
+    invoke-virtual {v1, p0}, Luc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -434,14 +434,14 @@
     .line 12
     .line 13
     .line 14
-    new-instance v1, Ltc/d;
+    new-instance v1, Luc/d;
 
     .line 15
     .line 16
     const/4 v2, 0x0
 
     .line 17
-    invoke-direct {v1, v2}, Ltc/d;-><init>(I)V
+    invoke-direct {v1, v2}, Luc/d;-><init>(I)V
 
     .line 18
     .line 19
@@ -667,7 +667,7 @@
     :cond_6
     const-string p0, "Request"
 
-    invoke-virtual {p3, p0, v2}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p3, p0, v2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 19
     const-string p0, "code"
@@ -676,17 +676,17 @@
 
     move-result-object p5
 
-    invoke-virtual {p4, p0, p5}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/Number;)V
+    invoke-virtual {p4, p0, p5}, Lcom/google/gson/JsonObject;->q(Ljava/lang/String;Ljava/lang/Number;)V
 
     .line 20
     const-string p0, "description"
 
-    invoke-virtual {p4, p0, p2}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p4, p0, p2}, Lcom/google/gson/JsonObject;->r(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 21
     const-string p0, "Response"
 
-    invoke-virtual {p3, p4, p0}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
+    invoke-virtual {p3, p0, p4}, Lcom/google/gson/JsonObject;->o(Ljava/lang/String;Lcom/google/gson/JsonElement;)V
 
     .line 22
     throw p1
@@ -836,9 +836,9 @@
 
     .line 6
     :goto_0
-    new-instance v0, Ltc/d;
+    new-instance v0, Luc/d;
 
-    invoke-direct {v0, p0}, Ltc/d;-><init>(Ljava/net/URI;)V
+    invoke-direct {v0, p0}, Luc/d;-><init>(Ljava/net/URI;)V
 
     invoke-virtual {p0}, Ljava/net/URI;->toString()Ljava/lang/String;
 
@@ -889,11 +889,11 @@
     move-result-object v0
 
     .line 9
-    new-instance v1, Ltc/f;
+    new-instance v1, Luc/f;
 
     .line 10
     .line 11
-    invoke-direct {v1, p0}, Ltc/f;-><init>(Ljava/net/URI;)V
+    invoke-direct {v1, p0}, Luc/f;-><init>(Ljava/net/URI;)V
 
     .line 12
     .line 13
@@ -910,16 +910,16 @@
     .line 18
     .line 19
     :try_start_0
-    new-instance p0, Lfd/d;
+    new-instance p0, Lgd/d;
 
     .line 20
     .line 21
-    invoke-direct {p0, p2}, Lfd/d;-><init>([B)V
+    invoke-direct {p0, p2}, Lgd/d;-><init>([B)V
 
     .line 22
     .line 23
     .line 24
-    invoke-virtual {v1, p0}, Ltc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
+    invoke-virtual {v1, p0}, Luc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -1034,11 +1034,11 @@
     move-result-object v0
 
     .line 9
-    new-instance v1, Ltc/g;
+    new-instance v1, Luc/g;
 
     .line 10
     .line 11
-    invoke-direct {v1}, Ltc/b;-><init>()V
+    invoke-direct {v1}, Luc/b;-><init>()V
 
     .line 12
     .line 13
@@ -1060,16 +1060,16 @@
     .line 21
     .line 22
     :try_start_0
-    new-instance p0, Lfd/d;
+    new-instance p0, Lgd/d;
 
     .line 23
     .line 24
-    invoke-direct {p0, p2}, Lfd/d;-><init>([B)V
+    invoke-direct {p0, p2}, Lgd/d;-><init>([B)V
 
     .line 25
     .line 26
     .line 27
-    invoke-virtual {v1, p0}, Ltc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
+    invoke-virtual {v1, p0}, Luc/e;->setEntity(Lorg/apache/http/HttpEntity;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 

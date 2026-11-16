@@ -1,6 +1,6 @@
 .class final Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -184,7 +184,7 @@
 
     .line 41
     .line 42
-    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->c0(Ljava/util/List;)Ljava/lang/String;
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Z(Ljava/util/List;)Ljava/lang/String;
 
     .line 43
     .line 44
@@ -192,7 +192,7 @@
     move-result-object v0
 
     .line 46
-    invoke-static {p1, p2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->W(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {p1, p2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->T(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 47
     .line 48
@@ -312,7 +312,7 @@
 
     iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->node:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
 
-    invoke-static {p2, v3, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->S(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p2, v0, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->O(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/lang/String;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;)Ljava/lang/String;
 
     move-result-object p2
 
@@ -343,11 +343,11 @@
     .line 4
     iget-object p2, p1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedHolder;->remove:Landroid/widget/Button;
 
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b0;
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;
 
-    const/4 v1, 0x7
+    const/4 v1, 0x4
 
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/j0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     invoke-virtual {p2, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
@@ -373,7 +373,7 @@
 
     iget-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->C(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->A(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
 
     move-result-object p2
 
@@ -389,7 +389,7 @@
 
     const/16 v0, 0x8
 
-    invoke-static {p2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {p2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result p2
 
@@ -397,7 +397,7 @@
 
     const/4 v2, 0x3
 
-    invoke-static {v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v1
 
@@ -405,13 +405,13 @@
 
     const/4 v4, 0x4
 
-    invoke-static {v3, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v3, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v3
 
     iget-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v4, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v4, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v2
 
@@ -422,19 +422,15 @@
 
     iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->C(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
+    invoke-static {v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->A(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
 
     move-result-object v1
 
     invoke-direct {p2, v1}, Landroid/widget/TextView;-><init>(Landroid/content/Context;)V
 
+    const v1, -0xe0b0a
+
     .line 6
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
-    invoke-static {v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->y(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)I
-
-    move-result v1
-
     invoke-virtual {p2, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
     const/high16 v1, 0x41400000    # 12.0f
@@ -447,9 +443,9 @@
 
     iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    const/16 v3, 0x1e
+    const/16 v3, 0x26
 
-    invoke-static {v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v2
 
@@ -466,7 +462,7 @@
 
     iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->C(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
+    invoke-static {v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->A(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Landroid/content/Context;
 
     move-result-object v2
 
@@ -483,47 +479,40 @@
     invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTextSize(F)V
 
     .line 12
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
-
-    invoke-static {v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->K(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;)Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuTheme;
-
-    move-result-object v2
-
-    invoke-virtual {v2, v1, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuTheme;->button(Landroid/widget/TextView;Z)V
-
-    .line 13
     invoke-virtual {v1, v5}, Landroid/widget/TextView;->setMinWidth(I)V
 
-    .line 14
+    .line 13
     invoke-virtual {v1, v5}, Landroid/view/View;->setMinimumWidth(I)V
 
-    .line 15
+    .line 14
     iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v2, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v2
 
     iget-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v4, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v4, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v0
 
     invoke-virtual {v1, v2, v5, v0, v5}, Landroid/view/View;->setPadding(IIII)V
 
-    .line 16
+    .line 15
     new-instance v0, Landroid/widget/LinearLayout$LayoutParams;
 
     iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    const/16 v4, 0x2a
+
+    invoke-static {v2, v4}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v2
 
     iget-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedAdapter;->this$0:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-    invoke-static {v4, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->Q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
+    invoke-static {v4, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;I)I
 
     move-result v3
 
@@ -531,7 +520,7 @@
 
     invoke-virtual {p1, v1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
-    .line 17
+    .line 16
     new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedHolder;
 
     invoke-direct {v0, p1, p2, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView$OrderedHolder;-><init>(Landroid/view/View;Landroid/widget/TextView;Landroid/widget/Button;)V

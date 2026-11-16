@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/CurseForgeActivity$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/ui/adapter/CurseForgeContentAdapter$OnPageChangeListener;
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->E(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->C(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
 
     .line 4
     .line 5
@@ -60,7 +60,7 @@
 
     .line 8
     .line 9
-    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->K(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->I(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
 
     .line 10
     .line 11
@@ -76,7 +76,7 @@
 
     .line 16
     .line 17
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->E(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->C(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
 
     .line 18
     .line 19
@@ -88,7 +88,7 @@
 
     .line 22
     .line 23
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->L(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
+    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->J(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
 
     .line 24
     .line 25
@@ -97,7 +97,7 @@
 
     .line 27
     .line 28
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->O(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->L(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)V
 
     .line 29
     .line 30
@@ -114,7 +114,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->E(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->C(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
 
     .line 4
     .line 5
@@ -133,7 +133,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->E(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->C(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)I
 
     .line 13
     .line 14
@@ -144,7 +144,7 @@
     sub-int/2addr v2, v1
 
     .line 17
-    invoke-static {v0, v2}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->L(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
+    invoke-static {v0, v2}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->J(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;I)V
 
     .line 18
     .line 19
@@ -153,7 +153,7 @@
 
     .line 21
     .line 22
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->O(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;->L(Lorg/levimc/launcher/ui/activities/CurseForgeActivity;)V
 
     .line 23
     .line 24

@@ -1,6 +1,6 @@
 .class Landroidx/core/view/WindowInsetsCompat$Impl20;
 .super Landroidx/core/view/WindowInsetsCompat$Impl;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -17,7 +17,7 @@
 # static fields
 .field private static final SYSTEM_BAR_VISIBILITY_MASK:I = 0x6
 
-.field private static sAttachInfoClass:Ljava/lang/Class; = null
+.field private static sAttachInfoClass:Ljava/lang/Class;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/lang/Class<",
@@ -26,13 +26,13 @@
     .end annotation
 .end field
 
-.field private static sAttachInfoField:Ljava/lang/reflect/Field; = null
+.field private static sAttachInfoField:Ljava/lang/reflect/Field;
 
-.field private static sGetViewRootImplMethod:Ljava/lang/reflect/Method; = null
+.field private static sGetViewRootImplMethod:Ljava/lang/reflect/Method;
 
-.field private static sVisibleInsetsField:Ljava/lang/reflect/Field; = null
+.field private static sVisibleInsetsField:Ljava/lang/reflect/Field;
 
-.field private static sVisibleRectReflectionFetched:Z = false
+.field private static sVisibleRectReflectionFetched:Z
 
 
 # instance fields

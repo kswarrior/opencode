@@ -1,49 +1,128 @@
 .class public final Lcd/g;
-.super Lcd/a;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# instance fields
+.field public final a:Ljava/util/concurrent/ConcurrentHashMap;
 
 
 # direct methods
-.method static constructor <clinit>()V
+.method public constructor <init>()V
     .locals 1
 
     .line 1
-    new-instance v0, Lcd/g;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lcd/a;-><init>()V
-
     .line 4
+    new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
+
     .line 5
     .line 6
+    invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    iput-object v0, p0, Lcd/g;->a:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 10
+    .line 11
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;)V
-    .locals 1
+.method public final a(Ljava/lang/String;)Lcd/c;
+    .locals 3
 
     .line 1
-    const/4 v0, 0x1
+    const-string v0, "Scheme name"
 
     .line 2
-    invoke-static {p1, p2, p3, v0}, Lcd/a;->d(Ljava/lang/String;[Ljava/lang/String;[Ljava/lang/String;Z)V
-
     .line 3
+    invoke-static {p1, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
+
     .line 4
     .line 5
-    return-void
+    .line 6
+    iget-object v0, p0, Lcd/g;->a:Ljava/util/concurrent/ConcurrentHashMap;
+
+    .line 7
+    .line 8
+    invoke-virtual {v0, p1}, Ljava/util/concurrent/ConcurrentHashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object v0
+
+    .line 12
+    check-cast v0, Lcd/c;
+
+    .line 13
+    .line 14
+    if-eqz v0, :cond_0
+
+    .line 15
+    .line 16
+    return-object v0
+
+    .line 17
+    :cond_0
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    .line 18
+    .line 19
+    const-string v1, "Scheme \'"
+
+    .line 20
+    .line 21
+    const-string v2, "\' not registered."
+
+    .line 22
+    .line 23
+    invoke-static {v1, p1, v2}, Lcom/google/android/gms/internal/measurement/gi;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p1
+
+    .line 27
+    invoke-direct {v0, p1}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 28
+    .line 29
+    .line 30
+    throw v0
 .end method
 
-.method public final toString()Ljava/lang/String;
-    .locals 1
+.method public final b(Lcd/c;)V
+    .locals 2
 
     .line 1
-    const-string v0, "STRICT"
+    iget-object v0, p0, Lcd/g;->a:Ljava/util/concurrent/ConcurrentHashMap;
 
     .line 2
     .line 3
-    return-object v0
+    iget-object v1, p1, Lcd/c;->a:Ljava/lang/String;
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, v1, p1}, Ljava/util/concurrent/ConcurrentHashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object p1
+
+    .line 9
+    check-cast p1, Lcd/c;
+
+    .line 10
+    .line 11
+    return-void
 .end method

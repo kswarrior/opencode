@@ -139,10 +139,6 @@
         0x7f04026e
     .end array-data
 
-    .line 60
-    .line 61
-    .line 62
-    .line 63
     :array_1
     .array-data 4
         0x1010532

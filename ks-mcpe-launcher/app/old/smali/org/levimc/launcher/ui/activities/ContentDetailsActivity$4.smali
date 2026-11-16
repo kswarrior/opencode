@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/ContentDetailsActivity$4;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/content/ContentImporter$ImportCallback;
@@ -81,7 +81,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->F(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/widget/ProgressBar;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->E(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/widget/ProgressBar;
 
     .line 4
     .line 5
@@ -102,7 +102,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->E(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Lcom/google/android/material/button/MaterialButton;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->D(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Lcom/google/android/material/button/MaterialButton;
 
     .line 15
     .line 16
@@ -146,7 +146,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->F(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/widget/ProgressBar;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->E(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Landroid/widget/ProgressBar;
 
     .line 4
     .line 5
@@ -167,7 +167,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->E(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Lcom/google/android/material/button/MaterialButton;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;->D(Lorg/levimc/launcher/ui/activities/ContentDetailsActivity;)Lcom/google/android/material/button/MaterialButton;
 
     .line 15
     .line 16
@@ -234,14 +234,14 @@
 
     .line 2
     .line 3
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
 
     .line 4
     .line 5
-    const/4 v2, 0x3
+    const/4 v2, 0x6
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 7
     .line 8

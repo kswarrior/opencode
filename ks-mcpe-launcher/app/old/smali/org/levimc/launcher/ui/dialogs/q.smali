@@ -1,19 +1,19 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnTouchListener;
+.implements Landroid/widget/AdapterView$OnItemClickListener;
 
 
 # instance fields
 .field public final synthetic c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
-.field public final synthetic d:[F
+.field public final synthetic d:[Ljava/lang/String;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[F)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[Ljava/lang/String;)V
     .locals 0
 
     .line 1
@@ -26,7 +26,7 @@
 
     .line 5
     .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/q;->d:[F
+    iput-object p2, p0, Lorg/levimc/launcher/ui/dialogs/q;->d:[Ljava/lang/String;
 
     .line 7
     .line 8
@@ -35,25 +35,34 @@
 
 
 # virtual methods
-.method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
-    .locals 2
+.method public final onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+    .locals 7
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/q;->c:Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/q;->d:[F
+    iget-object v1, p0, Lorg/levimc/launcher/ui/dialogs/q;->d:[Ljava/lang/String;
 
     .line 4
     .line 5
-    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->c(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[FLandroid/view/View;Landroid/view/MotionEvent;)Z
+    move-object v2, p1
 
     .line 6
+    move-object v3, p2
+
     .line 7
+    move v4, p3
+
     .line 8
-    move-result p1
+    move-wide v5, p4
 
     .line 9
-    return p1
+    invoke-static/range {v0 .. v6}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->b(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;[Ljava/lang/String;Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+
+    .line 10
+    .line 11
+    .line 12
+    return-void
 .end method

@@ -1,19 +1,123 @@
 .class public final Ls5/a;
-.super Lk4/f;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# static fields
+.field public static final i:[I
+
+.field public static final j:[F
+
+.field public static final k:[I
+
+.field public static final l:[F
 
 
 # instance fields
-.field public final h:Landroid/graphics/Typeface;
+.field public final a:Landroid/graphics/Paint;
 
-.field public final p:La1/a;
+.field public final b:Landroid/graphics/Paint;
 
-.field public q:Z
+.field public final c:Landroid/graphics/Paint;
+
+.field public d:I
+
+.field public e:I
+
+.field public f:I
+
+.field public final g:Landroid/graphics/Path;
+
+.field public final h:Landroid/graphics/Paint;
 
 
 # direct methods
-.method public constructor <init>(La1/a;Landroid/graphics/Typeface;)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 2
+
+    .line 1
+    const/4 v0, 0x3
+
+    .line 2
+    new-array v1, v0, [I
+
+    .line 3
+    .line 4
+    sput-object v1, Ls5/a;->i:[I
+
+    .line 5
+    .line 6
+    new-array v0, v0, [F
+
+    .line 7
+    .line 8
+    fill-array-data v0, :array_0
+
+    .line 9
+    .line 10
+    .line 11
+    sput-object v0, Ls5/a;->j:[F
+
+    .line 12
+    .line 13
+    const/4 v0, 0x4
+
+    .line 14
+    new-array v1, v0, [I
+
+    .line 15
+    .line 16
+    sput-object v1, Ls5/a;->k:[I
+
+    .line 17
+    .line 18
+    new-array v0, v0, [F
+
+    .line 19
+    .line 20
+    fill-array-data v0, :array_1
+
+    .line 21
+    .line 22
+    .line 23
+    sput-object v0, Ls5/a;->l:[F
+
+    .line 24
+    .line 25
+    return-void
+
+    .line 26
+    nop
+
+    .line 27
+    :array_0
+    .array-data 4
+        0x0
+        0x3f000000    # 0.5f
+        0x3f800000    # 1.0f
+    .end array-data
+
+    .line 28
+    .line 29
+    .line 30
+    .line 31
+    .line 32
+    .line 33
+    .line 34
+    .line 35
+    .line 36
+    .line 37
+    :array_1
+    .array-data 4
+        0x0
+        0x0
+        0x3f000000    # 0.5f
+        0x3f800000    # 1.0f
+    .end array-data
+.end method
+
+.method public constructor <init>()V
+    .locals 2
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -21,115 +125,168 @@
     .line 2
     .line 3
     .line 4
-    iput-object p2, p0, Ls5/a;->h:Landroid/graphics/Typeface;
+    new-instance v0, Landroid/graphics/Path;
 
     .line 5
     .line 6
-    iput-object p1, p0, Ls5/a;->p:La1/a;
+    invoke-direct {v0}, Landroid/graphics/Path;-><init>()V
 
     .line 7
     .line 8
+    .line 9
+    iput-object v0, p0, Ls5/a;->g:Landroid/graphics/Path;
+
+    .line 10
+    .line 11
+    new-instance v0, Landroid/graphics/Paint;
+
+    .line 12
+    .line 13
+    invoke-direct {v0}, Landroid/graphics/Paint;-><init>()V
+
+    .line 14
+    .line 15
+    .line 16
+    iput-object v0, p0, Ls5/a;->h:Landroid/graphics/Paint;
+
+    .line 17
+    .line 18
+    new-instance v1, Landroid/graphics/Paint;
+
+    .line 19
+    .line 20
+    invoke-direct {v1}, Landroid/graphics/Paint;-><init>()V
+
+    .line 21
+    .line 22
+    .line 23
+    iput-object v1, p0, Ls5/a;->a:Landroid/graphics/Paint;
+
+    .line 24
+    .line 25
+    const/high16 v1, -0x1000000
+
+    .line 26
+    .line 27
+    invoke-virtual {p0, v1}, Ls5/a;->a(I)V
+
+    .line 28
+    .line 29
+    .line 30
+    const/4 v1, 0x0
+
+    .line 31
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 32
+    .line 33
+    .line 34
+    new-instance v0, Landroid/graphics/Paint;
+
+    .line 35
+    .line 36
+    const/4 v1, 0x4
+
+    .line 37
+    invoke-direct {v0, v1}, Landroid/graphics/Paint;-><init>(I)V
+
+    .line 38
+    .line 39
+    .line 40
+    iput-object v0, p0, Ls5/a;->b:Landroid/graphics/Paint;
+
+    .line 41
+    .line 42
+    sget-object v1, Landroid/graphics/Paint$Style;->FILL:Landroid/graphics/Paint$Style;
+
+    .line 43
+    .line 44
+    invoke-virtual {v0, v1}, Landroid/graphics/Paint;->setStyle(Landroid/graphics/Paint$Style;)V
+
+    .line 45
+    .line 46
+    .line 47
+    new-instance v1, Landroid/graphics/Paint;
+
+    .line 48
+    .line 49
+    invoke-direct {v1, v0}, Landroid/graphics/Paint;-><init>(Landroid/graphics/Paint;)V
+
+    .line 50
+    .line 51
+    .line 52
+    iput-object v1, p0, Ls5/a;->c:Landroid/graphics/Paint;
+
+    .line 53
+    .line 54
     return-void
 .end method
 
 
 # virtual methods
-.method public final j(I)V
+.method public final a(I)V
     .locals 1
 
     .line 1
-    iget-boolean p1, p0, Ls5/a;->q:Z
+    const/16 v0, 0x44
 
     .line 2
     .line 3
-    if-nez p1, :cond_0
+    invoke-static {p1, v0}, Landroidx/core/graphics/a;->f(II)I
 
     .line 4
     .line 5
-    iget-object p1, p0, Ls5/a;->p:La1/a;
-
     .line 6
-    .line 7
-    iget-object p1, p1, La1/a;->d:Ljava/lang/Object;
-
-    .line 8
-    .line 9
-    check-cast p1, Ln5/b;
-
-    .line 10
-    .line 11
-    iget-object v0, p0, Ls5/a;->h:Landroid/graphics/Typeface;
-
-    .line 12
-    .line 13
-    invoke-virtual {p1, v0}, Ln5/b;->l(Landroid/graphics/Typeface;)Z
-
-    .line 14
-    .line 15
-    .line 16
     move-result v0
 
-    .line 17
-    if-eqz v0, :cond_0
-
-    .line 18
-    .line 19
-    const/4 v0, 0x0
-
-    .line 20
-    invoke-virtual {p1, v0}, Ln5/b;->j(Z)V
-
-    .line 21
-    .line 22
-    .line 23
-    :cond_0
-    return-void
-.end method
-
-.method public final k(Landroid/graphics/Typeface;Z)V
-    .locals 0
-
-    .line 1
-    iget-boolean p2, p0, Ls5/a;->q:Z
-
-    .line 2
-    .line 3
-    if-nez p2, :cond_0
-
-    .line 4
-    .line 5
-    iget-object p2, p0, Ls5/a;->p:La1/a;
-
-    .line 6
     .line 7
-    iget-object p2, p2, La1/a;->d:Ljava/lang/Object;
+    iput v0, p0, Ls5/a;->d:I
 
     .line 8
     .line 9
-    check-cast p2, Ln5/b;
+    const/16 v0, 0x14
 
     .line 10
     .line 11
-    invoke-virtual {p2, p1}, Ln5/b;->l(Landroid/graphics/Typeface;)Z
+    invoke-static {p1, v0}, Landroidx/core/graphics/a;->f(II)I
 
     .line 12
     .line 13
     .line 14
-    move-result p1
+    move-result v0
 
     .line 15
-    if-eqz p1, :cond_0
+    iput v0, p0, Ls5/a;->e:I
 
     .line 16
     .line 17
-    const/4 p1, 0x0
+    const/4 v0, 0x0
 
     .line 18
-    invoke-virtual {p2, p1}, Ln5/b;->j(Z)V
+    invoke-static {p1, v0}, Landroidx/core/graphics/a;->f(II)I
 
     .line 19
     .line 20
     .line 21
-    :cond_0
+    move-result p1
+
+    .line 22
+    iput p1, p0, Ls5/a;->f:I
+
+    .line 23
+    .line 24
+    iget-object p1, p0, Ls5/a;->a:Landroid/graphics/Paint;
+
+    .line 25
+    .line 26
+    iget v0, p0, Ls5/a;->d:I
+
+    .line 27
+    .line 28
+    invoke-virtual {p1, v0}, Landroid/graphics/Paint;->setColor(I)V
+
+    .line 29
+    .line 30
+    .line 31
     return-void
 .end method

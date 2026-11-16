@@ -1,57 +1,63 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:I
+.field public final synthetic b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
-.field public final synthetic h:Ljava/lang/Object;
+.field public final synthetic c:Ljava/util/LinkedHashSet;
 
-.field public final synthetic p:Landroid/view/View;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;
+
+.field public final synthetic e:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Landroid/view/View;II)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/util/LinkedHashSet;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;I)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->c:I
+    iput p5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->h:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->p:Landroid/view/View;
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->c:Ljava/util/LinkedHashSet;
 
     .line 6
     .line 7
-    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:I
+    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;
 
     .line 8
     .line 9
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->e:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
 
     .line 10
     .line 11
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 12
+    .line 13
+    .line 14
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 3
+.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+    .locals 11
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->c:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->a:I
 
     .line 2
     .line 3
@@ -60,62 +66,76 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->h:Ljava/lang/Object;
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iget-object v4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->e:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->p:Landroid/view/View;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
 
     .line 11
     .line 12
-    iget v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:I
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->c:Ljava/util/LinkedHashSet;
 
     .line 13
     .line 14
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->N(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Landroid/view/View;I)V
+    move-object v5, p1
 
     .line 15
+    move v6, p2
+
     .line 16
+    invoke-static/range {v1 .. v6}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->y(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/util/LinkedHashSet;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Landroid/widget/CompoundButton;Z)V
+
     .line 17
+    .line 18
+    .line 19
     return-void
 
-    .line 18
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->h:Ljava/lang/Object;
-
-    .line 19
     .line 20
-    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;
+    :pswitch_0
+    move-object v5, p1
 
     .line 21
+    move v6, p2
+
     .line 22
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->p:Landroid/view/View;
+    iget-object v7, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;
 
     .line 23
     .line 24
-    check-cast v1, Landroid/widget/HorizontalScrollView;
+    iget-object v8, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->e:Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;
 
     .line 25
     .line 26
-    iget v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->d:I
+    move-object v9, v5
 
     .line 27
+    iget-object v5, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;
+
     .line 28
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;->h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSettingsView;Landroid/widget/HorizontalScrollView;I)V
-
     .line 29
-    .line 30
-    .line 31
-    return-void
+    move v10, v6
 
+    .line 30
+    iget-object v6, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/b1;->c:Ljava/util/LinkedHashSet;
+
+    .line 31
     .line 32
-    nop
+    invoke-static/range {v5 .. v10}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;->g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/RuntimeConfigView;Ljava/util/LinkedHashSet;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Option;Lorg/levimc/launcher/core/mods/inbuilt/RuntimeConfigSchema$Node;Landroid/widget/CompoundButton;Z)V
 
     .line 33
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    nop
+
+    .line 37
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

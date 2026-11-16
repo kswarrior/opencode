@@ -1,32 +1,32 @@
 .class public final Ly1/x;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lw8/c;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public X:I
+.field public final synthetic X:Ly1/z;
 
-.field public p:Ljava/lang/Object;
+.field public Y:I
 
-.field public q:Ljava/lang/Throwable;
+.field public q:Ljava/lang/Object;
 
-.field public w:I
+.field public w:Ljava/lang/Throwable;
 
-.field public synthetic x:Ljava/lang/Object;
+.field public x:I
 
-.field public final synthetic y:Ly1/z;
+.field public synthetic y:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(Ly1/z;Ly8/c;)V
+.method public constructor <init>(Ly1/z;Lw8/c;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Ly1/x;->y:Ly1/z;
+    iput-object p1, p0, Ly1/x;->X:Ly1/z;
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+    invoke-direct {p0, p2}, Lw8/c;-><init>(Lkotlin/coroutines/Continuation;)V
 
     .line 4
     .line 5
@@ -40,11 +40,11 @@
     .locals 1
 
     .line 1
-    iput-object p1, p0, Ly1/x;->x:Ljava/lang/Object;
+    iput-object p1, p0, Ly1/x;->y:Ljava/lang/Object;
 
     .line 2
     .line 3
-    iget p1, p0, Ly1/x;->X:I
+    iget p1, p0, Ly1/x;->Y:I
 
     .line 4
     .line 5
@@ -55,18 +55,18 @@
     or-int/2addr p1, v0
 
     .line 8
-    iput p1, p0, Ly1/x;->X:I
+    iput p1, p0, Ly1/x;->Y:I
 
     .line 9
     .line 10
-    iget-object p1, p0, Ly1/x;->y:Ly1/z;
+    iget-object p1, p0, Ly1/x;->X:Ly1/z;
 
     .line 11
     .line 12
     const/4 v0, 0x0
 
     .line 13
-    invoke-virtual {p1, v0, v0, p0}, Ly1/z;->g(Landroidx/room/r0;Lkotlin/jvm/functions/Function2;Ly8/c;)Ljava/lang/Object;
+    invoke-virtual {p1, v0, v0, p0}, Ly1/z;->g(Landroidx/room/p0;Lkotlin/jvm/functions/Function2;Lw8/c;)Ljava/lang/Object;
 
     .line 14
     .line 15

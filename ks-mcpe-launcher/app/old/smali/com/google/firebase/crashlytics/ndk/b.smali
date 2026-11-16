@@ -1,6 +1,6 @@
 .class public final Lcom/google/firebase/crashlytics/ndk/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -12,7 +12,7 @@
 
 .field public final b:Lcom/google/firebase/crashlytics/ndk/e;
 
-.field public final c:Ld7/e;
+.field public final c:Lb7/e;
 
 
 # direct methods
@@ -39,7 +39,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Landroid/content/Context;Lcom/google/firebase/crashlytics/ndk/e;Ld7/e;)V
+.method public constructor <init>(Landroid/content/Context;Lcom/google/firebase/crashlytics/ndk/e;Lb7/e;)V
     .locals 0
 
     .line 1
@@ -56,7 +56,7 @@
 
     .line 7
     .line 8
-    iput-object p3, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iput-object p3, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 9
     .line 10
@@ -342,11 +342,11 @@
     return-object p0
 .end method
 
-.method public static g(Ld7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+.method public static g(Lb7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
     .locals 4
 
     .line 1
-    invoke-virtual {p0, p1}, Ld7/e;->f(Ljava/lang/String;)Ljava/io/File;
+    invoke-virtual {p0, p1}, Lb7/e;->f(Ljava/lang/String;)Ljava/io/File;
 
     .line 2
     .line 3
@@ -436,7 +436,7 @@
     move-result-object p0
 
     .line 45
-    invoke-static {v0, p0}, Lx6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
+    invoke-static {v0, p0}, Lv6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
 
     .line 46
     .line 47
@@ -488,7 +488,7 @@
     move-result-object p0
 
     .line 67
-    invoke-static {p3, p0}, Lx6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
+    invoke-static {p3, p0}, Lv6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
 
     .line 68
     .line 69
@@ -520,7 +520,7 @@
     move-result-object p0
 
     .line 83
-    invoke-static {p3, p0}, Lx6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
+    invoke-static {p3, p0}, Lv6/h;->b(Ljava/io/Closeable;Ljava/lang/String;)V
 
     .line 84
     .line 85
@@ -534,11 +534,11 @@
     .locals 12
 
     .line 1
-    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Ld7/e;->f(Ljava/lang/String;)Ljava/io/File;
+    invoke-virtual {v0, p1}, Lb7/e;->f(Ljava/lang/String;)Ljava/io/File;
 
     .line 4
     .line 5
@@ -572,7 +572,7 @@
     .line 19
     .line 20
     .line 21
-    invoke-static {v2, v3}, Lcom/google/android/gms/internal/measurement/x;->m(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v2, v3}, Lcom/google/android/gms/internal/measurement/gi;->j(Ljava/io/File;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 22
     .line 23
@@ -752,7 +752,7 @@
 
     .line 108
     .line 109
-    invoke-static {v3}, Ls4/q2;->f(Landroid/app/ActivityManager;)Ljava/util/List;
+    invoke-static {v3}, Landroidx/core/view/j1;->v(Landroid/app/ActivityManager;)Ljava/util/List;
 
     .line 110
     .line 111
@@ -764,7 +764,7 @@
 
     .line 114
     .line 115
-    invoke-virtual {v0, p1, v8}, Ld7/e;->g(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    invoke-virtual {v0, p1, v8}, Lb7/e;->g(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
 
     .line 116
     .line 117
@@ -819,7 +819,7 @@
     move-result-object v3
 
     .line 142
-    invoke-static {v3}, Ls4/q2;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
+    invoke-static {v3}, Lv6/y;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
 
     .line 143
     .line 144
@@ -827,7 +827,7 @@
     move-result-object v3
 
     .line 146
-    invoke-static {v3}, Ls4/q2;->a(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {v3}, Lv6/y;->a(Landroid/app/ApplicationExitInfo;)I
 
     .line 147
     .line 148
@@ -842,7 +842,7 @@
 
     .line 152
     .line 153
-    invoke-static {v3}, Ls4/q2;->b(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {v3}, Lv6/y;->b(Landroid/app/ApplicationExitInfo;)J
 
     .line 154
     .line 155
@@ -899,7 +899,7 @@
     move-result-object p1
 
     .line 179
-    invoke-static {p1}, Ls4/q2;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
+    invoke-static {p1}, Lv6/y;->c(Ljava/lang/Object;)Landroid/app/ApplicationExitInfo;
 
     .line 180
     .line 181
@@ -907,7 +907,7 @@
     move-result-object p1
 
     .line 183
-    new-instance v0, La7/c0;
+    new-instance v0, Ly6/c0;
 
     .line 184
     .line 185
@@ -916,7 +916,7 @@
     .line 186
     .line 187
     .line 188
-    invoke-static {p1}, Ls4/q2;->h(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {p1}, Lv6/y;->f(Landroid/app/ApplicationExitInfo;)I
 
     .line 189
     .line 190
@@ -924,11 +924,11 @@
     move-result v3
 
     .line 192
-    iput v3, v0, La7/c0;->d:I
+    iput v3, v0, Ly6/c0;->d:I
 
     .line 193
     .line 194
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 195
     .line 196
@@ -939,11 +939,11 @@
     int-to-byte v3, v3
 
     .line 199
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 200
     .line 201
-    invoke-static {p1}, Ls4/q2;->j(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
+    invoke-static {p1}, Lv6/y;->h(Landroid/app/ApplicationExitInfo;)Ljava/lang/String;
 
     .line 202
     .line 203
@@ -955,11 +955,11 @@
 
     .line 206
     .line 207
-    iput-object v3, v0, La7/c0;->b:Ljava/lang/String;
+    iput-object v3, v0, Ly6/c0;->b:Ljava/lang/String;
 
     .line 208
     .line 209
-    invoke-static {p1}, Ls4/q2;->a(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {p1}, Lv6/y;->a(Landroid/app/ApplicationExitInfo;)I
 
     .line 210
     .line 211
@@ -967,11 +967,11 @@
     move-result v3
 
     .line 213
-    iput v3, v0, La7/c0;->c:I
+    iput v3, v0, Ly6/c0;->c:I
 
     .line 214
     .line 215
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 216
     .line 217
@@ -981,11 +981,11 @@
     int-to-byte v3, v3
 
     .line 219
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 220
     .line 221
-    invoke-static {p1}, Ls4/q2;->b(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {p1}, Lv6/y;->b(Landroid/app/ApplicationExitInfo;)J
 
     .line 222
     .line 223
@@ -993,11 +993,11 @@
     move-result-wide v8
 
     .line 225
-    iput-wide v8, v0, La7/c0;->g:J
+    iput-wide v8, v0, Ly6/c0;->g:J
 
     .line 226
     .line 227
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 228
     .line 229
@@ -1008,11 +1008,11 @@
     int-to-byte v3, v3
 
     .line 232
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 233
     .line 234
-    invoke-static {p1}, Ls4/q2;->k(Landroid/app/ApplicationExitInfo;)I
+    invoke-static {p1}, Lv6/y;->i(Landroid/app/ApplicationExitInfo;)I
 
     .line 235
     .line 236
@@ -1020,11 +1020,11 @@
     move-result v3
 
     .line 238
-    iput v3, v0, La7/c0;->a:I
+    iput v3, v0, Ly6/c0;->a:I
 
     .line 239
     .line 240
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 241
     .line 242
@@ -1035,11 +1035,11 @@
     int-to-byte v3, v3
 
     .line 245
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 246
     .line 247
-    invoke-static {p1}, Ls4/q2;->i(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {p1}, Lv6/y;->g(Landroid/app/ApplicationExitInfo;)J
 
     .line 248
     .line 249
@@ -1047,11 +1047,11 @@
     move-result-wide v8
 
     .line 251
-    iput-wide v8, v0, La7/c0;->e:J
+    iput-wide v8, v0, Ly6/c0;->e:J
 
     .line 252
     .line 253
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 254
     .line 255
@@ -1062,11 +1062,11 @@
     int-to-byte v3, v3
 
     .line 258
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 259
     .line 260
-    invoke-static {p1}, Ls4/q2;->l(Landroid/app/ApplicationExitInfo;)J
+    invoke-static {p1}, Lv6/y;->j(Landroid/app/ApplicationExitInfo;)J
 
     .line 261
     .line 262
@@ -1074,11 +1074,11 @@
     move-result-wide v8
 
     .line 264
-    iput-wide v8, v0, La7/c0;->f:J
+    iput-wide v8, v0, Ly6/c0;->f:J
 
     .line 265
     .line 266
-    iget-byte v3, v0, La7/c0;->j:B
+    iget-byte v3, v0, Ly6/c0;->j:B
 
     .line 267
     .line 268
@@ -1089,12 +1089,12 @@
     int-to-byte v3, v3
 
     .line 271
-    iput-byte v3, v0, La7/c0;->j:B
+    iput-byte v3, v0, Ly6/c0;->j:B
 
     .line 272
     .line 273
     :try_start_0
-    invoke-static {p1}, Ls4/q2;->d(Landroid/app/ApplicationExitInfo;)Ljava/io/InputStream;
+    invoke-static {p1}, Lv6/y;->d(Landroid/app/ApplicationExitInfo;)Ljava/io/InputStream;
 
     .line 274
     .line 275
@@ -1126,11 +1126,11 @@
     .line 286
     .line 287
     :goto_2
-    iput-object v7, v0, La7/c0;->h:Ljava/lang/String;
+    iput-object v7, v0, Ly6/c0;->h:Ljava/lang/String;
 
     .line 288
     .line 289
-    invoke-virtual {v0}, La7/c0;->a()La7/d0;
+    invoke-virtual {v0}, Ly6/c0;->a()Ly6/d0;
 
     .line 290
     .line 291
@@ -1160,20 +1160,20 @@
     .line 302
     :cond_8
     :goto_3
-    new-instance p1, Lq7/e;
+    new-instance p1, Lo7/e;
 
     .line 303
     .line 304
-    const/16 v0, 0xe
+    const/16 v0, 0x10
 
     .line 305
     .line 306
-    invoke-direct {p1, v2, v7, v0}, Lq7/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {p1, v2, v7, v0}, Lo7/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 307
     .line 308
     .line 309
-    iput-object p1, v6, Lcom/google/firebase/crashlytics/ndk/f;->a:Lq7/e;
+    iput-object p1, v6, Lcom/google/firebase/crashlytics/ndk/f;->a:Lo7/e;
 
     .line 310
     .line 311
@@ -1271,11 +1271,11 @@
     .line 358
     .line 359
     .line 360
-    iget-object v0, v6, Lcom/google/firebase/crashlytics/ndk/f;->a:Lq7/e;
+    iget-object v0, v6, Lcom/google/firebase/crashlytics/ndk/f;->a:Lo7/e;
 
     .line 361
     .line 362
-    iput-object v0, p1, Lcom/google/firebase/crashlytics/ndk/f;->a:Lq7/e;
+    iput-object v0, p1, Lcom/google/firebase/crashlytics/ndk/f;->a:Lo7/e;
 
     .line 363
     .line 364
@@ -1387,7 +1387,7 @@
     move-result-object p1
 
     .line 34
-    iget-object p2, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iget-object p2, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 35
     .line 36
@@ -1395,7 +1395,7 @@
 
     .line 37
     .line 38
-    invoke-static {p2, p3, p1, p4}, Lcom/google/firebase/crashlytics/ndk/b;->g(Ld7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {p2, p3, p1, p4}, Lcom/google/firebase/crashlytics/ndk/b;->g(Lb7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 39
     .line 40
@@ -1403,35 +1403,35 @@
     return-void
 .end method
 
-.method public final e(Ljava/lang/String;La7/l1;)V
+.method public final e(Ljava/lang/String;Ly6/l1;)V
     .locals 8
 
     .line 1
-    iget-object v0, p2, La7/l1;->a:Ljava/lang/String;
+    iget-object v0, p2, Ly6/l1;->a:Ljava/lang/String;
 
     .line 2
     .line 3
-    iget-object v1, p2, La7/l1;->b:Ljava/lang/String;
+    iget-object v1, p2, Ly6/l1;->b:Ljava/lang/String;
 
     .line 4
     .line 5
-    iget-object v2, p2, La7/l1;->c:Ljava/lang/String;
+    iget-object v2, p2, Ly6/l1;->c:Ljava/lang/String;
 
     .line 6
     .line 7
-    iget-object v3, p2, La7/l1;->d:Ljava/lang/String;
+    iget-object v3, p2, Ly6/l1;->d:Ljava/lang/String;
 
     .line 8
     .line 9
-    iget v4, p2, La7/l1;->e:I
+    iget v4, p2, Ly6/l1;->e:I
 
     .line 10
     .line 11
-    iget-object p2, p2, La7/l1;->f:Lu6/c;
+    iget-object p2, p2, Ly6/l1;->f:Ls6/c;
 
     .line 12
     .line 13
-    invoke-virtual {p2}, Lu6/c;->a()Lu6/c;
+    invoke-virtual {p2}, Ls6/c;->a()Ls6/c;
 
     .line 14
     .line 15
@@ -1439,7 +1439,7 @@
     move-result-object v5
 
     .line 17
-    iget-object v5, v5, Lu6/c;->a:Ljava/lang/Object;
+    iget-object v5, v5, Ls6/c;->a:Ljava/lang/Object;
 
     .line 18
     .line 19
@@ -1447,7 +1447,7 @@
 
     .line 20
     .line 21
-    invoke-virtual {p2}, Lu6/c;->a()Lu6/c;
+    invoke-virtual {p2}, Ls6/c;->a()Ls6/c;
 
     .line 22
     .line 23
@@ -1455,7 +1455,7 @@
     move-result-object p2
 
     .line 25
-    iget-object p2, p2, Lu6/c;->b:Ljava/lang/Object;
+    iget-object p2, p2, Ls6/c;->b:Ljava/lang/Object;
 
     .line 26
     .line 27
@@ -1580,7 +1580,7 @@
     move-result-object p2
 
     .line 90
-    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 91
     .line 92
@@ -1588,7 +1588,7 @@
 
     .line 93
     .line 94
-    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Ld7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Lb7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 95
     .line 96
@@ -1596,11 +1596,11 @@
     return-void
 .end method
 
-.method public final f(Ljava/lang/String;La7/m1;)V
+.method public final f(Ljava/lang/String;Ly6/m1;)V
     .locals 12
 
     .line 1
-    iget v0, p2, La7/m1;->a:I
+    iget v0, p2, Ly6/m1;->a:I
 
     .line 2
     .line 3
@@ -1608,23 +1608,23 @@
 
     .line 4
     .line 5
-    iget v2, p2, La7/m1;->b:I
+    iget v2, p2, Ly6/m1;->b:I
 
     .line 6
     .line 7
-    iget-wide v3, p2, La7/m1;->c:J
+    iget-wide v3, p2, Ly6/m1;->c:J
 
     .line 8
     .line 9
-    iget-wide v5, p2, La7/m1;->d:J
+    iget-wide v5, p2, Ly6/m1;->d:J
 
     .line 10
     .line 11
-    iget-boolean v7, p2, La7/m1;->e:Z
+    iget-boolean v7, p2, Ly6/m1;->e:Z
 
     .line 12
     .line 13
-    iget p2, p2, La7/m1;->f:I
+    iget p2, p2, Ly6/m1;->f:I
 
     .line 14
     .line 15
@@ -1791,7 +1791,7 @@
     move-result-object p2
 
     .line 102
-    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 103
     .line 104
@@ -1799,7 +1799,7 @@
 
     .line 105
     .line 106
-    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Ld7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Lb7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 107
     .line 108
@@ -1807,7 +1807,7 @@
     return-void
 .end method
 
-.method public final h(Ljava/lang/String;La7/n1;)V
+.method public final h(Ljava/lang/String;Ly6/n1;)V
     .locals 4
 
     .line 1
@@ -1819,7 +1819,7 @@
 
     .line 4
     .line 5
-    iget-boolean p2, p2, La7/n1;->a:Z
+    iget-boolean p2, p2, Ly6/n1;->a:Z
 
     .line 6
     .line 7
@@ -1884,7 +1884,7 @@
     move-result-object p2
 
     .line 40
-    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Ld7/e;
+    iget-object v0, p0, Lcom/google/firebase/crashlytics/ndk/b;->c:Lb7/e;
 
     .line 41
     .line 42
@@ -1892,7 +1892,7 @@
 
     .line 43
     .line 44
-    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Ld7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-static {v0, p1, p2, v1}, Lcom/google/firebase/crashlytics/ndk/b;->g(Lb7/e;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 45
     .line 46

@@ -1,93 +1,89 @@
 .class public final Lsg/f;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lsh/g;
+.super Lsg/d;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final c:Ljava/security/cert/CRLSelector;
+.field public final X:Lzg/a;
 
-.field public final d:Z
+.field public final Y:[Lzg/f;
 
-.field public final h:Ljava/math/BigInteger;
+.field public final h:I
 
-.field public final p:[B
+.field public final q:I
 
-.field public final q:Z
+.field public final w:Lzg/c;
+
+.field public final x:Lzg/f;
+
+.field public final y:Lzg/e;
 
 
 # direct methods
-.method public constructor <init>(Lfa/d;)V
-    .locals 1
+.method public constructor <init>(IILzg/c;Lzg/f;Lzg/e;Ljava/lang/String;)V
+    .locals 2
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-static {p3, p4}, Lcom/bumptech/glide/f;->l(Lzg/c;Lzg/f;)Lzg/a;
 
     .line 2
     .line 3
     .line 4
-    iget-object v0, p1, Lfa/d;->d:Ljava/lang/Object;
+    move-result-object v0
 
     .line 5
+    const/4 v1, 0x1
+
     .line 6
-    check-cast v0, Ljava/security/cert/CRLSelector;
+    invoke-direct {p0, p6, v1}, Lsg/d;-><init>(Ljava/lang/String;Z)V
 
     .line 7
     .line 8
-    iput-object v0, p0, Lsg/f;->c:Ljava/security/cert/CRLSelector;
-
     .line 9
+    iput p1, p0, Lsg/f;->h:I
+
     .line 10
-    iget-boolean v0, p1, Lfa/d;->b:Z
-
     .line 11
+    iput p2, p0, Lsg/f;->q:I
+
     .line 12
-    iput-boolean v0, p0, Lsg/f;->d:Z
-
     .line 13
+    iput-object p3, p0, Lsg/f;->w:Lzg/c;
+
     .line 14
-    iget-object v0, p1, Lfa/d;->e:Ljava/lang/Object;
-
     .line 15
+    iput-object p4, p0, Lsg/f;->x:Lzg/f;
+
     .line 16
-    check-cast v0, Ljava/math/BigInteger;
-
     .line 17
+    iput-object v0, p0, Lsg/f;->X:Lzg/a;
+
     .line 18
-    iput-object v0, p0, Lsg/f;->h:Ljava/math/BigInteger;
-
     .line 19
+    iput-object p5, p0, Lsg/f;->y:Lzg/e;
+
     .line 20
-    iget-object v0, p1, Lfa/d;->f:Ljava/lang/Object;
-
     .line 21
+    new-instance p1, Lcom/google/firebase/messaging/u;
+
     .line 22
-    check-cast v0, [B
-
     .line 23
-    .line 24
-    iput-object v0, p0, Lsg/f;->p:[B
+    invoke-direct {p1, p3, p4}, Lcom/google/firebase/messaging/u;-><init>(Lzg/c;Lzg/f;)V
 
+    .line 24
     .line 25
     .line 26
-    iget-boolean p1, p1, Lfa/d;->c:Z
+    iget-object p1, p1, Lcom/google/firebase/messaging/u;->w:Ljava/lang/Object;
 
     .line 27
     .line 28
-    iput-boolean p1, p0, Lsg/f;->q:Z
+    check-cast p1, [Lzg/f;
 
     .line 29
     .line 30
+    iput-object p1, p0, Lsg/f;->Y:[Lzg/f;
+
+    .line 31
+    .line 32
     return-void
-.end method
-
-
-# virtual methods
-.method public final clone()Ljava/lang/Object;
-    .locals 0
-
-    .line 1
-    return-object p0
 .end method

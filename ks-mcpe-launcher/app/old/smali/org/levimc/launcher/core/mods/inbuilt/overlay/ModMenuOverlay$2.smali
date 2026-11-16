@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$2;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/widget/SeekBar$OnSeekBarChangeListener;
@@ -52,7 +52,7 @@
 
     .line 4
     .line 5
-    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->s0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Z
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->b0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Z
 
     .line 6
     .line 7
@@ -90,7 +90,7 @@
 
     .line 22
     .line 23
-    invoke-static {p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->B0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;I)V
+    invoke-static {p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->i0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;I)V
 
     .line 24
     .line 25

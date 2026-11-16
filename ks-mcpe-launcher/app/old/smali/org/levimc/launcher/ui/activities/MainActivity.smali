@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/activities/MainActivity;
 .super Lorg/levimc/launcher/ui/activities/BaseActivity;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -12,6 +12,22 @@
 
 
 # instance fields
+.field private accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+.field private accountAvatarContainer:Landroid/view/View;
+
+.field private accountExecutor:Ljava/util/concurrent/ExecutorService;
+
+.field private accountLoadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
+
+.field private accountLoginLauncher:Landroidx/activity/result/ActivityResultLauncher;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroidx/activity/result/ActivityResultLauncher;"
+        }
+    .end annotation
+.end field
+
 .field private apkImportManager:Lorg/levimc/launcher/util/ApkImportManager;
 
 .field private apkImportResultLauncher:Landroidx/activity/result/ActivityResultLauncher;
@@ -22,6 +38,10 @@
     .end annotation
 .end field
 
+.field private final avatarClient:Lokhttp3/OkHttpClient;
+
+.field private avatarProgress:Landroid/widget/ProgressBar;
+
 .field private binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
 .field private contentManager:Lorg/levimc/launcher/core/content/ContentManager;
@@ -29,6 +49,8 @@
 .field private fileHandler:Lorg/levimc/launcher/core/mods/FileHandler;
 
 .field private languageManager:Lorg/levimc/launcher/util/LanguageManager;
+
+.field private lastAvatarXuid:Ljava/lang/String;
 
 .field private launcherInitialized:Z
 
@@ -52,13 +74,13 @@
 
 .field private resourcePacksCountText:Landroid/widget/TextView;
 
+.field private signInButton:Landroid/widget/Button;
+
 .field private skinPacksCountText:Landroid/widget/TextView;
 
-.field private final tipHandler:Landroid/os/Handler;
+.field private skinRenderer:Lcom/mio/skin/SkinRenderer;
 
-.field private tipRotator:Ljava/lang/Runnable;
-
-.field private tipsVisible:Z
+.field private skinViewer:Lcom/mio/skin/SkinViewer;
 
 .field private versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
@@ -69,7 +91,7 @@
 
 # direct methods
 .method public constructor <init>()V
-    .locals 2
+    .locals 1
 
     .line 1
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;-><init>()V
@@ -77,27 +99,31 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Landroid/os/Handler;
+    new-instance v0, Lokhttp3/OkHttpClient;
 
     .line 5
     .line 6
-    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+    invoke-direct {v0}, Lokhttp3/OkHttpClient;-><init>()V
 
     .line 7
     .line 8
     .line 9
-    move-result-object v1
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarClient:Lokhttp3/OkHttpClient;
 
     .line 10
-    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
-
     .line 11
+    invoke-static {}, Ljava/util/concurrent/Executors;->newSingleThreadExecutor()Ljava/util/concurrent/ExecutorService;
+
     .line 12
     .line 13
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
-
     .line 14
+    move-result-object v0
+
     .line 15
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountExecutor:Ljava/util/concurrent/ExecutorService;
+
+    .line 16
+    .line 17
     return-void
 .end method
 
@@ -113,11 +139,11 @@
     return-void
 .end method
 
-.method public static synthetic B(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic B(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$4(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$22(Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
 
     .line 2
     .line 3
@@ -125,11 +151,11 @@
     return-void
 .end method
 
-.method public static synthetic C(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+.method public static synthetic C(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showLaunchMenu$23(I)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showEulaDialog$19(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -141,7 +167,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->showLaunchMenu(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$24(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -149,11 +175,11 @@
     return-void
 .end method
 
-.method public static synthetic E(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+.method public static synthetic E(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showPostEulaFlow$9()V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showEulaDialog$18(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -161,11 +187,11 @@
     return-void
 .end method
 
-.method public static synthetic F(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
+.method public static synthetic F(Lorg/levimc/launcher/ui/activities/MainActivity;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showVersionSelectDialog$24(Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showPostEulaFlow$17()V
 
     .line 2
     .line 3
@@ -173,11 +199,11 @@
     return-void
 .end method
 
-.method public static synthetic G(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/versions/VersionManager;)V
+.method public static synthetic G(Landroid/widget/PopupWindow;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initializeVersionManager$3(Lorg/levimc/launcher/core/versions/VersionManager;)V
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$7(Landroid/widget/PopupWindow;Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -185,11 +211,11 @@
     return-void
 .end method
 
-.method public static synthetic H(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic I(Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$18(Landroid/view/View;)V
+    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupNavBar$32(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -197,11 +223,11 @@
     return-void
 .end method
 
-.method public static synthetic I(Lorg/levimc/launcher/ui/activities/MainActivity;Landroidx/activity/result/ActivityResult;)V
+.method public static synthetic K(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/lang/String;Landroid/graphics/Bitmap;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupManagersAndHandlers$0(Landroidx/activity/result/ActivityResult;)V
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$loadXboxAvatar$2(Ljava/lang/String;Landroid/graphics/Bitmap;)V
 
     .line 2
     .line 3
@@ -209,11 +235,11 @@
     return-void
 .end method
 
-.method public static synthetic J(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic L(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$6(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$23(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -221,11 +247,11 @@
     return-void
 .end method
 
-.method public static synthetic K(Landroid/view/View;)V
+.method public static synthetic M(Lorg/levimc/launcher/ui/activities/MainActivity;Landroidx/activity/result/ActivityResult;)V
     .locals 0
 
     .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupNavBar$25(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupManagersAndHandlers$12(Landroidx/activity/result/ActivityResult;)V
 
     .line 2
     .line 3
@@ -233,11 +259,11 @@
     return-void
 .end method
 
-.method public static synthetic L(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/versions/VersionManager;)V
+.method public static synthetic N(Landroidx/recyclerview/widget/RecyclerView;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initializeVersionManager$2(Lorg/levimc/launcher/core/versions/VersionManager;)V
+    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$11(Landroidx/recyclerview/widget/RecyclerView;)V
 
     .line 2
     .line 3
@@ -245,11 +271,11 @@
     return-void
 .end method
 
-.method public static synthetic M(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/lang/String;)V
+.method public static synthetic O(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/widget/PopupWindow;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$8(Ljava/lang/String;)V
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$8(Landroid/widget/PopupWindow;Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -257,11 +283,11 @@
     return-void
 .end method
 
-.method public static synthetic N(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic Q(Lorg/levimc/launcher/ui/activities/MainActivity;Landroidx/activity/result/ActivityResult;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$16(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupManagersAndHandlers$13(Landroidx/activity/result/ActivityResult;)V
 
     .line 2
     .line 3
@@ -269,11 +295,11 @@
     return-void
 .end method
 
-.method public static synthetic O(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic R(Landroid/view/ViewGroup;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$7(Landroid/view/View;)V
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$10(Landroid/view/ViewGroup;Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -281,11 +307,11 @@
     return-void
 .end method
 
-.method public static synthetic P(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic S(Lorg/levimc/launcher/ui/activities/MainActivity;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$19(Landroid/view/View;)V
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$loadXboxAvatar$3()V
 
     .line 2
     .line 3
@@ -293,11 +319,11 @@
     return-void
 .end method
 
-.method public static synthetic Q(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+.method public static synthetic T(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/versions/VersionManager;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->performActualLaunch()V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initializeVersionManager$14(Lorg/levimc/launcher/core/versions/VersionManager;)V
 
     .line 2
     .line 3
@@ -305,47 +331,11 @@
     return-void
 .end method
 
-.method public static synthetic R(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic U(Lorg/levimc/launcher/ui/activities/MainActivity;Landroidx/activity/result/ActivityResult;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initListeners$12(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic S(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showEulaDialog$11(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic T(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$15(Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic U(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initListeners$13(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$onCreate$0(Landroidx/activity/result/ActivityResult;)V
 
     .line 2
     .line 3
@@ -357,7 +347,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$21(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->showAccountSwitchPopup(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -369,7 +359,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$17(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$25(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -377,11 +367,11 @@
     return-void
 .end method
 
-.method public static synthetic X(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic X(Lorg/levimc/launcher/ui/activities/MainActivity;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initListeners$14(Landroid/view/View;)V
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->performActualLaunch()V
 
     .line 2
     .line 3
@@ -389,11 +379,11 @@
     return-void
 .end method
 
-.method public static synthetic Y(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic Y(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$5(Landroid/view/View;)V
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$5(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
 
     .line 2
     .line 3
@@ -401,11 +391,11 @@
     return-void
 .end method
 
-.method public static synthetic Z(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+.method public static synthetic Z(Landroid/view/ViewGroup;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->launchGame()V
+    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$9(Landroid/view/ViewGroup;Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -413,11 +403,11 @@
     return-void
 .end method
 
-.method public static synthetic a0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic a0(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/lang/String;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$22(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$loadXboxAvatar$4(Ljava/lang/String;)V
 
     .line 2
     .line 3
@@ -426,7 +416,7 @@
 .end method
 
 .method private addModNameEntry(Ljava/lang/String;)V
-    .locals 2
+    .locals 3
 
     .line 1
     new-instance v0, Landroid/widget/TextView;
@@ -446,7 +436,7 @@
     const/4 p1, 0x2
 
     .line 10
-    const/high16 v1, 0x41600000    # 14.0f
+    const/high16 v1, 0x41400000    # 12.0f
 
     .line 11
     .line 12
@@ -455,7 +445,7 @@
     .line 13
     .line 14
     .line 15
-    sget p1, Lorg/levimc/launcher/R$color;->text_primary:I
+    sget p1, Lorg/levimc/launcher/R$color;->on_surface:I
 
     .line 16
     .line 17
@@ -472,109 +462,154 @@
     .line 22
     .line 23
     .line 24
-    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
+    const/4 p1, 0x0
 
     .line 25
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setFontFeatureSettings(Ljava/lang/String;)V
+
     .line 26
     .line 27
-    move-result-object p1
-
     .line 28
-    sget v1, Lorg/levimc/launcher/R$font;->misans:I
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 29
     .line 30
-    invoke-virtual {p1, v1}, Landroid/content/res/Resources;->getFont(I)Landroid/graphics/Typeface;
-
     .line 31
-    .line 32
-    .line 33
     move-result-object p1
 
+    .line 32
+    sget v1, Lorg/levimc/launcher/R$font;->misans:I
+
+    .line 33
     .line 34
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface;)V
+    invoke-virtual {p1, v1}, Landroid/content/res/Resources;->getFont(I)Landroid/graphics/Typeface;
 
     .line 35
     .line 36
     .line 37
-    const/16 p1, 0x10
+    move-result-object p1
 
     .line 38
-    .line 39
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setGravity(I)V
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setTypeface(Landroid/graphics/Typeface;)V
 
+    .line 39
     .line 40
     .line 41
-    .line 42
-    const/high16 p1, 0x42100000    # 36.0f
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
+    .line 42
     .line 43
     .line 44
-    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/widget/UiKit;->dp(Landroid/content/Context;F)F
+    move-result-object p1
 
     .line 45
+    invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
     .line 46
     .line 47
-    move-result p1
-
     .line 48
-    float-to-int p1, p1
+    move-result-object p1
 
     .line 49
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setMinHeight(I)V
+    iget p1, p1, Landroid/util/DisplayMetrics;->density:F
 
     .line 50
     .line 51
-    .line 52
-    const/4 p1, 0x1
+    const/high16 v1, 0x40400000    # 3.0f
 
+    .line 52
     .line 53
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setMaxLines(I)V
+    mul-float/2addr p1, v1
 
     .line 54
-    .line 55
-    .line 56
-    sget-object p1, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
+    float-to-int p1, p1
 
+    .line 55
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 56
     .line 57
     .line 58
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+    move-result-object v2
 
     .line 59
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
     .line 60
     .line 61
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->modsListContainer:Landroid/widget/LinearLayout;
-
     .line 62
+    move-result-object v2
+
     .line 63
-    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+    iget v2, v2, Landroid/util/DisplayMetrics;->density:F
 
     .line 64
     .line 65
+    mul-float/2addr v2, v1
+
     .line 66
+    float-to-int v1, v2
+
+    .line 67
+    const/4 v2, 0x0
+
+    .line 68
+    invoke-virtual {v0, v2, p1, v2, v1}, Landroid/widget/TextView;->setPadding(IIII)V
+
+    .line 69
+    .line 70
+    .line 71
+    const/4 p1, 0x1
+
+    .line 72
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setMaxLines(I)V
+
+    .line 73
+    .line 74
+    .line 75
+    sget-object p1, Landroid/text/TextUtils$TruncateAt;->END:Landroid/text/TextUtils$TruncateAt;
+
+    .line 76
+    .line 77
+    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setEllipsize(Landroid/text/TextUtils$TruncateAt;)V
+
+    .line 78
+    .line 79
+    .line 80
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->modsListContainer:Landroid/widget/LinearLayout;
+
+    .line 81
+    .line 82
+    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    .line 83
+    .line 84
+    .line 85
     return-void
 .end method
 
-.method public static bridge synthetic b0(Lorg/levimc/launcher/ui/activities/MainActivity;)Lorg/levimc/launcher/databinding/ActivityMainBinding;
+.method public static synthetic b0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initAccountHeader$1(Landroid/view/View;)V
 
     .line 2
     .line 3
-    return-object p0
+    .line 4
+    return-void
 .end method
 
-.method public static bridge synthetic c0(Lorg/levimc/launcher/ui/activities/MainActivity;)Landroid/os/Handler;
+.method public static synthetic c0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initContentManagementSection$26(Landroid/view/View;)V
 
     .line 2
     .line 3
-    return-object p0
+    .line 4
+    return-void
 .end method
 
 .method private checkResourcepack()V
@@ -688,7 +723,7 @@
 
     .line 24
     .line 25
-    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
 
     .line 26
     .line 27
@@ -922,45 +957,40 @@
     return-object v0
 .end method
 
-.method public static bridge synthetic d0(Lorg/levimc/launcher/ui/activities/MainActivity;)Z
+.method public static synthetic d0(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/lang/String;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
     .locals 0
 
     .line 1
-    iget-boolean p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipsVisible:Z
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showAccountSwitchPopup$6(Ljava/lang/String;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
 
     .line 2
-    .line 3
-    return p0
-.end method
-
-.method public static bridge synthetic e0(Lorg/levimc/launcher/ui/activities/MainActivity;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
     .line 3
     .line 4
-    .line 5
     return-void
 .end method
 
-.method public static bridge synthetic f0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+.method public static synthetic e0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initListeners$20(Landroid/view/View;)V
 
     .line 2
     .line 3
     .line 4
-    move-result-object p0
+    return-void
+.end method
 
-    .line 5
-    return-object p0
+.method public static synthetic f0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initModsSection$16(Landroid/view/View;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
 .end method
 
 .method private findShortcutVersion(Ljava/lang/String;Ljava/lang/String;)Lorg/levimc/launcher/core/versions/GameVersion;
@@ -1218,19 +1248,79 @@
     return v0
 .end method
 
-.method public static bridge synthetic g0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+.method public static synthetic g0(Lorg/levimc/launcher/ui/activities/MainActivity;)V
     .locals 0
 
     .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceVersionText(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->launchGame()V
 
     .line 2
     .line 3
     .line 4
-    move-result-object p0
+    return-void
+.end method
+
+.method private getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+    .locals 3
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
 
     .line 5
-    return-object p0
+    invoke-interface {v0}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    :cond_0
+    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v1
+
+    .line 13
+    if-eqz v1, :cond_1
+
+    .line 14
+    .line 15
+    invoke-interface {v0}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 16
+    .line 17
+    .line 18
+    move-result-object v1
+
+    .line 19
+    check-cast v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 20
+    .line 21
+    iget-boolean v2, v1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->active:Z
+
+    .line 22
+    .line 23
+    if-eqz v2, :cond_0
+
+    .line 24
+    .line 25
+    return-object v1
+
+    .line 26
+    :cond_1
+    const/4 v0, 0x0
+
+    .line 27
+    return-object v0
 .end method
 
 .method private static getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
@@ -1399,6 +1489,18 @@
     return-object v0
 .end method
 
+.method public static synthetic h0(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showVersionSelectDialog$31(Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
 .method private handleIncomingFiles()V
     .locals 4
 
@@ -1496,11 +1598,11 @@
 
     .line 43
     .line 44
-    new-instance v2, Lorg/levimc/launcher/ui/activities/MainActivity$6;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/MainActivity$7;
 
     .line 45
     .line 46
-    invoke-direct {v2, p0}, Lorg/levimc/launcher/ui/activities/MainActivity$6;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+    invoke-direct {v2, p0}, Lorg/levimc/launcher/ui/activities/MainActivity$7;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;)V
 
     .line 47
     .line 48
@@ -1680,7 +1782,7 @@
 
     .line 81
     .line 82
-    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
 
     .line 83
     .line 84
@@ -1688,14 +1790,14 @@
     move-result-object v0
 
     .line 86
-    new-instance v2, Lorg/levimc/launcher/ui/activities/k2;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/m1;
 
     .line 87
     .line 88
     const/4 v3, 0x1
 
     .line 89
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/k2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 90
     .line 91
@@ -1769,7 +1871,7 @@
 
     .line 24
     .line 25
-    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    invoke-virtual {v0}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
 
     .line 26
     .line 27
@@ -1777,14 +1879,14 @@
     move-result-object v0
 
     .line 29
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/m1;
 
     .line 30
     .line 31
-    const/4 v2, 0x3
+    const/4 v2, 0x4
 
     .line 32
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/k2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 33
     .line 34
@@ -1872,6 +1974,176 @@
     return-void
 .end method
 
+.method public static bridge synthetic i0(Lorg/levimc/launcher/ui/activities/MainActivity;)Ljava/util/concurrent/ExecutorService;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountExecutor:Ljava/util/concurrent/ExecutorService;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method private initAccountHeader()V
+    .locals 3
+
+    .line 1
+    sget v0, Lorg/levimc/launcher/R$id;->nav_sign_in_button:I
+
+    .line 2
+    .line 3
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, Landroid/widget/Button;
+
+    .line 8
+    .line 9
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->signInButton:Landroid/widget/Button;
+
+    .line 10
+    .line 11
+    sget v0, Lorg/levimc/launcher/R$id;->nav_account_avatar:I
+
+    .line 12
+    .line 13
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v0
+
+    .line 17
+    check-cast v0, Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 18
+    .line 19
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 20
+    .line 21
+    sget v0, Lorg/levimc/launcher/R$id;->nav_account_avatar_container:I
+
+    .line 22
+    .line 23
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    .line 24
+    .line 25
+    .line 26
+    move-result-object v0
+
+    .line 27
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatarContainer:Landroid/view/View;
+
+    .line 28
+    .line 29
+    sget v0, Lorg/levimc/launcher/R$id;->nav_avatar_progress:I
+
+    .line 30
+    .line 31
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    .line 32
+    .line 33
+    .line 34
+    move-result-object v0
+
+    .line 35
+    check-cast v0, Landroid/widget/ProgressBar;
+
+    .line 36
+    .line 37
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 38
+    .line 39
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->signInButton:Landroid/widget/Button;
+
+    .line 40
+    .line 41
+    if-eqz v0, :cond_0
+
+    .line 42
+    .line 43
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
+    .line 44
+    .line 45
+    const/4 v2, 0x0
+
+    .line 46
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
+    .line 47
+    .line 48
+    .line 49
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 50
+    .line 51
+    .line 52
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->signInButton:Landroid/widget/Button;
+
+    .line 53
+    .line 54
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
+
+    .line 55
+    .line 56
+    .line 57
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatarContainer:Landroid/view/View;
+
+    .line 58
+    .line 59
+    if-eqz v0, :cond_1
+
+    .line 60
+    .line 61
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
+    .line 62
+    .line 63
+    const/16 v2, 0x8
+
+    .line 64
+    .line 65
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
+    .line 66
+    .line 67
+    .line 68
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 69
+    .line 70
+    .line 71
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatarContainer:Landroid/view/View;
+
+    .line 72
+    .line 73
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
+
+    .line 74
+    .line 75
+    .line 76
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshAccountHeaderUI()V
+
+    .line 77
+    .line 78
+    .line 79
+    return-void
+.end method
+
 .method private initContentManagementSection()V
     .locals 3
 
@@ -1924,14 +2196,14 @@
     move-result-object v0
 
     .line 25
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n1;
 
     .line 26
     .line 27
     const/4 v2, 0x0
 
     .line 28
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 29
     .line 30
@@ -1949,14 +2221,14 @@
 
     .line 37
     .line 38
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
 
     .line 39
     .line 40
     const/4 v2, 0x4
 
     .line 41
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 42
     .line 43
@@ -1970,82 +2242,95 @@
 
     .line 48
     .line 49
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentWorldsRow:Landroid/widget/LinearLayout;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentViewAll:Landroid/widget/TextView;
 
     .line 50
     .line 51
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
 
     .line 52
     .line 53
-    const/4 v2, 0x5
-
     .line 54
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 55
     .line 56
-    .line 57
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentWorldsRow:Landroid/widget/LinearLayout;
 
+    .line 57
     .line 58
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
     .line 59
     .line 60
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    const/4 v2, 0x5
 
     .line 61
-    .line 62
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentResourcePacksRow:Landroid/widget/LinearLayout;
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
+    .line 62
     .line 63
     .line 64
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 65
     .line 66
-    const/4 v2, 0x6
-
     .line 67
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 68
     .line 69
-    .line 70
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentResourcePacksRow:Landroid/widget/LinearLayout;
 
+    .line 70
     .line 71
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
     .line 72
     .line 73
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    const/4 v2, 0x6
 
     .line 74
-    .line 75
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentSkinPacksRow:Landroid/widget/LinearLayout;
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
+    .line 75
     .line 76
     .line 77
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 78
     .line 79
-    const/4 v2, 0x7
-
     .line 80
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 81
     .line 82
-    .line 83
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->contentSkinPacksRow:Landroid/widget/LinearLayout;
 
+    .line 83
     .line 84
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
     .line 85
     .line 86
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshContentCounts()V
+    const/4 v2, 0x7
 
     .line 87
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
     .line 88
     .line 89
+    .line 90
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 91
+    .line 92
+    .line 93
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshContentCounts()V
+
+    .line 94
+    .line 95
+    .line 96
     return-void
 .end method
 
@@ -2059,254 +2344,123 @@
     .end annotation
 
     .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
-    .line 3
-    .line 4
-    .line 5
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
-    .line 6
-    .line 7
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Lcom/google/android/material/button/MaterialButton;
+    .line 2
+    .line 3
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
 
+    .line 4
+    .line 5
+    const/4 v1, 0x0
+
+    .line 6
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
+    .line 7
     .line 8
     .line 9
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 10
     .line 11
-    const/16 v2, 0xb
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
 
     .line 12
     .line 13
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
 
     .line 14
     .line 15
-    .line 16
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    const/16 v2, 0xb
 
+    .line 16
     .line 17
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
     .line 18
     .line 19
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
     .line 20
-    .line 21
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchMenuButton:Landroid/widget/ImageView;
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
+    .line 21
     .line 22
     .line 23
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 24
     .line 25
-    const/16 v2, 0xc
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
 
     .line 26
     .line 27
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
 
     .line 28
     .line 29
     .line 30
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 31
     .line 32
-    .line 33
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 34
-    .line 35
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->selectVersionButton:Landroid/widget/LinearLayout;
 
+    .line 33
+    .line 34
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
+
+    .line 35
     .line 36
+    const/16 v2, 0xc
+
     .line 37
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
-
     .line 38
-    .line 39
-    const/16 v2, 0xd
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
+    .line 39
     .line 40
     .line 41
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
     .line 42
     .line 43
     .line 44
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 45
     .line 46
-    .line 47
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 48
-    .line 49
     iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->selectVersionButton:Landroid/widget/LinearLayout;
 
+    .line 47
+    .line 48
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
+
+    .line 49
     .line 50
     .line 51
-    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
+    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     .line 52
     .line 53
     .line 54
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    move-result-object v0
 
     .line 55
-    .line 56
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeInstanceSettingsButton:Lcom/google/android/material/button/MaterialButton;
+    invoke-static {v0}, Lorg/levimc/launcher/settings/FeatureSettings;->init(Landroid/content/Context;)V
 
+    .line 56
     .line 57
     .line 58
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showRandomTip()V
 
     .line 59
     .line 60
-    const/16 v2, 0xe
-
     .line 61
-    .line 62
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 63
-    .line 64
-    .line 65
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 66
-    .line 67
-    .line 68
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 69
-    .line 70
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeInstanceSettingsButton:Lcom/google/android/material/button/MaterialButton;
-
-    .line 71
-    .line 72
-    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
-
-    .line 73
-    .line 74
-    .line 75
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->styleHomeAccents()V
-
-    .line 76
-    .line 77
-    .line 78
-    invoke-virtual {p0}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    .line 79
-    .line 80
-    .line 81
-    move-result-object v0
-
-    .line 82
-    invoke-static {v0}, Lorg/levimc/launcher/settings/FeatureSettings;->init(Landroid/content/Context;)V
-
-    .line 83
-    .line 84
-    .line 85
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showRandomTip()V
-
-    .line 86
-    .line 87
-    .line 88
-    return-void
-.end method
-
-.method private initMiscellaneousSection()V
-    .locals 3
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 2
-    .line 3
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscCurseforgeRow:Landroid/widget/LinearLayout;
-
-    .line 4
-    .line 5
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
-
-    .line 6
-    .line 7
-    const/4 v2, 0x1
-
-    .line 8
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 9
-    .line 10
-    .line 11
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 12
-    .line 13
-    .line 14
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 15
-    .line 16
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscPkgRow:Landroid/widget/LinearLayout;
-
-    .line 17
-    .line 18
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
-
-    .line 19
-    .line 20
-    const/4 v2, 0x2
-
-    .line 21
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 22
-    .line 23
-    .line 24
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 25
-    .line 26
-    .line 27
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 28
-    .line 29
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->miscExternalModsRow:Landroid/widget/LinearLayout;
-
-    .line 30
-    .line 31
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
-
-    .line 32
-    .line 33
-    const/4 v2, 0x3
-
-    .line 34
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 35
-    .line 36
-    .line 37
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 38
-    .line 39
-    .line 40
     return-void
 .end method
 
 .method private initModsSection()V
-    .locals 3
+    .locals 8
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
@@ -2333,176 +2487,296 @@
 
     .line 11
     .line 12
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->manageModsButton:Landroid/widget/TextView;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->manageModsButton:Landroid/widget/Button;
 
     .line 13
     .line 14
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/l1;
 
     .line 15
     .line 16
-    const/4 v2, 0x0
+    const/16 v2, 0xe
 
     .line 17
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
     .line 18
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
     .line 19
     .line 20
+    .line 21
     invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
 
-    .line 21
     .line 22
     .line 23
+    .line 24
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
-    .line 24
     .line 25
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->modCard:Lcom/google/android/material/card/MaterialCardView;
-
     .line 26
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->manageModsButton:Landroid/widget/Button;
+
     .line 27
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
-
     .line 28
-    .line 29
-    const/16 v2, 0x8
+    invoke-static {v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
 
+    .line 29
     .line 30
     .line 31
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    new-instance v0, Lorg/levimc/launcher/util/PersonalizationManager;
 
     .line 32
     .line 33
-    .line 34
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/util/PersonalizationManager;-><init>(Landroid/content/Context;)V
 
+    .line 34
     .line 35
     .line 36
-    .line 37
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->modsListContainer:Landroid/widget/LinearLayout;
+    invoke-virtual {v0}, Lorg/levimc/launcher/util/PersonalizationManager;->getAccentColor()I
 
+    .line 37
     .line 38
     .line 39
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    move-result v1
 
     .line 40
+    if-eqz v1, :cond_1
+
     .line 41
-    const/16 v2, 0xf
-
     .line 42
-    .line 43
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
+    .line 43
     .line 44
+    iget-object v2, v2, Lorg/levimc/launcher/databinding/ActivityMainBinding;->manageModsButton:Landroid/widget/Button;
+
     .line 45
     .line 46
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setTextColor(I)V
 
     .line 47
     .line 48
     .line 49
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    new-instance v2, Landroid/graphics/drawable/GradientDrawable;
 
     .line 50
     .line 51
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->loaderChip:Landroid/widget/TextView;
+    invoke-direct {v2}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
 
     .line 52
     .line 53
-    const/high16 v1, 0x41000000    # 8.0f
-
     .line 54
+    const/4 v3, 0x0
+
     .line 55
-    invoke-static {v0, v1}, Lorg/levimc/launcher/ui/widget/UiKit;->tintSoftAccent(Landroid/view/View;F)V
+    invoke-virtual {v2, v3}, Landroid/graphics/drawable/GradientDrawable;->setShape(I)V
 
     .line 56
     .line 57
     .line 58
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
+    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
 
     .line 59
     .line 60
-    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/MainViewModel;->getModsLiveData()Landroidx/lifecycle/LiveData;
-
     .line 61
+    move-result v3
+
     .line 62
+    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
+
     .line 63
-    move-result-object v0
-
     .line 64
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l2;
-
     .line 65
+    move-result v4
+
     .line 66
-    const/4 v2, 0x4
+    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
 
     .line 67
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
     .line 68
     .line 69
+    move-result v5
+
     .line 70
-    invoke-virtual {v0, p0, v1}, Landroidx/lifecycle/LiveData;->e(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+    const/16 v6, 0x1a
 
     .line 71
     .line 72
-    .line 73
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    invoke-static {v6, v3, v4, v5}, Landroid/graphics/Color;->argb(IIII)I
 
+    .line 73
     .line 74
     .line 75
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->loaderChip:Landroid/widget/TextView;
+    move-result v3
 
     .line 76
-    .line 77
-    new-instance v1, Lorg/levimc/launcher/ui/activities/j2;
+    invoke-virtual {v2, v3}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
 
+    .line 77
     .line 78
     .line 79
-    const/16 v2, 0x10
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 80
     .line 81
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
     .line 82
-    .line 83
-    .line 84
-    invoke-virtual {v0, v1}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+    move-result-object v3
 
+    .line 83
+    invoke-virtual {v3}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 84
     .line 85
     .line 86
+    move-result-object v3
+
     .line 87
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
+    iget v3, v3, Landroid/util/DisplayMetrics;->density:F
 
     .line 88
     .line 89
-    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/MainViewModel;->getLoaderLiveData()Landroidx/lifecycle/LiveData;
+    const/high16 v4, 0x40a00000    # 5.0f
 
     .line 90
     .line 91
+    mul-float/2addr v3, v4
+
     .line 92
-    move-result-object v0
+    invoke-virtual {v2, v3}, Landroid/graphics/drawable/GradientDrawable;->setCornerRadius(F)V
 
     .line 93
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l2;
-
     .line 94
     .line 95
-    const/4 v2, 0x5
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 96
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
     .line 97
     .line 98
+    move-result-object v3
+
     .line 99
-    invoke-virtual {v0, p0, v1}, Landroidx/lifecycle/LiveData;->e(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+    invoke-virtual {v3}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
 
     .line 100
     .line 101
     .line 102
+    move-result-object v3
+
+    .line 103
+    iget v3, v3, Landroid/util/DisplayMetrics;->density:F
+
+    .line 104
+    .line 105
+    const/high16 v4, 0x3f800000    # 1.0f
+
+    .line 106
+    .line 107
+    mul-float/2addr v3, v4
+
+    .line 108
+    float-to-int v3, v3
+
+    .line 109
+    invoke-static {v1}, Landroid/graphics/Color;->red(I)I
+
+    .line 110
+    .line 111
+    .line 112
+    move-result v4
+
+    .line 113
+    invoke-static {v1}, Landroid/graphics/Color;->green(I)I
+
+    .line 114
+    .line 115
+    .line 116
+    move-result v5
+
+    .line 117
+    invoke-static {v1}, Landroid/graphics/Color;->blue(I)I
+
+    .line 118
+    .line 119
+    .line 120
+    move-result v6
+
+    .line 121
+    const/16 v7, 0x33
+
+    .line 122
+    .line 123
+    invoke-static {v7, v4, v5, v6}, Landroid/graphics/Color;->argb(IIII)I
+
+    .line 124
+    .line 125
+    .line 126
+    move-result v4
+
+    .line 127
+    invoke-virtual {v2, v3, v4}, Landroid/graphics/drawable/GradientDrawable;->setStroke(II)V
+
+    .line 128
+    .line 129
+    .line 130
+    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
+    .line 131
+    .line 132
+    iget-object v3, v3, Lorg/levimc/launcher/databinding/ActivityMainBinding;->manageModsButton:Landroid/widget/Button;
+
+    .line 133
+    .line 134
+    invoke-virtual {v3, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
+
+    .line 135
+    .line 136
+    .line 137
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
+    .line 138
+    .line 139
+    iget-object v2, v2, Lorg/levimc/launcher/databinding/ActivityMainBinding;->minecraftTitleText:Landroid/widget/TextView;
+
+    .line 140
+    .line 141
+    if-eqz v2, :cond_1
+
+    .line 142
+    .line 143
+    invoke-virtual {v0, v2, v1}, Lorg/levimc/launcher/util/PersonalizationManager;->applySolidAccentText(Landroid/widget/TextView;I)V
+
+    .line 144
+    .line 145
+    .line 146
+    :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
+
+    .line 147
+    .line 148
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/MainViewModel;->getModsLiveData()Landroidx/lifecycle/LiveData;
+
+    .line 149
+    .line 150
+    .line 151
+    move-result-object v0
+
+    .line 152
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n1;
+
+    .line 153
+    .line 154
+    const/4 v2, 0x4
+
+    .line 155
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
+    .line 156
+    .line 157
+    .line 158
+    invoke-virtual {v0, p0, v1}, Landroidx/lifecycle/LiveData;->e(Landroidx/lifecycle/LifecycleOwner;Landroidx/lifecycle/Observer;)V
+
+    .line 159
+    .line 160
+    .line 161
     return-void
 .end method
 
@@ -2591,7 +2865,7 @@
     move-result-object v1
 
     .line 41
-    invoke-interface {p0}, Landroidx/lifecycle/j;->getDefaultViewModelCreationExtras()Landroidx/lifecycle/viewmodel/CreationExtras;
+    invoke-interface {p0}, Landroidx/lifecycle/i;->getDefaultViewModelCreationExtras()Landroidx/lifecycle/viewmodel/CreationExtras;
 
     .line 42
     .line 43
@@ -2603,7 +2877,7 @@
 
     .line 46
     .line 47
-    invoke-static {v1, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 48
     .line 49
@@ -2612,16 +2886,16 @@
 
     .line 51
     .line 52
-    invoke-static {v2, v3}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v2, v3}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 53
     .line 54
     .line 55
-    new-instance v3, Lcom/google/firebase/messaging/v;
+    new-instance v3, Lcom/google/firebase/messaging/u;
 
     .line 56
     .line 57
-    invoke-direct {v3, v1, v0, v2}, Lcom/google/firebase/messaging/v;-><init>(Landroidx/lifecycle/ViewModelStore;Landroidx/lifecycle/ViewModelProvider$Factory;Landroidx/lifecycle/viewmodel/CreationExtras;)V
+    invoke-direct {v3, v1, v0, v2}, Lcom/google/firebase/messaging/u;-><init>(Landroidx/lifecycle/ViewModelStore;Landroidx/lifecycle/ViewModelProvider$Factory;Landroidx/lifecycle/viewmodel/CreationExtras;)V
 
     .line 58
     .line 59
@@ -2630,7 +2904,7 @@
 
     .line 61
     .line 62
-    invoke-static {v0}, Lh9/r;->a(Ljava/lang/Class;)Lh9/f;
+    invoke-static {v0}, Lf9/r;->a(Ljava/lang/Class;)Lf9/f;
 
     .line 63
     .line 64
@@ -2638,7 +2912,7 @@
     move-result-object v0
 
     .line 66
-    invoke-virtual {v0}, Lh9/f;->a()Ljava/lang/String;
+    invoke-virtual {v0}, Lf9/f;->a()Ljava/lang/String;
 
     .line 67
     .line 68
@@ -2662,7 +2936,7 @@
     move-result-object v1
 
     .line 78
-    invoke-virtual {v3, v0, v1}, Lcom/google/firebase/messaging/v;->y(Lh9/f;Ljava/lang/String;)Landroidx/lifecycle/ViewModel;
+    invoke-virtual {v3, v0, v1}, Lcom/google/firebase/messaging/u;->w(Lf9/f;Ljava/lang/String;)Landroidx/lifecycle/ViewModel;
 
     .line 79
     .line 80
@@ -2697,11 +2971,6 @@
     .line 95
     .line 96
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->initContentManagementSection()V
-
-    .line 97
-    .line 98
-    .line 99
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->initMiscellaneousSection()V
 
     .line 100
     .line 101
@@ -2740,56 +3009,64 @@
     .locals 2
 
     .line 1
-    const/4 v0, 0x0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 2
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
     .line 3
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
     .line 4
     .line 5
-    invoke-static {}, Lorg/levimc/launcher/core/versions/VersionManager;->getIfInitialized()Lorg/levimc/launcher/core/versions/VersionManager;
+    const/4 v1, 0x0
 
     .line 6
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
     .line 7
     .line 8
-    move-result-object v0
-
     .line 9
-    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
+    invoke-static {}, Lorg/levimc/launcher/core/versions/VersionManager;->getIfInitialized()Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 10
     .line 11
-    if-eqz v0, :cond_0
-
     .line 12
+    move-result-object v0
+
     .line 13
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->onVersionManagerReady()V
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 14
     .line 15
-    .line 16
-    return-void
+    if-eqz v0, :cond_0
 
+    .line 16
     .line 17
-    :cond_0
-    new-instance v0, Lorg/levimc/launcher/ui/activities/l2;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->onVersionManagerReady()V
 
     .line 18
     .line 19
-    const/4 v1, 0x1
-
     .line 20
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    return-void
 
     .line 21
+    :cond_0
+    new-instance v0, Lorg/levimc/launcher/ui/activities/n1;
+
     .line 22
     .line 23
-    invoke-static {p0, v0}, Lorg/levimc/launcher/core/versions/VersionManager;->initializeAsync(Landroid/content/Context;Lorg/levimc/launcher/core/versions/VersionManager$InitCallback;)V
+    const/4 v1, 0x1
 
     .line 24
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
     .line 25
     .line 26
+    .line 27
+    invoke-static {p0, v0}, Lorg/levimc/launcher/core/versions/VersionManager;->initializeAsync(Landroid/content/Context;Lorg/levimc/launcher/core/versions/VersionManager$InitCallback;)V
+
+    .line 28
+    .line 29
+    .line 30
     return-void
 .end method
 
@@ -2888,7 +3165,72 @@
     return v1
 .end method
 
-.method private synthetic lambda$initContentManagementSection$15(Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
+.method public static bridge synthetic j0(Lorg/levimc/launcher/ui/activities/MainActivity;)Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountLoadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic k0(Lorg/levimc/launcher/ui/activities/MainActivity;)Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic l0(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/ui/dialogs/LoadingDialog;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountLoadingDialog:Lorg/levimc/launcher/ui/dialogs/LoadingDialog;
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method private lambda$initAccountHeader$1(Landroid/view/View;)V
+    .locals 2
+
+    .line 1
+    new-instance p1, Landroid/content/Intent;
+
+    .line 2
+    .line 3
+    const-class v0, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;
+
+    .line 4
+    .line 5
+    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    .line 6
+    .line 7
+    .line 8
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountLoginLauncher:Landroidx/activity/result/ActivityResultLauncher;
+
+    .line 9
+    .line 10
+    const/4 v1, 0x0
+
+    .line 11
+    invoke-virtual {v0, p1, v1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+.end method
+
+.method private synthetic lambda$initContentManagementSection$22(Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
     .locals 2
 
     .line 1
@@ -2966,7 +3308,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initContentManagementSection$16(Landroid/view/View;)V
+.method private synthetic lambda$initContentManagementSection$23(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -2978,7 +3320,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initContentManagementSection$17(Landroid/view/View;)V
+.method private synthetic lambda$initContentManagementSection$24(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -2993,7 +3335,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initContentManagementSection$18(Landroid/view/View;)V
+.method private synthetic lambda$initContentManagementSection$25(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -3008,7 +3350,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initContentManagementSection$19(Landroid/view/View;)V
+.method private synthetic lambda$initContentManagementSection$26(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -3023,7 +3365,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initListeners$12(Landroid/view/View;)V
+.method private synthetic lambda$initListeners$20(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -3035,128 +3377,21 @@
     return-void
 .end method
 
-.method private synthetic lambda$initListeners$13(Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showVersionSelectDialog()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$initListeners$14(Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->openInstanceSettings()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$initMiscellaneousSection$20(Landroid/view/View;)V
+.method private synthetic lambda$initListeners$21(Landroid/view/View;)V
     .locals 1
 
-    .line 1
     new-instance p1, Landroid/content/Intent;
 
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/CurseForgeActivity;
+    const-class v0, Lorg/levimc/launcher/ui/activities/InstancesActivity;
 
-    .line 4
-    .line 5
     invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
 
-    .line 6
-    .line 7
-    .line 8
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
 
-    .line 9
-    .line 10
-    .line 11
     return-void
 .end method
 
-.method private synthetic lambda$initMiscellaneousSection$21(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
-
-    .line 2
-    .line 3
-    const/4 v0, 0x0
-
-    .line 4
-    if-eqz p1, :cond_0
-
-    .line 5
-    .line 6
-    invoke-virtual {p1}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
-
-    .line 7
-    .line 8
-    .line 9
-    move-result-object p1
-
-    .line 10
-    goto :goto_0
-
-    .line 11
-    :cond_0
-    move-object p1, v0
-
-    .line 12
-    :goto_0
-    invoke-static {p0, p1, v0}, Lorg/levimc/launcher/ui/packages/PackagesActivity;->intent(Landroid/content/Context;Lorg/levimc/launcher/core/versions/GameVersion;Ljava/lang/String;)Landroid/content/Intent;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object p1
-
-    .line 16
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 17
-    .line 18
-    .line 19
-    return-void
-.end method
-
-.method private synthetic lambda$initMiscellaneousSection$22(Landroid/view/View;)V
-    .locals 1
-
-    .line 1
-    new-instance p1, Landroid/content/Intent;
-
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/ExternalModsActivity;
-
-    .line 4
-    .line 5
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 9
-    .line 10
-    .line 11
-    return-void
-.end method
-
-.method private synthetic lambda$initModsSection$4(Landroid/view/View;)V
+.method private synthetic lambda$initModsSection$16(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -3168,191 +3403,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$initModsSection$5(Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->openModsFullscreen()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$initModsSection$6(Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->openModsFullscreen()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method private synthetic lambda$initModsSection$7(Landroid/view/View;)V
-    .locals 0
-
-    .line 1
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
-
-    .line 2
-    .line 3
-    if-eqz p1, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {p1}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    goto :goto_0
-
-    .line 10
-    :cond_0
-    const/4 p1, 0x0
-
-    .line 11
-    :goto_0
-    invoke-static {p0, p1}, Lorg/levimc/launcher/ui/packages/PackageActions;->openLoaderSettings(Landroid/app/Activity;Lorg/levimc/launcher/core/versions/GameVersion;)V
-
-    .line 12
-    .line 13
-    .line 14
-    return-void
-.end method
-
-.method private synthetic lambda$initModsSection$8(Ljava/lang/String;)V
-    .locals 3
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    if-eqz p1, :cond_0
-
-    .line 3
-    .line 4
-    const/4 v1, 0x1
-
-    .line 5
-    goto :goto_0
-
-    .line 6
-    :cond_0
-    move v1, v0
-
-    .line 7
-    :goto_0
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 8
-    .line 9
-    iget-object v2, v2, Lorg/levimc/launcher/databinding/ActivityMainBinding;->loaderChip:Landroid/widget/TextView;
-
-    .line 10
-    .line 11
-    if-eqz v1, :cond_1
-
-    .line 12
-    .line 13
-    goto :goto_1
-
-    .line 14
-    :cond_1
-    const/16 v0, 0x8
-
-    .line 15
-    .line 16
-    :goto_1
-    invoke-virtual {v2, v0}, Landroid/view/View;->setVisibility(I)V
-
-    .line 17
-    .line 18
-    .line 19
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 20
-    .line 21
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->loaderChip:Landroid/widget/TextView;
-
-    .line 22
-    .line 23
-    if-eqz v1, :cond_2
-
-    .line 24
-    .line 25
-    new-instance v1, Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    invoke-direct {v1}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 28
-    .line 29
-    .line 30
-    sget v2, Lorg/levimc/launcher/R$string;->pkg_loader_name:I
-
-    .line 31
-    .line 32
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 33
-    .line 34
-    .line 35
-    move-result-object v2
-
-    .line 36
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 37
-    .line 38
-    .line 39
-    const-string v2, " "
-
-    .line 40
-    .line 41
-    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 42
-    .line 43
-    .line 44
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 45
-    .line 46
-    .line 47
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object p1
-
-    .line 51
-    goto :goto_2
-
-    .line 52
-    :cond_2
-    const/4 p1, 0x0
-
-    .line 53
-    :goto_2
-    invoke-virtual {v0, p1}, Landroid/view/View;->setContentDescription(Ljava/lang/CharSequence;)V
-
-    .line 54
-    .line 55
-    .line 56
-    return-void
-.end method
-
-.method private synthetic lambda$initializeVersionManager$2(Lorg/levimc/launcher/core/versions/VersionManager;)V
+.method private synthetic lambda$initializeVersionManager$14(Lorg/levimc/launcher/core/versions/VersionManager;)V
     .locals 1
 
     .line 1
@@ -3398,19 +3449,19 @@
     return-void
 .end method
 
-.method private synthetic lambda$initializeVersionManager$3(Lorg/levimc/launcher/core/versions/VersionManager;)V
+.method private synthetic lambda$initializeVersionManager$15(Lorg/levimc/launcher/core/versions/VersionManager;)V
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/d;
 
     .line 2
     .line 3
-    const/16 v1, 0x16
+    const/16 v1, 0x18
 
     .line 4
     .line 5
-    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p1, v1}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 6
     .line 7
@@ -3423,7 +3474,442 @@
     return-void
 .end method
 
-.method private lambda$setupManagersAndHandlers$0(Landroidx/activity/result/ActivityResult;)V
+.method private synthetic lambda$loadXboxAvatar$2(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 2
+    .line 3
+    sget v1, Lorg/levimc/launcher/R$id;->nav_account_avatar:I
+
+    .line 4
+    .line 5
+    invoke-virtual {v0, v1}, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    invoke-virtual {p1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v0
+
+    .line 13
+    if-nez v0, :cond_0
+
+    .line 14
+    .line 15
+    goto :goto_0
+
+    .line 16
+    :cond_0
+    if-eqz p2, :cond_1
+
+    .line 17
+    .line 18
+    invoke-static {p1, p2}, Lorg/levimc/launcher/util/AccountTextUtils;->cacheAvatar(Ljava/lang/String;Landroid/graphics/Bitmap;)V
+
+    .line 19
+    .line 20
+    .line 21
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 22
+    .line 23
+    invoke-virtual {p1, p2}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
+
+    .line 24
+    .line 25
+    .line 26
+    :cond_1
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 27
+    .line 28
+    if-eqz p1, :cond_2
+
+    .line 29
+    .line 30
+    const/16 p2, 0x8
+
+    .line 31
+    .line 32
+    invoke-virtual {p1, p2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 33
+    .line 34
+    .line 35
+    :cond_2
+    :goto_0
+    return-void
+.end method
+
+.method private synthetic lambda$loadXboxAvatar$3()V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    const/16 v1, 0x8
+
+    .line 6
+    .line 7
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 8
+    .line 9
+    .line 10
+    :cond_0
+    return-void
+.end method
+
+.method private lambda$loadXboxAvatar$4(Ljava/lang/String;)V
+    .locals 4
+
+    .line 1
+    :try_start_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarClient:Lokhttp3/OkHttpClient;
+
+    .line 2
+    .line 3
+    new-instance v1, Lokhttp3/Request$Builder;
+
+    .line 4
+    .line 5
+    invoke-direct {v1}, Lokhttp3/Request$Builder;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {v1, p1}, Lokhttp3/Request$Builder;->d(Ljava/lang/String;)V
+
+    .line 9
+    .line 10
+    .line 11
+    new-instance v2, Lae/o;
+
+    .line 12
+    .line 13
+    invoke-direct {v2, v1}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
+
+    .line 14
+    .line 15
+    .line 16
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 17
+    .line 18
+    .line 19
+    new-instance v1, Lzb/o;
+
+    .line 20
+    .line 21
+    const/4 v3, 0x0
+
+    .line 22
+    invoke-direct {v1, v0, v2, v3}, Lzb/o;-><init>(Lokhttp3/OkHttpClient;Lae/o;Z)V
+
+    .line 23
+    .line 24
+    .line 25
+    invoke-virtual {v1}, Lzb/o;->f()Lokhttp3/Response;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object v0
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 29
+    :try_start_1
+    iget-boolean v1, v0, Lokhttp3/Response;->F1:Z
+
+    .line 30
+    .line 31
+    if-eqz v1, :cond_0
+
+    .line 32
+    .line 33
+    iget-object v1, v0, Lokhttp3/Response;->y:Lvb/r;
+
+    .line 34
+    .line 35
+    if-eqz v1, :cond_0
+
+    .line 36
+    .line 37
+    invoke-virtual {v1}, Lvb/r;->a()Ljava/io/InputStream;
+
+    .line 38
+    .line 39
+    .line 40
+    move-result-object v1
+
+    .line 41
+    invoke-static {v1}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object v1
+
+    .line 45
+    goto :goto_0
+
+    .line 46
+    :catchall_0
+    move-exception p1
+
+    .line 47
+    goto :goto_1
+
+    .line 48
+    :cond_0
+    const/4 v1, 0x0
+
+    .line 49
+    :goto_0
+    new-instance v2, Lorg/levimc/launcher/ui/activities/l;
+
+    .line 50
+    .line 51
+    const/4 v3, 0x5
+
+    .line 52
+    invoke-direct {v2, p0, p1, v1, v3}, Lorg/levimc/launcher/ui/activities/l;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 53
+    .line 54
+    .line 55
+    invoke-virtual {p0, v2}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 56
+    .line 57
+    .line 58
+    :try_start_2
+    invoke-virtual {v0}, Lokhttp3/Response;->close()V
+    :try_end_2
+    .catch Ljava/lang/Exception; {:try_start_2 .. :try_end_2} :catch_0
+
+    .line 59
+    .line 60
+    .line 61
+    return-void
+
+    .line 62
+    :goto_1
+    :try_start_3
+    invoke-virtual {v0}, Lokhttp3/Response;->close()V
+    :try_end_3
+    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+
+    .line 63
+    .line 64
+    .line 65
+    goto :goto_2
+
+    .line 66
+    :catchall_1
+    move-exception v0
+
+    .line 67
+    :try_start_4
+    invoke-virtual {p1, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 68
+    .line 69
+    .line 70
+    :goto_2
+    throw p1
+    :try_end_4
+    .catch Ljava/lang/Exception; {:try_start_4 .. :try_end_4} :catch_0
+
+    .line 71
+    :catch_0
+    new-instance p1, Lorg/levimc/launcher/ui/activities/m1;
+
+    .line 72
+    .line 73
+    const/4 v0, 0x3
+
+    .line 74
+    invoke-direct {p1, p0, v0}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
+    .line 75
+    .line 76
+    .line 77
+    invoke-virtual {p0, p1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+
+    .line 78
+    .line 79
+    .line 80
+    return-void
+.end method
+
+.method private lambda$onCreate$0(Landroidx/activity/result/ActivityResult;)V
+    .locals 2
+
+    .line 1
+    iget v0, p1, Landroidx/activity/result/ActivityResult;->c:I
+
+    .line 2
+    .line 3
+    iget-object p1, p1, Landroidx/activity/result/ActivityResult;->d:Landroid/content/Intent;
+
+    .line 4
+    .line 5
+    const/4 v1, -0x1
+
+    .line 6
+    if-ne v0, v1, :cond_1
+
+    .line 7
+    .line 8
+    if-eqz p1, :cond_1
+
+    .line 9
+    .line 10
+    const-string v0, "ms_login_completed"
+
+    .line 11
+    .line 12
+    const/4 v1, 0x0
+
+    .line 13
+    invoke-virtual {p1, v0, v1}, Landroid/content/Intent;->getBooleanExtra(Ljava/lang/String;Z)Z
+
+    .line 14
+    .line 15
+    .line 16
+    move-result v0
+
+    .line 17
+    if-eqz v0, :cond_1
+
+    .line 18
+    .line 19
+    const-string v0, "ms_login_name"
+
+    .line 20
+    .line 21
+    invoke-virtual {p1, v0}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object p1
+
+    .line 25
+    if-eqz p1, :cond_0
+
+    .line 26
+    .line 27
+    goto :goto_0
+
+    .line 28
+    :cond_0
+    sget p1, Lorg/levimc/launcher/R$string;->not_signed_in:I
+
+    .line 29
+    .line 30
+    invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object p1
+
+    .line 34
+    :goto_0
+    sget v0, Lorg/levimc/launcher/R$string;->ms_login_success:I
+
+    .line 35
+    .line 36
+    filled-new-array {p1}, [Ljava/lang/Object;
+
+    .line 37
+    .line 38
+    .line 39
+    move-result-object p1
+
+    .line 40
+    invoke-virtual {p0, v0, p1}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object p1
+
+    .line 44
+    invoke-static {p0, p1, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
+
+    .line 45
+    .line 46
+    .line 47
+    move-result-object p1
+
+    .line 48
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+
+    .line 49
+    .line 50
+    .line 51
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshAccountHeaderUI()V
+
+    .line 52
+    .line 53
+    .line 54
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->refreshNavAccountUI()V
+
+    .line 55
+    .line 56
+    .line 57
+    return-void
+.end method
+
+.method private synthetic lambda$performActualLaunch$30(Landroid/view/View;)V
+    .locals 1
+
+    .line 1
+    new-instance p1, Landroid/content/Intent;
+
+    .line 2
+    .line 3
+    const-class v0, Lorg/levimc/launcher/ui/activities/AccountsActivity;
+
+    .line 4
+    .line 5
+    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    .line 6
+    .line 7
+    .line 8
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
+
+    .line 9
+    .line 10
+    .line 11
+    return-void
+.end method
+
+.method private lambda$setupManagersAndHandlers$12(Landroidx/activity/result/ActivityResult;)V
     .locals 2
 
     .line 1
@@ -3452,7 +3938,7 @@
     return-void
 .end method
 
-.method private lambda$setupManagersAndHandlers$1(Landroidx/activity/result/ActivityResult;)V
+.method private lambda$setupManagersAndHandlers$13(Landroidx/activity/result/ActivityResult;)V
     .locals 2
 
     .line 1
@@ -3481,14 +3967,294 @@
     return-void
 .end method
 
-.method private static synthetic lambda$setupNavBar$25(Landroid/view/View;)V
+.method private static synthetic lambda$setupNavBar$32(Landroid/view/View;)V
     .locals 0
 
     .line 1
     return-void
 .end method
 
-.method private synthetic lambda$showEulaDialog$10(Landroid/view/View;)V
+.method private static synthetic lambda$showAccountSwitchPopup$10(Landroid/view/ViewGroup;Landroid/view/View;)V
+    .locals 3
+
+    .line 1
+    if-eqz p0, :cond_0
+
+    .line 2
+    .line 3
+    if-eqz p1, :cond_0
+
+    .line 4
+    .line 5
+    invoke-virtual {p1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    const/4 v1, 0x0
+
+    .line 10
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object v0
+
+    .line 14
+    const-wide/16 v1, 0x78
+
+    .line 15
+    .line 16
+    invoke-virtual {v0, v1, v2}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    .line 17
+    .line 18
+    .line 19
+    move-result-object v0
+
+    .line 20
+    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
+
+    .line 21
+    .line 22
+    const/16 v2, 0x1a
+
+    .line 23
+    .line 24
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 25
+    .line 26
+    .line 27
+    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
+
+    .line 28
+    .line 29
+    .line 30
+    move-result-object p0
+
+    .line 31
+    invoke-virtual {p0}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    .line 32
+    .line 33
+    .line 34
+    :cond_0
+    return-void
+.end method
+
+.method private static synthetic lambda$showAccountSwitchPopup$11(Landroidx/recyclerview/widget/RecyclerView;)V
+    .locals 0
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->staggerRecyclerChildren(Landroidx/recyclerview/widget/RecyclerView;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private static synthetic lambda$showAccountSwitchPopup$5(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
+    .locals 0
+
+    .line 1
+    if-eqz p0, :cond_0
+
+    .line 2
+    .line 3
+    invoke-virtual {p1, p0}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
+
+    .line 4
+    .line 5
+    .line 6
+    :cond_0
+    return-void
+.end method
+
+.method private lambda$showAccountSwitchPopup$6(Ljava/lang/String;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;)V
+    .locals 3
+
+    .line 1
+    :try_start_0
+    new-instance v0, Lokhttp3/OkHttpClient;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Lokhttp3/OkHttpClient;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance v1, Lokhttp3/Request$Builder;
+
+    .line 7
+    .line 8
+    invoke-direct {v1}, Lokhttp3/Request$Builder;-><init>()V
+
+    .line 9
+    .line 10
+    .line 11
+    invoke-virtual {v1, p1}, Lokhttp3/Request$Builder;->d(Ljava/lang/String;)V
+
+    .line 12
+    .line 13
+    .line 14
+    new-instance p1, Lae/o;
+
+    .line 15
+    .line 16
+    invoke-direct {p1, v1}, Lae/o;-><init>(Lokhttp3/Request$Builder;)V
+
+    .line 17
+    .line 18
+    .line 19
+    new-instance v1, Lzb/o;
+
+    .line 20
+    .line 21
+    const/4 v2, 0x0
+
+    .line 22
+    invoke-direct {v1, v0, p1, v2}, Lzb/o;-><init>(Lokhttp3/OkHttpClient;Lae/o;Z)V
+
+    .line 23
+    .line 24
+    .line 25
+    invoke-virtual {v1}, Lzb/o;->f()Lokhttp3/Response;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object p1
+
+    .line 29
+    iget-boolean v0, p1, Lokhttp3/Response;->F1:Z
+
+    .line 30
+    .line 31
+    if-eqz v0, :cond_0
+
+    .line 32
+    .line 33
+    iget-object p1, p1, Lokhttp3/Response;->y:Lvb/r;
+
+    .line 34
+    .line 35
+    if-eqz p1, :cond_0
+
+    .line 36
+    .line 37
+    invoke-virtual {p1}, Lvb/r;->a()Ljava/io/InputStream;
+
+    .line 38
+    .line 39
+    .line 40
+    move-result-object p1
+
+    .line 41
+    invoke-static {p1}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object p1
+
+    .line 45
+    goto :goto_0
+
+    .line 46
+    :cond_0
+    const/4 p1, 0x0
+
+    .line 47
+    :goto_0
+    new-instance v0, Lorg/levimc/launcher/ui/activities/a;
+
+    .line 48
+    .line 49
+    const/4 v1, 0x2
+
+    .line 50
+    invoke-direct {v0, p1, p2, v1}, Lorg/levimc/launcher/ui/activities/a;-><init>(Landroid/graphics/Bitmap;Lcom/microsoft/xbox/idp/toolkit/CircleImageView;I)V
+
+    .line 51
+    .line 52
+    .line 53
+    invoke-virtual {p0, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 54
+    .line 55
+    .line 56
+    :catch_0
+    return-void
+.end method
+
+.method private static synthetic lambda$showAccountSwitchPopup$7(Landroid/widget/PopupWindow;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p0}, Landroid/widget/PopupWindow;->dismiss()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method private synthetic lambda$showAccountSwitchPopup$8(Landroid/widget/PopupWindow;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-virtual {p1}, Landroid/widget/PopupWindow;->dismiss()V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance p1, Landroid/content/Intent;
+
+    .line 5
+    .line 6
+    const-class p2, Lorg/levimc/launcher/ui/activities/AccountsActivity;
+
+    .line 7
+    .line 8
+    invoke-direct {p1, p0, p2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
+
+    .line 9
+    .line 10
+    .line 11
+    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+.end method
+
+.method private static synthetic lambda$showAccountSwitchPopup$9(Landroid/view/ViewGroup;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    :try_start_0
+    invoke-virtual {p0, p1}, Landroid/view/ViewGroup;->removeView(Landroid/view/View;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 2
+    .line 3
+    .line 4
+    :catch_0
+    return-void
+.end method
+
+.method private synthetic lambda$showEulaDialog$18(Landroid/view/View;)V
     .locals 3
 
     .line 1
@@ -3539,7 +4305,7 @@
 
     .line 23
     .line 24
-    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
 
     .line 25
     .line 26
@@ -3547,14 +4313,14 @@
     move-result-object p1
 
     .line 28
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k2;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m1;
 
     .line 29
     .line 30
     const/4 v1, 0x0
 
     .line 31
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/k2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 32
     .line 33
@@ -3571,7 +4337,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$showEulaDialog$11(Landroid/view/View;)V
+.method private synthetic lambda$showEulaDialog$19(Landroid/view/View;)V
     .locals 0
 
     .line 1
@@ -3583,32 +4349,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$showLaunchMenu$23(I)V
-    .locals 1
-
-    .line 1
-    new-instance p1, Landroid/content/Intent;
-
-    .line 2
-    .line 3
-    const-class v0, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 4
-    .line 5
-    invoke-direct {p1, p0, v0}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 9
-    .line 10
-    .line 11
-    return-void
-.end method
-
-.method private synthetic lambda$showPostEulaFlow$9()V
+.method private synthetic lambda$showPostEulaFlow$17()V
     .locals 1
 
     .line 1
@@ -3627,7 +4368,7 @@
     return-void
 .end method
 
-.method private synthetic lambda$showVersionSelectDialog$24(Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
+.method private synthetic lambda$showVersionSelectDialog$31(Landroid/widget/PopupWindow;Lorg/levimc/launcher/core/versions/GameVersion;)V
     .locals 1
 
     .line 1
@@ -3690,6 +4431,308 @@
     return-void
 .end method
 
+.method private loadXboxAvatar(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+    .locals 4
+
+    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 2
+    .line 3
+    if-nez v0, :cond_0
+
+    .line 4
+    .line 5
+    goto :goto_1
+
+    .line 6
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 7
+    if-eqz p1, :cond_1
+
+    .line 8
+    .line 9
+    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxAvatarUrl:Ljava/lang/String;
+
+    .line 10
+    .line 11
+    goto :goto_0
+
+    .line 12
+    :cond_1
+    move-object p1, v0
+
+    .line 13
+    :goto_0
+    invoke-static {p1}, Lorg/levimc/launcher/util/AccountTextUtils;->sanitizeUrl(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object p1
+
+    .line 17
+    const/16 v1, 0x8
+
+    .line 18
+    .line 19
+    if-nez p1, :cond_3
+
+    .line 20
+    .line 21
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 22
+    .line 23
+    if-eqz p1, :cond_2
+
+    .line 24
+    .line 25
+    invoke-virtual {p1, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 26
+    .line 27
+    .line 28
+    :cond_2
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 29
+    .line 30
+    invoke-virtual {p1, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 31
+    .line 32
+    .line 33
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->lastAvatarXuid:Ljava/lang/String;
+
+    .line 34
+    .line 35
+    return-void
+
+    .line 36
+    :cond_3
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 37
+    .line 38
+    sget v3, Lorg/levimc/launcher/R$id;->nav_account_avatar:I
+
+    .line 39
+    .line 40
+    invoke-virtual {v2, v3}, Landroid/view/View;->getTag(I)Ljava/lang/Object;
+
+    .line 41
+    .line 42
+    .line 43
+    move-result-object v2
+
+    .line 44
+    invoke-virtual {p1, v2}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    .line 45
+    .line 46
+    .line 47
+    move-result v2
+
+    .line 48
+    if-eqz v2, :cond_4
+
+    .line 49
+    .line 50
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 51
+    .line 52
+    invoke-virtual {v2}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 53
+    .line 54
+    .line 55
+    move-result-object v2
+
+    .line 56
+    if-eqz v2, :cond_4
+
+    .line 57
+    .line 58
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 59
+    .line 60
+    if-eqz p1, :cond_5
+
+    .line 61
+    .line 62
+    invoke-virtual {p1, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 63
+    .line 64
+    .line 65
+    return-void
+
+    .line 66
+    :cond_4
+    invoke-static {p1}, Lorg/levimc/launcher/util/AccountTextUtils;->getCachedAvatar(Ljava/lang/String;)Landroid/graphics/Bitmap;
+
+    .line 67
+    .line 68
+    .line 69
+    move-result-object v2
+
+    .line 70
+    if-eqz v2, :cond_6
+
+    .line 71
+    .line 72
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 73
+    .line 74
+    sget v3, Lorg/levimc/launcher/R$id;->nav_account_avatar:I
+
+    .line 75
+    .line 76
+    invoke-virtual {v0, v3, p1}, Landroid/view/View;->setTag(ILjava/lang/Object;)V
+
+    .line 77
+    .line 78
+    .line 79
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 80
+    .line 81
+    invoke-virtual {p1, v2}, Landroid/widget/ImageView;->setImageBitmap(Landroid/graphics/Bitmap;)V
+
+    .line 82
+    .line 83
+    .line 84
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 85
+    .line 86
+    if-eqz p1, :cond_5
+
+    .line 87
+    .line 88
+    invoke-virtual {p1, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 89
+    .line 90
+    .line 91
+    :cond_5
+    :goto_1
+    return-void
+
+    .line 92
+    :cond_6
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 93
+    .line 94
+    sget v2, Lorg/levimc/launcher/R$id;->nav_account_avatar:I
+
+    .line 95
+    .line 96
+    invoke-virtual {v1, v2, p1}, Landroid/view/View;->setTag(ILjava/lang/Object;)V
+
+    .line 97
+    .line 98
+    .line 99
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 100
+    .line 101
+    invoke-virtual {v1, v0}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 102
+    .line 103
+    .line 104
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 105
+    .line 106
+    if-eqz v0, :cond_7
+
+    .line 107
+    .line 108
+    const/4 v1, 0x0
+
+    .line 109
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 110
+    .line 111
+    .line 112
+    :cond_7
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountExecutor:Ljava/util/concurrent/ExecutorService;
+
+    .line 113
+    .line 114
+    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
+
+    .line 115
+    .line 116
+    const/16 v2, 0x19
+
+    .line 117
+    .line 118
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 119
+    .line 120
+    .line 121
+    invoke-interface {v0, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+
+    .line 122
+    .line 123
+    .line 124
+    return-void
+.end method
+
+.method public static bridge synthetic m0(Lorg/levimc/launcher/ui/activities/MainActivity;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshAccountHeaderUI()V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic n0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
+.method public static bridge synthetic o0(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    .locals 0
+
+    .line 1
+    invoke-static {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceVersionText(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p0
+
+    .line 5
+    return-object p0
+.end method
+
 .method private onVersionManagerReady()V
     .locals 3
 
@@ -3735,52 +4778,60 @@
 
     .line 20
     .line 21
-    const/4 v0, 0x1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 22
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
     .line 23
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
     .line 24
     .line 25
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->handleInstanceShortcutLaunch()Z
+    const/4 v1, 0x1
 
     .line 26
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
+
     .line 27
     .line 28
-    move-result v0
-
     .line 29
-    if-nez v0, :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->handleInstanceShortcutLaunch()Z
 
     .line 30
     .line 31
+    .line 32
+    move-result v0
+
+    .line 33
+    if-nez v0, :cond_1
+
+    .line 34
+    .line 35
     invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setTextMinecraftVersion()V
 
-    .line 32
-    .line 33
-    .line 34
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->updateViewModelVersion()V
-
-    .line 35
     .line 36
     .line 37
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->repairNeededVersions()V
-
     .line 38
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->updateViewModelVersion()V
+
     .line 39
     .line 40
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->handleVersionDependentIntent()V
-
     .line 41
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->repairNeededVersions()V
+
     .line 42
     .line 43
+    .line 44
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->handleVersionDependentIntent()V
+
+    .line 45
+    .line 46
+    .line 47
     :cond_1
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshContentCounts()V
 
-    .line 44
-    .line 45
-    .line 46
+    .line 48
+    .line 49
+    .line 50
     :cond_2
     :goto_0
     return-void
@@ -3965,104 +5016,6 @@
     return-void
 .end method
 
-.method private openInstanceSettings()V
-    .locals 3
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->isVersionManagerReady()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-nez v0, :cond_0
-
-    .line 6
-    .line 7
-    return-void
-
-    .line 8
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
-
-    .line 9
-    .line 10
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
-
-    .line 11
-    .line 12
-    .line 13
-    move-result-object v0
-
-    .line 14
-    if-nez v0, :cond_1
-
-    .line 15
-    .line 16
-    sget v0, Lorg/levimc/launcher/R$string;->not_found_version:I
-
-    .line 17
-    .line 18
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v0
-
-    .line 22
-    const/4 v1, 0x0
-
-    .line 23
-    invoke-static {p0, v0, v1}, Landroid/widget/Toast;->makeText(Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;
-
-    .line 24
-    .line 25
-    .line 26
-    move-result-object v0
-
-    .line 27
-    invoke-virtual {v0}, Landroid/widget/Toast;->show()V
-
-    .line 28
-    .line 29
-    .line 30
-    return-void
-
-    .line 31
-    :cond_1
-    new-instance v1, Landroid/content/Intent;
-
-    .line 32
-    .line 33
-    const-class v2, Lorg/levimc/launcher/ui/activities/InstanceSettingsActivity;
-
-    .line 34
-    .line 35
-    invoke-direct {v1, p0, v2}, Landroid/content/Intent;-><init>(Landroid/content/Context;Ljava/lang/Class;)V
-
-    .line 36
-    .line 37
-    .line 38
-    const-string v2, "version"
-
-    .line 39
-    .line 40
-    invoke-virtual {v1, v2, v0}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Landroid/os/Parcelable;)Landroid/content/Intent;
-
-    .line 41
-    .line 42
-    .line 43
-    invoke-virtual {p0, v1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->startActivity(Landroid/content/Intent;)V
-
-    .line 44
-    .line 45
-    .line 46
-    return-void
-.end method
-
 .method private openModsFullscreen()V
     .locals 2
 
@@ -4092,407 +5045,756 @@
     .locals 10
 
     .line 1
-    const/4 v0, 0x0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
     .line 2
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
     .line 3
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
     .line 4
     .line 5
-    const/4 v0, 0x0
+    const/4 v1, 0x0
 
     .line 6
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->create(Landroid/content/Intent;)Lorg/levimc/launcher/core/minecraft/LaunchTrace;
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
 
     .line 7
     .line 8
     .line 9
-    move-result-object v1
+    const/4 v0, 0x0
 
     .line 10
-    const-string v2, "Launch requested"
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->create(Landroid/content/Intent;)Lorg/levimc/launcher/core/minecraft/LaunchTrace;
 
     .line 11
     .line 12
+    .line 13
+    move-result-object v1
+
+    .line 14
+    const-string v2, "Launch requested"
+
+    .line 15
+    .line 16
     invoke-virtual {v1, v2}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->milestone(Ljava/lang/String;)V
 
-    .line 13
-    .line 14
-    .line 15
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
-
-    .line 16
     .line 17
-    if-eqz v2, :cond_0
-
     .line 18
     .line 19
-    invoke-virtual {v2}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
     .line 20
     .line 21
-    .line 22
-    move-result-object v2
+    if-eqz v2, :cond_0
 
+    .line 22
     .line 23
-    goto :goto_0
+    invoke-virtual {v2}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
 
     .line 24
+    .line 25
+    .line 26
+    move-result-object v2
+
+    .line 27
+    goto :goto_0
+
+    .line 28
     :cond_0
     move-object v2, v0
 
-    .line 25
-    :goto_0
-    const/4 v3, 0x1
-
-    .line 26
-    if-nez v2, :cond_1
-
-    .line 27
-    .line 28
-    const-string v2, "Launch cancelled"
-
     .line 29
-    .line 30
-    const-string v4, "No version selected"
+    :goto_0
+    const-string v3, "Launch cancelled"
 
+    .line 30
     .line 31
+    const/4 v4, 0x1
+
     .line 32
-    invoke-virtual {v1, v2, v4}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->warning(Ljava/lang/String;Ljava/lang/String;)V
+    if-nez v2, :cond_1
 
     .line 33
     .line 34
-    .line 35
-    invoke-direct {p0, v3}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
+    const-string v2, "No version selected"
 
+    .line 35
     .line 36
+    invoke-virtual {v1, v3, v2}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->warning(Ljava/lang/String;Ljava/lang/String;)V
+
     .line 37
     .line 38
-    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 39
-    .line 40
-    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
+    .line 40
     .line 41
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
     .line 42
     .line 43
-    sget v2, Lorg/levimc/launcher/R$string;->dialog_title_no_version:I
+    invoke-virtual {v1, v4}, Landroid/view/View;->setEnabled(Z)V
 
     .line 44
     .line 45
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
     .line 46
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
     .line 47
     .line 48
-    move-result-object v2
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
 
     .line 49
-    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 50
     .line 51
-    .line 52
-    move-result-object v1
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_title_no_version:I
 
+    .line 52
     .line 53
-    sget v2, Lorg/levimc/launcher/R$string;->dialog_message_no_version:I
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     .line 54
     .line 55
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
     .line 56
-    .line 57
-    .line 58
     move-result-object v2
 
-    .line 59
-    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+    .line 57
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
+    .line 58
+    .line 59
     .line 60
-    .line 61
-    .line 62
     move-result-object v1
 
+    .line 61
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_message_no_version:I
+
+    .line 62
     .line 63
-    sget v2, Lorg/levimc/launcher/R$string;->dialog_positive_ok:I
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     .line 64
     .line 65
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
     .line 66
-    .line 67
-    .line 68
     move-result-object v2
 
+    .line 67
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 68
     .line 69
-    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 70
-    .line 71
-    .line 72
-    move-result-object v0
+    move-result-object v1
 
+    .line 71
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_positive_ok:I
+
+    .line 72
     .line 73
-    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
     .line 74
     .line 75
     .line 76
-    return-void
+    move-result-object v2
 
     .line 77
-    :cond_1
-    new-instance v4, Ljava/lang/StringBuilder;
+    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 78
     .line 79
-    invoke-direct {v4}, Ljava/lang/StringBuilder;-><init>()V
-
     .line 80
-    .line 81
-    .line 82
-    iget-object v5, v2, Lorg/levimc/launcher/core/versions/GameVersion;->directoryName:Ljava/lang/String;
+    move-result-object v0
 
+    .line 81
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+
+    .line 82
     .line 83
     .line 84
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    return-void
 
     .line 85
+    :cond_1
+    invoke-static {}, Lorg/levimc/launcher/settings/FeatureSettings;->getInstance()Lorg/levimc/launcher/settings/FeatureSettings;
+
     .line 86
     .line 87
-    const-string v5, " "
-
     .line 88
+    move-result-object v5
+
     .line 89
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v5}, Lorg/levimc/launcher/settings/FeatureSettings;->isLauncherManagedMcLoginEnabled()Z
 
     .line 90
     .line 91
     .line 92
-    iget-object v5, v2, Lorg/levimc/launcher/core/versions/GameVersion;->versionCode:Ljava/lang/String;
+    move-result v5
 
     .line 93
-    .line 94
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    if-eqz v5, :cond_3
 
+    .line 94
     .line 95
+    const-string v5, "Checking launcher-managed login"
+
     .line 96
     .line 97
-    invoke-virtual {v4}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-virtual {v1, v5}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->mark(Ljava/lang/String;)V
 
     .line 98
     .line 99
     .line 100
-    move-result-object v4
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
 
     .line 101
-    const-string v5, "Launch preflight completed"
-
     .line 102
     .line 103
-    invoke-virtual {v1, v5, v4}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->mark(Ljava/lang/String;Ljava/lang/String;)V
+    move-result-object v5
 
     .line 104
+    if-eqz v5, :cond_2
+
     .line 105
     .line 106
-    :try_start_0
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->createMinecraftLaunchIntent()Landroid/content/Intent;
+    iget-object v5, v5, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->minecraftUsername:Ljava/lang/String;
 
     .line 107
     .line 108
-    .line 109
-    move-result-object v4
+    if-eqz v5, :cond_2
 
+    .line 109
     .line 110
-    const-string v5, "org.levimc.launcher.extra.LAUNCH_SESSION_ID"
+    invoke-virtual {v5}, Ljava/lang/String;->isEmpty()Z
 
     .line 111
     .line 112
-    invoke-virtual {v1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->getSessionId()Ljava/lang/String;
-
     .line 113
-    .line 114
-    .line 115
-    move-result-object v6
+    move-result v5
 
+    .line 114
+    if-nez v5, :cond_2
+
+    .line 115
     .line 116
-    invoke-virtual {v4, v5, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+    goto :goto_1
 
     .line 117
+    :cond_2
+    const-string v2, "Minecraft account is missing"
+
     .line 118
     .line 119
-    const-string v5, "org.levimc.launcher.extra.LAUNCH_STARTED_ELAPSED_MS"
+    invoke-virtual {v1, v3, v2}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->warning(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 120
     .line 121
-    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
-
     .line 122
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
     .line 123
     .line 124
-    move-result-wide v6
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
 
     .line 125
-    invoke-virtual {v1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->elapsedMs()J
-
     .line 126
+    invoke-virtual {v1, v4}, Landroid/view/View;->setEnabled(Z)V
+
     .line 127
     .line 128
-    move-result-wide v8
-
     .line 129
-    sub-long/2addr v6, v8
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 130
-    invoke-virtual {v4, v5, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
-
     .line 131
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+
     .line 132
     .line 133
-    iget-object v5, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->minecraftLauncher:Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;
-
     .line 134
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_title_login_required:I
+
     .line 135
-    new-instance v6, Lorg/levimc/launcher/ui/activities/MainActivity$4;
-
     .line 136
-    .line 137
-    invoke-direct {v6, p0, v1}, Lorg/levimc/launcher/ui/activities/MainActivity$4;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/minecraft/LaunchTrace;)V
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 137
     .line 138
     .line 139
+    move-result-object v2
+
     .line 140
-    invoke-virtual {v5, v4, v2, v6}, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->launch(Landroid/content/Intent;Lorg/levimc/launcher/core/versions/GameVersion;Lorg/levimc/launcher/core/minecraft/MinecraftLauncher$LaunchCallback;)V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 141
     .line 142
     .line 143
-    return-void
+    move-result-object v1
 
     .line 144
-    :catch_0
-    move-exception v2
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_message_login_required:I
 
     .line 145
-    const-string v4, "Launch failed before activity start"
-
     .line 146
-    .line 147
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 147
     .line 148
     .line 149
+    move-result-object v2
+
     .line 150
-    move-result-object v5
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 151
-    invoke-virtual {v1, v4, v5}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->error(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 152
     .line 153
+    move-result-object v1
+
     .line 154
-    invoke-direct {p0, v3}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
+    sget v2, Lorg/levimc/launcher/R$string;->go_to_accounts:I
 
     .line 155
     .line 156
-    .line 157
-    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 157
     .line 158
     .line 159
-    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+    move-result-object v2
 
     .line 160
+    new-instance v3, Lorg/levimc/launcher/ui/activities/l1;
+
     .line 161
     .line 162
-    sget v3, Lorg/levimc/launcher/R$string;->dialog_title_launch_failed:I
+    const/16 v4, 0xd
 
     .line 163
     .line 164
-    invoke-virtual {p0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-direct {v3, p0, v4}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 165
     .line 166
     .line 167
-    move-result-object v3
+    invoke-virtual {v1, v2, v3}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 168
-    invoke-virtual {v1, v3}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 169
     .line 170
-    .line 171
     move-result-object v1
+
+    .line 171
+    sget v2, Lorg/levimc/launcher/R$string;->disable_launcher_login_and_continue:I
 
     .line 172
-    sget v3, Lorg/levimc/launcher/R$string;->dialog_message_launch_failed:I
-
     .line 173
-    .line 174
-    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
+    .line 174
     .line 175
     .line 176
-    .line 177
     move-result-object v2
+
+    .line 177
+    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setNegativeButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 178
-    filled-new-array {v2}, [Ljava/lang/Object;
-
     .line 179
     .line 180
+    move-result-object v0
+
     .line 181
-    move-result-object v2
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
 
     .line 182
-    invoke-virtual {p0, v3, v2}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
-
     .line 183
     .line 184
+    return-void
+
     .line 185
-    move-result-object v2
+    :cond_3
+    :goto_1
+    new-instance v3, Ljava/lang/StringBuilder;
 
     .line 186
-    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 187
+    invoke-direct {v3}, Ljava/lang/StringBuilder;-><init>()V
+
     .line 188
     .line 189
-    move-result-object v1
-
     .line 190
-    sget v2, Lorg/levimc/launcher/R$string;->dialog_positive_ok:I
+    iget-object v5, v2, Lorg/levimc/launcher/core/versions/GameVersion;->directoryName:Ljava/lang/String;
 
     .line 191
     .line 192
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 193
     .line 194
     .line 195
-    move-result-object v2
+    const-string v5, " "
 
     .line 196
-    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
     .line 197
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 198
     .line 199
-    move-result-object v0
-
     .line 200
-    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+    iget-object v5, v2, Lorg/levimc/launcher/core/versions/GameVersion;->versionCode:Ljava/lang/String;
 
     .line 201
     .line 202
+    invoke-virtual {v3, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 203
+    .line 204
+    .line 205
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 206
+    .line 207
+    .line 208
+    move-result-object v3
+
+    .line 209
+    const-string v5, "Launch preflight completed"
+
+    .line 210
+    .line 211
+    invoke-virtual {v1, v5, v3}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->mark(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 212
+    .line 213
+    .line 214
+    :try_start_0
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->createMinecraftLaunchIntent()Landroid/content/Intent;
+
+    .line 215
+    .line 216
+    .line 217
+    move-result-object v3
+
+    .line 218
+    const-string v5, "org.levimc.launcher.extra.LAUNCH_SESSION_ID"
+
+    .line 219
+    .line 220
+    invoke-virtual {v1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->getSessionId()Ljava/lang/String;
+
+    .line 221
+    .line 222
+    .line 223
+    move-result-object v6
+
+    .line 224
+    invoke-virtual {v3, v5, v6}, Landroid/content/Intent;->putExtra(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
+
+    .line 225
+    .line 226
+    .line 227
+    const-string v5, "org.levimc.launcher.extra.LAUNCH_STARTED_ELAPSED_MS"
+
+    .line 228
+    .line 229
+    invoke-static {}, Landroid/os/SystemClock;->elapsedRealtime()J
+
+    .line 230
+    .line 231
+    .line 232
+    move-result-wide v6
+
+    .line 233
+    invoke-virtual {v1}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->elapsedMs()J
+
+    .line 234
+    .line 235
+    .line 236
+    move-result-wide v8
+
+    .line 237
+    sub-long/2addr v6, v8
+
+    .line 238
+    invoke-virtual {v3, v5, v6, v7}, Landroid/content/Intent;->putExtra(Ljava/lang/String;J)Landroid/content/Intent;
+
+    .line 239
+    .line 240
+    .line 241
+    iget-object v5, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->minecraftLauncher:Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;
+
+    .line 242
+    .line 243
+    new-instance v6, Lorg/levimc/launcher/ui/activities/MainActivity$5;
+
+    .line 244
+    .line 245
+    invoke-direct {v6, p0, v1}, Lorg/levimc/launcher/ui/activities/MainActivity$5;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/minecraft/LaunchTrace;)V
+
+    .line 246
+    .line 247
+    .line 248
+    invoke-virtual {v5, v3, v2, v6}, Lorg/levimc/launcher/core/minecraft/MinecraftLauncher;->launch(Landroid/content/Intent;Lorg/levimc/launcher/core/versions/GameVersion;Lorg/levimc/launcher/core/minecraft/MinecraftLauncher$LaunchCallback;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 249
+    .line 250
+    .line 251
+    return-void
+
+    .line 252
+    :catch_0
+    move-exception v2
+
+    .line 253
+    const-string v3, "Launch failed before activity start"
+
+    .line 254
+    .line 255
+    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 256
+    .line 257
+    .line 258
+    move-result-object v5
+
+    .line 259
+    invoke-virtual {v1, v3, v5}, Lorg/levimc/launcher/core/minecraft/LaunchTrace;->error(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 260
+    .line 261
+    .line 262
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
+    .line 263
+    .line 264
+    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
+    .line 265
+    .line 266
+    invoke-virtual {v1, v4}, Landroid/view/View;->setEnabled(Z)V
+
+    .line 267
+    .line 268
+    .line 269
+    new-instance v1, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 270
+    .line 271
+    invoke-direct {v1, p0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;-><init>(Landroid/content/Context;)V
+
+    .line 272
+    .line 273
+    .line 274
+    sget v3, Lorg/levimc/launcher/R$string;->dialog_title_launch_failed:I
+
+    .line 275
+    .line 276
+    invoke-virtual {p0, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 277
+    .line 278
+    .line 279
+    move-result-object v3
+
+    .line 280
+    invoke-virtual {v1, v3}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setTitleText(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 281
+    .line 282
+    .line 283
+    move-result-object v1
+
+    .line 284
+    sget v3, Lorg/levimc/launcher/R$string;->dialog_message_launch_failed:I
+
+    .line 285
+    .line 286
+    invoke-virtual {v2}, Ljava/lang/Throwable;->getMessage()Ljava/lang/String;
+
+    .line 287
+    .line 288
+    .line 289
+    move-result-object v2
+
+    .line 290
+    filled-new-array {v2}, [Ljava/lang/Object;
+
+    .line 291
+    .line 292
+    .line 293
+    move-result-object v2
+
+    .line 294
+    invoke-virtual {p0, v3, v2}, Landroid/content/Context;->getString(I[Ljava/lang/Object;)Ljava/lang/String;
+
+    .line 295
+    .line 296
+    .line 297
+    move-result-object v2
+
+    .line 298
+    invoke-virtual {v1, v2}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setMessage(Ljava/lang/String;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 299
+    .line 300
+    .line 301
+    move-result-object v1
+
+    .line 302
+    sget v2, Lorg/levimc/launcher/R$string;->dialog_positive_ok:I
+
+    .line 303
+    .line 304
+    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    .line 305
+    .line 306
+    .line 307
+    move-result-object v2
+
+    .line 308
+    invoke-virtual {v1, v2, v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->setPositiveButton(Ljava/lang/String;Landroid/view/View$OnClickListener;)Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
+
+    .line 309
+    .line 310
+    .line 311
+    move-result-object v0
+
+    .line 312
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->show()V
+
+    .line 313
+    .line 314
+    .line 315
+    return-void
+.end method
+
+.method private refreshAccountHeaderUI()V
+    .locals 4
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    const/4 v1, 0x0
+
+    .line 6
+    const/16 v2, 0x8
+
+    .line 7
+    .line 8
+    if-nez v0, :cond_4
+
+    .line 9
+    .line 10
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->signInButton:Landroid/widget/Button;
+
+    .line 11
+    .line 12
+    if-eqz v0, :cond_0
+
+    .line 13
+    .line 14
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 15
+    .line 16
+    .line 17
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatarContainer:Landroid/view/View;
+
+    .line 18
+    .line 19
+    if-eqz v0, :cond_1
+
+    .line 20
+    .line 21
+    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 22
+    .line 23
+    .line 24
+    :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 25
+    .line 26
+    const/4 v1, 0x0
+
+    .line 27
+    if-eqz v0, :cond_2
+
+    .line 28
+    .line 29
+    invoke-virtual {v0, v1}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 30
+    .line 31
+    .line 32
+    :cond_2
+    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->lastAvatarXuid:Ljava/lang/String;
+
+    .line 33
+    .line 34
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->avatarProgress:Landroid/widget/ProgressBar;
+
+    .line 35
+    .line 36
+    if-eqz v0, :cond_3
+
+    .line 37
+    .line 38
+    invoke-virtual {v0, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 39
+    .line 40
+    .line 41
+    :cond_3
+    return-void
+
+    .line 42
+    :cond_4
+    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->signInButton:Landroid/widget/Button;
+
+    .line 43
+    .line 44
+    if-eqz v3, :cond_5
+
+    .line 45
+    .line 46
+    invoke-virtual {v3, v2}, Landroid/view/View;->setVisibility(I)V
+
+    .line 47
+    .line 48
+    .line 49
+    :cond_5
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatarContainer:Landroid/view/View;
+
+    .line 50
+    .line 51
+    if-eqz v2, :cond_6
+
+    .line 52
+    .line 53
+    invoke-virtual {v2, v1}, Landroid/view/View;->setVisibility(I)V
+
+    .line 54
+    .line 55
+    .line 56
+    :cond_6
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->loadXboxAvatar(Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)V
+
+    .line 57
+    .line 58
+    .line 59
     return-void
 .end method
 
@@ -4765,78 +6067,6 @@
     return-void
 .end method
 
-.method private setLaunchEnabled(Z)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 2
-    .line 3
-    if-nez v0, :cond_0
-
-    .line 4
-    .line 5
-    return-void
-
-    .line 6
-    :cond_0
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Lcom/google/android/material/button/MaterialButton;
-
-    .line 7
-    .line 8
-    invoke-virtual {v0, p1}, Landroid/view/View;->setEnabled(Z)V
-
-    .line 9
-    .line 10
-    .line 11
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 12
-    .line 13
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchMenuButton:Landroid/widget/ImageView;
-
-    .line 14
-    .line 15
-    invoke-virtual {v0, p1}, Landroid/view/View;->setEnabled(Z)V
-
-    .line 16
-    .line 17
-    .line 18
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 19
-    .line 20
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchGroup:Landroid/widget/LinearLayout;
-
-    .line 21
-    .line 22
-    if-eqz p1, :cond_1
-
-    .line 23
-    .line 24
-    const/high16 p1, 0x3f800000    # 1.0f
-
-    .line 25
-    .line 26
-    goto :goto_0
-
-    .line 27
-    :cond_1
-    const p1, 0x3f19999a    # 0.6f
-
-    .line 28
-    .line 29
-    .line 30
-    :goto_0
-    invoke-virtual {v0, p1}, Landroid/view/View;->setAlpha(F)V
-
-    .line 31
-    .line 32
-    .line 33
-    return-void
-.end method
-
 .method private setupManagersAndHandlers()V
     .locals 3
 
@@ -4863,7 +6093,7 @@
 
     .line 12
     .line 13
-    const/4 v1, 0x7
+    const/4 v1, 0x6
 
     .line 14
     invoke-direct {v0, v1}, Landroidx/fragment/app/w0;-><init>(I)V
@@ -4871,14 +6101,14 @@
     .line 15
     .line 16
     .line 17
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n1;
 
     .line 18
     .line 19
     const/4 v2, 0x2
 
     .line 20
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 21
     .line 22
@@ -4899,7 +6129,7 @@
 
     .line 30
     .line 31
-    const/4 v1, 0x7
+    const/4 v1, 0x6
 
     .line 32
     invoke-direct {v0, v1}, Landroidx/fragment/app/w0;-><init>(I)V
@@ -4907,14 +6137,14 @@
     .line 33
     .line 34
     .line 35
-    new-instance v1, Lorg/levimc/launcher/ui/activities/l2;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/n1;
 
     .line 36
     .line 37
     const/4 v2, 0x3
 
     .line 38
-    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 39
     .line 40
@@ -4977,7 +6207,7 @@
 
     .line 7
     .line 8
-    invoke-virtual {p0, v0}, Lg/i;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
 
     .line 9
     .line 10
@@ -4989,7 +6219,7 @@
 
     .line 13
     .line 14
-    const/4 v2, 0x3
+    const/4 v2, 0x4
 
     .line 15
     invoke-direct {v1, v2}, Lcom/microsoft/xboxtcui/a;-><init>(I)V
@@ -5042,6 +6272,1228 @@
     .line 16
     .line 17
     .line 18
+    return-void
+.end method
+
+.method private setupSkinViewer()V
+    .locals 4
+
+    sget v0, Lorg/levimc/launcher/R$id;->skin_viewer:I
+
+    invoke-virtual {p0, v0}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    move-result-object v0
+
+    check-cast v0, Lcom/mio/skin/SkinViewer;
+
+    iput-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    new-instance v1, Lcom/mio/skin/SkinRenderer;
+
+    invoke-direct {v1, p0}, Lcom/mio/skin/SkinRenderer;-><init>(Landroid/content/Context;)V
+
+    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinRenderer:Lcom/mio/skin/SkinRenderer;
+
+    invoke-virtual {p0}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    move-result-object v2
+
+    invoke-virtual {v2}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    move-result-object v2
+
+    iget v2, v2, Landroid/util/DisplayMetrics;->density:F
+
+    invoke-virtual {v0, v1, v2}, Lcom/mio/skin/SkinViewer;->setRenderer(Lcom/mio/skin/SkinRenderer;F)V
+
+    new-instance v2, Lcom/mio/skin/IdleAnimation;
+
+    invoke-direct {v2}, Lcom/mio/skin/IdleAnimation;-><init>()V
+
+    invoke-virtual {v1, v2}, Lcom/mio/skin/SkinRenderer;->playAnimation(Lcom/mio/skin/PlayerAnimation;)V
+
+    return-void
+.end method
+
+.method private showAccountSwitchPopup(Landroid/view/View;)V
+    .locals 21
+
+    .line 1
+    move-object/from16 v1, p0
+
+    .line 2
+    .line 3
+    invoke-static {v1}, Lorg/levimc/launcher/core/auth/MsftAccountStore;->list(Landroid/content/Context;)Ljava/util/List;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    invoke-static {v1}, Landroid/view/LayoutInflater;->from(Landroid/content/Context;)Landroid/view/LayoutInflater;
+
+    .line 8
+    .line 9
+    .line 10
+    move-result-object v2
+
+    .line 11
+    sget v3, Lorg/levimc/launcher/R$layout;->popup_account_switch:I
+
+    .line 12
+    .line 13
+    const/4 v4, 0x0
+
+    .line 14
+    invoke-virtual {v2, v3, v4}, Landroid/view/LayoutInflater;->inflate(ILandroid/view/ViewGroup;)Landroid/view/View;
+
+    .line 15
+    .line 16
+    .line 17
+    move-result-object v8
+
+    .line 18
+    sget v2, Lorg/levimc/launcher/R$id;->recycler_accounts:I
+
+    .line 19
+    .line 20
+    invoke-virtual {v8, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v2
+
+    .line 24
+    move-object v9, v2
+
+    .line 25
+    check-cast v9, Landroidx/recyclerview/widget/RecyclerView;
+
+    .line 26
+    .line 27
+    sget v2, Lorg/levimc/launcher/R$id;->manage_action:I
+
+    .line 28
+    .line 29
+    invoke-virtual {v8, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v2
+
+    .line 33
+    move-object v10, v2
+
+    .line 34
+    check-cast v10, Landroid/widget/TextView;
+
+    .line 35
+    .line 36
+    sget v2, Lorg/levimc/launcher/R$id;->header_avatar:I
+
+    .line 37
+    .line 38
+    invoke-virtual {v8, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v2
+
+    .line 42
+    move-object v11, v2
+
+    .line 43
+    check-cast v11, Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 44
+    .line 45
+    sget v2, Lorg/levimc/launcher/R$id;->header_container:I
+
+    .line 46
+    .line 47
+    invoke-virtual {v8, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 48
+    .line 49
+    .line 50
+    move-result-object v12
+
+    .line 51
+    sget v2, Lorg/levimc/launcher/R$id;->header_name:I
+
+    .line 52
+    .line 53
+    invoke-virtual {v8, v2}, Landroid/view/View;->findViewById(I)Landroid/view/View;
+
+    .line 54
+    .line 55
+    .line 56
+    move-result-object v2
+
+    .line 57
+    move-object v13, v2
+
+    .line 58
+    check-cast v13, Landroid/widget/TextView;
+
+    .line 59
+    .line 60
+    new-instance v2, Landroid/util/TypedValue;
+
+    .line 61
+    .line 62
+    invoke-direct {v2}, Landroid/util/TypedValue;-><init>()V
+
+    .line 63
+    .line 64
+    .line 65
+    invoke-virtual {v1}, Landroid/content/Context;->getTheme()Landroid/content/res/Resources$Theme;
+
+    .line 66
+    .line 67
+    .line 68
+    move-result-object v3
+
+    .line 69
+    const v4, 0x101030e
+
+    .line 70
+    .line 71
+    .line 72
+    const/4 v5, 0x1
+
+    .line 73
+    invoke-virtual {v3, v4, v2, v5}, Landroid/content/res/Resources$Theme;->resolveAttribute(ILandroid/util/TypedValue;Z)Z
+
+    .line 74
+    .line 75
+    .line 76
+    iget v2, v2, Landroid/util/TypedValue;->resourceId:I
+
+    .line 77
+    .line 78
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 79
+    .line 80
+    .line 81
+    move-result-object v3
+
+    .line 82
+    invoke-virtual {v3}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 83
+    .line 84
+    .line 85
+    move-result-object v3
+
+    .line 86
+    iget v3, v3, Landroid/util/DisplayMetrics;->density:F
+
+    .line 87
+    .line 88
+    const/high16 v4, 0x41800000    # 16.0f
+
+    .line 89
+    .line 90
+    mul-float/2addr v3, v4
+
+    .line 91
+    float-to-int v3, v3
+
+    .line 92
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 93
+    .line 94
+    .line 95
+    move-result-object v4
+
+    .line 96
+    invoke-virtual {v4}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 97
+    .line 98
+    .line 99
+    move-result-object v4
+
+    .line 100
+    iget v4, v4, Landroid/util/DisplayMetrics;->density:F
+
+    .line 101
+    .line 102
+    const/high16 v6, 0x41400000    # 12.0f
+
+    .line 103
+    .line 104
+    mul-float/2addr v4, v6
+
+    .line 105
+    float-to-int v4, v4
+
+    .line 106
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 107
+    .line 108
+    .line 109
+    move-result-object v7
+
+    .line 110
+    invoke-virtual {v7}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 111
+    .line 112
+    .line 113
+    move-result-object v7
+
+    .line 114
+    iget v7, v7, Landroid/util/DisplayMetrics;->density:F
+
+    .line 115
+    .line 116
+    mul-float/2addr v7, v6
+
+    .line 117
+    float-to-int v6, v7
+
+    .line 118
+    invoke-direct {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->getActiveAccount()Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 119
+    .line 120
+    .line 121
+    move-result-object v7
+
+    .line 122
+    invoke-static {v1, v7}, Lorg/levimc/launcher/util/AccountTextUtils;->displayNameOrNotSigned(Landroid/content/Context;Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;)Ljava/lang/String;
+
+    .line 123
+    .line 124
+    .line 125
+    move-result-object v14
+
+    .line 126
+    invoke-virtual {v13, v14}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    .line 127
+    .line 128
+    .line 129
+    iget-object v14, v1, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 130
+    .line 131
+    if-eqz v14, :cond_1
+
+    .line 132
+    .line 133
+    invoke-virtual {v14}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 134
+    .line 135
+    .line 136
+    move-result-object v14
+
+    .line 137
+    if-eqz v14, :cond_1
+
+    .line 138
+    .line 139
+    iget-object v14, v1, Lorg/levimc/launcher/ui/activities/MainActivity;->accountAvatar:Lcom/microsoft/xbox/idp/toolkit/CircleImageView;
+
+    .line 140
+    .line 141
+    invoke-virtual {v14}, Landroid/widget/ImageView;->getDrawable()Landroid/graphics/drawable/Drawable;
+
+    .line 142
+    .line 143
+    .line 144
+    move-result-object v14
+
+    .line 145
+    invoke-virtual {v11, v14}, Landroid/widget/ImageView;->setImageDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 146
+    .line 147
+    .line 148
+    :cond_0
+    move-object/from16 v17, v0
+
+    .line 149
+    .line 150
+    goto :goto_0
+
+    .line 151
+    :cond_1
+    if-eqz v7, :cond_0
+
+    .line 152
+    .line 153
+    iget-object v14, v7, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxAvatarUrl:Ljava/lang/String;
+
+    .line 154
+    .line 155
+    invoke-static {v14}, Lorg/levimc/launcher/util/AccountTextUtils;->sanitizeUrl(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 156
+    .line 157
+    .line 158
+    move-result-object v14
+
+    .line 159
+    if-eqz v14, :cond_0
+
+    .line 160
+    .line 161
+    iget-object v15, v1, Lorg/levimc/launcher/ui/activities/MainActivity;->accountExecutor:Ljava/util/concurrent/ExecutorService;
+
+    .line 162
+    .line 163
+    new-instance v5, Lorg/levimc/launcher/ui/activities/l;
+
+    .line 164
+    .line 165
+    move-object/from16 v17, v0
+
+    .line 166
+    .line 167
+    const/4 v0, 0x4
+
+    .line 168
+    invoke-direct {v5, v1, v14, v11, v0}, Lorg/levimc/launcher/ui/activities/l;-><init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 169
+    .line 170
+    .line 171
+    invoke-interface {v15, v5}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
+
+    .line 172
+    .line 173
+    .line 174
+    :goto_0
+    new-instance v0, Landroid/widget/PopupWindow;
+
+    .line 175
+    .line 176
+    const/4 v14, -0x2
+
+    .line 177
+    const/4 v5, 0x1
+
+    .line 178
+    invoke-direct {v0, v8, v14, v14, v5}, Landroid/widget/PopupWindow;-><init>(Landroid/view/View;IIZ)V
+
+    .line 179
+    .line 180
+    .line 181
+    const/4 v15, 0x0
+
+    .line 182
+    invoke-virtual {v8, v15}, Landroid/view/View;->setAlpha(F)V
+
+    .line 183
+    .line 184
+    .line 185
+    const/high16 v5, 0x41c00000    # 24.0f
+
+    .line 186
+    .line 187
+    invoke-virtual {v8, v5}, Landroid/view/View;->setTranslationY(F)V
+
+    .line 188
+    .line 189
+    .line 190
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 191
+    .line 192
+    .line 193
+    move-result-object v5
+
+    .line 194
+    invoke-virtual {v5}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 195
+    .line 196
+    .line 197
+    move-result-object v5
+
+    .line 198
+    iget v5, v5, Landroid/util/DisplayMetrics;->density:F
+
+    .line 199
+    .line 200
+    if-eqz v12, :cond_2
+
+    .line 201
+    .line 202
+    invoke-virtual {v12, v15}, Landroid/view/View;->setAlpha(F)V
+
+    .line 203
+    .line 204
+    .line 205
+    const/high16 v18, 0x41000000    # 8.0f
+
+    .line 206
+    .line 207
+    mul-float v14, v5, v18
+
+    .line 208
+    .line 209
+    invoke-virtual {v12, v14}, Landroid/view/View;->setTranslationY(F)V
+
+    .line 210
+    .line 211
+    .line 212
+    goto :goto_1
+
+    .line 213
+    :cond_2
+    const/high16 v18, 0x41000000    # 8.0f
+
+    .line 214
+    .line 215
+    :goto_1
+    if-eqz v11, :cond_3
+
+    .line 216
+    .line 217
+    invoke-virtual {v11, v15}, Landroid/view/View;->setAlpha(F)V
+
+    .line 218
+    .line 219
+    .line 220
+    const v14, 0x3f70a3d7    # 0.94f
+
+    .line 221
+    .line 222
+    .line 223
+    invoke-virtual {v11, v14}, Landroid/view/View;->setScaleX(F)V
+
+    .line 224
+    .line 225
+    .line 226
+    invoke-virtual {v11, v14}, Landroid/view/View;->setScaleY(F)V
+
+    .line 227
+    .line 228
+    .line 229
+    :cond_3
+    invoke-virtual {v13, v15}, Landroid/view/View;->setAlpha(F)V
+
+    .line 230
+    .line 231
+    .line 232
+    const/high16 v14, 0x40c00000    # 6.0f
+
+    .line 233
+    .line 234
+    mul-float/2addr v5, v14
+
+    .line 235
+    invoke-virtual {v13, v5}, Landroid/view/View;->setTranslationY(F)V
+
+    .line 236
+    .line 237
+    .line 238
+    if-eqz v10, :cond_4
+
+    .line 239
+    .line 240
+    invoke-virtual {v10, v15}, Landroid/view/View;->setAlpha(F)V
+
+    .line 241
+    .line 242
+    .line 243
+    invoke-virtual {v10, v5}, Landroid/view/View;->setTranslationX(F)V
+
+    .line 244
+    .line 245
+    .line 246
+    :cond_4
+    new-instance v5, Landroid/graphics/drawable/ColorDrawable;
+
+    .line 247
+    .line 248
+    const/4 v14, 0x0
+
+    .line 249
+    invoke-direct {v5, v14}, Landroid/graphics/drawable/ColorDrawable;-><init>(I)V
+
+    .line 250
+    .line 251
+    .line 252
+    invoke-virtual {v0, v5}, Landroid/widget/PopupWindow;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+
+    .line 253
+    .line 254
+    .line 255
+    const/4 v5, 0x1
+
+    .line 256
+    invoke-virtual {v0, v5}, Landroid/widget/PopupWindow;->setOutsideTouchable(Z)V
+
+    .line 257
+    .line 258
+    .line 259
+    move/from16 v14, v18
+
+    .line 260
+    .line 261
+    invoke-virtual {v0, v14}, Landroid/widget/PopupWindow;->setElevation(F)V
+
+    .line 262
+    .line 263
+    .line 264
+    const v14, 0x1020002
+
+    .line 265
+    .line 266
+    .line 267
+    invoke-virtual {v1, v14}, Lg/g;->findViewById(I)Landroid/view/View;
+
+    .line 268
+    .line 269
+    .line 270
+    move-result-object v14
+
+    .line 271
+    check-cast v14, Landroid/view/ViewGroup;
+
+    .line 272
+    .line 273
+    new-instance v15, Landroid/view/View;
+
+    .line 274
+    .line 275
+    invoke-direct {v15, v1}, Landroid/view/View;-><init>(Landroid/content/Context;)V
+
+    .line 276
+    .line 277
+    .line 278
+    sget v5, Lorg/levimc/launcher/R$color;->scrim:I
+
+    .line 279
+    .line 280
+    invoke-virtual {v1, v5}, Landroid/content/Context;->getColor(I)I
+
+    .line 281
+    .line 282
+    .line 283
+    move-result v5
+
+    .line 284
+    invoke-virtual {v15, v5}, Landroid/view/View;->setBackgroundColor(I)V
+
+    .line 285
+    .line 286
+    .line 287
+    const/4 v5, 0x1
+
+    .line 288
+    invoke-virtual {v15, v5}, Landroid/view/View;->setClickable(Z)V
+
+    .line 289
+    .line 290
+    .line 291
+    new-instance v5, Lorg/levimc/launcher/ui/activities/y0;
+
+    .line 292
+    .line 293
+    const/4 v1, 0x3
+
+    .line 294
+    invoke-direct {v5, v0, v1}, Lorg/levimc/launcher/ui/activities/y0;-><init>(Ljava/lang/Object;I)V
+
+    .line 295
+    .line 296
+    .line 297
+    invoke-virtual {v15, v5}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 298
+    .line 299
+    .line 300
+    new-instance v1, Landroid/view/ViewGroup$LayoutParams;
+
+    .line 301
+    .line 302
+    const/4 v5, -0x1
+
+    .line 303
+    invoke-direct {v1, v5, v5}, Landroid/view/ViewGroup$LayoutParams;-><init>(II)V
+
+    .line 304
+    .line 305
+    .line 306
+    invoke-virtual {v14, v15, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    .line 307
+    .line 308
+    .line 309
+    const/4 v1, 0x0
+
+    .line 310
+    invoke-virtual {v15, v1}, Landroid/view/View;->setAlpha(F)V
+
+    .line 311
+    .line 312
+    .line 313
+    invoke-virtual {v15}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
+
+    .line 314
+    .line 315
+    .line 316
+    move-result-object v1
+
+    .line 317
+    const/high16 v5, 0x3f800000    # 1.0f
+
+    .line 318
+    .line 319
+    invoke-virtual {v1, v5}, Landroid/view/ViewPropertyAnimator;->alpha(F)Landroid/view/ViewPropertyAnimator;
+
+    .line 320
+    .line 321
+    .line 322
+    move-result-object v1
+
+    .line 323
+    move/from16 v19, v6
+
+    .line 324
+    .line 325
+    const-wide/16 v5, 0x78
+
+    .line 326
+    .line 327
+    invoke-virtual {v1, v5, v6}, Landroid/view/ViewPropertyAnimator;->setDuration(J)Landroid/view/ViewPropertyAnimator;
+
+    .line 328
+    .line 329
+    .line 330
+    move-result-object v1
+
+    .line 331
+    invoke-virtual {v1}, Landroid/view/ViewPropertyAnimator;->start()V
+
+    .line 332
+    .line 333
+    .line 334
+    new-instance v6, Ljava/util/ArrayList;
+
+    .line 335
+    .line 336
+    invoke-direct {v6}, Ljava/util/ArrayList;-><init>()V
+
+    .line 337
+    .line 338
+    .line 339
+    invoke-interface/range {v17 .. v17}, Ljava/util/List;->iterator()Ljava/util/Iterator;
+
+    .line 340
+    .line 341
+    .line 342
+    move-result-object v1
+
+    .line 343
+    :goto_2
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 344
+    .line 345
+    .line 346
+    move-result v5
+
+    .line 347
+    if-eqz v5, :cond_7
+
+    .line 348
+    .line 349
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 350
+    .line 351
+    .line 352
+    move-result-object v5
+
+    .line 353
+    check-cast v5, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;
+
+    .line 354
+    .line 355
+    move-object/from16 v17, v0
+
+    .line 356
+    .line 357
+    if-eqz v7, :cond_5
+
+    .line 358
+    .line 359
+    iget-object v0, v5, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    .line 360
+    .line 361
+    move-object/from16 v20, v1
+
+    .line 362
+    .line 363
+    iget-object v1, v7, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->id:Ljava/lang/String;
+
+    .line 364
+    .line 365
+    invoke-static {v0, v1}, Landroid/text/TextUtils;->equals(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Z
+
+    .line 366
+    .line 367
+    .line 368
+    move-result v0
+
+    .line 369
+    if-nez v0, :cond_6
+
+    .line 370
+    .line 371
+    goto :goto_3
+
+    .line 372
+    :cond_5
+    move-object/from16 v20, v1
+
+    .line 373
+    .line 374
+    :goto_3
+    invoke-virtual {v6, v5}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
+
+    .line 375
+    .line 376
+    .line 377
+    :cond_6
+    move-object/from16 v0, v17
+
+    .line 378
+    .line 379
+    move-object/from16 v1, v20
+
+    .line 380
+    .line 381
+    goto :goto_2
+
+    .line 382
+    :cond_7
+    move-object/from16 v17, v0
+
+    .line 383
+    .line 384
+    new-instance v0, Landroidx/recyclerview/widget/LinearLayoutManager;
+
+    .line 385
+    .line 386
+    const/4 v5, 0x1
+
+    .line 387
+    invoke-direct {v0, v5}, Landroidx/recyclerview/widget/LinearLayoutManager;-><init>(I)V
+
+    .line 388
+    .line 389
+    .line 390
+    invoke-virtual {v9, v0}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
+
+    .line 391
+    .line 392
+    .line 393
+    new-instance v0, Lorg/levimc/launcher/ui/activities/MainActivity$3;
+
+    .line 394
+    .line 395
+    move-object/from16 v1, p0
+
+    .line 396
+    .line 397
+    move v5, v2
+
+    .line 398
+    move v2, v3
+
+    .line 399
+    move v3, v4
+
+    .line 400
+    move-object/from16 v16, v13
+
+    .line 401
+    .line 402
+    move-object/from16 v7, v17
+
+    .line 403
+    .line 404
+    move/from16 v4, v19
+
+    .line 405
+    .line 406
+    const/high16 v13, 0x3f800000    # 1.0f
+
+    .line 407
+    .line 408
+    invoke-direct/range {v0 .. v7}, Lorg/levimc/launcher/ui/activities/MainActivity$3;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;IIIILjava/util/List;Landroid/widget/PopupWindow;)V
+
+    .line 409
+    .line 410
+    .line 411
+    invoke-virtual {v9, v0}, Landroidx/recyclerview/widget/RecyclerView;->setAdapter(Landroidx/recyclerview/widget/RecyclerView$Adapter;)V
+
+    .line 412
+    .line 413
+    .line 414
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 415
+    .line 416
+    .line 417
+    move-result-object v0
+
+    .line 418
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 419
+    .line 420
+    .line 421
+    move-result-object v0
+
+    .line 422
+    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
+
+    .line 423
+    .line 424
+    invoke-virtual {v6}, Ljava/util/ArrayList;->size()I
+
+    .line 425
+    .line 426
+    .line 427
+    move-result v2
+
+    .line 428
+    const/4 v3, 0x2
+
+    .line 429
+    if-le v2, v3, :cond_8
+
+    .line 430
+    .line 431
+    const/high16 v2, 0x42e00000    # 112.0f
+
+    .line 432
+    .line 433
+    mul-float/2addr v0, v2
+
+    .line 434
+    float-to-int v0, v0
+
+    .line 435
+    invoke-virtual {v9}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    .line 436
+    .line 437
+    .line 438
+    move-result-object v2
+
+    .line 439
+    iput v0, v2, Landroid/view/ViewGroup$LayoutParams;->height:I
+
+    .line 440
+    .line 441
+    goto :goto_4
+
+    .line 442
+    :cond_8
+    invoke-virtual {v9}, Landroid/view/View;->getLayoutParams()Landroid/view/ViewGroup$LayoutParams;
+
+    .line 443
+    .line 444
+    .line 445
+    move-result-object v0
+
+    .line 446
+    const/4 v2, -0x2
+
+    .line 447
+    iput v2, v0, Landroid/view/ViewGroup$LayoutParams;->height:I
+
+    .line 448
+    .line 449
+    :goto_4
+    new-instance v0, Lorg/levimc/launcher/ui/activities/e;
+
+    .line 450
+    .line 451
+    const/16 v2, 0xb
+
+    .line 452
+    .line 453
+    invoke-direct {v0, v1, v7, v2}, Lorg/levimc/launcher/ui/activities/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 454
+    .line 455
+    .line 456
+    invoke-virtual {v10, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
+    .line 457
+    .line 458
+    .line 459
+    invoke-static {v10}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->applyPressScale(Landroid/view/View;)V
+
+    .line 460
+    .line 461
+    .line 462
+    new-instance v0, Lorg/levimc/launcher/ui/activities/p1;
+
+    .line 463
+    .line 464
+    invoke-direct {v0, v14, v15}, Lorg/levimc/launcher/ui/activities/p1;-><init>(Landroid/view/ViewGroup;Landroid/view/View;)V
+
+    .line 465
+    .line 466
+    .line 467
+    invoke-virtual {v7, v0}, Landroid/widget/PopupWindow;->setOnDismissListener(Landroid/widget/PopupWindow$OnDismissListener;)V
+
+    .line 468
+    .line 469
+    .line 470
+    invoke-virtual {v1}, Lg/g;->getResources()Landroid/content/res/Resources;
+
+    .line 471
+    .line 472
+    .line 473
+    move-result-object v0
+
+    .line 474
+    invoke-virtual {v0}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 475
+    .line 476
+    .line 477
+    move-result-object v0
+
+    .line 478
+    iget v0, v0, Landroid/util/DisplayMetrics;->density:F
+
+    .line 479
+    .line 480
+    const/high16 v2, 0x40800000    # 4.0f
+
+    .line 481
+    .line 482
+    mul-float/2addr v0, v2
+
+    .line 483
+    float-to-int v0, v0
+
+    .line 484
+    neg-int v2, v0
+
+    .line 485
+    div-int/lit8 v0, v0, 0x4
+
+    .line 486
+    .line 487
+    const v3, 0x800005
+
+    .line 488
+    .line 489
+    .line 490
+    move-object/from16 v4, p1
+
+    .line 491
+    .line 492
+    invoke-virtual {v7, v4, v2, v0, v3}, Landroid/widget/PopupWindow;->showAsDropDown(Landroid/view/View;III)V
+
+    .line 493
+    .line 494
+    .line 495
+    invoke-static {v8, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springAlphaTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 496
+    .line 497
+    .line 498
+    move-result-object v0
+
+    .line 499
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 500
+    .line 501
+    .line 502
+    const/4 v0, 0x0
+
+    .line 503
+    invoke-static {v8, v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springTranslationYTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 504
+    .line 505
+    .line 506
+    move-result-object v2
+
+    .line 507
+    invoke-virtual {v2}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 508
+    .line 509
+    .line 510
+    new-instance v2, Lorg/levimc/launcher/ui/activities/b0;
+
+    .line 511
+    .line 512
+    const/16 v3, 0xc
+
+    .line 513
+    .line 514
+    invoke-direct {v2, v9, v3}, Lorg/levimc/launcher/ui/activities/b0;-><init>(Ljava/lang/Object;I)V
+
+    .line 515
+    .line 516
+    .line 517
+    invoke-virtual {v9, v2}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+    .line 518
+    .line 519
+    .line 520
+    if-eqz v12, :cond_9
+
+    .line 521
+    .line 522
+    invoke-static {v12, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springAlphaTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 523
+    .line 524
+    .line 525
+    move-result-object v2
+
+    .line 526
+    invoke-virtual {v2}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 527
+    .line 528
+    .line 529
+    invoke-static {v12, v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springTranslationYTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 530
+    .line 531
+    .line 532
+    move-result-object v2
+
+    .line 533
+    invoke-virtual {v2}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 534
+    .line 535
+    .line 536
+    :cond_9
+    if-eqz v11, :cond_a
+
+    .line 537
+    .line 538
+    invoke-static {v11, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springAlphaTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 539
+    .line 540
+    .line 541
+    move-result-object v0
+
+    .line 542
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 543
+    .line 544
+    .line 545
+    invoke-static {v11, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springScaleXTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 546
+    .line 547
+    .line 548
+    move-result-object v0
+
+    .line 549
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 550
+    .line 551
+    .line 552
+    invoke-static {v11, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springScaleYTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 553
+    .line 554
+    .line 555
+    move-result-object v0
+
+    .line 556
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 557
+    .line 558
+    .line 559
+    :cond_a
+    move-object/from16 v2, v16
+
+    .line 560
+    .line 561
+    invoke-static {v2, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springAlphaTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 562
+    .line 563
+    .line 564
+    move-result-object v0
+
+    .line 565
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 566
+    .line 567
+    .line 568
+    const/4 v0, 0x0
+
+    .line 569
+    invoke-static {v2, v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springTranslationYTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 570
+    .line 571
+    .line 572
+    move-result-object v2
+
+    .line 573
+    invoke-virtual {v2}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 574
+    .line 575
+    .line 576
+    invoke-static {v10, v13}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springAlphaTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 577
+    .line 578
+    .line 579
+    move-result-object v2
+
+    .line 580
+    invoke-virtual {v2}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 581
+    .line 582
+    .line 583
+    invoke-static {v10, v0}, Lorg/levimc/launcher/ui/animation/DynamicAnim;->springTranslationXTo(Landroid/view/View;F)Landroidx/dynamicanimation/animation/SpringAnimation;
+
+    .line 584
+    .line 585
+    .line 586
+    move-result-object v0
+
+    .line 587
+    invoke-virtual {v0}, Landroidx/dynamicanimation/animation/SpringAnimation;->e()V
+
+    .line 588
+    .line 589
+    .line 590
     return-void
 .end method
 
@@ -5129,7 +7581,7 @@
     move-result-object v1
 
     .line 41
-    new-instance v2, Lorg/levimc/launcher/ui/activities/j2;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/l1;
 
     .line 42
     .line 43
@@ -5137,7 +7589,7 @@
 
     .line 44
     .line 45
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 46
     .line 47
@@ -5162,7 +7614,7 @@
     move-result-object v1
 
     .line 58
-    new-instance v2, Lorg/levimc/launcher/ui/activities/j2;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/l1;
 
     .line 59
     .line 60
@@ -5170,7 +7622,7 @@
 
     .line 61
     .line 62
-    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/j2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v2, p0, v3}, Lorg/levimc/launcher/ui/activities/l1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 63
     .line 64
@@ -5240,86 +7692,6 @@
     .line 18
     .line 19
     :cond_0
-    return-void
-.end method
-
-.method private showLaunchMenu(Landroid/view/View;)V
-    .locals 3
-
-    .line 1
-    new-instance v0, Lorg/levimc/launcher/ui/widget/LauncherPopup;
-
-    .line 2
-    .line 3
-    invoke-direct {v0, p1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;-><init>(Landroid/view/View;)V
-
-    .line 4
-    .line 5
-    .line 6
-    const/16 p1, 0xf0
-
-    .line 7
-    .line 8
-    invoke-virtual {v0, p1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->width(I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
-
-    .line 9
-    .line 10
-    .line 11
-    move-result-object p1
-
-    .line 12
-    sget v0, Lorg/levimc/launcher/R$string;->quick_launch:I
-
-    .line 13
-    .line 14
-    invoke-virtual {p0, v0}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 15
-    .line 16
-    .line 17
-    move-result-object v0
-
-    .line 18
-    sget v1, Lorg/levimc/launcher/R$drawable;->ic_qa_launch:I
-
-    .line 19
-    .line 20
-    const/4 v2, 0x1
-
-    .line 21
-    invoke-virtual {p1, v2, v0, v1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->action(ILjava/lang/CharSequence;I)Lorg/levimc/launcher/ui/widget/LauncherPopup;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object p1
-
-    .line 25
-    new-instance v0, Lorg/levimc/launcher/ui/activities/l2;
-
-    .line 26
-    .line 27
-    const/4 v1, 0x6
-
-    .line 28
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/l2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
-
-    .line 29
-    .line 30
-    .line 31
-    invoke-virtual {p1, v0}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->onSelect(Lorg/levimc/launcher/ui/widget/LauncherPopup$OnSelect;)Lorg/levimc/launcher/ui/widget/LauncherPopup;
-
-    .line 32
-    .line 33
-    .line 34
-    move-result-object p1
-
-    .line 35
-    invoke-virtual {p1}, Lorg/levimc/launcher/ui/widget/LauncherPopup;->show()V
-
-    .line 36
-    .line 37
-    .line 38
     return-void
 .end method
 
@@ -5406,19 +7778,19 @@
 
     .line 37
     .line 38
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k2;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m1;
 
     .line 39
     .line 40
     const/4 v1, 0x2
 
     .line 41
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/k2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 42
     .line 43
     .line 44
-    invoke-static {p0, v0}, Lorg/levimc/launcher/core/news/ChangelogManager;->showIfNeeded(Landroid/app/Activity;Ljava/lang/Runnable;)V
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/activities/m1;->run()V
 
     .line 45
     .line 46
@@ -5429,10 +7801,10 @@
 .end method
 
 .method private showRandomTip()V
-    .locals 4
+    .locals 5
 
     .line 1
-    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 2
     .line 3
@@ -5455,7 +7827,7 @@
     array-length v1, v0
 
     .line 12
-    if-eqz v1, :cond_2
+    if-eqz v1, :cond_1
 
     .line 13
     .line 14
@@ -5504,59 +7876,42 @@
     .line 34
     .line 35
     .line 36
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipRotator:Ljava/lang/Runnable;
+    new-instance v1, Landroid/os/Handler;
 
     .line 37
     .line 38
-    if-eqz v1, :cond_1
+    invoke-virtual {p0}, Landroid/content/Context;->getMainLooper()Landroid/os/Looper;
 
     .line 39
     .line 40
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
-
     .line 41
+    move-result-object v2
+
     .line 42
-    invoke-virtual {v2, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    invoke-direct {v1, v2}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
 
     .line 43
     .line 44
     .line 45
-    :cond_1
-    new-instance v1, Lorg/levimc/launcher/ui/activities/MainActivity$3;
+    new-instance v2, Lorg/levimc/launcher/ui/activities/MainActivity$4;
 
     .line 46
     .line 47
-    invoke-direct {v1, p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity$3;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;[Ljava/lang/String;)V
+    invoke-direct {v2, p0, v0, v1}, Lorg/levimc/launcher/ui/activities/MainActivity$4;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;[Ljava/lang/String;Landroid/os/Handler;)V
 
     .line 48
     .line 49
     .line 50
-    iput-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipRotator:Ljava/lang/Runnable;
+    const-wide/16 v3, 0x1f40
 
     .line 51
     .line 52
-    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipsVisible:Z
+    invoke-virtual {v1, v2, v3, v4}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
 
     .line 53
     .line 54
-    if-eqz v0, :cond_2
-
     .line 55
-    .line 56
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
-
-    .line 57
-    .line 58
-    const-wide/16 v2, 0x1f40
-
-    .line 59
-    .line 60
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 61
-    .line 62
-    .line 63
-    :cond_2
+    :cond_1
     :goto_0
     return-void
 .end method
@@ -5742,7 +8097,7 @@
     .line 89
     .line 90
     .line 91
-    invoke-virtual {v3, v6}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/p1;)V
+    invoke-virtual {v3, v6}, Landroidx/recyclerview/widget/RecyclerView;->setLayoutManager(Landroidx/recyclerview/widget/r1;)V
 
     .line 92
     .line 93
@@ -5789,11 +8144,11 @@
 
     .line 115
     .line 116
-    new-instance v3, Lorg/levimc/launcher/ui/activities/MainActivity$5;
+    new-instance v3, Lorg/levimc/launcher/ui/activities/MainActivity$6;
 
     .line 117
     .line 118
-    invoke-direct {v3, p0, v6}, Lorg/levimc/launcher/ui/activities/MainActivity$5;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter;)V
+    invoke-direct {v3, p0, v6}, Lorg/levimc/launcher/ui/activities/MainActivity$6;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/ui/activities/MainActivity$InstancePopupAdapter;)V
 
     .line 119
     .line 120
@@ -5803,11 +8158,11 @@
     .line 122
     .line 123
     .line 124
-    new-instance v0, Lorg/levimc/launcher/ui/activities/d;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/o1;
 
     .line 125
     .line 126
-    invoke-direct {v0, p0, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-direct {v0, p0, v2}, Lorg/levimc/launcher/ui/activities/o1;-><init>(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Object;)V
 
     .line 127
     .line 128
@@ -5906,7 +8261,7 @@
     const/4 v2, 0x0
 
     .line 9
-    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
+    invoke-virtual {v0, v1, v2}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
 
     .line 10
     .line 11
@@ -5956,7 +8311,7 @@
     const/4 p1, 0x0
 
     .line 17
-    invoke-virtual {p2, v0, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;La1/a;)V
+    invoke-virtual {p2, v0, p1}, Landroidx/activity/result/ActivityResultLauncher;->a(Ljava/lang/Object;Lx7/c;)V
 
     .line 18
     .line 19
@@ -6020,7 +8375,7 @@
 
     .line 24
     .line 25
-    invoke-static {v0, p1, v1}, Lcom/google/android/gms/internal/measurement/x;->o(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p1, v1}, Lcom/google/android/gms/internal/measurement/gi;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 26
     .line 27
@@ -6082,358 +8437,8 @@
     return-object p0
 .end method
 
-.method private styleHomeAccents()V
-    .locals 4
-
-    .line 1
-    invoke-static {p0}, Lorg/levimc/launcher/ui/widget/UiKit;->accent(Landroid/content/Context;)I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    invoke-static {v0}, Lorg/levimc/launcher/util/ThemePalette;->onAccent(I)I
-
-    .line 6
-    .line 7
-    .line 8
-    move-result v1
-
-    .line 9
-    new-instance v2, Landroid/graphics/drawable/GradientDrawable;
-
-    .line 10
-    .line 11
-    invoke-direct {v2}, Landroid/graphics/drawable/GradientDrawable;-><init>()V
-
-    .line 12
-    .line 13
-    .line 14
-    const/high16 v3, 0x41600000    # 14.0f
-
-    .line 15
-    .line 16
-    invoke-static {p0, v3}, Lorg/levimc/launcher/ui/widget/UiKit;->dp(Landroid/content/Context;F)F
-
-    .line 17
-    .line 18
-    .line 19
-    move-result v3
-
-    .line 20
-    invoke-virtual {v2, v3}, Landroid/graphics/drawable/GradientDrawable;->setCornerRadius(F)V
-
-    .line 21
-    .line 22
-    .line 23
-    invoke-virtual {v2, v0}, Landroid/graphics/drawable/GradientDrawable;->setColor(I)V
-
-    .line 24
-    .line 25
-    .line 26
-    iget-object v3, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 27
-    .line 28
-    iget-object v3, v3, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchGroup:Landroid/widget/LinearLayout;
-
-    .line 29
-    .line 30
-    invoke-virtual {v3, v2}, Landroid/view/View;->setBackground(Landroid/graphics/drawable/Drawable;)V
-
-    .line 31
-    .line 32
-    .line 33
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 34
-    .line 35
-    iget-object v2, v2, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchGroup:Landroid/widget/LinearLayout;
-
-    .line 36
-    .line 37
-    invoke-virtual {v2, v0}, Landroid/view/View;->setOutlineSpotShadowColor(I)V
-
-    .line 38
-    .line 39
-    .line 40
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 41
-    .line 42
-    iget-object v2, v2, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchGroup:Landroid/widget/LinearLayout;
-
-    .line 43
-    .line 44
-    invoke-virtual {v2, v0}, Landroid/view/View;->setOutlineAmbientShadowColor(I)V
-
-    .line 45
-    .line 46
-    .line 47
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 48
-    .line 49
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Lcom/google/android/material/button/MaterialButton;
-
-    .line 50
-    .line 51
-    const/4 v2, 0x0
-
-    .line 52
-    invoke-static {v2}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 53
-    .line 54
-    .line 55
-    move-result-object v2
-
-    .line 56
-    invoke-virtual {v0, v2}, Lcom/google/android/material/button/MaterialButton;->setBackgroundTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 57
-    .line 58
-    .line 59
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 60
-    .line 61
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Lcom/google/android/material/button/MaterialButton;
-
-    .line 62
-    .line 63
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setTextColor(I)V
-
-    .line 64
-    .line 65
-    .line 66
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 67
-    .line 68
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Lcom/google/android/material/button/MaterialButton;
-
-    .line 69
-    .line 70
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 71
-    .line 72
-    .line 73
-    move-result-object v2
-
-    .line 74
-    invoke-virtual {v0, v2}, Lcom/google/android/material/button/MaterialButton;->setIconTint(Landroid/content/res/ColorStateList;)V
-
-    .line 75
-    .line 76
-    .line 77
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 78
-    .line 79
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchMenuButton:Landroid/widget/ImageView;
-
-    .line 80
-    .line 81
-    invoke-static {v1}, Landroid/content/res/ColorStateList;->valueOf(I)Landroid/content/res/ColorStateList;
-
-    .line 82
-    .line 83
-    .line 84
-    move-result-object v2
-
-    .line 85
-    invoke-virtual {v0, v2}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
-
-    .line 86
-    .line 87
-    .line 88
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 89
-    .line 90
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeLaunchDivider:Landroid/view/View;
-
-    .line 91
-    .line 92
-    invoke-virtual {v0, v1}, Landroid/view/View;->setBackgroundColor(I)V
-
-    .line 93
-    .line 94
-    .line 95
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 96
-    .line 97
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeContentChip:Landroid/widget/FrameLayout;
-
-    .line 98
-    .line 99
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeContentIcon:Landroid/widget/ImageView;
-
-    .line 100
-    .line 101
-    const v2, -0x13b767
-
-    .line 102
-    .line 103
-    .line 104
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 105
-    .line 106
-    .line 107
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 108
-    .line 109
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeDownloadChip:Landroid/widget/FrameLayout;
-
-    .line 110
-    .line 111
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeDownloadIcon:Landroid/widget/ImageView;
-
-    .line 112
-    .line 113
-    const v2, -0x68cea
-
-    .line 114
-    .line 115
-    .line 116
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 117
-    .line 118
-    .line 119
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 120
-    .line 121
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeWorldsChip:Landroid/widget/FrameLayout;
-
-    .line 122
-    .line 123
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeWorldsIcon:Landroid/widget/ImageView;
-
-    .line 124
-    .line 125
-    const v3, -0xc47d0a
-
-    .line 126
-    .line 127
-    .line 128
-    invoke-static {v1, v0, v3}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 129
-    .line 130
-    .line 131
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 132
-    .line 133
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeResourcePacksChip:Landroid/widget/FrameLayout;
-
-    .line 134
-    .line 135
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeResourcePacksIcon:Landroid/widget/ImageView;
-
-    .line 136
-    .line 137
-    const v3, -0x57aa09
-
-    .line 138
-    .line 139
-    .line 140
-    invoke-static {v1, v0, v3}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 141
-    .line 142
-    .line 143
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 144
-    .line 145
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeSkinPacksChip:Landroid/widget/FrameLayout;
-
-    .line 146
-    .line 147
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeSkinPacksIcon:Landroid/widget/ImageView;
-
-    .line 148
-    .line 149
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 150
-    .line 151
-    .line 152
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 153
-    .line 154
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeCurseforgeChip:Landroid/widget/FrameLayout;
-
-    .line 155
-    .line 156
-    const/4 v1, 0x0
-
-    .line 157
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 158
-    .line 159
-    .line 160
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 161
-    .line 162
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homePkgChip:Landroid/widget/FrameLayout;
-
-    .line 163
-    .line 164
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homePkgIcon:Landroid/widget/ImageView;
-
-    .line 165
-    .line 166
-    const v2, -0xdd3aa2
-
-    .line 167
-    .line 168
-    .line 169
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 170
-    .line 171
-    .line 172
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 173
-    .line 174
-    iget-object v1, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeExternalModsChip:Landroid/widget/FrameLayout;
-
-    .line 175
-    .line 176
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeExternalModsIcon:Landroid/widget/ImageView;
-
-    .line 177
-    .line 178
-    const v2, -0x9c990f
-
-    .line 179
-    .line 180
-    .line 181
-    invoke-static {v1, v0, v2}, Lorg/levimc/launcher/ui/widget/UiKit;->tintIconChip(Landroid/view/View;Landroid/widget/ImageView;I)V
-
-    .line 182
-    .line 183
-    .line 184
-    return-void
-.end method
-
 .method private updateModsUI(Ljava/util/List;)V
-    .locals 5
+    .locals 2
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "(",
@@ -6448,7 +8453,7 @@
 
     .line 2
     .line 3
-    if-eqz v0, :cond_8
+    if-eqz v0, :cond_2
 
     .line 4
     .line 5
@@ -6460,7 +8465,7 @@
 
     .line 8
     .line 9
-    goto :goto_4
+    goto :goto_1
 
     .line 10
     :cond_0
@@ -6469,189 +8474,74 @@
     .line 11
     .line 12
     .line 13
-    const/4 v0, 0x0
-
-    .line 14
     if-eqz p1, :cond_2
 
+    .line 14
     .line 15
-    .line 16
     invoke-interface {p1}, Ljava/util/List;->iterator()Ljava/util/Iterator;
 
+    .line 16
     .line 17
     .line 18
+    move-result-object p1
+
     .line 19
-    move-result-object v1
-
-    .line 20
-    move v2, v0
-
-    .line 21
     :cond_1
     :goto_0
-    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+    invoke-interface {p1}, Ljava/util/Iterator;->hasNext()Z
 
+    .line 20
+    .line 21
     .line 22
-    .line 23
-    .line 24
-    move-result v3
+    move-result v0
 
+    .line 23
+    if-eqz v0, :cond_2
+
+    .line 24
     .line 25
-    if-eqz v3, :cond_3
+    invoke-interface {p1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
 
     .line 26
     .line 27
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
-
     .line 28
-    .line 29
-    .line 30
-    move-result-object v3
+    move-result-object v0
 
+    .line 29
+    check-cast v0, Lorg/levimc/launcher/core/mods/Mod;
+
+    .line 30
     .line 31
-    check-cast v3, Lorg/levimc/launcher/core/mods/Mod;
+    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/Mod;->isEnabled()Z
 
     .line 32
     .line 33
-    invoke-virtual {v3}, Lorg/levimc/launcher/core/mods/Mod;->isEnabled()Z
-
     .line 34
-    .line 35
-    .line 36
-    move-result v4
+    move-result v1
 
+    .line 35
+    if-eqz v1, :cond_1
+
+    .line 36
     .line 37
-    if-eqz v4, :cond_1
+    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/Mod;->getDisplayName()Ljava/lang/String;
 
     .line 38
     .line 39
-    invoke-virtual {v3}, Lorg/levimc/launcher/core/mods/Mod;->getDisplayName()Ljava/lang/String;
-
     .line 40
+    move-result-object v0
+
     .line 41
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->addModNameEntry(Ljava/lang/String;)V
+
     .line 42
-    move-result-object v3
-
     .line 43
-    invoke-direct {p0, v3}, Lorg/levimc/launcher/ui/activities/MainActivity;->addModNameEntry(Ljava/lang/String;)V
-
     .line 44
-    .line 45
-    .line 46
-    add-int/lit8 v2, v2, 0x1
-
-    .line 47
-    .line 48
     goto :goto_0
 
-    .line 49
+    .line 45
     :cond_2
-    move v2, v0
-
-    .line 50
-    :cond_3
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 51
-    .line 52
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeModsScroll:Landroid/widget/ScrollView;
-
-    .line 53
-    .line 54
-    const/16 v3, 0x8
-
-    .line 55
-    .line 56
-    if-lez v2, :cond_4
-
-    .line 57
-    .line 58
-    move v4, v0
-
-    .line 59
-    goto :goto_1
-
-    .line 60
-    :cond_4
-    move v4, v3
-
-    .line 61
     :goto_1
-    invoke-virtual {v1, v4}, Landroid/view/View;->setVisibility(I)V
-
-    .line 62
-    .line 63
-    .line 64
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 65
-    .line 66
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeModsEmpty:Landroid/widget/LinearLayout;
-
-    .line 67
-    .line 68
-    if-lez v2, :cond_5
-
-    .line 69
-    .line 70
-    move v0, v3
-
-    .line 71
-    :cond_5
-    invoke-virtual {v1, v0}, Landroid/view/View;->setVisibility(I)V
-
-    .line 72
-    .line 73
-    .line 74
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 75
-    .line 76
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeModsEmptyText:Landroid/widget/TextView;
-
-    .line 77
-    .line 78
-    if-eqz p1, :cond_7
-
-    .line 79
-    .line 80
-    invoke-interface {p1}, Ljava/util/List;->isEmpty()Z
-
-    .line 81
-    .line 82
-    .line 83
-    move-result p1
-
-    .line 84
-    if-eqz p1, :cond_6
-
-    .line 85
-    .line 86
-    goto :goto_2
-
-    .line 87
-    :cond_6
-    sget p1, Lorg/levimc/launcher/R$string;->home_mods_none_enabled:I
-
-    .line 88
-    .line 89
-    goto :goto_3
-
-    .line 90
-    :cond_7
-    :goto_2
-    sget p1, Lorg/levimc/launcher/R$string;->home_mods_empty:I
-
-    .line 91
-    .line 92
-    :goto_3
-    invoke-virtual {v0, p1}, Landroid/widget/TextView;->setText(I)V
-
-    .line 93
-    .line 94
-    .line 95
-    :cond_8
-    :goto_4
     return-void
 .end method
 
@@ -6701,7 +8591,19 @@
     return-void
 .end method
 
-.method public static synthetic w(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/util/List;)V
+.method public static synthetic w(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initListeners$21(Landroid/view/View;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic x(Lorg/levimc/launcher/ui/activities/MainActivity;Ljava/util/List;)V
     .locals 0
 
     .line 1
@@ -6713,11 +8615,11 @@
     return-void
 .end method
 
-.method public static synthetic x(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic y(Lorg/levimc/launcher/ui/activities/MainActivity;Lorg/levimc/launcher/core/versions/VersionManager;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initMiscellaneousSection$20(Landroid/view/View;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$initializeVersionManager$15(Lorg/levimc/launcher/core/versions/VersionManager;)V
 
     .line 2
     .line 3
@@ -6725,23 +8627,11 @@
     return-void
 .end method
 
-.method public static synthetic y(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
+.method public static synthetic z(Lorg/levimc/launcher/ui/activities/MainActivity;Landroid/view/View;)V
     .locals 0
 
     .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$showEulaDialog$10(Landroid/view/View;)V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic z(Lorg/levimc/launcher/ui/activities/MainActivity;Landroidx/activity/result/ActivityResult;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$setupManagersAndHandlers$1(Landroidx/activity/result/ActivityResult;)V
+    invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MainActivity;->lambda$performActualLaunch$30(Landroid/view/View;)V
 
     .line 2
     .line 3
@@ -6780,7 +8670,7 @@
 
     .line 13
     .line 14
-    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
 
     .line 15
     .line 16
@@ -6791,6 +8681,8 @@
     invoke-virtual {p0, p1}, Lorg/levimc/launcher/ui/activities/BaseActivity;->setContentView(Landroid/view/View;)V
 
     .line 19
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setupSkinViewer()V
+
     .line 20
     .line 21
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->closeLauncherRestartAfterFirstDraw()V
@@ -6815,38 +8707,7 @@
     .line 33
     move-result p1
 
-    .line 34
-    if-nez p1, :cond_0
-
-    .line 35
-    .line 36
-    new-instance p1, Lorg/levimc/launcher/util/GithubReleaseUpdater;
-
-    .line 37
-    .line 38
-    const-string v0, "LeviLauncher-Android"
-
-    .line 39
-    .line 40
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->permissionResultLauncher:Landroidx/activity/result/ActivityResultLauncher;
-
-    .line 41
-    .line 42
-    const-string v2, "LiteLDev"
-
-    .line 43
-    .line 44
-    invoke-direct {p1, p0, v2, v0, v1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;-><init>(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Landroidx/activity/result/ActivityResultLauncher;)V
-
-    .line 45
-    .line 46
-    .line 47
-    invoke-virtual {p1}, Lorg/levimc/launcher/util/GithubReleaseUpdater;->checkUpdateOnLaunch()V
-
-    .line 48
-    .line 49
     .line 50
-    :cond_0
     invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showEulaIfNeeded()V
 
     .line 51
@@ -6857,35 +8718,76 @@
     .line 54
     .line 55
     .line 56
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    new-instance p1, Landroidx/fragment/app/w0;
 
     .line 57
     .line 58
-    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Lorg/levimc/launcher/ui/widget/HomeDashboardLayout;
+    const/4 v0, 0x6
 
     .line 59
+    invoke-direct {p1, v0}, Landroidx/fragment/app/w0;-><init>(I)V
+
     .line 60
     .line 61
-    move-result-object p1
-
     .line 62
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k2;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/n1;
 
     .line 63
     .line 64
-    const/4 v1, 0x0
+    const/4 v1, 0x5
 
     .line 65
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/k2;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/n1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
 
     .line 66
     .line 67
     .line 68
-    invoke-virtual {p1, v0}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+    invoke-virtual {p0, p1, v0}, Landroidx/activity/ComponentActivity;->registerForActivityResult(Landroidx/activity/result/contract/ActivityResultContract;Landroidx/activity/result/ActivityResultCallback;)Landroidx/activity/result/ActivityResultLauncher;
 
     .line 69
     .line 70
     .line 71
+    move-result-object p1
+
+    .line 72
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->accountLoginLauncher:Landroidx/activity/result/ActivityResultLauncher;
+
+    .line 73
+    .line 74
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->initAccountHeader()V
+
+    .line 75
+    .line 76
+    .line 77
+    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
+    .line 78
+    .line 79
+    invoke-virtual {p1}, Lorg/levimc/launcher/databinding/ActivityMainBinding;->getRoot()Landroid/widget/LinearLayout;
+
+    .line 80
+    .line 81
+    .line 82
+    move-result-object p1
+
+    .line 83
+    new-instance v0, Lorg/levimc/launcher/ui/activities/m1;
+
+    .line 84
+    .line 85
+    const/4 v1, 0x0
+
+    .line 86
+    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/ui/activities/m1;-><init>(Lorg/levimc/launcher/ui/activities/MainActivity;I)V
+
+    .line 87
+    .line 88
+    .line 89
+    invoke-virtual {p1, v0}, Landroid/view/View;->post(Ljava/lang/Runnable;)Z
+
+    .line 90
+    .line 91
+    .line 92
     return-void
 .end method
 
@@ -6912,357 +8814,190 @@
 .end method
 
 .method public onPause()V
-    .locals 2
+    .locals 1
 
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipsVisible:Z
-
-    .line 3
-    .line 4
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipRotator:Ljava/lang/Runnable;
-
-    .line 5
-    .line 6
-    if-eqz v0, :cond_0
-
-    .line 7
-    .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
-
-    .line 9
-    .line 10
-    invoke-virtual {v1, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 11
-    .line 12
-    .line 13
-    :cond_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 14
-    .line 15
-    if-eqz v0, :cond_1
-
-    .line 16
-    .line 17
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->tipText:Landroid/widget/TextView;
-
-    .line 18
-    .line 19
-    if-eqz v0, :cond_1
-
-    .line 20
-    .line 21
-    invoke-virtual {v0}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
-
-    .line 22
-    .line 23
-    .line 24
-    move-result-object v0
-
-    .line 25
-    const/4 v1, 0x0
-
-    .line 26
-    invoke-virtual {v0, v1}, Landroid/view/ViewPropertyAnimator;->withEndAction(Ljava/lang/Runnable;)Landroid/view/ViewPropertyAnimator;
-
-    .line 27
-    .line 28
-    .line 29
-    move-result-object v0
-
-    .line 30
-    invoke-virtual {v0}, Landroid/view/ViewPropertyAnimator;->cancel()V
-
-    .line 31
-    .line 32
-    .line 33
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 34
-    .line 35
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->tipText:Landroid/widget/TextView;
-
-    .line 36
-    .line 37
-    const/high16 v1, 0x3f800000    # 1.0f
-
-    .line 38
-    .line 39
-    invoke-virtual {v0, v1}, Landroid/view/View;->setAlpha(F)V
-
-    .line 40
-    .line 41
-    .line 42
-    :cond_1
     invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onPause()V
 
-    .line 43
-    .line 44
-    .line 45
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lcom/mio/skin/SkinViewer;->onPause()V
+
+    :cond_0
     return-void
 .end method
 
 .method public onResume()V
-    .locals 5
+    .locals 2
 
     .line 1
     invoke-super {p0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->onResume()V
 
     .line 2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->skinViewer:Lcom/mio/skin/SkinViewer;
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lcom/mio/skin/SkinViewer;->onResume()V
+
     .line 3
     .line 4
-    const/4 v0, 0x1
+    :cond_0
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshAccountHeaderUI()V
 
     .line 5
-    iput-boolean v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipsVisible:Z
-
     .line 6
     .line 7
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipRotator:Ljava/lang/Runnable;
+    iget-boolean v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->launcherInitialized:Z
 
     .line 8
     .line 9
-    if-eqz v1, :cond_0
+    if-nez v0, :cond_1
 
     .line 10
     .line 11
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showPostEulaFlow()V
 
     .line 12
     .line 13
-    invoke-virtual {v2, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
     .line 14
+    return-void
+
     .line 15
+    :cond_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
+
     .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipHandler:Landroid/os/Handler;
-
     .line 17
+    if-eqz v0, :cond_2
+
     .line 18
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->tipRotator:Ljava/lang/Runnable;
-
     .line 19
-    .line 20
-    const-wide/16 v3, 0x1f40
+    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setTextMinecraftVersion()V
 
+    .line 20
     .line 21
     .line 22
-    invoke-virtual {v1, v2, v3, v4}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
 
     .line 23
     .line 24
-    .line 25
-    :cond_0
-    iget-boolean v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->launcherInitialized:Z
+    invoke-virtual {v0}, Lorg/levimc/launcher/ui/views/MainViewModel;->refreshMods()V
 
+    .line 25
     .line 26
     .line 27
-    if-nez v1, :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshContentCounts()V
 
     .line 28
     .line 29
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->showPostEulaFlow()V
-
     .line 30
+    :cond_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+
     .line 31
     .line 32
-    return-void
+    if-eqz v0, :cond_3
 
     .line 33
-    :cond_1
+    .line 34
     iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
-    .line 34
     .line 35
-    if-eqz v1, :cond_2
-
     .line 36
-    .line 37
-    invoke-virtual {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setTextMinecraftVersion()V
+    if-eqz v1, :cond_3
 
+    .line 37
     .line 38
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->launchButton:Landroid/widget/Button;
+
     .line 39
     .line 40
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->viewModel:Lorg/levimc/launcher/ui/views/MainViewModel;
+    const/4 v1, 0x1
 
     .line 41
-    .line 42
-    invoke-virtual {v1}, Lorg/levimc/launcher/ui/views/MainViewModel;->refreshMods()V
+    invoke-virtual {v0, v1}, Landroid/view/View;->setEnabled(Z)V
 
+    .line 42
     .line 43
     .line 44
-    .line 45
-    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MainActivity;->refreshContentCounts()V
-
-    .line 46
-    .line 47
-    .line 48
-    :cond_2
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 49
-    .line 50
-    if-eqz v1, :cond_3
-
-    .line 51
-    .line 52
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
-
-    .line 53
-    .line 54
-    if-eqz v1, :cond_3
-
-    .line 55
-    .line 56
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->setLaunchEnabled(Z)V
-
-    .line 57
-    .line 58
-    .line 59
     :cond_3
     return-void
 .end method
 
 .method public setTextMinecraftVersion()V
-    .locals 4
+    .locals 5
 
-    .line 1
     iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
 
-    .line 2
-    .line 3
     if-nez v0, :cond_0
 
-    .line 4
-    .line 5
     return-void
 
-    .line 6
     :cond_0
     iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->versionManager:Lorg/levimc/launcher/core/versions/VersionManager;
 
-    .line 7
-    .line 8
     const/4 v2, 0x0
 
-    .line 9
+    const/4 v3, 0x0
+
     if-nez v1, :cond_1
 
-    .line 10
-    .line 11
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
+    sget v4, Lorg/levimc/launcher/R$string;->not_found_version:I
 
-    .line 12
-    .line 13
-    sget v1, Lorg/levimc/launcher/R$string;->not_found_version:I
+    invoke-virtual {p0, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    .line 14
-    .line 15
-    invoke-virtual {p0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    move-result-object v2
 
-    .line 16
-    .line 17
-    .line 18
-    move-result-object v1
+    goto :goto_0
 
-    .line 19
-    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
-
-    .line 20
-    .line 21
-    .line 22
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 23
-    .line 24
-    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeInstanceIcon:Landroid/widget/ImageView;
-
-    .line 25
-    .line 26
-    invoke-static {v0, v2}, Lorg/levimc/launcher/util/InstanceIcons;->bind(Landroid/widget/ImageView;Lorg/levimc/launcher/core/versions/GameVersion;)V
-
-    .line 27
-    .line 28
-    .line 29
-    return-void
-
-    .line 30
     :cond_1
     invoke-virtual {v1}, Lorg/levimc/launcher/core/versions/VersionManager;->getSelectedVersion()Lorg/levimc/launcher/core/versions/GameVersion;
 
-    .line 31
-    .line 32
-    .line 33
-    move-result-object v0
+    move-result-object v1
 
-    .line 34
-    if-eqz v0, :cond_2
+    if-eqz v1, :cond_2
 
-    .line 35
-    .line 36
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceDisplayName(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
 
-    .line 37
-    .line 38
-    .line 39
     move-result-object v2
 
-    .line 40
+    invoke-static {v1}, Lorg/levimc/launcher/ui/activities/MainActivity;->getInstanceVersionText(Lorg/levimc/launcher/core/versions/GameVersion;)Ljava/lang/String;
+
+    move-result-object v3
+
     :cond_2
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
-
-    .line 41
-    .line 42
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
-
-    .line 43
-    .line 44
     invoke-static {v2}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
 
-    .line 45
-    .line 46
-    .line 47
-    move-result v3
+    move-result v4
 
-    .line 48
-    if-eqz v3, :cond_3
+    if-eqz v4, :cond_3
 
-    .line 49
-    .line 50
-    sget v2, Lorg/levimc/launcher/R$string;->not_found_version:I
+    sget v4, Lorg/levimc/launcher/R$string;->not_found_version:I
 
-    .line 51
-    .line 52
-    invoke-virtual {p0, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+    invoke-virtual {p0, v4}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    .line 53
-    .line 54
-    .line 55
     move-result-object v2
 
-    .line 56
     :cond_3
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    :goto_0
+    iget-object v4, v0, Lorg/levimc/launcher/databinding/ActivityMainBinding;->textMinecraftVersion:Landroid/widget/TextView;
 
-    .line 57
-    .line 58
-    .line 59
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/MainActivity;->binding:Lorg/levimc/launcher/databinding/ActivityMainBinding;
+    invoke-virtual {v4, v2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
 
-    .line 60
-    .line 61
-    iget-object v1, v1, Lorg/levimc/launcher/databinding/ActivityMainBinding;->homeInstanceIcon:Landroid/widget/ImageView;
+    sget v4, Lorg/levimc/launcher/R$id;->text_instance_version:I
 
-    .line 62
-    .line 63
-    invoke-static {v1, v0}, Lorg/levimc/launcher/util/InstanceIcons;->bind(Landroid/widget/ImageView;Lorg/levimc/launcher/core/versions/GameVersion;)V
+    invoke-virtual {p0, v4}, Lg/g;->findViewById(I)Landroid/view/View;
 
-    .line 64
-    .line 65
-    .line 66
+    move-result-object v4
+
+    check-cast v4, Landroid/widget/TextView;
+
+    if-eqz v4, :cond_4
+
+    invoke-virtual {v4, v3}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_4
     return-void
 .end method

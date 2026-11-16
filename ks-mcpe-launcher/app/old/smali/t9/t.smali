@@ -1,52 +1,36 @@
-.class public final Lt9/t;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public abstract synthetic Lt9/t;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public p:Lh9/q;
-
-.field public q:Lt9/s;
-
-.field public synthetic w:Ljava/lang/Object;
-
-.field public x:I
+# static fields
+.field public static final a:I
 
 
-# virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
+# direct methods
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lt9/t;->w:Ljava/lang/Object;
+    invoke-static {}, Ljava/lang/Runtime;->getRuntime()Ljava/lang/Runtime;
 
     .line 2
     .line 3
-    iget p1, p0, Lt9/t;->x:I
-
     .line 4
+    move-result-object v0
+
     .line 5
-    const/high16 v0, -0x80000000
+    invoke-virtual {v0}, Ljava/lang/Runtime;->availableProcessors()I
 
     .line 6
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lt9/t;->x:I
+    move-result v0
 
     .line 9
+    sput v0, Lt9/t;->a:I
+
     .line 10
-    const/4 p1, 0x0
-
     .line 11
-    invoke-static {p1, p0}, Lt9/a0;->e(Lt9/c;Ly8/c;)Ljava/lang/Object;
-
-    .line 12
-    .line 13
-    .line 14
-    move-result-object p1
-
-    .line 15
-    return-object p1
+    return-void
 .end method

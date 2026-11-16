@@ -1,6 +1,6 @@
 .class public final Ll/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ll/x;
@@ -14,15 +14,15 @@
 
 .field public h:Ll/l;
 
-.field public p:Landroidx/appcompat/view/menu/ExpandedMenuView;
+.field public q:Landroidx/appcompat/view/menu/ExpandedMenuView;
 
-.field public q:Ll/w;
+.field public w:Ll/w;
 
-.field public w:Ll/g;
+.field public x:Ll/g;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;)V
+.method public constructor <init>(Landroid/content/ContextWrapper;)V
     .locals 0
 
     .line 1
@@ -52,28 +52,7 @@
 
 
 # virtual methods
-.method public final b(Ll/l;Z)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Ll/h;->q:Ll/w;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-interface {v0, p1, p2}, Ll/w;->b(Ll/l;Z)V
-
-    .line 6
-    .line 7
-    .line 8
-    :cond_0
-    return-void
-.end method
-
-.method public final c(Ll/n;)Z
+.method public final b(Ll/n;)Z
     .locals 0
 
     .line 1
@@ -81,6 +60,27 @@
 
     .line 2
     return p1
+.end method
+
+.method public final c(Ll/l;Z)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ll/h;->w:Ll/w;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    invoke-interface {v0, p1, p2}, Ll/w;->c(Ll/l;Z)V
+
+    .line 6
+    .line 7
+    .line 8
+    :cond_0
+    return-void
 .end method
 
 .method public final d()Z
@@ -93,11 +93,11 @@
     return v0
 .end method
 
-.method public final f()V
+.method public final e()V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Ll/h;->w:Ll/g;
+    iget-object v0, p0, Ll/h;->x:Ll/g;
 
     .line 2
     .line 3
@@ -114,7 +114,7 @@
     return-void
 .end method
 
-.method public final h(Ll/w;)V
+.method public final g(Ll/w;)V
     .locals 0
 
     const/4 p0, 0x0
@@ -163,7 +163,7 @@
 
     .line 18
     .line 19
-    iget-object p1, p0, Ll/h;->w:Ll/g;
+    iget-object p1, p0, Ll/h;->x:Ll/g;
 
     .line 20
     .line 21
@@ -181,7 +181,7 @@
 .end method
 
 .method public final j(Ll/d0;)Z
-    .locals 5
+    .locals 6
 
     .line 1
     invoke-virtual {p1}, Ll/l;->hasVisibleItems()Z
@@ -220,207 +220,210 @@
 
     .line 17
     .line 18
-    new-instance v2, Landroidx/appcompat/app/AlertDialog$Builder;
+    new-instance v2, Lc5/d;
 
     .line 19
     .line 20
-    invoke-direct {v2, v1}, Landroidx/appcompat/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+    invoke-direct {v2, v1}, Lc5/d;-><init>(Landroid/content/Context;)V
 
     .line 21
     .line 22
     .line 23
-    new-instance v3, Ll/h;
+    iget-object v3, v2, Lc5/d;->d:Ljava/lang/Object;
 
     .line 24
     .line 25
-    invoke-virtual {v2}, Landroidx/appcompat/app/AlertDialog$Builder;->getContext()Landroid/content/Context;
+    check-cast v3, Lg/b;
 
     .line 26
     .line 27
-    .line 28
-    move-result-object v4
+    new-instance v4, Ll/h;
 
+    .line 28
     .line 29
-    invoke-direct {v3, v4}, Ll/h;-><init>(Landroid/content/Context;)V
+    iget-object v5, v3, Lg/b;->a:Landroid/view/ContextThemeWrapper;
 
     .line 30
     .line 31
-    .line 32
-    iput-object v3, v0, Ll/m;->h:Ll/h;
+    invoke-direct {v4, v5}, Ll/h;-><init>(Landroid/content/ContextWrapper;)V
 
+    .line 32
     .line 33
     .line 34
-    iput-object v0, v3, Ll/h;->q:Ll/w;
+    iput-object v4, v0, Ll/m;->h:Ll/h;
 
     .line 35
     .line 36
-    invoke-virtual {p1, v3, v1}, Ll/l;->b(Ll/x;Landroid/content/Context;)V
+    iput-object v0, v4, Ll/h;->w:Ll/w;
 
     .line 37
     .line 38
-    .line 39
-    iget-object v1, v0, Ll/m;->h:Ll/h;
+    invoke-virtual {p1, v4, v1}, Ll/l;->b(Ll/x;Landroid/content/Context;)V
 
+    .line 39
     .line 40
     .line 41
-    iget-object v3, v1, Ll/h;->w:Ll/g;
+    iget-object v1, v0, Ll/m;->h:Ll/h;
 
     .line 42
     .line 43
-    if-nez v3, :cond_1
+    iget-object v4, v1, Ll/h;->x:Ll/g;
 
     .line 44
     .line 45
-    new-instance v3, Ll/g;
+    if-nez v4, :cond_1
 
     .line 46
     .line 47
-    invoke-direct {v3, v1}, Ll/g;-><init>(Ll/h;)V
+    new-instance v4, Ll/g;
 
     .line 48
     .line 49
-    .line 50
-    iput-object v3, v1, Ll/h;->w:Ll/g;
+    invoke-direct {v4, v1}, Ll/g;-><init>(Ll/h;)V
 
+    .line 50
     .line 51
     .line 52
-    :cond_1
-    iget-object v1, v1, Ll/h;->w:Ll/g;
+    iput-object v4, v1, Ll/h;->x:Ll/g;
 
     .line 53
     .line 54
-    invoke-virtual {v2, v1, v0}, Landroidx/appcompat/app/AlertDialog$Builder;->setAdapter(Landroid/widget/ListAdapter;Landroid/content/DialogInterface$OnClickListener;)Landroidx/appcompat/app/AlertDialog$Builder;
+    :cond_1
+    iget-object v1, v1, Ll/h;->x:Ll/g;
 
     .line 55
     .line 56
+    iput-object v1, v3, Lg/b;->q:Landroid/widget/ListAdapter;
+
     .line 57
+    .line 58
+    iput-object v0, v3, Lg/b;->r:Landroid/content/DialogInterface$OnClickListener;
+
+    .line 59
+    .line 60
     iget-object v1, p1, Ll/l;->E1:Landroid/view/View;
 
-    .line 58
-    .line 59
+    .line 61
+    .line 62
     if-eqz v1, :cond_2
 
-    .line 60
-    .line 61
-    invoke-virtual {v2, v1}, Landroidx/appcompat/app/AlertDialog$Builder;->setCustomTitle(Landroid/view/View;)Landroidx/appcompat/app/AlertDialog$Builder;
-
-    .line 62
     .line 63
     .line 64
-    goto :goto_0
+    iput-object v1, v3, Lg/b;->e:Landroid/view/View;
 
     .line 65
+    .line 66
+    goto :goto_0
+
+    .line 67
     :cond_2
     iget-object v1, p1, Ll/l;->D1:Landroid/graphics/drawable/Drawable;
 
-    .line 66
-    .line 67
-    invoke-virtual {v2, v1}, Landroidx/appcompat/app/AlertDialog$Builder;->setIcon(Landroid/graphics/drawable/Drawable;)Landroidx/appcompat/app/AlertDialog$Builder;
-
     .line 68
     .line 69
+    iput-object v1, v3, Lg/b;->c:Landroid/graphics/drawable/Drawable;
+
     .line 70
+    .line 71
     iget-object v1, p1, Ll/l;->C1:Ljava/lang/CharSequence;
 
-    .line 71
     .line 72
-    invoke-virtual {v2, v1}, Landroidx/appcompat/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroidx/appcompat/app/AlertDialog$Builder;
-
     .line 73
+    iput-object v1, v3, Lg/b;->d:Ljava/lang/CharSequence;
+
     .line 74
     .line 75
     :goto_0
-    invoke-virtual {v2, v0}, Landroidx/appcompat/app/AlertDialog$Builder;->setOnKeyListener(Landroid/content/DialogInterface$OnKeyListener;)Landroidx/appcompat/app/AlertDialog$Builder;
+    iput-object v0, v3, Lg/b;->o:Ll/m;
 
     .line 76
     .line 77
-    .line 78
-    invoke-virtual {v2}, Landroidx/appcompat/app/AlertDialog$Builder;->create()Landroidx/appcompat/app/AlertDialog;
+    invoke-virtual {v2}, Lc5/d;->e()Landroidx/appcompat/app/AlertDialog;
 
+    .line 78
     .line 79
     .line 80
-    .line 81
     move-result-object v1
 
-    .line 82
+    .line 81
     iput-object v1, v0, Ll/m;->d:Landroidx/appcompat/app/AlertDialog;
 
+    .line 82
     .line 83
-    .line 84
     invoke-virtual {v1, v0}, Landroid/app/Dialog;->setOnDismissListener(Landroid/content/DialogInterface$OnDismissListener;)V
 
+    .line 84
     .line 85
     .line 86
-    .line 87
     iget-object v1, v0, Ll/m;->d:Landroidx/appcompat/app/AlertDialog;
 
+    .line 87
     .line 88
-    .line 89
     invoke-virtual {v1}, Landroid/app/Dialog;->getWindow()Landroid/view/Window;
 
+    .line 89
     .line 90
     .line 91
-    .line 92
     move-result-object v1
 
-    .line 93
+    .line 92
     invoke-virtual {v1}, Landroid/view/Window;->getAttributes()Landroid/view/WindowManager$LayoutParams;
 
+    .line 93
     .line 94
     .line 95
-    .line 96
     move-result-object v1
 
-    .line 97
+    .line 96
     const/16 v2, 0x3eb
 
+    .line 97
     .line 98
-    .line 99
     iput v2, v1, Landroid/view/WindowManager$LayoutParams;->type:I
 
+    .line 99
     .line 100
-    .line 101
     iget v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
+    .line 101
     .line 102
-    .line 103
     const/high16 v3, 0x20000
 
+    .line 103
     .line 104
-    .line 105
     or-int/2addr v2, v3
 
-    .line 106
+    .line 105
     iput v2, v1, Landroid/view/WindowManager$LayoutParams;->flags:I
 
+    .line 106
     .line 107
-    .line 108
     iget-object v0, v0, Ll/m;->d:Landroidx/appcompat/app/AlertDialog;
 
+    .line 108
     .line 109
-    .line 110
     invoke-virtual {v0}, Landroid/app/Dialog;->show()V
 
+    .line 110
     .line 111
     .line 112
-    .line 113
-    iget-object v0, p0, Ll/h;->q:Ll/w;
+    iget-object v0, p0, Ll/h;->w:Ll/w;
 
+    .line 113
     .line 114
-    .line 115
     if-eqz v0, :cond_3
 
+    .line 115
     .line 116
-    .line 117
-    invoke-interface {v0, p1}, Ll/w;->f(Ll/l;)Z
+    invoke-interface {v0, p1}, Ll/w;->i(Ll/l;)Z
 
+    .line 117
     .line 118
     .line 119
-    .line 120
     :cond_3
     const/4 p1, 0x1
 
-    .line 121
+    .line 120
     return p1
 .end method
 
@@ -442,7 +445,7 @@
 
     .line 2
     .line 3
-    iget-object p2, p0, Ll/h;->w:Ll/g;
+    iget-object p2, p0, Ll/h;->x:Ll/g;
 
     .line 4
     .line 5

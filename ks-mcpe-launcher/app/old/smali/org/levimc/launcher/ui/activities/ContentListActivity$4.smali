@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/ContentListActivity$4;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/ui/adapter/ScreenshotsAdapter$OnScreenshotClickListener;
@@ -48,7 +48,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->J0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Lorg/levimc/launcher/core/content/ScreenshotItem;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->A0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Lorg/levimc/launcher/core/content/ScreenshotItem;)V
 
     .line 4
     .line 5
@@ -64,7 +64,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->H0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Lorg/levimc/launcher/core/content/ScreenshotItem;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->y0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Lorg/levimc/launcher/core/content/ScreenshotItem;)V
 
     .line 4
     .line 5

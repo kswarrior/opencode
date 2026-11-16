@@ -1,39 +1,36 @@
 .class public final Lc1/e;
-.super La/a;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lgc/h;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic d:Lc1/g;
+.field public final synthetic a:Lc1/g;
 
 
 # direct methods
 .method public constructor <init>(Lc1/g;)V
-    .locals 1
+    .locals 0
 
     .line 1
-    const/4 v0, 0x3
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    invoke-direct {p0, v0}, La/a;-><init>(I)V
-
     .line 3
     .line 4
-    .line 5
-    iput-object p1, p0, Lc1/e;->d:Lc1/g;
+    iput-object p1, p0, Lc1/e;->a:Lc1/g;
 
+    .line 5
     .line 6
-    .line 7
     return-void
 .end method
 
 
 # virtual methods
-.method public final o(Ljava/lang/Object;)F
+.method public final M(Ljava/lang/Object;)F
     .locals 0
 
     .line 1
-    iget-object p1, p0, Lc1/e;->d:Lc1/g;
+    iget-object p1, p0, Lc1/e;->a:Lc1/g;
 
     .line 2
     .line 3
@@ -44,11 +41,11 @@
     return p1
 .end method
 
-.method public final w(Ljava/lang/Object;F)V
+.method public final d0(Ljava/lang/Object;F)V
     .locals 0
 
     .line 1
-    iget-object p1, p0, Lc1/e;->d:Lc1/g;
+    iget-object p1, p0, Lc1/e;->a:Lc1/g;
 
     .line 2
     .line 3

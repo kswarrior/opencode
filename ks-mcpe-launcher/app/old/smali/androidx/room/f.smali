@@ -1,6 +1,6 @@
 .class public final synthetic Landroidx/room/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lkotlin/jvm/functions/Function0;
@@ -51,244 +51,244 @@
     .line 5
     .line 6
     .line 7
-    :try_start_0
-    sget-object v0, Lg2/c;->h:Ljava/lang/Object;
+    new-instance v0, Lca/h;
 
     .line 8
     .line 9
-    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+    sget-object v1, Lca/p;->a:Lca/p;
 
     .line 10
     .line 11
-    .line 12
-    move-result-object v0
+    sget-object v1, Lz7/x;->a:Lz7/x;
 
+    .line 12
     .line 13
-    check-cast v0, Ljava/lang/reflect/Method;
+    invoke-direct {v0, v1}, Lca/h;-><init>(Ly9/a;)V
 
     .line 14
     .line 15
-    if-eqz v0, :cond_0
-
     .line 16
+    return-object v0
+
     .line 17
-    invoke-virtual {v0}, Ljava/lang/reflect/Method;->getReturnType()Ljava/lang/Class;
+    :pswitch_0
+    :try_start_0
+    sget-object v0, Lg2/c;->h:Ljava/lang/Object;
 
     .line 18
     .line 19
+    invoke-interface {v0}, Lkotlin/Lazy;->getValue()Ljava/lang/Object;
+
     .line 20
+    .line 21
+    .line 22
     move-result-object v0
 
-    .line 21
-    if-eqz v0, :cond_0
-
-    .line 22
     .line 23
-    const-string v2, "beginTransaction"
+    check-cast v0, Ljava/lang/reflect/Method;
 
     .line 24
     .line 25
-    sget-object v3, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
+    if-eqz v0, :cond_0
 
     .line 26
     .line 27
-    const-class v4, Landroid/database/sqlite/SQLiteTransactionListener;
+    invoke-virtual {v0}, Ljava/lang/reflect/Method;->getReturnType()Ljava/lang/Class;
 
     .line 28
     .line 29
-    const-class v5, Landroid/os/CancellationSignal;
-
     .line 30
+    move-result-object v0
+
     .line 31
-    filled-new-array {v3, v4, v3, v5}, [Ljava/lang/Class;
+    if-eqz v0, :cond_0
 
     .line 32
     .line 33
-    .line 34
-    move-result-object v3
+    const-string v2, "beginTransaction"
 
+    .line 34
     .line 35
-    invoke-virtual {v0, v2, v3}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    sget-object v3, Ljava/lang/Integer;->TYPE:Ljava/lang/Class;
 
     .line 36
     .line 37
+    const-class v4, Landroid/database/sqlite/SQLiteTransactionListener;
+
     .line 38
+    .line 39
+    const-class v5, Landroid/os/CancellationSignal;
+
+    .line 40
+    .line 41
+    filled-new-array {v3, v4, v3, v5}, [Ljava/lang/Class;
+
+    .line 42
+    .line 43
+    .line 44
+    move-result-object v3
+
+    .line 45
+    invoke-virtual {v0, v2, v3}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+
+    .line 46
+    .line 47
+    .line 48
     move-result-object v1
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 39
+    .line 49
     :catchall_0
     :cond_0
     return-object v1
 
-    .line 40
-    :pswitch_0
+    .line 50
+    :pswitch_1
     :try_start_1
     const-class v0, Landroid/database/sqlite/SQLiteDatabase;
 
-    .line 41
-    .line 42
+    .line 51
+    .line 52
     const-string v2, "getThreadSession"
 
-    .line 43
-    .line 44
+    .line 53
+    .line 54
     invoke-virtual {v0, v2, v1}, Ljava/lang/Class;->getDeclaredMethod(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
 
-    .line 45
-    .line 46
-    .line 47
+    .line 55
+    .line 56
+    .line 57
     move-result-object v0
 
-    .line 48
+    .line 58
     const/4 v2, 0x1
 
-    .line 49
+    .line 59
     invoke-virtual {v0, v2}, Ljava/lang/reflect/AccessibleObject;->setAccessible(Z)V
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 50
-    .line 51
-    .line 52
+    .line 60
+    .line 61
+    .line 62
     move-object v1, v0
 
-    .line 53
+    .line 63
     :catchall_1
     return-object v1
 
-    .line 54
-    :pswitch_1
-    new-instance v0, Ljava/util/ArrayList;
-
-    .line 55
-    .line 56
-    const/4 v2, 0x0
-
-    .line 57
-    invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(I)V
-
-    .line 58
-    .line 59
-    .line 60
-    invoke-interface {v0}, Ljava/util/Collection;->isEmpty()Z
-
-    .line 61
-    .line 62
-    .line 63
-    move-result v3
-
     .line 64
-    if-eqz v3, :cond_1
+    :pswitch_2
+    sget-object v0, Lh9/d;->c:Lh9/a;
 
     .line 65
     .line 66
-    goto :goto_0
+    sget-object v0, Lh9/d;->c:Lh9/a;
 
     .line 67
-    :cond_1
-    move-object v1, v0
-
     .line 68
-    :goto_0
-    if-eqz v1, :cond_2
+    invoke-virtual {v0}, Lh9/a;->a()Ljava/util/Random;
 
     .line 69
     .line 70
-    new-array v0, v2, [Lca/d;
-
     .line 71
+    move-result-object v0
+
     .line 72
-    invoke-interface {v1, v0}, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
+    const/high16 v1, 0x7fff0000
 
     .line 73
     .line 74
+    invoke-virtual {v0, v1}, Ljava/util/Random;->nextInt(I)I
+
     .line 75
-    move-result-object v0
-
     .line 76
-    check-cast v0, [Lca/d;
-
     .line 77
+    move-result v0
+
     .line 78
-    if-nez v0, :cond_3
+    const/high16 v1, 0x10000
 
     .line 79
     .line 80
-    :cond_2
-    sget-object v0, Lea/k;->a:[Lca/d;
-
-    .line 81
-    .line 82
-    :cond_3
-    return-object v0
-
-    .line 83
-    :pswitch_2
-    sget-object v0, Lj9/d;->c:Lj9/a;
-
-    .line 84
-    .line 85
-    sget-object v0, Lj9/d;->c:Lj9/a;
-
-    .line 86
-    .line 87
-    invoke-virtual {v0}, Lj9/a;->a()Ljava/util/Random;
-
-    .line 88
-    .line 89
-    .line 90
-    move-result-object v0
-
-    .line 91
-    const/high16 v1, 0x7fff0000
-
-    .line 92
-    .line 93
-    invoke-virtual {v0, v1}, Ljava/util/Random;->nextInt(I)I
-
-    .line 94
-    .line 95
-    .line 96
-    move-result v0
-
-    .line 97
-    const/high16 v1, 0x10000
-
-    .line 98
-    .line 99
     add-int/2addr v0, v1
 
-    .line 100
+    .line 81
     invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 82
+    .line 83
+    .line 84
+    move-result-object v0
+
+    .line 85
+    return-object v0
+
+    .line 86
+    :pswitch_3
+    new-instance v0, Ljava/util/ArrayList;
+
+    .line 87
+    .line 88
+    const/4 v2, 0x0
+
+    .line 89
+    invoke-direct {v0, v2}, Ljava/util/ArrayList;-><init>(I)V
+
+    .line 90
+    .line 91
+    .line 92
+    invoke-interface {v0}, Ljava/util/Collection;->isEmpty()Z
+
+    .line 93
+    .line 94
+    .line 95
+    move-result v3
+
+    .line 96
+    if-eqz v3, :cond_1
+
+    .line 97
+    .line 98
+    goto :goto_0
+
+    .line 99
+    :cond_1
+    move-object v1, v0
+
+    .line 100
+    :goto_0
+    if-eqz v1, :cond_2
 
     .line 101
     .line 102
-    .line 103
-    move-result-object v0
+    new-array v0, v2, [Laa/d;
 
+    .line 103
     .line 104
-    return-object v0
+    invoke-interface {v1, v0}, Ljava/util/Collection;->toArray([Ljava/lang/Object;)[Ljava/lang/Object;
 
     .line 105
-    :pswitch_3
-    new-instance v0, Lea/h;
-
     .line 106
     .line 107
-    sget-object v1, Lea/p;->a:Lea/p;
+    move-result-object v0
 
     .line 108
+    check-cast v0, [Laa/d;
+
     .line 109
-    sget-object v1, Lb8/z;->a:Lb8/z;
-
     .line 110
-    .line 111
-    invoke-direct {v0, v1}, Lea/h;-><init>(Laa/a;)V
+    if-nez v0, :cond_3
 
+    .line 111
     .line 112
+    :cond_2
+    sget-object v0, Lca/k;->a:[Laa/d;
+
     .line 113
     .line 114
+    :cond_3
     return-object v0
 
     .line 115
@@ -301,7 +301,7 @@
 
     .line 118
     :pswitch_5
-    sget-object v0, Ls8/k;->a:Ls8/k;
+    sget-object v0, Lq8/k;->a:Lq8/k;
 
     .line 119
     .line 120

@@ -1,306 +1,277 @@
-.class public final Lga/c;
+.class public Lga/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# static fields
-.field public static final a:[C
-
-.field public static final b:[B
+# instance fields
+.field public final c:Lcom/google/gson/JsonElement;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 10
+.method public constructor <init>(Lcom/google/gson/JsonElement;)V
+    .locals 0
 
     .line 1
-    const/16 v0, 0x75
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    new-array v0, v0, [C
-
     .line 4
+    iput-object p1, p0, Lga/c;->c:Lcom/google/gson/JsonElement;
+
     .line 5
-    sput-object v0, Lga/c;->a:[C
-
     .line 6
-    .line 7
-    const/16 v0, 0x7e
-
-    .line 8
-    .line 9
-    new-array v0, v0, [B
-
-    .line 10
-    .line 11
-    sput-object v0, Lga/c;->b:[B
-
-    .line 12
-    .line 13
-    const/4 v0, 0x0
-
-    .line 14
-    move v1, v0
-
-    .line 15
-    :goto_0
-    const/16 v2, 0x20
-
-    .line 16
-    .line 17
-    if-ge v1, v2, :cond_0
-
-    .line 18
-    .line 19
-    add-int/lit8 v1, v1, 0x1
-
-    .line 20
-    .line 21
-    goto :goto_0
-
-    .line 22
-    :cond_0
-    const/16 v1, 0x62
-
-    .line 23
-    .line 24
-    const/16 v3, 0x8
-
-    .line 25
-    .line 26
-    invoke-static {v3, v1}, Lga/c;->a(IC)V
-
-    .line 27
-    .line 28
-    .line 29
-    const/16 v1, 0x74
-
-    .line 30
-    .line 31
-    const/16 v4, 0x9
-
-    .line 32
-    .line 33
-    invoke-static {v4, v1}, Lga/c;->a(IC)V
-
-    .line 34
-    .line 35
-    .line 36
-    const/16 v1, 0x6e
-
-    .line 37
-    .line 38
-    const/16 v5, 0xa
-
-    .line 39
-    .line 40
-    invoke-static {v5, v1}, Lga/c;->a(IC)V
-
-    .line 41
-    .line 42
-    .line 43
-    const/16 v1, 0xc
-
-    .line 44
-    .line 45
-    const/16 v6, 0x66
-
-    .line 46
-    .line 47
-    invoke-static {v1, v6}, Lga/c;->a(IC)V
-
-    .line 48
-    .line 49
-    .line 50
-    const/16 v1, 0x72
-
-    .line 51
-    .line 52
-    const/16 v6, 0xd
-
-    .line 53
-    .line 54
-    invoke-static {v6, v1}, Lga/c;->a(IC)V
-
-    .line 55
-    .line 56
-    .line 57
-    const/16 v1, 0x2f
-
-    .line 58
-    .line 59
-    invoke-static {v1, v1}, Lga/c;->a(IC)V
-
-    .line 60
-    .line 61
-    .line 62
-    const/16 v1, 0x22
-
-    .line 63
-    .line 64
-    invoke-static {v1, v1}, Lga/c;->a(IC)V
-
-    .line 65
-    .line 66
-    .line 67
-    const/16 v7, 0x5c
-
-    .line 68
-    .line 69
-    invoke-static {v7, v7}, Lga/c;->a(IC)V
-
-    .line 70
-    .line 71
-    .line 72
-    sget-object v8, Lga/c;->b:[B
-
-    .line 73
-    .line 74
-    :goto_1
-    const/16 v9, 0x21
-
-    .line 75
-    .line 76
-    if-ge v0, v9, :cond_1
-
-    .line 77
-    .line 78
-    const/16 v9, 0x7f
-
-    .line 79
-    .line 80
-    aput-byte v9, v8, v0
-
-    .line 81
-    .line 82
-    add-int/lit8 v0, v0, 0x1
-
-    .line 83
-    .line 84
-    goto :goto_1
-
-    .line 85
-    :cond_1
-    const/4 v0, 0x3
-
-    .line 86
-    aput-byte v0, v8, v4
-
-    .line 87
-    .line 88
-    aput-byte v0, v8, v5
-
-    .line 89
-    .line 90
-    aput-byte v0, v8, v6
-
-    .line 91
-    .line 92
-    aput-byte v0, v8, v2
-
-    .line 93
-    .line 94
-    const/16 v0, 0x2c
-
-    .line 95
-    .line 96
-    const/4 v2, 0x4
-
-    .line 97
-    aput-byte v2, v8, v0
-
-    .line 98
-    .line 99
-    const/16 v0, 0x3a
-
-    .line 100
-    .line 101
-    const/4 v2, 0x5
-
-    .line 102
-    aput-byte v2, v8, v0
-
-    .line 103
-    .line 104
-    const/16 v0, 0x7b
-
-    .line 105
-    .line 106
-    const/4 v2, 0x6
-
-    .line 107
-    aput-byte v2, v8, v0
-
-    .line 108
-    .line 109
-    const/16 v0, 0x7d
-
-    .line 110
-    .line 111
-    const/4 v2, 0x7
-
-    .line 112
-    aput-byte v2, v8, v0
-
-    .line 113
-    .line 114
-    const/16 v0, 0x5b
-
-    .line 115
-    .line 116
-    aput-byte v3, v8, v0
-
-    .line 117
-    .line 118
-    const/16 v0, 0x5d
-
-    .line 119
-    .line 120
-    aput-byte v4, v8, v0
-
-    .line 121
-    .line 122
-    const/4 v0, 0x1
-
-    .line 123
-    aput-byte v0, v8, v1
-
-    .line 124
-    .line 125
-    const/4 v0, 0x2
-
-    .line 126
-    aput-byte v0, v8, v7
-
-    .line 127
-    .line 128
     return-void
 .end method
 
-.method public static a(IC)V
+.method public static d(Lcom/google/gson/JsonElement;)Lga/c;
     .locals 1
 
     .line 1
-    const/16 v0, 0x75
+    instance-of v0, p0, Lcom/google/gson/JsonObject;
 
     .line 2
     .line 3
-    if-eq p1, v0, :cond_0
+    if-eqz v0, :cond_0
 
     .line 4
     .line 5
-    sget-object v0, Lga/c;->a:[C
+    new-instance v0, Lga/f;
 
     .line 6
     .line 7
-    int-to-char p0, p0
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonObject;
 
     .line 8
-    aput-char p0, v0, p1
-
     .line 9
     .line 10
+    move-result-object p0
+
+    .line 11
+    invoke-direct {v0, p0}, Lga/f;-><init>(Lcom/google/gson/JsonObject;)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-object v0
+
+    .line 15
     :cond_0
-    return-void
+    instance-of v0, p0, Lcom/google/gson/JsonArray;
+
+    .line 16
+    .line 17
+    if-eqz v0, :cond_1
+
+    .line 18
+    .line 19
+    new-instance v0, Lga/b;
+
+    .line 20
+    .line 21
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->j()Lcom/google/gson/JsonArray;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object p0
+
+    .line 25
+    invoke-direct {v0, p0}, Lga/b;-><init>(Lcom/google/gson/JsonArray;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-object v0
+
+    .line 29
+    :cond_1
+    instance-of v0, p0, Le8/n;
+
+    .line 30
+    .line 31
+    if-eqz v0, :cond_2
+
+    .line 32
+    .line 33
+    new-instance v0, Lga/g;
+
+    .line 34
+    .line 35
+    invoke-virtual {p0}, Lcom/google/gson/JsonElement;->l()Le8/n;
+
+    .line 36
+    .line 37
+    .line 38
+    move-result-object p0
+
+    .line 39
+    invoke-direct {v0, p0}, Lga/c;-><init>(Lcom/google/gson/JsonElement;)V
+
+    .line 40
+    .line 41
+    .line 42
+    return-object v0
+
+    .line 43
+    :cond_2
+    new-instance v0, Lga/c;
+
+    .line 44
+    .line 45
+    invoke-direct {v0, p0}, Lga/c;-><init>(Lcom/google/gson/JsonElement;)V
+
+    .line 46
+    .line 47
+    .line 48
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public final c()Lga/f;
+    .locals 2
+
+    .line 1
+    instance-of v0, p0, Lga/f;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    move-object v0, p0
+
+    .line 6
+    check-cast v0, Lga/f;
+
+    .line 7
+    .line 8
+    return-object v0
+
+    .line 9
+    :cond_0
+    new-instance v0, Lga/f;
+
+    .line 10
+    .line 11
+    iget-object v1, p0, Lga/c;->c:Lcom/google/gson/JsonElement;
+
+    .line 12
+    .line 13
+    invoke-virtual {v1}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonObject;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    invoke-direct {v0, v1}, Lga/f;-><init>(Lcom/google/gson/JsonObject;)V
+
+    .line 18
+    .line 19
+    .line 20
+    return-object v0
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 2
+
+    .line 1
+    instance-of v0, p1, Lga/c;
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lga/c;->c:Lcom/google/gson/JsonElement;
+
+    .line 4
+    .line 5
+    if-eqz v0, :cond_0
+
+    .line 6
+    .line 7
+    check-cast p1, Lga/c;
+
+    .line 8
+    .line 9
+    iget-object p1, p1, Lga/c;->c:Lcom/google/gson/JsonElement;
+
+    .line 10
+    .line 11
+    invoke-virtual {v1, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p1
+
+    .line 15
+    return p1
+
+    .line 16
+    :cond_0
+    instance-of v0, p1, Lcom/google/gson/JsonElement;
+
+    .line 17
+    .line 18
+    if-eqz v0, :cond_1
+
+    .line 19
+    .line 20
+    invoke-virtual {v1, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 21
+    .line 22
+    .line 23
+    move-result p1
+
+    .line 24
+    return p1
+
+    .line 25
+    :cond_1
+    const/4 p1, 0x0
+
+    .line 26
+    return p1
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lga/c;->c:Lcom/google/gson/JsonElement;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lga/c;->c:Lcom/google/gson/JsonElement;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    return-object v0
 .end method

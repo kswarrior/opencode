@@ -1,6 +1,6 @@
 .class public final Lh3/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lh3/b;
@@ -58,7 +58,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lh3/r;->c(Landroid/content/Context;)Lh3/r;
+    invoke-static {v0}, Lh3/q;->f(Landroid/content/Context;)Lh3/q;
 
     .line 4
     .line 5
@@ -74,7 +74,7 @@
 
     .line 10
     :try_start_0
-    iget-object v2, v0, Lh3/r;->p:Ljava/lang/Object;
+    iget-object v2, v0, Lh3/q;->q:Ljava/lang/Object;
 
     .line 11
     .line 12
@@ -87,7 +87,7 @@
     .line 15
     .line 16
     .line 17
-    invoke-virtual {v0}, Lh3/r;->f()V
+    invoke-virtual {v0}, Lh3/q;->g()V
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -121,7 +121,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lh3/r;->c(Landroid/content/Context;)Lh3/r;
+    invoke-static {v0}, Lh3/q;->f(Landroid/content/Context;)Lh3/q;
 
     .line 4
     .line 5
@@ -137,7 +137,7 @@
 
     .line 10
     :try_start_0
-    iget-object v2, v0, Lh3/r;->p:Ljava/lang/Object;
+    iget-object v2, v0, Lh3/q;->q:Ljava/lang/Object;
 
     .line 11
     .line 12
@@ -150,7 +150,7 @@
     .line 15
     .line 16
     .line 17
-    iget-boolean v1, v0, Lh3/r;->d:Z
+    iget-boolean v1, v0, Lh3/q;->d:Z
 
     .line 18
     .line 19
@@ -158,7 +158,7 @@
 
     .line 20
     .line 21
-    iget-object v1, v0, Lh3/r;->p:Ljava/lang/Object;
+    iget-object v1, v0, Lh3/q;->q:Ljava/lang/Object;
 
     .line 22
     .line 23
@@ -182,23 +182,23 @@
 
     .line 32
     :cond_0
-    iget-object v1, v0, Lh3/r;->h:Ljava/lang/Object;
+    iget-object v1, v0, Lh3/q;->h:Ljava/lang/Object;
 
     .line 33
     .line 34
-    check-cast v1, Lcom/google/firebase/messaging/o;
+    check-cast v1, Lae/w1;
 
     .line 35
     .line 36
-    iget-object v2, v1, Lcom/google/firebase/messaging/o;->d:Ljava/lang/Object;
+    iget-object v2, v1, Lae/w1;->h:Ljava/lang/Object;
 
     .line 37
     .line 38
-    check-cast v2, Lcom/google/android/gms/internal/measurement/ae;
+    check-cast v2, Lcom/google/android/gms/internal/measurement/ud;
 
     .line 39
     .line 40
-    invoke-virtual {v2}, Lcom/google/android/gms/internal/measurement/ae;->get()Ljava/lang/Object;
+    invoke-virtual {v2}, Lcom/google/android/gms/internal/measurement/ud;->get()Ljava/lang/Object;
 
     .line 41
     .line 42
@@ -210,11 +210,11 @@
 
     .line 45
     .line 46
-    iget-object v1, v1, Lcom/google/firebase/messaging/o;->e:Ljava/lang/Object;
+    iget-object v1, v1, Lae/w1;->q:Ljava/lang/Object;
 
     .line 47
     .line 48
-    check-cast v1, Lh3/q;
+    check-cast v1, Lh3/p;
 
     .line 49
     .line 50
@@ -226,7 +226,7 @@
     const/4 v1, 0x0
 
     .line 54
-    iput-boolean v1, v0, Lh3/r;->d:Z
+    iput-boolean v1, v0, Lh3/q;->d:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

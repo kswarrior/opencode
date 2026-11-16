@@ -1,6 +1,6 @@
 .class public final Lm0/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/util/concurrent/ThreadFactory;
@@ -46,14 +46,14 @@
 
     .line 7
     .line 8
-    new-instance v1, Lk6/z0;
+    new-instance v1, Li6/z0;
 
     .line 9
     .line 10
     const/4 v2, 0x3
 
     .line 11
-    invoke-direct {v1, p1, v2}, Lk6/z0;-><init>(Ljava/lang/Runnable;I)V
+    invoke-direct {v1, p1, v2}, Li6/z0;-><init>(Ljava/lang/Runnable;I)V
 
     .line 12
     .line 13
@@ -85,7 +85,6 @@
     .line 26
     nop
 
-    .line 27
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

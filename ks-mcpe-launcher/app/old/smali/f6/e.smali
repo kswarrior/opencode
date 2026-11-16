@@ -1,23 +1,29 @@
 .class public final Lf6/e;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ly6/t1;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lf6/d;
 .implements Ljava/io/Serializable;
 
 
-# virtual methods
-.method public final apply(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 0
+# static fields
+.field public static final synthetic d:I
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
 
     .line 1
-    const/4 p1, 0x0
+    sget v0, Lf6/c;->a:I
 
     .line 2
-    return-object p1
+    .line 3
+    return-void
 .end method
 
+
+# virtual methods
 .method public final equals(Ljava/lang/Object;)Z
     .locals 0
 
@@ -30,24 +36,16 @@
 
     .line 4
     .line 5
-    const/4 p1, 0x0
+    const/4 p1, 0x1
 
     .line 6
-    invoke-static {p1, p1}, Lcom/bumptech/glide/c;->o(Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    .line 7
-    .line 8
-    .line 9
-    move-result p1
-
-    .line 10
     return p1
 
-    .line 11
+    .line 7
     :cond_0
     const/4 p1, 0x0
 
-    .line 12
+    .line 8
     return p1
 .end method
 
@@ -55,21 +53,11 @@
     .locals 1
 
     .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return v0
-.end method
-
-.method public final toString()Ljava/lang/String;
-    .locals 2
-
-    .line 1
-    const-string v0, "null"
+    const-class v0, Lf6/e;
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/lang/String;->length()I
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
 
     .line 4
     .line 5
@@ -77,35 +65,42 @@
     move-result v0
 
     .line 7
-    add-int/lit8 v0, v0, 0x14
+    return v0
+.end method
 
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    const/16 v1, 0x20
+
+    .line 4
+    .line 5
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(I)V
+
+    .line 6
+    .line 7
     .line 8
+    const-string v1, "Hashing.murmur3_128(0)"
+
     .line 9
-    new-instance v1, Ljava/lang/StringBuilder;
-
     .line 10
-    .line 11
-    invoke-direct {v1, v0}, Ljava/lang/StringBuilder;-><init>(I)V
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
+    .line 11
     .line 12
     .line 13
-    .line 14
-    const-string v0, "Functions.constant(null)"
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 14
     .line 15
     .line 16
-    invoke-virtual {v1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 17
-    .line 18
-    .line 19
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 20
-    .line 21
-    .line 22
     move-result-object v0
 
-    .line 23
+    .line 17
     return-object v0
 .end method

@@ -1,33 +1,31 @@
 .class public abstract Lk3/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Cloneable;
 
 
 # instance fields
-.field public C1:Ls2/h;
+.field public B1:Lo3/c;
 
-.field public D1:Lo3/c;
+.field public C1:Ljava/lang/Class;
 
-.field public E1:Ljava/lang/Class;
+.field public D1:Z
+
+.field public E1:Z
 
 .field public F1:Z
 
 .field public G1:Z
 
-.field public H1:Z
-
-.field public I1:Z
-
 .field public X:I
 
-.field public Y:I
+.field public Y:Ls2/e;
 
-.field public Z:Ls2/e;
+.field public Z:Z
 
-.field public b1:Z
+.field public b1:Ls2/h;
 
 .field public c:I
 
@@ -35,15 +33,13 @@
 
 .field public h:Lcom/bumptech/glide/i;
 
-.field public p:Landroid/graphics/drawable/Drawable;
-
 .field public q:I
 
-.field public w:Landroid/graphics/drawable/Drawable;
+.field public w:I
 
-.field public x:I
+.field public x:Z
 
-.field public y:Z
+.field public y:I
 
 
 # direct methods
@@ -75,18 +71,18 @@
     const/4 v0, 0x1
 
     .line 13
-    iput-boolean v0, p0, Lk3/a;->y:Z
+    iput-boolean v0, p0, Lk3/a;->x:Z
 
     .line 14
     .line 15
     const/4 v1, -0x1
 
     .line 16
-    iput v1, p0, Lk3/a;->X:I
+    iput v1, p0, Lk3/a;->y:I
 
     .line 17
     .line 18
-    iput v1, p0, Lk3/a;->Y:I
+    iput v1, p0, Lk3/a;->X:I
 
     .line 19
     .line 20
@@ -94,7 +90,7 @@
 
     .line 21
     .line 22
-    iput-object v1, p0, Lk3/a;->Z:Ls2/e;
+    iput-object v1, p0, Lk3/a;->Y:Ls2/e;
 
     .line 23
     .line 24
@@ -107,7 +103,7 @@
     .line 27
     .line 28
     .line 29
-    iput-object v1, p0, Lk3/a;->C1:Ls2/h;
+    iput-object v1, p0, Lk3/a;->b1:Ls2/h;
 
     .line 30
     .line 31
@@ -123,7 +119,7 @@
     .line 35
     .line 36
     .line 37
-    iput-object v1, p0, Lk3/a;->D1:Lo3/c;
+    iput-object v1, p0, Lk3/a;->B1:Lo3/c;
 
     .line 38
     .line 39
@@ -131,18 +127,18 @@
 
     .line 40
     .line 41
-    iput-object v1, p0, Lk3/a;->E1:Ljava/lang/Class;
+    iput-object v1, p0, Lk3/a;->C1:Ljava/lang/Class;
 
     .line 42
     .line 43
-    iput-boolean v0, p0, Lk3/a;->H1:Z
+    iput-boolean v0, p0, Lk3/a;->F1:Z
 
     .line 44
     .line 45
     return-void
 .end method
 
-.method public static i(II)Z
+.method public static g(II)Z
     .locals 0
 
     .line 1
@@ -169,10 +165,10 @@
 
 # virtual methods
 .method public a(Lk3/a;)Lk3/a;
-    .locals 4
+    .locals 3
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -180,7 +176,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -212,7 +208,7 @@
 
     .line 19
     .line 20
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
     .line 21
     .line 22
@@ -224,11 +220,11 @@
 
     .line 25
     .line 26
-    iget-boolean v0, p1, Lk3/a;->I1:Z
+    iget-boolean v0, p1, Lk3/a;->G1:Z
 
     .line 27
     .line 28
-    iput-boolean v0, p0, Lk3/a;->I1:Z
+    iput-boolean v0, p0, Lk3/a;->G1:Z
 
     .line 29
     .line 30
@@ -240,7 +236,7 @@
     const/4 v1, 0x4
 
     .line 33
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
     .line 34
     .line 35
@@ -269,7 +265,7 @@
 
     .line 46
     .line 47
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
     .line 48
     .line 49
@@ -298,7 +294,7 @@
 
     .line 60
     .line 61
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
     .line 62
     .line 63
@@ -313,503 +309,448 @@
 
     .line 67
     .line 68
-    iget-object v0, p1, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
+    iput v1, p0, Lk3/a;->q:I
 
     .line 69
     .line 70
-    iput-object v0, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
+    iget v0, p0, Lk3/a;->c:I
 
     .line 71
     .line 72
-    iput v1, p0, Lk3/a;->q:I
+    and-int/lit8 v0, v0, -0x21
 
     .line 73
     .line 74
-    iget v0, p0, Lk3/a;->c:I
+    iput v0, p0, Lk3/a;->c:I
 
     .line 75
     .line 76
-    and-int/lit8 v0, v0, -0x21
-
-    .line 77
-    .line 78
-    iput v0, p0, Lk3/a;->c:I
-
-    .line 79
-    .line 80
     :cond_4
     iget v0, p1, Lk3/a;->c:I
 
-    .line 81
-    .line 82
+    .line 77
+    .line 78
     const/16 v2, 0x20
 
+    .line 79
+    .line 80
+    invoke-static {v0, v2}, Lk3/a;->g(II)Z
+
+    .line 81
+    .line 82
     .line 83
+    move-result v0
+
     .line 84
-    invoke-static {v0, v2}, Lk3/a;->i(II)Z
+    if-eqz v0, :cond_5
 
     .line 85
     .line 86
-    .line 87
-    move-result v0
-
-    .line 88
-    const/4 v2, 0x0
-
-    .line 89
-    if-eqz v0, :cond_5
-
-    .line 90
-    .line 91
     iget v0, p1, Lk3/a;->q:I
 
-    .line 92
-    .line 93
+    .line 87
+    .line 88
     iput v0, p0, Lk3/a;->q:I
 
-    .line 94
-    .line 95
-    iput-object v2, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
-
-    .line 96
-    .line 97
+    .line 89
+    .line 90
     iget v0, p0, Lk3/a;->c:I
 
-    .line 98
-    .line 99
+    .line 91
+    .line 92
     and-int/lit8 v0, v0, -0x11
 
-    .line 100
-    .line 101
+    .line 93
+    .line 94
     iput v0, p0, Lk3/a;->c:I
 
-    .line 102
-    .line 103
+    .line 95
+    .line 96
     :cond_5
     iget v0, p1, Lk3/a;->c:I
 
-    .line 104
-    .line 105
-    const/16 v3, 0x40
+    .line 97
+    .line 98
+    const/16 v2, 0x40
 
-    .line 106
-    .line 107
-    invoke-static {v0, v3}, Lk3/a;->i(II)Z
+    .line 99
+    .line 100
+    invoke-static {v0, v2}, Lk3/a;->g(II)Z
 
-    .line 108
-    .line 109
-    .line 110
+    .line 101
+    .line 102
+    .line 103
     move-result v0
 
-    .line 111
+    .line 104
     if-eqz v0, :cond_6
 
-    .line 112
-    .line 113
-    iget-object v0, p1, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
+    .line 105
+    .line 106
+    iput v1, p0, Lk3/a;->w:I
 
-    .line 114
-    .line 115
-    iput-object v0, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
-
-    .line 116
-    .line 117
-    iput v1, p0, Lk3/a;->x:I
-
-    .line 118
-    .line 119
+    .line 107
+    .line 108
     iget v0, p0, Lk3/a;->c:I
 
-    .line 120
-    .line 121
+    .line 109
+    .line 110
     and-int/lit16 v0, v0, -0x81
 
-    .line 122
-    .line 123
+    .line 111
+    .line 112
     iput v0, p0, Lk3/a;->c:I
 
-    .line 124
-    .line 125
+    .line 113
+    .line 114
     :cond_6
     iget v0, p1, Lk3/a;->c:I
 
-    .line 126
-    .line 127
+    .line 115
+    .line 116
     const/16 v1, 0x80
 
-    .line 128
-    .line 129
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 117
+    .line 118
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 130
-    .line 131
-    .line 132
+    .line 119
+    .line 120
+    .line 121
     move-result v0
 
-    .line 133
+    .line 122
     if-eqz v0, :cond_7
 
-    .line 134
-    .line 135
-    iget v0, p1, Lk3/a;->x:I
+    .line 123
+    .line 124
+    iget v0, p1, Lk3/a;->w:I
 
-    .line 136
-    .line 137
-    iput v0, p0, Lk3/a;->x:I
+    .line 125
+    .line 126
+    iput v0, p0, Lk3/a;->w:I
 
-    .line 138
-    .line 139
-    iput-object v2, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
-
-    .line 140
-    .line 141
+    .line 127
+    .line 128
     iget v0, p0, Lk3/a;->c:I
 
-    .line 142
-    .line 143
+    .line 129
+    .line 130
     and-int/lit8 v0, v0, -0x41
 
-    .line 144
-    .line 145
+    .line 131
+    .line 132
     iput v0, p0, Lk3/a;->c:I
 
-    .line 146
-    .line 147
+    .line 133
+    .line 134
     :cond_7
     iget v0, p1, Lk3/a;->c:I
 
-    .line 148
-    .line 149
+    .line 135
+    .line 136
     const/16 v1, 0x100
 
-    .line 150
-    .line 151
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 137
+    .line 138
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 152
-    .line 153
-    .line 154
+    .line 139
+    .line 140
+    .line 141
     move-result v0
 
-    .line 155
+    .line 142
     if-eqz v0, :cond_8
 
-    .line 156
-    .line 157
-    iget-boolean v0, p1, Lk3/a;->y:Z
+    .line 143
+    .line 144
+    iget-boolean v0, p1, Lk3/a;->x:Z
 
-    .line 158
-    .line 159
-    iput-boolean v0, p0, Lk3/a;->y:Z
+    .line 145
+    .line 146
+    iput-boolean v0, p0, Lk3/a;->x:Z
 
-    .line 160
-    .line 161
+    .line 147
+    .line 148
     :cond_8
     iget v0, p1, Lk3/a;->c:I
 
-    .line 162
-    .line 163
+    .line 149
+    .line 150
     const/16 v1, 0x200
 
-    .line 164
-    .line 165
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 151
+    .line 152
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 166
-    .line 167
-    .line 168
+    .line 153
+    .line 154
+    .line 155
     move-result v0
 
-    .line 169
+    .line 156
     if-eqz v0, :cond_9
 
-    .line 170
-    .line 171
-    iget v0, p1, Lk3/a;->Y:I
-
-    .line 172
-    .line 173
-    iput v0, p0, Lk3/a;->Y:I
-
-    .line 174
-    .line 175
+    .line 157
+    .line 158
     iget v0, p1, Lk3/a;->X:I
 
-    .line 176
-    .line 177
+    .line 159
+    .line 160
     iput v0, p0, Lk3/a;->X:I
 
-    .line 178
-    .line 179
+    .line 161
+    .line 162
+    iget v0, p1, Lk3/a;->y:I
+
+    .line 163
+    .line 164
+    iput v0, p0, Lk3/a;->y:I
+
+    .line 165
+    .line 166
     :cond_9
     iget v0, p1, Lk3/a;->c:I
 
-    .line 180
-    .line 181
+    .line 167
+    .line 168
     const/16 v1, 0x400
 
-    .line 182
-    .line 183
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 169
+    .line 170
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 184
-    .line 185
-    .line 186
+    .line 171
+    .line 172
+    .line 173
     move-result v0
 
-    .line 187
+    .line 174
     if-eqz v0, :cond_a
 
-    .line 188
-    .line 189
-    iget-object v0, p1, Lk3/a;->Z:Ls2/e;
+    .line 175
+    .line 176
+    iget-object v0, p1, Lk3/a;->Y:Ls2/e;
 
-    .line 190
-    .line 191
-    iput-object v0, p0, Lk3/a;->Z:Ls2/e;
+    .line 177
+    .line 178
+    iput-object v0, p0, Lk3/a;->Y:Ls2/e;
 
-    .line 192
-    .line 193
+    .line 179
+    .line 180
     :cond_a
     iget v0, p1, Lk3/a;->c:I
 
-    .line 194
-    .line 195
+    .line 181
+    .line 182
     const/16 v1, 0x1000
 
-    .line 196
-    .line 197
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 183
+    .line 184
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 198
-    .line 199
-    .line 200
+    .line 185
+    .line 186
+    .line 187
     move-result v0
 
-    .line 201
+    .line 188
     if-eqz v0, :cond_b
 
-    .line 202
-    .line 203
-    iget-object v0, p1, Lk3/a;->E1:Ljava/lang/Class;
+    .line 189
+    .line 190
+    iget-object v0, p1, Lk3/a;->C1:Ljava/lang/Class;
 
-    .line 204
-    .line 205
-    iput-object v0, p0, Lk3/a;->E1:Ljava/lang/Class;
+    .line 191
+    .line 192
+    iput-object v0, p0, Lk3/a;->C1:Ljava/lang/Class;
 
-    .line 206
-    .line 207
+    .line 193
+    .line 194
     :cond_b
     iget v0, p1, Lk3/a;->c:I
 
-    .line 208
-    .line 209
+    .line 195
+    .line 196
     const/16 v1, 0x2000
 
-    .line 210
-    .line 211
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 197
+    .line 198
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 212
-    .line 213
-    .line 214
+    .line 199
+    .line 200
+    .line 201
     move-result v0
 
-    .line 215
+    .line 202
     if-eqz v0, :cond_c
 
-    .line 216
-    .line 217
+    .line 203
+    .line 204
     iget v0, p0, Lk3/a;->c:I
 
-    .line 218
-    .line 219
+    .line 205
+    .line 206
     and-int/lit16 v0, v0, -0x4001
 
-    .line 220
-    .line 221
+    .line 207
+    .line 208
     iput v0, p0, Lk3/a;->c:I
 
-    .line 222
-    .line 223
+    .line 209
+    .line 210
     :cond_c
     iget v0, p1, Lk3/a;->c:I
 
-    .line 224
-    .line 225
+    .line 211
+    .line 212
     const/16 v1, 0x4000
 
-    .line 226
-    .line 227
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 213
+    .line 214
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 228
-    .line 229
-    .line 230
+    .line 215
+    .line 216
+    .line 217
     move-result v0
 
-    .line 231
+    .line 218
     if-eqz v0, :cond_d
 
-    .line 232
-    .line 233
+    .line 219
+    .line 220
     iget v0, p0, Lk3/a;->c:I
 
-    .line 234
-    .line 235
+    .line 221
+    .line 222
     and-int/lit16 v0, v0, -0x2001
 
-    .line 236
-    .line 237
+    .line 223
+    .line 224
     iput v0, p0, Lk3/a;->c:I
 
-    .line 238
-    .line 239
+    .line 225
+    .line 226
     :cond_d
     iget v0, p1, Lk3/a;->c:I
 
-    .line 240
-    .line 241
+    .line 227
+    .line 228
     const/high16 v1, 0x20000
 
-    .line 242
-    .line 243
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    .line 229
+    .line 230
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
 
-    .line 244
-    .line 245
-    .line 246
+    .line 231
+    .line 232
+    .line 233
     move-result v0
 
-    .line 247
+    .line 234
     if-eqz v0, :cond_e
 
-    .line 248
-    .line 249
-    iget-boolean v0, p1, Lk3/a;->b1:Z
+    .line 235
+    .line 236
+    iget-boolean v0, p1, Lk3/a;->Z:Z
 
-    .line 250
-    .line 251
-    iput-boolean v0, p0, Lk3/a;->b1:Z
+    .line 237
+    .line 238
+    iput-boolean v0, p0, Lk3/a;->Z:Z
 
-    .line 252
-    .line 253
+    .line 239
+    .line 240
     :cond_e
     iget v0, p1, Lk3/a;->c:I
 
-    .line 254
-    .line 255
+    .line 241
+    .line 242
     const/16 v1, 0x800
 
+    .line 243
+    .line 244
+    invoke-static {v0, v1}, Lk3/a;->g(II)Z
+
+    .line 245
+    .line 246
+    .line 247
+    move-result v0
+
+    .line 248
+    if-eqz v0, :cond_f
+
+    .line 249
+    .line 250
+    iget-object v0, p0, Lk3/a;->B1:Lo3/c;
+
+    .line 251
+    .line 252
+    iget-object v1, p1, Lk3/a;->B1:Lo3/c;
+
+    .line 253
+    .line 254
+    invoke-virtual {v0, v1}, Landroidx/collection/ArrayMap;->putAll(Ljava/util/Map;)V
+
+    .line 255
     .line 256
     .line 257
-    invoke-static {v0, v1}, Lk3/a;->i(II)Z
+    iget-boolean v0, p1, Lk3/a;->F1:Z
 
     .line 258
     .line 259
+    iput-boolean v0, p0, Lk3/a;->F1:Z
+
     .line 260
-    move-result v0
-
     .line 261
-    if-eqz v0, :cond_f
-
-    .line 262
-    .line 263
-    iget-object v0, p0, Lk3/a;->D1:Lo3/c;
-
-    .line 264
-    .line 265
-    iget-object v1, p1, Lk3/a;->D1:Lo3/c;
-
-    .line 266
-    .line 267
-    invoke-virtual {v0, v1}, Landroidx/collection/ArrayMap;->putAll(Ljava/util/Map;)V
-
-    .line 268
-    .line 269
-    .line 270
-    iget-boolean v0, p1, Lk3/a;->H1:Z
-
-    .line 271
-    .line 272
-    iput-boolean v0, p0, Lk3/a;->H1:Z
-
-    .line 273
-    .line 274
     :cond_f
     iget v0, p0, Lk3/a;->c:I
 
+    .line 262
+    .line 263
+    iget v1, p1, Lk3/a;->c:I
+
+    .line 264
+    .line 265
+    or-int/2addr v0, v1
+
+    .line 266
+    iput v0, p0, Lk3/a;->c:I
+
+    .line 267
+    .line 268
+    iget-object v0, p0, Lk3/a;->b1:Ls2/h;
+
+    .line 269
+    .line 270
+    iget-object p1, p1, Lk3/a;->b1:Ls2/h;
+
+    .line 271
+    .line 272
+    iget-object v0, v0, Ls2/h;->b:Lo3/c;
+
+    .line 273
+    .line 274
+    iget-object p1, p1, Ls2/h;->b:Lo3/c;
+
     .line 275
     .line 276
-    iget v1, p1, Lk3/a;->c:I
+    invoke-virtual {v0, p1}, Lo3/c;->g(Landroidx/collection/ArrayMap;)V
 
     .line 277
     .line 278
-    or-int/2addr v0, v1
-
     .line 279
-    iput v0, p0, Lk3/a;->c:I
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 280
     .line 281
-    iget-object v0, p0, Lk3/a;->C1:Ls2/h;
-
     .line 282
-    .line 283
-    iget-object p1, p1, Lk3/a;->C1:Ls2/h;
-
-    .line 284
-    .line 285
-    iget-object v0, v0, Ls2/h;->b:Lo3/c;
-
-    .line 286
-    .line 287
-    iget-object p1, p1, Ls2/h;->b:Lo3/c;
-
-    .line 288
-    .line 289
-    invoke-virtual {v0, p1}, Lo3/c;->g(Landroidx/collection/ArrayMap;)V
-
-    .line 290
-    .line 291
-    .line 292
-    invoke-virtual {p0}, Lk3/a;->o()V
-
-    .line 293
-    .line 294
-    .line 295
     return-object p0
 .end method
 
-.method public final b()Lk3/a;
-    .locals 2
-
-    .line 1
-    sget-object v0, Lb3/o;->d:Lb3/o;
-
-    .line 2
-    .line 3
-    new-instance v1, Lb3/h;
-
-    .line 4
-    .line 5
-    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
-
-    .line 6
-    .line 7
-    .line 8
-    invoke-virtual {p0, v0, v1}, Lk3/a;->s(Lb3/o;Lb3/e;)Lk3/a;
-
-    .line 9
-    .line 10
-    .line 11
-    move-result-object v0
-
-    .line 12
-    return-object v0
-.end method
-
-.method public c()Lk3/a;
+.method public b()Lk3/a;
     .locals 4
 
     .line 1
@@ -835,11 +776,11 @@
     .line 10
     .line 11
     .line 12
-    iput-object v1, v0, Lk3/a;->C1:Ls2/h;
+    iput-object v1, v0, Lk3/a;->b1:Ls2/h;
 
     .line 13
     .line 14
-    iget-object v2, p0, Lk3/a;->C1:Ls2/h;
+    iget-object v2, p0, Lk3/a;->b1:Ls2/h;
 
     .line 15
     .line 16
@@ -868,11 +809,11 @@
     .line 27
     .line 28
     .line 29
-    iput-object v1, v0, Lk3/a;->D1:Lo3/c;
+    iput-object v1, v0, Lk3/a;->B1:Lo3/c;
 
     .line 30
     .line 31
-    iget-object v3, p0, Lk3/a;->D1:Lo3/c;
+    iget-object v3, p0, Lk3/a;->B1:Lo3/c;
 
     .line 32
     .line 33
@@ -881,11 +822,11 @@
     .line 34
     .line 35
     .line 36
-    iput-boolean v2, v0, Lk3/a;->F1:Z
+    iput-boolean v2, v0, Lk3/a;->D1:Z
 
     .line 37
     .line 38
-    iput-boolean v2, v0, Lk3/a;->G1:Z
+    iput-boolean v2, v0, Lk3/a;->E1:Z
     :try_end_0
     .catch Ljava/lang/CloneNotSupportedException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -910,26 +851,11 @@
     throw v1
 .end method
 
-.method public bridge synthetic clone()Ljava/lang/Object;
+.method public final c(Ljava/lang/Class;)Lk3/a;
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object v0
-
-    .line 5
-    return-object v0
-.end method
-
-.method public final d(Ljava/lang/Class;)Lk3/a;
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -937,7 +863,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -945,7 +871,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->d(Ljava/lang/Class;)Lk3/a;
+    invoke-virtual {v0, p1}, Lk3/a;->c(Ljava/lang/Class;)Lk3/a;
 
     .line 10
     .line 11
@@ -957,7 +883,7 @@
 
     .line 14
     :cond_0
-    iput-object p1, p0, Lk3/a;->E1:Ljava/lang/Class;
+    iput-object p1, p0, Lk3/a;->C1:Ljava/lang/Class;
 
     .line 15
     .line 16
@@ -973,7 +899,7 @@
 
     .line 21
     .line 22
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 23
     .line 24
@@ -981,11 +907,26 @@
     return-object p0
 .end method
 
-.method public final e(Lu2/j;)Lk3/a;
+.method public bridge synthetic clone()Ljava/lang/Object;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object v0
+
+    .line 5
+    return-object v0
+.end method
+
+.method public final d(Lu2/j;)Lk3/a;
+    .locals 1
+
+    .line 1
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -993,7 +934,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -1001,7 +942,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->e(Lu2/j;)Lk3/a;
+    invoke-virtual {v0, p1}, Lk3/a;->d(Lu2/j;)Lk3/a;
 
     .line 10
     .line 11
@@ -1029,7 +970,7 @@
 
     .line 21
     .line 22
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 23
     .line 24
@@ -1037,11 +978,11 @@
     return-object p0
 .end method
 
-.method public equals(Ljava/lang/Object;)Z
+.method public final e(I)Lk3/a;
     .locals 1
 
     .line 1
-    instance-of v0, p1, Lk3/a;
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -1049,41 +990,7 @@
 
     .line 4
     .line 5
-    check-cast p1, Lk3/a;
-
-    .line 6
-    .line 7
-    invoke-virtual {p0, p1}, Lk3/a;->h(Lk3/a;)Z
-
-    .line 8
-    .line 9
-    .line 10
-    move-result p1
-
-    .line 11
-    return p1
-
-    .line 12
-    :cond_0
-    const/4 p1, 0x0
-
-    .line 13
-    return p1
-.end method
-
-.method public final f(I)Lk3/a;
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -1091,7 +998,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->f(I)Lk3/a;
+    invoke-virtual {v0, p1}, Lk3/a;->e(I)Lk3/a;
 
     .line 10
     .line 11
@@ -1115,34 +1022,27 @@
 
     .line 19
     .line 20
-    const/4 v0, 0x0
-
-    .line 21
-    iput-object v0, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
-
-    .line 22
-    .line 23
     and-int/lit8 p1, p1, -0x11
 
-    .line 24
-    .line 25
+    .line 21
+    .line 22
     iput p1, p0, Lk3/a;->c:I
 
+    .line 23
+    .line 24
+    invoke-virtual {p0}, Lk3/a;->l()V
+
+    .line 25
     .line 26
     .line 27
-    invoke-virtual {p0}, Lk3/a;->o()V
-
-    .line 28
-    .line 29
-    .line 30
     return-object p0
 .end method
 
-.method public final g(Landroid/graphics/drawable/Drawable;)Lk3/a;
+.method public equals(Ljava/lang/Object;)Z
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    instance-of v0, p1, Lk3/a;
 
     .line 2
     .line 3
@@ -1150,62 +1050,29 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    check-cast p1, Lk3/a;
 
     .line 6
     .line 7
+    invoke-virtual {p0, p1}, Lk3/a;->f(Lk3/a;)Z
+
     .line 8
-    move-result-object v0
-
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->g(Landroid/graphics/drawable/Drawable;)Lk3/a;
-
     .line 10
+    move-result p1
+
     .line 11
+    return p1
+
     .line 12
-    move-result-object p1
+    :cond_0
+    const/4 p1, 0x0
 
     .line 13
-    return-object p1
-
-    .line 14
-    :cond_0
-    iput-object p1, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
-
-    .line 15
-    .line 16
-    iget p1, p0, Lk3/a;->c:I
-
-    .line 17
-    .line 18
-    or-int/lit8 p1, p1, 0x10
-
-    .line 19
-    .line 20
-    const/4 v0, 0x0
-
-    .line 21
-    iput v0, p0, Lk3/a;->q:I
-
-    .line 22
-    .line 23
-    and-int/lit8 p1, p1, -0x21
-
-    .line 24
-    .line 25
-    iput p1, p0, Lk3/a;->c:I
-
-    .line 26
-    .line 27
-    invoke-virtual {p0}, Lk3/a;->o()V
-
-    .line 28
-    .line 29
-    .line 30
-    return-object p0
+    return p1
 .end method
 
-.method public final h(Lk3/a;)Z
+.method public final f(Lk3/a;)Z
     .locals 2
 
     .line 1
@@ -1242,63 +1109,63 @@
 
     .line 17
     .line 18
-    iget-object v0, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
+    sget-object v0, Lo3/n;->a:[C
 
     .line 19
     .line 20
-    iget-object v1, p1, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
+    iget v0, p0, Lk3/a;->w:I
 
     .line 21
     .line 22
-    invoke-static {v0, v1}, Lo3/n;->b(Ljava/lang/Object;Ljava/lang/Object;)Z
+    iget v1, p1, Lk3/a;->w:I
 
     .line 23
     .line 24
-    .line 25
-    move-result v0
+    if-ne v0, v1, :cond_0
 
+    .line 25
     .line 26
-    if-eqz v0, :cond_0
+    iget-boolean v0, p0, Lk3/a;->x:Z
 
     .line 27
     .line 28
-    iget v0, p0, Lk3/a;->x:I
+    iget-boolean v1, p1, Lk3/a;->x:Z
 
     .line 29
     .line 30
-    iget v1, p1, Lk3/a;->x:I
+    if-ne v0, v1, :cond_0
 
     .line 31
     .line 32
-    if-ne v0, v1, :cond_0
+    iget v0, p0, Lk3/a;->y:I
 
     .line 33
     .line 34
-    iget-object v0, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
+    iget v1, p1, Lk3/a;->y:I
 
     .line 35
     .line 36
-    iget-object v1, p1, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
+    if-ne v0, v1, :cond_0
 
     .line 37
     .line 38
-    invoke-static {v0, v1}, Lo3/n;->b(Ljava/lang/Object;Ljava/lang/Object;)Z
+    iget v0, p0, Lk3/a;->X:I
 
     .line 39
     .line 40
-    .line 41
-    move-result v0
+    iget v1, p1, Lk3/a;->X:I
 
+    .line 41
     .line 42
-    if-eqz v0, :cond_0
+    if-ne v0, v1, :cond_0
 
     .line 43
     .line 44
-    iget-boolean v0, p0, Lk3/a;->y:Z
+    iget-boolean v0, p0, Lk3/a;->Z:Z
 
     .line 45
     .line 46
-    iget-boolean v1, p1, Lk3/a;->y:Z
+    iget-boolean v1, p1, Lk3/a;->Z:Z
 
     .line 47
     .line 48
@@ -1306,165 +1173,184 @@
 
     .line 49
     .line 50
-    iget v0, p0, Lk3/a;->X:I
+    iget-object v0, p0, Lk3/a;->d:Lu2/j;
 
     .line 51
     .line 52
-    iget v1, p1, Lk3/a;->X:I
+    iget-object v1, p1, Lk3/a;->d:Lu2/j;
 
     .line 53
     .line 54
-    if-ne v0, v1, :cond_0
+    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     .line 55
     .line 56
-    iget v0, p0, Lk3/a;->Y:I
-
     .line 57
+    move-result v0
+
     .line 58
-    iget v1, p1, Lk3/a;->Y:I
+    if-eqz v0, :cond_0
 
     .line 59
     .line 60
-    if-ne v0, v1, :cond_0
+    iget-object v0, p0, Lk3/a;->h:Lcom/bumptech/glide/i;
 
     .line 61
     .line 62
-    iget-boolean v0, p0, Lk3/a;->b1:Z
+    iget-object v1, p1, Lk3/a;->h:Lcom/bumptech/glide/i;
 
     .line 63
     .line 64
-    iget-boolean v1, p1, Lk3/a;->b1:Z
+    if-ne v0, v1, :cond_0
 
     .line 65
     .line 66
-    if-ne v0, v1, :cond_0
+    iget-object v0, p0, Lk3/a;->b1:Ls2/h;
 
     .line 67
     .line 68
-    iget-object v0, p0, Lk3/a;->d:Lu2/j;
+    iget-object v1, p1, Lk3/a;->b1:Ls2/h;
 
     .line 69
     .line 70
-    iget-object v1, p1, Lk3/a;->d:Lu2/j;
+    invoke-virtual {v0, v1}, Ls2/h;->equals(Ljava/lang/Object;)Z
 
     .line 71
     .line 72
-    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
     .line 73
-    .line 74
-    .line 75
     move-result v0
 
-    .line 76
+    .line 74
     if-eqz v0, :cond_0
+
+    .line 75
+    .line 76
+    iget-object v0, p0, Lk3/a;->B1:Lo3/c;
 
     .line 77
     .line 78
-    iget-object v0, p0, Lk3/a;->h:Lcom/bumptech/glide/i;
+    iget-object v1, p1, Lk3/a;->B1:Lo3/c;
 
     .line 79
     .line 80
-    iget-object v1, p1, Lk3/a;->h:Lcom/bumptech/glide/i;
+    invoke-virtual {v0, v1}, Landroidx/collection/SimpleArrayMap;->equals(Ljava/lang/Object;)Z
 
     .line 81
     .line 82
-    if-ne v0, v1, :cond_0
-
     .line 83
+    move-result v0
+
     .line 84
-    iget-object v0, p0, Lk3/a;->C1:Ls2/h;
+    if-eqz v0, :cond_0
 
     .line 85
     .line 86
-    iget-object v1, p1, Lk3/a;->C1:Ls2/h;
+    iget-object v0, p0, Lk3/a;->C1:Ljava/lang/Class;
 
     .line 87
     .line 88
-    invoke-virtual {v0, v1}, Ls2/h;->equals(Ljava/lang/Object;)Z
+    iget-object v1, p1, Lk3/a;->C1:Ljava/lang/Class;
 
     .line 89
     .line 90
+    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
     .line 91
+    .line 92
+    .line 93
     move-result v0
 
-    .line 92
-    if-eqz v0, :cond_0
-
-    .line 93
     .line 94
-    iget-object v0, p0, Lk3/a;->D1:Lo3/c;
+    if-eqz v0, :cond_0
 
     .line 95
     .line 96
-    iget-object v1, p1, Lk3/a;->D1:Lo3/c;
+    iget-object v0, p0, Lk3/a;->Y:Ls2/e;
 
     .line 97
     .line 98
-    invoke-virtual {v0, v1}, Landroidx/collection/SimpleArrayMap;->equals(Ljava/lang/Object;)Z
+    iget-object p1, p1, Lk3/a;->Y:Ls2/e;
 
     .line 99
     .line 100
+    invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
     .line 101
-    move-result v0
-
     .line 102
-    if-eqz v0, :cond_0
-
     .line 103
+    move-result p1
+
     .line 104
-    iget-object v0, p0, Lk3/a;->E1:Ljava/lang/Class;
+    if-eqz p1, :cond_0
 
     .line 105
     .line 106
-    iget-object v1, p1, Lk3/a;->E1:Ljava/lang/Class;
-
-    .line 107
-    .line 108
-    invoke-virtual {v0, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    .line 109
-    .line 110
-    .line 111
-    move-result v0
-
-    .line 112
-    if-eqz v0, :cond_0
-
-    .line 113
-    .line 114
-    iget-object v0, p0, Lk3/a;->Z:Ls2/e;
-
-    .line 115
-    .line 116
-    iget-object p1, p1, Lk3/a;->Z:Ls2/e;
-
-    .line 117
-    .line 118
-    invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    .line 119
-    .line 120
-    .line 121
-    move-result p1
-
-    .line 122
-    if-eqz p1, :cond_0
-
-    .line 123
-    .line 124
     const/4 p1, 0x1
 
-    .line 125
+    .line 107
     return p1
 
-    .line 126
+    .line 108
     :cond_0
     const/4 p1, 0x0
 
-    .line 127
+    .line 109
     return p1
+.end method
+
+.method public final h(Lb3/n;Lb3/e;)Lk3/a;
+    .locals 1
+
+    .line 1
+    iget-boolean v0, p0, Lk3/a;->E1:Z
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
+
+    .line 6
+    .line 7
+    .line 8
+    move-result-object v0
+
+    .line 9
+    invoke-virtual {v0, p1, p2}, Lk3/a;->h(Lb3/n;Lb3/e;)Lk3/a;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object p1
+
+    .line 13
+    return-object p1
+
+    .line 14
+    :cond_0
+    sget-object v0, Lb3/n;->g:Ls2/g;
+
+    .line 15
+    .line 16
+    invoke-virtual {p0, v0, p1}, Lk3/a;->m(Ls2/g;Lb3/n;)Lk3/a;
+
+    .line 17
+    .line 18
+    .line 19
+    const/4 p1, 0x0
+
+    .line 20
+    invoke-virtual {p0, p2, p1}, Lk3/a;->r(Ls2/l;Z)Lk3/a;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p1
+
+    .line 24
+    return-object p1
 .end method
 
 .method public hashCode()I
@@ -1511,116 +1397,116 @@
     move-result v0
 
     .line 21
-    iget-object v1, p0, Lk3/a;->p:Landroid/graphics/drawable/Drawable;
-
-    .line 22
-    .line 23
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
-
-    .line 24
-    .line 25
-    .line 26
-    move-result v0
-
-    .line 27
-    iget v1, p0, Lk3/a;->x:I
-
-    .line 28
-    .line 29
-    invoke-static {v1, v0}, Lo3/n;->g(II)I
-
-    .line 30
-    .line 31
-    .line 32
-    move-result v0
-
-    .line 33
-    iget-object v1, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
-
-    .line 34
-    .line 35
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
-
-    .line 36
-    .line 37
-    .line 38
-    move-result v0
-
-    .line 39
     const/4 v1, 0x0
 
-    .line 40
-    invoke-static {v1, v0}, Lo3/n;->g(II)I
+    .line 22
+    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
 
-    .line 41
-    .line 42
-    .line 43
+    .line 23
+    .line 24
+    .line 25
     move-result v0
 
-    .line 44
+    .line 26
+    iget v2, p0, Lk3/a;->w:I
+
+    .line 27
+    .line 28
+    invoke-static {v2, v0}, Lo3/n;->g(II)I
+
+    .line 29
+    .line 30
+    .line 31
+    move-result v0
+
+    .line 32
+    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+
+    .line 33
+    .line 34
+    .line 35
+    move-result v0
+
+    .line 36
     const/4 v2, 0x0
 
+    .line 37
+    invoke-static {v2, v0}, Lo3/n;->g(II)I
+
+    .line 38
+    .line 39
+    .line 40
+    move-result v0
+
+    .line 41
+    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+
+    .line 42
+    .line 43
+    .line 44
+    move-result v0
+
     .line 45
-    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-boolean v3, p0, Lk3/a;->x:Z
 
     .line 46
     .line 47
+    invoke-static {v3, v0}, Lo3/n;->g(II)I
+
     .line 48
+    .line 49
+    .line 50
     move-result v0
 
-    .line 49
-    iget-boolean v3, p0, Lk3/a;->y:Z
-
-    .line 50
     .line 51
-    invoke-static {v3, v0}, Lo3/n;->g(II)I
+    iget v3, p0, Lk3/a;->y:I
 
     .line 52
     .line 53
+    invoke-static {v3, v0}, Lo3/n;->g(II)I
+
     .line 54
+    .line 55
+    .line 56
     move-result v0
 
-    .line 55
-    iget v3, p0, Lk3/a;->X:I
-
-    .line 56
     .line 57
-    invoke-static {v3, v0}, Lo3/n;->g(II)I
+    iget v3, p0, Lk3/a;->X:I
 
     .line 58
     .line 59
+    invoke-static {v3, v0}, Lo3/n;->g(II)I
+
     .line 60
+    .line 61
+    .line 62
     move-result v0
 
-    .line 61
-    iget v3, p0, Lk3/a;->Y:I
-
-    .line 62
     .line 63
-    invoke-static {v3, v0}, Lo3/n;->g(II)I
+    iget-boolean v3, p0, Lk3/a;->Z:Z
 
     .line 64
     .line 65
-    .line 66
-    move-result v0
-
-    .line 67
-    iget-boolean v3, p0, Lk3/a;->b1:Z
-
-    .line 68
-    .line 69
     invoke-static {v3, v0}, Lo3/n;->g(II)I
 
-    .line 70
-    .line 71
-    .line 72
+    .line 66
+    .line 67
+    .line 68
     move-result v0
 
-    .line 73
+    .line 69
     const/4 v3, 0x1
 
-    .line 74
+    .line 70
     invoke-static {v3, v0}, Lo3/n;->g(II)I
+
+    .line 71
+    .line 72
+    .line 73
+    move-result v0
+
+    .line 74
+    invoke-static {v2, v0}, Lo3/n;->g(II)I
 
     .line 75
     .line 76
@@ -1628,7 +1514,7 @@
     move-result v0
 
     .line 78
-    invoke-static {v1, v0}, Lo3/n;->g(II)I
+    invoke-static {v2, v0}, Lo3/n;->g(II)I
 
     .line 79
     .line 80
@@ -1636,77 +1522,77 @@
     move-result v0
 
     .line 82
-    invoke-static {v1, v0}, Lo3/n;->g(II)I
+    iget-object v2, p0, Lk3/a;->d:Lu2/j;
 
     .line 83
     .line 84
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 85
+    .line 86
+    .line 87
     move-result v0
 
-    .line 86
-    iget-object v1, p0, Lk3/a;->d:Lu2/j;
-
-    .line 87
     .line 88
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-object v2, p0, Lk3/a;->h:Lcom/bumptech/glide/i;
 
     .line 89
     .line 90
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 91
+    .line 92
+    .line 93
     move-result v0
 
-    .line 92
-    iget-object v1, p0, Lk3/a;->h:Lcom/bumptech/glide/i;
-
-    .line 93
     .line 94
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-object v2, p0, Lk3/a;->b1:Ls2/h;
 
     .line 95
     .line 96
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 97
+    .line 98
+    .line 99
     move-result v0
 
-    .line 98
-    iget-object v1, p0, Lk3/a;->C1:Ls2/h;
-
-    .line 99
     .line 100
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-object v2, p0, Lk3/a;->B1:Lo3/c;
 
     .line 101
     .line 102
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 103
+    .line 104
+    .line 105
     move-result v0
 
-    .line 104
-    iget-object v1, p0, Lk3/a;->D1:Lo3/c;
-
-    .line 105
     .line 106
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-object v2, p0, Lk3/a;->C1:Ljava/lang/Class;
 
     .line 107
     .line 108
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 109
+    .line 110
+    .line 111
     move-result v0
 
-    .line 110
-    iget-object v1, p0, Lk3/a;->E1:Ljava/lang/Class;
-
-    .line 111
     .line 112
-    invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
+    iget-object v2, p0, Lk3/a;->Y:Ls2/e;
 
     .line 113
     .line 114
+    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
+
     .line 115
+    .line 116
+    .line 117
     move-result v0
 
-    .line 116
-    iget-object v1, p0, Lk3/a;->Z:Ls2/e;
-
-    .line 117
     .line 118
     invoke-static {v0, v1}, Lo3/n;->h(ILjava/lang/Object;)I
 
@@ -1716,22 +1602,14 @@
     move-result v0
 
     .line 122
-    invoke-static {v0, v2}, Lo3/n;->h(ILjava/lang/Object;)I
-
-    .line 123
-    .line 124
-    .line 125
-    move-result v0
-
-    .line 126
     return v0
 .end method
 
-.method public final j(Lb3/o;Lb3/e;)Lk3/a;
+.method public final i(II)Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -1739,7 +1617,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -1747,7 +1625,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1, p2}, Lk3/a;->j(Lb3/o;Lb3/e;)Lk3/a;
+    invoke-virtual {v0, p1, p2}, Lk3/a;->i(II)Lk3/a;
 
     .line 10
     .line 11
@@ -1759,66 +1637,11 @@
 
     .line 14
     :cond_0
-    sget-object v0, Lb3/o;->g:Ls2/g;
+    iput p1, p0, Lk3/a;->X:I
 
     .line 15
     .line 16
-    invoke-virtual {p0, v0, p1}, Lk3/a;->p(Ls2/g;Ljava/lang/Object;)Lk3/a;
-
-    .line 17
-    .line 18
-    .line 19
-    const/4 p1, 0x0
-
-    .line 20
-    invoke-virtual {p0, p2, p1}, Lk3/a;->u(Ls2/l;Z)Lk3/a;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object p1
-
-    .line 24
-    return-object p1
-.end method
-
-.method public final k(II)Lk3/a;
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
-
-    .line 9
-    invoke-virtual {v0, p1, p2}, Lk3/a;->k(II)Lk3/a;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object p1
-
-    .line 13
-    return-object p1
-
-    .line 14
-    :cond_0
-    iput p1, p0, Lk3/a;->Y:I
-
-    .line 15
-    .line 16
-    iput p2, p0, Lk3/a;->X:I
+    iput p2, p0, Lk3/a;->y:I
 
     .line 17
     .line 18
@@ -1834,7 +1657,7 @@
 
     .line 23
     .line 24
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 25
     .line 26
@@ -1842,11 +1665,11 @@
     return-object p0
 .end method
 
-.method public final l(I)Lk3/a;
+.method public final j(I)Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -1854,7 +1677,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -1862,7 +1685,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->l(I)Lk3/a;
+    invoke-virtual {v0, p1}, Lk3/a;->j(I)Lk3/a;
 
     .line 10
     .line 11
@@ -1874,7 +1697,7 @@
 
     .line 14
     :cond_0
-    iput p1, p0, Lk3/a;->x:I
+    iput p1, p0, Lk3/a;->w:I
 
     .line 15
     .line 16
@@ -1886,101 +1709,27 @@
 
     .line 19
     .line 20
-    const/4 v0, 0x0
-
-    .line 21
-    iput-object v0, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
-
-    .line 22
-    .line 23
     and-int/lit8 p1, p1, -0x41
 
-    .line 24
-    .line 25
-    iput p1, p0, Lk3/a;->c:I
-
-    .line 26
-    .line 27
-    invoke-virtual {p0}, Lk3/a;->o()V
-
-    .line 28
-    .line 29
-    .line 30
-    return-object p0
-.end method
-
-.method public final m(Landroid/graphics/drawable/Drawable;)Lk3/a;
-    .locals 1
-
-    .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object v0
-
-    .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->m(Landroid/graphics/drawable/Drawable;)Lk3/a;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object p1
-
-    .line 13
-    return-object p1
-
-    .line 14
-    :cond_0
-    iput-object p1, p0, Lk3/a;->w:Landroid/graphics/drawable/Drawable;
-
-    .line 15
-    .line 16
-    iget p1, p0, Lk3/a;->c:I
-
-    .line 17
-    .line 18
-    or-int/lit8 p1, p1, 0x40
-
-    .line 19
-    .line 20
-    const/4 v0, 0x0
-
     .line 21
-    iput v0, p0, Lk3/a;->x:I
-
     .line 22
-    .line 23
-    and-int/lit16 p1, p1, -0x81
-
-    .line 24
-    .line 25
     iput p1, p0, Lk3/a;->c:I
 
+    .line 23
+    .line 24
+    invoke-virtual {p0}, Lk3/a;->l()V
+
+    .line 25
     .line 26
     .line 27
-    invoke-virtual {p0}, Lk3/a;->o()V
-
-    .line 28
-    .line 29
-    .line 30
     return-object p0
 .end method
 
-.method public final n()Lk3/a;
+.method public final k()Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -1988,7 +1737,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -1996,7 +1745,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0}, Lk3/a;->n()Lk3/a;
+    invoke-virtual {v0}, Lk3/a;->k()Lk3/a;
 
     .line 10
     .line 11
@@ -2008,7 +1757,7 @@
 
     .line 14
     :cond_0
-    sget-object v0, Lcom/bumptech/glide/i;->p:Lcom/bumptech/glide/i;
+    sget-object v0, Lcom/bumptech/glide/i;->q:Lcom/bumptech/glide/i;
 
     .line 15
     .line 16
@@ -2028,7 +1777,7 @@
 
     .line 23
     .line 24
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 25
     .line 26
@@ -2036,11 +1785,11 @@
     return-object p0
 .end method
 
-.method public final o()V
+.method public final l()V
     .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->F1:Z
+    iget-boolean v0, p0, Lk3/a;->D1:Z
 
     .line 2
     .line 3
@@ -2068,11 +1817,11 @@
     throw v0
 .end method
 
-.method public final p(Ls2/g;Ljava/lang/Object;)Lk3/a;
+.method public final m(Ls2/g;Lb3/n;)Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2080,7 +1829,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2088,7 +1837,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1, p2}, Lk3/a;->p(Ls2/g;Ljava/lang/Object;)Lk3/a;
+    invoke-virtual {v0, p1, p2}, Lk3/a;->m(Ls2/g;Lb3/n;)Lk3/a;
 
     .line 10
     .line 11
@@ -2105,7 +1854,7 @@
     .line 15
     .line 16
     .line 17
-    iget-object v0, p0, Lk3/a;->C1:Ls2/h;
+    iget-object v0, p0, Lk3/a;->b1:Ls2/h;
 
     .line 18
     .line 19
@@ -2118,7 +1867,7 @@
     .line 22
     .line 23
     .line 24
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 25
     .line 26
@@ -2126,11 +1875,11 @@
     return-object p0
 .end method
 
-.method public final q(Ln3/b;)Lk3/a;
+.method public final n(Ln3/b;)Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2138,7 +1887,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2146,7 +1895,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1}, Lk3/a;->q(Ln3/b;)Lk3/a;
+    invoke-virtual {v0, p1}, Lk3/a;->n(Ln3/b;)Lk3/a;
 
     .line 10
     .line 11
@@ -2158,7 +1907,7 @@
 
     .line 14
     :cond_0
-    iput-object p1, p0, Lk3/a;->Z:Ls2/e;
+    iput-object p1, p0, Lk3/a;->Y:Ls2/e;
 
     .line 15
     .line 16
@@ -2174,7 +1923,7 @@
 
     .line 21
     .line 22
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 23
     .line 24
@@ -2182,11 +1931,11 @@
     return-object p0
 .end method
 
-.method public final r()Lk3/a;
+.method public final o()Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2194,7 +1943,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2202,7 +1951,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0}, Lk3/a;->r()Lk3/a;
+    invoke-virtual {v0}, Lk3/a;->o()Lk3/a;
 
     .line 10
     .line 11
@@ -2217,7 +1966,7 @@
     const/4 v0, 0x0
 
     .line 15
-    iput-boolean v0, p0, Lk3/a;->y:Z
+    iput-boolean v0, p0, Lk3/a;->x:Z
 
     .line 16
     .line 17
@@ -2233,7 +1982,7 @@
 
     .line 22
     .line 23
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 24
     .line 25
@@ -2241,66 +1990,70 @@
     return-object p0
 .end method
 
-.method public final s(Lb3/o;Lb3/e;)Lk3/a;
-    .locals 1
+.method public final p(Lb3/h;)Lk3/a;
+    .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    sget-object v0, Lb3/n;->d:Lb3/n;
 
     .line 2
     .line 3
-    if-eqz v0, :cond_0
+    iget-boolean v1, p0, Lk3/a;->E1:Z
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    if-eqz v1, :cond_0
 
     .line 6
     .line 7
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
+
     .line 8
+    .line 9
+    .line 10
     move-result-object v0
 
-    .line 9
-    invoke-virtual {v0, p1, p2}, Lk3/a;->s(Lb3/o;Lb3/e;)Lk3/a;
-
-    .line 10
     .line 11
+    invoke-virtual {v0, p1}, Lk3/a;->p(Lb3/h;)Lk3/a;
+
     .line 12
+    .line 13
+    .line 14
     move-result-object p1
 
-    .line 13
+    .line 15
     return-object p1
 
-    .line 14
-    :cond_0
-    sget-object v0, Lb3/o;->g:Ls2/g;
-
-    .line 15
     .line 16
-    invoke-virtual {p0, v0, p1}, Lk3/a;->p(Ls2/g;Ljava/lang/Object;)Lk3/a;
+    :cond_0
+    sget-object v1, Lb3/n;->g:Ls2/g;
 
     .line 17
     .line 18
+    invoke-virtual {p0, v1, v0}, Lk3/a;->m(Ls2/g;Lb3/n;)Lk3/a;
+
     .line 19
-    const/4 p1, 0x1
-
     .line 20
-    invoke-virtual {p0, p2, p1}, Lk3/a;->u(Ls2/l;Z)Lk3/a;
-
     .line 21
+    const/4 v0, 0x1
+
     .line 22
+    invoke-virtual {p0, p1, v0}, Lk3/a;->r(Ls2/l;Z)Lk3/a;
+
     .line 23
+    .line 24
+    .line 25
     move-result-object p1
 
-    .line 24
+    .line 26
     return-object p1
 .end method
 
-.method public final t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+.method public final q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
     .locals 1
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2308,7 +2061,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2316,7 +2069,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1, p2, p3}, Lk3/a;->t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+    invoke-virtual {v0, p1, p2, p3}, Lk3/a;->q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
 
     .line 10
     .line 11
@@ -2333,7 +2086,7 @@
     .line 15
     .line 16
     .line 17
-    iget-object v0, p0, Lk3/a;->D1:Lo3/c;
+    iget-object v0, p0, Lk3/a;->B1:Lo3/c;
 
     .line 18
     .line 19
@@ -2361,7 +2114,7 @@
     const/4 p2, 0x0
 
     .line 31
-    iput-boolean p2, p0, Lk3/a;->H1:Z
+    iput-boolean p2, p0, Lk3/a;->F1:Z
 
     .line 32
     .line 33
@@ -2384,12 +2137,12 @@
     const/4 p1, 0x1
 
     .line 42
-    iput-boolean p1, p0, Lk3/a;->b1:Z
+    iput-boolean p1, p0, Lk3/a;->Z:Z
 
     .line 43
     .line 44
     :cond_1
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 45
     .line 46
@@ -2397,11 +2150,11 @@
     return-object p0
 .end method
 
-.method public final u(Ls2/l;Z)Lk3/a;
+.method public final r(Ls2/l;Z)Lk3/a;
     .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2409,7 +2162,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2417,7 +2170,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0, p1, p2}, Lk3/a;->u(Ls2/l;Z)Lk3/a;
+    invoke-virtual {v0, p1, p2}, Lk3/a;->r(Ls2/l;Z)Lk3/a;
 
     .line 10
     .line 11
@@ -2429,11 +2182,11 @@
 
     .line 14
     :cond_0
-    new-instance v0, Lb3/t;
+    new-instance v0, Lb3/s;
 
     .line 15
     .line 16
-    invoke-direct {v0, p1, p2}, Lb3/t;-><init>(Ls2/l;Z)V
+    invoke-direct {v0, p1, p2}, Lb3/s;-><init>(Ls2/l;Z)V
 
     .line 17
     .line 18
@@ -2442,7 +2195,7 @@
 
     .line 20
     .line 21
-    invoke-virtual {p0, v1, p1, p2}, Lk3/a;->t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+    invoke-virtual {p0, v1, p1, p2}, Lk3/a;->q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
 
     .line 22
     .line 23
@@ -2451,7 +2204,7 @@
 
     .line 25
     .line 26
-    invoke-virtual {p0, v1, v0, p2}, Lk3/a;->t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+    invoke-virtual {p0, v1, v0, p2}, Lk3/a;->q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
 
     .line 27
     .line 28
@@ -2460,30 +2213,30 @@
 
     .line 30
     .line 31
-    invoke-virtual {p0, v1, v0, p2}, Lk3/a;->t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+    invoke-virtual {p0, v1, v0, p2}, Lk3/a;->q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
 
     .line 32
     .line 33
     .line 34
-    new-instance v0, Lf3/e;
+    new-instance v0, Lf3/d;
 
     .line 35
     .line 36
-    invoke-direct {v0, p1}, Lf3/e;-><init>(Ls2/l;)V
+    invoke-direct {v0, p1}, Lf3/d;-><init>(Ls2/l;)V
 
     .line 37
     .line 38
     .line 39
-    const-class p1, Lf3/d;
+    const-class p1, Lf3/c;
 
     .line 40
     .line 41
-    invoke-virtual {p0, p1, v0, p2}, Lk3/a;->t(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
+    invoke-virtual {p0, p1, v0, p2}, Lk3/a;->q(Ljava/lang/Class;Ls2/l;Z)Lk3/a;
 
     .line 42
     .line 43
     .line 44
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 45
     .line 46
@@ -2491,11 +2244,11 @@
     return-object p0
 .end method
 
-.method public final v()Lk3/a;
+.method public final s()Lk3/a;
     .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lk3/a;->G1:Z
+    iget-boolean v0, p0, Lk3/a;->E1:Z
 
     .line 2
     .line 3
@@ -2503,7 +2256,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {p0}, Lk3/a;->c()Lk3/a;
+    invoke-virtual {p0}, Lk3/a;->b()Lk3/a;
 
     .line 6
     .line 7
@@ -2511,7 +2264,7 @@
     move-result-object v0
 
     .line 9
-    invoke-virtual {v0}, Lk3/a;->v()Lk3/a;
+    invoke-virtual {v0}, Lk3/a;->s()Lk3/a;
 
     .line 10
     .line 11
@@ -2526,7 +2279,7 @@
     const/4 v0, 0x1
 
     .line 15
-    iput-boolean v0, p0, Lk3/a;->I1:Z
+    iput-boolean v0, p0, Lk3/a;->G1:Z
 
     .line 16
     .line 17
@@ -2545,7 +2298,7 @@
 
     .line 23
     .line 24
-    invoke-virtual {p0}, Lk3/a;->o()V
+    invoke-virtual {p0}, Lk3/a;->l()V
 
     .line 25
     .line 26

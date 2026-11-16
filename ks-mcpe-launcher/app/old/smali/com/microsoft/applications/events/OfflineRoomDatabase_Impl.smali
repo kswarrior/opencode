@@ -1,6 +1,6 @@
 .class public final Lcom/microsoft/applications/events/OfflineRoomDatabase_Impl;
 .super Lcom/microsoft/applications/events/OfflineRoomDatabase;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -176,7 +176,7 @@
     move-result-object v2
 
     .line 12
-    invoke-interface {v2}, Landroidx/sqlite/db/SupportSQLiteOpenHelper;->Q()Landroidx/sqlite/db/SupportSQLiteDatabase;
+    invoke-interface {v2}, Landroidx/sqlite/db/SupportSQLiteOpenHelper;->P()Landroidx/sqlite/db/SupportSQLiteDatabase;
 
     .line 13
     .line 14
@@ -194,7 +194,7 @@
 
     .line 20
     .line 21
-    invoke-interface {v2, v3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
+    invoke-interface {v2, v3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
 
     .line 22
     .line 23
@@ -203,7 +203,7 @@
 
     .line 25
     .line 26
-    invoke-interface {v2, v3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
+    invoke-interface {v2, v3}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
 
     .line 27
     .line 28
@@ -220,7 +220,7 @@
     .line 33
     .line 34
     .line 35
-    invoke-interface {v2, v1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->S(Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-interface {v2, v1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->Q(Ljava/lang/String;)Landroid/database/Cursor;
 
     .line 36
     .line 37
@@ -245,7 +245,7 @@
 
     .line 47
     .line 48
-    invoke-interface {v2, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
+    invoke-interface {v2, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
 
     .line 49
     .line 50
@@ -263,7 +263,7 @@
     .line 54
     .line 55
     .line 56
-    invoke-interface {v2, v1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->S(Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-interface {v2, v1}, Landroidx/sqlite/db/SupportSQLiteDatabase;->Q(Ljava/lang/String;)Landroid/database/Cursor;
 
     .line 57
     .line 58
@@ -288,7 +288,7 @@
 
     .line 68
     .line 69
-    invoke-interface {v2, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->o(Ljava/lang/String;)V
+    invoke-interface {v2, v0}, Landroidx/sqlite/db/SupportSQLiteDatabase;->p(Ljava/lang/String;)V
 
     .line 70
     .line 71
@@ -364,7 +364,7 @@
     .end annotation
 
     .line 1
-    iget-object v0, p1, Landroidx/room/DatabaseConfiguration;->c:Lp7/d;
+    iget-object v0, p1, Landroidx/room/DatabaseConfiguration;->c:Ln7/d;
 
     .line 2
     .line 3
@@ -376,7 +376,7 @@
 
     .line 6
     .line 7
-    invoke-static {v1, v2}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     .line 9
@@ -385,7 +385,7 @@
 
     .line 11
     .line 12
-    new-instance v3, Landroidx/room/l0;
+    new-instance v3, Landroidx/room/j0;
 
     .line 13
     .line 14
@@ -401,7 +401,7 @@
     .line 18
     .line 19
     .line 20
-    invoke-direct {v3, p1, v4}, Landroidx/room/l0;-><init>(Landroidx/room/DatabaseConfiguration;Landroidx/room/k0;)V
+    invoke-direct {v3, p1, v4}, Landroidx/room/j0;-><init>(Landroidx/room/DatabaseConfiguration;Landroidx/room/i0;)V
 
     .line 21
     .line 22
@@ -415,7 +415,7 @@
 
     .line 27
     .line 28
-    invoke-direct {p1, v1, v2, v3}, Lg2/h;-><init>(Landroid/content/Context;Ljava/lang/String;Le5/d;)V
+    invoke-direct {p1, v1, v2, v3}, Lg2/h;-><init>(Landroid/content/Context;Ljava/lang/String;Lf2/a;)V
 
     .line 29
     .line 30
@@ -441,7 +441,7 @@
             "Ljava/lang/Object;",
             ">;)",
             "Ljava/util/List<",
-            "Lm6/b;",
+            "Landroidx/room/g0;",
             ">;"
         }
     .end annotation
@@ -450,7 +450,7 @@
     const/4 p1, 0x0
 
     .line 2
-    new-array p1, p1, [Lm6/b;
+    new-array p1, p1, [Landroidx/room/g0;
 
     .line 3
     .line 4

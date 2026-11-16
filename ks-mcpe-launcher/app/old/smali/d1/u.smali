@@ -1,6 +1,6 @@
 .class public final Ld1/u;
 .super Landroid/text/SpannableStringBuilder;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -26,7 +26,7 @@
     .line 7
     const-string p2, "watcherClass cannot be null"
 
-    invoke-static {p1, p2}, Lm6/b;->h(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Leh/k;->g(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 8
     iput-object p1, p0, Ld1/u;->c:Ljava/lang/Class;
@@ -50,7 +50,7 @@
     .line 3
     const-string p2, "watcherClass cannot be null"
 
-    invoke-static {p1, p2}, Lm6/b;->h(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, p2}, Leh/k;->g(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     iput-object p1, p0, Ld1/u;->c:Ljava/lang/Class;

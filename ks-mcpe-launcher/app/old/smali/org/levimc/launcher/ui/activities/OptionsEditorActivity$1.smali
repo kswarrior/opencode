@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/OptionsEditorActivity$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/text/TextWatcher;
@@ -8,7 +8,7 @@
 
 # annotations
 .annotation system Ldalvik/annotation/EnclosingMethod;
-    value = Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->onCreate(Landroid/os/Bundle;)V
+    value = Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->setupSearchFilter()V
 .end annotation
 
 .annotation system Ldalvik/annotation/InnerClass;
@@ -58,31 +58,22 @@
     .locals 0
 
     .line 1
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity$1;->this$0:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
+    iget-object p2, p0, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity$1;->this$0:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
 
     .line 2
     .line 3
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->J(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;)Z
+    invoke-interface {p1}, Ljava/lang/CharSequence;->toString()Ljava/lang/String;
 
     .line 4
     .line 5
     .line 6
-    move-result p1
+    move-result-object p1
 
     .line 7
-    if-nez p1, :cond_0
+    invoke-static {p2, p1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->I(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;Ljava/lang/String;)V
 
     .line 8
     .line 9
-    iget-object p1, p0, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity$1;->this$0:Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;
-
     .line 10
-    .line 11
-    invoke-static {p1}, Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;->K(Lorg/levimc/launcher/ui/activities/OptionsEditorActivity;)V
-
-    .line 12
-    .line 13
-    .line 14
-    :cond_0
     return-void
 .end method

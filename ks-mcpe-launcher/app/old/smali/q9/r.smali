@@ -1,60 +1,8 @@
-.class public final Lq9/r;
+.class public interface abstract Lq9/r;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lw8/f;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public final c:Lg9/k;
-
-.field public final d:Lw8/f;
-
-
-# direct methods
-.method public constructor <init>(Lw8/f;Lg9/k;)V
-    .locals 1
-
-    .line 1
-    const-string v0, "baseKey"
-
-    .line 2
-    .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 4
-    .line 5
-    .line 6
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 7
-    .line 8
-    .line 9
-    iput-object p2, p0, Lq9/r;->c:Lg9/k;
-
-    .line 10
-    .line 11
-    instance-of p2, p1, Lq9/r;
-
-    .line 12
-    .line 13
-    if-eqz p2, :cond_0
-
-    .line 14
-    .line 15
-    check-cast p1, Lq9/r;
-
-    .line 16
-    .line 17
-    iget-object p1, p1, Lq9/r;->d:Lw8/f;
-
-    .line 18
-    .line 19
-    :cond_0
-    iput-object p1, p0, Lq9/r;->d:Lw8/f;
-
-    .line 20
-    .line 21
-    return-void
+# virtual methods
+.method public abstract b(Ljava/util/concurrent/CancellationException;)V
 .end method

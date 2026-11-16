@@ -1,6 +1,6 @@
 .class public abstract Lcom/google/android/gms/common/api/GoogleApi;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/google/android/gms/common/api/HasApiKey;
@@ -566,7 +566,7 @@
 
     .line 62
     :cond_3
-    invoke-virtual {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->D0()Ljava/util/HashSet;
+    invoke-virtual {v1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B0()Ljava/util/HashSet;
 
     .line 63
     .line 64

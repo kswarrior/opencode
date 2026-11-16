@@ -1,6 +1,6 @@
 .class public final Lz4/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -19,6 +19,8 @@
 
 
 # instance fields
+.field public B1:I
+
 .field public C1:I
 
 .field public D1:Ljava/util/Locale;
@@ -57,11 +59,11 @@
 
 .field public U1:Ljava/lang/Integer;
 
-.field public X:I
+.field public X:Ljava/lang/Integer;
 
-.field public Y:Ljava/lang/String;
+.field public Y:I
 
-.field public Z:I
+.field public Z:Ljava/lang/String;
 
 .field public b1:I
 
@@ -70,8 +72,6 @@
 .field public d:Ljava/lang/Integer;
 
 .field public h:Ljava/lang/Integer;
-
-.field public p:Ljava/lang/Integer;
 
 .field public q:Ljava/lang/Integer;
 
@@ -119,18 +119,18 @@
 
     .line 5
     .line 6
-    iput v0, p0, Lz4/b;->X:I
+    iput v0, p0, Lz4/b;->Y:I
 
     .line 7
     .line 8
     const/4 v0, -0x2
 
     .line 9
-    iput v0, p0, Lz4/b;->Z:I
+    iput v0, p0, Lz4/b;->b1:I
 
     .line 10
     .line 11
-    iput v0, p0, Lz4/b;->b1:I
+    iput v0, p0, Lz4/b;->B1:I
 
     .line 12
     .line 13
@@ -192,7 +192,7 @@
     .line 14
     .line 15
     .line 16
-    iget-object p2, p0, Lz4/b;->p:Ljava/lang/Integer;
+    iget-object p2, p0, Lz4/b;->q:Ljava/lang/Integer;
 
     .line 17
     .line 18
@@ -201,7 +201,7 @@
     .line 19
     .line 20
     .line 21
-    iget-object p2, p0, Lz4/b;->q:Ljava/lang/Integer;
+    iget-object p2, p0, Lz4/b;->w:Ljava/lang/Integer;
 
     .line 22
     .line 23
@@ -210,7 +210,7 @@
     .line 24
     .line 25
     .line 26
-    iget-object p2, p0, Lz4/b;->w:Ljava/lang/Integer;
+    iget-object p2, p0, Lz4/b;->x:Ljava/lang/Integer;
 
     .line 27
     .line 28
@@ -219,7 +219,7 @@
     .line 29
     .line 30
     .line 31
-    iget-object p2, p0, Lz4/b;->x:Ljava/lang/Integer;
+    iget-object p2, p0, Lz4/b;->y:Ljava/lang/Integer;
 
     .line 32
     .line 33
@@ -228,7 +228,7 @@
     .line 34
     .line 35
     .line 36
-    iget-object p2, p0, Lz4/b;->y:Ljava/lang/Integer;
+    iget-object p2, p0, Lz4/b;->X:Ljava/lang/Integer;
 
     .line 37
     .line 38
@@ -237,7 +237,7 @@
     .line 39
     .line 40
     .line 41
-    iget p2, p0, Lz4/b;->X:I
+    iget p2, p0, Lz4/b;->Y:I
 
     .line 42
     .line 43
@@ -246,7 +246,7 @@
     .line 44
     .line 45
     .line 46
-    iget-object p2, p0, Lz4/b;->Y:Ljava/lang/String;
+    iget-object p2, p0, Lz4/b;->Z:Ljava/lang/String;
 
     .line 47
     .line 48
@@ -255,7 +255,7 @@
     .line 49
     .line 50
     .line 51
-    iget p2, p0, Lz4/b;->Z:I
+    iget p2, p0, Lz4/b;->b1:I
 
     .line 52
     .line 53
@@ -264,7 +264,7 @@
     .line 54
     .line 55
     .line 56
-    iget p2, p0, Lz4/b;->b1:I
+    iget p2, p0, Lz4/b;->B1:I
 
     .line 57
     .line 58

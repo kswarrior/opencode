@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/minecraft/MinecraftActivity;
 .super Lcom/mojang/minecraftpe/MainActivity;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/pojavcontrols/PojavControlsHost;
@@ -88,7 +88,7 @@
     return-void
 .end method
 
-.method public static synthetic D(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+.method public static synthetic C(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
     .locals 0
 
     .line 1
@@ -100,7 +100,7 @@
     return-void
 .end method
 
-.method public static synthetic E(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+.method public static synthetic D(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
     .locals 0
 
     .line 1
@@ -115,7 +115,7 @@
     return-object p0
 .end method
 
-.method public static synthetic F(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+.method public static synthetic E(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
     .locals 0
 
     .line 1
@@ -130,7 +130,7 @@
     return-object p0
 .end method
 
-.method public static synthetic G(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+.method public static synthetic F(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
     .locals 0
 
     .line 1
@@ -142,7 +142,7 @@
     return-void
 .end method
 
-.method public static synthetic H(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+.method public static synthetic G(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
     .locals 0
 
     .line 1
@@ -157,7 +157,7 @@
     return-object p0
 .end method
 
-.method public static synthetic I(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
+.method public static synthetic H(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)Ljava/io/File;
     .locals 0
 
     .line 1
@@ -172,7 +172,7 @@
     return-object p0
 .end method
 
-.method public static synthetic J(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;Ljava/lang/String;)V
+.method public static synthetic I(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;Ljava/lang/String;)V
     .locals 0
 
     .line 1
@@ -184,7 +184,7 @@
     return-void
 .end method
 
-.method public static synthetic K(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+.method public static synthetic J(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
     .locals 0
 
     .line 1
@@ -196,7 +196,7 @@
     return-void
 .end method
 
-.method public static synthetic L(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+.method public static synthetic K(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
     .locals 0
 
     .line 1
@@ -208,7 +208,7 @@
     return-void
 .end method
 
-.method public static synthetic M(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+.method public static synthetic L(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
     .locals 0
 
     .line 1
@@ -316,7 +316,7 @@
 
     .line 45
     :cond_1
-    invoke-static {v2}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v2}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 46
     .line 47
@@ -456,7 +456,7 @@
 
     .line 114
     :cond_5
-    invoke-static {v2}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v2}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 115
     .line 116
@@ -465,7 +465,7 @@
 
     .line 118
     :cond_6
-    invoke-static {v2}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v2}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 119
     .line 120
@@ -474,7 +474,7 @@
 
     .line 122
     :cond_7
-    invoke-static {v2}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v2}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 123
     .line 124
@@ -483,7 +483,7 @@
 
     .line 126
     :cond_8
-    invoke-static {v2}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v2}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 127
     .line 128
@@ -898,7 +898,7 @@
 
     .line 84
     :try_start_4
-    invoke-static {p2, v1}, Ljd/h;->e(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    invoke-static {p2, v1}, Lcom/bumptech/glide/e;->h(Ljava/io/Closeable;Ljava/lang/Throwable;)V
 
     .line 85
     .line 86
@@ -927,7 +927,7 @@
 
     .line 96
     .line 97
-    invoke-static {p2, v5}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v5}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 98
     .line 99
@@ -952,7 +952,7 @@
 
     .line 109
     .line 110
-    invoke-static {p2, v5}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v5}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 111
     .line 112
@@ -961,7 +961,7 @@
 
     .line 114
     .line 115
-    invoke-static {v5, p2}, Lo9/h;->I0(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v5, p2}, Lm9/h;->o0(ILjava/lang/String;)Ljava/lang/String;
 
     .line 116
     .line 117
@@ -969,7 +969,7 @@
     move-result-object p2
 
     .line 119
-    invoke-static {p2}, Lo9/h;->z0(Ljava/lang/CharSequence;)Z
+    invoke-static {p2}, Lm9/h;->f0(Ljava/lang/CharSequence;)Z
 
     .line 120
     .line 121
@@ -1106,7 +1106,7 @@
     .line 184
     .line 185
     :try_start_7
-    invoke-static {p1, p2, v0}, Ljb/c;->u(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
+    invoke-static {p1, p2, v0}, Lcom/bumptech/glide/d;->q(Ljava/io/InputStream;Ljava/io/OutputStream;I)J
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_5
 
@@ -1194,7 +1194,7 @@
 
     .line 217
     :try_start_b
-    invoke-static {p2, v1}, Ljd/h;->e(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    invoke-static {p2, v1}, Lcom/bumptech/glide/e;->h(Ljava/io/Closeable;Ljava/lang/Throwable;)V
 
     .line 218
     .line 219
@@ -1216,7 +1216,7 @@
 
     .line 223
     :try_start_d
-    invoke-static {p1, p2}, Ljd/h;->e(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    invoke-static {p1, p2}, Lcom/bumptech/glide/e;->h(Ljava/io/Closeable;Ljava/lang/Throwable;)V
 
     .line 224
     .line 225
@@ -1357,7 +1357,7 @@
 
     .line 13
     .line 14
-    invoke-static {v1, v2}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 15
     .line 16
@@ -1552,7 +1552,7 @@
     .line 51
     .line 52
     .line 53
-    invoke-virtual {p0, v2}, Lg/i;->findViewById(I)Landroid/view/View;
+    invoke-virtual {p0, v2}, Lg/g;->findViewById(I)Landroid/view/View;
 
     .line 54
     .line 55
@@ -1658,7 +1658,7 @@
     .line 11
     .line 12
     .line 13
-    invoke-static {p1}, Lo9/h;->z0(Ljava/lang/CharSequence;)Z
+    invoke-static {p1}, Lm9/h;->f0(Ljava/lang/CharSequence;)Z
 
     .line 14
     .line 15
@@ -2075,7 +2075,7 @@
 
     .line 46
     .line 47
-    invoke-static {p1, v1, v0}, Lu7/d;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v1, v0}, Ln5/h;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 48
     .line 49
@@ -2479,7 +2479,7 @@
 
     .line 40
     .line 41
-    invoke-static {p0, v2}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p0, v2}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 42
     .line 43
@@ -2584,7 +2584,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -2742,7 +2742,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -2766,7 +2766,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -2836,7 +2836,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -3275,7 +3275,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -3522,7 +3522,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -3570,7 +3570,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v0}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 15
     .line 16
@@ -3590,7 +3590,7 @@
     move-result-object v0
 
     .line 23
-    invoke-static {v0}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {v0}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 24
     .line 25
@@ -3668,7 +3668,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -3847,7 +3847,7 @@
 
     .line 17
     .line 18
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 19
     .line 20
@@ -3910,7 +3910,7 @@
 
     .line 10
     .line 11
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 12
     .line 13
@@ -4083,7 +4083,7 @@
 
     .line 16
     .line 17
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 18
     .line 19
@@ -4180,7 +4180,7 @@
 
     .line 67
     :cond_0
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 68
     .line 69
@@ -4222,7 +4222,7 @@
 
     .line 86
     .line 87
-    invoke-static {v5, v3}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v5, v3}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 88
     .line 89
@@ -4239,7 +4239,7 @@
 
     .line 95
     .line 96
-    invoke-static {v6, v3}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v6, v3}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 97
     .line 98
@@ -4467,7 +4467,7 @@
 
     .line 208
     :cond_4
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 209
     .line 210
@@ -4476,7 +4476,7 @@
 
     .line 212
     :cond_5
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 213
     .line 214
@@ -4525,7 +4525,7 @@
 
     .line 235
     :cond_6
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 236
     .line 237
@@ -4534,7 +4534,7 @@
 
     .line 239
     :cond_7
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 240
     .line 241
@@ -4543,7 +4543,7 @@
 
     .line 243
     :cond_8
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 244
     .line 245
@@ -4552,7 +4552,7 @@
 
     .line 247
     :cond_9
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 248
     .line 249
@@ -4562,7 +4562,7 @@
     .line 251
     :cond_a
     :try_start_2
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 252
     .line 253
@@ -4607,7 +4607,7 @@
 
     .line 272
     :cond_b
-    invoke-static {v1}, Lh9/i;->i(Ljava/lang/String;)V
+    invoke-static {v1}, Lf9/i;->i(Ljava/lang/String;)V
 
     .line 273
     .line 274
@@ -4732,7 +4732,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -4751,7 +4751,7 @@
 .end method
 
 .method public onPause()V
-    .locals 2
+    .locals 1
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->overlayManager:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
@@ -4762,95 +4762,78 @@
 
     .line 4
     .line 5
-    const/4 v1, 0x0
+    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->releaseModMenuShortcut()V
 
     .line 6
-    invoke-virtual {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->setActivityActive(Z)V
-
     .line 7
     .line 8
-    .line 9
     :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->overlayManager:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
 
+    .line 9
     .line 10
-    .line 11
     if-eqz v0, :cond_1
 
+    .line 11
     .line 12
-    .line 13
-    invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->releaseModMenuShortcut()V
-
-    .line 14
-    .line 15
-    .line 16
-    :cond_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->overlayManager:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
-
-    .line 17
-    .line 18
-    if-eqz v0, :cond_2
-
-    .line 19
-    .line 20
     invoke-virtual {v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->releaseKeybinds()V
 
+    .line 13
+    .line 14
+    .line 15
+    :cond_1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->shouldRestartAfterNormalExit()Z
+
+    .line 16
+    .line 17
+    .line 18
+    move-result v0
+
+    .line 19
+    if-eqz v0, :cond_2
+
+    .line 20
     .line 21
+    const-string v0, "Minecraft closed"
+
     .line 22
     .line 23
-    :cond_2
-    invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->shouldRestartAfterNormalExit()Z
+    invoke-static {v0}, Lorg/levimc/launcher/preloader/PreloaderInput;->cancelDocumentRequest(Ljava/lang/String;)V
 
     .line 24
     .line 25
     .line 26
-    move-result v0
+    invoke-static {}, Lorg/levimc/launcher/core/mods/ModManager;->disableAndUnloadLoadedMods()V
 
     .line 27
-    if-eqz v0, :cond_3
-
     .line 28
     .line 29
-    const-string v0, "Minecraft closed"
+    invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->prepareNormalExitCleanup()V
 
     .line 30
     .line 31
-    invoke-static {v0}, Lorg/levimc/launcher/preloader/PreloaderInput;->cancelDocumentRequest(Ljava/lang/String;)V
-
     .line 32
-    .line 33
-    .line 34
-    invoke-static {}, Lorg/levimc/launcher/core/mods/ModManager;->disableAndUnloadLoadedMods()V
-
-    .line 35
-    .line 36
-    .line 37
-    invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->prepareNormalExitCleanup()V
-
-    .line 38
-    .line 39
-    .line 40
     invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->scheduleNormalExitProcessRestart()V
 
-    .line 41
-    .line 42
-    .line 43
-    :cond_3
+    .line 33
+    .line 34
+    .line 35
+    :cond_2
     invoke-static {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivityState;->onPaused(Landroid/app/Activity;)V
 
-    .line 44
-    .line 45
-    .line 46
+    .line 36
+    .line 37
+    .line 38
     invoke-super {p0}, Lcom/mojang/minecraftpe/MainActivity;->onPause()V
 
-    .line 47
-    .line 48
-    .line 49
+    .line 39
+    .line 40
+    .line 41
     return-void
 .end method
 
 .method public onResume()V
-    .locals 2
+    .locals 1
 
     .line 1
     invoke-super {p0}, Lcom/mojang/minecraftpe/MainActivity;->onResume()V
@@ -4906,23 +4889,6 @@
     .line 27
     .line 28
     :cond_1
-    iget-object v0, p0, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->overlayManager:Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;
-
-    .line 29
-    .line 30
-    if-eqz v0, :cond_2
-
-    .line 31
-    .line 32
-    const/4 v1, 0x1
-
-    .line 33
-    invoke-virtual {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/InbuiltOverlayManager;->setActivityActive(Z)V
-
-    .line 34
-    .line 35
-    .line 36
-    :cond_2
     return-void
 .end method
 
@@ -4978,20 +4944,20 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
     .line 6
-    new-instance v0, Landroidx/room/p0;
+    new-instance v0, Landroidx/room/n0;
 
     .line 7
     .line 8
-    const/16 v1, 0xe
+    const/16 v1, 0xd
 
     .line 9
     .line 10
-    invoke-direct {v0, p0, p1, v1}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, p1, v1}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 11
     .line 12
@@ -5146,7 +5112,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5

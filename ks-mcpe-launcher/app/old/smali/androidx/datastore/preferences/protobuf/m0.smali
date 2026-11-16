@@ -1,6 +1,6 @@
 .class public abstract Landroidx/datastore/preferences/protobuf/m0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -36,12 +36,12 @@
     return-void
 .end method
 
-.method public static a(Ljava/lang/StringBuilder;I)V
+.method public static a(ILjava/lang/StringBuilder;)V
     .locals 3
 
     .line 1
     :goto_0
-    if-lez p1, :cond_1
+    if-lez p0, :cond_1
 
     .line 2
     .line 3
@@ -49,7 +49,7 @@
 
     .line 4
     .line 5
-    if-le p1, v0, :cond_0
+    if-le p0, v0, :cond_0
 
     .line 6
     .line 7
@@ -57,7 +57,7 @@
 
     .line 8
     :cond_0
-    move v0, p1
+    move v0, p0
 
     .line 9
     :goto_1
@@ -68,12 +68,12 @@
 
     .line 11
     .line 12
-    invoke-virtual {p0, v2, v1, v0}, Ljava/lang/StringBuilder;->append([CII)Ljava/lang/StringBuilder;
+    invoke-virtual {p1, v2, v1, v0}, Ljava/lang/StringBuilder;->append([CII)Ljava/lang/StringBuilder;
 
     .line 13
     .line 14
     .line 15
-    sub-int/2addr p1, v0
+    sub-int/2addr p0, v0
 
     .line 16
     goto :goto_0
@@ -212,7 +212,7 @@
     .line 59
     .line 60
     .line 61
-    invoke-static {p0, p1}, Landroidx/datastore/preferences/protobuf/m0;->a(Ljava/lang/StringBuilder;I)V
+    invoke-static {p1, p0}, Landroidx/datastore/preferences/protobuf/m0;->a(ILjava/lang/StringBuilder;)V
 
     .line 62
     .line 63
@@ -397,7 +397,7 @@
     .line 151
     .line 152
     .line 153
-    invoke-static {p1}, Lm6/b;->o(Landroidx/datastore/preferences/protobuf/g;)Ljava/lang/String;
+    invoke-static {p1}, Lcom/bumptech/glide/c;->o(Landroidx/datastore/preferences/protobuf/g;)Ljava/lang/String;
 
     .line 154
     .line 155
@@ -436,7 +436,7 @@
 
     .line 172
     .line 173
-    invoke-static {p3}, Lm6/b;->o(Landroidx/datastore/preferences/protobuf/g;)Ljava/lang/String;
+    invoke-static {p3}, Lcom/bumptech/glide/c;->o(Landroidx/datastore/preferences/protobuf/g;)Ljava/lang/String;
 
     .line 174
     .line 175
@@ -501,7 +501,7 @@
     .line 205
     .line 206
     .line 207
-    invoke-static {p0, p1}, Landroidx/datastore/preferences/protobuf/m0;->a(Ljava/lang/StringBuilder;I)V
+    invoke-static {p1, p0}, Landroidx/datastore/preferences/protobuf/m0;->a(ILjava/lang/StringBuilder;)V
 
     .line 208
     .line 209
@@ -575,7 +575,7 @@
     .line 244
     .line 245
     .line 246
-    invoke-static {p0, p1}, Landroidx/datastore/preferences/protobuf/m0;->a(Ljava/lang/StringBuilder;I)V
+    invoke-static {p1, p0}, Landroidx/datastore/preferences/protobuf/m0;->a(ILjava/lang/StringBuilder;)V
 
     .line 247
     .line 248
@@ -931,7 +931,7 @@
     move-result v7
 
     .line 153
-    if-eqz v7, :cond_17
+    if-eqz v7, :cond_18
 
     .line 154
     .line 155
@@ -1035,152 +1035,151 @@
     move-result-object v15
 
     .line 205
-    const-class v13, Ljava/util/List;
+    move/from16 v16, v13
 
     .line 206
     .line 207
-    invoke-virtual {v15, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    const-class v13, Ljava/util/List;
 
     .line 208
     .line 209
+    invoke-virtual {v15, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
     .line 210
+    .line 211
+    .line 212
     move-result v13
 
-    .line 211
-    if-eqz v13, :cond_9
-
-    .line 212
     .line 213
-    const/4 v7, 0x4
+    if-eqz v13, :cond_a
 
     .line 214
-    invoke-static {v7, v8, v9}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
-
     .line 215
+    invoke-virtual {v9}, Ljava/lang/String;->length()I
+
     .line 216
     .line 217
-    move-result-object v7
-
     .line 218
-    new-array v9, v8, [Ljava/lang/Object;
+    move-result v7
 
     .line 219
-    .line 220
-    invoke-static {v14, v0, v9}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
+    add-int/lit8 v7, v7, -0x4
 
+    .line 220
     .line 221
+    invoke-virtual {v9, v8, v7}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
     .line 222
     .line 223
-    move-result-object v9
-
     .line 224
-    invoke-static {v1, v2, v7, v9}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
+    move-result-object v7
 
     .line 225
+    new-array v9, v8, [Ljava/lang/Object;
+
     .line 226
     .line 227
-    :cond_8
-    :goto_3
-    const/4 v13, 0x3
+    invoke-static {v14, v0, v9}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 228
-    goto :goto_2
-
     .line 229
-    :cond_9
-    const-string v13, "Map"
-
     .line 230
+    move-result-object v9
+
     .line 231
-    invoke-virtual {v9, v13}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
+    invoke-static {v1, v2, v7, v9}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
 
     .line 232
     .line 233
     .line 234
-    move-result v14
+    :cond_8
+    :goto_3
+    move/from16 v13, v16
 
     .line 235
-    if-eqz v14, :cond_a
-
     .line 236
+    goto :goto_2
+
     .line 237
-    invoke-virtual {v9, v13}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+    :cond_9
+    move/from16 v16, v13
 
     .line 238
     .line 239
-    .line 240
-    move-result v13
+    :cond_a
+    const-string v13, "Map"
 
+    .line 240
     .line 241
-    if-nez v13, :cond_a
+    invoke-virtual {v9, v13}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
     .line 242
     .line 243
-    invoke-interface {v7}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
-
     .line 244
-    .line 245
-    .line 246
-    move-result-object v13
+    move-result v14
 
+    .line 245
+    if-eqz v14, :cond_b
+
+    .line 246
     .line 247
-    check-cast v13, Ljava/lang/reflect/Method;
+    invoke-virtual {v9, v13}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
     .line 248
     .line 249
-    if-eqz v13, :cond_a
-
     .line 250
+    move-result v13
+
     .line 251
-    invoke-virtual {v13}, Ljava/lang/reflect/Method;->getReturnType()Ljava/lang/Class;
+    if-nez v13, :cond_b
 
     .line 252
     .line 253
+    invoke-interface {v7}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
     .line 254
-    move-result-object v14
-
     .line 255
-    const-class v15, Ljava/util/Map;
-
     .line 256
+    move-result-object v13
+
     .line 257
-    invoke-virtual {v14, v15}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    check-cast v13, Ljava/lang/reflect/Method;
 
     .line 258
     .line 259
-    .line 260
-    move-result v14
+    if-eqz v13, :cond_b
 
+    .line 260
     .line 261
-    if-eqz v14, :cond_a
+    invoke-virtual {v13}, Ljava/lang/reflect/Method;->getReturnType()Ljava/lang/Class;
 
     .line 262
     .line 263
-    const-class v14, Ljava/lang/Deprecated;
-
     .line 264
+    move-result-object v14
+
     .line 265
-    invoke-virtual {v13, v14}, Ljava/lang/reflect/AccessibleObject;->isAnnotationPresent(Ljava/lang/Class;)Z
+    const-class v15, Ljava/util/Map;
 
     .line 266
     .line 267
+    invoke-virtual {v14, v15}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
     .line 268
+    .line 269
+    .line 270
     move-result v14
 
-    .line 269
-    if-nez v14, :cond_a
-
-    .line 270
     .line 271
-    invoke-virtual {v13}, Ljava/lang/reflect/Method;->getModifiers()I
+    if-eqz v14, :cond_b
 
     .line 272
     .line 273
-    .line 274
-    move-result v14
+    const-class v14, Ljava/lang/Deprecated;
 
+    .line 274
     .line 275
-    invoke-static {v14}, Ljava/lang/reflect/Modifier;->isPublic(I)Z
+    invoke-virtual {v13, v14}, Ljava/lang/reflect/AccessibleObject;->isAnnotationPresent(Ljava/lang/Class;)Z
 
     .line 276
     .line 277
@@ -1188,591 +1187,620 @@
     move-result v14
 
     .line 279
-    if-eqz v14, :cond_a
+    if-nez v14, :cond_b
 
     .line 280
     .line 281
-    const/4 v14, 0x3
+    invoke-virtual {v13}, Ljava/lang/reflect/Method;->getModifiers()I
 
     .line 282
-    invoke-static {v14, v8, v9}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
-
     .line 283
     .line 284
+    move-result v14
+
     .line 285
-    move-result-object v7
+    invoke-static {v14}, Ljava/lang/reflect/Modifier;->isPublic(I)Z
 
     .line 286
-    new-array v9, v8, [Ljava/lang/Object;
-
     .line 287
     .line 288
-    invoke-static {v13, v0, v9}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
+    move-result v14
 
     .line 289
+    if-eqz v14, :cond_b
+
     .line 290
     .line 291
-    move-result-object v9
+    invoke-virtual {v9}, Ljava/lang/String;->length()I
 
     .line 292
-    invoke-static {v1, v2, v7, v9}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
-
     .line 293
     .line 294
+    move-result v7
+
     .line 295
-    goto :goto_3
+    add-int/lit8 v7, v7, -0x3
 
     .line 296
-    :cond_a
-    invoke-virtual {v12, v9}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
     .line 297
+    invoke-virtual {v9, v8, v7}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
     .line 298
     .line 299
-    move-result-object v13
-
     .line 300
-    invoke-virtual {v3, v13}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
+    move-result-object v7
 
     .line 301
+    new-array v9, v8, [Ljava/lang/Object;
+
     .line 302
     .line 303
-    move-result v13
+    invoke-static {v13, v0, v9}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 304
-    if-nez v13, :cond_b
-
     .line 305
     .line 306
-    :goto_4
-    goto :goto_3
+    move-result-object v9
 
     .line 307
-    :cond_b
-    const-string v13, "Bytes"
+    invoke-static {v1, v2, v7, v9}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
 
     .line 308
     .line 309
-    invoke-virtual {v9, v13}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
-
     .line 310
+    goto :goto_3
+
     .line 311
+    :cond_b
+    invoke-virtual {v12, v9}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
     .line 312
-    move-result v13
-
     .line 313
-    if-eqz v13, :cond_c
-
     .line 314
+    move-result-object v13
+
     .line 315
-    new-instance v13, Ljava/lang/StringBuilder;
+    invoke-virtual {v3, v13}, Ljava/util/HashSet;->contains(Ljava/lang/Object;)Z
 
     .line 316
     .line 317
-    invoke-direct {v13, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 318
+    move-result v13
+
     .line 319
+    if-nez v13, :cond_c
+
     .line 320
-    invoke-virtual {v9}, Ljava/lang/String;->length()I
-
     .line 321
-    .line 322
-    .line 323
-    move-result v14
+    :goto_4
+    goto :goto_3
 
+    .line 322
+    :cond_c
+    const-string v13, "Bytes"
+
+    .line 323
     .line 324
-    add-int/lit8 v14, v14, -0x5
+    invoke-virtual {v9, v13}, Ljava/lang/String;->endsWith(Ljava/lang/String;)Z
 
     .line 325
     .line 326
-    invoke-virtual {v9, v8, v14}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
     .line 327
-    .line 328
-    .line 329
-    move-result-object v14
+    move-result v13
 
+    .line 328
+    if-eqz v13, :cond_d
+
+    .line 329
     .line 330
-    invoke-virtual {v13, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    new-instance v13, Ljava/lang/StringBuilder;
 
     .line 331
     .line 332
-    .line 333
-    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    invoke-direct {v13, v10}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 333
     .line 334
     .line 335
+    invoke-virtual {v9}, Ljava/lang/String;->length()I
+
     .line 336
-    move-result-object v13
-
     .line 337
-    invoke-virtual {v5, v13}, Ljava/util/TreeMap;->containsKey(Ljava/lang/Object;)Z
-
     .line 338
-    .line 339
-    .line 340
-    move-result v13
+    move-result v14
 
+    .line 339
+    add-int/lit8 v14, v14, -0x5
+
+    .line 340
     .line 341
-    if-eqz v13, :cond_c
+    invoke-virtual {v9, v8, v14}, Ljava/lang/String;->substring(II)Ljava/lang/String;
 
     .line 342
     .line 343
-    goto :goto_4
-
     .line 344
-    :cond_c
-    invoke-interface {v7}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+    move-result-object v14
 
     .line 345
+    invoke-virtual {v13, v14}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
     .line 346
     .line 347
-    move-result-object v7
-
     .line 348
-    check-cast v7, Ljava/lang/reflect/Method;
+    invoke-virtual {v13}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 349
     .line 350
-    invoke-virtual {v11, v9}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
-
     .line 351
+    move-result-object v13
+
     .line 352
+    invoke-virtual {v5, v13}, Ljava/util/TreeMap;->containsKey(Ljava/lang/Object;)Z
+
     .line 353
-    move-result-object v13
-
     .line 354
-    invoke-virtual {v4, v13}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
     .line 355
-    .line 356
-    .line 357
-    move-result-object v13
+    move-result v13
 
+    .line 356
+    if-eqz v13, :cond_d
+
+    .line 357
     .line 358
-    check-cast v13, Ljava/lang/reflect/Method;
+    goto :goto_4
 
     .line 359
-    .line 360
-    if-eqz v7, :cond_8
+    :cond_d
+    invoke-interface {v7}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
 
+    .line 360
     .line 361
     .line 362
-    new-array v14, v8, [Ljava/lang/Object;
-
-    .line 363
-    .line 364
-    invoke-static {v7, v0, v14}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 365
-    .line 366
-    .line 367
     move-result-object v7
 
+    .line 363
+    check-cast v7, Ljava/lang/reflect/Method;
+
+    .line 364
+    .line 365
+    invoke-virtual {v11, v9}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 366
+    .line 367
     .line 368
-    if-nez v13, :cond_16
+    move-result-object v13
 
     .line 369
-    .line 370
-    instance-of v13, v7, Ljava/lang/Boolean;
+    invoke-virtual {v4, v13}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 370
     .line 371
     .line 372
-    const/4 v14, 0x1
+    move-result-object v13
 
     .line 373
-    if-eqz v13, :cond_d
+    check-cast v13, Ljava/lang/reflect/Method;
 
     .line 374
     .line 375
-    move-object v13, v7
+    if-eqz v7, :cond_8
 
     .line 376
-    check-cast v13, Ljava/lang/Boolean;
-
     .line 377
-    .line 378
-    invoke-virtual {v13}, Ljava/lang/Boolean;->booleanValue()Z
+    new-array v14, v8, [Ljava/lang/Object;
 
+    .line 378
     .line 379
+    invoke-static {v7, v0, v14}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 380
     .line 381
-    move-result v13
-
     .line 382
-    xor-int/2addr v13, v14
+    move-result-object v7
 
     .line 383
-    goto/16 :goto_6
+    if-nez v13, :cond_17
 
     .line 384
     .line 385
-    :cond_d
-    instance-of v13, v7, Ljava/lang/Integer;
+    instance-of v13, v7, Ljava/lang/Boolean;
 
     .line 386
     .line 387
-    if-eqz v13, :cond_f
+    const/4 v14, 0x1
 
     .line 388
+    if-eqz v13, :cond_e
+
     .line 389
+    .line 390
     move-object v13, v7
 
-    .line 390
-    check-cast v13, Ljava/lang/Integer;
-
     .line 391
-    .line 392
-    invoke-virtual {v13}, Ljava/lang/Integer;->intValue()I
+    check-cast v13, Ljava/lang/Boolean;
 
+    .line 392
     .line 393
+    invoke-virtual {v13}, Ljava/lang/Boolean;->booleanValue()Z
+
     .line 394
     .line 395
+    .line 396
     move-result v13
 
-    .line 396
-    if-nez v13, :cond_e
-
     .line 397
+    xor-int/2addr v13, v14
+
     .line 398
-    :goto_5
-    move v13, v14
+    goto/16 :goto_6
 
     .line 399
-    goto :goto_6
-
     .line 400
     :cond_e
-    move v13, v8
+    instance-of v13, v7, Ljava/lang/Integer;
 
     .line 401
-    goto :goto_6
-
     .line 402
-    :cond_f
-    instance-of v13, v7, Ljava/lang/Float;
+    if-eqz v13, :cond_10
 
     .line 403
     .line 404
-    if-eqz v13, :cond_10
-
-    .line 405
-    .line 406
     move-object v13, v7
 
+    .line 405
+    check-cast v13, Ljava/lang/Integer;
+
+    .line 406
     .line 407
-    check-cast v13, Ljava/lang/Float;
+    invoke-virtual {v13}, Ljava/lang/Integer;->intValue()I
 
     .line 408
     .line 409
-    invoke-virtual {v13}, Ljava/lang/Float;->floatValue()F
-
     .line 410
-    .line 411
-    .line 412
     move-result v13
 
+    .line 411
+    if-nez v13, :cond_f
+
+    .line 412
     .line 413
-    invoke-static {v13}, Ljava/lang/Float;->floatToRawIntBits(F)I
+    :goto_5
+    move v13, v14
 
     .line 414
+    goto :goto_6
+
     .line 415
+    :cond_f
+    move v13, v8
+
     .line 416
-    move-result v13
+    goto :goto_6
 
     .line 417
-    if-nez v13, :cond_e
+    :cond_10
+    instance-of v13, v7, Ljava/lang/Float;
 
     .line 418
     .line 419
-    goto :goto_5
+    if-eqz v13, :cond_11
 
     .line 420
-    :cond_10
-    instance-of v13, v7, Ljava/lang/Double;
-
     .line 421
+    move-object v13, v7
+
     .line 422
-    if-eqz v13, :cond_11
+    check-cast v13, Ljava/lang/Float;
 
     .line 423
     .line 424
-    move-object v13, v7
+    invoke-virtual {v13}, Ljava/lang/Float;->floatValue()F
 
     .line 425
-    check-cast v13, Ljava/lang/Double;
-
     .line 426
     .line 427
-    invoke-virtual {v13}, Ljava/lang/Double;->doubleValue()D
+    move-result v13
 
     .line 428
+    invoke-static {v13}, Ljava/lang/Float;->floatToRawIntBits(F)I
+
     .line 429
     .line 430
-    move-result-wide v17
-
     .line 431
-    invoke-static/range {v17 .. v18}, Ljava/lang/Double;->doubleToRawLongBits(D)J
+    move-result v13
 
     .line 432
+    if-nez v13, :cond_f
+
     .line 433
     .line 434
-    move-result-wide v17
+    goto :goto_5
 
     .line 435
-    const-wide/16 v19, 0x0
+    :cond_11
+    instance-of v13, v7, Ljava/lang/Double;
 
     .line 436
     .line 437
-    cmp-long v13, v17, v19
+    if-eqz v13, :cond_12
 
     .line 438
     .line 439
-    if-nez v13, :cond_e
+    move-object v13, v7
 
     .line 440
-    .line 441
-    goto :goto_5
+    check-cast v13, Ljava/lang/Double;
 
+    .line 441
     .line 442
-    :cond_11
-    instance-of v13, v7, Ljava/lang/String;
+    invoke-virtual {v13}, Ljava/lang/Double;->doubleValue()D
 
     .line 443
     .line 444
-    if-eqz v13, :cond_12
-
     .line 445
+    move-result-wide v17
+
     .line 446
-    const-string v13, ""
+    invoke-static/range {v17 .. v18}, Ljava/lang/Double;->doubleToRawLongBits(D)J
 
     .line 447
     .line 448
-    invoke-virtual {v7, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
     .line 449
-    .line 450
-    .line 451
-    move-result v13
+    move-result-wide v17
 
+    .line 450
+    const-wide/16 v19, 0x0
+
+    .line 451
     .line 452
-    goto :goto_6
+    cmp-long v13, v17, v19
 
     .line 453
-    :cond_12
-    instance-of v13, v7, Landroidx/datastore/preferences/protobuf/g;
-
     .line 454
-    .line 455
-    if-eqz v13, :cond_13
+    if-nez v13, :cond_f
 
+    .line 455
     .line 456
+    goto :goto_5
+
     .line 457
-    sget-object v13, Landroidx/datastore/preferences/protobuf/g;->h:Landroidx/datastore/preferences/protobuf/g;
+    :cond_12
+    instance-of v13, v7, Ljava/lang/String;
 
     .line 458
     .line 459
-    invoke-virtual {v7, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    if-eqz v13, :cond_13
 
     .line 460
     .line 461
-    .line 462
-    move-result v13
+    const-string v13, ""
 
+    .line 462
     .line 463
-    goto :goto_6
+    invoke-virtual {v7, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     .line 464
-    :cond_13
-    instance-of v13, v7, Landroidx/datastore/preferences/protobuf/a;
-
     .line 465
     .line 466
-    if-eqz v13, :cond_14
+    move-result v13
 
     .line 467
+    goto :goto_6
+
     .line 468
-    move-object v13, v7
+    :cond_13
+    instance-of v13, v7, Landroidx/datastore/preferences/protobuf/g;
 
     .line 469
-    check-cast v13, Landroidx/datastore/preferences/protobuf/a;
-
     .line 470
+    if-eqz v13, :cond_14
+
     .line 471
-    check-cast v13, Landroidx/datastore/preferences/protobuf/w;
-
     .line 472
-    .line 473
-    const/4 v15, 0x6
+    sget-object v13, Landroidx/datastore/preferences/protobuf/g;->h:Landroidx/datastore/preferences/protobuf/g;
 
+    .line 473
     .line 474
-    invoke-virtual {v13, v15}, Landroidx/datastore/preferences/protobuf/w;->c(I)Ljava/lang/Object;
+    invoke-virtual {v7, v13}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
 
     .line 475
     .line 476
     .line 477
-    move-result-object v13
-
-    .line 478
-    check-cast v13, Landroidx/datastore/preferences/protobuf/w;
-
-    .line 479
-    .line 480
-    if-ne v7, v13, :cond_e
-
-    .line 481
-    .line 482
-    goto :goto_5
-
-    .line 483
-    :cond_14
-    instance-of v13, v7, Ljava/lang/Enum;
-
-    .line 484
-    .line 485
-    if-eqz v13, :cond_e
-
-    .line 486
-    .line 487
-    move-object v13, v7
-
-    .line 488
-    check-cast v13, Ljava/lang/Enum;
-
-    .line 489
-    .line 490
-    invoke-virtual {v13}, Ljava/lang/Enum;->ordinal()I
-
-    .line 491
-    .line 492
-    .line 493
     move-result v13
 
-    .line 494
-    if-nez v13, :cond_e
+    .line 478
+    goto :goto_6
 
-    .line 495
-    .line 496
-    goto :goto_5
+    .line 479
+    :cond_14
+    instance-of v13, v7, Landroidx/datastore/preferences/protobuf/a;
 
-    .line 497
-    :goto_6
-    if-nez v13, :cond_15
+    .line 480
+    .line 481
+    if-eqz v13, :cond_15
 
-    .line 498
-    .line 499
-    goto :goto_7
+    .line 482
+    .line 483
+    move-object v13, v7
 
-    .line 500
-    :cond_15
-    move v14, v8
+    .line 484
+    check-cast v13, Landroidx/datastore/preferences/protobuf/a;
 
-    .line 501
-    goto :goto_7
+    .line 485
+    .line 486
+    check-cast v13, Landroidx/datastore/preferences/protobuf/w;
 
-    .line 502
-    :cond_16
-    new-array v14, v8, [Ljava/lang/Object;
+    .line 487
+    .line 488
+    const/4 v15, 0x6
 
-    .line 503
-    .line 504
-    invoke-static {v13, v0, v14}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
+    .line 489
+    invoke-virtual {v13, v15}, Landroidx/datastore/preferences/protobuf/w;->c(I)Ljava/lang/Object;
 
-    .line 505
-    .line 506
-    .line 507
+    .line 490
+    .line 491
+    .line 492
     move-result-object v13
 
+    .line 493
+    check-cast v13, Landroidx/datastore/preferences/protobuf/w;
+
+    .line 494
+    .line 495
+    if-ne v7, v13, :cond_f
+
+    .line 496
+    .line 497
+    goto :goto_5
+
+    .line 498
+    :cond_15
+    instance-of v13, v7, Ljava/lang/Enum;
+
+    .line 499
+    .line 500
+    if-eqz v13, :cond_f
+
+    .line 501
+    .line 502
+    move-object v13, v7
+
+    .line 503
+    check-cast v13, Ljava/lang/Enum;
+
+    .line 504
+    .line 505
+    invoke-virtual {v13}, Ljava/lang/Enum;->ordinal()I
+
+    .line 506
+    .line 507
     .line 508
-    check-cast v13, Ljava/lang/Boolean;
+    move-result v13
 
     .line 509
+    if-nez v13, :cond_f
+
     .line 510
-    invoke-virtual {v13}, Ljava/lang/Boolean;->booleanValue()Z
-
     .line 511
-    .line 512
-    .line 513
-    move-result v14
+    goto :goto_5
 
+    .line 512
+    :goto_6
+    if-nez v13, :cond_16
+
+    .line 513
     .line 514
-    :goto_7
-    if-eqz v14, :cond_8
+    goto :goto_7
 
     .line 515
+    :cond_16
+    move v14, v8
+
     .line 516
-    invoke-static {v1, v2, v9, v7}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
+    goto :goto_7
 
     .line 517
+    :cond_17
+    new-array v14, v8, [Ljava/lang/Object;
+
     .line 518
     .line 519
-    goto/16 :goto_3
+    invoke-static {v13, v0, v14}, Landroidx/datastore/preferences/protobuf/w;->e(Ljava/lang/reflect/Method;Landroidx/datastore/preferences/protobuf/w;[Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 520
     .line 521
-    :cond_17
-    iget-object v0, v0, Landroidx/datastore/preferences/protobuf/w;->unknownFields:Landroidx/datastore/preferences/protobuf/c1;
-
     .line 522
+    move-result-object v13
+
     .line 523
-    if-eqz v0, :cond_18
+    check-cast v13, Ljava/lang/Boolean;
 
     .line 524
     .line 525
-    :goto_8
-    iget v3, v0, Landroidx/datastore/preferences/protobuf/c1;->a:I
+    invoke-virtual {v13}, Ljava/lang/Boolean;->booleanValue()Z
 
     .line 526
     .line 527
-    if-ge v8, v3, :cond_18
-
     .line 528
+    move-result v14
+
     .line 529
-    iget-object v3, v0, Landroidx/datastore/preferences/protobuf/c1;->b:[I
+    :goto_7
+    if-eqz v14, :cond_8
 
     .line 530
     .line 531
-    aget v3, v3, v8
+    invoke-static {v1, v2, v9, v7}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
 
     .line 532
     .line 533
-    const/16 v16, 0x3
-
     .line 534
+    goto/16 :goto_3
+
     .line 535
-    ushr-int/lit8 v3, v3, 0x3
-
     .line 536
-    .line 537
-    invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+    :cond_18
+    move/from16 v16, v13
 
+    .line 537
     .line 538
+    iget-object v0, v0, Landroidx/datastore/preferences/protobuf/w;->unknownFields:Landroidx/datastore/preferences/protobuf/c1;
+
     .line 539
     .line 540
-    move-result-object v3
+    if-eqz v0, :cond_19
 
     .line 541
-    iget-object v4, v0, Landroidx/datastore/preferences/protobuf/c1;->c:[Ljava/lang/Object;
-
     .line 542
+    :goto_8
+    iget v3, v0, Landroidx/datastore/preferences/protobuf/c1;->a:I
+
     .line 543
-    aget-object v4, v4, v8
-
     .line 544
-    .line 545
-    invoke-static {v1, v2, v3, v4}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
+    if-ge v8, v3, :cond_19
 
+    .line 545
     .line 546
+    iget-object v3, v0, Landroidx/datastore/preferences/protobuf/c1;->b:[I
+
     .line 547
     .line 548
-    add-int/lit8 v8, v8, 0x1
+    aget v3, v3, v8
 
     .line 549
     .line 550
-    goto :goto_8
+    ushr-int/lit8 v3, v3, 0x3
 
     .line 551
-    :cond_18
+    .line 552
+    invoke-static {v3}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 553
+    .line 554
+    .line 555
+    move-result-object v3
+
+    .line 556
+    iget-object v4, v0, Landroidx/datastore/preferences/protobuf/c1;->c:[Ljava/lang/Object;
+
+    .line 557
+    .line 558
+    aget-object v4, v4, v8
+
+    .line 559
+    .line 560
+    invoke-static {v1, v2, v3, v4}, Landroidx/datastore/preferences/protobuf/m0;->b(Ljava/lang/StringBuilder;ILjava/lang/String;Ljava/lang/Object;)V
+
+    .line 561
+    .line 562
+    .line 563
+    add-int/lit8 v8, v8, 0x1
+
+    .line 564
+    .line 565
+    goto :goto_8
+
+    .line 566
+    :cond_19
     return-void
 .end method

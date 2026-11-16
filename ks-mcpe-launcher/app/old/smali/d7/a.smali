@@ -1,404 +1,524 @@
-.class public final synthetic Ld7/a;
+.class public final Ld7/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ljava/util/Comparator;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic c:I
+.field public a:Ljava/lang/String;
 
 
 # direct methods
-.method public synthetic constructor <init>(I)V
-    .locals 0
+.method public static a(Lkd/d;Lkd/e;)V
+    .locals 2
 
     .line 1
-    iput p1, p0, Ld7/a;->c:I
+    iget-object v0, p1, Lkd/e;->b:Ljava/lang/Object;
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    check-cast v0, Ljava/lang/String;
 
     .line 4
     .line 5
+    if-eqz v0, :cond_0
+
     .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final compare(Ljava/lang/Object;Ljava/lang/Object;)I
-    .locals 4
-
-    .line 1
-    iget v0, p0, Ld7/a;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    check-cast p1, La7/q1;
-
     .line 7
+    const-string v1, "X-CRASHLYTICS-GOOGLE-APP-ID"
+
     .line 8
-    check-cast p2, La7/q1;
-
     .line 9
-    .line 10
-    check-cast p1, La7/f0;
+    invoke-virtual {p0, v1, v0}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
+    .line 10
     .line 11
     .line 12
-    iget-object p1, p1, La7/f0;->a:Ljava/lang/String;
+    :cond_0
+    const-string v0, "X-CRASHLYTICS-API-CLIENT-TYPE"
 
     .line 13
     .line 14
-    check-cast p2, La7/f0;
+    const-string v1, "android"
 
     .line 15
     .line 16
-    iget-object p2, p2, La7/f0;->a:Ljava/lang/String;
+    invoke-virtual {p0, v0, v1}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 17
     .line 18
-    invoke-virtual {p1, p2}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
-
     .line 19
+    const-string v0, "X-CRASHLYTICS-API-CLIENT-VERSION"
+
     .line 20
     .line 21
-    move-result p1
+    const-string v1, "20.0.6"
 
     .line 22
-    return p1
-
     .line 23
-    :pswitch_0
-    check-cast p1, Ljava/io/File;
+    invoke-virtual {p0, v0, v1}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 24
     .line 25
-    check-cast p2, Ljava/io/File;
-
     .line 26
-    .line 27
-    invoke-virtual {p2}, Ljava/io/File;->lastModified()J
+    const-string v0, "Accept"
 
+    .line 27
     .line 28
+    const-string v1, "application/json"
+
     .line 29
     .line 30
-    move-result-wide v0
+    invoke-virtual {p0, v0, v1}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 31
-    invoke-virtual {p1}, Ljava/io/File;->lastModified()J
-
     .line 32
     .line 33
-    .line 34
-    move-result-wide p1
+    iget-object v0, p1, Lkd/e;->c:Ljava/lang/Object;
 
+    .line 34
     .line 35
-    invoke-static {v0, v1, p1, p2}, Ljava/lang/Long;->compare(JJ)I
+    check-cast v0, Ljava/lang/String;
 
     .line 36
     .line 37
-    .line 38
-    move-result p1
+    if-eqz v0, :cond_1
 
+    .line 38
     .line 39
-    return p1
+    const-string v1, "X-CRASHLYTICS-DEVICE-MODEL"
 
     .line 40
-    :pswitch_1
-    check-cast p1, Lorg/levimc/launcher/util/WallpaperFolder$Image;
-
     .line 41
-    .line 42
-    check-cast p2, Lorg/levimc/launcher/util/WallpaperFolder$Image;
+    invoke-virtual {p0, v1, v0}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
+    .line 42
     .line 43
     .line 44
-    invoke-static {p1, p2}, Lorg/levimc/launcher/util/WallpaperFolder;->f(Lorg/levimc/launcher/util/WallpaperFolder$Image;Lorg/levimc/launcher/util/WallpaperFolder$Image;)I
+    :cond_1
+    iget-object v0, p1, Lkd/e;->d:Ljava/io/Serializable;
 
     .line 45
     .line 46
-    .line 47
-    move-result p1
+    check-cast v0, Ljava/lang/String;
 
+    .line 47
     .line 48
-    return p1
+    if-eqz v0, :cond_2
 
     .line 49
-    :pswitch_2
-    check-cast p1, Ljava/lang/String;
-
     .line 50
+    const-string v1, "X-CRASHLYTICS-OS-BUILD-VERSION"
+
     .line 51
-    check-cast p2, Ljava/lang/String;
-
     .line 52
-    .line 53
-    invoke-virtual {p1, p2}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
+    invoke-virtual {p0, v1, v0}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
+    .line 53
     .line 54
     .line 55
-    .line 56
-    move-result p1
+    :cond_2
+    iget-object v0, p1, Lkd/e;->e:Ljava/lang/Object;
 
+    .line 56
     .line 57
-    return p1
+    check-cast v0, Ljava/lang/String;
 
     .line 58
-    :pswitch_3
-    check-cast p1, Ljava/lang/String;
-
     .line 59
+    if-eqz v0, :cond_3
+
     .line 60
-    check-cast p2, Ljava/lang/String;
-
     .line 61
-    .line 62
-    invoke-static {p1, p2}, Lorg/levimc/launcher/ui/dialogs/gameversionselect/VersionUtil;->a(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "X-CRASHLYTICS-OS-DISPLAY-VERSION"
 
+    .line 62
     .line 63
+    invoke-virtual {p0, v1, v0}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
+
     .line 64
     .line 65
-    move-result p1
-
     .line 66
-    return p1
+    :cond_3
+    iget-object p1, p1, Lkd/e;->f:Ljava/lang/Object;
 
     .line 67
-    :pswitch_4
-    check-cast p1, Lorg/levimc/launcher/core/play/GameRelease;
-
     .line 68
+    check-cast p1, Lv6/x;
+
     .line 69
-    check-cast p2, Lorg/levimc/launcher/core/play/GameRelease;
-
     .line 70
-    .line 71
-    invoke-static {p1, p2}, Lorg/levimc/launcher/core/play/GameRelease;->compareNewestFirst(Lorg/levimc/launcher/core/play/GameRelease;Lorg/levimc/launcher/core/play/GameRelease;)I
+    invoke-virtual {p1}, Lv6/x;->c()Lv6/c;
 
+    .line 71
     .line 72
     .line 73
+    move-result-object p1
+
     .line 74
-    move-result p1
+    iget-object p1, p1, Lv6/c;->a:Ljava/lang/String;
 
     .line 75
-    return p1
-
     .line 76
-    :pswitch_5
-    check-cast p1, Ljava/lang/String;
+    if-eqz p1, :cond_4
 
     .line 77
     .line 78
-    check-cast p2, Ljava/lang/String;
+    const-string v0, "X-CRASHLYTICS-INSTALLATION-ID"
 
     .line 79
     .line 80
-    invoke-static {p1, p2}, Lorg/levimc/launcher/core/curseforge/CurseForgeClient;->a(Ljava/lang/String;Ljava/lang/String;)I
+    invoke-virtual {p0, v0, p1}, Lkd/d;->z(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 81
     .line 82
     .line 83
-    move-result p1
+    :cond_4
+    return-void
+.end method
 
+.method public static b(Lkd/e;)Ljava/util/HashMap;
+    .locals 3
+
+    .line 1
+    new-instance v0, Ljava/util/HashMap;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v1, p0, Lkd/e;->i:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v1, Ljava/lang/String;
+
+    .line 9
+    .line 10
+    const-string v2, "build_version"
+
+    .line 11
+    .line 12
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 13
+    .line 14
+    .line 15
+    iget-object v1, p0, Lkd/e;->h:Ljava/lang/Object;
+
+    .line 16
+    .line 17
+    check-cast v1, Ljava/lang/String;
+
+    .line 18
+    .line 19
+    const-string v2, "display_version"
+
+    .line 20
+    .line 21
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 22
+    .line 23
+    .line 24
+    iget v1, p0, Lkd/e;->a:I
+
+    .line 25
+    .line 26
+    invoke-static {v1}, Ljava/lang/Integer;->toString(I)Ljava/lang/String;
+
+    .line 27
+    .line 28
+    .line 29
+    move-result-object v1
+
+    .line 30
+    const-string v2, "source"
+
+    .line 31
+    .line 32
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 33
+    .line 34
+    .line 35
+    iget-object p0, p0, Lkd/e;->g:Ljava/lang/Object;
+
+    .line 36
+    .line 37
+    check-cast p0, Ljava/lang/String;
+
+    .line 38
+    .line 39
+    invoke-static {p0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 40
+    .line 41
+    .line 42
+    move-result v1
+
+    .line 43
+    if-nez v1, :cond_0
+
+    .line 44
+    .line 45
+    const-string v1, "instance"
+
+    .line 46
+    .line 47
+    invoke-virtual {v0, v1, p0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 48
+    .line 49
+    .line 50
+    :cond_0
+    return-object v0
+.end method
+
+
+# virtual methods
+.method public c(La7/a;)Lorg/json/JSONObject;
+    .locals 6
+
+    .line 1
+    iget-object v0, p0, Ld7/a;->a:Ljava/lang/String;
+
+    .line 2
+    .line 3
+    iget v1, p1, La7/a;->b:I
+
+    .line 4
+    .line 5
+    sget-object v2, Ls6/d;->c:Ls6/d;
+
+    .line 6
+    .line 7
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 8
+    .line 9
+    const-string v4, "Settings response code was: "
+
+    .line 10
+    .line 11
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 12
+    .line 13
+    .line 14
+    invoke-virtual {v3, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 15
+    .line 16
+    .line 17
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object v3
+
+    .line 21
+    invoke-virtual {v2, v3}, Ls6/d;->i(Ljava/lang/String;)V
+
+    .line 22
+    .line 23
+    .line 24
+    const/16 v3, 0xc8
+
+    .line 25
+    .line 26
+    const/4 v4, 0x0
+
+    .line 27
+    if-eq v1, v3, :cond_2
+
+    .line 28
+    .line 29
+    const/16 v3, 0xc9
+
+    .line 30
+    .line 31
+    if-eq v1, v3, :cond_2
+
+    .line 32
+    .line 33
+    const/16 v3, 0xca
+
+    .line 34
+    .line 35
+    if-eq v1, v3, :cond_2
+
+    .line 36
+    .line 37
+    const/16 v3, 0xcb
+
+    .line 38
+    .line 39
+    if-ne v1, v3, :cond_0
+
+    .line 40
+    .line 41
+    goto :goto_0
+
+    .line 42
+    :cond_0
+    new-instance p1, Ljava/lang/StringBuilder;
+
+    .line 43
+    .line 44
+    const-string v3, "Settings request failed; (status: "
+
+    .line 45
+    .line 46
+    invoke-direct {p1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 47
+    .line 48
+    .line 49
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 50
+    .line 51
+    .line 52
+    const-string v1, ") from "
+
+    .line 53
+    .line 54
+    invoke-virtual {p1, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 55
+    .line 56
+    .line 57
+    invoke-virtual {p1, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 58
+    .line 59
+    .line 60
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 61
+    .line 62
+    .line 63
+    move-result-object p1
+
+    .line 64
+    const/4 v0, 0x6
+
+    .line 65
+    invoke-virtual {v2, v0}, Ls6/d;->c(I)Z
+
+    .line 66
+    .line 67
+    .line 68
+    move-result v0
+
+    .line 69
+    if-eqz v0, :cond_1
+
+    .line 70
+    .line 71
+    const-string v0, "FirebaseCrashlytics"
+
+    .line 72
+    .line 73
+    invoke-static {v0, p1, v4}, Landroid/util/Log;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+
+    .line 74
+    .line 75
+    .line 76
+    :cond_1
+    return-object v4
+
+    .line 77
+    :cond_2
+    :goto_0
+    iget-object p1, p1, La7/a;->c:Ljava/lang/String;
+
+    .line 78
+    .line 79
+    :try_start_0
+    new-instance v1, Lorg/json/JSONObject;
+
+    .line 80
+    .line 81
+    invoke-direct {v1, p1}, Lorg/json/JSONObject;-><init>(Ljava/lang/String;)V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 82
+    .line 83
     .line 84
-    return p1
+    return-object v1
 
     .line 85
-    :pswitch_6
-    check-cast p1, [B
+    :catch_0
+    move-exception v1
 
     .line 86
+    new-instance v3, Ljava/lang/StringBuilder;
+
     .line 87
-    check-cast p2, [B
-
     .line 88
-    .line 89
-    array-length v0, p1
+    const-string v5, "Failed to parse settings JSON from "
 
+    .line 89
     .line 90
-    array-length v1, p2
+    invoke-direct {v3, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 91
-    if-eq v0, v1, :cond_0
-
     .line 92
     .line 93
-    array-length p1, p1
+    invoke-virtual {v3, v0}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 94
-    array-length p2, p2
-
     .line 95
-    sub-int/2addr p1, p2
-
     .line 96
-    goto :goto_1
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 97
-    :cond_0
-    const/4 v0, 0x0
-
     .line 98
-    move v1, v0
-
     .line 99
-    :goto_0
-    array-length v2, p1
+    move-result-object v0
 
     .line 100
-    if-ge v1, v2, :cond_2
+    invoke-virtual {v2, v0, v1}, Ls6/d;->j(Ljava/lang/String;Ljava/lang/Exception;)V
 
     .line 101
     .line 102
-    aget-byte v2, p1, v1
-
     .line 103
+    new-instance v0, Ljava/lang/StringBuilder;
+
     .line 104
-    aget-byte v3, p2, v1
-
     .line 105
+    const-string v1, "Settings response "
+
     .line 106
-    if-eq v2, v3, :cond_1
-
     .line 107
-    .line 108
-    sub-int p1, v2, v3
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 108
     .line 109
     .line 110
-    goto :goto_1
+    invoke-virtual {v0, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 111
-    :cond_1
-    add-int/lit8 v1, v1, 0x1
-
     .line 112
     .line 113
-    goto :goto_0
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 114
-    :cond_2
-    move p1, v0
-
     .line 115
-    :goto_1
-    return p1
-
     .line 116
-    :pswitch_7
-    check-cast p1, Ljava/io/File;
+    move-result-object p1
 
     .line 117
-    .line 118
-    check-cast p2, Ljava/io/File;
+    invoke-virtual {v2, p1, v4}, Ls6/d;->j(Ljava/lang/String;Ljava/lang/Exception;)V
 
+    .line 118
     .line 119
     .line 120
-    invoke-virtual {p1}, Ljava/io/File;->getName()Ljava/lang/String;
-
-    .line 121
-    .line 122
-    .line 123
-    move-result-object p1
-
-    .line 124
-    sget v0, Ld7/c;->f:I
-
-    .line 125
-    .line 126
-    const/4 v1, 0x0
-
-    .line 127
-    invoke-virtual {p1, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    .line 128
-    .line 129
-    .line 130
-    move-result-object p1
-
-    .line 131
-    invoke-virtual {p2}, Ljava/io/File;->getName()Ljava/lang/String;
-
-    .line 132
-    .line 133
-    .line 134
-    move-result-object p2
-
-    .line 135
-    invoke-virtual {p2, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
-
-    .line 136
-    .line 137
-    .line 138
-    move-result-object p2
-
-    .line 139
-    invoke-virtual {p1, p2}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
-
-    .line 140
-    .line 141
-    .line 142
-    move-result p1
-
-    .line 143
-    return p1
-
-    .line 144
-    :pswitch_8
-    check-cast p1, Ljava/io/File;
-
-    .line 145
-    .line 146
-    check-cast p2, Ljava/io/File;
-
-    .line 147
-    .line 148
-    invoke-virtual {p2}, Ljava/io/File;->getName()Ljava/lang/String;
-
-    .line 149
-    .line 150
-    .line 151
-    move-result-object p2
-
-    .line 152
-    invoke-virtual {p1}, Ljava/io/File;->getName()Ljava/lang/String;
-
-    .line 153
-    .line 154
-    .line 155
-    move-result-object p1
-
-    .line 156
-    invoke-virtual {p2, p1}, Ljava/lang/String;->compareTo(Ljava/lang/String;)I
-
-    .line 157
-    .line 158
-    .line 159
-    move-result p1
-
-    .line 160
-    return p1
-
-    .line 161
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_8
-        :pswitch_7
-        :pswitch_6
-        :pswitch_5
-        :pswitch_4
-        :pswitch_3
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    return-object v4
 .end method

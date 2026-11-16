@@ -1,6 +1,6 @@
 .class public Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
 .super Lcom/google/android/gms/common/internal/safeparcel/AbstractSafeParcelable;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/google/android/gms/common/internal/ReflectedParcelable;
@@ -30,13 +30,15 @@
 
 
 # instance fields
-.field public final X:Ljava/util/List;
+.field public final B1:Ljava/util/HashSet;
 
-.field public final Y:Ljava/lang/String;
+.field public final X:Ljava/lang/String;
+
+.field public final Y:Ljava/util/List;
 
 .field public final Z:Ljava/lang/String;
 
-.field public final b1:Ljava/util/HashSet;
+.field public final b1:Ljava/lang/String;
 
 .field public final c:Ljava/lang/String;
 
@@ -44,15 +46,13 @@
 
 .field public final h:Ljava/lang/String;
 
-.field public final p:Ljava/lang/String;
+.field public final q:Ljava/lang/String;
 
-.field public final q:Landroid/net/Uri;
+.field public final w:Landroid/net/Uri;
 
-.field public w:Ljava/lang/String;
+.field public x:Ljava/lang/String;
 
-.field public final x:J
-
-.field public final y:Ljava/lang/String;
+.field public final y:J
 
 
 # direct methods
@@ -110,7 +110,7 @@
     .line 7
     .line 8
     .line 9
-    iput-object v0, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->b1:Ljava/util/HashSet;
+    iput-object v0, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B1:Ljava/util/HashSet;
 
     .line 10
     .line 11
@@ -126,42 +126,42 @@
 
     .line 16
     .line 17
-    iput-object p4, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->p:Ljava/lang/String;
+    iput-object p4, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->q:Ljava/lang/String;
 
     .line 18
     .line 19
-    iput-object p5, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->q:Landroid/net/Uri;
+    iput-object p5, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->w:Landroid/net/Uri;
 
     .line 20
     .line 21
-    iput-object p6, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->w:Ljava/lang/String;
+    iput-object p6, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->x:Ljava/lang/String;
 
     .line 22
     .line 23
-    iput-wide p7, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->x:J
+    iput-wide p7, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:J
 
     .line 24
     .line 25
-    iput-object p9, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:Ljava/lang/String;
+    iput-object p9, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/lang/String;
 
     .line 26
     .line 27
-    iput-object p10, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/util/List;
+    iput-object p10, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Y:Ljava/util/List;
 
     .line 28
     .line 29
-    iput-object p11, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Y:Ljava/lang/String;
+    iput-object p11, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Z:Ljava/lang/String;
 
     .line 30
     .line 31
-    iput-object p12, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Z:Ljava/lang/String;
+    iput-object p12, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->b1:Ljava/lang/String;
 
     .line 32
     .line 33
     return-void
 .end method
 
-.method public static E0(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
+.method public static C0(Ljava/lang/String;)Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;
     .locals 15
 
     .line 1
@@ -591,7 +591,7 @@
 
     .line 197
     :cond_8
-    iput-object v1, v2, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->w:Ljava/lang/String;
+    iput-object v1, v2, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->x:Ljava/lang/String;
 
     .line 198
     .line 199
@@ -600,7 +600,7 @@
 
 
 # virtual methods
-.method public final D0()Ljava/util/HashSet;
+.method public final B0()Ljava/util/HashSet;
     .locals 2
 
     .line 1
@@ -608,7 +608,7 @@
 
     .line 2
     .line 3
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/util/List;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Y:Ljava/util/List;
 
     .line 4
     .line 5
@@ -617,7 +617,7 @@
     .line 6
     .line 7
     .line 8
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->b1:Ljava/util/HashSet;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B1:Ljava/util/HashSet;
 
     .line 9
     .line 10
@@ -665,11 +665,11 @@
 
     .line 13
     .line 14
-    iget-object v0, p1, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:Ljava/lang/String;
+    iget-object v0, p1, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/lang/String;
 
     .line 15
     .line 16
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/lang/String;
 
     .line 17
     .line 18
@@ -685,7 +685,7 @@
 
     .line 23
     .line 24
-    invoke-virtual {p1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->D0()Ljava/util/HashSet;
+    invoke-virtual {p1}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B0()Ljava/util/HashSet;
 
     .line 25
     .line 26
@@ -693,7 +693,7 @@
     move-result-object p1
 
     .line 28
-    invoke-virtual {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->D0()Ljava/util/HashSet;
+    invoke-virtual {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B0()Ljava/util/HashSet;
 
     .line 29
     .line 30
@@ -732,7 +732,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:Ljava/lang/String;
+    iget-object v0, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/lang/String;
 
     .line 2
     .line 3
@@ -748,7 +748,7 @@
 
     .line 8
     .line 9
-    invoke-virtual {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->D0()Ljava/util/HashSet;
+    invoke-virtual {p0}, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->B0()Ljava/util/HashSet;
 
     .line 10
     .line 11
@@ -828,7 +828,7 @@
     const/4 v1, 0x5
 
     .line 25
-    iget-object v2, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->p:Ljava/lang/String;
+    iget-object v2, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->q:Ljava/lang/String;
 
     .line 26
     .line 27
@@ -840,7 +840,7 @@
     const/4 v1, 0x6
 
     .line 31
-    iget-object v2, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->q:Landroid/net/Uri;
+    iget-object v2, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->w:Landroid/net/Uri;
 
     .line 32
     .line 33
@@ -852,7 +852,7 @@
     const/4 p2, 0x7
 
     .line 37
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->w:Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->x:Ljava/lang/String;
 
     .line 38
     .line 39
@@ -865,7 +865,7 @@
 
     .line 43
     .line 44
-    iget-wide v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->x:J
+    iget-wide v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:J
 
     .line 45
     .line 46
@@ -878,7 +878,7 @@
 
     .line 50
     .line 51
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->y:Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/lang/String;
 
     .line 52
     .line 53
@@ -891,7 +891,7 @@
 
     .line 57
     .line 58
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->X:Ljava/util/List;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Y:Ljava/util/List;
 
     .line 59
     .line 60
@@ -904,7 +904,7 @@
 
     .line 64
     .line 65
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Y:Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Z:Ljava/lang/String;
 
     .line 66
     .line 67
@@ -917,7 +917,7 @@
 
     .line 71
     .line 72
-    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->Z:Ljava/lang/String;
+    iget-object v1, p0, Lcom/google/android/gms/auth/api/signin/GoogleSignInAccount;->b1:Ljava/lang/String;
 
     .line 73
     .line 74

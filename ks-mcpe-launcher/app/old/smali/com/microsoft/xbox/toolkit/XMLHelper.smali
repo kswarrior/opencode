@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/XMLHelper;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -50,11 +50,11 @@
 
     .line 6
     .line 7
-    new-instance v0, Lcom/google/firebase/messaging/v;
+    new-instance v0, Lcom/google/firebase/messaging/u;
 
     .line 8
     .line 9
-    new-instance v1, Lk6/g0;
+    new-instance v1, Lu2/c0;
 
     .line 10
     .line 11
@@ -62,12 +62,12 @@
 
     .line 12
     .line 13
-    invoke-direct {v1, v2}, Lk6/g0;-><init>(I)V
+    invoke-direct {v1, v2}, Lu2/c0;-><init>(I)V
 
     .line 14
     .line 15
     .line 16
-    invoke-direct {v0, v1}, Lcom/google/firebase/messaging/v;-><init>(Lk6/g0;)V
+    invoke-direct {v0, v1}, Lcom/google/firebase/messaging/u;-><init>(Lu2/c0;)V
 
     .line 17
     .line 18
@@ -351,7 +351,7 @@
     :try_start_0
     iget-object v0, p0, Lcom/microsoft/xbox/toolkit/XMLHelper;->serializer:Lorg/simpleframework/xml/Serializer;
 
-    invoke-interface {v0, p1, p2}, Lorg/simpleframework/xml/Serializer;->i(Ljava/lang/Object;Ljava/io/OutputStream;)V
+    invoke-interface {v0, p1, p2}, Lorg/simpleframework/xml/Serializer;->f(Ljava/lang/Object;Ljava/io/OutputStream;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 

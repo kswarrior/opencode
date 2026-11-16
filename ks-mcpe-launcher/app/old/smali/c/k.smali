@@ -1,6 +1,6 @@
 .class public final synthetic Lc/k;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lkotlin/jvm/functions/Function0;
@@ -52,7 +52,7 @@
     .line 6
     .line 7
     .line 8
-    sget v0, Landroidx/activity/ComponentDialog;->c:I
+    sget v0, Landroidx/activity/ComponentDialog;->w:I
 
     .line 9
     .line 10
@@ -60,14 +60,14 @@
 
     .line 11
     .line 12
-    new-instance v2, La6/d;
+    new-instance v2, Landroidx/lifecycle/z;
 
     .line 13
     .line 14
-    const/4 v3, 0x5
+    const/4 v3, 0x2
 
     .line 15
-    invoke-direct {v2, v1, v3}, La6/d;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v2, v1, v3}, Landroidx/lifecycle/z;-><init>(Ljava/lang/Object;I)V
 
     .line 16
     .line 17
@@ -81,7 +81,7 @@
 
     .line 22
     :pswitch_0
-    sget v0, Landroidx/activity/ComponentDialog;->c:I
+    sget v0, Landroidx/activity/ComponentDialog;->w:I
 
     .line 23
     .line 24
@@ -94,7 +94,7 @@
     .line 27
     .line 28
     .line 29
-    invoke-virtual {v1}, Landroidx/activity/ComponentDialog;->getNavigationEventDispatcher()Landroidx/navigationevent/NavigationEventDispatcher;
+    invoke-virtual {v1}, Landroidx/activity/ComponentDialog;->getOnBackPressedDispatcher()Landroidx/activity/OnBackPressedDispatcher;
 
     .line 30
     .line 31
@@ -102,14 +102,18 @@
     move-result-object v1
 
     .line 33
-    invoke-virtual {v1, v0}, Landroidx/navigationevent/NavigationEventDispatcher;->a(Lp1/e;)V
+    iget-object v1, v1, Landroidx/activity/OnBackPressedDispatcher;->b:Landroidx/navigationevent/NavigationEventDispatcher;
 
     .line 34
     .line 35
+    invoke-virtual {v1, v0}, Landroidx/navigationevent/NavigationEventDispatcher;->a(Lp1/e;)V
+
     .line 36
+    .line 37
+    .line 38
     return-object v0
 
-    .line 37
+    .line 39
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

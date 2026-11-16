@@ -1,6 +1,6 @@
 .class public Landroidx/core/view/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -85,7 +85,7 @@
     return p1
 .end method
 
-.method public b(Landroid/view/View;)Lng/a;
+.method public b(Landroid/view/View;)Lhf/b;
     .locals 2
 
     .line 1
@@ -105,25 +105,26 @@
 
     .line 8
     .line 9
-    new-instance v0, Lng/a;
+    new-instance v0, Lhf/b;
 
     .line 10
     .line 11
-    const/4 v1, 0x3
+    const/16 v1, 0xa
 
     .line 12
-    invoke-direct {v0, p1, v1}, Lng/a;-><init>(Ljava/lang/Object;I)V
-
     .line 13
+    invoke-direct {v0, p1, v1}, Lhf/b;-><init>(Ljava/lang/Object;I)V
+
     .line 14
     .line 15
+    .line 16
     return-object v0
 
-    .line 16
+    .line 17
     :cond_0
     const/4 p1, 0x0
 
-    .line 17
+    .line 18
     return-object p1
 .end method
 
@@ -202,7 +203,7 @@
     .locals 6
 
     .line 1
-    const v0, 0x7f0a0586
+    const v0, 0x7f0a040e
 
     .line 2
     .line 3
@@ -416,7 +417,7 @@
 
     .line 96
     .line 97
-    const v2, 0x7f0a001e
+    const v2, 0x7f0a0010
 
     .line 98
     .line 99
@@ -444,7 +445,7 @@
     move-result p2
 
     .line 111
-    const p3, 0x7f0a0587
+    const p3, 0x7f0a040f
 
     .line 112
     .line 113

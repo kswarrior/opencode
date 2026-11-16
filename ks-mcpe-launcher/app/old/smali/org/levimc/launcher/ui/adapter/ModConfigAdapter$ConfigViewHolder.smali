@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
 .super Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -214,14 +214,14 @@
     move-result-object v0
 
     .line 28
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/h;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/i;
 
     .line 29
     .line 30
     const/4 v2, 0x0
 
     .line 31
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/h;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/i;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
 
     .line 32
     .line 33
@@ -281,14 +281,14 @@
     move-result-object v0
 
     .line 62
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/h;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/i;
 
     .line 63
     .line 64
     const/4 v2, 0x1
 
     .line 65
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/h;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/i;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
 
     .line 66
     .line 67
@@ -568,7 +568,7 @@
 
     .line 124
     .line 125
-    instance-of v2, v1, Lg8/l;
+    instance-of v2, v1, Le8/l;
 
     .line 126
     .line 127
@@ -585,7 +585,7 @@
     .line 131
     .line 132
     .line 133
-    instance-of v1, v1, Lg8/n;
+    instance-of v1, v1, Le8/n;
 
     .line 134
     .line 135
@@ -597,7 +597,7 @@
 
     .line 138
     .line 139
-    invoke-virtual {v1}, Lcom/google/gson/JsonElement;->o()Ljava/lang/String;
+    invoke-virtual {v1}, Lcom/google/gson/JsonElement;->n()Ljava/lang/String;
 
     .line 140
     .line 141
@@ -625,7 +625,7 @@
 
     .line 151
     .line 152
-    invoke-virtual {v1, v2}, Lcom/google/gson/Gson;->i(Lcom/google/gson/JsonElement;)Ljava/lang/String;
+    invoke-virtual {v1, v2}, Lcom/google/gson/Gson;->h(Lcom/google/gson/JsonElement;)Ljava/lang/String;
 
     .line 153
     .line 154
@@ -648,11 +648,11 @@
     .line 160
     .line 161
     .line 162
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/f;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/g;
 
     .line 163
     .line 164
-    invoke-direct {v1, p0, p1, v0, p2}, Lorg/levimc/launcher/ui/adapter/f;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;Z)V
+    invoke-direct {v1, p0, p1, v0, p2}, Lorg/levimc/launcher/ui/adapter/g;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;Z)V
 
     .line 165
     .line 166
@@ -662,11 +662,11 @@
     .line 168
     .line 169
     .line 170
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/g;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/h;
 
     .line 171
     .line 172
-    invoke-direct {v1, p0, p1, v0, p2}, Lorg/levimc/launcher/ui/adapter/g;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;Z)V
+    invoke-direct {v1, p0, p1, v0, p2}, Lorg/levimc/launcher/ui/adapter/h;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/widget/EditText;Z)V
 
     .line 173
     .line 174
@@ -761,7 +761,7 @@
     .line 33
     .line 34
     .line 35
-    instance-of v4, v3, Lg8/n;
+    instance-of v4, v3, Le8/n;
 
     .line 36
     .line 37
@@ -769,7 +769,7 @@
 
     .line 38
     .line 39
-    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->o()Ljava/lang/String;
+    invoke-virtual {v3}, Lcom/google/gson/JsonElement;->n()Ljava/lang/String;
 
     .line 40
     .line 41
@@ -793,7 +793,7 @@
     move-result-object v4
 
     .line 50
-    invoke-virtual {v4, v3}, Lcom/google/gson/Gson;->i(Lcom/google/gson/JsonElement;)Ljava/lang/String;
+    invoke-virtual {v4, v3}, Lcom/google/gson/Gson;->h(Lcom/google/gson/JsonElement;)Ljava/lang/String;
 
     .line 51
     .line 52
@@ -1389,14 +1389,14 @@
     .line 181
     .line 182
     .line 183
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/h;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/i;
 
     .line 184
     .line 185
     const/4 v2, 0x3
 
     .line 186
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/h;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/i;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
 
     .line 187
     .line 188
@@ -1471,14 +1471,14 @@
     move-result-object v0
 
     .line 17
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/h;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/i;
 
     .line 18
     .line 19
     const/4 v2, 0x2
 
     .line 20
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/h;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/i;-><init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
 
     .line 21
     .line 22
@@ -1541,7 +1541,7 @@
 
     .line 19
     .line 20
-    invoke-virtual {v1, p1}, Lcom/google/gson/Gson;->i(Lcom/google/gson/JsonElement;)Ljava/lang/String;
+    invoke-virtual {v1, p1}, Lcom/google/gson/Gson;->h(Lcom/google/gson/JsonElement;)Ljava/lang/String;
 
     .line 21
     .line 22
@@ -1637,7 +1637,7 @@
 
     .line 15
     .line 16
-    instance-of v2, v1, Lg8/n;
+    instance-of v2, v1, Le8/n;
 
     .line 17
     .line 18
@@ -1645,7 +1645,7 @@
 
     .line 19
     .line 20
-    invoke-virtual {v1}, Lcom/google/gson/JsonElement;->e()Z
+    invoke-virtual {v1}, Lcom/google/gson/JsonElement;->d()Z
 
     .line 21
     .line 22
@@ -1673,14 +1673,14 @@
     .line 30
     .line 31
     .line 32
-    new-instance v1, Lorg/levimc/launcher/ui/adapter/e;
+    new-instance v1, Lorg/levimc/launcher/ui/adapter/f;
 
     .line 33
     .line 34
     const/4 v2, 0x0
 
     .line 35
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/e;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/adapter/f;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 36
     .line 37
@@ -1773,7 +1773,7 @@
     .line 2
     .line 3
     :try_start_0
-    new-instance p3, Lg8/n;
+    new-instance p3, Le8/n;
 
     .line 4
     .line 5
@@ -1793,7 +1793,7 @@
     move-result-object p2
 
     .line 13
-    invoke-direct {p3, p2}, Lg8/n;-><init>(Ljava/lang/Number;)V
+    invoke-direct {p3, p2}, Le8/n;-><init>(Ljava/lang/Number;)V
 
     .line 14
     .line 15
@@ -1809,11 +1809,11 @@
 
     .line 19
     :cond_0
-    new-instance p3, Lg8/n;
+    new-instance p3, Le8/n;
 
     .line 20
     .line 21
-    invoke-direct {p3, p2}, Lg8/n;-><init>(Ljava/lang/String;)V
+    invoke-direct {p3, p2}, Le8/n;-><init>(Ljava/lang/String;)V
 
     .line 22
     .line 23
@@ -1823,7 +1823,7 @@
 
     .line 25
     .line 26
-    invoke-virtual {p3, p2}, Lg8/n;->equals(Ljava/lang/Object;)Z
+    invoke-virtual {p3, p2}, Le8/n;->equals(Ljava/lang/Object;)Z
 
     .line 27
     .line 28
@@ -2034,7 +2034,7 @@
 
     .line 2
     .line 3
-    invoke-virtual {p2}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonArray;
+    invoke-virtual {p2}, Lcom/google/gson/JsonElement;->j()Lcom/google/gson/JsonArray;
 
     .line 4
     .line 5
@@ -2111,7 +2111,7 @@
 
     .line 8
     .line 9
-    invoke-virtual {p2}, Lcom/google/gson/JsonElement;->k()Lcom/google/gson/JsonArray;
+    invoke-virtual {p2}, Lcom/google/gson/JsonElement;->j()Lcom/google/gson/JsonArray;
 
     .line 10
     .line 11
@@ -2135,7 +2135,7 @@
     move-result-object p1
 
     .line 21
-    invoke-virtual {p2, p1}, Lcom/google/gson/JsonArray;->p(Lcom/google/gson/JsonElement;)V
+    invoke-virtual {p2, p1}, Lcom/google/gson/JsonArray;->o(Lcom/google/gson/JsonElement;)V
 
     .line 22
     .line 23
@@ -2335,7 +2335,7 @@
 
     .line 2
     .line 3
-    new-instance v0, Lg8/n;
+    new-instance v0, Le8/n;
 
     .line 4
     .line 5
@@ -2347,7 +2347,7 @@
     move-result-object p3
 
     .line 9
-    invoke-direct {v0, p3}, Lg8/n;-><init>(Ljava/lang/Boolean;)V
+    invoke-direct {v0, p3}, Le8/n;-><init>(Ljava/lang/Boolean;)V
 
     .line 10
     .line 11

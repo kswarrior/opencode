@@ -1,6 +1,6 @@
 .class public Lcom/google/android/datatransport/runtime/scheduling/jobscheduling/JobInfoSchedulerService;
 .super Landroid/app/job/JobService;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -114,12 +114,12 @@
     move-result-object v3
 
     .line 45
-    invoke-static {v3}, Lt3/p;->b(Landroid/content/Context;)V
+    invoke-static {v3}, Lt3/q;->b(Landroid/content/Context;)V
 
     .line 46
     .line 47
     .line 48
-    invoke-static {}, Lt3/i;->a()Lkd/e;
+    invoke-static {}, Lt3/i;->a()Lkd/d;
 
     .line 49
     .line 50
@@ -127,7 +127,7 @@
     move-result-object v3
 
     .line 52
-    invoke-virtual {v3, v0}, Lkd/e;->H(Ljava/lang/String;)V
+    invoke-virtual {v3, v0}, Lkd/d;->E(Ljava/lang/String;)V
 
     .line 53
     .line 54
@@ -140,7 +140,7 @@
     move-result-object v0
 
     .line 59
-    iput-object v0, v3, Lkd/e;->p:Ljava/lang/Object;
+    iput-object v0, v3, Lkd/d;->q:Ljava/lang/Object;
 
     .line 60
     .line 61
@@ -159,12 +159,12 @@
     move-result-object v0
 
     .line 68
-    iput-object v0, v3, Lkd/e;->h:Ljava/lang/Object;
+    iput-object v0, v3, Lkd/d;->h:Ljava/lang/Object;
 
     .line 69
     .line 70
     :cond_0
-    invoke-static {}, Lt3/p;->a()Lt3/p;
+    invoke-static {}, Lt3/q;->a()Lt3/q;
 
     .line 71
     .line 72
@@ -172,11 +172,11 @@
     move-result-object v0
 
     .line 74
-    iget-object v6, v0, Lt3/p;->d:Lf7/e;
+    iget-object v6, v0, Lt3/q;->d:Lae/h;
 
     .line 75
     .line 76
-    invoke-virtual {v3}, Lkd/e;->y()Lt3/i;
+    invoke-virtual {v3}, Lkd/d;->u()Lt3/i;
 
     .line 77
     .line 78
@@ -184,30 +184,32 @@
     move-result-object v7
 
     .line 80
-    new-instance v9, Lx6/o;
+    new-instance v9, Lxd/a;
 
     .line 81
     .line 82
-    invoke-direct {v9, p0, p1}, Lx6/o;-><init>(Lcom/google/android/datatransport/runtime/scheduling/jobscheduling/JobInfoSchedulerService;Landroid/app/job/JobParameters;)V
+    const/4 v0, 0x1
 
     .line 83
+    invoke-direct {v9, p0, p1, v0}, Lxd/a;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 84
     .line 85
-    iget-object p1, v6, Lf7/e;->e:Ljava/lang/Object;
-
     .line 86
+    iget-object p1, v6, Lae/h;->e:Ljava/lang/Object;
+
     .line 87
+    .line 88
     check-cast p1, Ljava/util/concurrent/Executor;
 
-    .line 88
     .line 89
+    .line 90
     new-instance v5, Lorg/levimc/launcher/core/minecraft/h;
 
-    .line 90
     .line 91
-    const/16 v10, 0xb
-
     .line 92
+    const/4 v10, 0x5
+
     .line 93
     invoke-direct/range {v5 .. v10}, Lorg/levimc/launcher/core/minecraft/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;ILjava/lang/Object;I)V
 

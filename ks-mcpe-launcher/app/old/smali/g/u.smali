@@ -1,35 +1,127 @@
-.class public abstract Lg/u;
+.class public final synthetic Lg/u;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Landroid/window/OnBackInvokedCallback;
+
+
+# instance fields
+.field public final synthetic a:I
+
+.field public final synthetic b:Ljava/lang/Object;
 
 
 # direct methods
-.method public static a(Landroid/os/PowerManager;)Z
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    invoke-virtual {p0}, Landroid/os/PowerManager;->isPowerSaveMode()Z
+    iput p2, p0, Lg/u;->a:I
 
     .line 2
     .line 3
-    .line 4
-    move-result p0
+    iput-object p1, p0, Lg/u;->b:Ljava/lang/Object;
 
+    .line 4
     .line 5
-    return p0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
 .end method
 
-.method public static b(Ljava/util/Locale;)Ljava/lang/String;
-    .locals 0
+
+# virtual methods
+.method public final onBackInvoked()V
+    .locals 1
 
     .line 1
-    invoke-virtual {p0}, Ljava/util/Locale;->toLanguageTag()Ljava/lang/String;
+    iget v0, p0, Lg/u;->a:I
 
     .line 2
     .line 3
-    .line 4
-    move-result-object p0
+    packed-switch v0, :pswitch_data_0
 
+    .line 4
     .line 5
-    return-object p0
+    .line 6
+    iget-object v0, p0, Lg/u;->b:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v0, Lp1/i;
+
+    .line 9
+    .line 10
+    invoke-virtual {v0}, Lp1/e;->a()V
+
+    .line 11
+    .line 12
+    .line 13
+    return-void
+
+    .line 14
+    :pswitch_0
+    iget-object v0, p0, Lg/u;->b:Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    check-cast v0, Lo5/b;
+
+    .line 17
+    .line 18
+    invoke-interface {v0}, Lo5/b;->c()V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    :pswitch_1
+    iget-object v0, p0, Lg/u;->b:Ljava/lang/Object;
+
+    .line 23
+    .line 24
+    check-cast v0, Ljava/lang/Runnable;
+
+    .line 25
+    .line 26
+    invoke-interface {v0}, Ljava/lang/Runnable;->run()V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_2
+    iget-object v0, p0, Lg/u;->b:Ljava/lang/Object;
+
+    .line 31
+    .line 32
+    check-cast v0, Landroidx/appcompat/app/a;
+
+    .line 33
+    .line 34
+    invoke-virtual {v0}, Landroidx/appcompat/app/a;->Z()Z
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    nop
+
+    .line 39
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

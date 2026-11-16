@@ -1,6 +1,6 @@
 .class public abstract Lcom/bumptech/glide/load/data/l;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/d;
@@ -13,7 +13,7 @@
 
 .field public final h:Landroid/content/ContentResolver;
 
-.field public p:Ljava/lang/Object;
+.field public q:Ljava/lang/Object;
 
 
 # direct methods
@@ -47,7 +47,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/bumptech/glide/load/data/l;->p:Ljava/lang/Object;
+    iget-object v0, p0, Lcom/bumptech/glide/load/data/l;->q:Ljava/lang/Object;
 
     .line 2
     .line 3
@@ -56,7 +56,7 @@
     .line 4
     .line 5
     :try_start_0
-    invoke-virtual {p0, v0}, Lcom/bumptech/glide/load/data/l;->c(Ljava/lang/Object;)V
+    invoke-virtual {p0, v0}, Lcom/bumptech/glide/load/data/l;->d(Ljava/lang/Object;)V
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
 
@@ -68,7 +68,14 @@
     return-void
 .end method
 
-.method public abstract c(Ljava/lang/Object;)V
+.method public final c()I
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    return v0
 .end method
 
 .method public final cancel()V
@@ -78,14 +85,7 @@
     return-void
 .end method
 
-.method public final d()I
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
+.method public abstract d(Ljava/lang/Object;)V
 .end method
 
 .method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
@@ -109,7 +109,7 @@
     move-result-object p1
 
     .line 9
-    iput-object p1, p0, Lcom/bumptech/glide/load/data/l;->p:Ljava/lang/Object;
+    iput-object p1, p0, Lcom/bumptech/glide/load/data/l;->q:Ljava/lang/Object;
 
     .line 10
     .line 11
@@ -156,7 +156,7 @@
     .line 29
     .line 30
     :cond_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
 
     .line 31
     .line 32

@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/network/HttpClientFactory;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -118,41 +118,41 @@
     iput-object v0, p0, Lcom/microsoft/xbox/toolkit/network/HttpClientFactory;->clientWithTimeoutOverride:Lcom/microsoft/xbox/toolkit/network/AbstractXLEHttpClient;
 
     .line 7
-    new-instance v1, Lpd/b;
+    new-instance v1, Lqd/b;
 
-    invoke-direct {v1}, Lpd/b;-><init>()V
+    invoke-direct {v1}, Lqd/b;-><init>()V
 
     iput-object v1, p0, Lcom/microsoft/xbox/toolkit/network/HttpClientFactory;->params:Lorg/apache/http/params/HttpParams;
 
     .line 8
-    new-instance v2, Lbd/g;
+    new-instance v2, Lcd/g;
 
-    invoke-direct {v2}, Lbd/g;-><init>()V
+    invoke-direct {v2}, Lcd/g;-><init>()V
 
     .line 9
-    new-instance v3, Lbd/c;
+    new-instance v3, Lcd/c;
 
     .line 10
-    new-instance v4, Lue/b;
+    new-instance v4, Lt5/f;
 
-    const/4 v5, 0x5
+    const/4 v5, 0x6
 
     .line 11
-    invoke-direct {v4, v5}, Lue/b;-><init>(I)V
+    invoke-direct {v4, v5}, Lt5/f;-><init>(I)V
 
     .line 12
     const-string v5, "http"
 
     const/16 v6, 0x50
 
-    invoke-direct {v3, v5, v4, v6}, Lbd/c;-><init>(Ljava/lang/String;Lbd/j;I)V
+    invoke-direct {v3, v5, v4, v6}, Lcd/c;-><init>(Ljava/lang/String;Lcd/j;I)V
 
-    invoke-virtual {v2, v3}, Lbd/g;->b(Lbd/c;)V
+    invoke-virtual {v2, v3}, Lcd/g;->b(Lcd/c;)V
 
     .line 13
-    new-instance v3, Lbd/c;
+    new-instance v3, Lcd/c;
 
-    invoke-static {}, Lcd/f;->d()Lcd/f;
+    invoke-static {}, Ldd/e;->c()Ldd/e;
 
     move-result-object v4
 
@@ -160,12 +160,12 @@
 
     const-string v7, "https"
 
-    invoke-direct {v3, v7, v4, v5}, Lbd/c;-><init>(Ljava/lang/String;Lbd/j;I)V
+    invoke-direct {v3, v7, v4, v5}, Lcd/c;-><init>(Ljava/lang/String;Lcd/j;I)V
 
-    invoke-virtual {v2, v3}, Lbd/g;->b(Lbd/c;)V
+    invoke-virtual {v2, v3}, Lcd/g;->b(Lcd/c;)V
 
     .line 14
-    sget-object v3, Lpc/m;->w:Lpc/m;
+    sget-object v3, Lqc/m;->x:Lqc/m;
 
     .line 15
     const-string v4, "http.protocol.version"
@@ -185,7 +185,7 @@
 
     const-string v4, "http.protocol.expect-continue"
 
-    invoke-virtual {v1, v3, v4}, Lpd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v1, v3, v4}, Lqd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     if-eqz p1, :cond_0
 
@@ -195,7 +195,7 @@
     :cond_0
     const-string p1, "http.protocol.handle-redirects"
 
-    invoke-virtual {v1, v3, p1}, Lpd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v1, v3, p1}, Lqd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     .line 20
     invoke-static {}, Lcom/microsoft/xbox/toolkit/network/XboxLiveEnvironment;->Instance()Lcom/microsoft/xbox/toolkit/network/XboxLiveEnvironment;
@@ -209,17 +209,17 @@
     if-eqz p1, :cond_1
 
     .line 21
-    new-instance p1, Lpc/f;
+    new-instance p1, Lqc/f;
 
     const-string v3, "itgproxy.redmond.corp.microsoft.com"
 
     .line 22
-    invoke-direct {p1, v3, v6, v0}, Lpc/f;-><init>(Ljava/lang/String;ILjava/lang/String;)V
+    invoke-direct {p1, v3, v6, v0}, Lqc/f;-><init>(Ljava/lang/String;ILjava/lang/String;)V
 
     .line 23
     const-string v0, "http.route.default-proxy"
 
-    invoke-virtual {v1, p1, v0}, Lpd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v1, p1, v0}, Lqd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     .line 24
     :cond_1
@@ -227,43 +227,43 @@
 
     const v0, 0x9c40
 
-    invoke-virtual {v1, v0, p1}, Lpd/a;->e(ILjava/lang/String;)Lpd/a;
+    invoke-virtual {v1, v0, p1}, Lqd/a;->e(ILjava/lang/String;)Lqd/a;
 
     .line 25
     const-string p1, "http.socket.timeout"
 
-    invoke-virtual {v1, v0, p1}, Lpd/a;->e(ILjava/lang/String;)Lpd/a;
+    invoke-virtual {v1, v0, p1}, Lqd/a;->e(ILjava/lang/String;)Lqd/a;
 
     const/16 p1, 0x2000
 
     .line 26
     const-string v0, "http.socket.buffer-size"
 
-    invoke-virtual {v1, p1, v0}, Lpd/a;->e(ILjava/lang/String;)Lpd/a;
+    invoke-virtual {v1, p1, v0}, Lqd/a;->e(ILjava/lang/String;)Lqd/a;
 
     .line 27
-    new-instance p1, Lzc/d;
+    new-instance p1, Lad/d;
 
     const/16 v0, 0x10
 
-    invoke-direct {p1, v0}, Lzc/d;-><init>(I)V
+    invoke-direct {p1, v0}, Lad/d;-><init>(I)V
 
     .line 28
     const-string v0, "http.conn-manager.max-per-route"
 
-    invoke-virtual {v1, p1, v0}, Lpd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v1, p1, v0}, Lqd/b;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     const/16 p1, 0x20
 
     .line 29
     const-string v0, "http.conn-manager.max-total"
 
-    invoke-virtual {v1, p1, v0}, Lpd/a;->e(ILjava/lang/String;)Lpd/a;
+    invoke-virtual {v1, p1, v0}, Lqd/a;->e(ILjava/lang/String;)Lqd/a;
 
     .line 30
-    new-instance p1, Lkd/e;
+    new-instance p1, Lld/e;
 
-    invoke-direct {p1, v1, v2}, Lkd/e;-><init>(Lpd/b;Lbd/g;)V
+    invoke-direct {p1, v1, v2}, Lld/e;-><init>(Lqd/b;Lcd/g;)V
 
     iput-object p1, p0, Lcom/microsoft/xbox/toolkit/network/HttpClientFactory;->connectionManager:Lorg/apache/http/conn/ClientConnectionManager;
 
@@ -379,7 +379,7 @@
 
     .line 41
     .line 42
-    invoke-static {v1, v2}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v1, v2}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 43
     .line 44
@@ -388,7 +388,7 @@
 
     .line 46
     .line 47
-    invoke-interface {v1, p1, v2}, Lorg/apache/http/params/HttpParams;->e(ILjava/lang/String;)Lpd/a;
+    invoke-interface {v1, p1, v2}, Lorg/apache/http/params/HttpParams;->e(ILjava/lang/String;)Lqd/a;
 
     .line 48
     .line 49
@@ -397,7 +397,7 @@
 
     .line 51
     .line 52
-    invoke-interface {v1, p1, v2}, Lorg/apache/http/params/HttpParams;->e(ILjava/lang/String;)Lpd/a;
+    invoke-interface {v1, p1, v2}, Lorg/apache/http/params/HttpParams;->e(ILjava/lang/String;)Lqd/a;
 
     .line 53
     .line 54

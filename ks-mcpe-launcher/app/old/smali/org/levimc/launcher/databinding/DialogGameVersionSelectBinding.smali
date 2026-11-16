@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -8,13 +8,13 @@
 
 .field public final recyclerVersions:Landroidx/recyclerview/widget/RecyclerView;
 
-.field private final rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+.field private final rootView:Landroid/widget/FrameLayout;
 
 .field public final title:Landroid/widget/TextView;
 
 
 # direct methods
-.method private constructor <init>(Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;)V
+.method private constructor <init>(Landroid/widget/FrameLayout;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -23,7 +23,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->rootView:Landroid/widget/FrameLayout;
 
     .line 5
     .line 6
@@ -50,7 +50,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 4
     .line 5
@@ -70,7 +70,7 @@
 
     .line 12
     .line 13
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 14
     .line 15
@@ -90,7 +90,7 @@
 
     .line 22
     .line 23
-    invoke-static {v0, p0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v0, p0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 24
     .line 25
@@ -110,11 +110,11 @@
 
     .line 32
     .line 33
-    check-cast p0, Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    check-cast p0, Landroid/widget/FrameLayout;
 
     .line 34
     .line 35
-    invoke-direct {v0, p0, v1, v2, v3}, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;-><init>(Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;)V
+    invoke-direct {v0, p0, v1, v2, v3}, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;-><init>(Landroid/widget/FrameLayout;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;)V
 
     .line 36
     .line 37
@@ -210,18 +210,18 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->getRoot()Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    invoke-virtual {p0}, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->getRoot()Landroid/widget/FrameLayout;
 
     move-result-object v0
 
     return-object v0
 .end method
 
-.method public getRoot()Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+.method public getRoot()Landroid/widget/FrameLayout;
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->rootView:Lorg/levimc/launcher/ui/dialogs/LauncherDialogLayout;
+    iget-object v0, p0, Lorg/levimc/launcher/databinding/DialogGameVersionSelectBinding;->rootView:Landroid/widget/FrameLayout;
 
     return-object v0
 .end method

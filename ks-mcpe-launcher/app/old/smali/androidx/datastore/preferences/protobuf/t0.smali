@@ -1,13 +1,13 @@
 .class public final Landroidx/datastore/preferences/protobuf/t0;
 .super Landroidx/datastore/preferences/protobuf/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/util/RandomAccess;
 
 
 # static fields
-.field public static final p:Landroidx/datastore/preferences/protobuf/t0;
+.field public static final q:Landroidx/datastore/preferences/protobuf/t0;
 
 
 # instance fields
@@ -37,7 +37,7 @@
     .line 7
     .line 8
     .line 9
-    sput-object v0, Landroidx/datastore/preferences/protobuf/t0;->p:Landroidx/datastore/preferences/protobuf/t0;
+    sput-object v0, Landroidx/datastore/preferences/protobuf/t0;->q:Landroidx/datastore/preferences/protobuf/t0;
 
     .line 10
     .line 11
@@ -161,7 +161,7 @@
     const-string v1, ", Size:"
 
     .line 22
-    invoke-static {p1, v0, v1}, Ls1/a;->t(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {p1, v0, v1}, Ls1/a;->u(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     move-result-object p1
 
@@ -266,7 +266,7 @@
 
     .line 13
     .line 14
-    invoke-static {p1, v1, v2}, Ls1/a;->t(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-static {p1, v1, v2}, Ls1/a;->u(ILjava/lang/String;Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 15
     .line 16

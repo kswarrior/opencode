@@ -167,10 +167,6 @@
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20.0dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_max_velocity">800.0dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_velocity">120.0dp</dimen>
-    <dimen name="levi_navbar_center_offset">14.0dp</dimen>
-    <dimen name="levi_navbar_icon_size">23.0dp</dimen>
-    <dimen name="levi_navbar_item_padding">4.0dp</dimen>
-    <dimen name="levi_navbar_text_size">12.5sp</dimen>
     <dimen name="m3_alert_dialog_action_bottom_padding">14.0dp</dimen>
     <dimen name="m3_alert_dialog_action_top_padding">14.0dp</dimen>
     <dimen name="m3_alert_dialog_corner_size">28.0dp</dimen>
@@ -823,7 +819,6 @@
     <dimen name="material_textinput_min_width_with_label">88.0dp</dimen>
     <dimen name="material_time_picker_minimum_screen_height">560.0dp</dimen>
     <dimen name="material_time_picker_minimum_screen_width">340.0dp</dimen>
-    <dimen name="mods_col_version_width">96.0dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_bottom">10.0dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_end">10.0dp</dimen>
     <dimen name="mtrl_alert_dialog_background_inset_start">10.0dp</dimen>

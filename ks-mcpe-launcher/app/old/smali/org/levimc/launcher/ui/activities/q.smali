@@ -1,111 +1,66 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Lorg/levimc/launcher/ui/adapter/StructuresAdapter$OnStructureExportListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:Lorg/levimc/launcher/ui/activities/ContentListActivity;
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+.field public final synthetic b:Landroidx/appcompat/app/AlertDialog;
 
-.field public final synthetic h:Landroid/net/Uri;
-
-.field public final synthetic p:Ljava/util/ArrayList;
+.field public final synthetic c:Lorg/levimc/launcher/core/content/WorldItem;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroidx/appcompat/app/AlertDialog;Lorg/levimc/launcher/core/content/WorldItem;)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/q;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/q;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
-
     .line 4
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/q;->a:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/q;->h:Landroid/net/Uri;
-
     .line 6
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/q;->b:Landroidx/appcompat/app/AlertDialog;
+
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/q;->p:Ljava/util/ArrayList;
-
     .line 8
-    .line 9
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/q;->c:Lorg/levimc/launcher/core/content/WorldItem;
 
+    .line 9
     .line 10
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
+.method public final onExportStructure(Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;)V
     .locals 3
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/q;->c:I
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/q;->b:Landroidx/appcompat/app/AlertDialog;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/q;->c:Lorg/levimc/launcher/core/content/WorldItem;
 
     .line 4
     .line 5
+    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/q;->a:Lorg/levimc/launcher/ui/activities/ContentListActivity;
+
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/q;->h:Landroid/net/Uri;
-
     .line 7
-    .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/q;->p:Ljava/util/ArrayList;
+    invoke-static {v2, v0, v1, p1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->N(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroidx/appcompat/app/AlertDialog;Lorg/levimc/launcher/core/content/WorldItem;Lorg/levimc/launcher/core/content/StructureExtractor$StructureInfo;)V
 
+    .line 8
     .line 9
     .line 10
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/q;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
-
-    .line 11
-    .line 12
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->d0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;)V
-
-    .line 13
-    .line 14
-    .line 15
     return-void
-
-    .line 16
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/q;->h:Landroid/net/Uri;
-
-    .line 17
-    .line 18
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/q;->p:Ljava/util/ArrayList;
-
-    .line 19
-    .line 20
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/q;->d:Lorg/levimc/launcher/ui/activities/ContentListActivity;
-
-    .line 21
-    .line 22
-    invoke-static {v2, v0, v1}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->n0(Lorg/levimc/launcher/ui/activities/ContentListActivity;Landroid/net/Uri;Ljava/util/ArrayList;)V
-
-    .line 23
-    .line 24
-    .line 25
-    return-void
-
-    .line 26
-    nop
-
-    .line 27
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

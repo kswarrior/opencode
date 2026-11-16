@@ -1,6 +1,6 @@
 .class public abstract Lt0/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -42,14 +42,14 @@
 
     .line 7
     .line 8
-    new-instance v0, La6/j0;
+    new-instance v0, Lc5/f;
 
     .line 9
     .line 10
-    const/4 v1, 0x6
+    const/4 v1, 0x5
 
     .line 11
-    invoke-direct {v0, v1}, La6/j0;-><init>(I)V
+    invoke-direct {v0, v1}, Lc5/f;-><init>(I)V
 
     .line 12
     .line 13

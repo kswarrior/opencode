@@ -1,13 +1,13 @@
 .class public interface abstract Le2/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/AutoCloseable;
 
 
 # virtual methods
-.method public H()Z
+.method public I()Z
     .locals 5
 
     .line 1
@@ -41,7 +41,7 @@
     return v0
 .end method
 
-.method public abstract X(I)Ljava/lang/String;
+.method public abstract V(I)Ljava/lang/String;
 .end method
 
 .method public abstract getColumnCount()I
@@ -62,5 +62,5 @@
 .method public abstract reset()V
 .end method
 
-.method public abstract t0()Z
+.method public abstract s0()Z
 .end method

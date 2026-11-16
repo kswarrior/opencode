@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/i1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -160,7 +160,7 @@
     iget-object p4, p4, Landroidx/fragment/app/FragmentManager;->w:Landroidx/fragment/app/FragmentHostCallback;
 
     .line 16
-    iget-object p4, p4, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/i;
+    iget-object p4, p4, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/g;
 
     const/4 v0, 0x0
 
@@ -180,7 +180,7 @@
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mFromLayout:Z
 
     .line 20
-    iget-boolean p4, p1, Landroidx/fragment/app/g1;->p:Z
+    iget-boolean p4, p1, Landroidx/fragment/app/g1;->q:Z
 
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mInDynamicContainer:Z
 
@@ -190,37 +190,37 @@
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mRestored:Z
 
     .line 22
-    iget p4, p1, Landroidx/fragment/app/g1;->q:I
+    iget p4, p1, Landroidx/fragment/app/g1;->w:I
 
     iput p4, p2, Landroidx/fragment/app/Fragment;->mFragmentId:I
 
     .line 23
-    iget p4, p1, Landroidx/fragment/app/g1;->w:I
+    iget p4, p1, Landroidx/fragment/app/g1;->x:I
 
     iput p4, p2, Landroidx/fragment/app/Fragment;->mContainerId:I
 
     .line 24
-    iget-object p4, p1, Landroidx/fragment/app/g1;->x:Ljava/lang/String;
+    iget-object p4, p1, Landroidx/fragment/app/g1;->y:Ljava/lang/String;
 
     iput-object p4, p2, Landroidx/fragment/app/Fragment;->mTag:Ljava/lang/String;
 
     .line 25
-    iget-boolean p4, p1, Landroidx/fragment/app/g1;->y:Z
+    iget-boolean p4, p1, Landroidx/fragment/app/g1;->X:Z
 
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mRetainInstance:Z
 
     .line 26
-    iget-boolean p4, p1, Landroidx/fragment/app/g1;->X:Z
+    iget-boolean p4, p1, Landroidx/fragment/app/g1;->Y:Z
 
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mRemoving:Z
 
     .line 27
-    iget-boolean p4, p1, Landroidx/fragment/app/g1;->Y:Z
+    iget-boolean p4, p1, Landroidx/fragment/app/g1;->Z:Z
 
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mDetached:Z
 
     .line 28
-    iget-boolean p4, p1, Landroidx/fragment/app/g1;->Z:Z
+    iget-boolean p4, p1, Landroidx/fragment/app/g1;->b1:Z
 
     iput-boolean p4, p2, Landroidx/fragment/app/Fragment;->mHidden:Z
 
@@ -229,7 +229,7 @@
 
     move-result-object p4
 
-    iget v0, p1, Landroidx/fragment/app/g1;->b1:I
+    iget v0, p1, Landroidx/fragment/app/g1;->B1:I
 
     aget-object p4, p4, v0
 
@@ -431,7 +431,7 @@
 
     .line 7
     .line 8
-    const v3, 0x7f0a01da
+    const v3, 0x7f0a01a4
 
     .line 9
     .line 10
@@ -588,7 +588,7 @@
 
     .line 82
     .line 83
-    invoke-static {v1, v2, v4}, Lu7/d;->b(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {v1, v2, v4}, Lv6/u;->c(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 84
     .line 85
@@ -1039,7 +1039,7 @@
 
     .line 123
     .line 124
-    invoke-static {v2, v1, v3}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v1, v3}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 125
     .line 126
@@ -2196,7 +2196,7 @@
 
     .line 195
     .line 196
-    invoke-static {v2, v0, v3}, Ls1/a;->n(Ljava/lang/String;Landroidx/fragment/app/Fragment;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v0, v3}, Ls1/a;->p(Ljava/lang/String;Landroidx/fragment/app/Fragment;Ljava/lang/String;)Ljava/lang/String;
 
     .line 197
     .line 198
@@ -2294,7 +2294,7 @@
 
     .line 244
     .line 245
-    const v6, 0x7f0a01da
+    const v6, 0x7f0a01a4
 
     .line 246
     .line 247
@@ -2356,11 +2356,11 @@
 
     .line 276
     .line 277
-    sget-object v4, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
+    sget-object v4, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
 
     .line 278
     .line 279
-    invoke-static {v1}, Landroidx/core/view/i0;->c(Landroid/view/View;)V
+    invoke-static {v1}, Landroidx/core/view/j0;->c(Landroid/view/View;)V
 
     .line 280
     .line 281
@@ -2798,7 +2798,7 @@
 
     .line 114
     :cond_8
-    iget-object v6, v6, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/i;
+    iget-object v6, v6, Landroidx/fragment/app/FragmentHostCallback;->d:Lg/g;
 
     .line 115
     .line 116
@@ -3481,7 +3481,7 @@
 
     .line 70
     .line 71
-    const v3, 0x7f0a01da
+    const v3, 0x7f0a01a4
 
     .line 72
     .line 73
@@ -3886,7 +3886,7 @@
 
     .line 161
     .line 162
-    invoke-static {v8, v7}, Lcom/google/android/gms/internal/measurement/x;->r(ILjava/lang/String;)V
+    invoke-static {v8, v7}, Lcom/google/android/gms/internal/measurement/gi;->o(ILjava/lang/String;)V
 
     .line 163
     .line 164
@@ -5803,7 +5803,7 @@
 
     .line 68
     .line 69
-    iget-object v2, v2, Landroidx/fragment/app/FragmentViewLifecycleOwner;->q:Landroidx/savedstate/SavedStateRegistryController;
+    iget-object v2, v2, Landroidx/fragment/app/FragmentViewLifecycleOwner;->w:Landroidx/savedstate/SavedStateRegistryController;
 
     .line 70
     .line 71

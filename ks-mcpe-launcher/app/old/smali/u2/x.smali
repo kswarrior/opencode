@@ -1,6 +1,6 @@
 .class public final Lu2/x;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lu2/y;
@@ -8,7 +8,7 @@
 
 
 # static fields
-.field public static final q:Lkd/e;
+.field public static final w:Lkd/d;
 
 
 # instance fields
@@ -18,7 +18,7 @@
 
 .field public h:Z
 
-.field public p:Z
+.field public q:Z
 
 
 # direct methods
@@ -26,7 +26,7 @@
     .locals 2
 
     .line 1
-    new-instance v0, Ls4/b0;
+    new-instance v0, Ls4/e0;
 
     .line 2
     .line 3
@@ -34,7 +34,7 @@
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ls4/b0;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/e0;-><init>(I)V
 
     .line 6
     .line 7
@@ -43,7 +43,7 @@
 
     .line 9
     .line 10
-    invoke-static {v1, v0}, Lp3/d;->a(ILp3/a;)Lkd/e;
+    invoke-static {v1, v0}, Lp3/d;->a(ILp3/a;)Lkd/d;
 
     .line 11
     .line 12
@@ -51,7 +51,7 @@
     move-result-object v0
 
     .line 14
-    sput-object v0, Lu2/x;->q:Lkd/e;
+    sput-object v0, Lu2/x;->w:Lkd/d;
 
     .line 15
     .line 16
@@ -117,7 +117,7 @@
 
     .line 13
     .line 14
-    iget-boolean v0, p0, Lu2/x;->p:Z
+    iget-boolean v0, p0, Lu2/x;->q:Z
 
     .line 15
     .line 16
@@ -197,7 +197,7 @@
     const/4 v0, 0x1
 
     .line 8
-    iput-boolean v0, p0, Lu2/x;->p:Z
+    iput-boolean v0, p0, Lu2/x;->q:Z
 
     .line 9
     .line 10
@@ -225,11 +225,11 @@
 
     .line 21
     .line 22
-    sget-object v0, Lu2/x;->q:Lkd/e;
+    sget-object v0, Lu2/x;->w:Lkd/d;
 
     .line 23
     .line 24
-    invoke-virtual {v0, p0}, Lkd/e;->h(Ljava/lang/Object;)Z
+    invoke-virtual {v0, p0}, Lkd/d;->c(Ljava/lang/Object;)Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 

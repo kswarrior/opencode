@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/toolkit/ThreadManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -96,14 +96,14 @@
 
     .line 19
     .line 20
-    new-instance v2, Landroidx/room/p0;
+    new-instance v2, Landroidx/room/n0;
 
     .line 21
     .line 22
-    const/4 v3, 0x5
+    const/4 v3, 0x6
 
     .line 23
-    invoke-direct {v2, p0, v0, v3}, Landroidx/room/p0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v2, p0, v0, v3}, Landroidx/room/n0;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 24
     .line 25

@@ -1,6 +1,6 @@
 .class public final synthetic Lcom/microsoft/xbox/telemetry/helpers/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/microsoft/xbox/telemetry/helpers/UTCEventTracker$UTCEventDelegate;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:Ljava/lang/CharSequence;
 
-.field public final synthetic p:Z
+.field public final synthetic q:Z
 
 
 # direct methods
@@ -38,7 +38,7 @@
 
     .line 9
     .line 10
-    iput-boolean p4, p0, Lcom/microsoft/xbox/telemetry/helpers/b;->p:Z
+    iput-boolean p4, p0, Lcom/microsoft/xbox/telemetry/helpers/b;->q:Z
 
     .line 11
     .line 12
@@ -55,7 +55,7 @@
 
     .line 2
     .line 3
-    iget-boolean v1, p0, Lcom/microsoft/xbox/telemetry/helpers/b;->p:Z
+    iget-boolean v1, p0, Lcom/microsoft/xbox/telemetry/helpers/b;->q:Z
 
     .line 4
     .line 5

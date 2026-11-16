@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/xle/anim/XLEMAASAnimation;
 .super Lcom/microsoft/xbox/toolkit/anim/MAASAnimation;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -21,27 +21,27 @@
         }
     .end annotation
 
-    .annotation runtime Lqe/f;
+    .annotation runtime Lyd/f;
     .end annotation
 .end field
 
 .field public fillAfter:Z
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public offsetMs:I
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public target:Lcom/microsoft/xbox/xle/anim/XLEMAASAnimation$TargetType;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 
 .field public targetId:Ljava/lang/String;
-    .annotation runtime Lqe/a;
+    .annotation runtime Lyd/a;
     .end annotation
 .end field
 

@@ -1,138 +1,125 @@
 .class public final Lid/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/io/Serializable;
+.implements Lrc/b;
 
 
 # instance fields
-.field public final c:Ljava/util/TreeSet;
-
-.field public final transient d:Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+.field public final synthetic a:I
 
 
 # direct methods
-.method public constructor <init>()V
-    .locals 3
+.method public synthetic constructor <init>(I)V
+    .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p1, p0, Lid/c;->a:I
 
     .line 2
     .line 3
-    .line 4
-    new-instance v0, Ljava/util/TreeSet;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 4
     .line 5
     .line 6
-    new-instance v1, Led/d;
-
-    .line 7
-    .line 8
-    const/4 v2, 0x1
-
-    .line 9
-    invoke-direct {v1, v2}, Led/d;-><init>(I)V
-
-    .line 10
-    .line 11
-    .line 12
-    invoke-direct {v0, v1}, Ljava/util/TreeSet;-><init>(Ljava/util/Comparator;)V
-
-    .line 13
-    .line 14
-    .line 15
-    iput-object v0, p0, Lid/c;->c:Ljava/util/TreeSet;
-
-    .line 16
-    .line 17
-    new-instance v0, Ljava/util/concurrent/locks/ReentrantReadWriteLock;
-
-    .line 18
-    .line 19
-    invoke-direct {v0}, Ljava/util/concurrent/locks/ReentrantReadWriteLock;-><init>()V
-
-    .line 20
-    .line 21
-    .line 22
-    iput-object v0, p0, Lid/c;->d:Ljava/util/concurrent/locks/ReentrantReadWriteLock;
-
-    .line 23
-    .line 24
     return-void
 .end method
 
 
 # virtual methods
-.method public final toString()Ljava/lang/String;
-    .locals 2
+.method public final a(Lrd/c;)Lid/a;
+    .locals 1
 
     .line 1
-    iget-object v0, p0, Lid/c;->d:Ljava/util/concurrent/locks/ReentrantReadWriteLock;
+    iget p1, p0, Lid/c;->a:I
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->readLock()Ljava/util/concurrent/locks/Lock;
+    packed-switch p1, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    move-result-object v1
+    new-instance p1, Lid/l;
 
     .line 7
-    invoke-interface {v1}, Ljava/util/concurrent/locks/Lock;->lock()V
-
     .line 8
+    invoke-direct {p1}, Lid/e;-><init>()V
+
     .line 9
     .line 10
-    :try_start_0
-    iget-object v1, p0, Lid/c;->c:Ljava/util/TreeSet;
-
     .line 11
+    return-object p1
+
     .line 12
-    invoke-virtual {v1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    :pswitch_0
+    new-instance p1, Lid/j;
 
     .line 13
     .line 14
+    invoke-direct {p1}, Lid/j;-><init>()V
+
     .line 15
-    move-result-object v1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
-
     .line 16
-    invoke-virtual {v0}, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->readLock()Ljava/util/concurrent/locks/Lock;
-
     .line 17
-    .line 18
-    .line 19
-    move-result-object v0
+    return-object p1
 
+    .line 18
+    :pswitch_1
+    new-instance p1, Lid/g;
+
+    .line 19
     .line 20
-    invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V
+    invoke-direct {p1}, Lid/e;-><init>()V
 
     .line 21
     .line 22
     .line 23
-    return-object v1
+    return-object p1
 
     .line 24
-    :catchall_0
-    move-exception v1
+    :pswitch_2
+    new-instance p1, Lid/d;
 
     .line 25
-    invoke-virtual {v0}, Ljava/util/concurrent/locks/ReentrantReadWriteLock;->readLock()Ljava/util/concurrent/locks/Lock;
-
     .line 26
+    const/4 v0, 0x0
+
     .line 27
+    invoke-direct {p1, v0}, Lid/d;-><init>(Ljava/nio/charset/Charset;)V
+
     .line 28
-    move-result-object v0
-
     .line 29
-    invoke-interface {v0}, Ljava/util/concurrent/locks/Lock;->unlock()V
-
     .line 30
+    return-object p1
+
     .line 31
+    :pswitch_3
+    new-instance p1, Lid/b;
+
     .line 32
-    throw v1
+    .line 33
+    const/4 v0, 0x0
+
+    .line 34
+    invoke-direct {p1, v0}, Lid/b;-><init>(Ljava/nio/charset/Charset;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-object p1
+
+    .line 38
+    nop
+
+    .line 39
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

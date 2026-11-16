@@ -1,16 +1,16 @@
 .class public final Lk/g;
-.super Lfc/h;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lkd/h;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic b:I
+.field public final synthetic d:I
 
-.field public c:Z
+.field public h:Z
 
-.field public d:I
+.field public q:I
 
-.field public final synthetic e:Ljava/lang/Object;
+.field public final synthetic w:Ljava/lang/Object;
 
 
 # direct methods
@@ -19,44 +19,46 @@
 
     const/4 v0, 0x0
 
-    iput v0, p0, Lk/g;->b:I
+    iput v0, p0, Lk/g;->d:I
+
+    const/4 v0, 0x1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, v0}, Lkd/h;-><init>(I)V
 
     .line 2
-    iput-object p1, p0, Lk/g;->e:Ljava/lang/Object;
+    iput-object p1, p0, Lk/g;->w:Ljava/lang/Object;
 
     const/4 p1, 0x0
 
     .line 3
-    iput-boolean p1, p0, Lk/g;->c:Z
+    iput-boolean p1, p0, Lk/g;->h:Z
 
     .line 4
-    iput p1, p0, Lk/g;->d:I
+    iput p1, p0, Lk/g;->q:I
 
     return-void
 .end method
 
-.method public constructor <init>(Lm/l2;I)V
+.method public constructor <init>(Lm/p2;I)V
     .locals 1
 
     const/4 v0, 0x1
 
-    iput v0, p0, Lk/g;->b:I
+    iput v0, p0, Lk/g;->d:I
 
     .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {p0, v0}, Lkd/h;-><init>(I)V
 
     .line 6
-    iput-object p1, p0, Lk/g;->e:Ljava/lang/Object;
+    iput-object p1, p0, Lk/g;->w:Ljava/lang/Object;
 
-    iput p2, p0, Lk/g;->d:I
+    iput p2, p0, Lk/g;->q:I
 
     const/4 p1, 0x0
 
     .line 7
-    iput-boolean p1, p0, Lk/g;->c:Z
+    iput-boolean p1, p0, Lk/g;->h:Z
 
     return-void
 .end method
@@ -67,7 +69,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lk/g;->b:I
+    iget v0, p0, Lk/g;->d:I
 
     .line 2
     .line 3
@@ -83,7 +85,7 @@
     const/4 v0, 0x1
 
     .line 8
-    iput-boolean v0, p0, Lk/g;->c:Z
+    iput-boolean v0, p0, Lk/g;->h:Z
 
     .line 9
     .line 10
@@ -96,11 +98,11 @@
     .end packed-switch
 .end method
 
-.method public final b()V
+.method public final c()V
     .locals 2
 
     .line 1
-    iget v0, p0, Lk/g;->b:I
+    iget v0, p0, Lk/g;->d:I
 
     .line 2
     .line 3
@@ -109,15 +111,15 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lk/g;->e:Ljava/lang/Object;
+    iget-object v0, p0, Lk/g;->w:Ljava/lang/Object;
 
     .line 7
     .line 8
-    check-cast v0, Lm/l2;
+    check-cast v0, Lm/p2;
 
     .line 9
     .line 10
-    iget-object v0, v0, Lm/l2;->a:Landroidx/appcompat/widget/Toolbar;
+    iget-object v0, v0, Lm/p2;->a:Landroidx/appcompat/widget/Toolbar;
 
     .line 11
     .line 12
@@ -133,7 +135,7 @@
 
     .line 17
     :pswitch_0
-    iget-boolean v0, p0, Lk/g;->c:Z
+    iget-boolean v0, p0, Lk/g;->h:Z
 
     .line 18
     .line 19
@@ -148,11 +150,11 @@
     const/4 v0, 0x1
 
     .line 23
-    iput-boolean v0, p0, Lk/g;->c:Z
+    iput-boolean v0, p0, Lk/g;->h:Z
 
     .line 24
     .line 25
-    iget-object v0, p0, Lk/g;->e:Ljava/lang/Object;
+    iget-object v0, p0, Lk/g;->w:Ljava/lang/Object;
 
     .line 26
     .line 27
@@ -160,7 +162,7 @@
 
     .line 28
     .line 29
-    iget-object v0, v0, Lk/h;->d:Landroidx/core/view/v0;
+    iget-object v0, v0, Lk/h;->d:Landroidx/core/view/x0;
 
     .line 30
     .line 31
@@ -168,7 +170,7 @@
 
     .line 32
     .line 33
-    invoke-interface {v0}, Landroidx/core/view/v0;->b()V
+    invoke-interface {v0}, Landroidx/core/view/x0;->c()V
 
     .line 34
     .line 35
@@ -184,11 +186,11 @@
     .end packed-switch
 .end method
 
-.method public final c()V
+.method public final d()V
     .locals 3
 
     .line 1
-    iget v0, p0, Lk/g;->b:I
+    iget v0, p0, Lk/g;->d:I
 
     .line 2
     .line 3
@@ -197,7 +199,7 @@
     .line 4
     .line 5
     .line 6
-    iget-boolean v0, p0, Lk/g;->c:Z
+    iget-boolean v0, p0, Lk/g;->h:Z
 
     .line 7
     .line 8
@@ -205,19 +207,19 @@
 
     .line 9
     .line 10
-    iget-object v0, p0, Lk/g;->e:Ljava/lang/Object;
+    iget-object v0, p0, Lk/g;->w:Ljava/lang/Object;
 
     .line 11
     .line 12
-    check-cast v0, Lm/l2;
+    check-cast v0, Lm/p2;
 
     .line 13
     .line 14
-    iget-object v0, v0, Lm/l2;->a:Landroidx/appcompat/widget/Toolbar;
+    iget-object v0, v0, Lm/p2;->a:Landroidx/appcompat/widget/Toolbar;
 
     .line 15
     .line 16
-    iget v1, p0, Lk/g;->d:I
+    iget v1, p0, Lk/g;->q:I
 
     .line 17
     .line 18
@@ -231,7 +233,7 @@
 
     .line 22
     :pswitch_0
-    iget v0, p0, Lk/g;->d:I
+    iget v0, p0, Lk/g;->q:I
 
     .line 23
     .line 24
@@ -239,11 +241,11 @@
 
     .line 25
     .line 26
-    iput v0, p0, Lk/g;->d:I
+    iput v0, p0, Lk/g;->q:I
 
     .line 27
     .line 28
-    iget-object v1, p0, Lk/g;->e:Ljava/lang/Object;
+    iget-object v1, p0, Lk/g;->w:Ljava/lang/Object;
 
     .line 29
     .line 30
@@ -267,7 +269,7 @@
 
     .line 39
     .line 40
-    iget-object v0, v1, Lk/h;->d:Landroidx/core/view/v0;
+    iget-object v0, v1, Lk/h;->d:Landroidx/core/view/x0;
 
     .line 41
     .line 42
@@ -275,7 +277,7 @@
 
     .line 43
     .line 44
-    invoke-interface {v0}, Landroidx/core/view/v0;->c()V
+    invoke-interface {v0}, Landroidx/core/view/x0;->d()V
 
     .line 45
     .line 46
@@ -284,11 +286,11 @@
     const/4 v0, 0x0
 
     .line 48
-    iput v0, p0, Lk/g;->d:I
+    iput v0, p0, Lk/g;->q:I
 
     .line 49
     .line 50
-    iput-boolean v0, p0, Lk/g;->c:Z
+    iput-boolean v0, p0, Lk/g;->h:Z
 
     .line 51
     .line 52

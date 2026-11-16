@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/content/ContentManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -799,7 +799,7 @@
 .end method
 
 .method private synthetic lambda$configureStorageDirectories$0(J[Ljava/io/File;)V
-    .locals 6
+    .locals 5
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/core/content/ContentManager;->storageGeneration:Ljava/util/concurrent/atomic/AtomicLong;
@@ -1007,11 +1007,11 @@
     .line 107
     .line 108
     .line 109
-    const-string v5, "s"
+    const-string p1, "s"
 
     .line 110
     .line 111
-    invoke-virtual {v4, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    invoke-virtual {v4, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 112
     .line 113
@@ -1021,70 +1021,27 @@
     .line 115
     .line 116
     .line 117
-    move-result-object v4
+    move-result-object p1
 
     .line 118
-    invoke-interface {v3, v4, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
+    invoke-interface {v3, p1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
 
     .line 119
     .line 120
     .line 121
-    move-result v3
+    move-result p1
 
     .line 122
-    iget-object v4, p0, Lorg/levimc/launcher/core/content/ContentManager;->countPreferences:Landroid/content/SharedPreferences;
+    invoke-direct {p3, v0, v1, p1}, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;-><init>(III)V
 
     .line 123
     .line 124
-    new-instance v5, Ljava/lang/StringBuilder;
-
     .line 125
-    .line 126
-    invoke-direct {v5}, Ljava/lang/StringBuilder;-><init>()V
-
-    .line 127
-    .line 128
-    .line 129
-    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 130
-    .line 131
-    .line 132
-    const-string p1, "b"
-
-    .line 133
-    .line 134
-    invoke-virtual {v5, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 135
-    .line 136
-    .line 137
-    invoke-virtual {v5}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 138
-    .line 139
-    .line 140
-    move-result-object p1
-
-    .line 141
-    invoke-interface {v4, p1, v2}, Landroid/content/SharedPreferences;->getInt(Ljava/lang/String;I)I
-
-    .line 142
-    .line 143
-    .line 144
-    move-result p1
-
-    .line 145
-    invoke-direct {p3, v0, v1, v3, p1}, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;-><init>(IIII)V
-
-    .line 146
-    .line 147
-    .line 148
     invoke-virtual {p2, p3}, Landroidx/lifecycle/LiveData;->j(Ljava/lang/Object;)V
 
-    .line 149
-    .line 150
-    .line 151
+    .line 126
+    .line 127
+    .line 128
     return-void
 .end method
 
@@ -1227,7 +1184,7 @@
 .end method
 
 .method private synthetic lambda$refreshCounts$3()Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;
-    .locals 8
+    .locals 7
 
     .line 1
     iget-object v0, p0, Lorg/levimc/launcher/core/content/ContentManager;->locations:[Ljava/io/File;
@@ -1303,155 +1260,108 @@
     move-result v4
 
     .line 36
-    iget-object v5, p0, Lorg/levimc/launcher/core/content/ContentManager;->resourcePackManager:Lorg/levimc/launcher/core/content/ResourcePackManager;
+    invoke-direct {v1, v2, v3, v4}, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;-><init>(III)V
 
     .line 37
     .line 38
-    const/4 v6, 0x2
-
     .line 39
-    aget-object v6, v0, v6
+    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/content/ContentManager;->countKey([Ljava/io/File;)Ljava/lang/String;
 
     .line 40
     .line 41
-    sget-object v7, Lorg/levimc/launcher/core/content/ResourcePackItem$PackType;->BEHAVIOR_PACK:Lorg/levimc/launcher/core/content/ResourcePackItem$PackType;
-
     .line 42
+    move-result-object v0
+
     .line 43
-    invoke-virtual {v5, v6, v7}, Lorg/levimc/launcher/core/content/ResourcePackManager;->countPacks(Ljava/io/File;Lorg/levimc/launcher/core/content/ResourcePackItem$PackType;)I
+    iget-object v2, p0, Lorg/levimc/launcher/core/content/ContentManager;->countPreferences:Landroid/content/SharedPreferences;
 
     .line 44
     .line 45
-    .line 46
-    move-result v5
-
-    .line 47
-    invoke-direct {v1, v2, v3, v4, v5}, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;-><init>(IIII)V
-
-    .line 48
-    .line 49
-    .line 50
-    invoke-direct {p0, v0}, Lorg/levimc/launcher/core/content/ContentManager;->countKey([Ljava/io/File;)Ljava/lang/String;
-
-    .line 51
-    .line 52
-    .line 53
-    move-result-object v0
-
-    .line 54
-    iget-object v2, p0, Lorg/levimc/launcher/core/content/ContentManager;->countPreferences:Landroid/content/SharedPreferences;
-
-    .line 55
-    .line 56
     invoke-interface {v2}, Landroid/content/SharedPreferences;->edit()Landroid/content/SharedPreferences$Editor;
 
-    .line 57
-    .line 58
-    .line 59
+    .line 46
+    .line 47
+    .line 48
     move-result-object v2
 
-    .line 60
+    .line 49
     const-string v3, "w"
 
-    .line 61
-    .line 62
-    invoke-static {v0, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .line 50
+    .line 51
+    invoke-static {v0, v3}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 63
-    .line 64
-    .line 65
+    .line 52
+    .line 53
+    .line 54
     move-result-object v3
 
-    .line 66
+    .line 55
     iget v4, v1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->worlds:I
 
-    .line 67
-    .line 68
+    .line 56
+    .line 57
     invoke-interface {v2, v3, v4}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
-    .line 69
-    .line 70
-    .line 71
+    .line 58
+    .line 59
+    .line 60
     move-result-object v2
 
-    .line 72
+    .line 61
     const-string v3, "r"
 
-    .line 73
-    .line 74
-    invoke-static {v0, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .line 62
+    .line 63
+    invoke-static {v0, v3}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 75
-    .line 76
-    .line 77
+    .line 64
+    .line 65
+    .line 66
     move-result-object v3
 
-    .line 78
+    .line 67
     iget v4, v1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->resourcePacks:I
 
-    .line 79
-    .line 80
+    .line 68
+    .line 69
     invoke-interface {v2, v3, v4}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
-    .line 81
-    .line 82
-    .line 83
+    .line 70
+    .line 71
+    .line 72
     move-result-object v2
 
-    .line 84
+    .line 73
     const-string v3, "s"
 
-    .line 85
-    .line 86
-    invoke-static {v0, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    .line 74
+    .line 75
+    invoke-static {v0, v3}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
-    .line 87
-    .line 88
-    .line 89
-    move-result-object v3
-
-    .line 90
-    iget v4, v1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->skinPacks:I
-
-    .line 91
-    .line 92
-    invoke-interface {v2, v3, v4}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
-
-    .line 93
-    .line 94
-    .line 95
-    move-result-object v2
-
-    .line 96
-    const-string v3, "b"
-
-    .line 97
-    .line 98
-    invoke-static {v0, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 99
-    .line 100
-    .line 101
+    .line 76
+    .line 77
+    .line 78
     move-result-object v0
 
-    .line 102
-    iget v3, v1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->behaviorPacks:I
+    .line 79
+    iget v3, v1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;->skinPacks:I
 
-    .line 103
-    .line 104
+    .line 80
+    .line 81
     invoke-interface {v2, v0, v3}, Landroid/content/SharedPreferences$Editor;->putInt(Ljava/lang/String;I)Landroid/content/SharedPreferences$Editor;
 
-    .line 105
-    .line 106
-    .line 107
+    .line 82
+    .line 83
+    .line 84
     move-result-object v0
 
-    .line 108
+    .line 85
     invoke-interface {v0}, Landroid/content/SharedPreferences$Editor;->apply()V
 
-    .line 109
-    .line 110
-    .line 111
+    .line 86
+    .line 87
+    .line 88
     return-object v1
 .end method
 
@@ -1948,7 +1858,7 @@
 .end method
 
 .method private startRefresh(ILjava/util/concurrent/ExecutorService;Ljava/util/function/Supplier;Ljava/util/function/Consumer;)V
-    .locals 8
+    .locals 7
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "<T:",
@@ -2009,34 +1919,31 @@
 
     .line 21
     .line 22
-    const/4 v7, 0x0
-
-    .line 23
     move-object v2, p0
 
-    .line 24
+    .line 23
     move v3, p1
 
-    .line 25
+    .line 24
     move-object v6, p2
 
-    .line 26
+    .line 25
     move-object v4, p3
 
-    .line 27
+    .line 26
     move-object v5, p4
 
-    .line 28
-    invoke-direct/range {v1 .. v7}, Lorg/levimc/launcher/core/content/m;-><init>(Ljava/lang/Object;ILjava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+    .line 27
+    invoke-direct/range {v1 .. v6}, Lorg/levimc/launcher/core/content/m;-><init>(Lorg/levimc/launcher/core/content/ContentManager;ILjava/util/function/Supplier;Ljava/util/function/Consumer;Ljava/util/concurrent/ExecutorService;)V
 
+    .line 28
     .line 29
     .line 30
-    .line 31
     invoke-interface {v6, v1}, Ljava/util/concurrent/Executor;->execute(Ljava/lang/Runnable;)V
 
+    .line 31
     .line 32
     .line 33
-    .line 34
     :cond_1
     :goto_0
     return-void
@@ -2822,11 +2729,6 @@
     .line 27
     .line 28
     .line 29
-    invoke-virtual {p0}, Lorg/levimc/launcher/core/content/ContentManager;->refreshCounts()V
-
-    .line 30
-    .line 31
-    .line 32
     return-void
 .end method
 

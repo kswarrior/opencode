@@ -1,76 +1,97 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/k1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
+.field public final synthetic c:I
 
-.field public final synthetic d:I
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
 
-.field public final synthetic h:Ljava/util/List;
-
-.field public final synthetic p:Z
+.field public final synthetic h:Lorg/levimc/launcher/core/versions/GameVersion;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;ILjava/util/List;Z)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;Lorg/levimc/launcher/core/versions/GameVersion;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p3, p0, Lorg/levimc/launcher/ui/activities/k1;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k1;->d:Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/k1;->c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
-
     .line 5
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/k1;->h:Lorg/levimc/launcher/core/versions/GameVersion;
+
     .line 6
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/k1;->d:I
-
     .line 7
-    .line 8
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/k1;->h:Ljava/util/List;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 8
     .line 9
     .line 10
-    iput-boolean p4, p0, Lorg/levimc/launcher/ui/activities/k1;->p:Z
-
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 4
+.method public final onClick(Landroid/view/View;)V
+    .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k1;->h:Ljava/util/List;
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/k1;->c:I
 
     .line 2
     .line 3
-    iget-boolean v1, p0, Lorg/levimc/launcher/ui/activities/k1;->p:Z
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/k1;->c:Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k1;->d:Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
+
     .line 7
-    iget v3, p0, Lorg/levimc/launcher/ui/activities/k1;->d:I
-
     .line 8
-    .line 9
-    invoke-static {v2, v3, v0, v1}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->A(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;ILjava/util/List;Z)V
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/k1;->h:Lorg/levimc/launcher/core/versions/GameVersion;
 
+    .line 9
     .line 10
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;->a(Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;Lorg/levimc/launcher/core/versions/GameVersion;Landroid/view/View;)V
+
     .line 11
     .line 12
+    .line 13
     return-void
+
+    .line 14
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/k1;->d:Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;
+
+    .line 15
+    .line 16
+    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/k1;->h:Lorg/levimc/launcher/core/versions/GameVersion;
+
+    .line 17
+    .line 18
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;->b(Lorg/levimc/launcher/ui/activities/InstancesActivity$InstanceCardAdapter;Lorg/levimc/launcher/core/versions/GameVersion;Landroid/view/View;)V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    nop
+
+    .line 23
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

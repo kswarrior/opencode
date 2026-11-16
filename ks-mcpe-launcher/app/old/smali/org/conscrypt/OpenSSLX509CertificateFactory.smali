@@ -1,6 +1,6 @@
 .class public Lorg/conscrypt/OpenSSLX509CertificateFactory;
 .super Ljava/security/cert/CertificateFactorySpi;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -322,7 +322,7 @@
     const-string v0, "Certificate not X.509 type at index "
 
     .line 9
-    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v0}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
 
     move-result-object v0
 

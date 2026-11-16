@@ -1,88 +1,83 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/o0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/ui/widget/LauncherPopup$OnSelect;
-.implements Landroidx/activity/result/ActivityResultCallback;
-.implements Landroidx/lifecycle/Observer;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/activities/ContentManagementActivity;
+.field public final synthetic c:I
+
+.field public final synthetic d:Lorg/levimc/launcher/ui/activities/CrashActivity;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/ContentManagementActivity;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/CrashActivity;I)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/o0;->c:Lorg/levimc/launcher/ui/activities/ContentManagementActivity;
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/o0;->c:I
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/o0;->d:Lorg/levimc/launcher/ui/activities/CrashActivity;
 
     .line 4
     .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 6
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public a(Ljava/lang/Object;)V
+.method public final onClick(Landroid/view/View;)V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/o0;->c:Lorg/levimc/launcher/ui/activities/ContentManagementActivity;
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/o0;->c:I
 
     .line 2
     .line 3
-    check-cast p1, Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentManagementActivity;->F(Lorg/levimc/launcher/ui/activities/ContentManagementActivity;Lorg/levimc/launcher/core/content/ContentManager$ContentCounts;)V
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/o0;->d:Lorg/levimc/launcher/ui/activities/CrashActivity;
+
     .line 7
     .line 8
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CrashActivity;->y(Lorg/levimc/launcher/ui/activities/CrashActivity;Landroid/view/View;)V
+
+    .line 9
+    .line 10
+    .line 11
     return-void
-.end method
 
-.method public b(Ljava/lang/Object;)V
-    .locals 1
+    .line 12
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/o0;->d:Lorg/levimc/launcher/ui/activities/CrashActivity;
 
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/o0;->c:Lorg/levimc/launcher/ui/activities/ContentManagementActivity;
+    .line 13
+    .line 14
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/CrashActivity;->w(Lorg/levimc/launcher/ui/activities/CrashActivity;Landroid/view/View;)V
 
-    .line 2
-    .line 3
-    check-cast p1, Landroidx/activity/result/ActivityResult;
-
-    .line 4
-    .line 5
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentManagementActivity;->A(Lorg/levimc/launcher/ui/activities/ContentManagementActivity;Landroidx/activity/result/ActivityResult;)V
-
-    .line 6
-    .line 7
-    .line 8
+    .line 15
+    .line 16
+    .line 17
     return-void
-.end method
 
-.method public onSelect(I)V
-    .locals 1
+    .line 18
+    nop
 
-    .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/o0;->c:Lorg/levimc/launcher/ui/activities/ContentManagementActivity;
-
-    .line 2
-    .line 3
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/activities/ContentManagementActivity;->L(Lorg/levimc/launcher/ui/activities/ContentManagementActivity;I)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
+    .line 19
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

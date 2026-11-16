@@ -1,86 +1,82 @@
 .class public final Lg/a;
-.super Landroid/widget/ArrayAdapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Landroid/widget/AdapterView$OnItemClickListener;
 
 
 # instance fields
-.field public final synthetic a:Landroidx/appcompat/app/AlertController$RecycleListView;
+.field public final synthetic c:Lg/e;
 
-.field public final synthetic b:Landroidx/appcompat/app/AlertController$AlertParams;
+.field public final synthetic d:Lg/b;
 
 
 # direct methods
-.method public constructor <init>(Landroidx/appcompat/app/AlertController$AlertParams;Landroid/view/ContextThemeWrapper;I[Ljava/lang/CharSequence;Landroidx/appcompat/app/AlertController$RecycleListView;)V
+.method public constructor <init>(Lg/b;Lg/e;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lg/a;->b:Landroidx/appcompat/app/AlertController$AlertParams;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p5, p0, Lg/a;->a:Landroidx/appcompat/app/AlertController$RecycleListView;
-
     .line 4
-    .line 5
-    const p1, 0x1020014
+    iput-object p1, p0, Lg/a;->d:Lg/b;
 
+    .line 5
     .line 6
+    iput-object p2, p0, Lg/a;->c:Lg/e;
+
     .line 7
     .line 8
-    invoke-direct {p0, p2, p3, p1, p4}, Landroid/widget/ArrayAdapter;-><init>(Landroid/content/Context;II[Ljava/lang/Object;)V
-
-    .line 9
-    .line 10
-    .line 11
     return-void
 .end method
 
 
 # virtual methods
-.method public final getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
-    .locals 1
+.method public final onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
+    .locals 0
 
     .line 1
-    invoke-super {p0, p1, p2, p3}, Landroid/widget/ArrayAdapter;->getView(ILandroid/view/View;Landroid/view/ViewGroup;)Landroid/view/View;
+    iget-object p1, p0, Lg/a;->d:Lg/b;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object p2
+    iget-object p2, p1, Lg/b;->r:Landroid/content/DialogInterface$OnClickListener;
 
+    .line 4
     .line 5
-    iget-object p3, p0, Lg/a;->b:Landroidx/appcompat/app/AlertController$AlertParams;
+    iget-object p4, p0, Lg/a;->c:Lg/e;
 
     .line 6
     .line 7
-    iget-object p3, p3, Landroidx/appcompat/app/AlertController$AlertParams;->E:[Z
+    iget-object p5, p4, Lg/e;->b:Landroidx/appcompat/app/AlertDialog;
 
     .line 8
     .line 9
-    if-eqz p3, :cond_0
+    invoke-interface {p2, p5, p3}, Landroid/content/DialogInterface$OnClickListener;->onClick(Landroid/content/DialogInterface;I)V
 
     .line 10
     .line 11
-    aget-boolean p3, p3, p1
-
     .line 12
+    iget-boolean p1, p1, Lg/b;->t:Z
+
     .line 13
-    if-eqz p3, :cond_0
-
     .line 14
+    if-nez p1, :cond_0
+
     .line 15
-    iget-object p3, p0, Lg/a;->a:Landroidx/appcompat/app/AlertController$RecycleListView;
-
     .line 16
-    .line 17
-    const/4 v0, 0x1
+    iget-object p1, p4, Lg/e;->b:Landroidx/appcompat/app/AlertDialog;
 
+    .line 17
     .line 18
-    invoke-virtual {p3, p1, v0}, Landroid/widget/AbsListView;->setItemChecked(IZ)V
+    invoke-virtual {p1}, Lg/d0;->dismiss()V
 
     .line 19
     .line 20
     .line 21
     :cond_0
-    return-object p2
+    return-void
 .end method

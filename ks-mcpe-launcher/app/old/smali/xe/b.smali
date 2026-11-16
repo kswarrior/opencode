@@ -1,65 +1,69 @@
 .class public final Lxe/b;
-.super Ljava/util/LinkedHashMap;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lge/m;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final c:I
+.field public c:Lge/o;
 
-
-# direct methods
-.method public constructor <init>()V
-    .locals 1
-
-    .line 1
-    invoke-direct {p0}, Ljava/util/LinkedHashMap;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    const v0, 0xc350
-
-    .line 5
-    .line 6
-    .line 7
-    iput v0, p0, Lxe/b;->c:I
-
-    .line 8
-    .line 9
-    return-void
-.end method
+.field public d:Lge/s;
 
 
 # virtual methods
-.method public final removeEldestEntry(Ljava/util/Map$Entry;)Z
-    .locals 1
+.method public final d()Lge/s;
+    .locals 5
 
     .line 1
-    invoke-virtual {p0}, Ljava/util/AbstractMap;->size()I
+    new-instance v0, Lge/f;
 
     .line 2
     .line 3
+    invoke-direct {v0}, Lge/f;-><init>()V
+
     .line 4
-    move-result p1
-
     .line 5
-    iget v0, p0, Lxe/b;->c:I
-
     .line 6
+    iget-object v1, p0, Lxe/b;->c:Lge/o;
+
     .line 7
-    if-le p1, v0, :cond_0
-
     .line 8
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
+
     .line 9
-    const/4 p1, 0x1
-
     .line 10
-    return p1
-
     .line 11
-    :cond_0
-    const/4 p1, 0x0
+    new-instance v1, Lge/e1;
 
     .line 12
-    return p1
+    .line 13
+    iget-object v2, p0, Lxe/b;->d:Lge/s;
+
+    .line 14
+    .line 15
+    const/4 v3, 0x1
+
+    .line 16
+    const/4 v4, 0x0
+
+    .line 17
+    invoke-direct {v1, v3, v4, v2}, Lge/w;-><init>(ZILge/e;)V
+
+    .line 18
+    .line 19
+    .line 20
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
+
+    .line 21
+    .line 22
+    .line 23
+    new-instance v1, Lge/b1;
+
+    .line 24
+    .line 25
+    invoke-direct {v1, v0}, Lge/b1;-><init>(Lge/f;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-object v1
 .end method

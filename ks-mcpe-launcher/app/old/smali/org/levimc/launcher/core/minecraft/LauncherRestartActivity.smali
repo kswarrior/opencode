@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/minecraft/LauncherRestartActivity;
 .super Lorg/levimc/launcher/ui/activities/BaseActivity;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -53,7 +53,7 @@
     .locals 4
 
     .line 1
-    invoke-static {p3}, Lcom/bumptech/glide/f;->f(F)F
+    invoke-static {p3}, Lcom/bumptech/glide/d;->m(F)F
 
     .line 2
     .line 3
@@ -188,7 +188,7 @@
     int-to-float p1, p1
 
     .line 2
-    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 3
     .line 4
@@ -228,7 +228,7 @@
     .locals 2
 
     .line 1
-    invoke-virtual {p0}, Lg/i;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {p0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 2
     .line 3
@@ -717,7 +717,7 @@
     move-result-object v5
 
     .line 63
-    invoke-static {v5}, Lfc/a;->r(Landroid/view/Window;)V
+    invoke-static {v5}, Lgc/a;->s(Landroid/view/Window;)V
 
     .line 64
     .line 65
@@ -730,7 +730,7 @@
     move-result-object v5
 
     .line 70
-    invoke-static {v5}, Lfc/a;->y(Landroid/view/Window;)V
+    invoke-static {v5}, Lgc/a;->y(Landroid/view/Window;)V
 
     .line 71
     .line 72
@@ -1418,7 +1418,7 @@
     .line 434
     .line 435
     .line 436
-    invoke-virtual {v0}, Lg/i;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v0}, Lg/g;->getResources()Landroid/content/res/Resources;
 
     .line 437
     .line 438
@@ -1695,7 +1695,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lcom/bumptech/glide/f;->g(II)I
+    invoke-static {p2, v0}, Lcom/bumptech/glide/d;->n(II)I
 
     .line 4
     .line 5
@@ -1776,16 +1776,6 @@
 
 
 # virtual methods
-.method public avoidsCutoutWithoutShell()Z
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    return v0
-.end method
-
 .method public onCreate(Landroid/os/Bundle;)V
     .locals 0
 
@@ -1866,7 +1856,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5

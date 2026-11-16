@@ -1,57 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/v1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Ljava/lang/Object;
-
-.field public final synthetic h:Ljava/lang/Object;
-
-.field public final synthetic p:Ljava/lang/Object;
+.field public final synthetic b:Ljava/lang/Object;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/ui/activities/v1;->c:I
+    iput p2, p0, Lorg/levimc/launcher/ui/activities/v1;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/v1;->b:Ljava/lang/Object;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
-
     .line 8
-    .line 9
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 10
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 3
+.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/v1;->c:I
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/v1;->a:I
 
     .line 2
     .line 3
@@ -60,31 +48,32 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->b:Ljava/lang/Object;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
+    check-cast v0, Ljava/util/function/Consumer;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/WorldEditorActivity;->Q0(Ljava/util/function/Consumer;Landroid/widget/CompoundButton;Z)V
 
     .line 11
     .line 12
-    check-cast v1, [Ljava/lang/String;
-
     .line 13
+    return-void
+
     .line 14
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->b:Ljava/lang/Object;
 
     .line 15
     .line 16
-    check-cast v2, Landroid/widget/Spinner;
+    check-cast v0, Lorg/levimc/launcher/ui/activities/ModDetailActivity;
 
     .line 17
     .line 18
-    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->B(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;[Ljava/lang/String;Landroid/widget/Spinner;Landroid/view/View;)V
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/ModDetailActivity;->A(Lorg/levimc/launcher/ui/activities/ModDetailActivity;Landroid/widget/CompoundButton;Z)V
 
     .line 19
     .line 20
@@ -92,146 +81,11 @@
     return-void
 
     .line 22
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
-
-    .line 23
-    .line 24
-    check-cast v0, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;
-
-    .line 25
-    .line 26
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
-
-    .line 27
-    .line 28
-    check-cast v1, Landroid/widget/EditText;
-
-    .line 29
-    .line 30
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
-
-    .line 31
-    .line 32
-    check-cast v2, Landroid/widget/EditText;
-
-    .line 33
-    .line 34
-    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;->D(Lorg/levimc/launcher/ui/activities/QuickLaunchActivity;Landroid/widget/EditText;Landroid/widget/EditText;Landroid/view/View;)V
-
-    .line 35
-    .line 36
-    .line 37
-    return-void
-
-    .line 38
-    :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
-
-    .line 39
-    .line 40
-    check-cast v0, Lorg/levimc/launcher/ui/activities/InstancesActivity;
-
-    .line 41
-    .line 42
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
-
-    .line 43
-    .line 44
-    check-cast v1, Ljava/util/ArrayList;
-
-    .line 45
-    .line 46
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
-
-    .line 47
-    .line 48
-    check-cast v2, [Z
-
-    .line 49
-    .line 50
-    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/InstancesActivity;->D(Lorg/levimc/launcher/ui/activities/InstancesActivity;Ljava/util/ArrayList;[ZLandroid/view/View;)V
-
-    .line 51
-    .line 52
-    .line 53
-    return-void
-
-    .line 54
-    :pswitch_2
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
-
-    .line 55
-    .line 56
-    check-cast v0, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;
-
-    .line 57
-    .line 58
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
-
-    .line 59
-    .line 60
-    check-cast v1, Landroid/widget/EditText;
-
-    .line 61
-    .line 62
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
-
-    .line 63
-    .line 64
-    check-cast v2, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
-
-    .line 65
-    .line 66
-    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity;->G(Lorg/levimc/launcher/ui/activities/GameDownloadActivity;Landroid/widget/EditText;Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;Landroid/view/View;)V
-
-    .line 67
-    .line 68
-    .line 69
-    return-void
-
-    .line 70
-    :pswitch_3
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/v1;->d:Ljava/lang/Object;
-
-    .line 71
-    .line 72
-    check-cast v0, Lorg/levimc/launcher/ui/activities/GameDownloadActivity$ReleaseHolder;
-
-    .line 73
-    .line 74
-    iget-object v1, p0, Lorg/levimc/launcher/ui/activities/v1;->h:Ljava/lang/Object;
-
-    .line 75
-    .line 76
-    check-cast v1, Lorg/levimc/launcher/core/play/GameRelease;
-
-    .line 77
-    .line 78
-    iget-object v2, p0, Lorg/levimc/launcher/ui/activities/v1;->p:Ljava/lang/Object;
-
-    .line 79
-    .line 80
-    check-cast v2, Ljava/lang/String;
-
-    .line 81
-    .line 82
-    invoke-static {v0, v1, v2, p1}, Lorg/levimc/launcher/ui/activities/GameDownloadActivity$ReleaseHolder;->a(Lorg/levimc/launcher/ui/activities/GameDownloadActivity$ReleaseHolder;Lorg/levimc/launcher/core/play/GameRelease;Ljava/lang/String;Landroid/view/View;)V
-
-    .line 83
-    .line 84
-    .line 85
-    return-void
-
-    .line 86
     nop
 
-    .line 87
+    .line 23
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_3
-        :pswitch_2
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

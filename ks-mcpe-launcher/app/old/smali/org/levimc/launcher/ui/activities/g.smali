@@ -1,27 +1,27 @@
 .class public final synthetic Lorg/levimc/launcher/ui/activities/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/core/news/NewsRepository$Callback;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final synthetic b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+.field public final synthetic d:Landroid/view/View;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/activities/BaseActivity;I)V
+.method public synthetic constructor <init>(ILandroid/view/View;)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lorg/levimc/launcher/ui/activities/g;->a:I
+    iput p1, p0, Lorg/levimc/launcher/ui/activities/g;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/activities/g;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+    iput-object p2, p0, Lorg/levimc/launcher/ui/activities/g;->d:Landroid/view/View;
 
     .line 4
     .line 5
@@ -35,11 +35,11 @@
 
 
 # virtual methods
-.method public final onResult(Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
+.method public final run()V
     .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/activities/g;->a:I
+    iget v0, p0, Lorg/levimc/launcher/ui/activities/g;->c:I
 
     .line 2
     .line 3
@@ -48,11 +48,11 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/g;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/g;->d:Landroid/view/View;
 
     .line 7
     .line 8
-    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/BaseActivity;->t(Lorg/levimc/launcher/ui/activities/BaseActivity;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ModDetailActivity;->z(Landroid/view/View;)V
 
     .line 9
     .line 10
@@ -61,11 +61,11 @@
 
     .line 12
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/g;->b:Lorg/levimc/launcher/ui/activities/BaseActivity;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/activities/g;->d:Landroid/view/View;
 
     .line 13
     .line 14
-    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/ui/activities/BaseActivity;->l(Lorg/levimc/launcher/ui/activities/BaseActivity;Lorg/levimc/launcher/core/news/NewsFeed;Ljava/lang/Throwable;)V
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/BaseActivity;->g(Landroid/view/View;)V
 
     .line 15
     .line 16

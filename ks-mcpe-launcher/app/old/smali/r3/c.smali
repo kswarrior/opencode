@@ -1,13 +1,13 @@
 .class public final Lr3/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lu3/e;
 
 
 # instance fields
-.field public final a:Llg/b;
+.field public final a:Lx7/c;
 
 .field public final b:Landroid/net/ConnectivityManager;
 
@@ -32,11 +32,11 @@
     .line 2
     .line 3
     .line 4
-    new-instance v0, Lm7/d;
+    new-instance v0, Lk7/d;
 
     .line 5
     .line 6
-    invoke-direct {v0}, Lm7/d;-><init>()V
+    invoke-direct {v0}, Lk7/d;-><init>()V
 
     .line 7
     .line 8
@@ -49,7 +49,7 @@
 
     .line 12
     .line 13
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 14
     .line 15
@@ -58,7 +58,7 @@
 
     .line 17
     .line 18
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 19
     .line 20
@@ -71,7 +71,7 @@
 
     .line 24
     .line 25
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 26
     .line 27
@@ -80,7 +80,7 @@
 
     .line 29
     .line 30
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 31
     .line 32
@@ -93,7 +93,7 @@
 
     .line 36
     .line 37
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 38
     .line 39
@@ -102,7 +102,7 @@
 
     .line 41
     .line 42
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 43
     .line 44
@@ -115,7 +115,7 @@
 
     .line 48
     .line 49
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 50
     .line 51
@@ -124,7 +124,7 @@
 
     .line 53
     .line 54
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 55
     .line 56
@@ -137,7 +137,7 @@
 
     .line 60
     .line 61
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 62
     .line 63
@@ -146,7 +146,7 @@
 
     .line 65
     .line 66
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 67
     .line 68
@@ -159,7 +159,7 @@
 
     .line 72
     .line 73
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 74
     .line 75
@@ -168,7 +168,7 @@
 
     .line 77
     .line 78
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 79
     .line 80
@@ -181,7 +181,7 @@
 
     .line 84
     .line 85
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 86
     .line 87
@@ -190,7 +190,7 @@
 
     .line 89
     .line 90
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 91
     .line 92
@@ -203,7 +203,7 @@
 
     .line 96
     .line 97
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 98
     .line 99
@@ -212,7 +212,7 @@
 
     .line 101
     .line 102
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 103
     .line 104
@@ -225,7 +225,7 @@
 
     .line 108
     .line 109
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 110
     .line 111
@@ -234,7 +234,7 @@
 
     .line 113
     .line 114
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 115
     .line 116
@@ -247,7 +247,7 @@
 
     .line 120
     .line 121
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 122
     .line 123
@@ -256,7 +256,7 @@
 
     .line 125
     .line 126
-    invoke-virtual {v0, v2, v1}, Lm7/d;->a(Ljava/lang/Class;Lk7/d;)Ll7/a;
+    invoke-virtual {v0, v2, v1}, Lk7/d;->a(Ljava/lang/Class;Li7/d;)Lj7/a;
 
     .line 127
     .line 128
@@ -264,83 +264,84 @@
     const/4 v1, 0x1
 
     .line 130
-    iput-boolean v1, v0, Lm7/d;->d:Z
+    iput-boolean v1, v0, Lk7/d;->d:Z
 
     .line 131
     .line 132
-    new-instance v1, Llg/b;
+    new-instance v1, Lx7/c;
 
     .line 133
     .line 134
-    const/4 v2, 0x3
+    const/16 v2, 0x1a
 
     .line 135
-    invoke-direct {v1, v0, v2}, Llg/b;-><init>(Ljava/lang/Object;I)V
-
     .line 136
+    invoke-direct {v1, v0, v2}, Lx7/c;-><init>(Ljava/lang/Object;I)V
+
     .line 137
     .line 138
-    iput-object v1, p0, Lr3/c;->a:Llg/b;
-
     .line 139
+    iput-object v1, p0, Lr3/c;->a:Lx7/c;
+
     .line 140
+    .line 141
     iput-object p1, p0, Lr3/c;->c:Landroid/content/Context;
 
-    .line 141
     .line 142
+    .line 143
     const-string v0, "connectivity"
 
-    .line 143
     .line 144
+    .line 145
     invoke-virtual {p1, v0}, Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
-    .line 145
     .line 146
     .line 147
-    move-result-object p1
-
     .line 148
-    check-cast p1, Landroid/net/ConnectivityManager;
+    move-result-object p1
 
     .line 149
+    check-cast p1, Landroid/net/ConnectivityManager;
+
     .line 150
+    .line 151
     iput-object p1, p0, Lr3/c;->b:Landroid/net/ConnectivityManager;
 
-    .line 151
     .line 152
+    .line 153
     sget-object p1, Lr3/a;->c:Ljava/lang/String;
 
-    .line 153
     .line 154
+    .line 155
     invoke-static {p1}, Lr3/c;->b(Ljava/lang/String;)Ljava/net/URL;
 
-    .line 155
     .line 156
     .line 157
+    .line 158
     move-result-object p1
 
-    .line 158
+    .line 159
     iput-object p1, p0, Lr3/c;->d:Ljava/net/URL;
 
-    .line 159
     .line 160
+    .line 161
     iput-object p3, p0, Lr3/c;->e:Lc4/a;
 
-    .line 161
     .line 162
+    .line 163
     iput-object p2, p0, Lr3/c;->f:Lc4/a;
 
-    .line 163
     .line 164
+    .line 165
     const p1, 0x1fbd0
 
-    .line 165
     .line 166
     .line 167
+    .line 168
     iput p1, p0, Lr3/c;->g:I
 
-    .line 168
     .line 169
+    .line 170
     return-void
 .end method
 
@@ -375,7 +376,7 @@
 
     .line 11
     .line 12
-    invoke-static {v2, p0}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, p0}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 13
     .line 14
@@ -409,7 +410,7 @@
     move-result-object v0
 
     .line 7
-    invoke-virtual {p1}, Lt3/h;->c()Lcom/google/android/gms/internal/measurement/dg;
+    invoke-virtual {p1}, Lt3/h;->c()Lcom/google/android/gms/internal/measurement/xf;
 
     .line 8
     .line 9
@@ -421,7 +422,7 @@
 
     .line 12
     .line 13
-    iget-object v2, p1, Lcom/google/android/gms/internal/measurement/dg;->f:Ljava/lang/Object;
+    iget-object v2, p1, Lcom/google/android/gms/internal/measurement/xf;->f:Ljava/lang/Object;
 
     .line 14
     .line 15
@@ -462,7 +463,7 @@
 
     .line 33
     .line 34
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 35
     .line 36
@@ -475,7 +476,7 @@
 
     .line 40
     .line 41
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 42
     .line 43
@@ -488,7 +489,7 @@
 
     .line 47
     .line 48
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 49
     .line 50
@@ -501,7 +502,7 @@
 
     .line 54
     .line 55
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 56
     .line 57
@@ -514,7 +515,7 @@
 
     .line 61
     .line 62
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 63
     .line 64
@@ -527,7 +528,7 @@
 
     .line 68
     .line 69
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 70
     .line 71
@@ -540,7 +541,7 @@
 
     .line 75
     .line 76
-    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v2}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 77
     .line 78
@@ -589,7 +590,7 @@
     int-to-long v1, v1
 
     .line 101
-    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/dg;->f:Ljava/lang/Object;
+    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/xf;->f:Ljava/lang/Object;
 
     .line 102
     .line 103
@@ -645,7 +646,7 @@
 
     .line 127
     :goto_0
-    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/dg;->f:Ljava/lang/Object;
+    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/xf;->f:Ljava/lang/Object;
 
     .line 128
     .line 129
@@ -738,7 +739,7 @@
     .line 169
     .line 170
     :goto_1
-    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/dg;->f:Ljava/lang/Object;
+    iget-object v4, p1, Lcom/google/android/gms/internal/measurement/xf;->f:Ljava/lang/Object;
 
     .line 171
     .line 172
@@ -787,7 +788,7 @@
 
     .line 194
     .line 195
-    invoke-virtual {p1, v3, v0}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v3, v0}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 196
     .line 197
@@ -812,7 +813,7 @@
 
     .line 207
     .line 208
-    invoke-virtual {p1, v3, v0}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v3, v0}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 209
     .line 210
@@ -862,7 +863,7 @@
 
     .line 231
     .line 232
-    invoke-virtual {p1, v4, v0}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v4, v0}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 233
     .line 234
@@ -913,7 +914,7 @@
 
     .line 254
     .line 255
-    invoke-static {v2, v3, v0}, Lcom/bumptech/glide/e;->o(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V
+    invoke-static {v2, v3, v0}, Lcom/bumptech/glide/c;->l(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Exception;)V
 
     .line 256
     .line 257
@@ -931,12 +932,12 @@
 
     .line 263
     .line 264
-    invoke-virtual {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/dg;->a(Ljava/lang/String;Ljava/lang/String;)V
+    invoke-virtual {p1, v1, v0}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
 
     .line 265
     .line 266
     .line 267
-    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/dg;->b()Lt3/h;
+    invoke-virtual {p1}, Lcom/google/android/gms/internal/measurement/xf;->b()Lt3/h;
 
     .line 268
     .line 269

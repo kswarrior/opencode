@@ -1,9 +1,9 @@
 .class public Lg2/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lf2/a;
+.implements Lf2/b;
 
 
 # instance fields
@@ -19,7 +19,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -38,7 +38,7 @@
 
 
 # virtual methods
-.method public final F(IJ)V
+.method public final G(IJ)V
     .locals 1
 
     .line 1
@@ -62,7 +62,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -79,6 +79,22 @@
     return-void
 .end method
 
+.method public final c0(I)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lg2/i;->c:Landroid/database/sqlite/SQLiteProgram;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Landroid/database/sqlite/SQLiteProgram;->bindNull(I)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
 .method public final close()V
     .locals 1
 
@@ -88,22 +104,6 @@
     .line 2
     .line 3
     invoke-virtual {v0}, Landroid/database/sqlite/SQLiteClosable;->close()V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final e0(I)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lg2/i;->c:Landroid/database/sqlite/SQLiteProgram;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0, p1}, Landroid/database/sqlite/SQLiteProgram;->bindNull(I)V
 
     .line 4
     .line 5
@@ -135,7 +135,7 @@
 
     .line 2
     .line 3
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -152,7 +152,7 @@
     return-void
 .end method
 
-.method public final v(ID)V
+.method public final w(ID)V
     .locals 1
 
     .line 1

@@ -1,310 +1,187 @@
-.class public final Lec/b;
+.class public abstract Lec/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lic/d;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public final a:Ljavax/net/ssl/X509TrustManager;
-
-.field public final b:Ljava/lang/reflect/Method;
+# static fields
+.field public static final a:Lokio/ByteString;
 
 
 # direct methods
-.method public constructor <init>(Ljavax/net/ssl/X509TrustManager;Ljava/lang/reflect/Method;)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    sget-object v0, Lokio/ByteString;->q:Lokio/ByteString;
 
     .line 2
     .line 3
+    const-string v0, "xn--"
+
     .line 4
-    iput-object p1, p0, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lec/b;->b:Ljava/lang/reflect/Method;
+    invoke-static {v0}, Lce/b;->o(Ljava/lang/String;)Lokio/ByteString;
 
+    .line 6
     .line 7
     .line 8
+    move-result-object v0
+
+    .line 9
+    sput-object v0, Lec/b;->a:Lokio/ByteString;
+
+    .line 10
+    .line 11
     return-void
 .end method
 
-
-# virtual methods
-.method public final a(Ljava/security/cert/X509Certificate;)Ljava/security/cert/X509Certificate;
-    .locals 2
+.method public static a(IIZ)I
+    .locals 0
 
     .line 1
-    :try_start_0
-    iget-object v0, p0, Lec/b;->b:Ljava/lang/reflect/Method;
+    if-eqz p2, :cond_0
 
     .line 2
     .line 3
-    iget-object v1, p0, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
+    div-int/lit16 p0, p0, 0x2bc
 
     .line 4
     .line 5
-    filled-new-array {p1}, [Ljava/lang/Object;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    invoke-virtual {v0, v1, p1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object p1
-
-    .line 13
-    const-string v0, "null cannot be cast to non-null type java.security.cert.TrustAnchor"
-
-    .line 14
-    .line 15
-    invoke-static {p1, v0}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 16
-    .line 17
-    .line 18
-    check-cast p1, Ljava/security/cert/TrustAnchor;
-
-    .line 19
-    .line 20
-    invoke-virtual {p1}, Ljava/security/cert/TrustAnchor;->getTrustedCert()Ljava/security/cert/X509Certificate;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object p1
-    :try_end_0
-    .catch Ljava/lang/IllegalAccessException; {:try_start_0 .. :try_end_0} :catch_0
-    .catch Ljava/lang/reflect/InvocationTargetException; {:try_start_0 .. :try_end_0} :catch_1
-
-    .line 24
-    return-object p1
-
-    .line 25
-    :catch_0
-    move-exception p1
-
-    .line 26
     goto :goto_0
 
-    .line 27
-    :catch_1
-    const/4 p1, 0x0
-
-    .line 28
-    return-object p1
-
-    .line 29
-    :goto_0
-    new-instance v0, Ljava/lang/AssertionError;
-
-    .line 30
-    .line 31
-    const-string v1, "unable to get issues and signature"
-
-    .line 32
-    .line 33
-    invoke-direct {v0, v1, p1}, Ljava/lang/AssertionError;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
-    .line 34
-    .line 35
-    .line 36
-    throw v0
-.end method
-
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 4
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    if-ne p0, p1, :cond_0
-
-    .line 3
-    .line 4
-    return v0
-
-    .line 5
+    .line 6
     :cond_0
-    instance-of v1, p1, Lec/b;
+    div-int/lit8 p0, p0, 0x2
 
-    .line 6
     .line 7
-    const/4 v2, 0x0
-
     .line 8
-    if-nez v1, :cond_1
+    :goto_0
+    div-int p1, p0, p1
 
     .line 9
     .line 10
-    return v2
+    add-int/2addr p1, p0
 
     .line 11
-    :cond_1
-    check-cast p1, Lec/b;
+    const/4 p0, 0x0
 
     .line 12
+    :goto_1
+    const/16 p2, 0x1c7
+
     .line 13
-    iget-object v1, p0, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
-
     .line 14
+    if-le p1, p2, :cond_1
+
     .line 15
-    iget-object v3, p1, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
-
     .line 16
-    .line 17
-    invoke-static {v1, v3}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    div-int/lit8 p1, p1, 0x23
 
+    .line 17
     .line 18
+    add-int/lit8 p0, p0, 0x24
+
     .line 19
     .line 20
-    move-result v1
+    goto :goto_1
 
     .line 21
-    if-nez v1, :cond_2
+    :cond_1
+    mul-int/lit8 p2, p1, 0x24
 
     .line 22
     .line 23
-    return v2
+    add-int/lit8 p1, p1, 0x26
 
     .line 24
-    :cond_2
-    iget-object v1, p0, Lec/b;->b:Ljava/lang/reflect/Method;
+    .line 25
+    div-int/2addr p2, p1
+
+    .line 26
+    add-int/2addr p2, p0
+
+    .line 27
+    return p2
+.end method
+
+.method public static b(I)I
+    .locals 3
+
+    .line 1
+    const/16 v0, 0x1a
+
+    .line 2
+    .line 3
+    if-ge p0, v0, :cond_0
+
+    .line 4
+    .line 5
+    add-int/lit8 p0, p0, 0x61
+
+    .line 6
+    .line 7
+    return p0
+
+    .line 8
+    :cond_0
+    const/16 v0, 0x24
+
+    .line 9
+    .line 10
+    if-ge p0, v0, :cond_1
+
+    .line 11
+    .line 12
+    add-int/lit8 p0, p0, 0x16
+
+    .line 13
+    .line 14
+    return p0
+
+    .line 15
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalStateException;
+
+    .line 16
+    .line 17
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 18
+    .line 19
+    const-string v2, "unexpected digit: "
+
+    .line 20
+    .line 21
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 22
+    .line 23
+    .line 24
+    invoke-virtual {v1, p0}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 25
     .line 26
-    iget-object p1, p1, Lec/b;->b:Ljava/lang/reflect/Method;
-
     .line 27
-    .line 28
-    invoke-static {v1, p1}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
+    .line 28
     .line 29
     .line 30
+    move-result-object p0
+
     .line 31
-    move-result p1
+    invoke-virtual {p0}, Ljava/lang/Object;->toString()Ljava/lang/String;
 
     .line 32
-    if-nez p1, :cond_3
-
     .line 33
     .line 34
-    return v2
+    move-result-object p0
 
     .line 35
-    :cond_3
-    return v0
-.end method
+    invoke-direct {v0, p0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
 
-.method public final hashCode()I
-    .locals 2
-
-    .line 1
-    iget-object v0, p0, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    mul-int/lit8 v0, v0, 0x1f
-
-    .line 8
-    .line 9
-    iget-object v1, p0, Lec/b;->b:Ljava/lang/reflect/Method;
-
-    .line 10
-    .line 11
-    invoke-virtual {v1}, Ljava/lang/reflect/Method;->hashCode()I
-
-    .line 12
-    .line 13
-    .line 14
-    move-result v1
-
-    .line 15
-    add-int/2addr v1, v0
-
-    .line 16
-    return v1
-.end method
-
-.method public final toString()Ljava/lang/String;
-    .locals 2
-
-    .line 1
-    new-instance v0, Ljava/lang/StringBuilder;
-
-    .line 2
-    .line 3
-    const-string v1, "CustomTrustRootIndex(trustManager="
-
-    .line 4
-    .line 5
-    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 6
-    .line 7
-    .line 8
-    iget-object v1, p0, Lec/b;->a:Ljavax/net/ssl/X509TrustManager;
-
-    .line 9
-    .line 10
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 11
-    .line 12
-    .line 13
-    const-string v1, ", findByIssuerAndSignatureMethod="
-
-    .line 14
-    .line 15
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 16
-    .line 17
-    .line 18
-    iget-object v1, p0, Lec/b;->b:Ljava/lang/reflect/Method;
-
-    .line 19
-    .line 20
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 21
-    .line 22
-    .line 23
-    const/16 v1, 0x29
-
-    .line 24
-    .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
-
-    .line 26
-    .line 27
-    .line 28
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v0
-
-    .line 32
-    return-object v0
+    .line 36
+    .line 37
+    .line 38
+    throw v0
 .end method

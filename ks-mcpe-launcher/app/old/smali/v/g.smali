@@ -1,19 +1,19 @@
 .class public abstract Lv/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/google/common/util/concurrent/ListenableFuture;
 
 
 # static fields
-.field public static final p:Z
+.field public static final q:Z
 
-.field public static final q:Ljava/util/logging/Logger;
+.field public static final w:Ljava/util/logging/Logger;
 
-.field public static final w:Lm6/b;
+.field public static final x:Lkb/c;
 
-.field public static final x:Ljava/lang/Object;
+.field public static final y:Ljava/lang/Object;
 
 
 # instance fields
@@ -57,7 +57,7 @@
     move-result v1
 
     .line 15
-    sput-boolean v1, Lv/g;->p:Z
+    sput-boolean v1, Lv/g;->q:Z
 
     .line 16
     .line 17
@@ -81,7 +81,7 @@
     move-result-object v2
 
     .line 27
-    sput-object v2, Lv/g;->q:Ljava/util/logging/Logger;
+    sput-object v2, Lv/g;->w:Ljava/util/logging/Logger;
 
     .line 28
     .line 29
@@ -189,7 +189,7 @@
     .line 77
     .line 78
     :goto_0
-    sput-object v3, Lv/g;->w:Lm6/b;
+    sput-object v3, Lv/g;->x:Lkb/c;
 
     .line 79
     .line 80
@@ -197,7 +197,7 @@
 
     .line 81
     .line 82
-    sget-object v1, Lv/g;->q:Ljava/util/logging/Logger;
+    sget-object v1, Lv/g;->w:Ljava/util/logging/Logger;
 
     .line 83
     .line 84
@@ -224,7 +224,7 @@
     .line 94
     .line 95
     .line 96
-    sput-object v0, Lv/g;->x:Ljava/lang/Object;
+    sput-object v0, Lv/g;->y:Ljava/lang/Object;
 
     .line 97
     .line 98
@@ -240,7 +240,7 @@
 
     .line 2
     .line 3
-    sget-object v1, Lv/g;->w:Lm6/b;
+    sget-object v1, Lv/g;->x:Lkb/c;
 
     .line 4
     .line 5
@@ -248,7 +248,7 @@
 
     .line 6
     .line 7
-    invoke-virtual {v1, p0, v0, v2}, Lm6/b;->e(Lv/g;Lv/f;Lv/f;)Z
+    invoke-virtual {v1, p0, v0, v2}, Lkb/c;->e(Lv/g;Lv/f;Lv/f;)Z
 
     .line 8
     .line 9
@@ -304,7 +304,7 @@
 
     .line 32
     .line 33
-    sget-object v2, Lv/g;->w:Lm6/b;
+    sget-object v2, Lv/g;->x:Lkb/c;
 
     .line 34
     .line 35
@@ -312,7 +312,7 @@
 
     .line 36
     .line 37
-    invoke-virtual {v2, p0, v0, v3}, Lm6/b;->c(Lv/g;Lv/c;Lv/c;)Z
+    invoke-virtual {v2, p0, v0, v3}, Lkb/c;->c(Lv/g;Lv/c;Lv/c;)Z
 
     .line 38
     .line 39
@@ -442,7 +442,7 @@
     move-result-object p0
 
     .line 30
-    sget-object p1, Lv/g;->q:Ljava/util/logging/Logger;
+    sget-object p1, Lv/g;->w:Ljava/util/logging/Logger;
 
     .line 31
     .line 32
@@ -474,7 +474,7 @@
 
     .line 8
     .line 9
-    sget-object v0, Lv/g;->x:Ljava/lang/Object;
+    sget-object v0, Lv/g;->y:Ljava/lang/Object;
 
     .line 10
     .line 11
@@ -615,74 +615,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
-    .locals 4
-
-    .line 1
-    iget-object v0, p0, Lv/g;->d:Lv/c;
-
-    .line 2
-    .line 3
-    sget-object v1, Lv/c;->d:Lv/c;
-
-    .line 4
-    .line 5
-    if-eq v0, v1, :cond_2
-
-    .line 6
-    .line 7
-    new-instance v2, Lv/c;
-
-    .line 8
-    .line 9
-    invoke-direct {v2, p1, p2}, Lv/c;-><init>(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
-
-    .line 10
-    .line 11
-    .line 12
-    :cond_0
-    iput-object v0, v2, Lv/c;->c:Lv/c;
-
-    .line 13
-    .line 14
-    sget-object v3, Lv/g;->w:Lm6/b;
-
-    .line 15
-    .line 16
-    invoke-virtual {v3, p0, v0, v2}, Lm6/b;->c(Lv/g;Lv/c;Lv/c;)Z
-
-    .line 17
-    .line 18
-    .line 19
-    move-result v0
-
-    .line 20
-    if-eqz v0, :cond_1
-
-    .line 21
-    .line 22
-    return-void
-
-    .line 23
-    :cond_1
-    iget-object v0, p0, Lv/g;->d:Lv/c;
-
-    .line 24
-    .line 25
-    if-ne v0, v1, :cond_0
-
-    .line 26
-    .line 27
-    :cond_2
-    invoke-static {p1, p2}, Lv/g;->e(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
-
-    .line 28
-    .line 29
-    .line 30
-    return-void
-.end method
-
-.method public final b(Ljava/lang/StringBuilder;)V
+.method public final a(Ljava/lang/StringBuilder;)V
     .locals 3
 
     .line 1
@@ -840,6 +773,73 @@
     return-void
 .end method
 
+.method public final b(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
+    .locals 4
+
+    .line 1
+    iget-object v0, p0, Lv/g;->d:Lv/c;
+
+    .line 2
+    .line 3
+    sget-object v1, Lv/c;->d:Lv/c;
+
+    .line 4
+    .line 5
+    if-eq v0, v1, :cond_2
+
+    .line 6
+    .line 7
+    new-instance v2, Lv/c;
+
+    .line 8
+    .line 9
+    invoke-direct {v2, p1, p2}, Lv/c;-><init>(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
+
+    .line 10
+    .line 11
+    .line 12
+    :cond_0
+    iput-object v0, v2, Lv/c;->c:Lv/c;
+
+    .line 13
+    .line 14
+    sget-object v3, Lv/g;->x:Lkb/c;
+
+    .line 15
+    .line 16
+    invoke-virtual {v3, p0, v0, v2}, Lkb/c;->c(Lv/g;Lv/c;Lv/c;)Z
+
+    .line 17
+    .line 18
+    .line 19
+    move-result v0
+
+    .line 20
+    if-eqz v0, :cond_1
+
+    .line 21
+    .line 22
+    return-void
+
+    .line 23
+    :cond_1
+    iget-object v0, p0, Lv/g;->d:Lv/c;
+
+    .line 24
+    .line 25
+    if-ne v0, v1, :cond_0
+
+    .line 26
+    .line 27
+    :cond_2
+    invoke-static {p1, p2}, Lv/g;->e(Ljava/lang/Runnable;Ljava/util/concurrent/Executor;)V
+
+    .line 28
+    .line 29
+    .line 30
+    return-void
+.end method
+
 .method public c()V
     .locals 0
 
@@ -880,7 +880,7 @@
 
     .line 11
     .line 12
-    sget-boolean v3, Lv/g;->p:Z
+    sget-boolean v3, Lv/g;->q:Z
 
     .line 13
     .line 14
@@ -931,11 +931,11 @@
     .line 35
     .line 36
     :goto_1
-    sget-object p1, Lv/g;->w:Lm6/b;
+    sget-object p1, Lv/g;->x:Lkb/c;
 
     .line 37
     .line 38
-    invoke-virtual {p1, p0, v0, v3}, Lm6/b;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-virtual {p1, p0, v0, v3}, Lkb/c;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 39
     .line 40
@@ -996,12 +996,12 @@
 
     .line 83
     :cond_1
-    sget-object v3, Lv/g;->w:Lm6/b;
+    sget-object v3, Lv/g;->x:Lkb/c;
 
-    invoke-virtual {v3, v2, v1}, Lm6/b;->B(Lv/f;Lv/f;)V
+    invoke-virtual {v3, v2, v1}, Lkb/c;->B(Lv/f;Lv/f;)V
 
     .line 84
-    invoke-virtual {v3, p0, v1, v2}, Lm6/b;->e(Lv/g;Lv/f;Lv/f;)Z
+    invoke-virtual {v3, p0, v1, v2}, Lkb/c;->e(Lv/g;Lv/f;Lv/f;)Z
 
     move-result v1
 
@@ -1139,12 +1139,12 @@
 
     .line 8
     :cond_2
-    sget-object v15, Lv/g;->w:Lm6/b;
+    sget-object v15, Lv/g;->x:Lkb/c;
 
-    invoke-virtual {v15, v14, v13}, Lm6/b;->B(Lv/f;Lv/f;)V
+    invoke-virtual {v15, v14, v13}, Lkb/c;->B(Lv/f;Lv/f;)V
 
     .line 9
-    invoke-virtual {v15, v0, v13, v14}, Lm6/b;->e(Lv/g;Lv/f;Lv/f;)Z
+    invoke-virtual {v15, v0, v13, v14}, Lkb/c;->e(Lv/g;Lv/f;Lv/f;)Z
 
     move-result v13
 
@@ -1314,7 +1314,7 @@
     const-string v10, " (plus "
 
     .line 29
-    invoke-static {v2, v10}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v10}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1379,13 +1379,13 @@
     const-string v3, ","
 
     .line 34
-    invoke-static {v2, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v3}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
     .line 35
     :cond_e
-    invoke-static {v2, v1}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v1}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1414,7 +1414,7 @@
     const-string v1, "delay)"
 
     .line 38
-    invoke-static {v2, v1}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v1}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1432,7 +1432,7 @@
     const-string v3, " but future completed as timeout expired"
 
     .line 41
-    invoke-static {v2, v3}, Lu7/d;->d(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v3}, Ln5/h;->c(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1448,7 +1448,7 @@
     const-string v3, " for "
 
     .line 44
-    invoke-static {v2, v3, v4}, Lu7/d;->e(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v2, v3, v4}, Ln5/h;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object v2
 
@@ -1617,11 +1617,11 @@
 
     .line 31
     :cond_2
-    sget-object v3, Lv/g;->w:Lm6/b;
+    sget-object v3, Lv/g;->x:Lkb/c;
 
     .line 32
     .line 33
-    invoke-virtual {v3, p0, p1, v2}, Lm6/b;->e(Lv/g;Lv/f;Lv/f;)Z
+    invoke-virtual {v3, p0, p1, v2}, Lkb/c;->e(Lv/g;Lv/f;Lv/f;)Z
 
     .line 34
     .line 35
@@ -1698,19 +1698,19 @@
 
     .line 2
     .line 3
-    sget-object p1, Lv/g;->x:Ljava/lang/Object;
+    sget-object p1, Lv/g;->y:Ljava/lang/Object;
 
     .line 4
     .line 5
     :cond_0
-    sget-object v0, Lv/g;->w:Lm6/b;
+    sget-object v0, Lv/g;->x:Lkb/c;
 
     .line 6
     .line 7
     const/4 v1, 0x0
 
     .line 8
-    invoke-virtual {v0, p0, v1, p1}, Lm6/b;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-virtual {v0, p0, v1, p1}, Lkb/c;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 9
     .line 10
@@ -1758,14 +1758,14 @@
     .line 7
     .line 8
     .line 9
-    sget-object p1, Lv/g;->w:Lm6/b;
+    sget-object p1, Lv/g;->x:Lkb/c;
 
     .line 10
     .line 11
     const/4 v1, 0x0
 
     .line 12
-    invoke-virtual {p1, p0, v1, v0}, Lm6/b;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-virtual {p1, p0, v1, v0}, Lkb/c;->d(Lv/g;Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 13
     .line 14
@@ -1871,7 +1871,7 @@
 
     .line 37
     .line 38
-    invoke-virtual {p0, v0}, Lv/g;->b(Ljava/lang/StringBuilder;)V
+    invoke-virtual {p0, v0}, Lv/g;->a(Ljava/lang/StringBuilder;)V
 
     .line 39
     .line 40
@@ -1984,7 +1984,7 @@
 
     .line 91
     .line 92
-    invoke-virtual {p0, v0}, Lv/g;->b(Ljava/lang/StringBuilder;)V
+    invoke-virtual {p0, v0}, Lv/g;->a(Ljava/lang/StringBuilder;)V
 
     .line 93
     .line 94

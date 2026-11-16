@@ -1,12 +1,12 @@
 .class public abstract Lo3/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final a:Lg/n;
+.field public static final a:Lg/l;
 
-.field public static final b:Lg/n;
+.field public static final b:Lg/l;
 
 
 # direct methods
@@ -14,35 +14,35 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lg/n;
+    new-instance v0, Lg/l;
 
     .line 2
     .line 3
-    const/4 v1, 0x1
+    const/4 v1, 0x2
 
     .line 4
-    invoke-direct {v0, v1}, Lg/n;-><init>(I)V
+    invoke-direct {v0, v1}, Lg/l;-><init>(I)V
 
     .line 5
     .line 6
     .line 7
-    sput-object v0, Lo3/f;->a:Lg/n;
+    sput-object v0, Lo3/f;->a:Lg/l;
 
     .line 8
     .line 9
-    new-instance v0, Lg/n;
+    new-instance v0, Lg/l;
 
     .line 10
     .line 11
-    const/4 v1, 0x2
+    const/4 v1, 0x3
 
     .line 12
-    invoke-direct {v0, v1}, Lg/n;-><init>(I)V
+    invoke-direct {v0, v1}, Lg/l;-><init>(I)V
 
     .line 13
     .line 14
     .line 15
-    sput-object v0, Lo3/f;->b:Lg/n;
+    sput-object v0, Lo3/f;->b:Lg/l;
 
     .line 16
     .line 17

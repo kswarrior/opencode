@@ -1,20 +1,11 @@
-.class public abstract Lcom/google/android/gms/internal/play_billing/h0;
+.class public interface abstract Lcom/google/android/gms/internal/play_billing/h0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# static fields
-.field public static final synthetic a:I
+# virtual methods
+.method public abstract a(Ljava/lang/Class;)Lcom/google/android/gms/internal/play_billing/o0;
+.end method
 
-
-# direct methods
-.method static constructor <clinit>()V
-    .locals 1
-
-    .line 1
-    sget v0, Lcom/google/android/gms/internal/play_billing/s;->a:I
-
-    .line 2
-    .line 3
-    return-void
+.method public abstract b(Ljava/lang/Class;)Z
 .end method

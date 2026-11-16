@@ -1,10 +1,10 @@
 .class public final Ly1/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ly1/a0;
-.implements Landroidx/room/s;
+.implements Landroidx/room/r;
 
 
 # instance fields
@@ -36,68 +36,7 @@
 
 
 # virtual methods
-.method public final a(Ljava/lang/String;Lg9/k;Ly8/c;)Ljava/lang/Object;
-    .locals 1
-
-    .line 1
-    iget v0, p0, Ly1/i;->a:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    iget-object v0, p0, Ly1/i;->b:Ljava/lang/Object;
-
-    .line 7
-    .line 8
-    check-cast v0, Ly1/z;
-
-    .line 9
-    .line 10
-    invoke-virtual {v0, p1, p2, p3}, Ly1/z;->a(Ljava/lang/String;Lg9/k;Ly8/c;)Ljava/lang/Object;
-
-    .line 11
-    .line 12
-    .line 13
-    move-result-object p1
-
-    .line 14
-    return-object p1
-
-    .line 15
-    :pswitch_0
-    iget-object v0, p0, Ly1/i;->b:Ljava/lang/Object;
-
-    .line 16
-    .line 17
-    check-cast v0, Ly1/n;
-
-    .line 18
-    .line 19
-    invoke-virtual {v0, p1, p2, p3}, Ly1/n;->a(Ljava/lang/String;Lg9/k;Ly8/c;)Ljava/lang/Object;
-
-    .line 20
-    .line 21
-    .line 22
-    move-result-object p1
-
-    .line 23
-    return-object p1
-
-    .line 24
-    nop
-
-    .line 25
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final d()Landroidx/sqlite/SQLiteConnection;
+.method public final c()Landroidx/sqlite/SQLiteConnection;
     .locals 1
 
     .line 1
@@ -143,6 +82,68 @@
     .line 20
     nop
 
+    .line 21
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final d(Ljava/lang/String;Le9/k;Lw8/c;)Ljava/lang/Object;
+    .locals 1
+
+    .line 1
+    iget v0, p0, Ly1/i;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Ly1/i;->b:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v0, Ly1/z;
+
+    .line 9
+    .line 10
+    invoke-virtual {v0, p1, p2, p3}, Ly1/z;->d(Ljava/lang/String;Le9/k;Lw8/c;)Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object p1
+
+    .line 14
+    return-object p1
+
+    .line 15
+    :pswitch_0
+    iget-object v0, p0, Ly1/i;->b:Ljava/lang/Object;
+
+    .line 16
+    .line 17
+    check-cast v0, Ly1/n;
+
+    .line 18
+    .line 19
+    invoke-virtual {v0, p1, p2, p3}, Ly1/n;->d(Ljava/lang/String;Le9/k;Lw8/c;)Ljava/lang/Object;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p1
+
+    .line 23
+    return-object p1
+
+    .line 24
+    nop
+
+    .line 25
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

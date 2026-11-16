@@ -1,734 +1,229 @@
 .class public final Lqg/b;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lorg/spongycastle/crypto/i;
-
-
-# static fields
-.field public static final h:Ljava/math/BigInteger;
+.super Lge/m;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public c:Lmg/q;
+.field public final c:I
 
-.field public d:Ljava/security/SecureRandom;
+.field public final d:I
+
+.field public final h:Lzg/a;
+
+.field public final q:Lff/a;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 2
+.method public constructor <init>(IILzg/a;Lff/a;)V
+    .locals 0
 
     .line 1
-    const-wide/16 v0, 0x1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
+    iput p1, p0, Lqg/b;->c:I
+
     .line 3
-    invoke-static {v0, v1}, Ljava/math/BigInteger;->valueOf(J)Ljava/math/BigInteger;
+    iput p2, p0, Lqg/b;->d:I
 
     .line 4
+    new-instance p1, Lzg/a;
+
+    invoke-virtual {p3}, Lzg/a;->d()[B
+
+    move-result-object p2
+
+    invoke-direct {p1, p2}, Lzg/a;-><init>([B)V
+
+    iput-object p1, p0, Lqg/b;->h:Lzg/a;
+
     .line 5
+    iput-object p4, p0, Lqg/b;->q:Lff/a;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lge/t;)V
+    .locals 2
+
     .line 6
-    move-result-object v0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    const/4 v0, 0x0
 
     .line 7
-    sput-object v0, Lqg/b;->h:Ljava/math/BigInteger;
+    invoke-virtual {p1, v0}, Lge/t;->u(I)Lge/e;
+
+    move-result-object v0
+
+    check-cast v0, Lge/k;
+
+    invoke-virtual {v0}, Lge/k;->w()Ljava/math/BigInteger;
+
+    move-result-object v0
 
     .line 8
+    invoke-virtual {v0}, Ljava/math/BigInteger;->intValue()I
+
+    move-result v0
+
+    iput v0, p0, Lqg/b;->c:I
+
+    const/4 v0, 0x1
+
     .line 9
+    invoke-virtual {p1, v0}, Lge/t;->u(I)Lge/e;
+
+    move-result-object v0
+
+    check-cast v0, Lge/k;
+
+    invoke-virtual {v0}, Lge/k;->w()Ljava/math/BigInteger;
+
+    move-result-object v0
+
+    .line 10
+    invoke-virtual {v0}, Ljava/math/BigInteger;->intValue()I
+
+    move-result v0
+
+    iput v0, p0, Lqg/b;->d:I
+
+    .line 11
+    new-instance v0, Lzg/a;
+
+    const/4 v1, 0x2
+
+    invoke-virtual {p1, v1}, Lge/t;->u(I)Lge/e;
+
+    move-result-object v1
+
+    check-cast v1, Lge/p;
+
+    invoke-virtual {v1}, Lge/p;->u()[B
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Lzg/a;-><init>([B)V
+
+    iput-object v0, p0, Lqg/b;->h:Lzg/a;
+
+    const/4 v0, 0x3
+
+    .line 12
+    invoke-virtual {p1, v0}, Lge/t;->u(I)Lge/e;
+
+    move-result-object p1
+
+    invoke-static {p1}, Lff/a;->l(Ljava/lang/Object;)Lff/a;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lqg/b;->q:Lff/a;
+
     return-void
 .end method
 
 
 # virtual methods
-.method public final d([B)[Ljava/math/BigInteger;
-    .locals 10
+.method public final d()Lge/s;
+    .locals 4
 
     .line 1
-    iget-object v0, p0, Lqg/b;->c:Lmg/q;
+    new-instance v0, Lge/f;
 
     .line 2
     .line 3
-    iget-object v0, v0, Lmg/q;->d:Lmg/o;
+    invoke-direct {v0}, Lge/f;-><init>()V
 
     .line 4
     .line 5
-    iget-object v1, v0, Lmg/o;->c:Lbh/f;
-
     .line 6
-    .line 7
-    invoke-static {p1}, Lsh/c;->H([B)[B
+    new-instance v1, Lge/k;
 
+    .line 7
     .line 8
+    iget v2, p0, Lqg/b;->c:I
+
     .line 9
     .line 10
-    move-result-object p1
+    int-to-long v2, v2
 
     .line 11
-    new-instance v2, Ljava/math/BigInteger;
+    invoke-direct {v1, v2, v3}, Lge/k;-><init>(J)V
 
     .line 12
     .line 13
-    const/4 v3, 0x1
-
     .line 14
-    invoke-direct {v2, v3, p1}, Ljava/math/BigInteger;-><init>(I[B)V
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
 
     .line 15
     .line 16
     .line 17
-    invoke-virtual {v1}, Lbh/f;->j()I
+    new-instance v1, Lge/k;
 
     .line 18
     .line 19
-    .line 20
-    move-result p1
+    iget v2, p0, Lqg/b;->d:I
 
+    .line 20
     .line 21
-    invoke-virtual {v2}, Ljava/math/BigInteger;->bitLength()I
+    int-to-long v2, v2
 
     .line 22
+    invoke-direct {v1, v2, v3}, Lge/k;-><init>(J)V
+
     .line 23
     .line 24
-    move-result v4
-
     .line 25
-    sget-object v5, Lqg/b;->h:Ljava/math/BigInteger;
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
 
     .line 26
     .line 27
-    if-le v4, p1, :cond_0
-
     .line 28
-    .line 29
-    invoke-virtual {v5, p1}, Ljava/math/BigInteger;->shiftLeft(I)Ljava/math/BigInteger;
+    new-instance v1, Lge/y0;
 
+    .line 29
     .line 30
+    iget-object v2, p0, Lqg/b;->h:Lzg/a;
+
     .line 31
     .line 32
-    move-result-object p1
+    invoke-virtual {v2}, Lzg/a;->d()[B
 
     .line 33
-    invoke-virtual {v2, p1}, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
     .line 34
     .line 35
-    .line 36
     move-result-object v2
 
-    .line 37
-    :cond_0
-    invoke-virtual {v1, v2}, Lbh/f;->i(Ljava/math/BigInteger;)Lbh/t;
-
-    .line 38
-    .line 39
-    .line 40
-    move-result-object p1
-
-    .line 41
-    invoke-virtual {p1}, Lbh/t;->o()Z
-
-    .line 42
-    .line 43
-    .line 44
-    move-result v2
-
-    .line 45
-    if-eqz v2, :cond_1
-
-    .line 46
-    .line 47
-    invoke-virtual {v1, v5}, Lbh/f;->i(Ljava/math/BigInteger;)Lbh/t;
-
-    .line 48
-    .line 49
-    .line 50
-    move-result-object p1
-
-    .line 51
-    :cond_1
-    iget-object v1, v0, Lmg/o;->p:Ljava/math/BigInteger;
-
-    .line 52
-    .line 53
-    iget-object v2, p0, Lqg/b;->c:Lmg/q;
-
-    .line 54
-    .line 55
-    check-cast v2, Lmg/s;
-
-    .line 56
-    .line 57
-    iget-object v2, v2, Lmg/s;->h:Ljava/math/BigInteger;
-
-    .line 58
-    .line 59
-    new-instance v4, Lbh/l;
-
-    .line 60
-    .line 61
-    const/4 v6, 0x0
-
-    .line 62
-    invoke-direct {v4, v6}, Lbh/l;-><init>(I)V
-
-    .line 63
-    .line 64
-    .line 65
-    :cond_2
-    iget-object v6, p0, Lqg/b;->d:Ljava/security/SecureRandom;
-
-    .line 66
-    .line 67
-    new-instance v7, Ljava/math/BigInteger;
-
-    .line 68
-    .line 69
-    invoke-virtual {v1}, Ljava/math/BigInteger;->bitLength()I
-
-    .line 70
-    .line 71
-    .line 72
-    move-result v8
-
-    .line 73
-    sub-int/2addr v8, v3
-
-    .line 74
-    invoke-direct {v7, v8, v6}, Ljava/math/BigInteger;-><init>(ILjava/util/Random;)V
-
-    .line 75
-    .line 76
-    .line 77
-    iget-object v6, v0, Lmg/o;->h:Lbh/k;
-
-    .line 78
-    .line 79
-    invoke-virtual {v4, v6, v7}, Lbh/t;->q(Lbh/k;Ljava/math/BigInteger;)Lbh/k;
-
-    .line 80
-    .line 81
-    .line 82
-    move-result-object v6
-
-    .line 83
-    invoke-virtual {v6}, Lbh/k;->p()Lbh/k;
-
-    .line 84
-    .line 85
-    .line 86
-    move-result-object v6
-
-    .line 87
-    invoke-virtual {v6}, Lbh/k;->b()V
-
-    .line 88
-    .line 89
-    .line 90
-    iget-object v6, v6, Lbh/k;->b:Lbh/t;
-
-    .line 91
-    .line 92
-    invoke-virtual {v6}, Lbh/t;->o()Z
-
-    .line 93
-    .line 94
-    .line 95
-    move-result v8
-
-    .line 96
-    if-nez v8, :cond_2
-
-    .line 97
-    .line 98
-    invoke-virtual {p1, v6}, Lbh/t;->r(Lbh/t;)Lbh/t;
-
-    .line 99
-    .line 100
-    .line 101
-    move-result-object v6
-
-    .line 102
-    invoke-virtual {v6}, Lbh/t;->E()Ljava/math/BigInteger;
-
-    .line 103
-    .line 104
-    .line 105
-    move-result-object v6
-
-    .line 106
-    invoke-virtual {v1}, Ljava/math/BigInteger;->bitLength()I
-
-    .line 107
-    .line 108
-    .line 109
-    move-result v8
-
-    .line 110
-    sub-int/2addr v8, v3
-
-    .line 111
-    invoke-virtual {v6}, Ljava/math/BigInteger;->bitLength()I
-
-    .line 112
-    .line 113
-    .line 114
-    move-result v9
-
-    .line 115
-    if-le v9, v8, :cond_3
-
-    .line 116
-    .line 117
-    invoke-virtual {v5, v8}, Ljava/math/BigInteger;->shiftLeft(I)Ljava/math/BigInteger;
-
-    .line 118
-    .line 119
-    .line 120
-    move-result-object v8
-
-    .line 121
-    invoke-virtual {v6, v8}, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 122
-    .line 123
-    .line 124
-    move-result-object v6
-
-    .line 125
-    :cond_3
-    invoke-virtual {v6}, Ljava/math/BigInteger;->signum()I
-
-    .line 126
-    .line 127
-    .line 128
-    move-result v8
-
-    .line 129
-    if-eqz v8, :cond_2
-
-    .line 130
-    .line 131
-    invoke-virtual {v6, v2}, Ljava/math/BigInteger;->multiply(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 132
-    .line 133
-    .line 134
-    move-result-object v8
-
-    .line 135
-    invoke-virtual {v8, v7}, Ljava/math/BigInteger;->add(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 136
-    .line 137
-    .line 138
-    move-result-object v7
-
-    .line 139
-    invoke-virtual {v7, v1}, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 140
-    .line 141
-    .line 142
-    move-result-object v7
-
-    .line 143
-    invoke-virtual {v7}, Ljava/math/BigInteger;->signum()I
-
-    .line 144
-    .line 145
-    .line 146
-    move-result v8
-
-    .line 147
-    if-eqz v8, :cond_2
-
-    .line 148
-    .line 149
-    filled-new-array {v6, v7}, [Ljava/math/BigInteger;
-
-    .line 150
-    .line 151
-    .line 152
-    move-result-object p1
-
-    .line 153
-    return-object p1
-.end method
-
-.method public final g(Ljava/math/BigInteger;Ljava/math/BigInteger;[B)Z
-    .locals 7
-
-    .line 1
-    invoke-virtual {p1}, Ljava/math/BigInteger;->signum()I
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-lez v0, :cond_6
-
-    .line 6
-    .line 7
-    invoke-virtual {p2}, Ljava/math/BigInteger;->signum()I
-
-    .line 8
-    .line 9
-    .line 10
-    move-result v0
-
-    .line 11
-    if-gtz v0, :cond_0
-
-    .line 12
-    .line 13
-    goto/16 :goto_0
-
-    .line 14
-    .line 15
-    :cond_0
-    iget-object v0, p0, Lqg/b;->c:Lmg/q;
-
-    .line 16
-    .line 17
-    iget-object v0, v0, Lmg/q;->d:Lmg/o;
-
-    .line 18
-    .line 19
-    iget-object v1, v0, Lmg/o;->p:Ljava/math/BigInteger;
-
-    .line 20
-    .line 21
-    invoke-virtual {p1, v1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
-
-    .line 22
-    .line 23
-    .line 24
-    move-result v2
-
-    .line 25
-    if-gez v2, :cond_6
-
-    .line 26
-    .line 27
-    invoke-virtual {p2, v1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
-
-    .line 28
-    .line 29
-    .line 30
-    move-result v2
-
-    .line 31
-    if-ltz v2, :cond_1
-
-    .line 32
-    .line 33
-    goto :goto_0
-
-    .line 34
-    :cond_1
-    iget-object v2, v0, Lmg/o;->c:Lbh/f;
-
-    .line 35
     .line 36
-    invoke-static {p3}, Lsh/c;->H([B)[B
+    invoke-direct {v1, v2}, Lge/p;-><init>([B)V
 
     .line 37
     .line 38
     .line 39
-    move-result-object p3
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
 
     .line 40
-    new-instance v3, Ljava/math/BigInteger;
-
     .line 41
     .line 42
-    const/4 v4, 0x1
+    iget-object v1, p0, Lqg/b;->q:Lff/a;
 
     .line 43
-    invoke-direct {v3, v4, p3}, Ljava/math/BigInteger;-><init>(I[B)V
-
     .line 44
+    invoke-virtual {v0, v1}, Lge/f;->a(Lge/e;)V
+
     .line 45
     .line 46
-    invoke-virtual {v2}, Lbh/f;->j()I
-
     .line 47
+    new-instance v1, Lge/b1;
+
     .line 48
     .line 49
-    move-result p3
+    invoke-direct {v1, v0}, Lge/b1;-><init>(Lge/f;)V
 
     .line 50
-    invoke-virtual {v3}, Ljava/math/BigInteger;->bitLength()I
-
     .line 51
     .line 52
-    .line 53
-    move-result v5
-
-    .line 54
-    sget-object v6, Lqg/b;->h:Ljava/math/BigInteger;
-
-    .line 55
-    .line 56
-    if-le v5, p3, :cond_2
-
-    .line 57
-    .line 58
-    invoke-virtual {v6, p3}, Ljava/math/BigInteger;->shiftLeft(I)Ljava/math/BigInteger;
-
-    .line 59
-    .line 60
-    .line 61
-    move-result-object p3
-
-    .line 62
-    invoke-virtual {v3, p3}, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 63
-    .line 64
-    .line 65
-    move-result-object v3
-
-    .line 66
-    :cond_2
-    invoke-virtual {v2, v3}, Lbh/f;->i(Ljava/math/BigInteger;)Lbh/t;
-
-    .line 67
-    .line 68
-    .line 69
-    move-result-object p3
-
-    .line 70
-    invoke-virtual {p3}, Lbh/t;->o()Z
-
-    .line 71
-    .line 72
-    .line 73
-    move-result v3
-
-    .line 74
-    if-eqz v3, :cond_3
-
-    .line 75
-    .line 76
-    invoke-virtual {v2, v6}, Lbh/f;->i(Ljava/math/BigInteger;)Lbh/t;
-
-    .line 77
-    .line 78
-    .line 79
-    move-result-object p3
-
-    .line 80
-    :cond_3
-    iget-object v0, v0, Lmg/o;->h:Lbh/k;
-
-    .line 81
-    .line 82
-    iget-object v2, p0, Lqg/b;->c:Lmg/q;
-
-    .line 83
-    .line 84
-    check-cast v2, Lmg/t;
-
-    .line 85
-    .line 86
-    iget-object v2, v2, Lmg/t;->h:Lbh/k;
-
-    .line 87
-    .line 88
-    invoke-static {v0, p2, v2, p1}, Lbh/t;->C(Lbh/k;Ljava/math/BigInteger;Lbh/k;Ljava/math/BigInteger;)Lbh/k;
-
-    .line 89
-    .line 90
-    .line 91
-    move-result-object p2
-
-    .line 92
-    invoke-virtual {p2}, Lbh/k;->p()Lbh/k;
-
-    .line 93
-    .line 94
-    .line 95
-    move-result-object p2
-
-    .line 96
-    invoke-virtual {p2}, Lbh/k;->k()Z
-
-    .line 97
-    .line 98
-    .line 99
-    move-result v0
-
-    .line 100
-    if-eqz v0, :cond_4
-
-    .line 101
-    .line 102
-    goto :goto_0
-
-    .line 103
-    :cond_4
-    invoke-virtual {p2}, Lbh/k;->b()V
-
-    .line 104
-    .line 105
-    .line 106
-    iget-object p2, p2, Lbh/k;->b:Lbh/t;
-
-    .line 107
-    .line 108
-    invoke-virtual {p3, p2}, Lbh/t;->r(Lbh/t;)Lbh/t;
-
-    .line 109
-    .line 110
-    .line 111
-    move-result-object p2
-
-    .line 112
-    invoke-virtual {p2}, Lbh/t;->E()Ljava/math/BigInteger;
-
-    .line 113
-    .line 114
-    .line 115
-    move-result-object p2
-
-    .line 116
-    invoke-virtual {v1}, Ljava/math/BigInteger;->bitLength()I
-
-    .line 117
-    .line 118
-    .line 119
-    move-result p3
-
-    .line 120
-    sub-int/2addr p3, v4
-
-    .line 121
-    invoke-virtual {p2}, Ljava/math/BigInteger;->bitLength()I
-
-    .line 122
-    .line 123
-    .line 124
-    move-result v0
-
-    .line 125
-    if-le v0, p3, :cond_5
-
-    .line 126
-    .line 127
-    invoke-virtual {v6, p3}, Ljava/math/BigInteger;->shiftLeft(I)Ljava/math/BigInteger;
-
-    .line 128
-    .line 129
-    .line 130
-    move-result-object p3
-
-    .line 131
-    invoke-virtual {p2, p3}, Ljava/math/BigInteger;->mod(Ljava/math/BigInteger;)Ljava/math/BigInteger;
-
-    .line 132
-    .line 133
-    .line 134
-    move-result-object p2
-
-    .line 135
-    :cond_5
-    invoke-virtual {p2, p1}, Ljava/math/BigInteger;->compareTo(Ljava/math/BigInteger;)I
-
-    .line 136
-    .line 137
-    .line 138
-    move-result p1
-
-    .line 139
-    if-nez p1, :cond_6
-
-    .line 140
-    .line 141
-    return v4
-
-    .line 142
-    :cond_6
-    :goto_0
-    const/4 p1, 0x0
-
-    .line 143
-    return p1
-.end method
-
-.method public final init(ZLorg/spongycastle/crypto/h;)V
-    .locals 0
-
-    .line 1
-    if-eqz p1, :cond_1
-
-    .line 2
-    .line 3
-    instance-of p1, p2, Lmg/i0;
-
-    .line 4
-    .line 5
-    if-eqz p1, :cond_0
-
-    .line 6
-    .line 7
-    check-cast p2, Lmg/i0;
-
-    .line 8
-    .line 9
-    iget-object p1, p2, Lmg/i0;->c:Ljava/security/SecureRandom;
-
-    .line 10
-    .line 11
-    iput-object p1, p0, Lqg/b;->d:Ljava/security/SecureRandom;
-
-    .line 12
-    .line 13
-    iget-object p2, p2, Lmg/i0;->d:Lorg/spongycastle/crypto/h;
-
-    .line 14
-    .line 15
-    goto :goto_0
-
-    .line 16
-    :cond_0
-    new-instance p1, Ljava/security/SecureRandom;
-
-    .line 17
-    .line 18
-    invoke-direct {p1}, Ljava/security/SecureRandom;-><init>()V
-
-    .line 19
-    .line 20
-    .line 21
-    iput-object p1, p0, Lqg/b;->d:Ljava/security/SecureRandom;
-
-    .line 22
-    .line 23
-    :goto_0
-    check-cast p2, Lmg/s;
-
-    .line 24
-    .line 25
-    iput-object p2, p0, Lqg/b;->c:Lmg/q;
-
-    .line 26
-    .line 27
-    return-void
-
-    .line 28
-    :cond_1
-    check-cast p2, Lmg/t;
-
-    .line 29
-    .line 30
-    iput-object p2, p0, Lqg/b;->c:Lmg/q;
-
-    .line 31
-    .line 32
-    return-void
+    return-object v1
 .end method

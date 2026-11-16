@@ -1,17 +1,17 @@
 .class public final synthetic Landroidx/fragment/app/k0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroidx/activity/contextaware/OnContextAvailableListener;
 
 
 # instance fields
-.field public final synthetic a:Lg/i;
+.field public final synthetic a:Lg/g;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lg/i;)V
+.method public synthetic constructor <init>(Lg/g;)V
     .locals 0
 
     .line 1
@@ -20,7 +20,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Landroidx/fragment/app/k0;->a:Lg/i;
+    iput-object p1, p0, Landroidx/fragment/app/k0;->a:Lg/g;
 
     .line 5
     .line 6
@@ -33,7 +33,7 @@
     .locals 2
 
     .line 1
-    iget-object p1, p0, Landroidx/fragment/app/k0;->a:Lg/i;
+    iget-object p1, p0, Landroidx/fragment/app/k0;->a:Lg/g;
 
     .line 2
     .line 3
@@ -45,7 +45,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p1, Landroidx/fragment/app/FragmentHostCallback;->p:Landroidx/fragment/app/b1;
+    iget-object v0, p1, Landroidx/fragment/app/FragmentHostCallback;->q:Landroidx/fragment/app/b1;
 
     .line 8
     .line 9

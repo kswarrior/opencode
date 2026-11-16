@@ -1,289 +1,178 @@
-.class public final Lmc/j;
+.class public abstract Lmc/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lmc/a0;
 
 
 # instance fields
-.field public final a:Lokio/Path;
-
-.field public final b:Z
-
-.field public final c:Ljava/lang/String;
-
-.field public final d:J
-
-.field public final e:J
-
-.field public final f:J
-
-.field public final g:I
-
-.field public final h:J
-
-.field public final i:I
-
-.field public final j:I
-
-.field public final k:Ljava/lang/Long;
-
-.field public final l:Ljava/lang/Long;
-
-.field public final m:Ljava/lang/Long;
-
-.field public final n:Ljava/lang/Integer;
-
-.field public final o:Ljava/lang/Integer;
-
-.field public final p:Ljava/lang/Integer;
-
-.field public final q:Ljava/util/ArrayList;
+.field public final c:Lmc/a0;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lokio/Path;ZLjava/lang/String;JJJIJIILjava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;I)V
-    .locals 23
-
-    move/from16 v0, p18
-
-    and-int/lit8 v1, v0, 0x4
-
-    if-eqz v1, :cond_0
-
-    .line 19
-    const-string v1, ""
-
-    move-object v5, v1
-
-    goto :goto_0
-
-    :cond_0
-    move-object/from16 v5, p3
-
-    :goto_0
-    and-int/lit8 v1, v0, 0x8
-
-    const-wide/16 v2, -0x1
-
-    if-eqz v1, :cond_1
-
-    move-wide v6, v2
-
-    goto :goto_1
-
-    :cond_1
-    move-wide/from16 v6, p4
-
-    :goto_1
-    and-int/lit8 v1, v0, 0x10
-
-    if-eqz v1, :cond_2
-
-    move-wide v8, v2
-
-    goto :goto_2
-
-    :cond_2
-    move-wide/from16 v8, p6
-
-    :goto_2
-    and-int/lit8 v1, v0, 0x20
-
-    if-eqz v1, :cond_3
-
-    move-wide v10, v2
-
-    goto :goto_3
-
-    :cond_3
-    move-wide/from16 v10, p8
-
-    :goto_3
-    and-int/lit8 v1, v0, 0x40
-
-    const/4 v4, -0x1
-
-    if-eqz v1, :cond_4
-
-    move v12, v4
-
-    goto :goto_4
-
-    :cond_4
-    move/from16 v12, p10
-
-    :goto_4
-    and-int/lit16 v1, v0, 0x80
-
-    if-eqz v1, :cond_5
-
-    move-wide v13, v2
-
-    goto :goto_5
-
-    :cond_5
-    move-wide/from16 v13, p11
-
-    :goto_5
-    and-int/lit16 v1, v0, 0x100
-
-    if-eqz v1, :cond_6
-
-    move v15, v4
-
-    goto :goto_6
-
-    :cond_6
-    move/from16 v15, p13
-
-    :goto_6
-    and-int/lit16 v1, v0, 0x200
-
-    if-eqz v1, :cond_7
-
-    move/from16 v16, v4
-
-    goto :goto_7
-
-    :cond_7
-    move/from16 v16, p14
-
-    :goto_7
-    and-int/lit16 v1, v0, 0x400
-
-    const/4 v2, 0x0
-
-    if-eqz v1, :cond_8
-
-    move-object/from16 v17, v2
-
-    goto :goto_8
-
-    :cond_8
-    move-object/from16 v17, p15
-
-    :goto_8
-    and-int/lit16 v1, v0, 0x800
-
-    if-eqz v1, :cond_9
-
-    move-object/from16 v18, v2
-
-    goto :goto_9
-
-    :cond_9
-    move-object/from16 v18, p16
-
-    :goto_9
-    and-int/lit16 v0, v0, 0x1000
-
-    if-eqz v0, :cond_a
-
-    move-object/from16 v19, v2
-
-    goto :goto_a
-
-    :cond_a
-    move-object/from16 v19, p17
-
-    :goto_a
-    const/16 v20, 0x0
-
-    const/16 v21, 0x0
-
-    const/16 v22, 0x0
-
-    move-object/from16 v2, p0
-
-    move-object/from16 v3, p1
-
-    move/from16 v4, p2
-
-    .line 20
-    invoke-direct/range {v2 .. v22}, Lmc/j;-><init>(Lokio/Path;ZLjava/lang/String;JJJIJIILjava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V
-
+.method public constructor <init>(Lmc/a0;)V
+    .locals 1
+
+    .line 1
+    const-string v0, "delegate"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    iput-object p1, p0, Lmc/j;->c:Lmc/a0;
+
+    .line 10
+    .line 11
     return-void
 .end method
 
-.method public constructor <init>(Lokio/Path;ZLjava/lang/String;JJJIJIILjava/lang/Long;Ljava/lang/Long;Ljava/lang/Long;Ljava/lang/Integer;Ljava/lang/Integer;Ljava/lang/Integer;)V
+
+# virtual methods
+.method public final c()Lmc/e0;
     .locals 1
 
-    const-string v0, "canonicalPath"
-
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
-    const-string v0, "comment"
-
-    invoke-static {p3, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iget-object v0, p0, Lmc/j;->c:Lmc/a0;
 
     .line 2
-    iput-object p1, p0, Lmc/j;->a:Lokio/Path;
-
     .line 3
-    iput-boolean p2, p0, Lmc/j;->b:Z
+    invoke-interface {v0}, Lmc/a0;->c()Lmc/e0;
 
     .line 4
-    iput-object p3, p0, Lmc/j;->c:Ljava/lang/String;
-
     .line 5
-    iput-wide p4, p0, Lmc/j;->d:J
-
     .line 6
-    iput-wide p6, p0, Lmc/j;->e:J
+    move-result-object v0
 
     .line 7
-    iput-wide p8, p0, Lmc/j;->f:J
+    return-object v0
+.end method
 
+.method public close()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lmc/j;->c:Lmc/a0;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lmc/a0;->close()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public flush()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lmc/j;->c:Lmc/a0;
+
+    .line 2
+    .line 3
+    invoke-interface {v0}, Lmc/a0;->flush()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public h0(JLmc/f;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lmc/j;->c:Lmc/a0;
+
+    .line 2
+    .line 3
+    invoke-interface {v0, p1, p2, p3}, Lmc/a0;->h0(JLmc/f;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    invoke-direct {v0}, Ljava/lang/StringBuilder;-><init>()V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-virtual {p0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 7
     .line 8
-    iput p10, p0, Lmc/j;->g:I
-
     .line 9
-    iput-wide p11, p0, Lmc/j;->h:J
+    move-result-object v1
 
     .line 10
-    iput p13, p0, Lmc/j;->i:I
+    invoke-virtual {v1}, Ljava/lang/Class;->getSimpleName()Ljava/lang/String;
 
     .line 11
-    iput p14, p0, Lmc/j;->j:I
-
-    move-object/from16 p1, p15
-
     .line 12
-    iput-object p1, p0, Lmc/j;->k:Ljava/lang/Long;
-
-    move-object/from16 p1, p16
-
     .line 13
-    iput-object p1, p0, Lmc/j;->l:Ljava/lang/Long;
-
-    move-object/from16 p1, p17
+    move-result-object v1
 
     .line 14
-    iput-object p1, p0, Lmc/j;->m:Ljava/lang/Long;
-
-    move-object/from16 p1, p18
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 15
-    iput-object p1, p0, Lmc/j;->n:Ljava/lang/Integer;
-
-    move-object/from16 p1, p19
-
     .line 16
-    iput-object p1, p0, Lmc/j;->o:Ljava/lang/Integer;
-
-    move-object/from16 p1, p20
-
     .line 17
-    iput-object p1, p0, Lmc/j;->p:Ljava/lang/Integer;
+    const/16 v1, 0x28
 
     .line 18
-    new-instance p1, Ljava/util/ArrayList;
+    .line 19
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
-    invoke-direct {p1}, Ljava/util/ArrayList;-><init>()V
+    .line 20
+    .line 21
+    .line 22
+    iget-object v1, p0, Lmc/j;->c:Lmc/a0;
 
-    iput-object p1, p0, Lmc/j;->q:Ljava/util/ArrayList;
+    .line 23
+    .line 24
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
-    return-void
+    .line 25
+    .line 26
+    .line 27
+    const/16 v1, 0x29
+
+    .line 28
+    .line 29
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
+    .line 30
+    .line 31
+    .line 32
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 33
+    .line 34
+    .line 35
+    move-result-object v0
+
+    .line 36
+    return-object v0
 .end method

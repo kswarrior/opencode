@@ -1,6 +1,6 @@
 .class public final enum Lorg/conscrypt/ct/DigitallySigned$SignatureAlgorithm;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -187,7 +187,7 @@
     const-string v2, "Invalid signature algorithm "
 
     .line 4
-    invoke-static {p0, v2}, Lcom/google/android/gms/internal/measurement/x;->k(ILjava/lang/String;)Ljava/lang/String;
+    invoke-static {p0, v2}, Lcom/google/android/gms/internal/measurement/gi;->i(ILjava/lang/String;)Ljava/lang/String;
 
     move-result-object p0
 

@@ -4,10 +4,6 @@
         <item quantity="one">%1$d camada • baixo → cima</item>
         <item quantity="other">%1$d camadas • baixo → cima</item>
     </plurals>
-    <plurals name="game_download_version_count">
-        <item quantity="one">%1$d versão</item>
-        <item quantity="other">%1$d versões</item>
-    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d opção</item>
         <item quantity="other">%d opções</item>
@@ -19,45 +15,5 @@
     <plurals name="mod_config_items_count">
         <item quantity="one">%d item</item>
         <item quantity="other">%d itens</item>
-    </plurals>
-    <plurals name="mods_visible_count">
-        <item quantity="one">%1$d mod</item>
-        <item quantity="other">%1$d mods</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_body">
-        <item quantity="one">Você está prestes a desinstalar %1$d pacote de %2$s. Continuar?</item>
-        <item quantity="other">Você está prestes a desinstalar %1$d pacotes de %2$s. Continuar?</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_done">
-        <item quantity="one">%1$d pacote desinstalado</item>
-        <item quantity="other">%1$d pacotes desinstalados</item>
-    </plurals>
-    <plurals name="pkg_batch_update_body">
-        <item quantity="one">%1$d pacote selecionado, dos quais %2$d podem ser atualizados. Continuar?</item>
-        <item quantity="other">%1$d pacotes selecionados, dos quais %2$d podem ser atualizados. Continuar?</item>
-    </plurals>
-    <plurals name="pkg_batch_update_done">
-        <item quantity="one">%1$d pacote atualizado</item>
-        <item quantity="other">%1$d pacotes atualizados</item>
-    </plurals>
-    <plurals name="pkg_filters_show_results">
-        <item quantity="one">Mostrar %d resultado</item>
-        <item quantity="other">Mostrar %d resultados</item>
-    </plurals>
-    <plurals name="pkg_installed_summary">
-        <item quantity="one">%1$d pacote, %2$d instalado(s) por você · %3$s</item>
-        <item quantity="other">%1$d pacotes, %2$d instalado(s) por você · %3$s</item>
-    </plurals>
-    <plurals name="pkg_n_dependencies">
-        <item quantity="one">%d dependência</item>
-        <item quantity="other">%d dependências</item>
-    </plurals>
-    <plurals name="pkg_n_files">
-        <item quantity="one">%d arquivo registrado</item>
-        <item quantity="other">%d arquivos registrados</item>
-    </plurals>
-    <plurals name="pkg_n_versions">
-        <item quantity="one">%d versão</item>
-        <item quantity="other">%d versões</item>
     </plurals>
 </resources>

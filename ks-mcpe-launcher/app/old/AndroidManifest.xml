@@ -51,33 +51,21 @@
         </activity>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="true" android:name="org.levimc.launcher.ui.activities.MainActivity" android:screenOrientation="sensorLandscape" android:theme="@style/MainActivityTheme"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentManagementActivity" android:screenOrientation="sensorLandscape"/>
-        <service android:exported="false" android:name="org.levimc.launcher.core.news.LauncherNewsMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.NewsActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentListActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/edit_world" android:name="org.levimc.launcher.ui.activities.WorldEditorActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/edit_options" android:name="org.levimc.launcher.ui.activities.OptionsEditorActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/custom_flat_world" android:name="org.levimc.launcher.ui.activities.CustomFlatWorldActivity" android:screenOrientation="sensorLandscape"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.AboutActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.InstancesActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/settings_title" android:name="org.levimc.launcher.ui.activities.SettingsActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.InstanceSettingsActivity" android:screenOrientation="sensorLandscape"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/accounts_title" android:name="org.levimc.launcher.ui.activities.AccountsActivity" android:screenOrientation="sensorLandscape"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.GameDownloadActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.GoogleLoginActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.MsftLoginActivity" android:screenOrientation="sensorLandscape" android:windowSoftInputMode="adjustResize"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModsFullscreenActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ExternalModsActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModDetailActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ModConfigActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.CurseForgeActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.packages.PackagesActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen" android:windowSoftInputMode="adjustPan"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.packages.PackageActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:name="org.levimc.launcher.ui.activities.ContentDetailsActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
-        <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:exported="false" android:label="@string/quick_launch_title" android:name="org.levimc.launcher.ui.activities.QuickLaunchActivity" android:screenOrientation="sensorLandscape" android:theme="@style/Base.Theme.FullScreen"/>
         <activity android:alwaysRetainTaskState="true" android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="false" android:exported="true" android:launchMode="singleTask" android:name="org.levimc.launcher.ui.activities.IntentHandler" android:screenOrientation="sensorLandscape">
             <meta-data android:name="android.app.lib_name" android:value="preloader"/>
             <intent-filter>
@@ -123,11 +111,6 @@
                 <data android:pathPattern="/.*\\..*\\..*\\.levipack"/>
                 <data android:pathPattern="/.*\\..*\\..*\\..*\\.levipack"/>
                 <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levipack"/>
-                <data android:pathPattern="/.*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcmod"/>
                 <data android:pathPattern="/.*\\.so"/>
                 <data android:pathPattern="/.*\\..*\\.so"/>
                 <data android:pathPattern="/.*\\..*\\..*\\.so"/>
@@ -156,7 +139,6 @@
                 <data android:pathSuffix=".zip"/>
                 <data android:pathSuffix=".levibackup"/>
                 <data android:pathSuffix=".levipack"/>
-                <data android:pathSuffix=".mcmod"/>
                 <data android:pathSuffix=".so"/>
                 <data android:pathSuffix=".mcworld"/>
                 <data android:pathSuffix=".mcpack"/>
@@ -186,11 +168,6 @@
                 <data android:pathPattern="/.*\\..*\\..*\\.levipack"/>
                 <data android:pathPattern="/.*\\..*\\..*\\..*\\.levipack"/>
                 <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.levipack"/>
-                <data android:pathPattern="/.*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\..*\\.mcmod"/>
-                <data android:pathPattern="/.*\\..*\\..*\\..*\\..*\\.mcmod"/>
                 <data android:pathPattern="/.*\\.so"/>
                 <data android:pathPattern="/.*\\..*\\.so"/>
                 <data android:pathPattern="/.*\\..*\\..*\\.so"/>
@@ -219,7 +196,6 @@
                 <data android:pathSuffix=".zip"/>
                 <data android:pathSuffix=".levibackup"/>
                 <data android:pathSuffix=".levipack"/>
-                <data android:pathSuffix=".mcmod"/>
                 <data android:pathSuffix=".so"/>
                 <data android:pathSuffix=".mcworld"/>
                 <data android:pathSuffix=".mcpack"/>
@@ -247,7 +223,7 @@
             <meta-data android:name="android.app.lib_name" android:value="preloader"/>
         </activity>
         <activity android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|density|fontScale" android:excludeFromRecents="true" android:exported="false" android:finishOnTaskLaunch="true" android:launchMode="singleTask" android:name="org.levimc.launcher.core.minecraft.LauncherRestartActivity" android:process=":crash" android:screenOrientation="sensorLandscape" android:theme="@style/LauncherRestartTheme"/>
-        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.IntentHandler">
+        <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="true" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.IntentHandler">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
                 <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
@@ -256,7 +232,7 @@
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-                <data android:host="auth" android:scheme="@string/xal_token"/>
+                <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>
@@ -264,7 +240,7 @@
         <activity android:alwaysRetainTaskState="true" android:configChanges="keyboardHidden|orientation|uiMode|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.microsoft.xal.browser.BrowserLaunchActivity" android:theme="@style/WebViewTheme">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW"/>
-                <data android:host="auth" android:scheme="@string/xal_token"/>
+                <data android:host="auth" android:scheme="ms-xal-0000000048183522"/>
                 <category android:name="android.intent.category.DEFAULT"/>
                 <category android:name="android.intent.category.BROWSABLE"/>
             </intent-filter>

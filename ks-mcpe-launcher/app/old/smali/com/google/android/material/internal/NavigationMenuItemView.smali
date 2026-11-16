@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/internal/NavigationMenuItemView;
 .super Ln5/e;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ll/y;
@@ -31,7 +31,7 @@
 
 .field public X1:Landroid/graphics/drawable/Drawable;
 
-.field public final Y1:Lc5/g;
+.field public final Y1:Lc5/j;
 
 
 # direct methods
@@ -75,19 +75,19 @@
 
     .line 6
     .line 7
-    new-instance v0, Lc5/g;
+    new-instance v0, Lc5/j;
 
     .line 8
     .line 9
-    const/4 v1, 0x3
+    const/4 v1, 0x4
 
     .line 10
-    invoke-direct {v0, p0, v1}, Lc5/g;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1}, Lc5/j;-><init>(Ljava/lang/Object;I)V
 
     .line 11
     .line 12
     .line 13
-    iput-object v0, p0, Lcom/google/android/material/internal/NavigationMenuItemView;->Y1:Lc5/g;
+    iput-object v0, p0, Lcom/google/android/material/internal/NavigationMenuItemView;->Y1:Lc5/j;
 
     .line 14
     .line 15
@@ -107,7 +107,7 @@
     move-result-object v1
 
     .line 23
-    const v2, 0x7f0d004c
+    const v2, 0x7f0d0046
 
     .line 24
     .line 25
@@ -143,7 +143,7 @@
     .line 41
     .line 42
     .line 43
-    const p1, 0x7f0a015d
+    const p1, 0x7f0a0131
 
     .line 44
     .line 45
@@ -164,7 +164,7 @@
 
     .line 53
     .line 54
-    invoke-static {p1, v0}, Landroidx/core/view/s0;->k(Landroid/view/View;Landroidx/core/view/b;)V
+    invoke-static {p1, v0}, Landroidx/core/view/t0;->k(Landroid/view/View;Landroidx/core/view/b;)V
 
     .line 55
     .line 56
@@ -188,7 +188,7 @@
 
     .line 6
     .line 7
-    const v0, 0x7f0a015c
+    const v0, 0x7f0a0130
 
     .line 8
     .line 9
@@ -492,7 +492,7 @@
     .line 105
     .line 106
     .line 107
-    iget-object v0, p1, Ll/n;->q:Ljava/lang/CharSequence;
+    iget-object v0, p1, Ll/n;->w:Ljava/lang/CharSequence;
 
     .line 108
     .line 109
@@ -540,7 +540,7 @@
 
     .line 132
     .line 133
-    invoke-static {p0, p1}, Lm/m2;->a(Landroid/view/View;Ljava/lang/CharSequence;)V
+    invoke-static {p0, p1}, Lm/q2;->a(Landroid/view/View;Ljava/lang/CharSequence;)V
 
     .line 134
     .line 135
@@ -549,7 +549,7 @@
 
     .line 137
     .line 138
-    iget-object v0, p1, Ll/n;->q:Ljava/lang/CharSequence;
+    iget-object v0, p1, Ll/n;->w:Ljava/lang/CharSequence;
 
     .line 139
     .line 140
@@ -610,7 +610,7 @@
     move-result-object p1
 
     .line 169
-    check-cast p1, Lm/j1;
+    check-cast p1, Lm/m1;
 
     .line 170
     .line 171
@@ -655,7 +655,7 @@
     move-result-object p1
 
     .line 191
-    check-cast p1, Lm/j1;
+    check-cast p1, Lm/m1;
 
     .line 192
     .line 193
@@ -784,7 +784,7 @@
 
     .line 13
     .line 14
-    iget-object v1, p0, Lcom/google/android/material/internal/NavigationMenuItemView;->Y1:Lc5/g;
+    iget-object v1, p0, Lcom/google/android/material/internal/NavigationMenuItemView;->Y1:Lc5/j;
 
     .line 15
     .line 16
@@ -1001,7 +1001,7 @@
 
     .line 55
     .line 56
-    const v2, 0x7f080225
+    const v2, 0x7f0801ba
 
     .line 57
     .line 58

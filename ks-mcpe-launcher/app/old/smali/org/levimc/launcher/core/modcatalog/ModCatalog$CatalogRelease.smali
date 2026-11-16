@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/modcatalog/ModCatalog$CatalogRelease;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -26,13 +26,13 @@
 .end field
 
 .field public downloadType:Ljava/lang/String;
-    .annotation runtime Lh8/b;
+    .annotation runtime Lf8/b;
         value = "download_type"
     .end annotation
 .end field
 
 .field public downloadUrl:Ljava/lang/String;
-    .annotation runtime Lh8/b;
+    .annotation runtime Lf8/b;
         value = "download_url"
     .end annotation
 .end field
@@ -46,13 +46,13 @@
         }
     .end annotation
 
-    .annotation runtime Lh8/b;
+    .annotation runtime Lf8/b;
         value = "minecraft_versions"
     .end annotation
 .end field
 
 .field public publishedAt:Ljava/lang/String;
-    .annotation runtime Lh8/b;
+    .annotation runtime Lf8/b;
         value = "published_at"
     .end annotation
 .end field

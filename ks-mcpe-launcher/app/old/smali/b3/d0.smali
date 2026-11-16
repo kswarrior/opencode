@@ -1,394 +1,170 @@
 .class public final Lb3/d0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lu2/y;
+.implements Ls2/j;
 
 
 # instance fields
-.field public final synthetic c:I
-
-.field public final d:Ljava/lang/Object;
+.field public final synthetic a:I
 
 
 # direct methods
-.method public constructor <init>(Ljava/io/File;)V
-    .locals 1
-
-    const/4 v0, 0x3
-
-    iput v0, p0, Lb3/d0;->c:I
-
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 6
-    const-string v0, "Argument must not be null"
-
-    invoke-static {p1, v0}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 7
-    iput-object p1, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(I)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lb3/d0;->c:I
-
-    iput-object p1, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method public constructor <init>([B)V
-    .locals 1
-
-    const/4 v0, 0x1
-
-    iput v0, p0, Lb3/d0;->c:I
+    iput p1, p0, Lb3/d0;->a:I
 
     .line 2
+    .line 3
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
-    .line 3
-    const-string v0, "Argument must not be null"
-
-    invoke-static {p1, v0}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 4
-    iput-object p1, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    return-void
-.end method
-
-.method private final a()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method private final c()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method private final f()V
-    .locals 0
-
-    .line 1
+    .line 5
+    .line 6
     return-void
 .end method
 
 
 # virtual methods
-.method public final b()V
-    .locals 1
+.method public final a(Ljava/lang/Object;IILs2/h;)Lu2/y;
+    .locals 0
 
     .line 1
-    iget v0, p0, Lb3/d0;->c:I
+    iget p2, p0, Lb3/d0;->a:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    packed-switch p2, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    return-void
+    check-cast p1, Ljava/io/File;
 
     .line 7
-    :pswitch_0
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
     .line 8
-    .line 9
-    check-cast v0, Landroid/graphics/drawable/AnimatedImageDrawable;
-
-    .line 10
-    .line 11
-    invoke-virtual {v0}, Landroid/graphics/drawable/AnimatedImageDrawable;->stop()V
-
-    .line 12
-    .line 13
-    .line 14
-    invoke-virtual {v0}, Landroid/graphics/drawable/AnimatedImageDrawable;->clearAnimationCallbacks()V
-
-    .line 15
-    .line 16
-    .line 17
-    :pswitch_1
-    return-void
-
-    .line 18
-    nop
-
-    .line 19
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_1
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final d()I
-    .locals 2
-
-    .line 1
-    iget v0, p0, Lb3/d0;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    const/4 v0, 0x1
-
-    .line 7
-    return v0
-
-    .line 8
-    :pswitch_0
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
+    new-instance p2, Lb3/c0;
 
     .line 9
     .line 10
-    check-cast v0, Landroid/graphics/drawable/AnimatedImageDrawable;
+    invoke-direct {p2, p1}, Lb3/c0;-><init>(Ljava/io/File;)V
 
     .line 11
     .line 12
-    invoke-virtual {v0}, Landroid/graphics/drawable/AnimatedImageDrawable;->getIntrinsicWidth()I
-
     .line 13
-    .line 14
-    .line 15
-    move-result v1
+    return-object p2
 
+    .line 14
+    :pswitch_0
+    check-cast p1, Landroid/graphics/drawable/Drawable;
+
+    .line 15
     .line 16
-    invoke-virtual {v0}, Landroid/graphics/drawable/AnimatedImageDrawable;->getIntrinsicHeight()I
+    if-eqz p1, :cond_0
 
     .line 17
     .line 18
-    .line 19
-    move-result v0
+    new-instance p2, Ld3/b;
 
+    .line 19
     .line 20
-    mul-int/2addr v0, v1
+    const/4 p3, 0x0
 
     .line 21
-    sget-object v1, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+    invoke-direct {p2, p3, p1}, Ld3/b;-><init>(ILandroid/graphics/drawable/Drawable;)V
 
     .line 22
     .line 23
-    invoke-static {v1}, Lo3/n;->d(Landroid/graphics/Bitmap$Config;)I
-
     .line 24
+    goto :goto_0
+
     .line 25
+    :cond_0
+    const/4 p2, 0x0
+
     .line 26
-    move-result v1
+    :goto_0
+    return-object p2
 
     .line 27
-    mul-int/2addr v1, v0
+    :pswitch_1
+    check-cast p1, Landroid/graphics/Bitmap;
 
     .line 28
-    mul-int/lit8 v1, v1, 0x2
-
     .line 29
-    .line 30
-    return v1
+    new-instance p2, Lb3/c0;
 
+    .line 30
     .line 31
-    :pswitch_1
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
+    const/4 p3, 0x0
 
     .line 32
-    .line 33
-    check-cast v0, [B
+    invoke-direct {p2, p1, p3}, Lb3/c0;-><init>(Ljava/lang/Object;I)V
 
+    .line 33
     .line 34
     .line 35
-    array-length v0, v0
+    return-object p2
 
     .line 36
-    return v0
+    nop
 
     .line 37
-    :pswitch_2
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    .line 38
-    .line 39
-    check-cast v0, Landroid/graphics/Bitmap;
-
-    .line 40
-    .line 41
-    invoke-static {v0}, Lo3/n;->c(Landroid/graphics/Bitmap;)I
-
-    .line 42
-    .line 43
-    .line 44
-    move-result v0
-
-    .line 45
-    return v0
-
-    .line 46
-    nop
-
-    .line 47
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_2
         :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method
 
-.method public final e()Ljava/lang/Class;
-    .locals 1
+.method public final bridge synthetic b(Ljava/lang/Object;Ls2/h;)Z
+    .locals 0
 
     .line 1
-    iget v0, p0, Lb3/d0;->c:I
+    iget p2, p0, Lb3/d0;->a:I
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    packed-switch p2, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
+    check-cast p1, Ljava/io/File;
 
     .line 7
     .line 8
-    check-cast v0, Ljava/io/File;
+    :goto_0
+    const/4 p1, 0x1
 
     .line 9
+    return p1
+
     .line 10
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    :pswitch_0
+    check-cast p1, Landroid/graphics/drawable/Drawable;
 
     .line 11
     .line 12
+    goto :goto_0
+
     .line 13
-    move-result-object v0
-
-    .line 14
-    return-object v0
-
-    .line 15
-    :pswitch_0
-    const-class v0, Landroid/graphics/drawable/Drawable;
-
-    .line 16
-    .line 17
-    return-object v0
-
-    .line 18
     :pswitch_1
-    const-class v0, [B
-
-    .line 19
-    .line 20
-    return-object v0
-
-    .line 21
-    :pswitch_2
-    const-class v0, Landroid/graphics/Bitmap;
-
-    .line 22
-    .line 23
-    return-object v0
-
-    .line 24
-    nop
-
-    .line 25
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final get()Ljava/lang/Object;
-    .locals 1
-
-    .line 1
-    iget v0, p0, Lb3/d0;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    .line 7
-    .line 8
-    check-cast v0, Ljava/io/File;
-
-    .line 9
-    .line 10
-    return-object v0
-
-    .line 11
-    :pswitch_0
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    .line 12
-    .line 13
-    check-cast v0, Landroid/graphics/drawable/AnimatedImageDrawable;
+    check-cast p1, Landroid/graphics/Bitmap;
 
     .line 14
     .line 15
-    return-object v0
+    goto :goto_0
 
     .line 16
-    :pswitch_1
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    .line 17
-    .line 18
-    check-cast v0, [B
-
-    .line 19
-    .line 20
-    return-object v0
-
-    .line 21
-    :pswitch_2
-    iget-object v0, p0, Lb3/d0;->d:Ljava/lang/Object;
-
-    .line 22
-    .line 23
-    check-cast v0, Landroid/graphics/Bitmap;
-
-    .line 24
-    .line 25
-    return-object v0
-
-    .line 26
     nop
 
-    .line 27
+    .line 17
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_2
         :pswitch_1
         :pswitch_0
     .end packed-switch

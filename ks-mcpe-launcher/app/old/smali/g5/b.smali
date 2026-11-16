@@ -1,232 +1,177 @@
 .class public final Lg5/b;
-.super Lk4/f;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Landroid/view/View$BaseSavedState;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# static fields
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/Parcelable$Creator<",
+            "Lg5/b;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # instance fields
-.field public final synthetic h:I
-
-.field public final synthetic p:Ljava/lang/Object;
+.field public c:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 2
 
     .line 1
-    iput p2, p0, Lg5/b;->h:I
+    new-instance v0, Landroidx/fragment/app/b;
 
     .line 2
     .line 3
-    iput-object p1, p0, Lg5/b;->p:Ljava/lang/Object;
+    const/16 v1, 0xc
 
     .line 4
     .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-direct {v0, v1}, Landroidx/fragment/app/b;-><init>(I)V
 
     .line 6
     .line 7
     .line 8
-    return-void
-.end method
+    sput-object v0, Lg5/b;->CREATOR:Landroid/os/Parcelable$Creator;
 
-.method private final v(I)V
-    .locals 0
-
-    .line 1
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final j(I)V
-    .locals 1
+.method public final toString()Ljava/lang/String;
+    .locals 3
 
     .line 1
-    iget p1, p0, Lg5/b;->h:I
+    new-instance v0, Ljava/lang/StringBuilder;
 
     .line 2
     .line 3
-    packed-switch p1, :pswitch_data_0
+    const-string v1, "MaterialCheckBox.SavedState{"
 
     .line 4
     .line 5
-    .line 6
-    iget-object p1, p0, Lg5/b;->p:Ljava/lang/Object;
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 6
     .line 7
     .line 8
-    check-cast p1, Ln5/k;
+    invoke-static {p0}, Ljava/lang/System;->identityHashCode(Ljava/lang/Object;)I
 
     .line 9
     .line 10
-    const/4 v0, 0x1
-
     .line 11
-    iput-boolean v0, p1, Ln5/k;->e:Z
+    move-result v1
 
     .line 12
-    .line 13
-    iget-object p1, p1, Ln5/k;->f:Ljava/lang/ref/WeakReference;
+    invoke-static {v1}, Ljava/lang/Integer;->toHexString(I)Ljava/lang/String;
 
+    .line 13
     .line 14
     .line 15
-    invoke-virtual {p1}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+    move-result-object v1
 
     .line 16
-    .line 17
-    .line 18
-    move-result-object p1
-
-    .line 19
-    check-cast p1, Ln5/j;
-
-    .line 20
-    .line 21
-    if-eqz p1, :cond_0
-
-    .line 22
-    .line 23
-    invoke-interface {p1}, Ln5/j;->a()V
-
-    .line 24
-    .line 25
-    .line 26
-    :cond_0
-    :pswitch_0
-    return-void
-
-    .line 27
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final k(Landroid/graphics/Typeface;Z)V
-    .locals 1
-
-    .line 1
-    iget p1, p0, Lg5/b;->h:I
-
-    .line 2
-    .line 3
-    packed-switch p1, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    if-eqz p2, :cond_0
-
-    .line 7
-    .line 8
-    goto :goto_0
-
-    .line 9
-    :cond_0
-    iget-object p1, p0, Lg5/b;->p:Ljava/lang/Object;
-
-    .line 10
-    .line 11
-    check-cast p1, Ln5/k;
-
-    .line 12
-    .line 13
-    const/4 p2, 0x1
-
-    .line 14
-    iput-boolean p2, p1, Ln5/k;->e:Z
-
-    .line 15
-    .line 16
-    iget-object p1, p1, Ln5/k;->f:Ljava/lang/ref/WeakReference;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 17
     .line 18
-    invoke-virtual {p1}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
-
     .line 19
+    const-string v1, " CheckedState="
+
     .line 20
     .line 21
-    move-result-object p1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 22
-    check-cast p1, Ln5/j;
-
     .line 23
     .line 24
-    if-eqz p1, :cond_1
+    iget v1, p0, Lg5/b;->c:I
 
     .line 25
     .line 26
-    invoke-interface {p1}, Ln5/j;->a()V
+    const/4 v2, 0x1
 
     .line 27
+    if-eq v1, v2, :cond_1
+
     .line 28
     .line 29
-    :cond_1
-    :goto_0
-    return-void
+    const/4 v2, 0x2
 
     .line 30
-    :pswitch_0
-    iget-object p1, p0, Lg5/b;->p:Ljava/lang/Object;
+    if-eq v1, v2, :cond_0
 
     .line 31
     .line 32
-    check-cast p1, Lcom/google/android/material/chip/Chip;
+    const-string v1, "unchecked"
 
     .line 33
     .line 34
-    iget-object p2, p1, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    goto :goto_0
 
     .line 35
-    .line 36
-    iget-boolean v0, p2, Lg5/f;->c3:Z
+    :cond_0
+    const-string v1, "indeterminate"
 
+    .line 36
     .line 37
+    goto :goto_0
+
     .line 38
-    if-eqz v0, :cond_2
+    :cond_1
+    const-string v1, "checked"
 
     .line 39
     .line 40
-    iget-object p2, p2, Lg5/f;->e2:Ljava/lang/CharSequence;
+    :goto_0
+    const-string v2, "}"
 
     .line 41
     .line 42
-    goto :goto_1
+    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 43
-    :cond_2
-    invoke-virtual {p1}, Landroid/widget/TextView;->getText()Ljava/lang/CharSequence;
-
     .line 44
     .line 45
+    move-result-object v0
+
     .line 46
+    return-object v0
+.end method
+
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+    .locals 0
+
+    .line 1
+    invoke-super {p0, p1, p2}, Landroid/view/View$BaseSavedState;->writeToParcel(Landroid/os/Parcel;I)V
+
+    .line 2
+    .line 3
+    .line 4
+    iget p2, p0, Lg5/b;->c:I
+
+    .line 5
+    .line 6
+    invoke-static {p2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 7
+    .line 8
+    .line 9
     move-result-object p2
 
-    .line 47
-    :goto_1
-    invoke-virtual {p1, p2}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+    .line 10
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeValue(Ljava/lang/Object;)V
 
-    .line 48
-    .line 49
-    .line 50
-    invoke-virtual {p1}, Landroid/view/View;->requestLayout()V
-
-    .line 51
-    .line 52
-    .line 53
-    invoke-virtual {p1}, Landroid/view/View;->invalidate()V
-
-    .line 54
-    .line 55
-    .line 56
+    .line 11
+    .line 12
+    .line 13
     return-void
-
-    .line 57
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
 .end method

@@ -1,6 +1,6 @@
 .class public final Ll5/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -50,7 +50,7 @@
 .end method
 
 .method public constructor <init>(Landroid/content/Context;)V
-    .locals 5
+    .locals 6
 
     .line 1
     const v0, 0x7f0401eb
@@ -61,7 +61,7 @@
     const/4 v1, 0x0
 
     .line 5
-    invoke-static {p1, v0, v1}, Ljb/c;->h0(Landroid/content/Context;IZ)Z
+    invoke-static {p1, v0, v1}, Lkb/c;->F(Landroid/content/Context;IZ)Z
 
     .line 6
     .line 7
@@ -74,85 +74,269 @@
     .line 10
     .line 11
     .line 12
-    invoke-static {p1, v2, v1}, Ljd/h;->o(Landroid/content/Context;II)I
+    invoke-static {p1, v2}, Lkb/c;->E(Landroid/content/Context;I)Landroid/util/TypedValue;
 
     .line 13
     .line 14
     .line 15
-    move-result v2
+    move-result-object v2
 
     .line 16
-    const v3, 0x7f0401e9
+    const/4 v3, 0x0
 
     .line 17
+    if-eqz v2, :cond_1
+
     .line 18
     .line 19
-    invoke-static {p1, v3, v1}, Ljd/h;->o(Landroid/content/Context;II)I
+    iget v4, v2, Landroid/util/TypedValue;->resourceId:I
 
     .line 20
     .line 21
-    .line 22
-    move-result v3
+    if-eqz v4, :cond_0
 
+    .line 22
     .line 23
-    const v4, 0x7f04013c
+    invoke-virtual {p1, v4}, Landroid/content/Context;->getColor(I)I
 
     .line 24
     .line 25
     .line 26
-    invoke-static {p1, v4, v1}, Ljd/h;->o(Landroid/content/Context;II)I
+    move-result v2
 
     .line 27
-    .line 28
-    .line 29
-    move-result v1
+    goto :goto_0
 
+    .line 28
+    :cond_0
+    iget v2, v2, Landroid/util/TypedValue;->data:I
+
+    .line 29
     .line 30
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+    :goto_0
+    invoke-static {v2}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 31
     .line 32
     .line 33
-    move-result-object p1
+    move-result-object v2
 
     .line 34
-    invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+    goto :goto_1
 
     .line 35
-    .line 36
-    .line 37
-    move-result-object p1
+    :cond_1
+    move-object v2, v3
 
+    .line 36
+    :goto_1
+    if-eqz v2, :cond_2
+
+    .line 37
     .line 38
-    iget p1, p1, Landroid/util/DisplayMetrics;->density:F
+    invoke-virtual {v2}, Ljava/lang/Integer;->intValue()I
 
     .line 39
     .line 40
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
     .line 41
+    move-result v2
+
     .line 42
+    goto :goto_2
+
     .line 43
-    iput-boolean v0, p0, Ll5/a;->a:Z
+    :cond_2
+    move v2, v1
 
     .line 44
-    .line 45
-    iput v2, p0, Ll5/a;->b:I
+    :goto_2
+    const v4, 0x7f0401e9
 
+    .line 45
     .line 46
     .line 47
-    iput v3, p0, Ll5/a;->c:I
+    invoke-static {p1, v4}, Lkb/c;->E(Landroid/content/Context;I)Landroid/util/TypedValue;
 
     .line 48
     .line 49
-    iput v1, p0, Ll5/a;->d:I
-
     .line 50
+    move-result-object v4
+
     .line 51
-    iput p1, p0, Ll5/a;->e:F
+    if-eqz v4, :cond_4
 
     .line 52
     .line 53
+    iget v5, v4, Landroid/util/TypedValue;->resourceId:I
+
+    .line 54
+    .line 55
+    if-eqz v5, :cond_3
+
+    .line 56
+    .line 57
+    invoke-virtual {p1, v5}, Landroid/content/Context;->getColor(I)I
+
+    .line 58
+    .line 59
+    .line 60
+    move-result v4
+
+    .line 61
+    goto :goto_3
+
+    .line 62
+    :cond_3
+    iget v4, v4, Landroid/util/TypedValue;->data:I
+
+    .line 63
+    .line 64
+    :goto_3
+    invoke-static {v4}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object v4
+
+    .line 68
+    goto :goto_4
+
+    .line 69
+    :cond_4
+    move-object v4, v3
+
+    .line 70
+    :goto_4
+    if-eqz v4, :cond_5
+
+    .line 71
+    .line 72
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    .line 73
+    .line 74
+    .line 75
+    move-result v4
+
+    .line 76
+    goto :goto_5
+
+    .line 77
+    :cond_5
+    move v4, v1
+
+    .line 78
+    :goto_5
+    const v5, 0x7f04013c
+
+    .line 79
+    .line 80
+    .line 81
+    invoke-static {p1, v5}, Lkb/c;->E(Landroid/content/Context;I)Landroid/util/TypedValue;
+
+    .line 82
+    .line 83
+    .line 84
+    move-result-object v5
+
+    .line 85
+    if-eqz v5, :cond_7
+
+    .line 86
+    .line 87
+    iget v3, v5, Landroid/util/TypedValue;->resourceId:I
+
+    .line 88
+    .line 89
+    if-eqz v3, :cond_6
+
+    .line 90
+    .line 91
+    invoke-virtual {p1, v3}, Landroid/content/Context;->getColor(I)I
+
+    .line 92
+    .line 93
+    .line 94
+    move-result v3
+
+    .line 95
+    goto :goto_6
+
+    .line 96
+    :cond_6
+    iget v3, v5, Landroid/util/TypedValue;->data:I
+
+    .line 97
+    .line 98
+    :goto_6
+    invoke-static {v3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 99
+    .line 100
+    .line 101
+    move-result-object v3
+
+    .line 102
+    :cond_7
+    if-eqz v3, :cond_8
+
+    .line 103
+    .line 104
+    invoke-virtual {v3}, Ljava/lang/Integer;->intValue()I
+
+    .line 105
+    .line 106
+    .line 107
+    move-result v1
+
+    .line 108
+    :cond_8
+    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
+
+    .line 109
+    .line 110
+    .line 111
+    move-result-object p1
+
+    .line 112
+    invoke-virtual {p1}, Landroid/content/res/Resources;->getDisplayMetrics()Landroid/util/DisplayMetrics;
+
+    .line 113
+    .line 114
+    .line 115
+    move-result-object p1
+
+    .line 116
+    iget p1, p1, Landroid/util/DisplayMetrics;->density:F
+
+    .line 117
+    .line 118
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 119
+    .line 120
+    .line 121
+    iput-boolean v0, p0, Ll5/a;->a:Z
+
+    .line 122
+    .line 123
+    iput v2, p0, Ll5/a;->b:I
+
+    .line 124
+    .line 125
+    iput v4, p0, Ll5/a;->c:I
+
+    .line 126
+    .line 127
+    iput v1, p0, Ll5/a;->d:I
+
+    .line 128
+    .line 129
+    iput p1, p0, Ll5/a;->e:F
+
+    .line 130
+    .line 131
     return-void
 .end method
 
@@ -296,7 +480,7 @@
 
     .line 60
     .line 61
-    invoke-static {p1, v0, p2}, Ljd/h;->B(IIF)I
+    invoke-static {p1, v0, p2}, Lkd/h;->B(IIF)I
 
     .line 62
     .line 63

@@ -1,102 +1,106 @@
 .class public final Ly2/n;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ly2/r;
+.implements Lcom/bumptech/glide/load/data/d;
+
+
+# static fields
+.field public static final q:[Ljava/lang/String;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final b:Landroid/content/Context;
+.field public final d:Ljava/lang/Object;
+
+.field public final h:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;I)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 1
 
     .line 1
-    iput p2, p0, Ly2/n;->a:I
+    const-string v0, "_data"
 
     .line 2
     .line 3
-    packed-switch p2, :pswitch_data_0
+    filled-new-array {v0}, [Ljava/lang/String;
 
     .line 4
     .line 5
     .line 6
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    move-result-object v0
 
     .line 7
+    sput-object v0, Ly2/n;->q:[Ljava/lang/String;
+
     .line 8
     .line 9
-    iput-object p1, p0, Ly2/n;->b:Landroid/content/Context;
+    return-void
+.end method
 
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    .locals 0
+
+    .line 1
+    iput p3, p0, Ly2/n;->c:I
+
+    .line 2
+    .line 3
+    iput-object p1, p0, Ly2/n;->d:Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    iput-object p2, p0, Ly2/n;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 8
+    .line 9
     .line 10
-    .line 11
     return-void
+.end method
 
-    .line 12
-    :pswitch_0
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+.method private final d()V
+    .locals 0
 
-    .line 13
-    .line 14
-    .line 15
-    invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    .line 16
-    .line 17
-    .line 18
-    move-result-object p1
-
-    .line 19
-    iput-object p1, p0, Ly2/n;->b:Landroid/content/Context;
-
-    .line 20
-    .line 21
+    .line 1
     return-void
+.end method
 
-    .line 22
-    :pswitch_1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+.method private final f()V
+    .locals 0
 
-    .line 23
-    .line 24
-    .line 25
-    invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
-
-    .line 26
-    .line 27
-    .line 28
-    move-result-object p1
-
-    .line 29
-    iput-object p1, p0, Ly2/n;->b:Landroid/content/Context;
-
-    .line 30
-    .line 31
+    .line 1
     return-void
+.end method
 
-    .line 32
-    nop
+.method private final g()V
+    .locals 0
 
-    .line 33
-    :pswitch_data_0
-    .packed-switch 0x1
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    .line 1
+    return-void
+.end method
+
+.method private final h()V
+    .locals 0
+
+    .line 1
+    return-void
 .end method
 
 
 # virtual methods
-.method public final a(Ljava/lang/Object;IILs2/h;)Ly2/q;
-    .locals 3
+.method public final a()Ljava/lang/Class;
+    .locals 1
 
     .line 1
-    iget v0, p0, Ly2/n;->a:I
+    iget v0, p0, Ly2/n;->c:I
 
     .line 2
     .line 3
@@ -105,287 +109,58 @@
     .line 4
     .line 5
     .line 6
-    check-cast p1, Landroid/net/Uri;
+    iget-object v0, p0, Ly2/n;->h:Ljava/lang/Object;
 
     .line 7
     .line 8
-    const/high16 v0, -0x80000000
+    check-cast v0, Ly2/b0;
 
     .line 9
     .line 10
-    if-eq p2, v0, :cond_0
+    invoke-virtual {v0}, Ly2/b0;->b()Ljava/lang/Class;
 
     .line 11
     .line 12
-    if-eq p3, v0, :cond_0
-
     .line 13
+    move-result-object v0
+
     .line 14
-    const/16 v0, 0x200
+    return-object v0
 
     .line 15
-    .line 16
-    if-gt p2, v0, :cond_0
+    :pswitch_0
+    const-class v0, Ljava/io/File;
 
+    .line 16
     .line 17
+    return-object v0
+
     .line 18
-    const/16 p2, 0x180
+    nop
 
     .line 19
-    .line 20
-    if-gt p3, p2, :cond_0
-
-    .line 21
-    .line 22
-    sget-object p2, Lb3/h0;->d:Ls2/g;
-
-    .line 23
-    .line 24
-    invoke-virtual {p4, p2}, Ls2/h;->c(Ls2/g;)Ljava/lang/Object;
-
-    .line 25
-    .line 26
-    .line 27
-    move-result-object p2
-
-    .line 28
-    check-cast p2, Ljava/lang/Long;
-
-    .line 29
-    .line 30
-    if-eqz p2, :cond_0
-
-    .line 31
-    .line 32
-    invoke-virtual {p2}, Ljava/lang/Long;->longValue()J
-
-    .line 33
-    .line 34
-    .line 35
-    move-result-wide p2
-
-    .line 36
-    const-wide/16 v0, -0x1
-
-    .line 37
-    .line 38
-    cmp-long p2, p2, v0
-
-    .line 39
-    .line 40
-    if-nez p2, :cond_0
-
-    .line 41
-    .line 42
-    new-instance p2, Ly2/q;
-
-    .line 43
-    .line 44
-    new-instance p3, Ln3/b;
-
-    .line 45
-    .line 46
-    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
-
-    .line 47
-    .line 48
-    .line 49
-    new-instance p4, Lt2/a;
-
-    .line 50
-    .line 51
-    iget-object v0, p0, Ly2/n;->b:Landroid/content/Context;
-
-    .line 52
-    .line 53
-    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    .line 54
-    .line 55
-    .line 56
-    move-result-object v1
-
-    .line 57
-    const/4 v2, 0x1
-
-    .line 58
-    invoke-direct {p4, v1, v2}, Lt2/a;-><init>(Landroid/content/ContentResolver;I)V
-
-    .line 59
-    .line 60
-    .line 61
-    invoke-static {v0, p1, p4}, Lt2/b;->c(Landroid/content/Context;Landroid/net/Uri;Lt2/c;)Lt2/b;
-
-    .line 62
-    .line 63
-    .line 64
-    move-result-object p1
-
-    .line 65
-    invoke-direct {p2, p3, p1}, Ly2/q;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
-
-    .line 66
-    .line 67
-    .line 68
-    goto :goto_0
-
-    .line 69
-    :cond_0
-    const/4 p2, 0x0
-
-    .line 70
-    :goto_0
-    return-object p2
-
-    .line 71
-    :pswitch_0
-    check-cast p1, Landroid/net/Uri;
-
-    .line 72
-    .line 73
-    const/high16 p4, -0x80000000
-
-    .line 74
-    .line 75
-    if-eq p2, p4, :cond_1
-
-    .line 76
-    .line 77
-    if-eq p3, p4, :cond_1
-
-    .line 78
-    .line 79
-    const/16 p4, 0x200
-
-    .line 80
-    .line 81
-    if-gt p2, p4, :cond_1
-
-    .line 82
-    .line 83
-    const/16 p2, 0x180
-
-    .line 84
-    .line 85
-    if-gt p3, p2, :cond_1
-
-    .line 86
-    .line 87
-    new-instance p2, Ly2/q;
-
-    .line 88
-    .line 89
-    new-instance p3, Ln3/b;
-
-    .line 90
-    .line 91
-    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
-
-    .line 92
-    .line 93
-    .line 94
-    new-instance p4, Lt2/a;
-
-    .line 95
-    .line 96
-    iget-object v0, p0, Ly2/n;->b:Landroid/content/Context;
-
-    .line 97
-    .line 98
-    invoke-virtual {v0}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
-
-    .line 99
-    .line 100
-    .line 101
-    move-result-object v1
-
-    .line 102
-    const/4 v2, 0x0
-
-    .line 103
-    invoke-direct {p4, v1, v2}, Lt2/a;-><init>(Landroid/content/ContentResolver;I)V
-
-    .line 104
-    .line 105
-    .line 106
-    invoke-static {v0, p1, p4}, Lt2/b;->c(Landroid/content/Context;Landroid/net/Uri;Lt2/c;)Lt2/b;
-
-    .line 107
-    .line 108
-    .line 109
-    move-result-object p1
-
-    .line 110
-    invoke-direct {p2, p3, p1}, Ly2/q;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
-
-    .line 111
-    .line 112
-    .line 113
-    goto :goto_1
-
-    .line 114
-    :cond_1
-    const/4 p2, 0x0
-
-    .line 115
-    :goto_1
-    return-object p2
-
-    .line 116
-    :pswitch_1
-    check-cast p1, Landroid/net/Uri;
-
-    .line 117
-    .line 118
-    new-instance p2, Ly2/q;
-
-    .line 119
-    .line 120
-    new-instance p3, Ln3/b;
-
-    .line 121
-    .line 122
-    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
-
-    .line 123
-    .line 124
-    .line 125
-    new-instance p4, Ly2/m;
-
-    .line 126
-    .line 127
-    iget-object v0, p0, Ly2/n;->b:Landroid/content/Context;
-
-    .line 128
-    .line 129
-    const/4 v1, 0x0
-
-    .line 130
-    invoke-direct {p4, v0, p1, v1}, Ly2/m;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
-    .line 131
-    .line 132
-    .line 133
-    invoke-direct {p2, p3, p4}, Ly2/q;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
-
-    .line 134
-    .line 135
-    .line 136
-    return-object p2
-
-    .line 137
     :pswitch_data_0
     .packed-switch 0x0
-        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method
 
-.method public final b(Ljava/lang/Object;)Z
+.method public final b()V
     .locals 1
 
     .line 1
-    iget v0, p0, Ly2/n;->a:I
+    iget v0, p0, Ly2/n;->c:I
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public final c()I
+    .locals 1
+
+    .line 1
+    iget v0, p0, Ly2/n;->c:I
 
     .line 2
     .line 3
@@ -394,134 +169,330 @@
     .line 4
     .line 5
     .line 6
-    check-cast p1, Landroid/net/Uri;
+    const/4 v0, 0x1
+
+    .line 7
+    return v0
+
+    .line 8
+    :pswitch_0
+    const/4 v0, 0x1
+
+    .line 9
+    return v0
+
+    .line 10
+    nop
+
+    .line 11
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final cancel()V
+    .locals 1
+
+    .line 1
+    iget v0, p0, Ly2/n;->c:I
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
+    .locals 6
+
+    .line 1
+    iget p1, p0, Ly2/n;->c:I
+
+    .line 2
+    .line 3
+    packed-switch p1, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object p1, p0, Ly2/n;->h:Ljava/lang/Object;
 
     .line 7
     .line 8
-    invoke-static {p1}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
+    check-cast p1, Ly2/b0;
 
     .line 9
     .line 10
-    .line 11
-    move-result v0
+    iget-object v0, p0, Ly2/n;->d:Ljava/lang/Object;
 
+    .line 11
     .line 12
-    if-eqz v0, :cond_0
+    check-cast v0, [B
 
     .line 13
     .line 14
-    invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
+    iget p1, p1, Ly2/b0;->c:I
 
     .line 15
     .line 16
+    packed-switch p1, :pswitch_data_1
+
     .line 17
-    move-result-object p1
-
     .line 18
-    const-string v0, "video"
-
     .line 19
-    .line 20
-    invoke-interface {p1, v0}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+    new-instance p1, Ljava/io/ByteArrayInputStream;
 
+    .line 20
     .line 21
+    invoke-direct {p1, v0}, Ljava/io/ByteArrayInputStream;-><init>([B)V
+
     .line 22
     .line 23
-    move-result p1
-
     .line 24
-    if-eqz p1, :cond_0
-
-    .line 25
-    .line 26
-    const/4 p1, 0x1
-
-    .line 27
     goto :goto_0
 
+    .line 25
+    :pswitch_0
+    invoke-static {v0}, Ljava/nio/ByteBuffer;->wrap([B)Ljava/nio/ByteBuffer;
+
+    .line 26
+    .line 27
     .line 28
-    :cond_0
-    const/4 p1, 0x0
+    move-result-object p1
 
     .line 29
     :goto_0
-    return p1
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->f(Ljava/lang/Object;)V
 
     .line 30
-    :pswitch_0
-    check-cast p1, Landroid/net/Uri;
-
     .line 31
     .line 32
-    invoke-static {p1}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
+    return-void
 
     .line 33
+    :pswitch_1
+    iget-object p1, p0, Ly2/n;->d:Ljava/lang/Object;
+
     .line 34
     .line 35
-    move-result v0
+    check-cast p1, Landroid/content/Context;
 
     .line 36
-    if-eqz v0, :cond_1
-
     .line 37
-    .line 38
-    invoke-virtual {p1}, Landroid/net/Uri;->getPathSegments()Ljava/util/List;
+    invoke-virtual {p1}, Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;
 
+    .line 38
     .line 39
     .line 40
+    move-result-object v0
+
     .line 41
-    move-result-object p1
+    iget-object p1, p0, Ly2/n;->h:Ljava/lang/Object;
 
     .line 42
-    const-string v0, "video"
-
     .line 43
+    move-object v1, p1
+
     .line 44
-    invoke-interface {p1, v0}, Ljava/util/List;->contains(Ljava/lang/Object;)Z
+    check-cast v1, Landroid/net/Uri;
 
     .line 45
     .line 46
+    const/4 v4, 0x0
+
     .line 47
-    move-result p1
+    const/4 v5, 0x0
 
     .line 48
-    if-nez p1, :cond_1
+    sget-object v2, Ly2/n;->q:[Ljava/lang/String;
 
     .line 49
     .line 50
-    const/4 p1, 0x1
+    const/4 v3, 0x0
 
     .line 51
-    goto :goto_1
+    invoke-virtual/range {v0 .. v5}, Landroid/content/ContentResolver;->query(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     .line 52
-    :cond_1
-    const/4 p1, 0x0
-
     .line 53
-    :goto_1
-    return p1
-
     .line 54
-    :pswitch_1
-    check-cast p1, Landroid/net/Uri;
+    move-result-object p1
 
     .line 55
+    const/4 v0, 0x0
+
     .line 56
-    invoke-static {p1}, Lcom/bumptech/glide/e;->I(Landroid/net/Uri;)Z
+    if-eqz p1, :cond_1
 
     .line 57
     .line 58
+    :try_start_0
+    invoke-interface {p1}, Landroid/database/Cursor;->moveToFirst()Z
+
     .line 59
+    .line 60
+    .line 61
+    move-result v1
+
+    .line 62
+    if-eqz v1, :cond_0
+
+    .line 63
+    .line 64
+    const-string v0, "_data"
+
+    .line 65
+    .line 66
+    invoke-interface {p1, v0}, Landroid/database/Cursor;->getColumnIndexOrThrow(Ljava/lang/String;)I
+
+    .line 67
+    .line 68
+    .line 69
+    move-result v0
+
+    .line 70
+    invoke-interface {p1, v0}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    .line 71
+    .line 72
+    .line 73
+    move-result-object v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 74
+    goto :goto_1
+
+    .line 75
+    :catchall_0
+    move-exception v0
+
+    .line 76
+    move-object p2, v0
+
+    .line 77
+    goto :goto_2
+
+    .line 78
+    :cond_0
+    :goto_1
+    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+
+    .line 79
+    .line 80
+    .line 81
+    goto :goto_3
+
+    .line 82
+    :goto_2
+    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+
+    .line 83
+    .line 84
+    .line 85
+    throw p2
+
+    .line 86
+    :cond_1
+    :goto_3
+    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+
+    .line 87
+    .line 88
+    .line 89
     move-result p1
 
-    .line 60
-    return p1
+    .line 90
+    if-eqz p1, :cond_2
 
-    .line 61
+    .line 91
+    .line 92
+    new-instance p1, Ljava/io/FileNotFoundException;
+
+    .line 93
+    .line 94
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 95
+    .line 96
+    const-string v1, "Failed to find file path for: "
+
+    .line 97
+    .line 98
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 99
+    .line 100
+    .line 101
+    iget-object v1, p0, Ly2/n;->h:Ljava/lang/Object;
+
+    .line 102
+    .line 103
+    check-cast v1, Landroid/net/Uri;
+
+    .line 104
+    .line 105
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 106
+    .line 107
+    .line 108
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 109
+    .line 110
+    .line 111
+    move-result-object v0
+
+    .line 112
+    invoke-direct {p1, v0}, Ljava/io/FileNotFoundException;-><init>(Ljava/lang/String;)V
+
+    .line 113
+    .line 114
+    .line 115
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->d(Ljava/lang/Exception;)V
+
+    .line 116
+    .line 117
+    .line 118
+    goto :goto_4
+
+    .line 119
+    :cond_2
+    new-instance p1, Ljava/io/File;
+
+    .line 120
+    .line 121
+    invoke-direct {p1, v0}, Ljava/io/File;-><init>(Ljava/lang/String;)V
+
+    .line 122
+    .line 123
+    .line 124
+    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->f(Ljava/lang/Object;)V
+
+    .line 125
+    .line 126
+    .line 127
+    :goto_4
+    return-void
+
+    .line 128
+    nop
+
+    .line 129
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
+    .end packed-switch
+
+    .line 130
+    .line 131
+    .line 132
+    .line 133
+    .line 134
+    .line 135
+    :pswitch_data_1
+    .packed-switch 0x1
         :pswitch_0
     .end packed-switch
 .end method

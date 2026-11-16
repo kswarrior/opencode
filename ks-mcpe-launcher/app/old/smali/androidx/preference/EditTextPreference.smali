@@ -1,6 +1,6 @@
 .class public Landroidx/preference/EditTextPreference;
 .super Landroidx/preference/DialogPreference;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # direct methods
@@ -31,7 +31,7 @@
     .line 12
     .line 13
     .line 14
-    sget-object v1, Lq1/d;->c:[I
+    sget-object v1, Lq1/b;->c:[I
 
     .line 15
     .line 16
@@ -66,7 +66,7 @@
 
     .line 30
     .line 31
-    sget-object p2, Lq1/a;->d:Lq1/a;
+    sget-object p2, Lt5/f;->h:Lt5/f;
 
     .line 32
     .line 33
@@ -74,37 +74,38 @@
 
     .line 34
     .line 35
-    new-instance p2, Lq1/a;
+    new-instance p2, Lt5/f;
 
     .line 36
     .line 37
-    const/4 v0, 0x0
+    const/16 v0, 0x1c
 
     .line 38
-    invoke-direct {p2, v0}, Lq1/a;-><init>(I)V
-
     .line 39
+    invoke-direct {p2, v0}, Lt5/f;-><init>(I)V
+
     .line 40
     .line 41
-    sput-object p2, Lq1/a;->d:Lq1/a;
-
     .line 42
+    sput-object p2, Lt5/f;->h:Lt5/f;
+
     .line 43
-    :cond_0
-    sget-object p2, Lq1/a;->d:Lq1/a;
-
     .line 44
-    .line 45
-    iput-object p2, p0, Landroidx/preference/Preference;->x:Lq1/c;
+    :cond_0
+    sget-object p2, Lt5/f;->h:Lt5/f;
 
+    .line 45
     .line 46
+    iput-object p2, p0, Landroidx/preference/Preference;->y:Lq1/a;
+
     .line 47
+    .line 48
     :cond_1
     invoke-virtual {p1}, Landroid/content/res/TypedArray;->recycle()V
 
-    .line 48
     .line 49
     .line 50
+    .line 51
     return-void
 .end method
 

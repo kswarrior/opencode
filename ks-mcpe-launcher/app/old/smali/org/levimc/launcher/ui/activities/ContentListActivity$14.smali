@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/ui/activities/ContentListActivity$14;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/levimc/launcher/core/content/StructureExtractor$ExtractionCallback;
@@ -81,7 +81,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->y0(Lorg/levimc/launcher/ui/activities/ContentListActivity;)Lorg/levimc/launcher/ui/activities/ContentListActivity$ContentListViews;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->p0(Lorg/levimc/launcher/ui/activities/ContentListActivity;)Lorg/levimc/launcher/databinding/ActivityContentListBinding;
 
     .line 4
     .line 5
@@ -89,7 +89,7 @@
     move-result-object v0
 
     .line 7
-    iget-object v0, v0, Lorg/levimc/launcher/ui/activities/ContentListActivity$ContentListViews;->loadingOverlay:Landroid/widget/FrameLayout;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityContentListBinding;->loadingOverlay:Landroid/widget/FrameLayout;
 
     .line 8
     .line 9
@@ -161,7 +161,7 @@
 
     .line 2
     .line 3
-    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->y0(Lorg/levimc/launcher/ui/activities/ContentListActivity;)Lorg/levimc/launcher/ui/activities/ContentListActivity$ContentListViews;
+    invoke-static {v0}, Lorg/levimc/launcher/ui/activities/ContentListActivity;->p0(Lorg/levimc/launcher/ui/activities/ContentListActivity;)Lorg/levimc/launcher/databinding/ActivityContentListBinding;
 
     .line 4
     .line 5
@@ -169,7 +169,7 @@
     move-result-object v0
 
     .line 7
-    iget-object v0, v0, Lorg/levimc/launcher/ui/activities/ContentListActivity$ContentListViews;->loadingOverlay:Landroid/widget/FrameLayout;
+    iget-object v0, v0, Lorg/levimc/launcher/databinding/ActivityContentListBinding;->loadingOverlay:Landroid/widget/FrameLayout;
 
     .line 8
     .line 9
@@ -219,23 +219,24 @@
 
     .line 4
     .line 5
-    new-instance v0, Lorg/levimc/launcher/ui/activities/k;
+    new-instance v0, Lorg/levimc/launcher/ui/activities/d;
 
     .line 6
     .line 7
-    const/4 v1, 0x6
+    const/16 v1, 0x9
 
     .line 8
-    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 9
+    invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 10
     .line 11
+    .line 12
     invoke-virtual {p1, v0}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 12
     .line 13
     .line 14
+    .line 15
     return-void
 .end method
 
@@ -247,22 +248,23 @@
 
     .line 2
     .line 3
-    new-instance v1, Lorg/levimc/launcher/ui/activities/k;
+    new-instance v1, Lorg/levimc/launcher/ui/activities/d;
 
     .line 4
     .line 5
-    const/4 v2, 0x5
+    const/16 v2, 0x8
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/k;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 7
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/ui/activities/d;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
     .line 8
     .line 9
+    .line 10
     invoke-virtual {v0, v1}, Landroid/app/Activity;->runOnUiThread(Ljava/lang/Runnable;)V
 
-    .line 10
     .line 11
     .line 12
+    .line 13
     return-void
 .end method

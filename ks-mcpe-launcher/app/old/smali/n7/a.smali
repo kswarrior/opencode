@@ -1,17 +1,16 @@
 .class public final Ln7/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ln7/e;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final b:I
+.field public final a:Ljava/lang/String;
+
+.field public final b:Ljava/util/ArrayList;
 
 
 # direct methods
-.method public constructor <init>(I)V
+.method public constructor <init>(Ljava/lang/String;Ljava/util/ArrayList;)V
     .locals 0
 
     .line 1
@@ -20,31 +19,45 @@
     .line 2
     .line 3
     .line 4
-    iput p1, p0, Ln7/a;->b:I
+    if-eqz p1, :cond_0
 
     .line 5
     .line 6
+    iput-object p1, p0, Ln7/a;->a:Ljava/lang/String;
+
+    .line 7
+    .line 8
+    iput-object p2, p0, Ln7/a;->b:Ljava/util/ArrayList;
+
+    .line 9
+    .line 10
     return-void
+
+    .line 11
+    :cond_0
+    new-instance p1, Ljava/lang/NullPointerException;
+
+    .line 12
+    .line 13
+    const-string p2, "Null userAgent"
+
+    .line 14
+    .line 15
+    invoke-direct {p1, p2}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
+
+    .line 16
+    .line 17
+    .line 18
+    throw p1
 .end method
 
 
 # virtual methods
-.method public final annotationType()Ljava/lang/Class;
-    .locals 1
-
-    .line 1
-    const-class v0, Ln7/e;
-
-    .line 2
-    .line 3
-    return-object v0
-.end method
-
 .method public final equals(Ljava/lang/Object;)Z
-    .locals 1
+    .locals 2
 
     .line 1
-    if-ne p0, p1, :cond_0
+    if-ne p1, p0, :cond_0
 
     .line 2
     .line 3
@@ -52,108 +65,114 @@
 
     .line 4
     :cond_0
-    instance-of v0, p1, Ln7/e;
+    instance-of v0, p1, Ln7/a;
 
     .line 5
     .line 6
-    if-nez v0, :cond_1
+    if-eqz v0, :cond_1
 
     .line 7
     .line 8
-    goto :goto_1
-
-    .line 9
-    :cond_1
-    check-cast p1, Ln7/e;
-
-    .line 10
-    .line 11
     check-cast p1, Ln7/a;
 
+    .line 9
+    .line 10
+    iget-object v0, p0, Ln7/a;->a:Ljava/lang/String;
+
+    .line 11
     .line 12
+    iget-object v1, p1, Ln7/a;->a:Ljava/lang/String;
+
     .line 13
-    iget p1, p1, Ln7/a;->b:I
-
     .line 14
-    .line 15
-    iget v0, p0, Ln7/a;->b:I
+    invoke-virtual {v0, v1}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
 
+    .line 15
     .line 16
     .line 17
-    if-ne v0, p1, :cond_2
+    move-result v0
 
     .line 18
+    if-eqz v0, :cond_1
+
     .line 19
-    sget-object p1, Ln7/d;->c:Ln7/d;
-
     .line 20
-    .line 21
-    invoke-virtual {p1, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+    iget-object v0, p0, Ln7/a;->b:Ljava/util/ArrayList;
 
+    .line 21
     .line 22
+    iget-object p1, p1, Ln7/a;->b:Ljava/util/ArrayList;
+
     .line 23
     .line 24
-    move-result p1
+    invoke-virtual {v0, p1}, Ljava/util/ArrayList;->equals(Ljava/lang/Object;)Z
 
     .line 25
-    if-eqz p1, :cond_2
-
     .line 26
     .line 27
+    move-result p1
+
+    .line 28
+    if-eqz p1, :cond_1
+
+    .line 29
+    .line 30
     :goto_0
     const/4 p1, 0x1
 
-    .line 28
+    .line 31
     return p1
 
-    .line 29
-    :cond_2
-    :goto_1
+    .line 32
+    :cond_1
     const/4 p1, 0x0
 
-    .line 30
+    .line 33
     return p1
 .end method
 
 .method public final hashCode()I
-    .locals 3
+    .locals 2
 
     .line 1
-    const v0, 0xde0d66
+    iget-object v0, p0, Ln7/a;->a:Ljava/lang/String;
 
     .line 2
     .line 3
-    .line 4
-    iget v1, p0, Ln7/a;->b:I
+    invoke-virtual {v0}, Ljava/lang/String;->hashCode()I
 
+    .line 4
     .line 5
     .line 6
-    xor-int/2addr v0, v1
+    move-result v0
 
     .line 7
-    sget-object v1, Ln7/d;->c:Ln7/d;
+    const v1, 0xf4243
 
     .line 8
     .line 9
-    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
-
     .line 10
+    xor-int/2addr v0, v1
+
     .line 11
+    mul-int/2addr v0, v1
+
     .line 12
-    move-result v1
+    iget-object v1, p0, Ln7/a;->b:Ljava/util/ArrayList;
 
     .line 13
-    const v2, 0x79ad669e
-
     .line 14
+    invoke-virtual {v1}, Ljava/util/ArrayList;->hashCode()I
+
     .line 15
     .line 16
-    xor-int/2addr v1, v2
-
     .line 17
-    add-int/2addr v0, v1
+    move-result v1
 
     .line 18
+    xor-int/2addr v0, v1
+
+    .line 19
     return v0
 .end method
 
@@ -165,7 +184,7 @@
 
     .line 2
     .line 3
-    const-string v1, "@com.google.firebase.encoders.proto.Protobuf(tag="
+    const-string v1, "HeartBeatResult{userAgent="
 
     .line 4
     .line 5
@@ -174,16 +193,16 @@
     .line 6
     .line 7
     .line 8
-    iget v1, p0, Ln7/a;->b:I
+    iget-object v1, p0, Ln7/a;->a:Ljava/lang/String;
 
     .line 9
     .line 10
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 11
     .line 12
     .line 13
-    const-string v1, "intEncoding="
+    const-string v1, ", usedDates="
 
     .line 14
     .line 15
@@ -192,7 +211,7 @@
     .line 16
     .line 17
     .line 18
-    sget-object v1, Ln7/d;->c:Ln7/d;
+    iget-object v1, p0, Ln7/a;->b:Ljava/util/ArrayList;
 
     .line 19
     .line 20
@@ -201,11 +220,11 @@
     .line 21
     .line 22
     .line 23
-    const/16 v1, 0x29
+    const-string v1, "}"
 
     .line 24
     .line 25
-    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 26
     .line 27

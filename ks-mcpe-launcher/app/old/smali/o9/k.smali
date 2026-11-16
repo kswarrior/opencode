@@ -1,3 +1,14 @@
-.class public abstract Lo9/k;
-.super Lo9/j;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public interface abstract Lo9/k;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lo9/g0;
+
+
+# virtual methods
+.method public abstract b(Ljava/lang/Throwable;)Z
+.end method
+
+.method public abstract getParent()Lo9/u0;
+.end method

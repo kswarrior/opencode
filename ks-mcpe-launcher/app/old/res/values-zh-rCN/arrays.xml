@@ -12,11 +12,5 @@
         <item>在启动器中管理多个 Xbox 账号，并在它们之间无缝切换。</item>
         <item>CurseForge 可以让你直接浏览并下载社区内容。</item>
         <item>导入模组以扩展或增强 Minecraft 功能和性能。</item>
-        <item>动态 GIF 也可以用作启动器壁纸。</item>
-        <item>可以在实例设置中更改实例图标。</item>
-        <item>在模组菜单中为模块加星，就能在收藏中快速找到它。</item>
-        <item>拖动模组菜单的标题可移动菜单，拖动右下角可调整大小。</item>
-        <item>在外部模组页面使用“仅显示兼容”，即可按当前 Minecraft 版本筛选。</item>
-        <item>编辑世界的 NBT 数据前，请先备份世界。</item>
     </string-array>
 </resources>

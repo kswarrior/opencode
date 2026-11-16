@@ -1,9 +1,9 @@
 .class Lorg/levimc/launcher/util/GithubReleaseUpdater$1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lub/i;
+.implements Lvb/d;
 
 
 # annotations
@@ -178,11 +178,11 @@
     .line 2
     .line 3
     :try_start_0
-    iget-object p2, p2, Lokhttp3/Response;->x:Lub/w;
+    iget-object p2, p2, Lokhttp3/Response;->y:Lvb/r;
 
     .line 4
     .line 5
-    invoke-virtual {p2}, Lub/w;->u()Ljava/lang/String;
+    invoke-virtual {p2}, Lvb/r;->i()Ljava/lang/String;
 
     .line 6
     .line 7
@@ -419,14 +419,14 @@
     move-result-object p2
 
     .line 117
-    new-instance v0, Lorg/levimc/launcher/util/i;
+    new-instance v0, Lorg/levimc/launcher/util/h;
 
     .line 118
     .line 119
     const/4 v2, 0x0
 
     .line 120
-    invoke-direct {v0, p0, v1, v2}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v0, p0, v1, v2}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 121
     .line 122

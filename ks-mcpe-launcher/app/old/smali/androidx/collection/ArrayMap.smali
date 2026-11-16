@@ -1,17 +1,17 @@
 .class public Landroidx/collection/ArrayMap;
 .super Landroidx/collection/SimpleArrayMap;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/util/Map;
 
 
 # instance fields
-.field public p:Landroidx/datastore/preferences/protobuf/a1;
+.field public q:Landroidx/datastore/preferences/protobuf/a1;
 
-.field public q:Lt/b;
+.field public w:Lt/b;
 
-.field public w:Lt/d;
+.field public x:Lt/d;
 
 
 # direct methods
@@ -46,7 +46,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Landroidx/collection/ArrayMap;->p:Landroidx/datastore/preferences/protobuf/a1;
+    iget-object v0, p0, Landroidx/collection/ArrayMap;->q:Landroidx/datastore/preferences/protobuf/a1;
 
     .line 2
     .line 3
@@ -66,7 +66,7 @@
     .line 9
     .line 10
     .line 11
-    iput-object v0, p0, Landroidx/collection/ArrayMap;->p:Landroidx/datastore/preferences/protobuf/a1;
+    iput-object v0, p0, Landroidx/collection/ArrayMap;->q:Landroidx/datastore/preferences/protobuf/a1;
 
     .line 12
     .line 13
@@ -136,7 +136,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/collection/ArrayMap;->q:Lt/b;
+    iget-object v0, p0, Landroidx/collection/ArrayMap;->w:Lt/b;
 
     .line 2
     .line 3
@@ -153,7 +153,7 @@
     .line 8
     .line 9
     .line 10
-    iput-object v0, p0, Landroidx/collection/ArrayMap;->q:Lt/b;
+    iput-object v0, p0, Landroidx/collection/ArrayMap;->w:Lt/b;
 
     .line 11
     .line 12
@@ -397,7 +397,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Landroidx/collection/ArrayMap;->w:Lt/d;
+    iget-object v0, p0, Landroidx/collection/ArrayMap;->x:Lt/d;
 
     .line 2
     .line 3
@@ -414,7 +414,7 @@
     .line 8
     .line 9
     .line 10
-    iput-object v0, p0, Landroidx/collection/ArrayMap;->w:Lt/d;
+    iput-object v0, p0, Landroidx/collection/ArrayMap;->x:Lt/d;
 
     .line 11
     .line 12

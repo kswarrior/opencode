@@ -1,79 +1,115 @@
 .class public final Lc8/b;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Lb8/b;
 
 
 # instance fields
-.field public synthetic X:Ljava/lang/Object;
+.field public final synthetic c:I
 
-.field public final synthetic Y:Lc8/c;
-
-.field public Z:I
-
-.field public p:Ljava/util/Map;
-
-.field public q:Ljava/util/Iterator;
-
-.field public w:Lc8/d;
-
-.field public x:Ljava/util/Map;
-
-.field public y:Ljava/lang/Object;
+.field public final d:Lb8/c;
 
 
 # direct methods
-.method public constructor <init>(Lc8/c;Ly8/c;)V
+.method public synthetic constructor <init>(Lb8/c;I)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lc8/b;->Y:Lc8/c;
+    iput p2, p0, Lc8/b;->c:I
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+    iput-object p1, p0, Lc8/b;->d:Lb8/c;
 
     .line 4
     .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 6
+    .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final n(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 1
+.method public final get()Ljava/lang/Object;
+    .locals 2
 
     .line 1
-    iput-object p1, p0, Lc8/b;->X:Ljava/lang/Object;
+    iget v0, p0, Lc8/b;->c:I
 
     .line 2
     .line 3
-    iget p1, p0, Lc8/b;->Z:I
+    iget-object v1, p0, Lc8/b;->d:Lb8/c;
 
     .line 4
     .line 5
-    const/high16 v0, -0x80000000
+    packed-switch v0, :pswitch_data_0
 
     .line 6
     .line 7
-    or-int/2addr p1, v0
-
     .line 8
-    iput p1, p0, Lc8/b;->Z:I
+    iget-object v0, v1, Lb8/c;->d:Ljava/lang/Object;
 
     .line 9
     .line 10
-    iget-object p1, p0, Lc8/b;->Y:Lc8/c;
+    check-cast v0, Lcom/google/firebase/FirebaseApp;
 
     .line 11
     .line 12
-    invoke-virtual {p1, p0}, Lc8/c;->b(Ly8/c;)Ljava/lang/Object;
+    const-string v1, "firebaseApp"
 
     .line 13
     .line 14
-    .line 15
-    move-result-object p1
+    invoke-static {v0, v1}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 15
     .line 16
-    return-object p1
+    .line 17
+    sget-object v1, Lz7/l0;->a:Lz7/l0;
+
+    .line 18
+    .line 19
+    invoke-static {v0}, Lz7/l0;->a(Lcom/google/firebase/FirebaseApp;)Lz7/b;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v0
+
+    .line 23
+    return-object v0
+
+    .line 24
+    :pswitch_0
+    iget-object v0, v1, Lb8/c;->d:Ljava/lang/Object;
+
+    .line 25
+    .line 26
+    check-cast v0, Landroid/content/Context;
+
+    .line 27
+    .line 28
+    new-instance v1, Lc8/a;
+
+    .line 29
+    .line 30
+    invoke-direct {v1, v0}, Lc8/a;-><init>(Landroid/content/Context;)V
+
+    .line 31
+    .line 32
+    .line 33
+    return-object v1
+
+    .line 34
+    nop
+
+    .line 35
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

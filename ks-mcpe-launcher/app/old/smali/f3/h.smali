@@ -1,506 +1,958 @@
 .class public final Lf3/h;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Landroid/os/Handler$Callback;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final a:Lr2/d;
 
-.field public final synthetic b:Ljava/lang/Object;
+.field public final b:Landroid/os/Handler;
+
+.field public final c:Ljava/util/ArrayList;
+
+.field public final d:Lcom/bumptech/glide/q;
+
+.field public final e:Lv2/a;
+
+.field public f:Z
+
+.field public g:Z
+
+.field public h:Lcom/bumptech/glide/n;
+
+.field public i:Lf3/e;
+
+.field public j:Z
+
+.field public k:Lf3/e;
+
+.field public l:Landroid/graphics/Bitmap;
+
+.field public m:Lf3/e;
+
+.field public n:I
+
+.field public o:I
+
+.field public p:I
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
-    .locals 0
+.method public constructor <init>(Lcom/bumptech/glide/b;Lr2/d;IILandroid/graphics/Bitmap;)V
+    .locals 6
 
     .line 1
-    iput p2, p0, Lf3/h;->a:I
+    iget-object v0, p1, Lcom/bumptech/glide/b;->c:Lv2/a;
 
     .line 2
     .line 3
-    iput-object p1, p0, Lf3/h;->b:Ljava/lang/Object;
+    iget-object p1, p1, Lcom/bumptech/glide/b;->h:Lcom/bumptech/glide/g;
 
     .line 4
     .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    invoke-virtual {p1}, Landroid/content/ContextWrapper;->getBaseContext()Landroid/content/Context;
 
     .line 6
     .line 7
     .line 8
+    move-result-object v1
+
+    .line 9
+    invoke-static {v1}, Lcom/bumptech/glide/b;->b(Landroid/content/Context;)Lh3/l;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v2
+
+    .line 13
+    invoke-virtual {v2, v1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/q;
+
+    .line 14
+    .line 15
+    .line 16
+    move-result-object v1
+
+    .line 17
+    invoke-virtual {p1}, Landroid/content/ContextWrapper;->getBaseContext()Landroid/content/Context;
+
+    .line 18
+    .line 19
+    .line 20
+    move-result-object p1
+
+    .line 21
+    invoke-static {p1}, Lcom/bumptech/glide/b;->b(Landroid/content/Context;)Lh3/l;
+
+    .line 22
+    .line 23
+    .line 24
+    move-result-object v2
+
+    .line 25
+    invoke-virtual {v2, p1}, Lh3/l;->c(Landroid/content/Context;)Lcom/bumptech/glide/q;
+
+    .line 26
+    .line 27
+    .line 28
+    move-result-object p1
+
+    .line 29
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 30
+    .line 31
+    .line 32
+    new-instance v2, Lcom/bumptech/glide/n;
+
+    .line 33
+    .line 34
+    iget-object v3, p1, Lcom/bumptech/glide/q;->c:Lcom/bumptech/glide/b;
+
+    .line 35
+    .line 36
+    iget-object v4, p1, Lcom/bumptech/glide/q;->d:Landroid/content/Context;
+
+    .line 37
+    .line 38
+    const-class v5, Landroid/graphics/Bitmap;
+
+    .line 39
+    .line 40
+    invoke-direct {v2, v3, p1, v5, v4}, Lcom/bumptech/glide/n;-><init>(Lcom/bumptech/glide/b;Lcom/bumptech/glide/q;Ljava/lang/Class;Landroid/content/Context;)V
+
+    .line 41
+    .line 42
+    .line 43
+    sget-object p1, Lcom/bumptech/glide/q;->b1:Lk3/d;
+
+    .line 44
+    .line 45
+    invoke-virtual {v2, p1}, Lcom/bumptech/glide/n;->u(Lk3/a;)Lcom/bumptech/glide/n;
+
+    .line 46
+    .line 47
+    .line 48
+    move-result-object p1
+
+    .line 49
+    new-instance v2, Lk3/d;
+
+    .line 50
+    .line 51
+    invoke-direct {v2}, Lk3/a;-><init>()V
+
+    .line 52
+    .line 53
+    .line 54
+    sget-object v3, Lu2/j;->b:Lu2/j;
+
+    .line 55
+    .line 56
+    invoke-virtual {v2, v3}, Lk3/a;->d(Lu2/j;)Lk3/a;
+
+    .line 57
+    .line 58
+    .line 59
+    move-result-object v2
+
+    .line 60
+    check-cast v2, Lk3/d;
+
+    .line 61
+    .line 62
+    invoke-virtual {v2}, Lk3/a;->s()Lk3/a;
+
+    .line 63
+    .line 64
+    .line 65
+    move-result-object v2
+
+    .line 66
+    check-cast v2, Lk3/d;
+
+    .line 67
+    .line 68
+    invoke-virtual {v2}, Lk3/a;->o()Lk3/a;
+
+    .line 69
+    .line 70
+    .line 71
+    move-result-object v2
+
+    .line 72
+    check-cast v2, Lk3/d;
+
+    .line 73
+    .line 74
+    invoke-virtual {v2, p3, p4}, Lk3/a;->i(II)Lk3/a;
+
+    .line 75
+    .line 76
+    .line 77
+    move-result-object p3
+
+    .line 78
+    invoke-virtual {p1, p3}, Lcom/bumptech/glide/n;->u(Lk3/a;)Lcom/bumptech/glide/n;
+
+    .line 79
+    .line 80
+    .line 81
+    move-result-object p1
+
+    .line 82
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 83
+    .line 84
+    .line 85
+    new-instance p3, Ljava/util/ArrayList;
+
+    .line 86
+    .line 87
+    invoke-direct {p3}, Ljava/util/ArrayList;-><init>()V
+
+    .line 88
+    .line 89
+    .line 90
+    iput-object p3, p0, Lf3/h;->c:Ljava/util/ArrayList;
+
+    .line 91
+    .line 92
+    iput-object v1, p0, Lf3/h;->d:Lcom/bumptech/glide/q;
+
+    .line 93
+    .line 94
+    new-instance p3, Landroid/os/Handler;
+
+    .line 95
+    .line 96
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    .line 97
+    .line 98
+    .line 99
+    move-result-object p4
+
+    .line 100
+    new-instance v1, Lf3/g;
+
+    .line 101
+    .line 102
+    const/4 v2, 0x0
+
+    .line 103
+    invoke-direct {v1, p0, v2}, Lf3/g;-><init>(Ljava/lang/Object;I)V
+
+    .line 104
+    .line 105
+    .line 106
+    invoke-direct {p3, p4, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;Landroid/os/Handler$Callback;)V
+
+    .line 107
+    .line 108
+    .line 109
+    iput-object v0, p0, Lf3/h;->e:Lv2/a;
+
+    .line 110
+    .line 111
+    iput-object p3, p0, Lf3/h;->b:Landroid/os/Handler;
+
+    .line 112
+    .line 113
+    iput-object p1, p0, Lf3/h;->h:Lcom/bumptech/glide/n;
+
+    .line 114
+    .line 115
+    iput-object p2, p0, Lf3/h;->a:Lr2/d;
+
+    .line 116
+    .line 117
+    sget-object p1, La3/c;->b:La3/c;
+
+    .line 118
+    .line 119
+    invoke-virtual {p0, p1, p5}, Lf3/h;->c(Ls2/l;Landroid/graphics/Bitmap;)V
+
+    .line 120
+    .line 121
+    .line 122
     return-void
 .end method
 
 
 # virtual methods
-.method public final handleMessage(Landroid/os/Message;)Z
-    .locals 4
+.method public final a()V
+    .locals 7
 
     .line 1
-    iget v0, p0, Lf3/h;->a:I
+    iget-boolean v0, p0, Lf3/h;->f:Z
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    if-eqz v0, :cond_5
 
     .line 4
     .line 5
-    .line 6
-    iget v0, p1, Landroid/os/Message;->what:I
+    iget-boolean v0, p0, Lf3/h;->g:Z
 
+    .line 6
     .line 7
-    .line 8
     if-eqz v0, :cond_0
 
+    .line 8
     .line 9
+    goto :goto_2
+
     .line 10
-    const/4 p1, 0x0
+    :cond_0
+    iget-object v0, p0, Lf3/h;->m:Lf3/e;
 
     .line 11
-    return p1
-
     .line 12
-    :cond_0
-    iget-object v0, p0, Lf3/h;->b:Ljava/lang/Object;
+    if-eqz v0, :cond_1
 
     .line 13
     .line 14
-    check-cast v0, Lv3/c;
+    const/4 v1, 0x0
 
     .line 15
+    iput-object v1, p0, Lf3/h;->m:Lf3/e;
+
     .line 16
-    iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
-
     .line 17
-    .line 18
-    if-nez p1, :cond_1
+    invoke-virtual {p0, v0}, Lf3/h;->b(Lf3/e;)V
 
+    .line 18
     .line 19
     .line 20
-    iget-object p1, v0, Lv3/c;->c:Ljava/lang/Object;
+    return-void
 
     .line 21
+    :cond_1
+    const/4 v0, 0x1
+
     .line 22
-    monitor-enter p1
+    iput-boolean v0, p0, Lf3/h;->g:Z
 
     .line 23
-    const/4 v0, 0x0
-
     .line 24
-    :try_start_0
-    throw v0
+    iget-object v1, p0, Lf3/h;->a:Lr2/d;
 
     .line 25
-    :catchall_0
-    move-exception v0
-
     .line 26
-    monitor-exit p1
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    iget-object v2, v1, Lr2/d;->l:Lr2/b;
 
     .line 27
-    throw v0
-
     .line 28
-    :cond_1
-    new-instance p1, Ljava/lang/ClassCastException;
+    iget v3, v2, Lr2/b;->c:I
 
     .line 29
     .line 30
-    invoke-direct {p1}, Ljava/lang/ClassCastException;-><init>()V
+    if-lez v3, :cond_4
 
     .line 31
     .line 32
-    .line 33
-    throw p1
+    iget v4, v1, Lr2/d;->k:I
 
+    .line 33
     .line 34
-    :pswitch_0
-    const-string v0, "Received response for unknown request: "
+    if-gez v4, :cond_2
 
     .line 35
     .line 36
-    const-string v1, "MessengerIpcClient"
+    goto :goto_0
 
     .line 37
+    :cond_2
+    if-ltz v4, :cond_3
+
     .line 38
-    iget v2, p1, Landroid/os/Message;->arg1:I
-
     .line 39
-    .line 40
-    const/4 v3, 0x3
+    if-ge v4, v3, :cond_3
 
+    .line 40
     .line 41
-    invoke-static {v1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+    iget-object v2, v2, Lr2/b;->e:Ljava/util/ArrayList;
 
     .line 42
     .line 43
+    invoke-virtual {v2, v4}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
     .line 44
-    move-result v1
-
     .line 45
-    if-eqz v1, :cond_2
-
     .line 46
+    move-result-object v2
+
     .line 47
-    const-string v1, "Received response to request: "
+    check-cast v2, Lr2/a;
 
     .line 48
     .line 49
-    const-string v3, "MessengerIpcClient"
+    iget v2, v2, Lr2/a;->i:I
 
     .line 50
     .line 51
-    invoke-static {v2, v1, v3}, Lcom/google/android/gms/internal/measurement/x;->s(ILjava/lang/String;Ljava/lang/String;)V
+    goto :goto_1
 
     .line 52
+    :cond_3
+    const/4 v2, -0x1
+
     .line 53
+    goto :goto_1
+
     .line 54
-    :cond_2
-    iget-object v1, p0, Lf3/h;->b:Ljava/lang/Object;
+    :cond_4
+    :goto_0
+    const/4 v2, 0x0
 
     .line 55
-    .line 56
-    check-cast v1, Li4/j;
+    :goto_1
+    invoke-static {}, Landroid/os/SystemClock;->uptimeMillis()J
 
+    .line 56
     .line 57
     .line 58
-    monitor-enter v1
+    move-result-wide v3
 
     .line 59
-    :try_start_1
-    iget-object v3, v1, Li4/j;->e:Landroid/util/SparseArray;
+    int-to-long v5, v2
 
     .line 60
+    add-long/2addr v3, v5
+
     .line 61
-    invoke-virtual {v3, v2}, Landroid/util/SparseArray;->get(I)Ljava/lang/Object;
+    iget v2, v1, Lr2/d;->k:I
 
     .line 62
     .line 63
+    add-int/2addr v2, v0
+
     .line 64
-    move-result-object v3
+    iget-object v0, v1, Lr2/d;->l:Lr2/b;
 
     .line 65
-    check-cast v3, Li4/k;
-
     .line 66
-    .line 67
-    if-nez v3, :cond_3
+    iget v0, v0, Lr2/b;->c:I
 
+    .line 67
     .line 68
+    rem-int/2addr v2, v0
+
     .line 69
-    const-string p1, "MessengerIpcClient"
+    iput v2, v1, Lr2/d;->k:I
 
     .line 70
     .line 71
-    new-instance v3, Ljava/lang/StringBuilder;
+    new-instance v0, Lf3/e;
 
     .line 72
     .line 73
-    invoke-direct {v3, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    iget-object v5, p0, Lf3/h;->b:Landroid/os/Handler;
 
     .line 74
     .line 75
-    .line 76
-    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+    invoke-direct {v0, v5, v2, v3, v4}, Lf3/e;-><init>(Landroid/os/Handler;IJ)V
 
+    .line 76
     .line 77
     .line 78
-    .line 79
-    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    iput-object v0, p0, Lf3/h;->k:Lf3/e;
 
+    .line 79
     .line 80
+    iget-object v0, p0, Lf3/h;->h:Lcom/bumptech/glide/n;
+
     .line 81
     .line 82
-    move-result-object v0
+    new-instance v2, Ln3/b;
 
     .line 83
-    invoke-static {p1, v0}, Landroid/util/Log;->w(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 84
+    invoke-static {}, Ljava/lang/Math;->random()D
+
     .line 85
     .line 86
-    monitor-exit v1
-
     .line 87
-    goto :goto_0
+    move-result-wide v3
 
     .line 88
-    :catchall_1
-    move-exception p1
+    invoke-static {v3, v4}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
 
     .line 89
-    goto :goto_1
-
     .line 90
-    :cond_3
-    iget-object v0, v1, Li4/j;->e:Landroid/util/SparseArray;
-
     .line 91
+    move-result-object v3
+
     .line 92
-    invoke-virtual {v0, v2}, Landroid/util/SparseArray;->remove(I)V
+    invoke-direct {v2, v3}, Ln3/b;-><init>(Ljava/lang/Object;)V
 
     .line 93
     .line 94
     .line 95
-    invoke-virtual {v1}, Li4/j;->c()V
+    new-instance v3, Lk3/d;
 
     .line 96
     .line 97
+    invoke-direct {v3}, Lk3/a;-><init>()V
+
     .line 98
-    monitor-exit v1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
     .line 99
-    invoke-virtual {p1}, Landroid/os/Message;->getData()Landroid/os/Bundle;
-
     .line 100
+    invoke-virtual {v3, v2}, Lk3/a;->n(Ln3/b;)Lk3/a;
+
     .line 101
     .line 102
-    move-result-object p1
-
     .line 103
-    const-string v0, "unsupported"
+    move-result-object v2
 
     .line 104
-    .line 105
-    const/4 v1, 0x0
+    check-cast v2, Lk3/d;
 
+    .line 105
     .line 106
-    invoke-virtual {p1, v0, v1}, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;Z)Z
+    invoke-virtual {v0, v2}, Lcom/bumptech/glide/n;->u(Lk3/a;)Lcom/bumptech/glide/n;
 
     .line 107
     .line 108
     .line 109
-    move-result v0
+    move-result-object v0
 
     .line 110
-    if-eqz v0, :cond_4
+    invoke-virtual {v0, v1}, Lcom/bumptech/glide/n;->z(Ljava/lang/Object;)Lcom/bumptech/glide/n;
 
     .line 111
     .line 112
-    const-string p1, "Not supported by GmsCore"
-
     .line 113
+    move-result-object v0
+
     .line 114
-    new-instance v0, Lcom/google/android/gms/internal/measurement/zb;
+    iget-object v1, p0, Lf3/h;->k:Lf3/e;
 
     .line 115
     .line 116
-    const/4 v1, 0x0
+    invoke-virtual {v0, v1, v0}, Lcom/bumptech/glide/n;->y(Ll3/e;Lk3/a;)V
 
     .line 117
-    invoke-direct {v0, p1, v1}, Lcom/google/android/gms/internal/measurement/zb;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
     .line 118
     .line 119
+    :cond_5
+    :goto_2
+    return-void
+.end method
+
+.method public final b(Lf3/e;)V
+    .locals 8
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    iput-boolean v0, p0, Lf3/h;->g:Z
+
+    .line 3
+    .line 4
+    iget-boolean v0, p0, Lf3/h;->j:Z
+
+    .line 5
+    .line 6
+    const/4 v1, 0x2
+
+    .line 7
+    iget-object v2, p0, Lf3/h;->b:Landroid/os/Handler;
+
+    .line 8
+    .line 9
+    if-eqz v0, :cond_0
+
+    .line 10
+    .line 11
+    invoke-virtual {v2, v1, p1}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object p1
+
+    .line 15
+    invoke-virtual {p1}, Landroid/os/Message;->sendToTarget()V
+
+    .line 16
+    .line 17
+    .line 18
+    return-void
+
+    .line 19
+    :cond_0
+    iget-boolean v0, p0, Lf3/h;->f:Z
+
+    .line 20
+    .line 21
+    if-nez v0, :cond_1
+
+    .line 22
+    .line 23
+    iput-object p1, p0, Lf3/h;->m:Lf3/e;
+
+    .line 24
+    .line 25
+    return-void
+
+    .line 26
+    :cond_1
+    iget-object v0, p1, Lf3/e;->q:Landroid/graphics/Bitmap;
+
+    .line 27
+    .line 28
+    if-eqz v0, :cond_9
+
+    .line 29
+    .line 30
+    iget-object v0, p0, Lf3/h;->l:Landroid/graphics/Bitmap;
+
+    .line 31
+    .line 32
+    if-eqz v0, :cond_2
+
+    .line 33
+    .line 34
+    iget-object v3, p0, Lf3/h;->e:Lv2/a;
+
+    .line 35
+    .line 36
+    invoke-interface {v3, v0}, Lv2/a;->b(Landroid/graphics/Bitmap;)V
+
+    .line 37
+    .line 38
+    .line 39
+    const/4 v0, 0x0
+
+    .line 40
+    iput-object v0, p0, Lf3/h;->l:Landroid/graphics/Bitmap;
+
+    .line 41
+    .line 42
+    :cond_2
+    iget-object v0, p0, Lf3/h;->i:Lf3/e;
+
+    .line 43
+    .line 44
+    iput-object p1, p0, Lf3/h;->i:Lf3/e;
+
+    .line 45
+    .line 46
+    iget-object p1, p0, Lf3/h;->c:Ljava/util/ArrayList;
+
+    .line 47
+    .line 48
+    invoke-virtual {p1}, Ljava/util/ArrayList;->size()I
+
+    .line 49
+    .line 50
+    .line 51
+    move-result v3
+
+    .line 52
+    add-int/lit8 v3, v3, -0x1
+
+    .line 53
+    .line 54
+    :goto_0
+    if-ltz v3, :cond_8
+
+    .line 55
+    .line 56
+    invoke-virtual {p1, v3}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
+    .line 57
+    .line 58
+    .line 59
+    move-result-object v4
+
+    .line 60
+    check-cast v4, Lf3/f;
+
+    .line 61
+    .line 62
+    check-cast v4, Lf3/c;
+
+    .line 63
+    .line 64
+    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->getCallback()Landroid/graphics/drawable/Drawable$Callback;
+
+    .line 65
+    .line 66
+    .line 67
+    move-result-object v5
+
+    .line 68
+    :goto_1
+    instance-of v6, v5, Landroid/graphics/drawable/Drawable;
+
+    .line 69
+    .line 70
+    if-eqz v6, :cond_3
+
+    .line 71
+    .line 72
+    check-cast v5, Landroid/graphics/drawable/Drawable;
+
+    .line 73
+    .line 74
+    invoke-virtual {v5}, Landroid/graphics/drawable/Drawable;->getCallback()Landroid/graphics/drawable/Drawable$Callback;
+
+    .line 75
+    .line 76
+    .line 77
+    move-result-object v5
+
+    .line 78
+    goto :goto_1
+
+    .line 79
+    :cond_3
+    if-nez v5, :cond_4
+
+    .line 80
+    .line 81
+    invoke-virtual {v4}, Lf3/c;->stop()V
+
+    .line 82
+    .line 83
+    .line 84
+    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
+
+    .line 85
+    .line 86
+    .line 87
+    goto :goto_3
+
+    .line 88
+    :cond_4
+    invoke-virtual {v4}, Landroid/graphics/drawable/Drawable;->invalidateSelf()V
+
+    .line 89
+    .line 90
+    .line 91
+    iget-object v5, v4, Lf3/c;->c:Lf3/b;
+
+    .line 92
+    .line 93
+    iget-object v5, v5, Lf3/b;->b:Ljava/lang/Object;
+
+    .line 94
+    .line 95
+    check-cast v5, Lf3/h;
+
+    .line 96
+    .line 97
+    iget-object v6, v5, Lf3/h;->i:Lf3/e;
+
+    .line 98
+    .line 99
+    const/4 v7, -0x1
+
+    .line 100
+    if-eqz v6, :cond_5
+
+    .line 101
+    .line 102
+    iget v6, v6, Lf3/e;->d:I
+
+    .line 103
+    .line 104
+    goto :goto_2
+
+    .line 105
+    :cond_5
+    move v6, v7
+
+    .line 106
+    :goto_2
+    iget-object v5, v5, Lf3/h;->a:Lr2/d;
+
+    .line 107
+    .line 108
+    iget-object v5, v5, Lr2/d;->l:Lr2/b;
+
+    .line 109
+    .line 110
+    iget v5, v5, Lr2/b;->c:I
+
+    .line 111
+    .line 112
+    add-int/lit8 v5, v5, -0x1
+
+    .line 113
+    .line 114
+    if-ne v6, v5, :cond_6
+
+    .line 115
+    .line 116
+    iget v5, v4, Lf3/c;->x:I
+
+    .line 117
+    .line 118
+    add-int/lit8 v5, v5, 0x1
+
+    .line 119
     .line 120
-    invoke-virtual {v3, v0}, Li4/k;->b(Lcom/google/android/gms/internal/measurement/zb;)V
+    iput v5, v4, Lf3/c;->x:I
 
     .line 121
     .line 122
-    .line 123
-    goto :goto_0
+    :cond_6
+    iget v5, v4, Lf3/c;->y:I
 
+    .line 123
     .line 124
-    :cond_4
-    iget v0, v3, Li4/k;->e:I
+    if-eq v5, v7, :cond_7
 
     .line 125
     .line 126
-    packed-switch v0, :pswitch_data_1
+    iget v6, v4, Lf3/c;->x:I
 
     .line 127
     .line 128
+    if-lt v6, v5, :cond_7
+
     .line 129
-    const-string v0, "data"
-
     .line 130
-    .line 131
-    invoke-virtual {p1, v0}, Landroid/os/Bundle;->getBundle(Ljava/lang/String;)Landroid/os/Bundle;
+    invoke-virtual {v4}, Lf3/c;->stop()V
 
+    .line 131
     .line 132
     .line 133
-    .line 134
-    move-result-object p1
+    :cond_7
+    :goto_3
+    add-int/lit8 v3, v3, -0x1
 
+    .line 134
     .line 135
-    if-nez p1, :cond_5
+    goto :goto_0
 
     .line 136
+    :cond_8
+    if-eqz v0, :cond_9
+
     .line 137
-    sget-object p1, Landroid/os/Bundle;->EMPTY:Landroid/os/Bundle;
-
     .line 138
-    .line 139
-    :cond_5
-    invoke-virtual {v3, p1}, Li4/k;->c(Landroid/os/Bundle;)V
+    invoke-virtual {v2, v1, v0}, Landroid/os/Handler;->obtainMessage(ILjava/lang/Object;)Landroid/os/Message;
 
+    .line 139
     .line 140
     .line 141
+    move-result-object p1
+
     .line 142
-    goto :goto_0
+    invoke-virtual {p1}, Landroid/os/Message;->sendToTarget()V
 
     .line 143
-    :pswitch_1
-    const-string v0, "ack"
-
     .line 144
     .line 145
-    const/4 v1, 0x0
+    :cond_9
+    invoke-virtual {p0}, Lf3/h;->a()V
 
     .line 146
-    invoke-virtual {p1, v0, v1}, Landroid/os/BaseBundle;->getBoolean(Ljava/lang/String;Z)Z
-
     .line 147
     .line 148
-    .line 149
-    move-result p1
+    return-void
+.end method
 
-    .line 150
-    const/4 v0, 0x0
+.method public final c(Ls2/l;Landroid/graphics/Bitmap;)V
+    .locals 3
 
-    .line 151
-    if-eqz p1, :cond_6
+    .line 1
+    const-string v0, "Argument must not be null"
 
-    .line 152
-    .line 153
-    invoke-virtual {v3, v0}, Li4/k;->c(Landroid/os/Bundle;)V
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 154
-    .line 155
-    .line 156
-    goto :goto_0
+    .line 4
+    .line 5
+    .line 6
+    invoke-static {p2, v0}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 157
-    :cond_6
-    const-string p1, "Invalid response to one way request"
+    .line 7
+    .line 8
+    .line 9
+    iput-object p2, p0, Lf3/h;->l:Landroid/graphics/Bitmap;
 
-    .line 158
-    .line 159
-    new-instance v1, Lcom/google/android/gms/internal/measurement/zb;
+    .line 10
+    .line 11
+    iget-object v0, p0, Lf3/h;->h:Lcom/bumptech/glide/n;
 
-    .line 160
-    .line 161
-    invoke-direct {v1, p1, v0}, Lcom/google/android/gms/internal/measurement/zb;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
+    .line 12
+    .line 13
+    new-instance v1, Lk3/d;
 
-    .line 162
-    .line 163
-    .line 164
-    invoke-virtual {v3, v1}, Li4/k;->b(Lcom/google/android/gms/internal/measurement/zb;)V
+    .line 14
+    .line 15
+    invoke-direct {v1}, Lk3/a;-><init>()V
 
-    .line 165
-    .line 166
-    .line 167
-    :goto_0
-    const/4 p1, 0x1
-
-    .line 168
-    return p1
-
-    .line 169
-    :goto_1
-    :try_start_2
-    monitor-exit v1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_1
-
-    .line 170
-    throw p1
-
-    .line 171
-    :pswitch_2
-    iget-object v0, p0, Lf3/h;->b:Ljava/lang/Object;
-
-    .line 172
-    .line 173
-    check-cast v0, Lf3/i;
-
-    .line 174
-    .line 175
-    iget v1, p1, Landroid/os/Message;->what:I
-
-    .line 176
-    .line 177
+    .line 16
+    .line 17
+    .line 18
     const/4 v2, 0x1
 
-    .line 178
-    if-ne v1, v2, :cond_7
+    .line 19
+    invoke-virtual {v1, p1, v2}, Lk3/a;->r(Ls2/l;Z)Lk3/a;
 
-    .line 179
-    .line 180
-    iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .line 20
+    .line 21
+    .line 22
+    move-result-object p1
 
-    .line 181
-    .line 182
-    check-cast p1, Lf3/f;
+    .line 23
+    invoke-virtual {v0, p1}, Lcom/bumptech/glide/n;->u(Lk3/a;)Lcom/bumptech/glide/n;
 
-    .line 183
-    .line 184
-    invoke-virtual {v0, p1}, Lf3/i;->b(Lf3/f;)V
+    .line 24
+    .line 25
+    .line 26
+    move-result-object p1
 
-    .line 185
-    .line 186
-    .line 187
-    goto :goto_2
+    .line 27
+    iput-object p1, p0, Lf3/h;->h:Lcom/bumptech/glide/n;
 
-    .line 188
-    :cond_7
-    const/4 v2, 0x2
+    .line 28
+    .line 29
+    invoke-static {p2}, Lo3/n;->c(Landroid/graphics/Bitmap;)I
 
-    .line 189
-    if-ne v1, v2, :cond_8
+    .line 30
+    .line 31
+    .line 32
+    move-result p1
 
-    .line 190
-    .line 191
-    iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+    .line 33
+    iput p1, p0, Lf3/h;->n:I
 
-    .line 192
-    .line 193
-    check-cast p1, Lf3/f;
+    .line 34
+    .line 35
+    invoke-virtual {p2}, Landroid/graphics/Bitmap;->getWidth()I
 
-    .line 194
-    .line 195
-    iget-object v0, v0, Lf3/i;->d:Lcom/bumptech/glide/RequestManager;
+    .line 36
+    .line 37
+    .line 38
+    move-result p1
 
-    .line 196
-    .line 197
-    invoke-virtual {v0, p1}, Lcom/bumptech/glide/RequestManager;->b(Ll3/e;)V
+    .line 39
+    iput p1, p0, Lf3/h;->o:I
 
-    .line 198
-    .line 199
-    .line 200
-    :cond_8
-    const/4 v2, 0x0
+    .line 40
+    .line 41
+    invoke-virtual {p2}, Landroid/graphics/Bitmap;->getHeight()I
 
-    .line 201
-    :goto_2
-    return v2
+    .line 42
+    .line 43
+    .line 44
+    move-result p1
 
-    .line 202
-    nop
+    .line 45
+    iput p1, p0, Lf3/h;->p:I
 
-    .line 203
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_2
-        :pswitch_0
-    .end packed-switch
-
-    .line 204
-    .line 205
-    .line 206
-    .line 207
-    .line 208
-    .line 209
-    .line 210
-    .line 211
-    :pswitch_data_1
-    .packed-switch 0x0
-        :pswitch_1
-    .end packed-switch
+    .line 46
+    .line 47
+    return-void
 .end method

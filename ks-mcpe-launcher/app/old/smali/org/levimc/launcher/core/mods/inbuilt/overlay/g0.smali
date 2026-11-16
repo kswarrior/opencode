@@ -1,57 +1,45 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/lang/Runnable;
+.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Ljava/lang/Object;
-
-.field public final synthetic h:Ljava/lang/Object;
-
-.field public final synthetic p:Landroid/view/View;
+.field public final synthetic b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/View;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;I)V
     .locals 0
 
     .line 1
-    iput p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->c:I
+    iput p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->d:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->h:Ljava/lang/Object;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 6
     .line 7
-    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->p:Landroid/view/View;
-
     .line 8
-    .line 9
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 10
-    .line 11
-    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 3
+.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+    .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->c:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->a:I
 
     .line 2
     .line 3
@@ -60,60 +48,63 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->d:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->q(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/CompoundButton;Z)V
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->h:Ljava/lang/Object;
-
     .line 11
+    return-void
+
     .line 12
-    check-cast v1, Landroid/view/View;
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 13
     .line 14
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->p:Landroid/view/View;
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->o(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/CompoundButton;Z)V
 
     .line 15
     .line 16
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->V(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Landroid/view/View;Landroid/view/View;)V
-
     .line 17
-    .line 18
-    .line 19
     return-void
 
+    .line 18
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+
+    .line 19
     .line 20
-    :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->d:Ljava/lang/Object;
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/CompoundButton;Z)V
 
     .line 21
     .line 22
-    check-cast v0, Landroid/widget/EditText;
-
     .line 23
+    return-void
+
     .line 24
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->h:Ljava/lang/Object;
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 25
     .line 26
-    check-cast v1, [Ljava/lang/String;
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/CompoundButton;Z)V
 
     .line 27
     .line 28
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->p:Landroid/view/View;
-
     .line 29
+    return-void
+
     .line 30
-    check-cast v2, Landroid/widget/LinearLayout;
+    :pswitch_3
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/g0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 31
     .line 32
-    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs;->c(Landroid/widget/EditText;[Ljava/lang/String;Landroid/widget/LinearLayout;)V
+    invoke-static {v0, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->n(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/CompoundButton;Z)V
 
     .line 33
     .line 34
@@ -126,6 +117,9 @@
     .line 37
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_3
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

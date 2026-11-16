@@ -1,46 +1,26 @@
-.class public final Lqc/a;
+.class public abstract Lqc/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public final a:Lhd/a;
+# static fields
+.field public static final a:Ljava/nio/charset/Charset;
 
-.field public final b:Lqc/j;
+.field public static final b:Ljava/nio/charset/Charset;
+
+.field public static final c:Ljava/nio/charset/Charset;
 
 
 # direct methods
-.method public constructor <init>(Lhd/a;Lqc/j;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lqc/a;->a:Lhd/a;
-
-    .line 5
-    .line 6
-    iput-object p2, p0, Lqc/a;->b:Lqc/j;
-
-    .line 7
-    .line 8
-    return-void
-.end method
-
-
-# virtual methods
-.method public final toString()Ljava/lang/String;
+.method static constructor <clinit>()V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lqc/a;->a:Lhd/a;
+    const-string v0, "UTF-8"
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
 
     .line 4
     .line 5
@@ -48,5 +28,41 @@
     move-result-object v0
 
     .line 7
-    return-object v0
+    sput-object v0, Lqc/a;->a:Ljava/nio/charset/Charset;
+
+    .line 8
+    .line 9
+    const-string v0, "US-ASCII"
+
+    .line 10
+    .line 11
+    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+
+    .line 12
+    .line 13
+    .line 14
+    move-result-object v0
+
+    .line 15
+    sput-object v0, Lqc/a;->b:Ljava/nio/charset/Charset;
+
+    .line 16
+    .line 17
+    const-string v0, "ISO-8859-1"
+
+    .line 18
+    .line 19
+    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+
+    .line 20
+    .line 21
+    .line 22
+    move-result-object v0
+
+    .line 23
+    sput-object v0, Lqc/a;->c:Ljava/nio/charset/Charset;
+
+    .line 24
+    .line 25
+    return-void
 .end method

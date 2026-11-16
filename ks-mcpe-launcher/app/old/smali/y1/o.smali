@@ -1,13 +1,13 @@
 .class public final Ly1/o;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lw8/e;
+.implements Lu8/e;
 
 
 # static fields
-.field public static final d:Ls4/b0;
+.field public static final d:Ls4/e0;
 
 
 # instance fields
@@ -19,7 +19,7 @@
     .locals 2
 
     .line 1
-    new-instance v0, Ls4/b0;
+    new-instance v0, Ls4/e0;
 
     .line 2
     .line 3
@@ -27,12 +27,12 @@
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ls4/b0;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/e0;-><init>(I)V
 
     .line 6
     .line 7
     .line 8
-    sput-object v0, Ly1/o;->d:Ls4/b0;
+    sput-object v0, Ly1/o;->d:Ls4/e0;
 
     .line 9
     .line 10
@@ -57,11 +57,41 @@
 
 
 # virtual methods
-.method public final N(Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;
+.method public final E(Lu8/f;)Lu8/e;
     .locals 0
 
     .line 1
-    invoke-interface {p2, p1, p0}, Lkotlin/jvm/functions/Function2;->g(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-static {p0, p1}, Lk4/f;->p(Lu8/e;Lu8/f;)Lu8/e;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p1
+
+    .line 5
+    return-object p1
+.end method
+
+.method public final K(Lu8/f;)Lkotlin/coroutines/CoroutineContext;
+    .locals 0
+
+    .line 1
+    invoke-static {p0, p1}, Lk4/f;->A(Lu8/e;Lu8/f;)Lkotlin/coroutines/CoroutineContext;
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-object p1
+
+    .line 5
+    return-object p1
+.end method
+
+.method public final W(Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    invoke-interface {p2, p1, p0}, Lkotlin/jvm/functions/Function2;->h(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 2
     .line 3
@@ -76,7 +106,7 @@
     .locals 0
 
     .line 1
-    invoke-static {p1, p0}, Ljd/h;->D(Lkotlin/coroutines/CoroutineContext;Lw8/e;)Lkotlin/coroutines/CoroutineContext;
+    invoke-static {p1, p0}, Lk4/f;->C(Lkotlin/coroutines/CoroutineContext;Lu8/e;)Lkotlin/coroutines/CoroutineContext;
 
     .line 2
     .line 3
@@ -87,43 +117,13 @@
     return-object p1
 .end method
 
-.method public final getKey()Lw8/f;
+.method public final getKey()Lu8/f;
     .locals 1
 
     .line 1
-    sget-object v0, Ly1/o;->d:Ls4/b0;
+    sget-object v0, Ly1/o;->d:Ls4/e0;
 
     .line 2
     .line 3
     return-object v0
-.end method
-
-.method public final i(Lw8/f;)Lkotlin/coroutines/CoroutineContext;
-    .locals 0
-
-    .line 1
-    invoke-static {p0, p1}, Ljd/h;->C(Lw8/e;Lw8/f;)Lkotlin/coroutines/CoroutineContext;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p1
-
-    .line 5
-    return-object p1
-.end method
-
-.method public final u(Lw8/f;)Lw8/e;
-    .locals 0
-
-    .line 1
-    invoke-static {p0, p1}, Ljd/h;->m(Lw8/e;Lw8/f;)Lw8/e;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p1
-
-    .line 5
-    return-object p1
 .end method

@@ -1,14 +1,14 @@
 .class public final enum Lcom/google/android/gms/internal/play_billing/a;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
 .field public static final enum d:Lcom/google/android/gms/internal/play_billing/a;
 
-.field public static final h:Lcom/google/android/gms/internal/play_billing/o;
+.field public static final h:Lcom/google/android/gms/internal/play_billing/n;
 
-.field public static final synthetic p:[Lcom/google/android/gms/internal/play_billing/a;
+.field public static final synthetic q:[Lcom/google/android/gms/internal/play_billing/a;
 
 
 # instance fields
@@ -335,21 +335,21 @@
     move-result-object v0
 
     .line 158
-    sput-object v0, Lcom/google/android/gms/internal/play_billing/a;->p:[Lcom/google/android/gms/internal/play_billing/a;
+    sput-object v0, Lcom/google/android/gms/internal/play_billing/a;->q:[Lcom/google/android/gms/internal/play_billing/a;
 
     .line 159
     .line 160
-    new-instance v0, Lcom/google/android/gms/internal/play_billing/g;
+    new-instance v0, Lac/k;
 
     .line 161
     .line 162
-    const/4 v1, 0x0
+    const/4 v1, 0x3
 
     .line 163
     const/4 v2, 0x0
 
     .line 164
-    invoke-direct {v0, v2, v1}, Lcom/google/android/gms/internal/play_billing/g;-><init>(BI)V
+    invoke-direct {v0, v2, v1}, Lac/k;-><init>(BI)V
 
     .line 165
     .line 166
@@ -362,14 +362,14 @@
 
     .line 170
     .line 171
-    iput-object v1, v0, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
+    iput-object v1, v0, Lac/k;->d:Ljava/lang/Object;
 
     .line 172
     .line 173
     const/4 v1, 0x0
 
     .line 174
-    iput v1, v0, Lcom/google/android/gms/internal/play_billing/g;->c:I
+    iput v1, v0, Lac/k;->b:I
 
     .line 175
     .line 176
@@ -408,7 +408,7 @@
     move-result-object v4
 
     .line 192
-    iget v5, v0, Lcom/google/android/gms/internal/play_billing/g;->c:I
+    iget v5, v0, Lac/k;->b:I
 
     .line 193
     .line 194
@@ -416,7 +416,7 @@
 
     .line 195
     .line 196
-    iget-object v6, v0, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
+    iget-object v6, v0, Lac/k;->d:Ljava/lang/Object;
 
     .line 197
     .line 198
@@ -490,12 +490,12 @@
     move-result-object v5
 
     .line 230
-    iput-object v5, v0, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
+    iput-object v5, v0, Lac/k;->d:Ljava/lang/Object;
 
     .line 231
     .line 232
     :cond_2
-    iget-object v5, v0, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
+    iget-object v5, v0, Lac/k;->d:Ljava/lang/Object;
 
     .line 233
     .line 234
@@ -503,7 +503,7 @@
 
     .line 235
     .line 236
-    iget v6, v0, Lcom/google/android/gms/internal/play_billing/g;->c:I
+    iget v6, v0, Lac/k;->b:I
 
     .line 237
     .line 238
@@ -527,7 +527,7 @@
 
     .line 247
     .line 248
-    iput v6, v0, Lcom/google/android/gms/internal/play_billing/g;->c:I
+    iput v6, v0, Lac/k;->b:I
 
     .line 249
     .line 250
@@ -539,7 +539,7 @@
 
     .line 253
     :cond_3
-    iget-object v1, v0, Lcom/google/android/gms/internal/play_billing/g;->d:Ljava/lang/Object;
+    iget-object v1, v0, Lac/k;->c:Ljava/lang/Object;
 
     .line 254
     .line 255
@@ -551,11 +551,11 @@
 
     .line 258
     .line 259
-    iget v1, v0, Lcom/google/android/gms/internal/play_billing/g;->c:I
+    iget v1, v0, Lac/k;->b:I
 
     .line 260
     .line 261
-    iget-object v2, v0, Lcom/google/android/gms/internal/play_billing/g;->b:Ljava/lang/Object;
+    iget-object v2, v0, Lac/k;->d:Ljava/lang/Object;
 
     .line 262
     .line 263
@@ -563,7 +563,7 @@
 
     .line 264
     .line 265
-    invoke-static {v1, v2, v0}, Lcom/google/android/gms/internal/play_billing/o;->a(I[Ljava/lang/Object;Lcom/google/android/gms/internal/play_billing/g;)Lcom/google/android/gms/internal/play_billing/o;
+    invoke-static {v1, v2, v0}, Lcom/google/android/gms/internal/play_billing/n;->a(I[Ljava/lang/Object;Lac/k;)Lcom/google/android/gms/internal/play_billing/n;
 
     .line 266
     .line 267
@@ -571,7 +571,7 @@
     move-result-object v1
 
     .line 269
-    iget-object v0, v0, Lcom/google/android/gms/internal/play_billing/g;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lac/k;->c:Ljava/lang/Object;
 
     .line 270
     .line 271
@@ -583,7 +583,7 @@
 
     .line 274
     .line 275
-    sput-object v1, Lcom/google/android/gms/internal/play_billing/a;->h:Lcom/google/android/gms/internal/play_billing/o;
+    sput-object v1, Lcom/google/android/gms/internal/play_billing/a;->h:Lcom/google/android/gms/internal/play_billing/n;
 
     .line 276
     .line 277
@@ -634,7 +634,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lcom/google/android/gms/internal/play_billing/a;->p:[Lcom/google/android/gms/internal/play_billing/a;
+    sget-object v0, Lcom/google/android/gms/internal/play_billing/a;->q:[Lcom/google/android/gms/internal/play_billing/a;
 
     .line 2
     .line 3

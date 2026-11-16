@@ -1,6 +1,6 @@
 .class public Lcom/google/android/material/textfield/TextInputEditText;
 .super Landroidx/appcompat/widget/AppCompatEditText;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -22,7 +22,7 @@
     const/4 v6, 0x0
 
     .line 5
-    invoke-static {p1, p2, v3, v6}, Lc6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    invoke-static {p1, p2, v3, v6}, La6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
 
     .line 6
     .line 7
@@ -48,51 +48,61 @@
 
     .line 18
     .line 19
-    const v4, 0x7f1403cf
+    new-array v5, v6, [I
 
     .line 20
     .line 21
-    .line 22
-    new-array v5, v6, [I
+    const v4, 0x7f1403bb
 
+    .line 22
     .line 23
     .line 24
-    sget-object v2, Lw4/a;->Q:[I
+    invoke-static {p1, p2, v3, v4}, Ln5/n;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
     .line 25
     .line 26
-    move-object v0, p1
-
     .line 27
-    move-object v1, p2
+    sget-object v2, Lw4/a;->O:[I
 
     .line 28
-    invoke-static/range {v0 .. v5}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
-
     .line 29
+    move-object v0, p1
+
     .line 30
+    move-object v1, p2
+
     .line 31
-    move-result-object p1
+    invoke-static/range {v0 .. v5}, Ln5/n;->b(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)V
 
     .line 32
-    invoke-virtual {p1, v6, v6}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
-
     .line 33
     .line 34
+    invoke-virtual {v0, v1, v2, v3, v4}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+
     .line 35
-    move-result p2
-
     .line 36
-    invoke-virtual {p0, p2}, Lcom/google/android/material/textfield/TextInputEditText;->setTextInputLayoutFocusedRectEnabled(Z)V
-
     .line 37
-    .line 38
-    .line 39
-    invoke-virtual {p1}, Landroid/content/res/TypedArray;->recycle()V
+    move-result-object p1
 
+    .line 38
+    invoke-virtual {p1, v6, v6}, Landroid/content/res/TypedArray;->getBoolean(IZ)Z
+
+    .line 39
     .line 40
     .line 41
+    move-result p2
+
     .line 42
+    invoke-virtual {p0, p2}, Lcom/google/android/material/textfield/TextInputEditText;->setTextInputLayoutFocusedRectEnabled(Z)V
+
+    .line 43
+    .line 44
+    .line 45
+    invoke-virtual {p1}, Landroid/content/res/TypedArray;->recycle()V
+
+    .line 46
+    .line 47
+    .line 48
     return-void
 .end method
 

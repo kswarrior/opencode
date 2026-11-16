@@ -1,6 +1,6 @@
 .class public Lorg/conscrypt/ECParameters;
 .super Ljava/security/AlgorithmParametersSpi;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -157,7 +157,7 @@
 
     .line 31
     .line 32
-    invoke-static {p1, v1}, Ls1/a;->l(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p1, v1}, Ls1/a;->n(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/String;
 
     .line 33
     .line 34
@@ -209,7 +209,7 @@
     const-string v1, "Unknown EC curve name: "
 
     .line 6
-    invoke-static {v1, p1}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, p1}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     move-result-object p1
 

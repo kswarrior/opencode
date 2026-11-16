@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/UIHelper;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # direct methods
@@ -239,14 +239,14 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/util/u;
+    new-instance v0, Lorg/levimc/launcher/util/t;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, p0, v1, p1}, Lorg/levimc/launcher/util/u;-><init>(Landroid/content/Context;ILjava/lang/String;)V
+    invoke-direct {v0, p0, v1, p1}, Lorg/levimc/launcher/util/t;-><init>(Landroid/content/Context;ILjava/lang/String;)V
 
     .line 5
     .line 6
@@ -278,11 +278,11 @@
     .locals 2
 
     .line 1
-    new-instance v0, Lorg/levimc/launcher/util/u;
+    new-instance v0, Lorg/levimc/launcher/util/t;
 
     const/4 v1, 0x1
 
-    invoke-direct {v0, p0, v1, p1}, Lorg/levimc/launcher/util/u;-><init>(Landroid/content/Context;ILjava/lang/String;)V
+    invoke-direct {v0, p0, v1, p1}, Lorg/levimc/launcher/util/t;-><init>(Landroid/content/Context;ILjava/lang/String;)V
 
     invoke-static {p0, v0}, Lorg/levimc/launcher/util/UIHelper;->runOnUiThread(Landroid/content/Context;Ljava/lang/Runnable;)V
 

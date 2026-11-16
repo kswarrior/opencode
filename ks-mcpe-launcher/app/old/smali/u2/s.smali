@@ -1,6 +1,6 @@
 .class public final Lu2/s;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lu2/y;
@@ -13,13 +13,13 @@
 
 .field public final h:Lu2/y;
 
-.field public final p:Lu2/r;
+.field public final q:Lu2/r;
 
-.field public final q:Ls2/e;
+.field public final w:Ls2/e;
 
-.field public w:I
+.field public x:I
 
-.field public x:Z
+.field public y:Z
 
 
 # direct methods
@@ -53,7 +53,7 @@
 
     .line 14
     .line 15
-    iput-object p4, p0, Lu2/s;->q:Ls2/e;
+    iput-object p4, p0, Lu2/s;->w:Ls2/e;
 
     .line 16
     .line 17
@@ -62,7 +62,7 @@
     .line 18
     .line 19
     .line 20
-    iput-object p5, p0, Lu2/s;->p:Lu2/r;
+    iput-object p5, p0, Lu2/s;->q:Lu2/r;
 
     .line 21
     .line 22
@@ -79,7 +79,7 @@
 
     .line 2
     :try_start_0
-    iget-boolean v0, p0, Lu2/s;->x:Z
+    iget-boolean v0, p0, Lu2/s;->y:Z
 
     .line 3
     .line 4
@@ -87,7 +87,7 @@
 
     .line 5
     .line 6
-    iget v0, p0, Lu2/s;->w:I
+    iget v0, p0, Lu2/s;->x:I
 
     .line 7
     .line 8
@@ -95,7 +95,7 @@
 
     .line 9
     .line 10
-    iput v0, p0, Lu2/s;->w:I
+    iput v0, p0, Lu2/s;->x:I
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -149,7 +149,7 @@
 
     .line 2
     :try_start_0
-    iget v0, p0, Lu2/s;->w:I
+    iget v0, p0, Lu2/s;->x:I
 
     .line 3
     .line 4
@@ -157,7 +157,7 @@
 
     .line 5
     .line 6
-    iget-boolean v0, p0, Lu2/s;->x:Z
+    iget-boolean v0, p0, Lu2/s;->y:Z
 
     .line 7
     .line 8
@@ -168,7 +168,7 @@
     const/4 v0, 0x1
 
     .line 11
-    iput-boolean v0, p0, Lu2/s;->x:Z
+    iput-boolean v0, p0, Lu2/s;->y:Z
 
     .line 12
     .line 13
@@ -261,7 +261,7 @@
 
     .line 2
     :try_start_0
-    iget v0, p0, Lu2/s;->w:I
+    iget v0, p0, Lu2/s;->x:I
 
     .line 3
     .line 4
@@ -275,7 +275,7 @@
     sub-int/2addr v0, v1
 
     .line 8
-    iput v0, p0, Lu2/s;->w:I
+    iput v0, p0, Lu2/s;->x:I
 
     .line 9
     .line 10
@@ -300,11 +300,11 @@
 
     .line 16
     .line 17
-    iget-object v0, p0, Lu2/s;->p:Lu2/r;
+    iget-object v0, p0, Lu2/s;->q:Lu2/r;
 
     .line 18
     .line 19
-    iget-object v1, p0, Lu2/s;->q:Ls2/e;
+    iget-object v1, p0, Lu2/s;->w:Ls2/e;
 
     .line 20
     .line 21
@@ -451,7 +451,7 @@
     .line 17
     .line 18
     .line 19
-    iget-object v0, p0, Lu2/s;->p:Lu2/r;
+    iget-object v0, p0, Lu2/s;->q:Lu2/r;
 
     .line 20
     .line 21
@@ -469,7 +469,7 @@
     .line 27
     .line 28
     .line 29
-    iget-object v0, p0, Lu2/s;->q:Ls2/e;
+    iget-object v0, p0, Lu2/s;->w:Ls2/e;
 
     .line 30
     .line 31
@@ -487,7 +487,7 @@
     .line 37
     .line 38
     .line 39
-    iget v0, p0, Lu2/s;->w:I
+    iget v0, p0, Lu2/s;->x:I
 
     .line 40
     .line 41
@@ -505,7 +505,7 @@
     .line 47
     .line 48
     .line 49
-    iget-boolean v0, p0, Lu2/s;->x:Z
+    iget-boolean v0, p0, Lu2/s;->y:Z
 
     .line 50
     .line 51

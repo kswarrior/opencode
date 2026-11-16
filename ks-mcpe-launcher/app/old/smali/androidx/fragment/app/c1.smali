@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/c1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/os/Parcelable;
@@ -19,17 +19,17 @@
 
 
 # instance fields
+.field public X:Ljava/util/ArrayList;
+
 .field public c:Ljava/util/ArrayList;
 
 .field public d:Ljava/util/ArrayList;
 
 .field public h:[Landroidx/fragment/app/c;
 
-.field public p:I
+.field public q:I
 
-.field public q:Ljava/lang/String;
-
-.field public w:Ljava/util/ArrayList;
+.field public w:Ljava/lang/String;
 
 .field public x:Ljava/util/ArrayList;
 
@@ -103,7 +103,7 @@
     .line 14
     .line 15
     .line 16
-    iget p2, p0, Landroidx/fragment/app/c1;->p:I
+    iget p2, p0, Landroidx/fragment/app/c1;->q:I
 
     .line 17
     .line 18
@@ -112,7 +112,7 @@
     .line 19
     .line 20
     .line 21
-    iget-object p2, p0, Landroidx/fragment/app/c1;->q:Ljava/lang/String;
+    iget-object p2, p0, Landroidx/fragment/app/c1;->w:Ljava/lang/String;
 
     .line 22
     .line 23
@@ -121,7 +121,7 @@
     .line 24
     .line 25
     .line 26
-    iget-object p2, p0, Landroidx/fragment/app/c1;->w:Ljava/util/ArrayList;
+    iget-object p2, p0, Landroidx/fragment/app/c1;->x:Ljava/util/ArrayList;
 
     .line 27
     .line 28
@@ -130,7 +130,7 @@
     .line 29
     .line 30
     .line 31
-    iget-object p2, p0, Landroidx/fragment/app/c1;->x:Ljava/util/ArrayList;
+    iget-object p2, p0, Landroidx/fragment/app/c1;->y:Ljava/util/ArrayList;
 
     .line 32
     .line 33
@@ -139,7 +139,7 @@
     .line 34
     .line 35
     .line 36
-    iget-object p2, p0, Landroidx/fragment/app/c1;->y:Ljava/util/ArrayList;
+    iget-object p2, p0, Landroidx/fragment/app/c1;->X:Ljava/util/ArrayList;
 
     .line 37
     .line 38

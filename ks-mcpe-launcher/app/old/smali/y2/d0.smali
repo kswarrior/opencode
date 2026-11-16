@@ -1,243 +1,103 @@
 .class public final Ly2/d0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ly2/r;
-
-
-# static fields
-.field public static final b:Ljava/util/Set;
+.implements Ly2/t;
 
 
 # instance fields
-.field public final a:Ljava/lang/Object;
+.field public final synthetic c:I
+
+.field public final d:Landroid/content/ContentResolver;
+
+.field public final h:Z
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 4
-
-    .line 1
-    new-instance v0, Ljava/util/HashSet;
-
-    .line 2
-    .line 3
-    const-string v1, "content"
-
-    .line 4
-    .line 5
-    const-string v2, "android.resource"
-
-    .line 6
-    .line 7
-    const-string v3, "file"
-
-    .line 8
-    .line 9
-    filled-new-array {v3, v1, v2}, [Ljava/lang/String;
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object v1
-
-    .line 13
-    invoke-static {v1}, Ljava/util/Arrays;->asList([Ljava/lang/Object;)Ljava/util/List;
-
-    .line 14
-    .line 15
-    .line 16
-    move-result-object v1
-
-    .line 17
-    invoke-direct {v0, v1}, Ljava/util/HashSet;-><init>(Ljava/util/Collection;)V
-
-    .line 18
-    .line 19
-    .line 20
-    invoke-static {v0}, Ljava/util/Collections;->unmodifiableSet(Ljava/util/Set;)Ljava/util/Set;
-
-    .line 21
-    .line 22
-    .line 23
-    move-result-object v0
-
-    .line 24
-    sput-object v0, Ly2/d0;->b:Ljava/util/Set;
-
-    .line 25
-    .line 26
-    return-void
-.end method
-
-.method public constructor <init>(Ly2/c0;)V
+.method public synthetic constructor <init>(Landroid/content/ContentResolver;ZI)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p3, p0, Ly2/d0;->c:I
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Ly2/d0;->a:Ljava/lang/Object;
+    iput-object p1, p0, Ly2/d0;->d:Landroid/content/ContentResolver;
 
+    .line 4
     .line 5
+    iput-boolean p2, p0, Ly2/d0;->h:Z
+
     .line 6
+    .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Ljava/lang/Object;IILs2/h;)Ly2/q;
-    .locals 3
+.method public final i(Ly2/y;)Ly2/s;
+    .locals 0
 
     .line 1
-    check-cast p1, Landroid/net/Uri;
+    iget p1, p0, Ly2/d0;->c:I
 
     .line 2
     .line 3
-    new-instance p2, Ly2/q;
+    packed-switch p1, :pswitch_data_0
 
     .line 4
     .line 5
-    new-instance p3, Ln3/b;
-
     .line 6
-    .line 7
-    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
+    new-instance p1, Ly2/e0;
 
+    .line 7
     .line 8
+    invoke-direct {p1, p0}, Ly2/e0;-><init>(Ly2/d0;)V
+
     .line 9
     .line 10
-    iget-object p4, p0, Ly2/d0;->a:Ljava/lang/Object;
-
     .line 11
+    return-object p1
+
     .line 12
-    check-cast p4, Ly2/c0;
+    :pswitch_0
+    new-instance p1, Ly2/e0;
 
     .line 13
     .line 14
-    iget v0, p4, Ly2/c0;->c:I
+    invoke-direct {p1, p0}, Ly2/e0;-><init>(Ly2/d0;)V
 
     .line 15
     .line 16
-    packed-switch v0, :pswitch_data_0
-
     .line 17
+    return-object p1
+
     .line 18
+    :pswitch_1
+    new-instance p1, Ly2/e0;
+
     .line 19
-    new-instance v0, Lcom/bumptech/glide/load/data/m;
-
     .line 20
-    .line 21
-    iget-object v1, p4, Ly2/c0;->d:Landroid/content/ContentResolver;
+    invoke-direct {p1, p0}, Ly2/e0;-><init>(Ly2/d0;)V
 
+    .line 21
     .line 22
     .line 23
-    iget-boolean p4, p4, Ly2/c0;->h:Z
+    return-object p1
 
     .line 24
-    .line 25
-    invoke-direct {v0, v1, p1, p4}, Lcom/bumptech/glide/load/data/l;-><init>(Landroid/content/ContentResolver;Landroid/net/Uri;Z)V
-
-    .line 26
-    .line 27
-    .line 28
-    goto :goto_0
-
-    .line 29
-    :pswitch_0
-    new-instance v0, Lcom/bumptech/glide/load/data/a;
-
-    .line 30
-    .line 31
-    iget-object v1, p4, Ly2/c0;->d:Landroid/content/ContentResolver;
-
-    .line 32
-    .line 33
-    iget-boolean p4, p4, Ly2/c0;->h:Z
-
-    .line 34
-    .line 35
-    const/4 v2, 0x1
-
-    .line 36
-    invoke-direct {v0, v1, p1, p4, v2}, Lcom/bumptech/glide/load/data/a;-><init>(Landroid/content/ContentResolver;Landroid/net/Uri;ZI)V
-
-    .line 37
-    .line 38
-    .line 39
-    goto :goto_0
-
-    .line 40
-    :pswitch_1
-    new-instance v0, Lcom/bumptech/glide/load/data/a;
-
-    .line 41
-    .line 42
-    iget-object v1, p4, Ly2/c0;->d:Landroid/content/ContentResolver;
-
-    .line 43
-    .line 44
-    iget-boolean p4, p4, Ly2/c0;->h:Z
-
-    .line 45
-    .line 46
-    const/4 v2, 0x0
-
-    .line 47
-    invoke-direct {v0, v1, p1, p4, v2}, Lcom/bumptech/glide/load/data/a;-><init>(Landroid/content/ContentResolver;Landroid/net/Uri;ZI)V
-
-    .line 48
-    .line 49
-    .line 50
-    :goto_0
-    invoke-direct {p2, p3, v0}, Ly2/q;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
-
-    .line 51
-    .line 52
-    .line 53
-    return-object p2
-
-    .line 54
     nop
 
-    .line 55
+    .line 25
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_1
         :pswitch_0
     .end packed-switch
-.end method
-
-.method public final b(Ljava/lang/Object;)Z
-    .locals 1
-
-    .line 1
-    check-cast p1, Landroid/net/Uri;
-
-    .line 2
-    .line 3
-    sget-object v0, Ly2/d0;->b:Ljava/util/Set;
-
-    .line 4
-    .line 5
-    invoke-virtual {p1}, Landroid/net/Uri;->getScheme()Ljava/lang/String;
-
-    .line 6
-    .line 7
-    .line 8
-    move-result-object p1
-
-    .line 9
-    invoke-interface {v0, p1}, Ljava/util/Set;->contains(Ljava/lang/Object;)Z
-
-    .line 10
-    .line 11
-    .line 12
-    move-result p1
-
-    .line 13
-    return p1
 .end method

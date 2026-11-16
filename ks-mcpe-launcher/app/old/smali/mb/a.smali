@@ -1,41 +1,8 @@
-.class public final Lmb/a;
-.super Lla/a;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public interface abstract Lmb/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# direct methods
-.method public constructor <init>(Lcom/google/gson/JsonObject;)V
-    .locals 2
-
-    .line 1
-    sget-object v0, Lka/a;->b:Lpa/a;
-
-    .line 2
-    .line 3
-    invoke-virtual {p1}, Lcom/google/gson/JsonElement;->toString()Ljava/lang/String;
-
-    .line 4
-    .line 5
-    .line 6
-    move-result-object p1
-
-    .line 7
-    sget-object v1, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
-
-    .line 8
-    .line 9
-    invoke-virtual {p1, v1}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
-
-    .line 10
-    .line 11
-    .line 12
-    move-result-object p1
-
-    .line 13
-    invoke-direct {p0, v0, p1}, Lla/a;-><init>(Lpa/a;[B)V
-
-    .line 14
-    .line 15
-    .line 16
-    return-void
+# virtual methods
+.method public abstract a(Ljava/lang/Object;Ljava/lang/Object;)V
 .end method

@@ -1,60 +1,173 @@
 .class public final Ly2/q;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# static fields
+.field public static final b:Ljava/util/ArrayDeque;
 
 
 # instance fields
-.field public final a:Ls2/e;
-
-.field public final b:Ljava/util/List;
-
-.field public final c:Lcom/bumptech/glide/load/data/d;
+.field public a:Ljava/lang/Object;
 
 
 # direct methods
-.method public constructor <init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
+.method static constructor <clinit>()V
     .locals 2
 
     .line 1
-    sget-object v0, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
+    sget-object v0, Lo3/n;->a:[C
 
     .line 2
     .line 3
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    new-instance v0, Ljava/util/ArrayDeque;
+
+    .line 4
+    .line 5
+    const/4 v1, 0x0
+
+    .line 6
+    invoke-direct {v0, v1}, Ljava/util/ArrayDeque;-><init>(I)V
+
+    .line 7
+    .line 8
+    .line 9
+    sput-object v0, Ly2/q;->b:Ljava/util/ArrayDeque;
+
+    .line 10
+    .line 11
+    return-void
+.end method
+
+.method public static a(Ljava/lang/Object;)Ly2/q;
+    .locals 2
+
+    .line 1
+    sget-object v0, Ly2/q;->b:Ljava/util/ArrayDeque;
+
+    .line 2
+    .line 3
+    monitor-enter v0
+
+    .line 4
+    :try_start_0
+    invoke-virtual {v0}, Ljava/util/ArrayDeque;->poll()Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object v1
+
+    .line 8
+    check-cast v1, Ly2/q;
+
+    .line 9
+    .line 10
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 11
+    if-nez v1, :cond_0
+
+    .line 12
+    .line 13
+    new-instance v1, Ly2/q;
+
+    .line 14
+    .line 15
+    invoke-direct {v1}, Ljava/lang/Object;-><init>()V
+
+    .line 16
+    .line 17
+    .line 18
+    :cond_0
+    iput-object p0, v1, Ly2/q;->a:Ljava/lang/Object;
+
+    .line 19
+    .line 20
+    return-object v1
+
+    .line 21
+    :catchall_0
+    move-exception p0
+
+    .line 22
+    :try_start_1
+    monitor-exit v0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    .line 23
+    throw p0
+.end method
+
+
+# virtual methods
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 1
+
+    .line 1
+    instance-of v0, p1, Ly2/q;
+
+    .line 2
+    .line 3
+    if-eqz v0, :cond_0
+
+    .line 4
+    .line 5
+    check-cast p1, Ly2/q;
+
+    .line 6
+    .line 7
+    iget-object v0, p0, Ly2/q;->a:Ljava/lang/Object;
+
+    .line 8
+    .line 9
+    iget-object p1, p1, Ly2/q;->a:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p1
+
+    .line 15
+    if-eqz p1, :cond_0
+
+    .line 16
+    .line 17
+    const/4 p1, 0x1
+
+    .line 18
+    return p1
+
+    .line 19
+    :cond_0
+    const/4 p1, 0x0
+
+    .line 20
+    return p1
+.end method
+
+.method public final hashCode()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ly2/q;->a:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
 
     .line 4
     .line 5
     .line 6
-    const-string v1, "Argument must not be null"
+    move-result v0
 
     .line 7
-    .line 8
-    invoke-static {p1, v1}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 9
-    .line 10
-    .line 11
-    iput-object p1, p0, Ly2/q;->a:Ls2/e;
-
-    .line 12
-    .line 13
-    invoke-static {v0, v1}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 14
-    .line 15
-    .line 16
-    iput-object v0, p0, Ly2/q;->b:Ljava/util/List;
-
-    .line 17
-    .line 18
-    invoke-static {p2, v1}, Lo3/f;->c(Ljava/lang/Object;Ljava/lang/String;)V
-
-    .line 19
-    .line 20
-    .line 21
-    iput-object p2, p0, Ly2/q;->c:Lcom/bumptech/glide/load/data/d;
-
-    .line 22
-    .line 23
-    return-void
+    return v0
 .end method

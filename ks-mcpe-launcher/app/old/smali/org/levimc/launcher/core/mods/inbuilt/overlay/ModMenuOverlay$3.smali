@@ -1,6 +1,6 @@
 .class Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/text/TextWatcher;
@@ -70,7 +70,7 @@
     move-result-object p3
 
     .line 7
-    invoke-static {p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->u0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Ljava/lang/String;)V
+    invoke-static {p2, p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->d0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Ljava/lang/String;)V
 
     .line 8
     .line 9
@@ -79,7 +79,7 @@
 
     .line 11
     .line 12
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->q0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/os/Handler;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->Z(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/os/Handler;
 
     .line 13
     .line 14
@@ -91,7 +91,7 @@
 
     .line 17
     .line 18
-    invoke-static {p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->r0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/lang/Runnable;
+    invoke-static {p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->a0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/lang/Runnable;
 
     .line 19
     .line 20
@@ -108,7 +108,7 @@
 
     .line 26
     .line 27
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->q0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/os/Handler;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->Z(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/os/Handler;
 
     .line 28
     .line 29
@@ -120,7 +120,7 @@
 
     .line 32
     .line 33
-    invoke-static {p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->r0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/lang/Runnable;
+    invoke-static {p3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->a0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Ljava/lang/Runnable;
 
     .line 34
     .line 35
@@ -141,7 +141,7 @@
 
     .line 43
     .line 44
-    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->f0(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/widget/ImageButton;
+    invoke-static {p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->S(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;)Landroid/widget/ImageButton;
 
     .line 45
     .line 46

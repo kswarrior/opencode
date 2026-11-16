@@ -1,145 +1,116 @@
-.class public interface abstract Lob/a;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Lnet/lenni0451/commons/httpclient/handler/HttpResponseHandler;
+.class public abstract Lob/a;
+.super Lla/a;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# virtual methods
-.method public handle(Lnet/lenni0451/commons/httpclient/HttpResponse;)Ljava/lang/Object;
-    .locals 5
+# instance fields
+.field public final d:Ljava/lang/String;
+
+.field public final h:Ljava/lang/String;
+
+
+# direct methods
+.method public constructor <init>(Lha/b;Ljava/lang/String;Ljava/lang/String;)V
+    .locals 4
 
     .line 1
-    iget-object v0, p1, Lnet/lenni0451/commons/httpclient/HttpResponse;->b:Lnet/lenni0451/commons/httpclient/content/HttpContent;
-
-    iget v1, p1, Lnet/lenni0451/commons/httpclient/HttpResponse;->a:I
+    new-instance v0, Ljava/lang/StringBuilder;
 
     .line 2
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
     .line 3
-    sget-object v2, Ljava/nio/charset/StandardCharsets;->UTF_8:Ljava/nio/charset/Charset;
+    const-string v1, "status: "
 
     .line 4
-    new-instance v3, Ljava/lang/String;
-
-    invoke-virtual {v0}, Lnet/lenni0451/commons/httpclient/content/HttpContent;->c()[B
-
-    move-result-object v0
-
-    invoke-direct {v3, v0, v2}, Ljava/lang/String;-><init>([BLjava/nio/charset/Charset;)V
-
     .line 5
-    invoke-virtual {v3}, Ljava/lang/String;->isEmpty()Z
-
-    move-result v0
-
-    if-eqz v0, :cond_0
-
-    const/16 v0, 0xcc
-
-    if-ne v1, v0, :cond_0
-
-    const/4 p1, 0x0
-
-    return-object p1
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
     .line 6
-    :cond_0
-    invoke-virtual {v3}, Ljava/lang/String;->isEmpty()Z
-
-    move-result v0
-
-    const/16 v2, 0x12c
-
-    if-eqz v0, :cond_2
-
-    if-ge v1, v2, :cond_1
-
-    goto :goto_0
-
     .line 7
-    :cond_1
-    new-instance v0, Lnb/b;
-
-    const-string v1, "Empty response"
-
-    invoke-direct {v0, p1, v1}, Lnb/b;-><init>(Lnet/lenni0451/commons/httpclient/HttpResponse;Ljava/lang/String;)V
-
-    throw v0
-
     .line 8
-    :cond_2
-    :goto_0
-    iget-object v0, p1, Lnet/lenni0451/commons/httpclient/HttpResponse;->b:Lnet/lenni0451/commons/httpclient/content/HttpContent;
+    iget v1, p1, Lha/b;->d:I
 
     .line 9
-    iget-object v0, v0, Lnet/lenni0451/commons/httpclient/content/HttpContent;->a:Lpa/a;
-
     .line 10
-    iget-object v0, v0, Lpa/a;->a:Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
 
     .line 11
-    sget-object v4, Lka/a;->b:Lpa/a;
-
     .line 12
-    iget-object v4, v4, Lpa/a;->a:Ljava/lang/String;
-
     .line 13
-    invoke-virtual {v0, v4}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
-
-    move-result v0
-
-    if-eqz v0, :cond_4
+    const-string v2, " "
 
     .line 14
-    invoke-static {v3}, Lfc/h;->B(Ljava/lang/String;)Lcom/google/gson/JsonElement;
-
-    move-result-object v0
-
-    invoke-static {v0}, Lia/c;->d(Lcom/google/gson/JsonElement;)Lia/c;
-
-    move-result-object v0
-
     .line 15
-    invoke-virtual {v0}, Lia/c;->c()Lnet/lenni0451/commons/gson/elements/GsonObject;
-
-    move-result-object v0
-
-    if-ge v1, v2, :cond_3
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 16
-    invoke-interface {p0, p1, v0}, Lob/a;->handle(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/lang/Object;
-
-    move-result-object p1
-
-    return-object p1
-
     .line 17
-    :cond_3
-    invoke-interface {p0, p1, v0}, Lob/a;->handleError(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)V
-
     .line 18
-    new-instance v0, Lnb/b;
-
-    invoke-direct {v0, p1, v3}, Lnb/b;-><init>(Lnet/lenni0451/commons/httpclient/HttpResponse;Ljava/lang/String;)V
-
-    throw v0
+    sget-object v2, Lia/b;->a:Ljava/util/Map;
 
     .line 19
-    :cond_4
-    new-instance v0, Lnb/b;
+    .line 20
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
-    const-string v1, "Wrong content type"
+    .line 21
+    .line 22
+    .line 23
+    move-result-object v1
 
-    invoke-direct {v0, p1, v1}, Lnb/b;-><init>(Lnet/lenni0451/commons/httpclient/HttpResponse;Ljava/lang/String;)V
+    .line 24
+    const-string v3, "Unknown"
 
-    throw v0
-.end method
+    .line 25
+    .line 26
+    invoke-interface {v2, v1, v3}, Ljava/util/Map;->getOrDefault(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-.method public abstract handle(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/lang/Object;
-.end method
+    .line 27
+    .line 28
+    .line 29
+    move-result-object v1
 
-.method public abstract handleError(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)V
+    .line 30
+    check-cast v1, Ljava/lang/String;
+
+    .line 31
+    .line 32
+    const-string v2, ", error: "
+
+    .line 33
+    .line 34
+    const-string v3, ", error message: "
+
+    .line 35
+    .line 36
+    invoke-static {v0, v1, v2, p2, v3}, Lv6/u;->f(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 37
+    .line 38
+    .line 39
+    invoke-virtual {v0, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 40
+    .line 41
+    .line 42
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 43
+    .line 44
+    .line 45
+    move-result-object v0
+
+    .line 46
+    invoke-direct {p0, p1, v0}, Lla/a;-><init>(Lha/b;Ljava/lang/String;)V
+
+    .line 47
+    .line 48
+    .line 49
+    iput-object p2, p0, Lob/a;->d:Ljava/lang/String;
+
+    .line 50
+    .line 51
+    iput-object p3, p0, Lob/a;->h:Ljava/lang/String;
+
+    .line 52
+    .line 53
+    return-void
 .end method

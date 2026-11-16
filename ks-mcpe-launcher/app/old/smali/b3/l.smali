@@ -1,21 +1,17 @@
-.class public final Lb3/l;
-.super Ljava/io/IOException;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public interface abstract Lb3/l;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# direct methods
-.method public constructor <init>()V
-    .locals 1
+# virtual methods
+.method public abstract i()I
+.end method
 
-    .line 1
-    const-string v0, "Unexpectedly reached end of a file"
+.method public abstract q([BI)I
+.end method
 
-    .line 2
-    .line 3
-    invoke-direct {p0, v0}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+.method public abstract r()S
+.end method
 
-    .line 4
-    .line 5
-    .line 6
-    return-void
+.method public abstract skip(J)J
 .end method

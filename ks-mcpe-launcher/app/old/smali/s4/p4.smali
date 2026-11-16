@@ -1,22 +1,30 @@
 .class public final Ls4/p4;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final a:Ljava/lang/String;
+.field public final a:J
 
-.field public final b:Ljava/lang/String;
+.field public final b:Lcom/google/android/gms/internal/measurement/w9;
 
 .field public final c:Ljava/lang/String;
 
-.field public final d:J
+.field public final d:Ljava/util/HashMap;
 
-.field public final e:Ljava/lang/Object;
+.field public final e:Ls4/d3;
+
+.field public final f:J
+
+.field public final g:J
+
+.field public final h:J
+
+.field public final i:I
 
 
 # direct methods
-.method public constructor <init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;JLjava/lang/Object;)V
+.method public synthetic constructor <init>(JLcom/google/android/gms/internal/measurement/w9;Ljava/lang/String;Ljava/util/HashMap;Ls4/d3;JJJI)V
     .locals 0
 
     .line 1
@@ -25,40 +33,41 @@
     .line 2
     .line 3
     .line 4
-    invoke-static {p1}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+    iput-wide p1, p0, Ls4/p4;->a:J
 
     .line 5
     .line 6
-    .line 7
-    invoke-static {p3}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotEmpty(Ljava/lang/String;)Ljava/lang/String;
+    iput-object p3, p0, Ls4/p4;->b:Lcom/google/android/gms/internal/measurement/w9;
 
+    .line 7
     .line 8
+    iput-object p4, p0, Ls4/p4;->c:Ljava/lang/String;
+
     .line 9
     .line 10
-    invoke-static {p6}, Lcom/google/android/gms/common/internal/Preconditions;->checkNotNull(Ljava/lang/Object;)Ljava/lang/Object;
+    iput-object p5, p0, Ls4/p4;->d:Ljava/util/HashMap;
 
     .line 11
     .line 12
+    iput-object p6, p0, Ls4/p4;->e:Ls4/d3;
+
     .line 13
-    iput-object p1, p0, Ls4/p4;->a:Ljava/lang/String;
-
     .line 14
+    iput-wide p7, p0, Ls4/p4;->f:J
+
     .line 15
-    iput-object p2, p0, Ls4/p4;->b:Ljava/lang/String;
-
     .line 16
+    iput-wide p9, p0, Ls4/p4;->g:J
+
     .line 17
-    iput-object p3, p0, Ls4/p4;->c:Ljava/lang/String;
-
     .line 18
+    iput-wide p11, p0, Ls4/p4;->h:J
+
     .line 19
-    iput-wide p4, p0, Ls4/p4;->d:J
-
     .line 20
-    .line 21
-    iput-object p6, p0, Ls4/p4;->e:Ljava/lang/Object;
+    iput p13, p0, Ls4/p4;->i:I
 
+    .line 21
     .line 22
-    .line 23
     return-void
 .end method

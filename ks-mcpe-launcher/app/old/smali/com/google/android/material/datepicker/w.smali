@@ -1,26 +1,34 @@
-.class public final Lcom/google/android/material/datepicker/w;
-.super Landroidx/recyclerview/widget/z0;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public abstract Lcom/google/android/material/datepicker/w;
+.super Landroidx/fragment/app/Fragment;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# virtual methods
-.method public final h(Landroid/util/DisplayMetrics;)F
+# instance fields
+.field public final c:Ljava/util/LinkedHashSet;
+
+
+# direct methods
+.method public constructor <init>()V
     .locals 1
 
     .line 1
-    iget p1, p1, Landroid/util/DisplayMetrics;->densityDpi:I
+    invoke-direct {p0}, Landroidx/fragment/app/Fragment;-><init>()V
 
     .line 2
     .line 3
-    int-to-float p1, p1
-
     .line 4
-    const/high16 v0, 0x42c80000    # 100.0f
+    new-instance v0, Ljava/util/LinkedHashSet;
 
     .line 5
     .line 6
-    div-float/2addr v0, p1
+    invoke-direct {v0}, Ljava/util/LinkedHashSet;-><init>()V
 
     .line 7
-    return v0
+    .line 8
+    .line 9
+    iput-object v0, p0, Lcom/google/android/material/datepicker/w;->c:Ljava/util/LinkedHashSet;
+
+    .line 10
+    .line 11
+    return-void
 .end method

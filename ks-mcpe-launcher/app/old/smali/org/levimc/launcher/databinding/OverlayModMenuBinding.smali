@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/databinding/OverlayModMenuBinding;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -15,10 +15,6 @@
 .field public final btnHudReset:Landroid/widget/ImageButton;
 
 .field public final btnHudSave:Landroid/widget/ImageButton;
-
-.field public final btnMenuCompact:Landroid/widget/ImageButton;
-
-.field public final btnMenuSearch:Landroid/widget/ImageButton;
 
 .field public final compactFilterBar:Landroid/widget/LinearLayout;
 
@@ -36,7 +32,7 @@
 
 .field public final filterAll:Landroid/widget/TextView;
 
-.field public final filterBar:Landroid/widget/LinearLayout;
+.field public final filterBar:Landroid/widget/HorizontalScrollView;
 
 .field public final filterEnabled:Landroid/widget/TextView;
 
@@ -50,41 +46,17 @@
 
 .field public final hudEditorTools:Landroidx/cardview/widget/CardView;
 
-.field public final menuBrand:Landroid/widget/LinearLayout;
-
-.field public final menuBrandLabels:Landroid/widget/LinearLayout;
-
-.field public final menuClearFilters:Landroid/widget/TextView;
-
-.field public final menuHeader:Landroid/widget/LinearLayout;
-
-.field public final menuHeaderBorder:Landroid/view/View;
-
-.field public final menuHeaderSpace:Landroid/widget/Space;
-
-.field public final menuNavigationLabel:Landroid/widget/TextView;
-
-.field public final menuPageTitle:Landroid/widget/TextView;
-
-.field public final menuResizeHandle:Landroid/widget/ImageButton;
-
-.field public final menuSettingsContent:Landroid/widget/LinearLayout;
-
-.field public final menuSidebarBorder:Landroid/view/View;
-
-.field public final menuSidebarFooter:Landroid/widget/TextView;
-
 .field public final modConfigContainer:Landroid/widget/FrameLayout;
 
 .field public final modConfigContent:Landroid/widget/FrameLayout;
 
 .field public final modMenuContainer:Landroidx/cardview/widget/CardView;
 
+.field public final modMenuKeybindValue:Landroid/widget/TextView;
+
 .field public final modMenuLogo:Landroid/widget/ImageView;
 
 .field public final modMenuSidebar:Landroid/widget/LinearLayout;
-
-.field public final modMenuSurface:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSurface;
 
 .field public final modsGridRecycler:Landroidx/recyclerview/widget/RecyclerView;
 
@@ -112,13 +84,39 @@
 
 .field public final seekbarHudButtonSize:Landroid/widget/SeekBar;
 
+.field public final seekbarModMenuButtonOpacity:Landroid/widget/SeekBar;
+
+.field public final seekbarModMenuOpacity:Landroid/widget/SeekBar;
+
+.field public final settingCompactModMenu:Landroid/widget/LinearLayout;
+
+.field public final settingModMenuButtonOpacity:Landroid/widget/LinearLayout;
+
+.field public final settingModMenuKeybind:Landroid/widget/LinearLayout;
+
+.field public final settingModMenuOpacity:Landroid/widget/LinearLayout;
+
+.field public final settingNotifications:Landroid/widget/LinearLayout;
+
+.field public final settingPauseMenuOnly:Landroid/widget/LinearLayout;
+
 .field public final settingsContainer:Landroid/widget/ScrollView;
+
+.field public final switchCompactModMenu:Landroid/widget/Switch;
+
+.field public final switchNotifications:Landroid/widget/Switch;
+
+.field public final switchPauseMenuOnly:Landroid/widget/Switch;
 
 .field public final textHudButtonSize:Landroid/widget/TextView;
 
+.field public final textModMenuButtonOpacity:Landroid/widget/TextView;
+
+.field public final textModMenuOpacity:Landroid/widget/TextView;
+
 
 # direct methods
-.method private constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroidx/cardview/widget/CardView;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/view/View;Landroid/widget/Space;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/FrameLayout;Landroidx/cardview/widget/CardView;Landroid/widget/ImageView;Landroid/widget/LinearLayout;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSurface;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/EditText;Landroid/widget/SeekBar;Landroid/widget/ScrollView;Landroid/widget/TextView;)V
+.method private constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/HorizontalScrollView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroidx/cardview/widget/CardView;Landroid/widget/FrameLayout;Landroid/widget/FrameLayout;Landroidx/cardview/widget/CardView;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/EditText;Landroid/widget/SeekBar;Landroid/widget/SeekBar;Landroid/widget/SeekBar;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/ScrollView;Landroid/widget/Switch;Landroid/widget/Switch;Landroid/widget/Switch;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
     .locals 0
 
     .line 1
@@ -146,239 +144,234 @@
     iput-object p7, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->btnHudSave:Landroid/widget/ImageButton;
 
     .line 9
-    iput-object p8, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->btnMenuCompact:Landroid/widget/ImageButton;
+    iput-object p8, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactFilterBar:Landroid/widget/LinearLayout;
 
     .line 10
-    iput-object p9, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->btnMenuSearch:Landroid/widget/ImageButton;
+    iput-object p9, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactFilterSelector:Landroid/widget/TextView;
 
     .line 11
-    iput-object p10, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactFilterBar:Landroid/widget/LinearLayout;
+    iput-object p10, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactModuleCount:Landroid/widget/TextView;
 
     .line 12
-    iput-object p11, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactFilterSelector:Landroid/widget/TextView;
+    iput-object p11, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->configHeader:Landroid/widget/LinearLayout;
 
     .line 13
-    iput-object p12, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->compactModuleCount:Landroid/widget/TextView;
+    iput-object p12, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->configTitle:Landroid/widget/TextView;
 
     .line 14
-    iput-object p13, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->configHeader:Landroid/widget/LinearLayout;
+    iput-object p13, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->emptyState:Landroid/widget/LinearLayout;
 
     .line 15
-    iput-object p14, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->configTitle:Landroid/widget/TextView;
+    iput-object p14, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->emptyStateText:Landroid/widget/TextView;
 
     .line 16
-    iput-object p15, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->emptyState:Landroid/widget/LinearLayout;
+    iput-object p15, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterAll:Landroid/widget/TextView;
 
     move-object/from16 p1, p16
 
     .line 17
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->emptyStateText:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterBar:Landroid/widget/HorizontalScrollView;
 
     move-object/from16 p1, p17
 
     .line 18
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterAll:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterEnabled:Landroid/widget/TextView;
 
     move-object/from16 p1, p18
 
     .line 19
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterBar:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterExternal:Landroid/widget/TextView;
 
     move-object/from16 p1, p19
 
     .line 20
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterEnabled:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterFavorites:Landroid/widget/TextView;
 
     move-object/from16 p1, p20
 
     .line 21
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterExternal:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterInbuilt:Landroid/widget/TextView;
 
     move-object/from16 p1, p21
 
     .line 22
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterFavorites:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->hudEditorDragHandle:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p22
 
     .line 23
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->filterInbuilt:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->hudEditorTools:Landroidx/cardview/widget/CardView;
 
     move-object/from16 p1, p23
 
     .line 24
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->hudEditorDragHandle:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modConfigContainer:Landroid/widget/FrameLayout;
 
     move-object/from16 p1, p24
 
     .line 25
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->hudEditorTools:Landroidx/cardview/widget/CardView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modConfigContent:Landroid/widget/FrameLayout;
 
     move-object/from16 p1, p25
 
     .line 26
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuBrand:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuContainer:Landroidx/cardview/widget/CardView;
 
     move-object/from16 p1, p26
 
     .line 27
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuBrandLabels:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuKeybindValue:Landroid/widget/TextView;
 
     move-object/from16 p1, p27
 
     .line 28
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuClearFilters:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuLogo:Landroid/widget/ImageView;
 
     move-object/from16 p1, p28
 
     .line 29
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuHeader:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuSidebar:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p29
 
     .line 30
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuHeaderBorder:Landroid/view/View;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modsGridRecycler:Landroidx/recyclerview/widget/RecyclerView;
 
     move-object/from16 p1, p30
 
     .line 31
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuHeaderSpace:Landroid/widget/Space;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->moduleCountText:Landroid/widget/TextView;
 
     move-object/from16 p1, p31
 
     .line 32
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuNavigationLabel:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modulesContainer:Landroid/widget/FrameLayout;
 
     move-object/from16 p1, p32
 
     .line 33
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuPageTitle:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navHudEditor:Landroid/widget/TextView;
 
     move-object/from16 p1, p33
 
     .line 34
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuResizeHandle:Landroid/widget/ImageButton;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navHudEditorCompact:Landroid/widget/ImageButton;
 
     move-object/from16 p1, p34
 
     .line 35
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuSettingsContent:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navModules:Landroid/widget/TextView;
 
     move-object/from16 p1, p35
 
     .line 36
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuSidebarBorder:Landroid/view/View;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navModulesCompact:Landroid/widget/ImageButton;
 
     move-object/from16 p1, p36
 
     .line 37
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->menuSidebarFooter:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navSettings:Landroid/widget/TextView;
 
     move-object/from16 p1, p37
 
     .line 38
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modConfigContainer:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navSettingsCompact:Landroid/widget/ImageButton;
 
     move-object/from16 p1, p38
 
     .line 39
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modConfigContent:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->searchContainer:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p39
 
     .line 40
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuContainer:Landroidx/cardview/widget/CardView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->searchInput:Landroid/widget/EditText;
 
     move-object/from16 p1, p40
 
     .line 41
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuLogo:Landroid/widget/ImageView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->seekbarHudButtonSize:Landroid/widget/SeekBar;
 
     move-object/from16 p1, p41
 
     .line 42
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuSidebar:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->seekbarModMenuButtonOpacity:Landroid/widget/SeekBar;
 
     move-object/from16 p1, p42
 
     .line 43
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modMenuSurface:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSurface;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->seekbarModMenuOpacity:Landroid/widget/SeekBar;
 
     move-object/from16 p1, p43
 
     .line 44
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modsGridRecycler:Landroidx/recyclerview/widget/RecyclerView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingCompactModMenu:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p44
 
     .line 45
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->moduleCountText:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingModMenuButtonOpacity:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p45
 
     .line 46
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->modulesContainer:Landroid/widget/FrameLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingModMenuKeybind:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p46
 
     .line 47
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navHudEditor:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingModMenuOpacity:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p47
 
     .line 48
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navHudEditorCompact:Landroid/widget/ImageButton;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingNotifications:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p48
 
     .line 49
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navModules:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingPauseMenuOnly:Landroid/widget/LinearLayout;
 
     move-object/from16 p1, p49
 
     .line 50
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navModulesCompact:Landroid/widget/ImageButton;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingsContainer:Landroid/widget/ScrollView;
 
     move-object/from16 p1, p50
 
     .line 51
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navSettings:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->switchCompactModMenu:Landroid/widget/Switch;
 
     move-object/from16 p1, p51
 
     .line 52
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->navSettingsCompact:Landroid/widget/ImageButton;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->switchNotifications:Landroid/widget/Switch;
 
     move-object/from16 p1, p52
 
     .line 53
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->searchContainer:Landroid/widget/LinearLayout;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->switchPauseMenuOnly:Landroid/widget/Switch;
 
     move-object/from16 p1, p53
 
     .line 54
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->searchInput:Landroid/widget/EditText;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->textHudButtonSize:Landroid/widget/TextView;
 
     move-object/from16 p1, p54
 
     .line 55
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->seekbarHudButtonSize:Landroid/widget/SeekBar;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->textModMenuButtonOpacity:Landroid/widget/TextView;
 
     move-object/from16 p1, p55
 
     .line 56
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->settingsContainer:Landroid/widget/ScrollView;
-
-    move-object/from16 p1, p56
-
-    .line 57
-    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->textHudButtonSize:Landroid/widget/TextView;
+    iput-object p1, p0, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;->textModMenuOpacity:Landroid/widget/TextView;
 
     return-void
 .end method
 
 .method public static bind(Landroid/view/View;)Lorg/levimc/launcher/databinding/OverlayModMenuBinding;
-    .locals 60
+    .locals 59
 
     .line 1
     move-object/from16 v0, p0
@@ -389,7 +382,7 @@
 
     .line 4
     .line 5
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 6
     .line 7
@@ -412,7 +405,7 @@
 
     .line 15
     .line 16
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 17
     .line 18
@@ -435,7 +428,7 @@
 
     .line 26
     .line 27
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 28
     .line 29
@@ -458,7 +451,7 @@
 
     .line 37
     .line 38
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 39
     .line 40
@@ -481,7 +474,7 @@
 
     .line 48
     .line 49
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 50
     .line 51
@@ -504,7 +497,7 @@
 
     .line 59
     .line 60
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 61
     .line 62
@@ -523,11 +516,11 @@
 
     .line 68
     .line 69
-    sget v1, Lorg/levimc/launcher/R$id;->btn_menu_compact:I
+    sget v1, Lorg/levimc/launcher/R$id;->compact_filter_bar:I
 
     .line 70
     .line 71
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 72
     .line 73
@@ -538,7 +531,7 @@
     move-object v11, v2
 
     .line 76
-    check-cast v11, Landroid/widget/ImageButton;
+    check-cast v11, Landroid/widget/LinearLayout;
 
     .line 77
     .line 78
@@ -546,11 +539,11 @@
 
     .line 79
     .line 80
-    sget v1, Lorg/levimc/launcher/R$id;->btn_menu_search:I
+    sget v1, Lorg/levimc/launcher/R$id;->compact_filter_selector:I
 
     .line 81
     .line 82
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 83
     .line 84
@@ -561,7 +554,7 @@
     move-object v12, v2
 
     .line 87
-    check-cast v12, Landroid/widget/ImageButton;
+    check-cast v12, Landroid/widget/TextView;
 
     .line 88
     .line 89
@@ -569,11 +562,11 @@
 
     .line 90
     .line 91
-    sget v1, Lorg/levimc/launcher/R$id;->compact_filter_bar:I
+    sget v1, Lorg/levimc/launcher/R$id;->compact_module_count:I
 
     .line 92
     .line 93
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 94
     .line 95
@@ -584,7 +577,7 @@
     move-object v13, v2
 
     .line 98
-    check-cast v13, Landroid/widget/LinearLayout;
+    check-cast v13, Landroid/widget/TextView;
 
     .line 99
     .line 100
@@ -592,11 +585,11 @@
 
     .line 101
     .line 102
-    sget v1, Lorg/levimc/launcher/R$id;->compact_filter_selector:I
+    sget v1, Lorg/levimc/launcher/R$id;->config_header:I
 
     .line 103
     .line 104
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 105
     .line 106
@@ -607,7 +600,7 @@
     move-object v14, v2
 
     .line 109
-    check-cast v14, Landroid/widget/TextView;
+    check-cast v14, Landroid/widget/LinearLayout;
 
     .line 110
     .line 111
@@ -615,11 +608,11 @@
 
     .line 112
     .line 113
-    sget v1, Lorg/levimc/launcher/R$id;->compact_module_count:I
+    sget v1, Lorg/levimc/launcher/R$id;->config_title:I
 
     .line 114
     .line 115
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 116
     .line 117
@@ -638,11 +631,11 @@
 
     .line 123
     .line 124
-    sget v1, Lorg/levimc/launcher/R$id;->config_header:I
+    sget v1, Lorg/levimc/launcher/R$id;->empty_state:I
 
     .line 125
     .line 126
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 127
     .line 128
@@ -662,11 +655,11 @@
 
     .line 135
     .line 136
-    sget v1, Lorg/levimc/launcher/R$id;->config_title:I
+    sget v1, Lorg/levimc/launcher/R$id;->empty_state_text:I
 
     .line 137
     .line 138
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 139
     .line 140
@@ -686,11 +679,11 @@
 
     .line 147
     .line 148
-    sget v1, Lorg/levimc/launcher/R$id;->empty_state:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_all:I
 
     .line 149
     .line 150
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 151
     .line 152
@@ -702,7 +695,7 @@
 
     .line 155
     .line 156
-    check-cast v18, Landroid/widget/LinearLayout;
+    check-cast v18, Landroid/widget/TextView;
 
     .line 157
     .line 158
@@ -710,11 +703,11 @@
 
     .line 159
     .line 160
-    sget v1, Lorg/levimc/launcher/R$id;->empty_state_text:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_bar:I
 
     .line 161
     .line 162
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 163
     .line 164
@@ -726,7 +719,7 @@
 
     .line 167
     .line 168
-    check-cast v19, Landroid/widget/TextView;
+    check-cast v19, Landroid/widget/HorizontalScrollView;
 
     .line 169
     .line 170
@@ -734,11 +727,11 @@
 
     .line 171
     .line 172
-    sget v1, Lorg/levimc/launcher/R$id;->filter_all:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_enabled:I
 
     .line 173
     .line 174
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 175
     .line 176
@@ -758,11 +751,11 @@
 
     .line 183
     .line 184
-    sget v1, Lorg/levimc/launcher/R$id;->filter_bar:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_external:I
 
     .line 185
     .line 186
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 187
     .line 188
@@ -774,7 +767,7 @@
 
     .line 191
     .line 192
-    check-cast v21, Landroid/widget/LinearLayout;
+    check-cast v21, Landroid/widget/TextView;
 
     .line 193
     .line 194
@@ -782,11 +775,11 @@
 
     .line 195
     .line 196
-    sget v1, Lorg/levimc/launcher/R$id;->filter_enabled:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_favorites:I
 
     .line 197
     .line 198
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 199
     .line 200
@@ -806,11 +799,11 @@
 
     .line 207
     .line 208
-    sget v1, Lorg/levimc/launcher/R$id;->filter_external:I
+    sget v1, Lorg/levimc/launcher/R$id;->filter_inbuilt:I
 
     .line 209
     .line 210
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 211
     .line 212
@@ -830,11 +823,11 @@
 
     .line 219
     .line 220
-    sget v1, Lorg/levimc/launcher/R$id;->filter_favorites:I
+    sget v1, Lorg/levimc/launcher/R$id;->hud_editor_drag_handle:I
 
     .line 221
     .line 222
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 223
     .line 224
@@ -846,7 +839,7 @@
 
     .line 227
     .line 228
-    check-cast v24, Landroid/widget/TextView;
+    check-cast v24, Landroid/widget/LinearLayout;
 
     .line 229
     .line 230
@@ -854,11 +847,11 @@
 
     .line 231
     .line 232
-    sget v1, Lorg/levimc/launcher/R$id;->filter_inbuilt:I
+    sget v1, Lorg/levimc/launcher/R$id;->hud_editor_tools:I
 
     .line 233
     .line 234
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 235
     .line 236
@@ -870,7 +863,7 @@
 
     .line 239
     .line 240
-    check-cast v25, Landroid/widget/TextView;
+    check-cast v25, Landroidx/cardview/widget/CardView;
 
     .line 241
     .line 242
@@ -878,11 +871,11 @@
 
     .line 243
     .line 244
-    sget v1, Lorg/levimc/launcher/R$id;->hud_editor_drag_handle:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_config_container:I
 
     .line 245
     .line 246
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 247
     .line 248
@@ -894,7 +887,7 @@
 
     .line 251
     .line 252
-    check-cast v26, Landroid/widget/LinearLayout;
+    check-cast v26, Landroid/widget/FrameLayout;
 
     .line 253
     .line 254
@@ -902,11 +895,11 @@
 
     .line 255
     .line 256
-    sget v1, Lorg/levimc/launcher/R$id;->hud_editor_tools:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_config_content:I
 
     .line 257
     .line 258
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 259
     .line 260
@@ -918,7 +911,7 @@
 
     .line 263
     .line 264
-    check-cast v27, Landroidx/cardview/widget/CardView;
+    check-cast v27, Landroid/widget/FrameLayout;
 
     .line 265
     .line 266
@@ -926,11 +919,11 @@
 
     .line 267
     .line 268
-    sget v1, Lorg/levimc/launcher/R$id;->menu_brand:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_container:I
 
     .line 269
     .line 270
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 271
     .line 272
@@ -942,7 +935,7 @@
 
     .line 275
     .line 276
-    check-cast v28, Landroid/widget/LinearLayout;
+    check-cast v28, Landroidx/cardview/widget/CardView;
 
     .line 277
     .line 278
@@ -950,11 +943,11 @@
 
     .line 279
     .line 280
-    sget v1, Lorg/levimc/launcher/R$id;->menu_brand_labels:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_keybind_value:I
 
     .line 281
     .line 282
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 283
     .line 284
@@ -966,7 +959,7 @@
 
     .line 287
     .line 288
-    check-cast v29, Landroid/widget/LinearLayout;
+    check-cast v29, Landroid/widget/TextView;
 
     .line 289
     .line 290
@@ -974,11 +967,11 @@
 
     .line 291
     .line 292
-    sget v1, Lorg/levimc/launcher/R$id;->menu_clear_filters:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_logo:I
 
     .line 293
     .line 294
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 295
     .line 296
@@ -990,7 +983,7 @@
 
     .line 299
     .line 300
-    check-cast v30, Landroid/widget/TextView;
+    check-cast v30, Landroid/widget/ImageView;
 
     .line 301
     .line 302
@@ -998,11 +991,11 @@
 
     .line 303
     .line 304
-    sget v1, Lorg/levimc/launcher/R$id;->menu_header:I
+    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_sidebar:I
 
     .line 305
     .line 306
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 307
     .line 308
@@ -1022,683 +1015,683 @@
 
     .line 315
     .line 316
-    sget v1, Lorg/levimc/launcher/R$id;->menu_header_border:I
+    sget v1, Lorg/levimc/launcher/R$id;->mods_grid_recycler:I
 
     .line 317
     .line 318
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 319
     .line 320
     .line 321
-    move-result-object v32
+    move-result-object v2
 
     .line 322
-    if-eqz v32, :cond_0
+    move-object/from16 v32, v2
 
     .line 323
     .line 324
-    sget v1, Lorg/levimc/launcher/R$id;->menu_header_space:I
+    check-cast v32, Landroidx/recyclerview/widget/RecyclerView;
 
     .line 325
     .line 326
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v32, :cond_0
 
     .line 327
     .line 328
-    .line 329
-    move-result-object v2
+    sget v1, Lorg/levimc/launcher/R$id;->module_count_text:I
 
+    .line 329
     .line 330
-    move-object/from16 v33, v2
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 331
     .line 332
-    check-cast v33, Landroid/widget/Space;
-
     .line 333
+    move-result-object v2
+
     .line 334
-    if-eqz v33, :cond_0
+    move-object/from16 v33, v2
 
     .line 335
     .line 336
-    sget v1, Lorg/levimc/launcher/R$id;->menu_navigation_label:I
+    check-cast v33, Landroid/widget/TextView;
 
     .line 337
     .line 338
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v33, :cond_0
 
     .line 339
     .line 340
-    .line 341
-    move-result-object v2
+    sget v1, Lorg/levimc/launcher/R$id;->modules_container:I
 
+    .line 341
     .line 342
-    move-object/from16 v34, v2
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 343
     .line 344
-    check-cast v34, Landroid/widget/TextView;
-
     .line 345
+    move-result-object v2
+
     .line 346
-    if-eqz v34, :cond_0
+    move-object/from16 v34, v2
 
     .line 347
     .line 348
-    sget v1, Lorg/levimc/launcher/R$id;->menu_page_title:I
+    check-cast v34, Landroid/widget/FrameLayout;
 
     .line 349
     .line 350
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v34, :cond_0
 
     .line 351
     .line 352
-    .line 353
-    move-result-object v2
+    sget v1, Lorg/levimc/launcher/R$id;->nav_hud_editor:I
 
+    .line 353
     .line 354
-    move-object/from16 v35, v2
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 355
     .line 356
-    check-cast v35, Landroid/widget/TextView;
-
     .line 357
+    move-result-object v2
+
     .line 358
-    if-eqz v35, :cond_0
+    move-object/from16 v35, v2
 
     .line 359
     .line 360
-    sget v1, Lorg/levimc/launcher/R$id;->menu_resize_handle:I
+    check-cast v35, Landroid/widget/TextView;
 
     .line 361
     .line 362
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v35, :cond_0
 
     .line 363
     .line 364
-    .line 365
-    move-result-object v2
+    sget v1, Lorg/levimc/launcher/R$id;->nav_hud_editor_compact:I
 
+    .line 365
     .line 366
-    move-object/from16 v36, v2
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 367
     .line 368
-    check-cast v36, Landroid/widget/ImageButton;
-
     .line 369
+    move-result-object v2
+
     .line 370
-    if-eqz v36, :cond_0
+    move-object/from16 v36, v2
 
     .line 371
     .line 372
-    sget v1, Lorg/levimc/launcher/R$id;->menu_settings_content:I
+    check-cast v36, Landroid/widget/ImageButton;
 
     .line 373
     .line 374
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v36, :cond_0
 
     .line 375
     .line 376
-    .line 377
-    move-result-object v2
+    sget v1, Lorg/levimc/launcher/R$id;->nav_modules:I
 
+    .line 377
     .line 378
-    move-object/from16 v37, v2
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 379
     .line 380
-    check-cast v37, Landroid/widget/LinearLayout;
-
     .line 381
+    move-result-object v2
+
     .line 382
-    if-eqz v37, :cond_0
+    move-object/from16 v37, v2
 
     .line 383
     .line 384
-    sget v1, Lorg/levimc/launcher/R$id;->menu_sidebar_border:I
+    check-cast v37, Landroid/widget/TextView;
 
     .line 385
     .line 386
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    if-eqz v37, :cond_0
 
     .line 387
     .line 388
-    .line 389
-    move-result-object v38
+    sget v1, Lorg/levimc/launcher/R$id;->nav_modules_compact:I
 
+    .line 389
     .line 390
-    if-eqz v38, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 391
     .line 392
-    sget v1, Lorg/levimc/launcher/R$id;->menu_sidebar_footer:I
-
     .line 393
+    move-result-object v2
+
     .line 394
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v38, v2
 
     .line 395
     .line 396
-    .line 397
-    move-result-object v2
+    check-cast v38, Landroid/widget/ImageButton;
 
+    .line 397
     .line 398
-    move-object/from16 v39, v2
+    if-eqz v38, :cond_0
 
     .line 399
     .line 400
-    check-cast v39, Landroid/widget/TextView;
+    sget v1, Lorg/levimc/launcher/R$id;->nav_settings:I
 
     .line 401
     .line 402
-    if-eqz v39, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 403
     .line 404
-    sget v1, Lorg/levimc/launcher/R$id;->mod_config_container:I
-
     .line 405
+    move-result-object v2
+
     .line 406
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v39, v2
 
     .line 407
     .line 408
-    .line 409
-    move-result-object v2
+    check-cast v39, Landroid/widget/TextView;
 
+    .line 409
     .line 410
-    move-object/from16 v40, v2
+    if-eqz v39, :cond_0
 
     .line 411
     .line 412
-    check-cast v40, Landroid/widget/FrameLayout;
+    sget v1, Lorg/levimc/launcher/R$id;->nav_settings_compact:I
 
     .line 413
     .line 414
-    if-eqz v40, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 415
     .line 416
-    sget v1, Lorg/levimc/launcher/R$id;->mod_config_content:I
-
     .line 417
+    move-result-object v2
+
     .line 418
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v40, v2
 
     .line 419
     .line 420
-    .line 421
-    move-result-object v2
+    check-cast v40, Landroid/widget/ImageButton;
 
+    .line 421
     .line 422
-    move-object/from16 v41, v2
+    if-eqz v40, :cond_0
 
     .line 423
     .line 424
-    check-cast v41, Landroid/widget/FrameLayout;
+    sget v1, Lorg/levimc/launcher/R$id;->search_container:I
 
     .line 425
     .line 426
-    if-eqz v41, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 427
     .line 428
-    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_container:I
-
     .line 429
+    move-result-object v2
+
     .line 430
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v41, v2
 
     .line 431
     .line 432
-    .line 433
-    move-result-object v2
+    check-cast v41, Landroid/widget/LinearLayout;
 
+    .line 433
     .line 434
-    move-object/from16 v42, v2
+    if-eqz v41, :cond_0
 
     .line 435
     .line 436
-    check-cast v42, Landroidx/cardview/widget/CardView;
+    sget v1, Lorg/levimc/launcher/R$id;->search_input:I
 
     .line 437
     .line 438
-    if-eqz v42, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 439
     .line 440
-    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_logo:I
-
     .line 441
+    move-result-object v2
+
     .line 442
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v42, v2
 
     .line 443
     .line 444
-    .line 445
-    move-result-object v2
+    check-cast v42, Landroid/widget/EditText;
 
+    .line 445
     .line 446
-    move-object/from16 v43, v2
+    if-eqz v42, :cond_0
 
     .line 447
     .line 448
-    check-cast v43, Landroid/widget/ImageView;
+    sget v1, Lorg/levimc/launcher/R$id;->seekbar_hud_button_size:I
 
     .line 449
     .line 450
-    if-eqz v43, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 451
     .line 452
-    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_sidebar:I
-
     .line 453
+    move-result-object v2
+
     .line 454
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v43, v2
 
     .line 455
     .line 456
-    .line 457
-    move-result-object v2
+    check-cast v43, Landroid/widget/SeekBar;
 
+    .line 457
     .line 458
-    move-object/from16 v44, v2
+    if-eqz v43, :cond_0
 
     .line 459
     .line 460
-    check-cast v44, Landroid/widget/LinearLayout;
+    sget v1, Lorg/levimc/launcher/R$id;->seekbar_mod_menu_button_opacity:I
 
     .line 461
     .line 462
-    if-eqz v44, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 463
     .line 464
-    sget v1, Lorg/levimc/launcher/R$id;->mod_menu_surface:I
-
     .line 465
+    move-result-object v2
+
     .line 466
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v44, v2
 
     .line 467
     .line 468
-    .line 469
-    move-result-object v2
+    check-cast v44, Landroid/widget/SeekBar;
 
+    .line 469
     .line 470
-    move-object/from16 v45, v2
+    if-eqz v44, :cond_0
 
     .line 471
     .line 472
-    check-cast v45, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSurface;
+    sget v1, Lorg/levimc/launcher/R$id;->seekbar_mod_menu_opacity:I
 
     .line 473
     .line 474
-    if-eqz v45, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 475
     .line 476
-    sget v1, Lorg/levimc/launcher/R$id;->mods_grid_recycler:I
-
     .line 477
+    move-result-object v2
+
     .line 478
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v45, v2
 
     .line 479
     .line 480
-    .line 481
-    move-result-object v2
+    check-cast v45, Landroid/widget/SeekBar;
 
+    .line 481
     .line 482
-    move-object/from16 v46, v2
+    if-eqz v45, :cond_0
 
     .line 483
     .line 484
-    check-cast v46, Landroidx/recyclerview/widget/RecyclerView;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_compact_mod_menu:I
 
     .line 485
     .line 486
-    if-eqz v46, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 487
     .line 488
-    sget v1, Lorg/levimc/launcher/R$id;->module_count_text:I
-
     .line 489
+    move-result-object v2
+
     .line 490
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v46, v2
 
     .line 491
     .line 492
-    .line 493
-    move-result-object v2
+    check-cast v46, Landroid/widget/LinearLayout;
 
+    .line 493
     .line 494
-    move-object/from16 v47, v2
+    if-eqz v46, :cond_0
 
     .line 495
     .line 496
-    check-cast v47, Landroid/widget/TextView;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_mod_menu_button_opacity:I
 
     .line 497
     .line 498
-    if-eqz v47, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 499
     .line 500
-    sget v1, Lorg/levimc/launcher/R$id;->modules_container:I
-
     .line 501
+    move-result-object v2
+
     .line 502
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v47, v2
 
     .line 503
     .line 504
-    .line 505
-    move-result-object v2
+    check-cast v47, Landroid/widget/LinearLayout;
 
+    .line 505
     .line 506
-    move-object/from16 v48, v2
+    if-eqz v47, :cond_0
 
     .line 507
     .line 508
-    check-cast v48, Landroid/widget/FrameLayout;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_mod_menu_keybind:I
 
     .line 509
     .line 510
-    if-eqz v48, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 511
     .line 512
-    sget v1, Lorg/levimc/launcher/R$id;->nav_hud_editor:I
-
     .line 513
+    move-result-object v2
+
     .line 514
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v48, v2
 
     .line 515
     .line 516
-    .line 517
-    move-result-object v2
+    check-cast v48, Landroid/widget/LinearLayout;
 
+    .line 517
     .line 518
-    move-object/from16 v49, v2
+    if-eqz v48, :cond_0
 
     .line 519
     .line 520
-    check-cast v49, Landroid/widget/TextView;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_mod_menu_opacity:I
 
     .line 521
     .line 522
-    if-eqz v49, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 523
     .line 524
-    sget v1, Lorg/levimc/launcher/R$id;->nav_hud_editor_compact:I
-
     .line 525
+    move-result-object v2
+
     .line 526
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v49, v2
 
     .line 527
     .line 528
-    .line 529
-    move-result-object v2
+    check-cast v49, Landroid/widget/LinearLayout;
 
+    .line 529
     .line 530
-    move-object/from16 v50, v2
+    if-eqz v49, :cond_0
 
     .line 531
     .line 532
-    check-cast v50, Landroid/widget/ImageButton;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_notifications:I
 
     .line 533
     .line 534
-    if-eqz v50, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 535
     .line 536
-    sget v1, Lorg/levimc/launcher/R$id;->nav_modules:I
-
     .line 537
+    move-result-object v2
+
     .line 538
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v50, v2
 
     .line 539
     .line 540
-    .line 541
-    move-result-object v2
+    check-cast v50, Landroid/widget/LinearLayout;
 
+    .line 541
     .line 542
-    move-object/from16 v51, v2
+    if-eqz v50, :cond_0
 
     .line 543
     .line 544
-    check-cast v51, Landroid/widget/TextView;
+    sget v1, Lorg/levimc/launcher/R$id;->setting_pause_menu_only:I
 
     .line 545
     .line 546
-    if-eqz v51, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 547
     .line 548
-    sget v1, Lorg/levimc/launcher/R$id;->nav_modules_compact:I
-
     .line 549
+    move-result-object v2
+
     .line 550
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v51, v2
 
     .line 551
     .line 552
-    .line 553
-    move-result-object v2
+    check-cast v51, Landroid/widget/LinearLayout;
 
+    .line 553
     .line 554
-    move-object/from16 v52, v2
+    if-eqz v51, :cond_0
 
     .line 555
     .line 556
-    check-cast v52, Landroid/widget/ImageButton;
+    sget v1, Lorg/levimc/launcher/R$id;->settings_container:I
 
     .line 557
     .line 558
-    if-eqz v52, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 559
     .line 560
-    sget v1, Lorg/levimc/launcher/R$id;->nav_settings:I
-
     .line 561
+    move-result-object v2
+
     .line 562
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v52, v2
 
     .line 563
     .line 564
-    .line 565
-    move-result-object v2
+    check-cast v52, Landroid/widget/ScrollView;
 
+    .line 565
     .line 566
-    move-object/from16 v53, v2
+    if-eqz v52, :cond_0
 
     .line 567
     .line 568
-    check-cast v53, Landroid/widget/TextView;
+    sget v1, Lorg/levimc/launcher/R$id;->switch_compact_mod_menu:I
 
     .line 569
     .line 570
-    if-eqz v53, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 571
     .line 572
-    sget v1, Lorg/levimc/launcher/R$id;->nav_settings_compact:I
-
     .line 573
+    move-result-object v2
+
     .line 574
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v53, v2
 
     .line 575
     .line 576
-    .line 577
-    move-result-object v2
+    check-cast v53, Landroid/widget/Switch;
 
+    .line 577
     .line 578
-    move-object/from16 v54, v2
+    if-eqz v53, :cond_0
 
     .line 579
     .line 580
-    check-cast v54, Landroid/widget/ImageButton;
+    sget v1, Lorg/levimc/launcher/R$id;->switch_notifications:I
 
     .line 581
     .line 582
-    if-eqz v54, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 583
     .line 584
-    sget v1, Lorg/levimc/launcher/R$id;->search_container:I
-
     .line 585
+    move-result-object v2
+
     .line 586
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v54, v2
 
     .line 587
     .line 588
-    .line 589
-    move-result-object v2
+    check-cast v54, Landroid/widget/Switch;
 
+    .line 589
     .line 590
-    move-object/from16 v55, v2
+    if-eqz v54, :cond_0
 
     .line 591
     .line 592
-    check-cast v55, Landroid/widget/LinearLayout;
+    sget v1, Lorg/levimc/launcher/R$id;->switch_pause_menu_only:I
 
     .line 593
     .line 594
-    if-eqz v55, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 595
     .line 596
-    sget v1, Lorg/levimc/launcher/R$id;->search_input:I
-
     .line 597
+    move-result-object v2
+
     .line 598
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v55, v2
 
     .line 599
     .line 600
-    .line 601
-    move-result-object v2
+    check-cast v55, Landroid/widget/Switch;
 
+    .line 601
     .line 602
-    move-object/from16 v56, v2
+    if-eqz v55, :cond_0
 
     .line 603
     .line 604
-    check-cast v56, Landroid/widget/EditText;
+    sget v1, Lorg/levimc/launcher/R$id;->text_hud_button_size:I
 
     .line 605
     .line 606
-    if-eqz v56, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 607
     .line 608
-    sget v1, Lorg/levimc/launcher/R$id;->seekbar_hud_button_size:I
-
     .line 609
+    move-result-object v2
+
     .line 610
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v56, v2
 
     .line 611
     .line 612
-    .line 613
-    move-result-object v2
+    check-cast v56, Landroid/widget/TextView;
 
+    .line 613
     .line 614
-    move-object/from16 v57, v2
+    if-eqz v56, :cond_0
 
     .line 615
     .line 616
-    check-cast v57, Landroid/widget/SeekBar;
+    sget v1, Lorg/levimc/launcher/R$id;->text_mod_menu_button_opacity:I
 
     .line 617
     .line 618
-    if-eqz v57, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 619
     .line 620
-    sget v1, Lorg/levimc/launcher/R$id;->settings_container:I
-
     .line 621
+    move-result-object v2
+
     .line 622
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v57, v2
 
     .line 623
     .line 624
-    .line 625
-    move-result-object v2
+    check-cast v57, Landroid/widget/TextView;
 
+    .line 625
     .line 626
-    move-object/from16 v58, v2
+    if-eqz v57, :cond_0
 
     .line 627
     .line 628
-    check-cast v58, Landroid/widget/ScrollView;
+    sget v1, Lorg/levimc/launcher/R$id;->text_mod_menu_opacity:I
 
     .line 629
     .line 630
-    if-eqz v58, :cond_0
+    invoke-static {v1, v0}, Lkd/h;->m(ILandroid/view/View;)Landroid/view/View;
 
     .line 631
     .line 632
-    sget v1, Lorg/levimc/launcher/R$id;->text_hud_button_size:I
-
     .line 633
+    move-result-object v2
+
     .line 634
-    invoke-static {v1, v0}, Lwh/k;->p(ILandroid/view/View;)Landroid/view/View;
+    move-object/from16 v58, v2
 
     .line 635
     .line 636
-    .line 637
-    move-result-object v2
+    check-cast v58, Landroid/widget/TextView;
 
+    .line 637
     .line 638
-    move-object/from16 v59, v2
+    if-eqz v58, :cond_0
 
     .line 639
     .line 640
-    check-cast v59, Landroid/widget/TextView;
+    new-instance v3, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;
 
     .line 641
     .line 642
-    if-eqz v59, :cond_0
-
-    .line 643
-    .line 644
-    new-instance v3, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;
-
-    .line 645
-    .line 646
     move-object v4, v0
 
-    .line 647
+    .line 643
     check-cast v4, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;
 
+    .line 644
+    .line 645
+    invoke-direct/range {v3 .. v58}, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/HorizontalScrollView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroidx/cardview/widget/CardView;Landroid/widget/FrameLayout;Landroid/widget/FrameLayout;Landroidx/cardview/widget/CardView;Landroid/widget/TextView;Landroid/widget/ImageView;Landroid/widget/LinearLayout;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/EditText;Landroid/widget/SeekBar;Landroid/widget/SeekBar;Landroid/widget/SeekBar;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/ScrollView;Landroid/widget/Switch;Landroid/widget/Switch;Landroid/widget/Switch;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;)V
+
+    .line 646
+    .line 647
     .line 648
+    return-object v3
+
     .line 649
-    invoke-direct/range {v3 .. v59}, Lorg/levimc/launcher/databinding/OverlayModMenuBinding;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuKeyRoot;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroidx/cardview/widget/CardView;Landroid/widget/LinearLayout;Landroid/widget/LinearLayout;Landroid/widget/TextView;Landroid/widget/LinearLayout;Landroid/view/View;Landroid/widget/Space;Landroid/widget/TextView;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/view/View;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/FrameLayout;Landroidx/cardview/widget/CardView;Landroid/widget/ImageView;Landroid/widget/LinearLayout;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuSurface;Landroidx/recyclerview/widget/RecyclerView;Landroid/widget/TextView;Landroid/widget/FrameLayout;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/TextView;Landroid/widget/ImageButton;Landroid/widget/LinearLayout;Landroid/widget/EditText;Landroid/widget/SeekBar;Landroid/widget/ScrollView;Landroid/widget/TextView;)V
+    :cond_0
+    invoke-virtual {v0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
 
     .line 650
     .line 651
     .line 652
-    return-object v3
+    move-result-object v0
 
     .line 653
-    :cond_0
-    invoke-virtual {v0}, Landroid/view/View;->getResources()Landroid/content/res/Resources;
+    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
 
     .line 654
     .line 655
@@ -1706,35 +1699,27 @@
     move-result-object v0
 
     .line 657
-    invoke-virtual {v0, v1}, Landroid/content/res/Resources;->getResourceName(I)Ljava/lang/String;
+    new-instance v1, Ljava/lang/NullPointerException;
 
     .line 658
     .line 659
-    .line 660
-    move-result-object v0
+    const-string v2, "Missing required view with ID: "
 
+    .line 660
     .line 661
-    new-instance v1, Ljava/lang/NullPointerException;
+    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
 
     .line 662
     .line 663
-    const-string v2, "Missing required view with ID: "
-
     .line 664
+    move-result-object v0
+
     .line 665
-    invoke-virtual {v2, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {v1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
 
     .line 666
     .line 667
     .line 668
-    move-result-object v0
-
-    .line 669
-    invoke-direct {v1, v0}, Ljava/lang/NullPointerException;-><init>(Ljava/lang/String;)V
-
-    .line 670
-    .line 671
-    .line 672
     throw v1
 .end method
 

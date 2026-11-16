@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/news/ChangelogManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -795,7 +795,7 @@
 
     .line 19
     :catch_0
-    const-wide/32 v0, 0x384b5ee
+    const-wide/32 v0, 0x3797b6e
 
     .line 20
     .line 21
@@ -1299,7 +1299,7 @@
 
     .line 51
     .line 52
-    invoke-virtual {v2, v3, v1}, Lcom/google/gson/Gson;->d(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
+    invoke-virtual {v2, v3, v1}, Lcom/google/gson/Gson;->c(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Object;
 
     .line 53
     .line 54
@@ -1981,7 +1981,7 @@
 
     .line 81
     .line 82
-    const-string v9, "1.7.0"
+    const-string v9, "1.6.1"
 
     .line 83
     .line 84

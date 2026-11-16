@@ -1,36 +1,36 @@
 .class public final Lw0/i;
-.super Ly8/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lw8/c;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public synthetic X:Ljava/lang/Object;
+.field public X:Lw0/c0;
 
-.field public final synthetic Y:Lw0/j;
+.field public synthetic Y:Ljava/lang/Object;
 
-.field public Z:I
+.field public final synthetic Z:Lw0/j;
 
-.field public p:Ljava/lang/Object;
+.field public b1:I
 
 .field public q:Ljava/lang/Object;
 
 .field public w:Ljava/lang/Object;
 
-.field public x:Lh9/q;
+.field public x:Ljava/lang/Object;
 
-.field public y:Lw0/b0;
+.field public y:Lf9/q;
 
 
 # direct methods
-.method public constructor <init>(Lw0/j;Ly8/c;)V
+.method public constructor <init>(Lw0/j;Lw8/c;)V
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lw0/i;->Y:Lw0/j;
+    iput-object p1, p0, Lw0/i;->Z:Lw0/j;
 
     .line 2
     .line 3
-    invoke-direct {p0, p2}, Ly8/c;-><init>(Lkotlin/coroutines/Continuation;)V
+    invoke-direct {p0, p2}, Lw8/c;-><init>(Lkotlin/coroutines/Continuation;)V
 
     .line 4
     .line 5
@@ -44,11 +44,11 @@
     .locals 1
 
     .line 1
-    iput-object p1, p0, Lw0/i;->X:Ljava/lang/Object;
+    iput-object p1, p0, Lw0/i;->Y:Ljava/lang/Object;
 
     .line 2
     .line 3
-    iget p1, p0, Lw0/i;->Z:I
+    iget p1, p0, Lw0/i;->b1:I
 
     .line 4
     .line 5
@@ -59,18 +59,18 @@
     or-int/2addr p1, v0
 
     .line 8
-    iput p1, p0, Lw0/i;->Z:I
+    iput p1, p0, Lw0/i;->b1:I
 
     .line 9
     .line 10
-    iget-object p1, p0, Lw0/i;->Y:Lw0/j;
+    iget-object p1, p0, Lw0/i;->Z:Lw0/j;
 
     .line 11
     .line 12
     const/4 v0, 0x0
 
     .line 13
-    invoke-virtual {p1, v0, p0}, Lw0/j;->a(Lw0/f;Ly8/c;)Ljava/lang/Object;
+    invoke-virtual {p1, v0, p0}, Lw0/j;->a(Lw0/f;Lw8/c;)Ljava/lang/Object;
 
     .line 14
     .line 15

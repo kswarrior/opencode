@@ -1,6 +1,6 @@
 .class public final Lcom/bumptech/glide/load/data/g;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/bumptech/glide/load/data/f;
@@ -80,7 +80,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Ljava/io/InputStream;Lig/a;)V
+.method public constructor <init>(Ljava/io/InputStream;Lqf/a;)V
     .locals 1
 
     const/4 v0, 0x3
@@ -91,16 +91,16 @@
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 4
-    new-instance v0, Lb3/z;
+    new-instance v0, Lb3/y;
 
-    invoke-direct {v0, p1, p2}, Lb3/z;-><init>(Ljava/io/InputStream;Lig/a;)V
+    invoke-direct {v0, p1, p2}, Lb3/y;-><init>(Ljava/io/InputStream;Lqf/a;)V
 
     iput-object v0, p0, Lcom/bumptech/glide/load/data/g;->d:Ljava/lang/Object;
 
     const/high16 p1, 0x500000
 
     .line 5
-    invoke-virtual {v0, p1}, Lb3/z;->mark(I)V
+    invoke-virtual {v0, p1}, Lb3/y;->mark(I)V
 
     return-void
 .end method
@@ -154,11 +154,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lb3/z;
+    check-cast v0, Lb3/y;
 
     .line 9
     .line 10
-    invoke-virtual {v0}, Lb3/z;->reset()V
+    invoke-virtual {v0}, Lb3/y;->reset()V
 
     .line 11
     .line 12
@@ -221,11 +221,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lb3/z;
+    check-cast v0, Lb3/y;
 
     .line 9
     .line 10
-    invoke-virtual {v0}, Lb3/z;->release()V
+    invoke-virtual {v0}, Lb3/y;->release()V
 
     .line 11
     .line 12

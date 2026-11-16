@@ -1,82 +1,102 @@
 .class public final Lg/c;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Landroid/widget/AdapterView$OnItemClickListener;
+.super Landroid/os/Handler;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic c:Lg/g;
-
-.field public final synthetic d:Landroidx/appcompat/app/AlertController$AlertParams;
-
-
-# direct methods
-.method public constructor <init>(Landroidx/appcompat/app/AlertController$AlertParams;Lg/g;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lg/c;->d:Landroidx/appcompat/app/AlertController$AlertParams;
-
-    .line 5
-    .line 6
-    iput-object p2, p0, Lg/c;->c:Lg/g;
-
-    .line 7
-    .line 8
-    return-void
-.end method
+.field public a:Ljava/lang/ref/WeakReference;
 
 
 # virtual methods
-.method public final onItemClick(Landroid/widget/AdapterView;Landroid/view/View;IJ)V
-    .locals 0
+.method public final handleMessage(Landroid/os/Message;)V
+    .locals 2
 
     .line 1
-    iget-object p1, p0, Lg/c;->d:Landroidx/appcompat/app/AlertController$AlertParams;
+    iget v0, p1, Landroid/os/Message;->what:I
 
     .line 2
     .line 3
-    iget-object p2, p1, Landroidx/appcompat/app/AlertController$AlertParams;->w:Landroid/content/DialogInterface$OnClickListener;
+    const/4 v1, -0x3
 
     .line 4
-    .line 5
-    iget-object p4, p0, Lg/c;->c:Lg/g;
+    if-eq v0, v1, :cond_1
 
+    .line 5
     .line 6
+    const/4 v1, -0x2
+
     .line 7
-    iget-object p5, p4, Lg/g;->b:Landroidx/appcompat/app/AlertDialog;
+    if-eq v0, v1, :cond_1
 
     .line 8
     .line 9
-    invoke-interface {p2, p5, p3}, Landroid/content/DialogInterface$OnClickListener;->onClick(Landroid/content/DialogInterface;I)V
+    const/4 v1, -0x1
 
     .line 10
+    if-eq v0, v1, :cond_1
+
     .line 11
     .line 12
-    iget-boolean p1, p1, Landroidx/appcompat/app/AlertController$AlertParams;->G:Z
+    const/4 v1, 0x1
 
     .line 13
-    .line 14
-    if-nez p1, :cond_0
+    if-eq v0, v1, :cond_0
 
+    .line 14
     .line 15
+    return-void
+
     .line 16
-    iget-object p1, p4, Lg/g;->b:Landroidx/appcompat/app/AlertDialog;
+    :cond_0
+    iget-object p1, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
 
     .line 17
     .line 18
-    invoke-virtual {p1}, Lg/e0;->dismiss()V
+    check-cast p1, Landroid/content/DialogInterface;
 
     .line 19
     .line 20
+    invoke-interface {p1}, Landroid/content/DialogInterface;->dismiss()V
+
     .line 21
-    :cond_0
+    .line 22
+    .line 23
+    return-void
+
+    .line 24
+    :cond_1
+    iget-object v0, p1, Landroid/os/Message;->obj:Ljava/lang/Object;
+
+    .line 25
+    .line 26
+    check-cast v0, Landroid/content/DialogInterface$OnClickListener;
+
+    .line 27
+    .line 28
+    iget-object v1, p0, Lg/c;->a:Ljava/lang/ref/WeakReference;
+
+    .line 29
+    .line 30
+    invoke-virtual {v1}, Ljava/lang/ref/Reference;->get()Ljava/lang/Object;
+
+    .line 31
+    .line 32
+    .line 33
+    move-result-object v1
+
+    .line 34
+    check-cast v1, Landroid/content/DialogInterface;
+
+    .line 35
+    .line 36
+    iget p1, p1, Landroid/os/Message;->what:I
+
+    .line 37
+    .line 38
+    invoke-interface {v0, v1, p1}, Landroid/content/DialogInterface$OnClickListener;->onClick(Landroid/content/DialogInterface;I)V
+
+    .line 39
+    .line 40
+    .line 41
     return-void
 .end method

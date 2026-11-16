@@ -1,12 +1,12 @@
 .class public final Lcom/google/firebase/messaging/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
 .field public static final c:Ljava/lang/Object;
 
-.field public static d:Lcom/google/firebase/messaging/h0;
+.field public static d:Lcom/google/firebase/messaging/g0;
 
 
 # instance fields
@@ -125,7 +125,7 @@
 
     .line 20
     :try_start_0
-    sget-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/h0;
+    sget-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/g0;
 
     .line 21
     .line 22
@@ -133,16 +133,16 @@
 
     .line 23
     .line 24
-    new-instance v1, Lcom/google/firebase/messaging/h0;
+    new-instance v1, Lcom/google/firebase/messaging/g0;
 
     .line 25
     .line 26
-    invoke-direct {v1, p0}, Lcom/google/firebase/messaging/h0;-><init>(Landroid/content/Context;)V
+    invoke-direct {v1, p0}, Lcom/google/firebase/messaging/g0;-><init>(Landroid/content/Context;)V
 
     .line 27
     .line 28
     .line 29
-    sput-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/h0;
+    sput-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/g0;
 
     .line 30
     .line 31
@@ -158,7 +158,7 @@
     .line 34
     :cond_1
     :goto_0
-    sget-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/h0;
+    sget-object v1, Lcom/google/firebase/messaging/i;->d:Lcom/google/firebase/messaging/g0;
 
     .line 35
     .line 36
@@ -171,7 +171,7 @@
 
     .line 38
     .line 39
-    invoke-static {}, Lcom/google/firebase/messaging/v;->v()Lcom/google/firebase/messaging/v;
+    invoke-static {}, Lcom/google/firebase/messaging/u;->t()Lcom/google/firebase/messaging/u;
 
     .line 40
     .line 41
@@ -179,7 +179,7 @@
     move-result-object p2
 
     .line 43
-    invoke-virtual {p2, p0}, Lcom/google/firebase/messaging/v;->B(Landroid/content/Context;)Z
+    invoke-virtual {p2, p0}, Lcom/google/firebase/messaging/u;->z(Landroid/content/Context;)Z
 
     .line 44
     .line 45
@@ -191,7 +191,7 @@
 
     .line 48
     .line 49
-    sget-object p2, Lcom/google/firebase/messaging/e0;->b:Ljava/lang/Object;
+    sget-object p2, Lcom/google/firebase/messaging/d0;->b:Ljava/lang/Object;
 
     .line 50
     .line 51
@@ -199,7 +199,7 @@
 
     .line 52
     :try_start_1
-    invoke-static {p0}, Lcom/google/firebase/messaging/e0;->a(Landroid/content/Context;)V
+    invoke-static {p0}, Lcom/google/firebase/messaging/d0;->a(Landroid/content/Context;)V
 
     .line 53
     .line 54
@@ -235,11 +235,11 @@
 
     .line 69
     .line 70
-    sget-object p0, Lcom/google/firebase/messaging/e0;->c:Lv4/a;
+    sget-object p0, Lcom/google/firebase/messaging/d0;->c:Lv4/a;
 
     .line 71
     .line 72
-    sget-wide v2, Lcom/google/firebase/messaging/e0;->a:J
+    sget-wide v2, Lcom/google/firebase/messaging/d0;->a:J
 
     .line 73
     .line 74
@@ -260,7 +260,7 @@
     .line 80
     :cond_2
     :goto_1
-    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/h0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
+    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/g0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
 
     .line 81
     .line 82
@@ -268,14 +268,14 @@
     move-result-object p0
 
     .line 84
-    new-instance v0, La6/c0;
+    new-instance v0, Lc/m;
 
     .line 85
     .line 86
-    const/4 v1, 0x4
+    const/4 v1, 0x2
 
     .line 87
-    invoke-direct {v0, p1, v1}, La6/c0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p1, v1}, Lc/m;-><init>(Ljava/lang/Object;I)V
 
     .line 88
     .line 89
@@ -301,7 +301,7 @@
 
     .line 97
     :cond_3
-    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/h0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
+    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/g0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
 
     .line 98
     .line 99
@@ -330,7 +330,7 @@
 
     .line 110
     :cond_4
-    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/h0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
+    invoke-virtual {v1, p1}, Lcom/google/firebase/messaging/g0;->b(Landroid/content/Intent;)Lcom/google/android/gms/tasks/Task;
 
     .line 111
     .line 112
@@ -350,37 +350,36 @@
     .line 118
     .line 119
     .line 120
-    new-instance p2, La4/f;
+    new-instance p2, La4/e;
 
     .line 121
     .line 122
-    const/16 v0, 0x10
+    const/4 v0, 0x7
 
     .line 123
-    .line 124
-    invoke-direct {p2, v0}, La4/f;-><init>(I)V
+    invoke-direct {p2, v0}, La4/e;-><init>(I)V
 
+    .line 124
     .line 125
     .line 126
-    .line 127
     invoke-virtual {p0, p1, p2}, Lcom/google/android/gms/tasks/Task;->continueWith(Ljava/util/concurrent/Executor;Lcom/google/android/gms/tasks/Continuation;)Lcom/google/android/gms/tasks/Task;
 
+    .line 127
     .line 128
     .line 129
-    .line 130
     move-result-object p0
 
-    .line 131
+    .line 130
     return-object p0
 
-    .line 132
+    .line 131
     :goto_4
     :try_start_2
     monitor-exit v0
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
-    .line 133
+    .line 132
     throw p0
 .end method
 

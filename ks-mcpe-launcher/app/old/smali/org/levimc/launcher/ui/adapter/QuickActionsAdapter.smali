@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/adapter/QuickActionsAdapter;
 .super Landroidx/recyclerview/widget/RecyclerView$Adapter;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -220,7 +220,7 @@
 
     new-instance v0, Lorg/levimc/launcher/ui/adapter/b;
 
-    const/4 v1, 0x4
+    const/4 v1, 0x3
 
     invoke-direct {v0, p0, p2, v1}, Lorg/levimc/launcher/ui/adapter/b;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 

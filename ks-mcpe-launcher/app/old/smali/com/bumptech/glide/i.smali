@@ -1,6 +1,6 @@
 .class public final enum Lcom/bumptech/glide/i;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -10,9 +10,9 @@
 
 .field public static final enum h:Lcom/bumptech/glide/i;
 
-.field public static final enum p:Lcom/bumptech/glide/i;
+.field public static final enum q:Lcom/bumptech/glide/i;
 
-.field public static final synthetic q:[Lcom/bumptech/glide/i;
+.field public static final synthetic w:[Lcom/bumptech/glide/i;
 
 
 # direct methods
@@ -96,7 +96,7 @@
     .line 37
     .line 38
     .line 39
-    sput-object v3, Lcom/bumptech/glide/i;->p:Lcom/bumptech/glide/i;
+    sput-object v3, Lcom/bumptech/glide/i;->q:Lcom/bumptech/glide/i;
 
     .line 40
     .line 41
@@ -108,7 +108,7 @@
     move-result-object v0
 
     .line 45
-    sput-object v0, Lcom/bumptech/glide/i;->q:[Lcom/bumptech/glide/i;
+    sput-object v0, Lcom/bumptech/glide/i;->w:[Lcom/bumptech/glide/i;
 
     .line 46
     .line 47
@@ -142,7 +142,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lcom/bumptech/glide/i;->q:[Lcom/bumptech/glide/i;
+    sget-object v0, Lcom/bumptech/glide/i;->w:[Lcom/bumptech/glide/i;
 
     .line 2
     .line 3

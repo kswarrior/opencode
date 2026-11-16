@@ -1,33 +1,33 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/widget/CompoundButton$OnCheckedChangeListener;
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final synthetic b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
-.field public final synthetic c:Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
+.field public final synthetic h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->a:I
+    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->c:Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 6
     .line 7
@@ -41,11 +41,11 @@
 
 
 # virtual methods
-.method public final onCheckedChanged(Landroid/widget/CompoundButton;Z)V
+.method public final run()V
     .locals 2
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->a:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->c:I
 
     .line 2
     .line 3
@@ -54,15 +54,15 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 7
     .line 8
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->c:Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 9
     .line 10
-    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;Landroid/widget/CompoundButton;Z)V
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->l(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
 
     .line 11
     .line 12
@@ -71,15 +71,15 @@
 
     .line 14
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->b:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 15
     .line 16
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->c:Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
 
     .line 17
     .line 18
-    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->J(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Lorg/levimc/launcher/core/mods/inbuilt/manager/InbuiltModManager;Landroid/widget/CompoundButton;Z)V
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->p(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
 
     .line 19
     .line 20
@@ -87,11 +87,47 @@
     return-void
 
     .line 22
-    nop
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
     .line 23
+    .line 24
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+
+    .line 25
+    .line 26
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
+
+    .line 31
+    .line 32
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/p0;->h:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;
+
+    .line 33
+    .line 34
+    invoke-static {v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    nop
+
+    .line 39
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

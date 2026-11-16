@@ -1,15 +1,15 @@
 .class public final Ly2/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lcom/bumptech/glide/load/data/d;
+.implements Ly2/s;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final d:Ljava/lang/Object;
+.field public final b:Ljava/lang/Object;
 
 
 # direct methods
@@ -17,11 +17,11 @@
     .locals 0
 
     .line 1
-    iput p2, p0, Ly2/d;->c:I
+    iput p2, p0, Ly2/d;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Ly2/d;->d:Ljava/lang/Object;
+    iput-object p1, p0, Ly2/d;->b:Ljava/lang/Object;
 
     .line 4
     .line 5
@@ -33,234 +33,230 @@
     return-void
 .end method
 
-.method private final c()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method private final f()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method private final g()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
-.method private final h()V
-    .locals 0
-
-    .line 1
-    return-void
-.end method
-
 
 # virtual methods
-.method public final a()Ljava/lang/Class;
-    .locals 1
-
-    .line 1
-    iget v0, p0, Ly2/d;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    iget-object v0, p0, Ly2/d;->d:Ljava/lang/Object;
-
-    .line 7
-    .line 8
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
-    .line 9
-    .line 10
-    .line 11
-    move-result-object v0
-
-    .line 12
-    return-object v0
-
-    .line 13
-    :pswitch_0
-    const-class v0, Ljava/nio/ByteBuffer;
-
-    .line 14
-    .line 15
-    return-object v0
-
-    .line 16
-    nop
-
-    .line 17
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final b()V
-    .locals 1
-
-    .line 1
-    iget v0, p0, Ly2/d;->c:I
-
-    .line 2
-    .line 3
-    return-void
-.end method
-
-.method public final cancel()V
-    .locals 1
-
-    .line 1
-    iget v0, p0, Ly2/d;->c:I
-
-    .line 2
-    .line 3
-    return-void
-.end method
-
-.method public final d()I
-    .locals 1
-
-    .line 1
-    iget v0, p0, Ly2/d;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
-
-    .line 4
-    .line 5
-    .line 6
-    const/4 v0, 0x1
-
-    .line 7
-    return v0
-
-    .line 8
-    :pswitch_0
-    const/4 v0, 0x1
-
-    .line 9
-    return v0
-
-    .line 10
-    nop
-
-    .line 11
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
-.end method
-
-.method public final e(Lcom/bumptech/glide/i;Lcom/bumptech/glide/load/data/c;)V
+.method public final a(Ljava/lang/Object;IILs2/h;)Ly2/r;
     .locals 2
 
     .line 1
-    iget p1, p0, Ly2/d;->c:I
+    iget p2, p0, Ly2/d;->a:I
 
     .line 2
     .line 3
-    packed-switch p1, :pswitch_data_0
+    packed-switch p2, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    iget-object p1, p0, Ly2/d;->d:Ljava/lang/Object;
+    check-cast p1, Ljava/io/File;
 
     .line 7
     .line 8
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->f(Ljava/lang/Object;)V
+    new-instance p2, Ly2/r;
 
     .line 9
     .line 10
-    .line 11
-    return-void
+    new-instance p3, Ln3/b;
 
+    .line 11
     .line 12
-    :pswitch_0
-    :try_start_0
-    iget-object p1, p0, Ly2/d;->d:Ljava/lang/Object;
+    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
 
     .line 13
     .line 14
+    .line 15
+    new-instance p4, Lt2/b;
+
+    .line 16
+    .line 17
+    iget-object v0, p0, Ly2/d;->b:Ljava/lang/Object;
+
+    .line 18
+    .line 19
+    check-cast v0, Ly2/b0;
+
+    .line 20
+    .line 21
+    const/4 v1, 0x2
+
+    .line 22
+    invoke-direct {p4, p1, v0, v1}, Lt2/b;-><init>(Ljava/lang/Comparable;Ljava/lang/Object;I)V
+
+    .line 23
+    .line 24
+    .line 25
+    invoke-direct {p2, p3, p4}, Ly2/r;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
+
+    .line 26
+    .line 27
+    .line 28
+    return-object p2
+
+    .line 29
+    :pswitch_0
+    new-instance p2, Ly2/r;
+
+    .line 30
+    .line 31
+    new-instance p3, Ln3/b;
+
+    .line 32
+    .line 33
+    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
+
+    .line 34
+    .line 35
+    .line 36
+    new-instance p4, Lt2/b;
+
+    .line 37
+    .line 38
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object p1
+
+    .line 42
+    iget-object v0, p0, Ly2/d;->b:Ljava/lang/Object;
+
+    .line 43
+    .line 44
+    check-cast v0, Ly2/b0;
+
+    .line 45
+    .line 46
+    const/4 v1, 0x1
+
+    .line 47
+    invoke-direct {p4, p1, v0, v1}, Lt2/b;-><init>(Ljava/lang/Comparable;Ljava/lang/Object;I)V
+
+    .line 48
+    .line 49
+    .line 50
+    invoke-direct {p2, p3, p4}, Ly2/r;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
+
+    .line 51
+    .line 52
+    .line 53
+    return-object p2
+
+    .line 54
+    :pswitch_1
+    check-cast p1, [B
+
+    .line 55
+    .line 56
+    new-instance p2, Ly2/r;
+
+    .line 57
+    .line 58
+    new-instance p3, Ln3/b;
+
+    .line 59
+    .line 60
+    invoke-direct {p3, p1}, Ln3/b;-><init>(Ljava/lang/Object;)V
+
+    .line 61
+    .line 62
+    .line 63
+    new-instance p4, Ly2/n;
+
+    .line 64
+    .line 65
+    iget-object v0, p0, Ly2/d;->b:Ljava/lang/Object;
+
+    .line 66
+    .line 67
+    check-cast v0, Ly2/b0;
+
+    .line 68
+    .line 69
+    const/4 v1, 0x1
+
+    .line 70
+    invoke-direct {p4, p1, v0, v1}, Ly2/n;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 71
+    .line 72
+    .line 73
+    invoke-direct {p2, p3, p4}, Ly2/r;-><init>(Ls2/e;Lcom/bumptech/glide/load/data/d;)V
+
+    .line 74
+    .line 75
+    .line 76
+    return-object p2
+
+    .line 77
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public final b(Ljava/lang/Object;)Z
+    .locals 1
+
+    .line 1
+    iget v0, p0, Ly2/d;->a:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
     check-cast p1, Ljava/io/File;
+
+    .line 7
+    .line 8
+    const/4 p1, 0x1
+
+    .line 9
+    return p1
+
+    .line 10
+    :pswitch_0
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    .line 11
+    .line 12
+    .line 13
+    move-result-object p1
+
+    .line 14
+    const-string v0, "data:image"
 
     .line 15
     .line 16
-    invoke-static {p1}, Lo3/b;->a(Ljava/io/File;)Ljava/nio/MappedByteBuffer;
+    invoke-virtual {p1, v0}, Ljava/lang/String;->startsWith(Ljava/lang/String;)Z
 
     .line 17
     .line 18
     .line 19
-    move-result-object p1
+    move-result p1
 
     .line 20
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->f(Ljava/lang/Object;)V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    return p1
 
     .line 21
+    :pswitch_1
+    check-cast p1, [B
+
     .line 22
     .line 23
-    goto :goto_0
+    const/4 p1, 0x1
 
     .line 24
-    :catch_0
-    move-exception p1
+    return p1
 
     .line 25
-    const/4 v0, 0x3
-
-    .line 26
-    const-string v1, "ByteBufferFileLoader"
-
-    .line 27
-    .line 28
-    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
-
-    .line 29
-    .line 30
-    .line 31
-    move-result v0
-
-    .line 32
-    if-eqz v0, :cond_0
-
-    .line 33
-    .line 34
-    const-string v0, "Failed to obtain ByteBuffer for file"
-
-    .line 35
-    .line 36
-    invoke-static {v1, v0, p1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-
-    .line 37
-    .line 38
-    .line 39
-    :cond_0
-    invoke-interface {p2, p1}, Lcom/bumptech/glide/load/data/c;->c(Ljava/lang/Exception;)V
-
-    .line 40
-    .line 41
-    .line 42
-    :goto_0
-    return-void
-
     :pswitch_data_0
     .packed-switch 0x0
+        :pswitch_1
         :pswitch_0
     .end packed-switch
 .end method

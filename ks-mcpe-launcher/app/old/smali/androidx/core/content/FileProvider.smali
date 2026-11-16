@@ -1,14 +1,14 @@
 .class public Landroidx/core/content/FileProvider;
 .super Landroid/content/ContentProvider;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final p:[Ljava/lang/String;
+.field public static final q:[Ljava/lang/String;
 
-.field public static final q:Ljava/io/File;
+.field public static final w:Ljava/io/File;
 
-.field public static final w:Ljava/util/HashMap;
+.field public static final x:Ljava/util/HashMap;
 
 
 # instance fields
@@ -40,7 +40,7 @@
     move-result-object v0
 
     .line 9
-    sput-object v0, Landroidx/core/content/FileProvider;->p:[Ljava/lang/String;
+    sput-object v0, Landroidx/core/content/FileProvider;->q:[Ljava/lang/String;
 
     .line 10
     .line 11
@@ -57,7 +57,7 @@
     .line 16
     .line 17
     .line 18
-    sput-object v0, Landroidx/core/content/FileProvider;->q:Ljava/io/File;
+    sput-object v0, Landroidx/core/content/FileProvider;->w:Ljava/io/File;
 
     .line 19
     .line 20
@@ -70,7 +70,7 @@
     .line 23
     .line 24
     .line 25
-    sput-object v0, Landroidx/core/content/FileProvider;->w:Ljava/util/HashMap;
+    sput-object v0, Landroidx/core/content/FileProvider;->x:Ljava/util/HashMap;
 
     .line 26
     .line 27
@@ -103,7 +103,7 @@
 .end method
 
 .method public static a(Ljava/lang/String;)Ljava/lang/String;
-    .locals 3
+    .locals 2
 
     .line 1
     invoke-virtual {p0}, Ljava/lang/String;->length()I
@@ -126,11 +126,9 @@
     move-result v0
 
     .line 11
-    const/4 v1, 0x1
+    add-int/lit8 v0, v0, -0x1
 
     .line 12
-    sub-int/2addr v0, v1
-
     .line 13
     invoke-virtual {p0, v0}, Ljava/lang/String;->charAt(I)C
 
@@ -140,25 +138,37 @@
     move-result v0
 
     .line 17
-    const/16 v2, 0x2f
+    const/16 v1, 0x2f
 
     .line 18
     .line 19
-    if-ne v0, v2, :cond_0
+    if-ne v0, v1, :cond_0
 
     .line 20
     .line 21
-    const/4 v0, 0x0
+    invoke-virtual {p0}, Ljava/lang/String;->length()I
 
     .line 22
-    invoke-static {v1, v0, p0}, Lcom/google/android/gms/internal/measurement/x;->j(IILjava/lang/String;)Ljava/lang/String;
-
     .line 23
     .line 24
+    move-result v0
+
     .line 25
-    move-result-object p0
+    add-int/lit8 v0, v0, -0x1
 
     .line 26
+    .line 27
+    const/4 v1, 0x0
+
+    .line 28
+    invoke-virtual {p0, v1, v0}, Ljava/lang/String;->substring(II)Ljava/lang/String;
+
+    .line 29
+    .line 30
+    .line 31
+    move-result-object p0
+
+    .line 32
     :cond_0
     return-object p0
 .end method
@@ -167,7 +177,7 @@
     .locals 2
 
     .line 1
-    sget-object v0, Landroidx/core/content/FileProvider;->w:Ljava/util/HashMap;
+    sget-object v0, Landroidx/core/content/FileProvider;->x:Ljava/util/HashMap;
 
     .line 2
     .line 3
@@ -684,7 +694,7 @@
 
     .line 197
     .line 198
-    invoke-static {p2, p1}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {p2, p1}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 199
     .line 200
@@ -705,23 +715,37 @@
 
     .line 207
     .line 208
-    const-string p1, "Failed to resolve canonical path for "
+    new-instance p1, Ljava/lang/StringBuilder;
 
     .line 209
     .line 210
-    invoke-static {p2, p1}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
+    const-string v0, "Failed to resolve canonical path for "
 
     .line 211
     .line 212
+    invoke-direct {p1, v0}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 213
-    move-result-object p1
-
     .line 214
-    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 215
+    invoke-virtual {p1, p2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 216
     .line 217
+    .line 218
+    invoke-virtual {p1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 219
+    .line 220
+    .line 221
+    move-result-object p1
+
+    .line 222
+    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 223
+    .line 224
+    .line 225
     throw p0
 .end method
 
@@ -864,7 +888,7 @@
 
     .line 65
     .line 66
-    sget-object v3, Landroidx/core/content/FileProvider;->q:Ljava/io/File;
+    sget-object v3, Landroidx/core/content/FileProvider;->w:Ljava/io/File;
 
     .line 67
     .line 68
@@ -1148,86 +1172,100 @@
 
     .line 196
     .line 197
-    const-string v0, "Failed to resolve canonical path for "
+    new-instance v0, Ljava/lang/StringBuilder;
 
     .line 198
     .line 199
-    invoke-static {v3, v0}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
+    const-string v1, "Failed to resolve canonical path for "
 
     .line 200
     .line 201
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 202
-    move-result-object v0
-
     .line 203
-    invoke-direct {p1, v0, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
-
     .line 204
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 205
     .line 206
-    throw p1
-
     .line 207
-    :cond_9
-    new-instance p0, Ljava/lang/IllegalArgumentException;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 208
     .line 209
-    const-string p1, "Name must not be empty"
-
     .line 210
+    move-result-object v0
+
     .line 211
-    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    invoke-direct {p1, v0, p0}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;Ljava/lang/Throwable;)V
 
     .line 212
     .line 213
     .line 214
-    throw p0
+    throw p1
 
     .line 215
+    :cond_9
+    new-instance p0, Ljava/lang/IllegalArgumentException;
+
+    .line 216
+    .line 217
+    const-string p1, "Name must not be empty"
+
+    .line 218
+    .line 219
+    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 220
+    .line 221
+    .line 222
+    throw p0
+
+    .line 223
     :cond_a
     return-object v0
 
-    .line 216
-    :cond_b
-    new-instance p0, Ljava/lang/IllegalArgumentException;
-
-    .line 217
-    .line 218
-    const-string p1, "Missing android.support.FILE_PROVIDER_PATHS meta-data"
-
-    .line 219
-    .line 220
-    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 221
-    .line 222
-    .line 223
-    throw p0
-
     .line 224
-    :cond_c
+    :cond_b
     new-instance p0, Ljava/lang/IllegalArgumentException;
 
     .line 225
     .line 226
-    const-string v0, "Couldn\'t find meta-data for provider with authority "
+    const-string p1, "Missing android.support.FILE_PROVIDER_PATHS meta-data"
 
     .line 227
     .line 228
-    invoke-static {v0, p1}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 229
     .line 230
     .line 231
-    move-result-object p1
+    throw p0
 
     .line 232
-    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+    :cond_c
+    new-instance p0, Ljava/lang/IllegalArgumentException;
 
     .line 233
     .line 234
+    const-string v0, "Couldn\'t find meta-data for provider with authority "
+
     .line 235
+    .line 236
+    invoke-static {v0, p1}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+
+    .line 237
+    .line 238
+    .line 239
+    move-result-object p1
+
+    .line 240
+    invoke-direct {p0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 241
+    .line 242
+    .line 243
     throw p0
 .end method
 
@@ -1326,7 +1364,7 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_1
 
     .line 43
-    sget-object v0, Landroidx/core/content/FileProvider;->w:Ljava/util/HashMap;
+    sget-object v0, Landroidx/core/content/FileProvider;->x:Ljava/util/HashMap;
 
     .line 44
     .line 45
@@ -1848,7 +1886,7 @@
 
     .line 73
     .line 74
-    invoke-static {v0, p2}, Ls1/a;->o(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, p2}, Ls1/a;->q(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 75
     .line 76
@@ -1918,7 +1956,7 @@
 
     .line 16
     .line 17
-    sget-object p2, Landroidx/core/content/FileProvider;->p:[Ljava/lang/String;
+    sget-object p2, Landroidx/core/content/FileProvider;->q:[Ljava/lang/String;
 
     .line 18
     .line 19

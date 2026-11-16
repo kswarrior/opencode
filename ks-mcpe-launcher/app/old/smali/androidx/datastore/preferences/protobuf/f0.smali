@@ -1,6 +1,6 @@
 .class public final Landroidx/datastore/preferences/protobuf/f0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -122,7 +122,7 @@
     iput-object p1, p0, Landroidx/datastore/preferences/protobuf/f0;->a:Ljava/lang/Object;
 
     .line 3
-    iput-object p0, p1, Landroidx/datastore/preferences/protobuf/m;->h:Landroidx/datastore/preferences/protobuf/f0;
+    iput-object p0, p1, Landroidx/datastore/preferences/protobuf/m;->a:Landroidx/datastore/preferences/protobuf/f0;
 
     return-void
 .end method
@@ -148,12 +148,12 @@
     const/4 v1, 0x3
 
     .line 8
-    invoke-virtual {v0, p1, v1}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
+    invoke-virtual {v0, p1, v1}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
 
     .line 9
     .line 10
     .line 11
-    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/m;->h:Landroidx/datastore/preferences/protobuf/f0;
+    iget-object v1, v0, Landroidx/datastore/preferences/protobuf/m;->a:Landroidx/datastore/preferences/protobuf/f0;
 
     .line 12
     .line 13
@@ -165,7 +165,7 @@
     const/4 p2, 0x4
 
     .line 17
-    invoke-virtual {v0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->V(II)V
+    invoke-virtual {v0, p1, p2}, Landroidx/datastore/preferences/protobuf/m;->e0(II)V
 
     .line 18
     .line 19

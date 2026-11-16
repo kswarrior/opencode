@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/ResourcepackHandler;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -132,7 +132,7 @@
 
     .line 19
     .line 20
-    const/16 v1, 0x9
+    const/16 v1, 0x8
 
     .line 21
     .line 22
@@ -157,14 +157,14 @@
 
     .line 2
     .line 3
-    new-instance v1, Lorg/levimc/launcher/util/i;
+    new-instance v1, Lorg/levimc/launcher/util/h;
 
     .line 4
     .line 5
-    const/4 v2, 0x6
+    const/4 v2, 0x5
 
     .line 6
-    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/i;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v1, p0, p1, v2}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 7
     .line 8
@@ -365,14 +365,14 @@
     move-result-object v2
 
     .line 89
-    new-instance v3, Lorg/levimc/launcher/util/h;
+    new-instance v3, Lorg/levimc/launcher/util/g;
 
     .line 90
     .line 91
     const/4 v4, 0x3
 
     .line 92
-    invoke-direct {v3, p0, v0, v4}, Lorg/levimc/launcher/util/h;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+    invoke-direct {v3, p0, v0, v4}, Lorg/levimc/launcher/util/g;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 93
     .line 94

@@ -1,91 +1,42 @@
 .class public final Lcom/google/android/gms/internal/measurement/o4;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lf6/k;
+.implements Lcom/google/android/gms/internal/measurement/n4;
 
 
 # static fields
-.field public static final d:Lcom/google/android/gms/internal/measurement/o4;
-
-
-# instance fields
-.field public final c:Lf6/n;
+.field public static final a:Lcom/google/android/gms/internal/measurement/ed;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 1
+    .locals 3
 
     .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/o4;
+    sget-object v0, Lcom/google/android/gms/internal/measurement/c3;->c:Lcom/google/android/gms/internal/measurement/o6;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lcom/google/android/gms/internal/measurement/o4;-><init>()V
+    const-string v1, "45752928"
 
     .line 4
     .line 5
+    const/4 v2, 0x0
+
     .line 6
-    sput-object v0, Lcom/google/android/gms/internal/measurement/o4;->d:Lcom/google/android/gms/internal/measurement/o4;
-
-    .line 7
-    .line 8
-    return-void
-.end method
-
-.method public constructor <init>()V
-    .locals 2
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    new-instance v0, Lcom/google/android/gms/internal/measurement/r4;
-
-    .line 5
-    .line 6
-    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/o6;->c(Ljava/lang/String;Z)Lcom/google/android/gms/internal/measurement/ed;
 
     .line 7
     .line 8
     .line 9
-    new-instance v1, Lf6/n;
+    move-result-object v0
 
     .line 10
+    sput-object v0, Lcom/google/android/gms/internal/measurement/o4;->a:Lcom/google/android/gms/internal/measurement/ed;
+
     .line 11
-    invoke-direct {v1, v0}, Lf6/n;-><init>(Ljava/lang/Object;)V
-
     .line 12
-    .line 13
-    .line 14
-    iput-object v1, p0, Lcom/google/android/gms/internal/measurement/o4;->c:Lf6/n;
-
-    .line 15
-    .line 16
     return-void
-.end method
-
-
-# virtual methods
-.method public final get()Ljava/lang/Object;
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/o4;->c:Lf6/n;
-
-    .line 2
-    .line 3
-    iget-object v0, v0, Lf6/n;->c:Ljava/lang/Object;
-
-    .line 4
-    .line 5
-    check-cast v0, Lcom/google/android/gms/internal/measurement/q4;
-
-    .line 6
-    .line 7
-    return-object v0
 .end method

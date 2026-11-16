@@ -1,266 +1,146 @@
 .class public final Lb3/t;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ls2/l;
-
-
-# instance fields
-.field public final b:Ls2/l;
-
-.field public final c:Z
-
-
-# direct methods
-.method public constructor <init>(Ls2/l;Z)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lb3/t;->b:Ls2/l;
-
-    .line 5
-    .line 6
-    iput-boolean p2, p0, Lb3/t;->c:Z
-
-    .line 7
-    .line 8
-    return-void
-.end method
+.implements Ls2/d;
 
 
 # virtual methods
-.method public final a(Landroid/content/Context;Lu2/y;II)Lu2/y;
-    .locals 2
+.method public final a(Ljava/nio/ByteBuffer;)Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
+    .locals 0
 
     .line 1
-    invoke-static {p1}, Lcom/bumptech/glide/b;->a(Landroid/content/Context;)Lcom/bumptech/glide/b;
+    sget-object p1, Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;->UNKNOWN:Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
 
     .line 2
     .line 3
-    .line 4
-    move-result-object v0
+    return-object p1
+.end method
 
+.method public final b(Ljava/nio/ByteBuffer;Lqf/a;)I
+    .locals 1
+
+    .line 1
+    sget-object v0, Lo3/b;->a:Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 2
+    .line 3
+    new-instance v0, Lo3/a;
+
+    .line 4
     .line 5
-    iget-object v0, v0, Lcom/bumptech/glide/b;->c:Lv2/a;
+    invoke-direct {v0, p1}, Lo3/a;-><init>(Ljava/nio/ByteBuffer;)V
 
     .line 6
     .line 7
-    invoke-interface {p2}, Lu2/y;->get()Ljava/lang/Object;
-
     .line 8
+    invoke-virtual {p0, v0, p2}, Lb3/t;->f(Ljava/io/InputStream;Lqf/a;)I
+
     .line 9
     .line 10
-    move-result-object v1
-
     .line 11
-    check-cast v1, Landroid/graphics/drawable/Drawable;
+    move-result p1
 
     .line 12
+    return p1
+.end method
+
+.method public final c(Ljava/nio/ByteBuffer;Lqf/a;)Z
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x0
+
+    .line 2
+    return p1
+.end method
+
+.method public final d(Ljava/io/InputStream;Lqf/a;)Z
+    .locals 0
+
+    .line 1
+    const/4 p1, 0x0
+
+    .line 2
+    return p1
+.end method
+
+.method public final e(Ljava/io/InputStream;)Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
+    .locals 0
+
+    .line 1
+    sget-object p1, Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;->UNKNOWN:Lcom/bumptech/glide/load/ImageHeaderParser$ImageType;
+
+    .line 2
+    .line 3
+    return-object p1
+.end method
+
+.method public final f(Ljava/io/InputStream;Lqf/a;)I
+    .locals 0
+
+    .line 1
+    new-instance p2, Lg1/g;
+
+    .line 2
+    .line 3
+    invoke-direct {p2, p1}, Lg1/g;-><init>(Ljava/io/InputStream;)V
+
+    .line 4
+    .line 5
+    .line 6
+    const-string p1, "Orientation"
+
+    .line 7
+    .line 8
+    invoke-virtual {p2, p1}, Lg1/g;->c(Ljava/lang/String;)Lg1/c;
+
+    .line 9
+    .line 10
+    .line 11
+    move-result-object p1
+
+    .line 12
+    if-nez p1, :cond_0
+
     .line 13
-    invoke-static {v0, v1, p3, p4}, Lb3/s;->a(Lv2/a;Landroid/graphics/drawable/Drawable;II)Lb3/d;
-
     .line 14
-    .line 15
-    .line 16
-    move-result-object v0
+    goto :goto_0
 
+    .line 15
+    :cond_0
+    :try_start_0
+    iget-object p2, p2, Lg1/g;->f:Ljava/nio/ByteOrder;
+
+    .line 16
     .line 17
-    if-nez v0, :cond_1
+    invoke-virtual {p1, p2}, Lg1/c;->e(Ljava/nio/ByteOrder;)I
 
     .line 18
     .line 19
-    iget-boolean p1, p0, Lb3/t;->c:Z
-
     .line 20
+    move-result p1
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
+
     .line 21
-    if-nez p1, :cond_0
+    goto :goto_1
 
     .line 22
+    :catch_0
+    :goto_0
+    const/4 p1, 0x1
+
     .line 23
-    return-object p2
+    :goto_1
+    if-nez p1, :cond_1
 
     .line 24
-    :cond_0
-    new-instance p1, Ljava/lang/IllegalArgumentException;
-
     .line 25
+    const/4 p1, -0x1
+
     .line 26
-    new-instance p2, Ljava/lang/StringBuilder;
-
-    .line 27
-    .line 28
-    const-string p3, "Unable to convert "
-
-    .line 29
-    .line 30
-    invoke-direct {p2, p3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
-    .line 31
-    .line 32
-    .line 33
-    invoke-virtual {p2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-
-    .line 34
-    .line 35
-    .line 36
-    const-string p3, " to a Bitmap"
-
-    .line 37
-    .line 38
-    invoke-virtual {p2, p3}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
-
-    .line 39
-    .line 40
-    .line 41
-    invoke-virtual {p2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
-    .line 42
-    .line 43
-    .line 44
-    move-result-object p2
-
-    .line 45
-    invoke-direct {p1, p2}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
-    .line 46
-    .line 47
-    .line 48
-    throw p1
-
-    .line 49
     :cond_1
-    iget-object v1, p0, Lb3/t;->b:Ls2/l;
-
-    .line 50
-    .line 51
-    invoke-interface {v1, p1, v0, p3, p4}, Ls2/l;->a(Landroid/content/Context;Lu2/y;II)Lu2/y;
-
-    .line 52
-    .line 53
-    .line 54
-    move-result-object p3
-
-    .line 55
-    invoke-virtual {p3, v0}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    .line 56
-    .line 57
-    .line 58
-    move-result p4
-
-    .line 59
-    if-eqz p4, :cond_2
-
-    .line 60
-    .line 61
-    invoke-interface {p3}, Lu2/y;->b()V
-
-    .line 62
-    .line 63
-    .line 64
-    return-object p2
-
-    .line 65
-    :cond_2
-    invoke-virtual {p1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
-
-    .line 66
-    .line 67
-    .line 68
-    move-result-object p1
-
-    .line 69
-    new-instance p2, Lb3/d;
-
-    .line 70
-    .line 71
-    invoke-direct {p2, p1, p3}, Lb3/d;-><init>(Landroid/content/res/Resources;Lu2/y;)V
-
-    .line 72
-    .line 73
-    .line 74
-    return-object p2
-.end method
-
-.method public final b(Ljava/security/MessageDigest;)V
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lb3/t;->b:Ls2/l;
-
-    .line 2
-    .line 3
-    invoke-interface {v0, p1}, Ls2/e;->b(Ljava/security/MessageDigest;)V
-
-    .line 4
-    .line 5
-    .line 6
-    return-void
-.end method
-
-.method public final equals(Ljava/lang/Object;)Z
-    .locals 1
-
-    .line 1
-    instance-of v0, p1, Lb3/t;
-
-    .line 2
-    .line 3
-    if-eqz v0, :cond_0
-
-    .line 4
-    .line 5
-    check-cast p1, Lb3/t;
-
-    .line 6
-    .line 7
-    iget-object v0, p0, Lb3/t;->b:Ls2/l;
-
-    .line 8
-    .line 9
-    iget-object p1, p1, Lb3/t;->b:Ls2/l;
-
-    .line 10
-    .line 11
-    invoke-virtual {v0, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
-
-    .line 12
-    .line 13
-    .line 14
-    move-result p1
-
-    .line 15
     return p1
-
-    .line 16
-    :cond_0
-    const/4 p1, 0x0
-
-    .line 17
-    return p1
-.end method
-
-.method public final hashCode()I
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lb3/t;->b:Ls2/l;
-
-    .line 2
-    .line 3
-    invoke-virtual {v0}, Ljava/lang/Object;->hashCode()I
-
-    .line 4
-    .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    return v0
 .end method

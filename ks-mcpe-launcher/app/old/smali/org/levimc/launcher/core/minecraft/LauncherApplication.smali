@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/minecraft/LauncherApplication;
 .super Landroid/app/Application;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -138,7 +138,7 @@
 
     .line 9
     .line 10
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 11
     .line 12
@@ -173,7 +173,7 @@
     move-result-object v0
 
     .line 29
-    invoke-static {v0}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {v0}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 30
     .line 31
@@ -185,7 +185,7 @@
     const/4 v2, 0x0
 
     .line 35
-    invoke-static {v0, v1, v2}, Lo9/o;->m0(Ljava/lang/String;Ljava/lang/String;Z)Z
+    invoke-static {v0, v1, v2}, Lm9/o;->S(Ljava/lang/String;Ljava/lang/String;Z)Z
 
     .line 36
     .line 37
@@ -200,47 +200,40 @@
     return-void
 
     .line 42
-    :cond_0
-    invoke-static {p0}, Lorg/levimc/launcher/core/packages/PackageService;->init(Landroid/content/Context;)V
-
     .line 43
     .line 44
     .line 45
-    invoke-static {p0}, Lorg/levimc/launcher/core/news/NewsNotificationHelper;->initialize(Landroid/content/Context;)V
+    :cond_0
+    invoke-static {p0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;->init(Landroid/app/Application;)V
 
     .line 46
     .line 47
     .line 48
-    invoke-static {p0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;->init(Landroid/app/Application;)V
+    invoke-static {p0}, Lk6/b;->n(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 49
     .line 50
     .line 51
-    invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
-
-    .line 52
-    .line 53
-    .line 54
     move-result-object v0
 
-    .line 55
+    .line 52
     const-string v1, "getDefaultSharedPreferences(...)"
 
+    .line 53
+    .line 54
+    invoke-static {v0, v1}, Lf9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 55
     .line 56
     .line 57
-    invoke-static {v0, v1}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    sput-object v0, Lorg/levimc/launcher/core/minecraft/LauncherApplication;->preferences:Landroid/content/SharedPreferences;
 
     .line 58
     .line 59
-    .line 60
-    sput-object v0, Lorg/levimc/launcher/core/minecraft/LauncherApplication;->preferences:Landroid/content/SharedPreferences;
-
-    .line 61
-    .line 62
     invoke-static {p0}, Lorg/levimc/launcher/core/discord/DiscordPresence;->initialize(Landroid/app/Application;)V
 
-    .line 63
-    .line 64
-    .line 65
+    .line 60
+    .line 61
+    .line 62
     return-void
 .end method

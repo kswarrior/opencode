@@ -1,179 +1,278 @@
 .class public final Ls8/h;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/util/AbstractCollection;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lkotlin/Lazy;
-.implements Ljava/io/Serializable;
-
-
-# static fields
-.field public static final h:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
+.implements Ljava/util/Collection;
+.implements Lg9/a;
 
 
 # instance fields
-.field public volatile c:Lkotlin/jvm/functions/Function0;
-
-.field public volatile d:Ljava/lang/Object;
+.field public final c:Ls8/f;
 
 
 # direct methods
-.method static constructor <clinit>()V
-    .locals 3
+.method public constructor <init>(Ls8/f;)V
+    .locals 0
 
     .line 1
-    const-class v0, Ljava/lang/Object;
+    invoke-direct {p0}, Ljava/util/AbstractCollection;-><init>()V
 
     .line 2
     .line 3
-    const-string v1, "d"
-
     .line 4
+    iput-object p1, p0, Ls8/h;->c:Ls8/f;
+
     .line 5
-    const-class v2, Ls8/h;
-
     .line 6
-    .line 7
-    invoke-static {v2, v0, v1}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->newUpdater(Ljava/lang/Class;Ljava/lang/Class;Ljava/lang/String;)Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
-
-    .line 8
-    .line 9
-    .line 10
-    move-result-object v0
-
-    .line 11
-    sput-object v0, Ls8/h;->h:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
-
-    .line 12
-    .line 13
     return-void
 .end method
 
 
 # virtual methods
-.method public final getValue()Ljava/lang/Object;
-    .locals 4
+.method public final add(Ljava/lang/Object;)Z
+    .locals 0
 
     .line 1
-    iget-object v0, p0, Ls8/h;->d:Ljava/lang/Object;
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
     .line 2
     .line 3
-    sget-object v1, Ls8/j;->a:Ls8/j;
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
 
     .line 4
     .line 5
-    if-eq v0, v1, :cond_0
-
     .line 6
-    .line 7
-    return-object v0
-
-    .line 8
-    :cond_0
-    iget-object v0, p0, Ls8/h;->c:Lkotlin/jvm/functions/Function0;
-
-    .line 9
-    .line 10
-    if-eqz v0, :cond_3
-
-    .line 11
-    .line 12
-    invoke-interface {v0}, Lkotlin/jvm/functions/Function0;->a()Ljava/lang/Object;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object v0
-
-    .line 16
-    sget-object v2, Ls8/h;->h:Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;
-
-    .line 17
-    .line 18
-    :cond_1
-    invoke-virtual {v2, p0, v1, v0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->compareAndSet(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Z
-
-    .line 19
-    .line 20
-    .line 21
-    move-result v3
-
-    .line 22
-    if-eqz v3, :cond_2
-
-    .line 23
-    .line 24
-    const/4 v1, 0x0
-
-    .line 25
-    iput-object v1, p0, Ls8/h;->c:Lkotlin/jvm/functions/Function0;
-
-    .line 26
-    .line 27
-    return-object v0
-
-    .line 28
-    :cond_2
-    invoke-virtual {v2, p0}, Ljava/util/concurrent/atomic/AtomicReferenceFieldUpdater;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 29
-    .line 30
-    .line 31
-    move-result-object v3
-
-    .line 32
-    if-eq v3, v1, :cond_1
-
-    .line 33
-    .line 34
-    :cond_3
-    iget-object v0, p0, Ls8/h;->d:Ljava/lang/Object;
-
-    .line 35
-    .line 36
-    return-object v0
+    throw p1
 .end method
 
-.method public final toString()Ljava/lang/String;
-    .locals 2
+.method public final addAll(Ljava/util/Collection;)Z
+    .locals 1
 
     .line 1
-    iget-object v0, p0, Ls8/h;->d:Ljava/lang/Object;
+    const-string v0, "elements"
 
     .line 2
     .line 3
-    sget-object v1, Ls8/j;->a:Ls8/j;
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
-    if-eq v0, v1, :cond_0
-
     .line 6
-    .line 7
-    invoke-virtual {p0}, Ls8/h;->getValue()Ljava/lang/Object;
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
 
+    .line 7
     .line 8
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
     .line 9
     .line 10
-    move-result-object v0
+    .line 11
+    throw p1
+.end method
+
+.method public final clear()V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ls8/f;->clear()V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public final contains(Ljava/lang/Object;)Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Ls8/f;->containsValue(Ljava/lang/Object;)Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result p1
+
+    .line 7
+    return p1
+.end method
+
+.method public final isEmpty()Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ls8/f;->isEmpty()Z
+
+    .line 4
+    .line 5
+    .line 6
+    move-result v0
+
+    .line 7
+    return v0
+.end method
+
+.method public final iterator()Ljava/util/Iterator;
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 4
+    .line 5
+    .line 6
+    new-instance v1, Ls8/d;
+
+    .line 7
+    .line 8
+    const/4 v2, 0x2
+
+    .line 9
+    invoke-direct {v1, v0, v2}, Ls8/d;-><init>(Ls8/f;I)V
+
+    .line 10
+    .line 11
+    .line 12
+    return-object v1
+.end method
+
+.method public final remove(Ljava/lang/Object;)Z
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ls8/f;->c()V
+
+    .line 4
+    .line 5
+    .line 6
+    invoke-virtual {v0, p1}, Ls8/f;->i(Ljava/lang/Object;)I
+
+    .line 7
+    .line 8
+    .line 9
+    move-result p1
+
+    .line 10
+    if-gez p1, :cond_0
 
     .line 11
-    invoke-static {v0}, Ljava/lang/String;->valueOf(Ljava/lang/Object;)Ljava/lang/String;
+    .line 12
+    const/4 p1, 0x0
+
+    .line 13
+    return p1
+
+    .line 14
+    :cond_0
+    invoke-virtual {v0, p1}, Ls8/f;->l(I)V
+
+    .line 15
+    .line 16
+    .line 17
+    const/4 p1, 0x1
+
+    .line 18
+    return p1
+.end method
+
+.method public final removeAll(Ljava/util/Collection;)Z
+    .locals 1
+
+    .line 1
+    const-string v0, "elements"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls8/f;->c()V
+
+    .line 9
+    .line 10
+    .line 11
+    invoke-super {p0, p1}, Ljava/util/AbstractCollection;->removeAll(Ljava/util/Collection;)Z
 
     .line 12
     .line 13
     .line 14
-    move-result-object v0
+    move-result p1
 
     .line 15
-    return-object v0
+    return p1
+.end method
 
-    .line 16
-    :cond_0
-    const-string v0, "Lazy value not initialized yet."
+.method public final retainAll(Ljava/util/Collection;)Z
+    .locals 1
 
-    .line 17
-    .line 18
-    return-object v0
+    .line 1
+    const-string v0, "elements"
+
+    .line 2
+    .line 3
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 7
+    .line 8
+    invoke-virtual {v0}, Ls8/f;->c()V
+
+    .line 9
+    .line 10
+    .line 11
+    invoke-super {p0, p1}, Ljava/util/AbstractCollection;->retainAll(Ljava/util/Collection;)Z
+
+    .line 12
+    .line 13
+    .line 14
+    move-result p1
+
+    .line 15
+    return p1
+.end method
+
+.method public final size()I
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Ls8/h;->c:Ls8/f;
+
+    .line 2
+    .line 3
+    iget v0, v0, Ls8/f;->Y:I
+
+    .line 4
+    .line 5
+    return v0
 .end method

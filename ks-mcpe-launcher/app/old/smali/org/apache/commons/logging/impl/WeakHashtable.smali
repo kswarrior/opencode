@@ -1,6 +1,6 @@
 .class public final Lorg/apache/commons/logging/impl/WeakHashtable;
 .super Ljava/util/Hashtable;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -84,7 +84,7 @@
     move-result-object v2
 
     .line 15
-    check-cast v2, Lorg/apache/commons/logging/impl/e;
+    check-cast v2, Lorg/apache/commons/logging/impl/c;
 
     .line 16
     .line 17
@@ -92,7 +92,7 @@
 
     .line 18
     .line 19
-    iget-object v2, v2, Lorg/apache/commons/logging/impl/e;->a:Lorg/apache/commons/logging/impl/d;
+    iget-object v2, v2, Lorg/apache/commons/logging/impl/c;->a:Lorg/apache/commons/logging/impl/b;
 
     .line 20
     .line 21
@@ -191,7 +191,7 @@
     move-result-object v1
 
     .line 10
-    check-cast v1, Lorg/apache/commons/logging/impl/e;
+    check-cast v1, Lorg/apache/commons/logging/impl/c;
 
     .line 11
     .line 12
@@ -199,7 +199,7 @@
 
     .line 13
     .line 14
-    iget-object v1, v1, Lorg/apache/commons/logging/impl/e;->a:Lorg/apache/commons/logging/impl/d;
+    iget-object v1, v1, Lorg/apache/commons/logging/impl/c;->a:Lorg/apache/commons/logging/impl/b;
 
     .line 15
     .line 16
@@ -241,11 +241,11 @@
     .locals 1
 
     .line 1
-    new-instance v0, Lorg/apache/commons/logging/impl/d;
+    new-instance v0, Lorg/apache/commons/logging/impl/b;
 
     .line 2
     .line 3
-    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/d;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/b;-><init>(Ljava/lang/Object;)V
 
     .line 4
     .line 5
@@ -349,11 +349,11 @@
     move-result-object v3
 
     .line 33
-    check-cast v3, Lorg/apache/commons/logging/impl/d;
+    check-cast v3, Lorg/apache/commons/logging/impl/b;
 
     .line 34
     .line 35
-    iget-object v3, v3, Lorg/apache/commons/logging/impl/d;->a:Ljava/lang/ref/WeakReference;
+    iget-object v3, v3, Lorg/apache/commons/logging/impl/b;->a:Ljava/lang/ref/WeakReference;
 
     .line 36
     .line 37
@@ -377,11 +377,11 @@
 
     .line 46
     .line 47
-    new-instance v4, Lorg/apache/commons/logging/impl/c;
+    new-instance v4, Lorg/apache/commons/logging/impl/a;
 
     .line 48
     .line 49
-    invoke-direct {v4, v3, v2}, Lorg/apache/commons/logging/impl/c;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
+    invoke-direct {v4, v3, v2}, Lorg/apache/commons/logging/impl/a;-><init>(Ljava/lang/Object;Ljava/lang/Object;)V
 
     .line 50
     .line 51
@@ -402,11 +402,11 @@
     .locals 1
 
     .line 1
-    new-instance v0, Lorg/apache/commons/logging/impl/d;
+    new-instance v0, Lorg/apache/commons/logging/impl/b;
 
     .line 2
     .line 3
-    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/d;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/b;-><init>(Ljava/lang/Object;)V
 
     .line 4
     .line 5
@@ -498,11 +498,11 @@
     move-result-object v2
 
     .line 27
-    check-cast v2, Lorg/apache/commons/logging/impl/d;
+    check-cast v2, Lorg/apache/commons/logging/impl/b;
 
     .line 28
     .line 29
-    iget-object v2, v2, Lorg/apache/commons/logging/impl/d;->a:Ljava/lang/ref/WeakReference;
+    iget-object v2, v2, Lorg/apache/commons/logging/impl/b;->a:Ljava/lang/ref/WeakReference;
 
     .line 30
     .line 31
@@ -547,14 +547,14 @@
     move-result-object v0
 
     .line 8
-    new-instance v1, Lorg/apache/commons/logging/impl/b;
+    new-instance v1, Lff/k0;
 
     .line 9
     .line 10
-    const/4 v2, 0x0
+    const/4 v2, 0x1
 
     .line 11
-    invoke-direct {v1, v0, v2}, Lorg/apache/commons/logging/impl/b;-><init>(Ljava/util/Enumeration;I)V
+    invoke-direct {v1, v0, v2}, Lff/k0;-><init>(Ljava/util/Enumeration;I)V
 
     .line 12
     .line 13
@@ -636,7 +636,7 @@
     .line 32
     :cond_1
     :goto_0
-    new-instance v0, Lorg/apache/commons/logging/impl/d;
+    new-instance v0, Lorg/apache/commons/logging/impl/b;
 
     .line 33
     .line 34
@@ -644,7 +644,7 @@
 
     .line 35
     .line 36
-    invoke-direct {v0, p1, v1}, Lorg/apache/commons/logging/impl/d;-><init>(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
+    invoke-direct {v0, p1, v1}, Lorg/apache/commons/logging/impl/b;-><init>(Ljava/lang/Object;Ljava/lang/ref/ReferenceQueue;)V
 
     .line 37
     .line 38
@@ -869,11 +869,11 @@
     .line 28
     :cond_1
     :goto_0
-    new-instance v0, Lorg/apache/commons/logging/impl/d;
+    new-instance v0, Lorg/apache/commons/logging/impl/b;
 
     .line 29
     .line 30
-    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/d;-><init>(Ljava/lang/Object;)V
+    invoke-direct {v0, p1}, Lorg/apache/commons/logging/impl/b;-><init>(Ljava/lang/Object;)V
 
     .line 31
     .line 32

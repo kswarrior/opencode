@@ -1,6 +1,6 @@
 .class public final Lcom/google/android/material/appbar/d;
 .super Lt0/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -18,13 +18,13 @@
 # instance fields
 .field public h:Z
 
-.field public p:Z
+.field public q:Z
 
-.field public q:I
+.field public w:I
 
-.field public w:F
+.field public x:F
 
-.field public x:Z
+.field public y:Z
 
 
 # direct methods
@@ -113,7 +113,7 @@
 
     .line 26
     :goto_1
-    iput-boolean p2, p0, Lcom/google/android/material/appbar/d;->p:Z
+    iput-boolean p2, p0, Lcom/google/android/material/appbar/d;->q:Z
 
     .line 27
     .line 28
@@ -125,7 +125,7 @@
     move-result p2
 
     .line 32
-    iput p2, p0, Lcom/google/android/material/appbar/d;->q:I
+    iput p2, p0, Lcom/google/android/material/appbar/d;->w:I
 
     .line 33
     .line 34
@@ -137,7 +137,7 @@
     move-result p2
 
     .line 38
-    iput p2, p0, Lcom/google/android/material/appbar/d;->w:F
+    iput p2, p0, Lcom/google/android/material/appbar/d;->x:F
 
     .line 39
     .line 40
@@ -157,7 +157,7 @@
 
     .line 47
     :cond_2
-    iput-boolean v0, p0, Lcom/google/android/material/appbar/d;->x:Z
+    iput-boolean v0, p0, Lcom/google/android/material/appbar/d;->y:Z
 
     .line 48
     .line 49
@@ -187,7 +187,7 @@
     .line 8
     .line 9
     .line 10
-    iget-boolean p2, p0, Lcom/google/android/material/appbar/d;->p:Z
+    iget-boolean p2, p0, Lcom/google/android/material/appbar/d;->q:Z
 
     .line 11
     .line 12
@@ -199,7 +199,7 @@
     .line 14
     .line 15
     .line 16
-    iget p2, p0, Lcom/google/android/material/appbar/d;->q:I
+    iget p2, p0, Lcom/google/android/material/appbar/d;->w:I
 
     .line 17
     .line 18
@@ -208,7 +208,7 @@
     .line 19
     .line 20
     .line 21
-    iget p2, p0, Lcom/google/android/material/appbar/d;->w:F
+    iget p2, p0, Lcom/google/android/material/appbar/d;->x:F
 
     .line 22
     .line 23
@@ -217,7 +217,7 @@
     .line 24
     .line 25
     .line 26
-    iget-boolean p2, p0, Lcom/google/android/material/appbar/d;->x:Z
+    iget-boolean p2, p0, Lcom/google/android/material/appbar/d;->y:Z
 
     .line 27
     .line 28

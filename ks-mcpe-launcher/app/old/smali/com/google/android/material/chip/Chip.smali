@@ -1,19 +1,19 @@
 .class public Lcom/google/android/material/chip/Chip;
-.super Lm/o;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Lm/p;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lg5/e;
-.implements Lv5/y;
+.implements Lh5/e;
+.implements Lt5/y;
 .implements Ln5/g;
 
 
 # annotations
 .annotation system Ldalvik/annotation/Signature;
     value = {
-        "Lm/o;",
-        "Lg5/e;",
-        "Lv5/y;",
+        "Lm/p;",
+        "Lh5/e;",
+        "Lt5/y;",
         "Ln5/g;"
     }
 .end annotation
@@ -28,6 +28,8 @@
 
 
 # instance fields
+.field public B1:Landroid/widget/CompoundButton$OnCheckedChangeListener;
+
 .field public C1:Ln5/f;
 
 .field public D1:Z
@@ -46,7 +48,7 @@
 
 .field public K1:Ljava/lang/CharSequence;
 
-.field public final L1:Lg5/d;
+.field public final L1:Lh5/d;
 
 .field public M1:Z
 
@@ -54,17 +56,15 @@
 
 .field public final O1:Landroid/graphics/RectF;
 
-.field public final P1:Lg5/b;
+.field public final P1:Lh5/b;
 
-.field public b1:Landroid/widget/CompoundButton$OnCheckedChangeListener;
+.field public b1:Landroid/view/View$OnClickListener;
 
-.field public q:Lg5/f;
+.field public w:Lh5/f;
 
-.field public w:Landroid/graphics/drawable/InsetDrawable;
+.field public x:Landroid/graphics/drawable/InsetDrawable;
 
-.field public x:Landroid/graphics/drawable/RippleDrawable;
-
-.field public y:Landroid/view/View$OnClickListener;
+.field public y:Landroid/graphics/drawable/RippleDrawable;
 
 
 # direct methods
@@ -134,7 +134,7 @@
 
     .line 4
     .line 5
-    const v1, 0x7f1404d1
+    const v1, 0x7f1404a8
 
     .line 6
     .line 7
@@ -148,7 +148,7 @@
 
     .line 12
     .line 13
-    invoke-static {v3, v2, v4, v1}, Lc6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    invoke-static {v3, v2, v4, v1}, La6/a;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
 
     .line 14
     .line 15
@@ -156,7 +156,7 @@
     move-result-object v1
 
     .line 17
-    invoke-direct {v0, v1, v2, v4}, Lm/o;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
+    invoke-direct {v0, v1, v2, v4}, Lm/p;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;I)V
 
     .line 18
     .line 19
@@ -187,19 +187,19 @@
 
     .line 33
     .line 34
-    new-instance v1, Lg5/b;
+    new-instance v1, Lh5/b;
 
     .line 35
     .line 36
     const/4 v3, 0x0
 
     .line 37
-    invoke-direct {v1, v0, v3}, Lg5/b;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v1, v0, v3}, Lh5/b;-><init>(Ljava/lang/Object;I)V
 
     .line 38
     .line 39
     .line 40
-    iput-object v1, v0, Lcom/google/android/material/chip/Chip;->P1:Lg5/b;
+    iput-object v1, v0, Lcom/google/android/material/chip/Chip;->P1:Lh5/b;
 
     .line 41
     .line 42
@@ -420,11 +420,11 @@
     .line 149
     :cond_2
     :goto_0
-    new-instance v10, Lg5/f;
+    new-instance v10, Lh5/f;
 
     .line 150
     .line 151
-    invoke-direct {v10, v7, v2}, Lg5/f;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
+    invoke-direct {v10, v7, v2}, Lh5/f;-><init>(Landroid/content/Context;Landroid/util/AttributeSet;)V
 
     .line 152
     .line 153
@@ -436,20 +436,20 @@
 
     .line 156
     .line 157
-    iget-object v1, v10, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v10, Lh5/f;->E2:Landroid/content/Context;
 
     .line 158
     .line 159
-    sget-object v3, Lw4/a;->g:[I
+    sget-object v3, Lw4/a;->f:[I
 
     .line 160
     .line 161
-    const v5, 0x7f1404d1
+    const v5, 0x7f1404a8
 
     .line 162
     .line 163
     .line 164
-    invoke-static/range {v1 .. v6}, Ln5/m;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
+    invoke-static/range {v1 .. v6}, Ln5/n;->e(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)Landroid/content/res/TypedArray;
 
     .line 165
     .line 166
@@ -469,7 +469,7 @@
     move-result v5
 
     .line 174
-    iput-boolean v5, v10, Lg5/f;->e3:Z
+    iput-boolean v5, v10, Lh5/f;->e3:Z
 
     .line 175
     .line 176
@@ -477,11 +477,11 @@
 
     .line 177
     .line 178
-    iget-object v6, v10, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v6, v10, Lh5/f;->E2:Landroid/content/Context;
 
     .line 179
     .line 180
-    invoke-static {v6, v1, v5}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v5}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 181
     .line 182
@@ -489,7 +489,7 @@
     move-result-object v5
 
     .line 184
-    iget-object v13, v10, Lg5/f;->X1:Landroid/content/res/ColorStateList;
+    iget-object v13, v10, Lh5/f;->X1:Landroid/content/res/ColorStateList;
 
     .line 185
     .line 186
@@ -497,7 +497,7 @@
 
     .line 187
     .line 188
-    iput-object v5, v10, Lg5/f;->X1:Landroid/content/res/ColorStateList;
+    iput-object v5, v10, Lh5/f;->X1:Landroid/content/res/ColorStateList;
 
     .line 189
     .line 190
@@ -509,7 +509,7 @@
     move-result-object v5
 
     .line 194
-    invoke-virtual {v10, v5}, Lg5/f;->onStateChange([I)Z
+    invoke-virtual {v10, v5}, Lh5/f;->onStateChange([I)Z
 
     .line 195
     .line 196
@@ -519,7 +519,7 @@
 
     .line 198
     .line 199
-    invoke-static {v6, v1, v5}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v5}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 200
     .line 201
@@ -527,7 +527,7 @@
     move-result-object v5
 
     .line 203
-    iget-object v13, v10, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iget-object v13, v10, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 204
     .line 205
@@ -535,7 +535,7 @@
 
     .line 206
     .line 207
-    iput-object v5, v10, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iput-object v5, v10, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 208
     .line 209
@@ -547,7 +547,7 @@
     move-result-object v5
 
     .line 213
-    invoke-virtual {v10, v5}, Lg5/f;->onStateChange([I)Z
+    invoke-virtual {v10, v5}, Lh5/f;->onStateChange([I)Z
 
     .line 214
     .line 215
@@ -568,7 +568,7 @@
     move-result v5
 
     .line 223
-    iget v14, v10, Lg5/f;->Z1:F
+    iget v14, v10, Lh5/f;->Z1:F
 
     .line 224
     .line 225
@@ -580,16 +580,16 @@
 
     .line 228
     .line 229
-    iput v5, v10, Lg5/f;->Z1:F
+    iput v5, v10, Lh5/f;->Z1:F
 
     .line 230
     .line 231
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 232
     .line 233
     .line 234
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 235
     .line 236
@@ -619,7 +619,7 @@
     move-result v5
 
     .line 249
-    invoke-virtual {v10, v5}, Lg5/f;->O(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->N(F)V
 
     .line 250
     .line 251
@@ -629,7 +629,7 @@
 
     .line 253
     .line 254
-    invoke-static {v6, v1, v5}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v5}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 255
     .line 256
@@ -637,7 +637,7 @@
     move-result-object v5
 
     .line 258
-    invoke-virtual {v10, v5}, Lg5/f;->T(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v10, v5}, Lh5/f;->S(Landroid/content/res/ColorStateList;)V
 
     .line 259
     .line 260
@@ -654,7 +654,7 @@
     move-result v5
 
     .line 267
-    invoke-virtual {v10, v5}, Lg5/f;->U(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->T(F)V
 
     .line 268
     .line 269
@@ -663,7 +663,7 @@
 
     .line 271
     .line 272
-    invoke-static {v6, v1, v5}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v5}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 273
     .line 274
@@ -671,7 +671,7 @@
     move-result-object v5
 
     .line 276
-    invoke-virtual {v10, v5}, Lg5/f;->e0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v10, v5}, Lh5/f;->d0(Landroid/content/res/ColorStateList;)V
 
     .line 277
     .line 278
@@ -696,7 +696,7 @@
     .line 287
     .line 288
     :cond_7
-    iget-object v14, v10, Lg5/f;->e2:Ljava/lang/CharSequence;
+    iget-object v14, v10, Lh5/f;->e2:Ljava/lang/CharSequence;
 
     .line 289
     .line 290
@@ -708,7 +708,7 @@
     move-result v14
 
     .line 294
-    iget-object v15, v10, Lg5/f;->K2:Ln5/k;
+    iget-object v15, v10, Lh5/f;->K2:Ln5/l;
 
     .line 295
     .line 296
@@ -716,20 +716,20 @@
 
     .line 297
     .line 298
-    iput-object v5, v10, Lg5/f;->e2:Ljava/lang/CharSequence;
+    iput-object v5, v10, Lh5/f;->e2:Ljava/lang/CharSequence;
 
     .line 299
     .line 300
-    iput-boolean v9, v15, Ln5/k;->e:Z
+    iput-boolean v9, v15, Ln5/l;->e:Z
 
     .line 301
     .line 302
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 303
     .line 304
     .line 305
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 306
     .line 307
@@ -759,11 +759,11 @@
 
     .line 319
     .line 320
-    new-instance v14, Ls5/d;
+    new-instance v14, Lq5/d;
 
     .line 321
     .line 322
-    invoke-direct {v14, v6, v5}, Ls5/d;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v14, v6, v5}, Lq5/d;-><init>(Landroid/content/Context;I)V
 
     .line 323
     .line 324
@@ -776,7 +776,7 @@
 
     .line 327
     :goto_1
-    iget v5, v14, Ls5/d;->l:F
+    iget v5, v14, Lq5/d;->l:F
 
     .line 328
     .line 329
@@ -788,11 +788,11 @@
     move-result v5
 
     .line 333
-    iput v5, v14, Ls5/d;->l:F
+    iput v5, v14, Lq5/d;->l:F
 
     .line 334
     .line 335
-    invoke-virtual {v15, v14, v6}, Ln5/k;->c(Ls5/d;Landroid/content/Context;)V
+    invoke-virtual {v15, v14, v6}, Ln5/l;->c(Lq5/d;Landroid/content/Context;)V
 
     .line 336
     .line 337
@@ -831,7 +831,7 @@
 
     .line 352
     .line 353
-    iput-object v5, v10, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iput-object v5, v10, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 354
     .line 355
@@ -843,7 +843,7 @@
 
     .line 357
     .line 358
-    iput-object v5, v10, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iput-object v5, v10, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 359
     .line 360
@@ -855,7 +855,7 @@
 
     .line 362
     .line 363
-    iput-object v5, v10, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iput-object v5, v10, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 364
     .line 365
@@ -872,7 +872,7 @@
     move-result v5
 
     .line 371
-    invoke-virtual {v10, v5}, Lg5/f;->S(Z)V
+    invoke-virtual {v10, v5}, Lh5/f;->R(Z)V
 
     .line 372
     .line 373
@@ -929,7 +929,7 @@
     move-result v14
 
     .line 400
-    invoke-virtual {v10, v14}, Lg5/f;->S(Z)V
+    invoke-virtual {v10, v14}, Lh5/f;->R(Z)V
 
     .line 401
     .line 402
@@ -939,7 +939,7 @@
 
     .line 404
     .line 405
-    invoke-static {v6, v1, v14}, Ljd/h;->t(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v6, v1, v14}, Lkd/h;->s(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
 
     .line 406
     .line 407
@@ -947,7 +947,7 @@
     move-result-object v14
 
     .line 409
-    invoke-virtual {v10, v14}, Lg5/f;->P(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v10, v14}, Lh5/f;->O(Landroid/graphics/drawable/Drawable;)V
 
     .line 410
     .line 411
@@ -968,7 +968,7 @@
 
     .line 419
     .line 420
-    invoke-static {v6, v1, v14}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v14}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 421
     .line 422
@@ -976,7 +976,7 @@
     move-result-object v14
 
     .line 424
-    invoke-virtual {v10, v14}, Lg5/f;->R(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v10, v14}, Lh5/f;->Q(Landroid/content/res/ColorStateList;)V
 
     .line 425
     .line 426
@@ -998,7 +998,7 @@
     move-result v14
 
     .line 435
-    invoke-virtual {v10, v14}, Lg5/f;->Q(F)V
+    invoke-virtual {v10, v14}, Lh5/f;->P(F)V
 
     .line 436
     .line 437
@@ -1015,7 +1015,7 @@
     move-result v14
 
     .line 444
-    invoke-virtual {v10, v14}, Lg5/f;->b0(Z)V
+    invoke-virtual {v10, v14}, Lh5/f;->a0(Z)V
 
     .line 445
     .line 446
@@ -1068,7 +1068,7 @@
     move-result v14
 
     .line 471
-    invoke-virtual {v10, v14}, Lg5/f;->b0(Z)V
+    invoke-virtual {v10, v14}, Lh5/f;->a0(Z)V
 
     .line 472
     .line 473
@@ -1078,7 +1078,7 @@
 
     .line 475
     .line 476
-    invoke-static {v6, v1, v14}, Ljd/h;->t(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v6, v1, v14}, Lkd/h;->s(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
 
     .line 477
     .line 478
@@ -1086,7 +1086,7 @@
     move-result-object v14
 
     .line 480
-    invoke-virtual {v10, v14}, Lg5/f;->V(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v10, v14}, Lh5/f;->U(Landroid/graphics/drawable/Drawable;)V
 
     .line 481
     .line 482
@@ -1095,7 +1095,7 @@
 
     .line 484
     .line 485
-    invoke-static {v6, v1, v14}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v14}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 486
     .line 487
@@ -1103,7 +1103,7 @@
     move-result-object v14
 
     .line 489
-    invoke-virtual {v10, v14}, Lg5/f;->a0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v10, v14}, Lh5/f;->Z(Landroid/content/res/ColorStateList;)V
 
     .line 490
     .line 491
@@ -1120,7 +1120,7 @@
     move-result v14
 
     .line 498
-    invoke-virtual {v10, v14}, Lg5/f;->X(F)V
+    invoke-virtual {v10, v14}, Lh5/f;->W(F)V
 
     .line 499
     .line 500
@@ -1136,7 +1136,7 @@
     move-result v14
 
     .line 506
-    invoke-virtual {v10, v14}, Lg5/f;->K(Z)V
+    invoke-virtual {v10, v14}, Lh5/f;->J(Z)V
 
     .line 507
     .line 508
@@ -1153,7 +1153,7 @@
     move-result v14
 
     .line 515
-    invoke-virtual {v10, v14}, Lg5/f;->N(Z)V
+    invoke-virtual {v10, v14}, Lh5/f;->M(Z)V
 
     .line 516
     .line 517
@@ -1206,7 +1206,7 @@
     move-result v5
 
     .line 542
-    invoke-virtual {v10, v5}, Lg5/f;->N(Z)V
+    invoke-virtual {v10, v5}, Lh5/f;->M(Z)V
 
     .line 543
     .line 544
@@ -1215,7 +1215,7 @@
     const/4 v5, 0x7
 
     .line 546
-    invoke-static {v6, v1, v5}, Ljd/h;->t(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v6, v1, v5}, Lkd/h;->s(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/graphics/drawable/Drawable;
 
     .line 547
     .line 548
@@ -1223,7 +1223,7 @@
     move-result-object v5
 
     .line 550
-    invoke-virtual {v10, v5}, Lg5/f;->L(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v10, v5}, Lh5/f;->K(Landroid/graphics/drawable/Drawable;)V
 
     .line 551
     .line 552
@@ -1244,7 +1244,7 @@
 
     .line 560
     .line 561
-    invoke-static {v6, v1, v5}, Ljd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
+    invoke-static {v6, v1, v5}, Lkd/h;->q(Landroid/content/Context;Landroid/content/res/TypedArray;I)Landroid/content/res/ColorStateList;
 
     .line 562
     .line 563
@@ -1252,7 +1252,7 @@
     move-result-object v5
 
     .line 565
-    invoke-virtual {v10, v5}, Lg5/f;->M(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v10, v5}, Lh5/f;->L(Landroid/content/res/ColorStateList;)V
 
     .line 566
     .line 567
@@ -1302,7 +1302,7 @@
 
     .line 588
     :goto_3
-    iput-object v5, v10, Lg5/f;->u2:Lx4/b;
+    iput-object v5, v10, Lh5/f;->u2:Lx4/b;
 
     .line 589
     .line 590
@@ -1350,7 +1350,7 @@
 
     .line 610
     :goto_4
-    iput-object v14, v10, Lg5/f;->v2:Lx4/b;
+    iput-object v14, v10, Lh5/f;->v2:Lx4/b;
 
     .line 611
     .line 612
@@ -1366,7 +1366,7 @@
     move-result v5
 
     .line 618
-    iget v6, v10, Lg5/f;->w2:F
+    iget v6, v10, Lh5/f;->w2:F
 
     .line 619
     .line 620
@@ -1378,16 +1378,16 @@
 
     .line 623
     .line 624
-    iput v5, v10, Lg5/f;->w2:F
+    iput v5, v10, Lh5/f;->w2:F
 
     .line 625
     .line 626
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 627
     .line 628
     .line 629
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 630
     .line 631
@@ -1405,7 +1405,7 @@
     move-result v5
 
     .line 638
-    invoke-virtual {v10, v5}, Lg5/f;->d0(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->c0(F)V
 
     .line 639
     .line 640
@@ -1422,7 +1422,7 @@
     move-result v5
 
     .line 647
-    invoke-virtual {v10, v5}, Lg5/f;->c0(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->b0(F)V
 
     .line 648
     .line 649
@@ -1439,7 +1439,7 @@
     move-result v5
 
     .line 656
-    iget v6, v10, Lg5/f;->z2:F
+    iget v6, v10, Lh5/f;->z2:F
 
     .line 657
     .line 658
@@ -1451,16 +1451,16 @@
 
     .line 661
     .line 662
-    iput v5, v10, Lg5/f;->z2:F
+    iput v5, v10, Lh5/f;->z2:F
 
     .line 663
     .line 664
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 665
     .line 666
     .line 667
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 668
     .line 669
@@ -1478,7 +1478,7 @@
     move-result v5
 
     .line 676
-    iget v6, v10, Lg5/f;->A2:F
+    iget v6, v10, Lh5/f;->A2:F
 
     .line 677
     .line 678
@@ -1490,16 +1490,16 @@
 
     .line 681
     .line 682
-    iput v5, v10, Lg5/f;->A2:F
+    iput v5, v10, Lh5/f;->A2:F
 
     .line 683
     .line 684
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 685
     .line 686
     .line 687
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 688
     .line 689
@@ -1517,7 +1517,7 @@
     move-result v5
 
     .line 696
-    invoke-virtual {v10, v5}, Lg5/f;->Y(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->X(F)V
 
     .line 697
     .line 698
@@ -1534,7 +1534,7 @@
     move-result v5
 
     .line 705
-    invoke-virtual {v10, v5}, Lg5/f;->W(F)V
+    invoke-virtual {v10, v5}, Lh5/f;->V(F)V
 
     .line 706
     .line 707
@@ -1551,7 +1551,7 @@
     move-result v5
 
     .line 714
-    iget v6, v10, Lg5/f;->D2:F
+    iget v6, v10, Lh5/f;->D2:F
 
     .line 715
     .line 716
@@ -1563,16 +1563,16 @@
 
     .line 719
     .line 720
-    iput v5, v10, Lg5/f;->D2:F
+    iput v5, v10, Lh5/f;->D2:F
 
     .line 721
     .line 722
-    invoke-virtual {v10}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v10}, Lt5/j;->invalidateSelf()V
 
     .line 723
     .line 724
     .line 725
-    invoke-virtual {v10}, Lg5/f;->I()V
+    invoke-virtual {v10}, Lh5/f;->H()V
 
     .line 726
     .line 727
@@ -1594,7 +1594,7 @@
     move-result v5
 
     .line 736
-    iput v5, v10, Lg5/f;->d3:I
+    iput v5, v10, Lh5/f;->d3:I
 
     .line 737
     .line 738
@@ -1607,12 +1607,12 @@
 
     .line 742
     .line 743
-    const v5, 0x7f1404d1
+    const v5, 0x7f1404a8
 
     .line 744
     .line 745
     .line 746
-    invoke-static {v7, v2, v4, v5}, Ln5/m;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+    invoke-static {v7, v2, v4, v5}, Ln5/n;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
     .line 747
     .line 748
@@ -1620,7 +1620,7 @@
     move-object v1, v7
 
     .line 750
-    invoke-static/range {v1 .. v6}, Ln5/m;->b(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)V
+    invoke-static/range {v1 .. v6}, Ln5/n;->b(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)V
 
     .line 751
     .line 752
@@ -1649,7 +1649,7 @@
 
     .line 764
     .line 765
-    invoke-static {v1}, Ljb/c;->i0(Landroid/content/Context;)I
+    invoke-static {v1}, Lkb/c;->G(Landroid/content/Context;)I
 
     .line 766
     .line 767
@@ -1695,7 +1695,7 @@
     .line 785
     .line 786
     .line 787
-    invoke-virtual {v0, v10}, Lcom/google/android/material/chip/Chip;->setChipDrawable(Lg5/f;)V
+    invoke-virtual {v0, v10}, Lcom/google/android/material/chip/Chip;->setChipDrawable(Lh5/f;)V
 
     .line 788
     .line 789
@@ -1708,7 +1708,7 @@
     move-result v5
 
     .line 794
-    invoke-virtual {v10, v5}, Lv5/j;->q(F)V
+    invoke-virtual {v10, v5}, Lt5/j;->p(F)V
 
     .line 795
     .line 796
@@ -1717,17 +1717,17 @@
 
     .line 798
     .line 799
-    const v5, 0x7f1404d1
+    const v5, 0x7f1404a8
 
     .line 800
     .line 801
     .line 802
-    invoke-static {v1, v2, v4, v5}, Ln5/m;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)V
+    invoke-static {v1, v2, v4, v5}, Ln5/n;->a(Landroid/content/Context;Landroid/util/AttributeSet;II)V
 
     .line 803
     .line 804
     .line 805
-    invoke-static/range {v1 .. v6}, Ln5/m;->b(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)V
+    invoke-static/range {v1 .. v6}, Ln5/n;->b(Landroid/content/Context;Landroid/util/AttributeSet;[III[I)V
 
     .line 806
     .line 807
@@ -1753,16 +1753,16 @@
     .line 817
     .line 818
     .line 819
-    new-instance v1, Lg5/d;
+    new-instance v1, Lh5/d;
 
     .line 820
     .line 821
-    invoke-direct {v1, v0, v0}, Lg5/d;-><init>(Lcom/google/android/material/chip/Chip;Lcom/google/android/material/chip/Chip;)V
+    invoke-direct {v1, v0, v0}, Lh5/d;-><init>(Lcom/google/android/material/chip/Chip;Lcom/google/android/material/chip/Chip;)V
 
     .line 822
     .line 823
     .line 824
-    iput-object v1, v0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iput-object v1, v0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 825
     .line 826
@@ -1775,11 +1775,11 @@
 
     .line 830
     .line 831
-    new-instance v1, Lg5/c;
+    new-instance v1, Lh5/c;
 
     .line 832
     .line 833
-    invoke-direct {v1, v0}, Lg5/c;-><init>(Lcom/google/android/material/chip/Chip;)V
+    invoke-direct {v1, v0}, Lh5/c;-><init>(Lcom/google/android/material/chip/Chip;)V
 
     .line 834
     .line 835
@@ -1799,7 +1799,7 @@
     .line 842
     .line 843
     .line 844
-    iget-object v1, v10, Lg5/f;->e2:Ljava/lang/CharSequence;
+    iget-object v1, v10, Lh5/f;->e2:Ljava/lang/CharSequence;
 
     .line 845
     .line 846
@@ -1808,7 +1808,7 @@
     .line 847
     .line 848
     .line 849
-    iget-object v1, v10, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iget-object v1, v10, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 850
     .line 851
@@ -1822,11 +1822,11 @@
     .line 855
     .line 856
     .line 857
-    iget-object v1, v0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v1, v0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 858
     .line 859
-    iget-boolean v1, v1, Lg5/f;->c3:Z
+    iget-boolean v1, v1, Lh5/f;->c3:Z
 
     .line 860
     .line 861
@@ -1885,14 +1885,14 @@
 
     .line 889
     .line 890
-    new-instance v1, Lg5/a;
+    new-instance v1, Lh5/a;
 
     .line 891
     .line 892
     const/4 v2, 0x0
 
     .line 893
-    invoke-direct {v1, v0, v2}, Lg5/a;-><init>(Landroid/view/KeyEvent$Callback;I)V
+    invoke-direct {v1, v0, v2}, Lh5/a;-><init>(Landroid/view/KeyEvent$Callback;I)V
 
     .line 894
     .line 895
@@ -2037,7 +2037,7 @@
 
     .line 11
     .line 12
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/view/View$OnClickListener;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->b1:Landroid/view/View$OnClickListener;
 
     .line 13
     .line 14
@@ -2045,7 +2045,7 @@
 
     .line 15
     .line 16
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 17
     .line 18
@@ -2062,7 +2062,7 @@
     .line 23
     .line 24
     .line 25
-    invoke-virtual {v1}, Lg5/f;->h0()Z
+    invoke-virtual {v1}, Lh5/f;->g0()Z
 
     .line 26
     .line 27
@@ -2074,32 +2074,32 @@
 
     .line 30
     .line 31
-    iget v3, v1, Lg5/f;->D2:F
+    iget v3, v1, Lh5/f;->D2:F
 
     .line 32
     .line 33
-    iget v4, v1, Lg5/f;->C2:F
+    iget v4, v1, Lh5/f;->C2:F
 
     .line 34
     .line 35
     add-float/2addr v3, v4
 
     .line 36
-    iget v4, v1, Lg5/f;->o2:F
+    iget v4, v1, Lh5/f;->o2:F
 
     .line 37
     .line 38
     add-float/2addr v3, v4
 
     .line 39
-    iget v4, v1, Lg5/f;->B2:F
+    iget v4, v1, Lh5/f;->B2:F
 
     .line 40
     .line 41
     add-float/2addr v3, v4
 
     .line 42
-    iget v4, v1, Lg5/f;->A2:F
+    iget v4, v1, Lh5/f;->A2:F
 
     .line 43
     .line 44
@@ -2237,11 +2237,11 @@
     return-object v4
 .end method
 
-.method private getTextAppearance()Ls5/d;
+.method private getTextAppearance()Lq5/d;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -2249,11 +2249,11 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->K2:Ln5/k;
+    iget-object v0, v0, Lh5/f;->K2:Ln5/l;
 
     .line 6
     .line 7
-    iget-object v0, v0, Ln5/k;->g:Ls5/d;
+    iget-object v0, v0, Ln5/l;->g:Lq5/d;
 
     .line 8
     .line 9
@@ -2341,7 +2341,7 @@
 
     .line 8
     .line 9
-    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 10
     .line 11
@@ -2353,7 +2353,7 @@
 
     .line 14
     .line 15
-    iput-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iput-object v1, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 16
     .line 17
@@ -2396,11 +2396,11 @@
 
     .line 36
     :cond_1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 37
     .line 38
-    iget v0, v0, Lg5/f;->Z1:F
+    iget v0, v0, Lh5/f;->Z1:F
 
     .line 39
     .line 40
@@ -2419,11 +2419,11 @@
     move-result v0
 
     .line 47
-    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 48
     .line 49
-    invoke-virtual {v3}, Lg5/f;->getIntrinsicWidth()I
+    invoke-virtual {v3}, Lh5/f;->getIntrinsicWidth()I
 
     .line 50
     .line 51
@@ -2451,7 +2451,7 @@
 
     .line 62
     .line 63
-    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 64
     .line 65
@@ -2463,7 +2463,7 @@
 
     .line 68
     .line 69
-    iput-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iput-object v1, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 70
     .line 71
@@ -2538,7 +2538,7 @@
     move v7, v2
 
     .line 102
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 103
     .line 104
@@ -2555,7 +2555,7 @@
     .line 109
     .line 110
     .line 111
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 112
     .line 113
@@ -2645,7 +2645,7 @@
 
     .line 155
     .line 156
-    iget-object v5, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v5, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 157
     .line 158
@@ -2660,7 +2660,7 @@
     .line 161
     .line 162
     .line 163
-    iput-object v4, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iput-object v4, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 164
     .line 165
@@ -2676,7 +2676,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -2684,7 +2684,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->l2:Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lh5/f;->l2:Landroid/graphics/drawable/Drawable;
 
     .line 6
     .line 7
@@ -2750,7 +2750,7 @@
 
     .line 10
     :cond_0
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 11
     .line 12
@@ -2820,7 +2820,7 @@
 
     .line 10
     :cond_0
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 11
     .line 12
@@ -3031,7 +3031,7 @@
 
     .line 105
     .line 106
-    invoke-virtual {v0, v1, v4, v6}, Lg5/d;->s(IILandroid/os/Bundle;)Z
+    invoke-virtual {v0, v1, v4, v6}, Lh5/d;->s(IILandroid/os/Bundle;)Z
 
     .line 107
     .line 108
@@ -3134,12 +3134,12 @@
     .locals 4
 
     .line 1
-    invoke-super {p0}, Lm/o;->drawableStateChanged()V
+    invoke-super {p0}, Lm/p;->drawableStateChanged()V
 
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 5
     .line 6
@@ -3150,11 +3150,11 @@
 
     .line 8
     .line 9
-    iget-object v0, v0, Lg5/f;->l2:Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lh5/f;->l2:Landroid/graphics/drawable/Drawable;
 
     .line 10
     .line 11
-    invoke-static {v0}, Lg5/f;->H(Landroid/graphics/drawable/Drawable;)Z
+    invoke-static {v0}, Lh5/f;->G(Landroid/graphics/drawable/Drawable;)Z
 
     .line 12
     .line 13
@@ -3166,7 +3166,7 @@
 
     .line 16
     .line 17
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 18
     .line 19
@@ -3351,7 +3351,7 @@
     .line 106
     .line 107
     :cond_8
-    invoke-virtual {v0, v2}, Lg5/f;->Z([I)Z
+    invoke-virtual {v0, v2}, Lh5/f;->Y([I)Z
 
     .line 108
     .line 109
@@ -3389,7 +3389,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 8
     .line 9
@@ -3397,7 +3397,7 @@
 
     .line 10
     .line 11
-    iget-boolean v0, v0, Lg5/f;->k2:Z
+    iget-boolean v0, v0, Lh5/f;->k2:Z
 
     .line 12
     .line 13
@@ -3405,7 +3405,7 @@
 
     .line 14
     .line 15
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/view/View$OnClickListener;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->b1:Landroid/view/View$OnClickListener;
 
     .line 16
     .line 17
@@ -3413,11 +3413,11 @@
 
     .line 18
     .line 19
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 20
     .line 21
-    invoke-static {p0, v0}, Landroidx/core/view/s0;->k(Landroid/view/View;Landroidx/core/view/b;)V
+    invoke-static {p0, v0}, Landroidx/core/view/t0;->k(Landroid/view/View;Landroidx/core/view/b;)V
 
     .line 22
     .line 23
@@ -3436,7 +3436,7 @@
     const/4 v0, 0x0
 
     .line 29
-    invoke-static {p0, v0}, Landroidx/core/view/s0;->k(Landroid/view/View;Landroidx/core/view/b;)V
+    invoke-static {p0, v0}, Landroidx/core/view/t0;->k(Landroid/view/View;Landroidx/core/view/b;)V
 
     .line 30
     .line 31
@@ -3459,11 +3459,11 @@
 
     .line 2
     .line 3
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 4
     .line 5
-    iget-object v1, v1, Lg5/f;->d2:Landroid/content/res/ColorStateList;
+    iget-object v1, v1, Lh5/f;->d2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -3503,11 +3503,11 @@
     .line 21
     .line 22
     .line 23
-    iput-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/RippleDrawable;
+    iput-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/graphics/drawable/RippleDrawable;
 
     .line 24
     .line 25
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 26
     .line 27
@@ -3516,7 +3516,7 @@
     .line 28
     .line 29
     .line 30
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/RippleDrawable;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/graphics/drawable/RippleDrawable;
 
     .line 31
     .line 32
@@ -3557,7 +3557,7 @@
 
     .line 10
     .line 11
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 12
     .line 13
@@ -3569,18 +3569,18 @@
 
     .line 16
     :cond_0
-    iget v1, v0, Lg5/f;->D2:F
+    iget v1, v0, Lh5/f;->D2:F
 
     .line 17
     .line 18
-    iget v2, v0, Lg5/f;->A2:F
+    iget v2, v0, Lh5/f;->A2:F
 
     .line 19
     .line 20
     add-float/2addr v1, v2
 
     .line 21
-    invoke-virtual {v0}, Lg5/f;->E()F
+    invoke-virtual {v0}, Lh5/f;->D()F
 
     .line 22
     .line 23
@@ -3594,22 +3594,22 @@
     float-to-int v0, v0
 
     .line 27
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 28
     .line 29
-    iget v2, v1, Lg5/f;->w2:F
+    iget v2, v1, Lh5/f;->w2:F
 
     .line 30
     .line 31
-    iget v3, v1, Lg5/f;->z2:F
+    iget v3, v1, Lh5/f;->z2:F
 
     .line 32
     .line 33
     add-float/2addr v2, v3
 
     .line 34
-    invoke-virtual {v1}, Lg5/f;->D()F
+    invoke-virtual {v1}, Lh5/f;->C()F
 
     .line 35
     .line 36
@@ -3623,7 +3623,7 @@
     float-to-int v1, v1
 
     .line 40
-    iget-object v2, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object v2, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 41
     .line 42
@@ -3640,7 +3640,7 @@
     .line 47
     .line 48
     .line 49
-    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 50
     .line 51
@@ -3718,7 +3718,7 @@
 
     .line 12
     :cond_0
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 13
     .line 14
@@ -3726,7 +3726,7 @@
 
     .line 15
     .line 16
-    iget-boolean v0, v0, Lg5/f;->q2:Z
+    iget-boolean v0, v0, Lh5/f;->q2:Z
 
     .line 17
     .line 18
@@ -3754,11 +3754,11 @@
 
     .line 29
     .line 30
-    iget-object v0, v0, Lcom/google/android/material/chip/ChipGroup;->y:Lfa/d;
+    iget-object v0, v0, Lcom/google/android/material/chip/ChipGroup;->b1:Lag/e;
 
     .line 31
     .line 32
-    iget-boolean v0, v0, Lfa/d;->b:Z
+    iget-boolean v0, v0, Lag/e;->b:Z
 
     .line 33
     .line 34
@@ -3806,7 +3806,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Landroid/graphics/drawable/InsetDrawable;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/InsetDrawable;
 
     .line 2
     .line 3
@@ -3814,7 +3814,7 @@
 
     .line 4
     .line 5
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 6
     .line 7
@@ -3826,7 +3826,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3834,7 +3834,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->s2:Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lh5/f;->s2:Landroid/graphics/drawable/Drawable;
 
     .line 6
     .line 7
@@ -3852,7 +3852,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3860,7 +3860,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->t2:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->t2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -3878,7 +3878,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3886,7 +3886,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -3904,7 +3904,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3915,7 +3915,7 @@
 
     .line 5
     .line 6
-    invoke-virtual {v0}, Lg5/f;->F()F
+    invoke-virtual {v0}, Lh5/f;->E()F
 
     .line 7
     .line 8
@@ -3942,7 +3942,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3953,7 +3953,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3961,7 +3961,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->D2:F
+    iget v0, v0, Lh5/f;->D2:F
 
     .line 6
     .line 7
@@ -3979,7 +3979,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -3990,7 +3990,7 @@
 
     .line 5
     .line 6
-    iget-object v0, v0, Lg5/f;->g2:Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lh5/f;->g2:Landroid/graphics/drawable/Drawable;
 
     .line 7
     .line 8
@@ -4025,7 +4025,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4033,7 +4033,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->i2:F
+    iget v0, v0, Lh5/f;->i2:F
 
     .line 6
     .line 7
@@ -4051,7 +4051,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4059,7 +4059,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->h2:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->h2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -4077,7 +4077,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4085,7 +4085,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->Z1:F
+    iget v0, v0, Lh5/f;->Z1:F
 
     .line 6
     .line 7
@@ -4103,7 +4103,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4111,7 +4111,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->w2:F
+    iget v0, v0, Lh5/f;->w2:F
 
     .line 6
     .line 7
@@ -4129,7 +4129,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4137,7 +4137,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->b2:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->b2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -4155,7 +4155,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4163,7 +4163,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->c2:F
+    iget v0, v0, Lh5/f;->c2:F
 
     .line 6
     .line 7
@@ -4198,7 +4198,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4209,7 +4209,7 @@
 
     .line 5
     .line 6
-    iget-object v0, v0, Lg5/f;->l2:Landroid/graphics/drawable/Drawable;
+    iget-object v0, v0, Lh5/f;->l2:Landroid/graphics/drawable/Drawable;
 
     .line 7
     .line 8
@@ -4244,7 +4244,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4252,7 +4252,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->p2:Landroid/text/SpannableStringBuilder;
+    iget-object v0, v0, Lh5/f;->p2:Landroid/text/SpannableStringBuilder;
 
     .line 6
     .line 7
@@ -4270,7 +4270,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4278,7 +4278,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->C2:F
+    iget v0, v0, Lh5/f;->C2:F
 
     .line 6
     .line 7
@@ -4296,7 +4296,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4304,7 +4304,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->o2:F
+    iget v0, v0, Lh5/f;->o2:F
 
     .line 6
     .line 7
@@ -4322,7 +4322,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4330,7 +4330,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->B2:F
+    iget v0, v0, Lh5/f;->B2:F
 
     .line 6
     .line 7
@@ -4348,7 +4348,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4356,7 +4356,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->n2:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->n2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -4374,7 +4374,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4382,7 +4382,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iget-object v0, v0, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 6
     .line 7
@@ -4408,7 +4408,7 @@
 
     .line 4
     .line 5
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 6
     .line 7
@@ -4461,7 +4461,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4469,7 +4469,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->v2:Lx4/b;
+    iget-object v0, v0, Lh5/f;->v2:Lx4/b;
 
     .line 6
     .line 7
@@ -4487,7 +4487,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4495,7 +4495,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->y2:F
+    iget v0, v0, Lh5/f;->y2:F
 
     .line 6
     .line 7
@@ -4513,7 +4513,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4521,7 +4521,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->x2:F
+    iget v0, v0, Lh5/f;->x2:F
 
     .line 6
     .line 7
@@ -4539,7 +4539,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4547,7 +4547,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->d2:Landroid/content/res/ColorStateList;
+    iget-object v0, v0, Lh5/f;->d2:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -4561,19 +4561,19 @@
     return-object v0
 .end method
 
-.method public getShapeAppearanceModel()Lv5/o;
+.method public getShapeAppearanceModel()Lt5/o;
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
-    iget-object v0, v0, Lv5/j;->d:Lv5/h;
+    iget-object v0, v0, Lt5/j;->d:Lt5/h;
 
     .line 4
     .line 5
-    iget-object v0, v0, Lv5/h;->a:Lv5/o;
+    iget-object v0, v0, Lt5/h;->a:Lt5/o;
 
     .line 6
     .line 7
@@ -4584,7 +4584,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4592,7 +4592,7 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lg5/f;->u2:Lx4/b;
+    iget-object v0, v0, Lh5/f;->u2:Lx4/b;
 
     .line 6
     .line 7
@@ -4610,7 +4610,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4618,7 +4618,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->A2:F
+    iget v0, v0, Lh5/f;->A2:F
 
     .line 6
     .line 7
@@ -4636,7 +4636,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -4644,7 +4644,7 @@
 
     .line 4
     .line 5
-    iget v0, v0, Lg5/f;->z2:F
+    iget v0, v0, Lh5/f;->z2:F
 
     .line 6
     .line 7
@@ -4670,7 +4670,7 @@
     move-result-object v0
 
     .line 5
-    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 6
     .line 7
@@ -4691,7 +4691,7 @@
     .line 14
     .line 15
     :cond_0
-    invoke-direct {p0}, Lcom/google/android/material/chip/Chip;->getTextAppearance()Ls5/d;
+    invoke-direct {p0}, Lcom/google/android/material/chip/Chip;->getTextAppearance()Lq5/d;
 
     .line 16
     .line 17
@@ -4711,11 +4711,11 @@
     move-result-object v2
 
     .line 25
-    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->P1:Lg5/b;
+    iget-object v3, p0, Lcom/google/android/material/chip/Chip;->P1:Lh5/b;
 
     .line 26
     .line 27
-    invoke-virtual {v1, v2, v0, v3}, Ls5/d;->d(Landroid/content/Context;Landroid/text/TextPaint;Lk4/f;)V
+    invoke-virtual {v1, v2, v0, v3}, Lq5/d;->d(Landroid/content/Context;Landroid/text/TextPaint;Ly6/t1;)V
 
     .line 28
     .line 29
@@ -4733,11 +4733,11 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 5
     .line 6
-    invoke-static {p0, v0}, La7/t1;->E(Landroid/view/View;Lv5/j;)V
+    invoke-static {p0, v0}, Lcom/bumptech/glide/d;->Q(Landroid/view/View;Lt5/j;)V
 
     .line 7
     .line 8
@@ -4783,7 +4783,7 @@
     .line 17
     .line 18
     :cond_0
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 19
     .line 20
@@ -4791,7 +4791,7 @@
 
     .line 21
     .line 22
-    iget-boolean v0, v0, Lg5/f;->q2:Z
+    iget-boolean v0, v0, Lh5/f;->q2:Z
 
     .line 23
     .line 24
@@ -4829,7 +4829,7 @@
 
     .line 7
     .line 8
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 9
     .line 10
@@ -4978,7 +4978,7 @@
     .line 9
     .line 10
     .line 11
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 12
     .line 13
@@ -4992,7 +4992,7 @@
 
     .line 16
     .line 17
-    iget-boolean v0, v0, Lg5/f;->q2:Z
+    iget-boolean v0, v0, Lh5/f;->q2:Z
 
     .line 18
     .line 19
@@ -5149,7 +5149,7 @@
 
     .line 89
     :goto_2
-    const v0, 0x7f0a04d6
+    const v0, 0x7f0a036e
 
     .line 90
     .line 91
@@ -5195,7 +5195,7 @@
     move-result v0
 
     .line 111
-    invoke-static {v4, v2, v3, v2, v0}, Ld8/c;->b(IIIIZ)Ld8/c;
+    invoke-static {v4, v2, v3, v2, v0}, Lb8/c;->b(IIIIZ)Lb8/c;
 
     .line 112
     .line 113
@@ -5203,7 +5203,7 @@
     move-result-object v0
 
     .line 115
-    iget-object v0, v0, Ld8/c;->c:Ljava/lang/Object;
+    iget-object v0, v0, Lb8/c;->d:Ljava/lang/Object;
 
     .line 116
     .line 117
@@ -5452,7 +5452,7 @@
     .line 50
     .line 51
     .line 52
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/view/View$OnClickListener;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->b1:Landroid/view/View$OnClickListener;
 
     .line 53
     .line 54
@@ -5474,7 +5474,7 @@
 
     .line 62
     .line 63
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lg5/d;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->L1:Lh5/d;
 
     .line 64
     .line 65
@@ -5577,7 +5577,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/RippleDrawable;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/graphics/drawable/RippleDrawable;
 
     .line 8
     .line 9
@@ -5646,7 +5646,7 @@
 
     .line 6
     .line 7
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->x:Landroid/graphics/drawable/RippleDrawable;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/graphics/drawable/RippleDrawable;
 
     .line 8
     .line 9
@@ -5671,7 +5671,7 @@
 
     .line 19
     :cond_0
-    invoke-super {p0, p1}, Lm/o;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
+    invoke-super {p0, p1}, Lm/p;->setBackgroundDrawable(Landroid/graphics/drawable/Drawable;)V
 
     .line 20
     .line 21
@@ -5743,7 +5743,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5751,7 +5751,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->K(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->J(Z)V
 
     .line 6
     .line 7
@@ -5764,7 +5764,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5772,7 +5772,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -5792,7 +5792,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->K(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->J(Z)V
 
     .line 16
     .line 17
@@ -5805,7 +5805,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5821,7 +5821,7 @@
 
     .line 8
     :cond_0
-    iget-boolean v0, v0, Lg5/f;->q2:Z
+    iget-boolean v0, v0, Lh5/f;->q2:Z
 
     .line 9
     .line 10
@@ -5842,7 +5842,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5850,7 +5850,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->L(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->K(Landroid/graphics/drawable/Drawable;)V
 
     .line 6
     .line 7
@@ -5891,7 +5891,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5899,11 +5899,11 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
-    invoke-static {v1, p1}, Ljb/c;->G(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v1, p1}, Leh/k;->q(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
@@ -5911,7 +5911,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->L(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->K(Landroid/graphics/drawable/Drawable;)V
 
     .line 12
     .line 13
@@ -5924,7 +5924,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5932,7 +5932,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->M(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->L(Landroid/content/res/ColorStateList;)V
 
     .line 6
     .line 7
@@ -5945,7 +5945,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -5953,7 +5953,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -5965,7 +5965,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->M(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->L(Landroid/content/res/ColorStateList;)V
 
     .line 12
     .line 13
@@ -5978,12 +5978,12 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 2
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 3
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -5994,7 +5994,7 @@
 
     move-result p1
 
-    invoke-virtual {v0, p1}, Lg5/f;->N(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->M(Z)V
 
     :cond_0
     return-void
@@ -6004,12 +6004,12 @@
     .locals 1
 
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->N(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->M(Z)V
 
     :cond_0
     return-void
@@ -6019,7 +6019,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6027,7 +6027,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iget-object v1, v0, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 6
     .line 7
@@ -6035,7 +6035,7 @@
 
     .line 8
     .line 9
-    iput-object p1, v0, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iput-object p1, v0, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 10
     .line 11
@@ -6047,7 +6047,7 @@
     move-result-object p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->onStateChange([I)Z
+    invoke-virtual {v0, p1}, Lh5/f;->onStateChange([I)Z
 
     .line 16
     .line 17
@@ -6060,7 +6060,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6068,7 +6068,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6080,7 +6080,7 @@
     move-result-object p1
 
     .line 11
-    iget-object v1, v0, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iget-object v1, v0, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 12
     .line 13
@@ -6088,7 +6088,7 @@
 
     .line 14
     .line 15
-    iput-object p1, v0, Lg5/f;->Y1:Landroid/content/res/ColorStateList;
+    iput-object p1, v0, Lh5/f;->Y1:Landroid/content/res/ColorStateList;
 
     .line 16
     .line 17
@@ -6100,7 +6100,7 @@
     move-result-object p1
 
     .line 21
-    invoke-virtual {v0, p1}, Lg5/f;->onStateChange([I)Z
+    invoke-virtual {v0, p1}, Lh5/f;->onStateChange([I)Z
 
     .line 22
     .line 23
@@ -6115,7 +6115,7 @@
     .end annotation
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6123,7 +6123,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->O(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->N(F)V
 
     .line 6
     .line 7
@@ -6138,7 +6138,7 @@
     .end annotation
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6146,7 +6146,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6166,7 +6166,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->O(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->N(F)V
 
     .line 16
     .line 17
@@ -6175,11 +6175,11 @@
     return-void
 .end method
 
-.method public setChipDrawable(Lg5/f;)V
+.method public setChipDrawable(Lh5/f;)V
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6203,19 +6203,19 @@
     .line 11
     .line 12
     .line 13
-    iput-object v1, v0, Lg5/f;->a3:Ljava/lang/ref/WeakReference;
+    iput-object v1, v0, Lh5/f;->a3:Ljava/lang/ref/WeakReference;
 
     .line 14
     .line 15
     :cond_0
-    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 16
     .line 17
     const/4 v0, 0x0
 
     .line 18
-    iput-boolean v0, p1, Lg5/f;->c3:Z
+    iput-boolean v0, p1, Lh5/f;->c3:Z
 
     .line 19
     .line 20
@@ -6228,7 +6228,7 @@
     .line 23
     .line 24
     .line 25
-    iput-object v0, p1, Lg5/f;->a3:Ljava/lang/ref/WeakReference;
+    iput-object v0, p1, Lh5/f;->a3:Ljava/lang/ref/WeakReference;
 
     .line 26
     .line 27
@@ -6249,7 +6249,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6257,7 +6257,7 @@
 
     .line 4
     .line 5
-    iget v1, v0, Lg5/f;->D2:F
+    iget v1, v0, Lh5/f;->D2:F
 
     .line 6
     .line 7
@@ -6269,16 +6269,16 @@
 
     .line 10
     .line 11
-    iput p1, v0, Lg5/f;->D2:F
+    iput p1, v0, Lh5/f;->D2:F
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 17
     .line 18
@@ -6291,7 +6291,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6299,7 +6299,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6319,7 +6319,7 @@
     move-result p1
 
     .line 15
-    iget v1, v0, Lg5/f;->D2:F
+    iget v1, v0, Lh5/f;->D2:F
 
     .line 16
     .line 17
@@ -6331,16 +6331,16 @@
 
     .line 20
     .line 21
-    iput p1, v0, Lg5/f;->D2:F
+    iput p1, v0, Lh5/f;->D2:F
 
     .line 22
     .line 23
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 24
     .line 25
     .line 26
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 27
     .line 28
@@ -6353,7 +6353,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6361,7 +6361,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->P(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->O(Landroid/graphics/drawable/Drawable;)V
 
     .line 6
     .line 7
@@ -6402,7 +6402,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6410,11 +6410,11 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
-    invoke-static {v1, p1}, Ljb/c;->G(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v1, p1}, Leh/k;->q(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
@@ -6422,7 +6422,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->P(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->O(Landroid/graphics/drawable/Drawable;)V
 
     .line 12
     .line 13
@@ -6435,7 +6435,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6443,7 +6443,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->Q(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->P(F)V
 
     .line 6
     .line 7
@@ -6456,7 +6456,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6464,7 +6464,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6484,7 +6484,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->Q(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->P(F)V
 
     .line 16
     .line 17
@@ -6497,7 +6497,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6505,7 +6505,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->R(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->Q(Landroid/content/res/ColorStateList;)V
 
     .line 6
     .line 7
@@ -6518,7 +6518,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6526,7 +6526,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6538,7 +6538,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->R(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->Q(Landroid/content/res/ColorStateList;)V
 
     .line 12
     .line 13
@@ -6551,12 +6551,12 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 2
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 3
     invoke-virtual {v1}, Landroid/content/Context;->getResources()Landroid/content/res/Resources;
@@ -6567,7 +6567,7 @@
 
     move-result p1
 
-    invoke-virtual {v0, p1}, Lg5/f;->S(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->R(Z)V
 
     :cond_0
     return-void
@@ -6577,12 +6577,12 @@
     .locals 1
 
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->S(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->R(Z)V
 
     :cond_0
     return-void
@@ -6592,7 +6592,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6600,7 +6600,7 @@
 
     .line 4
     .line 5
-    iget v1, v0, Lg5/f;->Z1:F
+    iget v1, v0, Lh5/f;->Z1:F
 
     .line 6
     .line 7
@@ -6612,16 +6612,16 @@
 
     .line 10
     .line 11
-    iput p1, v0, Lg5/f;->Z1:F
+    iput p1, v0, Lh5/f;->Z1:F
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 17
     .line 18
@@ -6634,7 +6634,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6642,7 +6642,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6662,7 +6662,7 @@
     move-result p1
 
     .line 15
-    iget v1, v0, Lg5/f;->Z1:F
+    iget v1, v0, Lh5/f;->Z1:F
 
     .line 16
     .line 17
@@ -6674,16 +6674,16 @@
 
     .line 20
     .line 21
-    iput p1, v0, Lg5/f;->Z1:F
+    iput p1, v0, Lh5/f;->Z1:F
 
     .line 22
     .line 23
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 24
     .line 25
     .line 26
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 27
     .line 28
@@ -6696,7 +6696,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6704,7 +6704,7 @@
 
     .line 4
     .line 5
-    iget v1, v0, Lg5/f;->w2:F
+    iget v1, v0, Lh5/f;->w2:F
 
     .line 6
     .line 7
@@ -6716,16 +6716,16 @@
 
     .line 10
     .line 11
-    iput p1, v0, Lg5/f;->w2:F
+    iput p1, v0, Lh5/f;->w2:F
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 17
     .line 18
@@ -6738,7 +6738,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6746,7 +6746,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6766,7 +6766,7 @@
     move-result p1
 
     .line 15
-    iget v1, v0, Lg5/f;->w2:F
+    iget v1, v0, Lh5/f;->w2:F
 
     .line 16
     .line 17
@@ -6778,16 +6778,16 @@
 
     .line 20
     .line 21
-    iput p1, v0, Lg5/f;->w2:F
+    iput p1, v0, Lh5/f;->w2:F
 
     .line 22
     .line 23
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 24
     .line 25
     .line 26
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 27
     .line 28
@@ -6800,7 +6800,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6808,7 +6808,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->T(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->S(Landroid/content/res/ColorStateList;)V
 
     .line 6
     .line 7
@@ -6821,7 +6821,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6829,7 +6829,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6841,7 +6841,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->T(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->S(Landroid/content/res/ColorStateList;)V
 
     .line 12
     .line 13
@@ -6854,7 +6854,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6862,7 +6862,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->U(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->T(F)V
 
     .line 6
     .line 7
@@ -6875,7 +6875,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6883,7 +6883,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -6903,7 +6903,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->U(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->T(F)V
 
     .line 16
     .line 17
@@ -6960,7 +6960,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6968,7 +6968,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->V(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->U(Landroid/graphics/drawable/Drawable;)V
 
     .line 6
     .line 7
@@ -6986,7 +6986,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -6994,7 +6994,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->p2:Landroid/text/SpannableStringBuilder;
+    iget-object v1, v0, Lh5/f;->p2:Landroid/text/SpannableStringBuilder;
 
     .line 6
     .line 7
@@ -7047,7 +7047,7 @@
     .line 28
     .line 29
     .line 30
-    sget-object v2, Lo0/d;->a:Lse/a;
+    sget-object v2, Lo0/d;->a:Lae/a;
 
     .line 31
     .line 32
@@ -7059,11 +7059,11 @@
     move-result-object p1
 
     .line 36
-    iput-object p1, v0, Lg5/f;->p2:Landroid/text/SpannableStringBuilder;
+    iput-object p1, v0, Lh5/f;->p2:Landroid/text/SpannableStringBuilder;
 
     .line 37
     .line 38
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 39
     .line 40
@@ -7104,7 +7104,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7112,7 +7112,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->W(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->V(F)V
 
     .line 6
     .line 7
@@ -7125,7 +7125,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7133,7 +7133,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7153,7 +7153,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->W(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->V(F)V
 
     .line 16
     .line 17
@@ -7166,7 +7166,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7174,11 +7174,11 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
-    invoke-static {v1, p1}, Ljb/c;->G(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
+    invoke-static {v1, p1}, Leh/k;->q(Landroid/content/Context;I)Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
@@ -7186,7 +7186,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->V(Landroid/graphics/drawable/Drawable;)V
+    invoke-virtual {v0, p1}, Lh5/f;->U(Landroid/graphics/drawable/Drawable;)V
 
     .line 12
     .line 13
@@ -7204,7 +7204,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7212,7 +7212,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->X(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->W(F)V
 
     .line 6
     .line 7
@@ -7225,7 +7225,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7233,7 +7233,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7253,7 +7253,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->X(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->W(F)V
 
     .line 16
     .line 17
@@ -7266,7 +7266,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7274,7 +7274,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->Y(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->X(F)V
 
     .line 6
     .line 7
@@ -7287,7 +7287,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7295,7 +7295,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7315,7 +7315,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->Y(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->X(F)V
 
     .line 16
     .line 17
@@ -7328,7 +7328,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7336,7 +7336,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->a0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->Z(Landroid/content/res/ColorStateList;)V
 
     .line 6
     .line 7
@@ -7349,7 +7349,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7357,7 +7357,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7369,7 +7369,7 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->a0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->Z(Landroid/content/res/ColorStateList;)V
 
     .line 12
     .line 13
@@ -7399,12 +7399,12 @@
     .locals 1
 
     .line 2
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 3
-    invoke-virtual {v0, p1}, Lg5/f;->b0(Z)V
+    invoke-virtual {v0, p1}, Lh5/f;->a0(Z)V
 
     .line 4
     :cond_0
@@ -7425,7 +7425,7 @@
 
     .line 4
     .line 5
-    invoke-super {p0, p1, p2, p3, p4}, Lm/o;->setCompoundDrawables(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    invoke-super {p0, p1, p2, p3, p4}, Lm/p;->setCompoundDrawables(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
 
     .line 6
     .line 7
@@ -7479,7 +7479,7 @@
 
     .line 4
     .line 5
-    invoke-super {p0, p1, p2, p3, p4}, Lm/o;->setCompoundDrawablesRelative(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
+    invoke-super {p0, p1, p2, p3, p4}, Lm/p;->setCompoundDrawablesRelative(Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;Landroid/graphics/drawable/Drawable;)V
 
     .line 6
     .line 7
@@ -7662,7 +7662,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 5
     .line 6
@@ -7670,7 +7670,7 @@
 
     .line 7
     .line 8
-    invoke-virtual {v0, p1}, Lv5/j;->q(F)V
+    invoke-virtual {v0, p1}, Lt5/j;->p(F)V
 
     .line 9
     .line 10
@@ -7683,7 +7683,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7708,7 +7708,7 @@
     .line 11
     .line 12
     .line 13
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 14
     .line 15
@@ -7716,7 +7716,7 @@
 
     .line 16
     .line 17
-    iput-object p1, v0, Lg5/f;->b3:Landroid/text/TextUtils$TruncateAt;
+    iput-object p1, v0, Lh5/f;->b3:Landroid/text/TextUtils$TruncateAt;
 
     .line 18
     .line 19
@@ -7804,7 +7804,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7812,7 +7812,7 @@
 
     .line 4
     .line 5
-    iput-object p1, v0, Lg5/f;->v2:Lx4/b;
+    iput-object p1, v0, Lh5/f;->v2:Lx4/b;
 
     .line 6
     .line 7
@@ -7824,7 +7824,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7832,7 +7832,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7844,7 +7844,7 @@
     move-result-object p1
 
     .line 11
-    iput-object p1, v0, Lg5/f;->v2:Lx4/b;
+    iput-object p1, v0, Lh5/f;->v2:Lx4/b;
 
     .line 12
     .line 13
@@ -7856,7 +7856,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7864,7 +7864,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->c0(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->b0(F)V
 
     .line 6
     .line 7
@@ -7877,7 +7877,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7885,7 +7885,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7905,7 +7905,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->c0(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->b0(F)V
 
     .line 16
     .line 17
@@ -7918,7 +7918,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7926,7 +7926,7 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->d0(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->c0(F)V
 
     .line 6
     .line 7
@@ -7939,7 +7939,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -7947,7 +7947,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -7967,7 +7967,7 @@
     move-result p1
 
     .line 15
-    invoke-virtual {v0, p1}, Lg5/f;->d0(F)V
+    invoke-virtual {v0, p1}, Lh5/f;->c0(F)V
 
     .line 16
     .line 17
@@ -7998,7 +7998,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8099,7 +8099,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 5
     .line 6
@@ -8107,7 +8107,7 @@
 
     .line 7
     .line 8
-    iput p1, v0, Lg5/f;->d3:I
+    iput p1, v0, Lh5/f;->d3:I
 
     .line 9
     .line 10
@@ -8155,7 +8155,7 @@
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->b1:Landroid/widget/CompoundButton$OnCheckedChangeListener;
+    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->B1:Landroid/widget/CompoundButton$OnCheckedChangeListener;
 
     .line 2
     .line 3
@@ -8166,7 +8166,7 @@
     .locals 0
 
     .line 1
-    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->y:Landroid/view/View$OnClickListener;
+    iput-object p1, p0, Lcom/google/android/material/chip/Chip;->b1:Landroid/view/View$OnClickListener;
 
     .line 2
     .line 3
@@ -8182,7 +8182,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8190,13 +8190,13 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0, p1}, Lg5/f;->e0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->d0(Landroid/content/res/ColorStateList;)V
 
     .line 6
     .line 7
     .line 8
     :cond_0
-    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 9
     .line 10
@@ -8217,7 +8217,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8225,7 +8225,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -8237,12 +8237,12 @@
     move-result-object p1
 
     .line 11
-    invoke-virtual {v0, p1}, Lg5/f;->e0(Landroid/content/res/ColorStateList;)V
+    invoke-virtual {v0, p1}, Lh5/f;->d0(Landroid/content/res/ColorStateList;)V
 
     .line 12
     .line 13
     .line 14
-    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 15
     .line 16
@@ -8260,15 +8260,15 @@
     return-void
 .end method
 
-.method public setShapeAppearanceModel(Lv5/o;)V
+.method public setShapeAppearanceModel(Lt5/o;)V
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
-    invoke-virtual {v0, p1}, Lv5/j;->setShapeAppearanceModel(Lv5/o;)V
+    invoke-virtual {v0, p1}, Lt5/j;->setShapeAppearanceModel(Lt5/o;)V
 
     .line 4
     .line 5
@@ -8280,7 +8280,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8288,7 +8288,7 @@
 
     .line 4
     .line 5
-    iput-object p1, v0, Lg5/f;->u2:Lx4/b;
+    iput-object p1, v0, Lh5/f;->u2:Lx4/b;
 
     .line 6
     .line 7
@@ -8300,7 +8300,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8308,7 +8308,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -8320,7 +8320,7 @@
     move-result-object p1
 
     .line 11
-    iput-object p1, v0, Lg5/f;->u2:Lx4/b;
+    iput-object p1, v0, Lh5/f;->u2:Lx4/b;
 
     .line 12
     .line 13
@@ -8365,7 +8365,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8386,7 +8386,7 @@
     .line 9
     .line 10
     :cond_1
-    iget-boolean v0, v0, Lg5/f;->c3:Z
+    iget-boolean v0, v0, Lh5/f;->c3:Z
 
     .line 11
     .line 12
@@ -8410,7 +8410,7 @@
     .line 18
     .line 19
     .line 20
-    iget-object p2, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object p2, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 21
     .line 22
@@ -8418,7 +8418,7 @@
 
     .line 23
     .line 24
-    iget-object v0, p2, Lg5/f;->e2:Ljava/lang/CharSequence;
+    iget-object v0, p2, Lh5/f;->e2:Ljava/lang/CharSequence;
 
     .line 25
     .line 26
@@ -8434,27 +8434,27 @@
 
     .line 31
     .line 32
-    iput-object p1, p2, Lg5/f;->e2:Ljava/lang/CharSequence;
+    iput-object p1, p2, Lh5/f;->e2:Ljava/lang/CharSequence;
 
     .line 33
     .line 34
-    iget-object p1, p2, Lg5/f;->K2:Ln5/k;
+    iget-object p1, p2, Lh5/f;->K2:Ln5/l;
 
     .line 35
     .line 36
     const/4 v0, 0x1
 
     .line 37
-    iput-boolean v0, p1, Ln5/k;->e:Z
+    iput-boolean v0, p1, Ln5/l;->e:Z
 
     .line 38
     .line 39
-    invoke-virtual {p2}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {p2}, Lt5/j;->invalidateSelf()V
 
     .line 40
     .line 41
     .line 42
-    invoke-virtual {p2}, Lg5/f;->I()V
+    invoke-virtual {p2}, Lh5/f;->H()V
 
     .line 43
     .line 44
@@ -8471,21 +8471,21 @@
     invoke-super {p0, p1}, Landroid/widget/TextView;->setTextAppearance(I)V
 
     .line 10
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 11
-    new-instance v1, Ls5/d;
+    new-instance v1, Lq5/d;
 
-    iget-object v2, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v2, v0, Lh5/f;->E2:Landroid/content/Context;
 
-    invoke-direct {v1, v2, p1}, Ls5/d;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v1, v2, p1}, Lq5/d;-><init>(Landroid/content/Context;I)V
 
     .line 12
-    iget-object p1, v0, Lg5/f;->K2:Ln5/k;
+    iget-object p1, v0, Lh5/f;->K2:Ln5/l;
 
-    invoke-virtual {p1, v1, v2}, Ln5/k;->c(Ls5/d;Landroid/content/Context;)V
+    invoke-virtual {p1, v1, v2}, Ln5/l;->c(Lq5/d;Landroid/content/Context;)V
 
     .line 13
     :cond_0
@@ -8501,21 +8501,21 @@
     invoke-super {p0, p1, p2}, Landroid/widget/TextView;->setTextAppearance(Landroid/content/Context;I)V
 
     .line 5
-    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object p1, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz p1, :cond_0
 
     .line 6
-    new-instance v0, Ls5/d;
+    new-instance v0, Lq5/d;
 
-    iget-object v1, p1, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, p1, Lh5/f;->E2:Landroid/content/Context;
 
-    invoke-direct {v0, v1, p2}, Ls5/d;-><init>(Landroid/content/Context;I)V
+    invoke-direct {v0, v1, p2}, Lq5/d;-><init>(Landroid/content/Context;I)V
 
     .line 7
-    iget-object p1, p1, Lg5/f;->K2:Ln5/k;
+    iget-object p1, p1, Lh5/f;->K2:Ln5/l;
 
-    invoke-virtual {p1, v0, v1}, Ln5/k;->c(Ls5/d;Landroid/content/Context;)V
+    invoke-virtual {p1, v0, v1}, Ln5/l;->c(Lq5/d;Landroid/content/Context;)V
 
     .line 8
     :cond_0
@@ -8524,20 +8524,20 @@
     return-void
 .end method
 
-.method public setTextAppearance(Ls5/d;)V
+.method public setTextAppearance(Lq5/d;)V
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     if-eqz v0, :cond_0
 
     .line 2
-    iget-object v1, v0, Lg5/f;->K2:Ln5/k;
+    iget-object v1, v0, Lh5/f;->K2:Ln5/l;
 
-    iget-object v0, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v0, v0, Lh5/f;->E2:Landroid/content/Context;
 
-    invoke-virtual {v1, p1, v0}, Ln5/k;->c(Ls5/d;Landroid/content/Context;)V
+    invoke-virtual {v1, p1, v0}, Ln5/l;->c(Lq5/d;Landroid/content/Context;)V
 
     .line 3
     :cond_0
@@ -8570,7 +8570,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8578,7 +8578,7 @@
 
     .line 4
     .line 5
-    iget v1, v0, Lg5/f;->A2:F
+    iget v1, v0, Lh5/f;->A2:F
 
     .line 6
     .line 7
@@ -8590,16 +8590,16 @@
 
     .line 10
     .line 11
-    iput p1, v0, Lg5/f;->A2:F
+    iput p1, v0, Lh5/f;->A2:F
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 17
     .line 18
@@ -8612,7 +8612,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8620,7 +8620,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -8640,7 +8640,7 @@
     move-result p1
 
     .line 15
-    iget v1, v0, Lg5/f;->A2:F
+    iget v1, v0, Lh5/f;->A2:F
 
     .line 16
     .line 17
@@ -8652,16 +8652,16 @@
 
     .line 20
     .line 21
-    iput p1, v0, Lg5/f;->A2:F
+    iput p1, v0, Lh5/f;->A2:F
 
     .line 22
     .line 23
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 24
     .line 25
     .line 26
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 27
     .line 28
@@ -8679,7 +8679,7 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 5
     .line 6
@@ -8711,11 +8711,11 @@
     move-result p1
 
     .line 20
-    iget-object p2, v0, Lg5/f;->K2:Ln5/k;
+    iget-object p2, v0, Lh5/f;->K2:Ln5/l;
 
     .line 21
     .line 22
-    iget-object v1, p2, Ln5/k;->g:Ls5/d;
+    iget-object v1, p2, Ln5/l;->g:Lq5/d;
 
     .line 23
     .line 24
@@ -8723,11 +8723,11 @@
 
     .line 25
     .line 26
-    iput p1, v1, Ls5/d;->l:F
+    iput p1, v1, Lq5/d;->l:F
 
     .line 27
     .line 28
-    iget-object p2, p2, Ln5/k;->a:Landroid/text/TextPaint;
+    iget-object p2, p2, Ln5/l;->a:Landroid/text/TextPaint;
 
     .line 29
     .line 30
@@ -8736,7 +8736,7 @@
     .line 31
     .line 32
     .line 33
-    invoke-virtual {v0}, Lg5/f;->a()V
+    invoke-virtual {v0}, Lh5/f;->a()V
 
     .line 34
     .line 35
@@ -8754,7 +8754,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8762,7 +8762,7 @@
 
     .line 4
     .line 5
-    iget v1, v0, Lg5/f;->z2:F
+    iget v1, v0, Lh5/f;->z2:F
 
     .line 6
     .line 7
@@ -8774,16 +8774,16 @@
 
     .line 10
     .line 11
-    iput p1, v0, Lg5/f;->z2:F
+    iput p1, v0, Lh5/f;->z2:F
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 14
     .line 15
     .line 16
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 17
     .line 18
@@ -8796,7 +8796,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->q:Lg5/f;
+    iget-object v0, p0, Lcom/google/android/material/chip/Chip;->w:Lh5/f;
 
     .line 2
     .line 3
@@ -8804,7 +8804,7 @@
 
     .line 4
     .line 5
-    iget-object v1, v0, Lg5/f;->E2:Landroid/content/Context;
+    iget-object v1, v0, Lh5/f;->E2:Landroid/content/Context;
 
     .line 6
     .line 7
@@ -8824,7 +8824,7 @@
     move-result p1
 
     .line 15
-    iget v1, v0, Lg5/f;->z2:F
+    iget v1, v0, Lh5/f;->z2:F
 
     .line 16
     .line 17
@@ -8836,16 +8836,16 @@
 
     .line 20
     .line 21
-    iput p1, v0, Lg5/f;->z2:F
+    iput p1, v0, Lh5/f;->z2:F
 
     .line 22
     .line 23
-    invoke-virtual {v0}, Lv5/j;->invalidateSelf()V
+    invoke-virtual {v0}, Lt5/j;->invalidateSelf()V
 
     .line 24
     .line 25
     .line 26
-    invoke-virtual {v0}, Lg5/f;->I()V
+    invoke-virtual {v0}, Lh5/f;->H()V
 
     .line 27
     .line 28

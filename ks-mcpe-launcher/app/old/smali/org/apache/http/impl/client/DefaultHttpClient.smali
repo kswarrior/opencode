@@ -1,33 +1,35 @@
 .class public final Lorg/apache/http/impl/client/DefaultHttpClient;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/io/Closeable;
 
 
 # instance fields
-.field public C1:Lid/h;
+.field public B1:Ljd/g;
 
-.field public D1:Lid/o;
+.field public C1:Ljd/h;
 
-.field public E1:Lid/l;
+.field public D1:Ljd/o;
 
-.field public F1:Lid/c;
+.field public E1:Ljd/l;
 
-.field public G1:Lid/d;
+.field public F1:Ljd/c;
 
-.field public H1:La4/e;
+.field public G1:Ljd/d;
 
-.field public I1:Lv5/f;
+.field public H1:Lhf/b;
 
-.field public X:Led/j;
+.field public I1:Lce/b;
 
-.field public Y:Lqd/a;
+.field public X:Lfd/j;
 
-.field public Z:Lqd/f;
+.field public Y:Lfd/j;
 
-.field public b1:Lid/g;
+.field public Z:Lrd/a;
+
+.field public b1:Lrd/f;
 
 .field public final c:Lorg/apache/commons/logging/Log;
 
@@ -35,15 +37,13 @@
 
 .field public h:Lorg/apache/http/params/HttpParams;
 
-.field public p:Lf7/b;
+.field public q:Ld7/c;
 
-.field public q:Lorg/apache/http/conn/ClientConnectionManager;
+.field public w:Lorg/apache/http/conn/ClientConnectionManager;
 
-.field public w:Lp7/d;
+.field public x:Lt5/f;
 
-.field public x:Lue/b;
-
-.field public y:Led/j;
+.field public y:Lt5/f;
 
 
 # direct methods
@@ -96,37 +96,37 @@
 
     .line 23
     .line 24
-    iput-object p1, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->q:Lorg/apache/http/conn/ClientConnectionManager;
+    iput-object p1, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->w:Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 25
     .line 26
     return-void
 .end method
 
-.method public static a()Led/j;
+.method public static a()Lfd/j;
     .locals 3
 
     .line 1
-    new-instance v0, Led/j;
+    new-instance v0, Lfd/j;
 
     .line 2
     .line 3
     const/4 v1, 0x1
 
     .line 4
-    invoke-direct {v0, v1}, Led/j;-><init>(I)V
+    invoke-direct {v0, v1}, Lfd/j;-><init>(I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lhd/c;
+    new-instance v1, Lid/c;
 
     .line 8
     .line 9
     const/4 v2, 0x0
 
     .line 10
-    invoke-direct {v1, v2}, Lhd/c;-><init>(I)V
+    invoke-direct {v1, v2}, Lid/c;-><init>(I)V
 
     .line 11
     .line 12
@@ -135,19 +135,19 @@
 
     .line 14
     .line 15
-    invoke-virtual {v0, v2, v1}, Led/j;->c(Ljava/lang/String;Lhd/c;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->c(Ljava/lang/String;Lid/c;)V
 
     .line 16
     .line 17
     .line 18
-    new-instance v1, Lhd/c;
+    new-instance v1, Lid/c;
 
     .line 19
     .line 20
     const/4 v2, 0x1
 
     .line 21
-    invoke-direct {v1, v2}, Lhd/c;-><init>(I)V
+    invoke-direct {v1, v2}, Lid/c;-><init>(I)V
 
     .line 22
     .line 23
@@ -156,19 +156,19 @@
 
     .line 25
     .line 26
-    invoke-virtual {v0, v2, v1}, Led/j;->c(Ljava/lang/String;Lhd/c;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->c(Ljava/lang/String;Lid/c;)V
 
     .line 27
     .line 28
     .line 29
-    new-instance v1, Lhd/c;
+    new-instance v1, Lid/c;
 
     .line 30
     .line 31
     const/4 v2, 0x3
 
     .line 32
-    invoke-direct {v1, v2}, Lhd/c;-><init>(I)V
+    invoke-direct {v1, v2}, Lid/c;-><init>(I)V
 
     .line 33
     .line 34
@@ -177,19 +177,19 @@
 
     .line 36
     .line 37
-    invoke-virtual {v0, v2, v1}, Led/j;->c(Ljava/lang/String;Lhd/c;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->c(Ljava/lang/String;Lid/c;)V
 
     .line 38
     .line 39
     .line 40
-    new-instance v1, Lhd/c;
+    new-instance v1, Lid/c;
 
     .line 41
     .line 42
     const/4 v2, 0x4
 
     .line 43
-    invoke-direct {v1, v2}, Lhd/c;-><init>(I)V
+    invoke-direct {v1, v2}, Lid/c;-><init>(I)V
 
     .line 44
     .line 45
@@ -198,19 +198,19 @@
 
     .line 47
     .line 48
-    invoke-virtual {v0, v2, v1}, Led/j;->c(Ljava/lang/String;Lhd/c;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->c(Ljava/lang/String;Lid/c;)V
 
     .line 49
     .line 50
     .line 51
-    new-instance v1, Lhd/c;
+    new-instance v1, Lid/c;
 
     .line 52
     .line 53
     const/4 v2, 0x2
 
     .line 54
-    invoke-direct {v1, v2}, Lhd/c;-><init>(I)V
+    invoke-direct {v1, v2}, Lid/c;-><init>(I)V
 
     .line 55
     .line 56
@@ -219,7 +219,7 @@
 
     .line 58
     .line 59
-    invoke-virtual {v0, v2, v1}, Led/j;->c(Ljava/lang/String;Lhd/c;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->c(Ljava/lang/String;Lid/c;)V
 
     .line 60
     .line 61
@@ -227,30 +227,30 @@
     return-object v0
 .end method
 
-.method public static f()Led/j;
+.method public static f()Lfd/j;
     .locals 3
 
     .line 1
-    new-instance v0, Led/j;
+    new-instance v0, Lfd/j;
 
     .line 2
     .line 3
     const/4 v1, 0x0
 
     .line 4
-    invoke-direct {v0, v1}, Led/j;-><init>(I)V
+    invoke-direct {v0, v1}, Lfd/j;-><init>(I)V
 
     .line 5
     .line 6
     .line 7
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 8
     .line 9
     const/4 v2, 0x0
 
     .line 10
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 11
     .line 12
@@ -259,19 +259,19 @@
 
     .line 14
     .line 15
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 16
     .line 17
     .line 18
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 19
     .line 20
     const/4 v2, 0x0
 
     .line 21
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 22
     .line 23
@@ -280,19 +280,19 @@
 
     .line 25
     .line 26
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 27
     .line 28
     .line 29
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 30
     .line 31
     const/4 v2, 0x1
 
     .line 32
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 33
     .line 34
@@ -301,19 +301,19 @@
 
     .line 36
     .line 37
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 38
     .line 39
     .line 40
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 41
     .line 42
     const/4 v2, 0x2
 
     .line 43
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 44
     .line 45
@@ -322,19 +322,19 @@
 
     .line 47
     .line 48
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 49
     .line 50
     .line 51
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 52
     .line 53
     const/4 v2, 0x3
 
     .line 54
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 55
     .line 56
@@ -343,19 +343,19 @@
 
     .line 58
     .line 59
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 60
     .line 61
     .line 62
-    new-instance v1, Lld/h;
+    new-instance v1, Lmd/h;
 
     .line 63
     .line 64
     const/4 v2, 0x4
 
     .line 65
-    invoke-direct {v1, v2}, Lld/h;-><init>(I)V
+    invoke-direct {v1, v2}, Lmd/h;-><init>(I)V
 
     .line 66
     .line 67
@@ -364,12 +364,12 @@
 
     .line 69
     .line 70
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 71
     .line 72
     .line 73
-    new-instance v1, Lld/k;
+    new-instance v1, Lmd/k;
 
     .line 74
     .line 75
@@ -382,7 +382,7 @@
 
     .line 79
     .line 80
-    invoke-virtual {v0, v2, v1}, Led/j;->b(Ljava/lang/String;Led/g;)V
+    invoke-virtual {v0, v2, v1}, Lfd/j;->b(Ljava/lang/String;Lfd/g;)V
 
     .line 81
     .line 82
@@ -390,20 +390,20 @@
     return-object v0
 .end method
 
-.method public static i()Lpd/c;
+.method public static i()Lqd/c;
     .locals 8
 
     .line 1
-    new-instance v0, Lpd/c;
+    new-instance v0, Lqd/c;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lpd/b;-><init>()V
+    invoke-direct {v0}, Lqd/b;-><init>()V
 
     .line 4
     .line 5
     .line 6
-    sget-object v1, Lpc/m;->w:Lpc/m;
+    sget-object v1, Lqc/m;->x:Lqc/m;
 
     .line 7
     .line 8
@@ -416,7 +416,7 @@
     .line 11
     .line 12
     .line 13
-    sget-object v1, Lqd/b;->a:Ljava/nio/charset/Charset;
+    sget-object v1, Lrd/b;->a:Ljava/nio/charset/Charset;
 
     .line 14
     .line 15
@@ -445,7 +445,7 @@
 
     .line 27
     .line 28
-    invoke-virtual {v0, v2, v1}, Lpd/c;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v0, v2, v1}, Lqd/c;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     .line 29
     .line 30
@@ -458,7 +458,7 @@
 
     .line 34
     .line 35
-    invoke-virtual {v0, v1, v2}, Lpd/a;->e(ILjava/lang/String;)Lpd/a;
+    invoke-virtual {v0, v1, v2}, Lqd/a;->e(ILjava/lang/String;)Lqd/a;
 
     .line 36
     .line 37
@@ -781,11 +781,11 @@
 
     .line 183
     :cond_7
-    new-instance v2, Lb8/s0;
+    new-instance v2, Lae/i;
 
     .line 184
     .line 185
-    invoke-direct {v2, v1, v6, v3, v4}, Lb8/s0;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    invoke-direct {v2, v1, v6, v3, v4}, Lae/i;-><init>(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
 
     .line 186
     .line 187
@@ -798,7 +798,7 @@
 
     .line 190
     .line 191
-    iget-object v1, v4, Lb8/s0;->p:Ljava/lang/Object;
+    iget-object v1, v4, Lae/i;->q:Ljava/lang/Object;
 
     .line 192
     .line 193
@@ -880,7 +880,7 @@
 
     .line 232
     .line 233
-    invoke-virtual {v0, v1, v2}, Lpd/c;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
+    invoke-virtual {v0, v1, v2}, Lqd/c;->b(Ljava/lang/Object;Ljava/lang/String;)Lorg/apache/http/params/HttpParams;
 
     .line 234
     .line 235
@@ -888,142 +888,142 @@
     return-object v0
 .end method
 
-.method public static u()Lqd/a;
+.method public static v()Lrd/a;
     .locals 3
 
     .line 1
-    new-instance v0, Lqd/a;
+    new-instance v0, Lrd/a;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lqd/a;-><init>()V
+    invoke-direct {v0}, Lrd/a;-><init>()V
 
     .line 4
     .line 5
     .line 6
-    new-instance v1, Lqd/g;
+    new-instance v1, Lrd/g;
 
     .line 7
     .line 8
     const/4 v2, 0x4
 
     .line 9
-    invoke-direct {v1, v2}, Lqd/g;-><init>(I)V
+    invoke-direct {v1, v2}, Lrd/g;-><init>(I)V
 
     .line 10
     .line 11
     .line 12
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 13
     .line 14
     .line 15
-    new-instance v1, Lqd/g;
+    new-instance v1, Lrd/g;
 
     .line 16
     .line 17
     const/4 v2, 0x0
 
     .line 18
-    invoke-direct {v1, v2}, Lqd/g;-><init>(I)V
+    invoke-direct {v1, v2}, Lrd/g;-><init>(I)V
 
     .line 19
     .line 20
     .line 21
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 22
     .line 23
     .line 24
-    new-instance v1, Lqd/g;
+    new-instance v1, Lrd/g;
 
     .line 25
     .line 26
     const/4 v2, 0x2
 
     .line 27
-    invoke-direct {v1, v2}, Lqd/g;-><init>(I)V
+    invoke-direct {v1, v2}, Lrd/g;-><init>(I)V
 
     .line 28
     .line 29
     .line 30
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 31
     .line 32
     .line 33
-    new-instance v1, Lvc/d;
+    new-instance v1, Lwc/d;
 
     .line 34
     .line 35
-    invoke-direct {v1}, Lvc/d;-><init>()V
+    invoke-direct {v1}, Lwc/d;-><init>()V
 
     .line 36
     .line 37
     .line 38
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 39
     .line 40
     .line 41
-    new-instance v1, Lqd/g;
+    new-instance v1, Lrd/g;
 
     .line 42
     .line 43
     const/4 v2, 0x3
 
     .line 44
-    invoke-direct {v1, v2}, Lqd/g;-><init>(I)V
+    invoke-direct {v1, v2}, Lrd/g;-><init>(I)V
 
     .line 45
     .line 46
     .line 47
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 48
     .line 49
     .line 50
-    new-instance v1, Lqd/g;
+    new-instance v1, Lrd/g;
 
     .line 51
     .line 52
     const/4 v2, 0x1
 
     .line 53
-    invoke-direct {v1, v2}, Lqd/g;-><init>(I)V
+    invoke-direct {v1, v2}, Lrd/g;-><init>(I)V
 
     .line 54
     .line 55
     .line 56
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 57
     .line 58
     .line 59
-    new-instance v1, Lvc/b;
+    new-instance v1, Lwc/b;
 
     .line 60
     .line 61
-    invoke-direct {v1}, Lvc/b;-><init>()V
+    invoke-direct {v1}, Lwc/b;-><init>()V
 
     .line 62
     .line 63
     .line 64
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 65
     .line 66
     .line 67
-    new-instance v1, Lvc/f;
+    new-instance v1, Lwc/f;
 
     .line 68
     .line 69
-    invoke-direct {v1}, Lvc/f;-><init>()V
+    invoke-direct {v1}, Lwc/f;-><init>()V
 
     .line 70
     .line 71
     .line 72
-    iget-object v2, v0, Lqd/a;->d:Ljava/util/ArrayList;
+    iget-object v2, v0, Lrd/a;->d:Ljava/util/ArrayList;
 
     .line 73
     .line 74
@@ -1032,50 +1032,50 @@
     .line 75
     .line 76
     .line 77
-    new-instance v1, Lvc/c;
+    new-instance v1, Lwc/c;
 
     .line 78
     .line 79
-    invoke-direct {v1}, Lvc/c;-><init>()V
+    invoke-direct {v1}, Lwc/c;-><init>()V
 
     .line 80
     .line 81
     .line 82
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 83
     .line 84
     .line 85
-    new-instance v1, Lvc/e;
+    new-instance v1, Lwc/e;
 
     .line 86
     .line 87
     const/4 v2, 0x1
 
     .line 88
-    invoke-direct {v1, v2}, Lvc/e;-><init>(I)V
+    invoke-direct {v1, v2}, Lwc/e;-><init>(I)V
 
     .line 89
     .line 90
     .line 91
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 92
     .line 93
     .line 94
-    new-instance v1, Lvc/e;
+    new-instance v1, Lwc/e;
 
     .line 95
     .line 96
     const/4 v2, 0x0
 
     .line 97
-    invoke-direct {v1, v2}, Lvc/e;-><init>(I)V
+    invoke-direct {v1, v2}, Lwc/e;-><init>(I)V
 
     .line 98
     .line 99
     .line 100
-    invoke-virtual {v0, v1}, Lqd/a;->c(Lpc/j;)V
+    invoke-virtual {v0, v1}, Lrd/a;->c(Lqc/j;)V
 
     .line 101
     .line 102
@@ -1085,7 +1085,7 @@
 
 
 # virtual methods
-.method public final declared-synchronized C()Lorg/apache/http/conn/ClientConnectionManager;
+.method public final declared-synchronized E()Lorg/apache/http/conn/ClientConnectionManager;
     .locals 1
 
     .line 1
@@ -1093,7 +1093,7 @@
 
     .line 2
     :try_start_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->q:Lorg/apache/http/conn/ClientConnectionManager;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->w:Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 3
     .line 4
@@ -1101,7 +1101,7 @@
 
     .line 5
     .line 6
-    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->b()Ljd/a;
+    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->b()Lkd/a;
 
     .line 7
     .line 8
@@ -1109,7 +1109,7 @@
     move-result-object v0
 
     .line 10
-    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->q:Lorg/apache/http/conn/ClientConnectionManager;
+    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->w:Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 11
     .line 12
@@ -1125,7 +1125,7 @@
     .line 15
     :cond_0
     :goto_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->q:Lorg/apache/http/conn/ClientConnectionManager;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->w:Lorg/apache/http/conn/ClientConnectionManager;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -1147,7 +1147,7 @@
     throw v0
 .end method
 
-.method public final declared-synchronized J()Lqd/f;
+.method public final declared-synchronized K()Lrd/f;
     .locals 8
 
     .line 1
@@ -1155,7 +1155,7 @@
 
     .line 2
     :try_start_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lqd/f;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->b1:Lrd/f;
 
     .line 3
     .line 4
@@ -1169,7 +1169,7 @@
 
     .line 7
     :try_start_1
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lqd/a;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lrd/a;
 
     .line 8
     .line 9
@@ -1177,7 +1177,7 @@
 
     .line 10
     .line 11
-    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->u()Lqd/a;
+    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->v()Lrd/a;
 
     .line 12
     .line 13
@@ -1185,7 +1185,7 @@
     move-result-object v0
 
     .line 15
-    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lqd/a;
+    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lrd/a;
 
     .line 16
     .line 17
@@ -1201,7 +1201,7 @@
     .line 20
     :cond_0
     :goto_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lqd/a;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lrd/a;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_0
 
@@ -1211,7 +1211,7 @@
     monitor-exit p0
 
     .line 23
-    iget-object v1, v0, Lqd/a;->c:Ljava/util/ArrayList;
+    iget-object v1, v0, Lrd/a;->c:Ljava/util/ArrayList;
 
     .line 24
     .line 25
@@ -1223,7 +1223,7 @@
     move-result v1
 
     .line 29
-    new-array v2, v1, [Lpc/j;
+    new-array v2, v1, [Lqc/j;
 
     .line 30
     .line 31
@@ -1241,7 +1241,7 @@
 
     .line 35
     .line 36
-    iget-object v6, v0, Lqd/a;->c:Ljava/util/ArrayList;
+    iget-object v6, v0, Lrd/a;->c:Ljava/util/ArrayList;
 
     .line 37
     .line 38
@@ -1273,7 +1273,7 @@
     move-result-object v5
 
     .line 51
-    check-cast v5, Lpc/j;
+    check-cast v5, Lqc/j;
 
     .line 52
     .line 53
@@ -1298,7 +1298,7 @@
 
     .line 60
     :cond_3
-    iget-object v1, v0, Lqd/a;->d:Ljava/util/ArrayList;
+    iget-object v1, v0, Lrd/a;->d:Ljava/util/ArrayList;
 
     .line 61
     .line 62
@@ -1310,7 +1310,7 @@
     move-result v1
 
     .line 66
-    new-array v4, v1, [Lpc/l;
+    new-array v4, v1, [Lqc/l;
 
     .line 67
     .line 68
@@ -1319,7 +1319,7 @@
 
     .line 69
     .line 70
-    iget-object v6, v0, Lqd/a;->d:Ljava/util/ArrayList;
+    iget-object v6, v0, Lrd/a;->d:Ljava/util/ArrayList;
 
     .line 71
     .line 72
@@ -1351,7 +1351,7 @@
     move-result-object v6
 
     .line 85
-    check-cast v6, Lpc/l;
+    check-cast v6, Lqc/l;
 
     .line 86
     .line 87
@@ -1376,16 +1376,16 @@
 
     .line 94
     :cond_6
-    new-instance v0, Lqd/f;
+    new-instance v0, Lrd/f;
 
     .line 95
     .line 96
-    invoke-direct {v0, v2, v4}, Lqd/f;-><init>([Lpc/j;[Lpc/l;)V
+    invoke-direct {v0, v2, v4}, Lrd/f;-><init>([Lqc/j;[Lqc/l;)V
 
     .line 97
     .line 98
     .line 99
-    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lqd/f;
+    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->b1:Lrd/f;
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_1
 
@@ -1407,7 +1407,7 @@
     .line 104
     :cond_7
     :goto_7
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Z:Lqd/f;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->b1:Lrd/f;
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_1
 
@@ -1429,7 +1429,7 @@
     throw v0
 .end method
 
-.method public final declared-synchronized N()La4/e;
+.method public final declared-synchronized N()Lhf/b;
     .locals 2
 
     .line 1
@@ -1437,7 +1437,7 @@
 
     .line 2
     :try_start_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:La4/e;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:Lhf/b;
 
     .line 3
     .line 4
@@ -1445,11 +1445,11 @@
 
     .line 5
     .line 6
-    new-instance v0, La4/e;
+    new-instance v0, Lhf/b;
 
     .line 7
     .line 8
-    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->C()Lorg/apache/http/conn/ClientConnectionManager;
+    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->E()Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 9
     .line 10
@@ -1457,7 +1457,7 @@
     move-result-object v1
 
     .line 12
-    invoke-interface {v1}, Lorg/apache/http/conn/ClientConnectionManager;->e()Lbd/g;
+    invoke-interface {v1}, Lorg/apache/http/conn/ClientConnectionManager;->a()Lcd/g;
 
     .line 13
     .line 14
@@ -1465,12 +1465,12 @@
     move-result-object v1
 
     .line 16
-    invoke-direct {v0, v1}, La4/e;-><init>(Lbd/g;)V
+    invoke-direct {v0, v1}, Lhf/b;-><init>(Lcd/g;)V
 
     .line 17
     .line 18
     .line 19
-    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:La4/e;
+    iput-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:Lhf/b;
 
     .line 20
     .line 21
@@ -1486,7 +1486,7 @@
     .line 24
     :cond_0
     :goto_0
-    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:La4/e;
+    iget-object v0, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->H1:Lhf/b;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -1508,20 +1508,20 @@
     throw v0
 .end method
 
-.method public final b()Ljd/a;
+.method public final b()Lkd/a;
     .locals 5
 
     .line 1
-    new-instance v0, Lbd/g;
+    new-instance v0, Lcd/g;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lbd/g;-><init>()V
+    invoke-direct {v0}, Lcd/g;-><init>()V
 
     .line 4
     .line 5
     .line 6
-    new-instance v1, Lbd/c;
+    new-instance v1, Lcd/c;
 
     .line 7
     .line 8
@@ -1529,14 +1529,14 @@
 
     .line 9
     .line 10
-    new-instance v3, Lue/b;
+    new-instance v3, Lt5/f;
 
     .line 11
     .line 12
-    const/4 v4, 0x5
+    const/4 v4, 0x6
 
     .line 13
-    invoke-direct {v3, v4}, Lue/b;-><init>(I)V
+    invoke-direct {v3, v4}, Lt5/f;-><init>(I)V
 
     .line 14
     .line 15
@@ -1545,17 +1545,17 @@
 
     .line 17
     .line 18
-    invoke-direct {v1, v2, v4, v3}, Lbd/c;-><init>(Ljava/lang/String;ILbd/h;)V
+    invoke-direct {v1, v2, v4, v3}, Lcd/c;-><init>(Ljava/lang/String;ILcd/h;)V
 
     .line 19
     .line 20
     .line 21
-    invoke-virtual {v0, v1}, Lbd/g;->b(Lbd/c;)V
+    invoke-virtual {v0, v1}, Lcd/g;->b(Lcd/c;)V
 
     .line 22
     .line 23
     .line 24
-    new-instance v1, Lbd/c;
+    new-instance v1, Lcd/c;
 
     .line 25
     .line 26
@@ -1567,7 +1567,7 @@
 
     .line 29
     .line 30
-    invoke-static {}, Lcd/f;->d()Lcd/f;
+    invoke-static {}, Ldd/e;->c()Ldd/e;
 
     .line 31
     .line 32
@@ -1575,12 +1575,12 @@
     move-result-object v4
 
     .line 34
-    invoke-direct {v1, v2, v3, v4}, Lbd/c;-><init>(Ljava/lang/String;ILbd/h;)V
+    invoke-direct {v1, v2, v3, v4}, Lcd/c;-><init>(Ljava/lang/String;ILcd/h;)V
 
     .line 35
     .line 36
     .line 37
-    invoke-virtual {v0, v1}, Lbd/g;->b(Lbd/c;)V
+    invoke-virtual {v0, v1}, Lcd/g;->b(Lcd/c;)V
 
     .line 38
     .line 39
@@ -1597,7 +1597,7 @@
 
     .line 44
     .line 45
-    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->i()Lpd/c;
+    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->i()Lqd/c;
 
     .line 46
     .line 47
@@ -1810,11 +1810,11 @@
     .line 136
     :cond_3
     :goto_4
-    new-instance v1, Ljd/a;
+    new-instance v1, Lkd/a;
 
     .line 137
     .line 138
-    invoke-direct {v1, v0}, Ljd/a;-><init>(Lbd/g;)V
+    invoke-direct {v1, v0}, Lkd/a;-><init>(Lcd/g;)V
 
     .line 139
     .line 140
@@ -1836,7 +1836,7 @@
     .locals 1
 
     .line 1
-    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->C()Lorg/apache/http/conn/ClientConnectionManager;
+    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->E()Lorg/apache/http/conn/ClientConnectionManager;
 
     .line 2
     .line 3
@@ -1852,304 +1852,305 @@
     return-void
 .end method
 
-.method public final g()Lga/d;
+.method public final g()Lhf/b;
     .locals 3
 
     .line 1
-    new-instance v0, Lga/d;
+    new-instance v0, Lhf/b;
 
     .line 2
     .line 3
-    const/4 v1, 0x1
+    const/16 v1, 0xe
 
     .line 4
-    invoke-direct {v0, v1}, Lga/d;-><init>(I)V
-
     .line 5
+    invoke-direct {v0, v1}, Lhf/b;-><init>(I)V
+
     .line 6
     .line 7
+    .line 8
     const-string v1, "http.scheme-registry"
 
-    .line 8
     .line 9
-    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->C()Lorg/apache/http/conn/ClientConnectionManager;
-
     .line 10
+    invoke-virtual {p0}, Lorg/apache/http/impl/client/DefaultHttpClient;->E()Lorg/apache/http/conn/ClientConnectionManager;
+
     .line 11
     .line 12
-    move-result-object v2
-
     .line 13
-    invoke-interface {v2}, Lorg/apache/http/conn/ClientConnectionManager;->e()Lbd/g;
+    move-result-object v2
 
     .line 14
+    invoke-interface {v2}, Lorg/apache/http/conn/ClientConnectionManager;->a()Lcd/g;
+
     .line 15
     .line 16
-    move-result-object v2
-
     .line 17
-    invoke-virtual {v0, v1, v2}, Lga/d;->f(Ljava/lang/String;Ljava/lang/Object;)V
+    move-result-object v2
 
     .line 18
+    invoke-virtual {v0, v1, v2}, Lhf/b;->v(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 19
     .line 20
+    .line 21
     const-string v1, "http.authscheme-registry"
 
-    .line 21
     .line 22
+    .line 23
     monitor-enter p0
 
-    .line 23
-    :try_start_0
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Led/j;
-
     .line 24
+    :try_start_0
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lfd/j;
+
     .line 25
+    .line 26
     if-nez v2, :cond_0
 
-    .line 26
     .line 27
-    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->a()Led/j;
-
     .line 28
+    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->a()Lfd/j;
+
     .line 29
     .line 30
+    .line 31
     move-result-object v2
 
-    .line 31
-    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Led/j;
-
     .line 32
+    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lfd/j;
+
     .line 33
+    .line 34
     goto :goto_0
 
-    .line 34
+    .line 35
     :catchall_0
     move-exception v0
 
-    .line 35
+    .line 36
     goto :goto_7
 
-    .line 36
+    .line 37
     :cond_0
     :goto_0
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Led/j;
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->Y:Lfd/j;
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 37
     .line 38
+    .line 39
     monitor-exit p0
 
-    .line 39
-    invoke-virtual {v0, v1, v2}, Lga/d;->f(Ljava/lang/String;Ljava/lang/Object;)V
-
     .line 40
+    invoke-virtual {v0, v1, v2}, Lhf/b;->v(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 41
     .line 42
+    .line 43
     const-string v1, "http.cookiespec-registry"
 
-    .line 43
     .line 44
+    .line 45
     monitor-enter p0
 
-    .line 45
-    :try_start_1
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->y:Led/j;
-
     .line 46
+    :try_start_1
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Lfd/j;
+
     .line 47
+    .line 48
     if-nez v2, :cond_1
 
-    .line 48
     .line 49
-    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->f()Led/j;
-
     .line 50
+    invoke-static {}, Lorg/apache/http/impl/client/DefaultHttpClient;->f()Lfd/j;
+
     .line 51
     .line 52
+    .line 53
     move-result-object v2
 
-    .line 53
-    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->y:Led/j;
-
     .line 54
+    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Lfd/j;
+
     .line 55
+    .line 56
     goto :goto_1
 
-    .line 56
+    .line 57
     :catchall_1
     move-exception v0
 
-    .line 57
+    .line 58
     goto :goto_6
 
-    .line 58
+    .line 59
     :cond_1
     :goto_1
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->y:Led/j;
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->X:Lfd/j;
     :try_end_1
     .catchall {:try_start_1 .. :try_end_1} :catchall_1
 
-    .line 59
     .line 60
+    .line 61
     monitor-exit p0
 
-    .line 61
-    invoke-virtual {v0, v1, v2}, Lga/d;->f(Ljava/lang/String;Ljava/lang/Object;)V
-
     .line 62
+    invoke-virtual {v0, v1, v2}, Lhf/b;->v(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 63
     .line 64
+    .line 65
     const-string v1, "http.cookie-store"
 
-    .line 65
     .line 66
+    .line 67
     monitor-enter p0
 
-    .line 67
-    :try_start_2
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Lid/c;
-
     .line 68
+    :try_start_2
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Ljd/c;
+
     .line 69
+    .line 70
     if-nez v2, :cond_2
 
-    .line 70
     .line 71
-    new-instance v2, Lid/c;
-
     .line 72
-    .line 73
-    invoke-direct {v2}, Lid/c;-><init>()V
+    new-instance v2, Ljd/c;
 
+    .line 73
     .line 74
+    invoke-direct {v2}, Ljd/c;-><init>()V
+
     .line 75
     .line 76
-    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Lid/c;
-
     .line 77
+    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Ljd/c;
+
     .line 78
+    .line 79
     goto :goto_2
 
-    .line 79
+    .line 80
     :catchall_2
     move-exception v0
 
-    .line 80
+    .line 81
     goto :goto_5
 
-    .line 81
+    .line 82
     :cond_2
     :goto_2
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Lid/c;
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->F1:Ljd/c;
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_2
 
-    .line 82
     .line 83
+    .line 84
     monitor-exit p0
 
-    .line 84
-    invoke-virtual {v0, v1, v2}, Lga/d;->f(Ljava/lang/String;Ljava/lang/Object;)V
-
     .line 85
+    invoke-virtual {v0, v1, v2}, Lhf/b;->v(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 86
     .line 87
+    .line 88
     const-string v1, "http.auth.credentials-provider"
 
-    .line 88
     .line 89
+    .line 90
     monitor-enter p0
 
-    .line 90
-    :try_start_3
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Lid/d;
-
     .line 91
+    :try_start_3
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Ljd/d;
+
     .line 92
+    .line 93
     if-nez v2, :cond_3
 
-    .line 93
     .line 94
-    new-instance v2, Lid/d;
-
     .line 95
-    .line 96
-    invoke-direct {v2}, Lid/d;-><init>()V
+    new-instance v2, Ljd/d;
 
+    .line 96
     .line 97
+    invoke-direct {v2}, Ljd/d;-><init>()V
+
     .line 98
     .line 99
-    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Lid/d;
-
     .line 100
+    iput-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Ljd/d;
+
     .line 101
+    .line 102
     goto :goto_3
 
-    .line 102
+    .line 103
     :catchall_3
     move-exception v0
 
-    .line 103
+    .line 104
     goto :goto_4
 
-    .line 104
+    .line 105
     :cond_3
     :goto_3
-    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Lid/d;
+    iget-object v2, p0, Lorg/apache/http/impl/client/DefaultHttpClient;->G1:Ljd/d;
     :try_end_3
     .catchall {:try_start_3 .. :try_end_3} :catchall_3
 
-    .line 105
     .line 106
+    .line 107
     monitor-exit p0
 
-    .line 107
-    invoke-virtual {v0, v1, v2}, Lga/d;->f(Ljava/lang/String;Ljava/lang/Object;)V
-
     .line 108
+    invoke-virtual {v0, v1, v2}, Lhf/b;->v(Ljava/lang/String;Ljava/lang/Object;)V
+
     .line 109
     .line 110
+    .line 111
     return-object v0
 
-    .line 111
+    .line 112
     :goto_4
     :try_start_4
     monitor-exit p0
     :try_end_4
     .catchall {:try_start_4 .. :try_end_4} :catchall_3
 
-    .line 112
+    .line 113
     throw v0
 
-    .line 113
+    .line 114
     :goto_5
     :try_start_5
     monitor-exit p0
     :try_end_5
     .catchall {:try_start_5 .. :try_end_5} :catchall_2
 
-    .line 114
+    .line 115
     throw v0
 
-    .line 115
+    .line 116
     :goto_6
     :try_start_6
     monitor-exit p0
     :try_end_6
     .catchall {:try_start_6 .. :try_end_6} :catchall_1
 
-    .line 116
+    .line 117
     throw v0
 
-    .line 117
+    .line 118
     :goto_7
     :try_start_7
     monitor-exit p0
     :try_end_7
     .catchall {:try_start_7 .. :try_end_7} :catchall_0
 
-    .line 118
+    .line 119
     throw v0
 .end method

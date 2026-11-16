@@ -1,59 +1,133 @@
 .class public final synthetic Lorg/levimc/launcher/ui/adapter/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnTouchListener;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic c:Lorg/levimc/launcher/ui/adapter/ModsAdapter;
+.field public final synthetic c:I
 
-.field public final synthetic d:Lorg/levimc/launcher/ui/adapter/ModsAdapter$ModViewHolder;
+.field public final synthetic d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
+.field public final synthetic h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/adapter/ModsAdapter;Lorg/levimc/launcher/ui/adapter/ModsAdapter$ModViewHolder;)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;I)V
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p3, p0, Lorg/levimc/launcher/ui/adapter/i;->c:I
 
     .line 2
     .line 3
+    iput-object p1, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
     .line 4
-    iput-object p1, p0, Lorg/levimc/launcher/ui/adapter/i;->c:Lorg/levimc/launcher/ui/adapter/ModsAdapter;
-
     .line 5
-    .line 6
-    iput-object p2, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModsAdapter$ModViewHolder;
+    iput-object p2, p0, Lorg/levimc/launcher/ui/adapter/i;->h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
 
+    .line 6
     .line 7
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public final onTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
+.method public final onClick(Landroid/view/View;)V
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/i;->c:Lorg/levimc/launcher/ui/adapter/ModsAdapter;
+    iget v0, p0, Lorg/levimc/launcher/ui/adapter/i;->c:I
 
     .line 2
     .line 3
-    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModsAdapter$ModViewHolder;
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
-    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/ui/adapter/ModsAdapter;->b(Lorg/levimc/launcher/ui/adapter/ModsAdapter;Lorg/levimc/launcher/ui/adapter/ModsAdapter$ModViewHolder;Landroid/view/View;Landroid/view/MotionEvent;)Z
-
     .line 6
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
     .line 7
     .line 8
-    move-result p1
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/i;->h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
 
     .line 9
-    return p1
+    .line 10
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->c(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/view/View;)V
+
+    .line 11
+    .line 12
+    .line 13
+    return-void
+
+    .line 14
+    :pswitch_0
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
+    .line 15
+    .line 16
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/i;->h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
+
+    .line 17
+    .line 18
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->g(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/view/View;)V
+
+    .line 19
+    .line 20
+    .line 21
+    return-void
+
+    .line 22
+    :pswitch_1
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
+    .line 23
+    .line 24
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/i;->h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
+
+    .line 25
+    .line 26
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->e(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/view/View;)V
+
+    .line 27
+    .line 28
+    .line 29
+    return-void
+
+    .line 30
+    :pswitch_2
+    iget-object v0, p0, Lorg/levimc/launcher/ui/adapter/i;->d:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;
+
+    .line 31
+    .line 32
+    iget-object v1, p0, Lorg/levimc/launcher/ui/adapter/i;->h:Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;
+
+    .line 33
+    .line 34
+    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;->b(Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$ConfigViewHolder;Lorg/levimc/launcher/ui/adapter/ModConfigAdapter$Node;Landroid/view/View;)V
+
+    .line 35
+    .line 36
+    .line 37
+    return-void
+
+    .line 38
+    nop
+
+    .line 39
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
 .end method

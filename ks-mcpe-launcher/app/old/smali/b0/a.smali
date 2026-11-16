@@ -1,14 +1,14 @@
 .class public final Lb0/a;
 .super Lb0/c;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
+.field public B1:I
+
 .field public C1:Ly/a;
 
 .field public b1:I
-
-.field public y:I
 
 
 # virtual methods
@@ -46,7 +46,7 @@
     .locals 1
 
     .line 1
-    iget v0, p0, Lb0/a;->y:I
+    iget v0, p0, Lb0/a;->b1:I
 
     .line 2
     .line 3
@@ -57,11 +57,11 @@
     .locals 5
 
     .line 1
-    iget v0, p0, Lb0/a;->y:I
+    iget v0, p0, Lb0/a;->b1:I
 
     .line 2
     .line 3
-    iput v0, p0, Lb0/a;->b1:I
+    iput v0, p0, Lb0/a;->B1:I
 
     .line 4
     .line 5
@@ -85,7 +85,7 @@
 
     .line 12
     .line 13
-    iput v3, p0, Lb0/a;->b1:I
+    iput v3, p0, Lb0/a;->B1:I
 
     .line 14
     .line 15
@@ -97,7 +97,7 @@
 
     .line 17
     .line 18
-    iput v1, p0, Lb0/a;->b1:I
+    iput v1, p0, Lb0/a;->B1:I
 
     .line 19
     .line 20
@@ -109,7 +109,7 @@
 
     .line 22
     .line 23
-    iput v1, p0, Lb0/a;->b1:I
+    iput v1, p0, Lb0/a;->B1:I
 
     .line 24
     .line 25
@@ -121,7 +121,7 @@
 
     .line 27
     .line 28
-    iput v3, p0, Lb0/a;->b1:I
+    iput v3, p0, Lb0/a;->B1:I
 
     .line 29
     .line 30
@@ -139,7 +139,7 @@
 
     .line 35
     .line 36
-    iget p2, p0, Lb0/a;->b1:I
+    iget p2, p0, Lb0/a;->B1:I
 
     .line 37
     .line 38
@@ -236,7 +236,7 @@
     .locals 0
 
     .line 1
-    iput p1, p0, Lb0/a;->y:I
+    iput p1, p0, Lb0/a;->b1:I
 
     .line 2
     .line 3

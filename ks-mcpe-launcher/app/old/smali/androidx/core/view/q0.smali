@@ -1,14 +1,14 @@
 .class public abstract Landroidx/core/view/q0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # direct methods
-.method public static a(Landroid/view/View;Landroid/view/WindowInsets;)Landroid/view/WindowInsets;
+.method public static a(Landroid/view/View;)Landroid/view/View$AccessibilityDelegate;
     .locals 0
 
     .line 1
-    invoke-virtual {p0, p1}, Landroid/view/View;->dispatchApplyWindowInsets(Landroid/view/WindowInsets;)Landroid/view/WindowInsets;
+    invoke-virtual {p0}, Landroid/view/View;->getAccessibilityDelegate()Landroid/view/View$AccessibilityDelegate;
 
     .line 2
     .line 3
@@ -19,26 +19,11 @@
     return-object p0
 .end method
 
-.method public static b(Landroid/view/View;)Ljava/lang/CharSequence;
+.method public static b(Landroid/view/View;Landroid/content/Context;[ILandroid/util/AttributeSet;Landroid/content/res/TypedArray;II)V
     .locals 0
 
     .line 1
-    invoke-virtual {p0}, Landroid/view/View;->getStateDescription()Ljava/lang/CharSequence;
-
-    .line 2
-    .line 3
-    .line 4
-    move-result-object p0
-
-    .line 5
-    return-object p0
-.end method
-
-.method public static c(Landroid/view/View;Ljava/lang/CharSequence;)V
-    .locals 0
-
-    .line 1
-    invoke-virtual {p0, p1}, Landroid/view/View;->setStateDescription(Ljava/lang/CharSequence;)V
+    invoke-virtual/range {p0 .. p6}, Landroid/view/View;->saveAttributeDataForStyleable(Landroid/content/Context;[ILandroid/util/AttributeSet;Landroid/content/res/TypedArray;II)V
 
     .line 2
     .line 3

@@ -1,6 +1,6 @@
 .class public Lcom/discord/org/webrtc/HardwareVideoEncoderFactory;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lcom/discord/org/webrtc/VideoEncoderFactory;
@@ -440,7 +440,7 @@
 
     .line 6
     .line 7
-    invoke-static {p1}, La6/b0;->u(Landroid/media/MediaCodecInfo;)Z
+    invoke-static {p1}, Landroidx/core/view/i1;->u(Landroid/media/MediaCodecInfo;)Z
 
     .line 8
     .line 9

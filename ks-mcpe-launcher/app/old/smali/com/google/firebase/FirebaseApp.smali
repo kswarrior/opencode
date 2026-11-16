@@ -1,6 +1,6 @@
 .class public final Lcom/google/firebase/FirebaseApp;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -14,17 +14,17 @@
 
 .field public final b:Ljava/lang/String;
 
-.field public final c:Lm6/h;
+.field public final c:Lk6/h;
 
-.field public final d:Lr6/f;
+.field public final d:Lp6/f;
 
 .field public final e:Ljava/util/concurrent/atomic/AtomicBoolean;
 
 .field public final f:Ljava/util/concurrent/atomic/AtomicBoolean;
 
-.field public final g:Lr6/m;
+.field public final g:Lp6/m;
 
-.field public final h:Ls7/b;
+.field public final h:Lq7/b;
 
 .field public final i:Ljava/util/concurrent/CopyOnWriteArrayList;
 
@@ -68,7 +68,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Landroid/content/Context;Ljava/lang/String;Lm6/h;)V
+.method public constructor <init>(Landroid/content/Context;Ljava/lang/String;Lk6/h;)V
     .locals 8
 
     .line 1
@@ -168,15 +168,15 @@
     move-result-object p2
 
     .line 51
-    check-cast p2, Lm6/h;
+    check-cast p2, Lk6/h;
 
     .line 52
     .line 53
-    iput-object p2, p0, Lcom/google/firebase/FirebaseApp;->c:Lm6/h;
+    iput-object p2, p0, Lcom/google/firebase/FirebaseApp;->c:Lk6/h;
 
     .line 54
     .line 55
-    sget-object p2, Lcom/google/firebase/provider/FirebaseInitProvider;->c:Lm6/a;
+    sget-object p2, Lcom/google/firebase/provider/FirebaseInitProvider;->c:Lk6/a;
 
     .line 56
     .line 57
@@ -492,11 +492,11 @@
 
     .line 209
     .line 210
-    new-instance v4, Lr6/d;
+    new-instance v4, Lp6/d;
 
     .line 211
     .line 212
-    invoke-direct {v4, v2, v1}, Lr6/d;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v4, v2, v1}, Lp6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 213
     .line 214
@@ -524,7 +524,7 @@
     .line 225
     .line 226
     .line 227
-    sget-object v0, Ls6/j;->c:Ls6/j;
+    sget-object v0, Lq6/j;->c:Lq6/j;
 
     .line 228
     .line 229
@@ -560,14 +560,14 @@
     .line 245
     .line 246
     .line 247
-    new-instance v4, Lr6/d;
+    new-instance v4, Lp6/d;
 
     .line 248
     .line 249
     const/4 v5, 0x1
 
     .line 250
-    invoke-direct {v4, v3, v5}, Lr6/d;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v4, v3, v5}, Lp6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 251
     .line 252
@@ -586,11 +586,11 @@
     .line 259
     .line 260
     .line 261
-    new-instance v4, Lr6/d;
+    new-instance v4, Lp6/d;
 
     .line 262
     .line 263
-    invoke-direct {v4, v3, v5}, Lr6/d;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v4, v3, v5}, Lp6/d;-><init>(Ljava/lang/Object;I)V
 
     .line 264
     .line 265
@@ -608,7 +608,7 @@
 
     .line 272
     .line 273
-    invoke-static {p1, v3, v4}, Lr6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lr6/b;
+    invoke-static {p1, v3, v4}, Lp6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lp6/b;
 
     .line 274
     .line 275
@@ -629,7 +629,7 @@
 
     .line 283
     .line 284
-    invoke-static {p0, v3, v4}, Lr6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lr6/b;
+    invoke-static {p0, v3, v4}, Lp6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lp6/b;
 
     .line 285
     .line 286
@@ -642,7 +642,7 @@
     .line 289
     .line 290
     .line 291
-    const-class v3, Lm6/h;
+    const-class v3, Lk6/h;
 
     .line 292
     .line 293
@@ -650,7 +650,7 @@
 
     .line 294
     .line 295
-    invoke-static {p3, v3, v4}, Lr6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lr6/b;
+    invoke-static {p3, v3, v4}, Lp6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lp6/b;
 
     .line 296
     .line 297
@@ -663,199 +663,195 @@
     .line 300
     .line 301
     .line 302
-    new-instance p3, Lue/b;
+    new-instance p3, Lce/b;
 
     .line 303
     .line 304
-    const/16 v3, 0xc
+    invoke-direct {p3}, Ljava/lang/Object;-><init>()V
 
     .line 305
     .line 306
-    invoke-direct {p3, v3}, Lue/b;-><init>(I)V
-
     .line 307
+    const-class v3, Landroid/os/UserManager;
+
     .line 308
     .line 309
-    const-class v3, Landroid/os/UserManager;
+    invoke-virtual {p1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
 
     .line 310
     .line 311
-    invoke-virtual {p1, v3}, Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;
-
     .line 312
-    .line 313
-    .line 314
     move-result-object v3
 
-    .line 315
+    .line 313
     check-cast v3, Landroid/os/UserManager;
+
+    .line 314
+    .line 315
+    invoke-virtual {v3}, Landroid/os/UserManager;->isUserUnlocked()Z
 
     .line 316
     .line 317
-    invoke-virtual {v3}, Landroid/os/UserManager;->isUserUnlocked()Z
-
     .line 318
-    .line 319
-    .line 320
     move-result v3
 
-    .line 321
+    .line 319
     if-eqz v3, :cond_6
+
+    .line 320
+    .line 321
+    sget-object v3, Lcom/google/firebase/provider/FirebaseInitProvider;->d:Ljava/util/concurrent/atomic/AtomicBoolean;
 
     .line 322
     .line 323
-    sget-object v3, Lcom/google/firebase/provider/FirebaseInitProvider;->d:Ljava/util/concurrent/atomic/AtomicBoolean;
+    invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
     .line 324
     .line 325
-    invoke-virtual {v3}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
-
     .line 326
-    .line 327
-    .line 328
     move-result v3
 
-    .line 329
+    .line 327
     if-eqz v3, :cond_6
+
+    .line 328
+    .line 329
+    const-class v3, Lk6/a;
 
     .line 330
     .line 331
-    const-class v3, Lm6/a;
+    new-array v4, v1, [Ljava/lang/Class;
 
     .line 332
     .line 333
-    new-array v4, v1, [Ljava/lang/Class;
+    invoke-static {p2, v3, v4}, Lp6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lp6/b;
 
     .line 334
     .line 335
-    invoke-static {p2, v3, v4}, Lr6/b;->c(Ljava/lang/Object;Ljava/lang/Class;[Ljava/lang/Class;)Lr6/b;
-
     .line 336
-    .line 337
-    .line 338
     move-result-object p2
 
-    .line 339
+    .line 337
     invoke-virtual {v2, p2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
 
+    .line 338
+    .line 339
     .line 340
+    :cond_6
+    new-instance p2, Lp6/f;
+
     .line 341
     .line 342
-    :cond_6
-    new-instance p2, Lr6/f;
+    invoke-direct {p2, v0, v2, p3}, Lp6/f;-><init>(Ljava/util/ArrayList;Ljava/util/ArrayList;Lce/b;)V
 
     .line 343
     .line 344
-    invoke-direct {p2, v0, v2, p3}, Lr6/f;-><init>(Ljava/util/ArrayList;Ljava/util/ArrayList;Lue/b;)V
-
     .line 345
+    iput-object p2, p0, Lcom/google/firebase/FirebaseApp;->d:Lp6/f;
+
     .line 346
     .line 347
-    iput-object p2, p0, Lcom/google/firebase/FirebaseApp;->d:Lr6/f;
+    invoke-static {}, Landroid/os/Trace;->endSection()V
 
     .line 348
     .line 349
-    invoke-static {}, Landroid/os/Trace;->endSection()V
-
     .line 350
+    new-instance p3, Lp6/m;
+
     .line 351
     .line 352
-    new-instance p3, Lr6/m;
+    new-instance v0, Lk6/c;
 
     .line 353
     .line 354
-    new-instance v0, Lm6/c;
+    invoke-direct {v0, p0, p1, v1}, Lk6/c;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
 
     .line 355
     .line 356
-    invoke-direct {v0, p0, p1, v1}, Lm6/c;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
-
     .line 357
+    invoke-direct {p3, v0}, Lp6/m;-><init>(Lq7/b;)V
+
     .line 358
     .line 359
-    invoke-direct {p3, v0}, Lr6/m;-><init>(Ls7/b;)V
-
     .line 360
+    iput-object p3, p0, Lcom/google/firebase/FirebaseApp;->g:Lp6/m;
+
     .line 361
     .line 362
-    iput-object p3, p0, Lcom/google/firebase/FirebaseApp;->g:Lr6/m;
+    const-class p1, Ln7/c;
 
     .line 363
     .line 364
-    const-class p1, Lp7/c;
+    invoke-interface {p2, p1}, Lp6/c;->c(Ljava/lang/Class;)Lq7/b;
 
     .line 365
     .line 366
-    invoke-interface {p2, p1}, Lr6/c;->c(Ljava/lang/Class;)Ls7/b;
-
     .line 367
-    .line 368
-    .line 369
     move-result-object p1
 
+    .line 368
+    iput-object p1, p0, Lcom/google/firebase/FirebaseApp;->h:Lq7/b;
+
+    .line 369
     .line 370
-    iput-object p1, p0, Lcom/google/firebase/FirebaseApp;->h:Ls7/b;
+    new-instance p1, Lk6/d;
 
     .line 371
     .line 372
-    new-instance p1, Lm6/d;
+    invoke-direct {p1, p0}, Lk6/d;-><init>(Lcom/google/firebase/FirebaseApp;)V
 
     .line 373
     .line 374
-    invoke-direct {p1, p0}, Lm6/d;-><init>(Lcom/google/firebase/FirebaseApp;)V
-
     .line 375
-    .line 376
-    .line 377
     invoke-virtual {p0}, Lcom/google/firebase/FirebaseApp;->a()V
 
+    .line 376
+    .line 377
     .line 378
+    iget-object p2, p0, Lcom/google/firebase/FirebaseApp;->e:Ljava/util/concurrent/atomic/AtomicBoolean;
+
     .line 379
     .line 380
-    iget-object p2, p0, Lcom/google/firebase/FirebaseApp;->e:Ljava/util/concurrent/atomic/AtomicBoolean;
+    invoke-virtual {p2}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
 
     .line 381
     .line 382
-    invoke-virtual {p2}, Ljava/util/concurrent/atomic/AtomicBoolean;->get()Z
-
     .line 383
-    .line 384
-    .line 385
     move-result p2
 
-    .line 386
+    .line 384
     if-eqz p2, :cond_7
+
+    .line 385
+    .line 386
+    invoke-static {}, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->getInstance()Lcom/google/android/gms/common/api/internal/BackgroundDetector;
 
     .line 387
     .line 388
-    invoke-static {}, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->getInstance()Lcom/google/android/gms/common/api/internal/BackgroundDetector;
-
     .line 389
-    .line 390
-    .line 391
     move-result-object p2
 
-    .line 392
+    .line 390
     invoke-virtual {p2}, Lcom/google/android/gms/common/api/internal/BackgroundDetector;->isInBackground()Z
 
+    .line 391
+    .line 392
     .line 393
-    .line 394
-    .line 395
     :cond_7
     iget-object p2, p0, Lcom/google/firebase/FirebaseApp;->i:Ljava/util/concurrent/CopyOnWriteArrayList;
 
-    .line 396
-    .line 397
+    .line 394
+    .line 395
     invoke-virtual {p2, p1}, Ljava/util/concurrent/CopyOnWriteArrayList;->add(Ljava/lang/Object;)Z
 
+    .line 396
+    .line 397
     .line 398
-    .line 399
-    .line 400
     invoke-static {}, Landroid/os/Trace;->endSection()V
 
+    .line 399
+    .line 400
     .line 401
-    .line 402
-    .line 403
     return-void
 .end method
 
@@ -1068,11 +1064,11 @@
 
     .line 17
     .line 18
-    iget-object v0, v2, Lcom/google/firebase/FirebaseApp;->h:Ls7/b;
+    iget-object v0, v2, Lcom/google/firebase/FirebaseApp;->h:Lq7/b;
 
     .line 19
     .line 20
-    invoke-interface {v0}, Ls7/b;->get()Ljava/lang/Object;
+    invoke-interface {v0}, Lq7/b;->get()Ljava/lang/Object;
 
     .line 21
     .line 22
@@ -1080,11 +1076,11 @@
     move-result-object v0
 
     .line 24
-    check-cast v0, Lp7/c;
+    check-cast v0, Ln7/c;
 
     .line 25
     .line 26
-    invoke-virtual {v0}, Lp7/c;->c()V
+    invoke-virtual {v0}, Ln7/c;->c()V
 
     .line 27
     .line 28
@@ -1207,11 +1203,11 @@
 
     .line 19
     .line 20
-    iget-object v0, v1, Lcom/google/firebase/FirebaseApp;->h:Ls7/b;
+    iget-object v0, v1, Lcom/google/firebase/FirebaseApp;->h:Lq7/b;
 
     .line 21
     .line 22
-    invoke-interface {v0}, Ls7/b;->get()Ljava/lang/Object;
+    invoke-interface {v0}, Lq7/b;->get()Ljava/lang/Object;
 
     .line 23
     .line 24
@@ -1219,11 +1215,11 @@
     move-result-object v0
 
     .line 26
-    check-cast v0, Lp7/c;
+    check-cast v0, Ln7/c;
 
     .line 27
     .line 28
-    invoke-virtual {v0}, Lp7/c;->c()V
+    invoke-virtual {v0}, Ln7/c;->c()V
 
     .line 29
     .line 30
@@ -1402,7 +1398,7 @@
 
     .line 22
     :cond_0
-    invoke-static {p0}, Lm6/h;->a(Landroid/content/Context;)Lm6/h;
+    invoke-static {p0}, Lk6/h;->a(Landroid/content/Context;)Lk6/h;
 
     .line 23
     .line 24
@@ -1441,7 +1437,7 @@
 
     .line 39
     .line 40
-    invoke-static {p0, v2, v1}, Lcom/google/firebase/FirebaseApp;->k(Landroid/content/Context;Ljava/lang/String;Lm6/h;)Lcom/google/firebase/FirebaseApp;
+    invoke-static {p0, v2, v1}, Lcom/google/firebase/FirebaseApp;->k(Landroid/content/Context;Ljava/lang/String;Lk6/h;)Lcom/google/firebase/FirebaseApp;
 
     .line 41
     .line 42
@@ -1464,11 +1460,11 @@
     throw p0
 .end method
 
-.method public static k(Landroid/content/Context;Ljava/lang/String;Lm6/h;)Lcom/google/firebase/FirebaseApp;
+.method public static k(Landroid/content/Context;Ljava/lang/String;Lk6/h;)Lcom/google/firebase/FirebaseApp;
     .locals 5
 
     .line 1
-    sget-object v0, Lm6/e;->a:Ljava/util/concurrent/atomic/AtomicReference;
+    sget-object v0, Lk6/e;->a:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 2
     .line 3
@@ -1516,7 +1512,7 @@
 
     .line 23
     .line 24
-    sget-object v1, Lm6/e;->a:Ljava/util/concurrent/atomic/AtomicReference;
+    sget-object v1, Lk6/e;->a:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 25
     .line 26
@@ -1532,7 +1528,7 @@
 
     .line 31
     .line 32
-    new-instance v2, Lm6/e;
+    new-instance v2, Lk6/e;
 
     .line 33
     .line 34
@@ -1708,7 +1704,7 @@
 
     .line 118
     .line 119
-    invoke-direct {v2, p0, p1, p2}, Lcom/google/firebase/FirebaseApp;-><init>(Landroid/content/Context;Ljava/lang/String;Lm6/h;)V
+    invoke-direct {v2, p0, p1, p2}, Lcom/google/firebase/FirebaseApp;-><init>(Landroid/content/Context;Ljava/lang/String;Lk6/h;)V
 
     .line 120
     .line 121
@@ -1867,11 +1863,11 @@
     move-result-object v1
 
     .line 39
-    check-cast v1, Lb8/o;
+    check-cast v1, Lz7/n;
 
     .line 40
     .line 41
-    iget-object v1, v1, Lb8/o;->a:Lb8/w0;
+    iget-object v1, v1, Lz7/n;->a:Lz7/s0;
 
     .line 42
     .line 43
@@ -1888,7 +1884,7 @@
     .line 48
     .line 49
     .line 50
-    iput-boolean v2, v1, Lb8/w0;->d:Z
+    iput-boolean v2, v1, Lz7/s0;->d:Z
 
     .line 51
     .line 52
@@ -1922,11 +1918,11 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->d:Lr6/f;
+    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->d:Lp6/f;
 
     .line 5
     .line 6
-    invoke-interface {v0, p1}, Lr6/c;->a(Ljava/lang/Class;)Ljava/lang/Object;
+    invoke-interface {v0, p1}, Lp6/c;->a(Ljava/lang/Class;)Ljava/lang/Object;
 
     .line 7
     .line 8
@@ -2049,11 +2045,11 @@
     .line 32
     .line 33
     .line 34
-    iget-object v1, p0, Lcom/google/firebase/FirebaseApp;->c:Lm6/h;
+    iget-object v1, p0, Lcom/google/firebase/FirebaseApp;->c:Lk6/h;
 
     .line 35
     .line 36
-    iget-object v1, v1, Lm6/h;->b:Ljava/lang/String;
+    iget-object v1, v1, Lk6/h;->b:Ljava/lang/String;
 
     .line 37
     .line 38
@@ -2203,7 +2199,7 @@
 
     .line 43
     .line 44
-    sget-object v2, Lm6/f;->b:Ljava/util/concurrent/atomic/AtomicReference;
+    sget-object v2, Lk6/f;->b:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 45
     .line 46
@@ -2219,11 +2215,11 @@
 
     .line 51
     .line 52
-    new-instance v3, Lm6/f;
+    new-instance v3, Lk6/f;
 
     .line 53
     .line 54
-    invoke-direct {v3, v0}, Lm6/f;-><init>(Landroid/content/Context;)V
+    invoke-direct {v3, v0}, Lk6/f;-><init>(Landroid/content/Context;)V
 
     .line 55
     .line 56
@@ -2324,7 +2320,7 @@
     .line 103
     .line 104
     .line 105
-    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->d:Lr6/f;
+    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->d:Lp6/f;
 
     .line 106
     .line 107
@@ -2349,7 +2345,7 @@
     move-result v2
 
     .line 118
-    iget-object v3, v0, Lr6/f;->w:Ljava/util/concurrent/atomic/AtomicReference;
+    iget-object v3, v0, Lp6/f;->x:Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 119
     .line 120
@@ -2382,7 +2378,7 @@
 
     .line 132
     .line 133
-    iget-object v3, v0, Lr6/f;->c:Ljava/util/HashMap;
+    iget-object v3, v0, Lp6/f;->c:Ljava/util/HashMap;
 
     .line 134
     .line 135
@@ -2396,7 +2392,7 @@
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
     .line 139
-    invoke-virtual {v0, v1, v2}, Lr6/f;->e(Ljava/util/HashMap;Z)V
+    invoke-virtual {v0, v1, v2}, Lp6/f;->g(Ljava/util/HashMap;Z)V
 
     .line 140
     .line 141
@@ -2431,11 +2427,11 @@
     .line 151
     .line 152
     :goto_0
-    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->h:Ls7/b;
+    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->h:Lq7/b;
 
     .line 153
     .line 154
-    invoke-interface {v0}, Ls7/b;->get()Ljava/lang/Object;
+    invoke-interface {v0}, Lq7/b;->get()Ljava/lang/Object;
 
     .line 155
     .line 156
@@ -2443,11 +2439,11 @@
     move-result-object v0
 
     .line 158
-    check-cast v0, Lp7/c;
+    check-cast v0, Ln7/c;
 
     .line 159
     .line 160
-    invoke-virtual {v0}, Lp7/c;->c()V
+    invoke-virtual {v0}, Ln7/c;->c()V
 
     .line 161
     .line 162
@@ -2464,11 +2460,11 @@
     .line 2
     .line 3
     .line 4
-    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->g:Lr6/m;
+    iget-object v0, p0, Lcom/google/firebase/FirebaseApp;->g:Lp6/m;
 
     .line 5
     .line 6
-    invoke-virtual {v0}, Lr6/m;->get()Ljava/lang/Object;
+    invoke-virtual {v0}, Lp6/m;->get()Ljava/lang/Object;
 
     .line 7
     .line 8
@@ -2476,7 +2472,7 @@
     move-result-object v0
 
     .line 10
-    check-cast v0, Lx7/a;
+    check-cast v0, Lv7/a;
 
     .line 11
     .line 12
@@ -2484,7 +2480,7 @@
 
     .line 13
     :try_start_0
-    iget-boolean v1, v0, Lx7/a;->a:Z
+    iget-boolean v1, v0, Lv7/a;->a:Z
     :try_end_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
@@ -2541,7 +2537,7 @@
 
     .line 14
     .line 15
-    iget-object v2, p0, Lcom/google/firebase/FirebaseApp;->c:Lm6/h;
+    iget-object v2, p0, Lcom/google/firebase/FirebaseApp;->c:Lk6/h;
 
     .line 16
     .line 17

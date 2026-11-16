@@ -1,6 +1,6 @@
 .class public final Lorg/apache/http/message/j;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/apache/http/HeaderIterator;
@@ -13,7 +13,7 @@
 
 .field public h:I
 
-.field public final p:Ljava/lang/String;
+.field public final q:Ljava/lang/String;
 
 
 # direct methods
@@ -30,7 +30,7 @@
 
     .line 5
     .line 6
-    invoke-static {p2, v0}, Lcom/bumptech/glide/e;->W(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Leh/k;->D(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 7
     .line 8
@@ -39,7 +39,7 @@
 
     .line 10
     .line 11
-    iput-object p1, p0, Lorg/apache/http/message/j;->p:Ljava/lang/String;
+    iput-object p1, p0, Lorg/apache/http/message/j;->q:Ljava/lang/String;
 
     .line 12
     .line 13
@@ -180,7 +180,7 @@
 
     .line 19
     .line 20
-    iget-object v4, p0, Lorg/apache/http/message/j;->p:Ljava/lang/String;
+    iget-object v4, p0, Lorg/apache/http/message/j;->q:Ljava/lang/String;
 
     .line 21
     .line 22
@@ -207,7 +207,7 @@
 
     .line 31
     .line 32
-    invoke-interface {v5}, Lpc/p;->getName()Ljava/lang/String;
+    invoke-interface {v5}, Lqc/p;->getName()Ljava/lang/String;
 
     .line 33
     .line 34
@@ -309,7 +309,7 @@
 
     .line 10
     .line 11
-    invoke-static {v2, v0}, Lcom/bumptech/glide/f;->c(Ljava/lang/String;Z)V
+    invoke-static {v2, v0}, Lgc/h;->q(Ljava/lang/String;Z)V
 
     .line 12
     .line 13

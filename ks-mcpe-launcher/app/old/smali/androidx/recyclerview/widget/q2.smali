@@ -1,261 +1,192 @@
 .class public final Landroidx/recyclerview/widget/q2;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Landroid/os/Parcelable;
+
+
+# static fields
+.field public static final CREATOR:Landroid/os/Parcelable$Creator;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "Landroid/os/Parcelable$Creator<",
+            "Landroidx/recyclerview/widget/q2;",
+            ">;"
+        }
+    .end annotation
+.end field
 
 
 # instance fields
-.field public a:I
+.field public X:Z
 
-.field public b:I
+.field public Y:Z
+
+.field public Z:Z
 
 .field public c:I
 
 .field public d:I
 
-.field public e:I
+.field public h:I
+
+.field public q:[I
+
+.field public w:I
+
+.field public x:[I
+
+.field public y:Ljava/util/ArrayList;
 
 
-# virtual methods
-.method public final a()Z
-    .locals 6
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
 
     .line 1
-    iget v0, p0, Landroidx/recyclerview/widget/q2;->a:I
+    new-instance v0, Landroidx/recyclerview/widget/z0;
 
     .line 2
     .line 3
-    and-int/lit8 v1, v0, 0x7
+    const/4 v1, 0x2
+
+    .line 4
+    invoke-direct {v0, v1}, Landroidx/recyclerview/widget/z0;-><init>(I)V
+
+    .line 5
+    .line 6
+    .line 7
+    sput-object v0, Landroidx/recyclerview/widget/q2;->CREATOR:Landroid/os/Parcelable$Creator;
+
+    .line 8
+    .line 9
+    return-void
+.end method
+
+
+# virtual methods
+.method public final describeContents()I
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    return v0
+.end method
+
+.method public final writeToParcel(Landroid/os/Parcel;I)V
+    .locals 0
+
+    .line 1
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->c:I
+
+    .line 2
+    .line 3
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 4
     .line 5
-    const/4 v2, 0x2
-
     .line 6
-    const/4 v3, 0x4
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->d:I
 
     .line 7
-    const/4 v4, 0x1
-
     .line 8
-    if-eqz v1, :cond_2
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 9
     .line 10
-    iget v1, p0, Landroidx/recyclerview/widget/q2;->d:I
-
     .line 11
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->h:I
+
     .line 12
-    iget v5, p0, Landroidx/recyclerview/widget/q2;->b:I
-
     .line 13
-    .line 14
-    if-le v1, v5, :cond_0
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
+    .line 14
     .line 15
     .line 16
-    move v1, v4
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->h:I
 
     .line 17
-    goto :goto_0
-
     .line 18
-    :cond_0
-    if-ne v1, v5, :cond_1
+    if-lez p2, :cond_0
 
     .line 19
     .line 20
-    move v1, v2
+    iget-object p2, p0, Landroidx/recyclerview/widget/q2;->q:[I
 
     .line 21
-    goto :goto_0
-
     .line 22
-    :cond_1
-    move v1, v3
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeIntArray([I)V
 
     .line 23
-    :goto_0
-    and-int/2addr v1, v0
-
     .line 24
-    if-nez v1, :cond_2
-
     .line 25
-    .line 26
-    goto :goto_4
+    :cond_0
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->w:I
 
+    .line 26
     .line 27
-    :cond_2
-    and-int/lit8 v1, v0, 0x70
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 28
     .line 29
-    if-eqz v1, :cond_5
-
     .line 30
+    iget p2, p0, Landroidx/recyclerview/widget/q2;->w:I
+
     .line 31
-    iget v1, p0, Landroidx/recyclerview/widget/q2;->d:I
-
     .line 32
+    if-lez p2, :cond_1
+
     .line 33
-    iget v5, p0, Landroidx/recyclerview/widget/q2;->c:I
-
     .line 34
+    iget-object p2, p0, Landroidx/recyclerview/widget/q2;->x:[I
+
     .line 35
-    if-le v1, v5, :cond_3
-
     .line 36
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeIntArray([I)V
+
     .line 37
-    move v1, v4
-
     .line 38
-    goto :goto_1
-
     .line 39
-    :cond_3
-    if-ne v1, v5, :cond_4
+    :cond_1
+    iget-boolean p2, p0, Landroidx/recyclerview/widget/q2;->X:Z
 
     .line 40
     .line 41
-    move v1, v2
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 42
-    goto :goto_1
-
     .line 43
-    :cond_4
-    move v1, v3
-
     .line 44
-    :goto_1
-    shl-int/2addr v1, v3
+    iget-boolean p2, p0, Landroidx/recyclerview/widget/q2;->Y:Z
 
     .line 45
-    and-int/2addr v1, v0
-
     .line 46
-    if-nez v1, :cond_5
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 47
     .line 48
-    goto :goto_4
-
     .line 49
-    :cond_5
-    and-int/lit16 v1, v0, 0x700
+    iget-boolean p2, p0, Landroidx/recyclerview/widget/q2;->Z:Z
 
     .line 50
     .line 51
-    if-eqz v1, :cond_8
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeInt(I)V
 
     .line 52
     .line 53
-    iget v1, p0, Landroidx/recyclerview/widget/q2;->e:I
-
     .line 54
+    iget-object p2, p0, Landroidx/recyclerview/widget/q2;->y:Ljava/util/ArrayList;
+
     .line 55
-    iget v5, p0, Landroidx/recyclerview/widget/q2;->b:I
-
     .line 56
-    .line 57
-    if-le v1, v5, :cond_6
+    invoke-virtual {p1, p2}, Landroid/os/Parcel;->writeList(Ljava/util/List;)V
 
+    .line 57
     .line 58
     .line 59
-    move v1, v4
-
-    .line 60
-    goto :goto_2
-
-    .line 61
-    :cond_6
-    if-ne v1, v5, :cond_7
-
-    .line 62
-    .line 63
-    move v1, v2
-
-    .line 64
-    goto :goto_2
-
-    .line 65
-    :cond_7
-    move v1, v3
-
-    .line 66
-    :goto_2
-    shl-int/lit8 v1, v1, 0x8
-
-    .line 67
-    .line 68
-    and-int/2addr v1, v0
-
-    .line 69
-    if-nez v1, :cond_8
-
-    .line 70
-    .line 71
-    goto :goto_4
-
-    .line 72
-    :cond_8
-    and-int/lit16 v1, v0, 0x7000
-
-    .line 73
-    .line 74
-    if-eqz v1, :cond_b
-
-    .line 75
-    .line 76
-    iget v1, p0, Landroidx/recyclerview/widget/q2;->e:I
-
-    .line 77
-    .line 78
-    iget v5, p0, Landroidx/recyclerview/widget/q2;->c:I
-
-    .line 79
-    .line 80
-    if-le v1, v5, :cond_9
-
-    .line 81
-    .line 82
-    move v2, v4
-
-    .line 83
-    goto :goto_3
-
-    .line 84
-    :cond_9
-    if-ne v1, v5, :cond_a
-
-    .line 85
-    .line 86
-    goto :goto_3
-
-    .line 87
-    :cond_a
-    move v2, v3
-
-    .line 88
-    :goto_3
-    shl-int/lit8 v1, v2, 0xc
-
-    .line 89
-    .line 90
-    and-int/2addr v0, v1
-
-    .line 91
-    if-nez v0, :cond_b
-
-    .line 92
-    .line 93
-    :goto_4
-    const/4 v0, 0x0
-
-    .line 94
-    return v0
-
-    .line 95
-    :cond_b
-    return v4
+    return-void
 .end method

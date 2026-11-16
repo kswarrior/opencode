@@ -1,268 +1,350 @@
 .class public final Ldb/a;
-.super Lra/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Leb/a;
+.implements Lnet/raphimc/minecraftauth/util/Expirable;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final a:J
+
+.field public final b:Ljava/lang/String;
+
+.field public final c:Ljava/lang/String;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/String;)V
-    .locals 1
+.method public constructor <init>(JLjava/lang/String;Ljava/lang/String;)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x0
-
-    iput v0, p0, Ldb/a;->a:I
-
-    invoke-direct {p0, p1}, Lra/b;-><init>(Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;Lnet/raphimc/minecraftauth/msa/model/MsaToken;)V
-    .locals 3
-
-    const/4 v0, 0x1
-
-    iput v0, p0, Ldb/a;->a:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    iget-object p2, p2, Lnet/raphimc/minecraftauth/msa/model/MsaToken;->c:Ljava/lang/String;
-
     .line 3
-    iget v0, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->e:I
-
     .line 4
-    invoke-static {v0}, Ls1/a;->b(I)Ljava/lang/String;
-
-    move-result-object v0
-
-    invoke-direct {p0, v0}, Lra/b;-><init>(Ljava/lang/String;)V
+    iput-wide p1, p0, Ldb/a;->a:J
 
     .line 5
-    new-instance v0, Ljava/util/HashMap;
-
-    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
-
     .line 6
-    const-string v1, "client_id"
+    iput-object p3, p0, Ldb/a;->b:Ljava/lang/String;
 
     .line 7
-    iget-object v2, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->a:Ljava/lang/String;
-
     .line 8
-    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    iput-object p4, p0, Ldb/a;->c:Ljava/lang/String;
 
     .line 9
-    const-string v1, "scope"
-
     .line 10
-    iget-object v2, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->b:Ljava/lang/String;
-
-    .line 11
-    invoke-virtual {v0, v1, v2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 12
-    iget-object p1, p1, Lnet/raphimc/minecraftauth/msa/model/MsaApplicationConfig;->c:Ljava/lang/String;
-
-    if-eqz p1, :cond_0
-
-    .line 13
-    const-string v1, "client_secret"
-
-    invoke-virtual {v0, v1, p1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 14
-    :cond_0
-    const-string p1, "grant_type"
-
-    const-string v1, "refresh_token"
-
-    invoke-virtual {v0, p1, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 15
-    invoke-virtual {v0, v1, p2}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    .line 16
-    new-instance p1, Lla/c;
-
-    invoke-direct {p1, v0}, Lla/c;-><init>(Ljava/util/HashMap;)V
-
-    invoke-virtual {p0, p1}, Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;->setContent(Lnet/lenni0451/commons/httpclient/content/HttpContent;)Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;
-
     return-void
 .end method
 
 
 # virtual methods
-.method public final handle(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/lang/Object;
-    .locals 6
+.method public final b()J
+    .locals 2
 
     .line 1
-    iget p1, p0, Ldb/a;->a:I
+    iget-wide v0, p0, Ldb/a;->a:J
 
     .line 2
     .line 3
-    packed-switch p1, :pswitch_data_0
+    return-wide v0
+.end method
 
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 7
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    if-ne p1, p0, :cond_0
+
+    .line 3
     .line 4
-    .line 5
-    .line 6
-    new-instance p1, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
+    return v0
 
+    .line 5
+    :cond_0
+    instance-of v1, p1, Ldb/a;
+
+    .line 6
     .line 7
+    const/4 v2, 0x0
+
     .line 8
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
+    if-nez v1, :cond_1
 
     .line 9
     .line 10
+    return v2
+
     .line 11
-    move-result-wide v0
+    :cond_1
+    check-cast p1, Ldb/a;
 
     .line 12
-    const-string v2, "expires_in"
-
     .line 13
-    .line 14
-    invoke-virtual {p2, v2}, Lnet/lenni0451/commons/gson/elements/GsonObject;->m(Ljava/lang/String;)I
+    iget-wide v3, p0, Ldb/a;->a:J
 
+    .line 14
     .line 15
+    iget-wide v5, p1, Ldb/a;->a:J
+
     .line 16
     .line 17
-    move-result v2
+    cmp-long v1, v3, v5
 
     .line 18
-    int-to-long v2, v2
-
     .line 19
-    const-wide/16 v4, 0x3e8
+    if-eqz v1, :cond_2
 
     .line 20
     .line 21
-    mul-long/2addr v2, v4
+    return v2
 
     .line 22
-    add-long/2addr v2, v0
+    :cond_2
+    iget-object v1, p1, Ldb/a;->b:Ljava/lang/String;
 
     .line 23
-    const-string v0, "access_token"
+    .line 24
+    iget-object v3, p0, Ldb/a;->b:Ljava/lang/String;
+
+    .line 25
+    .line 26
+    if-nez v3, :cond_3
+
+    .line 27
+    .line 28
+    if-eqz v1, :cond_4
+
+    .line 29
+    .line 30
+    goto :goto_0
+
+    .line 31
+    :cond_3
+    invoke-virtual {v3, v1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 32
+    .line 33
+    .line 34
+    move-result v1
+
+    .line 35
+    if-nez v1, :cond_4
+
+    .line 36
+    .line 37
+    :goto_0
+    return v2
+
+    .line 38
+    :cond_4
+    iget-object p1, p1, Ldb/a;->c:Ljava/lang/String;
+
+    .line 39
+    .line 40
+    iget-object v1, p0, Ldb/a;->c:Ljava/lang/String;
+
+    .line 41
+    .line 42
+    if-nez v1, :cond_5
+
+    .line 43
+    .line 44
+    if-eqz p1, :cond_6
+
+    .line 45
+    .line 46
+    goto :goto_1
+
+    .line 47
+    :cond_5
+    invoke-virtual {v1, p1}, Ljava/lang/Object;->equals(Ljava/lang/Object;)Z
+
+    .line 48
+    .line 49
+    .line 50
+    move-result p1
+
+    .line 51
+    if-nez p1, :cond_6
+
+    .line 52
+    .line 53
+    :goto_1
+    return v2
+
+    .line 54
+    :cond_6
+    return v0
+.end method
+
+.method public final hashCode()I
+    .locals 5
+
+    .line 1
+    const/16 v0, 0x20
+
+    .line 2
+    .line 3
+    iget-wide v1, p0, Ldb/a;->a:J
+
+    .line 4
+    .line 5
+    ushr-long v3, v1, v0
+
+    .line 6
+    .line 7
+    xor-long v0, v3, v1
+
+    .line 8
+    .line 9
+    long-to-int v0, v0
+
+    .line 10
+    const/16 v1, 0x3b
+
+    .line 11
+    .line 12
+    add-int/2addr v0, v1
+
+    .line 13
+    mul-int/2addr v0, v1
+
+    .line 14
+    const/16 v2, 0x2b
+
+    .line 15
+    .line 16
+    iget-object v3, p0, Ldb/a;->b:Ljava/lang/String;
+
+    .line 17
+    .line 18
+    if-nez v3, :cond_0
+
+    .line 19
+    .line 20
+    move v3, v2
+
+    .line 21
+    goto :goto_0
+
+    .line 22
+    :cond_0
+    invoke-virtual {v3}, Ljava/lang/Object;->hashCode()I
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v3
+
+    .line 26
+    :goto_0
+    add-int/2addr v0, v3
+
+    .line 27
+    mul-int/2addr v0, v1
+
+    .line 28
+    iget-object v1, p0, Ldb/a;->c:Ljava/lang/String;
+
+    .line 29
+    .line 30
+    if-nez v1, :cond_1
+
+    .line 31
+    .line 32
+    goto :goto_1
+
+    .line 33
+    :cond_1
+    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
+
+    .line 34
+    .line 35
+    .line 36
+    move-result v2
+
+    .line 37
+    :goto_1
+    add-int/2addr v0, v2
+
+    .line 38
+    return v0
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 3
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    const-string v1, "MsaToken(expireTimeMs="
+
+    .line 4
+    .line 5
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 6
+    .line 7
+    .line 8
+    iget-wide v1, p0, Ldb/a;->a:J
+
+    .line 9
+    .line 10
+    invoke-virtual {v0, v1, v2}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
+
+    .line 11
+    .line 12
+    .line 13
+    const-string v1, ", accessToken="
+
+    .line 14
+    .line 15
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 16
+    .line 17
+    .line 18
+    iget-object v1, p0, Ldb/a;->b:Ljava/lang/String;
+
+    .line 19
+    .line 20
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 21
+    .line 22
+    .line 23
+    const-string v1, ", refreshToken="
 
     .line 24
     .line 25
-    invoke-virtual {p2, v0}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
 
     .line 26
     .line 27
     .line 28
-    move-result-object v0
+    iget-object v1, p0, Ldb/a;->c:Ljava/lang/String;
 
     .line 29
-    const-string v1, "refresh_token"
-
     .line 30
-    .line 31
-    const/4 v4, 0x0
+    const-string v2, ")"
 
+    .line 31
     .line 32
-    invoke-virtual {p2, v1, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v0, v1, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 33
     .line 34
     .line 35
-    move-result-object p2
-
-    .line 36
-    invoke-direct {p1, v2, v3, v0, p2}, Lnet/raphimc/minecraftauth/msa/model/MsaToken;-><init>(JLjava/lang/String;Ljava/lang/String;)V
-
-    .line 37
-    .line 38
-    .line 39
-    return-object p1
-
-    .line 40
-    :pswitch_0
-    new-instance p1, Lnet/raphimc/minecraftauth/msa/model/MsaToken;
-
-    .line 41
-    .line 42
-    invoke-static {}, Ljava/lang/System;->currentTimeMillis()J
-
-    .line 43
-    .line 44
-    .line 45
-    move-result-wide v0
-
-    .line 46
-    const-string v2, "expires_in"
-
-    .line 47
-    .line 48
-    invoke-virtual {p2, v2}, Lnet/lenni0451/commons/gson/elements/GsonObject;->m(Ljava/lang/String;)I
-
-    .line 49
-    .line 50
-    .line 51
-    move-result v2
-
-    .line 52
-    int-to-long v2, v2
-
-    .line 53
-    const-wide/16 v4, 0x3e8
-
-    .line 54
-    .line 55
-    mul-long/2addr v2, v4
-
-    .line 56
-    add-long/2addr v2, v0
-
-    .line 57
-    const-string v0, "access_token"
-
-    .line 58
-    .line 59
-    invoke-virtual {p2, v0}, Lnet/lenni0451/commons/gson/elements/GsonObject;->p(Ljava/lang/String;)Ljava/lang/String;
-
-    .line 60
-    .line 61
-    .line 62
     move-result-object v0
 
-    .line 63
-    const-string v1, "refresh_token"
-
-    .line 64
-    .line 65
-    const/4 v4, 0x0
-
-    .line 66
-    invoke-virtual {p2, v1, v4}, Lnet/lenni0451/commons/gson/elements/GsonObject;->e(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-
-    .line 67
-    .line 68
-    .line 69
-    move-result-object p2
-
-    .line 70
-    invoke-direct {p1, v2, v3, v0, p2}, Lnet/raphimc/minecraftauth/msa/model/MsaToken;-><init>(JLjava/lang/String;Ljava/lang/String;)V
-
-    .line 71
-    .line 72
-    .line 73
-    return-object p1
-
-    .line 74
-    nop
-
-    .line 75
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 36
+    return-object v0
 .end method

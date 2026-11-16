@@ -1,6 +1,6 @@
 .class public final Lt3/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -36,34 +36,31 @@
     return-void
 .end method
 
-.method public static a()Lkd/e;
-    .locals 3
+.method public static a()Lkd/d;
+    .locals 2
 
     .line 1
-    new-instance v0, Lkd/e;
+    new-instance v0, Lkd/d;
 
     .line 2
     .line 3
-    const/16 v1, 0x1a
+    const/16 v1, 0x19
 
     .line 4
     .line 5
-    const/4 v2, 0x0
+    invoke-direct {v0, v1}, Lkd/d;-><init>(I)V
 
     .line 6
-    invoke-direct {v0, v1, v2}, Lkd/e;-><init>(IZ)V
-
     .line 7
     .line 8
-    .line 9
     sget-object v1, Lq3/d;->c:Lq3/d;
 
+    .line 9
     .line 10
-    .line 11
-    iput-object v1, v0, Lkd/e;->p:Ljava/lang/Object;
+    iput-object v1, v0, Lkd/d;->q:Ljava/lang/Object;
 
+    .line 11
     .line 12
-    .line 13
     return-object v0
 .end method
 
@@ -73,7 +70,7 @@
     .locals 2
 
     .line 1
-    invoke-static {}, Lt3/i;->a()Lkd/e;
+    invoke-static {}, Lt3/i;->a()Lkd/d;
 
     .line 2
     .line 3
@@ -85,7 +82,7 @@
 
     .line 6
     .line 7
-    invoke-virtual {v0, v1}, Lkd/e;->H(Ljava/lang/String;)V
+    invoke-virtual {v0, v1}, Lkd/d;->E(Ljava/lang/String;)V
 
     .line 8
     .line 9
@@ -94,7 +91,7 @@
 
     .line 11
     .line 12
-    iput-object p1, v0, Lkd/e;->p:Ljava/lang/Object;
+    iput-object p1, v0, Lkd/d;->q:Ljava/lang/Object;
 
     .line 13
     .line 14
@@ -102,11 +99,11 @@
 
     .line 15
     .line 16
-    iput-object p1, v0, Lkd/e;->h:Ljava/lang/Object;
+    iput-object p1, v0, Lkd/d;->h:Ljava/lang/Object;
 
     .line 17
     .line 18
-    invoke-virtual {v0}, Lkd/e;->y()Lt3/i;
+    invoke-virtual {v0}, Lkd/d;->u()Lt3/i;
 
     .line 19
     .line 20
@@ -375,7 +372,7 @@
 
     .line 39
     .line 40
-    invoke-static {v1, v0, v2}, Ls1/a;->q(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    invoke-static {v1, v0, v2}, Ls1/a;->r(Ljava/lang/StringBuilder;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
 
     .line 41
     .line 42

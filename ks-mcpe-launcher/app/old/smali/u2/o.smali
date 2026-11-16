@@ -1,16 +1,18 @@
 .class public final Lu2/o;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lp3/b;
 
 
 # static fields
-.field public static final M1:Ls4/z;
+.field public static final M1:Ls4/c0;
 
 
 # instance fields
+.field public B1:Z
+
 .field public C1:Z
 
 .field public D1:Lu2/y;
@@ -33,11 +35,11 @@
 
 .field public final X:Lx2/d;
 
-.field public final Y:Ljava/util/concurrent/atomic/AtomicInteger;
+.field public final Y:Lx2/d;
 
-.field public Z:Lu2/q;
+.field public final Z:Ljava/util/concurrent/atomic/AtomicInteger;
 
-.field public b1:Z
+.field public b1:Lu2/q;
 
 .field public final c:Lu2/n;
 
@@ -45,13 +47,11 @@
 
 .field public final h:Lu2/r;
 
-.field public final p:Lp0/a;
+.field public final q:Lp0/a;
 
-.field public final q:Ls4/z;
+.field public final w:Ls4/c0;
 
-.field public final w:Lu2/p;
-
-.field public final x:Lx2/d;
+.field public final x:Lu2/p;
 
 .field public final y:Lx2/d;
 
@@ -61,7 +61,7 @@
     .locals 2
 
     .line 1
-    new-instance v0, Ls4/z;
+    new-instance v0, Ls4/c0;
 
     .line 2
     .line 3
@@ -69,19 +69,19 @@
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ls4/z;-><init>(I)V
+    invoke-direct {v0, v1}, Ls4/c0;-><init>(I)V
 
     .line 6
     .line 7
     .line 8
-    sput-object v0, Lu2/o;->M1:Ls4/z;
+    sput-object v0, Lu2/o;->M1:Ls4/c0;
 
     .line 9
     .line 10
     return-void
 .end method
 
-.method public constructor <init>(Lx2/d;Lx2/d;Lx2/d;Lx2/d;Lu2/k;Lu2/k;Lkd/e;)V
+.method public constructor <init>(Lx2/d;Lx2/d;Lx2/d;Lx2/d;Lu2/k;Lu2/k;Lkd/d;)V
     .locals 2
 
     .line 1
@@ -137,23 +137,23 @@
     .line 27
     .line 28
     .line 29
-    iput-object p3, p0, Lu2/o;->Y:Ljava/util/concurrent/atomic/AtomicInteger;
+    iput-object p3, p0, Lu2/o;->Z:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 30
     .line 31
-    iput-object p1, p0, Lu2/o;->x:Lx2/d;
+    iput-object p1, p0, Lu2/o;->y:Lx2/d;
 
     .line 32
     .line 33
-    iput-object p2, p0, Lu2/o;->y:Lx2/d;
+    iput-object p2, p0, Lu2/o;->X:Lx2/d;
 
     .line 34
     .line 35
-    iput-object p4, p0, Lu2/o;->X:Lx2/d;
+    iput-object p4, p0, Lu2/o;->Y:Lx2/d;
 
     .line 36
     .line 37
-    iput-object p5, p0, Lu2/o;->w:Lu2/p;
+    iput-object p5, p0, Lu2/o;->x:Lu2/p;
 
     .line 38
     .line 39
@@ -161,15 +161,15 @@
 
     .line 40
     .line 41
-    iput-object p7, p0, Lu2/o;->p:Lp0/a;
+    iput-object p7, p0, Lu2/o;->q:Lp0/a;
 
     .line 42
     .line 43
-    sget-object p1, Lu2/o;->M1:Ls4/z;
+    sget-object p1, Lu2/o;->M1:Ls4/c0;
 
     .line 44
     .line 45
-    iput-object p1, p0, Lu2/o;->q:Ls4/z;
+    iput-object p1, p0, Lu2/o;->w:Ls4/c0;
 
     .line 46
     .line 47
@@ -379,11 +379,11 @@
     .line 21
     .line 22
     :cond_1
-    iget-object v0, p0, Lu2/o;->w:Lu2/p;
+    iget-object v0, p0, Lu2/o;->x:Lu2/p;
 
     .line 23
     .line 24
-    iget-object v1, p0, Lu2/o;->Z:Lu2/q;
+    iget-object v1, p0, Lu2/o;->b1:Lu2/q;
 
     .line 25
     .line 26
@@ -500,7 +500,7 @@
     .line 14
     .line 15
     .line 16
-    iget-object v0, p0, Lu2/o;->Y:Ljava/util/concurrent/atomic/AtomicInteger;
+    iget-object v0, p0, Lu2/o;->Z:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 17
     .line 18
@@ -617,7 +617,7 @@
     .line 9
     .line 10
     .line 11
-    iget-object v0, p0, Lu2/o;->Y:Ljava/util/concurrent/atomic/AtomicInteger;
+    iget-object v0, p0, Lu2/o;->Z:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 12
     .line 13
@@ -730,7 +730,7 @@
 
     .line 2
     :try_start_0
-    iget-object v0, p0, Lu2/o;->Z:Lu2/q;
+    iget-object v0, p0, Lu2/o;->b1:Lu2/q;
 
     .line 3
     .line 4
@@ -754,7 +754,7 @@
     const/4 v0, 0x0
 
     .line 14
-    iput-object v0, p0, Lu2/o;->Z:Lu2/q;
+    iput-object v0, p0, Lu2/o;->b1:Lu2/q;
 
     .line 15
     .line 16
@@ -789,7 +789,7 @@
 
     .line 30
     .line 31
-    iget-object v3, v2, Lu2/h;->x:Lf7/a;
+    iget-object v3, v2, Lu2/h;->y:Ld7/b;
 
     .line 32
     .line 33
@@ -802,11 +802,11 @@
 
     .line 35
     :try_start_1
-    iput-boolean v4, v3, Lf7/a;->a:Z
+    iput-boolean v4, v3, Ld7/b;->a:Z
 
     .line 36
     .line 37
-    invoke-virtual {v3}, Lf7/a;->a()Z
+    invoke-virtual {v3}, Ld7/b;->a()Z
 
     .line 38
     .line 39
@@ -842,11 +842,11 @@
 
     .line 52
     .line 53
-    iget-object v0, p0, Lu2/o;->p:Lp0/a;
+    iget-object v0, p0, Lu2/o;->q:Lp0/a;
 
     .line 54
     .line 55
-    invoke-interface {v0, p0}, Lp0/a;->h(Ljava/lang/Object;)Z
+    invoke-interface {v0, p0}, Lp0/a;->c(Ljava/lang/Object;)Z
     :try_end_2
     .catchall {:try_start_2 .. :try_end_2} :catchall_0
 
@@ -931,7 +931,7 @@
 
     .line 12
     .line 13
-    sget-object v2, Lo3/f;->b:Lg/n;
+    sget-object v2, Lo3/f;->b:Lg/l;
 
     .line 14
     .line 15
@@ -998,7 +998,7 @@
     .line 45
     :cond_0
     :goto_0
-    iget-object p1, p0, Lu2/o;->Y:Ljava/util/concurrent/atomic/AtomicInteger;
+    iget-object p1, p0, Lu2/o;->Z:Ljava/util/concurrent/atomic/AtomicInteger;
 
     .line 46
     .line 47

@@ -1,6 +1,6 @@
 .class public final synthetic Lc/i;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -13,7 +13,7 @@
 
 .field public final synthetic h:I
 
-.field public final synthetic p:Ljava/lang/Object;
+.field public final synthetic q:Ljava/lang/Object;
 
 
 # direct methods
@@ -27,28 +27,26 @@
 
     iput p2, p0, Lc/i;->h:I
 
-    iput-object p3, p0, Lc/i;->p:Ljava/lang/Object;
+    iput-object p3, p0, Lc/i;->q:Ljava/lang/Object;
 
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
 
-.method public synthetic constructor <init>(Lorg/levimc/launcher/util/LauncherBackgroundController;Ljava/lang/String;I)V
-    .locals 1
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;II)V
+    .locals 0
 
     .line 2
-    const/4 v0, 0x5
-
-    iput v0, p0, Lc/i;->c:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Lc/i;->c:I
 
     iput-object p1, p0, Lc/i;->d:Ljava/lang/Object;
 
-    iput-object p2, p0, Lc/i;->p:Ljava/lang/Object;
+    iput-object p2, p0, Lc/i;->q:Ljava/lang/Object;
 
     iput p3, p0, Lc/i;->h:I
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
 .end method
@@ -72,11 +70,11 @@
 
     .line 7
     .line 8
-    check-cast v0, Lga/j;
+    check-cast v0, Lea/i;
 
     .line 9
     .line 10
-    iget-object v0, v0, Lga/j;->d:Ljava/lang/Object;
+    iget-object v0, v0, Lea/i;->d:Ljava/lang/Object;
 
     .line 11
     .line 12
@@ -88,11 +86,11 @@
 
     .line 15
     .line 16
-    iget-object v2, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v2, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 17
     .line 18
-    invoke-interface {v0, v1, v2}, Lv1/b;->h(ILjava/lang/Object;)V
+    invoke-interface {v0, v1, v2}, Lv1/b;->g(ILjava/lang/Object;)V
 
     .line 19
     .line 20
@@ -109,7 +107,7 @@
 
     .line 25
     .line 26
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 27
     .line 28
@@ -138,7 +136,7 @@
 
     .line 39
     .line 40
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 41
     .line 42
@@ -167,7 +165,7 @@
 
     .line 53
     .line 54
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 55
     .line 56
@@ -196,7 +194,7 @@
 
     .line 67
     .line 68
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 69
     .line 70
@@ -221,15 +219,15 @@
 
     .line 79
     .line 80
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;
+    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
 
     .line 81
     .line 82
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 83
     .line 84
-    check-cast v1, Ljava/lang/String;
+    check-cast v1, Landroid/view/View;
 
     .line 85
     .line 86
@@ -237,7 +235,7 @@
 
     .line 87
     .line 88
-    invoke-static {v0, v2, v1}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;->p(Lorg/levimc/launcher/ui/dialogs/LogcatOverlay;ILjava/lang/String;)V
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->v(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;Landroid/view/View;I)V
 
     .line 89
     .line 90
@@ -254,7 +252,7 @@
 
     .line 95
     .line 96
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 97
     .line 98
@@ -283,7 +281,7 @@
 
     .line 109
     .line 110
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 111
     .line 112
@@ -348,15 +346,15 @@
 
     .line 141
     .line 142
-    iget-object v1, p0, Lc/i;->p:Ljava/lang/Object;
+    iget-object v1, p0, Lc/i;->q:Ljava/lang/Object;
 
     .line 143
     .line 144
-    check-cast v1, La4/e;
+    check-cast v1, Ljd/k;
 
     .line 145
     .line 146
-    iget-object v1, v1, La4/e;->d:Ljava/lang/Object;
+    iget-object v1, v1, Ljd/k;->d:Ljava/lang/Object;
 
     .line 147
     .line 148
@@ -466,7 +464,7 @@
 
     .line 197
     .line 198
-    invoke-static {v3, v4}, Lh9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {v3, v4}, Lf9/i;->c(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 199
     .line 200
@@ -487,7 +485,7 @@
 
     .line 208
     .line 209
-    invoke-interface {v3, v1}, Landroidx/activity/result/ActivityResultCallback;->b(Ljava/lang/Object;)V
+    invoke-interface {v3, v1}, Landroidx/activity/result/ActivityResultCallback;->c(Ljava/lang/Object;)V
 
     .line 210
     .line 211

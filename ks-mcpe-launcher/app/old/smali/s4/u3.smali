@@ -1,388 +1,629 @@
 .class public final Ls4/u3;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+# interfaces
+.implements Ljava/lang/Runnable;
 
 
 # instance fields
-.field public a:J
+.field public final synthetic c:I
 
-.field public b:J
+.field public final synthetic d:J
 
-.field public final c:Ls4/t3;
-
-.field public final synthetic d:Ls4/v3;
+.field public final synthetic h:Ls4/y3;
 
 
 # direct methods
-.method public constructor <init>(Ls4/v3;)V
-    .locals 2
+.method public constructor <init>(Ls4/y3;JI)V
+    .locals 0
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput p4, p0, Ls4/u3;->c:I
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Ls4/u3;->d:Ls4/v3;
+    packed-switch p4, :pswitch_data_0
 
+    .line 4
     .line 5
     .line 6
-    new-instance v0, Ls4/t3;
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 7
     .line 8
-    iget-object p1, p1, Landroidx/core/view/w0;->c:Ljava/lang/Object;
-
     .line 9
+    iput-wide p2, p0, Ls4/u3;->d:J
+
     .line 10
-    check-cast p1, Ls4/q1;
-
     .line 11
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 12
-    const/4 v1, 0x0
-
     .line 13
-    invoke-direct {v0, p0, p1, v1}, Ls4/t3;-><init>(Ljava/lang/Object;Ls4/z1;I)V
-
     .line 14
+    iput-object p1, p0, Ls4/u3;->h:Ls4/y3;
+
     .line 15
     .line 16
-    iput-object v0, p0, Ls4/u3;->c:Ls4/t3;
+    return-void
 
     .line 17
-    .line 18
-    iget-object p1, p1, Ls4/q1;->Z:Lcom/google/android/gms/common/util/Clock;
+    :pswitch_0
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 18
     .line 19
     .line 20
-    invoke-interface {p1}, Lcom/google/android/gms/common/util/Clock;->elapsedRealtime()J
+    iput-wide p2, p0, Ls4/u3;->d:J
 
     .line 21
     .line 22
+    invoke-static {p1}, Ljava/util/Objects;->requireNonNull(Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 23
-    move-result-wide v0
-
     .line 24
-    iput-wide v0, p0, Ls4/u3;->a:J
-
     .line 25
-    .line 26
-    iput-wide v0, p0, Ls4/u3;->b:J
+    iput-object p1, p0, Ls4/u3;->h:Ls4/y3;
 
+    .line 26
     .line 27
-    .line 28
     return-void
+
+    .line 28
+    nop
+
+    .line 29
+    :pswitch_data_0
+    .packed-switch 0x1
+        :pswitch_0
+    .end packed-switch
 .end method
 
 
 # virtual methods
-.method public final a(JZZ)Z
-    .locals 7
+.method public final run()V
+    .locals 10
 
     .line 1
-    iget-object v0, p0, Ls4/u3;->d:Ls4/v3;
+    iget v0, p0, Ls4/u3;->c:I
 
     .line 2
     .line 3
-    invoke-virtual {v0}, Ls4/c0;->k()V
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    invoke-virtual {v0}, Ls4/g0;->l()V
+    iget-object v0, p0, Ls4/u3;->h:Ls4/y3;
 
     .line 7
     .line 8
-    .line 9
-    iget-object v0, v0, Landroidx/core/view/w0;->c:Ljava/lang/Object;
+    invoke-virtual {v0}, Ls4/f0;->r()V
 
+    .line 9
     .line 10
     .line 11
-    check-cast v0, Ls4/q1;
+    invoke-virtual {v0}, Ls4/y3;->v()V
 
     .line 12
     .line 13
-    invoke-virtual {v0}, Ls4/q1;->d()Z
-
     .line 14
+    iget-object v1, v0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 15
     .line 16
-    move-result v1
+    check-cast v1, Ls4/u1;
 
     .line 17
-    iget-object v2, v0, Ls4/q1;->w:Ls4/v0;
-
     .line 18
+    iget-object v2, v1, Ls4/u1;->x:Ls4/y0;
+
     .line 19
-    if-eqz v1, :cond_0
-
     .line 20
-    .line 21
-    iget-object v1, v0, Ls4/q1;->q:Ls4/e1;
+    invoke-static {v2}, Ls4/u1;->l(Ls4/c2;)V
 
+    .line 21
     .line 22
     .line 23
-    invoke-static {v1}, Ls4/q1;->j(Landroidx/core/view/w0;)V
+    iget-object v2, v2, Ls4/y0;->D1:Ls4/w0;
 
     .line 24
     .line 25
+    const-string v3, "Activity paused, time"
+
     .line 26
-    iget-object v1, v1, Ls4/e1;->F1:Ls4/c1;
-
     .line 27
+    iget-wide v8, p0, Ls4/u3;->d:J
+
     .line 28
-    iget-object v3, v0, Ls4/q1;->Z:Lcom/google/android/gms/common/util/Clock;
-
     .line 29
-    .line 30
-    invoke-interface {v3}, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+    invoke-static {v8, v9}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
+    .line 30
     .line 31
     .line 32
+    move-result-object v4
+
     .line 33
-    move-result-wide v3
+    invoke-virtual {v2, v4, v3}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 34
-    invoke-virtual {v1, v3, v4}, Ls4/c1;->b(J)V
-
     .line 35
     .line 36
+    iget-object v5, v0, Ls4/y3;->y:Li6/i0;
+
     .line 37
-    :cond_0
-    iget-wide v3, p0, Ls4/u3;->a:J
-
     .line 38
+    new-instance v4, Ls4/v3;
+
     .line 39
-    sub-long v3, p1, v3
-
     .line 40
+    iget-object v2, v5, Li6/i0;->h:Ljava/lang/Object;
+
     .line 41
-    if-nez p3, :cond_2
-
     .line 42
+    check-cast v2, Ls4/y3;
+
     .line 43
-    const-wide/16 v5, 0x3e8
-
     .line 44
+    iget-object v3, v2, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 45
-    cmp-long p3, v3, v5
-
     .line 46
+    check-cast v3, Ls4/u1;
+
     .line 47
-    if-ltz p3, :cond_1
-
     .line 48
-    .line 49
-    goto :goto_0
+    iget-object v3, v3, Ls4/u1;->b1:Lcom/google/android/gms/common/util/Clock;
 
+    .line 49
     .line 50
-    :cond_1
-    invoke-static {v2}, Ls4/q1;->l(Ls4/y1;)V
+    invoke-interface {v3}, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
 
     .line 51
     .line 52
     .line 53
-    iget-object p1, v2, Ls4/v0;->D1:Ls4/t0;
+    move-result-wide v6
 
     .line 54
-    .line 55
-    const-string p2, "Screen exposed for less than 1000 ms. Event not sent. time"
+    invoke-direct/range {v4 .. v9}, Ls4/v3;-><init>(Li6/i0;JJ)V
 
+    .line 55
     .line 56
     .line 57
-    invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    iput-object v4, v5, Li6/i0;->d:Ljava/lang/Object;
 
     .line 58
     .line 59
-    .line 60
-    move-result-object p3
+    iget-object v2, v2, Ls4/y3;->h:Lcom/google/android/gms/internal/measurement/s6;
 
+    .line 60
     .line 61
-    invoke-virtual {p1, p3, p2}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
+    const-wide/16 v5, 0x7d0
 
     .line 62
     .line 63
+    invoke-virtual {v2, v4, v5, v6}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
     .line 64
-    const/4 p1, 0x0
-
     .line 65
-    return p1
-
     .line 66
-    :cond_2
-    :goto_0
-    if-nez p4, :cond_3
+    iget-object v1, v1, Ls4/u1;->q:Ls4/i;
 
     .line 67
     .line 68
-    iget-wide v3, p0, Ls4/u3;->b:J
+    invoke-virtual {v1}, Ls4/i;->G()Z
 
     .line 69
     .line 70
-    sub-long v3, p1, v3
-
     .line 71
+    move-result v1
+
     .line 72
-    iput-wide p1, p0, Ls4/u3;->b:J
+    if-eqz v1, :cond_0
 
     .line 73
     .line 74
-    :cond_3
-    invoke-static {v2}, Ls4/q1;->l(Ls4/y1;)V
+    iget-object v0, v0, Ls4/y3;->x:Ls4/x3;
 
     .line 75
     .line 76
+    iget-object v0, v0, Ls4/x3;->c:Ls4/w3;
+
     .line 77
-    iget-object p3, v2, Ls4/v0;->D1:Ls4/t0;
-
     .line 78
-    .line 79
-    const-string v1, "Recording user engagement, ms"
+    invoke-virtual {v0}, Ls4/q;->c()V
 
+    .line 79
     .line 80
     .line 81
-    invoke-static {v3, v4}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+    :cond_0
+    return-void
 
     .line 82
+    :pswitch_0
+    iget-object v0, p0, Ls4/u3;->h:Ls4/y3;
+
     .line 83
     .line 84
-    move-result-object v2
+    iget-object v1, v0, Ls4/y3;->x:Ls4/x3;
 
     .line 85
-    invoke-virtual {p3, v2, v1}, Ls4/t0;->b(Ljava/lang/Object;Ljava/lang/String;)V
-
     .line 86
+    invoke-virtual {v0}, Ls4/f0;->r()V
+
     .line 87
     .line 88
-    new-instance p3, Landroid/os/Bundle;
-
     .line 89
-    .line 90
-    invoke-direct {p3}, Landroid/os/Bundle;-><init>()V
+    invoke-virtual {v0}, Ls4/y3;->v()V
 
+    .line 90
     .line 91
     .line 92
+    iget-object v2, v0, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
     .line 93
-    const-string v1, "_et"
-
     .line 94
-    .line 95
-    invoke-virtual {p3, v1, v3, v4}, Landroid/os/BaseBundle;->putLong(Ljava/lang/String;J)V
+    check-cast v2, Ls4/u1;
 
+    .line 95
     .line 96
+    iget-object v3, v2, Ls4/u1;->x:Ls4/y0;
+
     .line 97
     .line 98
-    iget-object v1, v0, Ls4/q1;->p:Ls4/h;
+    invoke-static {v3}, Ls4/u1;->l(Ls4/c2;)V
 
     .line 99
     .line 100
-    invoke-virtual {v1}, Ls4/h;->A()Z
-
     .line 101
+    iget-object v3, v3, Ls4/y0;->D1:Ls4/w0;
+
     .line 102
     .line 103
-    move-result v1
+    const-string v4, "Activity resumed, time"
 
     .line 104
-    const/4 v2, 0x1
-
     .line 105
-    xor-int/2addr v1, v2
+    iget-wide v5, p0, Ls4/u3;->d:J
 
     .line 106
-    iget-object v3, v0, Ls4/q1;->b1:Ls4/e3;
-
     .line 107
-    .line 108
-    invoke-static {v3}, Ls4/q1;->k(Ls4/g0;)V
+    invoke-static {v5, v6}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
+    .line 108
     .line 109
     .line 110
+    move-result-object v7
+
     .line 111
-    invoke-virtual {v3, v1}, Ls4/e3;->p(Z)Ls4/b3;
+    invoke-virtual {v3, v7, v4}, Ls4/w0;->b(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 112
     .line 113
     .line 114
-    move-result-object v1
+    iget-object v3, v2, Ls4/u1;->q:Ls4/i;
 
     .line 115
-    invoke-static {v1, p3, v2}, Ls4/r4;->g0(Ls4/b3;Landroid/os/Bundle;Z)V
-
     .line 116
+    sget-object v4, Ls4/h0;->S0:Ls4/g0;
+
     .line 117
     .line 118
-    if-nez p4, :cond_4
+    const/4 v7, 0x0
 
     .line 119
-    .line 120
-    iget-object p4, v0, Ls4/q1;->C1:Ls4/t2;
+    invoke-virtual {v3, v7, v4}, Ls4/i;->C(Ljava/lang/String;Ls4/g0;)Z
 
+    .line 120
     .line 121
     .line 122
-    invoke-static {p4}, Ls4/q1;->k(Ls4/g0;)V
+    move-result v4
 
     .line 123
+    if-eqz v4, :cond_2
+
     .line 124
     .line 125
-    const-string v0, "auto"
+    invoke-virtual {v3}, Ls4/i;->G()Z
 
     .line 126
     .line 127
-    const-string v1, "_e"
-
     .line 128
+    move-result v2
+
     .line 129
-    invoke-virtual {p4, v0, v1, p3}, Ls4/t2;->s(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+    if-nez v2, :cond_1
 
     .line 130
     .line 131
+    iget-boolean v2, v0, Ls4/y3;->q:Z
+
     .line 132
-    :cond_4
-    iput-wide p1, p0, Ls4/u3;->a:J
-
     .line 133
+    if-eqz v2, :cond_4
+
     .line 134
-    iget-object p1, p0, Ls4/u3;->c:Ls4/t3;
-
     .line 135
-    .line 136
-    invoke-virtual {p1}, Ls4/p;->c()V
+    :cond_1
+    iget-object v2, v1, Ls4/x3;->d:Ls4/y3;
 
+    .line 136
     .line 137
+    invoke-virtual {v2}, Ls4/f0;->r()V
+
     .line 138
     .line 139
-    sget-object p2, Ls4/e0;->p0:Ls4/d0;
-
     .line 140
-    .line 141
-    const/4 p3, 0x0
+    iget-object v2, v1, Ls4/x3;->c:Ls4/w3;
 
+    .line 141
     .line 142
-    invoke-virtual {p2, p3}, Ls4/d0;->a(Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v2}, Ls4/q;->c()V
 
     .line 143
     .line 144
     .line 145
-    move-result-object p2
+    iput-wide v5, v1, Ls4/x3;->a:J
 
     .line 146
-    check-cast p2, Ljava/lang/Long;
-
     .line 147
+    iput-wide v5, v1, Ls4/x3;->b:J
+
     .line 148
-    invoke-virtual {p2}, Ljava/lang/Long;->longValue()J
-
     .line 149
+    goto :goto_0
+
     .line 150
+    :cond_2
+    invoke-virtual {v3}, Ls4/i;->G()Z
+
     .line 151
-    move-result-wide p2
-
     .line 152
-    invoke-virtual {p1, p2, p3}, Ls4/p;->b(J)V
-
     .line 153
+    move-result v3
+
     .line 154
+    if-nez v3, :cond_3
+
     .line 155
-    return v2
+    .line 156
+    iget-object v2, v2, Ls4/u1;->w:Ls4/i1;
+
+    .line 157
+    .line 158
+    invoke-static {v2}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+
+    .line 159
+    .line 160
+    .line 161
+    iget-object v2, v2, Ls4/i1;->I1:Ls4/f1;
+
+    .line 162
+    .line 163
+    invoke-virtual {v2}, Ls4/f1;->a()Z
+
+    .line 164
+    .line 165
+    .line 166
+    move-result v2
+
+    .line 167
+    if-eqz v2, :cond_4
+
+    .line 168
+    .line 169
+    :cond_3
+    iget-object v2, v1, Ls4/x3;->d:Ls4/y3;
+
+    .line 170
+    .line 171
+    invoke-virtual {v2}, Ls4/f0;->r()V
+
+    .line 172
+    .line 173
+    .line 174
+    iget-object v2, v1, Ls4/x3;->c:Ls4/w3;
+
+    .line 175
+    .line 176
+    invoke-virtual {v2}, Ls4/q;->c()V
+
+    .line 177
+    .line 178
+    .line 179
+    iput-wide v5, v1, Ls4/x3;->a:J
+
+    .line 180
+    .line 181
+    iput-wide v5, v1, Ls4/x3;->b:J
+
+    .line 182
+    .line 183
+    :cond_4
+    :goto_0
+    iget-object v1, v0, Ls4/y3;->y:Li6/i0;
+
+    .line 184
+    .line 185
+    iget-object v2, v1, Li6/i0;->h:Ljava/lang/Object;
+
+    .line 186
+    .line 187
+    check-cast v2, Ls4/y3;
+
+    .line 188
+    .line 189
+    invoke-virtual {v2}, Ls4/f0;->r()V
+
+    .line 190
+    .line 191
+    .line 192
+    iget-object v1, v1, Li6/i0;->d:Ljava/lang/Object;
+
+    .line 193
+    .line 194
+    check-cast v1, Ls4/v3;
+
+    .line 195
+    .line 196
+    if-eqz v1, :cond_5
+
+    .line 197
+    .line 198
+    iget-object v3, v2, Ls4/y3;->h:Lcom/google/android/gms/internal/measurement/s6;
+
+    .line 199
+    .line 200
+    invoke-virtual {v3, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    .line 201
+    .line 202
+    .line 203
+    :cond_5
+    iget-object v1, v2, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
+    .line 204
+    .line 205
+    check-cast v1, Ls4/u1;
+
+    .line 206
+    .line 207
+    iget-object v1, v1, Ls4/u1;->w:Ls4/i1;
+
+    .line 208
+    .line 209
+    invoke-static {v1}, Ls4/u1;->j(Landroidx/core/view/y0;)V
+
+    .line 210
+    .line 211
+    .line 212
+    iget-object v1, v1, Ls4/i1;->I1:Ls4/f1;
+
+    .line 213
+    .line 214
+    const/4 v3, 0x0
+
+    .line 215
+    invoke-virtual {v1, v3}, Ls4/f1;->b(Z)V
+
+    .line 216
+    .line 217
+    .line 218
+    invoke-virtual {v2}, Ls4/f0;->r()V
+
+    .line 219
+    .line 220
+    .line 221
+    iput-boolean v3, v2, Ls4/y3;->q:Z
+
+    .line 222
+    .line 223
+    iget-object v0, v0, Ls4/y3;->w:Lhf/b;
+
+    .line 224
+    .line 225
+    iget-object v1, v0, Lhf/b;->d:Ljava/lang/Object;
+
+    .line 226
+    .line 227
+    check-cast v1, Ls4/y3;
+
+    .line 228
+    .line 229
+    invoke-virtual {v1}, Ls4/f0;->r()V
+
+    .line 230
+    .line 231
+    .line 232
+    iget-object v1, v1, Landroidx/core/view/y0;->c:Ljava/lang/Object;
+
+    .line 233
+    .line 234
+    check-cast v1, Ls4/u1;
+
+    .line 235
+    .line 236
+    invoke-virtual {v1}, Ls4/u1;->a()Z
+
+    .line 237
+    .line 238
+    .line 239
+    move-result v2
+
+    .line 240
+    iget-object v3, v1, Ls4/u1;->b1:Lcom/google/android/gms/common/util/Clock;
+
+    .line 241
+    .line 242
+    if-nez v2, :cond_6
+
+    .line 243
+    .line 244
+    goto :goto_2
+
+    .line 245
+    :cond_6
+    invoke-interface {v3}, Lcom/google/android/gms/common/util/Clock;->currentTimeMillis()J
+
+    .line 246
+    .line 247
+    .line 248
+    move-result-wide v4
+
+    .line 249
+    iget-object v1, v1, Ls4/u1;->q:Ls4/i;
+
+    .line 250
+    .line 251
+    sget-object v2, Ls4/h0;->e1:Ls4/g0;
+
+    .line 252
+    .line 253
+    invoke-virtual {v1, v7, v2}, Ls4/i;->C(Ljava/lang/String;Ls4/g0;)Z
+
+    .line 254
+    .line 255
+    .line 256
+    move-result v1
+
+    .line 257
+    if-eqz v1, :cond_7
+
+    .line 258
+    .line 259
+    invoke-interface {v3}, Lcom/google/android/gms/common/util/Clock;->elapsedRealtime()J
+
+    .line 260
+    .line 261
+    .line 262
+    move-result-wide v1
+
+    .line 263
+    goto :goto_1
+
+    .line 264
+    :cond_7
+    const-wide/16 v1, 0x0
+
+    .line 265
+    .line 266
+    :goto_1
+    invoke-virtual {v0, v4, v5, v1, v2}, Lhf/b;->x(JJ)V
+
+    .line 267
+    .line 268
+    .line 269
+    :goto_2
+    return-void
+
+    .line 270
+    nop
+
+    .line 271
+    :pswitch_data_0
+    .packed-switch 0x0
+        :pswitch_0
+    .end packed-switch
 .end method

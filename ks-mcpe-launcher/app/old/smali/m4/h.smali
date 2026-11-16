@@ -1,25 +1,27 @@
 .class public final Lm4/h;
 .super Landroid/graphics/drawable/Drawable;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/graphics/drawable/Drawable$Callback;
 
 
 # instance fields
+.field public B1:Z
+
 .field public C1:Z
 
 .field public D1:Z
 
 .field public E1:I
 
-.field public final X:Lm4/g;
+.field public X:Z
 
-.field public Y:Landroid/graphics/drawable/Drawable;
+.field public final Y:Lm4/g;
 
 .field public Z:Landroid/graphics/drawable/Drawable;
 
-.field public b1:Z
+.field public b1:Landroid/graphics/drawable/Drawable;
 
 .field public c:I
 
@@ -27,15 +29,13 @@
 
 .field public h:I
 
-.field public p:I
-
 .field public q:I
 
 .field public w:I
 
-.field public final x:Z
+.field public x:I
 
-.field public y:Z
+.field public final y:Z
 
 
 # direct methods
@@ -59,18 +59,18 @@
 
     .line 8
     .line 9
-    iput v1, p0, Lm4/h;->p:I
+    iput v1, p0, Lm4/h;->q:I
 
     .line 10
     .line 11
-    iput v0, p0, Lm4/h;->w:I
+    iput v0, p0, Lm4/h;->x:I
 
     .line 12
     .line 13
     const/4 v0, 0x1
 
     .line 14
-    iput-boolean v0, p0, Lm4/h;->x:Z
+    iput-boolean v0, p0, Lm4/h;->y:Z
 
     .line 15
     .line 16
@@ -104,7 +104,7 @@
     .line 30
     .line 31
     :cond_0
-    iput-object v0, p0, Lm4/h;->X:Lm4/g;
+    iput-object v0, p0, Lm4/h;->Y:Lm4/g;
 
     .line 32
     .line 33
@@ -117,7 +117,7 @@
     .locals 3
 
     .line 1
-    iget-boolean v0, p0, Lm4/h;->b1:Z
+    iget-boolean v0, p0, Lm4/h;->B1:Z
 
     .line 2
     .line 3
@@ -125,7 +125,7 @@
 
     .line 4
     .line 5
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 6
     .line 7
@@ -147,7 +147,7 @@
 
     .line 14
     .line 15
-    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 16
     .line 17
@@ -171,7 +171,7 @@
 
     .line 25
     .line 26
-    iput-boolean v2, p0, Lm4/h;->b1:Z
+    iput-boolean v2, p0, Lm4/h;->B1:Z
 
     .line 27
     .line 28
@@ -247,7 +247,7 @@
     sub-long/2addr v0, v4
 
     .line 27
-    iget v4, p0, Lm4/h;->q:I
+    iget v4, p0, Lm4/h;->w:I
 
     .line 28
     .line 29
@@ -319,7 +319,7 @@
     float-to-int v0, v1
 
     .line 56
-    iput v0, p0, Lm4/h;->w:I
+    iput v0, p0, Lm4/h;->x:I
 
     .line 57
     .line 58
@@ -347,19 +347,19 @@
 
     .line 68
     :goto_1
-    iget v0, p0, Lm4/h;->w:I
+    iget v0, p0, Lm4/h;->x:I
 
     .line 69
     .line 70
-    iget-object v1, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 71
     .line 72
-    iget-object v5, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v5, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 73
     .line 74
-    iget-boolean v6, p0, Lm4/h;->x:Z
+    iget-boolean v6, p0, Lm4/h;->y:Z
 
     .line 75
     .line 76
@@ -392,7 +392,7 @@
 
     .line 88
     :cond_6
-    iget v1, p0, Lm4/h;->p:I
+    iget v1, p0, Lm4/h;->q:I
 
     .line 89
     .line 90
@@ -419,7 +419,7 @@
 
     .line 100
     .line 101
-    iget v2, p0, Lm4/h;->p:I
+    iget v2, p0, Lm4/h;->q:I
 
     .line 102
     .line 103
@@ -444,7 +444,7 @@
 
     .line 112
     .line 113
-    iget v2, p0, Lm4/h;->p:I
+    iget v2, p0, Lm4/h;->q:I
 
     .line 114
     .line 115
@@ -468,7 +468,7 @@
     .line 124
     .line 125
     .line 126
-    iget p1, p0, Lm4/h;->p:I
+    iget p1, p0, Lm4/h;->q:I
 
     .line 127
     .line 128
@@ -498,7 +498,7 @@
     move-result v0
 
     .line 5
-    iget-object v1, p0, Lm4/h;->X:Lm4/g;
+    iget-object v1, p0, Lm4/h;->Y:Lm4/g;
 
     .line 6
     .line 7
@@ -543,7 +543,7 @@
     move-result v0
 
     .line 11
-    iget-object v1, p0, Lm4/h;->X:Lm4/g;
+    iget-object v1, p0, Lm4/h;->Y:Lm4/g;
 
     .line 12
     .line 13
@@ -565,7 +565,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 2
     .line 3
@@ -577,7 +577,7 @@
     move-result v0
 
     .line 7
-    iget-object v1, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
@@ -604,7 +604,7 @@
     .locals 2
 
     .line 1
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 2
     .line 3
@@ -616,7 +616,7 @@
     move-result v0
 
     .line 7
-    iget-object v1, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 8
     .line 9
@@ -651,7 +651,7 @@
 
     .line 4
     .line 5
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 6
     .line 7
@@ -663,7 +663,7 @@
     move-result v0
 
     .line 11
-    iget-object v1, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v1, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 12
     .line 13
@@ -731,7 +731,7 @@
     .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lm4/h;->y:Z
+    iget-boolean v0, p0, Lm4/h;->X:Z
 
     .line 2
     .line 3
@@ -763,7 +763,7 @@
 
     .line 16
     .line 17
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 18
     .line 19
@@ -772,7 +772,7 @@
     .line 20
     .line 21
     .line 22
-    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 23
     .line 24
@@ -784,7 +784,7 @@
     const/4 v0, 0x1
 
     .line 28
-    iput-boolean v0, p0, Lm4/h;->y:Z
+    iput-boolean v0, p0, Lm4/h;->X:Z
 
     .line 29
     .line 30
@@ -816,7 +816,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 2
     .line 3
@@ -825,7 +825,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 7
     .line 8
@@ -866,11 +866,11 @@
     .locals 2
 
     .line 1
-    iget v0, p0, Lm4/h;->w:I
+    iget v0, p0, Lm4/h;->x:I
 
     .line 2
     .line 3
-    iget v1, p0, Lm4/h;->p:I
+    iget v1, p0, Lm4/h;->q:I
 
     .line 4
     .line 5
@@ -878,12 +878,12 @@
 
     .line 6
     .line 7
-    iput p1, p0, Lm4/h;->w:I
+    iput p1, p0, Lm4/h;->x:I
 
     .line 8
     .line 9
     :cond_0
-    iput p1, p0, Lm4/h;->p:I
+    iput p1, p0, Lm4/h;->q:I
 
     .line 10
     .line 11
@@ -899,7 +899,7 @@
     .locals 1
 
     .line 1
-    iget-object v0, p0, Lm4/h;->Y:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
 
     .line 2
     .line 3
@@ -908,7 +908,7 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lm4/h;->Z:Landroid/graphics/drawable/Drawable;
+    iget-object v0, p0, Lm4/h;->b1:Landroid/graphics/drawable/Drawable;
 
     .line 7
     .line 8

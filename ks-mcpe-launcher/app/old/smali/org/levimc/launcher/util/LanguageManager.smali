@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/util/LanguageManager;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -669,7 +669,7 @@
 
     .line 12
     .line 13
-    invoke-static {v0}, Lg/m;->a(Ljava/lang/Object;)Landroid/os/LocaleList;
+    invoke-static {v0}, Lg/k;->a(Ljava/lang/Object;)Landroid/os/LocaleList;
 
     .line 14
     .line 15
@@ -896,11 +896,11 @@
     .line 19
     .line 20
     .line 21
-    new-instance p1, Lorg/levimc/launcher/util/o;
+    new-instance p1, Lorg/levimc/launcher/util/n;
 
     .line 22
     .line 23
-    invoke-direct {p1, p0}, Lorg/levimc/launcher/util/o;-><init>(Lorg/levimc/launcher/util/LanguageManager;)V
+    invoke-direct {p1, p0}, Lorg/levimc/launcher/util/n;-><init>(Lorg/levimc/launcher/util/LanguageManager;)V
 
     .line 24
     .line 25

@@ -1,6 +1,6 @@
 .class public final enum Lh2/c;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -10,11 +10,11 @@
 
 .field public static final enum h:Lh2/c;
 
-.field public static final enum p:Lh2/c;
-
 .field public static final enum q:Lh2/c;
 
-.field public static final synthetic w:[Lh2/c;
+.field public static final enum w:Lh2/c;
+
+.field public static final synthetic x:[Lh2/c;
 
 
 # direct methods
@@ -98,7 +98,7 @@
     .line 37
     .line 38
     .line 39
-    sput-object v3, Lh2/c;->p:Lh2/c;
+    sput-object v3, Lh2/c;->q:Lh2/c;
 
     .line 40
     .line 41
@@ -118,7 +118,7 @@
     .line 47
     .line 48
     .line 49
-    sput-object v4, Lh2/c;->q:Lh2/c;
+    sput-object v4, Lh2/c;->w:Lh2/c;
 
     .line 50
     .line 51
@@ -130,7 +130,7 @@
     move-result-object v0
 
     .line 55
-    sput-object v0, Lh2/c;->w:[Lh2/c;
+    sput-object v0, Lh2/c;->x:[Lh2/c;
 
     .line 56
     .line 57
@@ -164,7 +164,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lh2/c;->w:[Lh2/c;
+    sget-object v0, Lh2/c;->x:[Lh2/c;
 
     .line 2
     .line 3

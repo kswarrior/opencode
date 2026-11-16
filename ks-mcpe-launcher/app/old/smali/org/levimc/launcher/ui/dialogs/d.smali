@@ -1,27 +1,27 @@
 .class public final synthetic Lorg/levimc/launcher/ui/dialogs/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Landroid/view/View$OnClickListener;
+.implements Landroid/animation/ValueAnimator$AnimatorUpdateListener;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final synthetic a:I
 
-.field public final synthetic d:Landroid/view/View$OnCreateContextMenuListener;
+.field public final synthetic b:Landroid/app/Dialog;
 
 
 # direct methods
-.method public synthetic constructor <init>(Landroid/view/View$OnCreateContextMenuListener;I)V
+.method public synthetic constructor <init>(Landroid/app/Dialog;I)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lorg/levimc/launcher/ui/dialogs/d;->c:I
+    iput p2, p0, Lorg/levimc/launcher/ui/dialogs/d;->a:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/d;->d:Landroid/view/View$OnCreateContextMenuListener;
+    iput-object p1, p0, Lorg/levimc/launcher/ui/dialogs/d;->b:Landroid/app/Dialog;
 
     .line 4
     .line 5
@@ -35,11 +35,11 @@
 
 
 # virtual methods
-.method public final onClick(Landroid/view/View;)V
+.method public final onAnimationUpdate(Landroid/animation/ValueAnimator;)V
     .locals 1
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->c:I
+    iget v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->a:I
 
     .line 2
     .line 3
@@ -48,15 +48,15 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->d:Landroid/view/View$OnCreateContextMenuListener;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->b:Landroid/app/Dialog;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;
 
     .line 9
     .line 10
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;->h(Lorg/levimc/launcher/ui/dialogs/ApkVersionConfirmDialog;Landroid/view/View;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;->a(Lorg/levimc/launcher/ui/dialogs/LibsRepairDialog;Landroid/animation/ValueAnimator;)V
 
     .line 11
     .line 12
@@ -65,15 +65,15 @@
 
     .line 14
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->d:Landroid/view/View$OnCreateContextMenuListener;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->b:Landroid/app/Dialog;
 
     .line 15
     .line 16
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;
 
     .line 17
     .line 18
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;->b(Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;Landroid/view/View;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;->a(Lorg/levimc/launcher/ui/dialogs/InstallProgressDialog;Landroid/animation/ValueAnimator;)V
 
     .line 19
     .line 20
@@ -82,15 +82,15 @@
 
     .line 22
     :pswitch_1
-    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->d:Landroid/view/View$OnCreateContextMenuListener;
+    iget-object v0, p0, Lorg/levimc/launcher/ui/dialogs/d;->b:Landroid/app/Dialog;
 
     .line 23
     .line 24
-    check-cast v0, Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;
+    check-cast v0, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;
 
     .line 25
     .line 26
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;->a(Lorg/levimc/launcher/ui/dialogs/DownloadCreatorNotice;Landroid/view/View;)V
+    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;->e(Lorg/levimc/launcher/ui/dialogs/CustomAlertDialog;Landroid/animation/ValueAnimator;)V
 
     .line 27
     .line 28

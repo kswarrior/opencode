@@ -1,6 +1,6 @@
 .class public Lcom/xbox/httpclient/HttpClientResponse;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -52,11 +52,11 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
 
     .line 6
     .line 7
-    invoke-virtual {v0}, Lub/p;->size()I
+    invoke-virtual {v0}, Lvb/k;->size()I
 
     .line 8
     .line 9
@@ -76,11 +76,11 @@
 
     .line 15
     .line 16
-    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
 
     .line 17
     .line 18
-    invoke-virtual {v0, p1}, Lub/p;->d(I)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lvb/k;->d(I)Ljava/lang/String;
 
     .line 19
     .line 20
@@ -111,11 +111,11 @@
 
     .line 4
     .line 5
-    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
 
     .line 6
     .line 7
-    invoke-virtual {v0}, Lub/p;->size()I
+    invoke-virtual {v0}, Lvb/k;->size()I
 
     .line 8
     .line 9
@@ -135,11 +135,11 @@
 
     .line 15
     .line 16
-    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
 
     .line 17
     .line 18
-    invoke-virtual {v0, p1}, Lub/p;->h(I)Ljava/lang/String;
+    invoke-virtual {v0, p1}, Lvb/k;->h(I)Ljava/lang/String;
 
     .line 19
     .line 20
@@ -166,11 +166,11 @@
 
     .line 2
     .line 3
-    iget-object v0, v0, Lokhttp3/Response;->w:Lub/p;
+    iget-object v0, v0, Lokhttp3/Response;->x:Lvb/k;
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Lub/p;->size()I
+    invoke-virtual {v0}, Lvb/k;->size()I
 
     .line 6
     .line 7
@@ -190,11 +190,11 @@
 
     .line 2
     .line 3
-    iget-object v0, v0, Lokhttp3/Response;->x:Lub/w;
+    iget-object v0, v0, Lokhttp3/Response;->y:Lvb/r;
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Lub/w;->i()Llc/g;
+    invoke-virtual {v0}, Lvb/r;->g()Lmc/g;
 
     .line 6
     .line 7
@@ -215,11 +215,11 @@
     .line 14
     .line 15
     .line 16
-    new-instance v2, Llc/u;
+    new-instance v2, Lmc/u;
 
     .line 17
     .line 18
-    new-instance v3, Llc/e0;
+    new-instance v3, Lmc/e0;
 
     .line 19
     .line 20
@@ -228,12 +228,12 @@
     .line 21
     .line 22
     .line 23
-    invoke-direct {v2, v1, v3}, Llc/u;-><init>(Ljava/io/OutputStream;Llc/e0;)V
+    invoke-direct {v2, v1, v3}, Lmc/u;-><init>(Ljava/io/OutputStream;Lmc/e0;)V
 
     .line 24
     .line 25
     .line 26
-    invoke-interface {v0, v2}, Llc/g;->K(Llc/u;)J
+    invoke-interface {v0, v2}, Lmc/g;->l(Lmc/u;)J
     :try_end_0
     .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
     .catchall {:try_start_0 .. :try_end_0} :catchall_0
@@ -282,7 +282,7 @@
 
     .line 2
     .line 3
-    iget v0, v0, Lokhttp3/Response;->p:I
+    iget v0, v0, Lokhttp3/Response;->q:I
 
     .line 4
     .line 5

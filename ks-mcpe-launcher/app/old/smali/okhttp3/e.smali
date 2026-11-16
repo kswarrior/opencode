@@ -1,16 +1,20 @@
 .class public final Lokhttp3/e;
 .super Lokhttp3/RequestBody;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
 .field public final synthetic a:Lokhttp3/MediaType;
 
-.field public final synthetic b:Ljava/io/FileDescriptor;
+.field public final synthetic b:I
+
+.field public final synthetic c:[B
+
+.field public final synthetic d:I
 
 
 # direct methods
-.method public constructor <init>(Ljava/io/FileDescriptor;Lokhttp3/MediaType;)V
+.method public constructor <init>(Lokhttp3/MediaType;[BII)V
     .locals 0
 
     .line 1
@@ -19,19 +23,41 @@
     .line 2
     .line 3
     .line 4
-    iput-object p2, p0, Lokhttp3/e;->a:Lokhttp3/MediaType;
+    iput-object p1, p0, Lokhttp3/e;->a:Lokhttp3/MediaType;
 
     .line 5
     .line 6
-    iput-object p1, p0, Lokhttp3/e;->b:Ljava/io/FileDescriptor;
+    iput p3, p0, Lokhttp3/e;->b:I
 
     .line 7
     .line 8
+    iput-object p2, p0, Lokhttp3/e;->c:[B
+
+    .line 9
+    .line 10
+    iput p4, p0, Lokhttp3/e;->d:I
+
+    .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
+.method public final contentLength()J
+    .locals 2
+
+    .line 1
+    iget v0, p0, Lokhttp3/e;->b:I
+
+    .line 2
+    .line 3
+    int-to-long v0, v0
+
+    .line 4
+    return-wide v0
+.end method
+
 .method public final contentType()Lokhttp3/MediaType;
     .locals 1
 
@@ -43,83 +69,73 @@
     return-object v0
 .end method
 
-.method public final isOneShot()Z
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x1
-
-    .line 2
-    return v0
-.end method
-
 .method public final writeTo(Lokio/BufferedSink;)V
-    .locals 2
+    .locals 4
 
     .line 1
-    new-instance v0, Ljava/io/FileInputStream;
+    check-cast p1, Lmc/v;
 
     .line 2
     .line 3
-    iget-object v1, p0, Lokhttp3/e;->b:Ljava/io/FileDescriptor;
+    const-string v0, "source"
 
     .line 4
     .line 5
-    invoke-direct {v0, v1}, Ljava/io/FileInputStream;-><init>(Ljava/io/FileDescriptor;)V
+    iget-object v1, p0, Lokhttp3/e;->c:[B
 
     .line 6
     .line 7
-    .line 8
-    :try_start_0
-    check-cast p1, Llc/v;
+    invoke-static {v1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
+    .line 8
     .line 9
     .line 10
-    iget-object p1, p1, Llc/v;->d:Llc/f;
+    iget-boolean v0, p1, Lmc/v;->h:Z
 
     .line 11
     .line 12
-    invoke-static {v0}, Llc/b;->f(Ljava/io/InputStream;)Llc/p;
+    if-nez v0, :cond_0
 
     .line 13
     .line 14
-    .line 15
-    move-result-object v1
+    iget-object v0, p1, Lmc/v;->d:Lmc/f;
 
+    .line 15
     .line 16
-    invoke-virtual {p1, v1}, Llc/f;->D(Llc/c0;)J
-    :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+    iget v2, p0, Lokhttp3/e;->d:I
 
     .line 17
     .line 18
-    .line 19
-    invoke-virtual {v0}, Ljava/io/FileInputStream;->close()V
+    iget v3, p0, Lokhttp3/e;->b:I
 
+    .line 19
     .line 20
+    invoke-virtual {v0, v1, v2, v3}, Lmc/f;->write([BII)V
+
     .line 21
     .line 22
-    return-void
-
     .line 23
-    :catchall_0
-    move-exception p1
+    invoke-virtual {p1}, Lmc/v;->a()Lokio/BufferedSink;
 
     .line 24
-    :try_start_1
-    throw p1
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_1
-
     .line 25
-    :catchall_1
-    move-exception v1
-
     .line 26
-    invoke-static {v0, p1}, Ljd/h;->e(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    return-void
 
     .line 27
+    :cond_0
+    new-instance p1, Ljava/lang/IllegalStateException;
+
     .line 28
     .line 29
-    throw v1
+    const-string v0, "closed"
+
+    .line 30
+    .line 31
+    invoke-direct {p1, v0}, Ljava/lang/IllegalStateException;-><init>(Ljava/lang/String;)V
+
+    .line 32
+    .line 33
+    .line 34
+    throw p1
 .end method

@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/ui/dialogs/gameversionselect/VersionUtil;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -701,14 +701,14 @@
     .line 76
     .line 77
     .line 78
-    new-instance v3, Ld7/a;
+    new-instance v3, Lb7/a;
 
     .line 79
     .line 80
-    const/4 v4, 0x5
+    const/4 v4, 0x4
 
     .line 81
-    invoke-direct {v3, v4}, Ld7/a;-><init>(I)V
+    invoke-direct {v3, v4}, Lb7/a;-><init>(I)V
 
     .line 82
     .line 83
@@ -718,14 +718,14 @@
     .line 85
     .line 86
     .line 87
-    new-instance v3, Ld7/a;
+    new-instance v3, Lb7/a;
 
     .line 88
     .line 89
-    const/4 v4, 0x6
+    const/4 v4, 0x5
 
     .line 90
-    invoke-direct {v3, v4}, Ld7/a;-><init>(I)V
+    invoke-direct {v3, v4}, Lb7/a;-><init>(I)V
 
     .line 91
     .line 92

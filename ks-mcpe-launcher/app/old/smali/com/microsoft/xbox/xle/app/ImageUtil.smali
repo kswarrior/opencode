@@ -1,6 +1,6 @@
 .class public Lcom/microsoft/xbox/xle/app/ImageUtil;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -276,7 +276,7 @@
     .line 98
     .line 99
     .line 100
-    invoke-static {p2, v2, v0}, Ls1/a;->j(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p2, v2, v0}, Ls1/a;->l(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 101
     .line 102
@@ -344,7 +344,7 @@
     .line 133
     .line 134
     .line 135
-    invoke-static {p1, v0, v1}, Ls1/a;->j(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
+    invoke-static {p1, v0, v1}, Ls1/a;->l(ILjava/lang/String;Ljava/lang/StringBuilder;)Ljava/lang/String;
 
     .line 136
     .line 137

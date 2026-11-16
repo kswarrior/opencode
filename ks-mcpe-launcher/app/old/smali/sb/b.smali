@@ -1,175 +1,368 @@
 .class public final Lsb/b;
-.super Lra/b;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ltb/a;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final a:Lsb/e;
+
+.field public final b:Lsb/c;
+
+.field public final c:Lsb/f;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/String;)V
-    .locals 1
+.method public constructor <init>(Lsb/e;Lsb/c;Lsb/f;)V
+    .locals 0
 
     .line 1
-    const/4 v0, 0x0
-
-    iput v0, p0, Lsb/b;->a:I
-
-    invoke-direct {p0, p1}, Lra/b;-><init>(Ljava/lang/String;)V
-
-    return-void
-.end method
-
-.method public constructor <init>(Lrb/a;Lrb/e;Lrb/c;Ljava/lang/String;)V
-    .locals 3
-
-    const/4 v0, 0x1
-
-    iput v0, p0, Lsb/b;->a:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
-    const-string v0, "https://xsts.auth.xboxlive.com/xsts/authorize"
-
-    invoke-direct {p0, v0}, Lra/b;-><init>(Ljava/lang/String;)V
-
     .line 3
-    new-instance v0, Lcom/google/gson/JsonObject;
-
-    invoke-direct {v0}, Lcom/google/gson/JsonObject;-><init>()V
-
     .line 4
-    const-string v1, "SandboxId"
-
-    const-string v2, "RETAIL"
-
-    invoke-virtual {v0, v1, v2}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
-
-    if-eqz p1, :cond_0
+    iput-object p1, p0, Lsb/b;->a:Lsb/e;
 
     .line 5
-    const-string v1, "DeviceToken"
-
     .line 6
-    iget-object p1, p1, Lrb/a;->b:Ljava/lang/String;
+    iput-object p2, p0, Lsb/b;->b:Lsb/c;
 
     .line 7
-    invoke-virtual {v0, v1, p1}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
-
     .line 8
-    :cond_0
-    new-instance p1, Lcom/google/gson/JsonArray;
-
-    invoke-direct {p1}, Lcom/google/gson/JsonArray;-><init>()V
+    iput-object p3, p0, Lsb/b;->c:Lsb/f;
 
     .line 9
-    iget-object p2, p2, Lrb/e;->b:Ljava/lang/String;
-
     .line 10
-    invoke-virtual {p1, p2}, Lcom/google/gson/JsonArray;->q(Ljava/lang/String;)V
-
-    .line 11
-    const-string p2, "UserTokens"
-
-    invoke-virtual {v0, p1, p2}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
-
-    if-eqz p3, :cond_1
-
-    .line 12
-    const-string p1, "TitleToken"
-
-    .line 13
-    iget-object p2, p3, Lrb/c;->b:Ljava/lang/String;
-
-    .line 14
-    invoke-virtual {v0, p1, p2}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 15
-    :cond_1
-    new-instance p1, Lcom/google/gson/JsonObject;
-
-    invoke-direct {p1}, Lcom/google/gson/JsonObject;-><init>()V
-
-    .line 16
-    const-string p2, "Properties"
-
-    invoke-virtual {p1, v0, p2}, Lcom/google/gson/JsonObject;->p(Lcom/google/gson/JsonElement;Ljava/lang/String;)V
-
-    .line 17
-    const-string p2, "RelyingParty"
-
-    invoke-virtual {p1, p2, p4}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 18
-    const-string p2, "TokenType"
-
-    const-string p3, "JWT"
-
-    invoke-virtual {p1, p2, p3}, Lcom/google/gson/JsonObject;->s(Ljava/lang/String;Ljava/lang/String;)V
-
-    .line 19
-    new-instance p2, Lmb/a;
-
-    invoke-direct {p2, p1}, Lmb/a;-><init>(Lcom/google/gson/JsonObject;)V
-
-    invoke-virtual {p0, p2}, Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;->setContent(Lnet/lenni0451/commons/httpclient/content/HttpContent;)Lnet/lenni0451/commons/httpclient/requests/HttpContentRequest;
-
-    .line 20
-    const-string p1, "x-xbl-contract-version"
-
-    const-string p2, "1"
-
-    invoke-virtual {p0, p1, p2}, Lnet/lenni0451/commons/httpclient/HeaderStore;->setHeader(Ljava/lang/String;Ljava/lang/String;)Lnet/lenni0451/commons/httpclient/HeaderStore;
-
     return-void
 .end method
 
 
 # virtual methods
-.method public final handle(Lnet/lenni0451/commons/httpclient/HttpResponse;Lnet/lenni0451/commons/gson/elements/GsonObject;)Ljava/lang/Object;
-    .locals 0
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 4
 
     .line 1
-    iget p1, p0, Lsb/b;->a:I
+    const/4 v0, 0x1
 
     .line 2
+    if-ne p1, p0, :cond_0
+
     .line 3
-    packed-switch p1, :pswitch_data_0
-
     .line 4
+    return v0
+
     .line 5
+    :cond_0
+    instance-of v1, p1, Lsb/b;
+
     .line 6
-    invoke-static {p2}, Lrb/f;->c(Lnet/lenni0451/commons/gson/elements/GsonObject;)Lrb/f;
-
     .line 7
-    .line 8
-    .line 9
-    move-result-object p1
+    const/4 v2, 0x0
 
+    .line 8
+    if-nez v1, :cond_1
+
+    .line 9
     .line 10
-    return-object p1
+    return v2
 
     .line 11
-    :pswitch_0
-    invoke-static {p2}, Lrb/e;->c(Lnet/lenni0451/commons/gson/elements/GsonObject;)Lrb/e;
+    :cond_1
+    check-cast p1, Lsb/b;
 
     .line 12
     .line 13
-    .line 14
-    move-result-object p1
+    iget-object v1, p1, Lsb/b;->a:Lsb/e;
 
+    .line 14
     .line 15
-    return-object p1
+    iget-object v3, p0, Lsb/b;->a:Lsb/e;
 
     .line 16
-    nop
+    .line 17
+    if-nez v3, :cond_2
+
+    .line 18
+    .line 19
+    if-eqz v1, :cond_3
+
+    .line 20
+    .line 21
+    goto :goto_0
+
+    .line 22
+    :cond_2
+    invoke-virtual {v3, v1}, Lsb/e;->equals(Ljava/lang/Object;)Z
+
+    .line 23
+    .line 24
+    .line 25
+    move-result v1
+
+    .line 26
+    if-nez v1, :cond_3
+
+    .line 27
+    .line 28
+    :goto_0
+    return v2
+
+    .line 29
+    :cond_3
+    iget-object v1, p1, Lsb/b;->b:Lsb/c;
+
+    .line 30
+    .line 31
+    iget-object v3, p0, Lsb/b;->b:Lsb/c;
+
+    .line 32
+    .line 33
+    if-nez v3, :cond_4
+
+    .line 34
+    .line 35
+    if-eqz v1, :cond_5
+
+    .line 36
+    .line 37
+    goto :goto_1
+
+    .line 38
+    :cond_4
+    invoke-virtual {v3, v1}, Lsb/c;->equals(Ljava/lang/Object;)Z
+
+    .line 39
+    .line 40
+    .line 41
+    move-result v1
+
+    .line 42
+    if-nez v1, :cond_5
+
+    .line 43
+    .line 44
+    :goto_1
+    return v2
+
+    .line 45
+    :cond_5
+    iget-object p1, p1, Lsb/b;->c:Lsb/f;
+
+    .line 46
+    .line 47
+    iget-object v1, p0, Lsb/b;->c:Lsb/f;
+
+    .line 48
+    .line 49
+    if-nez v1, :cond_6
+
+    .line 50
+    .line 51
+    if-eqz p1, :cond_7
+
+    .line 52
+    .line 53
+    goto :goto_2
+
+    .line 54
+    :cond_6
+    invoke-virtual {v1, p1}, Lsb/f;->equals(Ljava/lang/Object;)Z
+
+    .line 55
+    .line 56
+    .line 57
+    move-result p1
+
+    .line 58
+    if-nez p1, :cond_7
+
+    .line 59
+    .line 60
+    :goto_2
+    return v2
+
+    .line 61
+    :cond_7
+    return v0
+.end method
+
+.method public final hashCode()I
+    .locals 4
+
+    .line 1
+    const/16 v0, 0x2b
+
+    .line 2
+    .line 3
+    iget-object v1, p0, Lsb/b;->a:Lsb/e;
+
+    .line 4
+    .line 5
+    if-nez v1, :cond_0
+
+    .line 6
+    .line 7
+    move v1, v0
+
+    .line 8
+    goto :goto_0
+
+    .line 9
+    :cond_0
+    invoke-virtual {v1}, Lsb/e;->hashCode()I
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v1
+
+    .line 13
+    :goto_0
+    const/16 v2, 0x3b
+
+    .line 14
+    .line 15
+    add-int/2addr v1, v2
+
+    .line 16
+    mul-int/2addr v1, v2
 
     .line 17
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    iget-object v3, p0, Lsb/b;->b:Lsb/c;
+
+    .line 18
+    .line 19
+    if-nez v3, :cond_1
+
+    .line 20
+    .line 21
+    move v3, v0
+
+    .line 22
+    goto :goto_1
+
+    .line 23
+    :cond_1
+    invoke-virtual {v3}, Lsb/c;->hashCode()I
+
+    .line 24
+    .line 25
+    .line 26
+    move-result v3
+
+    .line 27
+    :goto_1
+    add-int/2addr v1, v3
+
+    .line 28
+    mul-int/2addr v1, v2
+
+    .line 29
+    iget-object v2, p0, Lsb/b;->c:Lsb/f;
+
+    .line 30
+    .line 31
+    if-nez v2, :cond_2
+
+    .line 32
+    .line 33
+    goto :goto_2
+
+    .line 34
+    :cond_2
+    invoke-virtual {v2}, Lsb/f;->hashCode()I
+
+    .line 35
+    .line 36
+    .line 37
+    move-result v0
+
+    .line 38
+    :goto_2
+    add-int/2addr v1, v0
+
+    .line 39
+    return v1
+.end method
+
+.method public final toString()Ljava/lang/String;
+    .locals 2
+
+    .line 1
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 2
+    .line 3
+    const-string v1, "XblSisuTokens(userToken="
+
+    .line 4
+    .line 5
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 6
+    .line 7
+    .line 8
+    iget-object v1, p0, Lsb/b;->a:Lsb/e;
+
+    .line 9
+    .line 10
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 11
+    .line 12
+    .line 13
+    const-string v1, ", titleToken="
+
+    .line 14
+    .line 15
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 16
+    .line 17
+    .line 18
+    iget-object v1, p0, Lsb/b;->b:Lsb/c;
+
+    .line 19
+    .line 20
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 21
+    .line 22
+    .line 23
+    const-string v1, ", xstsToken="
+
+    .line 24
+    .line 25
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 26
+    .line 27
+    .line 28
+    iget-object v1, p0, Lsb/b;->c:Lsb/f;
+
+    .line 29
+    .line 30
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 31
+    .line 32
+    .line 33
+    const-string v1, ")"
+
+    .line 34
+    .line 35
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 36
+    .line 37
+    .line 38
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v0
+
+    .line 42
+    return-object v0
 .end method

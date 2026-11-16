@@ -1,49 +1,112 @@
-.class public final enum Lg8/q;
-.super Lg8/u;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final Lg8/q;
+.super Lg8/t;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
+
+
+# instance fields
+.field public final synthetic b:Ljava/lang/reflect/Method;
+
+.field public final synthetic c:I
 
 
 # direct methods
-.method public constructor <init>()V
-    .locals 2
+.method public constructor <init>(ILjava/lang/reflect/Method;)V
+    .locals 0
 
     .line 1
-    const-string v0, "DOUBLE"
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    const/4 v1, 0x0
-
     .line 4
-    invoke-direct {p0, v0, v1}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
+    iput-object p2, p0, Lg8/q;->b:Ljava/lang/reflect/Method;
 
     .line 5
     .line 6
+    iput p1, p0, Lg8/q;->c:I
+
     .line 7
+    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final a(Lcom/google/gson/stream/JsonReader;)Ljava/lang/Number;
+.method public final a(Ljava/lang/Class;)Ljava/lang/Object;
     .locals 2
 
     .line 1
-    invoke-virtual {p1}, Lcom/google/gson/stream/JsonReader;->y0()D
+    invoke-static {p1}, Lh3/q;->a(Ljava/lang/Class;)Ljava/lang/String;
 
     .line 2
     .line 3
     .line 4
-    move-result-wide v0
+    move-result-object v0
 
     .line 5
-    invoke-static {v0, v1}, Ljava/lang/Double;->valueOf(D)Ljava/lang/Double;
+    if-nez v0, :cond_0
 
     .line 6
     .line 7
+    iget v0, p0, Lg8/q;->c:I
+
     .line 8
+    .line 9
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 10
+    .line 11
+    .line 12
+    move-result-object v0
+
+    .line 13
+    filled-new-array {p1, v0}, [Ljava/lang/Object;
+
+    .line 14
+    .line 15
+    .line 16
     move-result-object p1
 
-    .line 9
+    .line 17
+    iget-object v0, p0, Lg8/q;->b:Ljava/lang/reflect/Method;
+
+    .line 18
+    .line 19
+    const/4 v1, 0x0
+
+    .line 20
+    invoke-virtual {v0, v1, p1}, Ljava/lang/reflect/Method;->invoke(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 21
+    .line 22
+    .line 23
+    move-result-object p1
+
+    .line 24
     return-object p1
+
+    .line 25
+    :cond_0
+    new-instance p1, Ljava/lang/AssertionError;
+
+    .line 26
+    .line 27
+    const-string v1, "UnsafeAllocator is used for non-instantiable type: "
+
+    .line 28
+    .line 29
+    invoke-virtual {v1, v0}, Ljava/lang/String;->concat(Ljava/lang/String;)Ljava/lang/String;
+
+    .line 30
+    .line 31
+    .line 32
+    move-result-object v0
+
+    .line 33
+    invoke-direct {p1, v0}, Ljava/lang/AssertionError;-><init>(Ljava/lang/Object;)V
+
+    .line 34
+    .line 35
+    .line 36
+    throw p1
 .end method

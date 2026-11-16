@@ -4,9 +4,6 @@
         <item quantity="one">%1$dレイヤー • 下 → 上</item>
         <item quantity="other">%1$dレイヤー • 下 → 上</item>
     </plurals>
-    <plurals name="game_download_version_count">
-        <item quantity="other">%1$d バージョン</item>
-    </plurals>
     <plurals name="mod_config_choices_count">
         <item quantity="one">%d 個の選択肢</item>
         <item quantity="other">%d 個の選択肢</item>
@@ -19,38 +16,8 @@
         <item quantity="one">%d 個の項目</item>
         <item quantity="other">%d 個の項目</item>
     </plurals>
-    <plurals name="mods_visible_count">
-        <item quantity="other">%1$d Mod</item>
-    </plurals>
     <plurals name="mtrl_badge_content_description">
         <item quantity="one">%d 件の新しい通知</item>
         <item quantity="other">%d 件の新しい通知</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_body">
-        <item quantity="other">%2$s から %1$d 個のパッケージをアンインストールします。続行しますか？</item>
-    </plurals>
-    <plurals name="pkg_batch_uninstall_done">
-        <item quantity="other">%1$d 個のパッケージをアンインストールしました</item>
-    </plurals>
-    <plurals name="pkg_batch_update_body">
-        <item quantity="other">%1$d 個のパッケージを選択中で、そのうち %2$d 個を更新できます。続行しますか？</item>
-    </plurals>
-    <plurals name="pkg_batch_update_done">
-        <item quantity="other">%1$d 個のパッケージを更新しました</item>
-    </plurals>
-    <plurals name="pkg_filters_show_results">
-        <item quantity="other">%d 件の結果を表示</item>
-    </plurals>
-    <plurals name="pkg_installed_summary">
-        <item quantity="other">%1$d 個のパッケージ (うち %2$d 個は手動インストール) · %3$s</item>
-    </plurals>
-    <plurals name="pkg_n_dependencies">
-        <item quantity="other">%d 個の依存関係</item>
-    </plurals>
-    <plurals name="pkg_n_files">
-        <item quantity="other">%d 個のファイルを記録済み</item>
-    </plurals>
-    <plurals name="pkg_n_versions">
-        <item quantity="other">%d 個のバージョン</item>
     </plurals>
 </resources>

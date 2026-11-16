@@ -1,19 +1,19 @@
 .class public final enum Lw3/c;
 .super Ljava/lang/Enum;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ln7/c;
+.implements Ll7/c;
 
 
 # static fields
-.field public static final synthetic X:[Lw3/c;
+.field public static final enum X:Lw3/c;
+
+.field public static final synthetic Y:[Lw3/c;
 
 .field public static final enum d:Lw3/c;
 
 .field public static final enum h:Lw3/c;
-
-.field public static final enum p:Lw3/c;
 
 .field public static final enum q:Lw3/c;
 
@@ -89,7 +89,7 @@
     .line 27
     .line 28
     .line 29
-    sput-object v2, Lw3/c;->p:Lw3/c;
+    sput-object v2, Lw3/c;->q:Lw3/c;
 
     .line 30
     .line 31
@@ -109,7 +109,7 @@
     .line 37
     .line 38
     .line 39
-    sput-object v3, Lw3/c;->q:Lw3/c;
+    sput-object v3, Lw3/c;->w:Lw3/c;
 
     .line 40
     .line 41
@@ -129,7 +129,7 @@
     .line 47
     .line 48
     .line 49
-    sput-object v4, Lw3/c;->w:Lw3/c;
+    sput-object v4, Lw3/c;->x:Lw3/c;
 
     .line 50
     .line 51
@@ -149,7 +149,7 @@
     .line 57
     .line 58
     .line 59
-    sput-object v5, Lw3/c;->x:Lw3/c;
+    sput-object v5, Lw3/c;->y:Lw3/c;
 
     .line 60
     .line 61
@@ -169,7 +169,7 @@
     .line 67
     .line 68
     .line 69
-    sput-object v6, Lw3/c;->y:Lw3/c;
+    sput-object v6, Lw3/c;->X:Lw3/c;
 
     .line 70
     .line 71
@@ -181,7 +181,7 @@
     move-result-object v0
 
     .line 75
-    sput-object v0, Lw3/c;->X:[Lw3/c;
+    sput-object v0, Lw3/c;->Y:[Lw3/c;
 
     .line 76
     .line 77
@@ -231,7 +231,7 @@
     .locals 1
 
     .line 1
-    sget-object v0, Lw3/c;->X:[Lw3/c;
+    sget-object v0, Lw3/c;->Y:[Lw3/c;
 
     .line 2
     .line 3

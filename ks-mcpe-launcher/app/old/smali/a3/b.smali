@@ -1,13 +1,13 @@
 .class public final La3/b;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/graphics/ImageDecoder$OnHeaderDecodedListener;
 
 
 # instance fields
-.field public final a:Lb3/x;
+.field public final a:Lb3/w;
 
 .field public final b:I
 
@@ -15,7 +15,7 @@
 
 .field public final d:Ls2/a;
 
-.field public final e:Lb3/o;
+.field public final e:Lb3/n;
 
 .field public final f:Z
 
@@ -32,7 +32,7 @@
     .line 2
     .line 3
     .line 4
-    invoke-static {}, Lb3/x;->a()Lb3/x;
+    invoke-static {}, Lb3/w;->a()Lb3/w;
 
     .line 5
     .line 6
@@ -40,7 +40,7 @@
     move-result-object v0
 
     .line 8
-    iput-object v0, p0, La3/b;->a:Lb3/x;
+    iput-object v0, p0, La3/b;->a:Lb3/w;
 
     .line 9
     .line 10
@@ -52,7 +52,7 @@
 
     .line 13
     .line 14
-    sget-object p1, Lb3/q;->f:Ls2/g;
+    sget-object p1, Lb3/p;->f:Ls2/g;
 
     .line 15
     .line 16
@@ -72,7 +72,7 @@
 
     .line 23
     .line 24
-    sget-object p1, Lb3/o;->g:Ls2/g;
+    sget-object p1, Lb3/n;->g:Ls2/g;
 
     .line 25
     .line 26
@@ -84,15 +84,15 @@
     move-result-object p1
 
     .line 30
-    check-cast p1, Lb3/o;
+    check-cast p1, Lb3/n;
 
     .line 31
     .line 32
-    iput-object p1, p0, La3/b;->e:Lb3/o;
+    iput-object p1, p0, La3/b;->e:Lb3/n;
 
     .line 33
     .line 34
-    sget-object p1, Lb3/q;->i:Ls2/g;
+    sget-object p1, Lb3/p;->i:Ls2/g;
 
     .line 35
     .line 36
@@ -147,7 +147,7 @@
 
     .line 58
     .line 59
-    sget-object p1, Lb3/q;->g:Ls2/g;
+    sget-object p1, Lb3/p;->g:Ls2/g;
 
     .line 60
     .line 61
@@ -176,7 +176,7 @@
     .locals 6
 
     .line 1
-    iget-object p3, p0, La3/b;->a:Lb3/x;
+    iget-object p3, p0, La3/b;->a:Lb3/w;
 
     .line 2
     .line 3
@@ -195,7 +195,7 @@
     const/4 v3, 0x0
 
     .line 10
-    invoke-virtual {p3, v0, v1, v2, v3}, Lb3/x;->c(IIZZ)Z
+    invoke-virtual {p3, v0, v1, v2, v3}, Lb3/w;->c(IIZZ)Z
 
     .line 11
     .line 12
@@ -314,11 +314,11 @@
     move-result v3
 
     .line 68
-    iget-object v4, p0, La3/b;->e:Lb3/o;
+    iget-object v4, p0, La3/b;->e:Lb3/n;
 
     .line 69
     .line 70
-    invoke-virtual {v4, v2, v3, v0, v1}, Lb3/o;->b(IIII)F
+    invoke-virtual {v4, v2, v3, v0, v1}, Lb3/n;->b(IIII)F
 
     .line 71
     .line 72

@@ -1,6 +1,6 @@
 .class public final synthetic Lorg/levimc/launcher/core/minecraft/e;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/lang/Runnable;
@@ -52,7 +52,7 @@
 
     .line 7
     .line 8
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->L(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->K(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
 
     .line 9
     .line 10
@@ -65,7 +65,7 @@
 
     .line 13
     .line 14
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->D(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->C(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
 
     .line 15
     .line 16
@@ -78,7 +78,7 @@
 
     .line 19
     .line 20
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->M(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->L(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
 
     .line 21
     .line 22
@@ -91,7 +91,7 @@
 
     .line 25
     .line 26
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->K(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->J(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
 
     .line 27
     .line 28
@@ -104,7 +104,7 @@
 
     .line 31
     .line 32
-    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->G(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
+    invoke-static {v0}, Lorg/levimc/launcher/core/minecraft/MinecraftActivity;->F(Lorg/levimc/launcher/core/minecraft/MinecraftActivity;)V
 
     .line 33
     .line 34

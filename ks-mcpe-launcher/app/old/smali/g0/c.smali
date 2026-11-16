@@ -1,6 +1,6 @@
 .class public final Lg0/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -246,100 +246,114 @@
 
     .line 98
     .line 99
-    const-string v1, "Failed to resolve canonical path for "
+    new-instance v1, Ljava/lang/StringBuilder;
 
     .line 100
     .line 101
-    invoke-static {p1, v1}, Lcom/google/android/gms/internal/measurement/x;->l(Ljava/io/File;Ljava/lang/String;)Ljava/lang/String;
+    const-string v2, "Failed to resolve canonical path for "
 
     .line 102
     .line 103
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 104
-    move-result-object p1
-
     .line 105
-    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 106
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 107
     .line 108
-    throw v0
-
     .line 109
-    :cond_1
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 110
     .line 111
-    new-instance v1, Ljava/lang/StringBuilder;
-
     .line 112
+    move-result-object p1
+
     .line 113
-    const-string v2, "Unable to find configured root for "
+    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 114
     .line 115
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 116
-    .line 117
-    .line 118
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    throw v0
 
+    .line 117
+    :cond_1
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    .line 118
     .line 119
+    new-instance v1, Ljava/lang/StringBuilder;
+
     .line 120
     .line 121
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v2, "Unable to find configured root for "
 
     .line 122
     .line 123
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 124
-    move-result-object p1
-
     .line 125
-    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 126
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 127
     .line 128
-    throw v0
-
     .line 129
-    :cond_2
-    new-instance v0, Ljava/lang/IllegalArgumentException;
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 130
     .line 131
-    new-instance v1, Ljava/lang/StringBuilder;
-
     .line 132
+    move-result-object p1
+
     .line 133
-    const-string v2, "Unable to find path from root: "
+    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
 
     .line 134
     .line 135
-    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
-
     .line 136
-    .line 137
-    .line 138
-    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    throw v0
 
+    .line 137
+    :cond_2
+    new-instance v0, Ljava/lang/IllegalArgumentException;
+
+    .line 138
     .line 139
+    new-instance v1, Ljava/lang/StringBuilder;
+
     .line 140
     .line 141
-    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+    const-string v2, "Unable to find path from root: "
 
     .line 142
     .line 143
+    invoke-direct {v1, v2}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
     .line 144
-    move-result-object p1
-
     .line 145
-    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
-
     .line 146
+    invoke-virtual {v1, p1}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
     .line 147
     .line 148
+    .line 149
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 150
+    .line 151
+    .line 152
+    move-result-object p1
+
+    .line 153
+    invoke-direct {v0, p1}, Ljava/lang/IllegalArgumentException;-><init>(Ljava/lang/String;)V
+
+    .line 154
+    .line 155
+    .line 156
     throw v0
 .end method

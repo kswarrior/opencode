@@ -1,6 +1,6 @@
 .class public final Landroidx/fragment/app/k1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
@@ -42,7 +42,7 @@
     iput-boolean p1, p0, Landroidx/fragment/app/k1;->c:Z
 
     .line 5
-    sget-object p1, Landroidx/lifecycle/Lifecycle$State;->q:Landroidx/lifecycle/Lifecycle$State;
+    sget-object p1, Landroidx/lifecycle/Lifecycle$State;->w:Landroidx/lifecycle/Lifecycle$State;
 
     iput-object p1, p0, Landroidx/fragment/app/k1;->h:Landroidx/lifecycle/Lifecycle$State;
 
@@ -70,7 +70,7 @@
     iput-boolean p1, p0, Landroidx/fragment/app/k1;->c:Z
 
     .line 11
-    sget-object p1, Landroidx/lifecycle/Lifecycle$State;->q:Landroidx/lifecycle/Lifecycle$State;
+    sget-object p1, Landroidx/lifecycle/Lifecycle$State;->w:Landroidx/lifecycle/Lifecycle$State;
 
     iput-object p1, p0, Landroidx/fragment/app/k1;->h:Landroidx/lifecycle/Lifecycle$State;
 

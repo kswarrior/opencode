@@ -1,173 +1,177 @@
 .class public final Lm/b;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Ljava/lang/Runnable;
+.super Landroid/graphics/drawable/Drawable;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic c:I
-
-.field public final synthetic d:Landroidx/appcompat/widget/ActionBarOverlayLayout;
+.field public final a:Landroidx/appcompat/widget/ActionBarContainer;
 
 
 # direct methods
-.method public synthetic constructor <init>(Landroidx/appcompat/widget/ActionBarOverlayLayout;I)V
+.method public constructor <init>(Landroidx/appcompat/widget/ActionBarContainer;)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lm/b;->c:I
+    invoke-direct {p0}, Landroid/graphics/drawable/Drawable;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lm/b;->d:Landroidx/appcompat/widget/ActionBarOverlayLayout;
-
     .line 4
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lm/b;->a:Landroidx/appcompat/widget/ActionBarContainer;
 
+    .line 5
     .line 6
-    .line 7
-    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final run()V
-    .locals 3
+.method public final draw(Landroid/graphics/Canvas;)V
+    .locals 2
 
     .line 1
-    iget v0, p0, Lm/b;->c:I
+    iget-object v0, p0, Lm/b;->a:Landroidx/appcompat/widget/ActionBarContainer;
 
     .line 2
     .line 3
-    packed-switch v0, :pswitch_data_0
+    iget-boolean v1, v0, Landroidx/appcompat/widget/ActionBarContainer;->y:Z
 
     .line 4
     .line 5
+    if-eqz v1, :cond_0
+
     .line 6
-    iget-object v0, p0, Lm/b;->d:Landroidx/appcompat/widget/ActionBarOverlayLayout;
-
     .line 7
-    .line 8
-    invoke-virtual {v0}, Landroidx/appcompat/widget/ActionBarOverlayLayout;->h()V
+    iget-object v0, v0, Landroidx/appcompat/widget/ActionBarContainer;->x:Landroid/graphics/drawable/Drawable;
 
+    .line 8
     .line 9
+    if-eqz v0, :cond_2
+
     .line 10
     .line 11
-    iget-object v1, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->p:Landroidx/appcompat/widget/ActionBarContainer;
+    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     .line 12
     .line 13
-    invoke-virtual {v1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
-
     .line 14
-    .line 15
-    .line 16
-    move-result-object v1
+    return-void
 
+    .line 15
+    :cond_0
+    iget-object v1, v0, Landroidx/appcompat/widget/ActionBarContainer;->q:Landroid/graphics/drawable/Drawable;
+
+    .line 16
     .line 17
-    iget-object v2, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->p:Landroidx/appcompat/widget/ActionBarContainer;
+    if-eqz v1, :cond_1
 
     .line 18
     .line 19
-    invoke-virtual {v2}, Landroid/view/View;->getHeight()I
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
     .line 20
     .line 21
     .line 22
-    move-result v2
+    :cond_1
+    iget-object v1, v0, Landroidx/appcompat/widget/ActionBarContainer;->w:Landroid/graphics/drawable/Drawable;
 
     .line 23
-    neg-int v2, v2
-
     .line 24
-    int-to-float v2, v2
+    if-eqz v1, :cond_2
 
     .line 25
-    invoke-virtual {v1, v2}, Landroid/view/ViewPropertyAnimator;->translationY(F)Landroid/view/ViewPropertyAnimator;
-
     .line 26
+    iget-boolean v0, v0, Landroidx/appcompat/widget/ActionBarContainer;->b1:Z
+
     .line 27
     .line 28
-    move-result-object v1
+    if-eqz v0, :cond_2
 
     .line 29
-    iget-object v2, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->Q1:La5/c;
-
     .line 30
-    .line 31
-    invoke-virtual {v1, v2}, Landroid/view/ViewPropertyAnimator;->setListener(Landroid/animation/Animator$AnimatorListener;)Landroid/view/ViewPropertyAnimator;
+    invoke-virtual {v1, p1}, Landroid/graphics/drawable/Drawable;->draw(Landroid/graphics/Canvas;)V
 
+    .line 31
     .line 32
     .line 33
-    .line 34
-    move-result-object v1
+    :cond_2
+    return-void
+.end method
 
-    .line 35
-    iput-object v1, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->P1:Landroid/view/ViewPropertyAnimator;
+.method public final getOpacity()I
+    .locals 1
 
-    .line 36
-    .line 37
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    return v0
+.end method
+
+.method public final getOutline(Landroid/graphics/Outline;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lm/b;->a:Landroidx/appcompat/widget/ActionBarContainer;
+
+    .line 2
+    .line 3
+    iget-boolean v1, v0, Landroidx/appcompat/widget/ActionBarContainer;->y:Z
+
+    .line 4
+    .line 5
+    if-eqz v1, :cond_0
+
+    .line 6
+    .line 7
+    iget-object v1, v0, Landroidx/appcompat/widget/ActionBarContainer;->x:Landroid/graphics/drawable/Drawable;
+
+    .line 8
+    .line 9
+    if-eqz v1, :cond_1
+
+    .line 10
+    .line 11
+    iget-object v0, v0, Landroidx/appcompat/widget/ActionBarContainer;->q:Landroid/graphics/drawable/Drawable;
+
+    .line 12
+    .line 13
+    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->getOutline(Landroid/graphics/Outline;)V
+
+    .line 14
+    .line 15
+    .line 16
     return-void
 
-    .line 38
-    :pswitch_0
-    iget-object v0, p0, Lm/b;->d:Landroidx/appcompat/widget/ActionBarOverlayLayout;
+    .line 17
+    :cond_0
+    iget-object v0, v0, Landroidx/appcompat/widget/ActionBarContainer;->q:Landroid/graphics/drawable/Drawable;
 
-    .line 39
-    .line 40
-    invoke-virtual {v0}, Landroidx/appcompat/widget/ActionBarOverlayLayout;->h()V
+    .line 18
+    .line 19
+    if-eqz v0, :cond_1
 
-    .line 41
-    .line 42
-    .line 43
-    iget-object v1, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->p:Landroidx/appcompat/widget/ActionBarContainer;
+    .line 20
+    .line 21
+    invoke-virtual {v0, p1}, Landroid/graphics/drawable/Drawable;->getOutline(Landroid/graphics/Outline;)V
 
-    .line 44
-    .line 45
-    invoke-virtual {v1}, Landroid/view/View;->animate()Landroid/view/ViewPropertyAnimator;
-
-    .line 46
-    .line 47
-    .line 48
-    move-result-object v1
-
-    .line 49
-    const/4 v2, 0x0
-
-    .line 50
-    invoke-virtual {v1, v2}, Landroid/view/ViewPropertyAnimator;->translationY(F)Landroid/view/ViewPropertyAnimator;
-
-    .line 51
-    .line 52
-    .line 53
-    move-result-object v1
-
-    .line 54
-    iget-object v2, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->Q1:La5/c;
-
-    .line 55
-    .line 56
-    invoke-virtual {v1, v2}, Landroid/view/ViewPropertyAnimator;->setListener(Landroid/animation/Animator$AnimatorListener;)Landroid/view/ViewPropertyAnimator;
-
-    .line 57
-    .line 58
-    .line 59
-    move-result-object v1
-
-    .line 60
-    iput-object v1, v0, Landroidx/appcompat/widget/ActionBarOverlayLayout;->P1:Landroid/view/ViewPropertyAnimator;
-
-    .line 61
-    .line 62
+    .line 22
+    .line 23
+    .line 24
+    :cond_1
     return-void
+.end method
 
-    .line 63
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+.method public final setAlpha(I)V
+    .locals 0
+
+    .line 1
+    return-void
+.end method
+
+.method public final setColorFilter(Landroid/graphics/ColorFilter;)V
+    .locals 0
+
+    .line 1
+    return-void
 .end method

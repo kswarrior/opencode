@@ -1,177 +1,419 @@
-.class public final synthetic Lcom/google/firebase/messaging/p;
+.class public final Lcom/google/firebase/messaging/p;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lr6/e;
+.implements Ljava/io/Closeable;
 
 
 # instance fields
-.field public final synthetic c:I
+.field public final c:Ljava/net/URL;
 
-.field public final synthetic d:Lr6/q;
+.field public volatile d:Ljava/util/concurrent/Future;
+
+.field public h:Lcom/google/android/gms/tasks/Task;
 
 
 # direct methods
-.method public synthetic constructor <init>(Lr6/q;I)V
+.method public constructor <init>(Ljava/net/URL;)V
     .locals 0
 
     .line 1
-    iput p2, p0, Lcom/google/firebase/messaging/p;->c:I
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     .line 2
     .line 3
-    iput-object p1, p0, Lcom/google/firebase/messaging/p;->d:Lr6/q;
-
     .line 4
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p1, p0, Lcom/google/firebase/messaging/p;->c:Ljava/net/URL;
 
+    .line 5
     .line 6
-    .line 7
-    .line 8
     return-void
 .end method
 
 
 # virtual methods
-.method public final f(Lcom/google/android/gms/internal/measurement/ub;)Ljava/lang/Object;
-    .locals 7
+.method public final a()Landroid/graphics/Bitmap;
+    .locals 6
 
     .line 1
-    iget v0, p0, Lcom/google/firebase/messaging/p;->c:I
+    const/4 v0, 0x4
 
     .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
+    const-string v1, "FirebaseMessaging"
 
+    .line 3
     .line 4
+    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
     .line 5
     .line 6
-    new-instance v1, Lp7/c;
-
     .line 7
+    move-result v0
+
     .line 8
-    const-class v0, Landroid/content/Context;
+    iget-object v2, p0, Lcom/google/firebase/messaging/p;->c:Ljava/net/URL;
 
     .line 9
     .line 10
-    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->a(Ljava/lang/Class;)Ljava/lang/Object;
+    if-eqz v0, :cond_0
 
     .line 11
     .line 12
-    .line 13
-    move-result-object v0
+    new-instance v0, Ljava/lang/StringBuilder;
 
+    .line 13
     .line 14
-    move-object v2, v0
+    const-string v3, "Starting download of: "
 
     .line 15
-    check-cast v2, Landroid/content/Context;
-
     .line 16
-    .line 17
-    const-class v0, Lcom/google/firebase/FirebaseApp;
+    invoke-direct {v0, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 17
     .line 18
     .line 19
-    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->a(Ljava/lang/Class;)Ljava/lang/Object;
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
 
     .line 20
     .line 21
     .line 22
-    move-result-object v0
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 23
-    check-cast v0, Lcom/google/firebase/FirebaseApp;
-
     .line 24
     .line 25
-    invoke-virtual {v0}, Lcom/google/firebase/FirebaseApp;->h()Ljava/lang/String;
+    move-result-object v0
 
     .line 26
+    invoke-static {v1, v0}, Landroid/util/Log;->i(Ljava/lang/String;Ljava/lang/String;)I
+
     .line 27
     .line 28
-    move-result-object v3
-
     .line 29
-    const-class v0, Lp7/d;
+    :cond_0
+    invoke-virtual {v2}, Ljava/net/URL;->openConnection()Ljava/net/URLConnection;
 
     .line 30
     .line 31
-    invoke-static {v0}, Lr6/q;->a(Ljava/lang/Class;)Lr6/q;
-
     .line 32
-    .line 33
-    .line 34
     move-result-object v0
 
+    .line 33
+    invoke-virtual {v0}, Ljava/net/URLConnection;->getContentLength()I
+
+    .line 34
     .line 35
-    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->i(Lr6/q;)Ljava/util/Set;
-
     .line 36
-    .line 37
-    .line 38
-    move-result-object v4
+    move-result v3
 
+    .line 37
+    const/high16 v4, 0x100000
+
+    .line 38
     .line 39
-    const-class v0, Lz7/b;
+    if-gt v3, v4, :cond_7
 
     .line 40
     .line 41
-    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->c(Ljava/lang/Class;)Ls7/b;
+    invoke-virtual {v0}, Ljava/net/URLConnection;->getInputStream()Ljava/io/InputStream;
 
     .line 42
     .line 43
     .line 44
-    move-result-object v5
+    move-result-object v0
 
     .line 45
-    iget-object v0, p0, Lcom/google/firebase/messaging/p;->d:Lr6/q;
+    :try_start_0
+    new-instance v3, Lcom/google/firebase/messaging/d;
 
     .line 46
     .line 47
-    invoke-virtual {p1, v0}, Lcom/google/android/gms/internal/measurement/ub;->g(Lr6/q;)Ljava/lang/Object;
+    invoke-direct {v3, v0}, Lcom/google/firebase/messaging/d;-><init>(Ljava/io/InputStream;)V
 
     .line 48
     .line 49
     .line 50
-    move-result-object p1
+    invoke-static {v3}, Lcom/bumptech/glide/f;->D(Lcom/google/firebase/messaging/d;)[B
 
     .line 51
-    move-object v6, p1
-
     .line 52
-    check-cast v6, Ljava/util/concurrent/Executor;
-
     .line 53
+    move-result-object v3
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
     .line 54
-    invoke-direct/range {v1 .. v6}, Lp7/c;-><init>(Landroid/content/Context;Ljava/lang/String;Ljava/util/Set;Ls7/b;Ljava/util/concurrent/Executor;)V
+    if-eqz v0, :cond_1
 
     .line 55
     .line 56
+    invoke-virtual {v0}, Ljava/io/InputStream;->close()V
+
     .line 57
-    return-object v1
-
     .line 58
-    :pswitch_0
-    iget-object v0, p0, Lcom/google/firebase/messaging/p;->d:Lr6/q;
-
     .line 59
+    :cond_1
+    const/4 v0, 0x2
+
     .line 60
-    invoke-static {v0, p1}, Lcom/google/firebase/messaging/FirebaseMessagingRegistrar;->a(Lr6/q;Lcom/google/android/gms/internal/measurement/ub;)Lcom/google/firebase/messaging/FirebaseMessaging;
+    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
 
     .line 61
     .line 62
     .line 63
-    move-result-object p1
+    move-result v0
 
     .line 64
-    return-object p1
+    if-eqz v0, :cond_2
 
     .line 65
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_0
-    .end packed-switch
+    .line 66
+    new-instance v0, Ljava/lang/StringBuilder;
+
+    .line 67
+    .line 68
+    const-string v5, "Downloaded "
+
+    .line 69
+    .line 70
+    invoke-direct {v0, v5}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 71
+    .line 72
+    .line 73
+    array-length v5, v3
+
+    .line 74
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;
+
+    .line 75
+    .line 76
+    .line 77
+    const-string v5, " bytes from "
+
+    .line 78
+    .line 79
+    invoke-virtual {v0, v5}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 80
+    .line 81
+    .line 82
+    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 83
+    .line 84
+    .line 85
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 86
+    .line 87
+    .line 88
+    move-result-object v0
+
+    .line 89
+    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 90
+    .line 91
+    .line 92
+    :cond_2
+    array-length v0, v3
+
+    .line 93
+    if-gt v0, v4, :cond_5
+
+    .line 94
+    .line 95
+    const/4 v0, 0x0
+
+    .line 96
+    array-length v4, v3
+
+    .line 97
+    invoke-static {v3, v0, v4}, Landroid/graphics/BitmapFactory;->decodeByteArray([BII)Landroid/graphics/Bitmap;
+
+    .line 98
+    .line 99
+    .line 100
+    move-result-object v0
+
+    .line 101
+    if-eqz v0, :cond_4
+
+    .line 102
+    .line 103
+    const/4 v3, 0x3
+
+    .line 104
+    invoke-static {v1, v3}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+
+    .line 105
+    .line 106
+    .line 107
+    move-result v3
+
+    .line 108
+    if-eqz v3, :cond_3
+
+    .line 109
+    .line 110
+    new-instance v3, Ljava/lang/StringBuilder;
+
+    .line 111
+    .line 112
+    const-string v4, "Successfully downloaded image: "
+
+    .line 113
+    .line 114
+    invoke-direct {v3, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 115
+    .line 116
+    .line 117
+    invoke-virtual {v3, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 118
+    .line 119
+    .line 120
+    invoke-virtual {v3}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 121
+    .line 122
+    .line 123
+    move-result-object v2
+
+    .line 124
+    invoke-static {v1, v2}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+
+    .line 125
+    .line 126
+    .line 127
+    :cond_3
+    return-object v0
+
+    .line 128
+    :cond_4
+    new-instance v0, Ljava/io/IOException;
+
+    .line 129
+    .line 130
+    new-instance v1, Ljava/lang/StringBuilder;
+
+    .line 131
+    .line 132
+    const-string v3, "Failed to decode image: "
+
+    .line 133
+    .line 134
+    invoke-direct {v1, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 135
+    .line 136
+    .line 137
+    invoke-virtual {v1, v2}, Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+
+    .line 138
+    .line 139
+    .line 140
+    invoke-virtual {v1}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 141
+    .line 142
+    .line 143
+    move-result-object v1
+
+    .line 144
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 145
+    .line 146
+    .line 147
+    throw v0
+
+    .line 148
+    :cond_5
+    new-instance v0, Ljava/io/IOException;
+
+    .line 149
+    .line 150
+    const-string v1, "Image exceeds max size of 1048576"
+
+    .line 151
+    .line 152
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 153
+    .line 154
+    .line 155
+    throw v0
+
+    .line 156
+    :catchall_0
+    move-exception v1
+
+    .line 157
+    if-eqz v0, :cond_6
+
+    .line 158
+    .line 159
+    :try_start_1
+    invoke-virtual {v0}, Ljava/io/InputStream;->close()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_1
+
+    .line 160
+    .line 161
+    .line 162
+    goto :goto_0
+
+    .line 163
+    :catchall_1
+    move-exception v0
+
+    .line 164
+    invoke-virtual {v1, v0}, Ljava/lang/Throwable;->addSuppressed(Ljava/lang/Throwable;)V
+
+    .line 165
+    .line 166
+    .line 167
+    :cond_6
+    :goto_0
+    throw v1
+
+    .line 168
+    :cond_7
+    new-instance v0, Ljava/io/IOException;
+
+    .line 169
+    .line 170
+    const-string v1, "Content-Length exceeds max size of 1048576"
+
+    .line 171
+    .line 172
+    invoke-direct {v0, v1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
+
+    .line 173
+    .line 174
+    .line 175
+    throw v0
+.end method
+
+.method public final close()V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, Lcom/google/firebase/messaging/p;->d:Ljava/util/concurrent/Future;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x1
+
+    .line 4
+    invoke-interface {v0, v1}, Ljava/util/concurrent/Future;->cancel(Z)Z
+
+    .line 5
+    .line 6
+    .line 7
+    return-void
 .end method

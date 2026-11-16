@@ -1,6 +1,6 @@
 .class public Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -28,8 +28,6 @@
 
 .field private final animationRunnable:Ljava/lang/Runnable;
 
-.field private animationsRunning:Z
-
 .field private chickSize:I
 
 .field private chickView:Landroid/widget/ImageView;
@@ -39,8 +37,6 @@
 .field private dirX:I
 
 .field private dirY:I
-
-.field private displayedFrame:I
 
 .field private facingRight:Z
 
@@ -64,11 +60,7 @@
 
 .field private final random:Ljava/util/Random;
 
-.field private final runEndRunnable:Ljava/lang/Runnable;
-
 .field private runFrames:[I
-
-.field private runtimeActive:Z
 
 .field private screenHeight:I
 
@@ -140,143 +132,111 @@
 
     .line 24
     .line 25
-    const/4 v1, 0x1
-
-    .line 26
-    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runtimeActive:Z
-
-    .line 27
-    .line 28
     iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isHiding:Z
 
-    .line 29
-    .line 30
-    sget-object v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->IDLE:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
+    .line 26
+    .line 27
+    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->IDLE:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
 
+    .line 28
+    .line 29
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
+
+    .line 30
     .line 31
+    const/4 v1, 0x1
+
     .line 32
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
+    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->dirX:I
 
     .line 33
     .line 34
-    iput v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->dirX:I
+    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->dirY:I
 
     .line 35
     .line 36
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->dirY:I
+    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animFrame:I
 
     .line 37
     .line 38
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animFrame:I
+    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->facingRight:Z
 
     .line 39
     .line 40
-    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->facingRight:Z
+    const-wide/16 v1, 0x0
 
     .line 41
     .line 42
-    const-wide/16 v1, 0x0
+    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->lastBlinkTime:J
 
     .line 43
     .line 44
-    iput-wide v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->lastBlinkTime:J
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isBlinking:Z
 
     .line 45
     .line 46
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isBlinking:Z
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$1;
 
     .line 47
     .line 48
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$1;
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
 
     .line 49
     .line 50
-    invoke-direct {v0, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
-
     .line 51
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
+
     .line 52
     .line 53
-    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;
 
     .line 54
     .line 55
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;
+    const/4 v1, 0x2
 
     .line 56
-    .line 57
-    const/4 v1, 0x1
-
-    .line 58
     invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;I)V
 
+    .line 57
+    .line 58
     .line 59
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
+
     .line 60
     .line 61
-    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->activity:Landroid/app/Activity;
 
     .line 62
     .line 63
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;
+    const-string v0, "window"
 
     .line 64
     .line 65
-    const/4 v1, 0x2
+    invoke-virtual {p1, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
 
     .line 66
-    invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;I)V
-
     .line 67
     .line 68
+    move-result-object p1
+
     .line 69
-    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
+    check-cast p1, Landroid/view/WindowManager;
 
     .line 70
     .line 71
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->activity:Landroid/app/Activity;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->windowManager:Landroid/view/WindowManager;
 
     .line 72
     .line 73
-    const-string v0, "window"
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->initFrames()V
 
     .line 74
     .line 75
-    invoke-virtual {p1, v0}, Landroid/app/Activity;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;
-
     .line 76
-    .line 77
-    .line 78
-    move-result-object p1
-
-    .line 79
-    check-cast p1, Landroid/view/WindowManager;
-
-    .line 80
-    .line 81
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->windowManager:Landroid/view/WindowManager;
-
-    .line 82
-    .line 83
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->initFrames()V
-
-    .line 84
-    .line 85
-    .line 86
     return-void
 .end method
 
-.method public static synthetic a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->lambda$new$1()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static synthetic b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
+.method public static synthetic a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;Landroid/view/View;Landroid/view/MotionEvent;)Z
     .locals 0
 
     .line 1
@@ -291,7 +251,7 @@
     return p0
 .end method
 
-.method public static synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
+.method public static synthetic b(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
     .locals 0
 
     .line 1
@@ -303,57 +263,16 @@
     return-void
 .end method
 
-.method private canAnimate()Z
-    .locals 1
+.method public static synthetic c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
+    .locals 0
 
     .line 1
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->showInternal()V
 
     .line 2
     .line 3
-    if-eqz v0, :cond_0
-
     .line 4
-    .line 5
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runtimeActive:Z
-
-    .line 6
-    .line 7
-    if-eqz v0, :cond_0
-
-    .line 8
-    .line 9
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
-
-    .line 10
-    .line 11
-    if-eqz v0, :cond_0
-
-    .line 12
-    .line 13
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
-
-    .line 14
-    .line 15
-    .line 16
-    move-result v0
-
-    .line 17
-    if-nez v0, :cond_0
-
-    .line 18
-    .line 19
-    const/4 v0, 0x1
-
-    .line 20
-    return v0
-
-    .line 21
-    :cond_0
-    const/4 v0, 0x0
-
-    .line 22
-    return v0
+    return-void
 .end method
 
 .method private changeToRandomState()V
@@ -605,7 +524,7 @@
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->showInternal()V
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->lambda$startRunning$1()V
 
     .line 2
     .line 3
@@ -613,18 +532,7 @@
     return-void
 .end method
 
-.method public static bridge synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)Z
-    .locals 0
-
-    .line 1
-    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
-    .line 2
-    .line 3
-    return p0
-.end method
-
-.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)Landroid/os/Handler;
+.method public static bridge synthetic e(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)Landroid/os/Handler;
     .locals 0
 
     .line 1
@@ -635,33 +543,27 @@
     return-object p0
 .end method
 
-.method public static bridge synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
-    .locals 1
-
-    .line 1
-    const/4 v0, 0x0
-
-    .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
-    .line 3
-    .line 4
-    return-void
-.end method
-
-.method public static bridge synthetic h(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)Z
+.method public static bridge synthetic f(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)Z
     .locals 0
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->canAnimate()Z
+    iget-boolean p0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
+
+    .line 2
+    .line 3
+    return p0
+.end method
+
+.method public static bridge synthetic g(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->updateAnimation()V
 
     .line 2
     .line 3
     .line 4
-    move-result p0
-
-    .line 5
-    return p0
+    return-void
 .end method
 
 .method private handleTouch(Landroid/view/View;Landroid/view/MotionEvent;)Z
@@ -696,18 +598,6 @@
 
     .line 13
     return p1
-.end method
-
-.method public static bridge synthetic i(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;)V
-    .locals 0
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->updateAnimation()V
-
-    .line 2
-    .line 3
-    .line 4
-    return-void
 .end method
 
 .method private initFrames()V
@@ -841,91 +731,65 @@
     .locals 2
 
     .line 1
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
 
     .line 2
     .line 3
-    if-eqz v0, :cond_2
+    if-nez v0, :cond_0
 
     .line 4
     .line 5
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->canAnimate()Z
+    return-void
 
     .line 6
-    .line 7
-    .line 8
-    move-result v0
-
-    .line 9
-    if-nez v0, :cond_0
-
-    .line 10
-    .line 11
-    goto :goto_0
-
-    .line 12
     :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
 
-    .line 13
-    .line 14
+    .line 7
+    .line 8
     sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->RUNNING:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
 
-    .line 15
-    .line 16
+    .line 9
+    .line 10
     if-eq v0, v1, :cond_1
 
-    .line 17
-    .line 18
+    .line 11
+    .line 12
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->changeToRandomState()V
 
-    .line 19
-    .line 20
-    .line 21
+    .line 13
+    .line 14
+    .line 15
     :cond_1
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->scheduleNextStateChange()V
 
-    .line 22
-    .line 23
-    .line 24
-    :cond_2
-    :goto_0
+    .line 16
+    .line 17
+    .line 18
     return-void
 .end method
 
-.method private synthetic lambda$new$1()V
+.method private synthetic lambda$startRunning$1()V
     .locals 2
 
     .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->canAnimate()Z
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
 
     .line 2
     .line 3
-    .line 4
-    move-result v0
+    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->RUNNING:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
 
+    .line 4
     .line 5
-    if-eqz v0, :cond_0
+    if-ne v0, v1, :cond_0
 
     .line 6
     .line 7
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->changeToRandomState()V
 
     .line 8
     .line 9
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->RUNNING:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
-
     .line 10
-    .line 11
-    if-ne v0, v1, :cond_0
-
-    .line 12
-    .line 13
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->changeToRandomState()V
-
-    .line 14
-    .line 15
-    .line 16
     :cond_0
     return-void
 .end method
@@ -1204,7 +1068,7 @@
 
     .line 124
     .line 125
-    if-eqz p1, :cond_5
+    if-eqz p1, :cond_4
 
     .line 126
     .line 127
@@ -1212,61 +1076,40 @@
 
     .line 128
     .line 129
-    if-eqz p2, :cond_5
+    if-eqz p2, :cond_4
 
     .line 130
     .line 131
-    iget v0, p1, Landroid/view/WindowManager$LayoutParams;->x:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->posX:I
 
     .line 132
     .line 133
-    iget v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->posX:I
+    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->x:I
 
     .line 134
     .line 135
-    if-ne v0, v1, :cond_4
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->posY:I
 
     .line 136
     .line 137
-    iget v0, p1, Landroid/view/WindowManager$LayoutParams;->y:I
+    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->y:I
 
     .line 138
     .line 139
-    iget v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->posY:I
-
-    .line 140
-    .line 141
-    if-eq v0, v2, :cond_5
-
-    .line 142
-    .line 143
-    :cond_4
-    iput v1, p1, Landroid/view/WindowManager$LayoutParams;->x:I
-
-    .line 144
-    .line 145
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->posY:I
-
-    .line 146
-    .line 147
-    iput v0, p1, Landroid/view/WindowManager$LayoutParams;->y:I
-
-    .line 148
-    .line 149
     :try_start_0
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->windowManager:Landroid/view/WindowManager;
 
-    .line 150
-    .line 151
+    .line 140
+    .line 141
     invoke-interface {v0, p2, p1}, Landroid/view/ViewManager;->updateViewLayout(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 152
-    .line 153
-    .line 154
+    .line 142
+    .line 143
+    .line 144
     :catch_0
-    :cond_5
+    :cond_4
     return-void
 .end method
 
@@ -1779,22 +1622,35 @@
     .line 226
     :cond_1
     :goto_0
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->syncAnimations()V
-    :try_end_0
-    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
 
     .line 227
     .line 228
-    .line 229
-    return-void
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
 
+    .line 229
     .line 230
-    :goto_1
-    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
 
     .line 231
     .line 232
     .line 233
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->scheduleNextStateChange()V
+    :try_end_0
+    .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
+
+    .line 234
+    .line 235
+    .line 236
+    return-void
+
+    .line 237
+    :goto_1
+    invoke-virtual {v0}, Ljava/lang/Throwable;->printStackTrace()V
+
+    .line 238
+    .line 239
+    .line 240
     :cond_2
     :goto_2
     return-void
@@ -1936,182 +1792,45 @@
 
     .line 58
     .line 59
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
+    new-instance v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;
 
     .line 60
     .line 61
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    const/4 v2, 0x0
 
     .line 62
+    invoke-direct {v1, p0, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;I)V
+
     .line 63
     .line 64
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
     .line 65
-    .line 66
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
-
-    .line 67
-    .line 68
     iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->random:Ljava/util/Random;
 
-    .line 69
-    .line 70
+    .line 66
+    .line 67
     const/16 v3, 0x5dc
 
-    .line 71
-    .line 72
+    .line 68
+    .line 69
     invoke-virtual {v2, v3}, Ljava/util/Random;->nextInt(I)I
 
-    .line 73
-    .line 74
-    .line 75
+    .line 70
+    .line 71
+    .line 72
     move-result v2
 
-    .line 76
+    .line 73
     add-int/2addr v2, v3
 
-    .line 77
+    .line 74
     int-to-long v2, v2
 
+    .line 75
+    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    .line 76
+    .line 77
     .line 78
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 79
-    .line 80
-    .line 81
-    return-void
-.end method
-
-.method private syncAnimations()V
-    .locals 4
-
-    .line 1
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->canAnimate()Z
-
-    .line 2
-    .line 3
-    .line 4
-    move-result v0
-
-    .line 5
-    if-nez v0, :cond_0
-
-    .line 6
-    .line 7
-    const/4 v0, 0x0
-
-    .line 8
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
-    .line 9
-    .line 10
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 11
-    .line 12
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
-
-    .line 13
-    .line 14
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 15
-    .line 16
-    .line 17
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 18
-    .line 19
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
-
-    .line 20
-    .line 21
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 22
-    .line 23
-    .line 24
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 25
-    .line 26
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
-
-    .line 27
-    .line 28
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 29
-    .line 30
-    .line 31
-    return-void
-
-    .line 32
-    :cond_0
-    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
-    .line 33
-    .line 34
-    if-nez v0, :cond_1
-
-    .line 35
-    .line 36
-    const/4 v0, 0x1
-
-    .line 37
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
-    .line 38
-    .line 39
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 40
-    .line 41
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
-
-    .line 42
-    .line 43
-    invoke-virtual {v0, v1}, Landroid/os/Handler;->post(Ljava/lang/Runnable;)Z
-
-    .line 44
-    .line 45
-    .line 46
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->scheduleNextStateChange()V
-
-    .line 47
-    .line 48
-    .line 49
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->currentState:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
-
-    .line 50
-    .line 51
-    sget-object v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;->RUNNING:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay$State;
-
-    .line 52
-    .line 53
-    if-ne v0, v1, :cond_1
-
-    .line 54
-    .line 55
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 56
-    .line 57
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
-
-    .line 58
-    .line 59
-    const-wide/16 v2, 0x5dc
-
-    .line 60
-    .line 61
-    invoke-virtual {v0, v1, v2, v3}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
-
-    .line 62
-    .line 63
-    .line 64
-    :cond_1
     return-void
 .end method
 
@@ -2123,7 +1842,7 @@
 
     .line 2
     .line 3
-    if-eqz v0, :cond_b
+    if-eqz v0, :cond_a
 
     .line 4
     .line 5
@@ -2428,7 +2147,7 @@
     .line 139
     :cond_8
     :goto_1
-    iget v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->displayedFrame:I
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
 
     .line 140
     .line 141
@@ -2440,59 +2159,46 @@
 
     .line 144
     .line 145
-    if-eq v2, v0, :cond_9
+    invoke-virtual {v2, v0}, Landroid/widget/ImageView;->setImageResource(I)V
 
     .line 146
     .line 147
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->displayedFrame:I
-
     .line 148
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
+
     .line 149
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
-
     .line 150
-    .line 151
-    invoke-virtual {v2, v0}, Landroid/widget/ImageView;->setImageResource(I)V
+    if-eqz v1, :cond_9
 
+    .line 151
     .line 152
+    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->facingRight:Z
+
     .line 153
     .line 154
-    :cond_9
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
+    if-nez v1, :cond_9
 
     .line 155
     .line 156
-    if-eqz v1, :cond_a
+    const/high16 v1, -0x40800000    # -1.0f
 
     .line 157
     .line 158
-    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->facingRight:Z
-
-    .line 159
-    .line 160
-    if-nez v1, :cond_a
-
-    .line 161
-    .line 162
-    const/high16 v1, -0x40800000    # -1.0f
-
-    .line 163
-    .line 164
     goto :goto_2
 
-    .line 165
-    :cond_a
+    .line 159
+    :cond_9
     const/high16 v1, 0x3f800000    # 1.0f
 
-    .line 166
-    .line 167
+    .line 160
+    .line 161
     :goto_2
     invoke-virtual {v0, v1}, Landroid/view/View;->setScaleX(F)V
 
-    .line 168
-    .line 169
-    .line 170
-    :cond_b
+    .line 162
+    .line 163
+    .line 164
+    :cond_a
     :goto_3
     return-void
 .end method
@@ -2503,184 +2209,121 @@
     .locals 4
 
     .line 1
-    const/4 v0, 0x0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
 
     .line 2
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationsRunning:Z
-
     .line 3
+    const/4 v1, 0x0
+
     .line 4
-    iput v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->displayedFrame:I
+    if-eqz v0, :cond_0
 
     .line 5
     .line 6
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
 
     .line 7
     .line 8
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
+    invoke-virtual {v2, v0}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 9
     .line 10
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
     .line 11
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+
     .line 12
     .line 13
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
+    :cond_0
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
 
     .line 14
     .line 15
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
+    const/4 v2, 0x0
 
     .line 16
-    .line 17
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    if-nez v0, :cond_1
 
+    .line 17
     .line 18
+    iput-boolean v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
+
     .line 19
     .line 20
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
+    return-void
 
     .line 21
+    :cond_1
+    const/4 v0, 0x1
+
     .line 22
-    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runEndRunnable:Ljava/lang/Runnable;
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isHiding:Z
 
     .line 23
     .line 24
-    invoke-virtual {v1, v2}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    iput-boolean v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
 
     .line 25
     .line 26
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
+
     .line 27
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
-
     .line 28
-    .line 29
-    const/4 v2, 0x0
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
 
+    .line 29
     .line 30
-    if-eqz v1, :cond_0
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 31
     .line 32
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
     .line 33
-    .line 34
-    invoke-virtual {v3, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
 
+    .line 34
     .line 35
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
+
     .line 36
     .line 37
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->pendingShowRunnable:Ljava/lang/Runnable;
+    invoke-virtual {v0, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
 
     .line 38
     .line 39
-    :cond_0
-    iget-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
-
     .line 40
-    .line 41
-    if-nez v1, :cond_1
-
-    .line 42
-    .line 43
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
-
-    .line 44
-    .line 45
-    return-void
-
-    .line 46
-    :cond_1
-    const/4 v1, 0x1
-
-    .line 47
-    iput-boolean v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isHiding:Z
-
-    .line 48
-    .line 49
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isShowing:Z
-
-    .line 50
-    .line 51
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 52
-    .line 53
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->animationRunnable:Ljava/lang/Runnable;
-
-    .line 54
-    .line 55
-    invoke-virtual {v1, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 56
-    .line 57
-    .line 58
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->handler:Landroid/os/Handler;
-
-    .line 59
-    .line 60
-    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->stateChangeRunnable:Ljava/lang/Runnable;
-
-    .line 61
-    .line 62
-    invoke-virtual {v1, v3}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
-
-    .line 63
-    .line 64
-    .line 65
     :try_start_0
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
 
-    .line 66
-    .line 67
-    if-eqz v1, :cond_2
+    .line 41
+    .line 42
+    if-eqz v0, :cond_2
 
-    .line 68
-    .line 69
+    .line 43
+    .line 44
     iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->windowManager:Landroid/view/WindowManager;
 
-    .line 70
-    .line 71
+    .line 45
+    .line 46
     if-eqz v3, :cond_2
 
-    .line 72
-    .line 73
-    invoke-interface {v3, v1}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
+    .line 47
+    .line 48
+    invoke-interface {v3, v0}, Landroid/view/ViewManager;->removeView(Landroid/view/View;)V
     :try_end_0
     .catch Ljava/lang/Exception; {:try_start_0 .. :try_end_0} :catch_0
 
-    .line 74
-    .line 75
-    .line 76
+    .line 49
+    .line 50
+    .line 51
     :catch_0
     :cond_2
-    iput-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
+    iput-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
 
-    .line 77
-    .line 78
-    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isHiding:Z
+    .line 52
+    .line 53
+    iput-boolean v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->isHiding:Z
 
-    .line 79
-    .line 80
-    return-void
-.end method
-
-.method public setRuntimeActive(Z)V
-    .locals 0
-
-    .line 1
-    iput-boolean p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->runtimeActive:Z
-
-    .line 2
-    .line 3
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->syncAnimations()V
-
-    .line 4
-    .line 5
-    .line 6
+    .line 54
+    .line 55
     return-void
 .end method
 
@@ -2696,33 +2339,12 @@
 
     .line 4
     .line 5
-    invoke-virtual {v0}, Landroid/view/View;->getVisibility()I
+    invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setVisibility(I)V
 
     .line 6
     .line 7
     .line 8
-    move-result v0
-
-    .line 9
-    if-eq v0, p1, :cond_0
-
-    .line 10
-    .line 11
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->chickView:Landroid/widget/ImageView;
-
-    .line 12
-    .line 13
-    invoke-virtual {v0, p1}, Landroid/widget/ImageView;->setVisibility(I)V
-
-    .line 14
-    .line 15
-    .line 16
     :cond_0
-    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;->syncAnimations()V
-
-    .line 17
-    .line 18
-    .line 19
     return-void
 .end method
 
@@ -2804,7 +2426,7 @@
 
     .line 36
     .line 37
-    const/4 v1, 0x0
+    const/4 v1, 0x1
 
     .line 38
     invoke-direct {v0, p0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/c;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ChickPetOverlay;I)V

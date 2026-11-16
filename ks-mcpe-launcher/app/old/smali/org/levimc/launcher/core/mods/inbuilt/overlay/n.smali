@@ -1,51 +1,57 @@
 .class public final synthetic Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs$Selection;
+.implements Landroid/view/View$OnClickListener;
 
 
 # instance fields
-.field public final synthetic a:I
+.field public final synthetic c:I
 
-.field public final synthetic b:Ljava/lang/Object;
+.field public final synthetic d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;
 
-.field public final synthetic c:Ljava/lang/Object;
+.field public final synthetic h:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;
+
+.field public final synthetic q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+.method public synthetic constructor <init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;I)V
     .locals 0
 
     .line 1
-    iput p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->a:I
+    iput p4, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->c:I
 
     .line 2
     .line 3
-    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->b:Ljava/lang/Object;
+    iput-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;
 
     .line 4
     .line 5
-    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->c:Ljava/lang/Object;
+    iput-object p2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->h:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;
 
     .line 6
     .line 7
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iput-object p3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;
 
     .line 8
     .line 9
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
     .line 10
+    .line 11
+    .line 12
     return-void
 .end method
 
 
 # virtual methods
-.method public final select(I)V
-    .locals 2
+.method public final onClick(Landroid/view/View;)V
+    .locals 3
 
     .line 1
-    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->a:I
+    iget v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->c:I
 
     .line 2
     .line 3
@@ -54,58 +60,49 @@
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->b:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->h:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;
 
     .line 9
     .line 10
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->c:Ljava/lang/Object;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;
 
     .line 11
     .line 12
-    check-cast v1, [Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;
+    invoke-static {v2, v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;->c(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;Landroid/view/View;)V
 
     .line 13
     .line 14
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->K(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;[Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay$ModuleFilter;I)V
-
     .line 15
-    .line 16
-    .line 17
     return-void
 
-    .line 18
+    .line 16
     :pswitch_0
-    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->b:Ljava/lang/Object;
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->h:Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;
+
+    .line 17
+    .line 18
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->q:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;
 
     .line 19
     .line 20
-    check-cast v0, Ljava/util/function/Consumer;
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->d:Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;
 
     .line 21
     .line 22
-    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/n;->c:Ljava/lang/Object;
+    invoke-static {v2, v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;->a(Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter;Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuAdapter$ModViewHolder;Landroid/view/View;)V
 
     .line 23
     .line 24
-    check-cast v1, Ljava/lang/Runnable;
-
     .line 25
-    .line 26
-    invoke-static {v0, v1, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModConfigView;->d(Ljava/util/function/Consumer;Ljava/lang/Runnable;I)V
-
-    .line 27
-    .line 28
-    .line 29
     return-void
 
-    .line 30
+    .line 26
     nop
 
-    .line 31
     :pswitch_data_0
     .packed-switch 0x0
         :pswitch_0

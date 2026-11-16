@@ -1,396 +1,712 @@
 .class public final synthetic La4/f;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements La4/k;
-.implements La6/i0;
-.implements Lo3/g;
-.implements Lr6/e;
-.implements Lcom/discord/org/webrtc/EglThread$ReleaseMonitor;
+.implements La4/j;
+.implements Lcom/google/android/gms/tasks/OnCompleteListener;
 .implements Lcom/google/android/gms/tasks/Continuation;
-.implements Lcom/google/android/gms/tasks/SuccessContinuation;
-.implements Lo7/a;
-.implements Lcom/microsoft/xboxtcui/XboxTcuiWindowDialog$DetachedCallback;
-.implements Li8/o;
+.implements Lcom/microsoft/xbox/idp/util/HttpCall$Callback;
+.implements Lcom/mojang/minecraftpe/hardwareinfo/CPUTopologyInfo$BitCollector;
+.implements Lp6/e;
+.implements Lxcrash/ICrashCallback;
+.implements Lq7/a;
+.implements Lb4/b;
 
 
 # instance fields
 .field public final synthetic c:I
 
+.field public final synthetic d:Ljava/lang/Object;
+
+.field public final synthetic h:Ljava/lang/Object;
+
 
 # direct methods
-.method public synthetic constructor <init>(I)V
+.method public synthetic constructor <init>(Ljava/lang/Object;Ljava/lang/Object;I)V
     .locals 0
 
     .line 1
-    iput p1, p0, La4/f;->c:I
-
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    return-void
-.end method
-
-.method public synthetic constructor <init>(Lb8/l;)V
-    .locals 0
+    iput p3, p0, La4/f;->c:I
 
     .line 2
-    const/16 p1, 0xb
+    .line 3
+    iput-object p1, p0, La4/f;->d:Ljava/lang/Object;
 
-    iput p1, p0, La4/f;->c:I
+    .line 4
+    .line 5
+    iput-object p2, p0, La4/f;->h:Ljava/lang/Object;
 
+    .line 6
+    .line 7
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
+    .line 8
+    .line 9
+    .line 10
     return-void
 .end method
 
 
 # virtual methods
-.method public apply(Ljava/lang/Object;)Ljava/lang/Object;
-    .locals 4
+.method public a(Ljava/lang/String;Ljava/lang/String;)V
+    .locals 2
 
     .line 1
-    iget v0, p0, La4/f;->c:I
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
     .line 2
     .line 3
-    sparse-switch v0, :sswitch_data_0
+    check-cast v0, Ljava/lang/String;
 
     .line 4
     .line 5
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
     .line 6
-    check-cast p1, La7/n2;
-
     .line 7
-    .line 8
-    sget-object v0, Le7/a;->b:Lb7/a;
+    check-cast v1, Landroid/content/Context;
 
+    .line 8
     .line 9
+    invoke-static {v0, v1, p1, p2}, Lorg/levimc/launcher/core/crash/CrashReporter;->a(Ljava/lang/String;Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)V
+
     .line 10
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 11
+    .line 12
+    return-void
+.end method
+
+.method public apply(Ljava/lang/Object;)Ljava/lang/Object;
+    .locals 13
+
+    .line 1
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, La4/l;
+
+    .line 4
+    .line 5
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v1, Lt3/i;
+
+    .line 8
+    .line 9
+    move-object v2, p1
+
+    .line 10
+    check-cast v2, Landroid/database/sqlite/SQLiteDatabase;
 
     .line 11
     .line 12
+    iget-object p1, v0, La4/l;->q:La4/a;
+
     .line 13
-    sget-object v0, Lb7/a;->a:Llg/b;
-
     .line 14
-    .line 15
-    invoke-virtual {v0, p1}, Llg/b;->j(Ljava/lang/Object;)Ljava/lang/String;
+    iget v3, p1, La4/a;->b:I
 
+    .line 15
     .line 16
+    invoke-virtual {v0, v2, v1, v3}, La4/l;->g(Landroid/database/sqlite/SQLiteDatabase;Lt3/i;I)Ljava/util/ArrayList;
+
     .line 17
     .line 18
-    move-result-object p1
-
     .line 19
-    const-string v0, "UTF-8"
+    move-result-object v10
 
     .line 20
-    .line 21
-    invoke-static {v0}, Ljava/nio/charset/Charset;->forName(Ljava/lang/String;)Ljava/nio/charset/Charset;
+    invoke-static {}, Lq3/d;->values()[Lq3/d;
 
+    .line 21
     .line 22
     .line 23
+    move-result-object v3
+
     .line 24
-    move-result-object v0
+    array-length v4, v3
 
     .line 25
-    invoke-virtual {p1, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+    const/4 v11, 0x0
 
     .line 26
-    .line 27
-    .line 28
-    move-result-object p1
+    move v5, v11
 
+    .line 27
+    :goto_0
+    if-ge v5, v4, :cond_2
+
+    .line 28
     .line 29
-    return-object p1
+    aget-object v6, v3, v5
 
     .line 30
-    :sswitch_0
-    check-cast p1, Ly7/e;
-
     .line 31
+    iget-object v7, v1, Lt3/i;->c:Lq3/d;
+
     .line 32
-    sget-object v0, Lcom/google/firebase/messaging/s;->a:Lkd/e;
-
     .line 33
+    if-ne v6, v7, :cond_0
+
     .line 34
-    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
-
     .line 35
+    goto :goto_1
+
     .line 36
+    :cond_0
+    iget v7, p1, La4/a;->b:I
+
     .line 37
-    new-instance v1, Ljava/io/ByteArrayOutputStream;
-
     .line 38
-    .line 39
-    invoke-direct {v1}, Ljava/io/ByteArrayOutputStream;-><init>()V
+    invoke-virtual {v10}, Ljava/util/ArrayList;->size()I
 
+    .line 39
     .line 40
     .line 41
+    move-result v8
+
     .line 42
-    :try_start_0
-    invoke-virtual {v0, p1, v1}, Lkd/e;->B(Ljava/lang/Object;Ljava/io/ByteArrayOutputStream;)V
-    :try_end_0
-    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    sub-int/2addr v7, v8
 
     .line 43
+    if-gtz v7, :cond_1
+
     .line 44
     .line 45
-    :catch_0
-    invoke-virtual {v1}, Ljava/io/ByteArrayOutputStream;->toByteArray()[B
+    goto :goto_2
 
     .line 46
+    :cond_1
+    invoke-virtual {v1, v6}, Lt3/i;->b(Lq3/d;)Lt3/i;
+
     .line 47
     .line 48
-    move-result-object p1
-
     .line 49
-    return-object p1
+    move-result-object v6
 
     .line 50
-    :sswitch_1
-    check-cast p1, Lb8/m0;
+    invoke-virtual {v0, v2, v6, v7}, La4/l;->g(Landroid/database/sqlite/SQLiteDatabase;Lt3/i;I)Ljava/util/ArrayList;
 
     .line 51
     .line 52
-    sget-object v0, Lb8/n0;->b:Llg/b;
-
     .line 53
+    move-result-object v6
+
     .line 54
-    invoke-virtual {v0, p1}, Llg/b;->j(Ljava/lang/Object;)Ljava/lang/String;
+    invoke-virtual {v10, v6}, Ljava/util/ArrayList;->addAll(Ljava/util/Collection;)Z
 
     .line 55
     .line 56
     .line 57
-    move-result-object p1
+    :goto_1
+    add-int/lit8 v5, v5, 0x1
 
     .line 58
-    const-string v0, "encode(...)"
-
     .line 59
+    goto :goto_0
+
     .line 60
-    invoke-static {p1, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    :cond_2
+    :goto_2
+    new-instance p1, Ljava/util/HashMap;
 
     .line 61
     .line 62
-    .line 63
-    const-string v0, "FirebaseSessions"
+    invoke-direct {p1}, Ljava/util/HashMap;-><init>()V
 
+    .line 63
     .line 64
     .line 65
-    const-string v1, "Session Event Type: SESSION_START"
+    new-instance v0, Ljava/lang/StringBuilder;
 
     .line 66
     .line 67
-    invoke-static {v0, v1}, Landroid/util/Log;->d(Ljava/lang/String;Ljava/lang/String;)I
+    const-string v1, "event_id IN ("
 
     .line 68
     .line 69
-    .line 70
-    sget-object v0, Lo9/a;->a:Ljava/nio/charset/Charset;
+    invoke-direct {v0, v1}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
 
+    .line 70
     .line 71
     .line 72
-    invoke-virtual {p1, v0}, Ljava/lang/String;->getBytes(Ljava/nio/charset/Charset;)[B
+    move v1, v11
 
     .line 73
+    :goto_3
+    invoke-virtual {v10}, Ljava/util/ArrayList;->size()I
+
     .line 74
     .line 75
-    move-result-object p1
-
     .line 76
-    const-string v0, "getBytes(...)"
+    move-result v3
 
     .line 77
+    const/4 v12, 0x1
+
     .line 78
-    invoke-static {p1, v0}, Lh9/i;->d(Ljava/lang/Object;Ljava/lang/String;)V
+    if-ge v1, v3, :cond_4
 
     .line 79
     .line 80
+    invoke-virtual {v10, v1}, Ljava/util/ArrayList;->get(I)Ljava/lang/Object;
+
     .line 81
-    return-object p1
-
     .line 82
-    :sswitch_2
-    check-cast p1, Landroid/database/sqlite/SQLiteDatabase;
-
     .line 83
+    move-result-object v3
+
     .line 84
-    const/4 v0, 0x0
+    check-cast v3, La4/b;
 
     .line 85
-    new-array v1, v0, [Ljava/lang/String;
-
     .line 86
+    iget-wide v3, v3, La4/b;->a:J
+
     .line 87
-    const-string v2, "SELECT distinct t._id, t.backend_name, t.priority, t.extras FROM transport_contexts AS t, events AS e WHERE e.context_id = t._id"
-
     .line 88
-    .line 89
-    invoke-virtual {p1, v2, v1}, Landroid/database/sqlite/SQLiteDatabase;->rawQuery(Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    invoke-virtual {v0, v3, v4}, Ljava/lang/StringBuilder;->append(J)Ljava/lang/StringBuilder;
 
+    .line 89
     .line 90
     .line 91
+    invoke-virtual {v10}, Ljava/util/ArrayList;->size()I
+
     .line 92
-    move-result-object p1
-
     .line 93
-    :try_start_1
-    new-instance v1, Ljava/util/ArrayList;
-
     .line 94
+    move-result v3
+
     .line 95
-    invoke-direct {v1}, Ljava/util/ArrayList;-><init>()V
+    sub-int/2addr v3, v12
 
     .line 96
+    if-ge v1, v3, :cond_3
+
     .line 97
     .line 98
-    :goto_0
-    invoke-interface {p1}, Landroid/database/Cursor;->moveToNext()Z
+    const/16 v3, 0x2c
 
     .line 99
     .line 100
+    invoke-virtual {v0, v3}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
+
     .line 101
-    move-result v2
-
     .line 102
-    if-eqz v2, :cond_1
-
     .line 103
+    :cond_3
+    add-int/lit8 v1, v1, 0x1
+
     .line 104
-    invoke-static {}, Lt3/i;->a()Lkd/e;
-
     .line 105
-    .line 106
-    .line 107
-    move-result-object v2
+    goto :goto_3
 
+    .line 106
+    :cond_4
+    const/16 v1, 0x29
+
+    .line 107
     .line 108
-    const/4 v3, 0x1
+    invoke-virtual {v0, v1}, Ljava/lang/StringBuilder;->append(C)Ljava/lang/StringBuilder;
 
     .line 109
-    invoke-interface {p1, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
-
     .line 110
     .line 111
-    .line 112
-    move-result-object v3
+    const-string v1, "name"
 
+    .line 112
     .line 113
-    invoke-virtual {v2, v3}, Lkd/e;->H(Ljava/lang/String;)V
+    const-string v3, "value"
 
     .line 114
     .line 115
-    .line 116
-    const/4 v3, 0x2
+    const-string v4, "event_id"
 
+    .line 116
     .line 117
-    invoke-interface {p1, v3}, Landroid/database/Cursor;->getInt(I)I
+    filled-new-array {v4, v1, v3}, [Ljava/lang/String;
 
     .line 118
     .line 119
     .line 120
-    move-result v3
+    move-result-object v4
 
     .line 121
-    invoke-static {v3}, Ld4/a;->b(I)Lq3/d;
+    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
 
     .line 122
     .line 123
     .line 124
-    move-result-object v3
+    move-result-object v5
 
     .line 125
-    iput-object v3, v2, Lkd/e;->p:Ljava/lang/Object;
+    const/4 v8, 0x0
 
     .line 126
+    const/4 v9, 0x0
+
     .line 127
-    const/4 v3, 0x3
+    const-string v3, "event_metadata"
 
     .line 128
-    invoke-interface {p1, v3}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
-
     .line 129
+    const/4 v6, 0x0
+
     .line 130
+    const/4 v7, 0x0
+
     .line 131
-    move-result-object v3
+    invoke-virtual/range {v2 .. v9}, Landroid/database/sqlite/SQLiteDatabase;->query(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
 
     .line 132
-    if-nez v3, :cond_0
-
     .line 133
     .line 134
-    const/4 v3, 0x0
+    move-result-object v1
 
     .line 135
-    goto :goto_1
+    :goto_4
+    :try_start_0
+    invoke-interface {v1}, Landroid/database/Cursor;->moveToNext()Z
 
     .line 136
-    :cond_0
-    invoke-static {v3, v0}, Landroid/util/Base64;->decode(Ljava/lang/String;I)[B
-
     .line 137
     .line 138
+    move-result v0
+
     .line 139
-    move-result-object v3
+    if-eqz v0, :cond_6
 
     .line 140
-    :goto_1
-    iput-object v3, v2, Lkd/e;->h:Ljava/lang/Object;
-
     .line 141
-    .line 142
-    invoke-virtual {v2}, Lkd/e;->y()Lt3/i;
+    invoke-interface {v1, v11}, Landroid/database/Cursor;->getLong(I)J
 
+    .line 142
     .line 143
     .line 144
+    move-result-wide v2
+
     .line 145
-    move-result-object v2
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
 
     .line 146
-    invoke-virtual {v1, v2}, Ljava/util/ArrayList;->add(Ljava/lang/Object;)Z
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
-
     .line 147
     .line 148
+    move-result-object v0
+
     .line 149
-    goto :goto_0
+    invoke-virtual {p1, v0}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 150
-    :cond_1
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
-
     .line 151
     .line 152
+    move-result-object v0
+
     .line 153
-    return-object v1
+    check-cast v0, Ljava/util/Set;
 
     .line 154
-    :catchall_0
-    move-exception v0
-
     .line 155
-    invoke-interface {p1}, Landroid/database/Cursor;->close()V
+    if-nez v0, :cond_5
 
     .line 156
     .line 157
-    .line 158
-    throw v0
+    new-instance v0, Ljava/util/HashSet;
 
+    .line 158
     .line 159
-    :sswitch_data_0
-    .sparse-switch
-        0x0 -> :sswitch_2
-        0xb -> :sswitch_1
-        0x13 -> :sswitch_0
-    .end sparse-switch
+    invoke-direct {v0}, Ljava/util/HashSet;-><init>()V
+
+    .line 160
+    .line 161
+    .line 162
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 163
+    .line 164
+    .line 165
+    move-result-object v2
+
+    .line 166
+    invoke-virtual {p1, v2, v0}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 167
+    .line 168
+    .line 169
+    :cond_5
+    new-instance v2, La4/k;
+
+    .line 170
+    .line 171
+    invoke-interface {v1, v12}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    .line 172
+    .line 173
+    .line 174
+    move-result-object v3
+
+    .line 175
+    const/4 v4, 0x2
+
+    .line 176
+    invoke-interface {v1, v4}, Landroid/database/Cursor;->getString(I)Ljava/lang/String;
+
+    .line 177
+    .line 178
+    .line 179
+    move-result-object v4
+
+    .line 180
+    invoke-direct {v2, v3, v4}, La4/k;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 181
+    .line 182
+    .line 183
+    invoke-interface {v0, v2}, Ljava/util/Set;->add(Ljava/lang/Object;)Z
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 184
+    .line 185
+    .line 186
+    goto :goto_4
+
+    .line 187
+    :cond_6
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
+
+    .line 188
+    .line 189
+    .line 190
+    invoke-virtual {v10}, Ljava/util/ArrayList;->listIterator()Ljava/util/ListIterator;
+
+    .line 191
+    .line 192
+    .line 193
+    move-result-object v0
+
+    .line 194
+    :goto_5
+    invoke-interface {v0}, Ljava/util/ListIterator;->hasNext()Z
+
+    .line 195
+    .line 196
+    .line 197
+    move-result v1
+
+    .line 198
+    if-eqz v1, :cond_9
+
+    .line 199
+    .line 200
+    invoke-interface {v0}, Ljava/util/ListIterator;->next()Ljava/lang/Object;
+
+    .line 201
+    .line 202
+    .line 203
+    move-result-object v1
+
+    .line 204
+    check-cast v1, La4/b;
+
+    .line 205
+    .line 206
+    iget-wide v2, v1, La4/b;->a:J
+
+    .line 207
+    .line 208
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 209
+    .line 210
+    .line 211
+    move-result-object v4
+
+    .line 212
+    invoke-virtual {p1, v4}, Ljava/util/HashMap;->containsKey(Ljava/lang/Object;)Z
+
+    .line 213
+    .line 214
+    .line 215
+    move-result v4
+
+    .line 216
+    if-nez v4, :cond_7
+
+    .line 217
+    .line 218
+    goto :goto_5
+
+    .line 219
+    :cond_7
+    iget-object v4, v1, La4/b;->c:Lt3/h;
+
+    .line 220
+    .line 221
+    invoke-virtual {v4}, Lt3/h;->c()Lcom/google/android/gms/internal/measurement/xf;
+
+    .line 222
+    .line 223
+    .line 224
+    move-result-object v4
+
+    .line 225
+    invoke-static {v2, v3}, Ljava/lang/Long;->valueOf(J)Ljava/lang/Long;
+
+    .line 226
+    .line 227
+    .line 228
+    move-result-object v5
+
+    .line 229
+    invoke-virtual {p1, v5}, Ljava/util/HashMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 230
+    .line 231
+    .line 232
+    move-result-object v5
+
+    .line 233
+    check-cast v5, Ljava/util/Set;
+
+    .line 234
+    .line 235
+    invoke-interface {v5}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
+
+    .line 236
+    .line 237
+    .line 238
+    move-result-object v5
+
+    .line 239
+    :goto_6
+    invoke-interface {v5}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 240
+    .line 241
+    .line 242
+    move-result v6
+
+    .line 243
+    if-eqz v6, :cond_8
+
+    .line 244
+    .line 245
+    invoke-interface {v5}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
+    .line 246
+    .line 247
+    .line 248
+    move-result-object v6
+
+    .line 249
+    check-cast v6, La4/k;
+
+    .line 250
+    .line 251
+    iget-object v7, v6, La4/k;->a:Ljava/lang/String;
+
+    .line 252
+    .line 253
+    iget-object v6, v6, La4/k;->b:Ljava/lang/String;
+
+    .line 254
+    .line 255
+    invoke-virtual {v4, v7, v6}, Lcom/google/android/gms/internal/measurement/xf;->a(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 256
+    .line 257
+    .line 258
+    goto :goto_6
+
+    .line 259
+    :cond_8
+    iget-object v1, v1, La4/b;->b:Lt3/i;
+
+    .line 260
+    .line 261
+    invoke-virtual {v4}, Lcom/google/android/gms/internal/measurement/xf;->b()Lt3/h;
+
+    .line 262
+    .line 263
+    .line 264
+    move-result-object v4
+
+    .line 265
+    new-instance v5, La4/b;
+
+    .line 266
+    .line 267
+    invoke-direct {v5, v2, v3, v1, v4}, La4/b;-><init>(JLt3/i;Lt3/h;)V
+
+    .line 268
+    .line 269
+    .line 270
+    invoke-interface {v0, v5}, Ljava/util/ListIterator;->set(Ljava/lang/Object;)V
+
+    .line 271
+    .line 272
+    .line 273
+    goto :goto_5
+
+    .line 274
+    :cond_9
+    return-object v10
+
+    .line 275
+    :catchall_0
+    move-exception v0
+
+    .line 276
+    move-object p1, v0
+
+    .line 277
+    invoke-interface {v1}, Landroid/database/Cursor;->close()V
+
+    .line 278
+    .line 279
+    .line 280
+    throw p1
 .end method
 
-.method public e()Ljava/lang/Object;
-    .locals 1
+.method public b(Lq7/b;)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lq7/a;
+
+    .line 4
+    .line 5
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v1, Lq7/a;
+
+    .line 8
+    .line 9
+    invoke-interface {v0, p1}, Lq7/a;->b(Lq7/b;)V
+
+    .line 10
+    .line 11
+    .line 12
+    invoke-interface {v1, p1}, Lq7/a;->b(Lq7/b;)V
+
+    .line 13
+    .line 14
+    .line 15
+    return-void
+.end method
+
+.method public d()Ljava/lang/Object;
+    .locals 7
 
     .line 1
     iget v0, p0, La4/f;->c:I
@@ -402,106 +718,292 @@
     .line 4
     .line 5
     .line 6
-    new-instance v0, Ljava/util/ArrayDeque;
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
     .line 7
     .line 8
-    invoke-direct {v0}, Ljava/util/ArrayDeque;-><init>()V
+    check-cast v0, Lae/h;
 
     .line 9
     .line 10
-    .line 11
-    return-object v0
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
 
+    .line 11
     .line 12
-    :pswitch_0
-    new-instance v0, Ljava/util/TreeSet;
+    check-cast v1, Ljava/util/HashMap;
 
     .line 13
     .line 14
-    invoke-direct {v0}, Ljava/util/TreeSet;-><init>()V
+    invoke-virtual {v1}, Ljava/util/HashMap;->entrySet()Ljava/util/Set;
 
     .line 15
     .line 16
     .line 17
-    return-object v0
+    move-result-object v1
 
     .line 18
-    :pswitch_1
-    new-instance v0, Ljava/util/LinkedHashSet;
+    invoke-interface {v1}, Ljava/util/Set;->iterator()Ljava/util/Iterator;
 
     .line 19
     .line 20
-    invoke-direct {v0}, Ljava/util/LinkedHashSet;-><init>()V
-
     .line 21
+    move-result-object v1
+
     .line 22
+    :goto_0
+    invoke-interface {v1}, Ljava/util/Iterator;->hasNext()Z
+
     .line 23
-    return-object v0
-
     .line 24
-    :pswitch_2
-    new-instance v0, Ljava/util/ArrayList;
-
     .line 25
+    move-result v2
+
     .line 26
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    if-eqz v2, :cond_0
 
     .line 27
     .line 28
+    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+
     .line 29
+    .line 30
+    .line 31
+    move-result-object v2
+
+    .line 32
+    check-cast v2, Ljava/util/Map$Entry;
+
+    .line 33
+    .line 34
+    iget-object v3, v0, Lae/h;->i:Ljava/lang/Object;
+
+    .line 35
+    .line 36
+    check-cast v3, La4/c;
+
+    .line 37
+    .line 38
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getValue()Ljava/lang/Object;
+
+    .line 39
+    .line 40
+    .line 41
+    move-result-object v4
+
+    .line 42
+    check-cast v4, Ljava/lang/Integer;
+
+    .line 43
+    .line 44
+    invoke-virtual {v4}, Ljava/lang/Integer;->intValue()I
+
+    .line 45
+    .line 46
+    .line 47
+    move-result v4
+
+    .line 48
+    int-to-long v4, v4
+
+    .line 49
+    invoke-interface {v2}, Ljava/util/Map$Entry;->getKey()Ljava/lang/Object;
+
+    .line 50
+    .line 51
+    .line 52
+    move-result-object v2
+
+    .line 53
+    check-cast v2, Ljava/lang/String;
+
+    .line 54
+    .line 55
+    check-cast v3, La4/l;
+
+    .line 56
+    .line 57
+    sget-object v6, Lw3/c;->y:Lw3/c;
+
+    .line 58
+    .line 59
+    invoke-virtual {v3, v4, v5, v6, v2}, La4/l;->i(JLw3/c;Ljava/lang/String;)V
+
+    .line 60
+    .line 61
+    .line 62
+    goto :goto_0
+
+    .line 63
+    :cond_0
+    const/4 v0, 0x0
+
+    .line 64
     return-object v0
 
-    .line 30
+    .line 65
+    :pswitch_0
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 66
+    .line 67
+    check-cast v0, Lae/h;
+
+    .line 68
+    .line 69
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 70
+    .line 71
+    check-cast v1, Ljava/lang/Iterable;
+
+    .line 72
+    .line 73
+    iget-object v0, v0, Lae/h;->c:Ljava/lang/Object;
+
+    .line 74
+    .line 75
+    check-cast v0, La4/d;
+
+    .line 76
+    .line 77
+    check-cast v0, La4/l;
+
+    .line 78
+    .line 79
+    invoke-virtual {v0}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    .line 80
+    .line 81
+    .line 82
+    invoke-interface {v1}, Ljava/lang/Iterable;->iterator()Ljava/util/Iterator;
+
+    .line 83
+    .line 84
+    .line 85
+    move-result-object v2
+
+    .line 86
+    invoke-interface {v2}, Ljava/util/Iterator;->hasNext()Z
+
+    .line 87
+    .line 88
+    .line 89
+    move-result v2
+
+    .line 90
+    if-nez v2, :cond_1
+
+    .line 91
+    .line 92
+    goto :goto_1
+
+    .line 93
+    :cond_1
+    new-instance v2, Ljava/lang/StringBuilder;
+
+    .line 94
+    .line 95
+    const-string v3, "DELETE FROM events WHERE _id in "
+
+    .line 96
+    .line 97
+    invoke-direct {v2, v3}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+
+    .line 98
+    .line 99
+    .line 100
+    invoke-static {v1}, La4/l;->E(Ljava/lang/Iterable;)Ljava/lang/String;
+
+    .line 101
+    .line 102
+    .line 103
+    move-result-object v1
+
+    .line 104
+    invoke-virtual {v2, v1}, Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;
+
+    .line 105
+    .line 106
+    .line 107
+    invoke-virtual {v2}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
+
+    .line 108
+    .line 109
+    .line 110
+    move-result-object v1
+
+    .line 111
+    invoke-virtual {v0}, La4/l;->a()Landroid/database/sqlite/SQLiteDatabase;
+
+    .line 112
+    .line 113
+    .line 114
+    move-result-object v0
+
+    .line 115
+    invoke-virtual {v0, v1}, Landroid/database/sqlite/SQLiteDatabase;->compileStatement(Ljava/lang/String;)Landroid/database/sqlite/SQLiteStatement;
+
+    .line 116
+    .line 117
+    .line 118
+    move-result-object v0
+
+    .line 119
+    invoke-virtual {v0}, Landroid/database/sqlite/SQLiteStatement;->execute()V
+
+    .line 120
+    .line 121
+    .line 122
+    :goto_1
+    const/4 v0, 0x0
+
+    .line 123
+    return-object v0
+
+    .line 124
     nop
 
-    .line 31
+    .line 125
     :pswitch_data_0
-    .packed-switch 0x1a
-        :pswitch_2
-        :pswitch_1
+    .packed-switch 0xb
         :pswitch_0
     .end packed-switch
 .end method
 
-.method public f(Lcom/google/android/gms/internal/measurement/ub;)Ljava/lang/Object;
-    .locals 1
+.method public f(Lae/o;)Ljava/lang/Object;
+    .locals 3
 
     .line 1
     iget v0, p0, La4/f;->c:I
 
     .line 2
     .line 3
-    sparse-switch v0, :sswitch_data_0
+    packed-switch v0, :pswitch_data_0
 
     .line 4
     .line 5
     .line 6
-    invoke-static {p1}, Lcom/google/firebase/datatransport/TransportRegistrar;->a(Lcom/google/android/gms/internal/measurement/ub;)Lq3/e;
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
     .line 7
     .line 8
-    .line 9
-    move-result-object p1
+    check-cast v0, Ljava/lang/String;
 
+    .line 9
     .line 10
-    return-object p1
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
 
     .line 11
-    :sswitch_0
-    invoke-static {p1}, Lcom/google/firebase/datatransport/TransportRegistrar;->b(Lcom/google/android/gms/internal/measurement/ub;)Lq3/e;
-
     .line 12
+    check-cast v1, La4/e;
+
     .line 13
     .line 14
-    move-result-object p1
+    const-class v2, Landroid/content/Context;
 
     .line 15
-    return-object p1
-
     .line 16
-    :sswitch_1
-    invoke-static {p1}, Lcom/google/firebase/datatransport/TransportRegistrar;->c(Lcom/google/android/gms/internal/measurement/ub;)Lq3/e;
+    invoke-virtual {p1, v2}, Lae/o;->a(Ljava/lang/Class;)Ljava/lang/Object;
 
     .line 17
     .line 18
@@ -509,472 +1011,547 @@
     move-result-object p1
 
     .line 20
-    return-object p1
+    check-cast p1, Landroid/content/Context;
 
     .line 21
-    :sswitch_2
-    invoke-static {p1}, Lcom/google/firebase/sessions/FirebaseSessionsRegistrar;->a(Lcom/google/android/gms/internal/measurement/ub;)Lb8/s;
-
     .line 22
-    .line 23
-    .line 24
-    move-result-object p1
-
-    .line 25
-    return-object p1
-
-    .line 26
-    :sswitch_3
-    invoke-static {p1}, Lcom/google/firebase/sessions/FirebaseSessionsRegistrar;->b(Lcom/google/android/gms/internal/measurement/ub;)Lb8/p;
-
-    .line 27
-    .line 28
-    .line 29
-    move-result-object p1
-
-    .line 30
-    return-object p1
-
-    .line 31
-    :sswitch_data_0
-    .sparse-switch
-        0xc -> :sswitch_3
-        0xd -> :sswitch_2
-        0x17 -> :sswitch_1
-        0x18 -> :sswitch_0
-    .end sparse-switch
-.end method
-
-.method public get()Ljava/lang/Object;
-    .locals 5
-
-    .line 1
-    sget v0, Landroid/os/Build$VERSION;->SDK_INT:I
-
-    .line 2
-    .line 3
-    const/16 v1, 0x22
-
-    .line 4
-    .line 5
-    const/4 v2, 0x0
-
-    .line 6
-    if-eq v0, v1, :cond_0
-
-    .line 7
-    .line 8
-    goto :goto_0
-
-    .line 9
-    :cond_0
-    sget-object v0, Landroid/graphics/Bitmap$Config;->ALPHA_8:Landroid/graphics/Bitmap$Config;
-
-    .line 10
-    .line 11
-    const/4 v1, 0x1
-
-    .line 12
-    invoke-static {v1, v1, v0}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-
-    .line 13
-    .line 14
-    .line 15
-    move-result-object v0
-
-    .line 16
-    sget-object v3, Landroid/graphics/Bitmap$Config;->HARDWARE:Landroid/graphics/Bitmap$Config;
-
-    .line 17
-    .line 18
-    invoke-virtual {v0, v3, v2}, Landroid/graphics/Bitmap;->copy(Landroid/graphics/Bitmap$Config;Z)Landroid/graphics/Bitmap;
-
-    .line 19
-    .line 20
-    .line 21
-    move-result-object v3
-
-    .line 22
-    invoke-virtual {v0}, Landroid/graphics/Bitmap;->recycle()V
+    iget v1, v1, La4/e;->c:I
 
     .line 23
     .line 24
-    .line 25
-    if-nez v3, :cond_1
+    packed-switch v1, :pswitch_data_1
 
+    .line 25
     .line 26
     .line 27
-    move v2, v1
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
     .line 28
-    :cond_1
-    const/4 v0, 0x2
-
     .line 29
-    const-string v1, "GainmapWorkaroundCalc"
-
     .line 30
+    move-result-object v1
+
     .line 31
-    invoke-static {v1, v0}, Landroid/util/Log;->isLoggable(Ljava/lang/String;I)Z
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageName()Ljava/lang/String;
 
     .line 32
     .line 33
     .line 34
-    move-result v0
+    move-result-object p1
 
     .line 35
-    if-eqz v0, :cond_2
+    invoke-virtual {v1, p1}, Landroid/content/pm/PackageManager;->getInstallerPackageName(Ljava/lang/String;)Ljava/lang/String;
 
     .line 36
     .line 37
-    new-instance v0, Ljava/lang/StringBuilder;
-
     .line 38
+    move-result-object p1
+
     .line 39
-    const-string v4, "calculateNeedsGainmapDecodeWorkaround="
+    if-eqz p1, :cond_0
 
     .line 40
     .line 41
-    invoke-direct {v0, v4}, Ljava/lang/StringBuilder;-><init>(Ljava/lang/String;)V
+    invoke-static {p1}, Lcom/google/firebase/FirebaseCommonRegistrar;->a(Ljava/lang/String;)Ljava/lang/String;
 
     .line 42
     .line 43
     .line 44
-    invoke-virtual {v0, v2}, Ljava/lang/StringBuilder;->append(Z)Ljava/lang/StringBuilder;
+    move-result-object p1
 
     .line 45
+    goto :goto_0
+
     .line 46
+    :cond_0
+    const-string p1, ""
+
     .line 47
-    invoke-virtual {v0}, Ljava/lang/StringBuilder;->toString()Ljava/lang/String;
-
     .line 48
+    goto :goto_0
+
     .line 49
+    :pswitch_0
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
     .line 50
-    move-result-object v0
-
     .line 51
-    invoke-static {v1, v0}, Landroid/util/Log;->v(Ljava/lang/String;Ljava/lang/String;)I
-
     .line 52
+    move-result-object v1
+
     .line 53
+    const-string v2, "android.hardware.type.television"
+
     .line 54
-    :cond_2
-    if-eqz v3, :cond_3
-
     .line 55
-    .line 56
-    invoke-virtual {v3}, Landroid/graphics/Bitmap;->recycle()V
+    invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
 
+    .line 56
     .line 57
     .line 58
+    move-result v1
+
     .line 59
-    :cond_3
-    :goto_0
-    invoke-static {v2}, Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;
+    if-eqz v1, :cond_1
 
     .line 60
     .line 61
+    const-string p1, "tv"
+
     .line 62
-    move-result-object v0
-
     .line 63
-    return-object v0
-.end method
+    goto :goto_0
 
-.method public onDetachedFromWindow()V
-    .locals 0
+    .line 64
+    :cond_1
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
 
-    .line 1
-    invoke-static {}, Lcom/microsoft/xboxtcui/Interop;->b()V
+    .line 65
+    .line 66
+    .line 67
+    move-result-object v1
 
-    .line 2
-    .line 3
-    .line 4
-    return-void
-.end method
+    .line 68
+    const-string v2, "android.hardware.type.watch"
 
-.method public onRelease(Lcom/discord/org/webrtc/EglThread;)Z
-    .locals 0
+    .line 69
+    .line 70
+    invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
 
-    .line 1
-    invoke-static {p1}, Lcom/discord/org/webrtc/EglThread;->b(Lcom/discord/org/webrtc/EglThread;)Z
+    .line 71
+    .line 72
+    .line 73
+    move-result v1
 
-    .line 2
-    .line 3
-    .line 4
+    .line 74
+    if-eqz v1, :cond_2
+
+    .line 75
+    .line 76
+    const-string p1, "watch"
+
+    .line 77
+    .line 78
+    goto :goto_0
+
+    .line 79
+    :cond_2
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    .line 80
+    .line 81
+    .line 82
+    move-result-object v1
+
+    .line 83
+    const-string v2, "android.hardware.type.automotive"
+
+    .line 84
+    .line 85
+    invoke-virtual {v1, v2}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+
+    .line 86
+    .line 87
+    .line 88
+    move-result v1
+
+    .line 89
+    if-eqz v1, :cond_3
+
+    .line 90
+    .line 91
+    const-string p1, "auto"
+
+    .line 92
+    .line 93
+    goto :goto_0
+
+    .line 94
+    :cond_3
+    invoke-virtual {p1}, Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;
+
+    .line 95
+    .line 96
+    .line 97
+    move-result-object p1
+
+    .line 98
+    const-string v1, "android.hardware.type.embedded"
+
+    .line 99
+    .line 100
+    invoke-virtual {p1, v1}, Landroid/content/pm/PackageManager;->hasSystemFeature(Ljava/lang/String;)Z
+
+    .line 101
+    .line 102
+    .line 103
     move-result p1
 
-    .line 5
-    return p1
-.end method
+    .line 104
+    if-eqz p1, :cond_0
 
-.method public then(Ljava/lang/Object;)Lcom/google/android/gms/tasks/Task;
-    .locals 7
+    .line 105
+    .line 106
+    const-string p1, "embedded"
 
-    const-string v0, "levilauncher-news"
+    .line 107
+    .line 108
+    goto :goto_0
 
-    check-cast p1, Lcom/google/firebase/messaging/b0;
+    .line 109
+    :pswitch_1
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
-    sget-object v1, Lcom/google/firebase/messaging/FirebaseMessaging;->m:La4/e;
+    .line 110
+    .line 111
+    .line 112
+    move-result-object p1
 
-    .line 2
-    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 113
+    if-eqz p1, :cond_0
 
-    .line 3
-    new-instance v1, Lcom/google/firebase/messaging/y;
+    .line 114
+    .line 115
+    iget p1, p1, Landroid/content/pm/ApplicationInfo;->minSdkVersion:I
 
-    const-string v2, "S"
+    .line 116
+    .line 117
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
 
-    invoke-direct {v1, v2, v0}, Lcom/google/firebase/messaging/y;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+    .line 118
+    .line 119
+    .line 120
+    move-result-object p1
 
-    .line 4
-    iget-object v0, p1, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;
+    .line 121
+    goto :goto_0
 
-    .line 5
-    monitor-enter v0
+    .line 122
+    :pswitch_2
+    invoke-virtual {p1}, Landroid/content/Context;->getApplicationInfo()Landroid/content/pm/ApplicationInfo;
 
-    .line 6
+    .line 123
+    .line 124
+    .line 125
+    move-result-object p1
+
+    .line 126
+    if-eqz p1, :cond_0
+
+    .line 127
+    .line 128
+    iget p1, p1, Landroid/content/pm/ApplicationInfo;->targetSdkVersion:I
+
+    .line 129
+    .line 130
+    invoke-static {p1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    .line 131
+    .line 132
+    .line 133
+    move-result-object p1
+
+    .line 134
+    :goto_0
+    new-instance v1, Lx7/a;
+
+    .line 135
+    .line 136
+    invoke-direct {v1, v0, p1}, Lx7/a;-><init>(Ljava/lang/String;Ljava/lang/String;)V
+
+    .line 137
+    .line 138
+    .line 139
+    return-object v1
+
+    .line 140
+    :pswitch_3
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 141
+    .line 142
+    check-cast v0, Ljava/lang/String;
+
+    .line 143
+    .line 144
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 145
+    .line 146
+    check-cast v1, Lp6/b;
+
+    .line 147
+    .line 148
     :try_start_0
-    iget-object v2, v0, Lcom/google/firebase/messaging/z;->a:Lb8/s0;
+    invoke-static {v0}, Landroid/os/Trace;->beginSection(Ljava/lang/String;)V
 
-    .line 7
-    iget-object v3, v1, Lcom/google/firebase/messaging/y;->c:Ljava/lang/String;
+    .line 149
+    .line 150
+    .line 151
+    iget-object v0, v1, Lp6/b;->f:Lp6/e;
 
-    .line 8
-    invoke-virtual {v2}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+    .line 152
+    .line 153
+    invoke-interface {v0, p1}, Lp6/e;->f(Lae/o;)Ljava/lang/Object;
 
-    .line 9
-    invoke-static {v3}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-nez v4, :cond_2
-
-    iget-object v4, v2, Lb8/s0;->p:Ljava/lang/Object;
-
-    check-cast v4, Ljava/lang/String;
-
-    invoke-virtual {v3, v4}, Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z
-
-    move-result v4
-
-    if-eqz v4, :cond_0
-
-    goto :goto_0
-
-    .line 10
-    :cond_0
-    iget-object v4, v2, Lb8/s0;->q:Ljava/lang/Object;
-
-    check-cast v4, Ljava/util/ArrayDeque;
-
-    monitor-enter v4
+    .line 154
+    .line 155
+    .line 156
+    move-result-object p1
     :try_end_0
-    .catchall {:try_start_0 .. :try_end_0} :catchall_3
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    .line 11
-    :try_start_1
-    iget-object v5, v2, Lb8/s0;->q:Ljava/lang/Object;
+    .line 157
+    invoke-static {}, Landroid/os/Trace;->endSection()V
 
-    check-cast v5, Ljava/util/ArrayDeque;
+    .line 158
+    .line 159
+    .line 160
+    return-object p1
 
-    invoke-virtual {v5, v3}, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_1
-
-    .line 12
-    iget-object v3, v2, Lb8/s0;->w:Ljava/lang/Object;
-
-    check-cast v3, Ljava/util/concurrent/ScheduledThreadPoolExecutor;
-
-    new-instance v5, La6/d;
-
-    const/16 v6, 0x9
-
-    invoke-direct {v5, v2, v6}, La6/d;-><init>(Ljava/lang/Object;I)V
-
-    invoke-virtual {v3, v5}, Ljava/util/concurrent/ScheduledThreadPoolExecutor;->execute(Ljava/lang/Runnable;)V
-
-    .line 13
-    :cond_1
-    monitor-exit v4
-
-    goto :goto_0
-
+    .line 161
     :catchall_0
     move-exception p1
 
-    .line 14
-    monitor-exit v4
-    :try_end_1
-    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+    .line 162
+    invoke-static {}, Landroid/os/Trace;->endSection()V
 
-    :try_start_2
+    .line 163
+    .line 164
+    .line 165
     throw p1
-    :try_end_2
-    .catchall {:try_start_2 .. :try_end_2} :catchall_3
+
+    .line 166
+    nop
+
+    .line 167
+    :pswitch_data_0
+    .packed-switch 0x6
+        :pswitch_3
+    .end packed-switch
+
+    .line 168
+    .line 169
+    .line 170
+    .line 171
+    .line 172
+    .line 173
+    :pswitch_data_1
+    .packed-switch 0x18
+        :pswitch_2
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public onComplete(Lcom/google/android/gms/tasks/Task;)V
+    .locals 2
+
+    .line 1
+    iget-object p1, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast p1, Lcom/google/firebase/messaging/EnhancedIntentService;
+
+    .line 4
+    .line 5
+    iget-object v0, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v0, Landroid/content/Intent;
+
+    .line 8
+    .line 9
+    sget v1, Lcom/google/firebase/messaging/EnhancedIntentService;->c:I
+
+    .line 10
+    .line 11
+    invoke-virtual {p1, v0}, Lcom/google/firebase/messaging/EnhancedIntentService;->a(Landroid/content/Intent;)V
+
+    .line 12
+    .line 13
+    .line 14
+    return-void
+.end method
+
+.method public processResponse(ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
+    .locals 2
+
+    .line 1
+    iget v0, p0, La4/f;->c:I
+
+    .line 2
+    .line 3
+    packed-switch v0, :pswitch_data_0
+
+    .line 4
+    .line 5
+    .line 6
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 7
+    .line 8
+    check-cast v0, Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 9
+    .line 10
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    check-cast v1, Lcom/microsoft/xbox/service/network/managers/AddFollowingUserResponseContainer$AddFollowingUserResponse;
+
+    .line 13
+    .line 14
+    invoke-static {v0, v1, p1, p2, p3}, Lcom/microsoft/xbox/service/network/managers/xblshared/SLSXsapiServiceManager;->a(Ljava/util/concurrent/atomic/AtomicReference;Lcom/microsoft/xbox/service/network/managers/AddFollowingUserResponseContainer$AddFollowingUserResponse;ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
 
     .line 15
-    :cond_2
-    :goto_0
-    monitor-exit v0
-
     .line 16
-    new-instance v0, Lcom/google/android/gms/tasks/TaskCompletionSource;
-
-    invoke-direct {v0}, Lcom/google/android/gms/tasks/TaskCompletionSource;-><init>()V
-
     .line 17
-    iget-object v2, p1, Lcom/google/firebase/messaging/b0;->e:Landroidx/collection/ArrayMap;
-
-    monitor-enter v2
+    return-void
 
     .line 18
-    :try_start_3
-    iget-object v1, v1, Lcom/google/firebase/messaging/y;->c:Ljava/lang/String;
+    :pswitch_0
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
     .line 19
-    iget-object v3, p1, Lcom/google/firebase/messaging/b0;->e:Landroidx/collection/ArrayMap;
-
-    invoke-virtual {v3, v1}, Landroidx/collection/SimpleArrayMap;->containsKey(Ljava/lang/Object;)Z
-
-    move-result v3
-
-    if-eqz v3, :cond_3
-
     .line 20
-    iget-object v3, p1, Lcom/google/firebase/messaging/b0;->e:Landroidx/collection/ArrayMap;
-
-    invoke-virtual {v3, v1}, Landroidx/collection/SimpleArrayMap;->get(Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-result-object v1
-
-    check-cast v1, Ljava/util/ArrayDeque;
-
-    goto :goto_1
-
-    :catchall_1
-    move-exception p1
-
-    goto :goto_2
+    check-cast v0, Ljava/util/concurrent/atomic/AtomicReference;
 
     .line 21
-    :cond_3
-    new-instance v3, Ljava/util/ArrayDeque;
-
-    invoke-direct {v3}, Ljava/util/ArrayDeque;-><init>()V
-
     .line 22
-    iget-object v4, p1, Lcom/google/firebase/messaging/b0;->e:Landroidx/collection/ArrayMap;
-
-    invoke-virtual {v4, v1, v3}, Landroidx/collection/SimpleArrayMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-
-    move-object v1, v3
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
 
     .line 23
-    :goto_1
-    invoke-virtual {v1, v0}, Ljava/util/ArrayDeque;->add(Ljava/lang/Object;)Z
-
     .line 24
-    monitor-exit v2
-    :try_end_3
-    .catchall {:try_start_3 .. :try_end_3} :catchall_1
+    check-cast v1, Ljava/util/List;
 
     .line 25
-    invoke-virtual {v0}, Lcom/google/android/gms/tasks/TaskCompletionSource;->getTask()Lcom/google/android/gms/tasks/Task;
-
-    move-result-object v0
-
     .line 26
-    iget-object v1, p1, Lcom/google/firebase/messaging/b0;->h:Lcom/google/firebase/messaging/z;
-
-    invoke-virtual {v1}, Lcom/google/firebase/messaging/z;->a()Lcom/google/firebase/messaging/y;
-
-    move-result-object v1
-
-    if-eqz v1, :cond_4
+    invoke-static {v0, v1, p1, p2, p3}, Lcom/microsoft/xbox/toolkit/TcuiHttpUtil;->b(Ljava/util/concurrent/atomic/AtomicReference;Ljava/util/List;ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
 
     .line 27
-    monitor-enter p1
-
     .line 28
-    :try_start_4
-    iget-boolean v1, p1, Lcom/google/firebase/messaging/b0;->g:Z
-    :try_end_4
-    .catchall {:try_start_4 .. :try_end_4} :catchall_2
-
-    monitor-exit p1
-
-    if-nez v1, :cond_4
-
-    const-wide/16 v1, 0x0
-
     .line 29
-    invoke-virtual {p1, v1, v2}, Lcom/google/firebase/messaging/b0;->f(J)V
-
-    return-object v0
-
-    :catchall_2
-    move-exception v0
+    return-void
 
     .line 30
-    :try_start_5
-    monitor-exit p1
-    :try_end_5
-    .catchall {:try_start_5 .. :try_end_5} :catchall_2
-
-    throw v0
-
-    :cond_4
-    return-object v0
+    :pswitch_1
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
     .line 31
-    :goto_2
-    :try_start_6
-    monitor-exit v2
-    :try_end_6
-    .catchall {:try_start_6 .. :try_end_6} :catchall_1
-
-    throw p1
-
-    :catchall_3
-    move-exception p1
-
     .line 32
-    :try_start_7
-    monitor-exit v0
-    :try_end_7
-    .catchall {:try_start_7 .. :try_end_7} :catchall_3
+    check-cast v0, Ljava/lang/Class;
 
-    throw p1
+    .line 33
+    .line 34
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 35
+    .line 36
+    check-cast v1, Ljava/util/concurrent/atomic/AtomicReference;
+
+    .line 37
+    .line 38
+    invoke-static {v0, v1, p1, p2, p3}, Lcom/microsoft/xbox/toolkit/TcuiHttpUtil;->a(Ljava/lang/Class;Ljava/util/concurrent/atomic/AtomicReference;ILjava/io/InputStream;Lcom/microsoft/xbox/idp/util/HttpHeaders;)V
+
+    .line 39
+    .line 40
+    .line 41
+    return-void
+
+    .line 42
+    nop
+
+    .line 43
+    :pswitch_data_0
+    .packed-switch 0x3
+        :pswitch_1
+        :pswitch_0
+    .end packed-switch
+.end method
+
+.method public setBit(I)V
+    .locals 2
+
+    .line 1
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    check-cast v0, Lcom/mojang/minecraftpe/hardwareinfo/CPUTopologyInfo;
+
+    .line 4
+    .line 5
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
+
+    .line 6
+    .line 7
+    check-cast v1, Ljava/util/TreeSet;
+
+    .line 8
+    .line 9
+    invoke-static {v0, v1, p1}, Lcom/mojang/minecraftpe/hardwareinfo/CPUTopologyInfo;->a(Lcom/mojang/minecraftpe/hardwareinfo/CPUTopologyInfo;Ljava/util/TreeSet;I)V
+
+    .line 10
+    .line 11
+    .line 12
+    return-void
 .end method
 
 .method public then(Lcom/google/android/gms/tasks/Task;)Ljava/lang/Object;
-    .locals 0
+    .locals 3
 
     .line 1
-    iget p1, p0, La4/f;->c:I
+    iget-object v0, p0, La4/f;->d:Ljava/lang/Object;
 
-    packed-switch p1, :pswitch_data_0
+    .line 2
+    .line 3
+    check-cast v0, Lcom/google/firebase/messaging/i;
 
-    const/4 p1, -0x1
+    .line 4
+    .line 5
+    iget-object v1, p0, La4/f;->h:Ljava/lang/Object;
 
-    :goto_0
-    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+    .line 6
+    .line 7
+    check-cast v1, Ljava/lang/String;
 
-    move-result-object p1
+    .line 8
+    .line 9
+    monitor-enter v0
 
+    .line 10
+    :try_start_0
+    iget-object v2, v0, Lcom/google/firebase/messaging/i;->b:Ljava/lang/Object;
+
+    .line 11
+    .line 12
+    check-cast v2, Landroidx/collection/ArrayMap;
+
+    .line 13
+    .line 14
+    invoke-virtual {v2, v1}, Landroidx/collection/SimpleArrayMap;->remove(Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 15
+    .line 16
+    .line 17
+    monitor-exit v0
+
+    .line 18
     return-object p1
 
-    :pswitch_0
-    const/16 p1, 0x193
+    .line 19
+    :catchall_0
+    move-exception p1
 
-    goto :goto_0
+    .line 20
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
 
-    :pswitch_data_0
-    .packed-switch 0xf
-        :pswitch_0
-    .end packed-switch
+    .line 21
+    throw p1
 .end method

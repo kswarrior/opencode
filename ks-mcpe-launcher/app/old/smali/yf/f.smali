@@ -1,162 +1,247 @@
-.class public final Lyf/f;
-.super Lye/l;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public abstract Lyf/f;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public X:Lyf/s;
-
-.field public c:Lye/j;
-
-.field public d:Lyf/w;
-
-.field public h:Lyf/b;
-
-.field public p:Lyf/a;
-
-.field public q:Lye/j;
-
-.field public w:Lyf/c;
-
-.field public x:Lye/s;
-
-.field public y:Lye/m0;
+# static fields
+.field public static final a:Ljava/util/Map;
 
 
-# virtual methods
-.method public final d()Lye/r;
+# direct methods
+.method static constructor <clinit>()V
     .locals 3
 
     .line 1
-    new-instance v0, Lkg/b;
+    new-instance v0, Ljava/util/HashMap;
 
     .line 2
     .line 3
-    invoke-direct {v0}, Lkg/b;-><init>()V
+    invoke-direct {v0}, Ljava/util/HashMap;-><init>()V
 
     .line 4
     .line 5
     .line 6
-    iget-object v1, p0, Lyf/f;->c:Lye/j;
+    const/16 v1, 0x32cc
 
     .line 7
     .line 8
-    invoke-virtual {v1}, Lye/j;->w()Ljava/math/BigInteger;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 9
     .line 10
     .line 11
-    move-result-object v2
+    move-result-object v1
 
     .line 12
-    invoke-virtual {v2}, Ljava/math/BigInteger;->intValue()I
+    const-string v2, "RIPEMD128"
 
     .line 13
     .line 14
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 15
-    move-result v2
-
     .line 16
-    if-eqz v2, :cond_0
-
     .line 17
-    .line 18
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    const/16 v1, 0x31cc
 
+    .line 18
     .line 19
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
     .line 20
     .line 21
-    :cond_0
-    iget-object v1, p0, Lyf/f;->d:Lyf/w;
-
     .line 22
+    move-result-object v1
+
     .line 23
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    const-string v2, "RIPEMD160"
 
     .line 24
     .line 25
-    .line 26
-    iget-object v1, p0, Lyf/f;->h:Lyf/b;
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 26
     .line 27
     .line 28
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    const/16 v1, 0x33cc
 
     .line 29
     .line 30
-    .line 31
-    iget-object v1, p0, Lyf/f;->p:Lyf/a;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
+    .line 31
     .line 32
     .line 33
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    move-result-object v1
 
     .line 34
+    const-string v2, "SHA-1"
+
     .line 35
     .line 36
-    iget-object v1, p0, Lyf/f;->q:Lye/j;
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 37
     .line 38
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
-
     .line 39
+    const/16 v1, 0x38cc
+
     .line 40
     .line 41
-    iget-object v1, p0, Lyf/f;->w:Lyf/c;
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
     .line 42
     .line 43
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
-
     .line 44
+    move-result-object v1
+
     .line 45
+    const-string v2, "SHA-224"
+
     .line 46
-    iget-object v1, p0, Lyf/f;->x:Lye/s;
-
     .line 47
-    .line 48
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
+    .line 48
     .line 49
     .line 50
+    const/16 v1, 0x34cc
+
     .line 51
-    iget-object v1, p0, Lyf/f;->y:Lye/m0;
-
     .line 52
-    .line 53
-    if-eqz v1, :cond_1
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
 
+    .line 53
     .line 54
     .line 55
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    move-result-object v1
 
     .line 56
+    const-string v2, "SHA-256"
+
     .line 57
     .line 58
-    :cond_1
-    iget-object v1, p0, Lyf/f;->X:Lyf/s;
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 59
     .line 60
-    if-eqz v1, :cond_2
-
     .line 61
-    .line 62
-    invoke-virtual {v0, v1}, Lkg/b;->a(Lye/e;)V
+    const/16 v1, 0x36cc
 
+    .line 62
     .line 63
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
     .line 64
     .line 65
-    :cond_2
-    new-instance v1, Lye/z0;
-
     .line 66
+    move-result-object v1
+
     .line 67
-    invoke-direct {v1, v0}, Lye/z0;-><init>(Lkg/b;)V
+    const-string v2, "SHA-384"
 
     .line 68
     .line 69
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
     .line 70
-    return-object v1
+    .line 71
+    .line 72
+    const/16 v1, 0x35cc
+
+    .line 73
+    .line 74
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 75
+    .line 76
+    .line 77
+    move-result-object v1
+
+    .line 78
+    const-string v2, "SHA-512"
+
+    .line 79
+    .line 80
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 81
+    .line 82
+    .line 83
+    const/16 v1, 0x39cc
+
+    .line 84
+    .line 85
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 86
+    .line 87
+    .line 88
+    move-result-object v1
+
+    .line 89
+    const-string v2, "SHA-512/224"
+
+    .line 90
+    .line 91
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 92
+    .line 93
+    .line 94
+    const/16 v1, 0x40cc
+
+    .line 95
+    .line 96
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 97
+    .line 98
+    .line 99
+    move-result-object v1
+
+    .line 100
+    const-string v2, "SHA-512/256"
+
+    .line 101
+    .line 102
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 103
+    .line 104
+    .line 105
+    const/16 v1, 0x37cc
+
+    .line 106
+    .line 107
+    invoke-static {v1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    .line 108
+    .line 109
+    .line 110
+    move-result-object v1
+
+    .line 111
+    const-string v2, "Whirlpool"
+
+    .line 112
+    .line 113
+    invoke-virtual {v0, v2, v1}, Ljava/util/HashMap;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+
+    .line 114
+    .line 115
+    .line 116
+    invoke-static {v0}, Ljava/util/Collections;->unmodifiableMap(Ljava/util/Map;)Ljava/util/Map;
+
+    .line 117
+    .line 118
+    .line 119
+    move-result-object v0
+
+    .line 120
+    sput-object v0, Lyf/f;->a:Ljava/util/Map;
+
+    .line 121
+    .line 122
+    return-void
 .end method

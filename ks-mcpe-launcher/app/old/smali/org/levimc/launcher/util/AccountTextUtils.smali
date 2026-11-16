@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/util/AccountTextUtils;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
@@ -102,59 +102,50 @@
 
     .line 11
     .line 12
-    invoke-static {v0}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    if-eqz v0, :cond_1
 
     .line 13
     .line 14
-    .line 15
-    move-result v0
-
-    .line 16
-    if-nez v0, :cond_1
-
-    .line 17
-    .line 18
-    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->minecraftUsername:Ljava/lang/String;
-
-    .line 19
-    .line 20
     goto :goto_0
 
-    .line 21
+    .line 15
     :cond_1
-    iget-object p1, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxGamertag:Ljava/lang/String;
+    iget-object v0, p1, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxGamertag:Ljava/lang/String;
+
+    .line 16
+    .line 17
+    if-eqz v0, :cond_2
+
+    .line 18
+    .line 19
+    goto :goto_0
+
+    .line 20
+    :cond_2
+    const/4 v0, 0x0
+
+    .line 21
+    :goto_0
+    if-eqz v0, :cond_3
 
     .line 22
     .line 23
-    :goto_0
-    invoke-static {p1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    return-object v0
 
     .line 24
+    :cond_3
+    sget p1, Lorg/levimc/launcher/R$string;->not_signed_in:I
+
     .line 25
     .line 26
-    move-result v0
-
-    .line 27
-    if-nez v0, :cond_2
-
-    .line 28
-    .line 29
-    return-object p1
-
-    .line 30
-    :cond_2
-    sget p1, Lorg/levimc/launcher/R$string;->accounts_page_title:I
-
-    .line 31
-    .line 32
     invoke-virtual {p0, p1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
 
-    .line 33
-    .line 34
-    .line 35
+    .line 27
+    .line 28
+    .line 29
     move-result-object p0
 
-    .line 36
+    .line 30
     return-object p0
 .end method
 
@@ -492,49 +483,25 @@
 
     .line 7
     .line 8
-    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
+    if-eqz v1, :cond_1
 
     .line 9
     .line 10
+    return-object v1
+
     .line 11
-    move-result v1
-
-    .line 12
-    if-nez v1, :cond_1
-
-    .line 13
-    .line 14
-    iget-object p0, p0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->minecraftUsername:Ljava/lang/String;
-
-    .line 15
-    .line 16
-    return-object p0
-
-    .line 17
     :cond_1
-    iget-object v1, p0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxGamertag:Ljava/lang/String;
-
-    .line 18
-    .line 19
-    invoke-static {v1}, Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z
-
-    .line 20
-    .line 21
-    .line 22
-    move-result v1
-
-    .line 23
-    if-nez v1, :cond_2
-
-    .line 24
-    .line 25
     iget-object p0, p0, Lorg/levimc/launcher/core/auth/MsftAccountStore$MsftAccount;->xboxGamertag:Ljava/lang/String;
 
-    .line 26
-    .line 27
+    .line 12
+    .line 13
+    if-eqz p0, :cond_2
+
+    .line 14
+    .line 15
     return-object p0
 
-    .line 28
+    .line 16
     :cond_2
     return-object v0
 .end method

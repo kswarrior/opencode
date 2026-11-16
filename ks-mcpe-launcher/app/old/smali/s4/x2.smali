@@ -1,15 +1,44 @@
-.class public final Ls4/x2;
-.super Ls4/y1;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public interface abstract Ls4/x2;
+.super Ljava/lang/Object;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # virtual methods
-.method public final l()Z
-    .locals 1
+.method public abstract a(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+.end method
 
-    .line 1
-    const/4 v0, 0x0
+.method public abstract b(Landroid/os/Bundle;)V
+.end method
 
-    .line 2
-    return v0
+.method public abstract c(Ljava/lang/String;)V
+.end method
+
+.method public abstract d(Ljava/lang/String;)V
+.end method
+
+.method public abstract e(Ljava/lang/String;Ljava/lang/String;Landroid/os/Bundle;)V
+.end method
+
+.method public abstract f(Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+.end method
+
+.method public abstract g(Ljava/lang/String;)I
+.end method
+
+.method public abstract h(Ljava/lang/String;Ljava/lang/String;Z)Ljava/util/Map;
+.end method
+
+.method public abstract zzh()Ljava/lang/String;
+.end method
+
+.method public abstract zzi()Ljava/lang/String;
+.end method
+
+.method public abstract zzj()Ljava/lang/String;
+.end method
+
+.method public abstract zzk()Ljava/lang/String;
+.end method
+
+.method public abstract zzl()J
 .end method

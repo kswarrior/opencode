@@ -1,9 +1,9 @@
 .class Lcom/google/firebase/crashlytics/ndk/FirebaseCrashlyticsNdk;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Lu6/a;
+.implements Ls6/a;
 
 
 # static fields
@@ -75,11 +75,11 @@
 
 
 # virtual methods
-.method public getSessionFileProvider(Ljava/lang/String;)Lu6/e;
+.method public getSessionFileProvider(Ljava/lang/String;)Ls6/e;
     .locals 2
 
     .line 1
-    new-instance v0, La1/a;
+    new-instance v0, Ljd/k;
 
     .line 2
     .line 3
@@ -95,11 +95,11 @@
     move-result-object p1
 
     .line 9
-    const/16 v1, 0xa
+    const/16 v1, 0xf
 
     .line 10
     .line 11
-    invoke-direct {v0, p1, v1}, La1/a;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {v0, p1, v1}, Ljd/k;-><init>(Ljava/lang/Object;I)V
 
     .line 12
     .line 13
@@ -160,7 +160,7 @@
     move-result-object p1
 
     .line 7
-    iget-object p1, p1, Lcom/google/firebase/crashlytics/ndk/f;->a:Lq7/e;
+    iget-object p1, p1, Lcom/google/firebase/crashlytics/ndk/f;->a:Lo7/e;
 
     .line 8
     .line 9
@@ -168,7 +168,7 @@
 
     .line 10
     .line 11
-    iget-object v0, p1, Lq7/e;->d:Ljava/lang/Object;
+    iget-object v0, p1, Lo7/e;->d:Ljava/lang/Object;
 
     .line 12
     .line 13
@@ -193,11 +193,11 @@
     .line 22
     .line 23
     :cond_0
-    iget-object p1, p1, Lq7/e;->h:Ljava/lang/Object;
+    iget-object p1, p1, Lo7/e;->h:Ljava/lang/Object;
 
     .line 24
     .line 25
-    check-cast p1, La7/p1;
+    check-cast p1, Ly6/p1;
 
     .line 26
     .line 27
@@ -344,7 +344,7 @@
     throw v0
 .end method
 
-.method public declared-synchronized prepareNativeSession(Ljava/lang/String;Ljava/lang/String;JLa7/o2;)V
+.method public declared-synchronized prepareNativeSession(Ljava/lang/String;Ljava/lang/String;JLy6/o2;)V
     .locals 7
 
     .line 1
@@ -378,7 +378,7 @@
 
     .line 11
     :try_start_1
-    invoke-direct/range {v0 .. v6}, Lcom/google/firebase/crashlytics/ndk/c;-><init>(Lcom/google/firebase/crashlytics/ndk/FirebaseCrashlyticsNdk;Ljava/lang/String;Ljava/lang/String;JLa7/o2;)V
+    invoke-direct/range {v0 .. v6}, Lcom/google/firebase/crashlytics/ndk/c;-><init>(Lcom/google/firebase/crashlytics/ndk/FirebaseCrashlyticsNdk;Ljava/lang/String;Ljava/lang/String;JLy6/o2;)V
 
     .line 12
     .line 13

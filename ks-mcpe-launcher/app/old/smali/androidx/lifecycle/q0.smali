@@ -1,37 +1,34 @@
 .class public abstract Landroidx/lifecycle/q0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field public static final a:Lue/b;
+.field public static final a:Lce/b;
 
 
 # direct methods
 .method static constructor <clinit>()V
-    .locals 2
+    .locals 1
 
     .line 1
-    new-instance v0, Lue/b;
+    new-instance v0, Lce/b;
 
     .line 2
     .line 3
-    const/4 v1, 0x3
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
 
     .line 4
-    invoke-direct {v0, v1}, Lue/b;-><init>(I)V
-
     .line 5
     .line 6
-    .line 7
-    sput-object v0, Landroidx/lifecycle/q0;->a:Lue/b;
+    sput-object v0, Landroidx/lifecycle/q0;->a:Lce/b;
 
+    .line 7
     .line 8
-    .line 9
     return-void
 .end method
 
-.method public static a(Landroid/os/Bundle;Landroid/os/Bundle;)Landroidx/lifecycle/f0;
+.method public static a(Landroid/os/Bundle;Landroid/os/Bundle;)Landroidx/lifecycle/g0;
     .locals 3
 
     .line 1
@@ -47,7 +44,7 @@
 
     .line 5
     .line 6
-    new-instance p0, Landroidx/lifecycle/f0;
+    new-instance p0, Landroidx/lifecycle/g0;
 
     .line 7
     .line 8
@@ -65,20 +62,20 @@
     .line 14
     .line 15
     .line 16
-    new-instance p1, Lb8/s0;
+    new-instance p1, Lae/i;
 
     .line 17
     .line 18
-    sget-object v0, Lt8/q;->c:Lt8/q;
+    sget-object v0, Lr8/q;->c:Lr8/q;
 
     .line 19
     .line 20
-    invoke-direct {p1, v0}, Lb8/s0;-><init>(Ljava/util/Map;)V
+    invoke-direct {p1, v0}, Lae/i;-><init>(Ljava/util/Map;)V
 
     .line 21
     .line 22
     .line 23
-    iput-object p1, p0, Landroidx/lifecycle/f0;->a:Lb8/s0;
+    iput-object p1, p0, Landroidx/lifecycle/g0;->a:Lae/i;
 
     .line 24
     .line 25
@@ -86,7 +83,7 @@
 
     .line 26
     :cond_1
-    const-class p1, Landroidx/lifecycle/f0;
+    const-class p1, Landroidx/lifecycle/g0;
 
     .line 27
     .line 28
@@ -98,7 +95,7 @@
     move-result-object p1
 
     .line 32
-    invoke-static {p1}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {p1}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 33
     .line 34
@@ -116,11 +113,11 @@
     move-result p1
 
     .line 42
-    new-instance v0, Lu8/f;
+    new-instance v0, Ls8/f;
 
     .line 43
     .line 44
-    invoke-direct {v0, p1}, Lu8/f;-><init>(I)V
+    invoke-direct {v0, p1}, Ls8/f;-><init>(I)V
 
     .line 45
     .line 46
@@ -166,7 +163,7 @@
 
     .line 66
     .line 67
-    invoke-static {v1}, Lh9/i;->b(Ljava/lang/Object;)V
+    invoke-static {v1}, Lf9/i;->b(Ljava/lang/Object;)V
 
     .line 68
     .line 69
@@ -179,7 +176,7 @@
     move-result-object v2
 
     .line 74
-    invoke-virtual {v0, v1, v2}, Lu8/f;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    invoke-virtual {v0, v1, v2}, Ls8/f;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
     .line 75
     .line 76
@@ -188,7 +185,7 @@
 
     .line 78
     :cond_2
-    invoke-virtual {v0}, Lu8/f;->b()Lu8/f;
+    invoke-virtual {v0}, Ls8/f;->b()Ls8/f;
 
     .line 79
     .line 80
@@ -196,7 +193,7 @@
     move-result-object p0
 
     .line 82
-    new-instance p1, Landroidx/lifecycle/f0;
+    new-instance p1, Landroidx/lifecycle/g0;
 
     .line 83
     .line 84
@@ -214,16 +211,16 @@
     .line 90
     .line 91
     .line 92
-    new-instance v0, Lb8/s0;
+    new-instance v0, Lae/i;
 
     .line 93
     .line 94
-    invoke-direct {v0, p0}, Lb8/s0;-><init>(Ljava/util/Map;)V
+    invoke-direct {v0, p0}, Lae/i;-><init>(Ljava/util/Map;)V
 
     .line 95
     .line 96
     .line 97
-    iput-object v0, p1, Landroidx/lifecycle/f0;->a:Lb8/s0;
+    iput-object v0, p1, Landroidx/lifecycle/g0;->a:Lae/i;
 
     .line 98
     .line 99

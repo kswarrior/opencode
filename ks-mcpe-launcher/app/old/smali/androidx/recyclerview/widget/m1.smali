@@ -1,25 +1,56 @@
 .class public final Landroidx/recyclerview/widget/m1;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # instance fields
-.field public final synthetic a:Landroidx/recyclerview/widget/RecyclerView;
+.field public a:I
+
+.field public b:I
 
 
-# direct methods
-.method public constructor <init>(Landroidx/recyclerview/widget/RecyclerView;)V
-    .locals 0
+# virtual methods
+.method public final a(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;)V
+    .locals 1
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    iget-object p1, p1, Landroidx/recyclerview/widget/RecyclerView$ViewHolder;->itemView:Landroid/view/View;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Landroidx/recyclerview/widget/m1;->a:Landroidx/recyclerview/widget/RecyclerView;
+    invoke-virtual {p1}, Landroid/view/View;->getLeft()I
 
+    .line 4
     .line 5
     .line 6
+    move-result v0
+
+    .line 7
+    iput v0, p0, Landroidx/recyclerview/widget/m1;->a:I
+
+    .line 8
+    .line 9
+    invoke-virtual {p1}, Landroid/view/View;->getTop()I
+
+    .line 10
+    .line 11
+    .line 12
+    move-result v0
+
+    .line 13
+    iput v0, p0, Landroidx/recyclerview/widget/m1;->b:I
+
+    .line 14
+    .line 15
+    invoke-virtual {p1}, Landroid/view/View;->getRight()I
+
+    .line 16
+    .line 17
+    .line 18
+    invoke-virtual {p1}, Landroid/view/View;->getBottom()I
+
+    .line 19
+    .line 20
+    .line 21
     return-void
 .end method

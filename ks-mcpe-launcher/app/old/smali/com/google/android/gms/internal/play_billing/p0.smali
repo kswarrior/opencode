@@ -1,175 +1,29 @@
-.class public final Lcom/google/android/gms/internal/play_billing/p0;
+.class public interface abstract Lcom/google/android/gms/internal/play_billing/p0;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-
-# instance fields
-.field public final a:Lcom/google/android/gms/internal/play_billing/q;
-
-.field public final b:Ljava/lang/String;
-
-.field public final c:[Ljava/lang/Object;
-
-.field public final d:I
-
-
-# direct methods
-.method public constructor <init>(Lcom/google/android/gms/internal/play_billing/b0;Ljava/lang/String;[Ljava/lang/Object;)V
-    .locals 3
-
-    .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 2
-    .line 3
-    .line 4
-    iput-object p1, p0, Lcom/google/android/gms/internal/play_billing/p0;->a:Lcom/google/android/gms/internal/play_billing/q;
-
-    .line 5
-    .line 6
-    iput-object p2, p0, Lcom/google/android/gms/internal/play_billing/p0;->b:Ljava/lang/String;
-
-    .line 7
-    .line 8
-    iput-object p3, p0, Lcom/google/android/gms/internal/play_billing/p0;->c:[Ljava/lang/Object;
-
-    .line 9
-    .line 10
-    const/4 p1, 0x0
-
-    .line 11
-    invoke-virtual {p2, p1}, Ljava/lang/String;->charAt(I)C
-
-    .line 12
-    .line 13
-    .line 14
-    move-result p1
-
-    .line 15
-    const p3, 0xd800
-
-    .line 16
-    .line 17
-    .line 18
-    if-ge p1, p3, :cond_0
-
-    .line 19
-    .line 20
-    iput p1, p0, Lcom/google/android/gms/internal/play_billing/p0;->d:I
-
-    .line 21
-    .line 22
-    return-void
-
-    .line 23
-    :cond_0
-    and-int/lit16 p1, p1, 0x1fff
-
-    .line 24
-    .line 25
-    const/4 v0, 0x1
-
-    .line 26
-    const/16 v1, 0xd
-
-    .line 27
-    .line 28
-    :goto_0
-    add-int/lit8 v2, v0, 0x1
-
-    .line 29
-    .line 30
-    invoke-virtual {p2, v0}, Ljava/lang/String;->charAt(I)C
-
-    .line 31
-    .line 32
-    .line 33
-    move-result v0
-
-    .line 34
-    if-lt v0, p3, :cond_1
-
-    .line 35
-    .line 36
-    and-int/lit16 v0, v0, 0x1fff
-
-    .line 37
-    .line 38
-    shl-int/2addr v0, v1
-
-    .line 39
-    or-int/2addr p1, v0
-
-    .line 40
-    add-int/lit8 v1, v1, 0xd
-
-    .line 41
-    .line 42
-    move v0, v2
-
-    .line 43
-    goto :goto_0
-
-    .line 44
-    :cond_1
-    shl-int p2, v0, v1
-
-    .line 45
-    .line 46
-    or-int/2addr p1, p2
-
-    .line 47
-    iput p1, p0, Lcom/google/android/gms/internal/play_billing/p0;->d:I
-
-    .line 48
-    .line 49
-    return-void
-.end method
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # virtual methods
-.method public final a()I
-    .locals 2
+.method public abstract a(Ljava/lang/Object;)Z
+.end method
 
-    .line 1
-    iget v0, p0, Lcom/google/android/gms/internal/play_billing/p0;->d:I
+.method public abstract b(Ljava/lang/Object;)V
+.end method
 
-    .line 2
-    .line 3
-    and-int/lit8 v1, v0, 0x1
+.method public abstract c(Lcom/google/android/gms/internal/play_billing/p;)I
+.end method
 
-    .line 4
-    .line 5
-    if-eqz v1, :cond_0
+.method public abstract d(Ljava/lang/Object;Lcom/google/android/gms/internal/play_billing/f0;)V
+.end method
 
-    .line 6
-    .line 7
-    const/4 v0, 0x1
+.method public abstract e(Lcom/google/android/gms/internal/play_billing/a0;)I
+.end method
 
-    .line 8
-    return v0
+.method public abstract f(Ljava/lang/Object;Ljava/lang/Object;)V
+.end method
 
-    .line 9
-    :cond_0
-    const/4 v1, 0x4
+.method public abstract g(Lcom/google/android/gms/internal/play_billing/a0;Lcom/google/android/gms/internal/play_billing/a0;)Z
+.end method
 
-    .line 10
-    and-int/2addr v0, v1
-
-    .line 11
-    if-ne v0, v1, :cond_1
-
-    .line 12
-    .line 13
-    const/4 v0, 0x3
-
-    .line 14
-    return v0
-
-    .line 15
-    :cond_1
-    const/4 v0, 0x2
-
-    .line 16
-    return v0
+.method public abstract zze()Lcom/google/android/gms/internal/play_billing/a0;
 .end method

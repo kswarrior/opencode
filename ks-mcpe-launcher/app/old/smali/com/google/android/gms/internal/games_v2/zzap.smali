@@ -1,8 +1,0 @@
-.class public interface abstract Lcom/google/android/gms/internal/games_v2/zzap;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-
-# virtual methods
-.method public abstract zza(Lcom/google/android/gms/common/api/GoogleApi;)Lcom/google/android/gms/tasks/Task;
-.end method

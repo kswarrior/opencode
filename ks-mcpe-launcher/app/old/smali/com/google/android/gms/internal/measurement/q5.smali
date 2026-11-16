@@ -1,81 +1,42 @@
 .class public final Lcom/google/android/gms/internal/measurement/q5;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
-.implements Ljava/util/Iterator;
+.implements Lcom/google/android/gms/internal/measurement/p5;
 
 
-# instance fields
-.field public final synthetic c:Ljava/util/Iterator;
+# static fields
+.field public static final a:Lcom/google/android/gms/internal/measurement/ed;
 
 
 # direct methods
-.method public constructor <init>(Ljava/util/Iterator;)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 3
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    sget-object v0, Lcom/google/android/gms/internal/measurement/c3;->c:Lcom/google/android/gms/internal/measurement/o6;
 
     .line 2
     .line 3
-    .line 4
-    iput-object p1, p0, Lcom/google/android/gms/internal/measurement/q5;->c:Ljava/util/Iterator;
-
-    .line 5
-    .line 6
-    return-void
-.end method
-
-
-# virtual methods
-.method public final hasNext()Z
-    .locals 1
-
-    .line 1
-    iget-object v0, p0, Lcom/google/android/gms/internal/measurement/q5;->c:Ljava/util/Iterator;
-
-    .line 2
-    .line 3
-    invoke-interface {v0}, Ljava/util/Iterator;->hasNext()Z
+    const-string v1, "measurement.integration.disable_firebase_instance_id"
 
     .line 4
     .line 5
-    .line 6
-    move-result v0
-
-    .line 7
-    return v0
-.end method
-
-.method public final bridge synthetic next()Ljava/lang/Object;
-    .locals 2
-
-    .line 1
-    new-instance v0, Lcom/google/android/gms/internal/measurement/e6;
-
-    .line 2
-    .line 3
-    iget-object v1, p0, Lcom/google/android/gms/internal/measurement/q5;->c:Ljava/util/Iterator;
-
-    .line 4
-    .line 5
-    invoke-interface {v1}, Ljava/util/Iterator;->next()Ljava/lang/Object;
+    const/4 v2, 0x0
 
     .line 6
+    invoke-virtual {v0, v1, v2}, Lcom/google/android/gms/internal/measurement/o6;->c(Ljava/lang/String;Z)Lcom/google/android/gms/internal/measurement/ed;
+
     .line 7
     .line 8
-    move-result-object v1
-
     .line 9
-    check-cast v1, Ljava/lang/String;
+    move-result-object v0
 
     .line 10
-    .line 11
-    invoke-direct {v0, v1}, Lcom/google/android/gms/internal/measurement/e6;-><init>(Ljava/lang/String;)V
+    sput-object v0, Lcom/google/android/gms/internal/measurement/q5;->a:Lcom/google/android/gms/internal/measurement/ed;
 
+    .line 11
     .line 12
-    .line 13
-    .line 14
-    return-object v0
+    return-void
 .end method

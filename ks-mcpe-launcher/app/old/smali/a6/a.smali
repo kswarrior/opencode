@@ -1,305 +1,348 @@
-.class public final synthetic La6/a;
+.class public abstract La6/a;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
-
-# interfaces
-.implements Landroid/view/View$OnClickListener;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public final synthetic c:I
+# static fields
+.field public static final a:[I
 
-.field public final synthetic d:Ljava/lang/Object;
+.field public static final b:[I
 
 
 # direct methods
-.method public synthetic constructor <init>(Ljava/lang/Object;I)V
-    .locals 0
+.method static constructor <clinit>()V
+    .locals 2
 
     .line 1
-    iput p2, p0, La6/a;->c:I
+    const/high16 v0, 0x1010000
 
     .line 2
     .line 3
-    iput-object p1, p0, La6/a;->d:Ljava/lang/Object;
-
-    .line 4
-    .line 5
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
-
-    .line 6
-    .line 7
-    .line 8
-    return-void
-.end method
-
-
-# virtual methods
-.method public final onClick(Landroid/view/View;)V
-    .locals 3
-
-    .line 1
-    iget v0, p0, La6/a;->c:I
-
-    .line 2
-    .line 3
-    packed-switch v0, :pswitch_data_0
+    const v1, 0x7f04059d
 
     .line 4
     .line 5
     .line 6
-    iget-object v0, p0, La6/a;->d:Ljava/lang/Object;
+    filled-new-array {v0, v1}, [I
 
     .line 7
     .line 8
-    check-cast v0, Lorg/levimc/launcher/ui/widget/CatalogSelect;
-
     .line 9
+    move-result-object v0
+
     .line 10
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/widget/CatalogSelect;->b(Lorg/levimc/launcher/ui/widget/CatalogSelect;Landroid/view/View;)V
+    sput-object v0, La6/a;->a:[I
 
     .line 11
     .line 12
+    const v0, 0x7f0403ac
+
     .line 13
-    return-void
-
     .line 14
-    :pswitch_0
-    iget-object v0, p0, La6/a;->d:Ljava/lang/Object;
-
     .line 15
-    .line 16
-    check-cast v0, Landroid/app/Dialog;
+    filled-new-array {v0}, [I
 
+    .line 16
     .line 17
     .line 18
-    invoke-static {v0, p1}, Lorg/levimc/launcher/ui/views/ContentActionPopup;->b(Landroid/app/Dialog;Landroid/view/View;)V
+    move-result-object v0
 
     .line 19
+    sput-object v0, La6/a;->b:[I
+
     .line 20
     .line 21
     return-void
+.end method
 
+.method public static a(Landroid/content/Context;Landroid/util/AttributeSet;II)Landroid/content/Context;
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    new-array v0, v0, [I
+
+    .line 3
+    .line 4
+    invoke-static {p0, p1, p2, p3, v0}, La6/a;->b(Landroid/content/Context;Landroid/util/AttributeSet;II[I)Landroid/content/Context;
+
+    .line 5
+    .line 6
+    .line 7
+    move-result-object p0
+
+    .line 8
+    return-object p0
+.end method
+
+.method public static b(Landroid/content/Context;Landroid/util/AttributeSet;II[I)Landroid/content/Context;
+    .locals 6
+
+    .line 1
+    const/4 v0, 0x1
+
+    .line 2
+    new-array v1, v0, [I
+
+    .line 3
+    .line 4
+    sget-object v2, La6/a;->b:[I
+
+    .line 5
+    .line 6
+    invoke-virtual {p0, p1, v2, p2, p3}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
+
+    .line 7
+    .line 8
+    .line 9
+    move-result-object v2
+
+    .line 10
+    const/4 v3, 0x0
+
+    .line 11
+    invoke-virtual {v2, v3, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
+
+    .line 12
+    .line 13
+    .line 14
+    move-result v4
+
+    .line 15
+    aput v4, v1, v3
+
+    .line 16
+    .line 17
+    invoke-virtual {v2}, Landroid/content/res/TypedArray;->recycle()V
+
+    .line 18
+    .line 19
+    .line 20
+    aget v1, v1, v3
+
+    .line 21
     .line 22
-    :pswitch_1
-    iget-object v0, p0, La6/a;->d:Ljava/lang/Object;
+    instance-of v2, p0, Lk/b;
 
     .line 23
     .line 24
-    check-cast v0, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;
+    if-eqz v2, :cond_0
 
     .line 25
     .line 26
-    invoke-static {v0, p1}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->w(Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;Landroid/view/View;)V
+    move-object v2, p0
 
     .line 27
+    check-cast v2, Lk/b;
+
     .line 28
     .line 29
-    return-void
+    iget v2, v2, Lk/b;->a:I
 
     .line 30
-    :pswitch_2
-    iget-object p1, p0, La6/a;->d:Ljava/lang/Object;
-
     .line 31
-    .line 32
-    check-cast p1, Lcom/google/android/material/datepicker/o;
+    if-ne v2, v1, :cond_0
 
+    .line 32
     .line 33
+    move v2, v0
+
     .line 34
-    invoke-virtual {p1}, Lcom/google/android/material/datepicker/o;->g()V
+    goto :goto_0
 
     .line 35
-    .line 36
-    .line 37
-    const/4 p1, 0x0
+    :cond_0
+    move v2, v3
 
+    .line 36
+    :goto_0
+    if-eqz v1, :cond_8
+
+    .line 37
     .line 38
-    throw p1
+    if-eqz v2, :cond_1
 
     .line 39
-    :pswitch_3
-    iget-object p1, p0, La6/a;->d:Ljava/lang/Object;
-
     .line 40
+    goto :goto_4
+
     .line 41
-    check-cast p1, La6/z;
+    :cond_1
+    new-instance v2, Lk/b;
 
     .line 42
     .line 43
-    iget-object v0, p1, La6/z;->f:Landroid/widget/EditText;
+    invoke-direct {v2, p0, v1}, Lk/b;-><init>(Landroid/content/Context;I)V
 
     .line 44
     .line 45
-    if-nez v0, :cond_0
-
     .line 46
+    array-length v1, p4
+
     .line 47
-    goto :goto_1
+    new-array v4, v1, [I
 
     .line 48
-    :cond_0
-    invoke-virtual {v0}, Landroid/widget/TextView;->getSelectionEnd()I
-
     .line 49
-    .line 50
-    .line 51
-    move-result v0
+    array-length v5, p4
 
+    .line 50
+    if-lez v5, :cond_3
+
+    .line 51
     .line 52
-    iget-object v1, p1, La6/z;->f:Landroid/widget/EditText;
+    invoke-virtual {p0, p1, p4, p2, p3}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[III)Landroid/content/res/TypedArray;
 
     .line 53
     .line 54
-    if-eqz v1, :cond_1
-
     .line 55
+    move-result-object p2
+
     .line 56
-    invoke-virtual {v1}, Landroid/widget/TextView;->getTransformationMethod()Landroid/text/method/TransformationMethod;
+    move p3, v3
 
     .line 57
-    .line 58
-    .line 59
-    move-result-object v1
+    :goto_1
+    array-length v5, p4
 
+    .line 58
+    if-ge p3, v5, :cond_2
+
+    .line 59
     .line 60
-    instance-of v1, v1, Landroid/text/method/PasswordTransformationMethod;
+    invoke-virtual {p2, p3, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     .line 61
     .line 62
-    if-eqz v1, :cond_1
-
     .line 63
+    move-result v5
+
     .line 64
-    iget-object v1, p1, La6/z;->f:Landroid/widget/EditText;
+    aput v5, v4, p3
 
     .line 65
     .line 66
-    const/4 v2, 0x0
+    add-int/lit8 p3, p3, 0x1
 
     .line 67
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTransformationMethod(Landroid/text/method/TransformationMethod;)V
-
     .line 68
+    goto :goto_1
+
     .line 69
+    :cond_2
+    invoke-virtual {p2}, Landroid/content/res/TypedArray;->recycle()V
+
     .line 70
-    goto :goto_0
-
     .line 71
-    :cond_1
-    iget-object v1, p1, La6/z;->f:Landroid/widget/EditText;
-
     .line 72
+    :cond_3
+    move p2, v3
+
     .line 73
-    invoke-static {}, Landroid/text/method/PasswordTransformationMethod;->getInstance()Landroid/text/method/PasswordTransformationMethod;
+    :goto_2
+    if-ge p2, v1, :cond_5
 
     .line 74
     .line 75
-    .line 76
-    move-result-object v2
+    aget p3, v4, p2
 
+    .line 76
     .line 77
-    invoke-virtual {v1, v2}, Landroid/widget/TextView;->setTransformationMethod(Landroid/text/method/TransformationMethod;)V
+    if-eqz p3, :cond_4
 
     .line 78
     .line 79
-    .line 80
-    :goto_0
-    if-ltz v0, :cond_2
+    invoke-virtual {v2}, Lk/b;->getTheme()Landroid/content/res/Resources$Theme;
 
+    .line 80
     .line 81
     .line 82
-    iget-object v1, p1, La6/z;->f:Landroid/widget/EditText;
+    move-result-object p4
 
     .line 83
-    .line 84
-    invoke-virtual {v1, v0}, Landroid/widget/EditText;->setSelection(I)V
+    invoke-virtual {p4, p3, v0}, Landroid/content/res/Resources$Theme;->applyStyle(IZ)V
 
+    .line 84
     .line 85
     .line 86
+    :cond_4
+    add-int/lit8 p2, p2, 0x1
+
     .line 87
-    :cond_2
-    invoke-virtual {p1}, La6/s;->p()V
-
     .line 88
-    .line 89
-    .line 90
-    :goto_1
-    return-void
+    goto :goto_2
 
+    .line 89
+    :cond_5
+    sget-object p2, La6/a;->a:[I
+
+    .line 90
     .line 91
-    :pswitch_4
-    iget-object p1, p0, La6/a;->d:Ljava/lang/Object;
+    invoke-virtual {p0, p1, p2}, Landroid/content/Context;->obtainStyledAttributes(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
 
     .line 92
     .line 93
-    check-cast p1, La6/n;
-
     .line 94
+    move-result-object p0
+
     .line 95
-    invoke-virtual {p1}, La6/n;->t()V
+    invoke-virtual {p0, v3, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     .line 96
     .line 97
     .line 98
-    return-void
+    move-result p1
 
     .line 99
-    :pswitch_5
-    iget-object p1, p0, La6/a;->d:Ljava/lang/Object;
+    invoke-virtual {p0, v0, v3}, Landroid/content/res/TypedArray;->getResourceId(II)I
 
     .line 100
     .line 101
-    check-cast p1, La6/f;
-
     .line 102
+    move-result p2
+
     .line 103
-    iget-object v0, p1, La6/f;->i:Landroid/widget/EditText;
+    invoke-virtual {p0}, Landroid/content/res/TypedArray;->recycle()V
 
     .line 104
     .line 105
-    if-nez v0, :cond_3
-
     .line 106
-    .line 107
-    goto :goto_2
+    if-eqz p1, :cond_6
 
+    .line 107
     .line 108
-    :cond_3
-    invoke-virtual {v0}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+    goto :goto_3
 
     .line 109
-    .line 110
-    .line 111
-    move-result-object v0
+    :cond_6
+    move p1, p2
 
+    .line 110
+    :goto_3
+    if-eqz p1, :cond_7
+
+    .line 111
     .line 112
-    if-eqz v0, :cond_4
+    invoke-virtual {v2}, Lk/b;->getTheme()Landroid/content/res/Resources$Theme;
 
     .line 113
     .line 114
-    invoke-interface {v0}, Landroid/text/Editable;->clear()V
-
     .line 115
-    .line 116
-    .line 117
-    :cond_4
-    invoke-virtual {p1}, La6/s;->p()V
+    move-result-object p0
 
+    .line 116
+    invoke-virtual {p0, p1, v0}, Landroid/content/res/Resources$Theme;->applyStyle(IZ)V
+
+    .line 117
     .line 118
     .line 119
-    .line 120
-    :goto_2
-    return-void
+    :cond_7
+    return-object v2
 
-    .line 121
-    :pswitch_data_0
-    .packed-switch 0x0
-        :pswitch_5
-        :pswitch_4
-        :pswitch_3
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-    .end packed-switch
+    .line 120
+    :cond_8
+    :goto_4
+    return-object p0
 .end method

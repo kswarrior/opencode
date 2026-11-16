@@ -1,6 +1,6 @@
 .class public final Ln/c;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Ljava/util/concurrent/ThreadFactory;
@@ -73,11 +73,11 @@
     move-result-object v0
 
     .line 10
-    new-instance v1, Lx6/u;
+    new-instance v1, Lv6/v;
 
     .line 11
     .line 12
-    invoke-direct {v1, p1}, Lx6/u;-><init>(Ljava/lang/Runnable;)V
+    invoke-direct {v1, p1}, Lv6/v;-><init>(Ljava/lang/Runnable;)V
 
     .line 13
     .line 14

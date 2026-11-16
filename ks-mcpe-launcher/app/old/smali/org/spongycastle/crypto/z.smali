@@ -1,6 +1,6 @@
 .class public abstract Lorg/spongycastle/crypto/z;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Lorg/spongycastle/crypto/d;
@@ -8,7 +8,7 @@
 
 
 # instance fields
-.field public final a:Lorg/spongycastle/crypto/d;
+.field public final c:Lorg/spongycastle/crypto/d;
 
 
 # direct methods
@@ -21,7 +21,7 @@
     .line 2
     .line 3
     .line 4
-    iput-object p1, p0, Lorg/spongycastle/crypto/z;->a:Lorg/spongycastle/crypto/d;
+    iput-object p1, p0, Lorg/spongycastle/crypto/z;->c:Lorg/spongycastle/crypto/d;
 
     .line 5
     .line 6

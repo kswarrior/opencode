@@ -1,6 +1,6 @@
 .class public final Ls0/d;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 # interfaces
 .implements Landroid/view/View$OnTouchListener;
@@ -11,6 +11,8 @@
 
 
 # instance fields
+.field public B1:Z
+
 .field public C1:Z
 
 .field public D1:Z
@@ -19,29 +21,27 @@
 
 .field public F1:Z
 
-.field public final G1:Lm/f1;
+.field public final G1:Lm/i1;
 
-.field public final X:[F
+.field public final X:I
 
 .field public final Y:[F
 
 .field public final Z:[F
 
-.field public b1:Z
+.field public final b1:[F
 
 .field public final c:Ls0/a;
 
 .field public final d:Landroid/view/animation/AccelerateInterpolator;
 
-.field public final h:Lm/f1;
+.field public final h:Lm/i1;
 
-.field public p:La6/f0;
-
-.field public final q:[F
+.field public q:Landroidx/lifecycle/u;
 
 .field public final w:[F
 
-.field public final x:I
+.field public final x:[F
 
 .field public final y:I
 
@@ -66,7 +66,7 @@
     return-void
 .end method
 
-.method public constructor <init>(Lm/f1;)V
+.method public constructor <init>(Lm/i1;)V
     .locals 11
 
     .line 1
@@ -137,7 +137,7 @@
     .line 34
     .line 35
     .line 36
-    iput-object v2, p0, Ls0/d;->q:[F
+    iput-object v2, p0, Ls0/d;->w:[F
 
     .line 37
     .line 38
@@ -150,7 +150,7 @@
     .line 41
     .line 42
     .line 43
-    iput-object v3, p0, Ls0/d;->w:[F
+    iput-object v3, p0, Ls0/d;->x:[F
 
     .line 44
     .line 45
@@ -163,7 +163,7 @@
     .line 48
     .line 49
     .line 50
-    iput-object v4, p0, Ls0/d;->X:[F
+    iput-object v4, p0, Ls0/d;->Y:[F
 
     .line 51
     .line 52
@@ -176,7 +176,7 @@
     .line 55
     .line 56
     .line 57
-    iput-object v5, p0, Ls0/d;->Y:[F
+    iput-object v5, p0, Ls0/d;->Z:[F
 
     .line 58
     .line 59
@@ -189,11 +189,11 @@
     .line 62
     .line 63
     .line 64
-    iput-object v1, p0, Ls0/d;->Z:[F
+    iput-object v1, p0, Ls0/d;->b1:[F
 
     .line 65
     .line 66
-    iput-object p1, p0, Ls0/d;->h:Lm/f1;
+    iput-object p1, p0, Ls0/d;->h:Lm/i1;
 
     .line 67
     .line 68
@@ -287,7 +287,7 @@
 
     .line 107
     .line 108
-    iput v10, p0, Ls0/d;->x:I
+    iput v10, p0, Ls0/d;->y:I
 
     .line 109
     .line 110
@@ -334,7 +334,7 @@
 
     .line 132
     .line 133
-    iput v1, p0, Ls0/d;->y:I
+    iput v1, p0, Ls0/d;->X:I
 
     .line 134
     .line 135
@@ -350,7 +350,7 @@
 
     .line 140
     .line 141
-    iput-object p1, p0, Ls0/d;->G1:Lm/f1;
+    iput-object p1, p0, Ls0/d;->G1:Lm/i1;
 
     .line 142
     .line 143
@@ -371,6 +371,9 @@
     .line 148
     .line 149
     .line 150
+    .line 151
+    .line 152
+    .line 153
     :array_1
     .array-data 4
         0x7f7fffff    # Float.MAX_VALUE
@@ -433,7 +436,7 @@
     .locals 3
 
     .line 1
-    iget-object v0, p0, Ls0/d;->q:[F
+    iget-object v0, p0, Ls0/d;->w:[F
 
     .line 2
     .line 3
@@ -441,7 +444,7 @@
 
     .line 4
     .line 5
-    iget-object v1, p0, Ls0/d;->w:[F
+    iget-object v1, p0, Ls0/d;->x:[F
 
     .line 6
     .line 7
@@ -568,7 +571,7 @@
 
     .line 61
     :cond_2
-    iget-object v0, p0, Ls0/d;->X:[F
+    iget-object v0, p0, Ls0/d;->Y:[F
 
     .line 62
     .line 63
@@ -576,7 +579,7 @@
 
     .line 64
     .line 65
-    iget-object v1, p0, Ls0/d;->Y:[F
+    iget-object v1, p0, Ls0/d;->Z:[F
 
     .line 66
     .line 67
@@ -584,7 +587,7 @@
 
     .line 68
     .line 69
-    iget-object v2, p0, Ls0/d;->Z:[F
+    iget-object v2, p0, Ls0/d;->b1:[F
 
     .line 70
     .line 71
@@ -656,7 +659,7 @@
     const/4 v1, 0x1
 
     .line 8
-    iget v2, p0, Ls0/d;->x:I
+    iget v2, p0, Ls0/d;->y:I
 
     .line 9
     .line 10
@@ -885,7 +888,7 @@
 
     .line 18
     .line 19
-    iget-object v2, p0, Ls0/d;->G1:Lm/f1;
+    iget-object v2, p0, Ls0/d;->G1:Lm/i1;
 
     .line 20
     .line 21
@@ -1081,7 +1084,7 @@
 
     .line 29
     .line 30
-    iput-boolean v1, p0, Ls0/d;->b1:Z
+    iput-boolean v1, p0, Ls0/d;->B1:Z
 
     .line 31
     .line 32
@@ -1105,7 +1108,7 @@
     int-to-float v3, v3
 
     .line 41
-    iget-object v4, p0, Ls0/d;->h:Lm/f1;
+    iget-object v4, p0, Ls0/d;->h:Lm/i1;
 
     .line 42
     .line 43
@@ -1198,7 +1201,7 @@
 
     .line 85
     .line 86
-    iget-object p1, p0, Ls0/d;->p:La6/f0;
+    iget-object p1, p0, Ls0/d;->q:Landroidx/lifecycle/u;
 
     .line 87
     .line 88
@@ -1206,7 +1209,7 @@
 
     .line 89
     .line 90
-    new-instance p1, La6/f0;
+    new-instance p1, Landroidx/lifecycle/u;
 
     .line 91
     .line 92
@@ -1214,12 +1217,12 @@
 
     .line 93
     .line 94
-    invoke-direct {p1, p0, p2}, La6/f0;-><init>(Ljava/lang/Object;I)V
+    invoke-direct {p1, p0, p2}, Landroidx/lifecycle/u;-><init>(Ljava/lang/Object;I)V
 
     .line 95
     .line 96
     .line 97
-    iput-object p1, p0, Ls0/d;->p:La6/f0;
+    iput-object p1, p0, Ls0/d;->q:Landroidx/lifecycle/u;
 
     .line 98
     .line 99
@@ -1232,7 +1235,7 @@
 
     .line 102
     .line 103
-    iget-boolean p1, p0, Ls0/d;->b1:Z
+    iget-boolean p1, p0, Ls0/d;->B1:Z
 
     .line 104
     .line 105
@@ -1240,7 +1243,7 @@
 
     .line 106
     .line 107
-    iget p1, p0, Ls0/d;->y:I
+    iget p1, p0, Ls0/d;->X:I
 
     .line 108
     .line 109
@@ -1248,14 +1251,14 @@
 
     .line 110
     .line 111
-    iget-object p2, p0, Ls0/d;->p:La6/f0;
+    iget-object p2, p0, Ls0/d;->q:Landroidx/lifecycle/u;
 
     .line 112
     .line 113
     int-to-long v5, p1
 
     .line 114
-    sget-object p1, Landroidx/core/view/s0;->a:Ljava/util/WeakHashMap;
+    sget-object p1, Landroidx/core/view/t0;->a:Ljava/util/WeakHashMap;
 
     .line 115
     .line 116
@@ -1268,17 +1271,17 @@
 
     .line 120
     :cond_5
-    iget-object p1, p0, Ls0/d;->p:La6/f0;
+    iget-object p1, p0, Ls0/d;->q:Landroidx/lifecycle/u;
 
     .line 121
     .line 122
-    invoke-virtual {p1}, La6/f0;->run()V
+    invoke-virtual {p1}, Landroidx/lifecycle/u;->run()V
 
     .line 123
     .line 124
     .line 125
     :goto_0
-    iput-boolean v2, p0, Ls0/d;->b1:Z
+    iput-boolean v2, p0, Ls0/d;->B1:Z
 
     .line 126
     .line 127

@@ -1,183 +1,140 @@
-.class public final Landroidx/room/x;
-.super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.class public final enum Landroidx/room/x;
+.super Ljava/lang/Enum;
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
-# instance fields
-.field public final a:Lh9/f;
+# static fields
+.field public static final enum c:Landroidx/room/x;
 
-.field public final b:Landroid/content/Context;
+.field public static final enum d:Landroidx/room/x;
 
-.field public final c:Ljava/lang/String;
+.field public static final enum h:Landroidx/room/x;
 
-.field public final d:Ljava/util/ArrayList;
-
-.field public final e:Ljava/util/ArrayList;
-
-.field public f:Ljava/util/concurrent/Executor;
-
-.field public g:Ljava/util/concurrent/Executor;
-
-.field public h:Landroidx/room/y;
-
-.field public final i:J
-
-.field public final j:Landroidx/room/z;
-
-.field public final k:Ljava/util/LinkedHashSet;
-
-.field public final l:Ljava/util/LinkedHashSet;
-
-.field public final m:Ljava/util/ArrayList;
-
-.field public n:Z
-
-.field public o:Z
-
-.field public final p:Z
+.field public static final synthetic q:[Landroidx/room/x;
 
 
 # direct methods
-.method public constructor <init>(Landroid/content/Context;Ljava/lang/String;)V
-    .locals 2
+.method static constructor <clinit>()V
+    .locals 5
 
     .line 1
-    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+    new-instance v0, Landroidx/room/x;
 
     .line 2
     .line 3
-    .line 4
-    new-instance v0, Ljava/util/ArrayList;
+    const-string v1, "AUTOMATIC"
 
+    .line 4
     .line 5
+    const/4 v2, 0x0
+
     .line 6
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    invoke-direct {v0, v1, v2}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 7
     .line 8
     .line 9
-    iput-object v0, p0, Landroidx/room/x;->d:Ljava/util/ArrayList;
+    sput-object v0, Landroidx/room/x;->c:Landroidx/room/x;
 
     .line 10
     .line 11
-    new-instance v0, Ljava/util/ArrayList;
+    new-instance v1, Landroidx/room/x;
 
     .line 12
     .line 13
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
+    const-string v2, "TRUNCATE"
 
     .line 14
     .line 15
+    const/4 v3, 0x1
+
     .line 16
-    iput-object v0, p0, Landroidx/room/x;->e:Ljava/util/ArrayList;
+    invoke-direct {v1, v2, v3}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 17
     .line 18
-    sget-object v0, Landroidx/room/y;->c:Landroidx/room/y;
-
     .line 19
+    sput-object v1, Landroidx/room/x;->d:Landroidx/room/x;
+
     .line 20
-    iput-object v0, p0, Landroidx/room/x;->h:Landroidx/room/y;
-
     .line 21
+    new-instance v2, Landroidx/room/x;
+
     .line 22
-    const-wide/16 v0, -0x1
-
     .line 23
-    .line 24
-    iput-wide v0, p0, Landroidx/room/x;->i:J
+    const-string v3, "WRITE_AHEAD_LOGGING"
 
+    .line 24
     .line 25
+    const/4 v4, 0x2
+
     .line 26
-    new-instance v0, Landroidx/room/z;
+    invoke-direct {v2, v3, v4}, Ljava/lang/Enum;-><init>(Ljava/lang/String;I)V
 
     .line 27
     .line 28
-    const/4 v1, 0x0
-
     .line 29
-    invoke-direct {v0, v1}, Landroidx/room/z;-><init>(I)V
+    sput-object v2, Landroidx/room/x;->h:Landroidx/room/x;
 
     .line 30
     .line 31
-    .line 32
-    iput-object v0, p0, Landroidx/room/x;->j:Landroidx/room/z;
+    filled-new-array {v0, v1, v2}, [Landroidx/room/x;
 
+    .line 32
     .line 33
     .line 34
-    new-instance v0, Ljava/util/LinkedHashSet;
-
-    .line 35
-    .line 36
-    invoke-direct {v0}, Ljava/util/LinkedHashSet;-><init>()V
-
-    .line 37
-    .line 38
-    .line 39
-    iput-object v0, p0, Landroidx/room/x;->k:Ljava/util/LinkedHashSet;
-
-    .line 40
-    .line 41
-    new-instance v0, Ljava/util/LinkedHashSet;
-
-    .line 42
-    .line 43
-    invoke-direct {v0}, Ljava/util/LinkedHashSet;-><init>()V
-
-    .line 44
-    .line 45
-    .line 46
-    iput-object v0, p0, Landroidx/room/x;->l:Ljava/util/LinkedHashSet;
-
-    .line 47
-    .line 48
-    new-instance v0, Ljava/util/ArrayList;
-
-    .line 49
-    .line 50
-    invoke-direct {v0}, Ljava/util/ArrayList;-><init>()V
-
-    .line 51
-    .line 52
-    .line 53
-    iput-object v0, p0, Landroidx/room/x;->m:Ljava/util/ArrayList;
-
-    .line 54
-    .line 55
-    const/4 v0, 0x1
-
-    .line 56
-    iput-boolean v0, p0, Landroidx/room/x;->n:Z
-
-    .line 57
-    .line 58
-    iput-boolean v0, p0, Landroidx/room/x;->p:Z
-
-    .line 59
-    .line 60
-    const-class v0, Lcom/microsoft/applications/events/OfflineRoomDatabase;
-
-    .line 61
-    .line 62
-    invoke-static {v0}, Lh9/r;->a(Ljava/lang/Class;)Lh9/f;
-
-    .line 63
-    .line 64
-    .line 65
     move-result-object v0
 
-    .line 66
-    iput-object v0, p0, Landroidx/room/x;->a:Lh9/f;
+    .line 35
+    sput-object v0, Landroidx/room/x;->q:[Landroidx/room/x;
 
-    .line 67
-    .line 68
-    iput-object p1, p0, Landroidx/room/x;->b:Landroid/content/Context;
-
-    .line 69
-    .line 70
-    iput-object p2, p0, Landroidx/room/x;->c:Ljava/lang/String;
-
-    .line 71
-    .line 72
+    .line 36
+    .line 37
     return-void
+.end method
+
+.method public static valueOf(Ljava/lang/String;)Landroidx/room/x;
+    .locals 1
+
+    .line 1
+    const-class v0, Landroidx/room/x;
+
+    .line 2
+    .line 3
+    invoke-static {v0, p0}, Ljava/lang/Enum;->valueOf(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object p0
+
+    .line 7
+    check-cast p0, Landroidx/room/x;
+
+    .line 8
+    .line 9
+    return-object p0
+.end method
+
+.method public static values()[Landroidx/room/x;
+    .locals 1
+
+    .line 1
+    sget-object v0, Landroidx/room/x;->q:[Landroidx/room/x;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0}, Ljava/lang/Object;->clone()Ljava/lang/Object;
+
+    .line 4
+    .line 5
+    .line 6
+    move-result-object v0
+
+    .line 7
+    check-cast v0, [Landroidx/room/x;
+
+    .line 8
+    .line 9
+    return-object v0
 .end method

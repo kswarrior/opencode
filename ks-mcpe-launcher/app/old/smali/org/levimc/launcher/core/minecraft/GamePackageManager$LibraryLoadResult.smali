@@ -1,6 +1,6 @@
 .class public final Lorg/levimc/launcher/core/minecraft/GamePackageManager$LibraryLoadResult;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # annotations
@@ -34,15 +34,15 @@
 
     const-string v0, "name"
 
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     const-string v0, "fileName"
 
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     const-string v0, "source"
 
-    invoke-static {p3, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p3, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 1
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
@@ -296,7 +296,7 @@
 
     .line 2
     .line 3
-    invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p1, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 4
     .line 5
@@ -305,7 +305,7 @@
 
     .line 7
     .line 8
-    invoke-static {p2, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p2, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 9
     .line 10
@@ -314,7 +314,7 @@
 
     .line 12
     .line 13
-    invoke-static {p3, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
+    invoke-static {p3, v0}, Lf9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
     .line 14
     .line 15
@@ -392,7 +392,7 @@
 
     .line 16
     .line 17
-    invoke-static {v1, v3}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v1, v3}, Lf9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 18
     .line 19
@@ -416,7 +416,7 @@
 
     .line 27
     .line 28
-    invoke-static {v1, v3}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v1, v3}, Lf9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 29
     .line 30
@@ -440,7 +440,7 @@
 
     .line 38
     .line 39
-    invoke-static {v1, v3}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v1, v3}, Lf9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 40
     .line 41
@@ -500,7 +500,7 @@
 
     .line 65
     .line 66
-    invoke-static {v1, p1}, Lh9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
+    invoke-static {v1, p1}, Lf9/i;->a(Ljava/lang/Object;Ljava/lang/Object;)Z
 
     .line 67
     .line 68
@@ -612,7 +612,7 @@
 
     .line 11
     .line 12
-    invoke-static {v0, v1, v2}, Ls1/a;->f(IILjava/lang/String;)I
+    invoke-static {v0, v1, v2}, Ls1/a;->h(IILjava/lang/String;)I
 
     .line 13
     .line 14
@@ -624,7 +624,7 @@
 
     .line 17
     .line 18
-    invoke-static {v0, v1, v2}, Ls1/a;->f(IILjava/lang/String;)I
+    invoke-static {v0, v1, v2}, Ls1/a;->h(IILjava/lang/String;)I
 
     .line 19
     .line 20

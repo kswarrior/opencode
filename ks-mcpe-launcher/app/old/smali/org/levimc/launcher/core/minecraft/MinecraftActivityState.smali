@@ -1,10 +1,10 @@
 .class public final Lorg/levimc/launcher/core/minecraft/MinecraftActivityState;
 .super Ljava/lang/Object;
-.source "r8-map-id-743f193644a41fe0a94cc1491e7e0672693bdd213c78e46eaff9839604b6b354"
+.source "r8-map-id-5891489aca200bad2d58697278b46e2b5e5f14ab2d00be2b83b599f61ec408d2"
 
 
 # static fields
-.field private static currentActivityRef:Ljava/lang/ref/WeakReference; = null
+.field private static currentActivityRef:Ljava/lang/ref/WeakReference;
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "Ljava/lang/ref/WeakReference<",
@@ -14,9 +14,9 @@
     .end annotation
 .end field
 
-.field private static volatile resumed:Z = false
+.field private static volatile resumed:Z
 
-.field private static volatile running:Z = false
+.field private static volatile running:Z
 
 
 # direct methods
