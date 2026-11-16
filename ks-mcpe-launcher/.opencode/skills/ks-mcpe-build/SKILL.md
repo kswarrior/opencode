@@ -16,7 +16,7 @@ The project is a hybrid APK:
   engine reflectively through `EngineLauncher`.
 
 The application id is `com.ks.android.mcpe.launcher`, version `1.0.1`
-(`versionCode 10001`). Do not confuse it with the archived 1.6.1 clone under
+(`versionCode 10001`). Do not confuse it with the archived 1.1.5 clone under
 `app/old`, whose id was `com.ks.mcpe.launcher`.
 
 ## Build
@@ -53,7 +53,7 @@ Requirements: Java 21+, Python 3, curl, zip, Android build-tools (`aapt2`,
   `HomeActivity`, `LaunchingActivity`, `Res`, `EngineLauncher`).
 - `app/source/build.sh` - the real build.
 - `app/build.sh` - wrapper that calls `app/source/build.sh`.
-- `app/old` - 1.6.1 KS clone kept only as reference. Never build from it.
+- `app/old` - 1.1.5 KS clone kept only as reference. Never build from it.
 - `/tmp/ks-mcpe-build` - disposable copy and intermediate APKs.
 - `release/signing/ks-mcpe.keystore` and `credentials.env` - current signing
   key and password. Gitignored; back them up and never print the password.

@@ -6,7 +6,7 @@ description: Use when installing or testing the KS MCPE Launcher APK on an Andro
 # APK install and device verification
 
 Current package: `com.ks.android.mcpe.launcher` (hybrid build, version `1.0.1`).
-The original LeviLauncher package is `org.levimc.launcher`; the archived 1.6.1
+The original LeviLauncher package is `org.levimc.launcher`; the archived 1.1.5
 KS clone used `com.ks.mcpe.launcher`. Do not mix them up.
 
 The hybrid APK contains only `arm64-v8a` native libraries. An x86_64 emulator
