@@ -3436,7 +3436,6 @@
     move-result-object v0
 
     .line 75
-    invoke-static {p1, v0}, Lorg/levimc/launcher/util/InstanceIcons;->bind(Landroid/widget/ImageView;Lorg/levimc/launcher/core/versions/GameVersion;)V
 
     .line 76
     .line 77
@@ -3617,7 +3616,6 @@
     .line 168
     .line 169
     .line 170
-    invoke-direct {p0}, Lorg/levimc/launcher/core/minecraft/MinecraftLoadingActivity;->applyLaunchTheme()V
 
     .line 171
     .line 172
