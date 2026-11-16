@@ -24,7 +24,6 @@ public abstract class BaseActivity extends Activity {
             getWindow().setNavigationBarContrastEnforced(false);
             getWindow().setNavigationBarDividerColor(Color.BLACK);
         }
-        hideSystemUi();
     }
 
     @Override
