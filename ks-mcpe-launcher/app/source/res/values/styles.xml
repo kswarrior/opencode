@@ -14,16 +14,4 @@
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:windowDisablePreview">true</item>
     </style>
-
-    <style name="Text.Brand">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
-
-    <style name="Text.Muted">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textColor">@color/gray_400</item>
-        <item name="android:includeFontPadding">false</item>
-    </style>
 </resources>
