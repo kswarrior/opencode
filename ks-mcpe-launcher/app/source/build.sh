@@ -213,9 +213,10 @@ printf '%s\n' "$BADGING" | grep -q "package: name='$APP_ID'" \
     || die "unexpected package id"
 printf '%s\n' "$BADGING" | grep -q "versionName='$APP_VERSION'" \
     || die "unexpected version name"
-unzip -l "$OUTPUT" | grep -q 'classes3.dex' \
+unzip -l "$OUTPUT" > "$WORKDIR/zip-list.txt"
+grep -q 'classes3.dex' "$WORKDIR/zip-list.txt" \
     || die "classes3.dex missing"
-unzip -l "$OUTPUT" | grep -q 'lib/arm64-v8a/libgxcore.so' \
+grep -q 'lib/arm64-v8a/libgxcore.so' "$WORKDIR/zip-list.txt" \
     || die "libgxcore.so missing"
 
 log "built $OUTPUT"
