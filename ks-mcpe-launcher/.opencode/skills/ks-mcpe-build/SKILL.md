@@ -1,18 +1,23 @@
 ---
 name: ks-mcpe-build
-description: Use when building, rebuilding, repacking, patching, signing, or verifying the KS MCPE Launcher APK (com.ks.mcpe.launcher) from the checked-in decoded LeviLauncher source tree, including source-tree customizations, zipalign, and apksigner checks. Trigger on ks-mcpe-launcher, app/build.sh, app/source, LeviLauncher, com.ks.mcpe.launcher, or APK clone/repack work in this repository.
+description: Use when building, rebuilding, patching, signing, or verifying the KS MCPE Launcher APK (com.ks.android.mcpe.launcher), including the LeviLauncher 1.7.1 launch engine, the small Java UI in app/source/ui-src, classes3.dex injection, zipalign, and apksigner checks. Trigger on ks-mcpe-launcher, app/build.sh, app/source, LeviLauncher 1.7.1, com.ks.android.mcpe.launcher, or hybrid APK work in this repository.
 ---
 
 # KS MCPE Launcher build
 
-The project is an unofficial apktool repack of the upstream LeviLauncher
-Android release, published under the application id `com.ks.mcpe.launcher`.
-Source build is not an option: the upstream app depends on a private Discord
-Partner SDK and other non-public artifacts.
+The project is a hybrid APK:
 
-Upstream source for behavior questions:
-<https://github.com/LiteLDev/LeviLauncher-Android> (Apache-2.0, inspected at
-commit `380a2b722990d0c018232e4ffb2d302ebc2b81ba`).
+- The checked-in decoded LeviLauncher 1.7.1 tree supplies the in-process
+  Minecraft launch engine, runtime preparation, mod support, and native
+  libraries.
+- `app/source/ui-src` is the compact KS Java UI. It is compiled to
+  `classes3.dex` and injected into the engine APK.
+- The old external-intent launch path is gone. `LaunchingActivity` calls the
+  engine reflectively through `EngineLauncher`.
+
+The application id is `com.ks.android.mcpe.launcher`, version `1.0.1`
+(`versionCode 10001`). Do not confuse it with the archived 1.6.1 clone under
+`app/old`, whose id was `com.ks.mcpe.launcher`.
 
 ## Build
 
@@ -20,170 +25,150 @@ commit `380a2b722990d0c018232e4ffb2d302ebc2b81ba`).
 ANDROID_HOME=/usr/local/lib/android/sdk ks-mcpe-launcher/app/build.sh
 ```
 
-The build copies the checked-in decoded project in
-`ks-mcpe-launcher/app/source` into `WORKDIR` (default `/tmp/ks-mcpe-build`),
-writes the clone version into `apktool.yml`, verifies the clone customizations,
-rebuilds with the pinned apktool, zipaligns, signs and verifies. The output is
-`/tmp/ks-mcpe-build/dist/KS-MCPE-Launcher-<version>.apk` plus a `.sha256` file.
+`app/build.sh` delegates to `app/source/build.sh`, which:
 
-Requirements: Java 21+, Python 3, curl, Android build-tools (`zipalign`,
-`apksigner`, `aapt2`).
+1. Copies `app/source` into `WORKDIR` (default `/tmp/ks-mcpe-build`).
+2. Writes `APP_VERSION` / `APP_VERSION_CODE` into `apktool.yml`, the manifest
+   package, and `BuildConfig.smali`.
+3. Compiles `ui-src` with javac and d8 (`--min-api 28`) into `classes3.dex`.
+4. Builds with pinned apktool 3.0.3.
+5. Injects `classes3.dex`, zipaligns, signs, verifies, and writes the SHA-256.
+6. Places the signed APK and checksum in `ks-mcpe-launcher/release/`.
+
+Output:
+
+```
+ks-mcpe-launcher/release/KS-MCPE-Launcher-<version>.apk
+ks-mcpe-launcher/release/KS-MCPE-Launcher-<version>.apk.sha256
+```
+
+Requirements: Java 21+, Python 3, curl, zip, Android build-tools (`aapt2`,
+`d8`, `zipalign`, `apksigner`), and platform `android-35` or newer.
 
 ## Workspace layout
 
-- Persistent source: `ks-mcpe-launcher/app/source` - the complete apktool
-  decode of the launcher (manifest, `res/`, `smali/`, `lib/`, `assets/`,
-  `apktool.yml`). It contains every file, not only changed ones, roughly
-  12,000 files / 180 MB, and is the single source of truth.
-- Build script: `ks-mcpe-launcher/app/build.sh`.
-- Disposable build workspace: `/tmp/ks-mcpe-build` (apktool jar, copied tree,
-  generated signing key, `dist/`).
-- Never hand-edit `/tmp/ks-mcpe-build/decoded`; every build deletes it and
-  recopies `app/source`. Make changes in `app/source` and commit them.
-- There is no overlay or per-file patch layer. Full-file replacements and
-  build-time customizations live directly in `app/source` or in `build.sh`.
-- The default keystore lives under `~/.local/share/ks-mcpe-signing`; it is not
-  disposable, but a fresh CI runner does not preserve it. Back it up or
-  configure CI signing secrets; a lost key changes the signature and breaks
-  in-place updates. Version 1.0.6 was signed with a new key for this reason; 1.0.7 reuses it.
-- Keep the root `.gitignore` exceptions for
-  `ks-mcpe-launcher/app/source/**/{server,target,debug}/`. The decoded Java
-  packages include directories with those names; without the exceptions
-  build-critical smali files are silently omitted from git.
+- `app/source` - the complete decoded LeviLauncher 1.7.1 tree plus KS changes.
+  About 194 MB / 13,000 files; it is the source of truth and is committed.
+- `app/source/ui-src` - the KS Java UI (`BaseActivity`, `LoadingActivity`,
+  `HomeActivity`, `LaunchingActivity`, `Res`, `EngineLauncher`).
+- `app/source/build.sh` - the real build.
+- `app/build.sh` - wrapper that calls `app/source/build.sh`.
+- `app/old` - 1.6.1 KS clone kept only as reference. Never build from it.
+- `/tmp/ks-mcpe-build` - disposable copy and intermediate APKs.
+- `release/signing/ks-mcpe.keystore` and `credentials.env` - current signing
+  key and password. Gitignored; back them up and never print the password.
+- `/tmp/opencode/ks-hybrid` - original staging copy of the hybrid; not needed
+  after `app/source` is in place.
 
-Pinned inputs:
+## Pinned inputs
 
 | Input | Value |
 | --- | --- |
-| Source base APK | `https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher/LeviLauncher-v1.6.1-release.apk` |
-| Source base SHA-256 | `2cf34efb13546dc070840aebf3657cdde5c27fb9d9f250e53384995c1a3c02ce` |
+| Engine base APK | `https://github.com/LiteLDev/LeviLauncher-Android/releases/download/v1.7.1/LeviLauncher-v1.7.1-release.apk` |
+| Engine base SHA-256 | `ff336424079f9d2a58f89d6a34a2d2ba23d88f49fdbf0c6357d22a3d32dfd911` |
 | Upstream package | `org.levimc.launcher` |
-| Upstream version | `1.6.1` (`versionCode 58293102`, minSdk 28, target 35) |
+| Upstream version | `1.7.1` (`versionCode 59124885`) |
 | Apktool | `3.0.3`, SHA-256 `dbf930b076c6b9be08d57c449cacefc3bdd6b71ebd59b3066fc0e1f5b14f9423` |
+| Android build-tools | `37.0.0` |
+| Compile platform | `android-35` |
+| Min / target SDK | 28 / 35 |
+| ABI | `arm64-v8a` only |
 
-The base APK is only needed when regenerating `app/source`; normal builds read
-the committed tree and never download the upstream APK.
+The base APK is only needed when regenerating `app/source`; normal builds use
+the committed tree.
 
-## Environment variables
+## Patches already present in the tree
 
-| Variable | Default | Purpose |
-| --- | --- | --- |
-| `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable workspace and output |
-| `SOURCE_DIR` | `app/source` | Full decoded apktool project to build |
-| `APP_ID` | `com.ks.mcpe.launcher` | Expected application id of the clone |
-| `APP_VERSION` | `1.0.7` | Clone versionName (also written to `BuildConfig`) |
-| `APP_VERSION_CODE` | `10007` | Clone versionCode (also written to `BuildConfig`) |
-| `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK file name prefix |
-| `KEYSTORE` | `~/.local/share/ks-mcpe-signing/ks-mcpe.keystore` | Signing keystore |
-| `CREDENTIALS_FILE` | next to keystore | Generated password/alias storage |
-| `KEY_ALIAS` / `KEY_PASSWORD` / `KEYSTORE_PASSWORD` | generated once | Signing credentials |
+1. Manifest package, signature permission, provider authorities,
+   `taskAffinity`, and `targetPackage` use `com.ks.android.mcpe.launcher`.
+2. `BuildConfig` uses the KS id, version `1.0.1`, versionCode `0x2711`, and
+   `SKIP_PLAY_STORE_CHECK=true`.
+3. `PlayStoreValidator.isMinecraftFromPlayStore(Context)` returns `true`.
+4. `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-op
+   `return-void` methods.
+5. `MinecraftProcessRestarter` and `LauncherRestartActivity` restart into
+   `com.ks.android.mcpe.launcher.HomeActivity`.
+6. `app_name` is `KS MCPE Launcher` in all 12 `res/values*/strings.xml`.
+7. `SplashActivity` is not exported and no longer owns the launcher filter.
+   `LoadingActivity` is the launcher; `HomeActivity` and `LaunchingActivity`
+   are added with `@style/KsTheme`.
+8. KS resources use the `ks_` prefix: `ks_activity_loading`,
+   `ks_activity_home`, `ks_activity_launching`, `ks_colors`, `ks_strings`,
+   `ks_styles`, `ks_ic_launcher`, `ks_ic_launcher_round`.
+9. `lib/arm64-v8a/libgxcore.so` has its native package-name verifier
+   neutralised at file offset `0x1950d4`:
+   `3f4c00f121180054` -> `20008052c0035fd6` (`mov w0,#1; ret`).
+   Patched SHA-256:
+   `6518bc25c9859183c2420c225ec24197d9b5ad366399fef4b4fafa9a0affe526`.
+   The pre-patch virtual address was `0x1990d4`; do not use that offset when
+   editing the decoded file.
+10. `classes.dex` and `classes2.dex` are upstream engine dex; `classes3.dex`
+    is the KS UI. Keep that order and do not merge them.
 
-## Customizations in the source tree
+## Engine bridge
 
-`app/source` already contains all clone changes:
+`EngineLauncher` uses reflection so `ui-src` does not compile against the
+engine smali:
 
-1. `<manifest package>` is `com.ks.mcpe.launcher`, and `android:authorities`
-   for every provider use the clone id so the clone does not collide with the
-   original app (`fileprovider`, `playgamesinitprovider`,
-   `firebaseinitprovider`, `androidx-startup`).
-2. Signature-level permission names (`<permission>` and
-   `<uses-permission>`, notably
-   `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION`) use the clone id. Android
-   rejects a redeclared signature permission owned by a different certificate
-   with `INSTALL_FAILED_DUPLICATE_PERMISSION` when the original is installed.
-3. `android:taskAffinity` and `android:targetPackage` use the clone id.
-4. `BuildConfig.APPLICATION_ID` in smali uses the clone id.
-5. `app_name` is `KS MCPE Launcher` in every `res/values*/strings.xml`.
-6. `eula_title` and `eula_message` are branded "KS MCPE Launcher" (translated
-   EULA texts keep their language but use the new brand name).
-7. `res/layout/nav_bar.xml` has a text-less, 36dp icon-only Settings button at
-   the far right of the header. The separate upstream About page is gone;
-   `res/layout/activity_settings.xml` renders a branded About tab with
-   `KS MCPE Launcher | created by KS Warrior`, a feature overview and the
-   GitHub/Discord links.
-8. The native package-name verifier in `lib/arm64-v8a/libgxcore.so` is
-   neutralised at virtual address `0x1990d4` (`cmp x1,#0x13; b.ne fail`) to
-   `mov w0,#1; ret`. `JNI_OnLoad` otherwise requires the upstream
-   19-character id plus a hard-coded hash, and `System.loadLibrary("gxcore")`
-   fails with `Failed to load native image preparation`.
-9. The update system is disabled: `GithubReleaseUpdater.checkUpdate()` and
-   `checkUpdateOnLaunch()` are no-op `return-void` methods, the launch-time
-   call is removed from `MainActivity`, and the "Check for updates" button and
-   its listener are removed from the settings screen.
-10. Play Games (`smali/com/google/android/gms/games`, `.../internal/games_v2`),
-    Play billing (`smali/com/android/billingclient`), Launcher News
-    (`NewsActivity`, adapters, feed classes and resources), and the Firebase
-    news push code (`LauncherNewsMessagingService`,
-    `NewsNotificationHelper`) are deleted, and their manifest providers,
-    activities, services, queries, permissions, and metadata are removed.
-    `ChangelogManager` is independent of the News feed and stays.
-11. The shared header is removed: `BaseActivity.wrapWithNavBar()` still
-    inflates `nav_bar.xml` but hides it (`nav_bar_root` GONE) and adds it after
-    the content page so page-local duplicate ids win `findViewById`. Keep the
-    nav views in `nav_bar.xml`, because listener wiring has no null checks.
-    The Home page has its own top row with the KS logo, the
-    "KS MCPE Launcher" brand, Sign In/avatar and Settings, plus a Mods pill
-    (plugin icon + "Mods" label) at the bottom-left. Every content page
-    includes `nav_back_button` (from
-    `res/layout/view_back_button.xml`) left of its title; Accounts pins that
-    row above its two-pane content so it also shows in the disabled state.
-    Management opens from the cube icon on each instance card (below its
-    settings icon), scoped to that instance, and Mods opens
-    `ModsFullscreenActivity`. The header News icon and badge are gone. The old
-    Mods/Content cards are hidden on the Home page. The
-    Miscellaneous tab/page and Quick Launch were removed; CurseForge is a
-    button in Content Management beside Import, and Microsoft Accounts is
-    reachable from the Home avatar/Sign In. `BaseActivity` registers five
-    header tabs (keep their views in `nav_bar.xml`, because listener wiring has
-    no null checks); add any future tab to both `setupBaseNavBar()` and
-    `setActiveNavTab()`.
-12. The Mods page places External Mods, Mod Menu and Add Mod on the title row
-    and shows enabled/total as an `N / M` badge in place of the old stat
-    blocks. The Settings page removes its subtitle and puts the Basic,
-    Personalization, Updates and About tabs on the title row.
-13. `assets/default_background.jpg` is seeded into `filesDir` on first launch;
-    it is the default background with 1px blur and 100% brightness. Clearing a
-    custom image restores it. `PersonalizationManager` keeps the
-    `bg_image_path`/`bg_image_blur`/`bg_image_brightness` preference keys.
+```
+VersionManager.get(Context)
+  -> loadAllVersions()
+  -> getSelectedVersion()
+  -> new MinecraftLauncher(Context)
+  -> launch(Intent, GameVersion, LaunchCallback)
+```
 
-`build.sh` rewrites the clone version into `apktool.yml` and
-`BuildConfig.smali` before building, then verifies the application id, branded
-EULA, disabled update entry points, the removal of Play Games/billing/news
-push, and the native patch before assembling. It refuses to build if a marker
-is missing.
-
-Never rename only the manifest package and leave permissions or authorities
-behind - that produces install failures that only appear when the original
-LeviLauncher is installed.
+The callback is a `Proxy` for
+`org.levimc.launcher.core.minecraft.MinecraftLauncher$LaunchCallback`.
+`getSelectedVersion()` falls back to the first installed version, so an
+installed Minecraft Bedrock package works without an explicit version picker.
+If Minecraft is absent, `LaunchingActivity` shows the missing-installation
+state instead of calling the engine.
 
 ## Verify a build
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging dist/KS-MCPE-Launcher-1.0.7.apk | head -3
-$BT/apksigner verify --print-certs dist/KS-MCPE-Launcher-1.0.7.apk
-$BT/zipalign -c -p 4 dist/KS-MCPE-Launcher-1.0.7.apk
-unzip -lv dist/KS-MCPE-Launcher-1.0.7.apk | grep -E 'resources.arsc|classes.dex'
+APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+$BT/aapt2 dump badging "$APK" | head -5
+$BT/apksigner verify --print-certs "$APK"
+$BT/zipalign -c -p 4 "$APK"
+unzip -l "$APK" | grep -E 'classes[23]?\.dex|libgxcore\.so'
+sha256sum -c "$APK.sha256"
 ```
 
-- `resources.arsc` must be `Stored` and 4-byte aligned (Android 11+ install
-  requirement for apps targeting API 30+).
-- Decode a copy of the APK with the pinned apktool to confirm the EULA strings,
-  the no-op updater methods and the layouts; do not leave decoded output in the
-  repository.
-- Resource IDs must stay identical to upstream (apktool 3 keeps them). Do not
-  run `aapt2 optimize` or `--enable-sparse-encoding` on this repack; ID
-  renumbering breaks the unmodified smali.
-- Keep the signing key stable between releases. A different key cannot update
-  an installed clone (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`).
+Expected:
+
+- Package `com.ks.android.mcpe.launcher`, versionName `1.0.1`, versionCode
+  `10001`.
+- V3 signer certificate SHA-256
+  `b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
+- `classes.dex`, `classes2.dex`, `classes3.dex`, and
+  `lib/arm64-v8a/libgxcore.so` are present.
+- `resources.arsc` is `Stored` and 4-byte aligned.
+- `libgxcore.so` bytes at `0x1950d4` are `20008052c0035fd6`.
+
+Decode a copy with the pinned apktool when checking smali patches:
+
+```bash
+java -jar ~/.cache/ks-mcpe/apktool_3.0.3.jar d --no-res --no-assets \
+  -f "$APK" -o /tmp/opencode/verify-decoded
+```
 
 ## Rules
 
-- Do not commit `WORKDIR`, built APKs, keystores, or `credentials.env`. All
-  are generated and belong outside the repo.
-- The full decoded project in `app/source` is intentionally committed. Do not
-  replace it with patch/overlay files again.
-- Do not reintroduce `ks-mcpe-launcher.workflow.yml` or a CI workflow for this
-  project; it was removed on request and builds are local.
-- Attribution: keep upstream license/notices inside the APK; the clone is not
-  an official LeviLauncher build.
+- Do not commit build outputs, keystores, or `credentials.env`.
+- Do not replace `app/source` with a patch/overlay scheme. The full decoded
+  tree is intentionally committed.
+- Do not re-add the old external-intent launcher or the full upstream UI.
+- Do not rename or delete engine resources, smali packages, or native
+  libraries. Resource IDs are preserved by apktool 3; do not run `aapt2
+  optimize` or sparse encoding.
+- Keep the signing key stable between releases. The 1.0.1 key is new; 1.0.0
+  users must uninstall before installing 1.0.1.
+- Do not create a CI workflow for this project unless the user asks. Builds
+  are local.
+- Keep upstream license/notices in the APK. This is not an official
+  LeviLauncher build.
+- Device testing is separate: see the `apk-install-verify` skill. This build
+  is arm64-only, so x86_64 emulators cannot install it.
