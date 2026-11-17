@@ -91,17 +91,17 @@ public class LaunchingActivity extends BaseActivity {
 
         PackageInfo minecraft = minecraftPackage();
         if (minecraft == null) {
-            minecraftView.setText(Res.string(this, "ks_info_not_installed"));
+            minecraftView.setText(Res.string(this, "info_not_installed"));
         } else {
-            minecraftView.setText(getString(Res.string(this, "ks_info_build"),
+            minecraftView.setText(getString(Res.string(this, "info_build"),
                     minecraftVersionName(minecraft),
                     Long.valueOf(minecraft.getLongVersionCode())));
         }
         engineView.setText(EngineLauncher.isAvailable()
                 ? EngineLauncher.ENGINE_LABEL
-                : getString(Res.string(this, "ks_info_unavailable")));
+                : getString(Res.string(this, "info_unavailable")));
         deviceView.setText(deviceName());
-        systemView.setText(getString(Res.string(this, "ks_info_system_value"),
+        systemView.setText(getString(Res.string(this, "info_system_value"),
                 Build.VERSION.RELEASE, Integer.valueOf(Build.VERSION.SDK_INT),
                 EngineLauncher.runtimeAbi()));
     }
@@ -193,7 +193,7 @@ public class LaunchingActivity extends BaseActivity {
 
     private void setStep(int step) {
         if (stepView != null) {
-            stepView.setText(getString(Res.string(this, "ks_launch_step"),
+            stepView.setText(getString(Res.string(this, "launch_step"),
                     Integer.valueOf(step), Integer.valueOf(EngineLauncher.TOTAL_STEPS)));
         }
     }
