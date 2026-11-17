@@ -53,4 +53,20 @@
     <string name="ks_back_to_home">BACK TO HOME</string>
     <string name="ks_version_format">v%1$s</string>
     <string name="ks_engine_missing_detail">The Minecraft launch engine is missing from this build. Reinstall the launcher from the release page.</string>
+    <string name="ks_home_skin_desc">3D player preview</string>
+    <string name="ks_add_skin">ADD SKIN</string>
+    <string name="ks_emote">EMOTE</string>
+    <string name="ks_emote_title">EMOTE</string>
+    <string name="ks_emote_idle">Idle</string>
+    <string name="ks_emote_wave">Wave</string>
+    <string name="ks_emote_hit">Hit</string>
+    <string name="ks_emote_spin_jump">Spin Jump</string>
+    <string name="ks_emote_crouch">Crouch</string>
+    <string name="ks_emote_hands_up">Hands Up</string>
+    <string name="ks_emote_swim">Swim</string>
+    <string name="ks_emote_fly">Fly</string>
+    <string name="ks_emote_run">Run</string>
+    <string name="ks_skin_invalid">That image is not a valid Minecraft skin. Choose a 64x64 or 64x32 PNG.</string>
+    <string name="ks_skin_saved">Skin applied to your player.</string>
+    <string name="ks_skin_load_failed">Could not load the saved skin.</string>
 </resources>
