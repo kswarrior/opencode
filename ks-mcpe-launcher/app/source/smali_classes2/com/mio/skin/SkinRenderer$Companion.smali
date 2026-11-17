@@ -85,24 +85,39 @@
 .end method
 
 .method private final defaultSkin()Landroid/graphics/Bitmap;
-    .locals 1
+    .locals 3
 
     .line 538
-    const-class p0, Lcom/mio/skin/SkinRenderer;
+    const-class v0, Lcom/mio/skin/SkinRenderer;
 
-    const-string v0, "/assets/img/alex.png"
+    const-string v1, "/assets/img/alex.png"
 
-    invoke-virtual {p0, v0}, Ljava/lang/Class;->getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;
+    invoke-virtual {v0, v1}, Ljava/lang/Class;->getResourceAsStream(Ljava/lang/String;)Ljava/io/InputStream;
 
-    move-result-object p0
+    move-result-object v1
 
-    invoke-static {p0}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    if-eqz v1, :fallback
 
-    move-result-object p0
+    invoke-static {v1}, Landroid/graphics/BitmapFactory;->decodeStream(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
 
-    const-string v0, "decodeStream(...)"
+    move-result-object v0
 
-    invoke-static {p0, v0}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+    const-string v1, "decodeStream(...)"
 
-    return-object p0
+    invoke-static {v0, v1}, Lkotlin/jvm/internal/Intrinsics;->checkNotNullExpressionValue(Ljava/lang/Object;Ljava/lang/String;)V
+
+    return-object v0
+
+    :fallback
+    const/16 v0, 0x40
+
+    const/16 v1, 0x40
+
+    sget-object v2, Landroid/graphics/Bitmap$Config;->ARGB_8888:Landroid/graphics/Bitmap$Config;
+
+    invoke-static {v0, v1, v2}, Landroid/graphics/Bitmap;->createBitmap(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
+
+    move-result-object v0
+
+    return-object v0
 .end method
