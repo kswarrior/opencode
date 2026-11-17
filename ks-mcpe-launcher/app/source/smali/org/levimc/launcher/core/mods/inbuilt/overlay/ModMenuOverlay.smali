@@ -15009,6 +15009,8 @@
 .method public hide()V
     .locals 3
 
+    invoke-static {}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->closeIfOpen()V
+
     .line 1
     iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->isShowing:Z
 
