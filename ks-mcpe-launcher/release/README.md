@@ -1,12 +1,18 @@
 # Release output
 
 Current release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.5>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.6>
 
-Current build: `1.0.5` (`versionCode 10005`, package
+Current build: `1.0.6` (`versionCode 10006`, package
 `com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI (including
 the 3D player preview with skin import and emotes) with the
 LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
+
+`1.0.6` fixes the startup crash caused by a mismatched Kotlin coroutine
+interface mapping (`NoSuchMethodError: CoroutineContext.u`) and removes the
+transparent background from the `TextureView` skin preview, which Android
+rejects with `UnsupportedOperationException`. It is signed with the same key
+as `1.0.5`, so `1.0.5` users can update in place.
 
 `app/source/build.sh` writes the signed APK here:
 
@@ -33,7 +39,7 @@ if the key changes, Android refuses to update an installed build
 (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). The password is stored only in
 `credentials.env`, which is also gitignored.
 
-The `1.0.5` certificate SHA-256 is
+The `1.0.5`/`1.0.6` certificate SHA-256 is
 `a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
 `1.0.5` uses a new signing key; the `1.0.2`–`1.0.4` key
 (`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`)
@@ -84,7 +90,7 @@ stubs, so the launcher never requests `/releases/latest` and never downloads
 an APK on its own. Users update by installing the new
 `KS-MCPE-Launcher-<version>.apk` from the release page.
 
-Do not mark `v1.0.5` as GitHub "latest". The legacy `ks-mcpe-launcher` release
+Do not mark `v1.0.6` as GitHub "latest". The legacy `ks-mcpe-launcher` release
 line (`v1.1.8` at the time of writing) shares the release page and
 `KS-MCPE-Launcher-*` asset names but is a different package/signing line. If
 updating is re-enabled later, filter releases by tag/package or asset version
