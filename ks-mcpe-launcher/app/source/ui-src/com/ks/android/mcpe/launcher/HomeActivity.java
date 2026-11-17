@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -79,6 +80,7 @@ public class HomeActivity extends BaseActivity {
 
     private Object skinRenderer;
     private Method setTextureMethod;
+    private Method updateTextureMethod;
     private Method playAnimationMethod;
     private Method pauseMethod;
     private Method resumeMethod;
@@ -140,6 +142,8 @@ public class HomeActivity extends BaseActivity {
             resumeMethod = viewer.getClass().getMethod("onResume");
             setTextureMethod = rendererClass.getMethod(
                     "setTexture", Bitmap.class, Bitmap.class);
+            updateTextureMethod = rendererClass.getMethod(
+                    "updateTexture", Bitmap.class, Bitmap.class, Boolean.class);
             playAnimationMethod = rendererClass.getMethod(
                     "playAnimation", Class.forName("com.mio.skin.PlayerAnimation"));
 
@@ -184,14 +188,43 @@ public class HomeActivity extends BaseActivity {
             return;
         }
         currentSkin = bitmap;
-        if (setTextureMethod == null || skinRenderer == null) {
+        if (skinRenderer == null) {
             return;
         }
+        Boolean slim = readSkinModel();
         try {
-            setTextureMethod.invoke(skinRenderer, bitmap, null);
+            if (updateTextureMethod != null && slim != null) {
+                updateTextureMethod.invoke(skinRenderer, bitmap, null, slim);
+            } else if (setTextureMethod != null) {
+                setTextureMethod.invoke(skinRenderer, bitmap, null);
+            }
         } catch (ReflectiveOperationException | RuntimeException error) {
             Log.e(TAG, "Could not apply skin", error);
         }
+    }
+
+    private Boolean readSkinModel() {
+        File file = new File(getFilesDir(), SKIN_MODEL_FILE);
+        if (!file.isFile()) {
+            return null;
+        }
+        try (FileInputStream input = new FileInputStream(file)) {
+            byte[] buffer = new byte[16];
+            int read = input.read(buffer);
+            if (read > 0) {
+                String model = new String(buffer, 0, read, StandardCharsets.UTF_8)
+                        .trim().toLowerCase(java.util.Locale.ROOT);
+                if ("slim".equals(model)) {
+                    return Boolean.TRUE;
+                }
+                if ("classic".equals(model)) {
+                    return Boolean.FALSE;
+                }
+            }
+        } catch (IOException | RuntimeException error) {
+            Log.w(TAG, "Could not read skin model", error);
+        }
+        return null;
     }
 
     private void pickSkin() {
