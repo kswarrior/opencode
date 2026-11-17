@@ -65,6 +65,79 @@
         android:gravity="end"
         android:orientation="vertical">
 
+        <FrameLayout
+            android:id="@+id/ks_home_account_host"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/ks_home_sign_in"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:background="@drawable/ks_btn_sign_in"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.10"
+                android:minWidth="108dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:text="@string/ks_account_sign_in"
+                android:textColor="@color/ks_black"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:id="@+id/ks_home_account_card"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:background="@drawable/ks_account_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="6dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ks_home_account_avatar"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/ks_avatar_circle"
+                    android:clipToOutline="true"
+                    android:contentDescription="@string/ks_account_avatar_desc"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ks_avatar_placeholder" />
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="9dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@color/ks_gray_600" />
+
+                <TextView
+                    android:id="@+id/ks_home_account_name"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:fontFamily="sans-serif-medium"
+                    android:includeFontPadding="false"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:textColor="@color/ks_white"
+                    android:textSize="12sp" />
+            </LinearLayout>
+        </FrameLayout>
+
         <View
             android:layout_width="38dp"
             android:layout_height="2dp"

@@ -54,6 +54,13 @@
     <string name="ks_version_format">v%1$s</string>
     <string name="ks_engine_missing_detail">The Minecraft launch engine is missing from this build. Reinstall the launcher from the release page.</string>
     <string name="ks_home_skin_desc">3D player preview</string>
+    <string name="ks_account_sign_in">SIGN IN</string>
+    <string name="ks_account_add">ADD ACCOUNT</string>
+    <string name="ks_account_unknown">PLAYER</string>
+    <string name="ks_account_avatar_desc">Player avatar</string>
+    <string name="ks_account_active">Active account</string>
+    <string name="ks_account_switch_failed">Could not switch account. Try again.</string>
+    <string name="ks_account_login_failed">Could not sign in. Try again.</string>
     <string name="ks_add_skin">ADD SKIN</string>
     <string name="ks_emote">EMOTE</string>
     <string name="ks_emote_title">EMOTE</string>
