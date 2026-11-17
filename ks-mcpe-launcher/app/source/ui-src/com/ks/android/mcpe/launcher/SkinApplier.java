@@ -45,6 +45,12 @@ final class SkinApplier {
     private static final String CLASSIC_ID = "Standard_Custom";
     private static final String SLIM_ID = "Standard_CustomSlim";
     private static final String DEFAULT_PROFILE = "com.mojang.minecraftpe";
+    private static final int[][] SLIM_AREAS = {
+            {50, 16, 2, 4},
+            {54, 20, 2, 12},
+            {42, 48, 2, 4},
+            {46, 52, 2, 4}
+    };
 
     private SkinApplier() {
     }
@@ -203,25 +209,47 @@ final class SkinApplier {
         if (scale < 1) {
             return false;
         }
-        int xStart = 54 * scale;
-        int xEnd = 56 * scale;
-        int yStart = 20 * scale;
-        int yEnd = 32 * scale;
-        if (xEnd > width || yEnd > height) {
-            return false;
+        boolean allBlack = true;
+        for (int[] area : SLIM_AREAS) {
+            int x = area[0] * scale;
+            int y = area[1] * scale;
+            int w = area[2] * scale;
+            int h = area[3] * scale;
+            if (x + w > width || y + h > height) {
+                return false;
+            }
+            if (hasTransparency(bitmap, x, y, w, h)) {
+                return true;
+            }
+            if (!isBlackArea(bitmap, x, y, w, h)) {
+                allBlack = false;
+            }
         }
-        boolean transparent = false;
-        boolean opaque = false;
-        for (int px = xStart; px < xEnd; px++) {
-            for (int py = yStart; py < yEnd; py++) {
+        return allBlack;
+    }
+
+    private static boolean hasTransparency(Bitmap bitmap, int x, int y,
+                                           int width, int height) {
+        for (int px = x; px < x + width; px++) {
+            for (int py = y; py < y + height; py++) {
                 if ((bitmap.getPixel(px, py) >>> 24) == 0) {
-                    transparent = true;
-                } else {
-                    opaque = true;
+                    return true;
                 }
             }
         }
-        return transparent && !opaque;
+        return false;
+    }
+
+    private static boolean isBlackArea(Bitmap bitmap, int x, int y,
+                                       int width, int height) {
+        for (int px = x; px < x + width; px++) {
+            for (int py = y; py < y + height; py++) {
+                if (bitmap.getPixel(px, py) != 0xFF000000) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 
     private static boolean isValidSize(Bitmap bitmap) {
