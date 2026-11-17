@@ -203,15 +203,16 @@ final class SkinApplier {
         if (scale < 1) {
             return false;
         }
-        int x = 47 * scale;
+        int xStart = 54 * scale;
+        int xEnd = 56 * scale;
         int yStart = 20 * scale;
         int yEnd = 32 * scale;
-        if (x >= width || yEnd > height) {
+        if (xEnd > width || yEnd > height) {
             return false;
         }
         boolean transparent = false;
         boolean opaque = false;
-        for (int px = x; px < x + scale && px < width; px++) {
+        for (int px = xStart; px < xEnd; px++) {
             for (int py = yStart; py < yEnd; py++) {
                 if ((bitmap.getPixel(px, py) >>> 24) == 0) {
                     transparent = true;
