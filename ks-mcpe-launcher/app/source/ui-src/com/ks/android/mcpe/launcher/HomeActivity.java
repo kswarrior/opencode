@@ -360,6 +360,273 @@ public class HomeActivity extends BaseActivity {
                 .start();
     }
 
+    private void refreshAccountUi() {
+        Object account = activeAccount();
+        if (account == null) {
+            signInButton.setVisibility(View.VISIBLE);
+            accountCard.setVisibility(View.GONE);
+            accountNameView.setText("");
+            accountAvatarView.setImageResource(
+                    Res.drawable(this, "avatar_placeholder"));
+            dismissAccountMenu();
+            return;
+        }
+
+        String name = accountDisplayName(account);
+        accountNameView.setText(name);
+        accountNameView.setSelected(true);
+        signInButton.setVisibility(View.GONE);
+        accountCard.setVisibility(View.VISIBLE);
+        loadAvatar(accountAvatarView, stringField(account, "xboxAvatarUrl"));
+    }
+
+    private void openAccountLogin() {
+        try {
+            Intent intent = new Intent();
+            intent.setClassName(getPackageName(), LOGIN_ACTIVITY_CLASS);
+            startActivityForResult(intent, REQUEST_ACCOUNT_LOGIN);
+        } catch (RuntimeException error) {
+            Log.e(TAG, "Could not open Microsoft sign in", error);
+            Toast.makeText(this, Res.string(this, "account_login_failed"),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void showAccountMenu() {
+        dismissAccountMenu();
+        List<Object> accounts = listAccounts();
+        if (accounts.isEmpty()) {
+            openAccountLogin();
+            return;
+        }
+
+        LayoutInflater inflater = LayoutInflater.from(this);
+        View content = inflater.inflate(
+                Res.layout(this, "account_menu"), null, false);
+        LinearLayout list = content.findViewById(
+                Res.view(this, "account_menu_list"));
+        for (Object account : accounts) {
+            addAccountRow(inflater, list, account);
+        }
+        View addAccount = content.findViewById(
+                Res.view(this, "account_menu_add"));
+        addAccount.setOnClickListener(view -> {
+            dismissAccountMenu();
+            openAccountLogin();
+        });
+
+        int width = dp(ACCOUNT_MENU_WIDTH_DP);
+        int maxScroll = dp(ACCOUNT_MENU_MAX_HEIGHT_DP);
+        int[] location = new int[2];
+        accountCard.getLocationOnScreen(location);
+        int available = getResources().getDisplayMetrics().heightPixels
+                - location[1] - accountCard.getHeight() - dp(24);
+        maxScroll = Math.max(dp(56), Math.min(maxScroll, available - dp(52)));
+
+        list.measure(View.MeasureSpec.makeMeasureSpec(
+                        width - dp(12), View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(
+                        0, View.MeasureSpec.UNSPECIFIED));
+        View scroll = content.findViewById(
+                Res.view(this, "account_menu_scroll"));
+        ViewGroup.LayoutParams scrollParams = scroll.getLayoutParams();
+        scrollParams.height = Math.min(list.getMeasuredHeight(), maxScroll);
+        scroll.setLayoutParams(scrollParams);
+
+        accountMenu = new PopupWindow(content, width,
+                ViewGroup.LayoutParams.WRAP_CONTENT, true);
+        accountMenu.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        accountMenu.setOutsideTouchable(true);
+        accountMenu.setFocusable(true);
+        accountMenu.setElevation(dp(14));
+        accountMenu.setOnDismissListener(() -> accountMenu = null);
+
+        int xOffset = accountCard.getWidth() - width;
+        if (location[0] + xOffset < dp(12)) {
+            xOffset = dp(12) - location[0];
+        }
+        try {
+            accountMenu.showAsDropDown(accountCard, xOffset, dp(8));
+        } catch (RuntimeException error) {
+            Log.e(TAG, "Could not show account menu", error);
+            dismissAccountMenu();
+        }
+    }
+
+    private void addAccountRow(LayoutInflater inflater, LinearLayout container,
+                               Object account) {
+        View row = inflater.inflate(
+                Res.layout(this, "account_row"), container, false);
+        TextView name = row.findViewById(
+                Res.view(this, "account_row_name"));
+        TextView tag = row.findViewById(
+                Res.view(this, "account_row_tag"));
+        ImageView avatar = row.findViewById(
+                Res.view(this, "account_row_avatar"));
+        ImageView check = row.findViewById(
+                Res.view(this, "account_row_check"));
+
+        String username = accountDisplayName(account);
+        String gamertag = stringField(account, "xboxGamertag");
+        name.setText(username);
+        if (!TextUtils.isEmpty(gamertag)
+                && !gamertag.equalsIgnoreCase(username)) {
+            tag.setText(gamertag);
+            tag.setVisibility(View.VISIBLE);
+        } else {
+            tag.setVisibility(View.GONE);
+        }
+
+        boolean active = booleanField(account, "active");
+        check.setVisibility(active ? View.VISIBLE : View.GONE);
+        row.setBackgroundResource(Res.drawable(this,
+                active ? "account_row_active" : "account_row_bg"));
+        loadAvatar(avatar, stringField(account, "xboxAvatarUrl"));
+
+        String id = stringField(account, "id");
+        row.setOnClickListener(view -> {
+            dismissAccountMenu();
+            selectAccount(id);
+        });
+        container.addView(row);
+    }
+
+    private void selectAccount(String id) {
+        if (TextUtils.isEmpty(id)) {
+            return;
+        }
+        try {
+            Class<?> store = Class.forName(ACCOUNT_STORE_CLASS);
+            store.getMethod("setActive", Context.class, String.class)
+                    .invoke(null, this, id);
+            refreshAccountUi();
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            Log.e(TAG, "Could not select account", error);
+            Toast.makeText(this, Res.string(this, "account_switch_failed"),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void dismissAccountMenu() {
+        if (accountMenu == null) {
+            return;
+        }
+        accountMenu.dismiss();
+        accountMenu = null;
+    }
+
+    private Object activeAccount() {
+        try {
+            Class<?> store = Class.forName(ACCOUNT_STORE_CLASS);
+            return store.getMethod("getActive", Context.class)
+                    .invoke(null, this);
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            Log.e(TAG, "Could not read active account", error);
+            return null;
+        }
+    }
+
+    @SuppressWarnings("unchecked")
+    private List<Object> listAccounts() {
+        try {
+            Class<?> store = Class.forName(ACCOUNT_STORE_CLASS);
+            Object accounts = store.getMethod("list", Context.class)
+                    .invoke(null, this);
+            if (accounts instanceof List) {
+                return (List<Object>) accounts;
+            }
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            Log.e(TAG, "Could not read accounts", error);
+        }
+        return Collections.<Object>emptyList();
+    }
+
+    private String accountDisplayName(Object account) {
+        String username = stringField(account, "minecraftUsername");
+        if (TextUtils.isEmpty(username)) {
+            username = stringField(account, "xboxGamertag");
+        }
+        if (TextUtils.isEmpty(username)) {
+            username = getString(Res.string(this, "account_unknown"));
+        }
+        return username;
+    }
+
+    private static String stringField(Object target, String name) {
+        try {
+            Field field = target.getClass().getField(name);
+            Object value = field.get(target);
+            return value instanceof String ? (String) value : "";
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            return "";
+        }
+    }
+
+    private static boolean booleanField(Object target, String name) {
+        try {
+            Field field = target.getClass().getField(name);
+            return field.getBoolean(target);
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            return false;
+        }
+    }
+
+    private void loadAvatar(ImageView view, String url) {
+        if (TextUtils.isEmpty(url)) {
+            view.setTag(null);
+            view.setImageResource(Res.drawable(this, "avatar_placeholder"));
+            return;
+        }
+        Bitmap cached = avatarCache.get(url);
+        if (cached != null) {
+            view.setTag(url);
+            view.setImageBitmap(cached);
+            return;
+        }
+        view.setTag(url);
+        view.setImageResource(Res.drawable(this, "avatar_placeholder"));
+        avatarExecutor.execute(() -> {
+            Bitmap avatar = downloadAvatar(url);
+            if (avatar == null) {
+                return;
+            }
+            mainHandler.post(() -> {
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+                avatarCache.put(url, avatar);
+                if (url.equals(view.getTag())) {
+                    view.setImageBitmap(avatar);
+                }
+            });
+        });
+    }
+
+    private Bitmap downloadAvatar(String url) {
+        HttpURLConnection connection = null;
+        try {
+            connection = (HttpURLConnection) new URL(url).openConnection();
+            connection.setConnectTimeout(8000);
+            connection.setReadTimeout(8000);
+            connection.setInstanceFollowRedirects(true);
+            connection.setRequestProperty("User-Agent", "KS-MCPE-Launcher");
+            try (InputStream input = connection.getInputStream()) {
+                return BitmapFactory.decodeStream(input);
+            }
+        } catch (IOException | RuntimeException error) {
+            Log.w(TAG, "Could not load player avatar", error);
+            return null;
+        } finally {
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
+    }
+
     private void openLauncher() {
         startActivity(new Intent(this, LaunchingActivity.class));
         applyFadeTransition();
