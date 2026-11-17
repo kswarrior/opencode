@@ -84,16 +84,16 @@ public class LaunchingActivity extends BaseActivity {
     }
 
     private void fillInfo() {
-        TextView minedcraftView = findViewById(Res.view(this, "launching_info_minecraft"));
+        TextView minecraftView = findViewById(Res.view(this, "launching_info_minecraft"));
         TextView engineView = findViewById(Res.view(this, "launching_info_engine"));
         TextView deviceView = findViewById(Res.view(this, "launching_info_device"));
         TextView systemView = findViewById(Res.view(this, "launching_info_system"));
 
         PackageInfo minecraft = minecraftPackage();
         if (minecraft == null) {
-            minedcraftView.setText(Res.string(this, "ks_info_unavailable"));
+            minecraftView.setText(Res.string(this, "ks_info_not_installed"));
         } else {
-            minedcraftView.setText(getString(Res.string(this, "ks_info_build"),
+            minecraftView.setText(getString(Res.string(this, "ks_info_build"),
                     minecraftVersionName(minecraft),
                     Long.valueOf(minecraft.getLongVersionCode())));
         }
@@ -101,7 +101,7 @@ public class LaunchingActivity extends BaseActivity {
                 ? EngineLauncher.ENGINE_LABEL
                 : getString(Res.string(this, "ks_info_unavailable")));
         deviceView.setText(deviceName());
-        systemView.setText(getString(Res.string(this, "ks_info_system"),
+        systemView.setText(getString(Res.string(this, "ks_info_system_value"),
                 Build.VERSION.RELEASE, Integer.valueOf(Build.VERSION.SDK_INT),
                 EngineLauncher.runtimeAbi()));
     }
