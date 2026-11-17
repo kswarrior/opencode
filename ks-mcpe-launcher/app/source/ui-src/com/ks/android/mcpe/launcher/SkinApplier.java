@@ -232,7 +232,7 @@ final class SkinApplier {
                                            int width, int height) {
         for (int px = x; px < x + width; px++) {
             for (int py = y; py < y + height; py++) {
-                if ((bitmap.getPixel(px, py) >>> 24) == 0) {
+                if ((bitmap.getPixel(px, py) >>> 24) != 0xFF) {
                     return true;
                 }
             }
