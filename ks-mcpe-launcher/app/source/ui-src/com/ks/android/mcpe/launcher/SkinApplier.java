@@ -162,7 +162,7 @@ final class SkinApplier {
                     if (value.startsWith("Standard")) {
                         lines.add(key + ":" + skinId);
                     } else if (modern != null) {
-                        lines.add(key + ":" + modern.getAbsolutePath());
+                        lines.add(key + ":" + skinPath(value, modern));
                     } else {
                         lines.add(line);
                     }
@@ -179,6 +179,15 @@ final class SkinApplier {
             backup(file);
         }
         writeText(file, join(lines, eol));
+    }
+
+    private static String skinPath(String value, File modern) {
+        String normalized = value.replace('\\', '/');
+        if (normalized.startsWith("/")
+                || normalized.matches("^[A-Za-z]:/.*")) {
+            return modern.getAbsolutePath();
+        }
+        return "com.mojang/custom_skins/" + CUSTOM_SKIN_FILE;
     }
 
     private static boolean resolveSlim(Context context, Bitmap bitmap) {
