@@ -5,10 +5,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,14 +26,30 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class HomeActivity extends BaseActivity {
 
     private static final String TAG = "KsHome";
     private static final int REQUEST_SKIN = 41;
+    private static final int REQUEST_ACCOUNT_LOGIN = 42;
     private static final String SKIN_FILE = "home_skin.png";
     private static final String DEFAULT_SKIN_ASSET = "img/alex.png";
+    private static final String ACCOUNT_STORE_CLASS =
+            "org.levimc.launcher.core.auth.MsftAccountStore";
+    private static final String LOGIN_ACTIVITY_CLASS =
+            "org.levimc.launcher.ui.activities.MsftLoginActivity";
+    private static final int ACCOUNT_MENU_WIDTH_DP = 252;
+    private static final int ACCOUNT_MENU_MAX_HEIGHT_DP = 240;
 
     private static final String[] EMOTE_LABELS = {
             "emote_idle",
@@ -56,6 +82,16 @@ public class HomeActivity extends BaseActivity {
     private Method resumeMethod;
     private Bitmap currentSkin;
 
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+    private final ExecutorService avatarExecutor = Executors.newFixedThreadPool(2);
+    private final Map<String, Bitmap> avatarCache = new HashMap<>();
+
+    private TextView signInButton;
+    private View accountCard;
+    private TextView accountNameView;
+    private ImageView accountAvatarView;
+    private PopupWindow accountMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +111,14 @@ public class HomeActivity extends BaseActivity {
         launchButton.setOnClickListener(view -> openLauncher());
         addSkinButton.setOnClickListener(view -> pickSkin());
         emoteButton.setOnClickListener(view -> showEmotes());
+
+        signInButton = findViewById(Res.view(this, "home_sign_in"));
+        accountCard = findViewById(Res.view(this, "home_account_card"));
+        accountNameView = findViewById(Res.view(this, "home_account_name"));
+        accountAvatarView = findViewById(Res.view(this, "home_account_avatar"));
+        signInButton.setOnClickListener(view -> openAccountLogin());
+        accountCard.setOnClickListener(view -> showAccountMenu());
+        refreshAccountUi();
 
         setupSkinViewer();
     }
@@ -164,6 +208,12 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_ACCOUNT_LOGIN) {
+            if (resultCode == RESULT_OK) {
+                refreshAccountUi();
+            }
+            return;
+        }
         if (requestCode != REQUEST_SKIN || resultCode != RESULT_OK
                 || data == null || data.getData() == null) {
             return;
@@ -270,13 +320,22 @@ public class HomeActivity extends BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        refreshAccountUi();
         invokeViewerMethod(resumeMethod);
     }
 
     @Override
     protected void onPause() {
+        dismissAccountMenu();
         invokeViewerMethod(pauseMethod);
         super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        dismissAccountMenu();
+        avatarExecutor.shutdownNow();
+        super.onDestroy();
     }
 
     private void invokeViewerMethod(Method method) {
