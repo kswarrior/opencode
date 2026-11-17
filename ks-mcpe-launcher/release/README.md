@@ -34,9 +34,9 @@ if the key changes, Android refuses to update an installed build
 
 The `1.0.3` certificate SHA-256 is
 `2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`.
-The `1.0.0` and `1.0.1` keys are not available, so users on those versions
-must uninstall before installing `1.0.2`; warn them that app data may be
-removed.
+`1.0.2` uses the same key, so it can update in place. The `1.0.0` and `1.0.1`
+keys are not available, so users on those versions must uninstall before
+installing `1.0.3`; warn them that app data may be removed.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
