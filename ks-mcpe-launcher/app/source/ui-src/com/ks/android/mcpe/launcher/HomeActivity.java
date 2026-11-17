@@ -421,7 +421,7 @@ public class HomeActivity extends BaseActivity {
         accountCard.getLocationOnScreen(location);
         int available = getResources().getDisplayMetrics().heightPixels
                 - location[1] - accountCard.getHeight() - dp(24);
-        maxScroll = Math.max(dp(56), Math.min(maxScroll, available - dp(52)));
+        maxScroll = Math.max(dp(56), Math.min(maxScroll, available - dp(64)));
 
         list.measure(View.MeasureSpec.makeMeasureSpec(
                         width - dp(12), View.MeasureSpec.EXACTLY),
