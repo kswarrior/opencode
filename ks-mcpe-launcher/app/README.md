@@ -5,11 +5,11 @@ the small KS three-screen Java UI, but LAUNCH now runs Minecraft in-process
 through the LeviLauncher 1.7.1 engine instead of starting Minecraft as a
 separate external intent.
 
-It does not contain, modify, or redistribute Minecraft.
+It does not contain, modify, or redistribute the Minecraft APK.
 
 - Package: `com.ks.android.mcpe.launcher`
 - Label: `KS MCPE Launcher`
-- Version: `1.0.1` (`versionCode 10001`)
+- Version: `1.0.9` (`versionCode 10009`)
 - Min Android: 9.0 / API 28
 - Target API: 35
 - ABI: `arm64-v8a` only
@@ -20,18 +20,21 @@ It does not contain, modify, or redistribute Minecraft.
 
 1. **Loading** - KS cube-and-play logo, brand, progress line, and
    "Preparing launcher / Loading interface / Ready". Opens Home automatically.
-2. **Home** - "KS MCPE LAUNCHER" at the top left and a white **LAUNCH** button
-   at the bottom right, with a faint logo watermark.
-3. **Launching** - shown after **LAUNCH**. Checks for Minecraft, then asks the
-   engine to start the selected installed version. It shows progress, a
-   success state, or the failure reason with **BACK TO HOME**.
+2. **Home** - "KS MCPE LAUNCHER" at the top left, a 3D player preview with
+   **ADD SKIN** and emote controls, a Microsoft account card, and a white
+   **LAUNCH** button at the bottom right with a faint logo watermark.
+3. **Launching** - shown after **LAUNCH**. Checks for Minecraft, copies the
+   selected skin into the game data, then asks the engine to start the selected
+   installed version. It shows progress, a success state, or the failure reason
+   with **BACK TO HOME**.
 
 ## Repository layout
 
 - `source/` - the hybrid build input:
   - `AndroidManifest.xml`, `res/`, `smali/`, `smali_classes2/`, `lib/`,
     `assets/`, `apktool.yml` - decoded LeviLauncher 1.7.1 tree
-  - `ui-src/com/ks/android/mcpe/launcher/` - KS Java UI and `EngineLauncher`
+  - `ui-src/com/ks/android/mcpe/launcher/` - KS Java UI, `EngineLauncher`,
+    and `SkinApplier`
   - `build.sh` - copies the tree, compiles the UI, builds with apktool,
     injects `classes3.dex`, aligns, signs, and writes the checksum
 - `build.sh` - wrapper that runs `source/build.sh`.
@@ -59,8 +62,8 @@ Environment variables:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `APP_ID` | `com.ks.android.mcpe.launcher` | Package id written into the manifest and `BuildConfig` |
-| `APP_VERSION` | `1.0.1` | versionName |
-| `APP_VERSION_CODE` | `10001` | versionCode |
+| `APP_VERSION` | `1.0.9` | versionName |
+| `APP_VERSION_CODE` | `10009` | versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace |
 | `DIST` | `release/` | APK output directory |
@@ -70,15 +73,38 @@ Environment variables:
 | `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
 | `KEYSTORE_BASE64` | unset | Restores a CI signing key into the keystore path |
 
-The `1.0.1` signing key lives in `release/signing/ks-mcpe.keystore`; its
-certificate SHA-256 is
-`b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
-Keep it private and backed up. The `1.0.0` key is not available, so `1.0.0`
-users must uninstall before installing `1.0.1`.
+The `1.0.5`–`1.0.9` signing key must live in
+`release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
+`a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
+Keep it private and backed up. The `1.0.2`–`1.0.4` key is not available, so
+those users must uninstall before installing `1.0.5` or later.
 
 The build fails if required SDK tools are missing and verifies the package,
 signature, zipalign, `classes3.dex`, and native library before reporting
 success.
+
+## Custom skins
+
+**ADD SKIN** imports a PNG into the launcher's private storage, shows it in the
+3D preview, and asks whether the model is Classic or Slim for 64x64 and larger
+skins. 64x32 skins are always Classic.
+
+On **LAUNCH**, after the engine prepares the selected version, `SkinApplier`
+copies the skin into each available game data root:
+
+- `minecraftpe/custom.png` for legacy Bedrock skin loading
+- `custom_skins/ks_launcher_skin.png` for newer versions
+- `game_skintypefull:Standard_Custom` or `Standard_CustomSlim` in
+  `minecraftpe/options.txt`
+- `game_lastcustomskinnew` when that key already exists
+
+It writes both internal and external `games/com.mojang` roots when the engine
+reports them, and backs up the first `options.txt` it changes to
+`options.txt.ks-skin-backup`. Skin application is best-effort: if a copy or
+options write fails, the launching screen logs the failure and launch continues.
+
+Minecraft versions differ in how they store imported skins, so the applied skin
+may not appear on every version. The launcher does not modify the Minecraft APK.
 
 ## How launching works
 
@@ -105,9 +131,12 @@ expose their features. Do not describe this build as permission-free.
 
 - `arm64-v8a` only; x86_64 emulators generally cannot install it.
 - Minecraft Bedrock must already be installed; the engine supports 1.21.80+
-  (or a newer major version). There is no download, account, version, mod,
-  world, or backup management in this UI.
+  (or a newer major version).
 - The installed version is selected automatically; there is no version picker.
+- The KS UI manages launch, skin import, emotes, and Microsoft accounts. It does
+  not add download, world, or backup management.
+- Custom skin application depends on Minecraft's options format and is
+  best-effort; Classic/Slim is chosen by the user, not read from the texture.
 - Use it only with a legitimately licensed copy of Minecraft Bedrock Edition.
 
 ## Attribution
