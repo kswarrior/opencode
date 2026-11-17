@@ -37,6 +37,7 @@ final class SkinApplier {
     private static final String STORAGE_CLASS =
             "org.levimc.launcher.util.LauncherStorage";
     private static final String SKIN_FILE = "home_skin.png";
+    private static final String MODEL_FILE = "home_skin.model";
     private static final String CUSTOM_SKIN_FILE = "ks_launcher_skin.png";
     private static final String OPTIONS_BACKUP = "options.txt.ks-skin-backup";
     private static final String SKIN_TYPE = "game_skintypefull";
@@ -59,7 +60,7 @@ final class SkinApplier {
             return new Result(false, null, "invalid skin image");
         }
 
-        boolean slim = isSlim(bitmap);
+        boolean slim = resolveSlim(context, bitmap);
         bitmap.recycle();
         String model = slim ? "slim" : "classic";
 
@@ -172,6 +173,24 @@ final class SkinApplier {
             backup(file);
         }
         writeText(file, join(lines, eol));
+    }
+
+    private static boolean resolveSlim(Context context, Bitmap bitmap) {
+        File modelFile = new File(context.getFilesDir(), MODEL_FILE);
+        if (modelFile.isFile()) {
+            try {
+                String model = readText(modelFile).trim().toLowerCase(java.util.Locale.ROOT);
+                if ("slim".equals(model)) {
+                    return true;
+                }
+                if ("classic".equals(model)) {
+                    return false;
+                }
+            } catch (IOException error) {
+                Log.w(TAG, "Could not read skin model", error);
+            }
+        }
+        return isSlim(bitmap);
     }
 
     private static boolean isSlim(Bitmap bitmap) {

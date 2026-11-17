@@ -75,6 +75,9 @@
     <string name="ks_emote_swim">Swim</string>
     <string name="ks_emote_fly">Fly</string>
     <string name="ks_emote_run">Run</string>
+    <string name="ks_skin_model_title">SKIN MODEL</string>
+    <string name="ks_skin_model_classic">Classic (4-pixel arms)</string>
+    <string name="ks_skin_model_slim">Slim (3-pixel arms)</string>
     <string name="ks_skin_invalid">That image is not a valid Minecraft skin. Choose a 64x64 or 64x32 PNG.</string>
     <string name="ks_skin_saved">Skin applied to your player.</string>
     <string name="ks_skin_load_failed">Could not load the saved skin.</string>

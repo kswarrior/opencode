@@ -30,6 +30,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -43,6 +44,7 @@ public class HomeActivity extends BaseActivity {
     private static final int REQUEST_SKIN = 41;
     private static final int REQUEST_ACCOUNT_LOGIN = 42;
     private static final String SKIN_FILE = "home_skin.png";
+    private static final String SKIN_MODEL_FILE = "home_skin.model";
     private static final String DEFAULT_SKIN_ASSET = "img/alex.png";
     private static final String ACCOUNT_STORE_CLASS =
             "org.levimc.launcher.core.auth.MsftAccountStore";
@@ -265,9 +267,41 @@ public class HomeActivity extends BaseActivity {
             return;
         }
 
-        applySkin(bitmap);
-        Toast.makeText(this, Res.string(this, "skin_saved"),
-                Toast.LENGTH_SHORT).show();
+        if (bitmap.getHeight() < 64) {
+            saveSkinModel("classic");
+            applySkin(bitmap);
+            Toast.makeText(this, Res.string(this, "skin_saved"),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        chooseSkinModel(bitmap);
+    }
+
+    private void chooseSkinModel(Bitmap bitmap) {
+        String[] models = {
+                getString(Res.string(this, "skin_model_classic")),
+                getString(Res.string(this, "skin_model_slim"))
+        };
+        new AlertDialog.Builder(this)
+                .setTitle(Res.string(this, "skin_model_title"))
+                .setItems(models, (dialog, which) -> {
+                    saveSkinModel(which == 1 ? "slim" : "classic");
+                    applySkin(bitmap);
+                    Toast.makeText(this, Res.string(this, "skin_saved"),
+                            Toast.LENGTH_SHORT).show();
+                })
+                .setCancelable(false)
+                .show();
+    }
+
+    private void saveSkinModel(String model) {
+        try (FileOutputStream output = new FileOutputStream(
+                new File(getFilesDir(), SKIN_MODEL_FILE))) {
+            output.write(model.getBytes(StandardCharsets.UTF_8));
+        } catch (IOException | RuntimeException error) {
+            Log.e(TAG, "Could not save skin model", error);
+        }
     }
 
     private boolean saveSkin(Bitmap bitmap) {
