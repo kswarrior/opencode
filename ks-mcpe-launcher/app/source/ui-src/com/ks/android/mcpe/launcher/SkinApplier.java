@@ -255,8 +255,9 @@ final class SkinApplier {
     private static boolean isValidSize(Bitmap bitmap) {
         int width = bitmap.getWidth();
         int height = bitmap.getHeight();
-        return width >= 64 && width <= 1024 && width % 64 == 0
-                && (width == height || width == height * 2);
+        return (width == 64 && height == 32)
+                || (width == 64 && height == 64)
+                || (width == 128 && height == 128);
     }
 
     private static File gameDataDir(Context context, String profile,

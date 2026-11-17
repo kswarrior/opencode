@@ -85,9 +85,9 @@ success.
 
 ## Custom skins
 
-**ADD SKIN** imports a PNG into the launcher's private storage, shows it in the
-3D preview, and asks whether the model is Classic or Slim for 64x64 and larger
-skins. 64x32 skins are always Classic.
+**ADD SKIN** imports a 64x32, 64x64, or 128x128 PNG into the launcher's private
+storage, shows it in the 3D preview, and asks whether the model is Classic or
+Slim for 64x64 and 128x128 skins. 64x32 skins are always Classic.
 
 On **LAUNCH**, after the engine prepares the selected version, `SkinApplier`
 copies the skin into each available game data root:
