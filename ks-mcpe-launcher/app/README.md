@@ -73,11 +73,13 @@ Environment variables:
 | `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
 | `KEYSTORE_BASE64` | unset | Restores a CI signing key into the keystore path |
 
-The `1.0.5`–`1.0.9` signing key must live in
+The production `1.0.5`–`1.0.9` signing key must live in
 `release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
 `a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
-Keep it private and backed up. The `1.0.2`–`1.0.4` key is not available, so
-those users must uninstall before installing `1.0.5` or later.
+Keep it private and backed up. The published `1.0.9` test pre-release is
+debug-signed and cannot update `1.0.5`–`1.0.8` in place. The `1.0.2`–`1.0.4`
+key is not available, so those users must uninstall before installing `1.0.5`
+or later.
 
 The build fails if required SDK tools are missing and verifies the package,
 signature, zipalign, `classes3.dex`, and native library before reporting

@@ -1,25 +1,23 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.8>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.9>
 
-## Prepared: 1.0.9
+## 1.0.9 test build
 
-`1.0.9` (`versionCode 10009`) is ready in source. It applies the selected skin
-to the installed game before launch instead of only showing it in the 3D
-preview: **ADD SKIN** now asks for Classic or Slim, and `SkinApplier` copies
-the PNG to `minecraftpe/custom.png` and `custom_skins/ks_launcher_skin.png` in
-both game data roots and updates `game_skintypefull` (plus
-`game_lastcustomskinnew` when present) in `options.txt`.
+`1.0.9` (`versionCode 10009`) applies the selected skin to the installed game
+before launch instead of only showing it in the 3D preview: **ADD SKIN** now
+asks for Classic or Slim, and `SkinApplier` copies the PNG to
+`minecraftpe/custom.png` and `custom_skins/ks_launcher_skin.png` in both game
+data roots and updates `game_skintypefull` (plus `game_lastcustomskinnew` when
+present) in `options.txt`.
 
-A test-signed build was verified locally. It uses a throwaway debug key and
-must not be published.
+The published `1.0.9` is a **pre-release signed with a throwaway Android debug
+key**. It is not update-compatible with `1.0.5`–`1.0.8`; users must uninstall
+first, which may remove app data. A production `1.0.9` must be re-signed with
+the `1.0.5`–`1.0.8` key and replace both release assets.
 
-Publishing is blocked until the `1.0.5`–`1.0.8` signing key is restored to
-`release/signing/` or supplied as `KEYSTORE_BASE64` with its passwords. Without
-it, a `1.0.9` build would not update existing installations in place.
-
-Published build: `1.0.8` (`versionCode 10008`, package
+Published production build: `1.0.8` (`versionCode 10008`, package
 `com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI (including
 the 3D player preview with skin import and emotes) with the
 LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
@@ -69,7 +67,10 @@ if the key changes, Android refuses to update an installed build
 
 The `1.0.5`–`1.0.8` certificate SHA-256 is
 `a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
-`1.0.9` must use the same key so `1.0.5`–`1.0.8` users can update in place.
+A production `1.0.9` must use the same key so `1.0.5`–`1.0.8` users can update
+in place. The published `1.0.9` test build instead uses the debug certificate
+`4f5e9ad722e3b6573c5d317f75037352b64bf8aea59c67b66bc6b884398d9b65`
+and must not be treated as a production update.
 `1.0.5` uses a new signing key; the `1.0.2`–`1.0.4` key
 (`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`)
 was not available in the build environment. Android cannot update 1.0.2–1.0.4
@@ -80,7 +81,7 @@ unavailable.
 The `1.0.5`–`1.0.8` keystore and `credentials.env` are in
 `release/signing/` locally (gitignored). Back them up, or add them to the
 `KEYSTORE_BASE64`/password secrets before the workspace is cleaned. The same
-material is required for `1.0.9`.
+material is required to replace the debug-signed `1.0.9` test release.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
