@@ -4359,6 +4359,8 @@
 .method private enterHudEditorMode(Landroid/view/View;Landroid/view/View;)V
     .locals 5
 
+    invoke-static {}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->closeIfOpen()V
+
     .line 1
     invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->saveVisibleScrollPosition()V
 
@@ -11529,6 +11531,15 @@
     :cond_7
     if-eqz v9, :cond_8
 
+    invoke-static {p0, p1, v9}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->tryOpen(Ljava/lang/Object;Ljava/lang/Object;Landroid/view/ViewGroup;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_more_buttons_render
+
+    goto/16 :cond_8
+
+    :cond_more_buttons_render
     .line 160
     .line 161
     iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuOverlay;->menuContext:Landroid/content/Context;
@@ -12337,6 +12348,8 @@
 .method private showModulesSection()V
     .locals 6
 
+    invoke-static {}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->closeIfOpen()V
+
     .line 1
     invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs;->dismissAll()V
 
@@ -12593,6 +12606,8 @@
 
 .method private showSettingsSection()V
     .locals 6
+
+    invoke-static {}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->closeIfOpen()V
 
     .line 1
     invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/ModMenuDialogs;->dismissAll()V
