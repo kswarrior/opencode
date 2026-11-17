@@ -96,7 +96,6 @@
             android:id="@+id/ks_home_skin_viewer"
             android:layout_width="230dp"
             android:layout_height="248dp"
-            android:background="@android:color/transparent"
             android:contentDescription="@string/ks_home_skin_desc" />
 
         <LinearLayout
