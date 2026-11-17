@@ -182,6 +182,9 @@ final class SkinApplier {
     }
 
     private static boolean resolveSlim(Context context, Bitmap bitmap) {
+        if (bitmap.getHeight() < 64) {
+            return false;
+        }
         File modelFile = new File(context.getFilesDir(), MODEL_FILE);
         if (modelFile.isFile()) {
             try {
