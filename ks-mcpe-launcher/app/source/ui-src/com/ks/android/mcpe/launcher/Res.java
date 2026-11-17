@@ -18,6 +18,10 @@ final class Res {
         return resolve(activity, "string", name);
     }
 
+    static int drawable(Activity activity, String name) {
+        return resolve(activity, "drawable", name);
+    }
+
     private static int resolve(Activity activity, String type, String name) {
         int id = activity.getResources().getIdentifier(
                 "ks_" + name, type, activity.getPackageName());
