@@ -1,9 +1,9 @@
 # Release output
 
 Current release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.4>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.5>
 
-Current build: `1.0.4` (`versionCode 10004`, package
+Current build: `1.0.5` (`versionCode 10005`, package
 `com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI (including
 the 3D player preview with skin import and emotes) with the
 LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
@@ -33,11 +33,17 @@ if the key changes, Android refuses to update an installed build
 (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). The password is stored only in
 `credentials.env`, which is also gitignored.
 
-The `1.0.4` certificate SHA-256 is
-`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`.
-`1.0.2` through `1.0.4` use the same key, so they can update in place. The
-`1.0.0` and `1.0.1` keys are not available, so users on those versions must
-uninstall before installing `1.0.4`; warn them that app data may be removed.
+The `1.0.5` certificate SHA-256 is
+`a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
+`1.0.5` uses a new signing key; the `1.0.2`–`1.0.4` key
+(`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`)
+was not available in the build environment. Android cannot update 1.0.2–1.0.4
+in place, so users must uninstall before installing `1.0.5`; warn them that
+app data may be removed. The `1.0.0` and `1.0.1` keys are also unavailable.
+
+The `1.0.5` keystore and `credentials.env` are in `release/signing/` locally
+(gitignored). Back them up, or add them to the `KEYSTORE_BASE64`/password
+secrets before the workspace is cleaned.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
@@ -78,7 +84,7 @@ stubs, so the launcher never requests `/releases/latest` and never downloads
 an APK on its own. Users update by installing the new
 `KS-MCPE-Launcher-<version>.apk` from the release page.
 
-Do not mark `v1.0.4` as GitHub "latest". The legacy `ks-mcpe-launcher` release
+Do not mark `v1.0.5` as GitHub "latest". The legacy `ks-mcpe-launcher` release
 line (`v1.1.8` at the time of writing) shares the release page and
 `KS-MCPE-Launcher-*` asset names but is a different package/signing line. If
 updating is re-enabled later, filter releases by tag/package or asset version
