@@ -15,8 +15,8 @@ SCRIPT_DIR="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd -- "$SCRIPT_DIR/../.." && pwd)"
 
 APP_ID="${APP_ID:-com.ks.android.mcpe.launcher}"
-APP_VERSION="${APP_VERSION:-1.0.6}"
-APP_VERSION_CODE="${APP_VERSION_CODE:-10006}"
+APP_VERSION="${APP_VERSION:-1.0.7}"
+APP_VERSION_CODE="${APP_VERSION_CODE:-10007}"
 OUTPUT_PREFIX="${OUTPUT_PREFIX:-KS-MCPE-Launcher}"
 
 WORKDIR="${WORKDIR:-/tmp/ks-mcpe-build}"
