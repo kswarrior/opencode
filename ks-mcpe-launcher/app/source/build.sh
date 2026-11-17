@@ -81,6 +81,10 @@ ANDROID_JAR="$PLATFORM/android.jar"
 [ -d "$SCRIPT_DIR/res" ] || die "missing res/"
 [ -d "$SCRIPT_DIR/smali" ] || die "missing smali/"
 [ -d "$SCRIPT_DIR/ui-src" ] || die "missing ui-src/"
+[ -f "$SCRIPT_DIR/smali_classes2/kotlin/jvm/internal/Intrinsics.smali" ] \
+    || die "missing Kotlin stdlib under smali_classes2/kotlin (required by the 3D skin viewer)"
+[ -f "$SCRIPT_DIR/smali_classes2/com/mio/skin/SkinRenderer.smali" ] \
+    || die "missing skin viewer classes under smali_classes2/com/mio/skin"
 
 if [ ! -f "$APKTOOL_JAR" ]; then
     log "downloading apktool $APKTOOL_VERSION"

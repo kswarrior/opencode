@@ -69,3 +69,17 @@ password into the repository.
 
 The resulting APK can be uploaded as a workflow artifact or as a GitHub
 release asset. Do not commit generated APKs to the repository.
+
+## Updates
+
+The in-app updater is disabled in this build:
+`GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-op
+stubs, so the launcher never requests `/releases/latest` and never downloads
+an APK on its own. Users update by installing the new
+`KS-MCPE-Launcher-<version>.apk` from the release page.
+
+Do not mark `v1.0.4` as GitHub "latest". The legacy `ks-mcpe-launcher` release
+line (`v1.1.8` at the time of writing) shares the release page and
+`KS-MCPE-Launcher-*` asset names but is a different package/signing line. If
+updating is re-enabled later, filter releases by tag/package or asset version
+instead of trusting `/releases/latest`.
