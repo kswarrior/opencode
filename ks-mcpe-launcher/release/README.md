@@ -1,26 +1,30 @@
 # Release output
 
 Current release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.7>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.8>
 
-Current build: `1.0.7` (`versionCode 10007`, package
+Current build: `1.0.8` (`versionCode 10008`, package
 `com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI (including
 the 3D player preview with skin import and emotes) with the
 LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
 
-`1.0.7` adds the top-right account area to the home screen. Signed-out users
-get a white SIGN IN button that opens the LeviLauncher Microsoft login flow.
-After sign-in, the card shows the player avatar and a fixed-width marquee of
-the Minecraft username; tapping it opens the account dropdown with all saved
-accounts, the active account marked, and an ADD ACCOUNT action. Selecting an
-account makes it active and exports it so the launch runtime signs in as that
-profile.
+`1.0.8` removes the full LeviLauncher navbar from the sign-in screen. The
+Launch, Download, Instances, About, and Settings tabs, news button, theme
+toggle, and account cluster are no longer shown there; only the Microsoft
+sign-in options remain. Back returns to the KS home screen.
 
-`1.0.7` includes the `1.0.6` startup crash fix: the mismatched Kotlin
+`1.0.8` includes the `1.0.7` account area. Signed-out users get a white
+SIGN IN button that opens the Microsoft login flow. After sign-in, the card
+shows the player avatar and a fixed-width marquee of the Minecraft username;
+tapping it opens the account dropdown with all saved accounts, the active
+account marked, and an ADD ACCOUNT action. Selecting an account makes it
+active and exports it so the launch runtime signs in as that profile.
+
+It also includes the `1.0.6` startup crash fix: the mismatched Kotlin
 coroutine interface mapping (`NoSuchMethodError: CoroutineContext.u`) and the
 transparent `TextureView` background rejected by Android 15 are both gone. It
-is signed with the same key as `1.0.5` and `1.0.6`, so those users can update
-in place.
+is signed with the same key as `1.0.5` through `1.0.7`, so those users can
+update in place.
 
 `app/source/build.sh` writes the signed APK here:
 
@@ -47,7 +51,7 @@ if the key changes, Android refuses to update an installed build
 (`INSTALL_FAILED_UPDATE_INCOMPATIBLE`). The password is stored only in
 `credentials.env`, which is also gitignored.
 
-The `1.0.5`–`1.0.7` certificate SHA-256 is
+The `1.0.5`–`1.0.8` certificate SHA-256 is
 `a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
 `1.0.5` uses a new signing key; the `1.0.2`–`1.0.4` key
 (`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`)
@@ -56,7 +60,7 @@ in place, so users must uninstall before installing `1.0.5` or later; warn
 them that app data may be removed. The `1.0.0` and `1.0.1` keys are also
 unavailable.
 
-The `1.0.5`–`1.0.7` keystore and `credentials.env` are in
+The `1.0.5`–`1.0.8` keystore and `credentials.env` are in
 `release/signing/` locally (gitignored). Back them up, or add them to the
 `KEYSTORE_BASE64`/password secrets before the workspace is cleaned.
 
@@ -99,7 +103,7 @@ stubs, so the launcher never requests `/releases/latest` and never downloads
 an APK on its own. Users update by installing the new
 `KS-MCPE-Launcher-<version>.apk` from the release page.
 
-Do not mark `v1.0.7` as GitHub "latest". The legacy `ks-mcpe-launcher` release
+Do not mark `v1.0.8` as GitHub "latest". The legacy `ks-mcpe-launcher` release
 line (`v1.1.8` at the time of writing) shares the release page and
 `KS-MCPE-Launcher-*` asset names but is a different package/signing line. If
 updating is re-enabled later, filter releases by tag/package or asset version
