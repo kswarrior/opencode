@@ -2244,6 +2244,13 @@
 
     .line 52
     .line 53
+    sget-boolean v10, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->inlineMode:Z
+
+    if-eqz v10, :cond_more_buttons_toolbar
+
+    goto :goto_more_buttons_toolbar_done
+
+    :cond_more_buttons_toolbar
     .line 54
     invoke-direct {v1, v0, v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->toolbar(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Runnable;)Landroid/widget/LinearLayout;
 
@@ -2255,6 +2262,7 @@
     .line 58
     invoke-virtual {v9, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
 
+    :goto_more_buttons_toolbar_done
     .line 59
     .line 60
     .line 61

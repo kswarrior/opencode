@@ -11213,6 +11213,15 @@
     .line 5
     .line 6
     .line 7
+    invoke-static {p1}, Lcom/ks/android/mcpe/launcher/MoreButtonsInline;->isMoreButtons(Ljava/lang/Object;)Z
+
+    move-result v0
+
+    if-eqz v0, :cond_more_buttons_custom
+
+    goto/16 :cond_0
+
+    :cond_more_buttons_custom
     invoke-virtual {p1}, Lorg/levimc/launcher/core/mods/inbuilt/UnifiedMod;->openCustomConfig()Z
 
     .line 8
