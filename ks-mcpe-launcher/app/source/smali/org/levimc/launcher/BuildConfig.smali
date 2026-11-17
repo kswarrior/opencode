@@ -20,9 +20,9 @@
 
 .field public static final SKIP_PLAY_STORE_CHECK:Z = true
 
-.field public static final VERSION_CODE:I = 0x2714
+.field public static final VERSION_CODE:I = 0x2715
 
-.field public static final VERSION_NAME:Ljava/lang/String; = "1.0.4"
+.field public static final VERSION_NAME:Ljava/lang/String; = "1.0.5"
 
 
 # direct methods
