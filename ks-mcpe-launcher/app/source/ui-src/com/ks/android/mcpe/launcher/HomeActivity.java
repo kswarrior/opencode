@@ -142,8 +142,12 @@ public class HomeActivity extends BaseActivity {
             resumeMethod = viewer.getClass().getMethod("onResume");
             setTextureMethod = rendererClass.getMethod(
                     "setTexture", Bitmap.class, Bitmap.class);
-            updateTextureMethod = rendererClass.getMethod(
-                    "updateTexture", Bitmap.class, Bitmap.class, Boolean.class);
+            try {
+                updateTextureMethod = rendererClass.getMethod(
+                        "updateTexture", Bitmap.class, Bitmap.class, Boolean.class);
+            } catch (NoSuchMethodException ignored) {
+                updateTextureMethod = null;
+            }
             playAnimationMethod = rendererClass.getMethod(
                     "playAnimation", Class.forName("com.mio.skin.PlayerAnimation"));
 
