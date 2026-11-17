@@ -129,6 +129,12 @@ final class EngineLauncher {
                     "launch", Intent.class, versionClass, callbackClass);
 
             step(listener, STEP_PREPARE);
+            SkinApplier.Result skin = SkinApplier.apply(activity, versionClass, version);
+            if (skin.applied) {
+                log(activity, listener, "launch_log_skin_applied", skin.model);
+            } else if (skin.error != null) {
+                log(activity, listener, "launch_log_skin_failed", skin.error);
+            }
             log(activity, listener, "launch_log_invoking");
             launch.invoke(launcher, new Intent(), version, callbackProxy);
             log(activity, listener, "launch_log_complete",

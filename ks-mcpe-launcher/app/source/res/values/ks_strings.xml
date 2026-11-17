@@ -31,6 +31,8 @@
     <string name="ks_launch_log_selected">Selected %1$s · game %2$s.</string>
     <string name="ks_launch_log_profile">Profile %1$s · isolation %2$s.</string>
     <string name="ks_launch_log_abi">Runtime ABI %1$s.</string>
+    <string name="ks_launch_log_skin_applied">Custom skin applied (%1$s).</string>
+    <string name="ks_launch_log_skin_failed">Could not apply custom skin: %1$s.</string>
     <string name="ks_launch_log_invoking">Preparing game runtime and handing off…</string>
     <string name="ks_launch_log_complete">Handoff complete in %1$d ms.</string>
     <string name="ks_launch_log_sequence">Launch sequence finished in %1$d ms.</string>
