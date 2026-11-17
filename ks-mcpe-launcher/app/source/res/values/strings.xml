@@ -105,7 +105,7 @@ Last updated: %2$s"</string>
     <string name="accounts_device_description">Use your browser, or enter the code on another device.</string>
     <string name="accounts_device_steps">Open Microsoft’s page and confirm the code. You can also use the address on another device.</string>
     <string name="accounts_device_title">Sign in with a code</string>
-    <string name="accounts_embedded_description">Use Microsoft’s sign-in page inside LeviLauncher.</string>
+    <string name="accounts_embedded_description">Use Microsoft’s sign-in page inside the app.</string>
     <string name="accounts_embedded_title">Sign in here</string>
     <string name="accounts_empty_description">Keep your Xbox profiles here and choose which one Minecraft uses.</string>
     <string name="accounts_empty_title">Add your first account</string>
