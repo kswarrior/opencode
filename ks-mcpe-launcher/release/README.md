@@ -1,9 +1,25 @@
 # Release output
 
-Current release:
+Current published release:
 <https://github.com/kswarrior/opencode/releases/tag/v1.0.8>
 
-Current build: `1.0.8` (`versionCode 10008`, package
+## Prepared: 1.0.9
+
+`1.0.9` (`versionCode 10009`) is ready in source. It applies the selected skin
+to the installed game before launch instead of only showing it in the 3D
+preview: **ADD SKIN** now asks for Classic or Slim, and `SkinApplier` copies
+the PNG to `minecraftpe/custom.png` and `custom_skins/ks_launcher_skin.png` in
+both game data roots and updates `game_skintypefull` (plus
+`game_lastcustomskinnew` when present) in `options.txt`.
+
+A test-signed build was verified locally. It uses a throwaway debug key and
+must not be published.
+
+Publishing is blocked until the `1.0.5`–`1.0.8` signing key is restored to
+`release/signing/` or supplied as `KEYSTORE_BASE64` with its passwords. Without
+it, a `1.0.9` build would not update existing installations in place.
+
+Published build: `1.0.8` (`versionCode 10008`, package
 `com.ks.android.mcpe.launcher`). It combines the 3-screen Java UI (including
 the 3D player preview with skin import and emotes) with the
 LeviLauncher 1.7.1 in-process launch engine and is `arm64-v8a` only.
@@ -53,6 +69,7 @@ if the key changes, Android refuses to update an installed build
 
 The `1.0.5`–`1.0.8` certificate SHA-256 is
 `a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
+`1.0.9` must use the same key so `1.0.5`–`1.0.8` users can update in place.
 `1.0.5` uses a new signing key; the `1.0.2`–`1.0.4` key
 (`2432ff6496bdc3d493a589aa51cc6e7cf23088ab07c071ca7db9f94b9dd49901`)
 was not available in the build environment. Android cannot update 1.0.2–1.0.4
@@ -62,7 +79,8 @@ unavailable.
 
 The `1.0.5`–`1.0.8` keystore and `credentials.env` are in
 `release/signing/` locally (gitignored). Back them up, or add them to the
-`KEYSTORE_BASE64`/password secrets before the workspace is cleaned.
+`KEYSTORE_BASE64`/password secrets before the workspace is cleaned. The same
+material is required for `1.0.9`.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
@@ -103,7 +121,7 @@ stubs, so the launcher never requests `/releases/latest` and never downloads
 an APK on its own. Users update by installing the new
 `KS-MCPE-Launcher-<version>.apk` from the release page.
 
-Do not mark `v1.0.8` as GitHub "latest". The legacy `ks-mcpe-launcher` release
+Do not mark `v1.0.8` or `v1.0.9` as GitHub "latest". The legacy `ks-mcpe-launcher` release
 line (`v1.1.8` at the time of writing) shares the release page and
 `KS-MCPE-Launcher-*` asset names but is a different package/signing line. If
 updating is re-enabled later, filter releases by tag/package or asset version
