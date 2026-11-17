@@ -276,7 +276,7 @@ public class HomeActivity extends BaseActivity {
             return;
         }
 
-        if (!isValidSkinSize(width, height) || width > 1024) {
+        if (!isValidSkinSize(width, height)) {
             Toast.makeText(this, Res.string(this, "skin_invalid"),
                     Toast.LENGTH_LONG).show();
             return;
@@ -352,9 +352,9 @@ public class HomeActivity extends BaseActivity {
     }
 
     private static boolean isValidSkinSize(int width, int height) {
-        return width > 0 && height > 0
-                && width % 64 == 0
-                && (width == height || width == height * 2);
+        return (width == 64 && height == 32)
+                || (width == 64 && height == 64)
+                || (width == 128 && height == 128);
     }
 
     private void showEmotes() {
