@@ -20,6 +20,8 @@
 
 .field private static editor:Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;
 
+.field public static inlineMode:Z
+
 .field private static editorActivity:Ljava/lang/ref/WeakReference;
     .annotation system Ldalvik/annotation/Signature;
         value = {
