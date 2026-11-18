@@ -4612,8 +4612,42 @@
     invoke-direct {p0, p1}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->showMethodChooser(Ljava/lang/String;)V
 
     .line 300
-    .line 301
-    .line 302
+    invoke-virtual {p0}, Landroid/app/Activity;->getIntent()Landroid/content/Intent;
+
+    move-result-object v0
+
+    const-string v1, "ks_login_method"
+
+    invoke-virtual {v0, v1}, Landroid/content/Intent;->getStringExtra(Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_ks_login_done
+
+    const-string v1, "web"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_ks_login_device
+
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->startWebViewLogin()V
+
+    goto :cond_ks_login_done
+
+    :cond_ks_login_device
+    const-string v1, "device"
+
+    invoke-virtual {v1, v0}, Ljava/lang/String;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-eqz v1, :cond_ks_login_done
+
+    invoke-direct {p0}, Lorg/levimc/launcher/ui/activities/MsftLoginActivity;->startDeviceCodeLogin()V
+
+    :cond_ks_login_done
     return-void
 .end method
 
