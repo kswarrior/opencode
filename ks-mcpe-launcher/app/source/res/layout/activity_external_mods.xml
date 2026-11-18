@@ -3,7 +3,7 @@
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
         <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="20.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/external_mods" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="20.0sp" android:textAllCaps="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/external_mods" />
             <TextView android:textAppearance="@style/TextAppearance.Levi.PageSubtitle" android:textSize="12.0sp" android:id="@id/external_mods_subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
         </LinearLayout>
         <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/external_mods_discord" android:layout_width="wrap_content" android:layout_height="44.0dp" android:text="@string/mods_external_join" android:layout_marginStart="10.0dp" app:icon="@drawable/ic_discord" app:iconPadding="6.0dp" app:iconSize="18.0dp" style="@style/Widget.Levi.Button.Secondary" />
