@@ -215,27 +215,58 @@
         </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/ks_home_content"
+    <LinearLayout
+        android:id="@+id/ks_home_actions"
         android:layout_width="wrap_content"
-        android:layout_height="58dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
         android:layout_margin="28dp"
-        android:background="@drawable/ks_btn_secondary"
-        android:clickable="true"
-        android:drawablePadding="12dp"
-        android:drawableStart="@drawable/ks_ic_content"
-        android:focusable="true"
-        android:fontFamily="sans-serif-medium"
-        android:gravity="center"
-        android:includeFontPadding="false"
-        android:letterSpacing="0.16"
-        android:minWidth="150dp"
-        android:paddingStart="24dp"
-        android:paddingEnd="24dp"
-        android:text="@string/ks_content"
-        android:textColor="@color/ks_white"
-        android:textSize="13sp" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ks_home_mods"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:background="@drawable/ks_btn_secondary"
+            android:clickable="true"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ks_ic_mods"
+            android:focusable="true"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:letterSpacing="0.16"
+            android:minWidth="150dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/ks_mods"
+            android:textColor="@color/ks_white"
+            android:textSize="13sp" />
+
+        <Space
+            android:layout_width="1dp"
+            android:layout_height="10dp" />
+
+        <TextView
+            android:id="@+id/ks_home_content"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:background="@drawable/ks_btn_secondary"
+            android:clickable="true"
+            android:drawablePadding="12dp"
+            android:drawableStart="@drawable/ks_ic_content"
+            android:focusable="true"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:letterSpacing="0.16"
+            android:minWidth="150dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:text="@string/ks_content"
+            android:textColor="@color/ks_white"
+            android:textSize="13sp" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/ks_launch_button"

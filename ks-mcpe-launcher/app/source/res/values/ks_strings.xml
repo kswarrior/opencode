@@ -66,6 +66,9 @@
     <string name="ks_content">CONTENT</string>
     <string name="ks_content_no_game">Install Minecraft Bedrock Edition to manage content.</string>
     <string name="ks_content_failed">Could not open the content manager.</string>
+    <string name="ks_mods">MODS</string>
+    <string name="ks_mods_no_game">Install Minecraft Bedrock Edition to manage mods.</string>
+    <string name="ks_mods_failed">Could not open the mods manager.</string>
     <string name="ks_add_skin">ADD SKIN</string>
     <string name="ks_emote">EMOTE</string>
     <string name="ks_emote_title">EMOTE</string>
