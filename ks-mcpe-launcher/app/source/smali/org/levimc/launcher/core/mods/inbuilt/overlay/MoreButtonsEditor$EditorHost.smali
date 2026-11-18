@@ -2368,72 +2368,11 @@
     .line 113
     move-result-object v2
 
-    .line 114
-    iget-object v3, v1, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;->activity:Landroid/app/Activity;
-
-    .line 115
-    .line 116
-    sget v5, Lorg/levimc/launcher/R$string;->tutorial:I
-
-    .line 117
-    .line 118
-    invoke-virtual {v3, v5}, Landroid/content/Context;->getString(I)Ljava/lang/String;
-
-    .line 119
-    .line 120
-    .line 121
-    move-result-object v5
-
-    .line 122
-    invoke-static {v3, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->d(Landroid/content/Context;Ljava/lang/String;)Landroid/widget/Button;
-
-    .line 123
-    .line 124
-    .line 125
-    move-result-object v3
-
-    .line 126
     invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->x()Landroid/widget/LinearLayout$LayoutParams;
 
-    .line 127
-    .line 128
-    .line 129
     move-result-object v5
 
-    .line 130
     invoke-virtual {v0, v2, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-
-    .line 131
-    .line 132
-    .line 133
-    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->x()Landroid/widget/LinearLayout$LayoutParams;
-
-    .line 134
-    .line 135
-    .line 136
-    move-result-object v5
-
-    .line 137
-    const/high16 v12, 0x41000000    # 8.0f
-
-    .line 138
-    .line 139
-    mul-float/2addr v12, v8
-
-    .line 140
-    invoke-static {v12}, Ljava/lang/Math;->round(F)I
-
-    .line 141
-    .line 142
-    .line 143
-    move-result v13
-
-    .line 144
-    iput v13, v5, Landroid/widget/LinearLayout$LayoutParams;->leftMargin:I
-
-    .line 145
-    .line 146
-    invoke-virtual {v0, v3, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
     .line 147
     .line 148
@@ -2452,40 +2391,17 @@
     .line 155
     invoke-virtual {v11, v0, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;
+
+    const/4 v5, 0x2
+
+    invoke-direct {v0, v1, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;I)V
+
+    invoke-virtual {v2, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
+
     .line 156
     .line 157
     .line 158
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;
-
-    .line 159
-    .line 160
-    const/4 v5, 0x2
-
-    .line 161
-    invoke-direct {v0, v1, v5}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;I)V
-
-    .line 162
-    .line 163
-    .line 164
-    invoke-virtual {v2, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
-    .line 165
-    .line 166
-    .line 167
-    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;
-
-    .line 168
-    .line 169
-    const/4 v2, 0x3
-
-    .line 170
-    invoke-direct {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/q1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditorHost;I)V
-
-    .line 171
-    .line 172
-    .line 173
-    invoke-virtual {v3, v0}, Landroid/view/View;->setOnClickListener(Landroid/view/View$OnClickListener;)V
-
     .line 174
     .line 175
     .line 176
