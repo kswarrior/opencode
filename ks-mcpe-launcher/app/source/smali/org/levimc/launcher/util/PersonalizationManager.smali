@@ -6044,7 +6044,7 @@
 
     move-result v0
 
-    const v1, -0x1
+    const v1, -0xef467f
 
     if-eqz v0, :cond_1
 

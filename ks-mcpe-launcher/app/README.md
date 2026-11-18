@@ -9,7 +9,7 @@ It does not contain, modify, or redistribute the Minecraft APK.
 
 - Package: `com.ks.android.mcpe.launcher`
 - Label: `KS MCPE Launcher`
-- Version: set by `APP_VERSION` / `APP_VERSION_CODE` in `app/source/build.sh`
+- Version: `1.0.15` (`versionCode 10015`)
 - Min Android: 9.0 / API 28
 - Target API: 35
 - ABI: `arm64-v8a` only
@@ -55,8 +55,9 @@ catalog. It also requires an installed Minecraft Bedrock version.
 - `build.sh` - wrapper that runs `source/build.sh`.
 - `../release/` - signed APK, `.sha256`, and local `signing/` material.
   Generated artifacts are gitignored; see `../release/README.md`.
-- `old/` - archived decoded KS clone (package `com.ks.mcpe.launcher`). It is
-  not referenced by the current build and must not be edited.
+- `old/` - archived decoded KS clone (`versionName 1.1.5`, package
+  `com.ks.mcpe.launcher`). It is not referenced by the current build and must
+  not be edited.
 - `logo.png` and `tombstone_*` - legacy assets from the previous repack.
 
 ## Build
@@ -76,8 +77,8 @@ Environment variables:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `APP_ID` | `com.ks.android.mcpe.launcher` | Package id written into the manifest and `BuildConfig` |
-| `APP_VERSION` | from `app/source/build.sh` | versionName |
-| `APP_VERSION_CODE` | from `app/source/build.sh` | versionCode |
+| `APP_VERSION` | `1.0.15` | versionName |
+| `APP_VERSION_CODE` | `10015` | versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace |
 | `DIST` | `release/` | APK output directory |
@@ -87,12 +88,13 @@ Environment variables:
 | `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
 | `KEYSTORE_BASE64` | unset | Restores a CI signing key into the keystore path |
 
-The current signing key must live in
-`../release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
-`8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
-Keep it private and backed up. If the key changes, Android refuses in-place
-updates over builds signed with the old key; those users must uninstall first,
-which may remove app data. Older keys are not available.
+The production `1.0.5`–`1.0.9` signing key must live in
+`release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
+`a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
+Keep it private and backed up. The published `1.0.9` test pre-release is
+debug-signed and cannot update `1.0.5`–`1.0.8` in place. The `1.0.2`–`1.0.4`
+key is not available, so those users must uninstall before installing `1.0.5`
+or later.
 
 The build fails if required SDK tools are missing and verifies the package,
 signature, zipalign, `classes3.dex`, and native library before reporting
@@ -139,8 +141,8 @@ picker. If Minecraft is absent, the launching screen reports it instead of
 calling the engine.
 
 The engine retains its own permissions and services (network, media/storage,
-Firebase, and related Google providers) even though the KS UI does not expose
-their features. Do not describe this build as permission-free.
+Firebase, Play Games, and related providers) even though the KS UI does not
+expose their features. Do not describe this build as permission-free.
 
 ## Limitations
 
@@ -148,9 +150,8 @@ their features. Do not describe this build as permission-free.
 - Minecraft Bedrock must already be installed; the engine supports 1.21.80+
   (or a newer major version).
 - The installed version is selected automatically; there is no version picker.
-- The KS UI manages launch, skin import, emotes, Microsoft accounts, mods,
-  packages, and content. It does not add news, settings, instance management,
-  downloads, or backups.
+- The KS UI manages launch, skin import, emotes, and Microsoft accounts. It does
+  not add download, world, or backup management.
 - Custom skin application depends on Minecraft's options format and is
   best-effort; Classic/Slim is chosen by the user, not read from the texture.
 - Use it only with a legitimately licensed copy of Minecraft Bedrock Edition.

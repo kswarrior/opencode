@@ -2,5 +2,5 @@
 <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?selectableItemBackground" android:layout_width="match_parent" android:layout_height="44.0dp" android:paddingStart="14.0dp" android:paddingEnd="14.0dp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
     <ImageView android:id="@id/action_icon" android:layout_width="20.0dp" android:layout_height="20.0dp" android:contentDescription="@null" app:tint="@color/on_surface" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/on_surface" android:ellipsize="end" android:id="@id/action_label" android:layout_width="0.0dp" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" android:fontFamily="sans-serif" android:layout_marginStart="12.0dp" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/on_surface" android:ellipsize="end" android:id="@id/action_label" android:layout_width="0.0dp" android:layout_height="wrap_content" android:maxLines="1" android:layout_weight="1.0" android:fontFamily="@font/misans" android:layout_marginStart="12.0dp" />
 </LinearLayout>

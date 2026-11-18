@@ -203,6 +203,19 @@
     :cond_0
     invoke-static {p0}, Lorg/levimc/launcher/core/packages/PackageService;->init(Landroid/content/Context;)V
 
+    .line 43
+    .line 44
+    .line 45
+    invoke-static {p0}, Lorg/levimc/launcher/core/news/NewsNotificationHelper;->initialize(Landroid/content/Context;)V
+
+    .line 46
+    .line 47
+    .line 48
+    invoke-static {p0}, Lorg/levimc/launcher/ui/dialogs/LogcatOverlayManager;->init(Landroid/app/Application;)V
+
+    .line 49
+    .line 50
+    .line 51
     invoke-static {p0}, Lwh/k;->r(Landroid/content/Context;)Landroid/content/SharedPreferences;
 
     .line 52
@@ -222,5 +235,12 @@
     .line 60
     sput-object v0, Lorg/levimc/launcher/core/minecraft/LauncherApplication;->preferences:Landroid/content/SharedPreferences;
 
+    .line 61
+    .line 62
+    invoke-static {p0}, Lorg/levimc/launcher/core/discord/DiscordPresence;->initialize(Landroid/app/Application;)V
+
+    .line 63
+    .line 64
+    .line 65
     return-void
 .end method

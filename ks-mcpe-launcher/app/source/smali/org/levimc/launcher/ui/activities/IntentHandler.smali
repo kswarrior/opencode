@@ -99,7 +99,7 @@
     .line 36
     .line 37
     .line 38
-    const-class p1, Lcom/ks/android/mcpe/launcher/HomeActivity;
+    const-class p1, Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 39
     .line 40
@@ -143,7 +143,7 @@
     .line 59
     .line 60
     .line 61
-    const-class p1, Lcom/ks/android/mcpe/launcher/HomeActivity;
+    const-class p1, Lorg/levimc/launcher/ui/activities/InstancesActivity;
 
     .line 62
     .line 63
@@ -251,7 +251,7 @@
 
     .line 116
     :cond_5
-    const-string p1, "com.ks.android.mcpe.launcher.HomeActivity"
+    const-string p1, "org.levimc.launcher.ui.activities.MainActivity"
 
     .line 117
     .line 118
@@ -460,7 +460,7 @@
 
     .line 95
     :cond_2
-    const-class p1, Lcom/ks/android/mcpe/launcher/HomeActivity;
+    const-class p1, Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 96
     .line 97

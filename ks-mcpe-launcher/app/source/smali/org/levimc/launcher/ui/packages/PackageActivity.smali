@@ -4385,7 +4385,7 @@
 
     .line 30
     .line 31
-    sget v0, Lorg/levimc/launcher/R$color;->on_primary:I
+    sget v0, Lorg/levimc/launcher/R$color;->text_primary:I
 
     .line 32
     .line 33

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="18.0sp" android:textStyle="bold" android:textAllCaps="true" android:letterSpacing="0.06" android:ellipsize="end" android:id="@id/pkg_header_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pkg_title_mods" android:singleLine="true" android:includeFontPadding="false" android:accessibilityHeading="true" />
+    <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="18.0sp" android:textStyle="bold" android:ellipsize="end" android:id="@id/pkg_header_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/pkg_title_mods" android:singleLine="true" android:includeFontPadding="false" android:accessibilityHeading="true" />
     <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:ellipsize="end" android:id="@id/pkg_header_target" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:singleLine="true" android:includeFontPadding="false" />
 </LinearLayout>

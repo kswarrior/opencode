@@ -36,7 +36,7 @@
             <com.google.android.material.button.MaterialButton android:id="@id/pkg_settings_proxy_save" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/save" android:layout_marginStart="8.0dp" style="@style/Widget.Levi.Button.Primary" />
         </LinearLayout>
         <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/pkg_settings_proxy_source" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/error" android:id="@id/pkg_settings_proxy_error" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:fontFamily="sans-serif" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/error" android:id="@id/pkg_settings_proxy_error" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:fontFamily="@font/misans" />
         <View style="@style/settings_Divider" />
         <LinearLayout style="@style/settings_Row">
             <LinearLayout style="@style/settings_RowText">

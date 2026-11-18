@@ -941,7 +941,7 @@
 
     .line 2
     .line 3
-    const-class v1, Lcom/ks/android/mcpe/launcher/HomeActivity;
+    const-class v1, Lorg/levimc/launcher/ui/activities/MainActivity;
 
     .line 4
     .line 5
