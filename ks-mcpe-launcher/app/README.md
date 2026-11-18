@@ -21,15 +21,21 @@ It does not contain, modify, or redistribute the Minecraft APK.
 1. **Loading** - KS cube-and-play logo, brand, progress line, and
    "Preparing launcher / Loading interface / Ready". Opens Home automatically.
 2. **Home** - "KS MCPE LAUNCHER" at the top left, a 3D player preview with
-   **ADD SKIN** and emote controls, a Microsoft account card, and a white
-   **LAUNCH** button at the bottom right with a faint logo watermark. The
-   engine's **Sign in to Minecraft with LeviLauncher** setting follows the
-   account card automatically: it is enabled while a Microsoft/Xbox account is
-   active and disabled when none is signed in.
+   **ADD SKIN** and emote controls, a Microsoft account card, a white
+   **LAUNCH** button at the bottom right with a faint logo watermark, and a
+   **CONTENT** button at the bottom left. The engine's **Sign in to Minecraft
+   with LeviLauncher** setting follows the account card automatically: it is
+   enabled while a Microsoft/Xbox account is active and disabled when none is
+   signed in.
 3. **Launching** - shown after **LAUNCH**. Checks for Minecraft, copies the
    selected skin into the game data, then asks the engine to start the selected
    installed version. It shows progress, a success state, or the failure reason
    with **BACK TO HOME**.
+
+**CONTENT** opens the engine content manager after loading the selected
+Minecraft version. It shows worlds, resource packs, behavior packs, skin
+packs, servers, and screenshots, with the engine's import and management
+actions. It requires an installed Minecraft Bedrock version.
 
 ## Repository layout
 

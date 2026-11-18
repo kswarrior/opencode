@@ -15,8 +15,8 @@ The project is a hybrid APK:
 - The old external-intent launch path is gone. `LaunchingActivity` calls the
   engine reflectively through `EngineLauncher`.
 
-The application id is `com.ks.android.mcpe.launcher`, version `1.0.14`
-(`versionCode 10014`). Do not confuse it with the archived 1.1.5 clone under
+The application id is `com.ks.android.mcpe.launcher`, version `1.0.15`
+(`versionCode 10015`). Do not confuse it with the archived 1.1.5 clone under
 `app/old`, whose id was `com.ks.mcpe.launcher`.
 
 ## Build
@@ -84,7 +84,7 @@ the committed tree.
 
 1. Manifest package, signature permission, provider authorities,
    `taskAffinity`, and `targetPackage` use `com.ks.android.mcpe.launcher`.
-2. `BuildConfig` uses the KS id, version `1.0.14`, versionCode `0x271e`, and
+2. `BuildConfig` uses the KS id, version `1.0.15`, versionCode `0x271f`, and
    `SKIP_PLAY_STORE_CHECK=true`.
 3. `PlayStoreValidator.isMinecraftFromPlayStore(Context)` returns `true`.
 4. `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-op
@@ -132,7 +132,7 @@ state instead of calling the engine.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.14.apk
+APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.15.apk
 $BT/aapt2 dump badging "$APK" | head -5
 $BT/apksigner verify --print-certs "$APK"
 $BT/zipalign -c -p 4 "$APK"
@@ -142,8 +142,8 @@ sha256sum -c "$APK.sha256"
 
 Expected:
 
-- Package `com.ks.android.mcpe.launcher`, versionName `1.0.14`, versionCode
-  `10014`.
+- Package `com.ks.android.mcpe.launcher`, versionName `1.0.15`, versionCode
+  `10015`.
 - V3 signer certificate SHA-256
   `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
 - `classes.dex`, `classes2.dex`, `classes3.dex`, and
