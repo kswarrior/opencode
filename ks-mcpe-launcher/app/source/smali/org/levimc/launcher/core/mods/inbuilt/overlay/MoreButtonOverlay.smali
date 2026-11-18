@@ -6,6 +6,10 @@
 # instance fields
 .field private active:Z
 
+.field private autoClickHandler:Landroid/os/Handler;
+
+.field private autoClickTask:Ljava/lang/Runnable;
+
 .field private final buttonId:Ljava/lang/String;
 
 .field private config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
@@ -974,6 +978,8 @@
 .method public hide()V
     .locals 2
 
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->stopAutoClick()V
+
     .line 1
     iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
 
@@ -1060,7 +1066,38 @@
 .method public onButtonPressEnd()V
     .locals 2
 
-    .line 1
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    if-nez v0, :ks_end_normal
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->toggle:Z
+
+    if-eqz v0, :ks_end_done
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->stopAutoClick()V
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->keyCode:I
+
+    const/4 v0, 0x0
+
+    invoke-direct {p0, v1, v0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->sendMappedInput(IZ)V
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->updateVisual()V
+
+    :ks_end_done
+    return-void
+
+    :ks_end_normal
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
 
     .line 2
@@ -1145,6 +1182,57 @@
     :cond_0
     iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
 
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    if-eqz v0, :ks_auto_off
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->toggle:Z
+
+    if-eqz v0, :ks_auto_toggle
+
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    if-eqz v0, :ks_auto_done
+
+    const/4 v0, 0x1
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->startAutoClick()V
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->updateVisual()V
+
+    return-void
+
+    :ks_auto_toggle
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    xor-int/lit8 v0, v0, 0x1
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    if-eqz v0, :ks_auto_stop
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->startAutoClick()V
+
+    goto :ks_auto_visual
+
+    :ks_auto_stop
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->stopAutoClick()V
+
+    :ks_auto_visual
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->updateVisual()V
+
+    :ks_auto_done
+    return-void
+
+    :ks_auto_off
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
     .line 13
     .line 14
     iget-boolean v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->toggle:Z
@@ -1222,5 +1310,126 @@
     .line 48
     .line 49
     .line 50
+    return-void
+.end method
+
+.method private startAutoClick()V
+    .locals 3
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickHandler:Landroid/os/Handler;
+
+    if-nez v0, :ks_handler_ready
+
+    new-instance v0, Landroid/os/Handler;
+
+    invoke-static {}, Landroid/os/Looper;->getMainLooper()Landroid/os/Looper;
+
+    move-result-object v1
+
+    invoke-direct {v0, v1}, Landroid/os/Handler;-><init>(Landroid/os/Looper;)V
+
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickHandler:Landroid/os/Handler;
+
+    :ks_handler_ready
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickTask:Ljava/lang/Runnable;
+
+    if-nez v0, :ks_task_ready
+
+    new-instance v0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay$1;
+
+    invoke-direct {v0, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay$1;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;)V
+
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickTask:Ljava/lang/Runnable;
+
+    :ks_task_ready
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickHandler:Landroid/os/Handler;
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickTask:Ljava/lang/Runnable;
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    invoke-virtual {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->tickAutoClick()V
+
+    return-void
+.end method
+
+.method private stopAutoClick()V
+    .locals 2
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickHandler:Landroid/os/Handler;
+
+    if-nez v0, :ks_stop_done
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickTask:Ljava/lang/Runnable;
+
+    if-nez v1, :ks_stop_done
+
+    invoke-virtual {v0, v1}, Landroid/os/Handler;->removeCallbacks(Ljava/lang/Runnable;)V
+
+    :ks_stop_done
+    return-void
+.end method
+
+.method public tickAutoClick()V
+    .locals 4
+
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    if-nez v0, :ks_tick_done
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    if-nez v0, :ks_tick_disabled
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->keyCode:I
+
+    const/4 v2, 0x1
+
+    invoke-direct {p0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->sendMappedInput(IZ)V
+
+    const/4 v2, 0x0
+
+    invoke-direct {p0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->sendMappedInput(IZ)V
+
+    iget v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClickMs:I
+
+    const/16 v1, 0x28
+
+    invoke-static {v1, v0}, Ljava/lang/Math;->max(II)I
+
+    move-result v0
+
+    const/16 v1, 0xea60
+
+    invoke-static {v1, v0}, Ljava/lang/Math;->min(II)I
+
+    move-result v0
+
+    iget-object v3, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickHandler:Landroid/os/Handler;
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->autoClickTask:Ljava/lang/Runnable;
+
+    int-to-long v0, v0
+
+    invoke-virtual {v3, v2, v0, v1}, Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable;J)Z
+
+    :ks_tick_done
+    return-void
+
+    :ks_tick_disabled
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->stopAutoClick()V
+
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->updateVisual()V
+
     return-void
 .end method
