@@ -600,6 +600,8 @@
 
 .field public static v161r2_mods_row_card:I = 0x7f080240
 
+.field public static ks_logo_mark:I = 0x7f080245
+
 
 # direct methods
 .method private constructor <init>()V

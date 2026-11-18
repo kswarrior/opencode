@@ -1493,12 +1493,14 @@
 
     .line 252
     .line 253
-    invoke-virtual {v0, v4}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
+    const/4 v3, 0x0
+
+    invoke-virtual {v0, v3}, Landroid/widget/ImageView;->setImageTintList(Landroid/content/res/ColorStateList;)V
 
     .line 254
     .line 255
     .line 256
-    sget v3, Lorg/levimc/launcher/R$drawable;->ic_leaf_logo:I
+    sget v3, Lorg/levimc/launcher/R$drawable;->ks_logo_mark:I
 
     .line 257
     .line 258
