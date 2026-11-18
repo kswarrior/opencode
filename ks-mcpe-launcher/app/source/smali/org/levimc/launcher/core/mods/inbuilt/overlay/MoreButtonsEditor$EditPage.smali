@@ -15,6 +15,8 @@
 
 
 # instance fields
+.field private autoClickMsInput:Landroid/widget/EditText;
+
 .field private final activity:Landroid/app/Activity;
 
 .field private buttonSize:I
@@ -667,6 +669,9 @@
 
     .line 1
     invoke-virtual {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->syncName()V
+
+    .line 1
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->readAutoClickInterval()V
 
     .line 2
     .line 3
@@ -3331,5 +3336,366 @@
     .line 16
     .line 17
     :cond_0
+    return-void
+.end method
+
+.method private addAutoClickSection(Landroid/widget/LinearLayout;F)V
+    .locals 6
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget v1, Lorg/levimc/launcher/R$string;->more_buttons_auto_click:I
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v2, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    invoke-static {v0, v1, v2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->t(Landroid/content/Context;Ljava/lang/String;Z)Landroid/widget/Switch;
+
+    move-result-object v1
+
+    const/16 v2, 0xa
+
+    invoke-static {v2, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->v(IF)Landroid/widget/LinearLayout$LayoutParams;
+
+    move-result-object v2
+
+    invoke-virtual {p1, v1, v2}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    new-instance v2, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonAutoClickSwitchListener;
+
+    invoke-direct {v2, p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonAutoClickSwitchListener;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;)V
+
+    invoke-virtual {v1, v2}, Landroid/widget/CompoundButton;->setOnCheckedChangeListener(Landroid/widget/CompoundButton$OnCheckedChangeListener;)V
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget v1, Lorg/levimc/launcher/R$string;->more_buttons_auto_click_help:I
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    const/high16 v2, 0x41400000    # 12.0f
+
+    const v3, -0x574f48
+
+    invoke-static {v0, v1, v2, v3}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->u(Landroid/content/Context;Ljava/lang/String;FI)Landroid/widget/TextView;
+
+    move-result-object v0
+
+    invoke-virtual {p1, v0}, Landroid/view/ViewGroup;->addView(Landroid/view/View;)V
+
+    new-instance v0, Landroid/widget/EditText;
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    invoke-direct {v0, v1}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
+
+    iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->autoClickMsInput:Landroid/widget/EditText;
+
+    sget v1, Lorg/levimc/launcher/R$string;->more_buttons_auto_click_interval:I
+
+    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget v2, Lorg/levimc/launcher/R$string;->more_buttons_auto_click_interval:I
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setHint(Ljava/lang/CharSequence;)V
+
+    const/4 v1, 0x2
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setInputType(I)V
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClickMs:I
+
+    invoke-static {v1}, Ljava/lang/String;->valueOf(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    const/16 v1, 0x6
+
+    invoke-static {v1, p2}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->v(IF)Landroid/widget/LinearLayout$LayoutParams;
+
+    move-result-object v1
+
+    invoke-virtual {p1, v0, v1}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-boolean v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    if-eqz v1, :cond_auto_visible
+
+    const/16 v1, 0x8
+
+    goto :goto_auto_set
+
+    :cond_auto_visible
+    const/4 v1, 0x0
+
+    :goto_auto_set
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    return-void
+.end method
+
+.method public inputSvg(Z)V
+    .locals 4
+
+    new-instance v0, Landroid/widget/EditText;
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    invoke-direct {v0, v1}, Landroid/widget/EditText;-><init>(Landroid/content/Context;)V
+
+    if-eqz p1, :cond_0
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-object v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->pressedSvg:Ljava/lang/String;
+
+    goto :goto_0
+
+    :cond_0
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget-object v1, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->normalSvg:Ljava/lang/String;
+
+    :goto_0
+    invoke-virtual {v0, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget v2, Lorg/levimc/launcher/R$string;->more_buttons_input_svg_hint:I
+
+    invoke-virtual {v1, v2}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v2
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setHint(Ljava/lang/CharSequence;)V
+
+    const/4 v2, 0x5
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setMinLines(I)V
+
+    const/16 v2, 0x30
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setGravity(I)V
+
+    const v2, 0x20001
+
+    invoke-virtual {v0, v2}, Landroid/widget/TextView;->setInputType(I)V
+
+    new-instance v2, Landroid/app/AlertDialog$Builder;
+
+    invoke-direct {v2, v1}, Landroid/app/AlertDialog$Builder;-><init>(Landroid/content/Context;)V
+
+    sget v3, Lorg/levimc/launcher/R$string;->more_buttons_input_svg:I
+
+    invoke-virtual {v1, v3}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v3
+
+    invoke-virtual {v2, v3}, Landroid/app/AlertDialog$Builder;->setTitle(Ljava/lang/CharSequence;)Landroid/app/AlertDialog$Builder;
+
+    invoke-virtual {v2, v0}, Landroid/app/AlertDialog$Builder;->setView(Landroid/view/View;)Landroid/app/AlertDialog$Builder;
+
+    new-instance v3, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonSvgApplyListener;
+
+    invoke-direct {v3, p0, v0, p1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonSvgApplyListener;-><init>(Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;Landroid/widget/EditText;Z)V
+
+    const v0, 0x104000a
+
+    invoke-virtual {v2, v0, v3}, Landroid/app/AlertDialog$Builder;->setPositiveButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    const/high16 v0, 0x1040000
+
+    const/4 v1, 0x0
+
+    invoke-virtual {v2, v0, v1}, Landroid/app/AlertDialog$Builder;->setNegativeButton(ILandroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;
+
+    invoke-virtual {v2}, Landroid/app/AlertDialog$Builder;->show()Landroid/app/AlertDialog;
+
+    return-void
+.end method
+
+.method public applySvgText(Ljava/lang/String;Z)V
+    .locals 5
+
+    invoke-static {p1}, Lorg/levimc/launcher/core/mods/inbuilt/manager/MoreButtonsManager;->looksLikeSvg(Ljava/lang/String;)Z
+
+    move-result v0
+
+    if-nez v0, :cond_0
+
+    iget-object p1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget p2, Lorg/levimc/launcher/R$string;->more_buttons_invalid_svg:I
+
+    const/4 v0, 0x1
+
+    invoke-static {p1, p2, v0}, Landroid/widget/Toast;->makeText(Landroid/content/Context;II)Landroid/widget/Toast;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Landroid/widget/Toast;->show()V
+
+    return-void
+
+    :cond_0
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    sget v1, Lorg/levimc/launcher/R$string;->more_buttons_pasted_svg:I
+
+    invoke-virtual {v0, v1}, Landroid/content/Context;->getString(I)Ljava/lang/String;
+
+    move-result-object v1
+
+    if-eqz p2, :cond_1
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iput-object p1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->pressedSvg:Ljava/lang/String;
+
+    iput-object v1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->pressedSvgName:Ljava/lang/String;
+
+    const-string p1, ""
+
+    iput-object p1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->pressedSvgFile:Ljava/lang/String;
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    invoke-static {v2, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->s(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->pressedFile:Landroid/widget/TextView;
+
+    if-eqz v2, :cond_2
+
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    goto :goto_0
+
+    :cond_1
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iput-object p1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->normalSvg:Ljava/lang/String;
+
+    iput-object v1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->normalSvgName:Ljava/lang/String;
+
+    const-string p1, ""
+
+    iput-object p1, v2, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->normalSvgFile:Ljava/lang/String;
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
+
+    invoke-static {v2, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->s(Landroid/content/Context;Ljava/lang/String;)Ljava/lang/String;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->normalFile:Landroid/widget/TextView;
+
+    if-eqz v2, :cond_2
+
+    invoke-virtual {v2, v1}, Landroid/widget/TextView;->setText(Ljava/lang/CharSequence;)V
+
+    :cond_2
+    :goto_0
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->updatePreview()V
+
+    return-void
+.end method
+
+.method public setAutoClickEnabled(Z)V
+    .locals 3
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iput-boolean p1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->autoClickMsInput:Landroid/widget/EditText;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    if-nez p1, :cond_1
+
+    const/16 v1, 0x8
+
+    goto :goto_0
+
+    :cond_1
+    const/4 v1, 0x0
+
+    :goto_0
+    invoke-virtual {v0, v1}, Landroid/view/View;->setVisibility(I)V
+
+    return-void
+.end method
+
+.method private readAutoClickInterval()V
+    .locals 3
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->autoClickMsInput:Landroid/widget/EditText;
+
+    if-nez v0, :cond_0
+
+    return-void
+
+    :cond_0
+    invoke-virtual {v0}, Landroid/widget/EditText;->getText()Landroid/text/Editable;
+
+    move-result-object v0
+
+    invoke-virtual {v0}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object v0
+
+    :try_start_0
+    invoke-static {v0}, Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I
+
+    move-result v0
+    :try_end_0
+    .catch Ljava/lang/NumberFormatException; {:try_start_0 .. :try_end_0} :catch_0
+
+    goto :goto_0
+
+    :catch_0
+    const/16 v0, 0x64
+
+    :goto_0
+    const/16 v1, 0x28
+
+    invoke-static {v1, v0}, Ljava/lang/Math;->max(II)I
+
+    move-result v0
+
+    const/16 v1, 0xea60
+
+    invoke-static {v1, v0}, Ljava/lang/Math;->min(II)I
+
+    move-result v0
+
+    iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->working:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iput v0, v1, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClickMs:I
+
     return-void
 .end method
