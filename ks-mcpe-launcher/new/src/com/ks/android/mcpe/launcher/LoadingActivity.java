@@ -28,14 +28,14 @@ public class LoadingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ks_activity_loading);
+        setContentView(Ui.layout(this, "ks_activity_loading"));
 
-        ImageView logo = findViewById(R.id.ks_loading_logo);
-        progressFill = findViewById(R.id.ks_loading_progress);
-        statusView = findViewById(R.id.ks_loading_status);
-        TextView versionView = findViewById(R.id.ks_loading_version);
+        ImageView logo = findViewById(Ui.view(this, "ks_loading_logo"));
+        progressFill = findViewById(Ui.view(this, "ks_loading_progress"));
+        statusView = findViewById(Ui.view(this, "ks_loading_status"));
+        TextView versionView = findViewById(Ui.view(this, "ks_loading_version"));
 
-        versionView.setText(getString(R.string.ks_version_format, appVersionName()));
+        versionView.setText(getString(Ui.string(this, "ks_version_format"), appVersionName()));
 
         pulseAnimator = ObjectAnimator.ofFloat(logo, View.ALPHA, 0.55f, 1f);
         pulseAnimator.setDuration(900L);
@@ -43,7 +43,7 @@ public class LoadingActivity extends BaseActivity {
         pulseAnimator.setRepeatMode(ObjectAnimator.REVERSE);
         pulseAnimator.start();
 
-        View track = findViewById(R.id.ks_loading_track);
+        View track = findViewById(Ui.view(this, "ks_loading_track"));
         track.post(() -> startProgress(track.getWidth()));
     }
 
@@ -58,11 +58,11 @@ public class LoadingActivity extends BaseActivity {
             params.width = Math.round(width * fraction);
             progressFill.setLayoutParams(params);
             if (fraction < 0.45f) {
-                statusView.setText(R.string.ks_loading_status_preparing);
+                statusView.setText(Ui.string(this, "ks_loading_status_preparing"));
             } else if (fraction < 0.85f) {
-                statusView.setText(R.string.ks_loading_status_interface);
+                statusView.setText(Ui.string(this, "ks_loading_status_interface"));
             } else {
-                statusView.setText(R.string.ks_loading_status_ready);
+                statusView.setText(Ui.string(this, "ks_loading_status_ready"));
             }
         });
         progressAnimator.addListener(new SimpleAnimatorListener() {
