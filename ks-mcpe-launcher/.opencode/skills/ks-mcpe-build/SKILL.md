@@ -164,8 +164,8 @@ java -jar ~/.cache/ks-mcpe/apktool_3.0.3.jar d --no-res --no-assets \
 - Do not rename or delete engine resources, smali packages, or native
   libraries. Resource IDs are preserved by apktool 3; do not run `aapt2
   optimize` or sparse encoding.
-- Keep the signing key stable between releases. The 1.0.1 key is new; 1.0.0
-  users must uninstall before installing 1.0.1.
+- Keep the signing key stable between releases. The 1.0.12 key is new; users
+  on 1.0.5–1.0.11 must uninstall before installing 1.0.12.
 - Do not create a CI workflow for this project unless the user asks. Builds
   are local.
 - Keep upstream license/notices in the APK. This is not an official

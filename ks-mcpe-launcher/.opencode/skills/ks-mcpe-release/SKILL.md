@@ -1,6 +1,6 @@
 ---
 name: ks-mcpe-release
-description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, ks-mcpe-launcher-java-v1.0.0, GitHub release upload, release asset, or signing secrets for this project.
+description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.12, GitHub release upload, release asset, or signing secrets for this project.
 ---
 
 # KS MCPE Launcher release
@@ -8,9 +8,9 @@ description: Use when publishing, replacing, or verifying KS MCPE Launcher relea
 Builds are published to:
 
 - Repository: `kswarrior/opencode`
-- Tag: `ks-mcpe-launcher-java-v1.0.0`
-- Release id at the time of writing: `447045166`
-- URL: <https://github.com/kswarrior/opencode/releases/tag/ks-mcpe-launcher-java-v1.0.0>
+- Tag: `v1.0.12`
+- Release id at the time of writing: `449507658`
+- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.12>
 
 Look the release up by tag before uploading; do not hardcode the id if the
 release can move.
@@ -20,7 +20,7 @@ release can move.
 - `KS-MCPE-Launcher-<version>.apk`
 - `KS-MCPE-Launcher-<version>.apk.sha256`
 
-`<version>` is the app's `versionName`, currently `1.0.1`, not the upstream
+`<version>` is the app's `versionName`, currently `1.0.12`, not the upstream
 LeviLauncher version. The checksum file is the exact output of `sha256sum`
 (two spaces between digest and file name).
 
@@ -28,28 +28,29 @@ Current assets:
 
 | Asset | Size | Notes |
 | --- | --- | --- |
-| `KS-MCPE-Launcher-1.0.0.apk` | 30,102 | archived Java-only build |
-| `KS-MCPE-Launcher-1.0.0.apk.sha256` | 93 | archived |
-| `KS-MCPE-Launcher-1.0.1.apk` | 37,595,100 | hybrid engine build |
-| `KS-MCPE-Launcher-1.0.1.apk.sha256` | 93 | SHA-256 `51d30d7c...` |
+| `KS-MCPE-Launcher-1.0.12.apk` | 39,549,790 | More Buttons fix, arm64-v8a only |
+| `KS-MCPE-Launcher-1.0.12.apk.sha256` | 94 | SHA-256 `b3192f9b...` |
+| `KS-MCPE-Launcher-1.0.11.apk` | 39,549,790 | previous build, broken More Buttons |
+| `KS-MCPE-Launcher-1.0.10.apk` | 39,545,694 | previous build |
 
 Keep older assets for rollback. Only replace the two assets for the version
 being published; never bulk-delete other versions.
 
 ## Current signing key
 
-`1.0.1` is signed with:
+`1.0.12` is signed with:
 
 - Keystore: `ks-mcpe-launcher/release/signing/ks-mcpe.keystore`
 - Credentials: `ks-mcpe-launcher/release/signing/credentials.env`
 - Certificate SHA-256:
-  `b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`
+  `54bb14276bea5ebefebf423ff560f28d85fa756f90b49c7d08ee1cf660331706`
 - Certificate SHA-1:
-  `b0e200f8fd5cf1f71496372a8cd580f98faa4fd2`
+  `ae93cbc73316f9dd670ebcd537831739f973885e`
 
-The `1.0.0` signing key is not available. A `1.0.0` install cannot update to
-`1.0.1`; users must uninstall `1.0.0` first, which may delete app data. State
-this in release notes.
+The `1.0.10`/`1.0.11` signing key was not available in the build environment,
+so `1.0.12` uses a new key. Installs from `1.0.5`–`1.0.11` cannot update in
+place; users must uninstall first, which may delete app data. State this in
+release notes.
 
 Back up the keystore and credentials outside the repository. They are
 gitignored and must never be committed or printed.
@@ -61,8 +62,8 @@ Authenticate with `GH_TOKEN`, or derive the bot token from the git
 
 ```bash
 REPO=kswarrior/opencode
-TAG=ks-mcpe-launcher-java-v1.0.0
-VERSION=1.0.1
+TAG=v1.0.12
+VERSION=1.0.12
 DIST=ks-mcpe-launcher/release
 TOKEN="${GH_TOKEN:-}"
 
@@ -115,35 +116,34 @@ more specific type is used, ensure the APK is
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher-java-v1.0.0/KS-MCPE-Launcher-1.0.1.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/ks-mcpe-launcher-java-v1.0.0/KS-MCPE-Launcher-1.0.1.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.1.apk.sha256
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.12/KS-MCPE-Launcher-1.0.12.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.12/KS-MCPE-Launcher-1.0.12.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.12.apk.sha256
 
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.1.apk | head -5
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.1.apk | head -5
-$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.1.apk
+$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.12.apk | head -5
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.12.apk | head -5
+$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.12.apk
 ```
 
 Confirm the uploaded manifest has package
-`com.ks.android.mcpe.launcher`, versionName `1.0.1`, versionCode `10001`, and
-that the signer certificate is `b96de...`. Compare SHA-256, not only size.
+`com.ks.android.mcpe.launcher`, versionName `1.0.12`, versionCode `10012`, and
+that the signer certificate is `54bb14...`. Compare SHA-256, not only size.
 
 ## Release notes
 
 When publishing a new version in an existing release, update the release name
 and body to describe both the new asset and the retained older assets. For
-`1.0.1` the important points are:
+`1.0.12` the important points are:
 
-- Compact 3-screen Java UI retained.
-- LAUNCH runs Minecraft in-process through the LeviLauncher 1.7.1 engine.
+- Restores the Add Button in More Buttons settings on Android 14/15.
+- Keeps the LeviLauncher 1.7.1 engine and the 3-screen Java UI.
 - Requires Minecraft Bedrock installed.
 - `arm64-v8a` only.
-- New signing key; uninstall `1.0.0` first.
+- New signing key; uninstall `1.0.5`–`1.0.11` first.
 
-Do not claim the old release body still applies. The `1.0.0` body said "No
-permissions and no internet access"; the hybrid engine has its own
-permissions and services.
+Do not claim the old release body still applies. Older bodies mention
+different signing keys and the removed Tutorial button.
 
 ## Rules
 
