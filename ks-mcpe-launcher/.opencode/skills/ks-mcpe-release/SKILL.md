@@ -1,6 +1,6 @@
 ---
 name: ks-mcpe-release
-description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.13, GitHub release upload, release asset, or signing secrets for this project.
+description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.14, GitHub release upload, release asset, or signing secrets for this project.
 ---
 
 # KS MCPE Launcher release
@@ -8,9 +8,8 @@ description: Use when publishing, replacing, or verifying KS MCPE Launcher relea
 Builds are published to:
 
 - Repository: `kswarrior/opencode`
-- Tag: `v1.0.13`
-- Release id at the time of writing: `449537694`
-- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.13>
+- Tag: `v1.0.14`
+- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.14>
 
 Look the release up by tag before uploading; do not hardcode the id if the
 release can move.

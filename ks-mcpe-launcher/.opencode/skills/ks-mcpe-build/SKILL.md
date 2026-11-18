@@ -15,8 +15,8 @@ The project is a hybrid APK:
 - The old external-intent launch path is gone. `LaunchingActivity` calls the
   engine reflectively through `EngineLauncher`.
 
-The application id is `com.ks.android.mcpe.launcher`, version `1.0.1`
-(`versionCode 10001`). Do not confuse it with the archived 1.1.5 clone under
+The application id is `com.ks.android.mcpe.launcher`, version `1.0.14`
+(`versionCode 10014`). Do not confuse it with the archived 1.1.5 clone under
 `app/old`, whose id was `com.ks.mcpe.launcher`.
 
 ## Build
@@ -55,8 +55,11 @@ Requirements: Java 21+, Python 3, curl, zip, Android build-tools (`aapt2`,
 - `app/build.sh` - wrapper that calls `app/source/build.sh`.
 - `app/old` - 1.1.5 KS clone kept only as reference. Never build from it.
 - `/tmp/ks-mcpe-build` - disposable copy and intermediate APKs.
-- `release/signing/ks-mcpe.keystore` and `credentials.env` - current signing
-  key and password. Gitignored; back them up and never print the password.
+- `release/signing/ks-mcpe.keystore` and `credentials.env` - the permanent
+  signing key introduced for `1.0.14`, alias `ksmcpe`, certificate SHA-256
+  `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
+  Gitignored; back them up and never print the password. The build script
+  uses this path automatically when `SIGNING_DIR` is not overridden.
 - `/tmp/opencode/ks-hybrid` - original staging copy of the hybrid; not needed
   after `app/source` is in place.
 
@@ -81,7 +84,7 @@ the committed tree.
 
 1. Manifest package, signature permission, provider authorities,
    `taskAffinity`, and `targetPackage` use `com.ks.android.mcpe.launcher`.
-2. `BuildConfig` uses the KS id, version `1.0.1`, versionCode `0x2711`, and
+2. `BuildConfig` uses the KS id, version `1.0.14`, versionCode `0x271e`, and
    `SKIP_PLAY_STORE_CHECK=true`.
 3. `PlayStoreValidator.isMinecraftFromPlayStore(Context)` returns `true`.
 4. `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-op
@@ -129,7 +132,7 @@ state instead of calling the engine.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.14.apk
 $BT/aapt2 dump badging "$APK" | head -5
 $BT/apksigner verify --print-certs "$APK"
 $BT/zipalign -c -p 4 "$APK"
@@ -139,10 +142,10 @@ sha256sum -c "$APK.sha256"
 
 Expected:
 
-- Package `com.ks.android.mcpe.launcher`, versionName `1.0.1`, versionCode
-  `10001`.
+- Package `com.ks.android.mcpe.launcher`, versionName `1.0.14`, versionCode
+  `10014`.
 - V3 signer certificate SHA-256
-  `b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
+  `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
 - `classes.dex`, `classes2.dex`, `classes3.dex`, and
   `lib/arm64-v8a/libgxcore.so` are present.
 - `resources.arsc` is `Stored` and 4-byte aligned.
@@ -164,9 +167,11 @@ java -jar ~/.cache/ks-mcpe/apktool_3.0.3.jar d --no-res --no-assets \
 - Do not rename or delete engine resources, smali packages, or native
   libraries. Resource IDs are preserved by apktool 3; do not run `aapt2
   optimize` or sparse encoding.
-- Keep the signing key stable between releases. 1.0.12 and 1.0.13 share the
-  current key; users on 1.0.5–1.0.11 must uninstall before installing 1.0.12
-  or later.
+- Keep the signing key stable between releases. `1.0.14` introduced the
+  current key (certificate SHA-256 `8e69a284...`); keep it for every later
+  build. Users on `1.0.13` and older must uninstall before installing
+  `1.0.14`, which may remove app data. The `1.0.12`/`1.0.13` key
+  (`54bb1427...`) is not available in the build environment.
 - Do not create a CI workflow for this project unless the user asks. Builds
   are local.
 - Keep upstream license/notices in the APK. This is not an official
