@@ -344,3 +344,33 @@
 
     return-void
 .end method
+
+.method public static synthetic g(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Exception;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public static synthetic h(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/util/List;I)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public static synthetic j(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/String;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public static synthetic k(Lorg/levimc/launcher/ui/activities/BaseActivity;Ljava/lang/Class;Landroid/view/View;)V
+    .locals 0
+
+    return-void
+.end method
+
+.method public static synthetic m(Lorg/levimc/launcher/ui/activities/BaseActivity;ZLandroid/view/View;)V
+    .locals 0
+
+    return-void
+.end method
