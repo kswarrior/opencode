@@ -1,7 +1,23 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.14>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.15>
+
+## 1.0.15 build
+
+`1.0.15` (`versionCode 10015`) adds **CONTENT** and **MODS** buttons at the
+bottom left of the Home screen. **CONTENT** opens the engine content manager
+for worlds, resource packs, behavior packs, skin packs, servers, and
+screenshots. **MODS** opens the installed-mods manager for the selected
+Minecraft version, with search, enable/disable, delete, import, and links to
+LeviMC packages and the external mod catalog. Both pages load the selected
+Minecraft version first and show a message when Minecraft is not installed.
+
+This build includes the `1.0.14` automatic **Sign in to Minecraft with
+LeviLauncher** setting. It uses the same signing key as `1.0.14`, so `1.0.14`
+users can update in place; users on `1.0.13` or older must uninstall first,
+which may delete app data. APK SHA-256:
+`c41a1c54965f25d06a57227a10f3ad7c4e24ec5496b216cc8e28bab2dca9cefa`.
 
 ## 1.0.14 build
 

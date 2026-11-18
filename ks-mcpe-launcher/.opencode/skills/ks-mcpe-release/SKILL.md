@@ -137,15 +137,21 @@ that the signer certificate is `8e69a2...`. Compare SHA-256, not only size.
 ## Release notes
 
 When publishing a new version in an existing release, update the release name
-and body to describe the new asset. For `1.0.14` the important points are:
+and body to describe the new asset. For `1.0.15` the important points are:
 
-- The **Sign in to Minecraft with LeviLauncher** engine setting is now
-  automatic: it stays off with no active Microsoft/Xbox account, turns on
-  after a successful account login, and turns off again when no account is
-  active. Minecraft therefore auto-signs in whenever the setting is on.
-- `1.0.14` uses a **new signing key** because the `1.0.13` key was lost.
-  Updating from `1.0.13` or older requires uninstalling first, which may
-  delete app data. Later `1.0.14`+ builds will keep this key.
+- The Home screen now has **CONTENT** and **MODS** buttons at the bottom left.
+- **CONTENT** opens the engine content manager for worlds, resource packs,
+  behavior packs, skin packs, servers, and screenshots.
+- **MODS** opens the installed-mods manager for the selected Minecraft
+  version, with search, enable/disable, delete, import, and links to LeviMC
+  packages and the external mod catalog.
+- Both pages load the selected Minecraft version first and show a message if
+  Minecraft is not installed.
+- Includes the `1.0.14` automatic **Sign in to Minecraft with LeviLauncher**
+  setting: it follows the active Microsoft/Xbox account.
+- `1.0.15` uses the same signing key as `1.0.14`, so `1.0.14` users update in
+  place. Users on `1.0.13` or older must uninstall first, which may delete
+  app data.
 - Keeps the LeviLauncher 1.7.1 engine and the 3-screen Java UI.
 - Requires Minecraft Bedrock installed.
 - `arm64-v8a` only.
@@ -161,7 +167,8 @@ signing keys and the removed Tutorial button.
 - Never re-upload a replacement for an already-published version unless the
   signing key that produced the existing asset is still available. The
   `1.0.14`+ key is available at `ks-mcpe-launcher/release/signing/`; the
-  `1.0.12`/`1.0.13` key and the `1.0.0` key are not.
+  `1.0.12`/`1.0.13` key and the `1.0.0` key are not. `1.0.15` assets can be
+  replaced while this key is available, but prefer a new version instead.
 - If the bot token lacks `contents: write`, the upload will fail. Do not fall
   back to committing binaries into the repository.
 - The built-in updater is inert; users update only by installing release
