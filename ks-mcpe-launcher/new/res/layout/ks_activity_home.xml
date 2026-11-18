@@ -82,6 +82,65 @@
             android:textSize="9sp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/ks_home_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="60dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.ks.android.mcpe.launcher.PlayerDollView
+            android:layout_width="230dp"
+            android:layout_height="248dp"
+            android:contentDescription="@string/ks_home_skin_desc" />
+
+        <LinearLayout
+            android:layout_width="240dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ks_home_add_skin"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:background="@drawable/ks_btn_secondary"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.12"
+                android:text="@string/ks_add_skin"
+                android:textColor="@color/ks_white"
+                android:textSize="11sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="1dp" />
+
+            <TextView
+                android:id="@+id/ks_home_emote"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_weight="1"
+                android:background="@drawable/ks_btn_secondary"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.12"
+                android:text="@string/ks_emote"
+                android:textColor="@color/ks_white"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
     <TextView
         android:id="@+id/ks_launch_button"
         android:layout_width="wrap_content"

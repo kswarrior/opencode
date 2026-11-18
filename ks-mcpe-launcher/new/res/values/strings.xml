@@ -7,6 +7,9 @@
     <string name="ks_loading_status_interface">LOADING INTERFACE</string>
     <string name="ks_loading_status_ready">READY</string>
     <string name="ks_launch">LAUNCH</string>
+    <string name="ks_add_skin">ADD SKIN</string>
+    <string name="ks_emote">EMOTE</string>
+    <string name="ks_home_skin_desc">Player skin preview</string>
     <string name="ks_requirements_hint">MINECRAFT BEDROCK EDITION REQUIRED</string>
     <string name="ks_version_format">v%1$s</string>
 </resources>

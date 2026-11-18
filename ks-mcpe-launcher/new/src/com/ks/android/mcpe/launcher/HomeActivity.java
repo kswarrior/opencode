@@ -12,11 +12,13 @@ public class HomeActivity extends BaseActivity {
 
         View brand = findViewById(R.id.ks_home_brand);
         View hint = findViewById(R.id.ks_home_hint);
+        View player = findViewById(R.id.ks_home_player);
         View launchButton = findViewById(R.id.ks_launch_button);
 
         animateIn(brand, 0L);
         animateIn(hint, 90L);
         animateIn(launchButton, 160L);
+        animateIn(player, 220L);
     }
 
     private void animateIn(View view, long delay) {

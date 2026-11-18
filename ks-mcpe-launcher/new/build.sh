@@ -69,6 +69,7 @@ log "packaging resources"
 "$BT/aapt2" compile --dir "$SCRIPT_DIR/res" -o "$WORKDIR/res-out/res.zip"
 "$BT/aapt2" link -o "$WORKDIR/unsigned.apk" \
   -I "$ANDROID_JAR" \
+  -A "$SCRIPT_DIR/assets" \
   --manifest "$SCRIPT_DIR/AndroidManifest.xml" \
   --java "$WORKDIR/gen" \
   --min-sdk-version "$MIN_SDK" \
