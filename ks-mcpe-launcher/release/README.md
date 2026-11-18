@@ -1,7 +1,26 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.13>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.14>
+
+## 1.0.14 build
+
+`1.0.14` (`versionCode 10014`) makes the engine's **Sign in to Minecraft with
+LeviLauncher** setting automatic. `HomeActivity` now syncs the setting with
+the active Microsoft/Xbox account: it stays off when no account is signed in,
+turns on after a successful login or whenever an account is active, and turns
+off again if no active account remains. With the setting on, the LeviLauncher
+runtime injects the saved Xbox credentials so Minecraft starts signed in;
+with it off, Minecraft is not auto-signed-in.
+
+`1.0.14` uses a new signing key because the `1.0.13` key was not available in
+this build environment. Installs from `1.0.13` and older cannot update in
+place; users must uninstall first, which may delete app data. The new key is
+saved at `release/signing/ks-mcpe.keystore` with `credentials.env`
+(certificate SHA-256
+`8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`). Keep it
+for every later build. APK SHA-256:
+`a8af818c6b8553ee16a8b568145814b617f3241d5759f84d30fa65aad26681b9`.
 
 ## 1.0.13 test build
 
