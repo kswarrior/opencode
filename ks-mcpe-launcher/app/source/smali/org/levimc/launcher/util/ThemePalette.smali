@@ -4,7 +4,7 @@
 
 
 # static fields
-.field public static final DEFAULT_ACCENT:I = -0xef467f
+.field public static final DEFAULT_ACCENT:I = -0x1
 
 .field public static final MORE:[I
 
@@ -617,13 +617,26 @@
 .end method
 
 .method public static onAccent(I)I
-    .locals 0
+    .locals 4
 
-    .line 1
-    const/4 p0, -0x1
+    invoke-static {p0}, Lorg/levimc/launcher/util/ThemePalette;->luminance(I)D
 
-    .line 2
-    return p0
+    move-result-wide v0
+
+    const-wide/high16 v2, 0x3fe0000000000000L    # 0.5
+
+    cmpl-double v2, v0, v2
+
+    if-lez v2, :cond_0
+
+    const/high16 v0, -0x1000000
+
+    return v0
+
+    :cond_0
+    const/4 v0, -0x1
+
+    return v0
 .end method
 
 .method public static readable(IIZD)I
