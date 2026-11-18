@@ -9,7 +9,7 @@ It does not contain, modify, or redistribute the Minecraft APK.
 
 - Package: `com.ks.android.mcpe.launcher`
 - Label: `KS MCPE Launcher`
-- Version: `1.0.15` (`versionCode 10015`)
+- Version: set by `APP_VERSION` / `APP_VERSION_CODE` in `app/source/build.sh`
 - Min Android: 9.0 / API 28
 - Target API: 35
 - ABI: `arm64-v8a` only
@@ -55,9 +55,8 @@ catalog. It also requires an installed Minecraft Bedrock version.
 - `build.sh` - wrapper that runs `source/build.sh`.
 - `../release/` - signed APK, `.sha256`, and local `signing/` material.
   Generated artifacts are gitignored; see `../release/README.md`.
-- `old/` - archived decoded KS clone (`versionName 1.1.5`, package
-  `com.ks.mcpe.launcher`). It is not referenced by the current build and must
-  not be edited.
+- `old/` - archived decoded KS clone (package `com.ks.mcpe.launcher`). It is
+  not referenced by the current build and must not be edited.
 - `logo.png` and `tombstone_*` - legacy assets from the previous repack.
 
 ## Build
@@ -77,8 +76,8 @@ Environment variables:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `APP_ID` | `com.ks.android.mcpe.launcher` | Package id written into the manifest and `BuildConfig` |
-| `APP_VERSION` | `1.0.15` | versionName |
-| `APP_VERSION_CODE` | `10015` | versionCode |
+| `APP_VERSION` | from `app/source/build.sh` | versionName |
+| `APP_VERSION_CODE` | from `app/source/build.sh` | versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace |
 | `DIST` | `release/` | APK output directory |
@@ -88,13 +87,12 @@ Environment variables:
 | `CREDENTIALS_FILE` | next to the keystore | Saved generated credentials |
 | `KEYSTORE_BASE64` | unset | Restores a CI signing key into the keystore path |
 
-The production `1.0.5`–`1.0.9` signing key must live in
+The current signing key must live in
 `release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
-`a0b56fd5620536d734388203a0c4244194f07ba7a7cd3f6eb8d69a161e1de4e8`.
-Keep it private and backed up. The published `1.0.9` test pre-release is
-debug-signed and cannot update `1.0.5`–`1.0.8` in place. The `1.0.2`–`1.0.4`
-key is not available, so those users must uninstall before installing `1.0.5`
-or later.
+`8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
+Keep it private and backed up. If the key changes, Android refuses in-place
+updates over builds signed with the old key; those users must uninstall first,
+which may remove app data. Older keys are not available.
 
 The build fails if required SDK tools are missing and verifies the package,
 signature, zipalign, `classes3.dex`, and native library before reporting

@@ -5,34 +5,35 @@ description: Use when installing or testing the KS MCPE Launcher APK on an Andro
 
 # APK install and device verification
 
-Current package: `com.ks.android.mcpe.launcher` (hybrid build, version `1.0.1`).
-The original LeviLauncher package is `org.levimc.launcher`; the archived 1.1.5
-KS clone used `com.ks.mcpe.launcher`. Do not mix them up.
+Package: `com.ks.android.mcpe.launcher` (hybrid build). The original
+LeviLauncher package is `org.levimc.launcher`; the archived KS clone used
+`com.ks.mcpe.launcher`. Do not mix them up.
 
 The hybrid APK contains only `arm64-v8a` native libraries. An x86_64 emulator
 normally cannot install it (`INSTALL_FAILED_NO_MATCHING_ABIS`). Use an arm64
 physical device, an arm64 host/emulator, or an emulator with working ARM
 translation. Static checks are still mandatory before publishing.
 
-No device was attached to the build runner used for `1.0.1`; that build has
-only been statically verified.
+If no device is available, report the build as statically verified only; do
+not imply it was installed or launched.
 
 ## Pre-install checks
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+APK=$(ls -t ks-mcpe-launcher/release/KS-MCPE-Launcher-*.apk | head -1)
 
 $BT/aapt2 dump badging "$APK" | head -8
 $BT/zipalign -c -p 4 "$APK"
 $BT/apksigner verify --print-certs "$APK" | head -5
 unzip -l "$APK" | grep -E 'classes[23]?\.dex|lib/arm64-v8a/libgxcore.so'
-sha256sum -c "$APK.sha256"
+(cd "$(dirname "$APK")" && sha256sum -c "$(basename "$APK").sha256")
 ```
 
-Expected: package `com.ks.android.mcpe.launcher`, versionCode `10001`,
-versionName `1.0.1`, minSdk 28, targetSdk 35, signer SHA-256
-`b96de202630add26d6f4e23df2fc15b1de9e727f2ba82d40b85c46708be9ae98`.
+Expected: package `com.ks.android.mcpe.launcher`; versionName and versionCode
+matching `APP_VERSION` / `APP_VERSION_CODE` in `app/source/build.sh`; minSdk
+28; targetSdk 35; signer SHA-256
+`8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
 
 ## Install test
 
@@ -44,17 +45,17 @@ collisions.
 ADB=/usr/local/lib/android/sdk/platform-tools/adb
 $ADB devices
 $ADB install -r /path/to/LeviLauncher-v1.7.1-release.apk
-$ADB install -r ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+$ADB install -r "$APK"
 $ADB shell pm list packages | grep -E 'levimc|ks\.android\.mcpe'
 ```
 
 Both installs must print `Success`.
 
-If `1.0.0` is installed, `1.0.1` has a different signing key. Uninstall first:
+If an installed build was signed with a different key, uninstall it first:
 
 ```bash
 $ADB uninstall com.ks.android.mcpe.launcher
-$ADB install ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.1.apk
+$ADB install "$APK"
 ```
 
 Uninstalling may delete launcher data and settings. Warn the user.
@@ -106,7 +107,7 @@ unzip -p "$APK" classes3.dex >/tmp/classes3.dex
 | Error | Likely cause | Fix |
 | --- | --- | --- |
 | `INSTALL_FAILED_NO_MATCHING_ABIS` | APK is `arm64-v8a` only; device/emulator is x86_64 | Use an arm64 device or ARM-translation emulator |
-| `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | Different signing key, e.g. `1.0.0` -> `1.0.1` | Uninstall the old package first; warn about data loss |
+| `INSTALL_FAILED_UPDATE_INCOMPATIBLE` | Installed build uses a different signing key | Uninstall the old package first; warn about data loss |
 | `INSTALL_FAILED_VERSION_DOWNGRADE` | Lower versionCode than installed | Install a higher versionCode or uninstall |
 | `INSTALL_FAILED_DUPLICATE_PERMISSION` | Signature permission still uses `org.levimc.launcher` while the original is installed | Rebuild from the patched tree; check `DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION` in the manifest |
 | `INSTALL_FAILED_CONFLICTING_PROVIDER` | Provider authority not renamed | Check all `android:authorities` use `com.ks.android.mcpe.launcher` |
