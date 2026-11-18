@@ -4,6 +4,10 @@
 
 
 # instance fields
+.field public autoClick:Z
+
+.field public autoClickMs:I
+
 .field public iconOffsetX:I
 
 .field public iconOffsetY:I
@@ -277,6 +281,50 @@
     iput-boolean v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->toggle:Z
 
     .line 73
+    const-string v1, "auto_click"
+
+    .line 74
+    invoke-virtual {p0, v1, v2}, Lorg/json/JSONObject;->optBoolean(Ljava/lang/String;Z)Z
+
+    .line 75
+    move-result v1
+
+    .line 76
+    iput-boolean v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    .line 77
+    const-string v1, "auto_click_ms"
+
+    .line 78
+    const/16 v3, 0x64
+
+    .line 79
+    invoke-virtual {p0, v1, v3}, Lorg/json/JSONObject;->optInt(Ljava/lang/String;I)I
+
+    .line 80
+    move-result v1
+
+    .line 81
+    const/16 v3, 0x28
+
+    .line 82
+    invoke-static {v3, v1}, Ljava/lang/Math;->max(II)I
+
+    .line 83
+    move-result v1
+
+    .line 84
+    const/16 v3, 0xea60
+
+    .line 85
+    invoke-static {v3, v1}, Ljava/lang/Math;->min(II)I
+
+    .line 86
+    move-result v1
+
+    .line 87
+    iput v1, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClickMs:I
+
     .line 74
     const-string v1, "visible"
 
@@ -950,5 +998,23 @@
     .line 109
     .line 110
     .line 111
+    const-string v1, "auto_click"
+
+    .line 112
+    iget-boolean v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClick:Z
+
+    .line 113
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;Z)Lorg/json/JSONObject;
+
+    .line 114
+    const-string v1, "auto_click_ms"
+
+    .line 115
+    iget v2, p0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->autoClickMs:I
+
+    .line 116
+    invoke-virtual {v0, v1, v2}, Lorg/json/JSONObject;->put(Ljava/lang/String;I)Lorg/json/JSONObject;
+
+    .line 117
     return-object v0
 .end method
