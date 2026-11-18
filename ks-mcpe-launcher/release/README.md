@@ -1,7 +1,25 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.10>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.12>
+
+## 1.0.12 test build
+
+`1.0.12` (`versionCode 10012`) fixes the missing **Add Button** in the
+in-game More Buttons module settings. Removing the Tutorial button in `1.0.11`
+also removed the `8 * density` float initialization of a spacing value that
+the Delete button still used. ART on Android 14/15 then rejected the whole
+`EditorHost` class during verification, so the Mod Menu silently fell back to
+its generic config page, which has no Add Button. The spacing calculation is
+restored and the editor was verified on an Android 14 emulator.
+
+The `1.0.10`/`1.0.11` signing key was not available in this build environment,
+so `1.0.12` is signed with a newly generated key
+(`54bb14276bea5ebefebf423ff560f28d85fa756f90b49c7d08ee1cf660331706`).
+Android rejects it as an in-place update over `1.0.5`–`1.0.11`; users must
+uninstall first, which may remove app data. Back up
+`release/signing/ks-mcpe.keystore` and `credentials.env` to avoid another key
+change in `1.0.13`.
 
 ## 1.0.10 test build
 
@@ -90,11 +108,11 @@ in place, so users must uninstall before installing `1.0.5` or later; warn
 them that app data may be removed. The `1.0.0` and `1.0.1` keys are also
 unavailable.
 
-The `1.0.5`–`1.0.8` keystore and `credentials.env` are in
-`release/signing/` locally (gitignored). Back them up, or add them to the
-`KEYSTORE_BASE64`/password secrets before the workspace is cleaned. The same
-material is required to replace the debug-signed `1.0.9` test release or to
-re-sign the `1.0.10` pre-release.
+The `1.0.12` keystore and `credentials.env` are in `release/signing/` locally
+(gitignored). Back them up, or add them to the `KEYSTORE_BASE64`/password
+secrets before the workspace is cleaned. The `1.0.10`/`1.0.11` key was lost
+when its workspace was cleaned, which is why `1.0.12` introduced another new
+key.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
