@@ -3398,10 +3398,6 @@
 
     iput-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->autoClickMsInput:Landroid/widget/EditText;
 
-    sget v1, Lorg/levimc/launcher/R$string;->more_buttons_auto_click_interval:I
-
-    invoke-virtual {v1}, Ljava/lang/Object;->hashCode()I
-
     iget-object v1, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor$EditPage;->activity:Landroid/app/Activity;
 
     sget v2, Lorg/levimc/launcher/R$string;->more_buttons_auto_click_interval:I
