@@ -62,11 +62,23 @@ if [ ! -f "$KEYSTORE" ]; then
   chmod 600 "$KEYSTORE"
 fi
 
-rm -rf "$WORKDIR/classes" "$WORKDIR/dex" "$WORKDIR/res-out" "$WORKDIR/unsigned.apk" "$WORKDIR/aligned.apk" "$WORKDIR/classes.dex"
-mkdir -p "$WORKDIR/classes" "$WORKDIR/dex" "$WORKDIR/res-out"
+rm -rf "$WORKDIR/classes" "$WORKDIR/dex" "$WORKDIR/res-out" "$WORKDIR/gen" "$WORKDIR/unsigned.apk" "$WORKDIR/aligned.apk" "$WORKDIR/classes.dex"
+mkdir -p "$WORKDIR/classes" "$WORKDIR/dex" "$WORKDIR/res-out" "$WORKDIR/gen"
+
+log "packaging resources"
+"$BT/aapt2" compile --dir "$SCRIPT_DIR/res" -o "$WORKDIR/res-out/res.zip"
+"$BT/aapt2" link -o "$WORKDIR/unsigned.apk" \
+  -I "$ANDROID_JAR" \
+  --manifest "$SCRIPT_DIR/AndroidManifest.xml" \
+  --java "$WORKDIR/gen" \
+  --min-sdk-version "$MIN_SDK" \
+  --target-sdk-version "$TARGET_SDK" \
+  --version-code "$APP_VERSION_CODE" \
+  --version-name "$APP_VERSION" \
+  "$WORKDIR/res-out/res.zip"
 
 log "compiling java"
-find "$SCRIPT_DIR/src" -name '*.java' >"$WORKDIR/sources.txt"
+find "$SCRIPT_DIR/src" "$WORKDIR/gen" -name '*.java' >"$WORKDIR/sources.txt"
 javac -source 11 -target 11 -nowarn \
   -classpath "$ANDROID_JAR" \
   -d "$WORKDIR/classes" \
@@ -74,17 +86,6 @@ javac -source 11 -target 11 -nowarn \
 
 log "dexing"
 find "$WORKDIR/classes" -name '*.class' -print0 | xargs -0 "$BT/d8" --min-api "$MIN_SDK" --output "$WORKDIR/dex"
-
-log "packaging resources"
-"$BT/aapt2" compile --dir "$SCRIPT_DIR/res" -o "$WORKDIR/res-out/res.zip"
-"$BT/aapt2" link -o "$WORKDIR/unsigned.apk" \
-  -I "$ANDROID_JAR" \
-  --manifest "$SCRIPT_DIR/AndroidManifest.xml" \
-  --min-sdk-version "$MIN_SDK" \
-  --target-sdk-version "$TARGET_SDK" \
-  --version-code "$APP_VERSION_CODE" \
-  --version-name "$APP_VERSION" \
-  "$WORKDIR/res-out/res.zip"
 
 cp "$WORKDIR/dex/classes.dex" "$WORKDIR/classes.dex"
 (cd "$WORKDIR" && zip -q unsigned.apk classes.dex)
