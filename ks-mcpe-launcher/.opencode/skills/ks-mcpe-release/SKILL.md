@@ -9,6 +9,7 @@ Builds are published to:
 
 - Repository: `kswarrior/opencode`
 - Tag: `v1.0.14`
+- Release id at the time of writing: `449571228`
 - URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.14>
 
 Look the release up by tag before uploading; do not hardcode the id if the
