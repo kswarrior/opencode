@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Hello World</string>
+    <string name="app_name">KS MCPE Launcher</string>
+    <string name="loading">Loading\u2026</string>
+    <string name="launch">Launch</string>
 </resources>
