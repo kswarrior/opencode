@@ -2368,13 +2368,9 @@
     .line 113
     move-result-object v2
 
-    new-instance v5, Landroid/widget/LinearLayout$LayoutParams;
+    invoke-static {}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonsEditor;->x()Landroid/widget/LinearLayout$LayoutParams;
 
-    const/4 v3, -0x1
-
-    const/4 v6, -0x2
-
-    invoke-direct {v5, v3, v6}, Landroid/widget/LinearLayout$LayoutParams;-><init>(II)V
+    move-result-object v5
 
     invoke-virtual {v0, v2, v5}, Landroid/view/ViewGroup;->addView(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
 
