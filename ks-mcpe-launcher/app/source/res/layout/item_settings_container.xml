@@ -5,9 +5,9 @@
     <Space android:layout_width="match_parent" android:layout_height="16.0dp" />
     <View android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" android:alpha="0.4" />
     <LinearLayout android:orientation="vertical" android:paddingTop="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_title" android:fontFamily="@font/misans" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/copyright" android:fontFamily="@font/misans" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/font_license" android:fontFamily="@font/misans" />
-        <TextView android:textSize="13.0sp" android:textColor="@color/primary" android:autoLink="web" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_footer_github" android:fontFamily="@font/misans" />
+        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_title" android:fontFamily="sans-serif" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/copyright" android:fontFamily="sans-serif" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/text_secondary" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/font_license" android:fontFamily="sans-serif" />
+        <TextView android:textSize="13.0sp" android:textColor="@color/primary" android:autoLink="web" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/about_footer_github" android:fontFamily="sans-serif" />
     </LinearLayout>
 </LinearLayout>
