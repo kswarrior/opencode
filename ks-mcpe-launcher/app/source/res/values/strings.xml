@@ -1197,7 +1197,7 @@ Failed:
     <string name="more_buttons_icon_size">Icon size</string>
     <string name="more_buttons_icon_x_offset">Icon X offset</string>
     <string name="more_buttons_icon_y_offset">Icon Y offset</string>
-    <string name="more_buttons_intro">Create Minecraft-style on-screen buttons mapped to exactly one keyboard key each. Buttons map exactly one keyboard key and can optionally auto-click at a fixed interval.</string>
+    <string name="more_buttons_intro">Create Minecraft-style on-screen buttons mapped to exactly one keyboard key each. Buttons can optionally auto-click at a fixed interval.</string>
     <string name="more_buttons_invalid_svg">That file does not contain a valid SVG document.</string>
     <string name="more_buttons_keep_original_colors">Keep original SVG colors</string>
     <string name="more_buttons_keep_pressed_colors">Keep original pressed-state colors</string>
