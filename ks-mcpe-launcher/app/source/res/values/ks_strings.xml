@@ -87,4 +87,11 @@
     <string name="ks_skin_invalid">That image is not a valid Minecraft skin. Choose a 64x64 or 64x32 PNG.</string>
     <string name="ks_skin_saved">Skin applied to your player.</string>
     <string name="ks_skin_load_failed">Could not load the saved skin.</string>
+    <string name="ks_sign_in_title">SIGN IN</string>
+    <string name="ks_sign_in_subtitle">CHOOSE HOW TO SIGN IN WITH MICROSOFT</string>
+    <string name="ks_sign_in_close">CLOSE</string>
+    <string name="ks_sign_in_web_title">BROWSER LOGIN</string>
+    <string name="ks_sign_in_web_desc">Open the Microsoft sign-in page inside the app.</string>
+    <string name="ks_sign_in_device_title">DEVICE CODE LOGIN</string>
+    <string name="ks_sign_in_device_desc">Enter a code at microsoft.com/link from another device.</string>
 </resources>
