@@ -1,5 +1,6 @@
 package com.ks.android.mcpe.launcher;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -19,6 +20,13 @@ public class HomeActivity extends BaseActivity {
         animateIn(hint, 90L);
         animateIn(launchButton, 160L);
         animateIn(player, 220L);
+
+        launchButton.setOnClickListener(view -> openLauncher());
+    }
+
+    private void openLauncher() {
+        startActivity(new Intent(this, LaunchingActivity.class));
+        applyFadeTransition();
     }
 
     private void animateIn(View view, long delay) {
