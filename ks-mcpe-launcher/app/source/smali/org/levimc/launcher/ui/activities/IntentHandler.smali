@@ -143,7 +143,7 @@
     .line 59
     .line 60
     .line 61
-    const-class p1, Lorg/levimc/launcher/ui/activities/InstancesActivity;
+    const-class p1, Lcom/ks/android/mcpe/launcher/HomeActivity;
 
     .line 62
     .line 63
