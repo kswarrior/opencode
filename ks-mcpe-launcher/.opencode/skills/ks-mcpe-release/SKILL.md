@@ -19,7 +19,7 @@ release can move.
 - `KS-MCPE-Launcher-<version>.apk`
 - `KS-MCPE-Launcher-<version>.apk.sha256`
 
-`<version>` is the app's `versionName`, currently `1.0.13`, not the upstream
+`<version>` is the app's `versionName`, currently `1.0.14`, not the upstream
 LeviLauncher version. The checksum file is the exact output of `sha256sum`
 (two spaces between digest and file name).
 
@@ -27,32 +27,35 @@ Current assets:
 
 | Asset | Size | Notes |
 | --- | --- | --- |
-| `KS-MCPE-Launcher-1.0.13.apk` | 39,549,790 | More Buttons crash fix, arm64-v8a only |
+| `KS-MCPE-Launcher-1.0.14.apk` | 39,553,886 | Automatic Microsoft sign-in setting, arm64-v8a only |
+| `KS-MCPE-Launcher-1.0.14.apk.sha256` | 94 | SHA-256 `a8af818c...` |
+| `KS-MCPE-Launcher-1.0.13.apk` | 39,549,790 | More Buttons crash fix, old signing key |
 | `KS-MCPE-Launcher-1.0.13.apk.sha256` | 94 | SHA-256 `3904eb0c...` |
 | `KS-MCPE-Launcher-1.0.12.apk` | 39,549,790 | previous build, Add Button fix |
-| `KS-MCPE-Launcher-1.0.11.apk` | 39,549,790 | previous build, broken More Buttons |
 
 Keep older assets for rollback. Only replace the two assets for the version
 being published; never bulk-delete other versions.
 
 ## Current signing key
 
-`1.0.12` and `1.0.13` are signed with:
+`1.0.14` and later use:
 
 - Keystore: `ks-mcpe-launcher/release/signing/ks-mcpe.keystore`
 - Credentials: `ks-mcpe-launcher/release/signing/credentials.env`
+- Alias: `ksmcpe`
 - Certificate SHA-256:
-  `54bb14276bea5ebefebf423ff560f28d85fa756f90b49c7d08ee1cf660331706`
+  `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`
 - Certificate SHA-1:
-  `ae93cbc73316f9dd670ebcd537831739f973885e`
+  `737ede4c23bceaf2562f6ccbb498a41c1ad70e12`
 
-The `1.0.10`/`1.0.11` signing key was not available in the build environment,
-so `1.0.12` introduced a new key. Installs from `1.0.5`–`1.0.11` cannot
-update in place; users must uninstall first, which may delete app data.
-`1.0.12` and `1.0.13` share this key, so `1.0.12` users update in place.
+This key replaced the missing `1.0.12`/`1.0.13` key. Installs from `1.0.13`
+and older cannot update in place to `1.0.14`; users must uninstall first,
+which may delete app data. Keep this key for every later release.
 
 Back up the keystore and credentials outside the repository. They are
-gitignored and must never be committed or printed.
+gitignored and must never be committed or printed. The password lives only
+in `credentials.env`; do not copy it into this skill, a ticket, or a release
+note.
 
 ## Upload via the API
 
@@ -61,8 +64,8 @@ Authenticate with `GH_TOKEN`, or derive the bot token from the git
 
 ```bash
 REPO=kswarrior/opencode
-TAG=v1.0.13
-VERSION=1.0.13
+TAG=v1.0.14
+VERSION=1.0.14
 DIST=ks-mcpe-launcher/release
 TOKEN="${GH_TOKEN:-}"
 
@@ -115,35 +118,38 @@ more specific type is used, ensure the APK is
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.13/KS-MCPE-Launcher-1.0.13.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.13/KS-MCPE-Launcher-1.0.13.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.13.apk.sha256
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.14/KS-MCPE-Launcher-1.0.14.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.14/KS-MCPE-Launcher-1.0.14.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.14.apk.sha256
 
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.13.apk | head -5
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.13.apk | head -5
-$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.13.apk
+$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.14.apk | head -5
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.14.apk | head -5
+$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.14.apk
 ```
 
 Confirm the uploaded manifest has package
-`com.ks.android.mcpe.launcher`, versionName `1.0.13`, versionCode `10013`, and
-that the signer certificate is `54bb14...`. Compare SHA-256, not only size.
+`com.ks.android.mcpe.launcher`, versionName `1.0.14`, versionCode `10014`, and
+that the signer certificate is `8e69a2...`. Compare SHA-256, not only size.
 
 ## Release notes
 
 When publishing a new version in an existing release, update the release name
-and body to describe both the new asset and the retained older assets. For
-`1.0.13` the important points are:
+and body to describe the new asset. For `1.0.14` the important points are:
 
-- Fixes crashes when two More Buttons keys are active at once.
-- More Buttons and hotbar use the `dispatchKeyEvent` path; held keys release on pause.
-- Same signing key as `1.0.12`; update in place from `1.0.12`.
+- The **Sign in to Minecraft with LeviLauncher** engine setting is now
+  automatic: it stays off with no active Microsoft/Xbox account, turns on
+  after a successful account login, and turns off again when no account is
+  active. Minecraft therefore auto-signs in whenever the setting is on.
+- `1.0.14` uses a **new signing key** because the `1.0.13` key was lost.
+  Updating from `1.0.13` or older requires uninstalling first, which may
+  delete app data. Later `1.0.14`+ builds will keep this key.
 - Keeps the LeviLauncher 1.7.1 engine and the 3-screen Java UI.
 - Requires Minecraft Bedrock installed.
 - `arm64-v8a` only.
 
-Do not claim the old release body still applies. Older bodies mention
-different signing keys and the removed Tutorial button.
+Do not claim older release bodies still apply. Older bodies mention previous
+signing keys and the removed Tutorial button.
 
 ## Rules
 
@@ -152,7 +158,8 @@ different signing keys and the removed Tutorial button.
 - Do not delete older version assets unless the user explicitly requests it.
 - Never re-upload a replacement for an already-published version unless the
   signing key that produced the existing asset is still available. The
-  current key is available; the `1.0.0` key is not.
+  `1.0.14`+ key is available at `ks-mcpe-launcher/release/signing/`; the
+  `1.0.12`/`1.0.13` key and the `1.0.0` key are not.
 - If the bot token lacks `contents: write`, the upload will fail. Do not fall
   back to committing binaries into the repository.
 - The built-in updater is inert; users update only by installing release
