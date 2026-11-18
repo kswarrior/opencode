@@ -51,6 +51,8 @@ public class HomeActivity extends BaseActivity {
             "org.levimc.launcher.core.auth.MsftAccountStore";
     private static final String LOGIN_ACTIVITY_CLASS =
             "org.levimc.launcher.ui.activities.MsftLoginActivity";
+    private static final String FEATURE_SETTINGS_CLASS =
+            "org.levimc.launcher.settings.FeatureSettings";
     private static final int ACCOUNT_MENU_WIDTH_DP = 252;
     private static final int ACCOUNT_MENU_MAX_HEIGHT_DP = 240;
 
@@ -433,6 +435,7 @@ public class HomeActivity extends BaseActivity {
 
     private void refreshAccountUi() {
         Object account = activeAccount();
+        syncManagedLogin(account != null);
         if (account == null) {
             signInButton.setVisibility(View.VISIBLE);
             accountCard.setVisibility(View.GONE);
@@ -449,6 +452,26 @@ public class HomeActivity extends BaseActivity {
         signInButton.setVisibility(View.GONE);
         accountCard.setVisibility(View.VISIBLE);
         loadAvatar(accountAvatarView, stringField(account, "xboxAvatarUrl"));
+    }
+
+    private void syncManagedLogin(boolean enabled) {
+        try {
+            Class<?> settingsClass = Class.forName(FEATURE_SETTINGS_CLASS);
+            Object settings = settingsClass.getMethod("getInstance").invoke(null);
+            boolean current = (Boolean) settingsClass
+                    .getMethod("isLauncherManagedMcLoginEnabled")
+                    .invoke(settings);
+            if (current == enabled) {
+                return;
+            }
+            settingsClass
+                    .getMethod("setLauncherManagedMcLoginEnabled", boolean.class)
+                    .invoke(settings, enabled);
+            Log.i(TAG, "Launcher-managed Minecraft login "
+                    + (enabled ? "enabled" : "disabled"));
+        } catch (ReflectiveOperationException | RuntimeException error) {
+            Log.w(TAG, "Could not sync launcher-managed Minecraft login", error);
+        }
     }
 
     private void openAccountLogin() {
