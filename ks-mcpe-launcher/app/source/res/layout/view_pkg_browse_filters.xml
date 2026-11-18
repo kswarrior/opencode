@@ -21,5 +21,5 @@
             <TextView android:textSize="12.0sp" android:id="@id/pkg_spinner_order" android:layout_width="match_parent" android:layout_height="36.0dp" android:minHeight="36.0dp" android:contentDescription="@string/catalog_order" style="@style/CatalogSelect" />
         </LinearLayout>
     </LinearLayout>
-    <TextView android:textSize="11.0sp" android:textColor="@color/ui_warning" android:id="@id/pkg_mapping_hint" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:text="@string/pkg_mapping_unavailable_hint" android:fontFamily="@font/misans" />
+    <TextView android:textSize="11.0sp" android:textColor="@color/ui_warning" android:id="@id/pkg_mapping_hint" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" android:text="@string/pkg_mapping_unavailable_hint" android:fontFamily="sans-serif" />
 </LinearLayout>

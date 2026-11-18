@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <org.levimc.launcher.ui.dialogs.LauncherDialogLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="?colorPrimary" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/version_name" android:fontFamily="@font/misans" />
+    <TextView android:textSize="17.0sp" android:textStyle="bold" android:textColor="?colorPrimary" android:id="@id/tv_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/version_name" android:fontFamily="sans-serif" />
     <ScrollView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp" android:layout_weight="1.0" android:overScrollMode="never">
         <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
             <EditText android:textSize="13.5sp" android:textColor="?colorOnSurface" android:textColorHint="?colorOnSurfaceVariant" android:id="@id/edit_version_name" android:background="@drawable/bg_edit_text" android:padding="12.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="0.0dp" android:hint="@string/version_name" android:singleLine="true" android:inputType="text" />

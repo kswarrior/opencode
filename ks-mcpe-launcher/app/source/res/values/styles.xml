@@ -249,7 +249,7 @@
         <item name="android:windowMinWidthMinor">@dimen/abc_dialog_min_width_minor</item>
     </style>
     <style name="Base.Theme.AppCompat.Light.DialogWhenLarge" parent="@style/Theme.AppCompat.Light" />
-    <style name="Base.Theme.FullScreen" parent="@style/Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.FullScreen" parent="@style/Theme.Material3.Dark.NoActionBar">
         <item name="android:colorBackground">@color/background</item>
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowNoTitle">true</item>
@@ -260,7 +260,7 @@
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar">false</item>
         <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>
         <item name="colorOnBackground">@color/on_background</item>
@@ -273,6 +273,26 @@
         <item name="colorSecondary">@color/secondary</item>
         <item name="colorSurface">@color/surface</item>
         <item name="colorTertiary">@color/tertiary</item>
+        <item name="android:colorAccent">@color/primary</item>
+        <item name="android:colorControlActivated">@color/primary</item>
+        <item name="android:colorControlHighlight">#33ffffff</item>
+        <item name="android:colorControlNormal">@color/text_secondary</item>
+        <item name="colorError">@color/error</item>
+        <item name="colorOnError">@color/on_error</item>
+        <item name="colorOnPrimaryContainer">@color/on_primary_container</item>
+        <item name="colorOnSecondaryContainer">@color/on_surface</item>
+        <item name="colorOnSurfaceVariant">@color/on_surface_variant</item>
+        <item name="colorOnTertiaryContainer">@color/on_surface</item>
+        <item name="colorOutlineVariant">@color/divider</item>
+        <item name="colorPrimaryContainer">@color/primary_container</item>
+        <item name="colorSecondaryContainer">@color/ui_default</item>
+        <item name="colorSurfaceContainer">@color/surface</item>
+        <item name="colorSurfaceContainerHigh">@color/ui_default</item>
+        <item name="colorSurfaceContainerHighest">@color/surface_variant</item>
+        <item name="colorSurfaceContainerLow">@color/background</item>
+        <item name="colorSurfaceContainerLowest">@color/background</item>
+        <item name="colorSurfaceVariant">@color/surface_variant</item>
+        <item name="colorTertiaryContainer">@color/ui_default</item>
     </style>
     <style name="Base.Theme.Material3.Dark" parent="@style/Base.V24.Theme.Material3.Dark" />
     <style name="Base.Theme.Material3.Dark.BottomSheetDialog" parent="@style/Base.V14.Theme.Material3.Dark.BottomSheetDialog" />
@@ -3223,7 +3243,7 @@
         <item name="android:windowBackground">@color/background</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowDisablePreview">true</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:windowContentTransitions">false</item>
     </style>
     <style name="LeviContentThumbnailShape">
@@ -3374,7 +3394,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:maxLines">1</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:paddingStart">7.0dp</item>
         <item name="android:paddingEnd">7.0dp</item>
     </style>
@@ -3384,7 +3404,7 @@
         <item name="android:layout_width">0.0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0.42</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="PkgFieldValue">
         <item name="android:textSize">12.0sp</item>
@@ -3392,7 +3412,7 @@
         <item name="android:layout_width">0.0dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">0.58</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="PkgFilterLabel">
         <item name="android:textSize">12.0sp</item>
@@ -3400,7 +3420,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">4.0dp</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="PkgFilterSpinner">
         <item name="android:gravity">center_vertical</item>
@@ -3966,12 +3986,12 @@
     <style name="TextAppearance.Levi.Body" parent="">
         <item name="android:textSize">13.0sp</item>
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="TextAppearance.Levi.Caption" parent="">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="TextAppearance.Levi.DialogBody" parent="@style/TextAppearance.Material3.BodyMedium">
         <item name="android:textSize">13.0sp</item>
@@ -3980,31 +4000,31 @@
     <style name="TextAppearance.Levi.FieldLabel" parent="">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="TextAppearance.Levi.PageSubtitle" parent="">
         <item name="android:textSize">13.0sp</item>
         <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="TextAppearance.Levi.PageTitle" parent="">
         <item name="android:textSize">22.0sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">@color/accent_text</item>
+        <item name="android:textColor">@color/text_primary</item>
         <item name="android:includeFontPadding">false</item>
-        <item name="android:fontFamily">@font/misans</item>
-        <item name="android:letterSpacing">0.0</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.04</item>
     </style>
     <style name="TextAppearance.Levi.SectionTitle" parent="">
         <item name="android:textSize">15.0sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
     </style>
     <style name="TextAppearance.Levi.StripLabel" parent="">
         <item name="android:textSize">12.0sp</item>
         <item name="android:textColor">@color/text_secondary</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="TextAppearance.M3.Sys.Typescale.BodyLarge" parent="@style/TextAppearance.AppCompat.Body2">
         <item name="android:textSize">16.0sp</item>
@@ -5541,7 +5561,7 @@
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="iconPadding">6.0dp</item>
         <item name="iconSize">16.0dp</item>
-        <item name="strokeColor">@color/divider</item>
+        <item name="strokeColor">@color/ks_gray_600</item>
         <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.AboutLink" parent="@style/Widget.Levi.AboutAction">
@@ -5556,21 +5576,24 @@
         <item name="android:minHeight">40.0dp</item>
         <item name="android:insetTop">0.0dp</item>
         <item name="android:insetBottom">0.0dp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:paddingStart">16.0dp</item>
         <item name="android:paddingEnd">16.0dp</item>
-        <item name="android:letterSpacing">0.0</item>
-        <item name="cornerRadius">8.0dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="cornerRadius">12.0dp</item>
         <item name="elevation">0.0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">6.0dp</item>
         <item name="iconSize">18.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Danger" parent="@style/Widget.Levi.Button">
-        <item name="android:textColor">@color/ui_danger</item>
-        <item name="backgroundTint">@color/ui_danger_soft</item>
-        <item name="iconTint">@color/ui_danger</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconTint">@color/text_primary</item>
+        <item name="rippleColor">#33ffffff</item>
+        <item name="strokeColor">@color/ks_gray_600</item>
+        <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Ghost" parent="@style/Widget.Levi.Button">
         <item name="android:textColor">@color/text_primary</item>
@@ -5586,15 +5609,15 @@
         <item name="android:text">@null</item>
         <item name="android:paddingStart">0.0dp</item>
         <item name="android:paddingEnd">0.0dp</item>
-        <item name="cornerRadius">8.0dp</item>
+        <item name="cornerRadius">12.0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0.0dp</item>
         <item name="iconSize">20.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Outline" parent="@style/Widget.Levi.Button">
-        <item name="android:textColor">@color/accent_text</item>
+        <item name="android:textColor">@color/text_primary</item>
         <item name="backgroundTint">@android:color/transparent</item>
-        <item name="iconTint">@color/accent_text</item>
+        <item name="iconTint">@color/text_primary</item>
         <item name="strokeColor">@color/primary</item>
         <item name="strokeWidth">1.0dp</item>
     </style>
@@ -5605,20 +5628,22 @@
     </style>
     <style name="Widget.Levi.Button.Secondary" parent="@style/Widget.Levi.Button">
         <item name="android:textColor">@color/text_primary</item>
-        <item name="backgroundTint">@color/ui_default</item>
+        <item name="backgroundTint">@android:color/transparent</item>
         <item name="iconTint">@color/text_primary</item>
-        <item name="rippleColor">#1f808080</item>
+        <item name="rippleColor">#33ffffff</item>
+        <item name="strokeColor">@color/ks_gray_600</item>
+        <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Card" parent="@style/Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/ui_card_surface</item>
-        <item name="cardCornerRadius">8.0dp</item>
+        <item name="cardCornerRadius">12.0dp</item>
         <item name="cardElevation">0.0dp</item>
         <item name="contentPadding">0.0dp</item>
         <item name="strokeColor">@color/ui_card_stroke</item>
         <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Card.Inner" parent="@style/Widget.Levi.Card">
-        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardBackgroundColor">@color/ui_default</item>
         <item name="cardCornerRadius">12.0dp</item>
         <item name="strokeColor">@color/ui_inner_card_stroke</item>
         <item name="strokeWidth">1.0dp</item>
@@ -5640,7 +5665,7 @@
         <item name="android:minHeight">40.0dp</item>
         <item name="android:singleLine">true</item>
         <item name="android:drawablePadding">8.0dp</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:paddingStart">12.0dp</item>
         <item name="android:paddingEnd">12.0dp</item>
         <item name="android:drawableTint">@color/text_secondary</item>
@@ -5659,7 +5684,7 @@
         <item name="android:singleLine">true</item>
         <item name="android:includeFontPadding">false</item>
         <item name="android:drawablePadding">4.0dp</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif</item>
         <item name="android:paddingStart">@dimen/levi_navbar_item_padding</item>
         <item name="android:paddingEnd">@dimen/levi_navbar_item_padding</item>
         <item name="android:drawableTint">@color/text_primary</item>
@@ -5698,7 +5723,8 @@
         <item name="android:paddingTop">2.0dp</item>
         <item name="android:paddingBottom">2.0dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:fontFamily">@font/misans</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.04</item>
         <item name="android:paddingStart">6.0dp</item>
         <item name="android:paddingEnd">6.0dp</item>
     </style>

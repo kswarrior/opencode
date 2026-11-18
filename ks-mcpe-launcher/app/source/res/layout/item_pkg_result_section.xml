@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textStyle="bold" android:id="@id/pkg_result_heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="@font/misans" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/on_surface" android:id="@id/pkg_result_items" android:background="@drawable/bg_pkg_log_panel" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:lineSpacingExtra="3.0dp" android:textIsSelectable="true" android:fontFamily="@font/misans" />
+    <TextView android:textSize="13.0sp" android:textStyle="bold" android:id="@id/pkg_result_heading" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="sans-serif" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/on_surface" android:id="@id/pkg_result_items" android:background="@drawable/bg_pkg_log_panel" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:lineSpacingExtra="3.0dp" android:textIsSelectable="true" android:fontFamily="sans-serif" />
 </LinearLayout>
