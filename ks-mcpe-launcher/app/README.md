@@ -9,7 +9,7 @@ It does not contain, modify, or redistribute the Minecraft APK.
 
 - Package: `com.ks.android.mcpe.launcher`
 - Label: `KS MCPE Launcher`
-- Version: `1.0.11` (`versionCode 10011`)
+- Version: `1.0.14` (`versionCode 10014`)
 - Min Android: 9.0 / API 28
 - Target API: 35
 - ABI: `arm64-v8a` only
@@ -22,7 +22,10 @@ It does not contain, modify, or redistribute the Minecraft APK.
    "Preparing launcher / Loading interface / Ready". Opens Home automatically.
 2. **Home** - "KS MCPE LAUNCHER" at the top left, a 3D player preview with
    **ADD SKIN** and emote controls, a Microsoft account card, and a white
-   **LAUNCH** button at the bottom right with a faint logo watermark.
+   **LAUNCH** button at the bottom right with a faint logo watermark. The
+   engine's **Sign in to Minecraft with LeviLauncher** setting follows the
+   account card automatically: it is enabled while a Microsoft/Xbox account is
+   active and disabled when none is signed in.
 3. **Launching** - shown after **LAUNCH**. Checks for Minecraft, copies the
    selected skin into the game data, then asks the engine to start the selected
    installed version. It shows progress, a success state, or the failure reason
@@ -62,8 +65,8 @@ Environment variables:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `APP_ID` | `com.ks.android.mcpe.launcher` | Package id written into the manifest and `BuildConfig` |
-| `APP_VERSION` | `1.0.11` | versionName |
-| `APP_VERSION_CODE` | `10011` | versionCode |
+| `APP_VERSION` | `1.0.14` | versionName |
+| `APP_VERSION_CODE` | `10014` | versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace |
 | `DIST` | `release/` | APK output directory |
