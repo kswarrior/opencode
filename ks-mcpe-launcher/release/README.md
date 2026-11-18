@@ -1,7 +1,19 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.9>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.10>
+
+## 1.0.10 test build
+
+`1.0.10` (`versionCode 10010`) adds the KS MCPE Launcher cube-and-play logo
+to the in-game Mod Menu brand area, replacing the LeviLauncher leaf, and
+renders it in full color instead of tinting it with the menu theme.
+
+The build environment did not have the `1.0.5`–`1.0.9` signing key.
+`1.0.10` is signed with a newly generated key
+(`57139949c00726720c30c5d824f6b24b84ca4dae162f960c47d17f5fc9e01810`) and is
+published as a pre-release. Android rejects it as an in-place update over
+earlier builds; users must uninstall first, which may remove app data.
 
 ## 1.0.9 test build
 
@@ -81,7 +93,8 @@ unavailable.
 The `1.0.5`–`1.0.8` keystore and `credentials.env` are in
 `release/signing/` locally (gitignored). Back them up, or add them to the
 `KEYSTORE_BASE64`/password secrets before the workspace is cleaned. The same
-material is required to replace the debug-signed `1.0.9` test release.
+material is required to replace the debug-signed `1.0.9` test release or to
+re-sign the `1.0.10` pre-release.
 
 Do not commit the keystore, `credentials.env`, or their values.
 
