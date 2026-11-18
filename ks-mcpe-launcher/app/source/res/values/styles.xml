@@ -5576,21 +5576,24 @@
         <item name="android:minHeight">40.0dp</item>
         <item name="android:insetTop">0.0dp</item>
         <item name="android:insetBottom">0.0dp</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:paddingStart">16.0dp</item>
         <item name="android:paddingEnd">16.0dp</item>
-        <item name="android:letterSpacing">0.0</item>
-        <item name="cornerRadius">8.0dp</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="cornerRadius">12.0dp</item>
         <item name="elevation">0.0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">6.0dp</item>
         <item name="iconSize">18.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Danger" parent="@style/Widget.Levi.Button">
-        <item name="android:textColor">@color/ui_danger</item>
-        <item name="backgroundTint">@color/ui_danger_soft</item>
-        <item name="iconTint">@color/ui_danger</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="iconTint">@color/text_primary</item>
+        <item name="rippleColor">#33ffffff</item>
+        <item name="strokeColor">@color/ks_gray_600</item>
+        <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Ghost" parent="@style/Widget.Levi.Button">
         <item name="android:textColor">@color/text_primary</item>
@@ -5606,15 +5609,15 @@
         <item name="android:text">@null</item>
         <item name="android:paddingStart">0.0dp</item>
         <item name="android:paddingEnd">0.0dp</item>
-        <item name="cornerRadius">8.0dp</item>
+        <item name="cornerRadius">12.0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0.0dp</item>
         <item name="iconSize">20.0dp</item>
     </style>
     <style name="Widget.Levi.Button.Outline" parent="@style/Widget.Levi.Button">
-        <item name="android:textColor">@color/accent_text</item>
+        <item name="android:textColor">@color/text_primary</item>
         <item name="backgroundTint">@android:color/transparent</item>
-        <item name="iconTint">@color/accent_text</item>
+        <item name="iconTint">@color/text_primary</item>
         <item name="strokeColor">@color/primary</item>
         <item name="strokeWidth">1.0dp</item>
     </style>
@@ -5625,20 +5628,22 @@
     </style>
     <style name="Widget.Levi.Button.Secondary" parent="@style/Widget.Levi.Button">
         <item name="android:textColor">@color/text_primary</item>
-        <item name="backgroundTint">@color/ui_default</item>
+        <item name="backgroundTint">@android:color/transparent</item>
         <item name="iconTint">@color/text_primary</item>
-        <item name="rippleColor">#1f808080</item>
+        <item name="rippleColor">#33ffffff</item>
+        <item name="strokeColor">@color/ks_gray_600</item>
+        <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Card" parent="@style/Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/ui_card_surface</item>
-        <item name="cardCornerRadius">8.0dp</item>
+        <item name="cardCornerRadius">12.0dp</item>
         <item name="cardElevation">0.0dp</item>
         <item name="contentPadding">0.0dp</item>
         <item name="strokeColor">@color/ui_card_stroke</item>
         <item name="strokeWidth">1.0dp</item>
     </style>
     <style name="Widget.Levi.Card.Inner" parent="@style/Widget.Levi.Card">
-        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardBackgroundColor">@color/ui_default</item>
         <item name="cardCornerRadius">12.0dp</item>
         <item name="strokeColor">@color/ui_inner_card_stroke</item>
         <item name="strokeWidth">1.0dp</item>
@@ -5718,7 +5723,8 @@
         <item name="android:paddingTop">2.0dp</item>
         <item name="android:paddingBottom">2.0dp</item>
         <item name="android:singleLine">true</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.04</item>
         <item name="android:paddingStart">6.0dp</item>
         <item name="android:paddingEnd">6.0dp</item>
     </style>
