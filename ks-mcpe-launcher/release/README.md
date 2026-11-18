@@ -1,7 +1,22 @@
 # Release output
 
 Current published release:
-<https://github.com/kswarrior/opencode/releases/tag/v1.0.12>
+<https://github.com/kswarrior/opencode/releases/tag/v1.0.13>
+
+## 1.0.13 test build
+
+`1.0.13` (`versionCode 10013`) fixes game crashes caused by the More Buttons
+module when two mapped keys are active at once (for example jumping with Space
+while moving forward with W). The module injected keys through a native queue
+that the game input hook drains and frees on the game thread while the Android
+UI thread can still push to it, so a second press could hit a use-after-free
+or a partially written key event. More Buttons and the hotbar overlay now use
+the same `dispatchKeyEvent` path as hardware keyboards, and held/toggled keys
+are released when the game loses focus.
+
+`1.0.13` uses the same signing key as `1.0.12`, so `1.0.12` users can update in
+place. SHA-256:
+`3904eb0c95f7240bc4d8919e7b75c6f868762839e56cb21bae552db50114aa7c`.
 
 ## 1.0.12 test build
 
