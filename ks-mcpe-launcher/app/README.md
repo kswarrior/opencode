@@ -88,7 +88,7 @@ Environment variables:
 | `KEYSTORE_BASE64` | unset | Restores a CI signing key into the keystore path |
 
 The current signing key must live in
-`release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
+`../release/signing/ks-mcpe.keystore`; its certificate SHA-256 is
 `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
 Keep it private and backed up. If the key changes, Android refuses in-place
 updates over builds signed with the old key; those users must uninstall first,

@@ -139,7 +139,7 @@ $BT/aapt2 dump badging "$APK" | head -5
 $BT/apksigner verify --print-certs "$APK"
 $BT/zipalign -c -p 4 "$APK"
 unzip -l "$APK" | grep -E 'classes[23]?\.dex|libgxcore\.so'
-sha256sum -c "$APK.sha256"
+(cd "$(dirname "$APK")" && sha256sum -c "$(basename "$APK").sha256")
 ```
 
 Expected:

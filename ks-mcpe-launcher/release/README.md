@@ -19,7 +19,7 @@ release/KS-MCPE-Launcher-<version>.apk.sha256
 `<version>` is `APP_VERSION` from `app/source/build.sh`. The file names change
 automatically; nothing in this file needs editing for a new version.
 
-Both files and everything under `release/signing/` are gitignored. This folder
+Both files and everything under `signing/` are gitignored. This folder
 is the local build drop used by the project; it is not a binary store in git.
 
 ## Signing key
@@ -27,8 +27,8 @@ is the local build drop used by the project; it is not a binary store in git.
 The current key lives at:
 
 ```
-release/signing/ks-mcpe.keystore
-release/signing/credentials.env
+signing/ks-mcpe.keystore
+signing/credentials.env
 ```
 
 Certificate SHA-256:
@@ -50,9 +50,9 @@ Put the signing material in repository secrets instead of committing it:
 | Secret | Value |
 | --- | --- |
 | `KEYSTORE_BASE64` | from repo root: `base64 -w0 ks-mcpe-launcher/release/signing/ks-mcpe.keystore` |
-| `KEYSTORE_PASSWORD` | value from `release/signing/credentials.env` |
-| `KEY_PASSWORD` | value from `release/signing/credentials.env` |
-| `KEY_ALIAS` | value from `release/signing/credentials.env` |
+| `KEYSTORE_PASSWORD` | value from `ks-mcpe-launcher/release/signing/credentials.env` |
+| `KEY_PASSWORD` | value from `ks-mcpe-launcher/release/signing/credentials.env` |
+| `KEY_ALIAS` | value from `ks-mcpe-launcher/release/signing/credentials.env` |
 
 A workflow step can recreate the key in the runner before building:
 
