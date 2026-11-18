@@ -617,25 +617,27 @@
 .end method
 
 .method public static onAccent(I)I
-    .locals 4
+    .locals 6
 
-    invoke-static {p0}, Lorg/levimc/launcher/util/ThemePalette;->luminance(I)D
+    const/4 v0, -0x1
 
-    move-result-wide v0
+    const/high16 v1, -0x1000000
 
-    const-wide/high16 v2, 0x3fe0000000000000L    # 0.5
+    invoke-static {p0, v0}, Lorg/levimc/launcher/util/ThemePalette;->contrast(II)D
 
-    cmpl-double v2, v0, v2
+    move-result-wide v2
+
+    invoke-static {p0, v1}, Lorg/levimc/launcher/util/ThemePalette;->contrast(II)D
+
+    move-result-wide v4
+
+    cmpl-double v2, v4, v2
 
     if-lez v2, :cond_0
 
-    const/high16 v0, -0x1000000
-
-    return v0
+    return v1
 
     :cond_0
-    const/4 v0, -0x1
-
     return v0
 .end method
 
