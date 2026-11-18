@@ -9,7 +9,7 @@ PLATFORM="${PLATFORM:-android-35}"
 
 APP_VERSION="${APP_VERSION:-1.0.0}"
 APP_VERSION_CODE="${APP_VERSION_CODE:-1}"
-APK_NAME="${APK_NAME:-hello-world}"
+APK_NAME="${APK_NAME:-KS-MCPE-Launcher}"
 MIN_SDK="${MIN_SDK:-28}"
 TARGET_SDK="${TARGET_SDK:-35}"
 
@@ -19,12 +19,12 @@ ANDROID_JAR="$ANDROID_HOME/platforms/$PLATFORM/android.jar"
 WORKDIR="${WORKDIR:-$SCRIPT_DIR/build/work}"
 OUT_DIR="${OUT_DIR:-$SCRIPT_DIR/build}"
 SIGNING_DIR="${SIGNING_DIR:-$SCRIPT_DIR/signing}"
-KEYSTORE="${KEYSTORE:-$SIGNING_DIR/hello.keystore}"
+KEYSTORE="${KEYSTORE:-$SIGNING_DIR/ks-mcpe.keystore}"
 CREDENTIALS_FILE="${CREDENTIALS_FILE:-$SIGNING_DIR/credentials.env}"
-KEY_ALIAS="${KEY_ALIAS:-hello}"
+KEY_ALIAS="${KEY_ALIAS:-ksmcpe}"
 
-log() { printf '[hello] %s\n' "$*"; }
-die() { printf '[hello] error: %s\n' "$*" >&2; exit 1; }
+log() { printf '[ks-mcpe] %s\n' "$*"; }
+die() { printf '[ks-mcpe] error: %s\n' "$*" >&2; exit 1; }
 need() { command -v "$1" >/dev/null 2>&1 || die "required tool not found: $1"; }
 
 need java
