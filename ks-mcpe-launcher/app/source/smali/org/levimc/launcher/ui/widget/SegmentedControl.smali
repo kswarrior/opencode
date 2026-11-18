@@ -288,7 +288,17 @@
 
     .line 88
     .line 89
-    move v7, v6
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v7
+
+    invoke-static {v7}, Lorg/levimc/launcher/ui/widget/UiKit;->accent(Landroid/content/Context;)I
+
+    move-result v7
+
+    invoke-static {v7}, Lorg/levimc/launcher/util/ThemePalette;->onAccent(I)I
+
+    move-result v7
 
     .line 90
     goto :goto_3
@@ -325,6 +335,18 @@
 
     .line 105
     .line 106
+    invoke-virtual {p0}, Landroid/view/View;->getContext()Landroid/content/Context;
+
+    move-result-object v6
+
+    invoke-static {v6}, Lorg/levimc/launcher/ui/widget/UiKit;->accent(Landroid/content/Context;)I
+
+    move-result v6
+
+    invoke-static {v6}, Lorg/levimc/launcher/util/ThemePalette;->onAccent(I)I
+
+    move-result v6
+
     goto :goto_4
 
     .line 107
