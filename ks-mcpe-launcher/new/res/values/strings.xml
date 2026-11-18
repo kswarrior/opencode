@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">KS MCPE Launcher</string>
+    <string name="ks_brand_title">KS MCPE LAUNCHER</string>
+    <string name="ks_brand_subtitle">MINECRAFT BEDROCK LAUNCHER</string>
+    <string name="ks_loading_status_preparing">PREPARING LAUNCHER</string>
+    <string name="ks_loading_status_interface">LOADING INTERFACE</string>
+    <string name="ks_loading_status_ready">READY</string>
+    <string name="ks_launch">LAUNCH</string>
+    <string name="ks_requirements_hint">MINECRAFT BEDROCK EDITION REQUIRED</string>
+    <string name="ks_version_format">v%1$s</string>
 </resources>
