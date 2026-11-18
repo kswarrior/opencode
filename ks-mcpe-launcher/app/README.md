@@ -9,7 +9,7 @@ It does not contain, modify, or redistribute the Minecraft APK.
 
 - Package: `com.ks.android.mcpe.launcher`
 - Label: `KS MCPE Launcher`
-- Version: `1.0.10` (`versionCode 10010`)
+- Version: `1.0.11` (`versionCode 10011`)
 - Min Android: 9.0 / API 28
 - Target API: 35
 - ABI: `arm64-v8a` only
@@ -62,8 +62,8 @@ Environment variables:
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `APP_ID` | `com.ks.android.mcpe.launcher` | Package id written into the manifest and `BuildConfig` |
-| `APP_VERSION` | `1.0.10` | versionName |
-| `APP_VERSION_CODE` | `10010` | versionCode |
+| `APP_VERSION` | `1.0.11` | versionName |
+| `APP_VERSION_CODE` | `10011` | versionCode |
 | `OUTPUT_PREFIX` | `KS-MCPE-Launcher` | Output APK name prefix |
 | `WORKDIR` | `/tmp/ks-mcpe-build` | Disposable build workspace |
 | `DIST` | `release/` | APK output directory |
