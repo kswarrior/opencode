@@ -139,8 +139,8 @@ picker. If Minecraft is absent, the launching screen reports it instead of
 calling the engine.
 
 The engine retains its own permissions and services (network, media/storage,
-Firebase, Play Games, and related providers) even though the KS UI does not
-expose their features. Do not describe this build as permission-free.
+Firebase, and related Google providers) even though the KS UI does not expose
+their features. Do not describe this build as permission-free.
 
 ## Limitations
 
@@ -148,8 +148,9 @@ expose their features. Do not describe this build as permission-free.
 - Minecraft Bedrock must already be installed; the engine supports 1.21.80+
   (or a newer major version).
 - The installed version is selected automatically; there is no version picker.
-- The KS UI manages launch, skin import, emotes, and Microsoft accounts. It does
-  not add download, world, or backup management.
+- The KS UI manages launch, skin import, emotes, Microsoft accounts, mods,
+  packages, and content. It does not add news, settings, instance management,
+  downloads, or backups.
 - Custom skin application depends on Minecraft's options format and is
   best-effort; Classic/Slim is chosen by the user, not read from the texture.
 - Use it only with a legitimately licensed copy of Minecraft Bedrock Edition.
