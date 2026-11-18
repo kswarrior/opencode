@@ -615,19 +615,7 @@
 
     .line 8
     :cond_0
-    invoke-static {v0, p2}, Lorg/levimc/launcher/core/mods/inbuilt/nativemod/MoreButtonsMod;->sendKey(IZ)Z
-
-    .line 9
-    .line 10
-    .line 11
-    move-result v0
-
-    .line 12
-    if-eqz v0, :cond_1
-
-    .line 13
-    .line 14
-    goto :goto_0
+    goto :cond_1
 
     .line 15
     :cond_1
