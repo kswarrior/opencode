@@ -52,7 +52,7 @@
             android:gravity="center"
             android:includeFontPadding="false"
             android:maxWidth="420dp"
-            android:text="@string/ks_launching_wait"
+            android:text="@string/ks_ui_wait"
             android:textColor="@color/ks_gray_300"
             android:textSize="12sp" />
 
@@ -99,7 +99,7 @@
         android:minWidth="120dp"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
-        android:text="@string/ks_back"
+        android:text="@string/ks_back_to_home"
         android:textColor="@color/ks_white"
         android:textSize="11sp"
         android:visibility="gone" />

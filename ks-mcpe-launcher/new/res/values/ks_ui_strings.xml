@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ks_ui_wait">Looking for Minecraft Bedrock Edition…</string>
+    <string name="ks_ui_found">Minecraft %1$s detected.</string>
+</resources>

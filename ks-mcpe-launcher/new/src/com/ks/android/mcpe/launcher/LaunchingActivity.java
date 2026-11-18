@@ -1,7 +1,8 @@
 package com.ks.android.mcpe.launcher;
 
 import android.animation.ValueAnimator;
-import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 public class LaunchingActivity extends BaseActivity {
 
+    private static final String MINECRAFT_PACKAGE = "com.mojang.minecraftpe";
     private static final long CHECK_DELAY_MS = 400L;
     private static final long START_DELAY_MS = 350L;
     private static final long FILL_DURATION_MS = 500L;
@@ -31,23 +33,23 @@ public class LaunchingActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.ks_activity_launching);
+        setContentView(Ui.layout(this, "ks_activity_launching"));
 
-        logo = findViewById(R.id.ks_launching_logo);
-        titleView = findViewById(R.id.ks_launching_title);
-        statusView = findViewById(R.id.ks_launching_status);
-        detailView = findViewById(R.id.ks_launching_detail);
-        actionView = findViewById(R.id.ks_launching_action);
-        progressFill = findViewById(R.id.ks_launching_progress);
-        TextView versionView = findViewById(R.id.ks_launching_version);
+        logo = findViewById(Ui.view(this, "ks_launching_logo"));
+        titleView = findViewById(Ui.view(this, "ks_launching_title"));
+        statusView = findViewById(Ui.view(this, "ks_launching_status"));
+        detailView = findViewById(Ui.view(this, "ks_launching_detail"));
+        actionView = findViewById(Ui.view(this, "ks_launching_action"));
+        progressFill = findViewById(Ui.view(this, "ks_launching_progress"));
+        TextView versionView = findViewById(Ui.view(this, "ks_launching_version"));
 
-        versionView.setText(getString(R.string.ks_version_format, appVersionName()));
+        versionView.setText(getString(Ui.string(this, "ks_version_format"), appVersionName()));
         actionView.setOnClickListener(view -> finishWithFade());
 
-        statusView.setText(R.string.ks_launching_checking);
-        detailView.setText(R.string.ks_launching_wait);
+        statusView.setText(Ui.string(this, "ks_launching_checking"));
+        detailView.setText(Ui.string(this, "ks_ui_wait"));
 
-        View track = findViewById(R.id.ks_launching_track);
+        View track = findViewById(Ui.view(this, "ks_launching_track"));
         track.post(() -> animateFillTo(0.35f));
 
         handler.postDelayed(this::checkInstallation, CHECK_DELAY_MS);
@@ -57,13 +59,18 @@ public class LaunchingActivity extends BaseActivity {
         if (isFinishing()) {
             return;
         }
-        if (!MinecraftLauncher.isInstalled(this)) {
-            showFailure(R.string.ks_missing_title, getString(R.string.ks_missing_detail));
+        if (!isMinecraftInstalled()) {
+            showFailure(Ui.string(this, "ks_missing_title"),
+                    getString(Ui.string(this, "ks_missing_detail")));
             return;
         }
-        statusView.setText(R.string.ks_launching_starting);
-        detailView.setText(getString(R.string.ks_launching_found,
-                MinecraftLauncher.versionName(this)));
+        if (!LaunchEngine.isAvailable()) {
+            showFailure(Ui.string(this, "ks_launch_failed_title"),
+                    getString(Ui.string(this, "ks_launch_failed_detail")));
+            return;
+        }
+        statusView.setText(Ui.string(this, "ks_launching_starting"));
+        detailView.setText(getString(Ui.string(this, "ks_ui_found"), minecraftVersion()));
         animateFillTo(0.75f);
         handler.postDelayed(this::startMinecraft, START_DELAY_MS);
     }
@@ -73,28 +80,51 @@ public class LaunchingActivity extends BaseActivity {
             return;
         }
         launchStarted = true;
-        try {
-            Intent intent = MinecraftLauncher.launchIntent(this);
-            if (intent == null) {
-                throw new IllegalStateException("No launch intent for "
-                        + MinecraftLauncher.PACKAGE);
+        animateFillTo(1f);
+        LaunchEngine.launch(this, new LaunchEngine.Callback() {
+            @Override
+            public void onStarted() {
+                if (!isFinishing()) {
+                    showLaunched();
+                }
             }
-            animateFillTo(1f);
-            startActivity(intent);
-            showLaunched();
-        } catch (RuntimeException error) {
-            launchStarted = false;
-            showFailure(R.string.ks_launch_failed_title,
-                    getString(R.string.ks_launch_failed_detail));
+
+            @Override
+            public void onFailed(Throwable error) {
+                if (isFinishing()) {
+                    return;
+                }
+                launchStarted = false;
+                showFailure(Ui.string(LaunchingActivity.this, "ks_launch_failed_title"),
+                        getString(Ui.string(LaunchingActivity.this, "ks_launch_failed_detail")));
+            }
+        });
+    }
+
+    private boolean isMinecraftInstalled() {
+        return minecraftPackage() != null;
+    }
+
+    private PackageInfo minecraftPackage() {
+        try {
+            return getPackageManager().getPackageInfo(MINECRAFT_PACKAGE, 0);
+        } catch (PackageManager.NameNotFoundException notFound) {
+            return null;
         }
     }
 
+    private String minecraftVersion() {
+        PackageInfo info = minecraftPackage();
+        return info == null || info.versionName == null || info.versionName.isEmpty()
+                ? "unknown" : info.versionName;
+    }
+
     private void showLaunched() {
-        titleView.setText(R.string.ks_launched_title);
-        statusView.setText(R.string.ks_launching_starting);
-        detailView.setText(R.string.ks_launched_detail);
+        titleView.setText(Ui.string(this, "ks_launched_title"));
+        statusView.setText(Ui.string(this, "ks_launching_starting"));
+        detailView.setText(Ui.string(this, "ks_launched_detail"));
         logo.setAlpha(1f);
-        actionView.setText(R.string.ks_back);
+        actionView.setText(Ui.string(this, "ks_back_to_home"));
         actionView.setVisibility(View.VISIBLE);
     }
 
@@ -103,12 +133,12 @@ public class LaunchingActivity extends BaseActivity {
         statusView.setText(titleRes);
         detailView.setText(detail);
         logo.setAlpha(0.4f);
-        actionView.setText(R.string.ks_back);
+        actionView.setText(Ui.string(this, "ks_back_to_home"));
         actionView.setVisibility(View.VISIBLE);
     }
 
     private void animateFillTo(float fraction) {
-        View track = findViewById(R.id.ks_launching_track);
+        View track = findViewById(Ui.view(this, "ks_launching_track"));
         final int width = Math.max(track.getWidth(), 1);
         float start = (float) progressFill.getLayoutParams().width / width;
         if (fillAnimator != null) {
