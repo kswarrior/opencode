@@ -3628,6 +3628,18 @@
 
 .field public static zoom_level_label:I = 0x7f13084f
 
+.field public static more_buttons_auto_click:I = 0x7f130850
+
+.field public static more_buttons_auto_click_help:I = 0x7f130851
+
+.field public static more_buttons_auto_click_interval:I = 0x7f130852
+
+.field public static more_buttons_input_svg:I = 0x7f130853
+
+.field public static more_buttons_input_svg_hint:I = 0x7f130854
+
+.field public static more_buttons_pasted_svg:I = 0x7f130855
+
 
 # direct methods
 .method private constructor <init>()V

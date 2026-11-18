@@ -8440,6 +8440,12 @@
     <public type="string" name="zoom_keybind_press" id="0x7f13084d" />
     <public type="string" name="zoom_keybind_tap_to_change" id="0x7f13084e" />
     <public type="string" name="zoom_level_label" id="0x7f13084f" />
+    <public type="string" name="more_buttons_auto_click" id="0x7f130850" />
+    <public type="string" name="more_buttons_auto_click_help" id="0x7f130851" />
+    <public type="string" name="more_buttons_auto_click_interval" id="0x7f130852" />
+    <public type="string" name="more_buttons_input_svg" id="0x7f130853" />
+    <public type="string" name="more_buttons_input_svg_hint" id="0x7f130854" />
+    <public type="string" name="more_buttons_pasted_svg" id="0x7f130855" />
     <public type="style" name="AlertDialog.AppCompat" id="0x7f140000" />
     <public type="style" name="AlertDialog.AppCompat.Light" id="0x7f140001" />
     <public type="style" name="Animation.AppCompat.Dialog" id="0x7f140002" />

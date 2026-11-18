@@ -1197,7 +1197,7 @@ Failed:
     <string name="more_buttons_icon_size">Icon size</string>
     <string name="more_buttons_icon_x_offset">Icon X offset</string>
     <string name="more_buttons_icon_y_offset">Icon Y offset</string>
-    <string name="more_buttons_intro">Create Minecraft-style on-screen buttons mapped to exactly one keyboard key each. Buttons never run macros, key sequences, automatic repeats or autoclicking.</string>
+    <string name="more_buttons_intro">Create Minecraft-style on-screen buttons mapped to exactly one keyboard key each. Buttons map exactly one keyboard key and can optionally auto-click at a fixed interval.</string>
     <string name="more_buttons_invalid_svg">That file does not contain a valid SVG document.</string>
     <string name="more_buttons_keep_original_colors">Keep original SVG colors</string>
     <string name="more_buttons_keep_pressed_colors">Keep original pressed-state colors</string>
@@ -1220,6 +1220,12 @@ Failed:
     <string name="more_buttons_press_one_key">Press One Key</string>
     <string name="more_buttons_pressed_color_help">A separate pressed SVG is optional for both momentary and toggle buttons. Without one, the normal SVG is reused. Off recolors the pressed icon to #E6E6E6; On preserves the selected SVG colors.</string>
     <string name="more_buttons_pressed_icon">Pressed icon</string>
+    <string name="more_buttons_input_svg">Input SVG</string>
+    <string name="more_buttons_input_svg_hint">Paste SVG markup here</string>
+    <string name="more_buttons_pasted_svg">Pasted SVG</string>
+    <string name="more_buttons_auto_click">Auto click</string>
+    <string name="more_buttons_auto_click_help">Repeats the mapped key every interval while active. Minimum 40 ms.</string>
+    <string name="more_buttons_auto_click_interval">Interval (ms)</string>
     <string name="more_buttons_preview_normal_state">Preview Normal State</string>
     <string name="more_buttons_preview_pressed_state">Preview Pressed State</string>
     <string name="more_buttons_save_failed">Could not save this button.</string>
