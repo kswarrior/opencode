@@ -2850,7 +2850,10 @@
     .line 400
     move-result-object v13
 
-    .line 401
+    const/high16 v12, 0x41000000    # 8.0f
+
+    mul-float/2addr v12, v8
+
     invoke-static {v12}, Ljava/lang/Math;->round(F)I
 
     .line 402
