@@ -58,7 +58,7 @@ final class EngineLauncher {
         }
     }
 
-    static boolean prepareContentManager(Context context)
+    static boolean prepareVersionManager(Context context)
             throws ReflectiveOperationException {
         ClassLoader loader = EngineLauncher.class.getClassLoader();
         Class<?> managerClass = Class.forName(VERSION_MANAGER, true, loader);

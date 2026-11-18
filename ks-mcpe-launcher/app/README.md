@@ -22,9 +22,10 @@ It does not contain, modify, or redistribute the Minecraft APK.
    "Preparing launcher / Loading interface / Ready". Opens Home automatically.
 2. **Home** - "KS MCPE LAUNCHER" at the top left, a 3D player preview with
    **ADD SKIN** and emote controls, a Microsoft account card, a white
-   **LAUNCH** button at the bottom right with a faint logo watermark, and a
-   **CONTENT** button at the bottom left. The engine's **Sign in to Minecraft
-   with LeviLauncher** setting follows the account card automatically: it is
+   **LAUNCH** button at the bottom right with a faint logo watermark, plus
+   **MODS** and **CONTENT** buttons at the bottom left. The engine's **Sign in
+   to Minecraft with LeviLauncher** setting follows the account card
+   automatically: it is
    enabled while a Microsoft/Xbox account is active and disabled when none is
    signed in.
 3. **Launching** - shown after **LAUNCH**. Checks for Minecraft, copies the
@@ -36,6 +37,11 @@ It does not contain, modify, or redistribute the Minecraft APK.
 Minecraft version. It shows worlds, resource packs, behavior packs, skin
 packs, servers, and screenshots, with the engine's import and management
 actions. It requires an installed Minecraft Bedrock version.
+
+**MODS** opens the engine's installed-mods manager for the selected version.
+It lists enabled and disabled mods, supports search, sorting, deletion, and
+mod import, and links to the LeviMC package browser and the external mod
+catalog. It also requires an installed Minecraft Bedrock version.
 
 ## Repository layout
 

@@ -55,6 +55,8 @@ public class HomeActivity extends BaseActivity {
             "org.levimc.launcher.settings.FeatureSettings";
     private static final String CONTENT_ACTIVITY_CLASS =
             "org.levimc.launcher.ui.activities.ContentManagementActivity";
+    private static final String MODS_ACTIVITY_CLASS =
+            "org.levimc.launcher.ui.activities.ModsFullscreenActivity";
     private static final int ACCOUNT_MENU_WIDTH_DP = 252;
     private static final int ACCOUNT_MENU_MAX_HEIGHT_DP = 240;
 
@@ -111,17 +113,22 @@ public class HomeActivity extends BaseActivity {
         View addSkinButton = findViewById(Res.view(this, "home_add_skin"));
         View emoteButton = findViewById(Res.view(this, "home_emote"));
         View contentButton = findViewById(Res.view(this, "home_content"));
+        View modsButton = findViewById(Res.view(this, "home_mods"));
 
         animateIn(brand, 0L);
         animateIn(hint, 90L);
         animateIn(launchButton, 160L);
-        animateIn(contentButton, 150L);
+        animateIn(modsButton, 140L);
+        animateIn(contentButton, 170L);
         animateIn(findViewById(Res.view(this, "home_player")), 220L);
 
         launchButton.setOnClickListener(view -> openLauncher());
         addSkinButton.setOnClickListener(view -> pickSkin());
         emoteButton.setOnClickListener(view -> showEmotes());
-        contentButton.setOnClickListener(view -> openContentManager());
+        contentButton.setOnClickListener(view -> openEnginePage(view,
+                CONTENT_ACTIVITY_CLASS, "content_no_game", "content_failed"));
+        modsButton.setOnClickListener(view -> openEnginePage(view,
+                MODS_ACTIVITY_CLASS, "mods_no_game", "mods_failed"));
 
         signInButton = findViewById(Res.view(this, "home_sign_in"));
         accountCard = findViewById(Res.view(this, "home_account_card"));
@@ -479,10 +486,10 @@ public class HomeActivity extends BaseActivity {
         }
     }
 
-    private void openContentManager() {
-        final View button = findViewById(Res.view(this, "home_content"));
+    private void openEnginePage(View button, String activityClass,
+                                String noGameKey, String failedKey) {
         if (!EngineLauncher.isAvailable()) {
-            Toast.makeText(this, Res.string(this, "content_failed"),
+            Toast.makeText(this, Res.string(this, failedKey),
                     Toast.LENGTH_LONG).show();
             return;
         }
@@ -492,7 +499,7 @@ public class HomeActivity extends BaseActivity {
             boolean ready = false;
             Throwable error = null;
             try {
-                ready = EngineLauncher.prepareContentManager(this);
+                ready = EngineLauncher.prepareVersionManager(this);
             } catch (Throwable failure) {
                 error = failure;
             }
@@ -505,27 +512,27 @@ public class HomeActivity extends BaseActivity {
                 button.setEnabled(true);
                 button.setAlpha(1f);
                 if (cause != null) {
-                    Log.e(TAG, "Could not prepare content manager", cause);
-                    Toast.makeText(this, Res.string(this, "content_failed"),
+                    Log.e(TAG, "Could not prepare " + activityClass, cause);
+                    Toast.makeText(this, Res.string(this, failedKey),
                             Toast.LENGTH_LONG).show();
                     return;
                 }
                 if (!hasVersion) {
-                    Toast.makeText(this, Res.string(this, "content_no_game"),
+                    Toast.makeText(this, Res.string(this, noGameKey),
                             Toast.LENGTH_LONG).show();
                     return;
                 }
                 try {
                     Intent intent = new Intent();
-                    intent.setClassName(getPackageName(), CONTENT_ACTIVITY_CLASS);
+                    intent.setClassName(getPackageName(), activityClass);
                     startActivity(intent);
                 } catch (RuntimeException failure) {
-                    Log.e(TAG, "Could not open content manager", failure);
-                    Toast.makeText(this, Res.string(this, "content_failed"),
+                    Log.e(TAG, "Could not open " + activityClass, failure);
+                    Toast.makeText(this, Res.string(this, failedKey),
                             Toast.LENGTH_LONG).show();
                 }
             });
-        }, "ks-content-open").start();
+        }, "ks-engine-page").start();
     }
 
     private void openAccountLogin() {
