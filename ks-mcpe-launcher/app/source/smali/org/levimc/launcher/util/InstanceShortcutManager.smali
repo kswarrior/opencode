@@ -52,7 +52,7 @@
 
     .line 6
     .line 7
-    const-class v1, Lorg/levimc/launcher/ui/activities/MainActivity;
+    const-class v1, Lcom/ks/android/mcpe/launcher/HomeActivity;
 
     .line 8
     .line 9

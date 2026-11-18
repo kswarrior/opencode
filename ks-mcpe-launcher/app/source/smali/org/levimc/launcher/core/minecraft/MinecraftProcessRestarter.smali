@@ -176,14 +176,6 @@
     .line 3
     invoke-static {p1, v0}, Lh9/i;->e(Ljava/lang/Object;Ljava/lang/String;)V
 
-    .line 4
-    .line 5
-    .line 6
-    invoke-static {}, Lorg/levimc/launcher/core/discord/DiscordPresence;->shutdown()V
-
-    .line 7
-    .line 8
-    .line 9
     invoke-virtual {p1}, Landroid/content/Context;->getApplicationContext()Landroid/content/Context;
 
     .line 10
