@@ -58,6 +58,17 @@ final class EngineLauncher {
         }
     }
 
+    static boolean prepareContentManager(Context context)
+            throws ReflectiveOperationException {
+        ClassLoader loader = EngineLauncher.class.getClassLoader();
+        Class<?> managerClass = Class.forName(VERSION_MANAGER, true, loader);
+        Object manager = managerClass
+                .getMethod("get", Context.class)
+                .invoke(null, context.getApplicationContext());
+        managerClass.getMethod("loadAllVersions").invoke(manager);
+        return managerClass.getMethod("getSelectedVersion").invoke(manager) != null;
+    }
+
     static String runtimeAbi() {
         String[] abis = android.os.Process.is64Bit()
                 ? Build.SUPPORTED_64_BIT_ABIS : Build.SUPPORTED_32_BIT_ABIS;

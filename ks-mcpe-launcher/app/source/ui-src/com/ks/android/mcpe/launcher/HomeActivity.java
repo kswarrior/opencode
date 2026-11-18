@@ -53,6 +53,8 @@ public class HomeActivity extends BaseActivity {
             "org.levimc.launcher.ui.activities.MsftLoginActivity";
     private static final String FEATURE_SETTINGS_CLASS =
             "org.levimc.launcher.settings.FeatureSettings";
+    private static final String CONTENT_ACTIVITY_CLASS =
+            "org.levimc.launcher.ui.activities.ContentManagementActivity";
     private static final int ACCOUNT_MENU_WIDTH_DP = 252;
     private static final int ACCOUNT_MENU_MAX_HEIGHT_DP = 240;
 
@@ -108,15 +110,18 @@ public class HomeActivity extends BaseActivity {
         TextView launchButton = findViewById(Res.view(this, "launch_button"));
         View addSkinButton = findViewById(Res.view(this, "home_add_skin"));
         View emoteButton = findViewById(Res.view(this, "home_emote"));
+        View contentButton = findViewById(Res.view(this, "home_content"));
 
         animateIn(brand, 0L);
         animateIn(hint, 90L);
         animateIn(launchButton, 160L);
+        animateIn(contentButton, 150L);
         animateIn(findViewById(Res.view(this, "home_player")), 220L);
 
         launchButton.setOnClickListener(view -> openLauncher());
         addSkinButton.setOnClickListener(view -> pickSkin());
         emoteButton.setOnClickListener(view -> showEmotes());
+        contentButton.setOnClickListener(view -> openContentManager());
 
         signInButton = findViewById(Res.view(this, "home_sign_in"));
         accountCard = findViewById(Res.view(this, "home_account_card"));
@@ -472,6 +477,55 @@ public class HomeActivity extends BaseActivity {
         } catch (ReflectiveOperationException | RuntimeException error) {
             Log.w(TAG, "Could not sync launcher-managed Minecraft login", error);
         }
+    }
+
+    private void openContentManager() {
+        final View button = findViewById(Res.view(this, "home_content"));
+        if (!EngineLauncher.isAvailable()) {
+            Toast.makeText(this, Res.string(this, "content_failed"),
+                    Toast.LENGTH_LONG).show();
+            return;
+        }
+        button.setEnabled(false);
+        button.setAlpha(0.55f);
+        new Thread(() -> {
+            boolean ready = false;
+            Throwable error = null;
+            try {
+                ready = EngineLauncher.prepareContentManager(this);
+            } catch (Throwable failure) {
+                error = failure;
+            }
+            final boolean hasVersion = ready;
+            final Throwable cause = error;
+            runOnUiThread(() -> {
+                if (isFinishing() || isDestroyed()) {
+                    return;
+                }
+                button.setEnabled(true);
+                button.setAlpha(1f);
+                if (cause != null) {
+                    Log.e(TAG, "Could not prepare content manager", cause);
+                    Toast.makeText(this, Res.string(this, "content_failed"),
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+                if (!hasVersion) {
+                    Toast.makeText(this, Res.string(this, "content_no_game"),
+                            Toast.LENGTH_LONG).show();
+                    return;
+                }
+                try {
+                    Intent intent = new Intent();
+                    intent.setClassName(getPackageName(), CONTENT_ACTIVITY_CLASS);
+                    startActivity(intent);
+                } catch (RuntimeException failure) {
+                    Log.e(TAG, "Could not open content manager", failure);
+                    Toast.makeText(this, Res.string(this, "content_failed"),
+                            Toast.LENGTH_LONG).show();
+                }
+            });
+        }, "ks-content-open").start();
     }
 
     private void openAccountLogin() {

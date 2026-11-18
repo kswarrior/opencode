@@ -63,6 +63,9 @@
     <string name="ks_account_active">Active account</string>
     <string name="ks_account_switch_failed">Could not switch account. Try again.</string>
     <string name="ks_account_login_failed">Could not sign in. Try again.</string>
+    <string name="ks_content">CONTENT</string>
+    <string name="ks_content_no_game">Install Minecraft Bedrock Edition to manage content.</string>
+    <string name="ks_content_failed">Could not open the content manager.</string>
     <string name="ks_add_skin">ADD SKIN</string>
     <string name="ks_emote">EMOTE</string>
     <string name="ks_emote_title">EMOTE</string>
