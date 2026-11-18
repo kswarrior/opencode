@@ -1044,6 +1044,52 @@
     return-void
 .end method
 
+.method public pauseInput()V
+    .locals 2
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->stopAutoClick()V
+
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    if-nez v0, :ks_pause_release
+
+    iget-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    if-nez v0, :ks_pause_release
+
+    goto :ks_pause_reset
+
+    :ks_pause_release
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->keyCode:I
+
+    invoke-static {v0}, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->isSupportedMapping(I)Z
+
+    move-result v0
+
+    if-eqz v0, :ks_pause_reset
+
+    iget-object v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->config:Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;
+
+    iget v0, v0, Lorg/levimc/launcher/core/mods/inbuilt/model/MoreButtonConfig;->keyCode:I
+
+    const/4 v1, 0x0
+
+    invoke-direct {p0, v0, v1}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->sendMappedInput(IZ)V
+
+    :ks_pause_reset
+    const/4 v0, 0x0
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->keyDown:Z
+
+    iput-boolean v0, p0, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->active:Z
+
+    invoke-direct {p0}, Lorg/levimc/launcher/core/mods/inbuilt/overlay/MoreButtonOverlay;->updateVisual()V
+
+    return-void
+.end method
+
 .method public onButtonClick()V
     .locals 0
 
