@@ -15,9 +15,11 @@ The project is a hybrid APK:
 - The old external-intent launch path is gone. `LaunchingActivity` calls the
   engine reflectively through `EngineLauncher`.
 
-The application id is `com.ks.android.mcpe.launcher`, version `1.0.15`
-(`versionCode 10015`). Do not confuse it with the archived 1.1.5 clone under
-`app/old`, whose id was `com.ks.mcpe.launcher`.
+The application id is `com.ks.android.mcpe.launcher`. The version name and
+version code come from `APP_VERSION` and `APP_VERSION_CODE` in
+`app/source/build.sh`; read them from that file or from the built APK instead
+of assuming a number. Do not confuse this package with the archived KS clone
+under `app/old`, whose id was `com.ks.mcpe.launcher`.
 
 ## Build
 
@@ -53,10 +55,10 @@ Requirements: Java 21+, Python 3, curl, zip, Android build-tools (`aapt2`,
   `HomeActivity`, `LaunchingActivity`, `Res`, `EngineLauncher`).
 - `app/source/build.sh` - the real build.
 - `app/build.sh` - wrapper that calls `app/source/build.sh`.
-- `app/old` - 1.1.5 KS clone kept only as reference. Never build from it.
+- `app/old` - archived KS clone kept only as reference. Never build from it.
 - `/tmp/ks-mcpe-build` - disposable copy and intermediate APKs.
-- `release/signing/ks-mcpe.keystore` and `credentials.env` - the permanent
-  signing key introduced for `1.0.14`, alias `ksmcpe`, certificate SHA-256
+- `release/signing/ks-mcpe.keystore` and `credentials.env` - the current
+  signing key, alias `ksmcpe`, certificate SHA-256
   `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
   Gitignored; back them up and never print the password. The build script
   uses this path automatically when `SIGNING_DIR` is not overridden.
@@ -84,8 +86,8 @@ the committed tree.
 
 1. Manifest package, signature permission, provider authorities,
    `taskAffinity`, and `targetPackage` use `com.ks.android.mcpe.launcher`.
-2. `BuildConfig` uses the KS id, version `1.0.15`, versionCode `0x271f`, and
-   `SKIP_PLAY_STORE_CHECK=true`.
+2. `BuildConfig` uses the KS id, the configured app version and version code,
+   and `SKIP_PLAY_STORE_CHECK=true`.
 3. `PlayStoreValidator.isMinecraftFromPlayStore(Context)` returns `true`.
 4. `GithubReleaseUpdater.checkUpdate()` and `checkUpdateOnLaunch()` are no-op
    `return-void` methods.
@@ -132,7 +134,7 @@ state instead of calling the engine.
 
 ```bash
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-APK=ks-mcpe-launcher/release/KS-MCPE-Launcher-1.0.15.apk
+APK=$(ls -t ks-mcpe-launcher/release/KS-MCPE-Launcher-*.apk | head -1)
 $BT/aapt2 dump badging "$APK" | head -5
 $BT/apksigner verify --print-certs "$APK"
 $BT/zipalign -c -p 4 "$APK"
@@ -142,8 +144,8 @@ sha256sum -c "$APK.sha256"
 
 Expected:
 
-- Package `com.ks.android.mcpe.launcher`, versionName `1.0.15`, versionCode
-  `10015`.
+- Package `com.ks.android.mcpe.launcher`; versionName and versionCode match
+  `APP_VERSION` / `APP_VERSION_CODE` in `app/source/build.sh`.
 - V3 signer certificate SHA-256
   `8e69a2842dcc3acb26f1423a5e9a5317c4b911c939d3aad644ece2b5234e6315`.
 - `classes.dex`, `classes2.dex`, `classes3.dex`, and
@@ -167,11 +169,10 @@ java -jar ~/.cache/ks-mcpe/apktool_3.0.3.jar d --no-res --no-assets \
 - Do not rename or delete engine resources, smali packages, or native
   libraries. Resource IDs are preserved by apktool 3; do not run `aapt2
   optimize` or sparse encoding.
-- Keep the signing key stable between releases. `1.0.14` introduced the
-  current key (certificate SHA-256 `8e69a284...`); keep it for every later
-  build. Users on `1.0.13` and older must uninstall before installing
-  `1.0.14`, which may remove app data. The `1.0.12`/`1.0.13` key
-  (`54bb1427...`) is not available in the build environment.
+- Keep the signing key stable between releases. If the key changes, Android
+  rejects in-place updates over builds signed with the old key; users must
+  uninstall first, which may remove app data. Older keys are not available;
+  never rely on them.
 - Do not create a CI workflow for this project unless the user asks. Builds
   are local.
 - Keep upstream license/notices in the APK. This is not an official

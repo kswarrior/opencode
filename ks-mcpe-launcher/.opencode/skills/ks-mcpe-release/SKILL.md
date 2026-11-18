@@ -1,6 +1,6 @@
 ---
 name: ks-mcpe-release
-description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.15, GitHub release upload, release asset, or signing secrets for this project.
+description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, GitHub release upload, release asset, or signing secrets for this project.
 ---
 
 # KS MCPE Launcher release
@@ -8,40 +8,25 @@ description: Use when publishing, replacing, or verifying KS MCPE Launcher relea
 Builds are published to:
 
 - Repository: `kswarrior/opencode`
-- Tag: `v1.0.15`
-- Release id at the time of writing: `449586682`
-- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.15>
-
-Look the release up by tag before uploading; do not hardcode the id if the
-release can move.
+- Releases: <https://github.com/kswarrior/opencode/releases>
+- Tag: `v<versionName>` (`<versionName>` comes from the APK, not from this
+  document)
+- Look up the release by tag; do not hardcode a release id.
 
 ## Asset contract
 
 - `KS-MCPE-Launcher-<version>.apk`
 - `KS-MCPE-Launcher-<version>.apk.sha256`
 
-`<version>` is the app's `versionName`, currently `1.0.15`, not the upstream
-LeviLauncher version. The checksum file is the exact output of `sha256sum`
-(two spaces between digest and file name).
-
-Current assets:
-
-| Asset | Size | Notes |
-| --- | --- | --- |
-| `KS-MCPE-Launcher-1.0.15.apk` | 39,558,131 | CONTENT and MODS buttons, arm64-v8a only |
-| `KS-MCPE-Launcher-1.0.15.apk.sha256` | 94 | SHA-256 `c41a1c54...` |
-| `KS-MCPE-Launcher-1.0.14.apk` | 39,553,886 | Automatic Microsoft sign-in setting |
-| `KS-MCPE-Launcher-1.0.14.apk.sha256` | 94 | SHA-256 `a8af818c...` |
-| `KS-MCPE-Launcher-1.0.13.apk` | 39,549,790 | More Buttons crash fix, old signing key |
-| `KS-MCPE-Launcher-1.0.13.apk.sha256` | 94 | SHA-256 `3904eb0c...` |
-| `KS-MCPE-Launcher-1.0.12.apk` | 39,549,790 | previous build, Add Button fix |
+`<version>` is the app's `versionName`, not the upstream LeviLauncher version.
+The checksum file is the exact output of `sha256sum` (two spaces between
+digest and file name). List the release's current assets through the API;
+there is no fixed asset table to maintain here.
 
 Keep older assets for rollback. Only replace the two assets for the version
 being published; never bulk-delete other versions.
 
 ## Current signing key
-
-`1.0.14` and later use:
 
 - Keystore: `ks-mcpe-launcher/release/signing/ks-mcpe.keystore`
 - Credentials: `ks-mcpe-launcher/release/signing/credentials.env`
@@ -51,9 +36,10 @@ being published; never bulk-delete other versions.
 - Certificate SHA-1:
   `737ede4c23bceaf2562f6ccbb498a41c1ad70e12`
 
-This key replaced the missing `1.0.12`/`1.0.13` key. Installs from `1.0.13`
-and older cannot update in place to `1.0.14` or later; users must uninstall
-first, which may delete app data. Keep this key for every later release.
+This is the key used by current builds. Keep it for every later release.
+If the key changes, Android refuses in-place updates over builds signed with
+the old key; users must uninstall first, which may delete app data. Older
+keys are not available; never rely on them.
 
 Back up the keystore and credentials outside the repository. They are
 gitignored and must never be committed or printed. The password lives only
@@ -62,14 +48,21 @@ note.
 
 ## Upload via the API
 
+Derive the version and tag from the APK being published, so this procedure
+does not need editing for each release.
+
 Authenticate with `GH_TOKEN`, or derive the bot token from the git
 `extraheader`. Never print the token or write it to a repository file.
 
 ```bash
 REPO=kswarrior/opencode
-TAG=v1.0.15
-VERSION=1.0.15
 DIST=ks-mcpe-launcher/release
+APK=$(ls -t "$DIST"/KS-MCPE-Launcher-*.apk | head -1)
+[ -f "$APK" ] || { echo "no APK in $DIST" >&2; exit 1; }
+
+VERSION=$(basename "$APK" .apk)
+VERSION=${VERSION#KS-MCPE-Launcher-}
+TAG="v$VERSION"
 TOKEN="${GH_TOKEN:-}"
 
 if [ -z "$TOKEN" ]; then
@@ -121,44 +114,34 @@ more specific type is used, ensure the APK is
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.15/KS-MCPE-Launcher-1.0.15.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.15/KS-MCPE-Launcher-1.0.15.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.15.apk.sha256
+BASE="https://github.com/kswarrior/opencode/releases/download/$TAG"
+curl -fsSLO "$BASE/KS-MCPE-Launcher-$VERSION.apk"
+curl -fsSLO "$BASE/KS-MCPE-Launcher-$VERSION.apk.sha256"
+sha256sum -c "KS-MCPE-Launcher-$VERSION.apk.sha256"
 
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.15.apk | head -5
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.15.apk | head -5
-$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.15.apk
+$BT/aapt2 dump badging "KS-MCPE-Launcher-$VERSION.apk" | head -5
+$BT/apksigner verify --print-certs "KS-MCPE-Launcher-$VERSION.apk" | head -5
+$BT/zipalign -c -p 4 "KS-MCPE-Launcher-$VERSION.apk"
 ```
 
 Confirm the uploaded manifest has package
-`com.ks.android.mcpe.launcher`, versionName `1.0.15`, versionCode `10015`, and
-that the signer certificate is `8e69a2...`. Compare SHA-256, not only size.
+`com.ks.android.mcpe.launcher`, a versionName equal to `$VERSION`, and a
+versionCode matching `APP_VERSION_CODE` in `app/source/build.sh`. Confirm the
+signer certificate is `8e69a2...`. Compare SHA-256, not only size.
 
 ## Release notes
 
-When publishing a new version in an existing release, update the release name
-and body to describe the new asset. For `1.0.15` the important points are:
+When publishing, update the release name and body to describe the new asset.
+Cover:
 
-- The Home screen now has **CONTENT** and **MODS** buttons at the bottom left.
-- **CONTENT** opens the engine content manager for worlds, resource packs,
-  behavior packs, skin packs, servers, and screenshots.
-- **MODS** opens the installed-mods manager for the selected Minecraft
-  version, with search, enable/disable, delete, import, and links to LeviMC
-  packages and the external mod catalog.
-- Both pages load the selected Minecraft version first and show a message if
-  Minecraft is not installed.
-- Includes the `1.0.14` automatic **Sign in to Minecraft with LeviLauncher**
-  setting: it follows the active Microsoft/Xbox account.
-- `1.0.15` uses the same signing key as `1.0.14`, so `1.0.14` users update in
-  place. Users on `1.0.13` or older must uninstall first, which may delete
-  app data.
-- Keeps the LeviLauncher 1.7.1 engine and the 3-screen Java UI.
-- Requires Minecraft Bedrock installed.
-- `arm64-v8a` only.
+- user-visible changes in this build
+- whether the signing key or update path changed
+- requirements, including an installed Minecraft Bedrock and `arm64-v8a`
+- verification performed and any area not tested on a device
 
-Do not claim older release bodies still apply. Older bodies mention previous
-signing keys and the removed Tutorial button.
+Do not claim an older release body still applies; each asset gets notes for
+what it actually contains.
 
 ## Rules
 
@@ -166,10 +149,8 @@ signing keys and the removed Tutorial button.
   hand-edit or hand-sign an APK.
 - Do not delete older version assets unless the user explicitly requests it.
 - Never re-upload a replacement for an already-published version unless the
-  signing key that produced the existing asset is still available. The
-  `1.0.14`+ key is available at `ks-mcpe-launcher/release/signing/`; the
-  `1.0.12`/`1.0.13` key and the `1.0.0` key are not. `1.0.15` assets can be
-  replaced while this key is available, but prefer a new version instead.
+  signing key that produced the existing asset is still available. Prefer a
+  new version; if that key is unavailable, do not replace the asset.
 - If the bot token lacks `contents: write`, the upload will fail. Do not fall
   back to committing binaries into the repository.
 - The built-in updater is inert; users update only by installing release
