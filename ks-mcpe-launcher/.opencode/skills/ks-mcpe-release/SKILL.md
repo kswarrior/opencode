@@ -1,6 +1,6 @@
 ---
 name: ks-mcpe-release
-description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.14, GitHub release upload, release asset, or signing secrets for this project.
+description: Use when publishing, replacing, or verifying KS MCPE Launcher release assets for com.ks.android.mcpe.launcher, when checking SHA-256 values, or when configuring signing material for the local build. Trigger on KS-MCPE-Launcher-*.apk, v1.0.15, GitHub release upload, release asset, or signing secrets for this project.
 ---
 
 # KS MCPE Launcher release
@@ -8,9 +8,8 @@ description: Use when publishing, replacing, or verifying KS MCPE Launcher relea
 Builds are published to:
 
 - Repository: `kswarrior/opencode`
-- Tag: `v1.0.14`
-- Release id at the time of writing: `449571228`
-- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.14>
+- Tag: `v1.0.15`
+- URL: <https://github.com/kswarrior/opencode/releases/tag/v1.0.15>
 
 Look the release up by tag before uploading; do not hardcode the id if the
 release can move.
@@ -20,7 +19,7 @@ release can move.
 - `KS-MCPE-Launcher-<version>.apk`
 - `KS-MCPE-Launcher-<version>.apk.sha256`
 
-`<version>` is the app's `versionName`, currently `1.0.14`, not the upstream
+`<version>` is the app's `versionName`, currently `1.0.15`, not the upstream
 LeviLauncher version. The checksum file is the exact output of `sha256sum`
 (two spaces between digest and file name).
 
@@ -28,7 +27,9 @@ Current assets:
 
 | Asset | Size | Notes |
 | --- | --- | --- |
-| `KS-MCPE-Launcher-1.0.14.apk` | 39,553,886 | Automatic Microsoft sign-in setting, arm64-v8a only |
+| `KS-MCPE-Launcher-1.0.15.apk` | 39,558,131 | CONTENT and MODS buttons, arm64-v8a only |
+| `KS-MCPE-Launcher-1.0.15.apk.sha256` | 94 | SHA-256 `c41a1c54...` |
+| `KS-MCPE-Launcher-1.0.14.apk` | 39,553,886 | Automatic Microsoft sign-in setting |
 | `KS-MCPE-Launcher-1.0.14.apk.sha256` | 94 | SHA-256 `a8af818c...` |
 | `KS-MCPE-Launcher-1.0.13.apk` | 39,549,790 | More Buttons crash fix, old signing key |
 | `KS-MCPE-Launcher-1.0.13.apk.sha256` | 94 | SHA-256 `3904eb0c...` |
@@ -50,8 +51,8 @@ being published; never bulk-delete other versions.
   `737ede4c23bceaf2562f6ccbb498a41c1ad70e12`
 
 This key replaced the missing `1.0.12`/`1.0.13` key. Installs from `1.0.13`
-and older cannot update in place to `1.0.14`; users must uninstall first,
-which may delete app data. Keep this key for every later release.
+and older cannot update in place to `1.0.14` or later; users must uninstall
+first, which may delete app data. Keep this key for every later release.
 
 Back up the keystore and credentials outside the repository. They are
 gitignored and must never be committed or printed. The password lives only
@@ -65,8 +66,8 @@ Authenticate with `GH_TOKEN`, or derive the bot token from the git
 
 ```bash
 REPO=kswarrior/opencode
-TAG=v1.0.14
-VERSION=1.0.14
+TAG=v1.0.15
+VERSION=1.0.15
 DIST=ks-mcpe-launcher/release
 TOKEN="${GH_TOKEN:-}"
 
@@ -119,18 +120,18 @@ more specific type is used, ensure the APK is
 
 ```bash
 cd /tmp/opencode
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.14/KS-MCPE-Launcher-1.0.14.apk"
-curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.14/KS-MCPE-Launcher-1.0.14.apk.sha256"
-sha256sum -c KS-MCPE-Launcher-1.0.14.apk.sha256
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.15/KS-MCPE-Launcher-1.0.15.apk"
+curl -fsSLO "https://github.com/kswarrior/opencode/releases/download/v1.0.15/KS-MCPE-Launcher-1.0.15.apk.sha256"
+sha256sum -c KS-MCPE-Launcher-1.0.15.apk.sha256
 
 BT=/usr/local/lib/android/sdk/build-tools/37.0.0
-$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.14.apk | head -5
-$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.14.apk | head -5
-$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.14.apk
+$BT/aapt2 dump badging KS-MCPE-Launcher-1.0.15.apk | head -5
+$BT/apksigner verify --print-certs KS-MCPE-Launcher-1.0.15.apk | head -5
+$BT/zipalign -c -p 4 KS-MCPE-Launcher-1.0.15.apk
 ```
 
 Confirm the uploaded manifest has package
-`com.ks.android.mcpe.launcher`, versionName `1.0.14`, versionCode `10014`, and
+`com.ks.android.mcpe.launcher`, versionName `1.0.15`, versionCode `10015`, and
 that the signer certificate is `8e69a2...`. Compare SHA-256, not only size.
 
 ## Release notes
