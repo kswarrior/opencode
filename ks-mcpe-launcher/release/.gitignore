@@ -1,5 +1,0 @@
-# Build artifacts and signing material are local only.
-*.apk
-*.apk.idsig
-*.apk.sha256
-signing/
