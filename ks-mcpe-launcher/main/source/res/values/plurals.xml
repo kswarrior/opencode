@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="flat_layers_count">
+        <item quantity="one">%1$d layer • bottom → top</item>
+        <item quantity="other">%1$d layers • bottom → top</item>
+    </plurals>
+    <plurals name="game_download_version_count">
+        <item quantity="one">%1$d version</item>
+        <item quantity="other">%1$d versions</item>
+    </plurals>
+    <plurals name="mod_config_choices_count">
+        <item quantity="one">%d choice</item>
+        <item quantity="other">%d choices</item>
+    </plurals>
+    <plurals name="mod_config_files_count">
+        <item quantity="one">%d editable config</item>
+        <item quantity="other">%d editable configs</item>
+    </plurals>
+    <plurals name="mod_config_items_count">
+        <item quantity="one">%d item</item>
+        <item quantity="other">%d items</item>
+    </plurals>
+    <plurals name="mods_visible_count">
+        <item quantity="one">%1$d mod</item>
+        <item quantity="other">%1$d mods</item>
+    </plurals>
+    <plurals name="mtrl_badge_content_description">
+        <item quantity="one">%d new notification</item>
+        <item quantity="other">%d new notifications</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_body">
+        <item quantity="one">You are about to uninstall %1$d package from %2$s. Continue?</item>
+        <item quantity="other">You are about to uninstall %1$d packages from %2$s. Continue?</item>
+    </plurals>
+    <plurals name="pkg_batch_uninstall_done">
+        <item quantity="one">Uninstalled %1$d package</item>
+        <item quantity="other">Uninstalled %1$d packages</item>
+    </plurals>
+    <plurals name="pkg_batch_update_body">
+        <item quantity="one">%1$d package selected, %2$d of which can be updated. Continue?</item>
+        <item quantity="other">%1$d packages selected, %2$d of which can be updated. Continue?</item>
+    </plurals>
+    <plurals name="pkg_batch_update_done">
+        <item quantity="one">Updated %1$d package</item>
+        <item quantity="other">Updated %1$d packages</item>
+    </plurals>
+    <plurals name="pkg_filters_show_results">
+        <item quantity="one">Show %d result</item>
+        <item quantity="other">Show %d results</item>
+    </plurals>
+    <plurals name="pkg_installed_summary">
+        <item quantity="one">%1$d package, %2$d installed by you · %3$s</item>
+        <item quantity="other">%1$d packages, %2$d installed by you · %3$s</item>
+    </plurals>
+    <plurals name="pkg_n_dependencies">
+        <item quantity="one">%d dependency</item>
+        <item quantity="other">%d dependencies</item>
+    </plurals>
+    <plurals name="pkg_n_files">
+        <item quantity="one">%d file recorded</item>
+        <item quantity="other">%d files recorded</item>
+    </plurals>
+    <plurals name="pkg_n_versions">
+        <item quantity="one">%d version</item>
+        <item quantity="other">%d versions</item>
+    </plurals>
+</resources>

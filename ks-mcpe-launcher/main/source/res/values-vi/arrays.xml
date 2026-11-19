@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="launcher_tips">
+        <item>Phần Cài đặt cho phép bạn điều chỉnh chủ đề, màu sắc, hình nền và các tùy chọn hiển thị khác sao cho phù hợp với thiết lập của mình.</item>
+        <item>LeviLauncher là mã nguồn mở. Vui lòng sử dụng GitHub Issues để báo cáo sự cố hoặc đề xuất cải tiến.</item>
+        <item>Sử dụng menu thả xuống phiên bản để nhanh chóng chuyển đổi giữa các phiên bản hiện tại.</item>
+        <item>Liệu mọi người có thực sự đọc những thứ này không:)?</item>
+        <item>Bạn có thể kéo các mod để thay đổi thứ tự ưu tiên tải của chúng.</item>
+        <item>Hãy Thử Chia Phiên Bản!</item>
+        <item>Sử dụng chức năng Khởi chạy nhanh để kết nối trực tiếp với máy chủ mà không cần mở trò chơi trước.</item>
+        <item>Bạn có thể nhập các file .mcworld, .mcpack và .mcaddon từ trang Quản lý nội dung.</item>
+        <item>Quản lý nhiều tài khoản Xbox ngay trong trình khởi chạy và chuyển đổi giữa chúng một cách liền mạch.</item>
+        <item>CurseForge cho phép bạn duyệt và tải xuống nội dung do cộng đồng trực tiếp thực hiện.</item>
+        <item>Nhập các bản mod để mở rộng hoặc nâng cao các tính năng và hiệu năng của Minecraft.</item>
+        <item>Bạn cũng có thể dùng GIF động làm hình nền trình khởi chạy.</item>
+        <item>Đổi biểu tượng của bản cài trong phần cài đặt của bản đó.</item>
+        <item>Đánh dấu sao cho mô-đun trong menu mod để tìm nhanh trong Yêu thích.</item>
+        <item>Kéo tiêu đề menu mod để di chuyển hoặc kéo góc dưới bên phải để đổi kích thước.</item>
+        <item>Dùng Chỉ tương thích trong Mod bên ngoài để lọc theo phiên bản Minecraft của bạn.</item>
+        <item>Sao lưu thế giới trước khi chỉnh sửa dữ liệu NBT của nó.</item>
+    </string-array>
+</resources>

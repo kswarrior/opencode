@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/bg_polish_card" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp" android:paddingHorizontal="12.0dp" android:paddingVertical="8.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="14.0dp">
+        <TextView android:textSize="13.0sp" android:textColor="@color/text_primary" android:id="@id/property_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="sans-serif-medium" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/text_secondary" android:id="@id/property_key" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dp" android:fontFamily="monospace" />
+    </LinearLayout>
+    <EditText android:textSize="13.0sp" android:id="@id/property_value" android:padding="10.0dp" android:layout_width="128.0dp" android:layout_height="wrap_content" android:minHeight="44.0dp" android:singleLine="true" android:inputType="textVisiblePassword|textNoSuggestions" android:imeOptions="actionDone" android:importantForAutofill="no" style="@style/Widget.Levi.Input" />
+</LinearLayout>

@@ -1,0 +1,22 @@
+.class public interface abstract annotation Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable$Param;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+# interfaces
+.implements Ljava/lang/annotation/Annotation;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/google/android/gms/common/internal/safeparcel/SafeParcelable;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x2609
+    name = "Param"
+.end annotation
+
+
+# virtual methods
+.method public abstract id()I
+.end method

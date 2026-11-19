@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="launcher_tips">
+        <item>Los Ajustes te permiten cambiar el tema, color, fondo y otras opciones para adaptar tu launcher.</item>
+        <item>LeviLauncher es de código abierto. Usa los issues en GitHub para informar de problemas o sugerir mejoras.</item>
+        <item>Usa el menú de versión para cambiar de instancia rápidamente.</item>
+        <item>¿Alguien lee realmente estos consejos?</item>
+        <item>Puedes arrastrar los mods para reordenar su prioridad de carga.</item>
+        <item>¡Prueba el Aislamiento de Versión!</item>
+        <item>Usa el Lanzamiento Rápido para conectarte a un servidor sin abrir primero el juego.</item>
+        <item>Puedes importar archivos .mcworld, .mcpack y .mcaddon desde la página de Gestión de Contenido.</item>
+        <item>Gestiona varias cuentas Xbox dentro del launcher y cambia entre ellas sin problemas.</item>
+        <item>CurseForge te permite navegar y descargar contenido de la comunidad directamente.</item>
+        <item>Carga módulos SO externos para extender o mejorar el rendimiento de Minecraft.</item>
+        <item>También puedes usar GIF animados como fondo del lanzador.</item>
+        <item>Cambia el icono de una instancia desde sus ajustes.</item>
+        <item>Marca módulos con una estrella en el menú de mods para encontrarlos en Favoritos.</item>
+        <item>Arrastra el título del menú de mods para moverlo o su esquina inferior derecha para cambiar su tamaño.</item>
+        <item>Usa Solo compatibles en Mods externos para filtrar por tu versión de Minecraft.</item>
+        <item>Haz una copia de tu mundo antes de editar sus datos NBT.</item>
+    </string-array>
+</resources>

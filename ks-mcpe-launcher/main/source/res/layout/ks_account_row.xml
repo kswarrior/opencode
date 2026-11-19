@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ks_account_row"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:background="@drawable/ks_account_row_bg"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp">
+
+    <ImageView
+        android:id="@+id/ks_account_row_avatar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@drawable/ks_avatar_circle"
+        android:clipToOutline="true"
+        android:contentDescription="@string/ks_account_avatar_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ks_avatar_placeholder" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ks_account_row_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif-medium"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/ks_white"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/ks_account_row_tag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:fontFamily="sans-serif"
+            android:includeFontPadding="false"
+            android:singleLine="true"
+            android:textColor="@color/ks_gray_400"
+            android:textSize="9sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/ks_account_row_check"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:contentDescription="@string/ks_account_active"
+        android:src="@drawable/ks_ic_check"
+        android:visibility="gone" />
+</LinearLayout>

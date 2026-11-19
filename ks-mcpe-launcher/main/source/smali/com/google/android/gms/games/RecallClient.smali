@@ -1,0 +1,24 @@
+.class public interface abstract Lcom/google/android/gms/games/RecallClient;
+.super Ljava/lang/Object;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# annotations
+.annotation build Lcom/google/android/gms/internal/games_v2/zzad;
+.end annotation
+
+
+# virtual methods
+.method public abstract requestRecallAccess()Lcom/google/android/gms/tasks/Task;
+    .annotation build Lcom/google/android/gms/internal/games_v2/zzad;
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Lcom/google/android/gms/tasks/Task<",
+            "Lcom/google/android/gms/games/RecallAccess;",
+            ">;"
+        }
+    .end annotation
+.end method

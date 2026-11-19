@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/msft_login_root" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="44.0dp">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="18.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ms_choose_login_method" android:includeFontPadding="false" android:accessibilityHeading="true" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" android:text="@string/accounts_sign_in_subtitle" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_marginTop="8.0dp" android:layout_weight="1.0">
+        <ScrollView android:id="@id/msft_method_panel" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="top" android:orientation="vertical" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="12.0sp" android:textColor="@color/ui_danger" android:id="@id/msft_method_error" android:background="@drawable/bg_ui_card_inner" android:padding="12.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dp" android:accessibilityLiveRegion="polite" />
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+                    <com.google.android.material.card.MaterialCardView android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="5.0dp" app:cardCornerRadius="12.0dp" style="@style/Widget.Levi.Card">
+                        <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_monitor" android:importantForAccessibility="no" app:tint="@color/accent_text" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="15.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/accounts_embedded_title" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="12.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:minHeight="36.0dp" android:text="@string/accounts_embedded_description" />
+                            <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/msft_web_login_button" android:layout_width="match_parent" android:layout_height="40.0dp" android:layout_marginTop="12.0dp" android:text="@string/ms_webview_login" app:icon="@drawable/ic_ui_person" style="@style/Widget.Levi.Button.Primary" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="5.0dp" app:cardCornerRadius="12.0dp" style="@style/Widget.Levi.Card">
+                        <LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                            <ImageView android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_internet" android:importantForAccessibility="no" app:tint="@color/accent_text" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="15.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp" android:text="@string/accounts_device_title" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="12.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:minHeight="36.0dp" android:text="@string/accounts_device_description" />
+                            <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/msft_device_login_button" android:layout_width="match_parent" android:layout_height="40.0dp" android:layout_marginTop="12.0dp" android:text="@string/ms_device_code_login" app:icon="@drawable/ic_ui_open_in_new" style="@style/Widget.Levi.Button.Secondary" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+        <ScrollView android:id="@id/msft_device_panel" android:visibility="gone" android:scrollbars="none" android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:overScrollMode="never">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingBottom="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                <com.google.android.material.card.MaterialCardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardCornerRadius="12.0dp" style="@style/Widget.Levi.Card">
+                    <LinearLayout android:gravity="center_vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:baselineAligned="false">
+                        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="20.0dp">
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ms_device_code_label" />
+                            <TextView android:textSize="28.0sp" android:textStyle="bold" android:textColor="@color/text_primary" android:gravity="center" android:id="@id/msft_device_code" android:layout_width="match_parent" android:layout_height="56.0dp" android:text="@string/ms_device_code_waiting_code" android:maxLines="1" android:textIsSelectable="true" android:fontFamily="monospace" android:letterSpacing="0.08" android:autoSizeTextType="uniform" android:autoSizeStepGranularity="1.0sp" android:autoSizeMinTextSize="18.0sp" android:autoSizeMaxTextSize="28.0sp" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="12.0sp" android:textColor="@color/accent_text" android:gravity="center" android:id="@id/msft_device_url" android:layout_width="match_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/msft_device_expiry" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" />
+                            <com.google.android.material.button.MaterialButton android:enabled="false" android:textSize="12.0sp" android:id="@id/msft_copy_code" android:layout_width="wrap_content" android:layout_height="40.0dp" android:layout_marginTop="8.0dp" android:text="@string/ms_device_code_copy" app:icon="@drawable/ic_ui_code" style="@style/Widget.Levi.Button.Secondary" />
+                        </LinearLayout>
+                        <View android:background="@color/divider" android:layout_width="1.0dp" android:layout_height="132.0dp" android:layout_marginEnd="20.0dp" />
+                        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.15">
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="14.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/ms_device_code_step_title" />
+                            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="12.0sp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="@string/accounts_device_steps" />
+                            <com.google.android.material.button.MaterialButton android:enabled="false" android:textSize="12.0sp" android:id="@id/msft_open_browser" android:layout_width="match_parent" android:layout_height="40.0dp" android:layout_marginTop="10.0dp" android:text="@string/ms_device_code_open_browser" app:icon="@drawable/ic_ui_open_in_new" style="@style/Widget.Levi.Button.Primary" />
+                            <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:minHeight="36.0dp">
+                                <ProgressBar android:id="@id/msft_device_progress" android:layout_width="16.0dp" android:layout_height="16.0dp" android:indeterminateTint="@color/primary" />
+                                <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:id="@id/msft_device_status" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/ms_device_code_requesting" android:layout_weight="1.0" android:layout_marginStart="8.0dp" android:accessibilityLiveRegion="polite" />
+                            </LinearLayout>
+                            <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/msft_device_cancel" android:layout_width="match_parent" android:layout_height="40.0dp" android:text="@string/ms_choose_other_method" style="@style/Widget.Levi.Button.Ghost" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+        </ScrollView>
+        <LinearLayout android:orientation="vertical" android:id="@id/msft_web_panel" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="40.0dp">
+                <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:textSize="11.0sp" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/accounts_microsoft_page" android:layout_weight="1.0" />
+                <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/msft_web_cancel" android:layout_width="wrap_content" android:layout_height="40.0dp" android:text="@string/ms_choose_other_method" style="@style/Widget.Levi.Button.Ghost" />
+            </LinearLayout>
+            <FrameLayout android:id="@id/msft_web_container" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/msft_progress_overlay" android:background="@color/background" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="match_parent" android:layout_height="match_parent">
+            <com.google.android.material.card.MaterialCardView android:layout_gravity="center" android:layout_width="300.0dp" android:layout_height="wrap_content" app:cardCornerRadius="14.0dp" style="@style/Widget.Levi.Card">
+                <LinearLayout android:orientation="vertical" android:padding="20.0dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+                        <ProgressBar android:id="@id/msft_progress_bar" android:layout_width="24.0dp" android:layout_height="24.0dp" android:indeterminateTint="@color/primary" />
+                        <TextView android:textAppearance="@style/TextAppearance.Levi.Body" android:textSize="13.0sp" android:id="@id/msft_progress_text" android:layout_width="0.0dp" android:layout_height="wrap_content" android:text="@string/ms_login_fetch_minecraft_identity" android:layout_weight="1.0" android:layout_marginStart="14.0dp" android:accessibilityLiveRegion="polite" />
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/msft_progress_cancel" android:layout_width="match_parent" android:layout_height="40.0dp" android:layout_marginTop="10.0dp" android:text="@android:string/cancel" style="@style/Widget.Levi.Button.Ghost" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
+    </FrameLayout>
+</LinearLayout>

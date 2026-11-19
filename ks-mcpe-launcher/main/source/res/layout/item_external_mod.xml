@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/external_mod_card" android:background="@drawable/bg_polish_card" android:padding="10.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_margin="4.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/external_mod_divider" android:layout_width="match_parent" android:layout_height="0.0dp" />
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/external_mod_icon_chip" android:background="@drawable/bg_ui_icon_chip" android:layout_width="44.0dp" android:layout_height="44.0dp">
+            <ImageView android:id="@id/external_mod_icon" android:padding="2.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:scaleType="centerCrop" android:importantForAccessibility="no" />
+        </FrameLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="10.0dp">
+            <TextView android:textSize="15.0sp" android:textColor="@color/text_primary" android:id="@id/external_mod_name" android:layout_width="match_parent" android:layout_height="wrap_content" android:fontFamily="sans-serif-medium" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/external_mod_author" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/text_secondary" android:ellipsize="end" android:id="@id/external_mod_description" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:maxLines="3" android:lineSpacingExtra="1.0dp" />
+    <com.google.android.material.chip.ChipGroup android:id="@id/external_mod_tags" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" app:chipSpacingHorizontal="5.0dp" app:chipSpacingVertical="4.0dp">
+        <TextView android:textSize="10.0sp" android:id="@id/external_mod_versions" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/Widget.Levi.Tag" />
+        <TextView android:textSize="10.0sp" android:id="@id/external_mod_download_type" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/Widget.Levi.Tag" />
+    </com.google.android.material.chip.ChipGroup>
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp">
+        <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/external_mod_version" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="8.0dp" />
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/external_mod_action" android:layout_width="wrap_content" android:layout_height="40.0dp" android:minWidth="88.0dp" android:text="@string/install" app:cornerRadius="9.0dp" style="@style/Widget.Levi.Button.Primary" />
+    </LinearLayout>
+</LinearLayout>

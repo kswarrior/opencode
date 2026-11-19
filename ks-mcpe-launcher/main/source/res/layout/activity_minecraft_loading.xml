@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/ks_bg_home">
+
+    <ImageView
+        android:layout_width="520dp"
+        android:layout_height="520dp"
+        android:layout_gravity="center"
+        android:alpha="0.035"
+        android:contentDescription="@null"
+        android:src="@drawable/ks_logo_mark" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|start"
+        android:layout_margin="28dp"
+        android:fontFamily="sans-serif-medium"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.16"
+        android:text="@string/ks_brand_title"
+        android:textColor="@color/ks_gray_400"
+        android:textSize="11sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="48dp"
+        android:paddingTop="44dp"
+        android:paddingEnd="48dp"
+        android:paddingBottom="28dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingEnd="28dp">
+
+            <ImageView
+                android:id="@id/minecraftLaunchLogo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ks_logo_mark" />
+
+            <TextView
+                android:id="@id/minecraftLaunchTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.12"
+                android:text="@string/ks_launching_title"
+                android:textColor="@color/ks_white"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@id/minecraftLaunchSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.14"
+                android:text="@string/ks_brand_subtitle"
+                android:textColor="@color/ks_gray_500"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@id/minecraftLaunchStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.04"
+                android:text="@string/ks_launching_checking"
+                android:textColor="@color/ks_white"
+                android:textSize="14sp" />
+
+            <ProgressBar
+                android:id="@id/minecraftLaunchProgress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="220dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="12dp"
+                android:indeterminate="false"
+                android:indeterminateTint="@color/ks_white"
+                android:max="100"
+                android:progress="0"
+                android:progressBackgroundTint="@color/ks_gray_700"
+                android:progressTint="@color/ks_white" />
+
+            <TextView
+                android:id="@id/minecraftLaunchDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="sans-serif"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:lineSpacingExtra="3dp"
+                android:maxWidth="420dp"
+                android:minHeight="18dp"
+                android:text="@string/ks_launching_detail"
+                android:textColor="@color/ks_gray_400"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@id/minecraftLaunchReturn"
+                android:layout_width="wrap_content"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ks_btn_secondary"
+                android:backgroundTint="@null"
+                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.14"
+                android:minWidth="190dp"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:stateListAnimator="@null"
+                android:text="@string/ks_back_to_home"
+                android:textAllCaps="false"
+                android:textColor="@color/ks_white"
+                android:textSize="11sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@id/minecraftLaunchLogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.16"
+                android:text="@string/ks_launch_log_title"
+                android:textColor="@color/ks_gray_400"
+                android:textSize="10sp" />
+
+            <ScrollView
+                android:id="@id/minecraftLaunchLogScroll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/ks_log_panel"
+                android:fadeScrollbars="false"
+                android:fillViewport="true"
+                android:padding="14dp"
+                android:scrollbars="vertical">
+
+                <TextView
+                    android:id="@id/minecraftLaunchLog"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="monospace"
+                    android:includeFontPadding="false"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/ks_launch_log_waiting"
+                    android:textColor="@color/ks_gray_300"
+                    android:textSize="10sp" />
+            </ScrollView>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

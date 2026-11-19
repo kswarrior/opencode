@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:padding="12.0dp" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:scrollbars="none" android:layout_width="180.0dp" android:layout_height="match_parent" android:overScrollMode="never">
+        <LinearLayout android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.SectionTitle" android:textSize="18.0sp" android:ellipsize="end" android:id="@id/settings_title" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dp" android:text="@string/settings_title" android:singleLine="true" android:includeFontPadding="false" android:layout_marginEnd="12.0dp" android:accessibilityHeading="true" />
+            <EditText android:id="@id/settings_search" android:layout_width="match_parent" android:layout_height="36.0dp" android:hint="@string/settings_ui_search_hint" android:inputType="text" android:imeOptions="actionSearch|flagNoExtractUi" android:drawableStart="@drawable/ic_ui_search" android:importantForAutofill="no" style="@style/Widget.Levi.Input" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.Caption" android:id="@id/settings_search_empty" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dp" android:text="@string/settings_ui_search_none" />
+            <org.levimc.launcher.ui.widget.SettingsNavigationView android:id="@id/settings_tabs" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dp" />
+        </LinearLayout>
+    </ScrollView>
+    <View android:background="@color/divider" android:layout_width="1.0dp" android:layout_height="match_parent" android:layout_marginStart="12.0dp" android:layout_marginEnd="12.0dp" />
+    <ScrollView android:id="@id/settings_scroll" android:scrollbars="none" android:clipToPadding="false" android:layout_width="0.0dp" android:layout_height="match_parent" android:fillViewport="true" android:layout_weight="1.0">
+        <include layout="@layout/view_settings_sections" />
+    </ScrollView>
+</LinearLayout>

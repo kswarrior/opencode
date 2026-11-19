@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="10.0dp" android:paddingBottom="10.0dp" android:layout_width="match_parent" android:layout_height="match_parent" android:paddingStart="16.0dp" android:paddingEnd="16.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_width="30.0dp" android:layout_height="30.0dp" android:layout_marginEnd="10.0dp" android:src="@drawable/ks_logo_mark" android:importantForAccessibility="no" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textAppearance="@style/TextAppearance.Levi.PageTitle" android:textSize="20.0sp" android:textAllCaps="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/external_mods" />
+            <TextView android:textAppearance="@style/TextAppearance.Levi.PageSubtitle" android:textSize="12.0sp" android:id="@id/external_mods_subtitle" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dp" />
+        </LinearLayout>
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/external_mods_discord" android:layout_width="wrap_content" android:layout_height="44.0dp" android:text="@string/mods_external_join" android:layout_marginStart="10.0dp" app:icon="@drawable/ic_discord" app:iconPadding="6.0dp" app:iconSize="18.0dp" style="@style/Widget.Levi.Button.Secondary" />
+        <com.google.android.material.button.MaterialButton android:id="@id/external_mods_refresh" android:layout_width="44.0dp" android:layout_height="44.0dp" android:contentDescription="@string/external_mods_refresh" android:layout_marginStart="8.0dp" app:icon="@drawable/ic_ui_refresh" style="@style/Widget.Levi.Button.Icon" />
+    </LinearLayout>
+    <org.levimc.launcher.ui.widget.CatalogToolbarLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dp">
+        <EditText android:textSize="13.0sp" android:id="@id/external_mods_search" android:layout_width="match_parent" android:layout_height="44.0dp" android:hint="@string/external_mods_search_hint" android:singleLine="true" android:inputType="text" android:imeOptions="actionSearch" android:drawableStart="@drawable/ic_ui_search" android:importantForAutofill="no" style="@style/Widget.Levi.Input" />
+        <com.google.android.material.checkbox.MaterialCheckBox android:textSize="12.0sp" android:textColor="@color/text_primary" android:id="@id/external_mods_compatible_filter" android:layout_width="wrap_content" android:layout_height="44.0dp" android:minHeight="44.0dp" android:text="@string/mods_external_compatible" android:buttonTint="@color/primary" />
+        <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/external_mods_sort" android:layout_width="wrap_content" android:layout_height="44.0dp" app:icon="@drawable/ic_ui_sort" app:iconPadding="6.0dp" app:iconSize="18.0dp" style="@style/Widget.Levi.Button.Secondary" />
+    </org.levimc.launcher.ui.widget.CatalogToolbarLayout>
+    <TextView android:textSize="12.0sp" android:textColor="@color/ui_warning" android:id="@id/external_mods_status" android:background="@drawable/bg_polish_notice" android:padding="8.0dp" android:visibility="gone" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" />
+    <TextView android:textSize="11.0sp" android:textColor="@color/text_secondary" android:id="@id/external_mods_results" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:layout_marginBottom="6.0dp" />
+    <FrameLayout android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/external_mods_recycler" android:paddingBottom="4.0dp" android:clipToPadding="false" android:layout_width="match_parent" android:layout_height="match_parent" android:overScrollMode="never" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/external_mods_progress" android:layout_width="32.0dp" android:layout_height="32.0dp" android:indeterminateTint="@color/primary" />
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/external_mods_empty_layout" android:visibility="gone" android:layout_width="match_parent" android:layout_height="match_parent">
+            <ImageView android:layout_width="32.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_ui_search" android:importantForAccessibility="no" app:tint="@color/text_secondary" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/text_primary" android:gravity="center" android:id="@id/external_mods_empty" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dp" android:text="@string/external_mods_empty" />
+            <com.google.android.material.button.MaterialButton android:textSize="12.0sp" android:id="@id/external_mods_clear" android:layout_width="wrap_content" android:layout_height="44.0dp" android:layout_marginTop="10.0dp" android:text="@string/mods_clear_filters" style="@style/Widget.Levi.Button.Secondary" />
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

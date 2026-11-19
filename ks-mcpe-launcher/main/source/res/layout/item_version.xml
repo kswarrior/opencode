@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="4.0dp" android:layout_marginStart="0.0dp" android:layout_marginEnd="12.0dp"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/linear_parent" android:background="@drawable/bg_third_level_item" android:paddingTop="8.0dp" android:paddingBottom="8.0dp" android:focusable="true" android:clickable="true" android:layout_width="match_parent" android:layout_height="wrap_content" android:foreground="?android:selectableItemBackground" android:paddingStart="12.0dp" android:paddingEnd="8.0dp" android:layout_marginStart="52.0dp">
+        <TextView android:textSize="15.0sp" android:textColor="@color/on_surface" android:id="@id/tv_version_name_item" android:layout_width="0.0dp" android:layout_height="wrap_content" android:layout_weight="1.0" android:fontFamily="sans-serif" />
+        <ImageButton android:id="@id/btn_rename" android:background="?selectableItemBackgroundBorderless" android:padding="6.0dp" android:visibility="gone" android:layout_width="32.0dp" android:layout_height="32.0dp" android:src="@drawable/ic_edit" android:scaleType="fitCenter" android:tint="@color/primary" />
+    </LinearLayout>
+</FrameLayout>

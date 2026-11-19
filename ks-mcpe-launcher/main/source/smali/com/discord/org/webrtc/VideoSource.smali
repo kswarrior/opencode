@@ -1,0 +1,448 @@
+.class public Lcom/discord/org/webrtc/VideoSource;
+.super Lcom/discord/org/webrtc/MediaSource;
+.source "r8-map-id-e6f77ad05eb1ead026c4f87a40e933022fe56a33a84e23a4f1cc7548a8eaa32e"
+
+
+# annotations
+.annotation system Ldalvik/annotation/MemberClasses;
+    value = {
+        Lcom/discord/org/webrtc/VideoSource$AspectRatio;
+    }
+.end annotation
+
+
+# instance fields
+.field private final capturerObserver:Lcom/discord/org/webrtc/CapturerObserver;
+
+.field private isCapturerRunning:Z
+
+.field private final nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+.field private videoProcessor:Lcom/discord/org/webrtc/VideoProcessor;
+
+.field private final videoProcessorLock:Ljava/lang/Object;
+
+
+# direct methods
+.method public constructor <init>(J)V
+    .locals 1
+
+    .line 1
+    invoke-direct {p0, p1, p2}, Lcom/discord/org/webrtc/MediaSource;-><init>(J)V
+
+    .line 2
+    .line 3
+    .line 4
+    new-instance v0, Ljava/lang/Object;
+
+    .line 5
+    .line 6
+    invoke-direct {v0}, Ljava/lang/Object;-><init>()V
+
+    .line 7
+    .line 8
+    .line 9
+    iput-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessorLock:Ljava/lang/Object;
+
+    .line 10
+    .line 11
+    new-instance v0, Lcom/discord/org/webrtc/VideoSource$1;
+
+    .line 12
+    .line 13
+    invoke-direct {v0, p0}, Lcom/discord/org/webrtc/VideoSource$1;-><init>(Lcom/discord/org/webrtc/VideoSource;)V
+
+    .line 14
+    .line 15
+    .line 16
+    iput-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->capturerObserver:Lcom/discord/org/webrtc/CapturerObserver;
+
+    .line 17
+    .line 18
+    new-instance v0, Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    .line 19
+    .line 20
+    invoke-direct {v0, p1, p2}, Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;-><init>(J)V
+
+    .line 21
+    .line 22
+    .line 23
+    iput-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    .line 24
+    .line 25
+    return-void
+.end method
+
+.method public static synthetic b(Lcom/discord/org/webrtc/VideoSource;Lcom/discord/org/webrtc/VideoFrame;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lcom/discord/org/webrtc/VideoSource;->lambda$setVideoProcessor$1(Lcom/discord/org/webrtc/VideoFrame;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static synthetic c(Lcom/discord/org/webrtc/VideoSource;Lcom/discord/org/webrtc/VideoFrame;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lcom/discord/org/webrtc/VideoSource;->lambda$setVideoProcessor$0(Lcom/discord/org/webrtc/VideoFrame;)V
+
+    .line 2
+    .line 3
+    .line 4
+    return-void
+.end method
+
+.method public static bridge synthetic d(Lcom/discord/org/webrtc/VideoSource;)Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/discord/org/webrtc/VideoSource;->nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic e(Lcom/discord/org/webrtc/VideoSource;)Lcom/discord/org/webrtc/VideoProcessor;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessor:Lcom/discord/org/webrtc/VideoProcessor;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic f(Lcom/discord/org/webrtc/VideoSource;)Ljava/lang/Object;
+    .locals 0
+
+    .line 1
+    iget-object p0, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessorLock:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    return-object p0
+.end method
+
+.method public static bridge synthetic g(Lcom/discord/org/webrtc/VideoSource;Z)V
+    .locals 0
+
+    .line 1
+    iput-boolean p1, p0, Lcom/discord/org/webrtc/VideoSource;->isCapturerRunning:Z
+
+    .line 2
+    .line 3
+    return-void
+.end method
+
+.method private synthetic lambda$setVideoProcessor$0(Lcom/discord/org/webrtc/VideoFrame;)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;->onFrameCaptured(Lcom/discord/org/webrtc/VideoFrame;)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method private synthetic lambda$setVideoProcessor$1(Lcom/discord/org/webrtc/VideoFrame;)V
+    .locals 2
+
+    .line 1
+    new-instance v0, Lcom/discord/org/webrtc/t;
+
+    .line 2
+    .line 3
+    const/4 v1, 0x5
+
+    .line 4
+    invoke-direct {v0, p0, p1, v1}, Lcom/discord/org/webrtc/t;-><init>(Ljava/lang/Object;Ljava/lang/Object;I)V
+
+    .line 5
+    .line 6
+    .line 7
+    invoke-virtual {p0, v0}, Lcom/discord/org/webrtc/MediaSource;->runWithReference(Ljava/lang/Runnable;)V
+
+    .line 8
+    .line 9
+    .line 10
+    return-void
+.end method
+
+
+# virtual methods
+.method public adaptOutputFormat(III)V
+    .locals 6
+
+    .line 1
+    invoke-static {p1, p2}, Ljava/lang/Math;->max(II)I
+
+    move-result v1
+
+    .line 2
+    invoke-static {p1, p2}, Ljava/lang/Math;->min(II)I
+
+    move-result v2
+
+    move v3, v2
+
+    move v4, v1
+
+    move-object v0, p0
+
+    move v5, p3
+
+    .line 3
+    invoke-virtual/range {v0 .. v5}, Lcom/discord/org/webrtc/VideoSource;->adaptOutputFormat(IIIII)V
+
+    return-void
+.end method
+
+.method public adaptOutputFormat(IIIII)V
+    .locals 6
+
+    .line 4
+    new-instance v1, Lcom/discord/org/webrtc/VideoSource$AspectRatio;
+
+    invoke-direct {v1, p1, p2}, Lcom/discord/org/webrtc/VideoSource$AspectRatio;-><init>(II)V
+
+    mul-int/2addr p1, p2
+
+    .line 5
+    invoke-static {p1}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v2
+
+    new-instance v3, Lcom/discord/org/webrtc/VideoSource$AspectRatio;
+
+    invoke-direct {v3, p3, p4}, Lcom/discord/org/webrtc/VideoSource$AspectRatio;-><init>(II)V
+
+    mul-int/2addr p3, p4
+
+    .line 6
+    invoke-static {p3}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v4
+
+    invoke-static {p5}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v5
+
+    move-object v0, p0
+
+    .line 7
+    invoke-virtual/range {v0 .. v5}, Lcom/discord/org/webrtc/VideoSource;->adaptOutputFormat(Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Ljava/lang/Integer;)V
+
+    return-void
+.end method
+
+.method public adaptOutputFormat(Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Ljava/lang/Integer;)V
+    .locals 6
+
+    .line 8
+    iget-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    move-object v1, p1
+
+    move-object v2, p2
+
+    move-object v3, p3
+
+    move-object v4, p4
+
+    move-object v5, p5
+
+    invoke-virtual/range {v0 .. v5}, Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;->adaptOutputFormat(Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Lcom/discord/org/webrtc/VideoSource$AspectRatio;Ljava/lang/Integer;Ljava/lang/Integer;)V
+
+    return-void
+.end method
+
+.method public dispose()V
+    .locals 1
+
+    .line 1
+    const/4 v0, 0x0
+
+    .line 2
+    invoke-virtual {p0, v0}, Lcom/discord/org/webrtc/VideoSource;->setVideoProcessor(Lcom/discord/org/webrtc/VideoProcessor;)V
+
+    .line 3
+    .line 4
+    .line 5
+    invoke-super {p0}, Lcom/discord/org/webrtc/MediaSource;->dispose()V
+
+    .line 6
+    .line 7
+    .line 8
+    return-void
+.end method
+
+.method public getCapturerObserver()Lcom/discord/org/webrtc/CapturerObserver;
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->capturerObserver:Lcom/discord/org/webrtc/CapturerObserver;
+
+    .line 2
+    .line 3
+    return-object v0
+.end method
+
+.method public getNativeVideoTrackSource()J
+    .locals 2
+
+    .line 1
+    invoke-virtual {p0}, Lcom/discord/org/webrtc/MediaSource;->getNativeMediaSource()J
+
+    .line 2
+    .line 3
+    .line 4
+    move-result-wide v0
+
+    .line 5
+    return-wide v0
+.end method
+
+.method public setIsScreencast(Z)V
+    .locals 1
+
+    .line 1
+    iget-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->nativeAndroidVideoTrackSource:Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;
+
+    .line 2
+    .line 3
+    invoke-virtual {v0, p1}, Lcom/discord/org/webrtc/NativeAndroidVideoTrackSource;->setIsScreencast(Z)V
+
+    .line 4
+    .line 5
+    .line 6
+    return-void
+.end method
+
+.method public setVideoProcessor(Lcom/discord/org/webrtc/VideoProcessor;)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessorLock:Ljava/lang/Object;
+
+    .line 2
+    .line 3
+    monitor-enter v0
+
+    .line 4
+    :try_start_0
+    iget-object v1, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessor:Lcom/discord/org/webrtc/VideoProcessor;
+
+    .line 5
+    .line 6
+    if-eqz v1, :cond_0
+
+    .line 7
+    .line 8
+    const/4 v2, 0x0
+
+    .line 9
+    invoke-interface {v1, v2}, Lcom/discord/org/webrtc/VideoProcessor;->setSink(Lcom/discord/org/webrtc/VideoSink;)V
+
+    .line 10
+    .line 11
+    .line 12
+    iget-boolean v1, p0, Lcom/discord/org/webrtc/VideoSource;->isCapturerRunning:Z
+
+    .line 13
+    .line 14
+    if-eqz v1, :cond_0
+
+    .line 15
+    .line 16
+    iget-object v1, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessor:Lcom/discord/org/webrtc/VideoProcessor;
+
+    .line 17
+    .line 18
+    invoke-interface {v1}, Lcom/discord/org/webrtc/CapturerObserver;->onCapturerStopped()V
+
+    .line 19
+    .line 20
+    .line 21
+    goto :goto_0
+
+    .line 22
+    :catchall_0
+    move-exception p1
+
+    .line 23
+    goto :goto_1
+
+    .line 24
+    :cond_0
+    :goto_0
+    iput-object p1, p0, Lcom/discord/org/webrtc/VideoSource;->videoProcessor:Lcom/discord/org/webrtc/VideoProcessor;
+
+    .line 25
+    .line 26
+    if-eqz p1, :cond_1
+
+    .line 27
+    .line 28
+    new-instance v1, Lcom/discord/org/webrtc/b;
+
+    .line 29
+    .line 30
+    const/4 v2, 0x2
+
+    .line 31
+    invoke-direct {v1, p0, v2}, Lcom/discord/org/webrtc/b;-><init>(Ljava/lang/Object;I)V
+
+    .line 32
+    .line 33
+    .line 34
+    invoke-interface {p1, v1}, Lcom/discord/org/webrtc/VideoProcessor;->setSink(Lcom/discord/org/webrtc/VideoSink;)V
+
+    .line 35
+    .line 36
+    .line 37
+    iget-boolean v1, p0, Lcom/discord/org/webrtc/VideoSource;->isCapturerRunning:Z
+
+    .line 38
+    .line 39
+    if-eqz v1, :cond_1
+
+    .line 40
+    .line 41
+    const/4 v1, 0x1
+
+    .line 42
+    invoke-interface {p1, v1}, Lcom/discord/org/webrtc/CapturerObserver;->onCapturerStarted(Z)V
+
+    .line 43
+    .line 44
+    .line 45
+    :cond_1
+    monitor-exit v0
+
+    .line 46
+    return-void
+
+    .line 47
+    :goto_1
+    monitor-exit v0
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    .line 48
+    throw p1
+.end method

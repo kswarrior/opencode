@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="16.0dp" android:layout_width="match_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/on_surface" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/transfer_to" android:fontFamily="sans-serif" />
+    <RadioGroup android:id="@id/storage_radio_group" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dp">
+        <RadioButton android:textSize="14.0sp" android:textColor="@color/on_surface" android:id="@id/radio_internal" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/storage_internal" android:fontFamily="sans-serif" />
+        <RadioButton android:textSize="14.0sp" android:textColor="@color/on_surface" android:id="@id/radio_external" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/storage_external" android:fontFamily="sans-serif" />
+        <RadioButton android:textSize="14.0sp" android:textColor="@color/on_surface" android:id="@id/radio_version_isolation_internal" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/storage_version_isolation" android:fontFamily="sans-serif" />
+        <RadioButton android:textSize="14.0sp" android:textColor="@color/on_surface" android:id="@id/radio_version_isolation" android:padding="8.0dp" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/storage_version_isolation" android:fontFamily="sans-serif" />
+    </RadioGroup>
+</LinearLayout>

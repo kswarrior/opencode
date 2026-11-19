@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="launcher_tips">
+        <item>在设置中可以调整主题、颜色、背景和其他外观选项，让启动器更符合你的使用习惯。</item>
+        <item>LeviLauncher 是开源项目。你可以通过 GitHub Issues 反馈启动器问题或提出改进建议。</item>
+        <item>使用版本下拉菜单可以快速切换当前实例。</item>
+        <item>真的有人会读这些提示吗？</item>
+        <item>你可以拖动模组来调整加载优先级。</item>
+        <item>试试版本隔离吧！</item>
+        <item>使用快速启动可以不先打开游戏，直接连接到服务器。</item>
+        <item>你可以在内容管理页面导入 .mcworld、.mcpack 和 .mcaddon 文件。</item>
+        <item>在启动器中管理多个 Xbox 账号，并在它们之间无缝切换。</item>
+        <item>CurseForge 可以让你直接浏览并下载社区内容。</item>
+        <item>导入模组以扩展或增强 Minecraft 功能和性能。</item>
+        <item>动态 GIF 也可以用作启动器壁纸。</item>
+        <item>可以在实例设置中更改实例图标。</item>
+        <item>在模组菜单中为模块加星，就能在收藏中快速找到它。</item>
+        <item>拖动模组菜单的标题可移动菜单，拖动右下角可调整大小。</item>
+        <item>在外部模组页面使用“仅显示兼容”，即可按当前 Minecraft 版本筛选。</item>
+        <item>编辑世界的 NBT 数据前，请先备份世界。</item>
+    </string-array>
+</resources>

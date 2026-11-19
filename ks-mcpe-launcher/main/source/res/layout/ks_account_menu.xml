@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/ks_account_menu_bg"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <ScrollView
+        android:id="@+id/ks_account_menu_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/ks_account_menu_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="4dp"
+        android:background="@color/ks_gray_700" />
+
+    <TextView
+        android:id="@+id/ks_account_menu_add"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:background="@drawable/ks_account_row_bg"
+        android:clickable="true"
+        android:drawableStart="@drawable/ks_ic_plus"
+        android:drawablePadding="10dp"
+        android:focusable="true"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.12"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:text="@string/ks_account_add"
+        android:textColor="@color/ks_white"
+        android:textSize="11sp" />
+</LinearLayout>

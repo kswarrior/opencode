@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/shell_root" android:tag="levi_keep_background" android:background="@color/background" android:layout_width="match_parent" android:layout_height="match_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <org.levimc.launcher.ui.widget.CenteredNavbarLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/nav_bar_root" android:tag="levi_keep_background" android:background="@color/ui_chrome" android:layout_width="match_parent" android:layout_height="48.0dp" android:baselineAligned="false" android:paddingStart="12.0dp" android:paddingEnd="12.0dp">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:baselineAligned="false">
+            <ImageView android:id="@id/nav_back_button" android:background="?selectableItemBackgroundBorderless" android:padding="4.0dp" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ic_ui_arrow_back" android:contentDescription="@string/nav_back" android:layout_marginEnd="6.0dp" android:tooltipText="@string/nav_back" app:tint="@color/ui_muted" />
+            <ImageView android:id="@id/nav_logo" android:layout_width="28.0dp" android:layout_height="28.0dp" android:src="@drawable/ks_logo_mark" android:contentDescription="@string/app_name" android:translationY="-0.5dp" />
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/accent_text" android:textAllCaps="true" android:letterSpacing="0.08" android:gravity="center_vertical" android:id="@id/nav_app_name" android:layout_width="wrap_content" android:layout_height="match_parent" android:text="@string/app_name" android:singleLine="true" android:includeFontPadding="false" android:translationY="-0.5dp" android:fontFamily="sans-serif-medium" android:layout_marginStart="8.0dp" />
+        </LinearLayout>
+        <HorizontalScrollView android:scrollbars="none" android:layout_width="0.0dp" android:layout_height="match_parent" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never" android:layout_marginStart="6.0dp" android:layout_marginEnd="6.0dp">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nav_navbar_items" android:layout_width="wrap_content" android:layout_height="match_parent" android:baselineAligned="false">
+                <TextView android:id="@id/nav_tab_launch" android:text="@string/nav_launch" android:drawableStart="@drawable/ic_nav_launch" style="@style/Widget.Levi.NavbarItem" />
+                <TextView android:id="@id/nav_tab_download" android:text="@string/nav_download" android:drawableStart="@drawable/ic_nav_download" style="@style/Widget.Levi.NavbarItem" />
+                <TextView android:id="@id/nav_tab_instances" android:text="@string/nav_instances" android:drawableStart="@drawable/ic_nav_instances" style="@style/Widget.Levi.NavbarItem" />
+                <TextView android:id="@id/nav_tab_about" android:text="@string/nav_about" android:drawableStart="@drawable/ic_nav_about" style="@style/Widget.Levi.NavbarItem" />
+                <TextView android:id="@id/nav_tab_settings" android:text="@string/nav_settings" android:drawableStart="@drawable/ic_nav_settings" style="@style/Widget.Levi.NavbarItem" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout android:gravity="end|center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="match_parent" android:baselineAligned="false">
+            <View android:id="@id/nav_utility_divider" android:background="@color/ui_border" android:layout_width="1.0dp" android:layout_height="20.0dp" android:importantForAccessibility="no" android:layout_marginStart="10.0dp" android:layout_marginEnd="28.0dp" />
+            <ImageView android:id="@id/nav_theme_toggle" android:background="?selectableItemBackgroundBorderless" android:padding="6.0dp" android:layout_width="36.0dp" android:layout_height="36.0dp" android:src="@drawable/ic_sun" android:contentDescription="@string/nav_toggle_theme" android:layout_marginEnd="7.0dp" android:tooltipText="@string/nav_toggle_theme" app:tint="@color/ui_muted" />
+            <include layout="@layout/shell_account_cluster" />
+        </LinearLayout>
+    </org.levimc.launcher.ui.widget.CenteredNavbarLayout>
+    <View android:id="@id/nav_divider" android:background="@color/divider" android:layout_width="match_parent" android:layout_height="1.0dp" />
+    <FrameLayout android:id="@id/shell_content" android:focusable="true" android:focusableInTouchMode="true" android:descendantFocusability="beforeDescendants" android:layout_width="match_parent" android:layout_height="0.0dp" android:layout_weight="1.0" />
+</LinearLayout>
